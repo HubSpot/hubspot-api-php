@@ -1,5 +1,5 @@
 {
-    "name": "GIT_USER_ID/GIT_REPO_ID",
+    "name": "hubspot/php-hubpost-3",
     "description": "",
     "keywords": [
         "swagger",
@@ -28,7 +28,10 @@
         "friendsofphp/php-cs-fixer": "~2.12"
     },
     "autoload": {
-        "psr-4": { "Swagger\\Client\\" : "lib/" }
+        "psr-4": {
+            "HubSpot\\Client\\" : "codegen/",
+            "HubSpot\\" : "lib/"
+        }
     },
     "autoload-dev": {
         "psr-4": { "Swagger\\Client\\" : "test/" }
