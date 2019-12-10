@@ -13,7 +13,26 @@ use HubSpot\Client\Crm\Objects\Configuration;
 class Factory
 {
     /** @var string */
-    private $apiKey = null;
+    private $apiKey;
+
+    /**
+     * @param string $name
+     * @param mixed  $args
+     *
+     * @return mixed
+     */
+    public function __call($name, $args)
+    {
+        $resource = '\\HubSpot\\Factory\\'.ucfirst($name);
+        $configuration = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
+        /** @var Configuration $config */
+        $config = new $configuration();
+        if (!empty($this->apiKey)) {
+            $config->setApiKey('hapikey', $this->apiKey);
+        }
+
+        return new $resource(new Client(), $config);
+    }
 
     /**
      * @return string
@@ -29,25 +48,6 @@ class Factory
     public function setApiKey($apiKey)
     {
         $this->apiKey = $apiKey;
-    }
-
-    /**
-     * @param string $name
-     * @param mixed $args
-     *
-     * @return mixed
-     */
-    public function __call($name, $args)
-    {
-        $resource = '\\HubSpot\\Factory\\'.ucfirst($name);
-        $configuration = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
-        /** @var Configuration $config */
-        $config = new $configuration();
-        if (!empty($this->apiKey)) {
-            $config->setApiKey('hapikey', $this->apiKey);
-        }
-
-        return new $resource(new Client(), $config);
     }
 
     /**

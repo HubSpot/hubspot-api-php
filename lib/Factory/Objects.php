@@ -30,7 +30,7 @@ class Objects
 
     /**
      * @param string $name
-     * @param mixed $args
+     * @param mixed  $args
      *
      * @return mixed
      */
