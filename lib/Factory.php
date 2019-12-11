@@ -15,10 +15,10 @@ class Factory
     const API_KEY_IDENTIFIER = 'hapikey';
 
     /** @var string */
-    private $apiKey;
+    protected $apiKey;
 
     /** @var string */
-    private $accessToken;
+    protected $accessToken;
 
     /**
      * @param string $name
