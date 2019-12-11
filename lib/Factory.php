@@ -12,6 +12,8 @@ use HubSpot\Client\Crm\Objects\Configuration;
  */
 class Factory
 {
+    const API_KEY_IDENTIFIED = 'hapikey';
+
     /** @var string */
     private $apiKey;
 
@@ -30,10 +32,10 @@ class Factory
         $configuration = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
         /** @var Configuration $config */
         $config = new $configuration();
-        if (!empty($this->apiKey)) {
-            $config->setApiKey('hapikey', $this->apiKey);
+        if (null !== $this->apiKey) {
+            $config->setApiKey(static::API_KEY_IDENTIFIED, $this->apiKey);
         }
-        if (!empty($this->accessToken)) {
+        if (null !== $this->accessToken) {
             $config->setAccessToken($this->accessToken);
         }
 
