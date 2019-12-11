@@ -1,30 +1,36 @@
 # php-hubspot-3
 PHP API vNext Client files and sample apps
 
-# How to use
+## Quickstart
+
+#### Create a factory using HubSpot API Key:
 
 ```php
-<?php
+$hubSpot = \HubSpot\Factory::createWithApiKey('api-key');
+```
 
-include_once 'vendor/autoload.php';
+####or using OAuth2 access token:
 
-$contactInput = new \HubSpot\Client\Crm\Objects\Model\ContactInput();
+```php
+$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
+```
 
-try {
-    $hubSpot = \HubSpot\Factory::createWithApiKey('api-key')->objects();
+#### Get contacts page:
 
-    $response = $hubSpot->basicApi()->getPage('contact');
-    var_dump($response);
-    
-    $searchRequest = new \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest();
-    $searchRequest->setFilters([
-        'email' => 'abc@hubspot.com',
-    ]);
-    $response = $hubSpot->searchApi()->doSearch($searchRequest);
-    var_dump($response);
-    
-} catch (\HubSpot\Client\Crm\Objects\ApiException $e) {
-    var_dump($e);
-}
+```php
+$response = $hubSpot->basicApi()->getPage('contact');
+```
 
+#### Search for a contact:
+
+```php
+$searchRequest = new \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest();
+$searchRequest->setFilters([
+    [
+        'propertyName' => 'firstname',
+        'operator' => 'EQ',
+        'value' => 'Alice',
+    ],
+]);
+$response = $hubSpot->searchApi()->doSearch($searchRequest);
 ```

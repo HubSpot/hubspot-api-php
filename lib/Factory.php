@@ -15,6 +15,9 @@ class Factory
     /** @var string */
     private $apiKey;
 
+    /** @var string */
+    private $accessToken;
+
     /**
      * @param string $name
      * @param mixed  $args
@@ -30,8 +33,27 @@ class Factory
         if (!empty($this->apiKey)) {
             $config->setApiKey('hapikey', $this->apiKey);
         }
+        if (!empty($this->accessToken)) {
+            $config->setAccessToken($this->accessToken);
+        }
 
         return new $resource(new Client(), $config);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string $accessToken
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
     }
 
     /**
@@ -62,6 +84,14 @@ class Factory
     {
         $factory = new static();
         $factory->setApiKey($apiKey);
+
+        return $factory;
+    }
+
+    public static function createWithAccessToken($accessToken)
+    {
+        $factory = new static();
+        $factory->setAccessToken($accessToken);
 
         return $factory;
     }
