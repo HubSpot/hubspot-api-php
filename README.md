@@ -9,7 +9,7 @@ PHP API vNext Client files and sample apps
 $hubSpot = \HubSpot\Factory::createWithApiKey('api-key');
 ```
 
-####or using OAuth2 access token:
+#### or using OAuth2 access token:
 
 ```php
 $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
