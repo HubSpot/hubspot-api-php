@@ -1,18 +1,20 @@
 {
-    "name": "hubspot/php-hubpost-3",
+    "name": "hubspot/php-hubspot-3",
+    "version": "0.1",
     "description": "",
     "keywords": [
+        "hubspot",
         "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
+    "homepage": "https://hubspot.com/",
     "license": "proprietary",
     "authors": [
         {
-            "name": "Swagger and contributors",
-            "homepage": "https://github.com/swagger-api/swagger-codegen"
+            "name": "HubSpot",
+            "homepage": "https://hubspot.com/"
         }
     ],
     "require": {
@@ -32,8 +34,5 @@
             "HubSpot\\Client\\" : "codegen/",
             "HubSpot\\" : "lib/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": { "Swagger\\Client\\" : "test/" }
     }
 }

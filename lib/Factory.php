@@ -12,13 +12,13 @@ use HubSpot\Client\Crm\Objects\Configuration;
  */
 class Factory
 {
-    const API_KEY_IDENTIFIED = 'hapikey';
+    const API_KEY_IDENTIFIER = 'hapikey';
 
     /** @var string */
-    private $apiKey;
+    protected $apiKey;
 
     /** @var string */
-    private $accessToken;
+    protected $accessToken;
 
     /**
      * @param string $name
@@ -32,12 +32,16 @@ class Factory
         $configuration = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
         /** @var Configuration $config */
         $config = new $configuration();
+
         if (null !== $this->apiKey) {
-            $config->setApiKey(static::API_KEY_IDENTIFIED, $this->apiKey);
+            $config->setApiKey(static::API_KEY_IDENTIFIER, $this->apiKey);
         }
         if (null !== $this->accessToken) {
             $config->setAccessToken($this->accessToken);
         }
+
+        $package = json_decode(file_get_contents(__DIR__.'/../composer.json'), true);
+        $config->setUserAgent("{$package['name']}; {$package['version']}");
 
         return new $resource(new Client(), $config);
     }
