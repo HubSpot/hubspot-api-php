@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  web:
+    env_file:
+      - .env
+    build:
+      dockerfile: ./sample-apps/contacts-app/docker/web/Dockerfile
+      context: ../../
+    ports:
+      - 8999:80
+    volumes:
+      - ./src:/app/src
+
+#  codecept:
+#    build:
+#      dockerfile: sample-apps/contacts-app/docker/codecept/Dockerfile
+#      context: ../../
+#    depends_on:
+#      - web
+#    volumes:
+#      - ./tests:/project/tests
