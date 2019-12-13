@@ -10,8 +10,16 @@ if (empty($search)) {
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-// https://developers.hubspot.com/docs/methods/contacts/search_contacts
-$response = $hubSpot->contacts()->search($_GET['search']);
-$contacts = $response['contacts'];
+$searchRequest = new \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest();
+$searchRequest->setFilters([
+    [
+        'propertyName' => 'email',
+        'operator' => 'EQ',
+        'value' => $search,
+    ],
+]);
+
+/** @var \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject $contactsPage */
+$contactsPage = $hubSpot->objects()->searchApi()->doSearch('contact', $searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';
