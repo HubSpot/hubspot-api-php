@@ -4,8 +4,8 @@
   <thead>
   <tr>
     <th>ID</th>
+    <th>Email</th>
     <th>Name</th>
-    <th>Company</th>
   </tr>
   </thead>
   <tbody>
@@ -16,11 +16,11 @@
       </fieldset>
   </form>
 
-  <?php foreach ($contacts as $contact) { ?>
+  <?php foreach ($contactsPage->getResults() as $contact) { ?>
     <tr>
-      <td><a href="/contacts/show.php?notUpdated=true&vid=<?php echo $contact['vid']; ?>"><?php echo $contact['vid']; ?></a></td>
-      <td><?php echo htmlentities($contact['properties']['firstname']['value']).' '.htmlentities($contact['properties']['lastname']['value']); ?></td>
-      <td><?php echo htmlentities($contact['properties']['company']['value']); ?></td>
+      <td><a href="/contacts/show.php?notUpdated=true&vid=<?php echo $contact['vid']; ?>"><?php echo $contact->getId(); ?></a></td>
+        <td><?php echo htmlentities($contact->getProperties()['email']); ?></td>
+      <td><?php echo htmlentities($contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname']); ?></td>
     </tr>
   <?php }?>
   </tbody>
