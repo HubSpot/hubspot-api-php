@@ -1,26 +1,26 @@
 <?php
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject;
+use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
 
 function get_contacts_for_export($maxPages = 10)
 {
-    global $hubSpot;
+    $hubSpot = Helpers\HubspotClientHelper::createFactory();
     $contacts = [];
-    $vidOffset = null;
+    $after = null;
     for ($pageNum = 0; $pageNum < $maxPages; ++$pageNum) {
         // https://developers.hubspot.com/docs/methods/contacts/get_contacts
-        $response = $hubSpot->contacts()->all([
-            'count' => 10,
-            'vidOffset' => $vidOffset,
-        ]);
-        foreach ($response->getData()->contacts as $contact) {
-            $contacts[] = $contact;
-        }
-        $vidOffset = $response->getData()->{'vid-offset'};
-        $hasMore = $response->getData()->{'has-more'};
-        if (!$hasMore) {
+        /** @var CollectionResponseSimplePublicObject $contactsPage */
+        $contactsPage = $hubSpot->objects()->basicApi()->getPage('contact', 10, $after);
+        $contacts = [
+            ...$contacts,
+            ...$contactsPage->getResults(),
+        ];
+        $next = $contactsPage->getPaging()->getNext();
+        if (null === $next) {
             break;
         }
+        $after = $next->getAfter();
     }
 
     return $contacts;
@@ -28,17 +28,15 @@ function get_contacts_for_export($maxPages = 10)
 
 function generate_csv_rows($contacts, $properties)
 {
-    $rows = [];
-    $headerRow = [];
-    foreach ($properties as $property) {
-        $headerRow[] = $property->label;
-    }
-    $rows[] = $headerRow;
+    $headerRow = [
+        ...$properties
+    ];
+    $rows = [$headerRow];
+    /** @var SimplePublicObject $contact */
     foreach ($contacts as $contact) {
         $row = [];
         foreach ($properties as $property) {
-            $propertyName = $property->name;
-            $row[] = $contact->properties->{$propertyName}->value;
+            $row[] = $contact->getProperties()[$property];
         }
         $rows[] = $row;
     }
@@ -48,10 +46,8 @@ function generate_csv_rows($contacts, $properties)
 
 $contacts = get_contacts_for_export();
 
-// https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
-$properties = $hubSpot->contactProperties()->all()->getData();
-
-$csvRows = generate_csv_rows($contacts, $properties);
+$propertiesToExport = ['email', 'firstname', 'lastname'];
+$csvRows = generate_csv_rows($contacts, $propertiesToExport);
 
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename=contacts.csv');
