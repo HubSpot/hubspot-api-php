@@ -1,9 +1,12 @@
 <?php
 
+use HubSpot\Client\Crm\Objects\Model\ContactInput;
+use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
+
 $hubSpot = \Helpers\HubspotClientHelper::createFactory();
 
 if (isset($_POST['email'])) {
-    $contactInput = new \HubSpot\Client\Crm\Objects\Model\ContactInput();
+    $contactInput = new ContactInput();
     $contactInput->setProperties($_POST);
     $contact = $hubSpot->objects()->createNativeObjectsApi()->postcrmv3objectscontacts($contactInput);
 
@@ -11,7 +14,7 @@ if (isset($_POST['email'])) {
     exit();
 }
 
-$contact = new \HubSpot\Client\Crm\Objects\Model\SimplePublicObject();
+$contact = new SimplePublicObject();
 $contact->setProperties([
     'email' => null,
 ]);

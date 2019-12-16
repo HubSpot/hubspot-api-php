@@ -2,16 +2,17 @@
 
 use Helpers\ContactPropertiesHelper;
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
 if (!isset($_GET['id'])) {
-    throw new \Exception();
+    throw new \Exception('Contact id is not specified');
 }
 
 $contactId = $_GET['id'];
 if (isset($_POST['email'])) {
-    $contact = new \HubSpot\Client\Crm\Objects\Model\SimplePublicObject();
+    $contact = new SimplePublicObject();
     $contact->setProperties($_POST);
     $contact = $hubSpot->objects()->basicApi()->update('contact', $contactId, $contact);
     $updated = true;
