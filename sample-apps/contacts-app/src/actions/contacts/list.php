@@ -5,9 +5,7 @@ use Helpers\HubspotClientHelper;
 $hubSpot = HubspotClientHelper::createFactory();
 
 // https://developers.hubspot.com/docs/methods/contacts/get_contacts
-$response = $hubSpot->contacts()->all([
-    'count' => 10,
-]);
-$contacts = $response['contacts'];
+/** @var \HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject $contactsPage */
+$contactsPage = $hubSpot->objects()->basicApi()->getPage('contact');
 
 include __DIR__.'/../../views/contacts/list.php';
