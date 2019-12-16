@@ -3,7 +3,7 @@
 <?php
       if (isset($errorResponse)) {
           include __DIR__.'/../_partials/error_response.php';
-      } elseif (!$_GET['notUpdated'] && !$notUpdated) {
+      } elseif ($updated) {
           echo "<h3 class='alert-success'>Successfully updated Contact properties</h3>";
       }
 ?>
@@ -13,7 +13,6 @@
         <?php include __DIR__.'/../properties/contacts_properties_list.php'; ?>
     </div>
     <div class="column">
-        <?php include __DIR__.'/../engagements/_list.php'; ?>
     </div>
 
 </div>
