@@ -18,7 +18,7 @@
 
   <?php foreach ($contactsPage->getResults() as $contact) { ?>
     <tr>
-      <td><a href="/contacts/show.php?notUpdated=true&vid=<?php echo $contact['vid']; ?>"><?php echo $contact->getId(); ?></a></td>
+      <td><a href="/contacts/show.php?id=<?php echo $contact['id']; ?>"><?php echo $contact->getId(); ?></a></td>
         <td><?php echo htmlentities($contact->getProperties()['email']); ?></td>
       <td><?php echo htmlentities($contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname']); ?></td>
     </tr>
@@ -27,10 +27,10 @@
 </table>
 
 <div>
-  <a id='contact-new' href="/contacts/new.php">
+  <a id="contact-new" href="/contacts/new.php">
     <input class="button-primary"  type="button" value="New Contact">
   </a>
-    <a id='contactsExport' href="/contacts/export.php">
+    <a id="contacts-export" href="/contacts/export.php">
         <input class="button-primary" type="button" value="Export To CSV">
     </a>
 </div>
