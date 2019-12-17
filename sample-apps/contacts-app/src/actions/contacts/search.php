@@ -1,5 +1,9 @@
 <?php
 
+use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject;
+use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
+
 $contacts = [];
 $search = $_GET['search'];
 
@@ -8,9 +12,9 @@ if (empty($search)) {
     exit();
 }
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
-$searchRequest = new \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest();
+$searchRequest = new PublicObjectSearchRequest();
 $searchRequest->setFilters([
     [
         'propertyName' => 'email',
@@ -19,7 +23,7 @@ $searchRequest->setFilters([
     ],
 ]);
 
-/** @var \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject $contactsPage */
+/** @var CollectionResponseWithTotalSimplePublicObject $contactsPage */
 $contactsPage = $hubSpot->objects()->searchApi()->doSearch('contact', $searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';
