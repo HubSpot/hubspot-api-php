@@ -4,11 +4,13 @@ namespace HubSpot;
 
 use GuzzleHttp\Client;
 use HubSpot\Factory\Objects;
+use HubSpot\Factory\Owners;
 
 /**
  * Class Factory.
  *
  * @method Objects objects()
+ * @method Owners  owners()
  */
 class Factory
 {
