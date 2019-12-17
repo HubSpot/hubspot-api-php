@@ -3,22 +3,22 @@
 namespace HubSpot;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Objects\Configuration;
+use HubSpot\Factory\Objects;
 
 /**
  * Class Factory.
  *
- * @method \HubSpot\Factory\Objects objects()
+ * @method Objects objects()
  */
 class Factory
 {
-    const API_KEY_IDENTIFIER = 'hapikey';
+    /** @var Config */
+    protected $config;
 
-    /** @var string */
-    protected $apiKey;
-
-    /** @var string */
-    protected $accessToken;
+    public function __construct($config = null)
+    {
+        $this->config = $config ?: new Config();
+    }
 
     /**
      * @param string $name
@@ -29,53 +29,27 @@ class Factory
     public function __call($name, $args)
     {
         $resource = '\\HubSpot\\Factory\\'.ucfirst($name);
-        $configuration = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
-        /** @var Configuration $config */
-        $config = new $configuration();
+        $clientConfigClassName = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
 
-        if (null !== $this->apiKey) {
-            $config->setApiKey(static::API_KEY_IDENTIFIER, $this->apiKey);
-        }
-        if (null !== $this->accessToken) {
-            $config->setAccessToken($this->accessToken);
-        }
+        $clientConfig = $this->config->convertToClientConfig($clientConfigClassName);
 
-        $package = json_decode(file_get_contents(__DIR__.'/../composer.json'), true);
-        $config->setUserAgent("{$package['name']}; {$package['version']}");
-
-        return new $resource(new Client(), $config);
+        return new $resource(new Client(), $clientConfig);
     }
 
     /**
-     * @return string
+     * @return Config
      */
-    public function getAccessToken()
+    public function getConfig()
     {
-        return $this->accessToken;
+        return $this->config;
     }
 
     /**
-     * @param string $accessToken
+     * @param Config $config
      */
-    public function setAccessToken($accessToken)
+    public function setConfig($config)
     {
-        $this->accessToken = $accessToken;
-    }
-
-    /**
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
-    }
-
-    /**
-     * @param string $apiKey
-     */
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
+        $this->config = $config;
     }
 
     /**
@@ -88,17 +62,17 @@ class Factory
 
     public static function createWithApiKey($apiKey)
     {
-        $factory = new static();
-        $factory->setApiKey($apiKey);
+        $config = new Config();
+        $config->setApiKey($apiKey);
 
-        return $factory;
+        return new static($config);
     }
 
     public static function createWithAccessToken($accessToken)
     {
-        $factory = new static();
-        $factory->setAccessToken($accessToken);
+        $config = new Config();
+        $config->setAccessToken($accessToken);
 
-        return $factory;
+        return new static($config);
     }
 }
