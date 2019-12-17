@@ -1,7 +1,7 @@
 <?php
 
 use Helpers\OAuth2Helper;
-use SevenShores\Hubspot\Utils\OAuth2;
+use HubSpot\Util\OAuth2;
 
 $authUrl = OAuth2::getAuthUrl(
     OAuth2Helper::getClientId(),
