@@ -1,7 +1,7 @@
 <?php
 
 use Helpers\OAuth2Helper;
-use HubSpot\Util\OAuth2;
+use HubSpot\Utils\OAuth2;
 
 $authUrl = OAuth2::getAuthUrl(
     OAuth2Helper::getClientId(),

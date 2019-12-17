@@ -1,6 +1,6 @@
 <?php
 
-namespace HubSpot\Util;
+namespace HubSpot\Utils;
 
 class OAuth2
 {
