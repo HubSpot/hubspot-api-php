@@ -3,24 +3,29 @@
 namespace HubSpot\Factory;
 
 use GuzzleHttp\Client;
+use HubSpot\Client\Crm\Objects\Api\AssociationsApi;
+use HubSpot\Client\Crm\Objects\Api\BasicApi;
+use HubSpot\Client\Crm\Objects\Api\BatchApi;
+use HubSpot\Client\Crm\Objects\Api\CreateNativeObjectsApi;
+use HubSpot\Client\Crm\Objects\Api\SearchApi;
 use HubSpot\Client\Crm\Objects\Configuration;
 
 /**
  * Class Objects.
  *
- * @method \HubSpot\Client\Crm\Objects\Api\AssociationsApi associationsApi()
- * @method \HubSpot\Client\Crm\Objects\Api\BasicApi basicApi
- * @method \HubSpot\Client\Crm\Objects\Api\BatchApi batchApi()
- * @method \HubSpot\Client\Crm\Objects\Api\CreateNativeObjectsApi createNativeObjectsApi
- * @method \HubSpot\Client\Crm\Objects\Api\SearchApi searchApi()
+ * @method AssociationsApi associationsApi()
+ * @method BasicApi basicApi
+ * @method BatchApi batchApi()
+ * @method CreateNativeObjectsApi createNativeObjectsApi
+ * @method SearchApi searchApi()
  */
 class Objects
 {
     /** @var Client */
-    private $client;
+    protected $client;
 
     /** @var Configuration */
-    private $config;
+    protected $config;
 
     public function __construct($client, $config)
     {

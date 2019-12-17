@@ -3,18 +3,19 @@
 namespace HubSpot\Factory;
 
 use GuzzleHttp\Client;
+use HubSpot\Client\Crm\Owners\Api\DefaultApi;
 use HubSpot\Client\Crm\Owners\Configuration;
 
 /**
- * @method \HubSpot\Client\Crm\Owners\Api\DefaultApi defaultApi()
+ * @method DefaultApi defaultApi()
  */
 class Owners
 {
     /** @var Client */
-    private $client;
+    protected $client;
 
     /** @var Configuration */
-    private $config;
+    protected $config;
 
     public function __construct($client, $config)
     {
