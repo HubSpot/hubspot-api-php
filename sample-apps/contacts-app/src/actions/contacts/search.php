@@ -1,5 +1,6 @@
 <?php
 
+use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject;
 use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
 
@@ -11,7 +12,7 @@ if (empty($search)) {
     exit();
 }
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
 $searchRequest = new PublicObjectSearchRequest();
 $searchRequest->setFilters([
