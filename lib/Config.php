@@ -19,12 +19,13 @@ class Config
 
     public function __construct()
     {
-        $package = json_decode(file_get_contents(__DIR__.'/../composer.json'), true);
-        $this->setUserAgent("{$package['name']}; {$package['version']}");
+        $package = $this->extractPackageNameAndVersionFromComposerFile();
+        $this->userAgent = "{$package['name']}; {$package['version']}";
     }
 
     /**
      * @param $clientConfigClassName
+     *
      * @return Configuration
      */
     public function convertToClientConfig($clientConfigClassName)
@@ -89,5 +90,10 @@ class Config
     public function setApiKey($apiKey)
     {
         $this->apiKey = $apiKey;
+    }
+
+    protected function extractPackageNameAndVersionFromComposerFile()
+    {
+        return json_decode(file_get_contents(__DIR__.'/../composer.json'), true);
     }
 }
