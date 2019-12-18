@@ -11,6 +11,7 @@ if (!isset($_GET['id'])) {
 }
 
 $contactId = $_GET['id'];
+
 if (isset($_POST['email'])) {
     $contact = new SimplePublicObject();
     $contact->setProperties($_POST);
@@ -19,5 +20,7 @@ if (isset($_POST['email'])) {
 } else {
     $contact = $hubSpot->objects()->basicApi()->getById('contact', $contactId);
 }
+
+$owners = $hubSpot->owners()->defaultApi()->getPage()->getResults();
 
 include __DIR__.'/../../views/contacts/show.php';
