@@ -15,6 +15,6 @@ use HubSpot\Client\Crm\Objects\Api\SearchApi;
  * @method CreateNativeObjectsApi createNativeObjectsApi
  * @method SearchApi searchApi()
  */
-class Objects extends FactoryBase
+class Objects extends Base
 {
 }

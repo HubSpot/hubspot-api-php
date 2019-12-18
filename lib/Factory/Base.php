@@ -3,10 +3,11 @@
 namespace HubSpot\Factory;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Owners\Api\DefaultApi;
 use HubSpot\Client\Crm\Owners\Configuration;
+use ReflectionClass;
+use ReflectionException;
 
-class FactoryBase
+class Base
 {
     /** @var Client */
     protected $client;
@@ -24,11 +25,14 @@ class FactoryBase
      * @param string $name
      * @param mixed  $args
      *
+     * @throws ReflectionException
+     *
      * @return mixed
      */
     public function __call($name, $args)
     {
-        $resource = '\\HubSpot\\Client\\Crm\\'.ucfirst(get_class()).'\\Api\\'.ucfirst($name);
+        $className = (new ReflectionClass(get_class($this)))->getShortName();
+        $resource = '\\HubSpot\\Client\\Crm\\'.$className.'\\Api\\'.ucfirst($name);
 
         return new $resource($this->client, $this->config);
     }

@@ -7,6 +7,6 @@ use HubSpot\Client\Crm\Owners\Api\DefaultApi;
 /**
  * @method DefaultApi defaultApi()
  */
-class Owners extends FactoryBase
+class Owners extends Base
 {
 }
