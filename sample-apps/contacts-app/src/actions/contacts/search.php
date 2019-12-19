@@ -3,6 +3,7 @@
 use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject;
 use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
+use HubSpot\Crm\ObjectType;
 
 $contacts = [];
 $search = $_GET['search'];
@@ -24,6 +25,6 @@ $searchRequest->setFilters([
 ]);
 
 /** @var CollectionResponseWithTotalSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->objects()->searchApi()->doSearch('contact', $searchRequest);
+$contactsPage = $hubSpot->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';
