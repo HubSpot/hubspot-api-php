@@ -1,16 +1,18 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
 <?php
-      if (isset($errorResponse)) {
-          include __DIR__.'/../_partials/error_response.php';
-      } elseif ($updated) {
+      if ($updated) {
           echo "<h3 class='alert-success'>Successfully updated Contact properties</h3>";
       }
 ?>
 
 <div class="row">
     <div class="column">
-        <?php include __DIR__.'/../properties/contacts_properties_list.php'; ?>
+        <h3>Properties</h3>
+        <form method="post">
+            <?php include __DIR__.'/../properties/_contacts_properties_list.php'; ?>
+            <input id="save" class="button-primary" type="submit" value="Save">
+        </form>
     </div>
     <div class="column">
     </div>
