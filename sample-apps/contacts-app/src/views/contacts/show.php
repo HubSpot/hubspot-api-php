@@ -13,22 +13,6 @@
             <?php include __DIR__.'/../properties/_contacts_properties_list.php'; ?>
             <input id="save" class="button-primary" type="submit" value="Save">
         </form>
-
-        <h3>Owner</h3>
-        <form method="post">
-            <fieldset>
-                <select name="owner_id">
-                    <option value="">Not assigned</option>
-                    <?php foreach ($owners as $owner) { ?>
-                        <option
-                            value="<?php echo $owner->getId(); ?>"
-                            <?php if (false) { ?>selected<?php } ?>
-                        ><?php echo htmlentities($owner->getFirstName().' '.$owner->getLastName()); ?></option>
-                    <?php } ?>
-                </select>
-                <input class="button-primary" type="submit" value="Save">
-            </fieldset>
-        </form>
     </div>
     <div class="column">
     </div>

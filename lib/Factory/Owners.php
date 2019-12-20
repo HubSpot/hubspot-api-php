@@ -10,3 +10,4 @@ use HubSpot\Client\Crm\Owners\Api\DefaultApi;
 class Owners extends Base
 {
 }
+

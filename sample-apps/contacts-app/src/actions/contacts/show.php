@@ -14,14 +14,13 @@ if (!isset($_GET['id'])) {
 $contactId = $_GET['id'];
 
 if (isset($_POST['email'])) {
-    $contact = new SimplePublicObject();
-    $contact->setProperties($_POST);
-    $contact = $hubSpot->objects()->basicApi()->update(ObjectType::CONTACT, $contactId, $contact);
+    $newProperties = new SimplePublicObject();
+    $newProperties->setProperties($_POST);
+    $contact = $hubSpot->objects()->basicApi()->update(ObjectType::CONTACT, $contactId, $newProperties);
     $updated = true;
-} else {
-    $contact = $hubSpot->objects()->basicApi()->getById(ObjectType::CONTACT, $contactId);
 }
 
+$contact = $hubSpot->objects()->basicApi()->getById(ObjectType::CONTACT, $contactId, 'email,firstname,lastname,hubspot_owner_id');
 $owners = $hubSpot->owners()->defaultApi()->getPage()->getResults();
 
 include __DIR__.'/../../views/contacts/show.php';
