@@ -1,7 +1,5 @@
 <?php
 
-use Helpers\ContactPropertiesHelper;
-use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
 use HubSpot\Crm\ObjectType;
 
