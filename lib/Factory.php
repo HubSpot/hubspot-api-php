@@ -3,65 +3,20 @@
 namespace HubSpot;
 
 use GuzzleHttp\Client;
-use HubSpot\Factory\Objects;
-use HubSpot\Factory\Owners;
-use HubSpot\Factory\Properties;
+use HubSpot\Discovery\Discovery;
 
 /**
  * Class Factory.
- *
- * @method Objects    objects()
- * @method Owners     owners()
- * @method Properties properties()
  */
 class Factory
 {
-    /** @var Config */
-    protected $config;
-
-    public function __construct($config = null)
-    {
-        $this->config = $config ?: new Config();
-    }
-
     /**
-     * @param string $name
-     * @param mixed  $args
-     *
-     * @return mixed
+     * @param null $config
+     * @return Discovery
      */
-    public function __call($name, $args)
+    public static function create($config = null)
     {
-        $resource = '\\HubSpot\\Factory\\'.ucfirst($name);
-        $clientConfigClassName = '\\HubSpot\\Client\\Crm\\'.ucfirst($name).'\\Configuration';
-
-        $clientConfig = $this->config->convertToClientConfig($clientConfigClassName);
-
-        return new $resource(new Client(), $clientConfig);
-    }
-
-    /**
-     * @return Config
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
-     * @param Config $config
-     */
-    public function setConfig($config)
-    {
-        $this->config = $config;
-    }
-
-    /**
-     * @return static
-     */
-    public static function create()
-    {
-        return new static();
+        return new Discovery(new Client(), $config ?: new Config());
     }
 
     public static function createWithApiKey($apiKey)
@@ -69,7 +24,7 @@ class Factory
         $config = new Config();
         $config->setApiKey($apiKey);
 
-        return new static($config);
+        return static::create($config);
     }
 
     public static function createWithAccessToken($accessToken)
@@ -77,6 +32,6 @@ class Factory
         $config = new Config();
         $config->setAccessToken($accessToken);
 
-        return new static($config);
+        return static::create($config);
     }
 }
