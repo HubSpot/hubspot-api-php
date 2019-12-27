@@ -18,7 +18,7 @@ $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
 #### Get contacts page:
 
 ```php
-$response = $hubSpot->objects()->basicApi()->getPage('contact');
+$response = $hubSpot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACT);
 ```
 
 #### Search for a contact:
@@ -32,5 +32,5 @@ $searchRequest->setFilters([
         'value' => 'Alice',
     ],
 ]);
-$response = $hubSpot->objects()->searchApi()->doSearch($searchRequest);
+$response = $hubSpot->crm()->objects()->searchApi()->doSearch($searchRequest);
 ```
