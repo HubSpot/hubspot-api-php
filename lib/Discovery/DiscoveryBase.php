@@ -34,19 +34,19 @@ class DiscoveryBase
     public function __call($name, $args)
     {
         $namespace = (new ReflectionClass(get_class($this)))->getNamespaceName();
-        $discoveryClassName = $namespace.'\\'.ucfirst($name).'\\Discovery';
 
-        if (class_exists($discoveryClassName)) {
-            return new $discoveryClassName($this->client, $this->config);
+        $intermediateDiscoveryClassName = $namespace.'\\'.ucfirst($name).'\\Discovery';
+        if (class_exists($intermediateDiscoveryClassName)) {
+            return new $intermediateDiscoveryClassName($this->client, $this->config);
         }
 
-        $clientNamespace = str_replace('Discovery', 'Client', $namespace);
-        $clientClassName = $clientNamespace.'\\Api\\'.ucfirst($name);
-        if (class_exists($clientClassName)) {
-            $clientConfigClassName = $clientNamespace.'\\Configuration';
-            $config = $this->config->convertToClientConfig($clientConfigClassName);
+        $targetClientNamespace = str_replace('Discovery', 'Client', $namespace);
+        $targetClientClassName = $targetClientNamespace.'\\Api\\'.ucfirst($name);
+        if (class_exists($targetClientClassName)) {
+            $targetClientConfigClassName = $targetClientNamespace.'\\Configuration';
+            $config = $this->config->convertToClientConfig($targetClientConfigClassName);
 
-            return new $clientClassName($this->client, $config);
+            return new $targetClientClassName($this->client, $config);
         }
 
         throw new Exception('Unable to discover "'.$name.'" client');
