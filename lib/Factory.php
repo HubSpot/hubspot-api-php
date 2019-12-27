@@ -11,7 +11,8 @@ use HubSpot\Discovery\Discovery;
 class Factory
 {
     /**
-     * @param null $config
+     * @param array $config
+     *
      * @return Discovery
      */
     public static function create($config = null)
