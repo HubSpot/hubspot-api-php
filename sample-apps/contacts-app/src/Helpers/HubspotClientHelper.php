@@ -2,11 +2,12 @@
 
 namespace Helpers;
 
+use HubSpot\Discovery\Discovery;
 use HubSpot\Factory;
 
 class HubspotClientHelper
 {
-    public static function createFactory(): Factory
+    public static function createFactory(): Discovery
     {
         if (OAuth2Helper::isAuthenticated()) {
             $accessToken = Oauth2Helper::refreshAndGetAccessToken();

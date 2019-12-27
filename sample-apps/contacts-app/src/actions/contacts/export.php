@@ -12,7 +12,7 @@ function get_contacts_for_export($maxPages = 10)
     for ($pageNum = 0; $pageNum < $maxPages; ++$pageNum) {
         // https://developers.hubspot.com/docs/methods/contacts/get_contacts
         /** @var CollectionResponseSimplePublicObject $contactsPage */
-        $contactsPage = $hubSpot->objects()->basicApi()->getPage(ObjectType::CONTACT, 10, $after);
+        $contactsPage = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::CONTACT, 10, $after);
         $contacts = [
             ...$contacts,
             ...$contactsPage->getResults(),
