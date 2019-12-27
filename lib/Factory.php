@@ -12,6 +12,7 @@ class Factory
 {
     /**
      * @param null $config
+     *
      * @return Discovery
      */
     public static function create($config = null)
