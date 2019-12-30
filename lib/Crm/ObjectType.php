@@ -1,8 +1,6 @@
 <?php
 
-
 namespace HubSpot\Crm;
-
 
 class ObjectType
 {
