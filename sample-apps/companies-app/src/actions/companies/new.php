@@ -1,18 +1,20 @@
 <?php
 
-$formFields = [
-    [
-        'name' => 'name',
-        'label' => 'name',
-        'value' => '',
-    ],
-    [
-        'name' => 'domain',
-        'label' => 'domain',
-        'value' => '',
-    ],
-];
+use HubSpot\Client\Crm\Objects\Model\CompanyInput;
 
-$notUpdated = true;
+$company = new CompanyInput([
+    'properties' => [
+        'name' => null,
+        'domain' => null,
+    ],
+]);
+if (isset($_POST['name'])) {
+    $hubSpot = \Helpers\HubspotClientHelper::createFactory();
+    $company->setProperties($_POST);
+    $response = $hubSpot->crm()->objects()->createNativeObjectsApi()->createCompany($company);
+    
+    header('Location: /companies/show.php?id='.$response->getId().'created=1');
+    exit();
+}
 
 include __DIR__.'/../../views/companies/show.php';

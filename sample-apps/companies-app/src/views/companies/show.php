@@ -17,30 +17,29 @@
             <h3 class="alert-success" '>Successfully created Company</h3>
         <?php } ?>
 
-        <?php if (isset($company)) { ?>
+        <?php if (isset($id)) { ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->companies()->getById($companyId)->getData();
+$hubSpot->crm()->objects()->basicApi()
+    ->getById(ObjectType::COMPANY, $id)
 </pre>
         <?php } ?>
 
-        <form method="post" action="/companies/show.php">
+            <form method="post" action="<?php
+            if (isset($id)) {
+                ?>/companies/show.php?id=<?php 
+                echo $id;
+            } else {
+            ?>/companies/new.php<?php } ?>">
             <fieldset>
-                <?php if (isset($id)) { ?>
-                    <input type="hidden" name="id" value="<?php echo htmlentities($id); ?>" />
-                <?php } ?>
-                <?php
-                foreach ($formFields as $field) { ?>
-                    <?php
-                    $nameSanitized = htmlentities($field['name']);
-                    $labelSanitized = htmlentities($field['label']);
-                    $valueSanitized = htmlentities($field['value']);
-                    ?>
-                    <label for="<?php echo $nameSanitized; ?>"><?php echo $labelSanitized; ?></label>
-                    <input type="text" name="<?php echo $nameSanitized; ?>" id="<?php echo $nameSanitized; ?>" value="<?php echo $valueSanitized; ?>">
-                <?php } ?>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<?php echo $company->getProperties()['name']; ?>">
+                
+                <label for="domain">Domain</label>
+                <input type="text" name="domain" id="domain" value="<?php echo $company->getProperties()['domain']; ?>">
 
-                <?php if (isset($company)) { ?>
+
+                <?php if (isset($id)) { ?>
 <pre>
 // src/actions/companies/show.php
 $hubSpot->companies()->update($companyId, $companyProperties);
@@ -58,8 +57,8 @@ $hubSpot->companies()->create($companyProperties);
 
     </div>
 
+    <?php if (isset($contacts)) { ?>
     <div class="column">
-        <?php if (isset($contacts)) { ?>
             <h3>Contacts</h3>
 
             <?php if ($_GET['contactsAdded']) { ?>
@@ -96,8 +95,8 @@ $hubSpot->crmAssociations()->get(
             <a href="/companies/contacts.php?companyId=<?php echo htmlentities($id); ?>">
                 <input class="button-primary" type="button" value="Manage Contacts">
             </a>
-        <?php } ?>
     </div>
+    <?php } ?>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>
