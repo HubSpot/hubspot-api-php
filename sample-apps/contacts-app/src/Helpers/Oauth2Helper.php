@@ -3,6 +3,7 @@
 namespace Helpers;
 
 use HubSpot\Client\OAuth\Model\TokenResponseFields;
+use HubSpot\Factory;
 
 class OAuth2Helper
 {
@@ -40,10 +41,14 @@ class OAuth2Helper
         return static::APP_REQUIRED_SCOPES;
     }
 
-    public static function saveTokens(array $tokens): void
+    public static function saveTokenResponse(TokenResponseFields $tokens): void
     {
-        $tokens['expires_at'] = time() + $tokens['expires_in'] * 0.95;
-        $_SESSION[static::SESSION_TOKENS_KEY] = $tokens;
+        $_SESSION[static::SESSION_TOKENS_KEY] = [
+            'access_token' => $tokens->getAccessToken(),
+            'refresh_token' => $tokens->getRefreshToken(),
+            'expires_in' => $tokens->getExpiresIn(),
+            'expires_at' => time() + $tokens['expires_in'] * 0.95,
+        ];
     }
 
     public static function isAuthenticated(): bool
@@ -60,12 +65,15 @@ class OAuth2Helper
         $tokens = $_SESSION[static::SESSION_TOKENS_KEY];
 
         if (time() > $tokens['expires_at']) {
-            $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByRefresh(
-                self::getClientId(),
-                self::getClientSecret(),
+            $tokens = Factory::create()->oAuth()->tokensApi()->postoauthv1token(
+                'refresh_token',
+                null,
+                static::getRedirectUri(),
+                static::getClientId(),
+                static::getClientSecret(),
                 $tokens['refresh_token']
-            )->toArray();
-            self::saveTokens($tokens);
+            );
+            self::saveTokenResponse($tokens);
         }
 
         return $tokens['access_token'];

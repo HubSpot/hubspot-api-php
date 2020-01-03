@@ -11,10 +11,6 @@ $tokens = HubspotClientHelper::createFactory()->oAuth()->tokensApi()->postoauthv
     OAuth2Helper::getClientSecret()
 );
 
-OAuth2Helper::saveTokens([
-    'access_token' => $tokens->getAccessToken(),
-    'refresh_token' => $tokens->getRefreshToken(),
-    'expires_in' => $tokens->getExpiresIn(),
-]);
+OAuth2Helper::saveTokenResponse($tokens);
 
 header('Location: /');
