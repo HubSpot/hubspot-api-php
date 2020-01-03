@@ -1,6 +1,6 @@
 <?php
 /**
- * TokensApi
+ * ScopeGroupsApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\OAuth\HeaderSelector;
 use HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * TokensApi Class Doc Comment
+ * ScopeGroupsApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TokensApi
+class ScopeGroupsApi
 {
     /**
      * @var ClientInterface
@@ -88,42 +88,30 @@ class TokensApi
     }
 
     /**
-     * Operation postoauthv1token
+     * Operation getoauthv1scopeGroups
      *
-     * @param  string $grant_type grant_type (optional)
-     * @param  string $code code (optional)
-     * @param  string $redirect_uri redirect_uri (optional)
-     * @param  string $client_id client_id (optional)
-     * @param  string $client_secret client_secret (optional)
-     * @param  string $refresh_token refresh_token (optional)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\OAuth\Model\TokenResponseFields|\HubSpot\Client\OAuth\Model\Error
+     * @return \HubSpot\Client\OAuth\Model\ScopeGroupsInventory|\HubSpot\Client\OAuth\Model\Error
      */
-    public function postoauthv1token($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function getoauthv1scopeGroups()
     {
-        list($response) = $this->postoauthv1tokenWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        list($response) = $this->getoauthv1scopeGroupsWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation postoauthv1tokenWithHttpInfo
+     * Operation getoauthv1scopeGroupsWithHttpInfo
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\OAuth\Model\TokenResponseFields|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\OAuth\Model\ScopeGroupsInventory|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postoauthv1tokenWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function getoauthv1scopeGroupsWithHttpInfo()
     {
-        $request = $this->postoauthv1tokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        $request = $this->getoauthv1scopeGroupsRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -156,14 +144,14 @@ class TokensApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\OAuth\Model\TokenResponseFields' === '\SplFileObject') {
+                    if ('\HubSpot\Client\OAuth\Model\ScopeGroupsInventory' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\TokenResponseFields', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\ScopeGroupsInventory', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -181,7 +169,7 @@ class TokensApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\OAuth\Model\TokenResponseFields';
+            $returnType = '\HubSpot\Client\OAuth\Model\ScopeGroupsInventory';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -200,7 +188,7 @@ class TokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\OAuth\Model\TokenResponseFields',
+                        '\HubSpot\Client\OAuth\Model\ScopeGroupsInventory',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -219,23 +207,17 @@ class TokensApi
     }
 
     /**
-     * Operation postoauthv1tokenAsync
+     * Operation getoauthv1scopeGroupsAsync
      *
      * 
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postoauthv1tokenAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function getoauthv1scopeGroupsAsync()
     {
-        return $this->postoauthv1tokenAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token)
+        return $this->getoauthv1scopeGroupsAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -244,24 +226,18 @@ class TokensApi
     }
 
     /**
-     * Operation postoauthv1tokenAsyncWithHttpInfo
+     * Operation getoauthv1scopeGroupsAsyncWithHttpInfo
      *
      * 
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postoauthv1tokenAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function getoauthv1scopeGroupsAsyncWithHttpInfo()
     {
-        $returnType = '\HubSpot\Client\OAuth\Model\TokenResponseFields';
-        $request = $this->postoauthv1tokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        $returnType = '\HubSpot\Client\OAuth\Model\ScopeGroupsInventory';
+        $request = $this->getoauthv1scopeGroupsRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -298,22 +274,16 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'postoauthv1token'
+     * Create request for operation 'getoauthv1scopeGroups'
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function postoauthv1tokenRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    protected function getoauthv1scopeGroupsRequest()
     {
 
-        $resourcePath = '/v1/token';
+        $resourcePath = '/v1/scope-groups';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -322,30 +292,6 @@ class TokensApi
 
 
 
-        // form params
-        if ($grant_type !== null) {
-            $formParams['grant_type'] = ObjectSerializer::toFormValue($grant_type);
-        }
-        // form params
-        if ($code !== null) {
-            $formParams['code'] = ObjectSerializer::toFormValue($code);
-        }
-        // form params
-        if ($redirect_uri !== null) {
-            $formParams['redirect_uri'] = ObjectSerializer::toFormValue($redirect_uri);
-        }
-        // form params
-        if ($client_id !== null) {
-            $formParams['client_id'] = ObjectSerializer::toFormValue($client_id);
-        }
-        // form params
-        if ($client_secret !== null) {
-            $formParams['client_secret'] = ObjectSerializer::toFormValue($client_secret);
-        }
-        // form params
-        if ($refresh_token !== null) {
-            $formParams['refresh_token'] = ObjectSerializer::toFormValue($refresh_token);
-        }
         // body params
         $_tempBody = null;
 
@@ -356,7 +302,7 @@ class TokensApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/x-www-form-urlencoded']
+                []
             );
         }
 
@@ -407,7 +353,7 @@ class TokensApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

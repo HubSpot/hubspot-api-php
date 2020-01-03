@@ -2,6 +2,8 @@
 
 namespace Helpers;
 
+use HubSpot\Client\OAuth\Model\TokenResponseFields;
+
 class OAuth2Helper
 {
     const APP_REQUIRED_SCOPES = ['contacts'];

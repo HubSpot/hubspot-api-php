@@ -1,6 +1,6 @@
 <?php
 /**
- * RefreshToken
+ * ScopeGroup
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * RefreshToken Class Doc Comment
+ * ScopeGroup Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class RefreshToken implements ModelInterface, ArrayAccess
+class ScopeGroup implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RefreshToken';
+    protected static $openAPIModelName = 'ScopeGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,12 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'token' => 'string',
-        'client_id' => 'string',
-        'hub_id' => 'int',
-        'user_id' => 'int'
+        'name' => 'string',
+        'short_description' => 'string',
+        'long_description' => 'string',
+        'picto_icon' => 'string',
+        'whitelisted' => 'bool',
+        'id' => 'int'
     ];
 
     /**
@@ -69,10 +71,12 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'token' => null,
-        'client_id' => null,
-        'hub_id' => null,
-        'user_id' => null
+        'name' => null,
+        'short_description' => null,
+        'long_description' => null,
+        'picto_icon' => null,
+        'whitelisted' => null,
+        'id' => null
     ];
 
     /**
@@ -102,10 +106,12 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token',
-        'client_id' => 'clientId',
-        'hub_id' => 'hubId',
-        'user_id' => 'userId'
+        'name' => 'name',
+        'short_description' => 'shortDescription',
+        'long_description' => 'longDescription',
+        'picto_icon' => 'pictoIcon',
+        'whitelisted' => 'whitelisted',
+        'id' => 'id'
     ];
 
     /**
@@ -114,10 +120,12 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken',
-        'client_id' => 'setClientId',
-        'hub_id' => 'setHubId',
-        'user_id' => 'setUserId'
+        'name' => 'setName',
+        'short_description' => 'setShortDescription',
+        'long_description' => 'setLongDescription',
+        'picto_icon' => 'setPictoIcon',
+        'whitelisted' => 'setWhitelisted',
+        'id' => 'setId'
     ];
 
     /**
@@ -126,10 +134,12 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken',
-        'client_id' => 'getClientId',
-        'hub_id' => 'getHubId',
-        'user_id' => 'getUserId'
+        'name' => 'getName',
+        'short_description' => 'getShortDescription',
+        'long_description' => 'getLongDescription',
+        'picto_icon' => 'getPictoIcon',
+        'whitelisted' => 'getWhitelisted',
+        'id' => 'getId'
     ];
 
     /**
@@ -192,10 +202,12 @@ class RefreshToken implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = isset($data['token']) ? $data['token'] : null;
-        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
-        $this->container['hub_id'] = isset($data['hub_id']) ? $data['hub_id'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['short_description'] = isset($data['short_description']) ? $data['short_description'] : null;
+        $this->container['long_description'] = isset($data['long_description']) ? $data['long_description'] : null;
+        $this->container['picto_icon'] = isset($data['picto_icon']) ? $data['picto_icon'] : null;
+        $this->container['whitelisted'] = isset($data['whitelisted']) ? $data['whitelisted'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -207,17 +219,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['client_id'] === null) {
-            $invalidProperties[] = "'client_id' can't be null";
+        if ($this->container['short_description'] === null) {
+            $invalidProperties[] = "'short_description' can't be null";
         }
-        if ($this->container['hub_id'] === null) {
-            $invalidProperties[] = "'hub_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,97 +244,145 @@ class RefreshToken implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets token
+     * Gets name
      *
      * @return string
      */
-    public function getToken()
+    public function getName()
     {
-        return $this->container['token'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets token
+     * Sets name
      *
-     * @param string $token token
+     * @param string $name name
      *
      * @return $this
      */
-    public function setToken($token)
+    public function setName($name)
     {
-        $this->container['token'] = $token;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets client_id
+     * Gets short_description
      *
      * @return string
      */
-    public function getClientId()
+    public function getShortDescription()
     {
-        return $this->container['client_id'];
+        return $this->container['short_description'];
     }
 
     /**
-     * Sets client_id
+     * Sets short_description
      *
-     * @param string $client_id client_id
+     * @param string $short_description short_description
      *
      * @return $this
      */
-    public function setClientId($client_id)
+    public function setShortDescription($short_description)
     {
-        $this->container['client_id'] = $client_id;
+        $this->container['short_description'] = $short_description;
 
         return $this;
     }
 
     /**
-     * Gets hub_id
+     * Gets long_description
      *
-     * @return int
+     * @return string|null
      */
-    public function getHubId()
+    public function getLongDescription()
     {
-        return $this->container['hub_id'];
+        return $this->container['long_description'];
     }
 
     /**
-     * Sets hub_id
+     * Sets long_description
      *
-     * @param int $hub_id hub_id
+     * @param string|null $long_description long_description
      *
      * @return $this
      */
-    public function setHubId($hub_id)
+    public function setLongDescription($long_description)
     {
-        $this->container['hub_id'] = $hub_id;
+        $this->container['long_description'] = $long_description;
 
         return $this;
     }
 
     /**
-     * Gets user_id
+     * Gets picto_icon
      *
-     * @return int
+     * @return string|null
      */
-    public function getUserId()
+    public function getPictoIcon()
     {
-        return $this->container['user_id'];
+        return $this->container['picto_icon'];
     }
 
     /**
-     * Sets user_id
+     * Sets picto_icon
      *
-     * @param int $user_id user_id
+     * @param string|null $picto_icon picto_icon
      *
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setPictoIcon($picto_icon)
     {
-        $this->container['user_id'] = $user_id;
+        $this->container['picto_icon'] = $picto_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets whitelisted
+     *
+     * @return bool|null
+     */
+    public function getWhitelisted()
+    {
+        return $this->container['whitelisted'];
+    }
+
+    /**
+     * Sets whitelisted
+     *
+     * @param bool|null $whitelisted whitelisted
+     *
+     * @return $this
+     */
+    public function setWhitelisted($whitelisted)
+    {
+        $this->container['whitelisted'] = $whitelisted;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

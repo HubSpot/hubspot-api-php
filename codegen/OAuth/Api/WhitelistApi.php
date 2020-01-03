@@ -1,6 +1,6 @@
 <?php
 /**
- * AccessTokensApi
+ * WhitelistApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\OAuth\HeaderSelector;
 use HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * AccessTokensApi Class Doc Comment
+ * WhitelistApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class AccessTokensApi
+class WhitelistApi
 {
     /**
      * @var ClientInterface
@@ -88,32 +88,283 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokensexpiredtoken
+     * Operation deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappId
      *
-     * @param  string $token token (required)
+     * @param  int $scope_group_id scope_group_id (required)
+     * @param  int $app_id app_id (required)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\OAuth\Model\Error
+     * @return void
      */
-    public function getoauthv1accessTokensexpiredtoken($token)
+    public function deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappId($scope_group_id, $app_id)
     {
-        list($response) = $this->getoauthv1accessTokensexpiredtokenWithHttpInfo($token);
+        $this->deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdWithHttpInfo($scope_group_id, $app_id);
+    }
+
+    /**
+     * Operation deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdWithHttpInfo
+     *
+     * @param  int $scope_group_id (required)
+     * @param  int $app_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdWithHttpInfo($scope_group_id, $app_id)
+    {
+        $request = $this->deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdRequest($scope_group_id, $app_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\OAuth\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdAsync
+     *
+     * 
+     *
+     * @param  int $scope_group_id (required)
+     * @param  int $app_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdAsync($scope_group_id, $app_id)
+    {
+        return $this->deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdAsyncWithHttpInfo($scope_group_id, $app_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  int $scope_group_id (required)
+     * @param  int $app_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdAsyncWithHttpInfo($scope_group_id, $app_id)
+    {
+        $returnType = '';
+        $request = $this->deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdRequest($scope_group_id, $app_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappId'
+     *
+     * @param  int $scope_group_id (required)
+     * @param  int $app_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappIdRequest($scope_group_id, $app_id)
+    {
+        // verify the required parameter 'scope_group_id' is set
+        if ($scope_group_id === null || (is_array($scope_group_id) && count($scope_group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $scope_group_id when calling deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappId'
+            );
+        }
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling deleteoauthv1whitelistsscopeGroupsscopeGroupIdappIdappId'
+            );
+        }
+
+        $resourcePath = '/v1/whitelists/scope-groups/{scopeGroupId}/app-id/{appId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($scope_group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'scopeGroupId' . '}',
+                ObjectSerializer::toPathValue($scope_group_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getoauthv1whitelistsappIdappIdscopeGroups
+     *
+     * @param  int $app_id app_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\OAuth\Model\ScopeGroup[]|\HubSpot\Client\OAuth\Model\Error
+     */
+    public function getoauthv1whitelistsappIdappIdscopeGroups($app_id)
+    {
+        list($response) = $this->getoauthv1whitelistsappIdappIdscopeGroupsWithHttpInfo($app_id);
         return $response;
     }
 
     /**
-     * Operation getoauthv1accessTokensexpiredtokenWithHttpInfo
+     * Operation getoauthv1whitelistsappIdappIdscopeGroupsWithHttpInfo
      *
-     * @param  string $token (required)
+     * @param  int $app_id (required)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\OAuth\Model\ScopeGroup[]|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getoauthv1accessTokensexpiredtokenWithHttpInfo($token)
+    public function getoauthv1whitelistsappIdappIdscopeGroupsWithHttpInfo($app_id)
     {
-        $request = $this->getoauthv1accessTokensexpiredtokenRequest($token);
+        $request = $this->getoauthv1whitelistsappIdappIdscopeGroupsRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -146,14 +397,14 @@ class AccessTokensApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\OAuth\Model\ScopeGroup[]' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\ScopeGroup[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -171,7 +422,7 @@ class AccessTokensApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse';
+            $returnType = '\HubSpot\Client\OAuth\Model\ScopeGroup[]';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -190,7 +441,7 @@ class AccessTokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse',
+                        '\HubSpot\Client\OAuth\Model\ScopeGroup[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -209,18 +460,18 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokensexpiredtokenAsync
+     * Operation getoauthv1whitelistsappIdappIdscopeGroupsAsync
      *
      * 
      *
-     * @param  string $token (required)
+     * @param  int $app_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getoauthv1accessTokensexpiredtokenAsync($token)
+    public function getoauthv1whitelistsappIdappIdscopeGroupsAsync($app_id)
     {
-        return $this->getoauthv1accessTokensexpiredtokenAsyncWithHttpInfo($token)
+        return $this->getoauthv1whitelistsappIdappIdscopeGroupsAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -229,19 +480,19 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokensexpiredtokenAsyncWithHttpInfo
+     * Operation getoauthv1whitelistsappIdappIdscopeGroupsAsyncWithHttpInfo
      *
      * 
      *
-     * @param  string $token (required)
+     * @param  int $app_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getoauthv1accessTokensexpiredtokenAsyncWithHttpInfo($token)
+    public function getoauthv1whitelistsappIdappIdscopeGroupsAsyncWithHttpInfo($app_id)
     {
-        $returnType = '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse';
-        $request = $this->getoauthv1accessTokensexpiredtokenRequest($token);
+        $returnType = '\HubSpot\Client\OAuth\Model\ScopeGroup[]';
+        $request = $this->getoauthv1whitelistsappIdappIdscopeGroupsRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -278,23 +529,23 @@ class AccessTokensApi
     }
 
     /**
-     * Create request for operation 'getoauthv1accessTokensexpiredtoken'
+     * Create request for operation 'getoauthv1whitelistsappIdappIdscopeGroups'
      *
-     * @param  string $token (required)
+     * @param  int $app_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getoauthv1accessTokensexpiredtokenRequest($token)
+    protected function getoauthv1whitelistsappIdappIdscopeGroupsRequest($app_id)
     {
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getoauthv1accessTokensexpiredtoken'
+                'Missing the required parameter $app_id when calling getoauthv1whitelistsappIdappIdscopeGroups'
             );
         }
 
-        $resourcePath = '/v1/access-tokens/expired/{token}';
+        $resourcePath = '/v1/whitelists/app-id/{appId}/scope-groups';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -303,10 +554,10 @@ class AccessTokensApi
 
 
         // path params
-        if ($token !== null) {
+        if ($app_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'token' . '}',
-                ObjectSerializer::toPathValue($token),
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -316,11 +567,11 @@ class AccessTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['*/*'],
                 []
             );
         }
@@ -380,32 +631,32 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokensinternaltoken
+     * Operation getoauthv1whitelistsscopeGroupsscopeGroupId
      *
-     * @param  string $token token (required)
+     * @param  int $scope_group_id scope_group_id (required)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse|\HubSpot\Client\OAuth\Model\Error
+     * @return \HubSpot\Client\OAuth\Model\ScopeGroupWhitelist|\HubSpot\Client\OAuth\Model\Error
      */
-    public function getoauthv1accessTokensinternaltoken($token)
+    public function getoauthv1whitelistsscopeGroupsscopeGroupId($scope_group_id)
     {
-        list($response) = $this->getoauthv1accessTokensinternaltokenWithHttpInfo($token);
+        list($response) = $this->getoauthv1whitelistsscopeGroupsscopeGroupIdWithHttpInfo($scope_group_id);
         return $response;
     }
 
     /**
-     * Operation getoauthv1accessTokensinternaltokenWithHttpInfo
+     * Operation getoauthv1whitelistsscopeGroupsscopeGroupIdWithHttpInfo
      *
-     * @param  string $token (required)
+     * @param  int $scope_group_id (required)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\OAuth\Model\ScopeGroupWhitelist|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getoauthv1accessTokensinternaltokenWithHttpInfo($token)
+    public function getoauthv1whitelistsscopeGroupsscopeGroupIdWithHttpInfo($scope_group_id)
     {
-        $request = $this->getoauthv1accessTokensinternaltokenRequest($token);
+        $request = $this->getoauthv1whitelistsscopeGroupsscopeGroupIdRequest($scope_group_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -438,14 +689,14 @@ class AccessTokensApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\OAuth\Model\ScopeGroupWhitelist' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\ScopeGroupWhitelist', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -463,7 +714,7 @@ class AccessTokensApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse';
+            $returnType = '\HubSpot\Client\OAuth\Model\ScopeGroupWhitelist';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -482,7 +733,7 @@ class AccessTokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse',
+                        '\HubSpot\Client\OAuth\Model\ScopeGroupWhitelist',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -501,18 +752,18 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokensinternaltokenAsync
+     * Operation getoauthv1whitelistsscopeGroupsscopeGroupIdAsync
      *
      * 
      *
-     * @param  string $token (required)
+     * @param  int $scope_group_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getoauthv1accessTokensinternaltokenAsync($token)
+    public function getoauthv1whitelistsscopeGroupsscopeGroupIdAsync($scope_group_id)
     {
-        return $this->getoauthv1accessTokensinternaltokenAsyncWithHttpInfo($token)
+        return $this->getoauthv1whitelistsscopeGroupsscopeGroupIdAsyncWithHttpInfo($scope_group_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -521,19 +772,19 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokensinternaltokenAsyncWithHttpInfo
+     * Operation getoauthv1whitelistsscopeGroupsscopeGroupIdAsyncWithHttpInfo
      *
      * 
      *
-     * @param  string $token (required)
+     * @param  int $scope_group_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getoauthv1accessTokensinternaltokenAsyncWithHttpInfo($token)
+    public function getoauthv1whitelistsscopeGroupsscopeGroupIdAsyncWithHttpInfo($scope_group_id)
     {
-        $returnType = '\HubSpot\Client\OAuth\Model\InternalAccessTokenInfoResponse';
-        $request = $this->getoauthv1accessTokensinternaltokenRequest($token);
+        $returnType = '\HubSpot\Client\OAuth\Model\ScopeGroupWhitelist';
+        $request = $this->getoauthv1whitelistsscopeGroupsscopeGroupIdRequest($scope_group_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -570,23 +821,23 @@ class AccessTokensApi
     }
 
     /**
-     * Create request for operation 'getoauthv1accessTokensinternaltoken'
+     * Create request for operation 'getoauthv1whitelistsscopeGroupsscopeGroupId'
      *
-     * @param  string $token (required)
+     * @param  int $scope_group_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getoauthv1accessTokensinternaltokenRequest($token)
+    protected function getoauthv1whitelistsscopeGroupsscopeGroupIdRequest($scope_group_id)
     {
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
+        // verify the required parameter 'scope_group_id' is set
+        if ($scope_group_id === null || (is_array($scope_group_id) && count($scope_group_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getoauthv1accessTokensinternaltoken'
+                'Missing the required parameter $scope_group_id when calling getoauthv1whitelistsscopeGroupsscopeGroupId'
             );
         }
 
-        $resourcePath = '/v1/access-tokens/internal/{token}';
+        $resourcePath = '/v1/whitelists/scope-groups/{scopeGroupId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -595,10 +846,10 @@ class AccessTokensApi
 
 
         // path params
-        if ($token !== null) {
+        if ($scope_group_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'token' . '}',
-                ObjectSerializer::toPathValue($token),
+                '{' . 'scopeGroupId' . '}',
+                ObjectSerializer::toPathValue($scope_group_id),
                 $resourcePath
             );
         }
@@ -608,11 +859,11 @@ class AccessTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['*/*'],
                 []
             );
         }
@@ -672,32 +923,32 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokenstoken
+     * Operation postoauthv1whitelists
      *
-     * @param  string $token token (required)
+     * @param  \HubSpot\Client\OAuth\Model\WhitelistEntryEgg $whitelist_entry_egg whitelist_entry_egg (optional)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\OAuth\Model\Error
+     * @return \HubSpot\Client\OAuth\Model\WhitelistEntry|\HubSpot\Client\OAuth\Model\Error
      */
-    public function getoauthv1accessTokenstoken($token)
+    public function postoauthv1whitelists($whitelist_entry_egg = null)
     {
-        list($response) = $this->getoauthv1accessTokenstokenWithHttpInfo($token);
+        list($response) = $this->postoauthv1whitelistsWithHttpInfo($whitelist_entry_egg);
         return $response;
     }
 
     /**
-     * Operation getoauthv1accessTokenstokenWithHttpInfo
+     * Operation postoauthv1whitelistsWithHttpInfo
      *
-     * @param  string $token (required)
+     * @param  \HubSpot\Client\OAuth\Model\WhitelistEntryEgg $whitelist_entry_egg (optional)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\OAuth\Model\WhitelistEntry|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getoauthv1accessTokenstokenWithHttpInfo($token)
+    public function postoauthv1whitelistsWithHttpInfo($whitelist_entry_egg = null)
     {
-        $request = $this->getoauthv1accessTokenstokenRequest($token);
+        $request = $this->postoauthv1whitelistsRequest($whitelist_entry_egg);
 
         try {
             $options = $this->createHttpClientOption();
@@ -730,14 +981,14 @@ class AccessTokensApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\OAuth\Model\WhitelistEntry' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\WhitelistEntry', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -755,7 +1006,7 @@ class AccessTokensApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse';
+            $returnType = '\HubSpot\Client\OAuth\Model\WhitelistEntry';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -774,7 +1025,7 @@ class AccessTokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse',
+                        '\HubSpot\Client\OAuth\Model\WhitelistEntry',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -793,18 +1044,18 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokenstokenAsync
+     * Operation postoauthv1whitelistsAsync
      *
      * 
      *
-     * @param  string $token (required)
+     * @param  \HubSpot\Client\OAuth\Model\WhitelistEntryEgg $whitelist_entry_egg (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getoauthv1accessTokenstokenAsync($token)
+    public function postoauthv1whitelistsAsync($whitelist_entry_egg = null)
     {
-        return $this->getoauthv1accessTokenstokenAsyncWithHttpInfo($token)
+        return $this->postoauthv1whitelistsAsyncWithHttpInfo($whitelist_entry_egg)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -813,19 +1064,19 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getoauthv1accessTokenstokenAsyncWithHttpInfo
+     * Operation postoauthv1whitelistsAsyncWithHttpInfo
      *
      * 
      *
-     * @param  string $token (required)
+     * @param  \HubSpot\Client\OAuth\Model\WhitelistEntryEgg $whitelist_entry_egg (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getoauthv1accessTokenstokenAsyncWithHttpInfo($token)
+    public function postoauthv1whitelistsAsyncWithHttpInfo($whitelist_entry_egg = null)
     {
-        $returnType = '\HubSpot\Client\OAuth\Model\AccessTokenInfoResponse';
-        $request = $this->getoauthv1accessTokenstokenRequest($token);
+        $returnType = '\HubSpot\Client\OAuth\Model\WhitelistEntry';
+        $request = $this->postoauthv1whitelistsRequest($whitelist_entry_egg);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -862,23 +1113,17 @@ class AccessTokensApi
     }
 
     /**
-     * Create request for operation 'getoauthv1accessTokenstoken'
+     * Create request for operation 'postoauthv1whitelists'
      *
-     * @param  string $token (required)
+     * @param  \HubSpot\Client\OAuth\Model\WhitelistEntryEgg $whitelist_entry_egg (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getoauthv1accessTokenstokenRequest($token)
+    protected function postoauthv1whitelistsRequest($whitelist_entry_egg = null)
     {
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getoauthv1accessTokenstoken'
-            );
-        }
 
-        $resourcePath = '/v1/access-tokens/{token}';
+        $resourcePath = '/v1/whitelists';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -886,25 +1131,20 @@ class AccessTokensApi
         $multipart = false;
 
 
-        // path params
-        if ($token !== null) {
-            $resourcePath = str_replace(
-                '{' . 'token' . '}',
-                ObjectSerializer::toPathValue($token),
-                $resourcePath
-            );
-        }
 
         // body params
         $_tempBody = null;
+        if (isset($whitelist_entry_egg)) {
+            $_tempBody = $whitelist_entry_egg;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                ['*/*'],
                 []
             );
         }
@@ -956,7 +1196,7 @@ class AccessTokensApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'GET',
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

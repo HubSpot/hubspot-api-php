@@ -3,13 +3,18 @@
 use Helpers\HubspotClientHelper;
 use Helpers\OAuth2Helper;
 
-$tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByCode(
-    OAuth2Helper::getClientId(),
-    OAuth2Helper::getClientSecret(),
+$tokens = HubspotClientHelper::createFactory()->oAuth()->tokensApi()->postoauthv1token(
+    'authorization_code',
+    $_GET['code'],
     OAuth2Helper::getRedirectUri(),
-    $_GET['code']
-)->toArray();
+    OAuth2Helper::getClientId(),
+    OAuth2Helper::getClientSecret()
+);
 
-OAuth2Helper::saveTokens($tokens);
+OAuth2Helper::saveTokens([
+    'access_token' => $tokens->getAccessToken(),
+    'refresh_token' => $tokens->getRefreshToken(),
+    'expires_in' => $tokens->getExpiresIn(),
+]);
 
 header('Location: /');

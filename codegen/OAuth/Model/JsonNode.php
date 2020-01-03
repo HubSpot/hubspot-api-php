@@ -59,13 +59,11 @@ class JsonNode implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'array' => 'bool',
         'null' => 'bool',
-        'float' => 'bool',
-        'node_type' => 'string',
         'number' => 'bool',
-        'missing_node' => 'bool',
-        'object' => 'bool',
         'value_node' => 'bool',
         'container_node' => 'bool',
+        'missing_node' => 'bool',
+        'object' => 'bool',
         'pojo' => 'bool',
         'integral_number' => 'bool',
         'floating_point_number' => 'bool',
@@ -77,7 +75,9 @@ class JsonNode implements ModelInterface, ArrayAccess
         'big_integer' => 'bool',
         'textual' => 'bool',
         'boolean' => 'bool',
-        'binary' => 'bool'
+        'binary' => 'bool',
+        'float' => 'bool',
+        'node_type' => 'string'
     ];
 
     /**
@@ -88,13 +88,11 @@ class JsonNode implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'array' => null,
         'null' => null,
-        'float' => null,
-        'node_type' => null,
         'number' => null,
-        'missing_node' => null,
-        'object' => null,
         'value_node' => null,
         'container_node' => null,
+        'missing_node' => null,
+        'object' => null,
         'pojo' => null,
         'integral_number' => null,
         'floating_point_number' => null,
@@ -106,7 +104,9 @@ class JsonNode implements ModelInterface, ArrayAccess
         'big_integer' => null,
         'textual' => null,
         'boolean' => null,
-        'binary' => null
+        'binary' => null,
+        'float' => null,
+        'node_type' => null
     ];
 
     /**
@@ -138,13 +138,11 @@ class JsonNode implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'array' => 'array',
         'null' => 'null',
-        'float' => 'float',
-        'node_type' => 'nodeType',
         'number' => 'number',
-        'missing_node' => 'missingNode',
-        'object' => 'object',
         'value_node' => 'valueNode',
         'container_node' => 'containerNode',
+        'missing_node' => 'missingNode',
+        'object' => 'object',
         'pojo' => 'pojo',
         'integral_number' => 'integralNumber',
         'floating_point_number' => 'floatingPointNumber',
@@ -156,7 +154,9 @@ class JsonNode implements ModelInterface, ArrayAccess
         'big_integer' => 'bigInteger',
         'textual' => 'textual',
         'boolean' => 'boolean',
-        'binary' => 'binary'
+        'binary' => 'binary',
+        'float' => 'float',
+        'node_type' => 'nodeType'
     ];
 
     /**
@@ -167,13 +167,11 @@ class JsonNode implements ModelInterface, ArrayAccess
     protected static $setters = [
         'array' => 'setArray',
         'null' => 'setNull',
-        'float' => 'setFloat',
-        'node_type' => 'setNodeType',
         'number' => 'setNumber',
-        'missing_node' => 'setMissingNode',
-        'object' => 'setObject',
         'value_node' => 'setValueNode',
         'container_node' => 'setContainerNode',
+        'missing_node' => 'setMissingNode',
+        'object' => 'setObject',
         'pojo' => 'setPojo',
         'integral_number' => 'setIntegralNumber',
         'floating_point_number' => 'setFloatingPointNumber',
@@ -185,7 +183,9 @@ class JsonNode implements ModelInterface, ArrayAccess
         'big_integer' => 'setBigInteger',
         'textual' => 'setTextual',
         'boolean' => 'setBoolean',
-        'binary' => 'setBinary'
+        'binary' => 'setBinary',
+        'float' => 'setFloat',
+        'node_type' => 'setNodeType'
     ];
 
     /**
@@ -196,13 +196,11 @@ class JsonNode implements ModelInterface, ArrayAccess
     protected static $getters = [
         'array' => 'getArray',
         'null' => 'getNull',
-        'float' => 'getFloat',
-        'node_type' => 'getNodeType',
         'number' => 'getNumber',
-        'missing_node' => 'getMissingNode',
-        'object' => 'getObject',
         'value_node' => 'getValueNode',
         'container_node' => 'getContainerNode',
+        'missing_node' => 'getMissingNode',
+        'object' => 'getObject',
         'pojo' => 'getPojo',
         'integral_number' => 'getIntegralNumber',
         'floating_point_number' => 'getFloatingPointNumber',
@@ -214,7 +212,9 @@ class JsonNode implements ModelInterface, ArrayAccess
         'big_integer' => 'getBigInteger',
         'textual' => 'getTextual',
         'boolean' => 'getBoolean',
-        'binary' => 'getBinary'
+        'binary' => 'getBinary',
+        'float' => 'getFloat',
+        'node_type' => 'getNodeType'
     ];
 
     /**
@@ -308,13 +308,11 @@ class JsonNode implements ModelInterface, ArrayAccess
     {
         $this->container['array'] = isset($data['array']) ? $data['array'] : null;
         $this->container['null'] = isset($data['null']) ? $data['null'] : null;
-        $this->container['float'] = isset($data['float']) ? $data['float'] : null;
-        $this->container['node_type'] = isset($data['node_type']) ? $data['node_type'] : null;
         $this->container['number'] = isset($data['number']) ? $data['number'] : null;
-        $this->container['missing_node'] = isset($data['missing_node']) ? $data['missing_node'] : null;
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['value_node'] = isset($data['value_node']) ? $data['value_node'] : null;
         $this->container['container_node'] = isset($data['container_node']) ? $data['container_node'] : null;
+        $this->container['missing_node'] = isset($data['missing_node']) ? $data['missing_node'] : null;
+        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['pojo'] = isset($data['pojo']) ? $data['pojo'] : null;
         $this->container['integral_number'] = isset($data['integral_number']) ? $data['integral_number'] : null;
         $this->container['floating_point_number'] = isset($data['floating_point_number']) ? $data['floating_point_number'] : null;
@@ -327,6 +325,8 @@ class JsonNode implements ModelInterface, ArrayAccess
         $this->container['textual'] = isset($data['textual']) ? $data['textual'] : null;
         $this->container['boolean'] = isset($data['boolean']) ? $data['boolean'] : null;
         $this->container['binary'] = isset($data['binary']) ? $data['binary'] : null;
+        $this->container['float'] = isset($data['float']) ? $data['float'] : null;
+        $this->container['node_type'] = isset($data['node_type']) ? $data['node_type'] : null;
     }
 
     /**
@@ -410,63 +410,6 @@ class JsonNode implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets float
-     *
-     * @return bool|null
-     */
-    public function getFloat()
-    {
-        return $this->container['float'];
-    }
-
-    /**
-     * Sets float
-     *
-     * @param bool|null $float float
-     *
-     * @return $this
-     */
-    public function setFloat($float)
-    {
-        $this->container['float'] = $float;
-
-        return $this;
-    }
-
-    /**
-     * Gets node_type
-     *
-     * @return string|null
-     */
-    public function getNodeType()
-    {
-        return $this->container['node_type'];
-    }
-
-    /**
-     * Sets node_type
-     *
-     * @param string|null $node_type node_type
-     *
-     * @return $this
-     */
-    public function setNodeType($node_type)
-    {
-        $allowedValues = $this->getNodeTypeAllowableValues();
-        if (!is_null($node_type) && !in_array($node_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'node_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['node_type'] = $node_type;
-
-        return $this;
-    }
-
-    /**
      * Gets number
      *
      * @return bool|null
@@ -486,54 +429,6 @@ class JsonNode implements ModelInterface, ArrayAccess
     public function setNumber($number)
     {
         $this->container['number'] = $number;
-
-        return $this;
-    }
-
-    /**
-     * Gets missing_node
-     *
-     * @return bool|null
-     */
-    public function getMissingNode()
-    {
-        return $this->container['missing_node'];
-    }
-
-    /**
-     * Sets missing_node
-     *
-     * @param bool|null $missing_node missing_node
-     *
-     * @return $this
-     */
-    public function setMissingNode($missing_node)
-    {
-        $this->container['missing_node'] = $missing_node;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return bool|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param bool|null $object object
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
 
         return $this;
     }
@@ -582,6 +477,54 @@ class JsonNode implements ModelInterface, ArrayAccess
     public function setContainerNode($container_node)
     {
         $this->container['container_node'] = $container_node;
+
+        return $this;
+    }
+
+    /**
+     * Gets missing_node
+     *
+     * @return bool|null
+     */
+    public function getMissingNode()
+    {
+        return $this->container['missing_node'];
+    }
+
+    /**
+     * Sets missing_node
+     *
+     * @param bool|null $missing_node missing_node
+     *
+     * @return $this
+     */
+    public function setMissingNode($missing_node)
+    {
+        $this->container['missing_node'] = $missing_node;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return bool|null
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param bool|null $object object
+     *
+     * @return $this
+     */
+    public function setObject($object)
+    {
+        $this->container['object'] = $object;
 
         return $this;
     }
@@ -870,6 +813,63 @@ class JsonNode implements ModelInterface, ArrayAccess
     public function setBinary($binary)
     {
         $this->container['binary'] = $binary;
+
+        return $this;
+    }
+
+    /**
+     * Gets float
+     *
+     * @return bool|null
+     */
+    public function getFloat()
+    {
+        return $this->container['float'];
+    }
+
+    /**
+     * Sets float
+     *
+     * @param bool|null $float float
+     *
+     * @return $this
+     */
+    public function setFloat($float)
+    {
+        $this->container['float'] = $float;
+
+        return $this;
+    }
+
+    /**
+     * Gets node_type
+     *
+     * @return string|null
+     */
+    public function getNodeType()
+    {
+        return $this->container['node_type'];
+    }
+
+    /**
+     * Sets node_type
+     *
+     * @param string|null $node_type node_type
+     *
+     * @return $this
+     */
+    public function setNodeType($node_type)
+    {
+        $allowedValues = $this->getNodeTypeAllowableValues();
+        if (!is_null($node_type) && !in_array($node_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'node_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['node_type'] = $node_type;
 
         return $this;
     }

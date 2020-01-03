@@ -1,6 +1,6 @@
 <?php
 /**
- * RefreshToken
+ * ScopeToScopeGroup
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * RefreshToken Class Doc Comment
+ * ScopeToScopeGroup Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class RefreshToken implements ModelInterface, ArrayAccess
+class ScopeToScopeGroup implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RefreshToken';
+    protected static $openAPIModelName = 'ScopeToScopeGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,9 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'token' => 'string',
-        'client_id' => 'string',
-        'hub_id' => 'int',
-        'user_id' => 'int'
+        'scope_id' => 'int',
+        'scope_group_id' => 'int',
+        'id' => 'int'
     ];
 
     /**
@@ -69,10 +68,9 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'token' => null,
-        'client_id' => null,
-        'hub_id' => null,
-        'user_id' => null
+        'scope_id' => null,
+        'scope_group_id' => null,
+        'id' => null
     ];
 
     /**
@@ -102,10 +100,9 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token',
-        'client_id' => 'clientId',
-        'hub_id' => 'hubId',
-        'user_id' => 'userId'
+        'scope_id' => 'scopeId',
+        'scope_group_id' => 'scopeGroupId',
+        'id' => 'id'
     ];
 
     /**
@@ -114,10 +111,9 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken',
-        'client_id' => 'setClientId',
-        'hub_id' => 'setHubId',
-        'user_id' => 'setUserId'
+        'scope_id' => 'setScopeId',
+        'scope_group_id' => 'setScopeGroupId',
+        'id' => 'setId'
     ];
 
     /**
@@ -126,10 +122,9 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken',
-        'client_id' => 'getClientId',
-        'hub_id' => 'getHubId',
-        'user_id' => 'getUserId'
+        'scope_id' => 'getScopeId',
+        'scope_group_id' => 'getScopeGroupId',
+        'id' => 'getId'
     ];
 
     /**
@@ -192,10 +187,9 @@ class RefreshToken implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = isset($data['token']) ? $data['token'] : null;
-        $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
-        $this->container['hub_id'] = isset($data['hub_id']) ? $data['hub_id'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['scope_id'] = isset($data['scope_id']) ? $data['scope_id'] : null;
+        $this->container['scope_group_id'] = isset($data['scope_group_id']) ? $data['scope_group_id'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -207,17 +201,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['scope_id'] === null) {
+            $invalidProperties[] = "'scope_id' can't be null";
         }
-        if ($this->container['client_id'] === null) {
-            $invalidProperties[] = "'client_id' can't be null";
+        if ($this->container['scope_group_id'] === null) {
+            $invalidProperties[] = "'scope_group_id' can't be null";
         }
-        if ($this->container['hub_id'] === null) {
-            $invalidProperties[] = "'hub_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,97 +226,73 @@ class RefreshToken implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->container['token'];
-    }
-
-    /**
-     * Sets token
-     *
-     * @param string $token token
-     *
-     * @return $this
-     */
-    public function setToken($token)
-    {
-        $this->container['token'] = $token;
-
-        return $this;
-    }
-
-    /**
-     * Gets client_id
-     *
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->container['client_id'];
-    }
-
-    /**
-     * Sets client_id
-     *
-     * @param string $client_id client_id
-     *
-     * @return $this
-     */
-    public function setClientId($client_id)
-    {
-        $this->container['client_id'] = $client_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets hub_id
+     * Gets scope_id
      *
      * @return int
      */
-    public function getHubId()
+    public function getScopeId()
     {
-        return $this->container['hub_id'];
+        return $this->container['scope_id'];
     }
 
     /**
-     * Sets hub_id
+     * Sets scope_id
      *
-     * @param int $hub_id hub_id
+     * @param int $scope_id scope_id
      *
      * @return $this
      */
-    public function setHubId($hub_id)
+    public function setScopeId($scope_id)
     {
-        $this->container['hub_id'] = $hub_id;
+        $this->container['scope_id'] = $scope_id;
 
         return $this;
     }
 
     /**
-     * Gets user_id
+     * Gets scope_group_id
      *
      * @return int
      */
-    public function getUserId()
+    public function getScopeGroupId()
     {
-        return $this->container['user_id'];
+        return $this->container['scope_group_id'];
     }
 
     /**
-     * Sets user_id
+     * Sets scope_group_id
      *
-     * @param int $user_id user_id
+     * @param int $scope_group_id scope_group_id
      *
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setScopeGroupId($scope_group_id)
     {
-        $this->container['user_id'] = $user_id;
+        $this->container['scope_group_id'] = $scope_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
