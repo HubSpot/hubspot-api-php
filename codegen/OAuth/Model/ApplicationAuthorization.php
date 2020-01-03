@@ -1,6 +1,6 @@
 <?php
 /**
- * RefreshToken
+ * ApplicationAuthorization
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * RefreshToken Class Doc Comment
+ * ApplicationAuthorization Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class RefreshToken implements ModelInterface, ArrayAccess
+class ApplicationAuthorization implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RefreshToken';
+    protected static $openAPIModelName = 'ApplicationAuthorization';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,13 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'token' => 'string',
+        'scope_groups' => '\HubSpot\Client\OAuth\Model\ScopeGroup[]',
         'client_id' => 'string',
-        'hub_id' => 'int',
-        'user_id' => 'int'
+        'name' => 'string',
+        'short_description' => 'string',
+        'description' => 'string',
+        'icon_url' => 'string',
+        'authorized' => 'bool'
     ];
 
     /**
@@ -69,10 +72,13 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'token' => null,
+        'scope_groups' => null,
         'client_id' => null,
-        'hub_id' => null,
-        'user_id' => null
+        'name' => null,
+        'short_description' => null,
+        'description' => null,
+        'icon_url' => null,
+        'authorized' => null
     ];
 
     /**
@@ -102,10 +108,13 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token',
+        'scope_groups' => 'scopeGroups',
         'client_id' => 'clientId',
-        'hub_id' => 'hubId',
-        'user_id' => 'userId'
+        'name' => 'name',
+        'short_description' => 'shortDescription',
+        'description' => 'description',
+        'icon_url' => 'iconUrl',
+        'authorized' => 'authorized'
     ];
 
     /**
@@ -114,10 +123,13 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken',
+        'scope_groups' => 'setScopeGroups',
         'client_id' => 'setClientId',
-        'hub_id' => 'setHubId',
-        'user_id' => 'setUserId'
+        'name' => 'setName',
+        'short_description' => 'setShortDescription',
+        'description' => 'setDescription',
+        'icon_url' => 'setIconUrl',
+        'authorized' => 'setAuthorized'
     ];
 
     /**
@@ -126,10 +138,13 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken',
+        'scope_groups' => 'getScopeGroups',
         'client_id' => 'getClientId',
-        'hub_id' => 'getHubId',
-        'user_id' => 'getUserId'
+        'name' => 'getName',
+        'short_description' => 'getShortDescription',
+        'description' => 'getDescription',
+        'icon_url' => 'getIconUrl',
+        'authorized' => 'getAuthorized'
     ];
 
     /**
@@ -192,10 +207,13 @@ class RefreshToken implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = isset($data['token']) ? $data['token'] : null;
+        $this->container['scope_groups'] = isset($data['scope_groups']) ? $data['scope_groups'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
-        $this->container['hub_id'] = isset($data['hub_id']) ? $data['hub_id'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['short_description'] = isset($data['short_description']) ? $data['short_description'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['icon_url'] = isset($data['icon_url']) ? $data['icon_url'] : null;
+        $this->container['authorized'] = isset($data['authorized']) ? $data['authorized'] : null;
     }
 
     /**
@@ -207,17 +225,23 @@ class RefreshToken implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['scope_groups'] === null) {
+            $invalidProperties[] = "'scope_groups' can't be null";
         }
         if ($this->container['client_id'] === null) {
             $invalidProperties[] = "'client_id' can't be null";
         }
-        if ($this->container['hub_id'] === null) {
-            $invalidProperties[] = "'hub_id' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['short_description'] === null) {
+            $invalidProperties[] = "'short_description' can't be null";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['authorized'] === null) {
+            $invalidProperties[] = "'authorized' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,25 +259,25 @@ class RefreshToken implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets token
+     * Gets scope_groups
      *
-     * @return string
+     * @return \HubSpot\Client\OAuth\Model\ScopeGroup[]
      */
-    public function getToken()
+    public function getScopeGroups()
     {
-        return $this->container['token'];
+        return $this->container['scope_groups'];
     }
 
     /**
-     * Sets token
+     * Sets scope_groups
      *
-     * @param string $token token
+     * @param \HubSpot\Client\OAuth\Model\ScopeGroup[] $scope_groups scope_groups
      *
      * @return $this
      */
-    public function setToken($token)
+    public function setScopeGroups($scope_groups)
     {
-        $this->container['token'] = $token;
+        $this->container['scope_groups'] = $scope_groups;
 
         return $this;
     }
@@ -283,49 +307,121 @@ class RefreshToken implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets hub_id
+     * Gets name
      *
-     * @return int
+     * @return string
      */
-    public function getHubId()
+    public function getName()
     {
-        return $this->container['hub_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets hub_id
+     * Sets name
      *
-     * @param int $hub_id hub_id
+     * @param string $name name
      *
      * @return $this
      */
-    public function setHubId($hub_id)
+    public function setName($name)
     {
-        $this->container['hub_id'] = $hub_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets user_id
+     * Gets short_description
      *
-     * @return int
+     * @return string
      */
-    public function getUserId()
+    public function getShortDescription()
     {
-        return $this->container['user_id'];
+        return $this->container['short_description'];
     }
 
     /**
-     * Sets user_id
+     * Sets short_description
      *
-     * @param int $user_id user_id
+     * @param string $short_description short_description
      *
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setShortDescription($short_description)
     {
-        $this->container['user_id'] = $user_id;
+        $this->container['short_description'] = $short_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string $description description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets icon_url
+     *
+     * @return string|null
+     */
+    public function getIconUrl()
+    {
+        return $this->container['icon_url'];
+    }
+
+    /**
+     * Sets icon_url
+     *
+     * @param string|null $icon_url icon_url
+     *
+     * @return $this
+     */
+    public function setIconUrl($icon_url)
+    {
+        $this->container['icon_url'] = $icon_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorized
+     *
+     * @return bool
+     */
+    public function getAuthorized()
+    {
+        return $this->container['authorized'];
+    }
+
+    /**
+     * Sets authorized
+     *
+     * @param bool $authorized authorized
+     *
+     * @return $this
+     */
+    public function setAuthorized($authorized)
+    {
+        $this->container['authorized'] = $authorized;
 
         return $this;
     }

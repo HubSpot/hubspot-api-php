@@ -1,6 +1,6 @@
 <?php
 /**
- * RefreshToken
+ * AuthorizationRequest
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * RefreshToken Class Doc Comment
+ * AuthorizationRequest Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class RefreshToken implements ModelInterface, ArrayAccess
+class AuthorizationRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RefreshToken';
+    protected static $openAPIModelName = 'AuthorizationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'token' => 'string',
+        'response_type' => 'string',
         'client_id' => 'string',
+        'redirect_uri' => 'string',
+        'state' => 'string',
         'hub_id' => 'int',
-        'user_id' => 'int'
+        'recaptcha_token' => 'string',
+        'scopes' => 'string[]',
+        'optional_scopes' => 'string[]'
     ];
 
     /**
@@ -69,10 +73,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'token' => null,
+        'response_type' => null,
         'client_id' => null,
+        'redirect_uri' => null,
+        'state' => null,
         'hub_id' => null,
-        'user_id' => null
+        'recaptcha_token' => null,
+        'scopes' => null,
+        'optional_scopes' => null
     ];
 
     /**
@@ -102,10 +110,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token',
+        'response_type' => 'responseType',
         'client_id' => 'clientId',
+        'redirect_uri' => 'redirectUri',
+        'state' => 'state',
         'hub_id' => 'hubId',
-        'user_id' => 'userId'
+        'recaptcha_token' => 'recaptchaToken',
+        'scopes' => 'scopes',
+        'optional_scopes' => 'optionalScopes'
     ];
 
     /**
@@ -114,10 +126,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken',
+        'response_type' => 'setResponseType',
         'client_id' => 'setClientId',
+        'redirect_uri' => 'setRedirectUri',
+        'state' => 'setState',
         'hub_id' => 'setHubId',
-        'user_id' => 'setUserId'
+        'recaptcha_token' => 'setRecaptchaToken',
+        'scopes' => 'setScopes',
+        'optional_scopes' => 'setOptionalScopes'
     ];
 
     /**
@@ -126,10 +142,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken',
+        'response_type' => 'getResponseType',
         'client_id' => 'getClientId',
+        'redirect_uri' => 'getRedirectUri',
+        'state' => 'getState',
         'hub_id' => 'getHubId',
-        'user_id' => 'getUserId'
+        'recaptcha_token' => 'getRecaptchaToken',
+        'scopes' => 'getScopes',
+        'optional_scopes' => 'getOptionalScopes'
     ];
 
     /**
@@ -192,10 +212,14 @@ class RefreshToken implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = isset($data['token']) ? $data['token'] : null;
+        $this->container['response_type'] = isset($data['response_type']) ? $data['response_type'] : null;
         $this->container['client_id'] = isset($data['client_id']) ? $data['client_id'] : null;
+        $this->container['redirect_uri'] = isset($data['redirect_uri']) ? $data['redirect_uri'] : null;
+        $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         $this->container['hub_id'] = isset($data['hub_id']) ? $data['hub_id'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['recaptcha_token'] = isset($data['recaptcha_token']) ? $data['recaptcha_token'] : null;
+        $this->container['scopes'] = isset($data['scopes']) ? $data['scopes'] : null;
+        $this->container['optional_scopes'] = isset($data['optional_scopes']) ? $data['optional_scopes'] : null;
     }
 
     /**
@@ -207,17 +231,11 @@ class RefreshToken implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['scopes'] === null) {
+            $invalidProperties[] = "'scopes' can't be null";
         }
-        if ($this->container['client_id'] === null) {
-            $invalidProperties[] = "'client_id' can't be null";
-        }
-        if ($this->container['hub_id'] === null) {
-            $invalidProperties[] = "'hub_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['optional_scopes'] === null) {
+            $invalidProperties[] = "'optional_scopes' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,25 +253,25 @@ class RefreshToken implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets token
+     * Gets response_type
      *
-     * @return string
+     * @return string|null
      */
-    public function getToken()
+    public function getResponseType()
     {
-        return $this->container['token'];
+        return $this->container['response_type'];
     }
 
     /**
-     * Sets token
+     * Sets response_type
      *
-     * @param string $token token
+     * @param string|null $response_type response_type
      *
      * @return $this
      */
-    public function setToken($token)
+    public function setResponseType($response_type)
     {
-        $this->container['token'] = $token;
+        $this->container['response_type'] = $response_type;
 
         return $this;
     }
@@ -261,7 +279,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
     /**
      * Gets client_id
      *
-     * @return string
+     * @return string|null
      */
     public function getClientId()
     {
@@ -271,7 +289,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
     /**
      * Sets client_id
      *
-     * @param string $client_id client_id
+     * @param string|null $client_id client_id
      *
      * @return $this
      */
@@ -283,9 +301,57 @@ class RefreshToken implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets redirect_uri
+     *
+     * @return string|null
+     */
+    public function getRedirectUri()
+    {
+        return $this->container['redirect_uri'];
+    }
+
+    /**
+     * Sets redirect_uri
+     *
+     * @param string|null $redirect_uri redirect_uri
+     *
+     * @return $this
+     */
+    public function setRedirectUri($redirect_uri)
+    {
+        $this->container['redirect_uri'] = $redirect_uri;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state state
+     *
+     * @return $this
+     */
+    public function setState($state)
+    {
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
      * Gets hub_id
      *
-     * @return int
+     * @return int|null
      */
     public function getHubId()
     {
@@ -295,7 +361,7 @@ class RefreshToken implements ModelInterface, ArrayAccess
     /**
      * Sets hub_id
      *
-     * @param int $hub_id hub_id
+     * @param int|null $hub_id hub_id
      *
      * @return $this
      */
@@ -307,25 +373,73 @@ class RefreshToken implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets user_id
+     * Gets recaptcha_token
      *
-     * @return int
+     * @return string|null
      */
-    public function getUserId()
+    public function getRecaptchaToken()
     {
-        return $this->container['user_id'];
+        return $this->container['recaptcha_token'];
     }
 
     /**
-     * Sets user_id
+     * Sets recaptcha_token
      *
-     * @param int $user_id user_id
+     * @param string|null $recaptcha_token recaptcha_token
      *
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setRecaptchaToken($recaptcha_token)
     {
-        $this->container['user_id'] = $user_id;
+        $this->container['recaptcha_token'] = $recaptcha_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets scopes
+     *
+     * @return string[]
+     */
+    public function getScopes()
+    {
+        return $this->container['scopes'];
+    }
+
+    /**
+     * Sets scopes
+     *
+     * @param string[] $scopes scopes
+     *
+     * @return $this
+     */
+    public function setScopes($scopes)
+    {
+        $this->container['scopes'] = $scopes;
+
+        return $this;
+    }
+
+    /**
+     * Gets optional_scopes
+     *
+     * @return string[]
+     */
+    public function getOptionalScopes()
+    {
+        return $this->container['optional_scopes'];
+    }
+
+    /**
+     * Sets optional_scopes
+     *
+     * @param string[] $optional_scopes optional_scopes
+     *
+     * @return $this
+     */
+    public function setOptionalScopes($optional_scopes)
+    {
+        $this->container['optional_scopes'] = $optional_scopes;
 
         return $this;
     }

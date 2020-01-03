@@ -1,6 +1,6 @@
 <?php
 /**
- * TokensApi
+ * BackfillApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\OAuth\HeaderSelector;
 use HubSpot\Client\OAuth\ObjectSerializer;
 
 /**
- * TokensApi Class Doc Comment
+ * BackfillApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\OAuth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TokensApi
+class BackfillApi
 {
     /**
      * @var ClientInterface
@@ -88,42 +88,31 @@ class TokensApi
     }
 
     /**
-     * Operation postoauthv1token
+     * Operation postoauthv1backfill
      *
-     * @param  string $grant_type grant_type (optional)
-     * @param  string $code code (optional)
-     * @param  string $redirect_uri redirect_uri (optional)
-     * @param  string $client_id client_id (optional)
-     * @param  string $client_secret client_secret (optional)
-     * @param  string $refresh_token refresh_token (optional)
+     * @param  \HubSpot\Client\OAuth\Model\Backfill $backfill backfill (optional)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\OAuth\Model\TokenResponseFields|\HubSpot\Client\OAuth\Model\Error
+     * @return void
      */
-    public function postoauthv1token($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function postoauthv1backfill($backfill = null)
     {
-        list($response) = $this->postoauthv1tokenWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
-        return $response;
+        $this->postoauthv1backfillWithHttpInfo($backfill);
     }
 
     /**
-     * Operation postoauthv1tokenWithHttpInfo
+     * Operation postoauthv1backfillWithHttpInfo
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
+     * @param  \HubSpot\Client\OAuth\Model\Backfill $backfill (optional)
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\OAuth\Model\TokenResponseFields|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postoauthv1tokenWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function postoauthv1backfillWithHttpInfo($backfill = null)
     {
-        $request = $this->postoauthv1tokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        $request = $this->postoauthv1backfillRequest($backfill);
 
         try {
             $options = $this->createHttpClientOption();
@@ -153,58 +142,10 @@ class TokensApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\OAuth\Model\TokenResponseFields' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\TokenResponseFields', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\OAuth\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\OAuth\Model\TokenResponseFields';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\OAuth\Model\TokenResponseFields',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -219,23 +160,18 @@ class TokensApi
     }
 
     /**
-     * Operation postoauthv1tokenAsync
+     * Operation postoauthv1backfillAsync
      *
      * 
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
+     * @param  \HubSpot\Client\OAuth\Model\Backfill $backfill (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postoauthv1tokenAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function postoauthv1backfillAsync($backfill = null)
     {
-        return $this->postoauthv1tokenAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token)
+        return $this->postoauthv1backfillAsyncWithHttpInfo($backfill)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -244,41 +180,25 @@ class TokensApi
     }
 
     /**
-     * Operation postoauthv1tokenAsyncWithHttpInfo
+     * Operation postoauthv1backfillAsyncWithHttpInfo
      *
      * 
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
+     * @param  \HubSpot\Client\OAuth\Model\Backfill $backfill (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postoauthv1tokenAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function postoauthv1backfillAsyncWithHttpInfo($backfill = null)
     {
-        $returnType = '\HubSpot\Client\OAuth\Model\TokenResponseFields';
-        $request = $this->postoauthv1tokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        $returnType = '';
+        $request = $this->postoauthv1backfillRequest($backfill);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -298,22 +218,17 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'postoauthv1token'
+     * Create request for operation 'postoauthv1backfill'
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
+     * @param  \HubSpot\Client\OAuth\Model\Backfill $backfill (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function postoauthv1tokenRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    protected function postoauthv1backfillRequest($backfill = null)
     {
 
-        $resourcePath = '/v1/token';
+        $resourcePath = '/v1/backfill';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -322,41 +237,20 @@ class TokensApi
 
 
 
-        // form params
-        if ($grant_type !== null) {
-            $formParams['grant_type'] = ObjectSerializer::toFormValue($grant_type);
-        }
-        // form params
-        if ($code !== null) {
-            $formParams['code'] = ObjectSerializer::toFormValue($code);
-        }
-        // form params
-        if ($redirect_uri !== null) {
-            $formParams['redirect_uri'] = ObjectSerializer::toFormValue($redirect_uri);
-        }
-        // form params
-        if ($client_id !== null) {
-            $formParams['client_id'] = ObjectSerializer::toFormValue($client_id);
-        }
-        // form params
-        if ($client_secret !== null) {
-            $formParams['client_secret'] = ObjectSerializer::toFormValue($client_secret);
-        }
-        // form params
-        if ($refresh_token !== null) {
-            $formParams['refresh_token'] = ObjectSerializer::toFormValue($refresh_token);
-        }
         // body params
         $_tempBody = null;
+        if (isset($backfill)) {
+            $_tempBody = $backfill;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/x-www-form-urlencoded']
+                ['*/*'],
+                []
             );
         }
 
