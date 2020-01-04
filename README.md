@@ -34,3 +34,17 @@ $searchRequest->setFilters([
 ]);
 $response = $hubSpot->crm()->objects()->searchApi()->doSearch($searchRequest);
 ```
+
+## Contributing
+
+### Run spec tests
+
+```
+vendor/bin/phpspec run
+```
+
+### Run unit tests
+
+```
+vendor/bin/phpunit ./tests
+```
