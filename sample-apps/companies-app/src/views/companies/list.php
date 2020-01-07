@@ -11,7 +11,7 @@ $hubSpot->companies()->searchByDomain($searchDomain, [
 
 <form action="/companies/search.php">
     <fieldset>
-        <input type="text" name="search" placeholder="Search by domain.." id="search" value="<?php echo $search; ?>">
+        <input type="text" name="search" placeholder="Search by domain.." id="search" value="<?php echo $_GET['search']; ?>">
     </fieldset>
 </form>
 
@@ -20,6 +20,8 @@ $hubSpot->companies()->searchByDomain($searchDomain, [
 <pre>
 // src/actions/companies/list.php
 $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANY);
+// src/actions/companies/delete.php
+$hubSpot->crm()->objects()->basicApi()->archive(ObjectType::COMPANY, $_GET['id']);
 </pre>
 <?php } ?>
 
@@ -29,6 +31,7 @@ $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANY);
     <th>ID</th>
     <th>Name</th>
     <th>Domain</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -42,6 +45,7 @@ $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANY);
       <td><a href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
       <td><?php echo htmlentities($company->getProperties()['name']); ?></td>
       <td><?php echo htmlentities($company->getProperties()['domain']); ?></td>
+      <td><a class="button" href="/companies/delete.php?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
     </tr>
   <?php }?>
   </tbody>

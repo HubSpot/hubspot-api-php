@@ -6,4 +6,5 @@ return [
     '/companies/search.php',
     '/companies/contacts.php',
     '/companies/show.php',
+    '/companies/delete.php',
 ];

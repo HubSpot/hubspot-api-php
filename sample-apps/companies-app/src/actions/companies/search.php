@@ -1,16 +1,28 @@
 <?php
 
-$searchDomain = $_GET['search'];
-if (empty($searchDomain)) {
+use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject;
+use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
+use HubSpot\Crm\ObjectType;
+
+$contacts = [];
+
+if (empty($_GET['search'])) {
     header('Location: /companies/list.php');
     exit();
 }
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
-https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain
-$companies = $hubSpot->companies()->searchByDomain($searchDomain, [
-    'name', 'domain',
-])->getData()->results;
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setFilters([
+    [
+        'propertyName' => 'domain',
+        'operator' => 'EQ',
+        'value' => $_GET['search'],
+    ],
+]);
+/** @var CollectionResponseWithTotalSimplePublicObject $contactsPage */
+$contactsPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::COMPANY, $searchRequest);
 
 include __DIR__.'/../../views/companies/list.php';
