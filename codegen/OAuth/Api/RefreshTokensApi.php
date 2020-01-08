@@ -88,6 +88,527 @@ class RefreshTokensApi
     }
 
     /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientId
+     *
+     * @param  int $hub_id hub_id (required)
+     * @param  string $client_id client_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientId($hub_id, $client_id)
+    {
+        $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdWithHttpInfo($hub_id, $client_id);
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdWithHttpInfo
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdWithHttpInfo($hub_id, $client_id)
+    {
+        $request = $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdRequest($hub_id, $client_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\OAuth\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdAsync
+     *
+     * 
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdAsync($hub_id, $client_id)
+    {
+        return $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdAsyncWithHttpInfo($hub_id, $client_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdAsyncWithHttpInfo($hub_id, $client_id)
+    {
+        $returnType = '';
+        $request = $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdRequest($hub_id, $client_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteoauthv1refreshTokenshubshubIdclientsclientId'
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteoauthv1refreshTokenshubshubIdclientsclientIdRequest($hub_id, $client_id)
+    {
+        // verify the required parameter 'hub_id' is set
+        if ($hub_id === null || (is_array($hub_id) && count($hub_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hub_id when calling deleteoauthv1refreshTokenshubshubIdclientsclientId'
+            );
+        }
+        // verify the required parameter 'client_id' is set
+        if ($client_id === null || (is_array($client_id) && count($client_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $client_id when calling deleteoauthv1refreshTokenshubshubIdclientsclientId'
+            );
+        }
+
+        $resourcePath = '/v1/refresh-tokens/hubs/{hubId}/clients/{clientId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($hub_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'hubId' . '}',
+                ObjectSerializer::toPathValue($hub_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($client_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'clientId' . '}',
+                ObjectSerializer::toPathValue($client_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserId
+     *
+     * @param  int $hub_id hub_id (required)
+     * @param  string $client_id client_id (required)
+     * @param  int $user_id user_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserId($hub_id, $client_id, $user_id)
+    {
+        $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdWithHttpInfo($hub_id, $client_id, $user_id);
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdWithHttpInfo
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdWithHttpInfo($hub_id, $client_id, $user_id)
+    {
+        $request = $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdRequest($hub_id, $client_id, $user_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\OAuth\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsync
+     *
+     * 
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsync($hub_id, $client_id, $user_id)
+    {
+        return $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsyncWithHttpInfo($hub_id, $client_id, $user_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsyncWithHttpInfo($hub_id, $client_id, $user_id)
+    {
+        $returnType = '';
+        $request = $this->deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdRequest($hub_id, $client_id, $user_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdRequest($hub_id, $client_id, $user_id)
+    {
+        // verify the required parameter 'hub_id' is set
+        if ($hub_id === null || (is_array($hub_id) && count($hub_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hub_id when calling deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+            );
+        }
+        // verify the required parameter 'client_id' is set
+        if ($client_id === null || (is_array($client_id) && count($client_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $client_id when calling deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+            );
+        }
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling deleteoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+            );
+        }
+
+        $resourcePath = '/v1/refresh-tokens/hubs/{hubId}/clients/{clientId}/users/{userId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($hub_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'hubId' . '}',
+                ObjectSerializer::toPathValue($hub_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($client_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'clientId' . '}',
+                ObjectSerializer::toPathValue($client_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteoauthv1refreshTokenstoken
      *
      * @param  string $token token (required)
@@ -296,11 +817,11 @@ class RefreshTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
+                ['application/json'],
                 []
             );
         }
@@ -334,6 +855,10 @@ class RefreshTokensApi
             }
         }
 
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -603,11 +1128,11 @@ class RefreshTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['application/json'],
                 []
             );
         }
@@ -641,6 +1166,10 @@ class RefreshTokensApi
             }
         }
 
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -910,11 +1439,11 @@ class RefreshTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['application/json'],
                 []
             );
         }
@@ -948,6 +1477,340 @@ class RefreshTokensApi
             }
         }
 
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getoauthv1refreshTokenshubshubIdclientsclientIdusersuserId
+     *
+     * @param  int $hub_id hub_id (required)
+     * @param  string $client_id client_id (required)
+     * @param  int $user_id user_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\OAuth\Model\RefreshToken|\HubSpot\Client\OAuth\Model\Error
+     */
+    public function getoauthv1refreshTokenshubshubIdclientsclientIdusersuserId($hub_id, $client_id, $user_id)
+    {
+        list($response) = $this->getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdWithHttpInfo($hub_id, $client_id, $user_id);
+        return $response;
+    }
+
+    /**
+     * Operation getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdWithHttpInfo
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\OAuth\Model\RefreshToken|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdWithHttpInfo($hub_id, $client_id, $user_id)
+    {
+        $request = $this->getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdRequest($hub_id, $client_id, $user_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\OAuth\Model\RefreshToken' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\RefreshToken', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\OAuth\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\OAuth\Model\RefreshToken';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\OAuth\Model\RefreshToken',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\OAuth\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsync
+     *
+     * 
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsync($hub_id, $client_id, $user_id)
+    {
+        return $this->getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsyncWithHttpInfo($hub_id, $client_id, $user_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdAsyncWithHttpInfo($hub_id, $client_id, $user_id)
+    {
+        $returnType = '\HubSpot\Client\OAuth\Model\RefreshToken';
+        $request = $this->getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdRequest($hub_id, $client_id, $user_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+     *
+     * @param  int $hub_id (required)
+     * @param  string $client_id (required)
+     * @param  int $user_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getoauthv1refreshTokenshubshubIdclientsclientIdusersuserIdRequest($hub_id, $client_id, $user_id)
+    {
+        // verify the required parameter 'hub_id' is set
+        if ($hub_id === null || (is_array($hub_id) && count($hub_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hub_id when calling getoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+            );
+        }
+        // verify the required parameter 'client_id' is set
+        if ($client_id === null || (is_array($client_id) && count($client_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $client_id when calling getoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+            );
+        }
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling getoauthv1refreshTokenshubshubIdclientsclientIdusersuserId'
+            );
+        }
+
+        $resourcePath = '/v1/refresh-tokens/hubs/{hubId}/clients/{clientId}/users/{userId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($hub_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'hubId' . '}',
+                ObjectSerializer::toPathValue($hub_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($client_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'clientId' . '}',
+                ObjectSerializer::toPathValue($client_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1198,11 +2061,11 @@ class RefreshTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['application/json'],
                 []
             );
         }
@@ -1236,6 +2099,10 @@ class RefreshTokensApi
             }
         }
 
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1486,11 +2353,11 @@ class RefreshTokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['application/json'],
                 []
             );
         }
@@ -1524,6 +2391,10 @@ class RefreshTokensApi
             }
         }
 
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

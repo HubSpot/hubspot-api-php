@@ -99,7 +99,7 @@ class TokensApi
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\OAuth\Model\Error
+     * @return \HubSpot\Client\OAuth\Model\TokenResponseFields|\HubSpot\Client\OAuth\Model\Error
      */
     public function postoauthv1token($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
@@ -119,7 +119,7 @@ class TokensApi
      *
      * @throws \HubSpot\Client\OAuth\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\OAuth\Model\TokenResponseFields|\HubSpot\Client\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function postoauthv1tokenWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
@@ -155,6 +155,18 @@ class TokensApi
 
             $responseBody = $response->getBody();
             switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\OAuth\Model\TokenResponseFields' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\OAuth\Model\TokenResponseFields', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 default:
                     if ('\HubSpot\Client\OAuth\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -169,7 +181,7 @@ class TokensApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\OAuth\Model\Error';
+            $returnType = '\HubSpot\Client\OAuth\Model\TokenResponseFields';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -185,6 +197,14 @@ class TokensApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\OAuth\Model\TokenResponseFields',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -240,7 +260,7 @@ class TokensApi
      */
     public function postoauthv1tokenAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
-        $returnType = '\HubSpot\Client\OAuth\Model\Error';
+        $returnType = '\HubSpot\Client\OAuth\Model\TokenResponseFields';
         $request = $this->postoauthv1tokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
 
         return $this->client
@@ -331,11 +351,11 @@ class TokensApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
+                ['application/json'],
                 ['application/x-www-form-urlencoded']
             );
         }
@@ -369,6 +389,10 @@ class TokensApi
             }
         }
 
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

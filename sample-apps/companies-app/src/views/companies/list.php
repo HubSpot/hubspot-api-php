@@ -22,12 +22,12 @@ $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRe
 </form>
 
 
-<?php if (empty($searchDomain)) { ?>
+<?php if (!isset($_GET['search'])) { ?>
 <pre>
 // src/actions/companies/list.php
-$hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANY);
+$hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANIES);
 // src/actions/companies/delete.php
-$hubSpot->crm()->objects()->basicApi()->archive(ObjectType::COMPANY, $_GET['id']);
+$hubSpot->crm()->objects()->basicApi()->archive(ObjectType::COMPANIES, $_GET['id']);
 </pre>
 <?php } ?>
 

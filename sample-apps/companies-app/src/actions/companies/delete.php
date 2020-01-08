@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
     throw new \Exception('Contact id is not specified');
 }
 HubspotClientHelper::createFactory()->crm()->objects()->basicApi()
-        ->archive(ObjectType::COMPANY, $_GET['id']);
+        ->archive(ObjectType::COMPANIES, $_GET['id']);
 
 header('Location: /companies/list.php');
 exit();

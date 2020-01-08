@@ -19,15 +19,15 @@ $company = new CompanyInput([
 
 if (isset($_POST['name'])) {
     $company->setProperties($_POST);
-    $hubSpot->crm()->objects()->basicApi()->update(ObjectType::COMPANY, $id, $company);
+    $hubSpot->crm()->objects()->basicApi()->update(ObjectType::COMPANIES, $id, $company);
     
     header('Location: /companies/list.php');
     exit();
 } else {
     
-    $company = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::COMPANY, $id);
+    $company = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::COMPANIES, $id);
     
-    //$contactsIds = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANY, $id, ObjectType::CONTACT);
+    //$contactsIds = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANIES, $id, ObjectType::CONTACT);
 }
 
 include __DIR__.'/../../views/companies/show.php';

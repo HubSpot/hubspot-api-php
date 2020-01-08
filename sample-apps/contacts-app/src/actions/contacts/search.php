@@ -25,6 +25,6 @@ $searchRequest->setFilters([
 ]);
 
 /** @var CollectionResponseWithTotalSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRequest);
+$contactsPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACTS, $searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';
