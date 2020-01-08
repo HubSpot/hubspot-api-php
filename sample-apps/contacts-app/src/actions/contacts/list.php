@@ -8,6 +8,6 @@ $hubSpot = HubspotClientHelper::createFactory();
 
 // https://developers.hubspot.com/docs/methods/contacts/get_contacts
 /** @var CollectionResponseSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::CONTACT);
+$contactsPage = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::CONTACTS);
 
 include __DIR__.'/../../views/contacts/list.php';

@@ -71,8 +71,8 @@ class RefreshToken implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'token' => null,
         'client_id' => null,
-        'hub_id' => 'int32',
-        'user_id' => 'int32'
+        'hub_id' => null,
+        'user_id' => null
     ];
 
     /**

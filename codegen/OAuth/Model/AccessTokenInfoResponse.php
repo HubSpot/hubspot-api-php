@@ -78,10 +78,10 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => null,
         'hub_domain' => null,
         'scopes' => null,
-        'hub_id' => 'int32',
-        'app_id' => 'int32',
-        'expires_in' => 'int32',
-        'user_id' => 'int32',
+        'hub_id' => null,
+        'app_id' => null,
+        'expires_in' => null,
+        'user_id' => null,
         'token_type' => null
     ];
 
