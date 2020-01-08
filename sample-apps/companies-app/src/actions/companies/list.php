@@ -7,6 +7,6 @@ use HubSpot\Crm\ObjectType;
 $hubSpot = HubspotClientHelper::createFactory();
 
 /** @var CollectionResponseSimplePublicObject $companiesPage */
-$companiesPage = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANY);
+$companiesPage = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANIES);
 
 include __DIR__.'/../../views/companies/list.php';

@@ -21,7 +21,7 @@
 <pre>
 // src/actions/companies/show.php
 $hubSpot->crm()->objects()->basicApi()
-    ->getById(ObjectType::COMPANY, $id)
+    ->getById(ObjectType::COMPANIES, $id)
 </pre>
         <?php } ?>
 
