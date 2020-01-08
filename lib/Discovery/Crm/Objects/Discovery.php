@@ -11,6 +11,7 @@ use HubSpot\Discovery\DiscoveryBase;
 /**
  * @method AssociationsApi        associationsApi()
  * @method BatchApi               batchApi()
+ * @method BasicApi               basicApi()
  * @method CreateNativeObjectsApi createNativeObjectsApi()
  * @method SearchApi              searchApi()
  */
