@@ -22,7 +22,7 @@ $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRe
 </form>
 
 
-<?php if (empty($searchDomain)) { ?>
+<?php if (!isset($_GET['search'])) { ?>
 <pre>
 // src/actions/companies/list.php
 $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANIES);
