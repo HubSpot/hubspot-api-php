@@ -1,8 +1,9 @@
 <?php
 
+use HubSpot\Crm\ObjectType;
+
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
 
-// https://developers.hubspot.com/docs/methods/contacts/v2/get_contacts_properties
-$properties = $hubSpot->contactProperties()->all()->getData();
+$properties = $hubSpot->crm()->properties()->coreApi()->getcrmv3propertiesobjectType(ObjectType::CONTACTS);
 
 include __DIR__.'/../../views/properties/list.php';
