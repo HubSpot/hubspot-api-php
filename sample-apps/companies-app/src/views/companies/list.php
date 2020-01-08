@@ -1,11 +1,17 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
-<?php if (!empty($searchDomain)) { ?>
+<?php if (isset($_GET['search'])) { ?>
 <pre>
 // src/actions/companies/search.php
-$hubSpot->companies()->searchByDomain($searchDomain, [
-    'name', 'domain',
-])
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setFilters([
+    [
+        'propertyName' => 'email',
+        'operator' => 'EQ',
+        'value' => $search,
+    ],
+]);
+$hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRequest);
 </pre>
 <?php } ?>
 
