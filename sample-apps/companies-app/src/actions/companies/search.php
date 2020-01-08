@@ -5,8 +5,6 @@ use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObje
 use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
 use HubSpot\Crm\ObjectType;
 
-$contacts = [];
-
 if (empty($_GET['search'])) {
     header('Location: /companies/list.php');
     exit();
@@ -22,7 +20,7 @@ $searchRequest->setFilters([
         'value' => $_GET['search'],
     ],
 ]);
-/** @var CollectionResponseWithTotalSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::COMPANY, $searchRequest);
+/** @var CollectionResponseWithTotalSimplePublicObject $companiesPage */
+$companiesPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::COMPANY, $searchRequest);
 
 include __DIR__.'/../../views/companies/list.php';
