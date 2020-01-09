@@ -10,7 +10,7 @@ if (isset($_POST['email'])) {
     $contactInput->setProperties($_POST);
     $contact = $hubSpot->crm()->objects()->createNativeObjectsApi()->createContact($contactInput);
 
-    header('Location: /contacts/show.php?id='.$contact['id']);
+    header('Location: /contacts/show.php?id='.$contact['id'].'&created=true');
     exit();
 }
 

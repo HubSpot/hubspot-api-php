@@ -1,9 +1,12 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
 <?php
-      if ($updated) {
-          echo "<h3 class='alert-success'>Successfully updated Contact properties</h3>";
-      }
+    if ($created) {
+        echo "<h3 class='alert-success created'>Successfully created</h3>";
+    }
+    if ($updated) {
+        echo "<h3 class='alert-success updated'>Successfully updated Contact properties</h3>";
+    }
 ?>
 
 <div class="row">

@@ -1,3 +1,3 @@
-FROM codeception/codeception
+FROM codeception/codeception:3.1.0
 
-ADD codeception.yml /project
+ADD ./sample-apps/contacts-app/codeception.yml /project
