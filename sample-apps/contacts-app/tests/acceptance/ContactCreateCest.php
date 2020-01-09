@@ -8,13 +8,13 @@ class ContactCreateCest
 
     public function creatingContactInvalidData(AcceptanceTester $I)
     {
-        $I->createContact('acceptance-tester-'.uniqid().'@mailforspam');
+        $I->createContact('acceptance-tester-'.uniqid().'@hubspot');
         $I->seeElement('.error');
     }
 
     public function creatingContactValidData(AcceptanceTester $I)
     {
-        $I->createContact('acceptance-tester-'.uniqid().'mike@mailforspam.com');
+        $I->createContact('acceptance-tester-'.uniqid().'@hubspot.com');
         $I->seeElement('.alert-success.created');
     }
 }
