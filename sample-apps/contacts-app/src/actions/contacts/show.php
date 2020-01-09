@@ -10,6 +10,8 @@ if (!isset($_GET['id'])) {
 }
 
 $contactId = $_GET['id'];
+$created = $_GET['created'] ?: false;
+$updated = false;
 
 if (isset($_POST['email'])) {
     $newProperties = new SimplePublicObject();
