@@ -3,6 +3,7 @@
 namespace spec\HubSpot\Discovery\Crm\Properties;
 
 use GuzzleHttp\Client;
+use HubSpot\Client\Crm\Properties\Api\BatchApi;
 use HubSpot\Client\Crm\Properties\Api\CoreApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Properties\Discovery;
@@ -20,8 +21,9 @@ class DiscoverySpec extends ObjectBehavior
         $this->shouldHaveType(Discovery::class);
     }
 
-    public function it_creates_default_client()
+    public function it_creates_clients()
     {
         $this->coreApi()->shouldHaveType(CoreApi::class);
+        $this->batchApi()->shouldHaveType(BatchApi::class);
     }
 }
