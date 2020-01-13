@@ -20,7 +20,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->shouldHaveType(Discovery::class);
     }
 
-    public function it_creates_default_client()
+    public function it_creates_clients()
     {
         $this->defaultApi()->shouldHaveType(DefaultApi::class);
     }
