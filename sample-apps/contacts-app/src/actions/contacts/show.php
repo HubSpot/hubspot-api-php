@@ -8,8 +8,14 @@ $hubSpot = Helpers\HubspotClientHelper::createFactory();
 if (!isset($_GET['id'])) {
     throw new \Exception('Contact id is not specified');
 }
-
 $contactId = $_GET['id'];
+
+if (isset($_POST['buttonDelete'])) {
+    $hubSpot->crm()->objects()->basicApi()->archive(ObjectType::CONTACTS, $contactId);
+    header('Location: /');
+    exit();
+}
+
 $created = $_GET['created'] ?: false;
 $updated = false;
 

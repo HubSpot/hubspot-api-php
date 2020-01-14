@@ -11,7 +11,7 @@ class ContactCreateCest
 
     public function createContact(AcceptanceTester $I)
     {
-        $I->createContact();
+        $I->createContact($I->generateRandomEmail());
         $I->seeElement('.alert-success.created');
     }
 }
