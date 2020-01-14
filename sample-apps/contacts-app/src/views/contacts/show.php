@@ -15,11 +15,11 @@
         <form method="post">
             <?php include __DIR__.'/../properties/_contacts_properties_list.php'; ?>
             <input id="save" class="button-primary" type="submit" value="Save">
+            <input id="delete" onclick="return confirm('Are you sure?');" class="button-primary" name="buttonDelete" type="submit" value="Delete">
         </form>
     </div>
     <div class="column">
     </div>
-
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>
