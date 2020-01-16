@@ -1,6 +1,6 @@
 <?php
 /**
- * NextPage
+ * PropertyGroupUpdate
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * NextPage Class Doc Comment
+ * PropertyGroupUpdate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Properties
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class NextPage implements ModelInterface, ArrayAccess
+class PropertyGroupUpdate implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NextPage implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NextPage';
+    protected static $openAPIModelName = 'PropertyGroupUpdate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class NextPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'label' => 'string',
+        'display_order' => 'int'
     ];
 
     /**
@@ -67,8 +67,8 @@ class NextPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'label' => null,
+        'display_order' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'label' => 'label',
+        'display_order' => 'displayOrder'
     ];
 
     /**
@@ -108,8 +108,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'label' => 'setLabel',
+        'display_order' => 'setDisplayOrder'
     ];
 
     /**
@@ -118,8 +118,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'label' => 'getLabel',
+        'display_order' => 'getDisplayOrder'
     ];
 
     /**
@@ -182,8 +182,8 @@ class NextPage implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = isset($data['after']) ? $data['after'] : null;
-        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['display_order'] = isset($data['display_order']) ? $data['display_order'] : null;
     }
 
     /**
@@ -195,9 +195,6 @@ class NextPage implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,49 +211,49 @@ class NextPage implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets after
+     * Gets label
      *
-     * @return string
+     * @return string|null
      */
-    public function getAfter()
+    public function getLabel()
     {
-        return $this->container['after'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets after
+     * Sets label
      *
-     * @param string $after after
+     * @param string|null $label A human-readable label that will be shown in HubSpot.
      *
      * @return $this
      */
-    public function setAfter($after)
+    public function setLabel($label)
     {
-        $this->container['after'] = $after;
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets link
+     * Gets display_order
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getLink()
+    public function getDisplayOrder()
     {
-        return $this->container['link'];
+        return $this->container['display_order'];
     }
 
     /**
-     * Sets link
+     * Sets display_order
      *
-     * @param string|null $link link
+     * @param int|null $display_order Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
      *
      * @return $this
      */
-    public function setLink($link)
+    public function setDisplayOrder($display_order)
     {
-        $this->container['link'] = $link;
+        $this->container['display_order'] = $display_order;
 
         return $this;
     }

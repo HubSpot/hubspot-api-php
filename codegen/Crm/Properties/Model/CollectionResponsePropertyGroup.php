@@ -1,6 +1,6 @@
 <?php
 /**
- * NextPage
+ * CollectionResponsePropertyGroup
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * NextPage Class Doc Comment
+ * CollectionResponsePropertyGroup Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Properties
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class NextPage implements ModelInterface, ArrayAccess
+class CollectionResponsePropertyGroup implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NextPage implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NextPage';
+    protected static $openAPIModelName = 'CollectionResponsePropertyGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class NextPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'results' => '\HubSpot\Client\Crm\Properties\Model\PropertyGroup[]',
+        'paging' => '\HubSpot\Client\Crm\Properties\Model\Paging'
     ];
 
     /**
@@ -67,8 +67,8 @@ class NextPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'results' => null,
+        'paging' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'results' => 'results',
+        'paging' => 'paging'
     ];
 
     /**
@@ -108,8 +108,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'results' => 'setResults',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -118,8 +118,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'results' => 'getResults',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -182,8 +182,8 @@ class NextPage implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = isset($data['after']) ? $data['after'] : null;
-        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
+        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
     }
 
     /**
@@ -195,8 +195,8 @@ class NextPage implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +214,49 @@ class NextPage implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets after
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup[]
      */
-    public function getAfter()
+    public function getResults()
     {
-        return $this->container['after'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets after
+     * Sets results
      *
-     * @param string $after after
+     * @param \HubSpot\Client\Crm\Properties\Model\PropertyGroup[] $results results
      *
      * @return $this
      */
-    public function setAfter($after)
+    public function setResults($results)
     {
-        $this->container['after'] = $after;
+        $this->container['results'] = $results;
 
         return $this;
     }
 
     /**
-     * Gets link
+     * Gets paging
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Properties\Model\Paging|null
      */
-    public function getLink()
+    public function getPaging()
     {
-        return $this->container['link'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets link
+     * Sets paging
      *
-     * @param string|null $link link
+     * @param \HubSpot\Client\Crm\Properties\Model\Paging|null $paging paging
      *
      * @return $this
      */
-    public function setLink($link)
+    public function setPaging($paging)
     {
-        $this->container['link'] = $link;
+        $this->container['paging'] = $paging;
 
         return $this;
     }
