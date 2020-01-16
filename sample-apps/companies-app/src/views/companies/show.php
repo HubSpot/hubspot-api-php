@@ -27,10 +27,11 @@ $hubSpot->crm()->objects()->basicApi()
 
             <form method="post" action="<?php
             if (isset($id)) {
-                ?>/companies/show.php?id=<?php 
+                ?>/companies/show.php?id=<?php
                 echo $id;
             } else {
-            ?>/companies/new.php<?php } ?>">
+                ?>/companies/new.php<?php
+            } ?>">
             <fieldset>
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="<?php echo $company->getProperties()['name']; ?>">
@@ -59,14 +60,14 @@ $hubSpot->companies()->create($companyProperties);
 
     <div class="column">
             <h3>Contacts</h3>
-            <?php 
+            <?php
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'create') { ?>
+                if ('create' == $_GET['action']) { ?>
                 <h3 class="alert-success">Successfully added contacts</h3>
             <?php } ?>
-            <?php if ($_GET['action'] == 'archive') { ?>
+            <?php if ('archive' == $_GET['action']) { ?>
                 <h3 class="alert-success">Successfully deleted contacts</h3>
-            <?php 
+            <?php
                 }
             }
             ?>

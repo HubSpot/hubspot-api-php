@@ -12,7 +12,7 @@ if (isset($_POST['name'])) {
     $hubSpot = \Helpers\HubspotClientHelper::createFactory();
     $company->setProperties($_POST);
     $response = $hubSpot->crm()->objects()->createNativeObjectsApi()->createCompany($company);
-    
+
     header('Location: /companies/show.php?id='.$response->getId().'created=1');
     exit();
 }

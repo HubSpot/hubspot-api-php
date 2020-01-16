@@ -1,8 +1,8 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Crm\ObjectType;
 use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
+use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
@@ -21,7 +21,7 @@ if (isset($_GET['search'])) {
             'value' => $_GET['search'],
         ],
     ]);
-    
+
     $contactList = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACTS, $searchRequest);
 } else {
     $contactList = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::CONTACTS, 20);
@@ -30,9 +30,9 @@ if (isset($_GET['search'])) {
 $associatedContacts = [];
 if (count($contactList->getResults()) > 0) {
     $associationResponse = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANIES, $companyId, ObjectType::CONTACTS);
-    
+
     $associatedContacts = array_map(function ($contact) {
-            return $contact->getId();
-        }, (array) $associationResponse->getResults());
+        return $contact->getId();
+    }, (array) $associationResponse->getResults());
 }
 include __DIR__.'/../../views/contacts/list.php';

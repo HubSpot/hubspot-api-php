@@ -1,6 +1,6 @@
 <?php
 /**
- * @var array Already associated Contacts
+ * @var array                                         Already associated Contacts
  * @var CollectionResponseWithTotalSimplePublicObject $contactList Contacts
  */
 include __DIR__.'/../_partials/header.php'; ?>

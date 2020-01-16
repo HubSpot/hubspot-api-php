@@ -13,12 +13,11 @@ $redirectParams = [
 ];
 
 if (isset($_POST['contactsIds'])) {
-    
     $ation = $_POST['action'].'Association';
     $redirectParams['action'] = $_POST['action'];
-    
+
     foreach (array_keys($_POST['contactsIds']) as $id) {
-        $hubSpot->crm()->objects()->associationsApi()->$ation(
+        $hubSpot->crm()->objects()->associationsApi()->{$ation}(
             ObjectType::COMPANIES,
             $companyId,
             ObjectType::CONTACTS,
