@@ -27,10 +27,11 @@ $hubSpot->crm()->objects()->basicApi()
 
             <form method="post" action="<?php
             if (isset($id)) {
-                ?>/companies/show.php?id=<?php 
+                ?>/companies/show.php?id=<?php
                 echo $id;
             } else {
-            ?>/companies/new.php<?php } ?>">
+                ?>/companies/new.php<?php
+            } ?>">
             <fieldset>
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="<?php echo $company->getProperties()['name']; ?>">
@@ -57,23 +58,29 @@ $hubSpot->companies()->create($companyProperties);
 
     </div>
 
-    <?php if (isset($contacts)) { ?>
     <div class="column">
             <h3>Contacts</h3>
-
-            <?php if ($_GET['contactsAdded']) { ?>
+            <?php
+            if (isset($_GET['action'])) {
+                if ('create' == $_GET['action']) { ?>
                 <h3 class="alert-success">Successfully added contacts</h3>
             <?php } ?>
-            <?php if ($_GET['contactsDeleted']) { ?>
+            <?php if ('archive' == $_GET['action']) { ?>
                 <h3 class="alert-success">Successfully deleted contacts</h3>
-            <?php } ?>
+            <?php
+                }
+            }
+            ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->crmAssociations()->get(
+$hubSpot->crm()->objects()->associationsApi()
+    ->getAssociations(
+        ObjectType::COMPANIES,
         $id,
-        $hubSpot->crmAssociations()::COMPANY_TO_CONTACT
-    )->getData();
+        ObjectType::CONTACTS
+    );
 </pre>
+            <?php if (!empty($contacts)) { ?>
             <table>
                 <thead>
                 <tr>
@@ -91,12 +98,11 @@ $hubSpot->crmAssociations()->get(
                 <?php }?>
                 </tbody>
             </table>
-
-            <a href="/companies/contacts.php?companyId=<?php echo htmlentities($id); ?>">
+            <?php } ?>
+            <a href="/contacts/list.php?companyId=<?php echo htmlentities($id); ?>">
                 <input class="button-primary" type="button" value="Manage Contacts">
             </a>
     </div>
-    <?php } ?>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>

@@ -27,7 +27,6 @@ class HubspotClientHelper
 
     public static function getOAuth2Resource()
     {
-        
     }
 
     public static function isResponseSuccessful(Response $response): bool
