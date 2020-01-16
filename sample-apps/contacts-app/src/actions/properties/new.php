@@ -1,10 +1,11 @@
 <?php
 
+use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Properties\Model\Property;
 use HubSpot\Client\Crm\Properties\Model\PropertyCreate;
 use HubSpot\Crm\ObjectType;
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
 if (isset($_POST['name'])) {
     $propertyCreate = new PropertyCreate($_POST);

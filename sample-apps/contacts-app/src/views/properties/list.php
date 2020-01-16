@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../_partials/header.php'; ?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
 <table class="properties-list">
     <thead>
@@ -36,4 +36,4 @@
     </a>
 </div>
 
-<?php include __DIR__ . '/../_partials/footer.php'; ?>
+<?php include __DIR__.'/../_partials/footer.php'; ?>
