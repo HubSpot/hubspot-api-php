@@ -30,7 +30,7 @@ function get_contacts_for_export($maxPages = 10)
 function generate_csv_rows($contacts, $properties)
 {
     $headerRow = [
-        ...$properties
+        ...$properties,
     ];
     $rows = [$headerRow];
     /** @var SimplePublicObject $contact */
