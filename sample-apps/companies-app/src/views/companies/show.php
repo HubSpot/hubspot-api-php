@@ -57,23 +57,29 @@ $hubSpot->companies()->create($companyProperties);
 
     </div>
 
-    <?php if (isset($contacts)) { ?>
     <div class="column">
             <h3>Contacts</h3>
-
-            <?php if ($_GET['contactsAdded']) { ?>
+            <?php 
+            if (isset($_GET['action'])) {
+                if ($_GET['action'] == 'create') { ?>
                 <h3 class="alert-success">Successfully added contacts</h3>
             <?php } ?>
-            <?php if ($_GET['contactsDeleted']) { ?>
+            <?php if ($_GET['action'] == 'archive') { ?>
                 <h3 class="alert-success">Successfully deleted contacts</h3>
-            <?php } ?>
+            <?php 
+                }
+            }
+            ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->crmAssociations()->get(
+$hubSpot->crm()->objects()->associationsApi()
+    ->getAssociations(
+        ObjectType::COMPANIES,
         $id,
-        $hubSpot->crmAssociations()::COMPANY_TO_CONTACT
-    )->getData();
+        ObjectType::CONTACTS
+    );
 </pre>
+            <?php if (!empty($contacts)) { ?>
             <table>
                 <thead>
                 <tr>
@@ -91,12 +97,11 @@ $hubSpot->crmAssociations()->get(
                 <?php }?>
                 </tbody>
             </table>
-
-            <a href="/companies/contacts.php?companyId=<?php echo htmlentities($id); ?>">
+            <?php } ?>
+            <a href="/contacts/list.php?companyId=<?php echo htmlentities($id); ?>">
                 <input class="button-primary" type="button" value="Manage Contacts">
             </a>
     </div>
-    <?php } ?>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>

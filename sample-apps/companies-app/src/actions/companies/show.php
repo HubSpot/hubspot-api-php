@@ -1,13 +1,13 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Crm\ObjectType;
-use HubSpot\Client\Crm\Objects\Model\CompanyInput;
-use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObjectId;
 use HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObjectId;
+use HubSpot\Client\Crm\Objects\Model\CompanyInput;
+use HubSpot\Crm\ObjectType;
 
 if (!isset($_GET['id'])) {
-    throw new \Exception('Contact id is not specified');
+    throw new Exception('Contact id is not specified');
 }
 
 $id = $_GET['id'];
@@ -32,18 +32,20 @@ if (isset($_POST['name'])) {
      * @var CollectionResponseSimplePublicObjectId $contactsIds
      */
     $contactsIds = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANIES, $id, ObjectType::CONTACTS);
+    
     $contacts = [];
+    
     if (count($contactsIds->getResults()) > 0) {
         $contactsIdsReqest = new BatchReadInputSimplePublicObjectId(['inputs' => $contactsIds->getResults()]);
         
-        $contactsObj = $hubSpot->crm()->objects()->batchApi()->readBatch(ObjectType::CONTACTS, true, $contactsIdsReqest);
-        var_dump($contactsObj); exit();
+        $contactsList = $hubSpot->crm()->objects()->batchApi()->readBatch(ObjectType::CONTACTS, true, $contactsIdsReqest);
+        
         $contacts = array_map(function ($contact) {
             return [
-                'id' => $contact->vid,
-                'name' => $contact->properties->firstname->value.' '.$contact->properties->lastname->value,
+                'id' => $contact->getId(),
+                'name' => $contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname'],
             ];
-        }, (array) $contactsObj);
+        }, (array) $contactsList->getResults());
     }
 }
 
