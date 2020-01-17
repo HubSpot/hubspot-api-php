@@ -9,7 +9,6 @@ if (isset($_GET['name'])) {
     $hubSpot->crm()->properties()->coreApi()->deleteCrmV3PropertiesObjectTypePropertyName(
         ObjectType::CONTACTS,
         $_GET['name']
-
     );
 }
 
