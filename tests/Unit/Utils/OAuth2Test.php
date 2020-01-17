@@ -5,6 +5,10 @@ namespace Hubspot\Tests\Unit\Utils;
 use HubSpot\Utils\OAuth2;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class OAuth2Test extends TestCase
 {
     /** @test */
