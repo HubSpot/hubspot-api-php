@@ -21,17 +21,17 @@ $company = new CompanyInput([
 
 if (isset($_POST['name'])) {
     $company->setProperties($_POST);
-    $hubSpot->crm()->objects()->basicApi()->update(ObjectType::COMPANIES, $id, $company);
+    $hubSpot->crm()->companies()->basicApi()->update($id, $company);
 
     header('Location: /companies/list.php');
     exit();
 }
 
-    $company = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::COMPANIES, $id);
+    $company = $hubSpot->crm()->companies()->basicApi()->getById($id);
     /**
      * @var CollectionResponseSimplePublicObjectId
      */
-    $contactsIds = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANIES, $id, ObjectType::CONTACTS);
+    $contactsIds = $hubSpot->crm()->companies()->associationsApi()->getAssociations(ObjectType::COMPANIES, $id, ObjectType::CONTACTS);
 
     $contacts = [];
 
