@@ -3,7 +3,7 @@
 use Helpers\OAuth2Helper;
 use HubSpot\Factory;
 
-$tokens = Factory::create()->oAuth()->tokensApi()->postoauthv1token(
+$tokens = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
     'authorization_code',
     $_GET['code'],
     OAuth2Helper::getRedirectUri(),
