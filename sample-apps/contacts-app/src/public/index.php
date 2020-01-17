@@ -30,7 +30,6 @@ try {
             exit();
     }
 } catch (Throwable $t) {
-    var_dump($t); die();
     $message = $t->getMessage();
     include __DIR__.'/../views/error.php';
     exit();
