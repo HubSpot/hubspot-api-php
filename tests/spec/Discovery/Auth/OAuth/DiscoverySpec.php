@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\HubSpot\Discovery;
+namespace spec\HubSpot\Discovery\Auth\OAuth;
 
 use GuzzleHttp\Client;
 use HubSpot\Config;
@@ -15,12 +15,11 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Discovery::class);
+        $this->shouldHaveType(\HubSpot\Discovery\Auth\OAuth\Discovery::class);
     }
 
     public function it_creates_clients()
     {
-        $this->crm()->shouldHaveType(\HubSpot\Discovery\Crm\Discovery::class);
-        $this->auth()->shouldHaveType(\HubSpot\Discovery\Auth\Discovery::class);
+        $this->defaultApi()->shouldHaveType(\HubSpot\Client\Auth\OAuth\Api\DefaultApi::class);
     }
 }
