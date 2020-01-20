@@ -3,8 +3,8 @@
 namespace spec\HubSpot\Discovery\Crm\Extensions;
 
 use GuzzleHttp\Client;
-use HubSpot\Discovery\Crm\Extensions\Cards\Discovery;
 use HubSpot\Config;
+use HubSpot\Discovery\Crm\Extensions\Cards\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
