@@ -116,7 +116,7 @@ class CoreApi
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypePropertyName
+     * Operation archive
      *
      * Archive a property
      *
@@ -127,13 +127,13 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteCrmV3PropertiesObjectTypePropertyName($object_type, $property_name)
+    public function archive($object_type, $property_name)
     {
-        $this->deleteCrmV3PropertiesObjectTypePropertyNameWithHttpInfo($object_type, $property_name);
+        $this->archiveWithHttpInfo($object_type, $property_name);
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypePropertyNameWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Archive a property
      *
@@ -144,9 +144,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCrmV3PropertiesObjectTypePropertyNameWithHttpInfo($object_type, $property_name)
+    public function archiveWithHttpInfo($object_type, $property_name)
     {
-        $request = $this->deleteCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name);
+        $request = $this->archiveRequest($object_type, $property_name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -194,7 +194,7 @@ class CoreApi
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypePropertyNameAsync
+     * Operation archiveAsync
      *
      * Archive a property
      *
@@ -204,9 +204,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3PropertiesObjectTypePropertyNameAsync($object_type, $property_name)
+    public function archiveAsync($object_type, $property_name)
     {
-        return $this->deleteCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo($object_type, $property_name)
+        return $this->archiveAsyncWithHttpInfo($object_type, $property_name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -215,7 +215,7 @@ class CoreApi
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Archive a property
      *
@@ -225,10 +225,10 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo($object_type, $property_name)
+    public function archiveAsyncWithHttpInfo($object_type, $property_name)
     {
         $returnType = '';
-        $request = $this->deleteCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name);
+        $request = $this->archiveRequest($object_type, $property_name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -254,7 +254,7 @@ class CoreApi
     }
 
     /**
-     * Create request for operation 'deleteCrmV3PropertiesObjectTypePropertyName'
+     * Create request for operation 'archive'
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
@@ -262,18 +262,18 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name)
+    protected function archiveRequest($object_type, $property_name)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling deleteCrmV3PropertiesObjectTypePropertyName'
+                'Missing the required parameter $object_type when calling archive'
             );
         }
         // verify the required parameter 'property_name' is set
         if ($property_name === null || (is_array($property_name) && count($property_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $property_name when calling deleteCrmV3PropertiesObjectTypePropertyName'
+                'Missing the required parameter $property_name when calling archive'
             );
         }
 
@@ -376,7 +376,316 @@ class CoreApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectType
+     * Operation create
+     *
+     * Create a property
+     *
+     * @param  string $object_type object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create property_create (optional)
+     *
+     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
+     */
+    public function create($object_type, $property_create = null)
+    {
+        list($response) = $this->createWithHttpInfo($object_type, $property_create);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * Create a property
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     *
+     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($object_type, $property_create = null)
+    {
+        $request = $this->createRequest($object_type, $property_create);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Properties\Model\Property' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\Property', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Properties\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Properties\Model\Property',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Properties\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * Create a property
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($object_type, $property_create = null)
+    {
+        return $this->createAsyncWithHttpInfo($object_type, $property_create)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * Create a property
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($object_type, $property_create = null)
+    {
+        $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
+        $request = $this->createRequest($object_type, $property_create);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createRequest($object_type, $property_create = null)
+    {
+        // verify the required parameter 'object_type' is set
+        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type when calling create'
+            );
+        }
+
+        $resourcePath = '/{objectType}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectType' . '}',
+                ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($property_create)) {
+            $_tempBody = $property_create;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAll
      *
      * Read all properties
      *
@@ -387,14 +696,14 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getCrmV3PropertiesObjectType($object_type, $archived = false)
+    public function getAll($object_type, $archived = false)
     {
-        list($response) = $this->getCrmV3PropertiesObjectTypeWithHttpInfo($object_type, $archived);
+        list($response) = $this->getAllWithHttpInfo($object_type, $archived);
         return $response;
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * Read all properties
      *
@@ -405,9 +714,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCrmV3PropertiesObjectTypeWithHttpInfo($object_type, $archived = false)
+    public function getAllWithHttpInfo($object_type, $archived = false)
     {
-        $request = $this->getCrmV3PropertiesObjectTypeRequest($object_type, $archived);
+        $request = $this->getAllRequest($object_type, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -503,7 +812,7 @@ class CoreApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeAsync
+     * Operation getAllAsync
      *
      * Read all properties
      *
@@ -513,9 +822,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypeAsync($object_type, $archived = false)
+    public function getAllAsync($object_type, $archived = false)
     {
-        return $this->getCrmV3PropertiesObjectTypeAsyncWithHttpInfo($object_type, $archived)
+        return $this->getAllAsyncWithHttpInfo($object_type, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -524,7 +833,7 @@ class CoreApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * Read all properties
      *
@@ -534,10 +843,10 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypeAsyncWithHttpInfo($object_type, $archived = false)
+    public function getAllAsyncWithHttpInfo($object_type, $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty';
-        $request = $this->getCrmV3PropertiesObjectTypeRequest($object_type, $archived);
+        $request = $this->getAllRequest($object_type, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -574,7 +883,7 @@ class CoreApi
     }
 
     /**
-     * Create request for operation 'getCrmV3PropertiesObjectType'
+     * Create request for operation 'getAll'
      *
      * @param  string $object_type (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -582,12 +891,12 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCrmV3PropertiesObjectTypeRequest($object_type, $archived = false)
+    protected function getAllRequest($object_type, $archived = false)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getCrmV3PropertiesObjectType'
+                'Missing the required parameter $object_type when calling getAll'
             );
         }
 
@@ -686,7 +995,7 @@ class CoreApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypePropertyName
+     * Operation getByName
      *
      * Read a property
      *
@@ -698,14 +1007,14 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getCrmV3PropertiesObjectTypePropertyName($object_type, $property_name, $archived = false)
+    public function getByName($object_type, $property_name, $archived = false)
     {
-        list($response) = $this->getCrmV3PropertiesObjectTypePropertyNameWithHttpInfo($object_type, $property_name, $archived);
+        list($response) = $this->getByNameWithHttpInfo($object_type, $property_name, $archived);
         return $response;
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypePropertyNameWithHttpInfo
+     * Operation getByNameWithHttpInfo
      *
      * Read a property
      *
@@ -717,9 +1026,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCrmV3PropertiesObjectTypePropertyNameWithHttpInfo($object_type, $property_name, $archived = false)
+    public function getByNameWithHttpInfo($object_type, $property_name, $archived = false)
     {
-        $request = $this->getCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name, $archived);
+        $request = $this->getByNameRequest($object_type, $property_name, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -815,7 +1124,7 @@ class CoreApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypePropertyNameAsync
+     * Operation getByNameAsync
      *
      * Read a property
      *
@@ -826,9 +1135,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypePropertyNameAsync($object_type, $property_name, $archived = false)
+    public function getByNameAsync($object_type, $property_name, $archived = false)
     {
-        return $this->getCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo($object_type, $property_name, $archived)
+        return $this->getByNameAsyncWithHttpInfo($object_type, $property_name, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -837,7 +1146,7 @@ class CoreApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo
+     * Operation getByNameAsyncWithHttpInfo
      *
      * Read a property
      *
@@ -848,10 +1157,10 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo($object_type, $property_name, $archived = false)
+    public function getByNameAsyncWithHttpInfo($object_type, $property_name, $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
-        $request = $this->getCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name, $archived);
+        $request = $this->getByNameRequest($object_type, $property_name, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -888,7 +1197,7 @@ class CoreApi
     }
 
     /**
-     * Create request for operation 'getCrmV3PropertiesObjectTypePropertyName'
+     * Create request for operation 'getByName'
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
@@ -897,18 +1206,18 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name, $archived = false)
+    protected function getByNameRequest($object_type, $property_name, $archived = false)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getCrmV3PropertiesObjectTypePropertyName'
+                'Missing the required parameter $object_type when calling getByName'
             );
         }
         // verify the required parameter 'property_name' is set
         if ($property_name === null || (is_array($property_name) && count($property_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $property_name when calling getCrmV3PropertiesObjectTypePropertyName'
+                'Missing the required parameter $property_name when calling getByName'
             );
         }
 
@@ -1015,7 +1324,7 @@ class CoreApi
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypePropertyName
+     * Operation update
      *
      * Update a property
      *
@@ -1027,14 +1336,14 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function patchCrmV3PropertiesObjectTypePropertyName($object_type, $property_name, $property_update = null)
+    public function update($object_type, $property_name, $property_update = null)
     {
-        list($response) = $this->patchCrmV3PropertiesObjectTypePropertyNameWithHttpInfo($object_type, $property_name, $property_update);
+        list($response) = $this->updateWithHttpInfo($object_type, $property_name, $property_update);
         return $response;
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypePropertyNameWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update a property
      *
@@ -1046,9 +1355,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchCrmV3PropertiesObjectTypePropertyNameWithHttpInfo($object_type, $property_name, $property_update = null)
+    public function updateWithHttpInfo($object_type, $property_name, $property_update = null)
     {
-        $request = $this->patchCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name, $property_update);
+        $request = $this->updateRequest($object_type, $property_name, $property_update);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1144,7 +1453,7 @@ class CoreApi
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypePropertyNameAsync
+     * Operation updateAsync
      *
      * Update a property
      *
@@ -1155,9 +1464,9 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchCrmV3PropertiesObjectTypePropertyNameAsync($object_type, $property_name, $property_update = null)
+    public function updateAsync($object_type, $property_name, $property_update = null)
     {
-        return $this->patchCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo($object_type, $property_name, $property_update)
+        return $this->updateAsyncWithHttpInfo($object_type, $property_name, $property_update)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1166,7 +1475,7 @@ class CoreApi
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update a property
      *
@@ -1177,10 +1486,10 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchCrmV3PropertiesObjectTypePropertyNameAsyncWithHttpInfo($object_type, $property_name, $property_update = null)
+    public function updateAsyncWithHttpInfo($object_type, $property_name, $property_update = null)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
-        $request = $this->patchCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name, $property_update);
+        $request = $this->updateRequest($object_type, $property_name, $property_update);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1217,7 +1526,7 @@ class CoreApi
     }
 
     /**
-     * Create request for operation 'patchCrmV3PropertiesObjectTypePropertyName'
+     * Create request for operation 'update'
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
@@ -1226,18 +1535,18 @@ class CoreApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function patchCrmV3PropertiesObjectTypePropertyNameRequest($object_type, $property_name, $property_update = null)
+    protected function updateRequest($object_type, $property_name, $property_update = null)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling patchCrmV3PropertiesObjectTypePropertyName'
+                'Missing the required parameter $object_type when calling update'
             );
         }
         // verify the required parameter 'property_name' is set
         if ($property_name === null || (is_array($property_name) && count($property_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $property_name when calling patchCrmV3PropertiesObjectTypePropertyName'
+                'Missing the required parameter $property_name when calling update'
             );
         }
 
@@ -1336,315 +1645,6 @@ class CoreApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectType
-     *
-     * Create a property
-     *
-     * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create property_create (optional)
-     *
-     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
-     */
-    public function postCrmV3PropertiesObjectType($object_type, $property_create = null)
-    {
-        list($response) = $this->postCrmV3PropertiesObjectTypeWithHttpInfo($object_type, $property_create);
-        return $response;
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeWithHttpInfo
-     *
-     * Create a property
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
-     *
-     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postCrmV3PropertiesObjectTypeWithHttpInfo($object_type, $property_create = null)
-    {
-        $request = $this->postCrmV3PropertiesObjectTypeRequest($object_type, $property_create);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Properties\Model\Property' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\Property', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Properties\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\Property',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeAsync
-     *
-     * Create a property
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCrmV3PropertiesObjectTypeAsync($object_type, $property_create = null)
-    {
-        return $this->postCrmV3PropertiesObjectTypeAsyncWithHttpInfo($object_type, $property_create)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeAsyncWithHttpInfo
-     *
-     * Create a property
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCrmV3PropertiesObjectTypeAsyncWithHttpInfo($object_type, $property_create = null)
-    {
-        $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
-        $request = $this->postCrmV3PropertiesObjectTypeRequest($object_type, $property_create);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postCrmV3PropertiesObjectType'
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function postCrmV3PropertiesObjectTypeRequest($object_type, $property_create = null)
-    {
-        // verify the required parameter 'object_type' is set
-        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling postCrmV3PropertiesObjectType'
-            );
-        }
-
-        $resourcePath = '/{objectType}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectType' . '}',
-                ObjectSerializer::toPathValue($object_type),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-        if (isset($property_create)) {
-            $_tempBody = $property_create;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

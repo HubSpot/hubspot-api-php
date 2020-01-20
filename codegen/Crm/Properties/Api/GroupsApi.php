@@ -116,7 +116,7 @@ class GroupsApi
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypeGroupsGroupName
+     * Operation archive
      *
      * Archive a property group
      *
@@ -127,13 +127,13 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteCrmV3PropertiesObjectTypeGroupsGroupName($object_type, $group_name)
+    public function archive($object_type, $group_name)
     {
-        $this->deleteCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo($object_type, $group_name);
+        $this->archiveWithHttpInfo($object_type, $group_name);
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Archive a property group
      *
@@ -144,9 +144,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo($object_type, $group_name)
+    public function archiveWithHttpInfo($object_type, $group_name)
     {
-        $request = $this->deleteCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name);
+        $request = $this->archiveRequest($object_type, $group_name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -194,7 +194,7 @@ class GroupsApi
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypeGroupsGroupNameAsync
+     * Operation archiveAsync
      *
      * Archive a property group
      *
@@ -204,9 +204,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3PropertiesObjectTypeGroupsGroupNameAsync($object_type, $group_name)
+    public function archiveAsync($object_type, $group_name)
     {
-        return $this->deleteCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo($object_type, $group_name)
+        return $this->archiveAsyncWithHttpInfo($object_type, $group_name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -215,7 +215,7 @@ class GroupsApi
     }
 
     /**
-     * Operation deleteCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Archive a property group
      *
@@ -225,10 +225,10 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo($object_type, $group_name)
+    public function archiveAsyncWithHttpInfo($object_type, $group_name)
     {
         $returnType = '';
-        $request = $this->deleteCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name);
+        $request = $this->archiveRequest($object_type, $group_name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -254,7 +254,7 @@ class GroupsApi
     }
 
     /**
-     * Create request for operation 'deleteCrmV3PropertiesObjectTypeGroupsGroupName'
+     * Create request for operation 'archive'
      *
      * @param  string $object_type (required)
      * @param  string $group_name (required)
@@ -262,18 +262,18 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name)
+    protected function archiveRequest($object_type, $group_name)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling deleteCrmV3PropertiesObjectTypeGroupsGroupName'
+                'Missing the required parameter $object_type when calling archive'
             );
         }
         // verify the required parameter 'group_name' is set
         if ($group_name === null || (is_array($group_name) && count($group_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $group_name when calling deleteCrmV3PropertiesObjectTypeGroupsGroupName'
+                'Missing the required parameter $group_name when calling archive'
             );
         }
 
@@ -376,7 +376,316 @@ class GroupsApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroups
+     * Operation create
+     *
+     * Create a property group
+     *
+     * @param  string $object_type object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create property_group_create (optional)
+     *
+     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
+     */
+    public function create($object_type, $property_group_create = null)
+    {
+        list($response) = $this->createWithHttpInfo($object_type, $property_group_create);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * Create a property group
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
+     *
+     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($object_type, $property_group_create = null)
+    {
+        $request = $this->createRequest($object_type, $property_group_create);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Properties\Model\PropertyGroup' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\PropertyGroup', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Properties\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Properties\Model\PropertyGroup',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Properties\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * Create a property group
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($object_type, $property_group_create = null)
+    {
+        return $this->createAsyncWithHttpInfo($object_type, $property_group_create)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * Create a property group
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($object_type, $property_group_create = null)
+    {
+        $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
+        $request = $this->createRequest($object_type, $property_group_create);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  string $object_type (required)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createRequest($object_type, $property_group_create = null)
+    {
+        // verify the required parameter 'object_type' is set
+        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type when calling create'
+            );
+        }
+
+        $resourcePath = '/{objectType}/groups';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectType' . '}',
+                ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($property_group_create)) {
+            $_tempBody = $property_group_create;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAll
      *
      * Read all property groups
      *
@@ -386,14 +695,14 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getCrmV3PropertiesObjectTypeGroups($object_type)
+    public function getAll($object_type)
     {
-        list($response) = $this->getCrmV3PropertiesObjectTypeGroupsWithHttpInfo($object_type);
+        list($response) = $this->getAllWithHttpInfo($object_type);
         return $response;
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * Read all property groups
      *
@@ -403,9 +712,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCrmV3PropertiesObjectTypeGroupsWithHttpInfo($object_type)
+    public function getAllWithHttpInfo($object_type)
     {
-        $request = $this->getCrmV3PropertiesObjectTypeGroupsRequest($object_type);
+        $request = $this->getAllRequest($object_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -501,7 +810,7 @@ class GroupsApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsAsync
+     * Operation getAllAsync
      *
      * Read all property groups
      *
@@ -510,9 +819,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypeGroupsAsync($object_type)
+    public function getAllAsync($object_type)
     {
-        return $this->getCrmV3PropertiesObjectTypeGroupsAsyncWithHttpInfo($object_type)
+        return $this->getAllAsyncWithHttpInfo($object_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -521,7 +830,7 @@ class GroupsApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * Read all property groups
      *
@@ -530,10 +839,10 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypeGroupsAsyncWithHttpInfo($object_type)
+    public function getAllAsyncWithHttpInfo($object_type)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup';
-        $request = $this->getCrmV3PropertiesObjectTypeGroupsRequest($object_type);
+        $request = $this->getAllRequest($object_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -570,19 +879,19 @@ class GroupsApi
     }
 
     /**
-     * Create request for operation 'getCrmV3PropertiesObjectTypeGroups'
+     * Create request for operation 'getAll'
      *
      * @param  string $object_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCrmV3PropertiesObjectTypeGroupsRequest($object_type)
+    protected function getAllRequest($object_type)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getCrmV3PropertiesObjectTypeGroups'
+                'Missing the required parameter $object_type when calling getAll'
             );
         }
 
@@ -677,7 +986,7 @@ class GroupsApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsGroupName
+     * Operation getByName
      *
      * Read a property group
      *
@@ -688,14 +997,14 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getCrmV3PropertiesObjectTypeGroupsGroupName($object_type, $group_name)
+    public function getByName($object_type, $group_name)
     {
-        list($response) = $this->getCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo($object_type, $group_name);
+        list($response) = $this->getByNameWithHttpInfo($object_type, $group_name);
         return $response;
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo
+     * Operation getByNameWithHttpInfo
      *
      * Read a property group
      *
@@ -706,9 +1015,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo($object_type, $group_name)
+    public function getByNameWithHttpInfo($object_type, $group_name)
     {
-        $request = $this->getCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name);
+        $request = $this->getByNameRequest($object_type, $group_name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -804,7 +1113,7 @@ class GroupsApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsGroupNameAsync
+     * Operation getByNameAsync
      *
      * Read a property group
      *
@@ -814,9 +1123,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypeGroupsGroupNameAsync($object_type, $group_name)
+    public function getByNameAsync($object_type, $group_name)
     {
-        return $this->getCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo($object_type, $group_name)
+        return $this->getByNameAsyncWithHttpInfo($object_type, $group_name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -825,7 +1134,7 @@ class GroupsApi
     }
 
     /**
-     * Operation getCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo
+     * Operation getByNameAsyncWithHttpInfo
      *
      * Read a property group
      *
@@ -835,10 +1144,10 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo($object_type, $group_name)
+    public function getByNameAsyncWithHttpInfo($object_type, $group_name)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-        $request = $this->getCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name);
+        $request = $this->getByNameRequest($object_type, $group_name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -875,7 +1184,7 @@ class GroupsApi
     }
 
     /**
-     * Create request for operation 'getCrmV3PropertiesObjectTypeGroupsGroupName'
+     * Create request for operation 'getByName'
      *
      * @param  string $object_type (required)
      * @param  string $group_name (required)
@@ -883,18 +1192,18 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name)
+    protected function getByNameRequest($object_type, $group_name)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getCrmV3PropertiesObjectTypeGroupsGroupName'
+                'Missing the required parameter $object_type when calling getByName'
             );
         }
         // verify the required parameter 'group_name' is set
         if ($group_name === null || (is_array($group_name) && count($group_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $group_name when calling getCrmV3PropertiesObjectTypeGroupsGroupName'
+                'Missing the required parameter $group_name when calling getByName'
             );
         }
 
@@ -997,7 +1306,7 @@ class GroupsApi
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypeGroupsGroupName
+     * Operation update
      *
      * Update a property group
      *
@@ -1009,14 +1318,14 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function patchCrmV3PropertiesObjectTypeGroupsGroupName($object_type, $group_name, $property_group_update = null)
+    public function update($object_type, $group_name, $property_group_update = null)
     {
-        list($response) = $this->patchCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo($object_type, $group_name, $property_group_update);
+        list($response) = $this->updateWithHttpInfo($object_type, $group_name, $property_group_update);
         return $response;
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update a property group
      *
@@ -1028,9 +1337,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchCrmV3PropertiesObjectTypeGroupsGroupNameWithHttpInfo($object_type, $group_name, $property_group_update = null)
+    public function updateWithHttpInfo($object_type, $group_name, $property_group_update = null)
     {
-        $request = $this->patchCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name, $property_group_update);
+        $request = $this->updateRequest($object_type, $group_name, $property_group_update);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1126,7 +1435,7 @@ class GroupsApi
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypeGroupsGroupNameAsync
+     * Operation updateAsync
      *
      * Update a property group
      *
@@ -1137,9 +1446,9 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchCrmV3PropertiesObjectTypeGroupsGroupNameAsync($object_type, $group_name, $property_group_update = null)
+    public function updateAsync($object_type, $group_name, $property_group_update = null)
     {
-        return $this->patchCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo($object_type, $group_name, $property_group_update)
+        return $this->updateAsyncWithHttpInfo($object_type, $group_name, $property_group_update)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1148,7 +1457,7 @@ class GroupsApi
     }
 
     /**
-     * Operation patchCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update a property group
      *
@@ -1159,10 +1468,10 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchCrmV3PropertiesObjectTypeGroupsGroupNameAsyncWithHttpInfo($object_type, $group_name, $property_group_update = null)
+    public function updateAsyncWithHttpInfo($object_type, $group_name, $property_group_update = null)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-        $request = $this->patchCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name, $property_group_update);
+        $request = $this->updateRequest($object_type, $group_name, $property_group_update);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1199,7 +1508,7 @@ class GroupsApi
     }
 
     /**
-     * Create request for operation 'patchCrmV3PropertiesObjectTypeGroupsGroupName'
+     * Create request for operation 'update'
      *
      * @param  string $object_type (required)
      * @param  string $group_name (required)
@@ -1208,18 +1517,18 @@ class GroupsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function patchCrmV3PropertiesObjectTypeGroupsGroupNameRequest($object_type, $group_name, $property_group_update = null)
+    protected function updateRequest($object_type, $group_name, $property_group_update = null)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling patchCrmV3PropertiesObjectTypeGroupsGroupName'
+                'Missing the required parameter $object_type when calling update'
             );
         }
         // verify the required parameter 'group_name' is set
         if ($group_name === null || (is_array($group_name) && count($group_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $group_name when calling patchCrmV3PropertiesObjectTypeGroupsGroupName'
+                'Missing the required parameter $group_name when calling update'
             );
         }
 
@@ -1318,315 +1627,6 @@ class GroupsApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'PATCH',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeGroups
-     *
-     * Create a property group
-     *
-     * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create property_group_create (optional)
-     *
-     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
-     */
-    public function postCrmV3PropertiesObjectTypeGroups($object_type, $property_group_create = null)
-    {
-        list($response) = $this->postCrmV3PropertiesObjectTypeGroupsWithHttpInfo($object_type, $property_group_create);
-        return $response;
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeGroupsWithHttpInfo
-     *
-     * Create a property group
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
-     *
-     * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postCrmV3PropertiesObjectTypeGroupsWithHttpInfo($object_type, $property_group_create = null)
-    {
-        $request = $this->postCrmV3PropertiesObjectTypeGroupsRequest($object_type, $property_group_create);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Properties\Model\PropertyGroup' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\PropertyGroup', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Properties\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\PropertyGroup',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeGroupsAsync
-     *
-     * Create a property group
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCrmV3PropertiesObjectTypeGroupsAsync($object_type, $property_group_create = null)
-    {
-        return $this->postCrmV3PropertiesObjectTypeGroupsAsyncWithHttpInfo($object_type, $property_group_create)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postCrmV3PropertiesObjectTypeGroupsAsyncWithHttpInfo
-     *
-     * Create a property group
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCrmV3PropertiesObjectTypeGroupsAsyncWithHttpInfo($object_type, $property_group_create = null)
-    {
-        $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-        $request = $this->postCrmV3PropertiesObjectTypeGroupsRequest($object_type, $property_group_create);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postCrmV3PropertiesObjectTypeGroups'
-     *
-     * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function postCrmV3PropertiesObjectTypeGroupsRequest($object_type, $property_group_create = null)
-    {
-        // verify the required parameter 'object_type' is set
-        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling postCrmV3PropertiesObjectTypeGroups'
-            );
-        }
-
-        $resourcePath = '/{objectType}/groups';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectType' . '}',
-                ObjectSerializer::toPathValue($object_type),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-        if (isset($property_group_create)) {
-            $_tempBody = $property_group_create;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
