@@ -6,7 +6,7 @@ use HubSpot\Client\Crm\Associations\Api\BatchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BatchApi        batchApi()
+ * @method BatchApi batchApi()
  */
 class Discovery extends DiscoveryBase
 {
