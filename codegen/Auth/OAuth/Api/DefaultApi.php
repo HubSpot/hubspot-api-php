@@ -116,6 +116,274 @@ class DefaultApi
     }
 
     /**
+     * Operation archiveRefreshToken
+     *
+     * @param  string $token token (required)
+     *
+     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Auth\OAuth\Model\Error
+     */
+    public function archiveRefreshToken($token)
+    {
+        list($response) = $this->archiveRefreshTokenWithHttpInfo($token);
+        return $response;
+    }
+
+    /**
+     * Operation archiveRefreshTokenWithHttpInfo
+     *
+     * @param  string $token (required)
+     *
+     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function archiveRefreshTokenWithHttpInfo($token)
+    {
+        $request = $this->archiveRefreshTokenRequest($token);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                default:
+                    if ('\HubSpot\Client\Auth\OAuth\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Auth\OAuth\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Auth\OAuth\Model\Error';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Auth\OAuth\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation archiveRefreshTokenAsync
+     *
+     * 
+     *
+     * @param  string $token (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveRefreshTokenAsync($token)
+    {
+        return $this->archiveRefreshTokenAsyncWithHttpInfo($token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation archiveRefreshTokenAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  string $token (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveRefreshTokenAsyncWithHttpInfo($token)
+    {
+        $returnType = '\HubSpot\Client\Auth\OAuth\Model\Error';
+        $request = $this->archiveRefreshTokenRequest($token);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'archiveRefreshToken'
+     *
+     * @param  string $token (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function archiveRefreshTokenRequest($token)
+    {
+        // verify the required parameter 'token' is set
+        if ($token === null || (is_array($token) && count($token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $token when calling archiveRefreshToken'
+            );
+        }
+
+        $resourcePath = '/v1/refresh-tokens/{token}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($token !== null) {
+            $resourcePath = str_replace(
+                '{' . 'token' . '}',
+                ObjectSerializer::toPathValue($token),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createToken
      *
      * @param  string $grant_type grant_type (optional)
@@ -439,275 +707,7 @@ class DefaultApi
     }
 
     /**
-     * Operation deleteOauthV1RefreshTokensToken
-     *
-     * @param  string $token token (required)
-     *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Auth\OAuth\Model\Error
-     */
-    public function deleteOauthV1RefreshTokensToken($token)
-    {
-        list($response) = $this->deleteOauthV1RefreshTokensTokenWithHttpInfo($token);
-        return $response;
-    }
-
-    /**
-     * Operation deleteOauthV1RefreshTokensTokenWithHttpInfo
-     *
-     * @param  string $token (required)
-     *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function deleteOauthV1RefreshTokensTokenWithHttpInfo($token)
-    {
-        $request = $this->deleteOauthV1RefreshTokensTokenRequest($token);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Auth\OAuth\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Auth\OAuth\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Auth\OAuth\Model\Error';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Auth\OAuth\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation deleteOauthV1RefreshTokensTokenAsync
-     *
-     * 
-     *
-     * @param  string $token (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteOauthV1RefreshTokensTokenAsync($token)
-    {
-        return $this->deleteOauthV1RefreshTokensTokenAsyncWithHttpInfo($token)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deleteOauthV1RefreshTokensTokenAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  string $token (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteOauthV1RefreshTokensTokenAsyncWithHttpInfo($token)
-    {
-        $returnType = '\HubSpot\Client\Auth\OAuth\Model\Error';
-        $request = $this->deleteOauthV1RefreshTokensTokenRequest($token);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'deleteOauthV1RefreshTokensToken'
-     *
-     * @param  string $token (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function deleteOauthV1RefreshTokensTokenRequest($token)
-    {
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling deleteOauthV1RefreshTokensToken'
-            );
-        }
-
-        $resourcePath = '/v1/refresh-tokens/{token}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($token !== null) {
-            $resourcePath = str_replace(
-                '{' . 'token' . '}',
-                ObjectSerializer::toPathValue($token),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getOauthV1AccessTokensToken
+     * Operation getAccessToken
      *
      * @param  string $token token (required)
      *
@@ -715,14 +715,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error
      */
-    public function getOauthV1AccessTokensToken($token)
+    public function getAccessToken($token)
     {
-        list($response) = $this->getOauthV1AccessTokensTokenWithHttpInfo($token);
+        list($response) = $this->getAccessTokenWithHttpInfo($token);
         return $response;
     }
 
     /**
-     * Operation getOauthV1AccessTokensTokenWithHttpInfo
+     * Operation getAccessTokenWithHttpInfo
      *
      * @param  string $token (required)
      *
@@ -730,9 +730,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOauthV1AccessTokensTokenWithHttpInfo($token)
+    public function getAccessTokenWithHttpInfo($token)
     {
-        $request = $this->getOauthV1AccessTokensTokenRequest($token);
+        $request = $this->getAccessTokenRequest($token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -828,7 +828,7 @@ class DefaultApi
     }
 
     /**
-     * Operation getOauthV1AccessTokensTokenAsync
+     * Operation getAccessTokenAsync
      *
      * 
      *
@@ -837,9 +837,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOauthV1AccessTokensTokenAsync($token)
+    public function getAccessTokenAsync($token)
     {
-        return $this->getOauthV1AccessTokensTokenAsyncWithHttpInfo($token)
+        return $this->getAccessTokenAsyncWithHttpInfo($token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -848,7 +848,7 @@ class DefaultApi
     }
 
     /**
-     * Operation getOauthV1AccessTokensTokenAsyncWithHttpInfo
+     * Operation getAccessTokenAsyncWithHttpInfo
      *
      * 
      *
@@ -857,10 +857,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOauthV1AccessTokensTokenAsyncWithHttpInfo($token)
+    public function getAccessTokenAsyncWithHttpInfo($token)
     {
         $returnType = '\HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse';
-        $request = $this->getOauthV1AccessTokensTokenRequest($token);
+        $request = $this->getAccessTokenRequest($token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -897,19 +897,19 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'getOauthV1AccessTokensToken'
+     * Create request for operation 'getAccessToken'
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getOauthV1AccessTokensTokenRequest($token)
+    protected function getAccessTokenRequest($token)
     {
         // verify the required parameter 'token' is set
         if ($token === null || (is_array($token) && count($token) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getOauthV1AccessTokensToken'
+                'Missing the required parameter $token when calling getAccessToken'
             );
         }
 
@@ -995,7 +995,7 @@ class DefaultApi
     }
 
     /**
-     * Operation getOauthV1RefreshTokensToken
+     * Operation getRefreshToken
      *
      * @param  string $token token (required)
      *
@@ -1003,14 +1003,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error
      */
-    public function getOauthV1RefreshTokensToken($token)
+    public function getRefreshToken($token)
     {
-        list($response) = $this->getOauthV1RefreshTokensTokenWithHttpInfo($token);
+        list($response) = $this->getRefreshTokenWithHttpInfo($token);
         return $response;
     }
 
     /**
-     * Operation getOauthV1RefreshTokensTokenWithHttpInfo
+     * Operation getRefreshTokenWithHttpInfo
      *
      * @param  string $token (required)
      *
@@ -1018,9 +1018,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOauthV1RefreshTokensTokenWithHttpInfo($token)
+    public function getRefreshTokenWithHttpInfo($token)
     {
-        $request = $this->getOauthV1RefreshTokensTokenRequest($token);
+        $request = $this->getRefreshTokenRequest($token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1116,7 +1116,7 @@ class DefaultApi
     }
 
     /**
-     * Operation getOauthV1RefreshTokensTokenAsync
+     * Operation getRefreshTokenAsync
      *
      * 
      *
@@ -1125,9 +1125,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOauthV1RefreshTokensTokenAsync($token)
+    public function getRefreshTokenAsync($token)
     {
-        return $this->getOauthV1RefreshTokensTokenAsyncWithHttpInfo($token)
+        return $this->getRefreshTokenAsyncWithHttpInfo($token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1136,7 +1136,7 @@ class DefaultApi
     }
 
     /**
-     * Operation getOauthV1RefreshTokensTokenAsyncWithHttpInfo
+     * Operation getRefreshTokenAsyncWithHttpInfo
      *
      * 
      *
@@ -1145,10 +1145,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOauthV1RefreshTokensTokenAsyncWithHttpInfo($token)
+    public function getRefreshTokenAsyncWithHttpInfo($token)
     {
         $returnType = '\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse';
-        $request = $this->getOauthV1RefreshTokensTokenRequest($token);
+        $request = $this->getRefreshTokenRequest($token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1185,19 +1185,19 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'getOauthV1RefreshTokensToken'
+     * Create request for operation 'getRefreshToken'
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getOauthV1RefreshTokensTokenRequest($token)
+    protected function getRefreshTokenRequest($token)
     {
         // verify the required parameter 'token' is set
         if ($token === null || (is_array($token) && count($token) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getOauthV1RefreshTokensToken'
+                'Missing the required parameter $token when calling getRefreshToken'
             );
         }
 
