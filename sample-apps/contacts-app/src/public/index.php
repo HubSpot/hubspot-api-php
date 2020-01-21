@@ -18,8 +18,6 @@ try {
         case '/properties/new.php':
         case '/properties/show.php':
         case '/properties/delete.php':
-        case '/engagements/new.php':
-        case '/engagements/show.php':
         case '/oauth/authorize.php':
         case '/oauth/callback.php':
             $path = __DIR__.'/../actions'.$uri;
