@@ -26,7 +26,16 @@ if (isset($_POST['email'])) {
     $updated = true;
 }
 
-$contact = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::CONTACTS, $contactId, 'email,firstname,lastname,hubspot_owner_id');
+$properties = $hubSpot->crm()->properties()->coreApi()->getAll(ObjectType::CONTACTS)->getResults();
+$propertiesToDisplay = ['hubspot_owner_id'];
+foreach ($properties as $property) {
+    if ('string' === $property->getType() && false === $property->getModificationMetadata()->getReadOnlyValue()) {
+        $propertiesToDisplay[] = $property->getName();
+    }
+}
+
+$contact = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::CONTACTS, $contactId, implode(',', $propertiesToDisplay));
+
 $owners = $hubSpot->crm()->owners()->defaultApi()->getPage()->getResults();
 
 include __DIR__.'/../../views/contacts/show.php';

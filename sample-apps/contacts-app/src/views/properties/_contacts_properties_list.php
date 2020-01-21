@@ -1,6 +1,6 @@
 <fieldset>
     <?php
-        foreach ($contact['properties'] as $propertyName => $propertyValue) { ?>
+        foreach ($contact->getProperties() as $propertyName => $propertyValue) { ?>
             <?php
                 $nameSanitized = htmlentities($propertyName);
                 $valueSanitized = htmlentities($propertyValue);
