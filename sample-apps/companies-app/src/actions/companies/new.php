@@ -1,8 +1,8 @@
 <?php
 
-use HubSpot\Client\Crm\Objects\Model\CompanyInput;
+use HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput;
 
-$company = new CompanyInput([
+$company = new SimplePublicObjectInput([
     'properties' => [
         'name' => null,
         'domain' => null,
@@ -11,7 +11,7 @@ $company = new CompanyInput([
 if (isset($_POST['name'])) {
     $hubSpot = \Helpers\HubspotClientHelper::createFactory();
     $company->setProperties($_POST);
-    $response = $hubSpot->crm()->objects()->createNativeObjectsApi()->createCompany($company);
+    $response = $hubSpot->crm()->companies()->basicApi()->create($company);
 
     header('Location: /companies/show.php?id='.$response->getId().'created=1');
     exit();

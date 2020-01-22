@@ -1,9 +1,10 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId;
-use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObjectId;
-use HubSpot\Client\Crm\Objects\Model\CompanyInput;
+use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
+use HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId;
+use HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput;
 use HubSpot\Crm\ObjectType;
 
 if (!isset($_GET['id'])) {
@@ -14,38 +15,43 @@ $id = $_GET['id'];
 
 $hubSpot = HubspotClientHelper::createFactory();
 
-$company = new CompanyInput([
+$company = new SimplePublicObjectInput([
     'name' => null,
     'domain' => null,
 ]);
 
 if (isset($_POST['name'])) {
     $company->setProperties($_POST);
-    $hubSpot->crm()->objects()->basicApi()->update(ObjectType::COMPANIES, $id, $company);
+    $hubSpot->crm()->companies()->basicApi()->update($id, $company);
 
     header('Location: /companies/list.php');
     exit();
 }
 
-    $company = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::COMPANIES, $id);
-    /**
-     * @var CollectionResponseSimplePublicObjectId
-     */
-    $contactsIds = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANIES, $id, ObjectType::CONTACTS);
+$company = $hubSpot->crm()->companies()->basicApi()->getById($id);
+/**
+ * @var CollectionResponseSimplePublicObjectId
+ */
 
-    $contacts = [];
+$inputId = new BatchInputPublicObjectId(['inputs' => [$id]]);
+$contactsIds = $hubSpot->crm()->associations()->batchApi()->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
+        ->getResults();
 
-    if (count($contactsIds->getResults()) > 0) {
-        $contactsIdsReqest = new BatchReadInputSimplePublicObjectId(['inputs' => $contactsIds->getResults()]);
+$contacts = [];
+if (!empty($contactsIds)) {
+    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId(['inputs' => array_map(function($id) {
+            return $id->getId();
+        }, $contactsIds[0]->getTo())
+    ]);
 
-        $contactsList = $hubSpot->crm()->objects()->batchApi()->readBatch(ObjectType::CONTACTS, true, $contactsIdsReqest);
+    $contactsList = $hubSpot->crm()->contacts()->batchApi()->readBatch(false, $contactsIdsRequest);
 
-        $contacts = array_map(function ($contact) {
-            return [
-                'id' => $contact->getId(),
-                'name' => $contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname'],
-            ];
-        }, (array) $contactsList->getResults());
-    }
+    $contacts = array_map(function ($contact) {
+        return [
+            'id' => $contact->getId(),
+            'name' => $contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname'],
+        ];
+    }, (array) $contactsList->getResults());
+}
 
 include __DIR__.'/../../views/companies/show.php';
