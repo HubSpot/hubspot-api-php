@@ -1,6 +1,6 @@
 # HubSpot-php sample OAuth 2.0 app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs/methods/companies/companies-overview) endpoints and their related actions.
+This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php-3). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs/methods/companies/companies-overview) endpoints and their related actions.
 
 Please see the documentation on [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
 
@@ -9,7 +9,7 @@ Please see the documentation on [How do I create an app in HubSpot?](https://dev
   - [Initiate an Integration with OAuth 2.0](https://developers.hubspot.com/docs/methods/oauth2/initiate-oauth-integration)
   - [Get OAuth 2.0 Access Token and Refresh Tokens](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)
   - [Refresh OAuth 2.0 Access Token](https://developers.hubspot.com/docs/methods/oauth2/refresh-access-token)
-  - [Get all contacts](https://developers.hubspot.com/docs/methods/contacts/get_contacts)
+  - [Search contacts](https://developers.hubspot.com/docs-beta/crm/search)
     
 ### Note on Application Scopes
 HubSpot provides a way to restrict application users access to the system to certain scopes. In order to do that it is a good practice to make a set of scopes required by your applicatuion.
