@@ -1,9 +1,11 @@
 <?php
 
-use Helpers\HubspotClientHelper;
 use Helpers\OAuth2Helper;
+use HubSpot\Factory;
 
-$tokens = HubspotClientHelper::createFactory()->auth()->oAuth()->defaultApi()->createToken(
+$hubSpot = Factory::create();
+
+$tokens = $hubSpot->auth()->oAuth()->defaultApi()->createToken(
     'authorization_code',
     $_GET['code'],
     OAuth2Helper::getRedirectUri(),
