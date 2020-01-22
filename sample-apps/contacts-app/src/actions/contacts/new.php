@@ -1,14 +1,15 @@
 <?php
 
-use HubSpot\Client\Crm\Objects\Model\ContactInput;
+use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
 use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
 
-$hubSpot = \Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
 if (isset($_POST['email'])) {
-    $contactInput = new ContactInput();
+    $contactInput = new SimplePublicObjectInput();
     $contactInput->setProperties($_POST);
-    $contact = $hubSpot->crm()->objects()->createNativeObjectsApi()->createContact($contactInput);
+    $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 
     header('Location: /contacts/show.php?id='.$contact['id'].'&created=true');
     exit();
