@@ -2,9 +2,7 @@
 
 <pre>
 // src/actions/oauth/authorize.php - Generate URL for OAuth
-use SevenShores\Hubspot\Utils\OAuth2;
-
-$authUrl = OAuth2::getAuthUrl(
+$authUrl = HubSpot\Utils\OAuth2::getAuthUrl(
     'ClientID',
     'Redirect Uri',
     ['Scopes']
