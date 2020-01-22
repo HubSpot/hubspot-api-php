@@ -1,8 +1,8 @@
 <?php
 
-use HubSpot\Client\Crm\Objects\Model\CompanyInput;
+use HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput;
 
-$company = new CompanyInput([
+$company = new SimplePublicObjectInput([
     'properties' => [
         'name' => null,
         'domain' => null,

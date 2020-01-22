@@ -1,9 +1,10 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject;
-use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
-use HubSpot\Crm\ObjectType;
+use HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject;
+use HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest;
+use HubSpot\Client\Crm\Companies\Model\Filter;
+use HubSpot\Client\Crm\Companies\Model\FilterGroup;
 
 if (empty($_GET['search'])) {
     header('Location: /companies/list.php');
@@ -11,15 +12,19 @@ if (empty($_GET['search'])) {
 }
 
 $hubSpot = HubspotClientHelper::createFactory();
+$filter = new Filter([
+    'property_name' => 'domain',
+    'operator' => 'EQ',
+    'value' => $_GET['search'],
+]);
+$filterGroup = new FilterGroup([
+    'filters' => [
+        $filter,
+    ],
+]); 
 
 $searchRequest = new PublicObjectSearchRequest();
-$searchRequest->setFilters([
-    [
-        'propertyName' => 'domain',
-        'operator' => 'EQ',
-        'value' => $_GET['search'],
-    ],
-]);
+$searchRequest->setFilterGroups([$filterGroup]);
 /** @var CollectionResponseWithTotalSimplePublicObject $companiesPage */
 $companiesPage = $hubSpot->crm()->companies()->searchApi()->doSearch($searchRequest);
 
