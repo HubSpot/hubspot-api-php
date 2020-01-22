@@ -1,9 +1,8 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
 use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject;
-use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
-use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
@@ -16,6 +15,6 @@ $searchRequest->setSorts([
 ]);
 
 /** @var CollectionResponseSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACTS, $searchRequest);
+$contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';
