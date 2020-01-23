@@ -2,6 +2,7 @@
 
 use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
 use HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId;
 use HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput;
@@ -39,8 +40,8 @@ $contactsIds = $hubSpot->crm()->associations()->batchApi()->readBatch(ObjectType
 
 $contacts = [];
 if (!empty($contactsIds)) {
-    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId(['inputs' => array_map(function($id) {
-            return $id->getId();
+    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId(['inputs' => array_map(function($objectId) {
+            return (new SimplePublicObjectId())->setId($objectId->getId());
         }, $contactsIds[0]->getTo())
     ]);
 
