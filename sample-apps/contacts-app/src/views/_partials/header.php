@@ -23,7 +23,7 @@
           <a id="properties-list" class="navigation-link" href="/properties/list.php">Properties</a>
         </li>
         <li class="navigation-item">
-          <a class="navigation-link" href="/oauth/authorize.php">OAuth2</a>
+          <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
         </li>
       </ul>
     </div>
