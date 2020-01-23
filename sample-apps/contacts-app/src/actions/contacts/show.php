@@ -1,6 +1,6 @@
 <?php
 
-use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
 use HubSpot\Crm\ObjectType;
 
 $hubSpot = Helpers\HubspotClientHelper::createFactory();
@@ -8,17 +8,37 @@ $hubSpot = Helpers\HubspotClientHelper::createFactory();
 if (!isset($_GET['id'])) {
     throw new \Exception('Contact id is not specified');
 }
-
 $contactId = $_GET['id'];
 
-if (isset($_POST['email'])) {
-    $newProperties = new SimplePublicObject();
-    $newProperties->setProperties($_POST);
-    $contact = $hubSpot->crm()->objects()->basicApi()->update(ObjectType::CONTACTS, $contactId, $newProperties);
-    $updated = true;
+if (isset($_POST['buttonDelete'])) {
+    // https://developers.hubspot.com/docs-beta/crm/contacts
+    $hubSpot->crm()->contacts()->basicApi()->archive($contactId);
+    header('Location: /');
+    exit();
 }
 
-$contact = $hubSpot->crm()->objects()->basicApi()->getById(ObjectType::CONTACTS, $contactId, 'email,firstname,lastname,hubspot_owner_id');
+if (isset($_POST['email'])) {
+    $newProperties = new SimplePublicObjectInput();
+    $newProperties->setProperties($_POST);
+    $hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
+    header('Location: /contacts/show.php?updated=true&id='.$contactId);
+    exit();
+}
+
+$properties = $hubSpot->crm()->properties()->coreApi()->getAll(ObjectType::CONTACTS)->getResults();
+$propertiesToDisplay = ['hubspot_owner_id'];
+foreach ($properties as $property) {
+    if ('string' === $property->getType() && false === $property->getModificationMetadata()->getReadOnlyValue()) {
+        $propertiesToDisplay[] = $property->getName();
+    }
+}
+
+// https://developers.hubspot.com/docs-beta/crm/contacts
+$contact = $hubSpot->crm()->contacts()->basicApi()->getById($contactId, implode(',', $propertiesToDisplay));
+// https://developers.hubspot.com/docs-beta/crm/owners
 $owners = $hubSpot->crm()->owners()->defaultApi()->getPage()->getResults();
+
+$created = $_GET['created'] ?: false;
+$updated = $_GET['updated'] ?: false;
 
 include __DIR__.'/../../views/contacts/show.php';

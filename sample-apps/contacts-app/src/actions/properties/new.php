@@ -1,25 +1,28 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Properties\Model\Property;
+use HubSpot\Client\Crm\Properties\Model\PropertyCreate;
+use HubSpot\Crm\ObjectType;
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
 if (isset($_POST['name'])) {
-    $propertyFields = $_POST;
-    // https://developers.hubspot.com/docs/methods/contacts/v2/create_contacts_property
-    $response = $hubSpot->contactProperties()->create($propertyFields);
+    $propertyCreate = new PropertyCreate($_POST);
+    // https://developers.hubspot.com/docs-beta/crm/properties
+    $hubSpot->crm()->properties()->coreApi()->create(
+        ObjectType::CONTACTS,
+        $propertyCreate
+    );
 
-    if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /properties/list.php');
-        exit();
-    }
-
-    $property = (object) $propertyFields;
-    $errorResponse = $response;
-} else {
-    $property = (object) [
-        'type' => 'string',
-    ];
+    header('Location: /properties/list.php');
+    exit();
 }
+
+$property = new Property();
+$property
+    ->setType('string')
+    ->setGroupName('contactinformation')
+;
 
 include __DIR__.'/../../views/properties/show.php';

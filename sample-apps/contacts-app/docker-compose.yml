@@ -12,11 +12,11 @@ services:
     volumes:
       - ./src:/app/src
 
-#  codecept:
-#    build:
-#      dockerfile: sample-apps/contacts-app/docker/codecept/Dockerfile
-#      context: ../../
-#    depends_on:
-#      - web
-#    volumes:
-#      - ./tests:/project/tests
+  codecept:
+    build:
+      dockerfile: sample-apps/contacts-app/docker/codecept/Dockerfile
+      context: ../../
+    depends_on:
+      - web
+    volumes:
+      - ./tests:/project/tests

@@ -1,9 +1,9 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject;
-use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
-use HubSpot\Crm\ObjectType;
+use HubSpot\Client\Crm\Contacts\Model\Filter;
+use HubSpot\Client\Crm\Contacts\Model\FilterGroup;
+use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
 
 $contacts = [];
 $search = $_GET['search'];
@@ -13,18 +13,20 @@ if (empty($search)) {
     exit();
 }
 
-$hubSpot = HubspotClientHelper::createFactory();
-
+$filter = new Filter();
+$filter
+    ->setOperator('EQ')
+    ->setPropertyName('email')
+    ->setValue($search)
+;
+$filterGroup = new FilterGroup();
+$filterGroup->setFilters([$filter]);
 $searchRequest = new PublicObjectSearchRequest();
-$searchRequest->setFilters([
-    [
-        'propertyName' => 'email',
-        'operator' => 'EQ',
-        'value' => $search,
-    ],
-]);
+$searchRequest->setFilterGroups([$filterGroup]);
 
-/** @var CollectionResponseWithTotalSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACTS, $searchRequest);
+// @var CollectionResponseWithTotalSimplePublicObject $contactsPage
+$hubSpot = HubspotClientHelper::createFactory();
+// https://developers.hubspot.com/docs-beta/crm/contacts
+$contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';
