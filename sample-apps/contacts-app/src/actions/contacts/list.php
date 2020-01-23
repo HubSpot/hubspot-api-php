@@ -14,6 +14,7 @@ $searchRequest->setSorts([
     ],
 ]);
 
+// https://developers.hubspot.com/docs-beta/crm/contacts
 /** @var CollectionResponseSimplePublicObject $contactsPage */
 $contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 

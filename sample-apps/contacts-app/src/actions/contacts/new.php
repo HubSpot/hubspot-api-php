@@ -9,6 +9,7 @@ $hubSpot = HubspotClientHelper::createFactory();
 if (isset($_POST['email'])) {
     $contactInput = new SimplePublicObjectInput();
     $contactInput->setProperties($_POST);
+    // https://developers.hubspot.com/docs-beta/crm/contacts
     $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 
     header('Location: /contacts/show.php?id='.$contact['id'].'&created=true');

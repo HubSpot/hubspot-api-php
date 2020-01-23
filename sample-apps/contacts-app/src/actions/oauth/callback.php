@@ -5,6 +5,7 @@ use HubSpot\Factory;
 
 $hubSpot = Factory::create();
 
+// https://developers.hubspot.com/docs-beta/working-with-oauth
 $tokens = $hubSpot->auth()->oAuth()->defaultApi()->createToken(
     'authorization_code',
     $_GET['code'],
