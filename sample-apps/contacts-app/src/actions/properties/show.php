@@ -7,6 +7,7 @@ use HubSpot\Crm\ObjectType;
 $hubSpot = HubspotClientHelper::createFactory();
 if (isset($_POST['name'])) {
     $propertyUpdate = new PropertyUpdate($_POST);
+    // https://developers.hubspot.com/docs-beta/crm/properties
     $hubSpot->crm()->properties()->coreApi()->update(
         ObjectType::CONTACTS,
         $_POST['name'],
@@ -18,6 +19,7 @@ if (isset($_POST['name'])) {
 }
 
 if (isset($_GET['name'])) {
+    // https://developers.hubspot.com/docs-beta/crm/properties
     $property = $hubSpot->crm()->properties()->coreApi()->getByName(
         ObjectType::CONTACTS,
         $_GET['name']

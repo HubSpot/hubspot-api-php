@@ -26,6 +26,7 @@ $searchRequest->setFilterGroups([$filterGroup]);
 
 // @var CollectionResponseWithTotalSimplePublicObject $contactsPage
 $hubSpot = HubspotClientHelper::createFactory();
+// https://developers.hubspot.com/docs-beta/crm/contacts
 $contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';

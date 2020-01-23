@@ -9,6 +9,7 @@ $hubSpot = HubspotClientHelper::createFactory();
 
 if (isset($_POST['name'])) {
     $propertyCreate = new PropertyCreate($_POST);
+    // https://developers.hubspot.com/docs-beta/crm/properties
     $hubSpot->crm()->properties()->coreApi()->create(
         ObjectType::CONTACTS,
         $propertyCreate
