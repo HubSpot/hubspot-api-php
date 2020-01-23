@@ -1,34 +1,34 @@
 <?php
 
+use Helpers\OAuth2Helper;
+
 include_once '../../vendor/autoload.php';
 
+session_start();
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+if ('/' === $uri) {
+    header('Location: /contacts/list.php');
+    exit();
+}
+
 try {
-    session_start();
-    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-    switch ($uri) {
-        case '/':
-            header('Location: /contacts/list.php');
-            exit();
-        case '/contacts/list.php':
-        case '/contacts/new.php':
-        case '/contacts/show.php':
-        case '/contacts/search.php':
-        case '/contacts/export.php':
-        case '/properties/list.php':
-        case '/properties/new.php':
-        case '/properties/show.php':
-        case '/properties/delete.php':
-        case '/engagements/new.php':
-        case '/engagements/show.php':
-        case '/oauth/authorize.php':
-        case '/oauth/callback.php':
-            $path = __DIR__.'/../actions'.$uri;
-            require $path;
-            exit();
-        default:
-            http_response_code(404);
-            exit();
+    $publicRoutes = require '../routes/public.php';
+    $protectedRoutes = require '../routes/protected.php';
+
+    if (in_array($uri, $protectedRoutes)) {
+        if (!OAuth2Helper::isAuthenticated()) {
+            header('Location: /oauth/login.php');
+        }
     }
+
+    if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
+        http_response_code(404);
+        exit();
+    }
+
+    $path = __DIR__.'/../actions'.$uri;
+    require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();
     include __DIR__.'/../views/error.php';

@@ -1,13 +1,21 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
 use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject;
-use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
-// https://developers.hubspot.com/docs/methods/contacts/get_contacts
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setSorts([
+    [
+        'propertyName' => 'createdate',
+        'direction' => 'DESCENDING',
+    ],
+]);
+
+// https://developers.hubspot.com/docs-beta/crm/contacts
 /** @var CollectionResponseSimplePublicObject $contactsPage */
-$contactsPage = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::CONTACTS);
+$contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 
 include __DIR__.'/../../views/contacts/list.php';

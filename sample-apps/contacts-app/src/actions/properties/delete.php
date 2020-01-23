@@ -1,17 +1,16 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
 if (isset($_GET['name'])) {
-    // https://developers.hubspot.com/docs/methods/contacts/v2/delete_contact_property
-    $response = $hubSpot->contactProperties()->delete($_GET['name']);
-    if (!HubspotClientHelper::isResponseSuccessfulButEmpty($response)) {
-        $message = json_encode($response);
-        include __DIR__.'/../../views/error.php';
-        exit();
-    }
+    // https://developers.hubspot.com/docs-beta/crm/properties
+    $hubSpot->crm()->properties()->coreApi()->archive(
+        ObjectType::CONTACTS,
+        $_GET['name']
+    );
 }
 
 header('Location: /properties/list.php');

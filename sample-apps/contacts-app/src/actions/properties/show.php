@@ -1,27 +1,29 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Properties\Model\PropertyUpdate;
+use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
 if (isset($_POST['name'])) {
-    $propertyFields = $_POST;
-    // https://developers.hubspot.com/docs/methods/contacts/v2/update_contact_property
-    $response = $hubSpot->contactProperties()->update($propertyFields['name'], $propertyFields);
-    if (HubspotClientHelper::isResponseSuccessful($response)) {
-        $name = $response->data->name;
-        header('Location: /properties/list.php');
-        exit();
-    }
+    $propertyUpdate = new PropertyUpdate($_POST);
+    // https://developers.hubspot.com/docs-beta/crm/properties
+    $hubSpot->crm()->properties()->coreApi()->update(
+        ObjectType::CONTACTS,
+        $_POST['name'],
+        $propertyUpdate
+    );
 
-    $property = (object) $propertyFields;
-    $errorResponse = $response;
-} else {
-    $property = [];
-    if (isset($_GET['name'])) {
-        // https://developers.hubspot.com/docs/methods/companies/get_contact_property
-        $response = $hubSpot->contactProperties()->get($_GET['name']);
-        $property = $response->getData();
-    }
+    header('Location: /properties/show.php?name='.$_POST['name']);
+    exit();
 }
 
-include __DIR__.'/../../views/properties/show.php';
+if (isset($_GET['name'])) {
+    // https://developers.hubspot.com/docs-beta/crm/properties
+    $property = $hubSpot->crm()->properties()->coreApi()->getByName(
+        ObjectType::CONTACTS,
+        $_GET['name']
+    );
+
+    include __DIR__.'/../../views/properties/show.php';
+}

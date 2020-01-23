@@ -20,12 +20,17 @@ class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
-    public function createContact(string $email)
+    public function createContact(string $email): void
     {
         $this->amOnPage('/');
         $this->click('#contact-new');
         $this->fillField(['name' => 'email'], $email);
         $this->click('#save');
+    }
+
+    public function generateRandomEmail()
+    {
+        return 'acceptance-tester-'.uniqid().'@hubspot.com';
     }
 
     // Define custom actions here

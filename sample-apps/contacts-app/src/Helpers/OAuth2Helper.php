@@ -2,7 +2,7 @@
 
 namespace Helpers;
 
-use HubSpot\Client\OAuth\Model\TokenResponseFields;
+use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use HubSpot\Factory;
 
 class OAuth2Helper
@@ -41,7 +41,7 @@ class OAuth2Helper
         return static::APP_REQUIRED_SCOPES;
     }
 
-    public static function saveTokenResponse(TokenResponseFields $tokens): void
+    public static function saveTokenResponse(TokenResponseIF $tokens): void
     {
         $_SESSION[static::SESSION_TOKENS_KEY] = [
             'access_token' => $tokens->getAccessToken(),
