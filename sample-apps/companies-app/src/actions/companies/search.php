@@ -12,16 +12,15 @@ if (empty($_GET['search'])) {
 }
 
 $hubSpot = HubspotClientHelper::createFactory();
-$filter = new Filter([
-    'property_name' => 'domain',
-    'operator' => 'EQ',
-    'value' => $_GET['search'],
-]);
-$filterGroup = new FilterGroup([
-    'filters' => [
-        $filter,
-    ],
-]); 
+
+$filter = new Filter();
+
+$filter->setPropertyName('domain');
+$filter->setOperator('EQ');
+$filter->setValue($_GET['search']);
+
+$filterGroup = new FilterGroup();
+$filterGroup->setFilters([$filter]); 
 
 $searchRequest = new PublicObjectSearchRequest();
 $searchRequest->setFilterGroups([$filterGroup]);
