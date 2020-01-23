@@ -1,7 +1,10 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
+use HubSpot\Client\Crm\Contacts\Model\Filter;
+use HubSpot\Client\Crm\Contacts\Model\FilterGroup;
+use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
+use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
 use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
@@ -13,26 +16,33 @@ if (isset($_GET['companyId'])) {
 }
 
 if (isset($_GET['search'])) {
-    $searchRequest = new PublicObjectSearchRequest();
-    $searchRequest->setFilters([
-        [
-            'propertyName' => 'email',
-            'operator' => 'EQ',
-            'value' => $_GET['search'],
-        ],
-    ]);
+    $filter = new Filter();
+    
+    $filter->setPropertyName('email');
+    $filter->setOperator('EQ');
+    $filter->setValue($_GET['search']);
 
-    $contactList = $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACTS, $searchRequest);
+   $filterGroup = new FilterGroup();
+   $filterGroup->setFilters([$filter]);
+
+    $searchRequest = new PublicObjectSearchRequest();
+    $searchRequest->setFilterGroups([$filterGroup]);
+
+    $contactList = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 } else {
-    $contactList = $hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::CONTACTS, 20);
+    $contactList = $hubSpot->crm()->contacts()->basicApi()->getPage(20);
 }
 
 $associatedContacts = [];
 if (count($contactList->getResults()) > 0) {
-    $associationResponse = $hubSpot->crm()->objects()->associationsApi()->getAssociations(ObjectType::COMPANIES, $companyId, ObjectType::CONTACTS);
+    $inputId = new BatchInputPublicObjectId(['inputs' => [$companyId]]); 
+    
+    $associationResponse = $hubSpot->crm()->associations()->batchApi()
+        ->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
+        ->getResults();
 
     $associatedContacts = array_map(function ($contact) {
         return $contact->getId();
-    }, (array) $associationResponse->getResults());
+    }, $associationResponse[0]->getTo());
 }
 include __DIR__.'/../../views/contacts/list.php';
