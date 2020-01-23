@@ -1,7 +1,10 @@
 <?php
+
 namespace Helpers;
+
 use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use HubSpot\Factory;
+
 class OAuth2Helper
 {
     const APP_REQUIRED_SCOPES = ['contacts'];
