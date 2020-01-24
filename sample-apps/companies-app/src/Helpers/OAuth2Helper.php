@@ -61,7 +61,9 @@ class OAuth2Helper
         if (empty($_SESSION[static::SESSION_TOKENS_KEY])) {
             throw new \Exception('Please authorize via OAuth2');
         }
+
         $tokens = $_SESSION[static::SESSION_TOKENS_KEY];
+
         if (time() > $tokens['expires_at']) {
             $tokens = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
                 'refresh_token',

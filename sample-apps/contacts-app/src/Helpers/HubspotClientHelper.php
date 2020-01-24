@@ -16,7 +16,7 @@ class HubspotClientHelper
         }
 
         $apiKey = $_ENV['HUBSPOT_API_KEY'];
-        if (null != $apiKey) {
+        if (!empty($apiKey)) {
             return Factory::createWithApiKey($apiKey);
         }
 

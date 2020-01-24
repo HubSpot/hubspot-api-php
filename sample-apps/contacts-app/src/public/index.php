@@ -18,7 +18,7 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if (in_array($uri, $protectedRoutes)) {
-        if (!OAuth2Helper::isAuthenticated()) {
+        if (empty($_ENV['HUBSPOT_API_KEY']) && !OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
         }
     }

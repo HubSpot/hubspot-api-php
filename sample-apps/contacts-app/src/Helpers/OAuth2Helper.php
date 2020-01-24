@@ -53,7 +53,7 @@ class OAuth2Helper
 
     public static function isAuthenticated(): bool
     {
-        return isset($_ENV['HUBSPOT_API_KEY']) || isset($_SESSION[static::SESSION_TOKENS_KEY]);
+        return isset($_SESSION[static::SESSION_TOKENS_KEY]);
     }
 
     public static function refreshAndGetAccessToken(): string
