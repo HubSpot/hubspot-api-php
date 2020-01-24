@@ -35,9 +35,9 @@ $company = $hubSpot->crm()->companies()->basicApi()->getById($id);
  */
 $inputId = new BatchInputPublicObjectId();
 $inputId->setInputs([$id]);
-$contactsIds = $hubSpot->crm()->associations()->batchApi()->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
-    ->getResults()
-;
+$contactsIds = $hubSpot->crm()->associations()->batchApi()
+    ->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
+    ->getResults();
 
 $contacts = [];
 if (!empty($contactsIds)) {
@@ -48,12 +48,14 @@ if (!empty($contactsIds)) {
         }, $contactsIds[0]->getTo())
     );
 
-    $contactsList = $hubSpot->crm()->contacts()->batchApi()->readBatch(false, $contactsIdsRequest);
+    $contactsList = $hubSpot->crm()->contacts()->batchApi()
+        ->readBatch(false, $contactsIdsRequest);
 
     $contacts = array_map(function ($contact) {
         return [
             'id' => $contact->getId(),
-            'name' => $contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname'],
+            'name' => $contact->getProperties()['firstname']
+                .' '.$contact->getProperties()['lastname'],
         ];
     }, (array) $contactsList->getResults());
 }

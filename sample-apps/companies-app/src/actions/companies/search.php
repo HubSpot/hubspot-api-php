@@ -25,6 +25,7 @@ $filterGroup->setFilters([$filter]);
 $searchRequest = new PublicObjectSearchRequest();
 $searchRequest->setFilterGroups([$filterGroup]);
 /** @var CollectionResponseWithTotalSimplePublicObject $companiesPage */
-$companiesPage = $hubSpot->crm()->companies()->searchApi()->doSearch($searchRequest);
+$companiesPage = $hubSpot->crm()->companies()->searchApi()
+    ->doSearch($searchRequest);
 
 include __DIR__.'/../../views/companies/list.php';
