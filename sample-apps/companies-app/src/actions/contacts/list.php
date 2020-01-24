@@ -40,9 +40,10 @@ if (count($contactList->getResults()) > 0) {
     $associationResponse = $hubSpot->crm()->associations()->batchApi()
         ->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
         ->getResults();
-
-    $associatedContacts = array_map(function ($contact) {
-        return $contact->getId();
-    }, $associationResponse[0]->getTo());
+    if (!empty($associationResponse)) {
+        $associatedContacts = array_map(function ($contact) {
+            return $contact->getId();
+        }, $associationResponse[0]->getTo());
+    }
 }
 include __DIR__.'/../../views/contacts/list.php';

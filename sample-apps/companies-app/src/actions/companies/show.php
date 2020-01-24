@@ -34,17 +34,19 @@ $company = $hubSpot->crm()->companies()->basicApi()->getById($id);
  * @var CollectionResponseSimplePublicObjectId
  */
 
-$inputId = new BatchInputPublicObjectId(['inputs' => [$id]]);
+$inputId = new BatchInputPublicObjectId();
+$inputId->setInputs([$id]);
 $contactsIds = $hubSpot->crm()->associations()->batchApi()->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
         ->getResults();
 
 $contacts = [];
 if (!empty($contactsIds)) {
-    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId(['inputs' => array_map(function($objectId) {
+    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId();
+    $contactsIdsRequest->setInputs(array_map(function($objectId) {
             return (new SimplePublicObjectId())->setId($objectId->getId());
         }, $contactsIds[0]->getTo())
-    ]);
-
+    );
+    
     $contactsList = $hubSpot->crm()->contacts()->batchApi()->readBatch(false, $contactsIdsRequest);
 
     $contacts = array_map(function ($contact) {
