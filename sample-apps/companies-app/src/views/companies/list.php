@@ -3,15 +3,19 @@
 <?php if (isset($_GET['search'])) { ?>
 <pre>
 // src/actions/companies/search.php
+$filter = new Filter();
+
+$filter->setPropertyName('domain');
+$filter->setOperator('EQ');
+$filter->setValue($_GET['search']);
+
+$filterGroup = new FilterGroup();
+$filterGroup->setFilters([$filter]);
+
 $searchRequest = new PublicObjectSearchRequest();
-$searchRequest->setFilters([
-    [
-        'propertyName' => 'email',
-        'operator' => 'EQ',
-        'value' => $search,
-    ],
-]);
-$hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRequest);
+$searchRequest->setFilterGroups([$filterGroup]);
+
+$companiesPage = $hubSpot->crm()->companies()->searchApi()->doSearch($searchRequest);
 </pre>
 <?php } ?>
 
@@ -25,9 +29,9 @@ $hubSpot->crm()->objects()->searchApi()->doSearch(ObjectType::CONTACT, $searchRe
 <?php if (!isset($_GET['search'])) { ?>
 <pre>
 // src/actions/companies/list.php
-$hubSpot->crm()->objects()->basicApi()->getPage(ObjectType::COMPANIES);
+$hubSpot->crm()->companies()->basicApi()->getPage();
 // src/actions/companies/delete.php
-$hubSpot->crm()->objects()->basicApi()->archive(ObjectType::COMPANIES, $_GET['id']);
+$hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
 </pre>
 <?php } ?>
 
@@ -42,8 +46,7 @@ $hubSpot->crm()->objects()->basicApi()->archive(ObjectType::COMPANIES, $_GET['id
   </thead>
   <tbody>
 
-  <?php foreach ($companiesPage->getResults() as $company) {
-    // @var \HubSpot\Client\Crm\Objects\Model\SimplePublicObject $company?>
+  <?php foreach ($companiesPage->getResults() as $company) { ?>
     <tr>
       <td><a href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
       <td><?php echo htmlentities($company->getProperties()['name']); ?></td>

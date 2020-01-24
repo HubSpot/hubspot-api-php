@@ -20,8 +20,8 @@
         <?php if (isset($id)) { ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->crm()->objects()->basicApi()
-    ->getById(ObjectType::COMPANIES, $id)
+$hubSpot->crm()->companies()->basicApi()
+    ->getById($id);
 </pre>
         <?php } ?>
 
@@ -43,12 +43,14 @@ $hubSpot->crm()->objects()->basicApi()
                 <?php if (isset($id)) { ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->companies()->update($companyId, $companyProperties);
+$hubSpot->crm()->companies()->basicApi()
+    ->update($id, $company);
 </pre>
                 <?php } else { ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->companies()->create($companyProperties);
+$hubSpot->crm()->companies()->basicApi()
+    ->create($company);
 </pre>
 
                 <?php } ?>
@@ -73,11 +75,11 @@ $hubSpot->companies()->create($companyProperties);
             ?>
 <pre>
 // src/actions/companies/show.php
-$hubSpot->crm()->objects()->associationsApi()
-    ->getAssociations(
+$hubSpot->crm()->associations()->batchApi()
+    ->readBatch(
         ObjectType::COMPANIES,
-        $id,
-        ObjectType::CONTACTS
+        ObjectType::CONTACTS,
+        $inputId
     );
 </pre>
             <?php if (!empty($contacts)) { ?>

@@ -15,11 +15,11 @@ include __DIR__.'/../_partials/header.php'; ?>
 </form>
 <pre>
 // src/actions/contacts/list.php
-$hubSpot->crm()->objects()->associationsApi()
-    ->getAssociations(
+$hubSpot->crm()->associations()->batchApi()
+    ->readBatch(
         ObjectType::COMPANIES,
-        $id,
-        ObjectType::CONTACTS
+        ObjectType::CONTACTS,
+        $inputId
     );
 </pre>
 <?php if (count($contactList->getResults()) > 0) { ?>
@@ -48,19 +48,19 @@ $hubSpot->crm()->objects()->associationsApi()
 
 <pre>
 // src/actions/contacts/manage.php
-HubspotClientHelper::createFactory()->crm()->objects()->associationsApi()
-    ->createAssociation(
+//Add
+$hubSpot->crm()->associations()->batchApi()
+    ->createBatch(
         ObjectType::COMPANIES,
-        $companyId,
         ObjectType::CONTACTS,
-        $id
+        $request
     );
-HubspotClientHelper::createFactory()->crm()->objects()->associationsApi()
-    ->archiveAssociation(
+//Delete
+$hubSpot->crm()->associations()->batchApi()
+    ->archiveBatch(
         ObjectType::COMPANIES,
-        $companyId,
         ObjectType::CONTACTS,
-        $id
+        $request
     );
 </pre>
     <button type="submit" name="action" value="create">Add selected to company</button>

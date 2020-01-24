@@ -51,6 +51,10 @@
     justify-content: center;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .alert-error {
     color: white;
     background-color: red;

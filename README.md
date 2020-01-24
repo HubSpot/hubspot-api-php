@@ -1,50 +1,44 @@
-# php-hubspot-3
-PHP API vNext Client files and sample apps
+# HubSpot-php Companies sample app
 
-## Quickstart
+This is a sample app for the [hubspot-php-3 SDK](https://github.com/hubspot/hubspot-php-3). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs-beta/crm/companies) endpoints and their related actions.
 
-#### Create a factory using HubSpot API Key:
+Please see the documentation on [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
 
-```php
-$hubSpot = \HubSpot\Factory::createWithApiKey('api-key');
+### HubSpot Public API endpoints used in this application
+
+  - [Companies](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Associations](https://developers.hubspot.com/docs-beta/crm/associations)
+  - [Contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
+  - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
+
+### Setup App
+
+Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
+
+### Configure
+
+1. Copy .env.template to .env
+2. Specify authorization data in .env:
+    
+    - Paste your HubSpot API Key as the value for HUBSPOT_API_KEY
+    
+    or
+    
+    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
+
+### Running
+
+The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
+
+```bash
+docker-compose up --build web
 ```
+You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
 
-#### or using OAuth2 access token:
+### Running tests
 
-```php
-$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
-```
+Run tests with codecept
 
-#### Get contacts page:
-
-```php
-$response = $hubSpot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS);
-```
-
-#### Search for a contact:
-
-```php
-$searchRequest = new \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest();
-$searchRequest->setFilters([
-    [
-        'propertyName' => 'firstname',
-        'operator' => 'EQ',
-        'value' => 'Alice',
-    ],
-]);
-$response = $hubSpot->crm()->objects()->searchApi()->doSearch($searchRequest);
-```
-
-## Contributing
-
-### Run spec tests
-
-```
-vendor/bin/phpspec run
-```
-
-### Run unit tests
-
-```
-vendor/bin/phpunit ./tests
+```bash
+docker-compose run codecept run
 ```
