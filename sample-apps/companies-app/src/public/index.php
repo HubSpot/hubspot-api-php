@@ -1,6 +1,6 @@
 <?php
 
-use Helpers\Oauth2Helper;
+use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
