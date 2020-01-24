@@ -7,8 +7,6 @@ use HubSpot\Factory;
 
 class HubspotClientHelper
 {
-    const HTTP_OK = 200;
-
     public static function createFactory(): Discovery
     {
         if (OAuth2Helper::isAuthenticated()) {
@@ -23,14 +21,5 @@ class HubspotClientHelper
         }
 
         throw new \Exception('Please specify API key or authorize via OAuth');
-    }
-
-    public static function getOAuth2Resource()
-    {
-    }
-
-    public static function isResponseSuccessful(Response $response): bool
-    {
-        return self::HTTP_OK === $response->getStatusCode();
     }
 }

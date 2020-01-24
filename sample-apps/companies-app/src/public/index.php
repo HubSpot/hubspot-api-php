@@ -1,6 +1,6 @@
 <?php
 
-use Helpers\Oauth2Helper;
+use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
@@ -13,10 +13,11 @@ try {
     // protected
     $protectedRoutes = require '../routes/protected.php';
 
-//    if (!in_array($uri, $publicRoutes) && !Oauth2Helper::isAuthenticated()) {
-//        header('Location: /oauth/login.php');
-//        exit();
-//    }
+    if (in_array($uri, $protectedRoutes)) {
+        if (empty($_ENV['HUBSPOT_API_KEY']) && !OAuth2Helper::isAuthenticated()) {
+            header('Location: /oauth/login.php');
+        }
+    }
 
     if ('/' === $uri) {
         header('Location: /companies/list.php');
