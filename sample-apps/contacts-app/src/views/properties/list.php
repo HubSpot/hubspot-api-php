@@ -1,5 +1,15 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
+<pre>
+// src/actions/properties/list.php
+$hubSpot
+    ->crm()
+    ->properties()
+    ->coreApi()
+    ->getAll(ObjectType::CONTACTS)
+    ->getResults();
+</pre>
+
 <table class="properties-list">
     <thead>
     <tr>

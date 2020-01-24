@@ -5,6 +5,7 @@ use Helpers\OAuth2Helper;
 include_once '../../vendor/autoload.php';
 
 session_start();
+
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 if ('/' === $uri) {
