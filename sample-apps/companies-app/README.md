@@ -1,20 +1,20 @@
 # HubSpot-php sample Companies app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs/methods/companies/companies-overview) endpoints and their related actions.
+This is a sample app for the [hubspot-php SDK](../../lib/). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs/methods/companies/companies-overview) endpoints and their related actions.
 
-Please see the documentation on [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
 ### HubSpot Public API links used in this application
 
-  - [Get all companies](https://developers.hubspot.com/docs/methods/companies/get-all-companies)
-  - [Create a Company](https://developers.hubspot.com/docs/methods/companies/create_company)
-  - [Update a Company](https://developers.hubspot.com/docs/methods/companies/update_company)
-  - [Search for companies by domain](https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain)
+  - [Get all companies](https://developers.hubspot.com/docs-beta/crm/companies) `GET/crm/v3/objects/companies`
+  - [Create a Company](https://developers.hubspot.com/docs-beta/crm/companies)  `POST/crm/v3/objects/companies`
+  - [Update a Company](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Search for companies by domain](https://developers.hubspot.com/docs-beta/crm/companies)
   - [Get a Company](https://developers.hubspot.com/docs/methods/companies/get_company)
-  - [Get Contacts at a Company](https://developers.hubspot.com/docs/methods/companies/get_company_contacts)
-  - [Get all Company Properties](https://developers.hubspot.com/docs/methods/companies/get_company_properties)
-  - [Associate CRM objects](https://developers.hubspot.com/docs/methods/crm-associations/associate-objects)
-  - [Delete an association](https://developers.hubspot.com/docs/methods/crm-associations/delete-association)
+  - [Get Contacts at a Company](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Get all Company Properties](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Associate CRM objects](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Delete an association](https://developers.hubspot.com/docs-beta/crm/companies)
 
 ### Setup App
 
