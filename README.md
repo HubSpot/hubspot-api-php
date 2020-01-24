@@ -1,7 +1,7 @@
 # php-hubspot-3
 PHP API vNext SDK(Client) files and sample apps
 
-Sample Applications can be found in [sample-apps][sample-apps/] folder
+Sample Applications can be found in [sample-apps](sample-apps/) folder
 
 ## Quickstart
 
