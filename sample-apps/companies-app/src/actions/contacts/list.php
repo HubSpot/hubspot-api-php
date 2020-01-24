@@ -1,10 +1,10 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\Filter;
 use HubSpot\Client\Crm\Contacts\Model\FilterGroup;
 use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
-use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
 use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
@@ -17,13 +17,13 @@ if (isset($_GET['companyId'])) {
 
 if (isset($_GET['search'])) {
     $filter = new Filter();
-    
+
     $filter->setPropertyName('email');
     $filter->setOperator('EQ');
     $filter->setValue($_GET['search']);
 
-   $filterGroup = new FilterGroup();
-   $filterGroup->setFilters([$filter]);
+    $filterGroup = new FilterGroup();
+    $filterGroup->setFilters([$filter]);
 
     $searchRequest = new PublicObjectSearchRequest();
     $searchRequest->setFilterGroups([$filterGroup]);
@@ -35,11 +35,12 @@ if (isset($_GET['search'])) {
 
 $associatedContacts = [];
 if (count($contactList->getResults()) > 0) {
-    $inputId = new BatchInputPublicObjectId(['inputs' => [$companyId]]); 
-    
+    $inputId = new BatchInputPublicObjectId(['inputs' => [$companyId]]);
+
     $associationResponse = $hubSpot->crm()->associations()->batchApi()
         ->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
-        ->getResults();
+        ->getResults()
+    ;
     if (!empty($associationResponse)) {
         $associatedContacts = array_map(function ($contact) {
             return $contact->getId();

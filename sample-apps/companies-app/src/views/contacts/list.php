@@ -6,8 +6,8 @@
 include __DIR__.'/../_partials/header.php'; ?>
 <form>
     <fieldset>
-        <input type="text" name="search" placeholder="Search.." id="search" value="<?php 
-        if (isset($_GET['search'])) { 
+        <input type="text" name="search" placeholder="Search.." id="search" value="<?php
+        if (isset($_GET['search'])) {
             echo htmlentities($_GET['search']);
         }?>">
         <input type="hidden" name="companyId" value="<?php echo htmlentities($companyId); ?>">

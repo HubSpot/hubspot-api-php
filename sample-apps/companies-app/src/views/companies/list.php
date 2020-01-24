@@ -43,7 +43,7 @@ $hubSpot->crm()->objects()->basicApi()->archive(ObjectType::COMPANIES, $_GET['id
   <tbody>
 
   <?php foreach ($companiesPage->getResults() as $company) {
-    // @var \HubSpot\Client\Crm\Objects\Model\SimplePublicObject $company ?>
+    // @var \HubSpot\Client\Crm\Objects\Model\SimplePublicObject $company?>
     <tr>
       <td><a href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
       <td><?php echo htmlentities($company->getProperties()['name']); ?></td>
