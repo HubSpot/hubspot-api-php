@@ -1,5 +1,17 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
+<pre>
+// src/actions/properties/show.php
+$hubSpot
+    ->crm()
+    ->properties()
+    ->coreApi()
+    ->getByName(
+        ObjectType::CONTACTS,
+        $_GET['name']
+    );
+</pre>
+
 <form method="post">
     <fieldset>
         <label for="name">Name</label>
