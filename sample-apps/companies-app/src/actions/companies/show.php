@@ -1,10 +1,11 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
 use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
 use HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId;
 use HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput;
+use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use HubSpot\Crm\ObjectType;
 
 if (!isset($_GET['id'])) {
@@ -32,24 +33,29 @@ $company = $hubSpot->crm()->companies()->basicApi()->getById($id);
 /**
  * @var CollectionResponseSimplePublicObjectId
  */
-
-$inputId = new BatchInputPublicObjectId(['inputs' => [$id]]);
-$contactsIds = $hubSpot->crm()->associations()->batchApi()->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
-        ->getResults();
+$inputId = new BatchInputPublicObjectId();
+$inputId->setInputs([$id]);
+$contactsIds = $hubSpot->crm()->associations()->batchApi()
+    ->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
+    ->getResults();
 
 $contacts = [];
 if (!empty($contactsIds)) {
-    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId(['inputs' => array_map(function($id) {
-            return $id->getId();
+    $contactsIdsRequest = new BatchReadInputSimplePublicObjectId();
+    $contactsIdsRequest->setInputs(
+        array_map(function ($objectId) {
+            return (new SimplePublicObjectId())->setId($objectId->getId());
         }, $contactsIds[0]->getTo())
-    ]);
+    );
 
-    $contactsList = $hubSpot->crm()->contacts()->batchApi()->readBatch(false, $contactsIdsRequest);
+    $contactsList = $hubSpot->crm()->contacts()->batchApi()
+        ->readBatch(false, $contactsIdsRequest);
 
     $contacts = array_map(function ($contact) {
         return [
             'id' => $contact->getId(),
-            'name' => $contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname'],
+            'name' => $contact->getProperties()['firstname']
+                .' '.$contact->getProperties()['lastname'],
         ];
     }, (array) $contactsList->getResults());
 }

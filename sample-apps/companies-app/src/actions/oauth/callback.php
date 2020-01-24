@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\OAuth2Helper;
 use HubSpot\Factory;
 
