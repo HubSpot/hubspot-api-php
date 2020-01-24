@@ -1,5 +1,29 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
+<?php if (!empty($search)) { ?>
+<pre>
+// src/actions/contacts/search.php
+$filter = new Filter();
+$filter
+    ->setOperator('EQ')
+    ->setPropertyName('email')
+    ->setValue($search)
+;
+$filterGroup = new FilterGroup();
+$filterGroup->setFilters([$filter]);
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setFilterGroups([$filterGroup]);
+
+$hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+</pre>
+<?php } ?>
+
+<form id="search-form" action="/contacts/search.php">
+    <fieldset>
+        <input type="text" name="search" placeholder="Search by email.." id="search" value="<?php echo $search; ?>">
+    </fieldset>
+</form>
+
 <table class="contacts-list">
   <thead>
   <tr>
@@ -10,11 +34,19 @@
   </thead>
   <tbody>
 
-  <form id="search-form" action="/contacts/search.php">
-      <fieldset>
-          <input type="text" name="search" placeholder="Search by email.." id="search" value="<?php echo $search; ?>">
-      </fieldset>
-  </form>
+<?php if (empty($search)) { ?>
+<pre>
+// src/actions/contacts/list.php
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setSorts([
+    [
+        'propertyName' => 'createdate',
+        'direction' => 'DESCENDING',
+    ],
+]);
+$hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+</pre>
+<?php } ?>
 
   <?php foreach ($contactsPage->getResults() as $contact) { ?>
     <tr>

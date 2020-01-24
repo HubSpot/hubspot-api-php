@@ -9,6 +9,18 @@
     }
 ?>
 
+<pre>
+// src/actions/contacts/show.php
+$hubSpot
+    ->crm()
+    ->contacts()
+    ->basicApi()
+    ->getById(
+        $contactId,
+        'firstname,lastname'
+    );
+</pre>
+
 <div class="row">
     <div class="column">
         <h3>Properties</h3>

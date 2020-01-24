@@ -1,5 +1,17 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
+<pre>
+// src/actions/contacts/list.php
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setSorts([
+    [
+        'propertyName' => 'createdate',
+        'direction' => 'DESCENDING',
+    ],
+]);
+$hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+</pre>
+
 <table class="contacts-list">
   <thead>
   <tr>
