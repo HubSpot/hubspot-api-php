@@ -1,21 +1,24 @@
 # HubSpot-php sample Companies app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php). Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs/methods/companies/companies-overview) endpoints and their related actions.
+This is a sample app for the [hubspot-php SDK](../../../../).
+Currently, this app focuses on demonstrating the functionality of [Companies API](https://developers.hubspot.com/docs-beta/crm/companies) endpoints and their related actions.
 
-Please see the documentation on [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
 ### HubSpot Public API links used in this application
 
-  - [Get all companies](https://developers.hubspot.com/docs/methods/companies/get-all-companies)
-  - [Create a Company](https://developers.hubspot.com/docs/methods/companies/create_company)
-  - [Update a Company](https://developers.hubspot.com/docs/methods/companies/update_company)
-  - [Search for companies by domain](https://developers.hubspot.com/docs/methods/companies/search_companies_by_domain)
-  - [Get a Company](https://developers.hubspot.com/docs/methods/companies/get_company)
-  - [Get Contacts at a Company](https://developers.hubspot.com/docs/methods/companies/get_company_contacts)
-  - [Get all Company Properties](https://developers.hubspot.com/docs/methods/companies/get_company_properties)
-  - [Associate CRM objects](https://developers.hubspot.com/docs/methods/crm-associations/associate-objects)
-  - [Delete an association](https://developers.hubspot.com/docs/methods/crm-associations/delete-association)
-
+  - [Create a company object](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Update a company](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Search for companies by domain](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Get companies](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Get all company properties](https://developers.hubspot.com/docs-beta/crm/properties)
+  - [Get a company](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Get associated contacts at a company](https://developers.hubspot.com/docs-beta/crm/associations)
+  - [Read a batch of contact objects by ID](https://developers.hubspot.com/docs-beta/crm/companies)
+  - [Get all contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
+  - [Search for contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
+  - [Create associations between company and contacts](https://developers.hubspot.com/docs-beta/crm/associations)
+  - [Delete associations between company and contacts](https://developers.hubspot.com/docs-beta/crm/associations)
 ### Setup App
 
 Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
