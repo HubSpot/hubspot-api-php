@@ -3,11 +3,12 @@
         foreach ($contact->getProperties() as $propertyName => $propertyValue) { ?>
             <?php
                 $nameSanitized = htmlentities($propertyName);
+                $labelSanitized = htmlentities($propertiesLabels[$propertyName]);
                 $valueSanitized = htmlentities($propertyValue);
             ?>
-            <label for="<?php echo $nameSanitized; ?>"><?php echo ('hubspot_owner_id' === $nameSanitized) ? 'HubSpot Owner' : $nameSanitized; ?></label>
+            <label for="<?php echo $nameSanitized; ?>"><?php echo $labelSanitized; ?></label>
             <?php if ('hubspot_owner_id' === $nameSanitized) { ?>
-<pre> 
+<pre>
 // https://developers.hubspot.com/docs-beta/crm/owners 
 $owners = $hubSpot->crm()->owners()
                   ->defaultApi()
