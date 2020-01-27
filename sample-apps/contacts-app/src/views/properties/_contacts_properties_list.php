@@ -5,8 +5,15 @@
                 $nameSanitized = htmlentities($propertyName);
                 $valueSanitized = htmlentities($propertyValue);
             ?>
-            <label for="<?php echo $nameSanitized; ?>"><?php echo $nameSanitized; ?></label>
+            <label for="<?php echo $nameSanitized; ?>"><?php echo ('hubspot_owner_id' === $nameSanitized) ? 'HubSpot Owner' : $nameSanitized; ?></label>
             <?php if ('hubspot_owner_id' === $nameSanitized) { ?>
+<pre> 
+// https://developers.hubspot.com/docs-beta/crm/owners 
+$owners = $hubSpot->crm()->owners()
+                  ->defaultApi()
+                  ->getPage()
+                  ->getResults()
+</pre>
                 <select name="<?php echo $nameSanitized; ?>" id="<?php echo $nameSanitized; ?>">
                     <option value="">Not assigned</option>
                     <?php foreach ($owners as $owner) { ?>
