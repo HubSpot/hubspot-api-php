@@ -13,7 +13,7 @@ if (isset($_POST['name'])) {
     $company->setProperties($_POST);
     $response = $hubSpot->crm()->companies()->basicApi()->create($company);
 
-    header('Location: /companies/show.php?id='.$response->getId().'created=1');
+    header('Location: /companies/show.php?id='.$response->getId().'&created=1');
     exit();
 }
 
