@@ -27,9 +27,13 @@ if (isset($_POST['email'])) {
 
 $properties = $hubSpot->crm()->properties()->coreApi()->getAll(ObjectType::CONTACTS)->getResults();
 $propertiesToDisplay = ['hubspot_owner_id'];
+$propertiesLabels = [
+    'hubspot_owner_id' => 'Contact Owner',
+];
 foreach ($properties as $property) {
     if ('string' === $property->getType() && false === $property->getModificationMetadata()->getReadOnlyValue()) {
         $propertiesToDisplay[] = $property->getName();
+        $propertiesLabels[$property->getName()] = $property->getLabel();
     }
 }
 

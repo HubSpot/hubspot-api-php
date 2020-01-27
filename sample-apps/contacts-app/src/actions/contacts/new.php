@@ -21,4 +21,9 @@ $contact->setProperties([
     'email' => null,
 ]);
 
+$propertiesLabels = [
+    'email' => 'Email',
+];
+$create = true;
+
 include __DIR__.'/../../views/contacts/show.php';
