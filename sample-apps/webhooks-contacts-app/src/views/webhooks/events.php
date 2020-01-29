@@ -15,7 +15,7 @@
     <?php foreach ($contacts as $contact) { ?>
         <tr>
             <td><?php echo htmlentities($contact['id']); ?></a></td>
-            <td><?php echo htmlentities($contact['properties']->firstname->value).' '.htmlentities($contact['properties']->lastname->value); ?></td>
+            <td><?php echo htmlentities($contact['name']); ?></td>
             <td>
                 <?php foreach ($contact['events'] as $event) { ?>
                     <span class="event <?php echo htmlentities($event['event_type']); ?>"><?php echo htmlentities($event['event_type']); ?><?php

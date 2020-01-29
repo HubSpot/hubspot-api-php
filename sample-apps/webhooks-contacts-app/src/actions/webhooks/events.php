@@ -3,14 +3,10 @@
 use Components\Paginator;
 use Helpers\HubspotClientHelper;
 use Repositories\EventsRepository;
+use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 
-$hubSpot = HubspotClientHelper::createFactory();
-
-$paginator = new Paginator(EventsRepository::getEventsCount(), '/webhooks/events.php');
-
-$contactsIds = EventsRepository::findLastModifiedObjectsIds($paginator->getFrom(), $paginator->getPerPage());
-
-function format_event($event)
+function formatEvent($event)
 {
     // "contact.creation" => "creation"
     $event['event_type'] = explode('.', $event['event_type'])[1];
@@ -18,17 +14,39 @@ function format_event($event)
     return $event;
 }
 
-$contacts = [];
-foreach ($contactsIds as $contactsId) {
-    $contact = [
-        'id' => $contactsId,
-        'events' => array_map('format_event', EventsRepository::findEventTypesByObjectId($contactsId)),
-    ];
-    $response = $hubSpot->contacts()->getById($contactsId);
-    if (HubspotClientHelper::isResponseSuccessful($response)) {
-        $contact['properties'] = $response->getData()->properties;
-    }
-    $contacts[] = $contact;
-}
+$hubSpot = HubspotClientHelper::createFactory();
+$paginator = new Paginator(EventsRepository::getEventsCount(), '/webhooks/events.php');
+$contactsIds = EventsRepository::findLastModifiedObjectsIds($paginator->getFrom(), $paginator->getPerPage());
 
+if (count($contactsIds) > 0) {
+    $request = new BatchReadInputSimplePublicObjectId();
+    $request->setInputs(array_map(function($id) {
+        $contactId = new SimplePublicObjectId();
+        $contactId->setId($id);
+        return $contactId;
+    }, $contactsIds));
+
+    $response = $hubSpot->crm()->contacts()->batchApi()->readBatch(false, $request);
+
+    $names = [];
+    foreach ($response->getResults() as $object) {
+        $names[$object->getId()] = trim($object->getProperties()['firstname']
+            .' '.$object->getProperties()['lastname']);
+    }
+    
+    $contacts = array_map(function ($id) use($names) {
+        $name = null;
+        if (array_key_exists($id, $names)) {
+            $name = $names[$id];
+        }
+
+        return [
+            'id' => $id,
+            'events' => array_map('formatEvent', EventsRepository::findEventTypesByObjectId($id)),
+            'name' => $name,
+        ];
+    }, $contactsIds);
+} else {
+    $contacts = [];
+}
 include __DIR__.'/../../views/webhooks/events.php';
