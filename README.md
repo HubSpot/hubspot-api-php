@@ -1,5 +1,5 @@
 # hubspot-api-php
-PHP [HubSpot API](https://developers.hubspot.com/docs-beta/overview) vNext SDK(Client) files and sample apps
+PHP [HubSpot API](https://developers.hubspot.com/docs-beta/overview) v3  SDK(Client) files and sample apps
 
 Sample Applications can be found in [sample-apps](sample-apps/) folder
 
