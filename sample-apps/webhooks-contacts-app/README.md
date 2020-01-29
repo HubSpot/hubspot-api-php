@@ -1,30 +1,35 @@
 # HubSpot-php sample Webhooks app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/hubspot/hubspot-php). 
-Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview), contact creation/deletion in particular.
+This is a sample app for the [hubspot-php SDK](../../../../).
+Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs-beta/crm/extensions), contact creation/deletion in particular.
 
 Please note that the Webhooks events are not sent in chronological order with respect to the creation time. Events might be sent in large numbers, for example when the user imports large number of contacts or deletes a large list of contacts.
-The application demonstrates the use of Queues (Kafka in case of this application - see [KafkaHelper.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Helpers/KafkaHelper.php)) to process webhooks events.
+The application demonstrates the use of Queues (Kafka in case of this application - see KafkaHelper.php) to process webhooks events.
 Common webhook processing practice consists of few steps:
-1. Handle methods receive the request sent by the webook and immediately place payload on the queue [handle.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/actions/webhooks/handle.php)
-2. Message consumer instance(s) is running in a separate process, typically on multiple nodes in a cloud, such as AWS [consumer.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/console/webhooks/consumer.php)
+1. Handle methods receive the request sent by the webook and immediately place payload on the queue handle.php
+2. Message consumer instance(s) is running in a separate process, typically on multiple nodes in a cloud, such as AWS сonsumer.php
 3. Consumer stores webhook events in the database potentially calling an API to get full record of the object that triggered the event
-   - This application uses MySQL, the methods working with the database can be seen in [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php)
-4. Other services/objects fetch the events data from the database sorted by timestamp of the event [EventsRepository.php](https://git.hubteam.com/HubSpot/hubspot-integration-samples-php/blob/master/webhooks-contacts-app/src/Repositories/EventsRepository.php#L38)
+   - This application uses MySQL, the methods working with the database can be seen in EventsRepository.php
+4. Other services/objects fetch the events data from the database sorted by timestamp of the event EventsRepository.php
 
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
+### HubSpot Public API links used in this application
+
+  - [Read a batch of contact objects by ID](https://developers.hubspot.com/docs-beta/crm/contacts)
 ### Note on the Data Base
 This application uses MySQL database to store the events coming from Webhooks. There is a single events table:
 ```
 create table if not exists events
 (
-    id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    event_type  VARCHAR(255),
-    object_id   int        default null,
-    event_id    int        default null,
-    occurred_at bigint     default null,
-    shown       tinyint(1) default 0,
-    created_at  datetime   default CURRENT_TIMESTAMP
+    id              INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    event_type      VARCHAR(255),
+    object_id       int             default null,
+    event_id        bigint          default null,
+    occurred_at     bigint          default null,
+    propertyName    varchar(255)    default null,
+    propertyValue   varchar(255)    default null,
+    created_at      datetime        default CURRENT_TIMESTAMP
 );
 ```
 Please note that event_id sent by HubSpot needs to be stored as int
