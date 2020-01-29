@@ -1,7 +1,7 @@
 <?php
 
 use Helpers\KafkaHelper;
-use SevenShores\Hubspot\Utils\Webhooks;
+use HubSpot\Utils\Webhooks;
 
 $requestBody = file_get_contents('php://input');
 

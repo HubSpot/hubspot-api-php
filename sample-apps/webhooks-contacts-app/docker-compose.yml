@@ -36,7 +36,9 @@ services:
       DB_NAME: events
       DB_USERNAME: events
       DB_PASSWORD: events
-    build: .
+    build:
+      dockerfile: ./sample-apps/webhooks-contacts-app/Dockerfile
+      context: ../../
     depends_on:
       - kafka
       - db

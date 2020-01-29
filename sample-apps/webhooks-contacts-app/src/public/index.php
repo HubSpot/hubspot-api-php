@@ -17,7 +17,7 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /companies/events.php');
+        header('Location: /webhooks/events.php');
         exit();
     }
     

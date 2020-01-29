@@ -16,11 +16,11 @@ ADD ./composer.json /sdk
 ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
-ADD ./sample-apps/companies-app/composer.json /app
+ADD ./sample-apps/webhooks-contacts-app/composer.json /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
 
 RUN apt-get install -y supervisor
-COPY docker/supervisor/processes.conf /etc/supervisor/conf.d/apache.conf
+COPY ./sample-apps/webhooks-contacts-app/docker/supervisor/processes.conf /etc/supervisor/conf.d/apache.conf
 CMD ["/usr/bin/supervisord"]
