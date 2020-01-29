@@ -11,3 +11,5 @@ services:
       - 8999:80
     volumes:
       - ./src:/app/src
+      - ./codeception.yml:/app/codeception.yml
+      - ./tests:/app/tests
