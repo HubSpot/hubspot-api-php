@@ -1,7 +1,7 @@
 <?php
 
-use Helpers\OAuth2Helper;
 use Helpers\DBClientHelper;
+use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
@@ -10,7 +10,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
     DBClientHelper::runMigrations();
-    
+
     // allowed for anonymous
     $publicRoutes = require '../routes/public.php';
     // protected
@@ -20,7 +20,7 @@ try {
         header('Location: /webhooks/events.php');
         exit();
     }
-    
+
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');

@@ -2,9 +2,9 @@
 
 use Components\Paginator;
 use Helpers\HubspotClientHelper;
-use Repositories\EventsRepository;
 use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
+use Repositories\EventsRepository;
 
 function formatEvent($event)
 {
@@ -20,9 +20,10 @@ $contactsIds = EventsRepository::findLastModifiedObjectsIds($paginator->getFrom(
 
 if (count($contactsIds) > 0) {
     $request = new BatchReadInputSimplePublicObjectId();
-    $request->setInputs(array_map(function($id) {
+    $request->setInputs(array_map(function ($id) {
         $contactId = new SimplePublicObjectId();
         $contactId->setId($id);
+
         return $contactId;
     }, $contactsIds));
 
@@ -33,8 +34,8 @@ if (count($contactsIds) > 0) {
         $names[$object->getId()] = trim($object->getProperties()['firstname']
             .' '.$object->getProperties()['lastname']);
     }
-    
-    $contacts = array_map(function ($id) use($names) {
+
+    $contacts = array_map(function ($id) use ($names) {
         $name = null;
         if (array_key_exists($id, $names)) {
             $name = $names[$id];
