@@ -3,7 +3,7 @@
 use Helpers\OAuth2Helper;
 use HubSpot\Factory;
 
-// https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens
+// https://developers.hubspot.com/docs-beta/working-with-oauth
 $tokens = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
     'authorization_code',
     $_GET['code'],
