@@ -7,7 +7,7 @@ class AuthorizationCest
         $I->amOnPage('/');
         $I->click('#oauthPage');
         $I->waitForElement('#OAuthBtn');
-        
+
         $I->click('#OAuthBtn');
         $I->waitForElement('#loginBtn');
 
@@ -18,7 +18,7 @@ class AuthorizationCest
         $element = 'td>a[href*="'.$_ENV['HUBSPOT_PORTAL_ID'].'"]';
         $I->waitForElement($element);
         $I->click($element);
-        
+
         $I->waitForElement('#companiesList');
     }
 }

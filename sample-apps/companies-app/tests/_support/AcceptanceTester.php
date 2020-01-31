@@ -1,7 +1,7 @@
 <?php
 
 use Facebook\WebDriver\WebDriverKeys;
-        
+
 /**
  * Inherited Methods.
  *
@@ -21,13 +21,13 @@ use Facebook\WebDriver\WebDriverKeys;
 class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
-    
+
     public function findCompany($domain)
     {
         $this->amOnPage('/');
         $this->fillField(['name' => 'search'], $domain);
         $this->pressKey('#search', WebDriverKeys::ENTER);
-        
+
         $this->waitForElement('#companiesList');
         $this->see($domain, 'td');
     }
