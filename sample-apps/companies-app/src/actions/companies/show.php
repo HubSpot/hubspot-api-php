@@ -37,7 +37,8 @@ $inputId = new BatchInputPublicObjectId();
 $inputId->setInputs([$id]);
 $contactsIds = $hubSpot->crm()->associations()->batchApi()
     ->readBatch(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
-    ->getResults();
+    ->getResults()
+;
 
 $contacts = [];
 if (!empty($contactsIds)) {
@@ -49,7 +50,8 @@ if (!empty($contactsIds)) {
     );
 
     $contactsList = $hubSpot->crm()->contacts()->batchApi()
-        ->readBatch(false, $contactsIdsRequest);
+        ->readBatch(false, $contactsIdsRequest)
+    ;
 
     $contacts = array_map(function ($contact) {
         return [

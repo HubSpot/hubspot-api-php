@@ -14,5 +14,9 @@
         "psr-4": {
             "": "src/"
         }
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.0",
+        "codeception/module-webdriver": "^1.0"
     }
 }

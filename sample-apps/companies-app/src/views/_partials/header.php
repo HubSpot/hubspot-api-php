@@ -20,7 +20,7 @@
           <a class="navigation-link" href="/companies/list.php">Companies</a>
         </li>
         <li class="navigation-item">
-          <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
+          <a id='oauthPage' class="navigation-link" href="/oauth/login.php">OAuth2</a>
         </li>
       </ul>
     </div>

@@ -54,12 +54,12 @@ $hubSpot->crm()->companies()->basicApi()
 </pre>
 
                 <?php } ?>
-                <input class="button-primary" type="submit" value="Save">
+                <input id="save" class="button-primary" type="submit" value="Save">
             </fieldset>
         </form>
 
     </div>
-
+<?php if (isset($id)) { ?>
     <div class="column">
             <h3>Contacts</h3>
             <?php
@@ -102,9 +102,10 @@ $hubSpot->crm()->associations()->batchApi()
             </table>
             <?php } ?>
             <a href="/contacts/list.php?companyId=<?php echo htmlentities($id); ?>">
-                <input class="button-primary" type="button" value="Manage Contacts">
+                <input id="manageContacts" class="button-primary" type="button" value="Manage Contacts">
             </a>
     </div>
+<?php } ?>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>
