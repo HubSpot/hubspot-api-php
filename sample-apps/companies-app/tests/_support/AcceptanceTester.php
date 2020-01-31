@@ -1,5 +1,7 @@
 <?php
 
+use Facebook\WebDriver\WebDriverKeys;
+        
 /**
  * Inherited Methods.
  *
@@ -19,6 +21,14 @@
 class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
-
-    // Define custom actions here
+    
+    public function findCompany($domain)
+    {
+        $this->amOnPage('/');
+        $this->fillField(['name' => 'search'], $domain);
+        $this->pressKey('#search', WebDriverKeys::ENTER);
+        
+        $this->waitForElement('#companiesList');
+        $this->see($domain, 'td');
+    }
 }

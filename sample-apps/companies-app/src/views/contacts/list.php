@@ -24,7 +24,7 @@ $hubSpot->crm()->associations()->batchApi()
 </pre>
 <?php if (count($contactList->getResults()) > 0) { ?>
 <form method="post" action="/contacts/manage.php?companyId=<?php echo $companyId; ?>">
-    <table>
+    <table id="contactsList">
       <thead>
       <tr>
         <th>ID</th>
