@@ -30,9 +30,11 @@ if (count($contactsIds) > 0) {
     $response = $hubSpot->crm()->contacts()->batchApi()->readBatch(false, $request);
 
     $names = [];
-    foreach ($response->getResults() as $object) {
-        $names[$object->getId()] = trim($object->getProperties()['firstname']
-            .' '.$object->getProperties()['lastname']);
+    if (!empty($response->getResults())) {
+        foreach ($response->getResults() as $object) {
+            $names[$object->getId()] = trim($object->getProperties()['firstname']
+                .' '.$object->getProperties()['lastname']);
+        }
     }
 
     $contacts = array_map(function ($id) use ($names) {
