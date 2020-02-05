@@ -17,6 +17,21 @@ $hubSpot = \HubSpot\Factory::createWithApiKey('api-key');
 $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
 ```
 
+#### also you can pass custum client and config to Factory:
+
+```php
+$handlerStack = \GuzzleHttp\HandlerStack::create();
+$handlerStack->push(\HubSpot\RetryMiddleware::getInternalError());
+$handlerStack->push(\HubSpot\RetryMiddleware::getRateLimit());
+
+$client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
+
+$config = new \HubSpot\Config();
+$config->setApiKey($apiKey);
+
+$hubSpot = \HubSpot\Factory::create($client, $config);
+```
+
 #### Get contacts page:
 
 ```php

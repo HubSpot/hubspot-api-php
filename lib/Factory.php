@@ -21,19 +21,19 @@ class Factory
         return new Discovery($client ?: new Client(), $config ?: new Config());
     }
 
-    public static function createWithApiKey($apiKey): Discovery
+    public static function createWithApiKey(string $apiKey, ClientInterface $client = null): Discovery
     {
         $config = new Config();
         $config->setApiKey($apiKey);
 
-        return static::create(null, $config);
+        return static::create($client, $config);
     }
 
-    public static function createWithAccessToken($accessToken): Discovery
+    public static function createWithAccessToken(string $accessToken, ClientInterface $client = null): Discovery
     {
         $config = new Config();
         $config->setAccessToken($accessToken);
 
-        return static::create(null, $config);
+        return static::create($client, $config);
     }
 }
