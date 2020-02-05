@@ -21,8 +21,8 @@ $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
 
 ```php
 $handlerStack = \GuzzleHttp\HandlerStack::create();
-$handlerStack->push(\HubSpot\RetryMiddleware::getInternalError());
-$handlerStack->push(\HubSpot\RetryMiddleware::getRateLimit());
+$handlerStack->push(\HubSpot\RetryMiddlewareFactory::createInternalErrorMiddleware());
+$handlerStack->push(\HubSpot\RetryMiddlewareFactory::createRateLimitMiddleware());
 
 $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
 

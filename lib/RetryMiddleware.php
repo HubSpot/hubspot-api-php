@@ -7,19 +7,19 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Exception\RequestException;
 
-class RetryMiddleware {
+class RetryMiddlewareFactory {
     
-    public static function getInternalError(int $secondsDelay = 10, int $maxRetries = 5)
+    public static function createInternalErrorMiddleware(int $secondsDelay = 10, int $maxRetries = 5)
     {
-        return static::getByCode(500, $secondsDelay, $maxRetries);
+        return static::createMiddlewareByHttpCode(500, $secondsDelay, $maxRetries);
     }
     
-    public static function getRateLimit(int $secondsDelay = 10, int $maxRetries = 5)
+    public static function createRateLimitMiddleware(int $secondsDelay = 10, int $maxRetries = 5)
     {
-        return static::getByCode(429, $secondsDelay, $maxRetries);
+        return static::createMiddlewareByHttpCode(429, $secondsDelay, $maxRetries);
     }
     
-    public static function getByCode(int $code, int $secondsDelay = 10, int $maxRetries = 5)
+    public static function createMiddlewareByHttpCode(int $code, int $secondsDelay = 10, int $maxRetries = 5)
     {
         return Middleware::retry(static::getRetryFunction($code, $maxRetries), static::getDelayFunction($secondsDelay));
     }
