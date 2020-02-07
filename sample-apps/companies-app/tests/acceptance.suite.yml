@@ -5,6 +5,11 @@
 # If you need both WebDriver and PHPBrowser tests - create a separate suite.
 
 actor: AcceptanceTester
+extensions:
+    enabled:
+        - Codeception\Extension\RunProcess:
+            0: /usr/bin/chromedriver --whitelisted-ips= --url-base=/wd/hub
+            sleep: 5
 modules:
     enabled:
         - WebDriver:
