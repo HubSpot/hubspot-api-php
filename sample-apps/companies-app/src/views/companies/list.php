@@ -1,6 +1,24 @@
-<?php include __DIR__.'/../_partials/header.php'; ?>
+<?php 
+include __DIR__.'/../_partials/header.php';
 
+if (isset($_GET['search'])) { ?>
+<pre>
+// src/actions/companies/search.php
+$filter = new Filter();
 
+$filter->setPropertyName('domain');
+$filter->setOperator('EQ');
+$filter->setValue($_GET['search']);
+
+$filterGroup = new FilterGroup();
+$filterGroup->setFilters([$filter]);
+
+$searchRequest = new PublicObjectSearchRequest();
+$searchRequest->setFilterGroups([$filterGroup]);
+
+$companiesPage = $hubSpot->crm()->companies()->searchApi()->doSearch($searchRequest);
+</pre>
+<?php } ?>
 
 <form action="/companies/search.php">
     <fieldset>
