@@ -2,7 +2,6 @@
 
 use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject;
 use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
-use HubSpot\Crm\ObjectType;
 
 function get_contacts_for_export($maxPages = 10)
 {

@@ -1,6 +1,7 @@
-<?php include __DIR__.'/../_partials/header.php'; ?>
+<?php
+include __DIR__.'/../_partials/header.php';
 
-<?php if (isset($_GET['search'])) { ?>
+if (isset($_GET['search'])) { ?>
 <pre>
 // src/actions/companies/search.php
 $filter = new Filter();
@@ -35,7 +36,7 @@ $hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
 </pre>
 <?php } ?>
 
-<table>
+<table id="companiesList">
   <thead>
   <tr>
     <th>ID</th>
@@ -48,10 +49,10 @@ $hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
 
   <?php foreach ($companiesPage->getResults() as $company) { ?>
     <tr>
-      <td><a href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
-      <td><?php echo htmlentities($company->getProperties()['name']); ?></td>
-      <td><?php echo htmlentities($company->getProperties()['domain']); ?></td>
-      <td><a class="button" href="/companies/delete.php?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
+        <td><a class="showCompany" href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
+        <td><?php echo htmlentities($company->getProperties()['name']); ?></td>
+        <td><?php echo htmlentities($company->getProperties()['domain']); ?></td>
+        <td><a class="deleteBtn button" href="/companies/delete.php?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
     </tr>
   <?php
 }?>
@@ -59,7 +60,7 @@ $hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
 </table>
 
 <div>
-    <a href="/companies/new.php">
+    <a id="newCompany" href="/companies/new.php">
         <input class="button-primary" type="button" value="New Company">
     </a>
 </div>
