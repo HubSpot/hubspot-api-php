@@ -1,4 +1,4 @@
-<?php 
+<?php
 include __DIR__.'/../_partials/header.php';
 
 if (isset($_GET['search'])) { ?>
