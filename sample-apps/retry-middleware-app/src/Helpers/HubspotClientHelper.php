@@ -4,9 +4,9 @@ namespace Helpers;
 
 use HubSpot\Discovery\Discovery;
 use HubSpot\Factory;
-use HubSpot\RetryMiddlewareFactory;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client;
+use HubSpot\RetryMiddlewareFactory;
 
 class HubspotClientHelper
 {

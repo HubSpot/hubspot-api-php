@@ -3,12 +3,12 @@
 require_once '/app/vendor/autoload.php';
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Contacts\BatchInputSimplePublicObjectId;
-use HubSpot\Client\Crm\Contacts\BatchInputSimplePublicObjectInput;
-use HubSpot\Client\Crm\Contacts\SimplePublicObjectId;
-use HubSpot\Client\Crm\Contacts\SimplePublicObjectInput;
+use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInput;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
 
-//$hubspot = HubspotClientHelper::createFactory();
+$hubspot = HubspotClientHelper::createFactory();
 
 $emails = [];
 for ($i = 0; $i < 3; $i++) {
@@ -24,6 +24,17 @@ for ($i = 0; $i < 3; $i++) {
 $emailsList = new BatchInputSimplePublicObjectInput();
 $emailsList->setInputs($emails);
 
-//$response = $hubspot->crm()->contacts()->batchApi()->createBatch($emailsList);
+$response = $hubspot->crm()->contacts()->batchApi()->createBatch($emailsList);
 
-//var_dump($response); exit();
+$ids = array_map(function ($contact) {
+        $id = new SimplePublicObjectId();
+        $id->setId($contact->getId());
+        
+        return $id;
+    }, $response->getResults());
+    
+$idsList = new BatchInputSimplePublicObjectId();
+$idsList->setInputs($ids);
+
+$hubspot->crm()->contacts()->batchApi()->archiveBatch($idsList);
+
