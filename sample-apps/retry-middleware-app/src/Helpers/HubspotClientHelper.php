@@ -4,20 +4,18 @@ namespace Helpers;
 
 use HubSpot\Discovery\Discovery;
 use HubSpot\Factory;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Client;
-use HubSpot\RetryMiddlewareFactory;
 
 class HubspotClientHelper
 {
     public static function createFactory(): Discovery
     {
-        $apiKey = $_ENV['HUBSPOT_API_KEY'];
-        if (!empty($apiKey)) {
-            return Factory::createWithApiKey($apiKey, static::getClient());
+        if (OAuth2Helper::isAuthenticated()) {
+            $accessToken = Oauth2Helper::refreshAndGetAccessToken();
+
+            return Factory::createWithAccessToken($accessToken, static::getClient());
         }
 
-        throw new \Exception('Please specify API key or authorize via OAuth');
+        throw new \Exception('Please authorize via OAuth');
     }
     
     public static function getClient() : Client

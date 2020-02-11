@@ -8,9 +8,14 @@
     "require": {
         "hubspot/hubspot-api-php": "*",
         "ext-curl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "byjg/migration": "4.0.*"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/functions.php"
+        ],
         "psr-4": {
             "": "src/"
         }

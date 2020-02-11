@@ -1,13 +1,12 @@
-# HubSpot-php sample app
+# HubSpot PHP Retry Middleware Sample App
 
-This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs-beta/crm/contacts) endpoints and their related actions.
+This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the retry middleware mechanism. It will be useful for you if you often reach rate limit (429 http error).
 
 Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
 ### HubSpot Public API endpoints used in this application
 
   - [Contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
-  - [Owners](https://developers.hubspot.com/docs-beta/crm/owners)
   - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
 
 ### Setup App
