@@ -8,6 +8,10 @@ use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInput;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
+use Helpers\DBClientHelper;
+
+
+DBClientHelper::runMigrations();
 
 if (!OAuth2Helper::isAuthenticated()) {
     echo "In order to continue please go to http://localhost:8999 and authorize via OAuth.\n";
