@@ -4,6 +4,13 @@ namespace Helpers;
 
 use HubSpot\Discovery\Discovery;
 use HubSpot\Factory;
+use HubSpot\RetryMiddlewareFactory;
+use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\HandlerStack;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class HubspotClientHelper
 {
@@ -22,6 +29,16 @@ class HubspotClientHelper
     {
         $handlerStack = HandlerStack::create();
         $handlerStack->push(RetryMiddlewareFactory::createRateLimitMiddleware());
+        
+        $logger = new Logger('log');
+        $logger->pushHandler(new StreamHandler("php://stdout"));
+
+        $handlerStack->push(
+            Middleware::log(
+                $logger,
+                new MessageFormatter(MessageFormatter::SHORT)
+            )
+        );
         
         return new Client(['handler' => $handlerStack]);
     }

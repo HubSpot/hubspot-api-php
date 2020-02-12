@@ -7,7 +7,12 @@ RUN a2enmod rewrite
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN apt update && apt install -y git zip
+RUN apt update && apt install -y git zip unzip wget
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 RUN mkdir -p /sdk
 ADD ./codegen /sdk/codegen
@@ -20,3 +25,7 @@ ADD ./sample-apps/retry-middleware-app/composer.json /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
+
+RUN apt-get install -y supervisor
+
+COPY ./sample-apps/retry-middleware-app/docker/supervisor/processes.conf /etc/supervisor/conf.d/processes.conf

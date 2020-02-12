@@ -37,18 +37,20 @@ for ($i = 0; $i < 3; $i++) {
 $emailsList = new BatchInputSimplePublicObjectInput();
 $emailsList->setInputs($emails);
 
-
-$response = $hubspot->crm()->contacts()->batchApi()->createBatch($emailsList);
-
-$ids = array_map(function ($contact) {
-        $id = new SimplePublicObjectId();
-        $id->setId($contact->getId());
-        
-        return $id;
-    }, $response->getResults());
+while (true) {
+    echo "Create contacts\n";
+    $response = $hubspot->crm()->contacts()->batchApi()->createBatch($emailsList);
     
-$idsList = new BatchInputSimplePublicObjectId();
-$idsList->setInputs($ids);
+    $ids = array_map(function ($contact) {
+            $id = new SimplePublicObjectId();
+            $id->setId($contact->getId());
 
-$hubspot->crm()->contacts()->batchApi()->archiveBatch($idsList);
+            return $id;
+        }, $response->getResults());
 
+    $idsList = new BatchInputSimplePublicObjectId();
+    $idsList->setInputs($ids);
+    
+    echo "Delete contacts\n";
+    $hubspot->crm()->contacts()->batchApi()->archiveBatch($idsList);
+}
