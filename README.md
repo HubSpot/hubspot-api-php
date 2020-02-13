@@ -25,8 +25,8 @@ $client = new \GuzzleHttp\Client([...]);
 $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
-#### API Client has some Middleware for implementation of Rate and Concurrent Limiting.
-It provides you possibility to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
+#### API Client comes with Middleware for implementation of Rate and Concurrent Limiting.
+It provides an ability to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
 
 ```php
 $handlerStack = \GuzzleHttp\HandlerStack::create();
