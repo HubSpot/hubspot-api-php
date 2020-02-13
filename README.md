@@ -17,19 +17,34 @@ $hubSpot = \HubSpot\Factory::createWithApiKey('api-key');
 $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
 ```
 
-#### also you can pass custum client and config to Factory:
+#### also you can pass custom client to Factory:
+
+```php
+$client = new \GuzzleHttp\Client([...]);
+
+$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
+```
+
+#### API Client comes with Middleware for implementation of Rate and Concurrent Limiting.
+It provides an ability to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
 
 ```php
 $handlerStack = \GuzzleHttp\HandlerStack::create();
-$handlerStack->push(\HubSpot\RetryMiddlewareFactory::createInternalErrorMiddleware());
-$handlerStack->push(\HubSpot\RetryMiddlewareFactory::createRateLimitMiddleware());
+$handlerStack->push(
+    \HubSpot\RetryMiddlewareFactory::createRateLimitMiddleware(
+        \HubSpot\Delay::getConstantDelayFunction()
+    )
+);
+        
+$handlerStack->push(
+    \HubSpot\RetryMiddlewareFactory::createInternalErrorsMiddleware(
+        \HubSpot\Delay::getExponentialDelayFunction(2)
+    )
+);
 
 $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
 
-$config = new \HubSpot\Config();
-$config->setApiKey($apiKey);
-
-$hubSpot = \HubSpot\Factory::create($client, $config);
+$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
 #### Get contacts page:

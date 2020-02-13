@@ -29,14 +29,12 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
 
 ```bash
-docker-compose up --build web
+docker-compose up --build
 ```
-You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
-
-### Running tests
-
-Run tests with codecept
+You should now be able to navigate to [http://localhost:8999](http://localhost:8999). There are you have to authorize via OAuth there. Than you can to go to the terminal window and start the following command
 
 ```bash
-docker-compose run codecept run
+docker-compose exec web php /app/src/console/exemple.php
 ```
+
+Please note this app starts a few workers in order to reach rate limit. 
