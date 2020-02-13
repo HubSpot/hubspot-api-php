@@ -5,6 +5,7 @@ namespace Helpers;
 use HubSpot\Discovery\Discovery;
 use HubSpot\Factory;
 use HubSpot\RetryMiddlewareFactory;
+use HubSpot\Delay;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\MessageFormatter;
@@ -28,7 +29,17 @@ class HubspotClientHelper
     public static function getClient() : Client
     {
         $handlerStack = HandlerStack::create();
-        $handlerStack->push(RetryMiddlewareFactory::createRateLimitMiddleware());
+        $handlerStack->push(
+            RetryMiddlewareFactory::createRateLimitMiddleware(
+                Delay::getConstantDelayFunction()
+            )
+        );
+        
+        $handlerStack->push(
+            RetryMiddlewareFactory::createInternalErrorsMiddleware(
+                Delay::getExponentialDelayFunction(2)
+            )
+        );
         
         $logger = new Logger('log');
         $logger->pushHandler(new StreamHandler("php://stdout"));

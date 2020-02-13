@@ -9,45 +9,99 @@ use GuzzleHttp\Exception\RequestException;
 
 class RetryMiddlewareFactory {
     
-    public static function createInternalErrorMiddleware(int $secondsDelay = 10, int $maxRetries = 5)
+    public static function createInternalErrorsMiddleware(
+            callable $delayFunction = null,
+            int $maxRetries = 5
+        )
     {
-        return static::createMiddlewareByHttpCode(500, $secondsDelay, $maxRetries);
+        return static::createMiddlewareByHttpCodeRange(500, 504, $delayFunction, $maxRetries);
     }
     
-    public static function createRateLimitMiddleware(int $secondsDelay = 10, int $maxRetries = 5)
+    public static function createRateLimitMiddleware(
+            callable $delayFunction = null,
+            int $maxRetries = 5
+        )
     {
-        return static::createMiddlewareByHttpCode(429, $secondsDelay, $maxRetries);
+        return static::createMiddlewareByHttpCodes([429], $delayFunction, $maxRetries);
     }
     
-    public static function createMiddlewareByHttpCode(int $code, int $secondsDelay = 10, int $maxRetries = 5)
+    /**
+     * @param string $delayType Currently supports сonstant delay, exponential delay,
+     * linear delay or null
+     */
+    public static function createMiddlewareByHttpCodes(
+            array $codes,
+            callable $delayFunction,
+            int $maxRetries = 5
+        ) : callable
     {
-        return Middleware::retry(static::getRetryFunction($code, $maxRetries), static::getDelayFunction($secondsDelay));
+        return Middleware::retry(
+                static::getRetryFunction($codes, $maxRetries),
+                $delayFunction
+            );
     }
     
-    public static function getRetryFunction(int $code, int $maxRetries = 5)
+    /**
+     * @param string $delayType Currently supports сonstant delay, exponential delay,
+     * linear delay or null
+     */
+    public static function createMiddlewareByHttpCodeRange(
+            int $from,
+            int $to,
+            callable $delayFunction,
+            int $maxRetries = 5
+        ) : callable
+    {
+        return Middleware::retry(
+                static::getRetryFunctionByRange($from, $to, $maxRetries),
+                $delayFunction
+            );
+    }
+    
+    
+    public static function getRetryFunctionByRange(
+            int $from,
+            int $to,
+            int $maxRetries = 5
+        )
     {
         return function (
             $retries,
             Request $request,
             Response $response = null,
             RequestException $exception = null
-        ) use ($code, $maxRetries) {
+        ) use ($from, $to, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if(($response instanceof Response) && ($response->getStatusCode() == $code)) {
-                return true;
+            if($response instanceof Response) {
+                if (($response->getStatusCode() >= $from) && ($response->getStatusCode() <= $to)) {
+                    return true;
+                }
             }
 
             return false;
         };
     }
     
-    public static function getDelayFunction(int $secondsDelay)
+    public static function getRetryFunction(array $codes, int $maxRetries = 5)
     {
-        return function($retries) use ($secondsDelay) {
-            return 1000 * $secondsDelay;
+        return function (
+            $retries,
+            Request $request,
+            Response $response = null,
+            RequestException $exception = null
+        ) use ($codes, $maxRetries) {
+            if ($retries >= $maxRetries) {
+                return false;
+            }
+
+            if(($response instanceof Response) && in_array($response->getStatusCode(), $codes)) {
+                return true;
+            }
+
+            return false;
         };
     }
 }
