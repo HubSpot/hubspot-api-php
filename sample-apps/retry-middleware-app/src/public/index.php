@@ -20,7 +20,7 @@ try {
         header('Location: /readme.php');
         exit();
     }
-    
+
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');

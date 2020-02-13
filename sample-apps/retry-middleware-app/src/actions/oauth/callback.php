@@ -1,9 +1,9 @@
 <?php
 
 use Helpers\OAuth2Helper;
+use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use HubSpot\Factory;
 use Repositories\TokensRepository;
-use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 
 // https://developers.hubspot.com/docs-beta/working-with-oauth
 $token = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
