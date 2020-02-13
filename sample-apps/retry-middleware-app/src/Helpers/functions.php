@@ -1,8 +1,6 @@
 <?php
 
 /**
- * @param string $name
- *
  * @return null|mixed
  */
 function getEnvOrException(string $name)

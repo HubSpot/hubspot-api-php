@@ -11,7 +11,8 @@ class TokensRepository
     public static function getToken()
     {
         $query = DBClientHelper::getClient()
-            ->query('select * from tokens order by id desc limit 1');
+            ->query('select * from tokens order by id desc limit 1')
+        ;
 
         return $query->fetch(PDO::FETCH_ASSOC);
     }

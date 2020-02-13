@@ -2,16 +2,16 @@
 
 namespace Helpers;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
+use HubSpot\Delay;
 use HubSpot\Discovery\Discovery;
 use HubSpot\Factory;
 use HubSpot\RetryMiddlewareFactory;
-use HubSpot\Delay;
-use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\MessageFormatter;
-use GuzzleHttp\HandlerStack;
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 class HubspotClientHelper
 {
@@ -25,8 +25,8 @@ class HubspotClientHelper
 
         throw new \Exception('Please authorize via OAuth');
     }
-    
-    public static function getClient() : Client
+
+    public static function getClient(): Client
     {
         $handlerStack = HandlerStack::create();
         $handlerStack->push(
@@ -34,15 +34,15 @@ class HubspotClientHelper
                 Delay::getConstantDelayFunction()
             )
         );
-        
+
         $handlerStack->push(
             RetryMiddlewareFactory::createInternalErrorsMiddleware(
                 Delay::getExponentialDelayFunction(2)
             )
         );
-        
+
         $logger = new Logger('log');
-        $logger->pushHandler(new StreamHandler("php://stdout"));
+        $logger->pushHandler(new StreamHandler('php://stdout'));
 
         $handlerStack->push(
             Middleware::log(
@@ -50,7 +50,7 @@ class HubspotClientHelper
                 new MessageFormatter(MessageFormatter::SHORT)
             )
         );
-        
+
         return new Client(['handler' => $handlerStack]);
     }
 }
