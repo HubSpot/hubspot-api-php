@@ -6,7 +6,8 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN apt update && apt install -y git
+RUN apt-get update && apt-get install -y git libzip-dev zip
+RUN docker-php-ext-install zip
 
 RUN mkdir -p /sdk
 ADD ./codegen /sdk/codegen
