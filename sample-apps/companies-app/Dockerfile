@@ -6,7 +6,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN apt update && apt install -y git zip unzip git libzip-dev libicu-dev g++ wget gnupg2
+RUN apt-get update && apt-get install -y git zip unzip git libzip-dev libicu-dev g++ wget gnupg2
 
 RUN docker-php-ext-configure zip
 RUN docker-php-ext-install zip
@@ -24,7 +24,7 @@ WORKDIR /app
 RUN /usr/local/bin/composer install
 
 RUN mkdir -p /usr/share/man/man1
-RUN apt install -y default-jdk
+RUN apt-get install -y default-jdk
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list

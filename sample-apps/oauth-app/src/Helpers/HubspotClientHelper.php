@@ -10,7 +10,7 @@ class HubspotClientHelper
     public static function createFactory(): Discovery
     {
         if (OAuth2Helper::isAuthenticated()) {
-            $accessToken = Oauth2Helper::refreshAndGetAccessToken();
+            $accessToken = OAuth2Helper::refreshAndGetAccessToken();
 
             return Factory::createWithAccessToken($accessToken);
         }

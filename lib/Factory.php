@@ -13,8 +13,6 @@ class Factory
 {
     /**
      * @param array $config
-     *
-     * @return Discovery
      */
     public static function create(ClientInterface $client = null, Config $config = null): Discovery
     {
