@@ -6,7 +6,7 @@
         }
     ],
     "require": {
-        "hubspot/hubspot-api-php": "*",
+        "hubspot/api-client": "*",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-pdo": "*",
