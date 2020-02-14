@@ -5,7 +5,8 @@ use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
-session_start();
+getEnvOrException('PROCESS_COUNT');
+
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {

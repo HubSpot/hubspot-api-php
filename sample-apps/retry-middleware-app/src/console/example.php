@@ -10,6 +10,8 @@ use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInput;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
 
+getEnvOrException('PROCESS_COUNT');
+
 DBClientHelper::runMigrations();
 
 if (!OAuth2Helper::isAuthenticated()) {
