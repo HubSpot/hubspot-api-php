@@ -32,8 +32,8 @@ The best way to run this project (with the least configuration), is using docker
 docker-compose up --build
 ```
 You should now be able to navigate to [http://localhost:8999](http://localhost:8999). 
-Firstly you will need to authorize via OAuth there. Than you can to go to the terminal window and start
-the following command in the application root
+Firstly you will need to authorize via OAuth there.
+Than you can to go to the terminal window and start the following command in the application root
 
 ```bash
 docker-compose exec web php /app/src/console/example.php
