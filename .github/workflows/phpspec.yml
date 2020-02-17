@@ -1,0 +1,12 @@
+name: phpspec
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - run: composer install
+      - run: vendor/bin/phpspec run
