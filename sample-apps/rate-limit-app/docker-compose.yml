@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  web:
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    build:
+      dockerfile: ./sample-apps/retry-middleware-app/Dockerfile
+      context: ../../
+    ports:
+      - 8999:80
+  redis:
+    image: redis:latest
+    volumes:
+      - ./db/redis:/data
+    
