@@ -7,12 +7,14 @@ services:
     depends_on:
       - redis
     build:
-      dockerfile: ./sample-apps/retry-middleware-app/Dockerfile
+      dockerfile: ./sample-apps/rate-limit-app/Dockerfile
       context: ../../
     ports:
       - 8999:80
+    volumes:
+      - ./src:/app/src
+      - ./vendor:/app/vendor
   redis:
     image: redis:latest
     volumes:
       - ./db/redis:/data
-    

@@ -19,6 +19,7 @@ if ($token instanceof TokenResponseIF) {
         'refresh_token' => $token->getRefreshToken(),
         'access_token' => $token->getAccessToken(),
         'expires_in' => $token->getExpiresIn(),
+        'expires_at' => OAuth2Helper::getExpiresAt($token->getExpiresIn()),
     ]);
 }
 

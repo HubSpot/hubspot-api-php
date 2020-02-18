@@ -1,16 +1,12 @@
 <?php
 
-use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
-getEnvOrException('PROCESS_COUNT');
-
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
-    DBClientHelper::runMigrations();
 
     // allowed for anonymous
     $publicRoutes = require '../routes/public.php';
