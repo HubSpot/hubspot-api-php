@@ -10,7 +10,8 @@ use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInput;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
 
-getEnvOrException('PROCESS_COUNT');
+//checking PROCESS_COUNT if it isn't set up it throw exception
+checkEnvParam('PROCESS_COUNT');
 
 DBClientHelper::runMigrations();
 

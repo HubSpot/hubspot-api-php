@@ -5,7 +5,8 @@ use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
 
-getEnvOrException('PROCESS_COUNT');
+//checking PROCESS_COUNT if it isn't set up it throw exception
+checkEnvParam('PROCESS_COUNT');
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
