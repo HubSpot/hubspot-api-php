@@ -26,7 +26,8 @@ if (!OAuth2Helper::isAuthenticated()) {
 }
 
 echo "Start\n";
-
+//Pay attention on HubspotClientHelper.
+//It generate custom client with reties middlewares and pass this client to HubSpot Factory. 
 $hubspot = HubspotClientHelper::createFactory();
 
 $emails = [];

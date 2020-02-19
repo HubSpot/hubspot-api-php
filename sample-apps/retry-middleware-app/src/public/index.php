@@ -3,7 +3,7 @@
 use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
 
-include_once '../../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 
 //checking PROCESS_COUNT if it isn't set up it throw exception
 checkEnvParam('PROCESS_COUNT');
