@@ -11,3 +11,10 @@ function getEnvOrException(string $name)
 
     return $_ENV[$name];
 }
+
+function checkEnvParam(string $name)
+{
+    if (empty($_ENV[$name])) {
+        throw new \Exception("Please specify {$name} in .env");
+    }
+}

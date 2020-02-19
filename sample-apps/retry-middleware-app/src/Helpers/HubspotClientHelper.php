@@ -26,6 +26,10 @@ class HubspotClientHelper
         throw new \Exception('Please authorize via OAuth');
     }
 
+    /**
+     * This function creates Client and suts up Retries Middlewares in it.
+     * @return Client
+     */
     public static function getClient(): Client
     {
         $handlerStack = HandlerStack::create();

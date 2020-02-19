@@ -10,7 +10,8 @@ use HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInput;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
 
-getEnvOrException('PROCESS_COUNT');
+//checking PROCESS_COUNT if it isn't set up it throw exception
+checkEnvParam('PROCESS_COUNT');
 
 DBClientHelper::runMigrations();
 
@@ -25,7 +26,8 @@ if (!OAuth2Helper::isAuthenticated()) {
 }
 
 echo "Start\n";
-
+//Pay attention on HubspotClientHelper.
+//It generate custom client with reties middlewares and pass this client to HubSpot Factory. 
 $hubspot = HubspotClientHelper::createFactory();
 
 $emails = [];
