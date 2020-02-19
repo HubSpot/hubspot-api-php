@@ -13,6 +13,10 @@ Please see the documentation on [Creating an app in HubSpot](https://developers.
 
 Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 
+ - The code in all folders except for console is to provide OAuth UI for the useer. 
+ - [example.php](src/console/example.php) creates batches of requests to Create/Delete Contacts API to cause exceeding of therate limit 
+  - PROCESS_COUNT (set in .env file) controls the number of processes launched by docker running example.php - usually it takes about 10 to reach ratee limit
+
 ### Configure
 
 1. Copy .env.template to .env
