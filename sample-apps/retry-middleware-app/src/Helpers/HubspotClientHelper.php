@@ -28,6 +28,7 @@ class HubspotClientHelper
 
     /**
      * This function creates Client and suts up Retries Middlewares in it.
+     * 
      * @return Client
      */
     public static function getClient(): Client

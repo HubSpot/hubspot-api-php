@@ -42,4 +42,4 @@ docker-compose exec web php /app/src/console/example.php
 Please note this app starts a few workers in order to reach rate limit.
 
 Pay attention on [HubspotClientHelper](src/Helpers/HubspotClientHelper.php).
-It generates custom client with reties middlewares and pass this client to HubSpot Factory. 
+It generates a custom client with reties middlewares and pass this client to HubSpot Factory. 
