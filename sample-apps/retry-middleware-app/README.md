@@ -39,4 +39,7 @@ Than you can to go to the terminal window and start the following command in the
 docker-compose exec web php /app/src/console/example.php
 ```
 
-Please note this app starts a few workers in order to reach rate limit. 
+Please note this app starts a few workers in order to reach rate limit.
+
+Pay attention on [HubspotClientHelper](src/Helpers/HubspotClientHelper.php).
+It generates a custom client with reties middlewares and pass this client to HubSpot Factory. 
