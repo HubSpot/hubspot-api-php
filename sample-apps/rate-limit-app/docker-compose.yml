@@ -4,6 +4,7 @@ services:
   web:
     env_file:
       - .env
+    command: dockerize -wait-retry-interval 3s -timeout 30s -wait tcp://redis:6379 /usr/bin/supervisord
     depends_on:
       - redis
     build:
@@ -11,6 +12,9 @@ services:
       context: ../../
     ports:
       - 8999:80
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
     volumes:
       - ./src:/app/src
       - ./vendor:/app/vendor
