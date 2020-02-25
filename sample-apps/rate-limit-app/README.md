@@ -39,4 +39,4 @@ Than you can to go to the terminal window and start the following command in the
 docker-compose exec web php /app/src/console/example.php
 ```
 
-Please note this app starts a few workers in order to reach rate limit's faster.
+Please note this app starts a few workers in order to reach rate limit faster.
