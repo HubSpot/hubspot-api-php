@@ -14,7 +14,7 @@ if (isset($_POST['name'])) {
         $propertyUpdate
     );
 
-    header('Location: /properties/show.php?name='.$_POST['name']);
+    header('Location: /properties/list.php');
     exit();
 }
 

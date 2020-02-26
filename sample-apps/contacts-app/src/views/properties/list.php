@@ -29,7 +29,7 @@ $hubSpot
             <td><?php echo htmlentities($property->getLabel()); ?></td>
             <td><?php echo htmlentities($property->getDescription()); ?></td>
             <td><?php echo htmlentities($property->getType()); ?></td>
-            <td><?php if (!$property->mutableDefinitionNotDeletable && !$property->readOnlyDefinition) { ?>
+            <td><?php if ($property->getModificationMetadata()->getArchivable()) { ?>
                 <a id="remove-<?php echo htmlentities($property->name); ?>"
                    href="/properties/delete.php?name=<?php echo htmlentities($property->getName()); ?>">
                     <input type="button" value="Delete" title="Delete" class="button-primary"/>
