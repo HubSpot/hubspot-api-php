@@ -50,21 +50,44 @@ $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 #### Get contacts page:
 
 ```php
-$response = $hubSpot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS);
+$response = $hubSpot->crm()->contacts()->basicApi()->getPage();
 ```
 
 #### Search for a contact:
 
 ```php
-$searchRequest = new \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest();
-$searchRequest->setFilters([
-    [
-        'propertyName' => 'firstname',
-        'operator' => 'EQ',
-        'value' => 'Alice',
-    ],
-]);
-$response = $hubSpot->crm()->objects()->searchApi()->doSearch($searchRequest);
+$filter = new \HubSpot\Client\Crm\Contacts\Model\FilterFilter();
+$filter
+    ->setOperator('EQ')
+    ->setPropertyName('email')
+    ->setValue($search);
+
+$filterGroup = new \HubSpot\Client\Crm\Contacts\Model\FilterGroup();
+$filterGroup->setFilters([$filter]);
+
+$searchRequest = new \HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest();
+$searchRequest->setFilterGroups([$filterGroup]);
+
+// @var CollectionResponseWithTotalSimplePublicObject $contactsPage
+$contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+```
+
+#### Create a contact:
+
+```php
+$contactInput = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
+$contactInput->setProperties($_POST);
+
+$contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
+```
+
+#### Update a contact:
+
+```php
+$newProperties = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
+$newProperties->setProperties($_POST);
+
+$hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
 ```
 
 ## Contributing
