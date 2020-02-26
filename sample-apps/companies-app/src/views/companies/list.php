@@ -52,7 +52,7 @@ $hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
         <td><a class="showCompany" href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
         <td><?php echo htmlentities($company->getProperties()['name']); ?></td>
         <td><?php echo htmlentities($company->getProperties()['domain']); ?></td>
-        <td><a class="deleteBtn button" href="/companies/delete.php?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
+        <td><a class="button" href="/companies/delete.php?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
     </tr>
   <?php
 }?>

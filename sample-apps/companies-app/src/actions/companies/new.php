@@ -8,6 +8,7 @@ $company = new SimplePublicObjectInput([
         'domain' => null,
     ],
 ]);
+
 if (isset($_POST['name'])) {
     $hubSpot = \Helpers\HubspotClientHelper::createFactory();
     $company->setProperties($_POST);

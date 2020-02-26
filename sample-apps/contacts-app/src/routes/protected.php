@@ -4,6 +4,7 @@ return [
     '/contacts/list.php',
     '/contacts/new.php',
     '/contacts/show.php',
+    '/contacts/delete.php',
     '/contacts/search.php',
     '/contacts/export.php',
     '/properties/list.php',
