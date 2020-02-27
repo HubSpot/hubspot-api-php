@@ -9,7 +9,6 @@
         "hubspot/api-client": "*",
         "ext-curl": "*",
         "ext-json": "*",
-        "ext-pcntl": "*",
         "predis/predis": "^1.1"
     },
     "autoload": {

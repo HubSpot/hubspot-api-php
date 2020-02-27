@@ -21,11 +21,11 @@ ADD ./composer.json /sdk
 ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
-ADD ./sample-apps/retry-middleware-app/composer.json /app
+ADD ./sample-apps/rate-limit-app/composer.json /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
 
-#RUN apt-get install -y supervisor
+RUN apt-get install -y supervisor
 
-#COPY ./sample-apps/retry-middleware-app/docker/supervisor/processes.conf /etc/supervisor/conf.d/processes.conf
+COPY ./sample-apps/rate-limit-app/docker/supervisor/processes.conf /etc/supervisor/conf.d/processes.conf

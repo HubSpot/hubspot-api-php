@@ -1,6 +1,6 @@
-# HubSpot PHP Retry Middleware Sample App
+# HubSpot PHP Rate Limit Sample App
 
-This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the retry middleware mechanism. It will be useful for you if you often reach rate limit (429 http error).
+This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the rate limit mechanism. It will be useful for you if you often reach rate limit (429 http error).
 
 Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
@@ -39,4 +39,4 @@ Than you can to go to the terminal window and start the following command in the
 docker-compose exec web php /app/src/console/example.php
 ```
 
-Please note this app starts a few workers in order to reach rate limit. 
+Please note this app starts a few workers in order to reach rate limit faster.
