@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\LineItems\Api;
+namespace HubSpot\Client\Crm\Lineitems\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Crm\LineItems\ApiException;
-use HubSpot\Client\Crm\LineItems\Configuration;
-use HubSpot\Client\Crm\LineItems\HeaderSelector;
-use HubSpot\Client\Crm\LineItems\ObjectSerializer;
+use HubSpot\Client\Crm\Lineitems\ApiException;
+use HubSpot\Client\Crm\Lineitems\Configuration;
+use HubSpot\Client\Crm\Lineitems\HeaderSelector;
+use HubSpot\Client\Crm\Lineitems\ObjectSerializer;
 
 /**
  * AssociationsApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -124,7 +124,7 @@ class AssociationsApi
      * @param  string $associated_object_type associated_object_type (required)
      * @param  string $to_object_id to_object_id (required)
      *
-     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -142,7 +142,7 @@ class AssociationsApi
      * @param  string $associated_object_type (required)
      * @param  string $to_object_id (required)
      *
-     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -185,7 +185,7 @@ class AssociationsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\Error',
+                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -288,7 +288,7 @@ class AssociationsApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
+        $resourcePath = '/line_items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -403,9 +403,9 @@ class AssociationsApi
      * @param  string $associated_object_type associated_object_type (required)
      * @param  string $to_object_id to_object_id (required)
      *
-     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
+     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
      */
     public function createAssociation($line_item_id, $associated_object_type, $to_object_id)
     {
@@ -422,9 +422,9 @@ class AssociationsApi
      * @param  string $associated_object_type (required)
      * @param  string $to_object_id (required)
      *
-     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAssociationWithHttpInfo($line_item_id, $associated_object_type, $to_object_id)
     {
@@ -461,32 +461,32 @@ class AssociationsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -505,7 +505,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject',
+                        '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -513,7 +513,7 @@ class AssociationsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\Error',
+                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -559,7 +559,7 @@ class AssociationsApi
      */
     public function createAssociationAsyncWithHttpInfo($line_item_id, $associated_object_type, $to_object_id)
     {
-        $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
         $request = $this->createAssociationRequest($line_item_id, $associated_object_type, $to_object_id);
 
         return $this->client
@@ -627,7 +627,7 @@ class AssociationsApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
+        $resourcePath = '/line_items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -741,9 +741,9 @@ class AssociationsApi
      * @param  string $line_item_id line_item_id (required)
      * @param  string $associated_object_type associated_object_type (required)
      *
-     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId|\HubSpot\Client\Crm\LineItems\Model\Error
+     * @return \HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId|\HubSpot\Client\Crm\Lineitems\Model\Error
      */
     public function getAssociations($line_item_id, $associated_object_type)
     {
@@ -759,9 +759,9 @@ class AssociationsApi
      * @param  string $line_item_id (required)
      * @param  string $associated_object_type (required)
      *
-     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssociationsWithHttpInfo($line_item_id, $associated_object_type)
     {
@@ -798,32 +798,32 @@ class AssociationsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId';
+            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -842,7 +842,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId',
+                        '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -850,7 +850,7 @@ class AssociationsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\Error',
+                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -894,7 +894,7 @@ class AssociationsApi
      */
     public function getAssociationsAsyncWithHttpInfo($line_item_id, $associated_object_type)
     {
-        $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId';
+        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId';
         $request = $this->getAssociationsRequest($line_item_id, $associated_object_type);
 
         return $this->client
@@ -955,7 +955,7 @@ class AssociationsApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}/associations/{associatedObjectType}';
+        $resourcePath = '/line_items/{lineItemId}/associations/{associatedObjectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

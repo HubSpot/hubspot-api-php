@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\LineItems\Model;
+namespace HubSpot\Client\Crm\Lineitems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
+use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
 
 /**
  * CollectionResponseSimplePublicObjectId Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,8 +57,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[]',
-        'paging' => '\HubSpot\Client\Crm\LineItems\Model\Paging'
+        'results' => '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectId[]',
+        'paging' => '\HubSpot\Client\Crm\Lineitems\Model\Paging'
     ];
 
     /**
@@ -216,7 +216,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[]
+     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectId[]
      */
     public function getResults()
     {
@@ -226,7 +226,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[] $results results
+     * @param \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectId[] $results results
      *
      * @return $this
      */
@@ -240,7 +240,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     /**
      * Gets paging
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\Paging|null
+     * @return \HubSpot\Client\Crm\Lineitems\Model\Paging|null
      */
     public function getPaging()
     {
@@ -250,7 +250,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     /**
      * Sets paging
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\Paging|null $paging paging
+     * @param \HubSpot\Client\Crm\Lineitems\Model\Paging|null $paging paging
      *
      * @return $this
      */

@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\LineItems;
+namespace HubSpot\Client\Crm\Lineitems;
 
 use \Exception;
 
@@ -34,7 +34,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

@@ -61,9 +61,9 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
         'num_errors' => 'int',
         'errors' => '\HubSpot\Client\Crm\Properties\Model\Error[]',
         'status' => 'string',
-        'requested_at' => 'string',
-        'started_at' => 'string',
-        'completed_at' => 'string'
+        'requested_at' => '\DateTime',
+        'started_at' => '\DateTime',
+        'completed_at' => '\DateTime'
     ];
 
     /**
@@ -76,9 +76,9 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
         'num_errors' => null,
         'errors' => null,
         'status' => null,
-        'requested_at' => null,
-        'started_at' => null,
-        'completed_at' => null
+        'requested_at' => 'date-time',
+        'started_at' => 'date-time',
+        'completed_at' => 'date-time'
     ];
 
     /**
@@ -390,7 +390,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Gets requested_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getRequestedAt()
     {
@@ -400,7 +400,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Sets requested_at
      *
-     * @param string|null $requested_at requested_at
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return $this
      */
@@ -414,7 +414,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Gets started_at
      *
-     * @return string
+     * @return \DateTime
      */
     public function getStartedAt()
     {
@@ -424,7 +424,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Sets started_at
      *
-     * @param string $started_at started_at
+     * @param \DateTime $started_at started_at
      *
      * @return $this
      */
@@ -438,7 +438,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Gets completed_at
      *
-     * @return string
+     * @return \DateTime
      */
     public function getCompletedAt()
     {
@@ -448,7 +448,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Sets completed_at
      *
-     * @param string $completed_at completed_at
+     * @param \DateTime $completed_at completed_at
      *
      * @return $this
      */

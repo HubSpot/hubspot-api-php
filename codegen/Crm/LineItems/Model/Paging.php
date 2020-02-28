@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\LineItems\Model;
+namespace HubSpot\Client\Crm\Lineitems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
+use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
 
 /**
  * Paging Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,7 +57,7 @@ class Paging implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next' => '\HubSpot\Client\Crm\LineItems\Model\NextPage'
+        'next' => '\HubSpot\Client\Crm\Lineitems\Model\NextPage'
     ];
 
     /**
@@ -207,7 +207,7 @@ class Paging implements ModelInterface, ArrayAccess
     /**
      * Gets next
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\NextPage|null
+     * @return \HubSpot\Client\Crm\Lineitems\Model\NextPage|null
      */
     public function getNext()
     {
@@ -217,7 +217,7 @@ class Paging implements ModelInterface, ArrayAccess
     /**
      * Sets next
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\NextPage|null $next next
+     * @param \HubSpot\Client\Crm\Lineitems\Model\NextPage|null $next next
      *
      * @return $this
      */

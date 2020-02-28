@@ -59,9 +59,9 @@ class Pipeline implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'stages' => '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage[]',
-        'created_at' => 'string',
-        'archived_at' => 'string',
-        'updated_at' => 'string',
+        'created_at' => '\DateTime',
+        'archived_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'archived' => 'bool',
         'label' => 'string',
         'display_order' => 'int',
@@ -75,9 +75,9 @@ class Pipeline implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'stages' => null,
-        'created_at' => null,
-        'archived_at' => null,
-        'updated_at' => null,
+        'created_at' => 'date-time',
+        'archived_at' => 'date-time',
+        'updated_at' => 'date-time',
         'archived' => null,
         'label' => null,
         'display_order' => null,
@@ -295,7 +295,7 @@ class Pipeline implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -305,7 +305,7 @@ class Pipeline implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param string $created_at The date the pipeline was created. The default pipelines will have createdAt = 0.
+     * @param \DateTime $created_at The date the pipeline was created. The default pipelines will have createdAt = 0.
      *
      * @return $this
      */
@@ -319,7 +319,7 @@ class Pipeline implements ModelInterface, ArrayAccess
     /**
      * Gets archived_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getArchivedAt()
     {
@@ -329,7 +329,7 @@ class Pipeline implements ModelInterface, ArrayAccess
     /**
      * Sets archived_at
      *
-     * @param string|null $archived_at The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.
+     * @param \DateTime|null $archived_at The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.
      *
      * @return $this
      */
@@ -343,7 +343,7 @@ class Pipeline implements ModelInterface, ArrayAccess
     /**
      * Gets updated_at
      *
-     * @return string
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -353,7 +353,7 @@ class Pipeline implements ModelInterface, ArrayAccess
     /**
      * Sets updated_at
      *
-     * @param string $updated_at The date the pipeline was last updated.
+     * @param \DateTime $updated_at The date the pipeline was last updated.
      *
      * @return $this
      */

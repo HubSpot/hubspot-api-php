@@ -72,7 +72,7 @@ class Error implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'message' => null,
-        'correlation_id' => null,
+        'correlation_id' => 'uuid',
         'category' => null,
         'errors' => null,
         'context' => null,
@@ -225,10 +225,6 @@ class Error implements ModelInterface, ArrayAccess
         if ($this->container['correlation_id'] === null) {
             $invalidProperties[] = "'correlation_id' can't be null";
         }
-        if (!preg_match("/[a-zA-Z0-9]{32}/", $this->container['correlation_id'])) {
-            $invalidProperties[] = "invalid value for 'correlation_id', must be conform to the pattern /[a-zA-Z0-9]{32}/.";
-        }
-
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
         }
@@ -290,11 +286,6 @@ class Error implements ModelInterface, ArrayAccess
      */
     public function setCorrelationId($correlation_id)
     {
-
-        if ((!preg_match("/[a-zA-Z0-9]{32}/", $correlation_id))) {
-            throw new \InvalidArgumentException("invalid value for $correlation_id when calling Error., must conform to the pattern /[a-zA-Z0-9]{32}/.");
-        }
-
         $this->container['correlation_id'] = $correlation_id;
 
         return $this;

@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\LineItems\Model;
+namespace HubSpot\Client\Crm\Lineitems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
+use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
 
 /**
  * CollectionResponseWithTotalSimplePublicObject Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -58,8 +58,8 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'results' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[]',
-        'paging' => '\HubSpot\Client\Crm\LineItems\Model\Paging'
+        'results' => '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[]',
+        'paging' => '\HubSpot\Client\Crm\Lineitems\Model\Paging'
     ];
 
     /**
@@ -249,7 +249,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[]
+     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[]
      */
     public function getResults()
     {
@@ -259,7 +259,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[] $results results
      *
      * @return $this
      */
@@ -273,7 +273,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Gets paging
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\Paging|null
+     * @return \HubSpot\Client\Crm\Lineitems\Model\Paging|null
      */
     public function getPaging()
     {
@@ -283,7 +283,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Sets paging
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\Paging|null $paging paging
+     * @param \HubSpot\Client\Crm\Lineitems\Model\Paging|null $paging paging
      *
      * @return $this
      */

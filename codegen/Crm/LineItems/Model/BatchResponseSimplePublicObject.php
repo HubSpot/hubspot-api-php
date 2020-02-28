@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\LineItems\Model;
+namespace HubSpot\Client\Crm\Lineitems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
+use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
 
 /**
  * BatchResponseSimplePublicObject Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\LineItems
+ * @package  HubSpot\Client\Crm\Lineitems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,13 +57,13 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[]',
+        'results' => '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[]',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Crm\LineItems\Model\Error[]',
+        'errors' => '\HubSpot\Client\Crm\Lineitems\Model\Error[]',
         'status' => 'string',
-        'requested_at' => 'string',
-        'started_at' => 'string',
-        'completed_at' => 'string'
+        'requested_at' => '\DateTime',
+        'started_at' => '\DateTime',
+        'completed_at' => '\DateTime'
     ];
 
     /**
@@ -76,9 +76,9 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
         'num_errors' => null,
         'errors' => null,
         'status' => null,
-        'requested_at' => null,
-        'started_at' => null,
-        'completed_at' => null
+        'requested_at' => 'date-time',
+        'started_at' => 'date-time',
+        'completed_at' => 'date-time'
     ];
 
     /**
@@ -285,7 +285,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[]
+     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[]
      */
     public function getResults()
     {
@@ -295,7 +295,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[] $results results
      *
      * @return $this
      */
@@ -333,7 +333,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\Error[]
+     * @return \HubSpot\Client\Crm\Lineitems\Model\Error[]
      */
     public function getErrors()
     {
@@ -343,7 +343,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\Error[] $errors errors
+     * @param \HubSpot\Client\Crm\Lineitems\Model\Error[] $errors errors
      *
      * @return $this
      */
@@ -390,7 +390,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets requested_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getRequestedAt()
     {
@@ -400,7 +400,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets requested_at
      *
-     * @param string|null $requested_at requested_at
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return $this
      */
@@ -414,7 +414,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets started_at
      *
-     * @return string
+     * @return \DateTime
      */
     public function getStartedAt()
     {
@@ -424,7 +424,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets started_at
      *
-     * @param string $started_at started_at
+     * @param \DateTime $started_at started_at
      *
      * @return $this
      */
@@ -438,7 +438,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets completed_at
      *
-     * @return string
+     * @return \DateTime
      */
     public function getCompletedAt()
     {
@@ -448,7 +448,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets completed_at
      *
-     * @param string $completed_at completed_at
+     * @param \DateTime $completed_at completed_at
      *
      * @return $this
      */
