@@ -6,7 +6,7 @@ use HubSpot\Client\Crm\Quotes\Api\AssociationsApi;
 use HubSpot\Client\Crm\Quotes\Api\BasicApi;
 use HubSpot\Client\Crm\Quotes\Api\BatchApi;
 use HubSpot\Client\Crm\Quotes\Api\SearchApi;
-use HubSpot\Discovery\DiscoveryBase;
+use HubSpot\Discovery\Crm\ObjectDiscovery;
 
 /**
  * @method AssociationsApi associationsApi()
@@ -14,6 +14,6 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method BasicApi        basicApi()
  * @method SearchApi       searchApi()
  */
-class Discovery extends DiscoveryBase
+class Discovery extends ObjectDiscovery
 {
 }
