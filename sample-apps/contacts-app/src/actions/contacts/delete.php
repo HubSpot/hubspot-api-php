@@ -9,4 +9,3 @@ HubspotClientHelper::createFactory()->crm()->contacts()->basicApi()
     ->archive($_GET['id']);
 
 header('Location: /contacts/list.php');
-exit();

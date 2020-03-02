@@ -33,6 +33,10 @@ class DiscoveryBase
      */
     public function __call($name, $args)
     {
+        if (method_exists($this, $name)) {
+            return $this->$name(...$args);
+        }
+        
         $namespace = (new ReflectionClass(get_class($this)))->getNamespaceName();
 
         $intermediateDiscoveryClassName = $namespace.'\\'.ucfirst($name).'\\Discovery';
