@@ -30,6 +30,8 @@ $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 $contactsPage = $hubSpot->crm()->contacts()->basicApi()->getPage();
 // src/actions/contacts/delete.php
 $hubSpot->crm()->contacts()->basicApi()->archive($_GET['id']);
+// src/actions/contacts/export.php
+$hubSpot->crm()->contacts()->getAll();
 </pre>
 <?php } 
 if (count($contactsPage->getResults()) > 0) {
@@ -71,7 +73,7 @@ if (count($contactsPage->getResults()) > 0) {
     <input class="button-primary"  type="button" value="New Contact">
   </a>
     <a id="contacts-export" href="/contacts/export.php">
-        <input class="button-primary" type="button" value="Export To CSV">
+        <input class="button-primary" type="button" value="Export All Contacts To CSV">
     </a>
 </div>
 
