@@ -5,7 +5,7 @@ namespace HubSpot\Discovery\Crm;
 use HubSpot\Discovery\DiscoveryBase;
 
 class ObjectDiscovery extends DiscoveryBase
-{
+{   
     public function getAll($properties = null, $associations = null, $archived = false): array
     {
         $objects = [];
