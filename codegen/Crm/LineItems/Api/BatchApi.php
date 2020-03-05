@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Api;
+namespace HubSpot\Client\Crm\LineItems\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Crm\Lineitems\ApiException;
-use HubSpot\Client\Crm\Lineitems\Configuration;
-use HubSpot\Client\Crm\Lineitems\HeaderSelector;
-use HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use HubSpot\Client\Crm\LineItems\ApiException;
+use HubSpot\Client\Crm\LineItems\Configuration;
+use HubSpot\Client\Crm\LineItems\HeaderSelector;
+use HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * BatchApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -120,9 +120,9 @@ class BatchApi
      *
      * Archive a batch of line items by ID
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -136,9 +136,9 @@ class BatchApi
      *
      * Archive a batch of line items by ID
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -181,7 +181,7 @@ class BatchApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -196,7 +196,7 @@ class BatchApi
      *
      * Archive a batch of line items by ID
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -216,7 +216,7 @@ class BatchApi
      *
      * Archive a batch of line items by ID
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -252,7 +252,7 @@ class BatchApi
     /**
      * Create request for operation 'archiveBatch'
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -350,11 +350,11 @@ class BatchApi
      *
      * Create a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function createBatch($batch_input_simple_public_object_input = null)
     {
@@ -367,11 +367,11 @@ class BatchApi
      *
      * Create a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBatchWithHttpInfo($batch_input_simple_public_object_input = null)
     {
@@ -408,44 +408,44 @@ class BatchApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -464,7 +464,7 @@ class BatchApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -472,7 +472,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -480,7 +480,7 @@ class BatchApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -495,7 +495,7 @@ class BatchApi
      *
      * Create a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -515,14 +515,14 @@ class BatchApi
      *
      * Create a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createBatchAsyncWithHttpInfo($batch_input_simple_public_object_input = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject';
         $request = $this->createBatchRequest($batch_input_simple_public_object_input);
 
         return $this->client
@@ -562,7 +562,7 @@ class BatchApi
     /**
      * Create request for operation 'createBatch'
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -661,11 +661,11 @@ class BatchApi
      * Read a batch of line items by ID
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function readBatch($archived = false, $batch_read_input_simple_public_object_id = null)
     {
@@ -679,11 +679,11 @@ class BatchApi
      * Read a batch of line items by ID
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readBatchWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
     {
@@ -720,44 +720,44 @@ class BatchApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -776,7 +776,7 @@ class BatchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -784,7 +784,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -792,7 +792,7 @@ class BatchApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -808,7 +808,7 @@ class BatchApi
      * Read a batch of line items by ID
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -829,14 +829,14 @@ class BatchApi
      * Read a batch of line items by ID
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function readBatchAsyncWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject';
         $request = $this->readBatchRequest($archived, $batch_read_input_simple_public_object_id);
 
         return $this->client
@@ -877,7 +877,7 @@ class BatchApi
      * Create request for operation 'readBatch'
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -979,11 +979,11 @@ class BatchApi
      *
      * Update a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function updateBatch($batch_input_simple_public_object_batch_input = null)
     {
@@ -996,11 +996,11 @@ class BatchApi
      *
      * Update a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateBatchWithHttpInfo($batch_input_simple_public_object_batch_input = null)
     {
@@ -1037,44 +1037,44 @@ class BatchApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1093,7 +1093,7 @@ class BatchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1101,7 +1101,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1109,7 +1109,7 @@ class BatchApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1124,7 +1124,7 @@ class BatchApi
      *
      * Update a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1144,14 +1144,14 @@ class BatchApi
      *
      * Update a batch of line items
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateBatchAsyncWithHttpInfo($batch_input_simple_public_object_batch_input = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\BatchResponseSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject';
         $request = $this->updateBatchRequest($batch_input_simple_public_object_batch_input);
 
         return $this->client
@@ -1191,7 +1191,7 @@ class BatchApi
     /**
      * Create request for operation 'updateBatch'
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

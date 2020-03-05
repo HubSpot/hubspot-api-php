@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * BatchInputSimplePublicObjectInput Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,7 +57,7 @@ class BatchInputSimplePublicObjectInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput[]'
+        'inputs' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput[]'
     ];
 
     /**
@@ -210,7 +210,7 @@ class BatchInputSimplePublicObjectInput implements ModelInterface, ArrayAccess
     /**
      * Gets inputs
      *
-     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput[]
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput[]
      */
     public function getInputs()
     {
@@ -220,7 +220,7 @@ class BatchInputSimplePublicObjectInput implements ModelInterface, ArrayAccess
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput[] $inputs inputs
+     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput[] $inputs inputs
      *
      * @return $this
      */

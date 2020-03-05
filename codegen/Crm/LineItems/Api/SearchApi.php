@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Api;
+namespace HubSpot\Client\Crm\LineItems\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Crm\Lineitems\ApiException;
-use HubSpot\Client\Crm\Lineitems\Configuration;
-use HubSpot\Client\Crm\Lineitems\HeaderSelector;
-use HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use HubSpot\Client\Crm\LineItems\ApiException;
+use HubSpot\Client\Crm\LineItems\Configuration;
+use HubSpot\Client\Crm\LineItems\HeaderSelector;
+use HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * SearchApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -120,11 +120,11 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function doSearch($public_object_search_request = null)
     {
@@ -137,11 +137,11 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function doSearchWithHttpInfo($public_object_search_request = null)
     {
@@ -178,32 +178,32 @@ class SearchApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -222,7 +222,7 @@ class SearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,7 +230,7 @@ class SearchApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -245,7 +245,7 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -265,14 +265,14 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function doSearchAsyncWithHttpInfo($public_object_search_request = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseWithTotalSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseWithTotalSimplePublicObject';
         $request = $this->doSearchRequest($public_object_search_request);
 
         return $this->client
@@ -312,7 +312,7 @@ class SearchApi
     /**
      * Create request for operation 'doSearch'
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

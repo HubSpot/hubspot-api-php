@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems\Model
+ * @package  HubSpot\Client\Crm\LineItems\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,12 +27,12 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package HubSpot\Client\Crm\Lineitems\Model
+ * @package HubSpot\Client\Crm\LineItems\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

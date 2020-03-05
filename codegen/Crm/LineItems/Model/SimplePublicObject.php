@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * SimplePublicObject Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -61,7 +61,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => 'map[string,string]',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'associations' => 'map[string,\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId]',
+        'associations' => 'map[string,\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId]',
         'archived' => 'bool',
         'archived_at' => '\DateTime'
     ];
@@ -357,7 +357,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets associations
      *
-     * @return map[string,\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId]
+     * @return map[string,\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId]
      */
     public function getAssociations()
     {
@@ -367,7 +367,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets associations
      *
-     * @param map[string,\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObjectId] $associations associations
+     * @param map[string,\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObjectId] $associations associations
      *
      * @return $this
      */

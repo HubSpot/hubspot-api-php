@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * SimplePublicObjectInput Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

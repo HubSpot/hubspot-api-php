@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * PublicObjectSearchRequest Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,7 +57,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'filter_groups' => '\HubSpot\Client\Crm\Lineitems\Model\FilterGroup[]',
+        'filter_groups' => '\HubSpot\Client\Crm\LineItems\Model\FilterGroup[]',
         'sorts' => 'string[]',
         'query' => 'string',
         'properties' => 'string[]',
@@ -252,7 +252,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess
     /**
      * Gets filter_groups
      *
-     * @return \HubSpot\Client\Crm\Lineitems\Model\FilterGroup[]
+     * @return \HubSpot\Client\Crm\LineItems\Model\FilterGroup[]
      */
     public function getFilterGroups()
     {
@@ -262,7 +262,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess
     /**
      * Sets filter_groups
      *
-     * @param \HubSpot\Client\Crm\Lineitems\Model\FilterGroup[] $filter_groups filter_groups
+     * @param \HubSpot\Client\Crm\LineItems\Model\FilterGroup[] $filter_groups filter_groups
      *
      * @return $this
      */

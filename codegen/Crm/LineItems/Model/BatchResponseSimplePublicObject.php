@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * BatchResponseSimplePublicObject Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,9 +57,9 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[]',
+        'results' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[]',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Crm\Lineitems\Model\Error[]',
+        'errors' => '\HubSpot\Client\Crm\LineItems\Model\Error[]',
         'status' => 'string',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
@@ -285,7 +285,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[]
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[]
      */
     public function getResults()
     {
@@ -295,7 +295,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject[] $results results
      *
      * @return $this
      */
@@ -333,7 +333,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\Lineitems\Model\Error[]
+     * @return \HubSpot\Client\Crm\LineItems\Model\Error[]
      */
     public function getErrors()
     {
@@ -343,7 +343,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Lineitems\Model\Error[] $errors errors
+     * @param \HubSpot\Client\Crm\LineItems\Model\Error[] $errors errors
      *
      * @return $this
      */

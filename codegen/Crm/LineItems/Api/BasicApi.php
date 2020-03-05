@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Api;
+namespace HubSpot\Client\Crm\LineItems\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Crm\Lineitems\ApiException;
-use HubSpot\Client\Crm\Lineitems\Configuration;
-use HubSpot\Client\Crm\Lineitems\HeaderSelector;
-use HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use HubSpot\Client\Crm\LineItems\ApiException;
+use HubSpot\Client\Crm\LineItems\Configuration;
+use HubSpot\Client\Crm\LineItems\HeaderSelector;
+use HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * BasicApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -122,7 +122,7 @@ class BasicApi
      *
      * @param  string $line_item_id line_item_id (required)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -138,7 +138,7 @@ class BasicApi
      *
      * @param  string $line_item_id (required)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -181,7 +181,7 @@ class BasicApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -361,11 +361,11 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function create($simple_public_object_input = null)
     {
@@ -378,11 +378,11 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($simple_public_object_input = null)
     {
@@ -419,32 +419,32 @@ class BasicApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -463,7 +463,7 @@ class BasicApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -471,7 +471,7 @@ class BasicApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -486,7 +486,7 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -506,14 +506,14 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createAsyncWithHttpInfo($simple_public_object_input = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
         $request = $this->createRequest($simple_public_object_input);
 
         return $this->client
@@ -553,7 +553,7 @@ class BasicApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -656,9 +656,9 @@ class BasicApi
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function getById($line_item_id, $properties = null, $associations = null, $archived = false)
     {
@@ -676,9 +676,9 @@ class BasicApi
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getByIdWithHttpInfo($line_item_id, $properties = null, $associations = null, $archived = false)
     {
@@ -715,32 +715,32 @@ class BasicApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -759,7 +759,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -767,7 +767,7 @@ class BasicApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -815,7 +815,7 @@ class BasicApi
      */
     public function getByIdAsyncWithHttpInfo($line_item_id, $properties = null, $associations = null, $archived = false)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
         $request = $this->getByIdRequest($line_item_id, $properties, $associations, $archived);
 
         return $this->client
@@ -991,9 +991,9 @@ class BasicApi
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function getPage($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
@@ -1012,9 +1012,9 @@ class BasicApi
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPageWithHttpInfo($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
@@ -1051,32 +1051,32 @@ class BasicApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1095,7 +1095,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1103,7 +1103,7 @@ class BasicApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1153,7 +1153,7 @@ class BasicApi
      */
     public function getPageAsyncWithHttpInfo($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\CollectionResponseSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseSimplePublicObject';
         $request = $this->getPageRequest($limit, $after, $properties, $associations, $archived);
 
         return $this->client
@@ -1319,11 +1319,11 @@ class BasicApi
      * Update
      *
      * @param  string $line_item_id line_item_id (required)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
     public function update($line_item_id, $simple_public_object_input = null)
     {
@@ -1337,11 +1337,11 @@ class BasicApi
      * Update
      *
      * @param  string $line_item_id (required)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
-     * @throws \HubSpot\Client\Crm\Lineitems\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject|\HubSpot\Client\Crm\Lineitems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($line_item_id, $simple_public_object_input = null)
     {
@@ -1378,32 +1378,32 @@ class BasicApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Crm\Lineitems\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lineitems\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1422,7 +1422,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1430,7 +1430,7 @@ class BasicApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lineitems\Model\Error',
+                        '\HubSpot\Client\Crm\LineItems\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1446,7 +1446,7 @@ class BasicApi
      * Update
      *
      * @param  string $line_item_id (required)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1467,14 +1467,14 @@ class BasicApi
      * Update
      *
      * @param  string $line_item_id (required)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateAsyncWithHttpInfo($line_item_id, $simple_public_object_input = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Lineitems\Model\SimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
         $request = $this->updateRequest($line_item_id, $simple_public_object_input);
 
         return $this->client
@@ -1515,7 +1515,7 @@ class BasicApi
      * Create request for operation 'update'
      *
      * @param  string $line_item_id (required)
-     * @param  \HubSpot\Client\Crm\Lineitems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput $simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

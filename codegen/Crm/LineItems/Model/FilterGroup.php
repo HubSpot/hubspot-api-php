@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * FilterGroup Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -57,7 +57,7 @@ class FilterGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'filters' => '\HubSpot\Client\Crm\Lineitems\Model\Filter[]'
+        'filters' => '\HubSpot\Client\Crm\LineItems\Model\Filter[]'
     ];
 
     /**
@@ -210,7 +210,7 @@ class FilterGroup implements ModelInterface, ArrayAccess
     /**
      * Gets filters
      *
-     * @return \HubSpot\Client\Crm\Lineitems\Model\Filter[]
+     * @return \HubSpot\Client\Crm\LineItems\Model\Filter[]
      */
     public function getFilters()
     {
@@ -220,7 +220,7 @@ class FilterGroup implements ModelInterface, ArrayAccess
     /**
      * Sets filters
      *
-     * @param \HubSpot\Client\Crm\Lineitems\Model\Filter[] $filters filters
+     * @param \HubSpot\Client\Crm\LineItems\Model\Filter[] $filters filters
      *
      * @return $this
      */

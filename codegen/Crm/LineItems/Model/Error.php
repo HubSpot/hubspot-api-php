@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Lineitems\Model;
+namespace HubSpot\Client\Crm\LineItems\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Lineitems\ObjectSerializer;
+use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
  * Error Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Lineitems
+ * @package  HubSpot\Client\Crm\LineItems
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -60,7 +60,7 @@ class Error implements ModelInterface, ArrayAccess
         'message' => 'string',
         'correlation_id' => 'string',
         'category' => 'string',
-        'errors' => '\HubSpot\Client\Crm\Lineitems\Model\ErrorDetail[]',
+        'errors' => '\HubSpot\Client\Crm\LineItems\Model\ErrorDetail[]',
         'context' => 'map[string,string[]]',
         'links' => 'map[string,string]'
     ];
@@ -318,7 +318,7 @@ class Error implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\Lineitems\Model\ErrorDetail[]|null
+     * @return \HubSpot\Client\Crm\LineItems\Model\ErrorDetail[]|null
      */
     public function getErrors()
     {
@@ -328,7 +328,7 @@ class Error implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Lineitems\Model\ErrorDetail[]|null $errors further information about the error
+     * @param \HubSpot\Client\Crm\LineItems\Model\ErrorDetail[]|null $errors further information about the error
      *
      * @return $this
      */
