@@ -57,7 +57,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'string',
+        'sub_category' => 'object',
         'message' => 'string',
         'code' => 'string',
         'in' => 'string',
@@ -237,7 +237,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     /**
      * Gets sub_category
      *
-     * @return string|null
+     * @return object|null
      */
     public function getSubCategory()
     {
@@ -247,7 +247,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     /**
      * Sets sub_category
      *
-     * @param string|null $sub_category sub_category
+     * @param object|null $sub_category sub_category
      *
      * @return $this
      */

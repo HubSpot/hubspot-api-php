@@ -266,7 +266,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}';
+        $resourcePath = '/line_items/{lineItemId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -561,7 +561,7 @@ class BasicApi
     protected function createRequest($simple_public_object_input = null)
     {
 
-        $resourcePath = '/line items';
+        $resourcePath = '/line_items';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -872,7 +872,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}';
+        $resourcePath = '/line_items/{lineItemId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1205,7 +1205,7 @@ class BasicApi
     protected function getPageRequest($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
 
-        $resourcePath = '/line items';
+        $resourcePath = '/line_items';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1529,7 +1529,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}';
+        $resourcePath = '/line_items/{lineItemId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

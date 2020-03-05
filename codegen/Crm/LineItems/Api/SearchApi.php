@@ -320,7 +320,7 @@ class SearchApi
     protected function doSearchRequest($public_object_search_request = null)
     {
 
-        $resourcePath = '/line items/search';
+        $resourcePath = '/line_items/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

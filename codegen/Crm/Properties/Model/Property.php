@@ -57,9 +57,9 @@ class Property implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'updated_at' => 'string',
-        'created_at' => 'string',
-        'archived_at' => 'string',
+        'updated_at' => '\DateTime',
+        'created_at' => '\DateTime',
+        'archived_at' => '\DateTime',
         'name' => 'string',
         'label' => 'string',
         'type' => 'string',
@@ -88,9 +88,9 @@ class Property implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'updated_at' => null,
-        'created_at' => null,
-        'archived_at' => null,
+        'updated_at' => 'date-time',
+        'created_at' => 'date-time',
+        'archived_at' => 'date-time',
         'name' => null,
         'label' => null,
         'type' => null,
@@ -360,7 +360,7 @@ class Property implements ModelInterface, ArrayAccess
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -370,7 +370,7 @@ class Property implements ModelInterface, ArrayAccess
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at updated_at
+     * @param \DateTime|null $updated_at updated_at
      *
      * @return $this
      */
@@ -384,7 +384,7 @@ class Property implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -394,7 +394,7 @@ class Property implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param string|null $created_at created_at
+     * @param \DateTime|null $created_at created_at
      *
      * @return $this
      */
@@ -408,7 +408,7 @@ class Property implements ModelInterface, ArrayAccess
     /**
      * Gets archived_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getArchivedAt()
     {
@@ -418,7 +418,7 @@ class Property implements ModelInterface, ArrayAccess
     /**
      * Sets archived_at
      *
-     * @param string|null $archived_at When the property was archived.
+     * @param \DateTime|null $archived_at When the property was archived.
      *
      * @return $this
      */

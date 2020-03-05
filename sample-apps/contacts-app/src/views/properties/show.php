@@ -1,10 +1,15 @@
-<?php include __DIR__.'/../_partials/header.php';
+<?php
+
+use HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata;
+
+include __DIR__.'/../_partials/header.php';
 
 $readOnly = '';
-if ($property->getModificationMetadata()->getReadOnlyDefinition()) {
+if ($property->getModificationMetadata() instanceof PropertyModificationMetadata 
+        && $property->getModificationMetadata()->getReadOnlyDefinition()) {
     $readOnly = 'readonly';
 }
-if ($property->getModificationMetadata()->getReadOnlyDefinition()) {
+if (!empty($readOnly)) {
 ?>
 <h3>This property can't be modified.</h3>
 <?php } ?>

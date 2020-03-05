@@ -288,7 +288,7 @@ class AssociationsApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
+        $resourcePath = '/line_items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -627,7 +627,7 @@ class AssociationsApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
+        $resourcePath = '/line_items/{lineItemId}/associations/{associatedObjectType}/{toObjectId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -955,7 +955,7 @@ class AssociationsApi
             );
         }
 
-        $resourcePath = '/line items/{lineItemId}/associations/{associatedObjectType}';
+        $resourcePath = '/line_items/{lineItemId}/associations/{associatedObjectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

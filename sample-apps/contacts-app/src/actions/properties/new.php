@@ -22,7 +22,6 @@ if (isset($_POST['name'])) {
 $property = new Property();
 $property
     ->setType('string')
-    ->setGroupName('contactinformation')
-;
+    ->setGroupName('contactinformation');
 
 include __DIR__.'/../../views/properties/show.php';

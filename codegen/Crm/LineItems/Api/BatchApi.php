@@ -260,7 +260,7 @@ class BatchApi
     protected function archiveBatchRequest($batch_input_simple_public_object_id = null)
     {
 
-        $resourcePath = '/line items/batch/archive';
+        $resourcePath = '/line_items/batch/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -570,7 +570,7 @@ class BatchApi
     protected function createBatchRequest($batch_input_simple_public_object_input = null)
     {
 
-        $resourcePath = '/line items/batch/create';
+        $resourcePath = '/line_items/batch/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -885,7 +885,7 @@ class BatchApi
     protected function readBatchRequest($archived = false, $batch_read_input_simple_public_object_id = null)
     {
 
-        $resourcePath = '/line items/batch/read';
+        $resourcePath = '/line_items/batch/read';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1199,7 +1199,7 @@ class BatchApi
     protected function updateBatchRequest($batch_input_simple_public_object_batch_input = null)
     {
 
-        $resourcePath = '/line items/batch/update';
+        $resourcePath = '/line_items/batch/update';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
