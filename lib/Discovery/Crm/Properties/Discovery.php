@@ -8,8 +8,8 @@ use HubSpot\Client\Crm\Properties\Api\GroupsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BatchApi  batchApi()
- * @method CoreApi   coreApi()
+ * @method BatchApi batchApi()
+ * @method CoreApi  coreApi()
  * @method GroupsApi groupsApi
  */
 class Discovery extends DiscoveryBase

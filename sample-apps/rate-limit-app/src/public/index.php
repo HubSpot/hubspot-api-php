@@ -7,7 +7,6 @@ include_once '../../vendor/autoload.php';
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
-
     // allowed for anonymous
     $publicRoutes = require '../routes/public.php';
     // protected

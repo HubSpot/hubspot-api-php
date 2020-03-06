@@ -25,10 +25,10 @@ echo 'Start'.PHP_EOL;
 
 while (true) {
     //Pay attention on HubspotClientHelper.
-    //It generates a custom client with reties middlewares and pass this client to HubSpot Factory. 
+    //It generates a custom client with reties middlewares and pass this client to HubSpot Factory.
     $hubspot = HubspotClientHelper::createFactory();
-    
+
     echo PHP_EOL.'Request: Get contacts'.PHP_EOL;
-    
+
     $hubspot->crm()->contacts()->basicApi()->getPage();
 }
