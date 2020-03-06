@@ -26,6 +26,7 @@ echo 'Start'.PHP_EOL;
 while (true) {
     //Pay attention on HubspotClientHelper.
     //It generates a custom client with reties middlewares and pass this client to HubSpot Factory.
+    //Inside loop to avoid token expiration.
     $hubspot = HubspotClientHelper::createFactory();
 
     echo PHP_EOL.'Request: Get contacts'.PHP_EOL;
