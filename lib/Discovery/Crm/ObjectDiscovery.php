@@ -10,11 +10,12 @@ class ObjectDiscovery extends DiscoveryBase
     {
         $objects = [];
         $after = null;
-        
+
         do {
             $page = $this->basicApi()
-                    ->getPage(100, $after, $properties, $associations, $archived);
-            
+                ->getPage(100, $after, $properties, $associations, $archived)
+            ;
+
             $objects = array_merge($objects, $page->getResults());
 
             if (!is_null($page->getPaging())) {

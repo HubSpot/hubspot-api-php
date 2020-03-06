@@ -5,14 +5,15 @@ use HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata;
 include __DIR__.'/../_partials/header.php';
 
 $readOnly = '';
-if ($property->getModificationMetadata() instanceof PropertyModificationMetadata 
+if ($property->getModificationMetadata() instanceof PropertyModificationMetadata
         && $property->getModificationMetadata()->getReadOnlyDefinition()) {
     $readOnly = 'readonly';
 }
 if (!empty($readOnly)) {
-?>
+    ?>
 <h3>This property can't be modified.</h3>
-<?php } ?>
+<?php
+} ?>
 
 <pre>
 // src/actions/properties/show.php

@@ -33,9 +33,9 @@ $hubSpot->crm()->contacts()->basicApi()->archive($_GET['id']);
 // src/actions/contacts/export.php
 $hubSpot->crm()->contacts()->getAll();
 </pre>
-<?php } 
+<?php }
 if (count($contactsPage->getResults()) > 0) {
-?>
+    ?>
 <table class="contacts-list">
   <thead>
   <tr>
@@ -54,19 +54,20 @@ if (count($contactsPage->getResults()) > 0) {
         <td><?php echo htmlentities($contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname']); ?></td>
         <td><a class="button" href="/contacts/delete.php?id=<?php echo $contact['id']; ?>">Delete</a></td>
     </tr>
-  <?php }?>
+  <?php } ?>
   </tbody>
 </table>
-<?php 
+<?php
 } else {
-    if (empty($search)) {
-?>
+        if (empty($search)) {
+            ?>
     <h3>No Contacts have been added yet.</h3>
-<?php } else { ?>
+<?php
+        } else { ?>
     <h3>Contact not found.</h3>
-<?php 
+<?php
     }
-}
+    }
 ?>
 <div>
   <a id="contact-new" href="/contacts/new.php">
