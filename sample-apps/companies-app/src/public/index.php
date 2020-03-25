@@ -16,6 +16,7 @@ try {
     if (in_array($uri, $protectedRoutes)) {
         if (empty($_ENV['HUBSPOT_API_KEY']) && !OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
+            exit();
         }
     }
 

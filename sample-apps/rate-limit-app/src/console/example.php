@@ -33,7 +33,7 @@ while (true) {
     }
 
     echo 'Able To Perform = '.($able ? 'yes' : 'no').PHP_EOL;
-    
+
     //Inside loop to avoid token expiration.
     $hubspot = HubspotClientHelper::createFactory();
 
