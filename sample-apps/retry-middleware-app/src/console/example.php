@@ -21,7 +21,7 @@ if (!OAuth2Helper::isAuthenticated()) {
     }
 }
 
-echo "Start\n";
+echo 'Start'.PHP_EOL;
 
 while (true) {
     //Pay attention on HubspotClientHelper.
