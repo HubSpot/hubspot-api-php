@@ -1,10 +1,13 @@
 <?php
 
-namespace spec\HubSpot\Discovery;
+namespace spec\HubSpot\Discovery\Webhooks;
 
 use GuzzleHttp\Client;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
+use HubSpot\Client\Webhooks\Api\SettingsApi;
+use HubSpot\Client\Webhooks\Api\SubscriptionsApi;
+
 
 class DiscoverySpec extends ObjectBehavior
 {
@@ -15,13 +18,12 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Discovery::class);
+        $this->shouldHaveType(\HubSpot\Discovery\Webhooks\Discovery::class);
     }
 
     public function it_creates_clients()
     {
-        $this->crm()->shouldHaveType(\HubSpot\Discovery\Crm\Discovery::class);
-        $this->auth()->shouldHaveType(\HubSpot\Discovery\Auth\Discovery::class);
-        $this->auth()->shouldHaveType(\HubSpot\Discovery\Webhooks\Discovery::class);
+        $this->webhooks()->shouldHaveType(SettingsApi::class);
+        $this->webhooks()->shouldHaveType(SubscriptionsApi::class);
     }
 }
