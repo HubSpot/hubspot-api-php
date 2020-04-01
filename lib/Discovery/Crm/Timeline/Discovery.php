@@ -8,9 +8,9 @@ use HubSpot\Client\Crm\Timeline\Api\TokensApi;
 use HubSpot\Discovery\Crm\ObjectDiscovery;
 
 /**
- * @method EventsApi        eventsApi()
- * @method TemplatesApi     templatesApi()
- * @method TokensApi        tokensApi()
+ * @method EventsApi    eventsApi()
+ * @method TemplatesApi templatesApi()
+ * @method TokensApi    tokensApi()
  */
 class Discovery extends ObjectDiscovery
 {

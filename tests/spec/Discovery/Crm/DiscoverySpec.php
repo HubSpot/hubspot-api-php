@@ -19,7 +19,7 @@ class DiscoverySpec extends ObjectBehavior
     }
 
     public function it_creates_clients()
-    {   
+    {
         $this->associations()->shouldHaveType(\HubSpot\Discovery\Crm\Associations\Discovery::class);
         $this->companies()->shouldHaveType(\HubSpot\Discovery\Crm\Companies\Discovery::class);
         $this->contacts()->shouldHaveType(\HubSpot\Discovery\Crm\Contacts\Discovery::class);
