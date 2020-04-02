@@ -288,7 +288,7 @@ class PipelineStagesApi
             );
         }
 
-        $resourcePath = '/{objectType}/{pipelineId}/stages/{stageId}';
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -621,7 +621,7 @@ class PipelineStagesApi
             );
         }
 
-        $resourcePath = '/{objectType}/{pipelineId}/stages';
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -949,7 +949,7 @@ class PipelineStagesApi
             );
         }
 
-        $resourcePath = '/{objectType}/{pipelineId}/stages';
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1289,7 +1289,7 @@ class PipelineStagesApi
             );
         }
 
-        $resourcePath = '/{objectType}/{pipelineId}/stages/{stageId}';
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1637,7 +1637,7 @@ class PipelineStagesApi
             );
         }
 
-        $resourcePath = '/{objectType}/{pipelineId}/stages/{stageId}';
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1989,7 +1989,7 @@ class PipelineStagesApi
             );
         }
 
-        $resourcePath = '/{objectType}/{pipelineId}/stages/{stageId}';
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -58,7 +58,8 @@ class PublicAssociation implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'from' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId'
+        'to' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId',
+        'type' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class PublicAssociation implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'from' => null,
-        'to' => null
+        'to' => null,
+        'type' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class PublicAssociation implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'from' => 'from',
-        'to' => 'to'
+        'to' => 'to',
+        'type' => 'type'
     ];
 
     /**
@@ -109,7 +112,8 @@ class PublicAssociation implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'from' => 'setFrom',
-        'to' => 'setTo'
+        'to' => 'setTo',
+        'type' => 'setType'
     ];
 
     /**
@@ -119,7 +123,8 @@ class PublicAssociation implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'from' => 'getFrom',
-        'to' => 'getTo'
+        'to' => 'getTo',
+        'type' => 'getType'
     ];
 
     /**
@@ -184,6 +189,7 @@ class PublicAssociation implements ModelInterface, ArrayAccess
     {
         $this->container['from'] = isset($data['from']) ? $data['from'] : null;
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -200,6 +206,9 @@ class PublicAssociation implements ModelInterface, ArrayAccess
         }
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
         return $invalidProperties;
     }
@@ -260,6 +269,30 @@ class PublicAssociation implements ModelInterface, ArrayAccess
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

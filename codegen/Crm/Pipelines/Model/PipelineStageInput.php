@@ -70,7 +70,7 @@ class PipelineStageInput implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'label' => null,
-        'display_order' => null,
+        'display_order' => 'int32',
         'metadata' => null
     ];
 

@@ -68,7 +68,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'total' => null,
+        'total' => 'int32',
         'results' => null,
         'paging' => null
     ];

@@ -73,7 +73,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'results' => null,
-        'num_errors' => null,
+        'num_errors' => 'int32',
         'errors' => null,
         'status' => null,
         'requested_at' => 'date-time',

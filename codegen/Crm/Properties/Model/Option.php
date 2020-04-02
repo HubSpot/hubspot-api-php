@@ -73,7 +73,7 @@ class Option implements ModelInterface, ArrayAccess
         'label' => null,
         'value' => null,
         'description' => null,
-        'display_order' => null,
+        'display_order' => 'int32',
         'hidden' => null
     ];
 

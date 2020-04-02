@@ -277,7 +277,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/{objectType}/{propertyName}';
+        $resourcePath = '/crm/v3/properties/{objectType}/{propertyName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -591,7 +591,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/{objectType}';
+        $resourcePath = '/crm/v3/properties/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -900,7 +900,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/{objectType}';
+        $resourcePath = '/crm/v3/properties/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1221,7 +1221,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/{objectType}/{propertyName}';
+        $resourcePath = '/crm/v3/properties/{objectType}/{propertyName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1550,7 +1550,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/{objectType}/{propertyName}';
+        $resourcePath = '/crm/v3/properties/{objectType}/{propertyName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

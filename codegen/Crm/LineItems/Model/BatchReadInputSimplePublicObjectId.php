@@ -58,6 +58,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'properties' => 'string[]',
+        'id_property' => 'string',
         'inputs' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[]'
     ];
 
@@ -68,6 +69,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'properties' => null,
+        'id_property' => null,
         'inputs' => null
     ];
 
@@ -99,6 +101,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'properties' => 'properties',
+        'id_property' => 'idProperty',
         'inputs' => 'inputs'
     ];
 
@@ -109,6 +112,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'properties' => 'setProperties',
+        'id_property' => 'setIdProperty',
         'inputs' => 'setInputs'
     ];
 
@@ -119,6 +123,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'properties' => 'getProperties',
+        'id_property' => 'getIdProperty',
         'inputs' => 'getInputs'
     ];
 
@@ -183,6 +188,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['properties'] = isset($data['properties']) ? $data['properties'] : null;
+        $this->container['id_property'] = isset($data['id_property']) ? $data['id_property'] : null;
         $this->container['inputs'] = isset($data['inputs']) ? $data['inputs'] : null;
     }
 
@@ -236,6 +242,30 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
     public function setProperties($properties)
     {
         $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_property
+     *
+     * @return string|null
+     */
+    public function getIdProperty()
+    {
+        return $this->container['id_property'];
+    }
+
+    /**
+     * Sets id_property
+     *
+     * @param string|null $id_property id_property
+     *
+     * @return $this
+     */
+    public function setIdProperty($id_property)
+    {
+        $this->container['id_property'] = $id_property;
 
         return $this;
     }

@@ -81,7 +81,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://api.hubapi.com/crm/v3/associations';
+    protected $host = 'https://api.hubapi.com';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -436,7 +436,7 @@ class Configuration
     {
         return array(
           array(
-            "url" => "https://api.hubapi.com/crm/v3/associations",
+            "url" => "https://api.hubapi.com/",
             "description" => "No description provided",
           )
         );

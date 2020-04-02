@@ -75,8 +75,8 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess
         'sorts' => null,
         'query' => null,
         'properties' => null,
-        'limit' => null,
-        'after' => null
+        'limit' => 'int32',
+        'after' => 'int32'
     ];
 
     /**

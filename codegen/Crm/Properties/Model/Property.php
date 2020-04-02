@@ -101,7 +101,7 @@ class Property implements ModelInterface, ArrayAccess
         'created_user_id' => null,
         'updated_user_id' => null,
         'referenced_object_type' => null,
-        'display_order' => null,
+        'display_order' => 'int32',
         'calculated' => null,
         'external_options' => null,
         'archived' => null,
