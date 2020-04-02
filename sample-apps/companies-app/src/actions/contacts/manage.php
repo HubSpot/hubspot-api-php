@@ -5,6 +5,7 @@ use HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation;
 use HubSpot\Client\Crm\Associations\Model\PublicAssociation;
 use HubSpot\Client\Crm\Associations\Model\PublicObjectId;
 use HubSpot\Crm\ObjectType;
+use Hubspot\Crm\AssociationType;
 
 if (!isset($_GET['companyId']) || !isset($_POST['action'])) {
     throw new Exception('Something went wrong ...');
@@ -25,7 +26,7 @@ if (isset($_POST['contactsIds'])) {
         return (new PublicAssociation())
             ->setFrom((new PublicObjectId())->setId($companyId))
             ->setTo((new PublicObjectId())->setId($id))
-        ;
+            ->setType(AssociationType::COMPANY_TO_CONTACT);
     }, array_keys($_POST['contactsIds'])));
     $hubSpot->crm()->associations()->batchApi()->{$ation}(
         ObjectType::COMPANIES,
