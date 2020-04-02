@@ -121,16 +121,17 @@ class AssociationsApi
      * Remove an association between two companies
      *
      * @param  string $company_id company_id (required)
-     * @param  string $associated_object_type associated_object_type (required)
+     * @param  string $to_object_type to_object_type (required)
      * @param  string $to_object_id to_object_id (required)
+     * @param  string $association_type association_type (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveAssociation($company_id, $associated_object_type, $to_object_id)
+    public function archiveAssociation($company_id, $to_object_type, $to_object_id, $association_type)
     {
-        $this->archiveAssociationWithHttpInfo($company_id, $associated_object_type, $to_object_id);
+        $this->archiveAssociationWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type);
     }
 
     /**
@@ -139,16 +140,17 @@ class AssociationsApi
      * Remove an association between two companies
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveAssociationWithHttpInfo($company_id, $associated_object_type, $to_object_id)
+    public function archiveAssociationWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->archiveAssociationRequest($company_id, $associated_object_type, $to_object_id);
+        $request = $this->archiveAssociationRequest($company_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -201,15 +203,16 @@ class AssociationsApi
      * Remove an association between two companies
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsync($company_id, $associated_object_type, $to_object_id)
+    public function archiveAssociationAsync($company_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->archiveAssociationAsyncWithHttpInfo($company_id, $associated_object_type, $to_object_id)
+        return $this->archiveAssociationAsyncWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -223,16 +226,17 @@ class AssociationsApi
      * Remove an association between two companies
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsyncWithHttpInfo($company_id, $associated_object_type, $to_object_id)
+    public function archiveAssociationAsyncWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type)
     {
         $returnType = '';
-        $request = $this->archiveAssociationRequest($company_id, $associated_object_type, $to_object_id);
+        $request = $this->archiveAssociationRequest($company_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -261,13 +265,14 @@ class AssociationsApi
      * Create request for operation 'archiveAssociation'
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveAssociationRequest($company_id, $associated_object_type, $to_object_id)
+    protected function archiveAssociationRequest($company_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'company_id' is set
         if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
@@ -275,10 +280,10 @@ class AssociationsApi
                 'Missing the required parameter $company_id when calling archiveAssociation'
             );
         }
-        // verify the required parameter 'associated_object_type' is set
-        if ($associated_object_type === null || (is_array($associated_object_type) && count($associated_object_type) === 0)) {
+        // verify the required parameter 'to_object_type' is set
+        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $associated_object_type when calling archiveAssociation'
+                'Missing the required parameter $to_object_type when calling archiveAssociation'
             );
         }
         // verify the required parameter 'to_object_id' is set
@@ -287,8 +292,14 @@ class AssociationsApi
                 'Missing the required parameter $to_object_id when calling archiveAssociation'
             );
         }
+        // verify the required parameter 'association_type' is set
+        if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $association_type when calling archiveAssociation'
+            );
+        }
 
-        $resourcePath = '/companies/{companyId}/associations/{associatedObjectType}/{toObjectId}';
+        $resourcePath = '/crm/v3/objects/companies/{companyId}/associations/{toObjectType}/{toObjectId}/{associationType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -305,10 +316,10 @@ class AssociationsApi
             );
         }
         // path params
-        if ($associated_object_type !== null) {
+        if ($to_object_type !== null) {
             $resourcePath = str_replace(
-                '{' . 'associatedObjectType' . '}',
-                ObjectSerializer::toPathValue($associated_object_type),
+                '{' . 'toObjectType' . '}',
+                ObjectSerializer::toPathValue($to_object_type),
                 $resourcePath
             );
         }
@@ -317,6 +328,14 @@ class AssociationsApi
             $resourcePath = str_replace(
                 '{' . 'toObjectId' . '}',
                 ObjectSerializer::toPathValue($to_object_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($association_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'associationType' . '}',
+                ObjectSerializer::toPathValue($association_type),
                 $resourcePath
             );
         }
@@ -400,16 +419,17 @@ class AssociationsApi
      * Associate two companies
      *
      * @param  string $company_id company_id (required)
-     * @param  string $associated_object_type associated_object_type (required)
+     * @param  string $to_object_type to_object_type (required)
      * @param  string $to_object_id to_object_id (required)
+     * @param  string $association_type association_type (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Companies\Model\SimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
      */
-    public function createAssociation($company_id, $associated_object_type, $to_object_id)
+    public function createAssociation($company_id, $to_object_type, $to_object_id, $association_type)
     {
-        list($response) = $this->createAssociationWithHttpInfo($company_id, $associated_object_type, $to_object_id);
+        list($response) = $this->createAssociationWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type);
         return $response;
     }
 
@@ -419,16 +439,17 @@ class AssociationsApi
      * Associate two companies
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Companies\Model\SimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAssociationWithHttpInfo($company_id, $associated_object_type, $to_object_id)
+    public function createAssociationWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->createAssociationRequest($company_id, $associated_object_type, $to_object_id);
+        $request = $this->createAssociationRequest($company_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -529,15 +550,16 @@ class AssociationsApi
      * Associate two companies
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAssociationAsync($company_id, $associated_object_type, $to_object_id)
+    public function createAssociationAsync($company_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->createAssociationAsyncWithHttpInfo($company_id, $associated_object_type, $to_object_id)
+        return $this->createAssociationAsyncWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -551,16 +573,17 @@ class AssociationsApi
      * Associate two companies
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAssociationAsyncWithHttpInfo($company_id, $associated_object_type, $to_object_id)
+    public function createAssociationAsyncWithHttpInfo($company_id, $to_object_type, $to_object_id, $association_type)
     {
         $returnType = '\HubSpot\Client\Crm\Companies\Model\SimplePublicObject';
-        $request = $this->createAssociationRequest($company_id, $associated_object_type, $to_object_id);
+        $request = $this->createAssociationRequest($company_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -600,13 +623,14 @@ class AssociationsApi
      * Create request for operation 'createAssociation'
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
+     * @param  string $association_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createAssociationRequest($company_id, $associated_object_type, $to_object_id)
+    protected function createAssociationRequest($company_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'company_id' is set
         if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
@@ -614,10 +638,10 @@ class AssociationsApi
                 'Missing the required parameter $company_id when calling createAssociation'
             );
         }
-        // verify the required parameter 'associated_object_type' is set
-        if ($associated_object_type === null || (is_array($associated_object_type) && count($associated_object_type) === 0)) {
+        // verify the required parameter 'to_object_type' is set
+        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $associated_object_type when calling createAssociation'
+                'Missing the required parameter $to_object_type when calling createAssociation'
             );
         }
         // verify the required parameter 'to_object_id' is set
@@ -626,8 +650,14 @@ class AssociationsApi
                 'Missing the required parameter $to_object_id when calling createAssociation'
             );
         }
+        // verify the required parameter 'association_type' is set
+        if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $association_type when calling createAssociation'
+            );
+        }
 
-        $resourcePath = '/companies/{companyId}/associations/{associatedObjectType}/{toObjectId}';
+        $resourcePath = '/crm/v3/objects/companies/{companyId}/associations/{toObjectType}/{toObjectId}/{associationType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -644,10 +674,10 @@ class AssociationsApi
             );
         }
         // path params
-        if ($associated_object_type !== null) {
+        if ($to_object_type !== null) {
             $resourcePath = str_replace(
-                '{' . 'associatedObjectType' . '}',
-                ObjectSerializer::toPathValue($associated_object_type),
+                '{' . 'toObjectType' . '}',
+                ObjectSerializer::toPathValue($to_object_type),
                 $resourcePath
             );
         }
@@ -656,6 +686,14 @@ class AssociationsApi
             $resourcePath = str_replace(
                 '{' . 'toObjectId' . '}',
                 ObjectSerializer::toPathValue($to_object_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($association_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'associationType' . '}',
+                ObjectSerializer::toPathValue($association_type),
                 $resourcePath
             );
         }
@@ -739,15 +777,15 @@ class AssociationsApi
      * List associations of a company by type
      *
      * @param  string $company_id company_id (required)
-     * @param  string $associated_object_type associated_object_type (required)
+     * @param  string $to_object_type to_object_type (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId|\HubSpot\Client\Crm\Companies\Model\Error
+     * @return \HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Companies\Model\Error
      */
-    public function getAssociations($company_id, $associated_object_type)
+    public function getAssociations($company_id, $to_object_type)
     {
-        list($response) = $this->getAssociationsWithHttpInfo($company_id, $associated_object_type);
+        list($response) = $this->getAssociationsWithHttpInfo($company_id, $to_object_type);
         return $response;
     }
 
@@ -757,15 +795,15 @@ class AssociationsApi
      * List associations of a company by type
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssociationsWithHttpInfo($company_id, $associated_object_type)
+    public function getAssociationsWithHttpInfo($company_id, $to_object_type)
     {
-        $request = $this->getAssociationsRequest($company_id, $associated_object_type);
+        $request = $this->getAssociationsRequest($company_id, $to_object_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -798,14 +836,14 @@ class AssociationsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -823,7 +861,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId';
+            $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -842,7 +880,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId',
+                        '\HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -866,14 +904,14 @@ class AssociationsApi
      * List associations of a company by type
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssociationsAsync($company_id, $associated_object_type)
+    public function getAssociationsAsync($company_id, $to_object_type)
     {
-        return $this->getAssociationsAsyncWithHttpInfo($company_id, $associated_object_type)
+        return $this->getAssociationsAsyncWithHttpInfo($company_id, $to_object_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -887,15 +925,15 @@ class AssociationsApi
      * List associations of a company by type
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssociationsAsyncWithHttpInfo($company_id, $associated_object_type)
+    public function getAssociationsAsyncWithHttpInfo($company_id, $to_object_type)
     {
-        $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId';
-        $request = $this->getAssociationsRequest($company_id, $associated_object_type);
+        $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseAssociatedId';
+        $request = $this->getAssociationsRequest($company_id, $to_object_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -935,12 +973,12 @@ class AssociationsApi
      * Create request for operation 'getAssociations'
      *
      * @param  string $company_id (required)
-     * @param  string $associated_object_type (required)
+     * @param  string $to_object_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAssociationsRequest($company_id, $associated_object_type)
+    protected function getAssociationsRequest($company_id, $to_object_type)
     {
         // verify the required parameter 'company_id' is set
         if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
@@ -948,14 +986,14 @@ class AssociationsApi
                 'Missing the required parameter $company_id when calling getAssociations'
             );
         }
-        // verify the required parameter 'associated_object_type' is set
-        if ($associated_object_type === null || (is_array($associated_object_type) && count($associated_object_type) === 0)) {
+        // verify the required parameter 'to_object_type' is set
+        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $associated_object_type when calling getAssociations'
+                'Missing the required parameter $to_object_type when calling getAssociations'
             );
         }
 
-        $resourcePath = '/companies/{companyId}/associations/{associatedObjectType}';
+        $resourcePath = '/crm/v3/objects/companies/{companyId}/associations/{toObjectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -972,10 +1010,10 @@ class AssociationsApi
             );
         }
         // path params
-        if ($associated_object_type !== null) {
+        if ($to_object_type !== null) {
             $resourcePath = str_replace(
-                '{' . 'associatedObjectType' . '}',
-                ObjectSerializer::toPathValue($associated_object_type),
+                '{' . 'toObjectType' . '}',
+                ObjectSerializer::toPathValue($to_object_type),
                 $resourcePath
             );
         }

@@ -266,7 +266,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/line_items/{lineItemId}';
+        $resourcePath = '/crm/v3/objects/line_items/{lineItemId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -561,7 +561,7 @@ class BasicApi
     protected function createRequest($simple_public_object_input = null)
     {
 
-        $resourcePath = '/line_items';
+        $resourcePath = '/crm/v3/objects/line_items';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -655,14 +655,15 @@ class BasicApi
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
      */
-    public function getById($line_item_id, $properties = null, $associations = null, $archived = false)
+    public function getById($line_item_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        list($response) = $this->getByIdWithHttpInfo($line_item_id, $properties, $associations, $archived);
+        list($response) = $this->getByIdWithHttpInfo($line_item_id, $properties, $associations, $archived, $id_property);
         return $response;
     }
 
@@ -675,14 +676,15 @@ class BasicApi
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($line_item_id, $properties = null, $associations = null, $archived = false)
+    public function getByIdWithHttpInfo($line_item_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        $request = $this->getByIdRequest($line_item_id, $properties, $associations, $archived);
+        $request = $this->getByIdRequest($line_item_id, $properties, $associations, $archived, $id_property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -786,13 +788,14 @@ class BasicApi
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($line_item_id, $properties = null, $associations = null, $archived = false)
+    public function getByIdAsync($line_item_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        return $this->getByIdAsyncWithHttpInfo($line_item_id, $properties, $associations, $archived)
+        return $this->getByIdAsyncWithHttpInfo($line_item_id, $properties, $associations, $archived, $id_property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -809,14 +812,15 @@ class BasicApi
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($line_item_id, $properties = null, $associations = null, $archived = false)
+    public function getByIdAsyncWithHttpInfo($line_item_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
         $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
-        $request = $this->getByIdRequest($line_item_id, $properties, $associations, $archived);
+        $request = $this->getByIdRequest($line_item_id, $properties, $associations, $archived, $id_property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -859,11 +863,12 @@ class BasicApi
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getByIdRequest($line_item_id, $properties = null, $associations = null, $archived = false)
+    protected function getByIdRequest($line_item_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
@@ -872,7 +877,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/line_items/{lineItemId}';
+        $resourcePath = '/crm/v3/objects/line_items/{lineItemId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -896,6 +901,10 @@ class BasicApi
         // query params
         if ($archived !== null) {
             $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
+        }
+        // query params
+        if ($id_property !== null) {
+            $queryParams['idProperty'] = ObjectSerializer::toQueryValue($id_property);
         }
 
         // path params
@@ -1205,7 +1214,7 @@ class BasicApi
     protected function getPageRequest($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
 
-        $resourcePath = '/line_items';
+        $resourcePath = '/crm/v3/objects/line_items';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1529,7 +1538,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/line_items/{lineItemId}';
+        $resourcePath = '/crm/v3/objects/line_items/{lineItemId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -282,7 +282,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/{fromObjectType}/{toObjectType}/batch/archive';
+        $resourcePath = '/crm/v3/associations/{fromObjectType}/{toObjectType}/batch/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -630,7 +630,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/{fromObjectType}/{toObjectType}/batch/create';
+        $resourcePath = '/crm/v3/associations/{fromObjectType}/{toObjectType}/batch/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -978,7 +978,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/{fromObjectType}/{toObjectType}/batch/read';
+        $resourcePath = '/crm/v3/associations/{fromObjectType}/{toObjectType}/batch/read';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

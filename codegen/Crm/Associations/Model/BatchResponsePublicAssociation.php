@@ -73,7 +73,7 @@ class BatchResponsePublicAssociation implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'results' => null,
-        'num_errors' => null,
+        'num_errors' => 'int32',
         'errors' => null,
         'status' => null,
         'requested_at' => 'date-time',
@@ -247,9 +247,6 @@ class BatchResponsePublicAssociation implements ModelInterface, ArrayAccess
         if ($this->container['results'] === null) {
             $invalidProperties[] = "'results' can't be null";
         }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -333,7 +330,7 @@ class BatchResponsePublicAssociation implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\Associations\Model\Error[]
+     * @return \HubSpot\Client\Crm\Associations\Model\Error[]|null
      */
     public function getErrors()
     {
@@ -343,7 +340,7 @@ class BatchResponsePublicAssociation implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Associations\Model\Error[] $errors errors
+     * @param \HubSpot\Client\Crm\Associations\Model\Error[]|null $errors errors
      *
      * @return $this
      */

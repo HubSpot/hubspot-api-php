@@ -58,7 +58,7 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'from' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId[]'
+        'to' => '\HubSpot\Client\Crm\Associations\Model\AssociatedId[]'
     ];
 
     /**
@@ -243,7 +243,7 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Gets to
      *
-     * @return \HubSpot\Client\Crm\Associations\Model\PublicObjectId[]
+     * @return \HubSpot\Client\Crm\Associations\Model\AssociatedId[]
      */
     public function getTo()
     {
@@ -253,7 +253,7 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets to
      *
-     * @param \HubSpot\Client\Crm\Associations\Model\PublicObjectId[] $to The IDs of objects that are associated with the object identified by the ID in 'from'.
+     * @param \HubSpot\Client\Crm\Associations\Model\AssociatedId[] $to The IDs of objects that are associated with the object identified by the ID in 'from'.
      *
      * @return $this
      */
