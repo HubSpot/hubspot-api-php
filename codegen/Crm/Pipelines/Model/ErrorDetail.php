@@ -59,6 +59,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'message' => 'string',
         'in' => 'string',
+        'code' => 'string',
+        'sub_category' => 'string',
         'context' => 'map[string,string[]]'
     ];
 
@@ -70,6 +72,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'message' => null,
         'in' => null,
+        'code' => null,
+        'sub_category' => null,
         'context' => null
     ];
 
@@ -102,6 +106,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'message' => 'message',
         'in' => 'in',
+        'code' => 'code',
+        'sub_category' => 'subCategory',
         'context' => 'context'
     ];
 
@@ -113,6 +119,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     protected static $setters = [
         'message' => 'setMessage',
         'in' => 'setIn',
+        'code' => 'setCode',
+        'sub_category' => 'setSubCategory',
         'context' => 'setContext'
     ];
 
@@ -124,6 +132,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     protected static $getters = [
         'message' => 'getMessage',
         'in' => 'getIn',
+        'code' => 'getCode',
+        'sub_category' => 'getSubCategory',
         'context' => 'getContext'
     ];
 
@@ -189,6 +199,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     {
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['in'] = isset($data['in']) ? $data['in'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
         $this->container['context'] = isset($data['context']) ? $data['context'] : null;
     }
 
@@ -263,6 +275,54 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     public function setIn($in)
     {
         $this->container['in'] = $in;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code The status code associated with the error detail
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return string|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }

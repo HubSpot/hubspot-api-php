@@ -179,8 +179,6 @@ class Filter implements ModelInterface, ArrayAccess
     const OPERATOR_NOT_IN = 'NOT_IN';
     const OPERATOR_HAS_PROPERTY = 'HAS_PROPERTY';
     const OPERATOR_NOT_HAS_PROPERTY = 'NOT_HAS_PROPERTY';
-    const OPERATOR_ROLLING_DATE_RANGE = 'ROLLING_DATE_RANGE';
-    const OPERATOR_TIME_UNIT_TO_DATE = 'TIME_UNIT_TO_DATE';
     const OPERATOR_CONTAINS_TOKEN = 'CONTAINS_TOKEN';
     const OPERATOR_NOT_CONTAINS_TOKEN = 'NOT_CONTAINS_TOKEN';
     
@@ -205,8 +203,6 @@ class Filter implements ModelInterface, ArrayAccess
             self::OPERATOR_NOT_IN,
             self::OPERATOR_HAS_PROPERTY,
             self::OPERATOR_NOT_HAS_PROPERTY,
-            self::OPERATOR_ROLLING_DATE_RANGE,
-            self::OPERATOR_TIME_UNIT_TO_DATE,
             self::OPERATOR_CONTAINS_TOKEN,
             self::OPERATOR_NOT_CONTAINS_TOKEN,
         ];

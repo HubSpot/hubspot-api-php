@@ -320,7 +320,7 @@ class SearchApi
     protected function doSearchRequest($public_object_search_request = null)
     {
 
-        $resourcePath = '/products/search';
+        $resourcePath = '/crm/v3/objects/products/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

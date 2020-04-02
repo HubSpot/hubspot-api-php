@@ -80,7 +80,7 @@ class Pipeline implements ModelInterface, ArrayAccess
         'updated_at' => 'date-time',
         'archived' => null,
         'label' => null,
-        'display_order' => null,
+        'display_order' => 'int32',
         'id' => null
     ];
 

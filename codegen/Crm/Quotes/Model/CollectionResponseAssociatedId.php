@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseSimplePublicObjectId
+ * CollectionResponseAssociatedId
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Quotes\ObjectSerializer;
 
 /**
- * CollectionResponseSimplePublicObjectId Class Doc Comment
+ * CollectionResponseAssociatedId Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Quotes
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAccess
+class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseSimplePublicObjectId';
+    protected static $openAPIModelName = 'CollectionResponseAssociatedId';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[]',
+        'results' => '\HubSpot\Client\Crm\Quotes\Model\AssociatedId[]',
         'paging' => '\HubSpot\Client\Crm\Quotes\Model\Paging'
     ];
 
@@ -216,7 +216,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[]
+     * @return \HubSpot\Client\Crm\Quotes\Model\AssociatedId[]
      */
     public function getResults()
     {
@@ -226,7 +226,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[] $results results
+     * @param \HubSpot\Client\Crm\Quotes\Model\AssociatedId[] $results results
      *
      * @return $this
      */

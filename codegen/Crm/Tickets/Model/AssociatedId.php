@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseSimplePublicObjectId
+ * AssociatedId
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
 
 /**
- * CollectionResponseSimplePublicObjectId Class Doc Comment
+ * AssociatedId Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Tickets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAccess
+class AssociatedId implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseSimplePublicObjectId';
+    protected static $openAPIModelName = 'AssociatedId';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectId[]',
-        'paging' => '\HubSpot\Client\Crm\Tickets\Model\Paging'
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -108,8 +108,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -118,8 +118,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -182,8 +182,8 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
-        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -195,8 +195,11 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +217,49 @@ class CollectionResponseSimplePublicObjectId implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets results
+     * Gets id
      *
-     * @return \HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectId[]
+     * @return string
      */
-    public function getResults()
+    public function getId()
     {
-        return $this->container['results'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets results
+     * Sets id
      *
-     * @param \HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectId[] $results results
+     * @param string $id id
      *
      * @return $this
      */
-    public function setResults($results)
+    public function setId($id)
     {
-        $this->container['results'] = $results;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets type
      *
-     * @return \HubSpot\Client\Crm\Tickets\Model\Paging|null
+     * @return string
      */
-    public function getPaging()
+    public function getType()
     {
-        return $this->container['paging'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets paging
+     * Sets type
      *
-     * @param \HubSpot\Client\Crm\Tickets\Model\Paging|null $paging paging
+     * @param string $type type
      *
      * @return $this
      */
-    public function setPaging($paging)
+    public function setType($type)
     {
-        $this->container['paging'] = $paging;
+        $this->container['type'] = $type;
 
         return $this;
     }

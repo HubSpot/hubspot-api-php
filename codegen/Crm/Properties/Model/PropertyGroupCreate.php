@@ -70,7 +70,7 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'name' => null,
         'label' => null,
-        'display_order' => null
+        'display_order' => 'int32'
     ];
 
     /**

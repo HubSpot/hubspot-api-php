@@ -79,7 +79,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         'group_name' => null,
         'description' => null,
         'options' => null,
-        'display_order' => null,
+        'display_order' => 'int32',
         'hidden' => null
     ];
 

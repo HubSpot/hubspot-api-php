@@ -260,7 +260,7 @@ class BatchApi
     protected function archiveBatchRequest($batch_input_simple_public_object_id = null)
     {
 
-        $resourcePath = '/products/batch/archive';
+        $resourcePath = '/crm/v3/objects/products/batch/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -570,7 +570,7 @@ class BatchApi
     protected function createBatchRequest($batch_input_simple_public_object_input = null)
     {
 
-        $resourcePath = '/products/batch/create';
+        $resourcePath = '/crm/v3/objects/products/batch/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -658,7 +658,7 @@ class BatchApi
     /**
      * Operation readBatch
      *
-     * Read a batch of products by ID
+     * Read a batch of products by internal ID, or unique property values
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  \HubSpot\Client\Crm\Products\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (optional)
@@ -676,7 +676,7 @@ class BatchApi
     /**
      * Operation readBatchWithHttpInfo
      *
-     * Read a batch of products by ID
+     * Read a batch of products by internal ID, or unique property values
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  \HubSpot\Client\Crm\Products\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
@@ -805,7 +805,7 @@ class BatchApi
     /**
      * Operation readBatchAsync
      *
-     * Read a batch of products by ID
+     * Read a batch of products by internal ID, or unique property values
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  \HubSpot\Client\Crm\Products\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
@@ -826,7 +826,7 @@ class BatchApi
     /**
      * Operation readBatchAsyncWithHttpInfo
      *
-     * Read a batch of products by ID
+     * Read a batch of products by internal ID, or unique property values
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  \HubSpot\Client\Crm\Products\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
@@ -885,7 +885,7 @@ class BatchApi
     protected function readBatchRequest($archived = false, $batch_read_input_simple_public_object_id = null)
     {
 
-        $resourcePath = '/products/batch/read';
+        $resourcePath = '/crm/v3/objects/products/batch/read';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1199,7 +1199,7 @@ class BatchApi
     protected function updateBatchRequest($batch_input_simple_public_object_batch_input = null)
     {
 
-        $resourcePath = '/products/batch/update';
+        $resourcePath = '/crm/v3/objects/products/batch/update';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

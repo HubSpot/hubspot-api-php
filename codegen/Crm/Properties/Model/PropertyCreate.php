@@ -82,7 +82,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         'group_name' => null,
         'description' => null,
         'options' => null,
-        'display_order' => null,
+        'display_order' => 'int32',
         'has_unique_value' => null,
         'hidden' => null
     ];

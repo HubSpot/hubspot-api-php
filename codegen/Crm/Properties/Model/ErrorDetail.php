@@ -57,10 +57,10 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'object',
         'message' => 'string',
-        'code' => 'string',
         'in' => 'string',
+        'code' => 'string',
+        'sub_category' => 'string',
         'context' => 'map[string,string[]]'
     ];
 
@@ -70,10 +70,10 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
         'message' => null,
-        'code' => null,
         'in' => null,
+        'code' => null,
+        'sub_category' => null,
         'context' => null
     ];
 
@@ -104,10 +104,10 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
         'message' => 'message',
-        'code' => 'code',
         'in' => 'in',
+        'code' => 'code',
+        'sub_category' => 'subCategory',
         'context' => 'context'
     ];
 
@@ -117,10 +117,10 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
         'message' => 'setMessage',
-        'code' => 'setCode',
         'in' => 'setIn',
+        'code' => 'setCode',
+        'sub_category' => 'setSubCategory',
         'context' => 'setContext'
     ];
 
@@ -130,10 +130,10 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
         'message' => 'getMessage',
-        'code' => 'getCode',
         'in' => 'getIn',
+        'code' => 'getCode',
+        'sub_category' => 'getSubCategory',
         'context' => 'getContext'
     ];
 
@@ -197,10 +197,10 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['in'] = isset($data['in']) ? $data['in'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
         $this->container['context'] = isset($data['context']) ? $data['context'] : null;
     }
 
@@ -216,9 +216,6 @@ class ErrorDetail implements ModelInterface, ArrayAccess
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -233,30 +230,6 @@ class ErrorDetail implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets sub_category
-     *
-     * @return object|null
-     */
-    public function getSubCategory()
-    {
-        return $this->container['sub_category'];
-    }
-
-    /**
-     * Sets sub_category
-     *
-     * @param object|null $sub_category sub_category
-     *
-     * @return $this
-     */
-    public function setSubCategory($sub_category)
-    {
-        $this->container['sub_category'] = $sub_category;
-
-        return $this;
-    }
 
     /**
      * Gets message
@@ -278,30 +251,6 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     public function setMessage($message)
     {
         $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
 
         return $this;
     }
@@ -331,9 +280,57 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code The status code associated with the error detail
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return string|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
+
+        return $this;
+    }
+
+    /**
      * Gets context
      *
-     * @return map[string,string[]]
+     * @return map[string,string[]]|null
      */
     public function getContext()
     {
@@ -343,7 +340,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     /**
      * Sets context
      *
-     * @param map[string,string[]] $context Context about the error condition
+     * @param map[string,string[]]|null $context Context about the error condition
      *
      * @return $this
      */

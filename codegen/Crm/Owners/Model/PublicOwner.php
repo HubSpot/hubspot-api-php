@@ -78,7 +78,7 @@ class PublicOwner implements ModelInterface, ArrayAccess
         'email' => null,
         'first_name' => null,
         'last_name' => null,
-        'user_id' => null,
+        'user_id' => 'int32',
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'archived' => null,
@@ -248,9 +248,6 @@ class PublicOwner implements ModelInterface, ArrayAccess
         }
         if ($this->container['archived'] === null) {
             $invalidProperties[] = "'archived' can't be null";
-        }
-        if ($this->container['teams'] === null) {
-            $invalidProperties[] = "'teams' can't be null";
         }
         return $invalidProperties;
     }
@@ -462,7 +459,7 @@ class PublicOwner implements ModelInterface, ArrayAccess
     /**
      * Gets teams
      *
-     * @return \HubSpot\Client\Crm\Owners\Model\PublicTeam[]
+     * @return \HubSpot\Client\Crm\Owners\Model\PublicTeam[]|null
      */
     public function getTeams()
     {
@@ -472,7 +469,7 @@ class PublicOwner implements ModelInterface, ArrayAccess
     /**
      * Sets teams
      *
-     * @param \HubSpot\Client\Crm\Owners\Model\PublicTeam[] $teams teams
+     * @param \HubSpot\Client\Crm\Owners\Model\PublicTeam[]|null $teams teams
      *
      * @return $this
      */

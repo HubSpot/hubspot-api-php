@@ -277,7 +277,7 @@ class GroupsApi
             );
         }
 
-        $resourcePath = '/{objectType}/groups/{groupName}';
+        $resourcePath = '/crm/v3/properties/{objectType}/groups/{groupName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -591,7 +591,7 @@ class GroupsApi
             );
         }
 
-        $resourcePath = '/{objectType}/groups';
+        $resourcePath = '/crm/v3/properties/{objectType}/groups';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -895,7 +895,7 @@ class GroupsApi
             );
         }
 
-        $resourcePath = '/{objectType}/groups';
+        $resourcePath = '/crm/v3/properties/{objectType}/groups';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1207,7 +1207,7 @@ class GroupsApi
             );
         }
 
-        $resourcePath = '/{objectType}/groups/{groupName}';
+        $resourcePath = '/crm/v3/properties/{objectType}/groups/{groupName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1532,7 +1532,7 @@ class GroupsApi
             );
         }
 
-        $resourcePath = '/{objectType}/groups/{groupName}';
+        $resourcePath = '/crm/v3/properties/{objectType}/groups/{groupName}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

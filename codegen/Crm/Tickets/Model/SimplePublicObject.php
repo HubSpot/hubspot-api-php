@@ -61,7 +61,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => 'map[string,string]',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'associations' => 'map[string,\HubSpot\Client\Crm\Tickets\Model\CollectionResponseSimplePublicObjectId]',
+        'associations' => 'map[string,\HubSpot\Client\Crm\Tickets\Model\CollectionResponseAssociatedId]',
         'archived' => 'bool',
         'archived_at' => '\DateTime'
     ];
@@ -237,12 +237,6 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
-        if ($this->container['associations'] === null) {
-            $invalidProperties[] = "'associations' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -357,7 +351,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets associations
      *
-     * @return map[string,\HubSpot\Client\Crm\Tickets\Model\CollectionResponseSimplePublicObjectId]
+     * @return map[string,\HubSpot\Client\Crm\Tickets\Model\CollectionResponseAssociatedId]|null
      */
     public function getAssociations()
     {
@@ -367,7 +361,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets associations
      *
-     * @param map[string,\HubSpot\Client\Crm\Tickets\Model\CollectionResponseSimplePublicObjectId] $associations associations
+     * @param map[string,\HubSpot\Client\Crm\Tickets\Model\CollectionResponseAssociatedId]|null $associations associations
      *
      * @return $this
      */
@@ -381,7 +375,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Gets archived
      *
-     * @return bool
+     * @return bool|null
      */
     public function getArchived()
     {
@@ -391,7 +385,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     /**
      * Sets archived
      *
-     * @param bool $archived archived
+     * @param bool|null $archived archived
      *
      * @return $this
      */

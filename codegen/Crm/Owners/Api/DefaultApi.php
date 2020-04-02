@@ -331,7 +331,7 @@ class DefaultApi
             );
         }
 
-        $resourcePath = '/{ownerId}';
+        $resourcePath = '/crm/v3/owners/{ownerId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -640,7 +640,7 @@ class DefaultApi
     protected function getPageRequest($email = null, $after = null, $limit = 100)
     {
 
-        $resourcePath = '/';
+        $resourcePath = '/crm/v3/owners/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
