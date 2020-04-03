@@ -18,9 +18,9 @@ $redirectParams = [
 if (isset($_POST['contactsIds'])) {
     $ation = $_POST['action'].'Batch';
     $redirectParams['action'] = $_POST['action'];
-    
+
     // List all the valid association types available between two object types
-    //$hubSpot->crm()->associations()->typesApi()->getTypes($from_object_type, $to_object_type);
+    // $hubSpot->crm()->associations()->typesApi()->getTypes($from_object_type, $to_object_type);
     $type = 'company_to_contact';
 
     $request = new BatchInputPublicAssociation();
@@ -28,7 +28,8 @@ if (isset($_POST['contactsIds'])) {
         return (new PublicAssociation())
             ->setFrom((new PublicObjectId())->setId($companyId))
             ->setTo((new PublicObjectId())->setId($id))
-            ->setType($type);
+            ->setType($type)
+        ;
     }, array_keys($_POST['contactsIds'])));
     $hubSpot->crm()->associations()->batchApi()->{$ation}(
         ObjectType::COMPANIES,
@@ -36,5 +37,6 @@ if (isset($_POST['contactsIds'])) {
         $request
     );
 }
+
 header('Location: /companies/show.php?'.http_build_query($redirectParams));
 exit();
