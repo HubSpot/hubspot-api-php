@@ -4,12 +4,12 @@ namespace HubSpot\Discovery\Webhooks;
 
 use HubSpot\Client\Webhooks\Api\SettingsApi;
 use HubSpot\Client\Webhooks\Api\SubscriptionsApi;
-use HubSpot\Discovery\Crm\ObjectDiscovery;
+use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method SettingsApi      eventsApi()
- * @method SubscriptionsApi templatesApi()
+ * @method SettingsApi      settingsApi()
+ * @method SubscriptionsApi subscriptionsApi()
  */
-class Discovery extends ObjectDiscovery
+class Discovery extends DiscoveryBase
 {
 }
