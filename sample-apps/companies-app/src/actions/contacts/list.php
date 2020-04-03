@@ -29,7 +29,8 @@ if (isset($_GET['search'])) {
     $searchRequest->setFilterGroups([$filterGroup]);
 
     $contactList = $hubSpot->crm()->contacts()->searchApi()
-        ->doSearch($searchRequest);
+        ->doSearch($searchRequest)
+    ;
 } else {
     $contactList = $hubSpot->crm()->contacts()->basicApi()->getPage(20);
 }
