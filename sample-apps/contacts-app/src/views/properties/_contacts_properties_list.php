@@ -2,10 +2,10 @@
     <?php
         foreach ($contact->getProperties() as $propertyName => $propertyValue) { ?>
             <?php
+            if (in_array($propertyName, $propertiesToDisplay)) {
                 $nameSanitized = htmlentities($propertyName);
                 $labelSanitized = htmlentities($propertiesLabels[$propertyName]);
-                $valueSanitized = htmlentities($propertyValue);
-            ?>
+                $valueSanitized = htmlentities($propertyValue); ?>
             <label for="<?php echo $nameSanitized; ?>"><?php echo $labelSanitized; ?></label>
             <?php if ('hubspot_owner_id' === $nameSanitized) { ?>
 <pre>
@@ -27,7 +27,10 @@ $owners = $hubSpot->crm()->owners()
             <?php } else { ?>
                 <input type="text" name="<?php echo $nameSanitized; ?>" id="<?php echo $nameSanitized; ?>" value="<?php echo $valueSanitized; ?>">
             <?php } ?>
-    <?php } ?>
+    <?php
+            }
+        }
+    ?>
 </fieldset>
 
 

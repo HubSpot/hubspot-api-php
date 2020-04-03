@@ -1,7 +1,7 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject;
+use HubSpot\Client\Crm\Contacts\Model\CollectionResponseSimplePublicObject;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
