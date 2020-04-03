@@ -1,8 +1,8 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObject;
-use HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest;
+use HubSpot\Client\Crm\Contacts\Model\CollectionResponseSimplePublicObject;
+use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
 use HubSpot\Crm\ObjectType;
 
 $hubSpot = HubspotClientHelper::createFactory();
