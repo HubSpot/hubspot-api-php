@@ -1,8 +1,8 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObject;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
-use HubSpot\Client\Crm\Objects\Model\SimplePublicObject;
 
 $hubSpot = HubspotClientHelper::createFactory();
 
@@ -24,6 +24,5 @@ $contact->setProperties([
 $propertiesLabels = [
     'email' => 'Email',
 ];
-$create = true;
 
 include __DIR__.'/../../views/contacts/show.php';
