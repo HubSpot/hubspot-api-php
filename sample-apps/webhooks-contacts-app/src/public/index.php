@@ -26,6 +26,11 @@ try {
             header('Location: /oauth/login.php');
             exit();
         }
+        
+        if (($uri != '/webhooks/init.php') && empty($_SESSION['init'])) {
+            header('Location: /webhooks/init.php');
+            exit();
+        }
     }
 
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {

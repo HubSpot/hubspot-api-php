@@ -2,7 +2,7 @@
 
 namespace HubSpot;
 
-use HubSpot\Client\Crm\Objects\Configuration;
+use HubSpot\Client\Crm\Contacts\Configuration;
 
 class Config
 {
