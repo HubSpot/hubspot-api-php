@@ -17,7 +17,6 @@ class HubspotClientHelper
 
         throw new \Exception('Please authorize via OAuth');
     }
-    
 
     public static function createFactoryWithDeveloperAPIKey(): Discovery
     {

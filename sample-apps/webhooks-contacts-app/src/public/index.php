@@ -26,8 +26,8 @@ try {
             header('Location: /oauth/login.php');
             exit();
         }
-        
-        if (($uri != '/webhooks/init.php') && empty($_SESSION['init'])) {
+
+        if (('/webhooks/init.php' != $uri) && empty($_SESSION['init'])) {
             header('Location: /webhooks/init.php');
             exit();
         }
