@@ -15,11 +15,13 @@ class HubspotClientHelper
             return Factory::createWithAccessToken($accessToken);
         }
 
-        $apiKey = $_ENV['HUBSPOT_API_KEY'];
-        if (!empty($apiKey)) {
-            return Factory::createWithApiKey($apiKey);
-        }
+        throw new \Exception('Please authorize via OAuth');
+    }
 
-        throw new \Exception('Please specify API key or authorize via OAuth');
+    public static function createFactoryWithDeveloperAPIKey(): Discovery
+    {
+        return Factory::createWithApiKey(
+            getEnvOrException('HUBSPOT_DEVELOPER_API_KEY')
+        );
     }
 }
