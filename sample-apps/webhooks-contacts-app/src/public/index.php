@@ -27,7 +27,7 @@ try {
             exit();
         }
 
-        if (('/webhooks/init.php' != $uri) && empty($_SESSION['init'])) {
+        if (('/webhooks/init.php' !== $uri) && empty($_SESSION['init'])) {
             header('Location: /webhooks/init.php');
             exit();
         }
