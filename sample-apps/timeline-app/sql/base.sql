@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `telegram_update`
+create table if not exists `telegram_update`
 (
     `id` bigint UNSIGNED COMMENT 'Update''s unique identifier'
 );

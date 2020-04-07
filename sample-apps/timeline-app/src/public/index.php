@@ -10,8 +10,8 @@ require_once '../../vendor/autoload.php';
 session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-try {
-    //DBClientHelper::runMigrations();
+//try {
+    DBClientHelper::runMigrations();
 
     $publicRoutes = require '../routes/public.php';
     $protectedRoutes = require '../routes/protected.php';
@@ -37,8 +37,8 @@ try {
 
     $path = __DIR__.'/../actions'.$uri;
     require $path;
-} catch (Throwable $throwable) {
-    $message = $throwable->getMessage();
-    include __DIR__.'/../views/error.php';
-    exit();
-}
+//} catch (Throwable $throwable) {
+//    $message = $throwable->getMessage();
+//    include __DIR__.'/../views/error.php';
+//    exit();
+//}

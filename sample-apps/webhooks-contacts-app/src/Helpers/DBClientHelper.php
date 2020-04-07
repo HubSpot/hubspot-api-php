@@ -8,7 +8,7 @@ class DBClientHelper
 {
     private static $dbClient = null;
 
-    public static function getClient()
+    public static function getClient(): PDO
     {
         if (!self::$dbClient) {
             $pdo = new PDO('mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_NAME'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
