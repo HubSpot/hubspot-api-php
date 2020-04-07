@@ -1,18 +1,21 @@
 <?php
 
-use Helpers\HubspotClientHelper;
 use Helpers\OAuth2Helper;
+use HubSpot\Factory;
+use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use Repositories\TokensRepository;
 
-$response = HubspotClientHelper::getOAuth2Resource()->getTokensByCode(
-    OAuth2Helper::getClientId(),
-    OAuth2Helper::getClientSecret(),
+// https://developers.hubspot.com/docs-beta/working-with-oauth
+$token = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
+    'authorization_code',
+    $_GET['code'],
     OAuth2Helper::getRedirectUri(),
-    $_GET['code']
+    OAuth2Helper::getClientId(),
+    OAuth2Helper::getClientSecret()
 );
 
-if (HubspotClientHelper::isResponseSuccessful($response)) {
-    TokensRepository::save($response->toArray());
-
-    header('Location: /');
+if ($token instanceof TokenResponseIF) {
+    TokensRepository::save($token);
 }
+
+header('Location: /');

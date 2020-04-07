@@ -11,7 +11,7 @@ session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 try {
-    //DBClientHelper::runMigrations();
+    DBClientHelper::runMigrations();
 
     $publicRoutes = require '../routes/public.php';
     $protectedRoutes = require '../routes/protected.php';

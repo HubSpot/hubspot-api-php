@@ -2,6 +2,9 @@
 
 use Enums\EventTypeCode;
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest;
+use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate;
+use HubSpot\Crm\ObjectType;
 use Repositories\EventTypesRepository;
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
@@ -11,25 +14,28 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
 
 EventTypesRepository::delete();
 
+$appId = getEnvOrException('HUBSPOT_APPLICATION_ID');
+
 //Intialize HubSpot API Wrapper using HUBSPOT_DEVELOPER_API_KEY needed to create Event Type
 //Note that you asscoiate Event Types with application while actual events will be associated with objects in Portals, e.g. Contacts 
 //That is why Developer API Key is used to initialize the Wrapper to make calls to Event Type API links
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 
 if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
-    //create one event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
-    $botAdded = $hubSpot->timeline()->createEventType(
-        getEnvOrException('HUBSPOT_APPLICATION_ID'),
-        'Telegram Bot added',
-        '# Telegram Bot added',
-        'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
-        'CONTACT'
-    );
+    
+    $botAddedRequest = new TimelineEventTemplateCreateRequest();
+    $botAddedRequest->setName('Telegram Bot added');
+    $botAddedRequest->setHeaderTemplate('# Telegram Bot added');
+    $botAddedRequest->setDetailTemplate('This event happened on {{#formatDate timestamp}}{{/formatDate}}');
+    $botAddedRequest->setObjectType(ObjectType::CONTACTS);
+    
+    $botAdded = $hubSpot->crm()->timeline()->templatesApi()
+        ->createEventTemplate($appId, $botAddedRequest);
 
-    if (HubspotClientHelper::isResponseSuccessful($botAdded)) {
+    if ($botAdded instanceof TimelineEventTemplate) {
         EventTypesRepository::insert([
             'code' => EventTypeCode::BOT_ADDED,
-            'hubspot_event_type_id' => $botAdded->getData()->id,
+            'hubspot_event_type_id' => $botAdded->getId(),
         ]);
     }
 }

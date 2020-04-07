@@ -4,6 +4,7 @@ namespace Repositories;
 
 use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
+use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use PDO;
 
 class TokensRepository
@@ -41,14 +42,21 @@ class TokensRepository
         ]);
     }
 
-    public static function save($token)
+    public static function save(TokenResponseIF $token)
     {
+        $data = [
+            'access_token' => $token->getAccessToken(),
+            'expires_in' => $token->getExpiresIn(),
+            'refresh_token' => $token->getRefreshToken(),
+        ];
+        
         $savedToken = static::getToken();
+        
         if ($savedToken) {
-            $token['id'] = $savedToken['id'];
-            static::update($token);
+            $data['id'] = $savedToken['id'];
+            static::update($data);
         } else {
-            static::insert($token);
+            static::insert($data);
         }
     }
 }
