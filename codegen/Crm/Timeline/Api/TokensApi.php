@@ -116,7 +116,7 @@ class TokensApi
     }
 
     /**
-     * Operation archiveEventTemplateToken
+     * Operation archive
      *
      * Removes a token from the event template
      *
@@ -128,13 +128,13 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveEventTemplateToken($event_template_id, $token_name, $app_id)
+    public function archive($event_template_id, $token_name, $app_id)
     {
-        $this->archiveEventTemplateTokenWithHttpInfo($event_template_id, $token_name, $app_id);
+        $this->archiveWithHttpInfo($event_template_id, $token_name, $app_id);
     }
 
     /**
-     * Operation archiveEventTemplateTokenWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Removes a token from the event template
      *
@@ -146,9 +146,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveEventTemplateTokenWithHttpInfo($event_template_id, $token_name, $app_id)
+    public function archiveWithHttpInfo($event_template_id, $token_name, $app_id)
     {
-        $request = $this->archiveEventTemplateTokenRequest($event_template_id, $token_name, $app_id);
+        $request = $this->archiveRequest($event_template_id, $token_name, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,7 +196,7 @@ class TokensApi
     }
 
     /**
-     * Operation archiveEventTemplateTokenAsync
+     * Operation archiveAsync
      *
      * Removes a token from the event template
      *
@@ -207,9 +207,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveEventTemplateTokenAsync($event_template_id, $token_name, $app_id)
+    public function archiveAsync($event_template_id, $token_name, $app_id)
     {
-        return $this->archiveEventTemplateTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id)
+        return $this->archiveAsyncWithHttpInfo($event_template_id, $token_name, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -218,7 +218,7 @@ class TokensApi
     }
 
     /**
-     * Operation archiveEventTemplateTokenAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Removes a token from the event template
      *
@@ -229,10 +229,10 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveEventTemplateTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id)
+    public function archiveAsyncWithHttpInfo($event_template_id, $token_name, $app_id)
     {
         $returnType = '';
-        $request = $this->archiveEventTemplateTokenRequest($event_template_id, $token_name, $app_id);
+        $request = $this->archiveRequest($event_template_id, $token_name, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -258,7 +258,7 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'archiveEventTemplateToken'
+     * Create request for operation 'archive'
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
@@ -267,24 +267,24 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveEventTemplateTokenRequest($event_template_id, $token_name, $app_id)
+    protected function archiveRequest($event_template_id, $token_name, $app_id)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling archiveEventTemplateToken'
+                'Missing the required parameter $event_template_id when calling archive'
             );
         }
         // verify the required parameter 'token_name' is set
         if ($token_name === null || (is_array($token_name) && count($token_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token_name when calling archiveEventTemplateToken'
+                'Missing the required parameter $token_name when calling archive'
             );
         }
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archiveEventTemplateToken'
+                'Missing the required parameter $app_id when calling archive'
             );
         }
 
@@ -395,7 +395,7 @@ class TokensApi
     }
 
     /**
-     * Operation createEventTemplateToken
+     * Operation create
      *
      * Adds a token to an existing event template
      *
@@ -407,14 +407,14 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function createEventTemplateToken($event_template_id, $app_id, $timeline_event_template_token = null)
+    public function create($event_template_id, $app_id, $timeline_event_template_token = null)
     {
-        list($response) = $this->createEventTemplateTokenWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token);
+        list($response) = $this->createWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token);
         return $response;
     }
 
     /**
-     * Operation createEventTemplateTokenWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * Adds a token to an existing event template
      *
@@ -426,9 +426,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createEventTemplateTokenWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token = null)
+    public function createWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token = null)
     {
-        $request = $this->createEventTemplateTokenRequest($event_template_id, $app_id, $timeline_event_template_token);
+        $request = $this->createRequest($event_template_id, $app_id, $timeline_event_template_token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -524,7 +524,7 @@ class TokensApi
     }
 
     /**
-     * Operation createEventTemplateTokenAsync
+     * Operation createAsync
      *
      * Adds a token to an existing event template
      *
@@ -535,9 +535,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createEventTemplateTokenAsync($event_template_id, $app_id, $timeline_event_template_token = null)
+    public function createAsync($event_template_id, $app_id, $timeline_event_template_token = null)
     {
-        return $this->createEventTemplateTokenAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token)
+        return $this->createAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -546,7 +546,7 @@ class TokensApi
     }
 
     /**
-     * Operation createEventTemplateTokenAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * Adds a token to an existing event template
      *
@@ -557,10 +557,10 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createEventTemplateTokenAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token = null)
+    public function createAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token = null)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken';
-        $request = $this->createEventTemplateTokenRequest($event_template_id, $app_id, $timeline_event_template_token);
+        $request = $this->createRequest($event_template_id, $app_id, $timeline_event_template_token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -597,7 +597,7 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'createEventTemplateToken'
+     * Create request for operation 'create'
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
@@ -606,18 +606,18 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createEventTemplateTokenRequest($event_template_id, $app_id, $timeline_event_template_token = null)
+    protected function createRequest($event_template_id, $app_id, $timeline_event_template_token = null)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling createEventTemplateToken'
+                'Missing the required parameter $event_template_id when calling create'
             );
         }
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling createEventTemplateToken'
+                'Missing the required parameter $app_id when calling create'
             );
         }
 
@@ -723,7 +723,7 @@ class TokensApi
     }
 
     /**
-     * Operation updateEventTemplateToken
+     * Operation update
      *
      * Updates an existing token on an event template
      *
@@ -736,14 +736,14 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function updateEventTemplateToken($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
+    public function update($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
     {
-        list($response) = $this->updateEventTemplateTokenWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
+        list($response) = $this->updateWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
         return $response;
     }
 
     /**
-     * Operation updateEventTemplateTokenWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Updates an existing token on an event template
      *
@@ -756,9 +756,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateEventTemplateTokenWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
+    public function updateWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
     {
-        $request = $this->updateEventTemplateTokenRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
+        $request = $this->updateRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -854,7 +854,7 @@ class TokensApi
     }
 
     /**
-     * Operation updateEventTemplateTokenAsync
+     * Operation updateAsync
      *
      * Updates an existing token on an event template
      *
@@ -866,9 +866,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateEventTemplateTokenAsync($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
+    public function updateAsync($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
     {
-        return $this->updateEventTemplateTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
+        return $this->updateAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -877,7 +877,7 @@ class TokensApi
     }
 
     /**
-     * Operation updateEventTemplateTokenAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Updates an existing token on an event template
      *
@@ -889,10 +889,10 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateEventTemplateTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
+    public function updateAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken';
-        $request = $this->updateEventTemplateTokenRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
+        $request = $this->updateRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -929,7 +929,7 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'updateEventTemplateToken'
+     * Create request for operation 'update'
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
@@ -939,24 +939,24 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateEventTemplateTokenRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
+    protected function updateRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request = null)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling updateEventTemplateToken'
+                'Missing the required parameter $event_template_id when calling update'
             );
         }
         // verify the required parameter 'token_name' is set
         if ($token_name === null || (is_array($token_name) && count($token_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token_name when calling updateEventTemplateToken'
+                'Missing the required parameter $token_name when calling update'
             );
         }
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling updateEventTemplateToken'
+                'Missing the required parameter $app_id when calling update'
             );
         }
 

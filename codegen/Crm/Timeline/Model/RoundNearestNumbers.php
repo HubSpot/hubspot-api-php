@@ -1,6 +1,6 @@
 <?php
 /**
- * NumberPropertyVariable
+ * RoundNearestNumbers
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
 
 /**
- * NumberPropertyVariable Class Doc Comment
+ * RoundNearestNumbers Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Timeline
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class NumberPropertyVariable implements ModelInterface, ArrayAccess
+class RoundNearestNumbers implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NumberPropertyVariable implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NumberPropertyVariable';
+    protected static $openAPIModelName = 'RoundNearestNumbers';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -173,7 +173,7 @@ class NumberPropertyVariable implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const OPERATOR_NUMBER_PROPERTY_VARIABLE = 'NUMBER_PROPERTY_VARIABLE';
+    const OPERATOR_ROUND_NEAREST = 'ROUND_NEAREST';
     
 
     
@@ -185,7 +185,7 @@ class NumberPropertyVariable implements ModelInterface, ArrayAccess
     public function getOperatorAllowableValues()
     {
         return [
-            self::OPERATOR_NUMBER_PROPERTY_VARIABLE,
+            self::OPERATOR_ROUND_NEAREST,
         ];
     }
     
@@ -205,7 +205,7 @@ class NumberPropertyVariable implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['operator'] = isset($data['operator']) ? $data['operator'] : 'NUMBER_PROPERTY_VARIABLE';
+        $this->container['operator'] = isset($data['operator']) ? $data['operator'] : 'ROUND_NEAREST';
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
         $this->container['inputs'] = isset($data['inputs']) ? $data['inputs'] : null;
         $this->container['property_name'] = isset($data['property_name']) ? $data['property_name'] : null;
