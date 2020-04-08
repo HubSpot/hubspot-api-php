@@ -4,6 +4,7 @@ use Enums\EventTypeCode;
 use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest;
 use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate;
+use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken;
 use HubSpot\Crm\ObjectType;
 use Repositories\EventTypesRepository;
 
@@ -39,52 +40,63 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
         ]);
     }
 }
-//
+
 if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
-    //create another event type with  https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
-    $invitationEventType = $hubSpot->timeline()->createEventType(
-        getEnvOrException('HUBSPOT_APPLICATION_ID'),
-        'User received/accepted/rejected an invitation',
-        'User {{ action }} an invitation for {{ name }}',
-        'Event URL: [{{ event_url }}]({{ event_url }})'."  \n".'This event happened on {{#formatDate timestamp}}{{/formatDate}}',
-        'CONTACT'
-    );
-
-    if (HubspotClientHelper::isResponseSuccessful($invitationEventType)) {
-    // We need to add 3 custom properties to this Event type in order to use them in Event's template
+    $invitationRequest = new TimelineEventTemplateCreateRequest();
+    $invitationRequest->setName('User received/accepted/rejected an invitation');
+    $invitationRequest->setHeaderTemplate('User {{ action }} an invitation for {{ name }}');
+    $invitationRequest->setDetailTemplate('Event URL: [{{ event_url }}]({{ event_url }}) '.PHP_EOL.'This event happened on {{#formatDate timestamp}}{{/formatDate}}');
+    $invitationRequest->setObjectType(ObjectType::CONTACTS);
+    
+    $invitationEventType = $hubSpot->crm()->timeline()->templatesApi()
+        ->createEventTemplate($appId, $invitationRequest);
+    
+    if ($invitationEventType instanceof TimelineEventTemplate) {
+        // We need to add 3 custom properties to this Event type in order to use them in Event's template
         //add custom property 'name' to this Event Type 
-        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
-        $nameProperty = $hubSpot->timeline()->createEventTypeProperty(
-            getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $invitationEventType->getData()->id,
-            'name',
-            'Invitation Name',
-            'String'
-        );
+        $nameRequest = new TimelineEventTemplateToken();
+        $nameRequest->setName('name');
+        $nameRequest->setLabel('Invitation Name');
+        $nameRequest->setType('String');
+        
+        $nameProperty = $hubSpot->crm()->timeline()->tokensApi()
+            ->createEventTemplateToken(
+                $invitationEventType->getId(),
+                $appId,
+                $nameRequest
+            );
         //add custom property 'action' to this Event Type 
-        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
-        $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
-            getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $invitationEventType->getData()->id,
-            'action',
-            'User Action',
-            'String'
-        );
+        $actionRequest = new TimelineEventTemplateToken();
+        $actionRequest->setName('action');
+        $actionRequest->setLabel('User Action');
+        $actionRequest->setType('String');
+        
+        $actionProperty = $hubSpot->crm()->timeline()->tokensApi()
+            ->createEventTemplateToken(
+                $invitationEventType->getId(),
+                $appId,
+                $actionRequest
+            );
 
-        //add custom property 'event_url' to this Event Type 
-        //call to https://api.hubapi.com/integrations/v1/<<appId>>/timeline/event-types/<<eventTypeId>>/properties?hapikey=<<developerHapikey>>&userId=<<yourUserId>>
-        $actionProperty = $hubSpot->timeline()->createEventTypeProperty(
-            getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $invitationEventType->getData()->id,
-            'event_url',
-            'Event URL',
-            'String'
-        );
-        if (HubspotClientHelper::isResponseSuccessful($nameProperty)
-            && HubspotClientHelper::isResponseSuccessful($actionProperty)) {
+        //add custom property 'event_url' to this Event Type
+        $eventUrlRequest = new TimelineEventTemplateToken();
+        $eventUrlRequest->setName('event_url');
+        $eventUrlRequest->setLabel('Event URL');
+        $eventUrlRequest->setType('String');
+        
+        $eventUrlProperty = $hubSpot->crm()->timeline()->tokensApi()
+            ->createEventTemplateToken(
+                $invitationEventType->getId(),
+                $appId,
+                $actionRequest
+            );
+        
+        if ($nameProperty instanceof TimelineEventTemplateToken
+        && $actionProperty instanceof TimelineEventTemplateToken
+        && $eventUrlProperty instanceof TimelineEventTemplateToken) {
             EventTypesRepository::insert([
                 'code' => EventTypeCode::USER_INVITATION_ACTION,
-                'hubspot_event_type_id' => $invitationEventType->getData()->id,
+                'hubspot_event_type_id' => $invitationEventType->getId(),
             ]);
         }
     }
