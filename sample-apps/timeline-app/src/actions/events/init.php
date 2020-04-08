@@ -57,7 +57,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         $nameRequest = new TimelineEventTemplateToken();
         $nameRequest->setName('name');
         $nameRequest->setLabel('Invitation Name');
-        $nameRequest->setType('String');
+        $nameRequest->setType('string');
         
         $nameProperty = $hubSpot->crm()->timeline()->tokensApi()
             ->createEventTemplateToken(
@@ -69,7 +69,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         $actionRequest = new TimelineEventTemplateToken();
         $actionRequest->setName('action');
         $actionRequest->setLabel('User Action');
-        $actionRequest->setType('String');
+        $actionRequest->setType('string');
         
         $actionProperty = $hubSpot->crm()->timeline()->tokensApi()
             ->createEventTemplateToken(
@@ -82,13 +82,13 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         $eventUrlRequest = new TimelineEventTemplateToken();
         $eventUrlRequest->setName('event_url');
         $eventUrlRequest->setLabel('Event URL');
-        $eventUrlRequest->setType('String');
+        $eventUrlRequest->setType('string');
         
         $eventUrlProperty = $hubSpot->crm()->timeline()->tokensApi()
             ->createEventTemplateToken(
                 $invitationEventType->getId(),
                 $appId,
-                $actionRequest
+                $eventUrlRequest
             );
         
         if ($nameProperty instanceof TimelineEventTemplateToken
