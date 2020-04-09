@@ -12,4 +12,4 @@ if (array_key_exists('id', $_GET)) {
     }
 }
 
-header('Location: /types/list.php');
+header('Location: /templates/list.php');

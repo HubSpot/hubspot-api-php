@@ -11,7 +11,7 @@ $type = [
 ];
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
-    $response = $hubSpot->timeline()->createEventType(
+    $response = $hubSpot->crm()->timeline()->templatesApi()->createEventType(
         $_ENV['HUBSPOT_APPLICATION_ID'],
         $type['name'],
         $type['headerTemplate'],
@@ -19,8 +19,8 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         $type['objectType']
     );
     if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /types/show.php?id='.$response->getData()->id);
+        header('Location: /templates/show.php?id='.$response->getData()->id);
     }
 }
 
-include __DIR__.'/../../views/types/form.php';
+include __DIR__.'/../../views/templates/form.php';

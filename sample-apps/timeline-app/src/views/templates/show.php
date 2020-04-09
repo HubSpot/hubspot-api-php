@@ -16,20 +16,34 @@ $hubSpot->timeline()->getEventTypeProperties('HubSpot Application ID', 'Event Ty
     <div class="column column-50">
         <table>
             <tbody>
-                <?php foreach ((array) $type as $key => $value) {?>
                 <tr>
-                    <td><?php echo $key; ?></td>
-                    <td><?php echo $value; ?></td>
+                    <td>ID</td>
+                    <td><?php echo $template->getId();?></td>
                 </tr>
-                <?php } ?>
+                <tr>
+                    <td>Nane</td>
+                    <td><?php echo $template->getName();?></td>
+                </tr>
+                <tr>
+                    <td>Object Type</td>
+                    <td><?php echo $template->getObjectType();?></td>
+                </tr>
+                <tr>
+                    <td>Header Template</td>
+                    <td><?php echo $template->getHeaderTemplate();?></td>
+                </tr>
+                <tr>
+                    <td>Detail Template</td>
+                    <td><?php echo $template->getDetailTemplate();?></td>
+                </tr>
             </tbody>
         </table>
         <div>
-            <a id='type-update' class="button" href="/types/update.php?id=<?php echo $type->id; ?>">Update</a>
-            <a id='type-delete' class="button" href="/types/delete.php?id=<?php echo $type->id; ?>">Delete</a>
+            <a id='template-update' class="button" href="/templates/update.php?id=<?php echo $template->getId(); ?>">Update</a>
+            <a id='template-delete' class="button" href="/templates/delete.php?id=<?php echo $template->getId(); ?>">Delete</a>
         </div>
         <pre>
-// src/actions/types/delete.php
+// src/actions/templates/delete.php
 Delete a timeline Event Type
 $hubSpot->timeline()
     ->deleteEventType(

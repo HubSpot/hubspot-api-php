@@ -20,7 +20,7 @@
                     <a class="navigation-link" href="/telegram/link.php">Manage Telegram Bot Invites </a>
                 </li>
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/types/list.php">Manage Event Types</a>
+                    <a class="navigation-link" href="/templates/list.php">Manage Event Templates</a>
                 </li>
                 <li class="navigation-item">
                     <a class="navigation-link" href="/invitations/list.php">Manage Invitations</a>
