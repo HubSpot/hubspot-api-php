@@ -19,8 +19,9 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     
     $hubSpot->crm()->timeline()->templatesApi()
         ->updateEventTemplate(
-            $request,
-            getEnvOrException('HUBSPOT_APPLICATION_ID')
+            $_GET['id'],
+            getEnvOrException('HUBSPOT_APPLICATION_ID'),
+            $request
         );
     
     header('Location: /templates/show.php?id='.$_GET['id']);
