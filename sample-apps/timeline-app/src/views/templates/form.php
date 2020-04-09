@@ -1,12 +1,14 @@
 <?php
 /**
- * @var array timeline event type
+ * @var array $type timeline event type
  */
+use HubSpot\Crm\ObjectType;
+
 include __DIR__.'/../_partials/header.php';
 $objectTypes = [
-    'CONTACT' => 'Contact',
-    'COMPANY' => 'Company',
-    'DEAL' => 'Deal',
+    ObjectType::CONTACTS => 'Contact',
+    ObjectType::COMPANIES => 'Company',
+    ObjectType::DEALS => 'Deal',
 ];
 ?>
 <pre>
