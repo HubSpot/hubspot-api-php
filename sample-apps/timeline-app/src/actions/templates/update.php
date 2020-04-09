@@ -1,36 +1,35 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 
 if (!array_key_exists('id', $_GET)) {
     header('Location: /templates/list.php');
 }
+
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
-    $type = [
-        'name' => getValueOrNull('name', $_POST),
-        'headerTemplate' => getValueOrNull('headerTemplate', $_POST),
-        'detailTemplate' => getValueOrNull('detailTemplate', $_POST),
-        'objectType' => getValueOrNull('objectType', $_POST),
-    ];
-    $response = $hubSpot->timeline()->updateEventType(
-        $_ENV['HUBSPOT_APPLICATION_ID'],
+    $request = new TimelineEventTemplateUpdateRequest();
+    $request->setId($_GET['id']);
+    $request->setName($_POST['name']);
+    $request->setHeaderTemplate($_POST['headerTemplate']);
+    $request->setDetailTemplate($_POST['detailTemplate']);
+    //$request->setObjectType(getValueOrNull('objectType', $_POST));
+    
+    $hubSpot->crm()->timeline()->templatesApi()
+        ->updateEventTemplate(
+            $request,
+            getEnvOrException('HUBSPOT_APPLICATION_ID')
+        );
+    
+    header('Location: /templates/show.php?id='.$_GET['id']);
+}
+
+$template = $hubSpot->crm()->timeline()->templatesApi()
+    ->getEventTemplateById(
         $_GET['id'],
-        $type['name'],
-        $type['headerTemplate'],
-        $type['detailTemplate'],
-        $type['objectType']
+        getEnvOrException('HUBSPOT_APPLICATION_ID')
     );
-    if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /templates/show.php?id='.$_GET['id']);
-    }
-}
-if (!isset($type)) {
-    $typeResponse = $hubSpot->timeline()->getEventTypeById($_ENV['HUBSPOT_APPLICATION_ID'], intval($_GET['id']));
-    if (!HubspotClientHelper::isResponseSuccessful($typeResponse)) {
-        throw new Exception($typeResponse->getReasonPhrase());
-    }
-    $type = (array) $typeResponse->getData();
-}
+
 include __DIR__.'/../../views/templates/form.php';

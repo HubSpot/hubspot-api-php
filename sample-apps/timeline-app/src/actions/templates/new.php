@@ -4,24 +4,18 @@ use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
-$type = [
-    'name' => getValueOrNull('name', $_POST),
-    'headerTemplate' => getValueOrNull('headerTemplate', $_POST),
-    'detailTemplate' => getValueOrNull('detailTemplate', $_POST),
-    'objectType' => getValueOrNull('objectType', $_POST),
-];
+
+$template = new TimelineEventTemplateCreateRequest();
+$template->setName(getValueOrNull('name', $_POST));
+$template->setHeaderTemplate(getValueOrNull('headerTemplate', $_POST));
+$template->setDetailTemplate(getValueOrNull('detailTemplate', $_POST));
+$template->setObjectType(getValueOrNull('objectType', $_POST));
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
-    $request = new TimelineEventTemplateCreateRequest();
-    $request->setName($type['name']);
-    $request->setHeaderTemplate($type['headerTemplate']);
-    $request->setDetailTemplate($type['detailTemplate']);
-    $request->setObjectType($type['objectType']);
-    
     $response = $hubSpot->crm()->timeline()->templatesApi()
         ->createEventTemplate(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
-            $request
+            $template
         );
 
     header('Location: /templates/show.php?id='.$response->getId());
