@@ -1,11 +1,14 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
+
 if (!array_key_exists('id', $_GET)) {
     header('Location: /templates/list.php');
 }
+
 $property = [
     'name' => getValueOrNull('name', $_POST),
     'label' => getValueOrNull('label', $_POST),
@@ -13,7 +16,9 @@ $property = [
 ];
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
-    $response = $hubSpot->timeline()->createEventTypeProperty(
+    $response = $hubSpot->crm()->timeline()->tokensApi()
+        ->createEventTemplateToken($event_template_id, $app_id)
+        ->createEventTypeProperty(
         $_ENV['HUBSPOT_APPLICATION_ID'],
         $_GET['id'],
         $property['name'],

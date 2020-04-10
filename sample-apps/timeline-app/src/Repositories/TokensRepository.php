@@ -58,5 +58,7 @@ class TokensRepository
         } else {
             static::insert($data);
         }
+        
+        return $data;
     }
 }
