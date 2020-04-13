@@ -15,7 +15,6 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $request->setName($_POST['name']);
     $request->setHeaderTemplate($_POST['headerTemplate']);
     $request->setDetailTemplate($_POST['detailTemplate']);
-    //$request->setObjectType(getValueOrNull('objectType', $_POST));
     
     $hubSpot->crm()->timeline()->templatesApi()
         ->updateEventTemplate(

@@ -13,7 +13,7 @@ $template->setObjectType(getValueOrNull('objectType', $_POST));
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $response = $hubSpot->crm()->timeline()->templatesApi()
-        ->createEventTemplate(
+        ->create(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $template
         );

@@ -8,6 +8,6 @@ if (!array_key_exists('id', $_GET)) {
 }
 
 $template = $hubSpot->crm()->timeline()->templatesApi()
-    ->getEventTemplateById(intval($_GET['id']), getEnvOrException('HUBSPOT_APPLICATION_ID'));
+    ->getById($_GET['id'], getEnvOrException('HUBSPOT_APPLICATION_ID'));
 
 include __DIR__.'/../../views/templates/show.php';

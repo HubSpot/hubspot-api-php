@@ -16,20 +16,20 @@ $property = [
 ];
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
-    $response = $hubSpot->crm()->timeline()->tokensApi()
-        ->createEventTemplateToken($event_template_id, $app_id)
-        ->createEventTypeProperty(
-        $_ENV['HUBSPOT_APPLICATION_ID'],
-        $_GET['id'],
-        $property['name'],
-        $property['label'],
-        $property['propertyType']
-    );
-
-    if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /templates/show.php?id='.$_GET['id']);
-        exit();
-    }
+    
+    $request = new TimelineEventTemplateToken();
+    $request->setName($property['name']);
+    $request->setLabel($property['label']);
+    $request->setType($property['propertyType']);
+    
+    $hubSpot->crm()->timeline()->tokensApi()
+        ->create(
+            $_GET['id'],
+            getEnvOrException('HUBSPOT_APPLICATION_ID'),
+            $request
+        );
+    
+    header('Location: /templates/show.php?id='.$_GET['id']);
 }
 
 include __DIR__.'/../../../views/properties/form.php';
