@@ -13,25 +13,33 @@ $objectTypes = [
 if ($template instanceof TimelineEventTemplate) {
 ?>
 <pre>
-// src/actions/templates/update.php - Update a Timeline Event Type
-$hubSpot->timeline()->updateEventType(
+// src/actions/templates/update.php - Update a Timeline Event Template
+$request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest();
+$request->setId($_GET['id']);
+$request->setName($_POST['name']);
+$request->setHeaderTemplate($_POST['headerTemplate']);
+$request->setDetailTemplate($_POST['detailTemplate']);
+
+$hubSpot->crm()->timeline()->templatesApi()
+    ->update(
+        'Event Template ID',
         'HubSpot Application ID',
-        'Event Type ID',
-        'Event Type Name',
-        'Header Template',
-        'Detail Template',
-        'Object Type'
+        $request
     );
 </pre>
 <?php } else { ?>
 <pre>
-// src/actions/templates/new.php - Create a new Timeline Event Type
-$hubSpot->timeline()->createEventType(
+// src/actions/templates/new.php - Create a new Timeline Event Template
+$request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest();
+$request->setName('name');
+$request->setHeaderTemplate('headerTemplate');
+$request->setDetailTemplate('detailTemplate');
+$request->setObjectType('objectType');
+
+$hubSpot->crm()->timeline()->templatesApi()
+    ->create(
         'HubSpot Application ID',
-        'Event Type Name',
-        'Header Template',
-        'Detail Template',
-        'Object Type'
+        $request
     );
 </pre>
 <?php } ?>

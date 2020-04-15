@@ -1,16 +1,10 @@
 <?php
-/**
- * @var stdClass timeline event type
- * @var array    $properties array consist of type's properties (stdClass)
- */
 include __DIR__.'/../_partials/header.php';
 ?>
 <pre>
-// src/actions/types/list.php - Get Timeline Event Types
-$hubSpot->timeline()->getEventTypeById('HubSpot Application ID', 'Event Type ID');
-
-// src/actions/types/list.php - Get Properties for Timeline Event Type
-$hubSpot->timeline()->getEventTypeProperties('HubSpot Application ID', 'Event Type ID');
+// src/actions/types/list.php - Get Timeline Event Template
+$hubSpot->crm()->timeline()->templatesApi()
+    ->getById('Event Template ID', 'HubSpot Application ID');
 </pre>
 <div class="row">
     <div class="column column-50">
@@ -44,12 +38,9 @@ $hubSpot->timeline()->getEventTypeProperties('HubSpot Application ID', 'Event Ty
         </div>
         <pre>
 // src/actions/templates/delete.php
-Delete a timeline Event Type
-$hubSpot->timeline()
-    ->deleteEventType(
-        'HubSpot Application ID',
-        'Event Type ID'
-    );
+Delete a timeline Event Template
+$hubSpot->crm()->timeline()->templatesApi()
+    ->archive('Event Template ID', 'HubSpot Application ID');
         </pre>
     </div>
     <div class="column">

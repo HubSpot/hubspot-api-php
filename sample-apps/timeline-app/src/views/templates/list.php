@@ -1,17 +1,15 @@
 <?php
-/**
- * @var array array consist of types (stdClass)
- */
 include __DIR__.'/../_partials/header.php';
 ?>
 
 <pre>
-// src/actions/types/list.php - Get Timeline Event Types
+// src/actions/types/list.php - Get Timeline Event Templates
 $hubSpot->crm()->timeline()->templatesApi()
-    ->getAllEventTemplates('HubSpot Application ID')
+    ->getAll('HubSpot Application ID')
 
-// src/actions/types/delete.php - Delete a timeline Event Type
-$hubSpot->timeline()->deleteEventType('HubSpot Application ID', 'Event Type ID');
+// src/actions/types/delete.php - Delete a timeline Event Template
+$hubSpot->crm()->timeline()->templatesApi()
+    ->archive('Event Template ID', 'HubSpot Application ID');
 </pre>
 <table class="types-list">
     <thead>

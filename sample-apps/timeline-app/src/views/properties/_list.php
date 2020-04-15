@@ -32,10 +32,10 @@ if (count($template->getTokens()) > 0) {
 <pre>
 // src/actions/templates/properties/delete.php
 Delete Property for Timeline Event Type
-$hubSpot->timeline()
-    ->deleteEventTypeProperty(
-        'HubSpot Application ID',
-        'Event Type ID'
-        'Property ID'
+$response = $hubSpot->crm()->timeline()->tokensApi()
+    ->archive(
+        'Event Template ID',
+        'Token name',
+        'HubSpot Application ID'
     );
 </pre>
