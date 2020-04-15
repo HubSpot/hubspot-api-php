@@ -3,17 +3,15 @@
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
-if (!array_key_exists('type_id', $_GET) || !array_key_exists('property_id', $_GET)) {
+if (!array_key_exists('template_id', $_GET) || !array_key_exists('name', $_GET)) {
     header('Location: /templates/list.php');
 }
 
-$response = $hubSpot->timeline()->deleteEventTypeProperty(
-    $_ENV['HUBSPOT_APPLICATION_ID'],
-    $_GET['type_id'],
-    $_GET['property_id']
-);
+$response = $hubSpot->crm()->timeline()->tokensApi()
+    ->archive(
+        $_GET['template_id'],
+        $_GET['name'],
+        getEnvOrException('HUBSPOT_APPLICATION_ID')
+    );
 
-if (HubspotClientHelper::isEmptyResponseSuccessful($response)) {
-    header('Location: /templates/show.php?id='.$_GET['type_id']);
-    exit();
-}
+header('Location: /templates/show.php?id='.$_GET['template_id']);

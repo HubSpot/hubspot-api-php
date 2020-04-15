@@ -4,21 +4,29 @@
  */
 include __DIR__.'/../_partials/header.php';
 $propertyTypes = [
-    'Date',
-    'Numeric',
-    'String',
+    'date',
+    'number',
+    'string',
 ];
+
+if (!isset($_GET['name'])) {
 ?>
 <pre>
 // src/actions/types/properties/new.php - Create Property for Timeline Event Type
-$hubSpot->timeline()->createEventTypeProperty(
-        'HubSpot Application ID',
-        'Event Type ID'
-        'Name',
-        'Label',
-        'Property Type'
-    );
+$property = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken();
+$property->setName('name');
+$property->setLabel('Label');
+$property->setType('string');
 
+$hubSpot->crm()->timeline()->tokensApi()
+    ->create(
+        $_GET['id'],
+        $_ENV('HUBSPOT_APPLICATION_ID'),
+        $property
+    );
+</pre>
+<?php } else { ?>
+<pre>
 // src/actions/types/properties/update.php - Update Property for Timeline Event Type
 $hubSpot->timeline()->updateEventType(
         'HubSpot Application ID',
@@ -29,19 +37,24 @@ $hubSpot->timeline()->updateEventType(
         'Property Type'
     );
 </pre>
+<?php } ?>
 <form method="post">
     <fieldset>
+        <?php if (!isset($_GET['name'])) { ?>
         <label for="name">Name</label>
-        <input type="text" placeholder="Name" id="name"<?php if (isset($_GET['property_id'])) { ?> readonly<?php } ?> name="name" value="<?php echo $property['name']; ?>">
+        <input type="text" placeholder="Name" required id="name" name="name" value="<?php echo $property->getName(); ?>">
+        <?php } ?>
         <label for="label">Label</label>
-        <input type="text" placeholder="Label" id="label" name="label" value="<?php echo $property['label']; ?>">
-        <label for="propertyType">Property Type</label>
-        <select id="propertyType" name="propertyType">
-            <option disabled<?php if (empty($property['propertyType'])) { ?>selected<?php } ?>>Select Property Type</option>
+        <input type="text" placeholder="Label" id="label" name="label" value="<?php echo $property->getLabel(); ?>">
+        <?php if (!isset($_GET['name'])) { ?>
+        <label for="type">Property Type</label>
+        <select id="type" name="type" required>
+            <option value="" <?php if (empty($property->getType())) { ?>selected<?php } ?>>Select Property Type</option>
             <?php foreach ($propertyTypes as $value) { ?>
-                <option <?php if ($property['propertyType'] == $value) {?>selected <?php } ?>value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                <option <?php if ($property->getType() == $value) {?>selected <?php } ?>value="<?php echo $value; ?>"><?php echo $value; ?></option>
             <?php } ?>
         </select>
+        <?php } ?>
         <input id="save" class="button-primary" type="submit" value="Save">
     </fieldset>
 </form>

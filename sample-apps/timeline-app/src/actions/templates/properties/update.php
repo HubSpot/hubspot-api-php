@@ -1,44 +1,47 @@
 <?php
 
+use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest;
 use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
-if (!array_key_exists('type_id', $_GET) || !array_key_exists('property_id', $_GET)) {
+if (!array_key_exists('template_id', $_GET) || !array_key_exists('name', $_GET)) {
     header('Location: /templates/list.php');
 }
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
-    $property = [
-        'name' => getValueOrNull('name', $_POST),
-        'label' => getValueOrNull('label', $_POST),
-        'propertyType' => getValueOrNull('propertyType', $_POST),
-    ];
-    $response = $hubSpot->timeline()->updateEventTypeProperty(
-        $_ENV['HUBSPOT_APPLICATION_ID'],
-        $_GET['type_id'],
-        $_GET['property_id'],
-        $property['name'],
-        $property['label'],
-        $property['propertyType']
-    );
+    $request = new TimelineEventTemplateTokenUpdateRequest();
+    $request->setLabel($_POST['label']);
+    
+    $response = $hubSpot->crm()->timeline()->tokensApi()
+        ->update(
+            $_GET['template_id'],
+            $_GET['name'],
+            getEnvOrException('HUBSPOT_APPLICATION_ID'),
+            $request
+        );
 
-    if (HubspotClientHelper::isResponseSuccessful($response)) {
-        header('Location: /templates/show.php?id='.$_GET['type_id']);
-        exit();
-    }
-} else {
-    $response = $hubSpot->timeline()->getEventTypeProperties($_ENV['HUBSPOT_APPLICATION_ID'], $_GET['type_id']);
-    if (!HubspotClientHelper::isResponseSuccessful($response)) {
-        throw new Exception($response->getReasonPhrase());
-    }
+    header('Location: /templates/show.php?id='.$_GET['template_id']);
+}
+    
+$template = $hubSpot->crm()->timeline()->templatesApi()->getById(
+    $_GET['template_id'],
+    getEnvOrException('HUBSPOT_APPLICATION_ID')
+);
 
-    foreach ($response->getData() as $propertyStd) {
-        if ($propertyStd->id == $_GET['property_id']) {
-            $property = (array) $propertyStd;
+$property = null;
 
+if (count($template->getTokens()) > 0) {
+    foreach ($template->getTokens() as $token) {
+        if($token->getName() == $_GET['name']) {
+            $property = $token;
             break;
         }
     }
+}
+
+if (is_null($property)) {
+    http_response_code(404);
+    exit();
 }
 
 include __DIR__.'/../../../views/properties/form.php';

@@ -17,7 +17,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $request->setDetailTemplate($_POST['detailTemplate']);
     
     $hubSpot->crm()->timeline()->templatesApi()
-        ->updateEventTemplate(
+        ->update(
             $_GET['id'],
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $request
@@ -27,7 +27,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
 }
 
 $template = $hubSpot->crm()->timeline()->templatesApi()
-    ->getEventTemplateById(
+    ->getById(
         $_GET['id'],
         getEnvOrException('HUBSPOT_APPLICATION_ID')
     );
