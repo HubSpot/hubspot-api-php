@@ -17,11 +17,11 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if (!in_array($uri, $publicRoutes)) {
-        if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
+        if (!OAuth2Helper::isAuthenticated()) {
+            header('Location: /oauth/login.php');
+        } else if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
                 || !EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
             header('Location: /events/init.php');
-        } elseif (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
         }
     }
 

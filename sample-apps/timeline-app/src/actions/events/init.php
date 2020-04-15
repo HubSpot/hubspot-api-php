@@ -31,7 +31,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
     $botAddedRequest->setObjectType(ObjectType::CONTACTS);
     
     $botAdded = $hubSpot->crm()->timeline()->templatesApi()
-        ->createEventTemplate($appId, $botAddedRequest);
+        ->create($appId, $botAddedRequest);
 
     if ($botAdded instanceof TimelineEventTemplate) {
         EventTypesRepository::insert([
@@ -49,7 +49,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
     $invitationRequest->setObjectType(ObjectType::CONTACTS);
     
     $invitationEventType = $hubSpot->crm()->timeline()->templatesApi()
-        ->createEventTemplate($appId, $invitationRequest);
+        ->create($appId, $invitationRequest);
     
     if ($invitationEventType instanceof TimelineEventTemplate) {
         // We need to add 3 custom properties to this Event type in order to use them in Event's template
@@ -60,7 +60,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         $nameRequest->setType('string');
         
         $nameProperty = $hubSpot->crm()->timeline()->tokensApi()
-            ->createEventTemplateToken(
+            ->create(
                 $invitationEventType->getId(),
                 $appId,
                 $nameRequest
@@ -72,7 +72,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         $actionRequest->setType('string');
         
         $actionProperty = $hubSpot->crm()->timeline()->tokensApi()
-            ->createEventTemplateToken(
+            ->create(
                 $invitationEventType->getId(),
                 $appId,
                 $actionRequest
@@ -85,7 +85,7 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATIO
         $eventUrlRequest->setType('string');
         
         $eventUrlProperty = $hubSpot->crm()->timeline()->tokensApi()
-            ->createEventTemplateToken(
+            ->create(
                 $invitationEventType->getId(),
                 $appId,
                 $eventUrlRequest

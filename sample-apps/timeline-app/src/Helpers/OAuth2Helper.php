@@ -2,6 +2,7 @@
 
 namespace Helpers;
 
+use HubSpot\Factory;
 use Repositories\TokensRepository;
 
 class OAuth2Helper
@@ -48,12 +49,16 @@ class OAuth2Helper
             throw new \Exception('Please authorize via OAuth2');
         }
         if (time() > $tokens['expires_at']) {
-            $tokens = HubspotClientHelper::getOAuth2Resource()->getTokensByRefresh(
-                self::getClientId(),
-                self::getClientSecret(),
+            $response = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
+                'refresh_token',
+                null,
+                static::getRedirectUri(),
+                static::getClientId(),
+                static::getClientSecret(),
                 $tokens['refresh_token']
-            )->toArray();
-            TokensRepository::save($tokens);
+            );
+            
+            $tokens = TokensRepository::save($response);
         }
 
         return $tokens['access_token'];
