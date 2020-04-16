@@ -29,9 +29,9 @@ $sendInvitationAndCreateTimelineEvent = function($invitation, $contact) use ($hu
     }
 };
 
-if (isset($_POST['listIds'])) {
+if (isset($_POST['contactIds'])) {
     $invitation = InvitationsRepository::getById($_GET['id']);
-    foreach ($_POST['listIds'] as $listId) {
+    foreach ($_POST['contactIds'] as $id) {
         $contacts = $hubSpot->contactLists()->recentContacts($listId)->getData()->contacts;
         foreach ($contacts as $contact) {
             $contact = $hubSpot->contacts()->getById($contact->vid)->getData();
