@@ -116,7 +116,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation archiveAssociation
+     * Operation archive
      *
      * Remove an association between two contacts
      *
@@ -129,13 +129,13 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveAssociation($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function archive($contact_id, $to_object_type, $to_object_id, $association_type)
     {
-        $this->archiveAssociationWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type);
+        $this->archiveWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type);
     }
 
     /**
-     * Operation archiveAssociationWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Remove an association between two contacts
      *
@@ -148,9 +148,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveAssociationWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->archiveAssociationRequest($contact_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($contact_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,7 +198,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation archiveAssociationAsync
+     * Operation archiveAsync
      *
      * Remove an association between two contacts
      *
@@ -210,9 +210,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsync($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsync($contact_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->archiveAssociationAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
+        return $this->archiveAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -221,7 +221,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation archiveAssociationAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Remove an association between two contacts
      *
@@ -233,10 +233,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
     {
         $returnType = '';
-        $request = $this->archiveAssociationRequest($contact_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($contact_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -262,7 +262,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'archiveAssociation'
+     * Create request for operation 'archive'
      *
      * @param  string $contact_id (required)
      * @param  string $to_object_type (required)
@@ -272,30 +272,30 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveAssociationRequest($contact_id, $to_object_type, $to_object_id, $association_type)
+    protected function archiveRequest($contact_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'contact_id' is set
         if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $contact_id when calling archiveAssociation'
+                'Missing the required parameter $contact_id when calling archive'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling archiveAssociation'
+                'Missing the required parameter $to_object_type when calling archive'
             );
         }
         // verify the required parameter 'to_object_id' is set
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling archiveAssociation'
+                'Missing the required parameter $to_object_id when calling archive'
             );
         }
         // verify the required parameter 'association_type' is set
         if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling archiveAssociation'
+                'Missing the required parameter $association_type when calling archive'
             );
         }
 
@@ -414,7 +414,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation createAssociation
+     * Operation create
      *
      * Associate two contacts
      *
@@ -427,14 +427,14 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Contacts\Model\SimplePublicObject|\HubSpot\Client\Crm\Contacts\Model\Error
      */
-    public function createAssociation($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function create($contact_id, $to_object_type, $to_object_id, $association_type)
     {
-        list($response) = $this->createAssociationWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type);
+        list($response) = $this->createWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type);
         return $response;
     }
 
     /**
-     * Operation createAssociationWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * Associate two contacts
      *
@@ -447,9 +447,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Contacts\Model\SimplePublicObject|\HubSpot\Client\Crm\Contacts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAssociationWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function createWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->createAssociationRequest($contact_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->createRequest($contact_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -545,7 +545,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation createAssociationAsync
+     * Operation createAsync
      *
      * Associate two contacts
      *
@@ -557,9 +557,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAssociationAsync($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsync($contact_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->createAssociationAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
+        return $this->createAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -568,7 +568,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation createAssociationAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * Associate two contacts
      *
@@ -580,10 +580,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAssociationAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsyncWithHttpInfo($contact_id, $to_object_type, $to_object_id, $association_type)
     {
         $returnType = '\HubSpot\Client\Crm\Contacts\Model\SimplePublicObject';
-        $request = $this->createAssociationRequest($contact_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->createRequest($contact_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -620,7 +620,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'createAssociation'
+     * Create request for operation 'create'
      *
      * @param  string $contact_id (required)
      * @param  string $to_object_type (required)
@@ -630,30 +630,30 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createAssociationRequest($contact_id, $to_object_type, $to_object_id, $association_type)
+    protected function createRequest($contact_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'contact_id' is set
         if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $contact_id when calling createAssociation'
+                'Missing the required parameter $contact_id when calling create'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling createAssociation'
+                'Missing the required parameter $to_object_type when calling create'
             );
         }
         // verify the required parameter 'to_object_id' is set
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling createAssociation'
+                'Missing the required parameter $to_object_id when calling create'
             );
         }
         // verify the required parameter 'association_type' is set
         if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling createAssociation'
+                'Missing the required parameter $association_type when calling create'
             );
         }
 
@@ -772,7 +772,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getAssociations
+     * Operation getAll
      *
      * List associations of a contact by type
      *
@@ -783,14 +783,14 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Contacts\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Contacts\Model\Error
      */
-    public function getAssociations($contact_id, $to_object_type)
+    public function getAll($contact_id, $to_object_type)
     {
-        list($response) = $this->getAssociationsWithHttpInfo($contact_id, $to_object_type);
+        list($response) = $this->getAllWithHttpInfo($contact_id, $to_object_type);
         return $response;
     }
 
     /**
-     * Operation getAssociationsWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * List associations of a contact by type
      *
@@ -801,9 +801,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Contacts\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Contacts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssociationsWithHttpInfo($contact_id, $to_object_type)
+    public function getAllWithHttpInfo($contact_id, $to_object_type)
     {
-        $request = $this->getAssociationsRequest($contact_id, $to_object_type);
+        $request = $this->getAllRequest($contact_id, $to_object_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -899,7 +899,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getAssociationsAsync
+     * Operation getAllAsync
      *
      * List associations of a contact by type
      *
@@ -909,9 +909,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssociationsAsync($contact_id, $to_object_type)
+    public function getAllAsync($contact_id, $to_object_type)
     {
-        return $this->getAssociationsAsyncWithHttpInfo($contact_id, $to_object_type)
+        return $this->getAllAsyncWithHttpInfo($contact_id, $to_object_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -920,7 +920,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getAssociationsAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * List associations of a contact by type
      *
@@ -930,10 +930,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssociationsAsyncWithHttpInfo($contact_id, $to_object_type)
+    public function getAllAsyncWithHttpInfo($contact_id, $to_object_type)
     {
         $returnType = '\HubSpot\Client\Crm\Contacts\Model\CollectionResponseAssociatedId';
-        $request = $this->getAssociationsRequest($contact_id, $to_object_type);
+        $request = $this->getAllRequest($contact_id, $to_object_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -970,7 +970,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'getAssociations'
+     * Create request for operation 'getAll'
      *
      * @param  string $contact_id (required)
      * @param  string $to_object_type (required)
@@ -978,18 +978,18 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAssociationsRequest($contact_id, $to_object_type)
+    protected function getAllRequest($contact_id, $to_object_type)
     {
         // verify the required parameter 'contact_id' is set
         if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $contact_id when calling getAssociations'
+                'Missing the required parameter $contact_id when calling getAll'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling getAssociations'
+                'Missing the required parameter $to_object_type when calling getAll'
             );
         }
 
