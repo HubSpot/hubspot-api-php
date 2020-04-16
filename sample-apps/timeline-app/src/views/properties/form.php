@@ -1,7 +1,4 @@
 <?php
-/**
- * @var array timeline event type's property
- */
 include __DIR__.'/../_partials/header.php';
 $propertyTypes = [
     'date',
@@ -12,29 +9,31 @@ $propertyTypes = [
 if (!isset($_GET['name'])) {
 ?>
 <pre>
-// src/actions/types/properties/new.php - Create Property for Timeline Event Type
-$property = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken();
-$property->setName('name');
-$property->setLabel('Label');
-$property->setType('string');
+// src/actions/types/properties/new.php - Create Token for Timeline Event Template
+$request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken();
+$request->setName('name');
+$request->setLabel('Label');
+$request->setType('string');
 
 $hubSpot->crm()->timeline()->tokensApi()
     ->create(
-        $_GET['id'],
-        $_ENV('HUBSPOT_APPLICATION_ID'),
-        $property
+        'Event Template ID',
+        'HubSpot Application ID',
+        $request
     );
 </pre>
 <?php } else { ?>
 <pre>
-// src/actions/types/properties/update.php - Update Property for Timeline Event Type
-$hubSpot->timeline()->updateEventType(
+// src/actions/types/properties/update.php - Update Token for Timeline Event Template
+$request = new TimelineEventTemplateTokenUpdateRequest();
+$request->setLabel($_POST['label']);
+
+$hubSpot->crm()->timeline()->tokensApi()
+    ->update(
+        'Event Template ID',
+        'Token name',
         'HubSpot Application ID',
-        'Event Type ID',
-        'Property ID',
-        'Name',
-        'Label',
-        'Property Type'
+        $request
     );
 </pre>
 <?php } ?>

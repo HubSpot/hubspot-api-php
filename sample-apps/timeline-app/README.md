@@ -1,21 +1,22 @@
 # HubSpot-php sample Timeline app
 
-This is a sample app for the [hubspot-php SDK](https://github.com/HubSpot/hubspot-php). 
-Currently, this app is focused on demonstrating of [Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview)
+This is a sample app for the [hubspot-php SDK](../../../../).
+Currently, this app is focused on demonstrating of [Timeline API](https://developers.hubspot.com/docs/api/crm/extensions/timeline)
 integration with [Telegram](https://telegram.org/).
 
 ### HubSpot CRM and Telegram messenger integration
-This application lets you communicate with your CRM contacts via Telegram messanger chat bot and keep track of their responses in HubSpot CRM Contact's Timeline. It demonstrates the use of [HubSpot Timeline API](https://developers.hubspot.com/docs/methods/timeline/timeline-overview) as well as [HubSpot Contact List API](https://developers.hubspot.com/docs/methods/lists/contact-lists-overview) and Telegram Chat Bot API. As of now you can create new Event Types in CRM using this application but only two Event Types are used to create Timeline Events recording customer's responses to the event invites sent via Telegram Chat Bot.
+This application lets you communicate with your CRM contacts via Telegram messanger chat bot and keep track of their responses in HubSpot CRM Contact's Timeline.
+ It demonstrates the use of [HubSpot Timeline API](https://developers.hubspot.com/docs/api/crm/extensions/timeline) as well as [HubSpot Contact API](https://developers.hubspot.com/docs-beta/crm/contacts) and Telegram Chat Bot API. As of now you can create new Event Templates in CRM using this application but only two Event Templates are used to create Timeline Events recording customer's responses to the event invites sent via Telegram Chat Bot.
 
 You can
 - Authorize this application with HubSpot using OAuth 2.0 - see [OAuth2Helper.php](src/Helpers/OAuth2Helper.php) for OAuth 2.0 utilities.
   - Note: we store access tokens in MySQL DB
-- Initialization script [init.php](src/actions/events/init.php) creates two Event Types in HubSpot associated with your Application (you should use Developer HAPI Key for that)
+- Initialization script [init.php](src/actions/events/init.php) creates two Event Templates in HubSpot associated with your Application (you should use Developer HAPI Key for that)
   - User is expected to run this script first in the application
 - Invite your contacts to use Telegram Chat Bot [TelegramBotHelper.php](src/Helpers/TelegramBotHelper.php)
   - We use [Telegram deep linking](https://core.telegram.org/bots#deep-linking) to map CRM Contact (identified by email) and their chat ID with Telegram Bot. 
   - Generate bot link, share it with the contact. 
-- Manage your Event Types [src/actions/types] 
+- Manage your Event Templates [src/actions/templates] 
 - Create invites to your events and send them to your Static Contact Lists [src/actions/invitations]
   - Telegram bot sends invitations to participate in events. 
   - If a contact responds  - corresponding timeline event will be created.
@@ -24,7 +25,7 @@ You can
 
 Please see the documentation on:
 - 
-- [How do I create an app in HubSpot?](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)
+- [How do I create an app in HubSpot?](https://developers.hubspot.com/docs-beta/creating-an-app)
 - [How do I find the app ID for a HubSpot app?](https://developers.hubspot.com/docs/faq/how-do-i-find-the-app-id)
 - [Developer HAPIkeys](https://developers.hubspot.com/docs/faq/developer-hapikeys)
 - [Telegram bots: An introduction for developers](https://core.telegram.org/bots)

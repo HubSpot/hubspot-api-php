@@ -1,21 +1,22 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
-<h3 class="text-center">Initialization Script - press Go button to initialize event types</h3>
+<h3 class="text-center">Initialization Script - press Go button to initialize event templates</h3>
 <div class="row">
     <div class="column column-20"></div>
     <div class="column column-60">
     <pre>
-// src/actions/events/init.php - event types initialization script
-$hubSpot->timeline()->createEventType(
-        'HubSpot Application ID',
-        'Event Type Name',
-        'Header Template',
-        'Detail Template',
-        'Object Type'
-    );
+// src/actions/events/init.php - event templates initialization script
+$request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest();
+$request->setName('Event Template Name');
+$request->setHeaderTemplate('Header Template');
+$request->setDetailTemplate('Detail Template');
+$request->setObjectType('Object Type');
+
+$hubSpot->crm()->timeline()->templatesApi()
+    ->create('HubSpot Application ID', $request);
     </pre>
         <form method="post" class="text-center">
-            <p>This script creates two event types.</p>
+            <p>This script creates two event templates.</p>
             <button type="submit">Go</button>
         </form>
     </div>
