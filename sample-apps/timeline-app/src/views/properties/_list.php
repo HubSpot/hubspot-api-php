@@ -1,6 +1,6 @@
 <?php
 if (count($template->getTokens()) > 0) {
-?>
+    ?>
 <table class="tokens-list">
     <thead>
         <tr>

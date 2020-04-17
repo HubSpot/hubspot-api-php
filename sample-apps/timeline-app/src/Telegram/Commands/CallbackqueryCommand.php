@@ -34,6 +34,7 @@ class CallbackqueryCommand extends SystemCommand
             $invitationId = $invitationReply->getInvitationId();
             TelegramBot::sendInvitationLink(InvitationsRepository::getById($invitationId), $this->getCallbackQuery()->getMessage()->getChat()->getId());
         }
+
         return Request::answerCallbackQuery($data);
     }
 

@@ -63,7 +63,7 @@ class OAuth2Helper
                 static::getClientSecret(),
                 $tokens['refresh_token']
             );
-            
+
             self::saveTokenResponse($tokens);
         }
 

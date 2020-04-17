@@ -12,6 +12,7 @@ $response = $hubSpot->crm()->timeline()->tokensApi()
         $_GET['template_id'],
         $_GET['name'],
         getEnvOrException('HUBSPOT_APPLICATION_ID')
-    );
+    )
+;
 
 header('Location: /templates/show.php?id='.$_GET['template_id']);

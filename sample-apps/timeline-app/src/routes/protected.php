@@ -5,6 +5,7 @@ return [
     '/invitations/show.php',
     '/invitations/list.php',
     '/invitations/update.php',
+    '/invitations/contacts.php',
     '/invitations/send.php',
     '/invitations/delete.php',
     '/templates/new.php',

@@ -43,7 +43,7 @@
     text-decoration: none
 }
 
-.text-center {
+.text-center, .success-message {
     text-align: center;
 }
 
@@ -53,4 +53,9 @@
 
 .hidden {
     display: none;
+}
+
+.success-message {
+    color: #3c763d;
+    background-color: #dff0d8;
 }

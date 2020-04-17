@@ -23,7 +23,7 @@ create table if not exists invitations
     id          INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(255) not null,
     text        text not null,
-    event_url   VARCHAR(255),
+    event_url   VARCHAR(255) not null,
     created_at  DATETIME not null DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -36,5 +36,5 @@ create table if not exists tokens
     expires_in int not null
 );
 
-insert into invitations (name, text) values ('Test event', 'Our company would like to invite you to our Test Event! We will be glad to see you. Will you come?');
+insert into invitations (name, text, event_url) values ('Test event', 'Our company would like to invite you to our Test Event! We will be glad to see you. Will you come?', 'https://hubspot.com');
 

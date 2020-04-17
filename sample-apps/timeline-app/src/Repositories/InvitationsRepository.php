@@ -10,7 +10,8 @@ class InvitationsRepository
     public static function list()
     {
         $query = DBClientHelper::getClient()
-            ->query('select * from invitations');
+            ->query('select * from invitations')
+        ;
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -18,8 +19,9 @@ class InvitationsRepository
     public static function getById(int $id)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('select * from invitations where id = ?');
-        
+            ->prepare('select * from invitations where id = ?')
+        ;
+
         $query->execute([$id]);
 
         return $query->fetch(PDO::FETCH_ASSOC);
@@ -28,8 +30,9 @@ class InvitationsRepository
     public static function getRandom()
     {
         $query = DBClientHelper::getClient()
-            ->prepare('select * from invitations order by rand() limit 1');
-        
+            ->prepare('select * from invitations order by rand() limit 1')
+        ;
+
         $query->execute([]);
 
         return $query->fetch(PDO::FETCH_ASSOC);
@@ -38,8 +41,9 @@ class InvitationsRepository
     public static function insert(array $invitation)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('insert into invitations (name, text, event_url) values (?, ?, ?)');
-        
+            ->prepare('insert into invitations (name, text, event_url) values (?, ?, ?)')
+        ;
+
         $query->execute([
             $invitation['name'],
             $invitation['text'],
@@ -50,8 +54,9 @@ class InvitationsRepository
     public static function update(array $invitation)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('update invitations set name = ?, text = ? where id = ?');
-        
+            ->prepare('update invitations set name = ?, text = ? where id = ?')
+        ;
+
         $query->execute([
             $invitation['name'],
             $invitation['text'],
@@ -63,8 +68,9 @@ class InvitationsRepository
     public static function delete(int $id)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('delete from invitations where id = ?');
-        
+            ->prepare('delete from invitations where id = ?')
+        ;
+
         $query->execute([
             $id,
         ]);

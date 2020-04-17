@@ -22,8 +22,9 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
             $_GET['id'],
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $property
-        );
-    
+        )
+    ;
+
     header('Location: /templates/show.php?id='.$_GET['id']);
 }
 

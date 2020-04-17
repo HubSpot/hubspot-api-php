@@ -66,7 +66,7 @@ class TelegramBot
             'reply_markup' => json_encode([
                 'inline_keyboard' => [
                     [
-                        ['text' => 'Go To '.$invitation['name'], 'url' =>  $invitation['event_url']]
+                        ['text' => 'Go To '.$invitation['name'], 'url' => $invitation['event_url']],
                     ],
                 ],
             ]),
