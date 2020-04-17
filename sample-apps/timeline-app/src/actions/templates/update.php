@@ -15,14 +15,15 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     $request->setName($_POST['name']);
     $request->setHeaderTemplate($_POST['headerTemplate']);
     $request->setDetailTemplate($_POST['detailTemplate']);
-    
+
     $hubSpot->crm()->timeline()->templatesApi()
         ->update(
             $_GET['id'],
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $request
-        );
-    
+        )
+    ;
+
     header('Location: /templates/show.php?id='.$_GET['id']);
 }
 
@@ -30,6 +31,7 @@ $template = $hubSpot->crm()->timeline()->templatesApi()
     ->getById(
         $_GET['id'],
         getEnvOrException('HUBSPOT_APPLICATION_ID')
-    );
+    )
+;
 
 include __DIR__.'/../../views/templates/form.php';

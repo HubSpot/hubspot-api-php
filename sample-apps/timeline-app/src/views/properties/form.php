@@ -7,7 +7,7 @@ $propertyTypes = [
 ];
 
 if (!isset($_GET['name'])) {
-?>
+    ?>
 <pre>
 // src/actions/types/properties/new.php - Create Token for Timeline Event Template
 $request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken();
@@ -22,7 +22,8 @@ $hubSpot->crm()->timeline()->tokensApi()
         $request
     );
 </pre>
-<?php } else { ?>
+<?php
+} else { ?>
 <pre>
 // src/actions/types/properties/update.php - Update Token for Timeline Event Template
 $request = new TimelineEventTemplateTokenUpdateRequest();

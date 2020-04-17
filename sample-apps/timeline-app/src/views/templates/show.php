@@ -12,23 +12,23 @@ $hubSpot->crm()->timeline()->templatesApi()
             <tbody>
                 <tr>
                     <td>ID</td>
-                    <td><?php echo $template->getId();?></td>
+                    <td><?php echo $template->getId(); ?></td>
                 </tr>
                 <tr>
                     <td>Nane</td>
-                    <td><?php echo $template->getName();?></td>
+                    <td><?php echo $template->getName(); ?></td>
                 </tr>
                 <tr>
                     <td>Object Type</td>
-                    <td><?php echo $template->getObjectType();?></td>
+                    <td><?php echo $template->getObjectType(); ?></td>
                 </tr>
                 <tr>
                     <td>Header Template</td>
-                    <td><?php echo $template->getHeaderTemplate();?></td>
+                    <td><?php echo $template->getHeaderTemplate(); ?></td>
                 </tr>
                 <tr>
                     <td>Detail Template</td>
-                    <td><?php echo $template->getDetailTemplate();?></td>
+                    <td><?php echo $template->getDetailTemplate(); ?></td>
                 </tr>
             </tbody>
         </table>

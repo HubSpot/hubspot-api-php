@@ -33,6 +33,7 @@ class EventsCommand extends SystemCommand
                 'chat_id' => $chatId,
                 'text' => 'No more upcoming events :(',
             ];
+
             return Request::sendMessage($data);
         }
 

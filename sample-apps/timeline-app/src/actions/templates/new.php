@@ -16,7 +16,8 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         ->create(
             getEnvOrException('HUBSPOT_APPLICATION_ID'),
             $template
-        );
+        )
+    ;
 
     header('Location: /templates/show.php?id='.$response->getId());
 }

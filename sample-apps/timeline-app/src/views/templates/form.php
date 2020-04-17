@@ -11,7 +11,7 @@ $objectTypes = [
 ];
 
 if ($template instanceof TimelineEventTemplate) {
-?>
+    ?>
 <pre>
 // src/actions/templates/update.php - Update a Timeline Event Template
 $request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest();
@@ -27,7 +27,8 @@ $hubSpot->crm()->timeline()->templatesApi()
         $request
     );
 </pre>
-<?php } else { ?>
+<?php
+} else { ?>
 <pre>
 // src/actions/templates/new.php - Create a new Timeline Event Template
 $request = new \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest();

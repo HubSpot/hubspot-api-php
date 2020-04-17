@@ -11,7 +11,7 @@ class HubspotClientHelper
     {
         if (OAuth2Helper::isAuthenticated()) {
             $accessToken = OAuth2Helper::refreshAndGetAccessToken();
-            
+
             return Factory::createWithAccessToken($accessToken);
         }
 

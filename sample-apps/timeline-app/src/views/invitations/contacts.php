@@ -30,7 +30,7 @@ $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 
 <form id="search-form">
     <fieldset>
-        <input type="hidden" name="id" value="<?php echo $_GET['id'];?>"/>
+        <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
         <input type="text" name="search" placeholder="Search by email.." id="search" value="<?php echo $_GET['search']; ?>">
     </fieldset>
 </form>
@@ -42,8 +42,8 @@ $hubSpot->crm()->contacts()->basicApi()->getPage()
 </pre>
 <?php }
 if (count($contacts->getResults()) > 0) {
-?>
-<form method="post" action="/invitations/send.php?id=<?php echo $_GET['id'];?>">
+    ?>
+<form method="post" action="/invitations/send.php?id=<?php echo $_GET['id']; ?>">
     <table class="contacts-list">
         <thead>
             <tr>
@@ -55,7 +55,7 @@ if (count($contacts->getResults()) > 0) {
         <tbody>
             <?php foreach ($contacts->getResults() as $contact) { ?>
                 <tr>
-                    <td><input type="checkbox" name="contactIds[]" value="<?php echo htmlentities($contact->getId()) ?>"/> </td>
+                    <td><input type="checkbox" name="contactIds[]" value="<?php echo htmlentities($contact->getId()); ?>"/> </td>
                     <td><?php echo htmlentities($contact->getProperties()['email']); ?></td>
                     <td><?php echo htmlentities($contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname']); ?></td>
                 </tr>
@@ -66,14 +66,15 @@ if (count($contacts->getResults()) > 0) {
 </form>
 <?php
 } else {
-    if ($search) {
-    ?>
+        if ($search) {
+            ?>
     <h3>No Contacts have been added yet.</h3>
-<?php } else { ?>
+<?php
+        } else { ?>
     <h3>Contact not found.</h3>
 <?php
     }
-}
+    }
 
 include __DIR__.'/../_partials/footer.php';
 

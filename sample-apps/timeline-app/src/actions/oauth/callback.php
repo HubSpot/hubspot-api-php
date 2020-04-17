@@ -1,8 +1,8 @@
 <?php
 
 use Helpers\OAuth2Helper;
-use HubSpot\Factory;
 use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
+use HubSpot\Factory;
 use Repositories\TokensRepository;
 
 // https://developers.hubspot.com/docs-beta/working-with-oauth
