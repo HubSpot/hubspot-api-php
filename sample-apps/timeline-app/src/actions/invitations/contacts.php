@@ -19,7 +19,7 @@ if (array_key_exists('search', $_GET) && !empty($_GET['search'])) {
     $filter
         ->setOperator('EQ')
         ->setPropertyName('email')
-        ->setValue($search);
+        ->setValue($_GET['search']);
 
     $filterGroup = new FilterGroup();
     $filterGroup->setFilters([$filter]);

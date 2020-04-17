@@ -22,7 +22,7 @@ if (count($invitations) > 0) {
             <td><?php echo htmlentities($invitation['name']); ?></td>
             <td><?php echo htmlentities($invitation['text']); ?></td>
             <td>
-                <a class="button" href="/invitations/send.php?id=<?php echo $invitation['id']; ?>">Send</a>
+                <a class="button" href="/invitations/contacts.php?id=<?php echo $invitation['id']; ?>">Send</a>
                 <a class="button" href="/invitations/delete.php?id=<?php echo $invitation['id']; ?>">Delete</a>
             </td>
         </tr>

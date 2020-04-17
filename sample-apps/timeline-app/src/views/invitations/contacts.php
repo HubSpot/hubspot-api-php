@@ -4,11 +4,11 @@ include __DIR__.'/../_partials/header.php';
 $search = array_key_exists('search', $_GET);
 ?>
 
-<?php if (isset($sent) && $sent) { ?>
-    <h4>Successfully sent to selected contacts</h4>
+<?php if (array_key_exists('send', $_GET) && $_GET['send']) { ?>
+<h4 class="success-message">Successfully sent to selected contacts</h4>
 <?php } ?>
 
-<h3>Select contacts to send the invitation to</h3>
+<h3 class="text-center">Select contacts to send the invitation to</h3>
 
 <?php if ($search) { ?>
 <pre>

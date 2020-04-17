@@ -4,6 +4,8 @@ use Enums\EventTypeCode;
 use Enums\UserInvitationAction;
 use Helpers\HubspotClientHelper;
 use Helpers\TimelineEventHelper;
+use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
+use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
 use Repositories\InvitationsRepository;
 use Repositories\UsersRepository;
 use Telegram\TelegramBot;
@@ -11,9 +13,8 @@ use Telegram\TelegramBot;
 TelegramBot::init();
 $hubSpot = HubspotClientHelper::createFactory();
 
-$sendInvitationAndCreateTimelineEvent = function($invitation, $contact) use ($hubSpot)
+$sendInvitationAndCreateTimelineEvent = function($invitation, $email)
 {
-    $email = $contact->properties->email->value;
     $chatId = UsersRepository::getTelegramChatIdByEmail($email);
     if (!empty($chatId)) {
         TelegramBot::sendInvitation($invitation, $chatId);
@@ -29,18 +30,22 @@ $sendInvitationAndCreateTimelineEvent = function($invitation, $contact) use ($hu
     }
 };
 
-if (isset($_POST['contactIds'])) {
-    $invitation = InvitationsRepository::getById($_GET['id']);
-    foreach ($_POST['contactIds'] as $id) {
-        $contacts = $hubSpot->contactLists()->recentContacts($listId)->getData()->contacts;
-        foreach ($contacts as $contact) {
-            $contact = $hubSpot->contacts()->getById($contact->vid)->getData();
-            $sendInvitationAndCreateTimelineEvent($invitation, $contact);
-        }
-    }
-    $sent = true;
-}
-//Call to get lists of contacts https://developers.hubspot.com/docs/methods/lists/get_static_lists
-$contactLists = $hubSpot->contactLists()->getAllStatic(['count' => 250])->getData()->lists;
+$invitation = InvitationsRepository::getById($_GET['id']);
+$ids = [];
 
-include __DIR__.'/../../views/invitations/send.php';
+foreach ($_POST['contactIds'] as $id) {
+    $contactId = new SimplePublicObjectId();
+    $contactId->setId($id);
+    $ids[] = $contactId;
+}
+
+$request = new BatchReadInputSimplePublicObjectId();
+$request->setInputs($ids);
+
+$contacts = $hubSpot->crm()->contacts()->batchApi()->read(false, $request);
+
+foreach ($contacts->getResults() as $contact) {
+    $sendInvitationAndCreateTimelineEvent($invitation, $contact->getProperties()['email']);
+}
+
+header('Location: /invitations/contacts.php?send=true&id='.$_GET['id']);

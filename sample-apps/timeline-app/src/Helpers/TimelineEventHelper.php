@@ -8,7 +8,7 @@ use Repositories\UsersRepository;
 
 class TimelineEventHelper
 {
-    public static function createEvent(string $telegramChatId, string $eventTypeCode, array $eventTypeData = [])
+    public static function createEvent(string $telegramChatId, string $eventTypeCode, array $tokens = [])
     {
         //HubSpot API Wrapper here is intialized with OAuth credentials unlike in src/actions/events/init.php where Developer API Key is used
         //This is because here we will be calling API to post actual Events with Event Type created in src/actions/events/init.php
@@ -16,7 +16,7 @@ class TimelineEventHelper
         $request->setId(uniqid());
         $request->setEmail(UsersRepository::getEmailByTelegramChatId($telegramChatId));
         $request->setEventTemplateId(EventTypesRepository::getHubspotEventIDByCode($eventTypeCode));
-        $request->setExtraData((object) $eventTypeData);
+        $request->setTokens($tokens);
         
         return HubspotClientHelper::createFactory()->crm()->timeline()
             ->eventsApi()->create($request);
