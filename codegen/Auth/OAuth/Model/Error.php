@@ -60,6 +60,7 @@ class Error implements ModelInterface, ArrayAccess
         'message' => 'string',
         'correlation_id' => 'string',
         'category' => 'string',
+        'sub_category' => 'string',
         'errors' => '\HubSpot\Client\Auth\OAuth\Model\ErrorDetail[]',
         'context' => 'map[string,string[]]',
         'links' => 'map[string,string]'
@@ -72,8 +73,9 @@ class Error implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'message' => null,
-        'correlation_id' => null,
+        'correlation_id' => 'uuid',
         'category' => null,
+        'sub_category' => null,
         'errors' => null,
         'context' => null,
         'links' => null
@@ -109,6 +111,7 @@ class Error implements ModelInterface, ArrayAccess
         'message' => 'message',
         'correlation_id' => 'correlationId',
         'category' => 'category',
+        'sub_category' => 'subCategory',
         'errors' => 'errors',
         'context' => 'context',
         'links' => 'links'
@@ -123,6 +126,7 @@ class Error implements ModelInterface, ArrayAccess
         'message' => 'setMessage',
         'correlation_id' => 'setCorrelationId',
         'category' => 'setCategory',
+        'sub_category' => 'setSubCategory',
         'errors' => 'setErrors',
         'context' => 'setContext',
         'links' => 'setLinks'
@@ -137,6 +141,7 @@ class Error implements ModelInterface, ArrayAccess
         'message' => 'getMessage',
         'correlation_id' => 'getCorrelationId',
         'category' => 'getCategory',
+        'sub_category' => 'getSubCategory',
         'errors' => 'getErrors',
         'context' => 'getContext',
         'links' => 'getLinks'
@@ -205,6 +210,7 @@ class Error implements ModelInterface, ArrayAccess
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['correlation_id'] = isset($data['correlation_id']) ? $data['correlation_id'] : null;
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
         $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
         $this->container['context'] = isset($data['context']) ? $data['context'] : null;
         $this->container['links'] = isset($data['links']) ? $data['links'] : null;
@@ -225,10 +231,6 @@ class Error implements ModelInterface, ArrayAccess
         if ($this->container['correlation_id'] === null) {
             $invalidProperties[] = "'correlation_id' can't be null";
         }
-        if (!preg_match("/[a-zA-Z0-9]{32}/", $this->container['correlation_id'])) {
-            $invalidProperties[] = "invalid value for 'correlation_id', must be conform to the pattern /[a-zA-Z0-9]{32}/.";
-        }
-
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
         }
@@ -290,11 +292,6 @@ class Error implements ModelInterface, ArrayAccess
      */
     public function setCorrelationId($correlation_id)
     {
-
-        if ((!preg_match("/[a-zA-Z0-9]{32}/", $correlation_id))) {
-            throw new \InvalidArgumentException("invalid value for $correlation_id when calling Error., must conform to the pattern /[a-zA-Z0-9]{32}/.");
-        }
-
         $this->container['correlation_id'] = $correlation_id;
 
         return $this;
@@ -320,6 +317,30 @@ class Error implements ModelInterface, ArrayAccess
     public function setCategory($category)
     {
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return string|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }

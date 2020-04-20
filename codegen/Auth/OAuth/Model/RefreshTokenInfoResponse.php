@@ -77,9 +77,9 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => null,
         'hub_domain' => null,
         'scopes' => null,
-        'hub_id' => null,
+        'hub_id' => 'int32',
         'client_id' => null,
-        'user_id' => null,
+        'user_id' => 'int32',
         'token_type' => null
     ];
 

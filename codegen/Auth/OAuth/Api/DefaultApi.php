@@ -302,7 +302,7 @@ class DefaultApi
             );
         }
 
-        $resourcePath = '/v1/refresh-tokens/{token}';
+        $resourcePath = '/oauth/v1/refresh-tokens/{token}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -609,7 +609,7 @@ class DefaultApi
     protected function createTokenRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
 
-        $resourcePath = '/v1/token';
+        $resourcePath = '/oauth/v1/token';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -913,7 +913,7 @@ class DefaultApi
             );
         }
 
-        $resourcePath = '/v1/access-tokens/{token}';
+        $resourcePath = '/oauth/v1/access-tokens/{token}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1201,7 +1201,7 @@ class DefaultApi
             );
         }
 
-        $resourcePath = '/v1/refresh-tokens/{token}';
+        $resourcePath = '/oauth/v1/refresh-tokens/{token}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

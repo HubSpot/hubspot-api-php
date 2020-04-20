@@ -58,8 +58,8 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'access_token' => 'string',
-        'refresh_token' => 'string',
-        'expires_in' => 'int'
+        'expires_in' => 'int',
+        'refresh_token' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'access_token' => null,
-        'refresh_token' => null,
-        'expires_in' => null
+        'expires_in' => 'int32',
+        'refresh_token' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'access_token' => 'access_token',
-        'refresh_token' => 'refresh_token',
-        'expires_in' => 'expires_in'
+        'expires_in' => 'expires_in',
+        'refresh_token' => 'refresh_token'
     ];
 
     /**
@@ -112,8 +112,8 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'access_token' => 'setAccessToken',
-        'refresh_token' => 'setRefreshToken',
-        'expires_in' => 'setExpiresIn'
+        'expires_in' => 'setExpiresIn',
+        'refresh_token' => 'setRefreshToken'
     ];
 
     /**
@@ -123,8 +123,8 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'access_token' => 'getAccessToken',
-        'refresh_token' => 'getRefreshToken',
-        'expires_in' => 'getExpiresIn'
+        'expires_in' => 'getExpiresIn',
+        'refresh_token' => 'getRefreshToken'
     ];
 
     /**
@@ -188,8 +188,8 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['access_token'] = isset($data['access_token']) ? $data['access_token'] : null;
-        $this->container['refresh_token'] = isset($data['refresh_token']) ? $data['refresh_token'] : null;
         $this->container['expires_in'] = isset($data['expires_in']) ? $data['expires_in'] : null;
+        $this->container['refresh_token'] = isset($data['refresh_token']) ? $data['refresh_token'] : null;
     }
 
     /**
@@ -204,11 +204,11 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
         if ($this->container['access_token'] === null) {
             $invalidProperties[] = "'access_token' can't be null";
         }
-        if ($this->container['refresh_token'] === null) {
-            $invalidProperties[] = "'refresh_token' can't be null";
-        }
         if ($this->container['expires_in'] === null) {
             $invalidProperties[] = "'expires_in' can't be null";
+        }
+        if ($this->container['refresh_token'] === null) {
+            $invalidProperties[] = "'refresh_token' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,30 +250,6 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets refresh_token
-     *
-     * @return string
-     */
-    public function getRefreshToken()
-    {
-        return $this->container['refresh_token'];
-    }
-
-    /**
-     * Sets refresh_token
-     *
-     * @param string $refresh_token refresh_token
-     *
-     * @return $this
-     */
-    public function setRefreshToken($refresh_token)
-    {
-        $this->container['refresh_token'] = $refresh_token;
-
-        return $this;
-    }
-
-    /**
      * Gets expires_in
      *
      * @return int
@@ -293,6 +269,30 @@ class TokenResponseIF implements ModelInterface, ArrayAccess
     public function setExpiresIn($expires_in)
     {
         $this->container['expires_in'] = $expires_in;
+
+        return $this;
+    }
+
+    /**
+     * Gets refresh_token
+     *
+     * @return string
+     */
+    public function getRefreshToken()
+    {
+        return $this->container['refresh_token'];
+    }
+
+    /**
+     * Sets refresh_token
+     *
+     * @param string $refresh_token refresh_token
+     *
+     * @return $this
+     */
+    public function setRefreshToken($refresh_token)
+    {
+        $this->container['refresh_token'] = $refresh_token;
 
         return $this;
     }
