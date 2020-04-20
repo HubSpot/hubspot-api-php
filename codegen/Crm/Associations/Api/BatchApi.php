@@ -116,7 +116,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatch
+     * Operation archive
      *
      * Archive a batch of associations
      *
@@ -128,13 +128,13 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveBatch($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archive($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
-        $this->archiveBatchWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association);
+        $this->archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association);
     }
 
     /**
-     * Operation archiveBatchWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Archive a batch of associations
      *
@@ -146,9 +146,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveBatchWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
-        $request = $this->archiveBatchRequest($from_object_type, $to_object_type, $batch_input_public_association);
+        $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,7 +196,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatchAsync
+     * Operation archiveAsync
      *
      * Archive a batch of associations
      *
@@ -207,9 +207,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveBatchAsync($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveAsync($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
-        return $this->archiveBatchAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
+        return $this->archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -218,7 +218,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatchAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Archive a batch of associations
      *
@@ -229,10 +229,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveBatchAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
         $returnType = '';
-        $request = $this->archiveBatchRequest($from_object_type, $to_object_type, $batch_input_public_association);
+        $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -258,7 +258,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'archiveBatch'
+     * Create request for operation 'archive'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -267,18 +267,18 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveBatchRequest($from_object_type, $to_object_type, $batch_input_public_association = null)
+    protected function archiveRequest($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling archiveBatch'
+                'Missing the required parameter $from_object_type when calling archive'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling archiveBatch'
+                'Missing the required parameter $to_object_type when calling archive'
             );
         }
 
@@ -384,7 +384,7 @@ class BatchApi
     }
 
     /**
-     * Operation createBatch
+     * Operation create
      *
      * Create a batch of associations
      *
@@ -396,14 +396,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\Error
      */
-    public function createBatch($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function create($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
-        list($response) = $this->createBatchWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association);
+        list($response) = $this->createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association);
         return $response;
     }
 
     /**
-     * Operation createBatchWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * Create a batch of associations
      *
@@ -415,9 +415,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBatchWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
-        $request = $this->createBatchRequest($from_object_type, $to_object_type, $batch_input_public_association);
+        $request = $this->createRequest($from_object_type, $to_object_type, $batch_input_public_association);
 
         try {
             $options = $this->createHttpClientOption();
@@ -533,7 +533,7 @@ class BatchApi
     }
 
     /**
-     * Operation createBatchAsync
+     * Operation createAsync
      *
      * Create a batch of associations
      *
@@ -544,9 +544,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsync($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createAsync($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
-        return $this->createBatchAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
+        return $this->createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -555,7 +555,7 @@ class BatchApi
     }
 
     /**
-     * Operation createBatchAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * Create a batch of associations
      *
@@ -566,10 +566,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation';
-        $request = $this->createBatchRequest($from_object_type, $to_object_type, $batch_input_public_association);
+        $request = $this->createRequest($from_object_type, $to_object_type, $batch_input_public_association);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -606,7 +606,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'createBatch'
+     * Create request for operation 'create'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -615,18 +615,18 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createBatchRequest($from_object_type, $to_object_type, $batch_input_public_association = null)
+    protected function createRequest($from_object_type, $to_object_type, $batch_input_public_association = null)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling createBatch'
+                'Missing the required parameter $from_object_type when calling create'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling createBatch'
+                'Missing the required parameter $to_object_type when calling create'
             );
         }
 
@@ -732,7 +732,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch
+     * Operation read
      *
      * Read a batch of associations
      *
@@ -744,14 +744,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\Error
      */
-    public function readBatch($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function read($from_object_type, $to_object_type, $batch_input_public_object_id = null)
     {
-        list($response) = $this->readBatchWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id);
+        list($response) = $this->readWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id);
         return $response;
     }
 
     /**
-     * Operation readBatchWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * Read a batch of associations
      *
@@ -763,9 +763,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readBatchWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id = null)
     {
-        $request = $this->readBatchRequest($from_object_type, $to_object_type, $batch_input_public_object_id);
+        $request = $this->readRequest($from_object_type, $to_object_type, $batch_input_public_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -881,7 +881,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsync
+     * Operation readAsync
      *
      * Read a batch of associations
      *
@@ -892,9 +892,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsync($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readAsync($from_object_type, $to_object_type, $batch_input_public_object_id = null)
     {
-        return $this->readBatchAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id)
+        return $this->readAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -903,7 +903,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * Read a batch of associations
      *
@@ -914,10 +914,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id = null)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti';
-        $request = $this->readBatchRequest($from_object_type, $to_object_type, $batch_input_public_object_id);
+        $request = $this->readRequest($from_object_type, $to_object_type, $batch_input_public_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -954,7 +954,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'readBatch'
+     * Create request for operation 'read'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -963,18 +963,18 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function readBatchRequest($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    protected function readRequest($from_object_type, $to_object_type, $batch_input_public_object_id = null)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling readBatch'
+                'Missing the required parameter $from_object_type when calling read'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling readBatch'
+                'Missing the required parameter $to_object_type when calling read'
             );
         }
 

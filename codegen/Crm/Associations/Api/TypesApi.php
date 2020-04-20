@@ -116,7 +116,7 @@ class TypesApi
     }
 
     /**
-     * Operation getTypes
+     * Operation getAll
      *
      * List association types
      *
@@ -127,14 +127,14 @@ class TypesApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton|\HubSpot\Client\Crm\Associations\Model\Error
      */
-    public function getTypes($from_object_type, $to_object_type)
+    public function getAll($from_object_type, $to_object_type)
     {
-        list($response) = $this->getTypesWithHttpInfo($from_object_type, $to_object_type);
+        list($response) = $this->getAllWithHttpInfo($from_object_type, $to_object_type);
         return $response;
     }
 
     /**
-     * Operation getTypesWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * List association types
      *
@@ -145,9 +145,9 @@ class TypesApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTypesWithHttpInfo($from_object_type, $to_object_type)
+    public function getAllWithHttpInfo($from_object_type, $to_object_type)
     {
-        $request = $this->getTypesRequest($from_object_type, $to_object_type);
+        $request = $this->getAllRequest($from_object_type, $to_object_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -243,7 +243,7 @@ class TypesApi
     }
 
     /**
-     * Operation getTypesAsync
+     * Operation getAllAsync
      *
      * List association types
      *
@@ -253,9 +253,9 @@ class TypesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTypesAsync($from_object_type, $to_object_type)
+    public function getAllAsync($from_object_type, $to_object_type)
     {
-        return $this->getTypesAsyncWithHttpInfo($from_object_type, $to_object_type)
+        return $this->getAllAsyncWithHttpInfo($from_object_type, $to_object_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -264,7 +264,7 @@ class TypesApi
     }
 
     /**
-     * Operation getTypesAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * List association types
      *
@@ -274,10 +274,10 @@ class TypesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTypesAsyncWithHttpInfo($from_object_type, $to_object_type)
+    public function getAllAsyncWithHttpInfo($from_object_type, $to_object_type)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton';
-        $request = $this->getTypesRequest($from_object_type, $to_object_type);
+        $request = $this->getAllRequest($from_object_type, $to_object_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,7 +314,7 @@ class TypesApi
     }
 
     /**
-     * Create request for operation 'getTypes'
+     * Create request for operation 'getAll'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -322,18 +322,18 @@ class TypesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getTypesRequest($from_object_type, $to_object_type)
+    protected function getAllRequest($from_object_type, $to_object_type)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling getTypes'
+                'Missing the required parameter $from_object_type when calling getAll'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling getTypes'
+                'Missing the required parameter $to_object_type when calling getAll'
             );
         }
 
