@@ -1,6 +1,6 @@
 <?php
 /**
- * CardPatchRequest
+ * ObjectToken
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardPatchRequest Class Doc Comment
+ * ObjectToken Class Doc Comment
  *
  * @category Class
- * @description Body for a patch with optional fields
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardPatchRequest implements ModelInterface, ArrayAccess
+class ObjectToken implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardPatchRequest';
+    protected static $openAPIModelName = 'ObjectToken';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch',
-        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
-        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
+        'name' => 'string',
+        'label' => 'string',
+        'data_type' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -70,10 +69,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'fetch' => null,
-        'display' => null,
-        'actions' => null
+        'name' => null,
+        'label' => null,
+        'data_type' => null,
+        'value' => null
     ];
 
     /**
@@ -103,10 +102,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'fetch' => 'fetch',
-        'display' => 'display',
-        'actions' => 'actions'
+        'name' => 'name',
+        'label' => 'label',
+        'data_type' => 'dataType',
+        'value' => 'value'
     ];
 
     /**
@@ -115,10 +114,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'fetch' => 'setFetch',
-        'display' => 'setDisplay',
-        'actions' => 'setActions'
+        'name' => 'setName',
+        'label' => 'setLabel',
+        'data_type' => 'setDataType',
+        'value' => 'setValue'
     ];
 
     /**
@@ -127,10 +126,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'fetch' => 'getFetch',
-        'display' => 'getDisplay',
-        'actions' => 'getActions'
+        'name' => 'getName',
+        'label' => 'getLabel',
+        'data_type' => 'getDataType',
+        'value' => 'getValue'
     ];
 
     /**
@@ -174,8 +173,37 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const DATA_TYPE_BOOLEAN = 'BOOLEAN';
+    const DATA_TYPE_CURRENCY = 'CURRENCY';
+    const DATA_TYPE_DATE = 'DATE';
+    const DATA_TYPE_DATETIME = 'DATETIME';
+    const DATA_TYPE_EMAIL = 'EMAIL';
+    const DATA_TYPE_LINK = 'LINK';
+    const DATA_TYPE_NUMERIC = 'NUMERIC';
+    const DATA_TYPE_STRING = 'STRING';
+    const DATA_TYPE_STATUS = 'STATUS';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDataTypeAllowableValues()
+    {
+        return [
+            self::DATA_TYPE_BOOLEAN,
+            self::DATA_TYPE_CURRENCY,
+            self::DATA_TYPE_DATE,
+            self::DATA_TYPE_DATETIME,
+            self::DATA_TYPE_EMAIL,
+            self::DATA_TYPE_LINK,
+            self::DATA_TYPE_NUMERIC,
+            self::DATA_TYPE_STRING,
+            self::DATA_TYPE_STATUS,
+        ];
+    }
     
 
     /**
@@ -193,10 +221,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['fetch'] = isset($data['fetch']) ? $data['fetch'] : null;
-        $this->container['display'] = isset($data['display']) ? $data['display'] : null;
-        $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -208,6 +236,17 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getDataTypeAllowableValues();
+        if (!is_null($this->container['data_type']) && !in_array($this->container['data_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'data_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -224,97 +263,106 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets title
+     * Gets name
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->container['title'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets title
+     * Sets name
      *
-     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param string|null $name name
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->container['title'] = $title;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets fetch
+     * Gets label
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null
+     * @return string|null
      */
-    public function getFetch()
+    public function getLabel()
     {
-        return $this->container['fetch'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets fetch
+     * Sets label
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null $fetch fetch
+     * @param string|null $label label
      *
      * @return $this
      */
-    public function setFetch($fetch)
+    public function setLabel($label)
     {
-        $this->container['fetch'] = $fetch;
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets display
+     * Gets data_type
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null
+     * @return string|null
      */
-    public function getDisplay()
+    public function getDataType()
     {
-        return $this->container['display'];
+        return $this->container['data_type'];
     }
 
     /**
-     * Sets display
+     * Sets data_type
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null $display display
+     * @param string|null $data_type data_type
      *
      * @return $this
      */
-    public function setDisplay($display)
+    public function setDataType($data_type)
     {
-        $this->container['display'] = $display;
+        $allowedValues = $this->getDataTypeAllowableValues();
+        if (!is_null($data_type) && !in_array($data_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'data_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['data_type'] = $data_type;
 
         return $this;
     }
 
     /**
-     * Gets actions
+     * Gets value
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null
+     * @return string
      */
-    public function getActions()
+    public function getValue()
     {
-        return $this->container['actions'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets actions
+     * Sets value
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null $actions actions
+     * @param string $value value
      *
      * @return $this
      */
-    public function setActions($actions)
+    public function setValue($value)
     {
-        $this->container['actions'] = $actions;
+        $this->container['value'] = $value;
 
         return $this;
     }

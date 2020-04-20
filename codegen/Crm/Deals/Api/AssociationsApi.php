@@ -116,7 +116,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation archiveAssociation
+     * Operation archive
      *
      * Remove an association between two deals
      *
@@ -129,13 +129,13 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveAssociation($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function archive($deal_id, $to_object_type, $to_object_id, $association_type)
     {
-        $this->archiveAssociationWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type);
+        $this->archiveWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type);
     }
 
     /**
-     * Operation archiveAssociationWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Remove an association between two deals
      *
@@ -148,9 +148,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveAssociationWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->archiveAssociationRequest($deal_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($deal_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,7 +198,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation archiveAssociationAsync
+     * Operation archiveAsync
      *
      * Remove an association between two deals
      *
@@ -210,9 +210,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsync($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsync($deal_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->archiveAssociationAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
+        return $this->archiveAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -221,7 +221,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation archiveAssociationAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Remove an association between two deals
      *
@@ -233,10 +233,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
     {
         $returnType = '';
-        $request = $this->archiveAssociationRequest($deal_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($deal_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -262,7 +262,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'archiveAssociation'
+     * Create request for operation 'archive'
      *
      * @param  string $deal_id (required)
      * @param  string $to_object_type (required)
@@ -272,30 +272,30 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveAssociationRequest($deal_id, $to_object_type, $to_object_id, $association_type)
+    protected function archiveRequest($deal_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'deal_id' is set
         if ($deal_id === null || (is_array($deal_id) && count($deal_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $deal_id when calling archiveAssociation'
+                'Missing the required parameter $deal_id when calling archive'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling archiveAssociation'
+                'Missing the required parameter $to_object_type when calling archive'
             );
         }
         // verify the required parameter 'to_object_id' is set
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling archiveAssociation'
+                'Missing the required parameter $to_object_id when calling archive'
             );
         }
         // verify the required parameter 'association_type' is set
         if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling archiveAssociation'
+                'Missing the required parameter $association_type when calling archive'
             );
         }
 
@@ -414,7 +414,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation createAssociation
+     * Operation create
      *
      * Associate two deals
      *
@@ -427,14 +427,14 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Deals\Model\SimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error
      */
-    public function createAssociation($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function create($deal_id, $to_object_type, $to_object_id, $association_type)
     {
-        list($response) = $this->createAssociationWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type);
+        list($response) = $this->createWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type);
         return $response;
     }
 
     /**
-     * Operation createAssociationWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * Associate two deals
      *
@@ -447,9 +447,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Deals\Model\SimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAssociationWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function createWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->createAssociationRequest($deal_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->createRequest($deal_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -545,7 +545,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation createAssociationAsync
+     * Operation createAsync
      *
      * Associate two deals
      *
@@ -557,9 +557,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAssociationAsync($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsync($deal_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->createAssociationAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
+        return $this->createAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -568,7 +568,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation createAssociationAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * Associate two deals
      *
@@ -580,10 +580,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAssociationAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsyncWithHttpInfo($deal_id, $to_object_type, $to_object_id, $association_type)
     {
         $returnType = '\HubSpot\Client\Crm\Deals\Model\SimplePublicObject';
-        $request = $this->createAssociationRequest($deal_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->createRequest($deal_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -620,7 +620,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'createAssociation'
+     * Create request for operation 'create'
      *
      * @param  string $deal_id (required)
      * @param  string $to_object_type (required)
@@ -630,30 +630,30 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createAssociationRequest($deal_id, $to_object_type, $to_object_id, $association_type)
+    protected function createRequest($deal_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'deal_id' is set
         if ($deal_id === null || (is_array($deal_id) && count($deal_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $deal_id when calling createAssociation'
+                'Missing the required parameter $deal_id when calling create'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling createAssociation'
+                'Missing the required parameter $to_object_type when calling create'
             );
         }
         // verify the required parameter 'to_object_id' is set
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling createAssociation'
+                'Missing the required parameter $to_object_id when calling create'
             );
         }
         // verify the required parameter 'association_type' is set
         if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling createAssociation'
+                'Missing the required parameter $association_type when calling create'
             );
         }
 
@@ -772,7 +772,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getAssociations
+     * Operation getAll
      *
      * List associations of a deal by type
      *
@@ -783,14 +783,14 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Deals\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Deals\Model\Error
      */
-    public function getAssociations($deal_id, $to_object_type)
+    public function getAll($deal_id, $to_object_type)
     {
-        list($response) = $this->getAssociationsWithHttpInfo($deal_id, $to_object_type);
+        list($response) = $this->getAllWithHttpInfo($deal_id, $to_object_type);
         return $response;
     }
 
     /**
-     * Operation getAssociationsWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * List associations of a deal by type
      *
@@ -801,9 +801,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Deals\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Deals\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAssociationsWithHttpInfo($deal_id, $to_object_type)
+    public function getAllWithHttpInfo($deal_id, $to_object_type)
     {
-        $request = $this->getAssociationsRequest($deal_id, $to_object_type);
+        $request = $this->getAllRequest($deal_id, $to_object_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -899,7 +899,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getAssociationsAsync
+     * Operation getAllAsync
      *
      * List associations of a deal by type
      *
@@ -909,9 +909,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssociationsAsync($deal_id, $to_object_type)
+    public function getAllAsync($deal_id, $to_object_type)
     {
-        return $this->getAssociationsAsyncWithHttpInfo($deal_id, $to_object_type)
+        return $this->getAllAsyncWithHttpInfo($deal_id, $to_object_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -920,7 +920,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getAssociationsAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * List associations of a deal by type
      *
@@ -930,10 +930,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAssociationsAsyncWithHttpInfo($deal_id, $to_object_type)
+    public function getAllAsyncWithHttpInfo($deal_id, $to_object_type)
     {
         $returnType = '\HubSpot\Client\Crm\Deals\Model\CollectionResponseAssociatedId';
-        $request = $this->getAssociationsRequest($deal_id, $to_object_type);
+        $request = $this->getAllRequest($deal_id, $to_object_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -970,7 +970,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'getAssociations'
+     * Create request for operation 'getAll'
      *
      * @param  string $deal_id (required)
      * @param  string $to_object_type (required)
@@ -978,18 +978,18 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAssociationsRequest($deal_id, $to_object_type)
+    protected function getAllRequest($deal_id, $to_object_type)
     {
         // verify the required parameter 'deal_id' is set
         if ($deal_id === null || (is_array($deal_id) && count($deal_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $deal_id when calling getAssociations'
+                'Missing the required parameter $deal_id when calling getAll'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling getAssociations'
+                'Missing the required parameter $to_object_type when calling getAll'
             );
         }
 

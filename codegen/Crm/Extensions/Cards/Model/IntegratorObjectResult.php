@@ -1,6 +1,6 @@
 <?php
 /**
- * CardPatchRequest
+ * IntegratorObjectResult
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardPatchRequest Class Doc Comment
+ * IntegratorObjectResult Class Doc Comment
  *
  * @category Class
- * @description Body for a patch with optional fields
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardPatchRequest implements ModelInterface, ArrayAccess
+class IntegratorObjectResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardPatchRequest';
+    protected static $openAPIModelName = 'IntegratorObjectResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,11 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'title' => 'string',
-        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch',
-        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
-        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
+        'link_url' => 'string',
+        'tokens' => '\HubSpot\Client\Crm\Extensions\Cards\Model\ObjectToken[]',
+        'actions' => 'OneOfActionHookActionBodyIFrameActionBody[]'
     ];
 
     /**
@@ -70,9 +70,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'title' => null,
-        'fetch' => null,
-        'display' => null,
+        'link_url' => null,
+        'tokens' => null,
         'actions' => null
     ];
 
@@ -103,9 +104,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'title' => 'title',
-        'fetch' => 'fetch',
-        'display' => 'display',
+        'link_url' => 'linkUrl',
+        'tokens' => 'tokens',
         'actions' => 'actions'
     ];
 
@@ -115,9 +117,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'title' => 'setTitle',
-        'fetch' => 'setFetch',
-        'display' => 'setDisplay',
+        'link_url' => 'setLinkUrl',
+        'tokens' => 'setTokens',
         'actions' => 'setActions'
     ];
 
@@ -127,9 +130,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'title' => 'getTitle',
-        'fetch' => 'getFetch',
-        'display' => 'getDisplay',
+        'link_url' => 'getLinkUrl',
+        'tokens' => 'getTokens',
         'actions' => 'getActions'
     ];
 
@@ -193,9 +197,10 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['fetch'] = isset($data['fetch']) ? $data['fetch'] : null;
-        $this->container['display'] = isset($data['display']) ? $data['display'] : null;
+        $this->container['link_url'] = isset($data['link_url']) ? $data['link_url'] : null;
+        $this->container['tokens'] = isset($data['tokens']) ? $data['tokens'] : null;
         $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
     }
 
@@ -208,6 +213,18 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['tokens'] === null) {
+            $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['actions'] === null) {
+            $invalidProperties[] = "'actions' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -224,9 +241,33 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets title
      *
-     * @return string|null
+     * @return string
      */
     public function getTitle()
     {
@@ -236,7 +277,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     /**
      * Sets title
      *
-     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param string $title title
      *
      * @return $this
      */
@@ -248,49 +289,49 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets fetch
+     * Gets link_url
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null
+     * @return string|null
      */
-    public function getFetch()
+    public function getLinkUrl()
     {
-        return $this->container['fetch'];
+        return $this->container['link_url'];
     }
 
     /**
-     * Sets fetch
+     * Sets link_url
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null $fetch fetch
+     * @param string|null $link_url link_url
      *
      * @return $this
      */
-    public function setFetch($fetch)
+    public function setLinkUrl($link_url)
     {
-        $this->container['fetch'] = $fetch;
+        $this->container['link_url'] = $link_url;
 
         return $this;
     }
 
     /**
-     * Gets display
+     * Gets tokens
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ObjectToken[]
      */
-    public function getDisplay()
+    public function getTokens()
     {
-        return $this->container['display'];
+        return $this->container['tokens'];
     }
 
     /**
-     * Sets display
+     * Sets tokens
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null $display display
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ObjectToken[] $tokens tokens
      *
      * @return $this
      */
-    public function setDisplay($display)
+    public function setTokens($tokens)
     {
-        $this->container['display'] = $display;
+        $this->container['tokens'] = $tokens;
 
         return $this;
     }
@@ -298,7 +339,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     /**
      * Gets actions
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null
+     * @return OneOfActionHookActionBodyIFrameActionBody[]
      */
     public function getActions()
     {
@@ -308,7 +349,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     /**
      * Sets actions
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null $actions actions
+     * @param OneOfActionHookActionBodyIFrameActionBody[] $actions actions
      *
      * @return $this
      */

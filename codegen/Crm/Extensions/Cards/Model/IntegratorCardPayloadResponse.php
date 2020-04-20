@@ -1,6 +1,6 @@
 <?php
 /**
- * CardDisplayProperty
+ * IntegratorCardPayloadResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardDisplayProperty Class Doc Comment
+ * IntegratorCardPayloadResponse Class Doc Comment
  *
  * @category Class
- * @description Definition for a card display property.
+ * @description The card details payload, sent to HubSpot by an app in response to a data fetch request when a user visits a CRM record page.
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardDisplayProperty implements ModelInterface, ArrayAccess
+class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardDisplayProperty';
+    protected static $openAPIModelName = 'IntegratorCardPayloadResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'label' => 'string',
-        'data_type' => 'string',
-        'options' => '\HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]'
+        'total_count' => 'int',
+        'all_items_link_url' => 'string',
+        'card_label' => 'string',
+        'top_level_actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\TopLevelActions',
+        'sections' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResult[]',
+        'response_version' => 'string'
     ];
 
     /**
@@ -70,10 +72,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'label' => null,
-        'data_type' => null,
-        'options' => null
+        'total_count' => 'int32',
+        'all_items_link_url' => null,
+        'card_label' => null,
+        'top_level_actions' => null,
+        'sections' => null,
+        'response_version' => null
     ];
 
     /**
@@ -103,10 +107,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'label' => 'label',
-        'data_type' => 'dataType',
-        'options' => 'options'
+        'total_count' => 'totalCount',
+        'all_items_link_url' => 'allItemsLinkUrl',
+        'card_label' => 'cardLabel',
+        'top_level_actions' => 'topLevelActions',
+        'sections' => 'sections',
+        'response_version' => 'responseVersion'
     ];
 
     /**
@@ -115,10 +121,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'label' => 'setLabel',
-        'data_type' => 'setDataType',
-        'options' => 'setOptions'
+        'total_count' => 'setTotalCount',
+        'all_items_link_url' => 'setAllItemsLinkUrl',
+        'card_label' => 'setCardLabel',
+        'top_level_actions' => 'setTopLevelActions',
+        'sections' => 'setSections',
+        'response_version' => 'setResponseVersion'
     ];
 
     /**
@@ -127,10 +135,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'label' => 'getLabel',
-        'data_type' => 'getDataType',
-        'options' => 'getOptions'
+        'total_count' => 'getTotalCount',
+        'all_items_link_url' => 'getAllItemsLinkUrl',
+        'card_label' => 'getCardLabel',
+        'top_level_actions' => 'getTopLevelActions',
+        'sections' => 'getSections',
+        'response_version' => 'getResponseVersion'
     ];
 
     /**
@@ -174,15 +184,8 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const DATA_TYPE_BOOLEAN = 'BOOLEAN';
-    const DATA_TYPE_CURRENCY = 'CURRENCY';
-    const DATA_TYPE_DATE = 'DATE';
-    const DATA_TYPE_DATETIME = 'DATETIME';
-    const DATA_TYPE_EMAIL = 'EMAIL';
-    const DATA_TYPE_LINK = 'LINK';
-    const DATA_TYPE_NUMERIC = 'NUMERIC';
-    const DATA_TYPE_STRING = 'STRING';
-    const DATA_TYPE_STATUS = 'STATUS';
+    const RESPONSE_VERSION_V1 = 'v1';
+    const RESPONSE_VERSION_V3 = 'v3';
     
 
     
@@ -191,18 +194,11 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      *
      * @return string[]
      */
-    public function getDataTypeAllowableValues()
+    public function getResponseVersionAllowableValues()
     {
         return [
-            self::DATA_TYPE_BOOLEAN,
-            self::DATA_TYPE_CURRENCY,
-            self::DATA_TYPE_DATE,
-            self::DATA_TYPE_DATETIME,
-            self::DATA_TYPE_EMAIL,
-            self::DATA_TYPE_LINK,
-            self::DATA_TYPE_NUMERIC,
-            self::DATA_TYPE_STRING,
-            self::DATA_TYPE_STATUS,
+            self::RESPONSE_VERSION_V1,
+            self::RESPONSE_VERSION_V3,
         ];
     }
     
@@ -222,10 +218,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
+        $this->container['all_items_link_url'] = isset($data['all_items_link_url']) ? $data['all_items_link_url'] : null;
+        $this->container['card_label'] = isset($data['card_label']) ? $data['card_label'] : null;
+        $this->container['top_level_actions'] = isset($data['top_level_actions']) ? $data['top_level_actions'] : null;
+        $this->container['sections'] = isset($data['sections']) ? $data['sections'] : null;
+        $this->container['response_version'] = isset($data['response_version']) ? $data['response_version'] : null;
     }
 
     /**
@@ -237,26 +235,17 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
         }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['data_type'] === null) {
-            $invalidProperties[] = "'data_type' can't be null";
-        }
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!is_null($this->container['data_type']) && !in_array($this->container['data_type'], $allowedValues, true)) {
+        $allowedValues = $this->getResponseVersionAllowableValues();
+        if (!is_null($this->container['response_version']) && !in_array($this->container['response_version'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'data_type', must be one of '%s'",
+                "invalid value for 'response_version', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -273,106 +262,154 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets total_count
      *
-     * @return string
+     * @return int
      */
-    public function getName()
+    public function getTotalCount()
     {
-        return $this->container['name'];
+        return $this->container['total_count'];
     }
 
     /**
-     * Sets name
+     * Sets total_count
      *
-     * @param string $name An internal identifier for this property. This value must be unique TODO.
+     * @param int $total_count The total number of card properties that will be sent in this response.
      *
      * @return $this
      */
-    public function setName($name)
+    public function setTotalCount($total_count)
     {
-        $this->container['name'] = $name;
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }
 
     /**
-     * Gets label
+     * Gets all_items_link_url
      *
-     * @return string
+     * @return string|null
      */
-    public function getLabel()
+    public function getAllItemsLinkUrl()
     {
-        return $this->container['label'];
+        return $this->container['all_items_link_url'];
     }
 
     /**
-     * Sets label
+     * Sets all_items_link_url
      *
-     * @param string $label The label for this property as you'd like it displayed to users.
+     * @param string|null $all_items_link_url URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setAllItemsLinkUrl($all_items_link_url)
     {
-        $this->container['label'] = $label;
+        $this->container['all_items_link_url'] = $all_items_link_url;
 
         return $this;
     }
 
     /**
-     * Gets data_type
+     * Gets card_label
      *
-     * @return string
+     * @return string|null
      */
-    public function getDataType()
+    public function getCardLabel()
     {
-        return $this->container['data_type'];
+        return $this->container['card_label'];
     }
 
     /**
-     * Sets data_type
+     * Sets card_label
      *
-     * @param string $data_type Type of data represented by this property.
+     * @param string|null $card_label The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
      *
      * @return $this
      */
-    public function setDataType($data_type)
+    public function setCardLabel($card_label)
     {
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!in_array($data_type, $allowedValues, true)) {
+        $this->container['card_label'] = $card_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets top_level_actions
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\TopLevelActions|null
+     */
+    public function getTopLevelActions()
+    {
+        return $this->container['top_level_actions'];
+    }
+
+    /**
+     * Sets top_level_actions
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\TopLevelActions|null $top_level_actions top_level_actions
+     *
+     * @return $this
+     */
+    public function setTopLevelActions($top_level_actions)
+    {
+        $this->container['top_level_actions'] = $top_level_actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets sections
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResult[]|null
+     */
+    public function getSections()
+    {
+        return $this->container['sections'];
+    }
+
+    /**
+     * Sets sections
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResult[]|null $sections A list of up to five valid card sub categories.
+     *
+     * @return $this
+     */
+    public function setSections($sections)
+    {
+        $this->container['sections'] = $sections;
+
+        return $this;
+    }
+
+    /**
+     * Gets response_version
+     *
+     * @return string|null
+     */
+    public function getResponseVersion()
+    {
+        return $this->container['response_version'];
+    }
+
+    /**
+     * Sets response_version
+     *
+     * @param string|null $response_version response_version
+     *
+     * @return $this
+     */
+    public function setResponseVersion($response_version)
+    {
+        $allowedValues = $this->getResponseVersionAllowableValues();
+        if (!is_null($response_version) && !in_array($response_version, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'data_type', must be one of '%s'",
+                    "Invalid value for 'response_version', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['data_type'] = $data_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[] $options An array of available options that can be displayed. Only used in when `dataType` is `STATUS`.
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
+        $this->container['response_version'] = $response_version;
 
         return $this;
     }

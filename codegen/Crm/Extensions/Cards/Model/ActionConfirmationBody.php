@@ -1,6 +1,6 @@
 <?php
 /**
- * CardPatchRequest
+ * ActionConfirmationBody
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardPatchRequest Class Doc Comment
+ * ActionConfirmationBody Class Doc Comment
  *
  * @category Class
- * @description Body for a patch with optional fields
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardPatchRequest implements ModelInterface, ArrayAccess
+class ActionConfirmationBody implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardPatchRequest';
+    protected static $openAPIModelName = 'ActionConfirmationBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch',
-        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
-        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
+        'prompt' => 'string',
+        'confirm_button_label' => 'string',
+        'cancel_button_label' => 'string'
     ];
 
     /**
@@ -70,10 +68,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'fetch' => null,
-        'display' => null,
-        'actions' => null
+        'prompt' => null,
+        'confirm_button_label' => null,
+        'cancel_button_label' => null
     ];
 
     /**
@@ -103,10 +100,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'fetch' => 'fetch',
-        'display' => 'display',
-        'actions' => 'actions'
+        'prompt' => 'prompt',
+        'confirm_button_label' => 'confirmButtonLabel',
+        'cancel_button_label' => 'cancelButtonLabel'
     ];
 
     /**
@@ -115,10 +111,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'fetch' => 'setFetch',
-        'display' => 'setDisplay',
-        'actions' => 'setActions'
+        'prompt' => 'setPrompt',
+        'confirm_button_label' => 'setConfirmButtonLabel',
+        'cancel_button_label' => 'setCancelButtonLabel'
     ];
 
     /**
@@ -127,10 +122,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'fetch' => 'getFetch',
-        'display' => 'getDisplay',
-        'actions' => 'getActions'
+        'prompt' => 'getPrompt',
+        'confirm_button_label' => 'getConfirmButtonLabel',
+        'cancel_button_label' => 'getCancelButtonLabel'
     ];
 
     /**
@@ -193,10 +187,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['fetch'] = isset($data['fetch']) ? $data['fetch'] : null;
-        $this->container['display'] = isset($data['display']) ? $data['display'] : null;
-        $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
+        $this->container['prompt'] = isset($data['prompt']) ? $data['prompt'] : null;
+        $this->container['confirm_button_label'] = isset($data['confirm_button_label']) ? $data['confirm_button_label'] : null;
+        $this->container['cancel_button_label'] = isset($data['cancel_button_label']) ? $data['cancel_button_label'] : null;
     }
 
     /**
@@ -208,6 +201,15 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['prompt'] === null) {
+            $invalidProperties[] = "'prompt' can't be null";
+        }
+        if ($this->container['confirm_button_label'] === null) {
+            $invalidProperties[] = "'confirm_button_label' can't be null";
+        }
+        if ($this->container['cancel_button_label'] === null) {
+            $invalidProperties[] = "'cancel_button_label' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -224,97 +226,73 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets title
+     * Gets prompt
      *
-     * @return string|null
+     * @return string
      */
-    public function getTitle()
+    public function getPrompt()
     {
-        return $this->container['title'];
+        return $this->container['prompt'];
     }
 
     /**
-     * Sets title
+     * Sets prompt
      *
-     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param string $prompt prompt
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setPrompt($prompt)
     {
-        $this->container['title'] = $title;
+        $this->container['prompt'] = $prompt;
 
         return $this;
     }
 
     /**
-     * Gets fetch
+     * Gets confirm_button_label
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null
+     * @return string
      */
-    public function getFetch()
+    public function getConfirmButtonLabel()
     {
-        return $this->container['fetch'];
+        return $this->container['confirm_button_label'];
     }
 
     /**
-     * Sets fetch
+     * Sets confirm_button_label
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null $fetch fetch
+     * @param string $confirm_button_label confirm_button_label
      *
      * @return $this
      */
-    public function setFetch($fetch)
+    public function setConfirmButtonLabel($confirm_button_label)
     {
-        $this->container['fetch'] = $fetch;
+        $this->container['confirm_button_label'] = $confirm_button_label;
 
         return $this;
     }
 
     /**
-     * Gets display
+     * Gets cancel_button_label
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null
+     * @return string
      */
-    public function getDisplay()
+    public function getCancelButtonLabel()
     {
-        return $this->container['display'];
+        return $this->container['cancel_button_label'];
     }
 
     /**
-     * Sets display
+     * Sets cancel_button_label
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null $display display
+     * @param string $cancel_button_label cancel_button_label
      *
      * @return $this
      */
-    public function setDisplay($display)
+    public function setCancelButtonLabel($cancel_button_label)
     {
-        $this->container['display'] = $display;
-
-        return $this;
-    }
-
-    /**
-     * Gets actions
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null
-     */
-    public function getActions()
-    {
-        return $this->container['actions'];
-    }
-
-    /**
-     * Sets actions
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null $actions actions
-     *
-     * @return $this
-     */
-    public function setActions($actions)
-    {
-        $this->container['actions'] = $actions;
+        $this->container['cancel_button_label'] = $cancel_button_label;
 
         return $this;
     }

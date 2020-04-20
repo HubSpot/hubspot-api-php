@@ -1,6 +1,6 @@
 <?php
 /**
- * CardDisplayProperty
+ * ActionHookActionBody
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardDisplayProperty Class Doc Comment
+ * ActionHookActionBody Class Doc Comment
  *
  * @category Class
- * @description Definition for a card display property.
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardDisplayProperty implements ModelInterface, ArrayAccess
+class ActionHookActionBody implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardDisplayProperty';
+    protected static $openAPIModelName = 'ActionHookActionBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'type' => 'string',
+        'confirmation' => '\HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody',
+        'http_method' => 'string',
+        'url' => 'string',
         'label' => 'string',
-        'data_type' => 'string',
-        'options' => '\HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]'
+        'property_names_included' => 'string[]'
     ];
 
     /**
@@ -70,10 +71,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'type' => null,
+        'confirmation' => null,
+        'http_method' => null,
+        'url' => null,
         'label' => null,
-        'data_type' => null,
-        'options' => null
+        'property_names_included' => null
     ];
 
     /**
@@ -103,10 +106,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'type' => 'type',
+        'confirmation' => 'confirmation',
+        'http_method' => 'httpMethod',
+        'url' => 'url',
         'label' => 'label',
-        'data_type' => 'dataType',
-        'options' => 'options'
+        'property_names_included' => 'propertyNamesIncluded'
     ];
 
     /**
@@ -115,10 +120,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'type' => 'setType',
+        'confirmation' => 'setConfirmation',
+        'http_method' => 'setHttpMethod',
+        'url' => 'setUrl',
         'label' => 'setLabel',
-        'data_type' => 'setDataType',
-        'options' => 'setOptions'
+        'property_names_included' => 'setPropertyNamesIncluded'
     ];
 
     /**
@@ -127,10 +134,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'type' => 'getType',
+        'confirmation' => 'getConfirmation',
+        'http_method' => 'getHttpMethod',
+        'url' => 'getUrl',
         'label' => 'getLabel',
-        'data_type' => 'getDataType',
-        'options' => 'getOptions'
+        'property_names_included' => 'getPropertyNamesIncluded'
     ];
 
     /**
@@ -174,15 +183,16 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const DATA_TYPE_BOOLEAN = 'BOOLEAN';
-    const DATA_TYPE_CURRENCY = 'CURRENCY';
-    const DATA_TYPE_DATE = 'DATE';
-    const DATA_TYPE_DATETIME = 'DATETIME';
-    const DATA_TYPE_EMAIL = 'EMAIL';
-    const DATA_TYPE_LINK = 'LINK';
-    const DATA_TYPE_NUMERIC = 'NUMERIC';
-    const DATA_TYPE_STRING = 'STRING';
-    const DATA_TYPE_STATUS = 'STATUS';
+    const TYPE_ACTION_HOOK = 'ACTION_HOOK';
+    const HTTP_METHOD_CONNECT = 'CONNECT';
+    const HTTP_METHOD_DELETE = 'DELETE';
+    const HTTP_METHOD_GET = 'GET';
+    const HTTP_METHOD_HEAD = 'HEAD';
+    const HTTP_METHOD_OPTIONS = 'OPTIONS';
+    const HTTP_METHOD_PATCH = 'PATCH';
+    const HTTP_METHOD_POST = 'POST';
+    const HTTP_METHOD_PUT = 'PUT';
+    const HTTP_METHOD_TRACE = 'TRACE';
     
 
     
@@ -191,18 +201,30 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      *
      * @return string[]
      */
-    public function getDataTypeAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::DATA_TYPE_BOOLEAN,
-            self::DATA_TYPE_CURRENCY,
-            self::DATA_TYPE_DATE,
-            self::DATA_TYPE_DATETIME,
-            self::DATA_TYPE_EMAIL,
-            self::DATA_TYPE_LINK,
-            self::DATA_TYPE_NUMERIC,
-            self::DATA_TYPE_STRING,
-            self::DATA_TYPE_STATUS,
+            self::TYPE_ACTION_HOOK,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getHttpMethodAllowableValues()
+    {
+        return [
+            self::HTTP_METHOD_CONNECT,
+            self::HTTP_METHOD_DELETE,
+            self::HTTP_METHOD_GET,
+            self::HTTP_METHOD_HEAD,
+            self::HTTP_METHOD_OPTIONS,
+            self::HTTP_METHOD_PATCH,
+            self::HTTP_METHOD_POST,
+            self::HTTP_METHOD_PUT,
+            self::HTTP_METHOD_TRACE,
         ];
     }
     
@@ -222,10 +244,12 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : 'ACTION_HOOK';
+        $this->container['confirmation'] = isset($data['confirmation']) ? $data['confirmation'] : null;
+        $this->container['http_method'] = isset($data['http_method']) ? $data['http_method'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['property_names_included'] = isset($data['property_names_included']) ? $data['property_names_included'] : null;
     }
 
     /**
@@ -237,25 +261,33 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['data_type'] === null) {
-            $invalidProperties[] = "'data_type' can't be null";
-        }
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!is_null($this->container['data_type']) && !in_array($this->container['data_type'], $allowedValues, true)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'data_type', must be one of '%s'",
+                "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
+        if ($this->container['http_method'] === null) {
+            $invalidProperties[] = "'http_method' can't be null";
+        }
+        $allowedValues = $this->getHttpMethodAllowableValues();
+        if (!is_null($this->container['http_method']) && !in_array($this->container['http_method'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'http_method', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['property_names_included'] === null) {
+            $invalidProperties[] = "'property_names_included' can't be null";
         }
         return $invalidProperties;
     }
@@ -273,25 +305,115 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets type
      *
      * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string $name An internal identifier for this property. This value must be unique TODO.
+     * @param string $type type
      *
      * @return $this
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->container['name'] = $name;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets confirmation
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null
+     */
+    public function getConfirmation()
+    {
+        return $this->container['confirmation'];
+    }
+
+    /**
+     * Sets confirmation
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null $confirmation confirmation
+     *
+     * @return $this
+     */
+    public function setConfirmation($confirmation)
+    {
+        $this->container['confirmation'] = $confirmation;
+
+        return $this;
+    }
+
+    /**
+     * Gets http_method
+     *
+     * @return string
+     */
+    public function getHttpMethod()
+    {
+        return $this->container['http_method'];
+    }
+
+    /**
+     * Sets http_method
+     *
+     * @param string $http_method http_method
+     *
+     * @return $this
+     */
+    public function setHttpMethod($http_method)
+    {
+        $allowedValues = $this->getHttpMethodAllowableValues();
+        if (!in_array($http_method, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'http_method', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['http_method'] = $http_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }
@@ -299,7 +421,7 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
     /**
      * Gets label
      *
-     * @return string
+     * @return string|null
      */
     public function getLabel()
     {
@@ -309,7 +431,7 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
     /**
      * Sets label
      *
-     * @param string $label The label for this property as you'd like it displayed to users.
+     * @param string|null $label label
      *
      * @return $this
      */
@@ -321,58 +443,25 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets data_type
+     * Gets property_names_included
      *
-     * @return string
+     * @return string[]
      */
-    public function getDataType()
+    public function getPropertyNamesIncluded()
     {
-        return $this->container['data_type'];
+        return $this->container['property_names_included'];
     }
 
     /**
-     * Sets data_type
+     * Sets property_names_included
      *
-     * @param string $data_type Type of data represented by this property.
+     * @param string[] $property_names_included property_names_included
      *
      * @return $this
      */
-    public function setDataType($data_type)
+    public function setPropertyNamesIncluded($property_names_included)
     {
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!in_array($data_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'data_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['data_type'] = $data_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[] $options An array of available options that can be displayed. Only used in when `dataType` is `STATUS`.
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
+        $this->container['property_names_included'] = $property_names_included;
 
         return $this;
     }
