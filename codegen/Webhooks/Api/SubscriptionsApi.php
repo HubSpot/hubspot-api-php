@@ -116,7 +116,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation deleteSubscription
+     * Operation archive
      *
      * Delete a subscription
      *
@@ -127,13 +127,13 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteSubscription($subscription_id, $app_id)
+    public function archive($subscription_id, $app_id)
     {
-        $this->deleteSubscriptionWithHttpInfo($subscription_id, $app_id);
+        $this->archiveWithHttpInfo($subscription_id, $app_id);
     }
 
     /**
-     * Operation deleteSubscriptionWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Delete a subscription
      *
@@ -144,9 +144,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteSubscriptionWithHttpInfo($subscription_id, $app_id)
+    public function archiveWithHttpInfo($subscription_id, $app_id)
     {
-        $request = $this->deleteSubscriptionRequest($subscription_id, $app_id);
+        $request = $this->archiveRequest($subscription_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -194,7 +194,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation deleteSubscriptionAsync
+     * Operation archiveAsync
      *
      * Delete a subscription
      *
@@ -204,9 +204,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSubscriptionAsync($subscription_id, $app_id)
+    public function archiveAsync($subscription_id, $app_id)
     {
-        return $this->deleteSubscriptionAsyncWithHttpInfo($subscription_id, $app_id)
+        return $this->archiveAsyncWithHttpInfo($subscription_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -215,7 +215,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation deleteSubscriptionAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Delete a subscription
      *
@@ -225,10 +225,10 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSubscriptionAsyncWithHttpInfo($subscription_id, $app_id)
+    public function archiveAsyncWithHttpInfo($subscription_id, $app_id)
     {
         $returnType = '';
-        $request = $this->deleteSubscriptionRequest($subscription_id, $app_id);
+        $request = $this->archiveRequest($subscription_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -254,7 +254,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Create request for operation 'deleteSubscription'
+     * Create request for operation 'archive'
      *
      * @param  int $subscription_id The ID of subscription to delete. (required)
      * @param  int $app_id The ID of the target app. (required)
@@ -262,18 +262,18 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteSubscriptionRequest($subscription_id, $app_id)
+    protected function archiveRequest($subscription_id, $app_id)
     {
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription_id when calling deleteSubscription'
+                'Missing the required parameter $subscription_id when calling archive'
             );
         }
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling deleteSubscription'
+                'Missing the required parameter $app_id when calling archive'
             );
         }
 
@@ -372,7 +372,615 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation getSubscription
+     * Operation create
+     *
+     * Subscribe to an event
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (required)
+     *
+     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
+     */
+    public function create($app_id, $subscription_create_request)
+    {
+        list($response) = $this->createWithHttpInfo($app_id, $subscription_create_request);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * Subscribe to an event
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (required)
+     *
+     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($app_id, $subscription_create_request)
+    {
+        $request = $this->createRequest($app_id, $subscription_create_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Webhooks\Model\SubscriptionResponse' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\SubscriptionResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Webhooks\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Webhooks\Model\SubscriptionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Webhooks\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * Subscribe to an event
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($app_id, $subscription_create_request)
+    {
+        return $this->createAsyncWithHttpInfo($app_id, $subscription_create_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * Subscribe to an event
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($app_id, $subscription_create_request)
+    {
+        $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
+        $request = $this->createRequest($app_id, $subscription_create_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createRequest($app_id, $subscription_create_request)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling create'
+            );
+        }
+        // verify the required parameter 'subscription_create_request' is set
+        if ($subscription_create_request === null || (is_array($subscription_create_request) && count($subscription_create_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $subscription_create_request when calling create'
+            );
+        }
+
+        $resourcePath = '/webhooks/v3/{appId}/subscriptions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($subscription_create_request)) {
+            $_tempBody = $subscription_create_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAll
+     *
+     * Get subscription details
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     *
+     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error
+     */
+    public function getAll($app_id)
+    {
+        list($response) = $this->getAllWithHttpInfo($app_id);
+        return $response;
+    }
+
+    /**
+     * Operation getAllWithHttpInfo
+     *
+     * Get subscription details
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     *
+     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAllWithHttpInfo($app_id)
+    {
+        $request = $this->getAllRequest($app_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Webhooks\Model\SubscriptionListResponse' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Webhooks\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Webhooks\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAllAsync
+     *
+     * Get subscription details
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllAsync($app_id)
+    {
+        return $this->getAllAsyncWithHttpInfo($app_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAllAsyncWithHttpInfo
+     *
+     * Get subscription details
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAllAsyncWithHttpInfo($app_id)
+    {
+        $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse';
+        $request = $this->getAllRequest($app_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAll'
+     *
+     * @param  int $app_id The ID of the target app. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getAllRequest($app_id)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getAll'
+            );
+        }
+
+        $resourcePath = '/webhooks/v3/{appId}/subscriptions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getById
      *
      * Get subscription
      *
@@ -383,14 +991,14 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getSubscription($app_id, $subscription_id)
+    public function getById($app_id, $subscription_id)
     {
-        list($response) = $this->getSubscriptionWithHttpInfo($app_id, $subscription_id);
+        list($response) = $this->getByIdWithHttpInfo($app_id, $subscription_id);
         return $response;
     }
 
     /**
-     * Operation getSubscriptionWithHttpInfo
+     * Operation getByIdWithHttpInfo
      *
      * Get subscription
      *
@@ -401,9 +1009,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSubscriptionWithHttpInfo($app_id, $subscription_id)
+    public function getByIdWithHttpInfo($app_id, $subscription_id)
     {
-        $request = $this->getSubscriptionRequest($app_id, $subscription_id);
+        $request = $this->getByIdRequest($app_id, $subscription_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -499,7 +1107,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation getSubscriptionAsync
+     * Operation getByIdAsync
      *
      * Get subscription
      *
@@ -509,9 +1117,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSubscriptionAsync($app_id, $subscription_id)
+    public function getByIdAsync($app_id, $subscription_id)
     {
-        return $this->getSubscriptionAsyncWithHttpInfo($app_id, $subscription_id)
+        return $this->getByIdAsyncWithHttpInfo($app_id, $subscription_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -520,7 +1128,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation getSubscriptionAsyncWithHttpInfo
+     * Operation getByIdAsyncWithHttpInfo
      *
      * Get subscription
      *
@@ -530,10 +1138,10 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSubscriptionAsyncWithHttpInfo($app_id, $subscription_id)
+    public function getByIdAsyncWithHttpInfo($app_id, $subscription_id)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->getSubscriptionRequest($app_id, $subscription_id);
+        $request = $this->getByIdRequest($app_id, $subscription_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -570,7 +1178,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Create request for operation 'getSubscription'
+     * Create request for operation 'getById'
      *
      * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the target subscription. (required)
@@ -578,18 +1186,18 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSubscriptionRequest($app_id, $subscription_id)
+    protected function getByIdRequest($app_id, $subscription_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getSubscription'
+                'Missing the required parameter $app_id when calling getById'
             );
         }
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription_id when calling getSubscription'
+                'Missing the required parameter $subscription_id when calling getById'
             );
         }
 
@@ -688,609 +1296,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation getSubscriptions
-     *
-     * Get subscription details
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error
-     */
-    public function getSubscriptions($app_id)
-    {
-        list($response) = $this->getSubscriptionsWithHttpInfo($app_id);
-        return $response;
-    }
-
-    /**
-     * Operation getSubscriptionsWithHttpInfo
-     *
-     * Get subscription details
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getSubscriptionsWithHttpInfo($app_id)
-    {
-        $request = $this->getSubscriptionsRequest($app_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Webhooks\Model\SubscriptionListResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Webhooks\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Webhooks\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getSubscriptionsAsync
-     *
-     * Get subscription details
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getSubscriptionsAsync($app_id)
-    {
-        return $this->getSubscriptionsAsyncWithHttpInfo($app_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getSubscriptionsAsyncWithHttpInfo
-     *
-     * Get subscription details
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getSubscriptionsAsyncWithHttpInfo($app_id)
-    {
-        $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse';
-        $request = $this->getSubscriptionsRequest($app_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getSubscriptions'
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function getSubscriptionsRequest($app_id)
-    {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getSubscriptions'
-            );
-        }
-
-        $resourcePath = '/webhooks/v3/{appId}/subscriptions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation subscribe
-     *
-     * Subscribe to an event
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (optional)
-     *
-     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
-     */
-    public function subscribe($app_id, $subscription_create_request = null)
-    {
-        list($response) = $this->subscribeWithHttpInfo($app_id, $subscription_create_request);
-        return $response;
-    }
-
-    /**
-     * Operation subscribeWithHttpInfo
-     *
-     * Subscribe to an event
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (optional)
-     *
-     * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function subscribeWithHttpInfo($app_id, $subscription_create_request = null)
-    {
-        $request = $this->subscribeRequest($app_id, $subscription_create_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Webhooks\Model\SubscriptionResponse' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\SubscriptionResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Webhooks\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Webhooks\Model\SubscriptionResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Webhooks\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation subscribeAsync
-     *
-     * Subscribe to an event
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscribeAsync($app_id, $subscription_create_request = null)
-    {
-        return $this->subscribeAsyncWithHttpInfo($app_id, $subscription_create_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation subscribeAsyncWithHttpInfo
-     *
-     * Subscribe to an event
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscribeAsyncWithHttpInfo($app_id, $subscription_create_request = null)
-    {
-        $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->subscribeRequest($app_id, $subscription_create_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'subscribe'
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request Details about the new subscription. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function subscribeRequest($app_id, $subscription_create_request = null)
-    {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling subscribe'
-            );
-        }
-
-        $resourcePath = '/webhooks/v3/{appId}/subscriptions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-        if (isset($subscription_create_request)) {
-            $_tempBody = $subscription_create_request;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updateSubscription
+     * Operation update
      *
      * Update a subscription
      *
@@ -1302,14 +1308,14 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function updateSubscription($subscription_id, $app_id, $subscription_patch_request = null)
+    public function update($subscription_id, $app_id, $subscription_patch_request = null)
     {
-        list($response) = $this->updateSubscriptionWithHttpInfo($subscription_id, $app_id, $subscription_patch_request);
+        list($response) = $this->updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request);
         return $response;
     }
 
     /**
-     * Operation updateSubscriptionWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update a subscription
      *
@@ -1321,9 +1327,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateSubscriptionWithHttpInfo($subscription_id, $app_id, $subscription_patch_request = null)
+    public function updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request = null)
     {
-        $request = $this->updateSubscriptionRequest($subscription_id, $app_id, $subscription_patch_request);
+        $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1419,7 +1425,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation updateSubscriptionAsync
+     * Operation updateAsync
      *
      * Update a subscription
      *
@@ -1430,9 +1436,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSubscriptionAsync($subscription_id, $app_id, $subscription_patch_request = null)
+    public function updateAsync($subscription_id, $app_id, $subscription_patch_request = null)
     {
-        return $this->updateSubscriptionAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
+        return $this->updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1441,7 +1447,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Operation updateSubscriptionAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update a subscription
      *
@@ -1452,10 +1458,10 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSubscriptionAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request = null)
+    public function updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request = null)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->updateSubscriptionRequest($subscription_id, $app_id, $subscription_patch_request);
+        $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1492,7 +1498,7 @@ class SubscriptionsApi
     }
 
     /**
-     * Create request for operation 'updateSubscription'
+     * Create request for operation 'update'
      *
      * @param  int $subscription_id The ID of the subscription to update. (required)
      * @param  int $app_id The ID of the target app. (required)
@@ -1501,18 +1507,18 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateSubscriptionRequest($subscription_id, $app_id, $subscription_patch_request = null)
+    protected function updateRequest($subscription_id, $app_id, $subscription_patch_request = null)
     {
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription_id when calling updateSubscription'
+                'Missing the required parameter $subscription_id when calling update'
             );
         }
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling updateSubscription'
+                'Missing the required parameter $app_id when calling update'
             );
         }
 

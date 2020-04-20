@@ -116,7 +116,7 @@ class SettingsApi
     }
 
     /**
-     * Operation clearSettings
+     * Operation clear
      *
      * Clear webhook settings
      *
@@ -126,13 +126,13 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function clearSettings($app_id)
+    public function clear($app_id)
     {
-        $this->clearSettingsWithHttpInfo($app_id);
+        $this->clearWithHttpInfo($app_id);
     }
 
     /**
-     * Operation clearSettingsWithHttpInfo
+     * Operation clearWithHttpInfo
      *
      * Clear webhook settings
      *
@@ -142,9 +142,9 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function clearSettingsWithHttpInfo($app_id)
+    public function clearWithHttpInfo($app_id)
     {
-        $request = $this->clearSettingsRequest($app_id);
+        $request = $this->clearRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -192,7 +192,7 @@ class SettingsApi
     }
 
     /**
-     * Operation clearSettingsAsync
+     * Operation clearAsync
      *
      * Clear webhook settings
      *
@@ -201,9 +201,9 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function clearSettingsAsync($app_id)
+    public function clearAsync($app_id)
     {
-        return $this->clearSettingsAsyncWithHttpInfo($app_id)
+        return $this->clearAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -212,7 +212,7 @@ class SettingsApi
     }
 
     /**
-     * Operation clearSettingsAsyncWithHttpInfo
+     * Operation clearAsyncWithHttpInfo
      *
      * Clear webhook settings
      *
@@ -221,10 +221,10 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function clearSettingsAsyncWithHttpInfo($app_id)
+    public function clearAsyncWithHttpInfo($app_id)
     {
         $returnType = '';
-        $request = $this->clearSettingsRequest($app_id);
+        $request = $this->clearRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -250,19 +250,19 @@ class SettingsApi
     }
 
     /**
-     * Create request for operation 'clearSettings'
+     * Create request for operation 'clear'
      *
      * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function clearSettingsRequest($app_id)
+    protected function clearRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling clearSettings'
+                'Missing the required parameter $app_id when calling clear'
             );
         }
 
@@ -353,38 +353,38 @@ class SettingsApi
     }
 
     /**
-     * Operation configureSettings
+     * Operation configure
      *
      * Configure webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function configureSettings($app_id, $settings_change_request = null)
+    public function configure($app_id, $settings_change_request)
     {
-        list($response) = $this->configureSettingsWithHttpInfo($app_id, $settings_change_request);
+        list($response) = $this->configureWithHttpInfo($app_id, $settings_change_request);
         return $response;
     }
 
     /**
-     * Operation configureSettingsWithHttpInfo
+     * Operation configureWithHttpInfo
      *
      * Configure webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function configureSettingsWithHttpInfo($app_id, $settings_change_request = null)
+    public function configureWithHttpInfo($app_id, $settings_change_request)
     {
-        $request = $this->configureSettingsRequest($app_id, $settings_change_request);
+        $request = $this->configureRequest($app_id, $settings_change_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -480,19 +480,19 @@ class SettingsApi
     }
 
     /**
-     * Operation configureSettingsAsync
+     * Operation configureAsync
      *
      * Configure webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureSettingsAsync($app_id, $settings_change_request = null)
+    public function configureAsync($app_id, $settings_change_request)
     {
-        return $this->configureSettingsAsyncWithHttpInfo($app_id, $settings_change_request)
+        return $this->configureAsyncWithHttpInfo($app_id, $settings_change_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -501,20 +501,20 @@ class SettingsApi
     }
 
     /**
-     * Operation configureSettingsAsyncWithHttpInfo
+     * Operation configureAsyncWithHttpInfo
      *
      * Configure webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureSettingsAsyncWithHttpInfo($app_id, $settings_change_request = null)
+    public function configureAsyncWithHttpInfo($app_id, $settings_change_request)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SettingsResponse';
-        $request = $this->configureSettingsRequest($app_id, $settings_change_request);
+        $request = $this->configureRequest($app_id, $settings_change_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -551,20 +551,26 @@ class SettingsApi
     }
 
     /**
-     * Create request for operation 'configureSettings'
+     * Create request for operation 'configure'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request Settings state to create new with or replace existing settings with. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function configureSettingsRequest($app_id, $settings_change_request = null)
+    protected function configureRequest($app_id, $settings_change_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling configureSettings'
+                'Missing the required parameter $app_id when calling configure'
+            );
+        }
+        // verify the required parameter 'settings_change_request' is set
+        if ($settings_change_request === null || (is_array($settings_change_request) && count($settings_change_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settings_change_request when calling configure'
             );
         }
 
@@ -658,7 +664,7 @@ class SettingsApi
     }
 
     /**
-     * Operation getSettings
+     * Operation getAll
      *
      * Get webhook settings
      *
@@ -668,14 +674,14 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getSettings($app_id)
+    public function getAll($app_id)
     {
-        list($response) = $this->getSettingsWithHttpInfo($app_id);
+        list($response) = $this->getAllWithHttpInfo($app_id);
         return $response;
     }
 
     /**
-     * Operation getSettingsWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * Get webhook settings
      *
@@ -685,9 +691,9 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSettingsWithHttpInfo($app_id)
+    public function getAllWithHttpInfo($app_id)
     {
-        $request = $this->getSettingsRequest($app_id);
+        $request = $this->getAllRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -783,7 +789,7 @@ class SettingsApi
     }
 
     /**
-     * Operation getSettingsAsync
+     * Operation getAllAsync
      *
      * Get webhook settings
      *
@@ -792,9 +798,9 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSettingsAsync($app_id)
+    public function getAllAsync($app_id)
     {
-        return $this->getSettingsAsyncWithHttpInfo($app_id)
+        return $this->getAllAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -803,7 +809,7 @@ class SettingsApi
     }
 
     /**
-     * Operation getSettingsAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * Get webhook settings
      *
@@ -812,10 +818,10 @@ class SettingsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSettingsAsyncWithHttpInfo($app_id)
+    public function getAllAsyncWithHttpInfo($app_id)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SettingsResponse';
-        $request = $this->getSettingsRequest($app_id);
+        $request = $this->getAllRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -852,19 +858,19 @@ class SettingsApi
     }
 
     /**
-     * Create request for operation 'getSettings'
+     * Create request for operation 'getAll'
      *
      * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSettingsRequest($app_id)
+    protected function getAllRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getSettings'
+                'Missing the required parameter $app_id when calling getAll'
             );
         }
 
