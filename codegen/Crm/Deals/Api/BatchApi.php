@@ -116,7 +116,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatch
+     * Operation archive
      *
      * Archive a batch of deals by ID
      *
@@ -126,13 +126,13 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveBatch($batch_input_simple_public_object_id = null)
+    public function archive($batch_input_simple_public_object_id = null)
     {
-        $this->archiveBatchWithHttpInfo($batch_input_simple_public_object_id);
+        $this->archiveWithHttpInfo($batch_input_simple_public_object_id);
     }
 
     /**
-     * Operation archiveBatchWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Archive a batch of deals by ID
      *
@@ -142,9 +142,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveBatchWithHttpInfo($batch_input_simple_public_object_id = null)
+    public function archiveWithHttpInfo($batch_input_simple_public_object_id = null)
     {
-        $request = $this->archiveBatchRequest($batch_input_simple_public_object_id);
+        $request = $this->archiveRequest($batch_input_simple_public_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -192,7 +192,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatchAsync
+     * Operation archiveAsync
      *
      * Archive a batch of deals by ID
      *
@@ -201,9 +201,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveBatchAsync($batch_input_simple_public_object_id = null)
+    public function archiveAsync($batch_input_simple_public_object_id = null)
     {
-        return $this->archiveBatchAsyncWithHttpInfo($batch_input_simple_public_object_id)
+        return $this->archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -212,7 +212,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatchAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Archive a batch of deals by ID
      *
@@ -221,10 +221,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveBatchAsyncWithHttpInfo($batch_input_simple_public_object_id = null)
+    public function archiveAsyncWithHttpInfo($batch_input_simple_public_object_id = null)
     {
         $returnType = '';
-        $request = $this->archiveBatchRequest($batch_input_simple_public_object_id);
+        $request = $this->archiveRequest($batch_input_simple_public_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -250,14 +250,14 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'archiveBatch'
+     * Create request for operation 'archive'
      *
      * @param  \HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveBatchRequest($batch_input_simple_public_object_id = null)
+    protected function archiveRequest($batch_input_simple_public_object_id = null)
     {
 
         $resourcePath = '/crm/v3/objects/deals/batch/archive';
@@ -346,7 +346,7 @@ class BatchApi
     }
 
     /**
-     * Operation createBatch
+     * Operation create
      *
      * Create a batch of deals
      *
@@ -356,14 +356,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error
      */
-    public function createBatch($batch_input_simple_public_object_input = null)
+    public function create($batch_input_simple_public_object_input = null)
     {
-        list($response) = $this->createBatchWithHttpInfo($batch_input_simple_public_object_input);
+        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input);
         return $response;
     }
 
     /**
-     * Operation createBatchWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * Create a batch of deals
      *
@@ -373,9 +373,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBatchWithHttpInfo($batch_input_simple_public_object_input = null)
+    public function createWithHttpInfo($batch_input_simple_public_object_input = null)
     {
-        $request = $this->createBatchRequest($batch_input_simple_public_object_input);
+        $request = $this->createRequest($batch_input_simple_public_object_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -491,7 +491,7 @@ class BatchApi
     }
 
     /**
-     * Operation createBatchAsync
+     * Operation createAsync
      *
      * Create a batch of deals
      *
@@ -500,9 +500,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsync($batch_input_simple_public_object_input = null)
+    public function createAsync($batch_input_simple_public_object_input = null)
     {
-        return $this->createBatchAsyncWithHttpInfo($batch_input_simple_public_object_input)
+        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -511,7 +511,7 @@ class BatchApi
     }
 
     /**
-     * Operation createBatchAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * Create a batch of deals
      *
@@ -520,10 +520,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsyncWithHttpInfo($batch_input_simple_public_object_input = null)
+    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input = null)
     {
         $returnType = '\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject';
-        $request = $this->createBatchRequest($batch_input_simple_public_object_input);
+        $request = $this->createRequest($batch_input_simple_public_object_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -560,14 +560,14 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'createBatch'
+     * Create request for operation 'create'
      *
      * @param  \HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createBatchRequest($batch_input_simple_public_object_input = null)
+    protected function createRequest($batch_input_simple_public_object_input = null)
     {
 
         $resourcePath = '/crm/v3/objects/deals/batch/create';
@@ -656,7 +656,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch
+     * Operation read
      *
      * Read a batch of deals by internal ID, or unique property values
      *
@@ -667,14 +667,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error
      */
-    public function readBatch($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function read($archived = false, $batch_read_input_simple_public_object_id = null)
     {
-        list($response) = $this->readBatchWithHttpInfo($archived, $batch_read_input_simple_public_object_id);
+        list($response) = $this->readWithHttpInfo($archived, $batch_read_input_simple_public_object_id);
         return $response;
     }
 
     /**
-     * Operation readBatchWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * Read a batch of deals by internal ID, or unique property values
      *
@@ -685,9 +685,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readBatchWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function readWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
     {
-        $request = $this->readBatchRequest($archived, $batch_read_input_simple_public_object_id);
+        $request = $this->readRequest($archived, $batch_read_input_simple_public_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -803,7 +803,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsync
+     * Operation readAsync
      *
      * Read a batch of deals by internal ID, or unique property values
      *
@@ -813,9 +813,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsync($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function readAsync($archived = false, $batch_read_input_simple_public_object_id = null)
     {
-        return $this->readBatchAsyncWithHttpInfo($archived, $batch_read_input_simple_public_object_id)
+        return $this->readAsyncWithHttpInfo($archived, $batch_read_input_simple_public_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -824,7 +824,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * Read a batch of deals by internal ID, or unique property values
      *
@@ -834,10 +834,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsyncWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function readAsyncWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
     {
         $returnType = '\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject';
-        $request = $this->readBatchRequest($archived, $batch_read_input_simple_public_object_id);
+        $request = $this->readRequest($archived, $batch_read_input_simple_public_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -874,7 +874,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'readBatch'
+     * Create request for operation 'read'
      *
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  \HubSpot\Client\Crm\Deals\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
@@ -882,7 +882,7 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function readBatchRequest($archived = false, $batch_read_input_simple_public_object_id = null)
+    protected function readRequest($archived = false, $batch_read_input_simple_public_object_id = null)
     {
 
         $resourcePath = '/crm/v3/objects/deals/batch/read';
@@ -975,7 +975,7 @@ class BatchApi
     }
 
     /**
-     * Operation updateBatch
+     * Operation update
      *
      * Update a batch of deals
      *
@@ -985,14 +985,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error
      */
-    public function updateBatch($batch_input_simple_public_object_batch_input = null)
+    public function update($batch_input_simple_public_object_batch_input = null)
     {
-        list($response) = $this->updateBatchWithHttpInfo($batch_input_simple_public_object_batch_input);
+        list($response) = $this->updateWithHttpInfo($batch_input_simple_public_object_batch_input);
         return $response;
     }
 
     /**
-     * Operation updateBatchWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update a batch of deals
      *
@@ -1002,9 +1002,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Deals\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateBatchWithHttpInfo($batch_input_simple_public_object_batch_input = null)
+    public function updateWithHttpInfo($batch_input_simple_public_object_batch_input = null)
     {
-        $request = $this->updateBatchRequest($batch_input_simple_public_object_batch_input);
+        $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1120,7 +1120,7 @@ class BatchApi
     }
 
     /**
-     * Operation updateBatchAsync
+     * Operation updateAsync
      *
      * Update a batch of deals
      *
@@ -1129,9 +1129,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBatchAsync($batch_input_simple_public_object_batch_input = null)
+    public function updateAsync($batch_input_simple_public_object_batch_input = null)
     {
-        return $this->updateBatchAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
+        return $this->updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1140,7 +1140,7 @@ class BatchApi
     }
 
     /**
-     * Operation updateBatchAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update a batch of deals
      *
@@ -1149,10 +1149,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBatchAsyncWithHttpInfo($batch_input_simple_public_object_batch_input = null)
+    public function updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input = null)
     {
         $returnType = '\HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject';
-        $request = $this->updateBatchRequest($batch_input_simple_public_object_batch_input);
+        $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1189,14 +1189,14 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'updateBatch'
+     * Create request for operation 'update'
      *
      * @param  \HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateBatchRequest($batch_input_simple_public_object_batch_input = null)
+    protected function updateRequest($batch_input_simple_public_object_batch_input = null)
     {
 
         $resourcePath = '/crm/v3/objects/deals/batch/update';
