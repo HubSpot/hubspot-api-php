@@ -1,6 +1,6 @@
 <?php
 /**
- * CardPatchRequest
+ * IFrameActionBody
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardPatchRequest Class Doc Comment
+ * IFrameActionBody Class Doc Comment
  *
  * @category Class
- * @description Body for a patch with optional fields
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardPatchRequest implements ModelInterface, ArrayAccess
+class IFrameActionBody implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardPatchRequest';
+    protected static $openAPIModelName = 'IFrameActionBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,12 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch',
-        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
-        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
+        'type' => 'string',
+        'width' => 'int',
+        'height' => 'int',
+        'url' => 'string',
+        'label' => 'string',
+        'property_names_included' => 'string[]'
     ];
 
     /**
@@ -70,10 +71,12 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'fetch' => null,
-        'display' => null,
-        'actions' => null
+        'type' => null,
+        'width' => 'int32',
+        'height' => 'int32',
+        'url' => null,
+        'label' => null,
+        'property_names_included' => null
     ];
 
     /**
@@ -103,10 +106,12 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'fetch' => 'fetch',
-        'display' => 'display',
-        'actions' => 'actions'
+        'type' => 'type',
+        'width' => 'width',
+        'height' => 'height',
+        'url' => 'url',
+        'label' => 'label',
+        'property_names_included' => 'propertyNamesIncluded'
     ];
 
     /**
@@ -115,10 +120,12 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'fetch' => 'setFetch',
-        'display' => 'setDisplay',
-        'actions' => 'setActions'
+        'type' => 'setType',
+        'width' => 'setWidth',
+        'height' => 'setHeight',
+        'url' => 'setUrl',
+        'label' => 'setLabel',
+        'property_names_included' => 'setPropertyNamesIncluded'
     ];
 
     /**
@@ -127,10 +134,12 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'fetch' => 'getFetch',
-        'display' => 'getDisplay',
-        'actions' => 'getActions'
+        'type' => 'getType',
+        'width' => 'getWidth',
+        'height' => 'getHeight',
+        'url' => 'getUrl',
+        'label' => 'getLabel',
+        'property_names_included' => 'getPropertyNamesIncluded'
     ];
 
     /**
@@ -174,8 +183,21 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const TYPE_IFRAME = 'IFRAME';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_IFRAME,
+        ];
+    }
     
 
     /**
@@ -193,10 +215,12 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['fetch'] = isset($data['fetch']) ? $data['fetch'] : null;
-        $this->container['display'] = isset($data['display']) ? $data['display'] : null;
-        $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : 'IFRAME';
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['property_names_included'] = isset($data['property_names_included']) ? $data['property_names_included'] : null;
     }
 
     /**
@@ -208,6 +232,29 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
+        }
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['property_names_included'] === null) {
+            $invalidProperties[] = "'property_names_included' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -224,97 +271,154 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets title
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param int $width width
+     *
+     * @return $this
+     */
+    public function setWidth($width)
+    {
+        $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets height
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->container['height'];
+    }
+
+    /**
+     * Sets height
+     *
+     * @param int $height height
+     *
+     * @return $this
+     */
+    public function setHeight($height)
+    {
+        $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getLabel()
     {
-        return $this->container['title'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets title
+     * Sets label
      *
-     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param string|null $label label
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setLabel($label)
     {
-        $this->container['title'] = $title;
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets fetch
+     * Gets property_names_included
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null
+     * @return string[]
      */
-    public function getFetch()
+    public function getPropertyNamesIncluded()
     {
-        return $this->container['fetch'];
+        return $this->container['property_names_included'];
     }
 
     /**
-     * Sets fetch
+     * Sets property_names_included
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null $fetch fetch
+     * @param string[] $property_names_included property_names_included
      *
      * @return $this
      */
-    public function setFetch($fetch)
+    public function setPropertyNamesIncluded($property_names_included)
     {
-        $this->container['fetch'] = $fetch;
-
-        return $this;
-    }
-
-    /**
-     * Gets display
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null
-     */
-    public function getDisplay()
-    {
-        return $this->container['display'];
-    }
-
-    /**
-     * Sets display
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null $display display
-     *
-     * @return $this
-     */
-    public function setDisplay($display)
-    {
-        $this->container['display'] = $display;
-
-        return $this;
-    }
-
-    /**
-     * Gets actions
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null
-     */
-    public function getActions()
-    {
-        return $this->container['actions'];
-    }
-
-    /**
-     * Sets actions
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null $actions actions
-     *
-     * @return $this
-     */
-    public function setActions($actions)
-    {
-        $this->container['actions'] = $actions;
+        $this->container['property_names_included'] = $property_names_included;
 
         return $this;
     }

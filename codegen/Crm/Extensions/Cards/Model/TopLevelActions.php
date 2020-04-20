@@ -1,6 +1,6 @@
 <?php
 /**
- * CardPatchRequest
+ * TopLevelActions
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardPatchRequest Class Doc Comment
+ * TopLevelActions Class Doc Comment
  *
  * @category Class
- * @description Body for a patch with optional fields
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CardPatchRequest implements ModelInterface, ArrayAccess
+class TopLevelActions implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardPatchRequest';
+    protected static $openAPIModelName = 'TopLevelActions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch',
-        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
-        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
+        'settings' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IFrameActionBody',
+        'primary' => 'OneOfActionHookActionBodyIFrameActionBody',
+        'secondary' => 'OneOfActionHookActionBodyIFrameActionBody[]'
     ];
 
     /**
@@ -70,10 +68,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'fetch' => null,
-        'display' => null,
-        'actions' => null
+        'settings' => null,
+        'primary' => null,
+        'secondary' => null
     ];
 
     /**
@@ -103,10 +100,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'fetch' => 'fetch',
-        'display' => 'display',
-        'actions' => 'actions'
+        'settings' => 'settings',
+        'primary' => 'primary',
+        'secondary' => 'secondary'
     ];
 
     /**
@@ -115,10 +111,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'fetch' => 'setFetch',
-        'display' => 'setDisplay',
-        'actions' => 'setActions'
+        'settings' => 'setSettings',
+        'primary' => 'setPrimary',
+        'secondary' => 'setSecondary'
     ];
 
     /**
@@ -127,10 +122,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'fetch' => 'getFetch',
-        'display' => 'getDisplay',
-        'actions' => 'getActions'
+        'settings' => 'getSettings',
+        'primary' => 'getPrimary',
+        'secondary' => 'getSecondary'
     ];
 
     /**
@@ -193,10 +187,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['fetch'] = isset($data['fetch']) ? $data['fetch'] : null;
-        $this->container['display'] = isset($data['display']) ? $data['display'] : null;
-        $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
+        $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
+        $this->container['primary'] = isset($data['primary']) ? $data['primary'] : null;
+        $this->container['secondary'] = isset($data['secondary']) ? $data['secondary'] : null;
     }
 
     /**
@@ -208,6 +201,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['secondary'] === null) {
+            $invalidProperties[] = "'secondary' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -224,97 +220,73 @@ class CardPatchRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets title
+     * Gets settings
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\IFrameActionBody|null
      */
-    public function getTitle()
+    public function getSettings()
     {
-        return $this->container['title'];
+        return $this->container['settings'];
     }
 
     /**
-     * Sets title
+     * Sets settings
      *
-     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\IFrameActionBody|null $settings settings
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setSettings($settings)
     {
-        $this->container['title'] = $title;
+        $this->container['settings'] = $settings;
 
         return $this;
     }
 
     /**
-     * Gets fetch
+     * Gets primary
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null
+     * @return OneOfActionHookActionBodyIFrameActionBody|null
      */
-    public function getFetch()
+    public function getPrimary()
     {
-        return $this->container['fetch'];
+        return $this->container['primary'];
     }
 
     /**
-     * Sets fetch
+     * Sets primary
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch|null $fetch fetch
+     * @param OneOfActionHookActionBodyIFrameActionBody|null $primary primary
      *
      * @return $this
      */
-    public function setFetch($fetch)
+    public function setPrimary($primary)
     {
-        $this->container['fetch'] = $fetch;
+        $this->container['primary'] = $primary;
 
         return $this;
     }
 
     /**
-     * Gets display
+     * Gets secondary
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null
+     * @return OneOfActionHookActionBodyIFrameActionBody[]
      */
-    public function getDisplay()
+    public function getSecondary()
     {
-        return $this->container['display'];
+        return $this->container['secondary'];
     }
 
     /**
-     * Sets display
+     * Sets secondary
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody|null $display display
+     * @param OneOfActionHookActionBodyIFrameActionBody[] $secondary secondary
      *
      * @return $this
      */
-    public function setDisplay($display)
+    public function setSecondary($secondary)
     {
-        $this->container['display'] = $display;
-
-        return $this;
-    }
-
-    /**
-     * Gets actions
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null
-     */
-    public function getActions()
-    {
-        return $this->container['actions'];
-    }
-
-    /**
-     * Sets actions
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions|null $actions actions
-     *
-     * @return $this
-     */
-    public function setActions($actions)
-    {
-        $this->container['actions'] = $actions;
+        $this->container['secondary'] = $secondary;
 
         return $this;
     }
