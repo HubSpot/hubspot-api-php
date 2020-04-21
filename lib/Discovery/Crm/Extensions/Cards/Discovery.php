@@ -2,11 +2,13 @@
 
 namespace HubSpot\Discovery\Crm\Extensions\Cards;
 
-use HubSpot\Client\Crm\Extensions\Cards\Api\DefaultApi;
+use HubSpot\Client\Crm\Extensions\Cards\Api\CardsApi;
+use HubSpot\Client\Crm\Extensions\Cards\Api\SampleResponseApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method DefaultApi defaultApi()
+ * @method CardsApi             cardsApi()
+ * @method SampleResponseApi    sampleResponseApi()
  */
 class Discovery extends DiscoveryBase
 {
