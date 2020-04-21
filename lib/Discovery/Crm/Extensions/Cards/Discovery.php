@@ -7,8 +7,8 @@ use HubSpot\Client\Crm\Extensions\Cards\Api\SampleResponseApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method CardsApi             cardsApi()
- * @method SampleResponseApi    sampleResponseApi()
+ * @method CardsApi          cardsApi()
+ * @method SampleResponseApi sampleResponseApi()
  */
 class Discovery extends DiscoveryBase
 {
