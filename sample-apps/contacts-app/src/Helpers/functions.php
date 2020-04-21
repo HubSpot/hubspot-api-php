@@ -1,8 +1,6 @@
 <?php
 
 /**
- * @param string $name
- *
  * @return mixed
  */
 function getEnvOrException(string $name)
@@ -15,15 +13,15 @@ function getEnvOrException(string $name)
 }
 
 /**
- * @param string $string
+ * @param mixed $length
  *
  * @return string
  */
 function getShortString(string $string, $length = 25)
 {
-    if  (strlen($string) > $length) {
+    if (strlen($string) > $length) {
         return substr($string, 0, $length - 3).'...';
     }
-    
+
     return $string;
 }

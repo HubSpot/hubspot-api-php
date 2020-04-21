@@ -24,7 +24,7 @@ $hubSpot
     <?php foreach ($properties as $property) { ?>
         <tr>
             <td>
-                <a href="/properties/show.php?name=<?php echo htmlentities($property->getName()); ?>"><?php echo getShortString(htmlentities($property->getName()));?></a>
+                <a href="/properties/show.php?name=<?php echo htmlentities($property->getName()); ?>"><?php echo getShortString(htmlentities($property->getName())); ?></a>
             </td>
             <td><?php echo htmlentities($property->getLabel()); ?></td>
             <td><?php echo getShortString(htmlentities($property->getDescription()), 70); ?></td>
