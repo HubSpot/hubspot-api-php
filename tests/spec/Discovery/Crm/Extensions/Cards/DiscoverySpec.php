@@ -3,7 +3,8 @@
 namespace spec\HubSpot\Discovery\Crm\Extensions\Cards;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Extensions\Cards\Api\DefaultApi;
+use HubSpot\Client\Crm\Extensions\Cards\Api\CardsApi;
+use HubSpot\Client\Crm\Extensions\Cards\Api\SampleResponseApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -21,6 +22,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->defaultApi()->shouldHaveType(DefaultApi::class);
+        $this->cardsApi()->shouldHaveType(CardsApi::class);
+        $this->sampleResponseApi()->shouldHaveType(SampleResponseApi::class);
     }
 }
