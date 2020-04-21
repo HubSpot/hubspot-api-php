@@ -12,9 +12,6 @@ function getEnvOrException(string $name)
     return $_ENV[$name];
 }
 
-/**
- * @return string
- */
 function shortenString(string $string, int $length = 25): string
 {
     if (strlen($string) > $length) {
