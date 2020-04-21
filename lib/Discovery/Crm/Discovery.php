@@ -10,6 +10,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Contacts\Discovery     contacts()
  * @method Deals\Discovery        deals()
  * @method Extensions\Discovery   extensions()
+ * @method Imports\Discovery      imports()
  * @method LineItems\Discovery    lineItems()
  * @method Owners\Discovery       owners()
  * @method Pipelines\Discovery    pipelines()
