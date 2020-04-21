@@ -24,10 +24,10 @@ $hubSpot
     <?php foreach ($properties as $property) { ?>
         <tr>
             <td>
-                <a href="/properties/show.php?name=<?php echo htmlentities($property->getName()); ?>"><?php echo getShortString(htmlentities($property->getName())); ?></a>
+                <a href="/properties/show.php?name=<?php echo htmlentities($property->getName()); ?>"><?php echo shortenString(htmlentities($property->getName())); ?></a>
             </td>
             <td><?php echo htmlentities($property->getLabel()); ?></td>
-            <td><?php echo getShortString(htmlentities($property->getDescription()), 70); ?></td>
+            <td><?php echo shortenString(htmlentities($property->getDescription()), 70); ?></td>
             <td><?php echo htmlentities($property->getType()); ?></td>
             <td><?php if ($property->getModificationMetadata()->getArchivable()) { ?>
                 <a id="remove-<?php echo htmlentities($property->name); ?>"

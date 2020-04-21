@@ -13,11 +13,9 @@ function getEnvOrException(string $name)
 }
 
 /**
- * @param mixed $length
- *
  * @return string
  */
-function getShortString(string $string, $length = 25)
+function shortenString(string $string, int $length = 25): string
 {
     if (strlen($string) > $length) {
         return substr($string, 0, $length - 3).'...';
