@@ -1,7 +1,7 @@
 {
     "name": "hubspot/api-client",
-    "version": "0.1",
-    "description": "",
+    "version": "1.0.0-beta",
+    "description": "Hubspot API client",
     "keywords": [
         "hubspot",
         "swagger",
