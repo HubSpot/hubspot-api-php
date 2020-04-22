@@ -2,10 +2,11 @@
 
 use Helpers\HubspotClientHelper;
 use Helpers\UrlHelper;
+use HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest;
+use HubSpot\Client\Webhooks\Model\SubscriptionBatchUpdateRequest;
 use HubSpot\Client\Webhooks\Model\SettingsChangeRequest;
 use HubSpot\Client\Webhooks\Model\SettingsResponse;
 use HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest;
-use HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest;
 
 $appUrl = UrlHelper::generateServerUri().'/webhooks/handle.php';
 
@@ -18,7 +19,26 @@ $webhooksClient = HubspotClientHelper::createFactoryWithDeveloperAPIKey()
     ->webhooks()
 ;
 
-$appId = getEnvOrException('HUBSPOT_APP_ID');
+$appId = getEnvOrException('HUBSPOT_APPLICATION_ID');
+
+$updateSubscriptions = function (array $ids, bool $activity) use ($appId, $webhooksClient) {
+    if (count($ids) > 0) {
+        $subscriptionRequests = [];
+
+        foreach ($ids as $id) {
+            $subscriptionRequest = new SubscriptionBatchUpdateRequest();
+            $subscriptionRequest->setId($id);
+            $subscriptionRequest->setActive($activity);
+
+            $subscriptionRequests[] = $subscriptionRequest;
+        }
+
+        $subscriptionsRequest = new BatchInputSubscriptionBatchUpdateRequest();
+        $subscriptionsRequest->setInputs($subscriptionRequests);
+
+        $webhooksClient->subscriptionsApi()->updateBatch($appId, $subscriptionsRequest);
+    }
+};
 
 $necessarySubscriptions = [
     'contact.creation' => null,
@@ -28,7 +48,7 @@ $necessarySubscriptions = [
 
 $activeSubscriptions = [];
 
-$subscriptions = $webhooksClient->subscriptionsApi()->getSubscriptions($appId);
+$subscriptions = $webhooksClient->subscriptionsApi()->getAll($appId);
 
 foreach ($subscriptions->getResults() as $subscription) {
     if (
@@ -39,24 +59,19 @@ foreach ($subscriptions->getResults() as $subscription) {
             )
         ) {
         $necessarySubscriptions[$subscription->getEventType()] = $subscription->getId();
-    } elseif ($subscription->getActive()) {
+    }
+    if ($subscription->getActive()) {
         $activeSubscriptions[] = $subscription->getId();
     }
-
-    if ($subscription->getActive()) {
-        $subscriptionRequest = new SubscriptionPatchRequest();
-        $subscriptionRequest->setEnabled(false);
-        $webhooksClient->subscriptionsApi()
-            ->updateSubscription($subscription->getId(), $appId, $subscriptionRequest)
-        ;
-    }
 }
+
+$updateSubscriptions($activeSubscriptions, false);
 
 $request = new SettingsChangeRequest();
 $request->setTargetUrl($appUrl);
 
 $response = $webhooksClient->settingsApi()
-    ->configureSettings($appId, $request)
+    ->configure($appId, $request)
 ;
 
 foreach ($necessarySubscriptions as $eventType => $subscriptionId) {
@@ -69,20 +84,13 @@ foreach ($necessarySubscriptions as $eventType => $subscriptionId) {
             $request->setPropertyName('firstname');
         }
 
-        $webhooksClient->subscriptionsApi()->subscribe($appId, $request);
-    } else {
-        $activeSubscriptions[] = $subscriptionId;
+        $webhooksClient->subscriptionsApi()->create($appId, $request);
     }
 }
 
-foreach ($activeSubscriptions as $subscriptionId) {
-    $subscriptionRequest = new SubscriptionPatchRequest();
-    $subscriptionRequest->setEnabled(true);
-    $webhooksClient->subscriptionsApi()
-        ->updateSubscription($subscriptionId, $appId, $subscriptionRequest)
-    ;
-}
-$settings = $webhooksClient->settingsApi()->getSettings($appId);
+$updateSubscriptions($activeSubscriptions, true);
+
+$settings = $webhooksClient->settingsApi()->getAll($appId);
 
 if (($settings instanceof SettingsResponse) && ($settings->getTargetUrl() == $appUrl)) {
     $_SESSION['init'] = true;
