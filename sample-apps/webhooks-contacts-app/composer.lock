@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "867822446f8289f3bfe080fb8cc97efb",
+    "content-hash": "dd6f6b266fdfff07dcb70998ec60db13",
     "packages": [
+        {
+            "name": "amphp/amp",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amphp/amp.git",
+                "reference": "4f2161da5f68f274f116985635aea63b5c0f54d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amphp/amp/zipball/4f2161da5f68f274f116985635aea63b5c0f54d2",
+                "reference": "4f2161da5f68f274f116985635aea63b5c0f54d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.9",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Amp\\": "lib/"
+                },
+                "files": [
+                    "lib/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Lowrey",
+                    "email": "rdlowrey@php.net",
+                    "role": "Creator / Lead Developer"
+                }
+            ],
+            "description": "A non-blocking concurrency framework for PHP applications",
+            "homepage": "https://github.com/amphp/amp",
+            "keywords": [
+                "async",
+                "concurrency",
+                "event",
+                "non-blocking",
+                "promise"
+            ],
+            "time": "2016-05-12T12:54:59+00:00"
+        },
         {
             "name": "byjg/anydataset",
             "version": "4.0.1.x-dev",
@@ -542,65 +599,48 @@
             ]
         },
         {
-            "name": "longman/telegram-bot",
-            "version": "0.61.1",
+            "name": "nmred/kafka-php",
+            "version": "v0.2.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-telegram-bot/core.git",
-                "reference": "85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e"
+                "url": "https://github.com/weiboad/kafka-php.git",
+                "reference": "d5b395aeb9d069dce49fc1dceff0a6f45750d981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e",
-                "reference": "85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e",
+                "url": "https://api.github.com/repos/weiboad/kafka-php/zipball/d5b395aeb9d069dce49fc1dceff0a6f45750d981",
+                "reference": "d5b395aeb9d069dce49fc1dceff0a6f45750d981",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-pdo": "*",
-                "guzzlehttp/guzzle": "^6.3",
-                "php": "^5.5|^7.0",
-                "psr/log": "^1.1"
+                "amphp/amp": "v1.2.2",
+                "php": ">=5.5",
+                "psr/log": "1.0.2"
             },
             "require-dev": {
-                "dms/phpunit-arraysubset-asserts": "^0.1.0",
-                "monolog/monolog": "^2.0",
-                "phpunit/phpunit": "^8.4",
-                "squizlabs/php_codesniffer": "^3.4"
+                "kmelia/monolog-stdout-handler": "1.2.1",
+                "monolog/monolog": "1.22.1",
+                "phpunit/phpcov": "*",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Longman\\TelegramBot\\": "src/"
+                "psr-0": {
+                    "Kafka\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
-            "authors": [
-                {
-                    "name": "Avtandil Kikabidze aka LONGMAN",
-                    "email": "akalongman@gmail.com",
-                    "homepage": "http://longman.me",
-                    "role": "Developer"
-                },
-                {
-                    "name": "PHP Telegram Bot Team",
-                    "homepage": "https://github.com/php-telegram-bot/core/graphs/contributors",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP Telegram bot",
-            "homepage": "https://github.com/php-telegram-bot/core",
+            "description": "Kafka client for php",
+            "homepage": "http://www.swanlinux.net",
             "keywords": [
-                "api",
-                "bot",
-                "telegram"
+                "client",
+                "kafka"
             ],
-            "time": "2019-11-23T21:48:39+00:00"
+            "time": "2017-10-23T09:33:08+00:00"
         },
         {
             "name": "psr/cache",
@@ -700,16 +740,16 @@
         },
         {
             "name": "psr/log",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
@@ -718,7 +758,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -743,7 +783,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -784,63 +824,6 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "spomky-labs/base64url",
-            "version": "v2.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Spomky-Labs/base64url.git",
-                "reference": "a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/base64url/zipball/a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d",
-                "reference": "a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1|^8.0"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-beberlei-assert": "^0.11.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Base64Url\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky-Labs/base64url/contributors"
-                }
-            ],
-            "description": "Base 64 URL Safe Encoding/Decoding PHP Library",
-            "homepage": "https://github.com/Spomky-Labs/base64url",
-            "keywords": [
-                "base64",
-                "rfc4648",
-                "safe",
-                "url"
-            ],
-            "time": "2019-04-18T11:52:47+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -1070,6 +1053,7 @@
     "platform": {
         "ext-curl": "*",
         "ext-json": "*",
+        "ext-sqlite3": "*",
         "ext-pdo": "*"
     },
     "platform-dev": [],
