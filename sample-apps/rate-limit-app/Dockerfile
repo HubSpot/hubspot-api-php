@@ -22,6 +22,7 @@ ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
 ADD ./sample-apps/rate-limit-app/composer.json /app
+ADD ./sample-apps/rate-limit-app/composer.lock /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
