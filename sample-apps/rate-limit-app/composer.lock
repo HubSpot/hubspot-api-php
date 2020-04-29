@@ -4,307 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "867822446f8289f3bfe080fb8cc97efb",
+    "content-hash": "2c70fc442a1e4bb011655687d786b575",
     "packages": [
-        {
-            "name": "byjg/anydataset",
-            "version": "4.0.1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/anydataset.git",
-                "reference": "ccb0b68d28e900e7b3e87371d61a56e142bf3afb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/anydataset/zipball/ccb0b68d28e900e7b3e87371d61a56e142bf3afb",
-                "reference": "ccb0b68d28e900e7b3e87371d61a56e142bf3afb",
-                "shasum": ""
-            },
-            "require": {
-                "byjg/serializer": "1.0.*",
-                "byjg/xmlutil": "1.0.*",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.7.*|7.4.*"
-            },
-            "suggest": {
-                "ext-dom": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\AnyDataset\\Core\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "Anydataset is an agnostic data source abstraction layer in PHP. Core Module.",
-            "time": "2020-04-11T16:45:01+00:00"
-        },
-        {
-            "name": "byjg/anydataset-array",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/anydataset-array.git",
-                "reference": "e66aa343b8ccd32baec0545120ea9948e1d0b0c5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/anydataset-array/zipball/e66aa343b8ccd32baec0545120ea9948e1d0b0c5",
-                "reference": "e66aa343b8ccd32baec0545120ea9948e1d0b0c5",
-                "shasum": ""
-            },
-            "require": {
-                "byjg/anydataset": "4.0.*",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\AnyDataset\\Lists\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "Anydataset Array abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
-            "time": "2018-11-24T15:20:06+00:00"
-        },
-        {
-            "name": "byjg/anydataset-db",
-            "version": "4.0.4.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/anydataset-db.git",
-                "reference": "209952cad1d5d3f4d7d79b42ce703bb38dbb7ea4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/anydataset-db/zipball/209952cad1d5d3f4d7d79b42ce703bb38dbb7ea4",
-                "reference": "209952cad1d5d3f4d7d79b42ce703bb38dbb7ea4",
-                "shasum": ""
-            },
-            "require": {
-                "byjg/anydataset": "4.0.*",
-                "byjg/anydataset-array": "4.0.*",
-                "byjg/uri": "2.0.*",
-                "ext-pdo": "*",
-                "php": ">=5.6.0",
-                "psr/cache": "1.0.*"
-            },
-            "require-dev": {
-                "byjg/cache-engine": "4.0.*",
-                "phpunit/phpunit": "5.7.*|7.4.*"
-            },
-            "suggest": {
-                "byjg/cache-engine": "4.0.*",
-                "ext-curl": "*",
-                "ext-oci8": "*",
-                "ext-pdo_mysql": "*",
-                "ext-pdo_pgsql": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\AnyDataset\\Db\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "Anydataset Database Relational abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
-            "time": "2020-04-02T07:08:00+00:00"
-        },
-        {
-            "name": "byjg/migration",
-            "version": "4.0.3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/migration.git",
-                "reference": "e1e2c12bebabe6a35d238e8bfff7e82f9f1e6cfd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/migration/zipball/e1e2c12bebabe6a35d238e8bfff7e82f9f1e6cfd",
-                "reference": "e1e2c12bebabe6a35d238e8bfff7e82f9f1e6cfd",
-                "shasum": ""
-            },
-            "require": {
-                "byjg/anydataset-db": "4.0.*",
-                "ext-pdo": "*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.7.*|7.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\DbMigration\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "jg",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "Simple library in PHP for database version control. Supports Sqlite, MySql, Sql Server and Postgres.",
-            "time": "2020-04-02T05:55:04+00:00"
-        },
-        {
-            "name": "byjg/serializer",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/serializer.git",
-                "reference": "229882fbe5efe0edf195937a39aa2d48912a3f8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/serializer/zipball/229882fbe5efe0edf195937a39aa2d48912a3f8d",
-                "reference": "229882fbe5efe0edf195937a39aa2d48912a3f8d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">5.7"
-            },
-            "suggest": {
-                "ext-curl": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\Serializer\\": "src/",
-                    "Tests\\": "tests"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "Serialize any object into array and format it JSON or XML",
-            "time": "2018-03-09T05:59:31+00:00"
-        },
-        {
-            "name": "byjg/uri",
-            "version": "2.0.1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/uri.git",
-                "reference": "0761c2228ff5b0f8494a465af21c025f9a0001ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/uri/zipball/0761c2228ff5b0f8494a465af21c025f9a0001ba",
-                "reference": "0761c2228ff5b0f8494a465af21c025f9a0001ba",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.7.*|7.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\Util\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "An implementation of PSR UriInterface ",
-            "time": "2020-04-07T05:34:31+00:00"
-        },
-        {
-            "name": "byjg/xmlutil",
-            "version": "1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/byjg/xmlutil.git",
-                "reference": "9f82339931252b7990596d07f365c765e3dbbad3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/byjg/xmlutil/zipball/9f82339931252b7990596d07f365c765e3dbbad3",
-                "reference": "9f82339931252b7990596d07f365c765e3dbbad3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ByJG\\Util\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Gilberto Magalhães",
-                    "email": "joao@byjg.com.br"
-                }
-            ],
-            "description": "A utility class to make easy work with XML in PHP.",
-            "time": "2018-03-10T14:43:36+00:00"
-        },
         {
             "name": "guzzlehttp/guzzle",
             "version": "6.5.x-dev",
@@ -542,38 +243,33 @@
             ]
         },
         {
-            "name": "longman/telegram-bot",
-            "version": "0.61.1",
+            "name": "predis/predis",
+            "version": "v1.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-telegram-bot/core.git",
-                "reference": "85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e"
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "111d100ee389d624036b46b35ed0c9ac59c71313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-telegram-bot/core/zipball/85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e",
-                "reference": "85d52f67b5ecf3ac81471fbcfacc37f61abb0c8e",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/111d100ee389d624036b46b35ed0c9ac59c71313",
+                "reference": "111d100ee389d624036b46b35ed0c9ac59c71313",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-pdo": "*",
-                "guzzlehttp/guzzle": "^6.3",
-                "php": "^5.5|^7.0",
-                "psr/log": "^1.1"
+                "php": ">=5.3.9"
             },
             "require-dev": {
-                "dms/phpunit-arraysubset-asserts": "^0.1.0",
-                "monolog/monolog": "^2.0",
-                "phpunit/phpunit": "^8.4",
-                "squizlabs/php_codesniffer": "^3.4"
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Longman\\TelegramBot\\": "src/"
+                    "Predis\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -582,71 +278,19 @@
             ],
             "authors": [
                 {
-                    "name": "Avtandil Kikabidze aka LONGMAN",
-                    "email": "akalongman@gmail.com",
-                    "homepage": "http://longman.me",
-                    "role": "Developer"
-                },
-                {
-                    "name": "PHP Telegram Bot Team",
-                    "homepage": "https://github.com/php-telegram-bot/core/graphs/contributors",
-                    "role": "Developer"
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
                 }
             ],
-            "description": "PHP Telegram bot",
-            "homepage": "https://github.com/php-telegram-bot/core",
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/nrk/predis",
             "keywords": [
-                "api",
-                "bot",
-                "telegram"
+                "nosql",
+                "predis",
+                "redis"
             ],
-            "time": "2019-11-23T21:48:39+00:00"
-        },
-        {
-            "name": "psr/cache",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "b9aa2cd4dd36cec02779bee07ee9dab8bd2d07d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/b9aa2cd4dd36cec02779bee07ee9dab8bd2d07d7",
-                "reference": "b9aa2cd4dd36cec02779bee07ee9dab8bd2d07d7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for caching libraries",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
-            ],
-            "time": "2019-10-04T14:04:41+00:00"
+            "time": "2017-07-12T14:39:17+00:00"
         },
         {
             "name": "psr/http-message",
@@ -699,53 +343,6 @@
             "time": "2019-08-29T13:16:46+00:00"
         },
         {
-            "name": "psr/log",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "time": "2020-03-23T09:12:05+00:00"
-        },
-        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -784,63 +381,6 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "spomky-labs/base64url",
-            "version": "v2.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Spomky-Labs/base64url.git",
-                "reference": "a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/base64url/zipball/a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d",
-                "reference": "a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1|^8.0"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-beberlei-assert": "^0.11.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Base64Url\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky-Labs/base64url/contributors"
-                }
-            ],
-            "description": "Base 64 URL Safe Encoding/Decoding PHP Library",
-            "homepage": "https://github.com/Spomky-Labs/base64url",
-            "keywords": [
-                "base64",
-                "rfc4648",
-                "safe",
-                "url"
-            ],
-            "time": "2019-04-18T11:52:47+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -1069,8 +609,7 @@
     "prefer-lowest": false,
     "platform": {
         "ext-curl": "*",
-        "ext-json": "*",
-        "ext-pdo": "*"
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

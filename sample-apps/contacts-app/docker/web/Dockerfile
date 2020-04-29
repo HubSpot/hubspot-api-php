@@ -17,6 +17,7 @@ ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
 ADD ./sample-apps/contacts-app/composer.json /app
+ADD ./sample-apps/contacts-app/composer.lock /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install

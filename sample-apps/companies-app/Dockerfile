@@ -19,6 +19,7 @@ ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
 ADD ./sample-apps/companies-app/composer.json /app
+ADD ./sample-apps/companies-app/composer.lock /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install
