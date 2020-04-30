@@ -3,9 +3,9 @@
 use Helpers\HubspotClientHelper;
 use Helpers\UrlHelper;
 use HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest;
-use HubSpot\Client\Webhooks\Model\SubscriptionBatchUpdateRequest;
 use HubSpot\Client\Webhooks\Model\SettingsChangeRequest;
 use HubSpot\Client\Webhooks\Model\SettingsResponse;
+use HubSpot\Client\Webhooks\Model\SubscriptionBatchUpdateRequest;
 use HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest;
 
 $appUrl = UrlHelper::generateServerUri().'/webhooks/handle.php';
