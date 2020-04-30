@@ -66,3 +66,7 @@ Following [Webhooks Setup](https://developers.hubspot.com/docs/methods/webhooks/
 - Every time the app is restarted you should update the webhooks url
 - The app supports `contact.creation` and `contact.deletion` subscription types only
 - Subscription are paused by default. You need to activate them manually after creating
+
+### HubSpot Signature
+To help improve security, HubSpot webhooks are sent with signature so you can verify that it came from HubSpot. This sample application shows how to do that verification. You can read more about validation in general here: https://developers.hubspot.com/docs/api/webhooks/validating-requests.
+The source code for validating webhooks is at [HubSpot\Utils\Webhooks](../../lib/Utils/Webhooks.php) and [an usage example](./src/actions/webhooks/handle.php)
