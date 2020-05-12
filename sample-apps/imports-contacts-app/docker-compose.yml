@@ -11,3 +11,4 @@ services:
       - 8999:80
     volumes:
       - ./src:/app/src
+      - ./tmp:/app/tmp
