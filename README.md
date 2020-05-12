@@ -4,7 +4,7 @@ PHP [HubSpot API](https://developers.hubspot.com/docs-beta/overview) v3  SDK(Cli
 ## Installation
 
 ```bash
-composer require hubspot/api-client 1.0.0-beta
+composer require hubspot/api-client
 ```
 
 Sample Applications can be found in [sample-apps](sample-apps/) folder
