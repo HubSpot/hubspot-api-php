@@ -8,7 +8,9 @@ if (!array_key_exists('file', $_FILES)) {
 }
 
 $fileName = $_FILES['file']['name'];
-move_uploaded_file($_FILES['file']['tmp_name'], '/app/tmp/'.$fileName);
+$file = '/app/tmp/'.$fileName;
+
+move_uploaded_file($_FILES['file']['tmp_name'], $file);
 
 $hubSpot = HubspotClientHelper::createFactory();
 
@@ -29,16 +31,15 @@ $request = json_encode([
                         'columnName' => 'Email',
                         'propertyName' => 'email',
                         'columnObjectType' => 'CONTACT',
-                    ]
-                ]
-            ]
-        ]
-    ]
+                    ],
+                ],
+            ],
+        ],
+    ],
 ]);
 
-$file = new SplFileObject('/app/tmp/'.$fileName);
 $response = $hubSpot->crm()->imports()->coreApi()->create($request, $file);
 
-@unlink('/app/tmp/'.$fileName);
+@unlink($file);
 
 include __DIR__.'/../../views/imports/done.php';
