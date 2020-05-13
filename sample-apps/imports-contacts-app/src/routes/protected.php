@@ -1,6 +1,6 @@
 <?php
 
 return [
-    '/imports/start.php',
-    '/imports/end.php',
+    '/import/start.php',
+    '/import/do.php',
 ];

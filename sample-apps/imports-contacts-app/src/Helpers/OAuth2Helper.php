@@ -7,7 +7,7 @@ use HubSpot\Factory;
 
 class OAuth2Helper
 {
-    const APP_REQUIRED_SCOPES = ['contacts'];
+    const APP_REQUIRED_SCOPES = ['contacts', 'crm.import'];
     const CALLBACK_PATH = '/oauth/callback.php';
     const SESSION_TOKENS_KEY = 'tokens';
 

@@ -9,7 +9,7 @@ session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 if ('/' === $uri) {
-    header('Location: /contacts/list.php');
+    header('Location: /import/start.php');
     exit();
 }
 
@@ -18,7 +18,7 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if (in_array($uri, $protectedRoutes)) {
-        if (empty($_ENV['HUBSPOT_API_KEY']) && !OAuth2Helper::isAuthenticated()) {
+        if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
             exit();
         }

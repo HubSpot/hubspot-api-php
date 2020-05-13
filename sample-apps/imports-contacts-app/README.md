@@ -1,14 +1,12 @@
-# HubSpot-php sample app
+# HubSpot PHP Imports Contacts App
 
-This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs-beta/crm/contacts) endpoints and their related actions. Additionally it shows how to work with paged results.
+This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Imports API](https://developers.hubspot.com/docs/api/crm/imports) endpoints and their related actions.
 
 Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
 ### HubSpot Public API endpoints used in this application
 
-  - [Contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
-  - [Owners](https://developers.hubspot.com/docs-beta/crm/owners)
-  - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
+  - [Imports](https://developers.hubspot.com/docs/api/crm/imports)
 
 ### Setup App
 
@@ -17,27 +15,13 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 ### Configure
 
 1. Copy .env.template to .env
-2. Specify authorization data in .env:
-    
-    - Paste your HubSpot API Key as the value for HUBSPOT_API_KEY
-    
-    or
-    
-    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
+2. Paste your HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET
 
 ### Running
 
 The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
 
 ```bash
-docker-compose up --build web
+docker-compose up --build
 ```
 You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
-
-### Running tests
-
-Run tests with codecept
-
-```bash
-docker-compose run codecept run
-```

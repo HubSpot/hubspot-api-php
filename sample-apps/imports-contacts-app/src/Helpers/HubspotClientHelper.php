@@ -14,6 +14,7 @@ class HubspotClientHelper
 
             return Factory::createWithAccessToken($accessToken);
         }
+
         throw new \Exception('Please authorize via OAuth');
     }
 }
