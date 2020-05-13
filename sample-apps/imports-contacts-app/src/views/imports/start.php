@@ -11,7 +11,7 @@
 
 <pre>
 $request = json_encode([
-    'name' => 'Import ('.$fileName.')',
+    'name' => 'Import',
     'files' => [
         [
             'fileName' => $fileName,
@@ -34,8 +34,7 @@ $request = json_encode([
     ]
 ]);
 
-$file = new /SplFileObject('/app/tmp/'.$fileName);
-$response = $hubSpot->crm()->imports()->coreApi()->create($request, $file);
+$hubSpot->crm()->imports()->coreApi()->create($request, $fileName);
 </pre>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>
