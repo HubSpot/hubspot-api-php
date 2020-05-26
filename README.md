@@ -62,7 +62,7 @@ $response = $hubSpot->crm()->contacts()->basicApi()->getPage();
 #### Search for a contact:
 
 ```php
-$filter = new \HubSpot\Client\Crm\Contacts\Model\FilterFilter();
+$filter = new \HubSpot\Client\Crm\Contacts\Model\Filter();
 $filter
     ->setOperator('EQ')
     ->setPropertyName('email')
