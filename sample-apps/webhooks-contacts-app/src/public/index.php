@@ -8,7 +8,7 @@ include_once '../../vendor/autoload.php';
 session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-try {
+//try {
     DBClientHelper::runMigrations();
 
     // allowed for anonymous
@@ -40,8 +40,8 @@ try {
 
     $path = __DIR__.'/../actions'.$uri;
     require $path;
-} catch (Throwable $t) {
-    $message = $t->getMessage();
-    include __DIR__.'/../views/error.php';
-    exit();
-}
+//} catch (Throwable $t) {
+//    $message = $t->getMessage();
+//    include __DIR__.'/../views/error.php';
+//    exit();
+//}
