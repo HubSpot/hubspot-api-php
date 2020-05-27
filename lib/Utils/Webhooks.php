@@ -12,8 +12,6 @@ class Webhooks
      * @param string $signature   hubspot signarute
      * @param string $secret      the Secret of your app
      * @param string $requestBody a set of scopes that your app will need access to
-     *
-     * @return bool
      */
     public static function isHubspotSignatureValid(
         string $signature,
@@ -24,14 +22,14 @@ class Webhooks
         string $signatureVersion = 'v1'
     ): bool {
         $sourceString = null;
-        if ($signatureVersion == 'v1') {
+        if ('v1' == $signatureVersion) {
             $sourceString = $secret.$requestBody;
-        } else if ($signatureVersion == 'v2') {
+        } elseif ('v2' == $signatureVersion) {
             $sourceString = $secret.$httpMethod.$httpUri.$requestBody;
         } else {
-            throw new Exception("Not supported signature version: $signatureVersion");
+            throw new Exception("Not supported signature version: {$signatureVersion}");
         }
-        
+
         return $signature == hash('sha256', $sourceString);
     }
 }
