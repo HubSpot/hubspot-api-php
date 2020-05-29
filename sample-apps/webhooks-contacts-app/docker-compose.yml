@@ -23,6 +23,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   web:
+    container_name: php-webhooks-app-web
     env_file:
       - .env
     environment:

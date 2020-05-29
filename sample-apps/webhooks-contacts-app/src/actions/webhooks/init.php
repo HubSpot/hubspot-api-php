@@ -59,9 +59,11 @@ foreach ($subscriptions->getResults() as $subscription) {
             )
         ) {
         $necessarySubscriptions[$subscription->getEventType()] = $subscription->getId();
-    }
-    if ($subscription->getActive()) {
         $activeSubscriptions[] = $subscription->getId();
+    } else {
+        if ($subscription->getActive()) {
+            $activeSubscriptions[] = $subscription->getId();
+        }
     }
 }
 
