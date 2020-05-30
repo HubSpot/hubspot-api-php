@@ -50,14 +50,15 @@ class OAuth2Helper
         }
 
         if (time() > $token['expires_at']) {
-            $response = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
-                'refresh_token',
-                null,
-                static::getRedirectUri(),
-                static::getClientId(),
-                static::getClientSecret(),
-                $token['refresh_token']
-            );
+            $response = Factory::create()
+                ->auth()->oAuth()->defaultApi()->createToken(
+                    'refresh_token',
+                    null,
+                    null,
+                    static::getClientId(),
+                    static::getClientSecret(),
+                    $token['refresh_token']
+                );
 
             TokensRepository::save([
                 'refresh_token' => $response->getRefreshToken(),
