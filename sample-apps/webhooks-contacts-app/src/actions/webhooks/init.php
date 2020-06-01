@@ -6,8 +6,6 @@ use Helpers\WebhooksHelper;
 use HubSpot\Client\Webhooks\Model\SettingsChangeRequest;
 use HubSpot\Client\Webhooks\Model\SettingsResponse;
 
-$appUrl = UrlHelper::generateServerUri().'/webhooks/handle.php';
-
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     include __DIR__.'/../../views/webhooks/init.php';
     exit();
@@ -19,8 +17,6 @@ $webhooksClient = HubspotClientHelper::createFactoryWithDeveloperAPIKey()
 
 $appId = getEnvOrException('HUBSPOT_APPLICATION_ID');
 
-;
-
 $subscriptions = $webhooksClient->subscriptionsApi()->getAll($appId);
 
 $activeSubscriptions = WebhooksHelper::getActiveSubscriptions($subscriptions->getResults());
@@ -29,7 +25,7 @@ $necessarySubscriptions = WebhooksHelper::getNecessarySubscriptions($subscriptio
 WebhooksHelper::updateSubscriptions($appId, $activeSubscriptions, false);
 
 $request = new SettingsChangeRequest();
-$request->setTargetUrl($appUrl);
+$request->setTargetUrl(UrlHelper::generateServerUri().'/webhooks/handle.php');
 
 $response = $webhooksClient->settingsApi()
     ->configure($appId, $request)
