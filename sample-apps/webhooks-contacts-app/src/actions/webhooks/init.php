@@ -32,15 +32,15 @@ $response = $webhooksClient->settingsApi()
 ;
 
 WebhooksHelper::createSubscriptions(
-        $appId,
-        $necessarySubscriptions
-    );
+    $appId,
+    $necessarySubscriptions
+);
 
 WebhooksHelper::updateSubscriptions(
-        $appId,
-        array_filter(array_values($necessarySubscriptions)),
-        true
-    );
+    $appId,
+    array_filter(array_values($necessarySubscriptions)),
+    true
+);
 
 $settings = $webhooksClient->settingsApi()->getAll($appId);
 

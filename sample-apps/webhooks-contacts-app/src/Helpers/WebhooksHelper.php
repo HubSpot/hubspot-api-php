@@ -26,11 +26,12 @@ class WebhooksHelper
 
             HubspotClientHelper::createFactoryWithDeveloperAPIKey()
                 ->webhooks()->subscriptionsApi()
-                ->updateBatch($appId, $subscriptionsRequest);
+                ->updateBatch($appId, $subscriptionsRequest)
+            ;
         }
     }
-    
-    public static function getActiveSubscriptions(array $subscriptions):array
+
+    public static function getActiveSubscriptions(array $subscriptions): array
     {
         $results = [];
         foreach ($subscriptions as $subscription) {
@@ -38,18 +39,18 @@ class WebhooksHelper
                 $results[] = $subscription->getId();
             }
         }
-        
+
         return $results;
     }
-    
-    public static function getNecessarySubscriptions(array $subscriptions):array
+
+    public static function getNecessarySubscriptions(array $subscriptions): array
     {
         $results = [
             'contact.creation' => null,
             'contact.propertyChange' => null,
             'contact.deletion' => null,
         ];
-        
+
         foreach ($subscriptions as $subscription) {
             if (
                     array_key_exists($subscription->getEventType(), $results)
@@ -61,10 +62,10 @@ class WebhooksHelper
                 $results[$subscription->getEventType()] = $subscription->getId();
             }
         }
-        
+
         return $results;
     }
-    
+
     public static function createSubscriptions($appId, $subscriptions)
     {
         foreach ($subscriptions as $eventType => $subscriptionId) {
@@ -82,7 +83,5 @@ class WebhooksHelper
                     ->subscriptionsApi()->create($appId, $request);
             }
         }
-        
     }
-    
 }
