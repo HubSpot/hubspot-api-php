@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  web:
+    env_file:
+      - .env
+    build:
+      dockerfile: ./sample-apps/search-results-paging-app/docker/web/Dockerfile
+      context: ../../
+    ports:
+      - 8999:80
+    volumes:
+      - ./src:/app/src
