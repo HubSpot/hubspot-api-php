@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-06-01
+
+### Update
+
+- Update Webhook's Util (HubSpot\Utils\Webhooks::isHubspotSignatureValid)
+
 ## [1.1.0] - 2020-04-30
 
 ### Added
