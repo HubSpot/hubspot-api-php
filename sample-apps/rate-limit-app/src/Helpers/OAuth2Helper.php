@@ -53,7 +53,7 @@ class OAuth2Helper
             $response = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
                 'refresh_token',
                 null,
-                static::getRedirectUri(),
+                null,
                 static::getClientId(),
                 static::getClientSecret(),
                 $token['refresh_token']
