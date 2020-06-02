@@ -2,14 +2,7 @@
 
 <pre>
 // src/actions/contacts/list.php
-$searchRequest = new PublicObjectSearchRequest();
-$searchRequest->setSorts([
-    [
-        'propertyName' => 'createdate',
-        'direction' => 'DESCENDING',
-    ],
-]);
-$hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+$hubSpot->crm()->contacts()->basicApi()->getPage();
 </pre>
 
 <table class="contacts-list">
