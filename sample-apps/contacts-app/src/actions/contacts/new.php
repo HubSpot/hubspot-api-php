@@ -1,5 +1,4 @@
 <?php
-
 use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObject;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
@@ -12,7 +11,7 @@ if (isset($_POST['email'])) {
     // https://developers.hubspot.com/docs-beta/crm/contacts
     $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 
-    header('Location: /contacts/show.php?id='.$contact['id'].'&created=true');
+    header('Location: /contacts/show?id='.$contact['id'].'&created=true');
     exit();
 }
 
@@ -21,6 +20,8 @@ $contact->setProperties([
     'email' => null,
 ]);
 
+$propertiesToDisplay = ['email'];
+        
 $propertiesLabels = [
     'email' => 'Email',
 ];

@@ -24,14 +24,14 @@ $hubSpot
     <?php foreach ($properties as $property) { ?>
         <tr>
             <td>
-                <a href="/properties/show.php?name=<?php echo htmlentities($property->getName()); ?>"><?php echo shortenString(htmlentities($property->getName())); ?></a>
+                <a href="/properties/show?name=<?php echo htmlentities($property->getName()); ?>"><?php echo shortenString(htmlentities($property->getName())); ?></a>
             </td>
             <td><?php echo htmlentities($property->getLabel()); ?></td>
             <td><?php echo shortenString(htmlentities($property->getDescription()), 70); ?></td>
             <td><?php echo htmlentities($property->getType()); ?></td>
             <td><?php if ($property->getModificationMetadata()->getArchivable()) { ?>
                 <a id="remove-<?php echo htmlentities($property->name); ?>"
-                   href="/properties/delete.php?name=<?php echo htmlentities($property->getName()); ?>">
+                   href="/properties/delete?name=<?php echo htmlentities($property->getName()); ?>">
                     <input type="button" value="Delete" title="Delete" class="button-primary"/>
                 </a> <?php } ?>
             </td>
@@ -41,7 +41,7 @@ $hubSpot
 </table>
 
 <div>
-    <a id="new-property" href="/properties/new.php">
+    <a id="new-property" href="/properties/new">
         <input class="button-primary" type="button" value="New Property">
     </a>
 </div>

@@ -9,7 +9,7 @@ $contacts = [];
 $search = $_GET['search'];
 
 if (empty($search)) {
-    header('Location: /contacts/list.php');
+    header('Location: /contacts/list');
     exit();
 }
 

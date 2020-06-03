@@ -1,4 +1,4 @@
-# HubSpot-php sample app
+# HubSpot-php sample contacts app
 
 This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs-beta/crm/contacts) endpoints and their related actions. Additionally it shows how to work with paged results.
 
