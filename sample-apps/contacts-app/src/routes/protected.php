@@ -1,14 +1,14 @@
 <?php
 
 return [
-    '/contacts/list.php',
-    '/contacts/new.php',
-    '/contacts/show.php',
-    '/contacts/delete.php',
-    '/contacts/search.php',
-    '/contacts/export.php',
-    '/properties/list.php',
-    '/properties/new.php',
-    '/properties/show.php',
-    '/properties/delete.php',
+    '/contacts/list',
+    '/contacts/new',
+    '/contacts/show',
+    '/contacts/delete',
+    '/contacts/search',
+    '/contacts/export',
+    '/properties/list',
+    '/properties/new',
+    '/properties/show',
+    '/properties/delete',
 ];

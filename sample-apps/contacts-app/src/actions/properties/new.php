@@ -15,7 +15,7 @@ if (isset($_POST['name'])) {
         $propertyCreate
     );
 
-    header('Location: /properties/list.php');
+    header('Location: /properties/list');
     exit();
 }
 

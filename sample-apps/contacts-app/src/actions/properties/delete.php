@@ -13,4 +13,4 @@ if (isset($_GET['name'])) {
     );
 }
 
-header('Location: /properties/list.php');
+header('Location: /properties/list');

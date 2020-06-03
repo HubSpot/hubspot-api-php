@@ -1,9 +1,10 @@
 <?php
 
+use Helpers\ContactPropertiesHelper;
+use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
-use HubSpot\Crm\ObjectType;
 
-$hubSpot = Helpers\HubspotClientHelper::createFactory();
+$hubSpot = HubspotClientHelper::createFactory();
 
 if (!isset($_GET['id'])) {
     throw new \Exception('Contact id is not specified');
@@ -21,23 +22,15 @@ if (isset($_POST['email'])) {
     $newProperties = new SimplePublicObjectInput();
     $newProperties->setProperties($_POST);
     $hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
-    header('Location: /contacts/show.php?updated=true&id='.$contactId);
+    header('Location: /contacts/show?updated=true&id='.$contactId);
     exit();
 }
 
-$properties = $hubSpot->crm()->properties()->coreApi()
-    ->getAll(ObjectType::CONTACTS)->getResults();
-$propertiesToDisplay = ['hubspot_owner_id'];
-$propertiesLabels = [
+$propertiesToDisplay = ContactPropertiesHelper::getDisplayProperties(['hubspot_owner_id']);
+        
+$propertiesLabels = ContactPropertiesHelper::getPropertiesLabels([
     'hubspot_owner_id' => 'Contact Owner',
-];
-foreach ($properties as $property) {
-    if ('string' === $property->getType()
-            && false === $property->getModificationMetadata()->getReadOnlyValue()) {
-        $propertiesToDisplay[] = $property->getName();
-        $propertiesLabels[$property->getName()] = $property->getLabel();
-    }
-}
+]);
 
 // https://developers.hubspot.com/docs-beta/crm/contacts
 $contact = $hubSpot->crm()->contacts()->basicApi()->getById($contactId, implode(',', $propertiesToDisplay));
