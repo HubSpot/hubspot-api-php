@@ -7,7 +7,7 @@ use HubSpot\Client\Crm\Companies\Model\FilterGroup;
 use HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest;
 
 if (empty($_GET['search'])) {
-    header('Location: /companies/list.php');
+    header('Location: /companies/list');
     exit();
 }
 

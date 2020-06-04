@@ -1,6 +1,6 @@
 <?php
 /**
- * @var array                                         Already associated Contacts
+ * @var array                                         $associatedContacts Already associated Contacts
  * @var CollectionResponseWithTotalSimplePublicObject $contactList Contacts
  */
 include __DIR__.'/../_partials/header.php'; ?>
@@ -23,7 +23,7 @@ $hubSpot->crm()->associations()->batchApi()
     );
 </pre>
 <?php if (count($contactList->getResults()) > 0) { ?>
-<form method="post" action="/contacts/manage.php?companyId=<?php echo $companyId; ?>">
+<form method="post" action="/contacts/manage?companyId=<?php echo $companyId; ?>">
     <table id="contactsList">
       <thead>
       <tr>
@@ -37,7 +37,7 @@ $hubSpot->crm()->associations()->batchApi()
       <?php foreach ($contactList->getResults() as $contact) { ?>
         <tr>
             <td><?php echo htmlentities($contact->getId()); ?></td>
-            <td><?php echo htmlentities($contact->getProperties()['firstname'].' '.$contact->getProperties()['firstname']); ?></td>
+            <td><?php echo htmlentities($contact->getProperties()['firstname'].' '.$contact->getProperties()['lastname']); ?></td>
             <td><?php if (in_array($contact->getId(), $associatedContacts)) {?>Associated<?php } else { ?>-<?php } ?></td>
             <td><input type="checkbox" name="contactsIds[<?php echo htmlentities($contact->getId()); ?>]" /></td>
         </tr>
