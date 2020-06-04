@@ -9,5 +9,5 @@ HubspotClientHelper::createFactory()->crm()->companies()->basicApi()
     ->archive($_GET['id'])
 ;
 
-header('Location: /companies/list.php');
+header('Location: /companies/list');
 exit();

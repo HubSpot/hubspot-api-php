@@ -27,10 +27,10 @@ $hubSpot->crm()->companies()->basicApi()
 
             <form method="post" action="<?php
             if (isset($id)) {
-                ?>/companies/show.php?id=<?php
+                ?>/companies/show?id=<?php
                 echo $id;
             } else {
-                ?>/companies/new.php<?php
+                ?>/companies/new<?php
             } ?>">
             <fieldset>
                 <label for="name">Name</label>
@@ -101,7 +101,7 @@ $hubSpot->crm()->associations()->batchApi()
                 </tbody>
             </table>
             <?php } ?>
-            <a href="/contacts/list.php?companyId=<?php echo htmlentities($id); ?>">
+            <a href="/contacts/list?companyId=<?php echo htmlentities($id); ?>">
                 <input id="manageContacts" class="button-primary" type="button" value="Manage Contacts">
             </a>
     </div>

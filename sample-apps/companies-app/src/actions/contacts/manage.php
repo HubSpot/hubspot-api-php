@@ -38,5 +38,5 @@ if (isset($_POST['contactsIds'])) {
     );
 }
 
-header('Location: /companies/show.php?'.http_build_query($redirectParams));
+header('Location: /companies/show?'.http_build_query($redirectParams));
 exit();

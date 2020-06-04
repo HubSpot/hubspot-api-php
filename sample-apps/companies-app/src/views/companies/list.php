@@ -49,10 +49,10 @@ $hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
 
   <?php foreach ($companiesPage->getResults() as $company) { ?>
     <tr>
-        <td><a class="showCompany" href="/companies/show.php?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
+        <td><a class="showCompany" href="/companies/show?id=<?php echo htmlentities($company->getId()); ?>"><?php echo htmlentities($company->getId()); ?></a></td>
         <td><?php echo htmlentities($company->getProperties()['name']); ?></td>
         <td><?php echo htmlentities($company->getProperties()['domain']); ?></td>
-        <td><a class="button" href="/companies/delete.php?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
+        <td><a class="button" href="/companies/delete?id=<?php echo htmlentities($company->getId()); ?>">Delete</a></td>
     </tr>
   <?php
 }?>
@@ -60,7 +60,7 @@ $hubSpot->crm()->companies()->basicApi()->archive($_GET['id']);
 </table>
 
 <div>
-    <a id="newCompany" href="/companies/new.php">
+    <a id="newCompany" href="/companies/new">
         <input class="button-primary" type="button" value="New Company">
     </a>
 </div>

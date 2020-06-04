@@ -15,13 +15,13 @@ try {
 
     if (in_array($uri, $protectedRoutes)) {
         if (empty($_ENV['HUBSPOT_API_KEY']) && !OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
             exit();
         }
     }
 
     if ('/' === $uri) {
-        header('Location: /companies/list.php');
+        header('Location: /companies/list');
         exit();
     }
 
@@ -30,7 +30,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();

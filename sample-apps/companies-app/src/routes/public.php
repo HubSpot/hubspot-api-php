@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '/oauth/login.php',
-    '/oauth/authorize.php',
-    '/oauth/callback.php',
+    '/oauth/login',
+    '/oauth/authorize',
+    '/oauth/callback',
 ];
