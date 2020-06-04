@@ -17,10 +17,10 @@
       </a>
       <ul class="navigation-list float-right">
         <li class="navigation-item">
-          <a id="contacts-list" class="navigation-link" href="/contacts/list.php">Contacts</a>
+          <a id="contacts-list" class="navigation-link" href="/contacts/list">Contacts</a>
         </li>
         <li class="navigation-item">
-          <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
+          <a class="navigation-link" href="/oauth/login">OAuth2</a>
         </li>
       </ul>
     </div>

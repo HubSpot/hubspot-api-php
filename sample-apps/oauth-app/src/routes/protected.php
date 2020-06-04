@@ -1,5 +1,5 @@
 <?php
 
 return [
-    '/contacts/list.php',
+    '/contacts/list',
 ];
