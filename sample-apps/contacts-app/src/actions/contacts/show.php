@@ -27,7 +27,7 @@ if (isset($_POST['email'])) {
 }
 
 $propertiesToDisplay = ContactPropertiesHelper::getDisplayProperties(['hubspot_owner_id']);
-        
+
 $propertiesLabels = ContactPropertiesHelper::getPropertiesLabels([
     'hubspot_owner_id' => 'Contact Owner',
 ]);

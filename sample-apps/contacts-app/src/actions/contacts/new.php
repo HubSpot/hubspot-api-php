@@ -1,4 +1,5 @@
 <?php
+
 use Helpers\HubspotClientHelper;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObject;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput;
@@ -21,7 +22,7 @@ $contact->setProperties([
 ]);
 
 $propertiesToDisplay = ['email'];
-        
+
 $propertiesLabels = [
     'email' => 'Email',
 ];
