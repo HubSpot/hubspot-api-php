@@ -61,3 +61,11 @@ input[type=datetime-local] {
 h3.alert-success {
     text-align: center;
 }
+
+.row.authorize-button {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}

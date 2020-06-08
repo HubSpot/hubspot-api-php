@@ -13,6 +13,9 @@
         "predis/predis": "^1.1"
     },
     "autoload": {
+        "files": [
+            "src/Helpers/functions.php"
+        ],
         "psr-4": {
             "": "src/"
         }

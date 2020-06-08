@@ -1,4 +1,4 @@
-# HubSpot-python sample Search Results Iterating app
+# HubSpot PHP Sample Search Results Iterating App
 
 This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [OAuth API](https://developers.hubspot.com/docs-beta/working-with-oauth) endpoints and their related actions.
 
