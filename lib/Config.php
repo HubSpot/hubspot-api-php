@@ -20,7 +20,8 @@ class Config
     public function __construct()
     {
         $package = $this->extractPackageNameAndVersionFromComposerFile();
-        $this->userAgent = "{$package['name']}-php; {$package['version']}";
+        $name = str_replace('/', '-', $package['name']);
+        $this->userAgent = "$name-php; {$package['version']}";
     }
 
     /**
