@@ -15,8 +15,8 @@ ADD ./composer.json /sdk
 ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
-ADD ./sample-apps/search-results-paging-app/composer.json /app
-ADD ./sample-apps/search-results-paging-app/composer.lock /app
+ADD ./sample-apps/search-results-iterating-app/composer.json /app
+ADD ./sample-apps/search-results-iterating-app/composer.lock /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install

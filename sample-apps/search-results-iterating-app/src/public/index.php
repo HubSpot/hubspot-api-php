@@ -13,12 +13,12 @@ try {
 
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
         }
     }
 
     if ('/' === $uri) {
-        header('Location: /search.php');
+        header('Location: /readme');
         exit();
     }
 
@@ -27,7 +27,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();

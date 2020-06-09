@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+    web:
+        container_name: php-search-results-iterating-app-web
+        env_file:
+            - .env
+        build:
+            dockerfile: ./sample-apps/search-results-iterating-app/docker/web/Dockerfile
+            context: ../../
+        depends_on:
+            - redis
+        environment:
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+        ports:
+            - 8999:80
+        volumes:
+            - ./src:/app/src
+    redis:
+        container_name: php-search-results-iterating-app-redis
+        image: redis:latest
+        volumes:
+            - ./db/redis:/data
