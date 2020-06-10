@@ -20,23 +20,22 @@ $after = null;
 
 while (true) {
     $response = SearchHelper::getContacts(
-            getEnvOrException('SEARCH_QUERY'),
-            $after,
-            getEnvOrException('SEARCH_BATCH_SIZE')
-        );
-    
+        getEnvOrException('SEARCH_QUERY'),
+        $after,
+        getEnvOrException('SEARCH_BATCH_SIZE')
+    );
+
     $count = count($response->getResults());
-    
+
     if ($count < 1) {
         break;
     }
-    
+
     foreach ($response->getResults() as $contact) {
         echo $contact->getId().PHP_EOL;
     }
-    
-    $after = $response->getResults()[$count - 1]->getId(); 
-}
 
+    $after = $response->getResults()[$count - 1]->getId();
+}
 
 echo 'End'.PHP_EOL;
