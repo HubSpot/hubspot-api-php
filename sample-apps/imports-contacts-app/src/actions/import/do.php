@@ -3,7 +3,7 @@
 use Helpers\HubspotClientHelper;
 
 if (!array_key_exists('file', $_FILES)) {
-    header('Location: /import/start.php');
+    header('Location: /import/start');
     exit();
 }
 
@@ -38,7 +38,7 @@ $request = json_encode([
     ],
 ]);
 
-$response = $hubSpot->crm()->imports()->coreApi()->create($request, $file);
+$import = $hubSpot->crm()->imports()->coreApi()->create($request, $file);
 
 @unlink($file);
 

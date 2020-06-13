@@ -9,7 +9,7 @@ session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 if ('/' === $uri) {
-    header('Location: /import/start.php');
+    header('Location: /import/history');
     exit();
 }
 
@@ -19,7 +19,7 @@ try {
 
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
             exit();
         }
     }
@@ -29,7 +29,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();

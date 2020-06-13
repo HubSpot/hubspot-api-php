@@ -1,24 +1,18 @@
 <?php include __DIR__.'/../_partials/header.php'; ?>
 
 <h3 class="text-center">Import request have been sent</h3>
+<?php include __DIR__.'/_details.php'; ?>
+
+<pre>
+// src/actions/import/cansel.php
+$hubspot->crm()->imports()->coreApi()->cancel($importId);
+</pre>
+
 <div>
-    <table>
-        <tbody>
-            <tr>
-                <td>Import Id</td>
-                <td><?php echo $response->getId(); ?></td>
-            </tr>
-            <tr>
-                <td>Status</td>
-                <td><?php echo $response->getState(); ?></td>
-            </tr>
-            <tr>
-                <td>Created At</td>
-                <td><?php echo $response->getCreatedAt()->format('Y-m-d H:i:s'); ?></td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="/import/start.php">Back</a>
+    <?php if ($import->getState() !== 'DONE') { ?>
+    <a href="/import/cansel"><button>Cansel</button></a>
+    <?php } ?>
+    <a href="/import/history"><button>History</button></a>
 </div>
 
 <?php include __DIR__.'/../_partials/footer.php'; ?>

@@ -67,7 +67,7 @@ if (count($contactsPage->getResults()) > 0) {
     <h3>Contact not found.</h3>
 <?php
     }
-    }
+}
 ?>
 <div>
   <a id="contact-new" href="/contacts/new">
