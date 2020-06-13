@@ -13,7 +13,7 @@ $hubSpot->crm()->imports()->coreApi()->getPage();
 </div>
 <?php
 if (count($history->getResults()) > 0) {
-?>
+    ?>
 <table>
   <thead>
   <tr>
@@ -34,8 +34,8 @@ if (count($history->getResults()) > 0) {
   <?php } ?>
   </tbody>
 </table>
-<?php 
-  } else { ?>
+<?php
+} else { ?>
     <h3>No imports.</h3>
 <?php
 }

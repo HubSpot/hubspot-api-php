@@ -1,4 +1,4 @@
-<?php include __DIR__.'/../_partials/header.php';?>
+<?php include __DIR__.'/../_partials/header.php'; ?>
 
 <h3 class="text-center">Import</h3>
 

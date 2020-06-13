@@ -9,7 +9,7 @@ $hubspot->crm()->imports()->coreApi()->cancel($importId);
 </pre>
 
 <div>
-    <?php if ($import->getState() !== 'DONE') { ?>
+    <?php if ('DONE' !== $import->getState()) { ?>
     <a href="/import/cansel"><button>Cansel</button></a>
     <?php } ?>
     <a href="/import/history"><button>History</button></a>
