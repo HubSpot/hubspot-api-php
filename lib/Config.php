@@ -21,7 +21,7 @@ class Config
     {
         $package = $this->extractPackageNameAndVersionFromComposerFile();
         $name = str_replace('/', '-', $package['name']);
-        $this->userAgent = "$name-php; {$package['version']}";
+        $this->userAgent = "{$name}-php; {$package['version']}";
     }
 
     /**

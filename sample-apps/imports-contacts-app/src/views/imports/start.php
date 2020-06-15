@@ -3,13 +3,14 @@
 <h3 class="text-center">Select File</h3>
 <p>You can take an example of file <a href="/data/example.csv">here</a>.</p>
 <div>
-    <form method="post"  enctype="multipart/form-data" action="/import/do.php">
+    <form method="post"  enctype="multipart/form-data" action="/import/do">
         <input type="file" required name="file" accept='text/*,.csv'>
         <input type="submit" value="Upload" name="submit">
     </form>
 </div>
 
 <pre>
+// src/actions/import/do.php
 $request = json_encode([
     'name' => 'Import',
     'files' => [
