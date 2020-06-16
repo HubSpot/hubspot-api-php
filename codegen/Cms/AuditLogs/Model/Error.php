@@ -1,19 +1,19 @@
 <?php
 /**
- * BatchResponseSubscriptionResponse
+ * Error
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Webhooks
+ * @package  HubSpot\Client\Cms\AuditLogs
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Webhooks API
+ * CMS Audit Logs
  *
- * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
+ * Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Webhooks\Model;
+namespace HubSpot\Client\Cms\AuditLogs\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Webhooks\ObjectSerializer;
+use \HubSpot\Client\Cms\AuditLogs\ObjectSerializer;
 
 /**
- * BatchResponseSubscriptionResponse Class Doc Comment
+ * Error Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Webhooks
+ * @package  HubSpot\Client\Cms\AuditLogs
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
+class Error implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponseSubscriptionResponse';
+    protected static $openAPIModelName = 'Error';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,12 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'results' => '\HubSpot\Client\Webhooks\Model\SubscriptionResponse[]',
-        'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Webhooks\Model\Error[]',
-        'requested_at' => '\DateTime',
-        'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
+        'message' => 'string',
+        'correlation_id' => 'string',
+        'category' => 'string',
+        'sub_category' => 'string',
+        'errors' => '\HubSpot\Client\Cms\AuditLogs\Model\ErrorDetail[]',
+        'context' => 'map[string,string[]]',
         'links' => 'map[string,string]'
     ];
 
@@ -73,13 +72,12 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'results' => null,
-        'num_errors' => 'int32',
+        'message' => null,
+        'correlation_id' => 'uuid',
+        'category' => null,
+        'sub_category' => null,
         'errors' => null,
-        'requested_at' => 'date-time',
-        'started_at' => 'date-time',
-        'completed_at' => 'date-time',
+        'context' => null,
         'links' => null
     ];
 
@@ -110,13 +108,12 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'results' => 'results',
-        'num_errors' => 'numErrors',
+        'message' => 'message',
+        'correlation_id' => 'correlationId',
+        'category' => 'category',
+        'sub_category' => 'subCategory',
         'errors' => 'errors',
-        'requested_at' => 'requestedAt',
-        'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
+        'context' => 'context',
         'links' => 'links'
     ];
 
@@ -126,13 +123,12 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'results' => 'setResults',
-        'num_errors' => 'setNumErrors',
+        'message' => 'setMessage',
+        'correlation_id' => 'setCorrelationId',
+        'category' => 'setCategory',
+        'sub_category' => 'setSubCategory',
         'errors' => 'setErrors',
-        'requested_at' => 'setRequestedAt',
-        'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
+        'context' => 'setContext',
         'links' => 'setLinks'
     ];
 
@@ -142,13 +138,12 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'results' => 'getResults',
-        'num_errors' => 'getNumErrors',
+        'message' => 'getMessage',
+        'correlation_id' => 'getCorrelationId',
+        'category' => 'getCategory',
+        'sub_category' => 'getSubCategory',
         'errors' => 'getErrors',
-        'requested_at' => 'getRequestedAt',
-        'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
+        'context' => 'getContext',
         'links' => 'getLinks'
     ];
 
@@ -193,27 +188,8 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const STATUS_PENDING = 'PENDING';
-    const STATUS_PROCESSING = 'PROCESSING';
-    const STATUS_CANCELED = 'CANCELED';
-    const STATUS_COMPLETE = 'COMPLETE';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PENDING,
-            self::STATUS_PROCESSING,
-            self::STATUS_CANCELED,
-            self::STATUS_COMPLETE,
-        ];
-    }
     
 
     /**
@@ -231,13 +207,12 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
-        $this->container['num_errors'] = isset($data['num_errors']) ? $data['num_errors'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['correlation_id'] = isset($data['correlation_id']) ? $data['correlation_id'] : null;
+        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
         $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
-        $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
-        $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
-        $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
+        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
         $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
@@ -250,25 +225,14 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['correlation_id'] === null) {
+            $invalidProperties[] = "'correlation_id' can't be null";
         }
-
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
         return $invalidProperties;
     }
@@ -286,82 +250,97 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets status
+     * Gets message
      *
      * @return string
      */
-    public function getStatus()
+    public function getMessage()
     {
-        return $this->container['status'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets status
+     * Sets message
      *
-     * @param string $status status
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setMessage($message)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets results
+     * Gets correlation_id
      *
-     * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse[]
+     * @return string
      */
-    public function getResults()
+    public function getCorrelationId()
     {
-        return $this->container['results'];
+        return $this->container['correlation_id'];
     }
 
     /**
-     * Sets results
+     * Sets correlation_id
      *
-     * @param \HubSpot\Client\Webhooks\Model\SubscriptionResponse[] $results results
+     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
      *
      * @return $this
      */
-    public function setResults($results)
+    public function setCorrelationId($correlation_id)
     {
-        $this->container['results'] = $results;
+        $this->container['correlation_id'] = $correlation_id;
 
         return $this;
     }
 
     /**
-     * Gets num_errors
+     * Gets category
      *
-     * @return int|null
+     * @return string
      */
-    public function getNumErrors()
+    public function getCategory()
     {
-        return $this->container['num_errors'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets num_errors
+     * Sets category
      *
-     * @param int|null $num_errors num_errors
+     * @param string $category The error category
      *
      * @return $this
      */
-    public function setNumErrors($num_errors)
+    public function setCategory($category)
     {
-        $this->container['num_errors'] = $num_errors;
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return string|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }
@@ -369,7 +348,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Webhooks\Model\Error[]|null
+     * @return \HubSpot\Client\Cms\AuditLogs\Model\ErrorDetail[]|null
      */
     public function getErrors()
     {
@@ -379,7 +358,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Webhooks\Model\Error[]|null $errors errors
+     * @param \HubSpot\Client\Cms\AuditLogs\Model\ErrorDetail[]|null $errors further information about the error
      *
      * @return $this
      */
@@ -391,73 +370,25 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets requested_at
+     * Gets context
      *
-     * @return \DateTime|null
+     * @return map[string,string[]]|null
      */
-    public function getRequestedAt()
+    public function getContext()
     {
-        return $this->container['requested_at'];
+        return $this->container['context'];
     }
 
     /**
-     * Sets requested_at
+     * Sets context
      *
-     * @param \DateTime|null $requested_at requested_at
+     * @param map[string,string[]]|null $context Context about the error condition
      *
      * @return $this
      */
-    public function setRequestedAt($requested_at)
+    public function setContext($context)
     {
-        $this->container['requested_at'] = $requested_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets started_at
-     *
-     * @return \DateTime
-     */
-    public function getStartedAt()
-    {
-        return $this->container['started_at'];
-    }
-
-    /**
-     * Sets started_at
-     *
-     * @param \DateTime $started_at started_at
-     *
-     * @return $this
-     */
-    public function setStartedAt($started_at)
-    {
-        $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets completed_at
-     *
-     * @return \DateTime
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime $completed_at completed_at
-     *
-     * @return $this
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
+        $this->container['context'] = $context;
 
         return $this;
     }
@@ -475,7 +406,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param map[string,string]|null $links links
+     * @param map[string,string]|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
      *
      * @return $this
      */
