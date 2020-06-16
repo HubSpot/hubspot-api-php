@@ -20,3 +20,6 @@
         </tbody>
     </table>
 </div>
+<div>
+    <a href="/import/history"><button>History</button></a>
+</div>
