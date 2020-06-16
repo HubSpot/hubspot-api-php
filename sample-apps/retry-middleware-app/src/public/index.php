@@ -19,13 +19,13 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /readme.php');
+        header('Location: /readme');
         exit();
     }
 
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
             exit();
         }
     }
@@ -35,7 +35,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();
