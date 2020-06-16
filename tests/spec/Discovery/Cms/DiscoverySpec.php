@@ -1,0 +1,29 @@
+<?php
+
+namespace spec\HubSpot\Discovery\Cms;
+
+use GuzzleHttp\Client;
+use HubSpot\Config;
+use PhpSpec\ObjectBehavior;
+
+class DiscoverySpec extends ObjectBehavior
+{
+    public function let(Client $client, Config $config)
+    {
+        $this->beConstructedWith($client, $config);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(\HubSpot\Discovery\Cms\Discovery::class);
+    }
+
+    public function it_creates_clients()
+    {
+        $this->auditLogs()->shouldHaveType(\HubSpot\Discovery\Cms\AuditLogs\Discovery::class);
+        $this->domains()->shouldHaveType(\HubSpot\Discovery\Cms\Domains\Discovery::class);
+        $this->performance()->shouldHaveType(\HubSpot\Discovery\Cms\Performance\Discovery::class);
+        $this->siteSearch()->shouldHaveType(\HubSpot\Discovery\Cms\SiteSearch\Discovery::class);
+        $this->urlRedirects()->shouldHaveType(\HubSpot\Discovery\Cms\UrlRedirects\Discovery::class);
+    }
+}
