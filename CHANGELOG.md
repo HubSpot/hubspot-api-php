@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/1.2.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/1.3.0...HEAD)
+
+## [1.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.3.0) - 2020-06-17
+
+### Added
+
+- `cms()->auditLogs()` API client
+- `cms()->domains()` API client
+- `cms()->performance()` API client
+- `cms()->siteSearch()` API client
+- `cms()->urlRedirects()` API client
+
 
 ## [1.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0) - 2020-06-02
 
