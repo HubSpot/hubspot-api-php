@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+    web:
+        container_name: php-rate-limit-app-web
+        env_file:
+            - .env
+        command: dockerize -wait-retry-interval 3s -timeout 30s -wait tcp://redis:6379 /usr/bin/supervisord
+        depends_on:
+            - redis
+        build:
+            dockerfile: ./sample-apps/rate-limit-app/Dockerfile
+            context: ../../
+        ports:
+            - 8999:80
+        environment:
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+        volumes:
+            - ./src:/app/src
+    redis:
+        container_name: php-rate-limit-app-redis
+        image: redis:latest
+        volumes:
+            - ./db/redis:/data
