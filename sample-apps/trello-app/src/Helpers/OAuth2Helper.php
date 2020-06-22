@@ -8,7 +8,7 @@ use Repositories\TokensRepository;
 class OAuth2Helper
 {
     const APP_REQUIRED_SCOPES = ['contacts'];
-    const CALLBACK_PATH = '/oauth/callback.php';
+    const CALLBACK_PATH = '/oauth/callback';
     const SESSION_TOKENS_KEY = 'tokens';
 
     public static function getClientId(): string
@@ -63,6 +63,7 @@ class OAuth2Helper
                 'refresh_token' => $response->getRefreshToken(),
                 'access_token' => $response->getAccessToken(),
                 'expires_in' => $response->getExpiresIn(),
+                'expires_at' => OAuth2Helper::getExpiresAt($token->getExpiresIn()),
             ]);
 
             return $response->getAccessToken();

@@ -1,4 +1,4 @@
-# HubSpot PHP Rate Limit Sample App
+# HubSpot PHP Trello Sample App
 
 This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the rate limit mechanism. It will be useful for you if you often reach rate limit (429 http error).
 
@@ -6,7 +6,7 @@ Please see the documentation on [Creating an app in HubSpot](https://developers.
 
 ### HubSpot Public API endpoints used in this application
 
-  - [Contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
+  - [CRM Card](https://developers.hubspot.com/docs/api/crm/extensions/custom-cards)
   - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
 
 ### Setup App
@@ -17,11 +17,7 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 
 1. Copy .env.template to .env
 2. Specify authorization data in .env:
-    
-    - Paste your HubSpot API Key as the value for HUBSPOT_API_KEY
-    
-    or
-    
+
     - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
 
 ### Running
