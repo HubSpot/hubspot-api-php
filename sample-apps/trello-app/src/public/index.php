@@ -13,7 +13,7 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /readme');
+        header('Location: /');
         exit();
     }
 
