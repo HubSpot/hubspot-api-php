@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.3.1) - 2020-06-25
 
 ### Fixed
- - Parsing response in cms()->siteSearch()->defaultApi().getById() method
+ - Parsing response in cms()->siteSearch()->defaultApi()->getById() method
 
 ## [1.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.3.0) - 2020-06-17
 
