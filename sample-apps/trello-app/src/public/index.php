@@ -3,6 +3,7 @@
 use Helpers\OAuth2Helper;
 
 include_once '../../vendor/autoload.php';
+session_start();
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
@@ -13,13 +14,13 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /');
+        header('Location: /trello/search');
         exit();
     }
 
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login');
+            header('Location: /oauth/hubspot/login');
             exit();
         }
     }
