@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="/css/main.css?<?php echo filemtime('./css/main.css'); ?>">
 </head>
 <body>
-<main class="wrapper">
-    <nav class="navigation">
+    <main class="wrapper">
+        <nav class="navigation">
+            <div class="container">
+                <a class="navigation-title" href="/">
+                    <h3 class="title">HubSpot PHP Trello Sample App</h3>
+                </a>
+                <ul class="navigation-list float-right">
+                    <li class="navigation-item">
+                        <a class="navigation-link" href="/oauth/login">OAuth2</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
-            <a class="navigation-title" href="/">
-                <h3 class="title">HubSpot PHP Trello Sample App</h3>
-            </a>
-            <ul class="navigation-list float-right">
-                <li class="navigation-item">
-                    <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
