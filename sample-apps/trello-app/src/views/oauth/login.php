@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Helpers\UrlHelper;
 
@@ -18,7 +18,7 @@ Helpers\Trello::getAuthUrl(
         </pre>
         <ol>
           <li>Go to <a href="https://trello.com/app-key" target="_blank">https://trello.com/app-key</a> page</li>
-          <li>Add <?php echo UrlHelper::generateServerUri();?> to "Allowed Resources" section</li>
+          <li>Add <?php echo UrlHelper::generateServerUri(); ?> to "Allowed Resources" section</li>
           <li>Continue with <a class="button" href="/oauth/trello/authorize">Authorize</a></li>
         </ol>
             <h4>Status: <span class="green">authorized</span></h4>
