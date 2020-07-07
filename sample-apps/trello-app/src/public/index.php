@@ -1,6 +1,7 @@
 <?php
 
 use Helpers\OAuth2Helper;
+use Helpers\Trello;
 
 include_once '../../vendor/autoload.php';
 session_start();
@@ -19,8 +20,8 @@ try {
     }
 
     if (in_array($uri, $protectedRoutes)) {
-        if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/hubspot/login');
+        if (!OAuth2Helper::isAuthenticated() || !Trello::isAuthenticated()) {
+            header('Location: /oauth/login');
             exit();
         }
     }

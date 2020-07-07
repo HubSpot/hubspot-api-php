@@ -2,7 +2,10 @@
 
 namespace Helpers;
 
+use Repositories\TokensRepository;
+
 class Trello {
+    
     public static function getAuthUrl(
         string $key,
         string $return_url,
@@ -20,5 +23,10 @@ class Trello {
             'scope' => $scope,
             'response_type' => $response_type
         ]);
+    }
+    
+    public static function isAuthenticated(): bool
+    {
+        return !empty(TokensRepository::getToken(TokensRepository::TRELLO_TOKEN));
     }
 }
