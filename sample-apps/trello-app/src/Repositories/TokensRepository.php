@@ -6,13 +6,16 @@ use Helpers\RedisHelper;
 
 class TokensRepository
 {
-    public static function getToken()
+    const HUBSPOT_TOKEN = 'HubSpotToken';
+    const TRELLO_TOKEN = 'TrelloToken';
+
+    public static function getToken(string $key = 'HubSpotToken'): array
     {
-        return (array) json_decode(RedisHelper::getClient()->get('token'));
+        return (array) json_decode(RedisHelper::getClient()->get($key));
     }
 
-    public static function save(array $token)
+    public static function save(mixed $token, string $key = 'HubSpotToken')
     {
-        RedisHelper::getClient()->set('token', json_encode($token));
+        RedisHelper::getClient()->set($key, json_encode($token));
     }
 }

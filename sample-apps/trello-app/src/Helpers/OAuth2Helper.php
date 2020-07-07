@@ -8,7 +8,7 @@ use Repositories\TokensRepository;
 class OAuth2Helper
 {
     const APP_REQUIRED_SCOPES = ['contacts'];
-    const CALLBACK_PATH = '/oauth/callback';
+    const CALLBACK_PATH = '/oauth/hubspot/callback';
     const SESSION_TOKENS_KEY = 'tokens';
 
     public static function getClientId(): string

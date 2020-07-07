@@ -2,6 +2,9 @@
 
 return [
     '/oauth/login',
-    '/oauth/authorize',
-    '/oauth/callback',
+    '/oauth/hubspot/authorize',
+    '/oauth/hubspot/callback',
+    '/oauth/trello/authorize',
+    '/oauth/trello/callback',
+    '/oauth/trello/token',
 ];

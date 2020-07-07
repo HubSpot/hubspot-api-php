@@ -5,7 +5,6 @@ services:
         container_name: php-trello-app-web
         env_file:
             - .env
-        command: dockerize -wait-retry-interval 3s -timeout 30s -wait tcp://redis:6379 /usr/bin/supervisord
         depends_on:
             - redis
         build:
