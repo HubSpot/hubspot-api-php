@@ -2,13 +2,13 @@ version: '3.5'
 
 services:
     web:
-        container_name: php-trello-app-web
+        container_name: php-trello-integration-app-web
         env_file:
             - .env
         depends_on:
             - redis
         build:
-            dockerfile: ./sample-apps/trello-app/Dockerfile
+            dockerfile: ./sample-apps/trello-integration-app/Dockerfile
             context: ../../
         ports:
             - 8999:80
@@ -18,7 +18,7 @@ services:
         volumes:
             - ./src:/app/src
     redis:
-        container_name: php-trello-app-redis
+        container_name: php-trello-integration-app-redis
         image: redis:latest
         volumes:
             - ./db/redis:/data
