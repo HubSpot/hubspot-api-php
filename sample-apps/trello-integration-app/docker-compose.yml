@@ -22,3 +22,13 @@ services:
         image: redis:latest
         volumes:
             - ./db/redis:/data
+    ngrok:
+        container_name: php-trello-integration-app-ngrok
+        image: gtriggiano/ngrok-tunnel
+        ports:
+            - 4040:4040
+        environment:
+            TARGET_HOST: web
+            TARGET_PORT: 80
+        depends_on:
+            - web

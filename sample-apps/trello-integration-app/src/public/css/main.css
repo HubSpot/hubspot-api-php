@@ -77,3 +77,7 @@
 .text-center {
     text-align: center;
 }
+
+span.green {
+    color: green;
+}

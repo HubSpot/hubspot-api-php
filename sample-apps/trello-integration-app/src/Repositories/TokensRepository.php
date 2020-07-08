@@ -14,7 +14,7 @@ class TokensRepository
         return (array) json_decode(RedisHelper::getClient()->get($key));
     }
 
-    public static function save(mixed $token, string $key = 'HubSpotToken')
+    public static function save($token, string $key = 'HubSpotToken')
     {
         RedisHelper::getClient()->set($key, json_encode($token));
     }
