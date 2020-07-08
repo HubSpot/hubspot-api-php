@@ -20,8 +20,8 @@ ADD ./composer.json /sdk
 ADD ./composer.lock /sdk
 
 RUN mkdir -p /app
-ADD ./sample-apps/trello-app/composer.json /app
-ADD ./sample-apps/trello-app/composer.lock /app
+ADD ./sample-apps/trello-integration-app/composer.json /app
+ADD ./sample-apps/trello-integration-app/composer.lock /app
 
 WORKDIR /app
 RUN /usr/local/bin/composer install

@@ -1,4 +1,4 @@
-# HubSpot PHP Trello Sample App
+# HubSpot PHP Sample Trello Integration App
 
 This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the rate limit mechanism. It will be useful for you if you often reach rate limit (429 http error).
 

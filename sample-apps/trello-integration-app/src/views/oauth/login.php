@@ -1,5 +1,7 @@
 <?php
 
+use Helpers\OAuth2Helper;
+use Helpers\Trello;
 use Helpers\UrlHelper;
 
 include __DIR__.'/../_partials/header.php';
@@ -21,8 +23,11 @@ Helpers\Trello::getAuthUrl(
           <li>Add <?php echo UrlHelper::generateServerUri(); ?> to "Allowed Resources" section</li>
           <li>Continue with <a class="button" href="/oauth/trello/authorize">Authorize</a></li>
         </ol>
-            <h4>Status: <span class="green">authorized</span></h4>
-            <h4>Status: not authorized</h4>
+        <?php if (Trello::isAuthenticated()) { ?>
+        <h4>Status: <span class="green">authorized</span></h4>
+        <?php } else { ?>
+        <h4>Status: not authorized</h4>
+        <?php } ?>
     </div>
 
     <div class="column">
@@ -37,8 +42,11 @@ $authUrl = HubSpot\Utils\OAuth2::getAuthUrl(
 );
         </pre>
         <a class="button" href="/oauth/hubspot/authorize">Authorize</a>
+        <?php if (OAuth2Helper::isAuthenticated()) { ?>
         <h4>Status: <span class="green">authorized</span></h4>
+        <?php } else { ?>
         <h4>Status: not authorized</h4>
+        <?php } ?>
     </div>
 </div>
 
