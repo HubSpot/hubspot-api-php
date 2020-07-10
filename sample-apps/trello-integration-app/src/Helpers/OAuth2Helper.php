@@ -58,12 +58,12 @@ class OAuth2Helper
                 static::getClientSecret(),
                 $token['refresh_token']
             );
-
+            
             TokensRepository::save([
                 'refresh_token' => $response->getRefreshToken(),
                 'access_token' => $response->getAccessToken(),
                 'expires_in' => $response->getExpiresIn(),
-                'expires_at' => OAuth2Helper::getExpiresAt($token->getExpiresIn()),
+                'expires_at' => OAuth2Helper::getExpiresAt($response->getExpiresIn()),
             ]);
 
             return $response->getAccessToken();
