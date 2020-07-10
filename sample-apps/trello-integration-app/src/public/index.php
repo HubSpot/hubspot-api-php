@@ -15,7 +15,7 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /trello/search');
+        header('Location: /cards/init');
         exit();
     }
 

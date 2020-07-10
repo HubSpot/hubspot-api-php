@@ -17,4 +17,11 @@ class HubspotClientHelper
 
         throw new \Exception('Please authorize via OAuth');
     }
+
+    public static function createFactoryWithDeveloperAPIKey(): Discovery
+    {
+        return Factory::createWithApiKey(
+            getEnvOrException('HUBSPOT_DEVELOPER_API_KEY')
+        );
+    }
 }
