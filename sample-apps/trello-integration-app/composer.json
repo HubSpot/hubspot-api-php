@@ -10,7 +10,9 @@
         "hubspot/api-client": "*",
         "ext-curl": "*",
         "ext-json": "*",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "ext-pdo": "*",
+        "byjg/migration": "4.0.*"
     },
     "autoload": {
         "files": [
