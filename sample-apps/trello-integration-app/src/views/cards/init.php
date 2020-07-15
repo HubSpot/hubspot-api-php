@@ -6,7 +6,7 @@ use Repositories\CardRepository;
 include __DIR__.'/../_partials/header.php';
 
 $baseUrl = UrlHelper::generateServerUri();
-$fetchUrl = UrlHelper::getCardFetchUrl();
+$fetchUrl = UrlHelper::getUrl('/trello/cards');
 ?>
     <div class="row">
         <div class="column">

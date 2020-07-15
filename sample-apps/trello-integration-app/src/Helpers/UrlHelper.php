@@ -27,4 +27,9 @@ class UrlHelper
     {
         return static::generateServerUri().'/trello/cards/';
     }
+    
+    public static function getUrl(string $url): string
+    {
+        return static::generateServerUri().$url;
+    }
 }

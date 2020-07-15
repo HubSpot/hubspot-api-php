@@ -7,12 +7,13 @@ use HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse;
+use HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest;
 use Repositories\CardRepository;
 use Helpers\UrlHelper;
 
+$cardId = CardRepository::getCardId();
+
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
-    $cardId = CardRepository::getCardId();
-    
     include __DIR__.'/../../views/cards/init.php';
     exit();
 }
@@ -26,20 +27,31 @@ $objectType->setName('deals');
 $objectType->setPropertiesToSend(['hs_object_id', 'dealname']);
 
 $fetchBody = new CardFetchBody();
-$fetchBody->setTargetUrl(UrlHelper::getCardFetchUrl());
+$fetchBody->setTargetUrl(UrlHelper::getUrl('/trello/cards'));
 $fetchBody->setObjectTypes([$objectType]);
 
 $action = new CardActions();
 $action->setBaseUrls([UrlHelper::generateServerUri()]);
 
-$request = new CardCreateRequest();
-$request->setTitle(CardRepository::CARD_TITLE);
-$request->setFetch($fetchBody);
-$request->setActions($action);
-$request->setDisplay(new CardDisplayBody());
+if (empty($cardId)) {
+    $request = new CardCreateRequest();
+    $request->setTitle(CardRepository::CARD_TITLE);
+    $request->setFetch($fetchBody);
+    $request->setActions($action);
+    $request->setDisplay(new CardDisplayBody());
 
-$card = $hubSpot->crm()->extensions()->cards()->cardsApi()
-    ->create($appId, $request);
+    $card = $hubSpot->crm()->extensions()->cards()->cardsApi()
+        ->create($appId, $request);
+} else {
+    $request = new CardPatchRequest();
+    $request->setTitle(CardRepository::CARD_TITLE);
+    $request->setActions($action);
+    $request->setFetch($fetchBody);
+    $request->setDisplay(new CardDisplayBody());
+    
+    $card = $hubSpot->crm()->extensions()->cards()->cardsApi()
+        ->update($appId, $cardId, $request);
+}
 
 if ($card instanceof CardResponse) {
     CardRepository::saveCardId($card->getId());
