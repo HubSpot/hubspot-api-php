@@ -1,19 +1,39 @@
 <?php
 
+use GuzzleHttp\Client;
+use Repositories\TokensRepository;
+
+if (!isset($_GET['q'])) {
+    throw new Exception('Invalid Query');
+}
+
 $headers = [
     'Accept' => 'application/json',
 ];
 
 $query = [
-    'key' => '12d414a90ef767aebdcbc58e4fc70692',
-    'token' => 'c060666587095589d77900f387a28b8f', //$_SESSION['trello']['oauth_token'],
-    'query' => 'test',
+    'key' => $_ENV['TRELLO_API_KEY'],
+    'token' => TokensRepository::getToken(TokensRepository::TRELLO_TOKEN),
+    'query' => $_GET['q'],
 ];
 
-$response = Unirest\Request::get(
-    'https://api.trello.com/1/search',
-    $headers,
-    $query
+$client = new Client();
+$response = $client->get(
+    'https://api.trello.com/1/search?'.http_build_query($query),
+    ['headers' => $headers]
 );
 
-var_dump($response);
+$data = json_decode($response->getBody()->getContents());
+
+$result = [];
+if (!empty($data->cards)) {
+    foreach ($data->cards as $card) {
+        $result[] = [
+            'id' => $card->id,
+            'name' => $card->name,
+        ];
+    }
+}
+
+header('Content-Type: application/json');
+echo json_encode($result);

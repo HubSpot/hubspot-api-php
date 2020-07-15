@@ -22,9 +22,14 @@ class UrlHelper
 
         return $scheme.'://'.$serverName.$port;
     }
-    
+
     public static function getCardFetchUrl(): string
     {
         return static::generateServerUri().'/trello/cards/';
+    }
+
+    public static function getUrl(string $url): string
+    {
+        return static::generateServerUri().$url;
     }
 }

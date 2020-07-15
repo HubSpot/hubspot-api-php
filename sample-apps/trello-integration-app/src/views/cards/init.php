@@ -6,18 +6,20 @@ use Repositories\CardRepository;
 include __DIR__.'/../_partials/header.php';
 
 $baseUrl = UrlHelper::generateServerUri();
-$fetchUrl = UrlHelper::getCardFetchUrl();
+$fetchUrl = UrlHelper::getUrl('/trello/cards');
 ?>
     <div class="row">
         <div class="column">
-            <h3>CRM extension card initialization<?php if (!empty($cardId)) { echo ' (card_id='.$cardId.')';}?></h3>
+            <h3>CRM extension card initialization<?php if (!empty($cardId)) {
+    echo ' (card_id='.$cardId.')';
+}?></h3>
             <ol>
                 <?php if (empty($cardId)) { ?>
-                  <li>New CRM extension card will be created (with "<?php echo CardRepository::CARD_TITLE;?>" title)</li>
+                  <li>New CRM extension card will be created (with "<?php echo CardRepository::CARD_TITLE; ?>" title)</li>
                 <?php } ?>
-                <li>"Data fetch URL" will be updated to <a href="<?php echo $fetchUrl;?>"><?php echo $fetchUrl;?></a></li>
+                <li>"Data fetch URL" will be updated to <a href="<?php echo $fetchUrl; ?>"><?php echo $fetchUrl; ?></a></li>
                 <li>"Deals" in "Target record types" section will be activated with "hs_object_id", "dealname" properties sent form HubSpot</li>
-                <li>"Custom actions"->"Base URL" section will be updated with <a href="<?php echo $baseUrl;?>"><?php echo $baseUrl;?></a></li>
+                <li>"Custom actions"->"Base URL" section will be updated with <a href="<?php echo $baseUrl; ?>"><?php echo $baseUrl; ?></a></li>
             </ol>
         </div>
     </div>
