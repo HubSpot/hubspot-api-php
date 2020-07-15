@@ -19,7 +19,7 @@ $query = [
 
 $client = new Client();
 $response = $client->get(
-    'https://api.trello.com/1/search?'. http_build_query($query),
+    'https://api.trello.com/1/search?'.http_build_query($query),
     ['headers' => $headers]
 );
 

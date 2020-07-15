@@ -4,12 +4,12 @@ namespace Formatters;
 
 use Helpers\UrlHelper;
 
-class CardsFormatter {
-    
+class CardsFormatter
+{
     public static function cardExtensionDataResponse($associatedDeals = [], $card = null): array
     {
         $results = [];
-        
+
         if (!empty($associatedDeals)) {
             /*
              * result = {
@@ -44,7 +44,7 @@ class CardsFormatter {
                 'associatedObjectProperties' => ['hs_object_id', 'dealname'],
             ];
         }
-        
+
         return [
             'results' => $results,
             'primaryAction' => $primaryAction,

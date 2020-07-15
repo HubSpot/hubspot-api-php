@@ -1,15 +1,15 @@
 <?php
 
 use Helpers\HubspotClientHelper;
+use Helpers\UrlHelper;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardActions;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest;
+use HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody;
-use HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody;
-use HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest;
+use HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse;
 use Repositories\CardRepository;
-use Helpers\UrlHelper;
 
 $cardId = CardRepository::getCardId();
 
@@ -41,16 +41,18 @@ if (empty($cardId)) {
     $request->setDisplay(new CardDisplayBody());
 
     $card = $hubSpot->crm()->extensions()->cards()->cardsApi()
-        ->create($appId, $request);
+        ->create($appId, $request)
+    ;
 } else {
     $request = new CardPatchRequest();
     $request->setTitle(CardRepository::CARD_TITLE);
     $request->setActions($action);
     $request->setFetch($fetchBody);
     $request->setDisplay(new CardDisplayBody());
-    
+
     $card = $hubSpot->crm()->extensions()->cards()->cardsApi()
-        ->update($appId, $cardId, $request);
+        ->update($appId, $cardId, $request)
+    ;
 }
 
 if ($card instanceof CardResponse) {
