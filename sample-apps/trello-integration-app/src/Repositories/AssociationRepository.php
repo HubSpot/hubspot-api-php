@@ -26,4 +26,15 @@ class AssociationRepository
 
         return $query->fetch();
     }
+
+    public static function delete(string $dealId)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('delete from '.static::TABLE.' where deal_id = ?')
+        ;
+
+        $query->execute([
+            $dealId,
+        ]);
+    }
 }
