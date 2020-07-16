@@ -11,19 +11,18 @@ class CardsFormatter
         $results = [];
 
         if (!empty($associatedDeal)) {
-            
             $result = [
                 'objectId' => $card->idShort,
                 'title' => $card->name,
-                'link' => $card->shortUrl
+                'link' => $card->shortUrl,
             ];
-            
+
             if (count($card->members) > 0) {
                 $values = [];
                 foreach ($card->members as $member) {
                     $values[] = $member->username;
                 }
-                
+
                 $result['properties'][] = [
                     'label' => 'Members',
                     'dataType' => 'STRING',
@@ -31,8 +30,8 @@ class CardsFormatter
                 ];
             }
 
-            $results [] = $result;
-            
+            $results[] = $result;
+
             $primaryAction = [
                 'type' => 'ACTION_HOOK',
                 'httpMethod' => 'DELETE',

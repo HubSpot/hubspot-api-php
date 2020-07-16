@@ -1,7 +1,7 @@
 <?php
 
-use Helpers\OAuth2Helper;
 use Helpers\DBClientHelper;
+use Helpers\OAuth2Helper;
 use Helpers\Trello;
 
 include_once '../../vendor/autoload.php';
@@ -11,7 +11,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 //try {
     DBClientHelper::runMigrations();
-    
+
     // allowed for anonymous
     $publicRoutes = require '../routes/public.php';
     // protected
