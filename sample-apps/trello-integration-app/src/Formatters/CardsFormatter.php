@@ -6,34 +6,39 @@ use Helpers\UrlHelper;
 
 class CardsFormatter
 {
-    public static function cardExtensionDataResponse($associatedDeals = [], $card = null): array
+    public static function cardExtensionDataResponse($associatedDeal = null, $card = null): array
     {
         $results = [];
 
-        if (!empty($associatedDeals)) {
-            /*
-             * result = {
-            "objectId": card.short_id,
-            "title": card.name,
-            "link": card.short_url,
-        }
-        if len(card.members) > 0:
-            result["properties"] = [
-                {
-                    "label": "Members",
-                    "dataType": "STRING",
-                    "value": ", ".join([member.username for member in card.members]),
+        if (!empty($associatedDeal)) {
+            $result = [
+                'objectId' => $card->idShort,
+                'title' => $card->name,
+                'link' => $card->shortUrl,
+            ];
+
+            if (count($card->members) > 0) {
+                $values = [];
+                foreach ($card->members as $member) {
+                    $values[] = $member->username;
                 }
-            ]
-        results = [result]
-        primary_action = {
-            "type": "ACTION_HOOK",
-            "httpMethod": "DELETE",
-            "associatedObjectProperties": ["hs_object_id",],
-            "uri": url_for("trello.cards.delete_association", _external=True),
-            "label": "Remove the association",
-        }
-             */
+
+                $result['properties'][] = [
+                    'label' => 'Members',
+                    'dataType' => 'STRING',
+                    'value' => implode(', ', $values),
+                ];
+            }
+
+            $results[] = $result;
+
+            $primaryAction = [
+                'type' => 'ACTION_HOOK',
+                'httpMethod' => 'DELETE',
+                'associatedObjectProperties' => ['hs_object_id'],
+                'uri' => UrlHelper::getUrl('/trello/delete-association'),
+                'label' => 'Remove the association',
+            ];
         } else {
             $primaryAction = [
                 'type' => 'IFRAME',

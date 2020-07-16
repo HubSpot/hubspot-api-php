@@ -1,5 +1,6 @@
 <?php
 
+use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
 use Helpers\Trello;
 
@@ -8,7 +9,9 @@ session_start();
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-try {
+//try {
+    DBClientHelper::runMigrations();
+
     // allowed for anonymous
     $publicRoutes = require '../routes/public.php';
     // protected
@@ -33,8 +36,8 @@ try {
 
     $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
-} catch (Throwable $t) {
-    $message = $t->getMessage();
-    include __DIR__.'/../views/error.php';
-    exit();
-}
+//} catch (Throwable $t) {
+//    $message = $t->getMessage();
+//    include __DIR__.'/../views/error.php';
+//    exit();
+//}
