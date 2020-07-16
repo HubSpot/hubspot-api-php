@@ -46,7 +46,7 @@ class CardsFormatter
                 'width' => 650,
                 'height' => 350,
                 'uri' => UrlHelper::getUrl('/trello/search-frame'),
-                'label' => json_encode($_GET),
+                'label' => 'Associate Trello card',
                 'associatedObjectProperties' => ['hs_object_id', 'dealname'],
             ];
         }
