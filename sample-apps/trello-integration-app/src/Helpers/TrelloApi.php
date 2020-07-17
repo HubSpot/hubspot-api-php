@@ -7,56 +7,35 @@ use Repositories\TokensRepository;
 
 class TrelloApi
 {
+    public static function search(string $query)
+    {
+        $params = ['query' => $query];
+
+        return TrelloApi::send('https://api.trello.com/1/search', $params);
+    }
+    
     public static function getCard(string $cardId)
     {
-        $query = ['members' => true];
+        $params = ['members' => true];
 
-        return TrelloApi::send('https://api.trello.com/1/cards/'.$cardId, $query);
+        return TrelloApi::send('https://api.trello.com/1/cards/'.$cardId, $params);
     }
 
-    protected static function send(string $url, array $query = [], string $method = 'get')
+    protected static function send(string $url, array $params = [])
     {
         $headers = [
             'Accept' => 'application/json',
         ];
 
-        $query['key'] = $_ENV['TRELLO_API_KEY'];
-        $query['token'] = TokensRepository::getToken(TokensRepository::TRELLO_TOKEN);
+        $params['key'] = $_ENV['TRELLO_API_KEY'];
+        $params['token'] = TokensRepository::getToken(TokensRepository::TRELLO_TOKEN);
 
         $client = new Client();
         $response = $client->get(
-            $url.'?'.http_build_query($query),
+            $url.'?'.http_build_query($params),
             ['headers' => $headers]
         );
 
         return json_decode($response->getBody()->getContents());
     }
 }
-
-/*
- *
-
-$query = [
-    'key' => $_ENV['TRELLO_API_KEY'],
-    'token' => TokensRepository::getToken(TokensRepository::TRELLO_TOKEN),
-    'query' => $_GET['q'],
-];
-
-$client = new Client();
-$response = $client->get(
-    'https://api.trello.com/1/search?'.http_build_query($query),
-    ['headers' => $headers]
-);
-
-$data = json_decode($response->getBody()->getContents());
-
-$result = [];
-if (!empty($data->cards)) {
-    foreach ($data->cards as $card) {
-        $result[] = [
-            'id' => $card->id,
-            'name' => $card->name,
-        ];
-    }
-}
- */
