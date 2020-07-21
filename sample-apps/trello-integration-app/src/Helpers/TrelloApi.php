@@ -13,7 +13,7 @@ class TrelloApi
 
         return TrelloApi::send('https://api.trello.com/1/search', $params);
     }
-    
+
     public static function getCard(string $cardId)
     {
         $params = ['members' => true];

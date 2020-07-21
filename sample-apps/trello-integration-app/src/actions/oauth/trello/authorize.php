@@ -1,9 +1,9 @@
 <?php
 
-use Helpers\Trello;
+use Helpers\TrelloOAuth;
 use Helpers\UrlHelper;
 
-$authUrl = Trello::getAuthUrl(
+$authUrl = TrelloOAuth::getAuthUrl(
     getEnvOrException('TRELLO_API_KEY'),
     UrlHelper::generateServerUri().'/oauth/trello/callback'
 );

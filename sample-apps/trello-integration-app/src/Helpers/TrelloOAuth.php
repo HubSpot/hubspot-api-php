@@ -2,9 +2,9 @@
 
 namespace Helpers;
 
-use Repositories\TokensRepository;
+use Repositories\SettingsRepository;
 
-class Trello
+class TrelloOAuth
 {
     public static function getAuthUrl(
         string $key,
@@ -26,6 +26,11 @@ class Trello
 
     public static function isAuthenticated(): bool
     {
-        return !empty(TokensRepository::getToken(TokensRepository::TRELLO_TOKEN));
+        return !empty(SettingsRepository::getSetting(SettingsRepository::TRELLO_TOKEN));
+    }
+
+    public static function saveToken(string $token)
+    {
+        SettingsRepository::save(SettingsRepository::TRELLO_TOKEN, $token);
     }
 }

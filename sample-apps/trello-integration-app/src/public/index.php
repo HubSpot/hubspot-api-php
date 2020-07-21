@@ -2,7 +2,7 @@
 
 use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
-use Helpers\Trello;
+use Helpers\TrelloOAuth;
 
 include_once '../../vendor/autoload.php';
 session_start();
@@ -23,7 +23,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     }
 
     if (in_array($uri, $protectedRoutes)) {
-        if (!OAuth2Helper::isAuthenticated() || !Trello::isAuthenticated()) {
+        if (!OAuth2Helper::isAuthenticated() || !TrelloOAuth::isAuthenticated()) {
             header('Location: /oauth/login');
             exit();
         }
