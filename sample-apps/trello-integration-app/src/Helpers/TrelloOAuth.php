@@ -33,4 +33,9 @@ class TrelloOAuth
     {
         SettingsRepository::save(SettingsRepository::TRELLO_TOKEN, $token);
     }
+
+    public static function getToken()
+    {
+        return SettingsRepository::getSetting(SettingsRepository::TRELLO_TOKEN);
+    }
 }

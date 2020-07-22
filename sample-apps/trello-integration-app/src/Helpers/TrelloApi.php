@@ -3,7 +3,6 @@
 namespace Helpers;
 
 use GuzzleHttp\Client;
-use Repositories\TokensRepository;
 
 class TrelloApi
 {
@@ -28,7 +27,7 @@ class TrelloApi
         ];
 
         $params['key'] = $_ENV['TRELLO_API_KEY'];
-        $params['token'] = TokensRepository::getToken(TokensRepository::TRELLO_TOKEN);
+        $params['token'] = TrelloOAuth::getToken();
 
         $client = new Client();
         $response = $client->get(
