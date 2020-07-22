@@ -1,9 +1,9 @@
 <?php
 
-use Repositories\TokensRepository;
+use Helpers\TrelloOAuth;
 
 if (isset($_GET['token'])) {
-    TokensRepository::save($_GET['token'], TokensRepository::TRELLO_TOKEN);
+    TrelloOAuth::saveToken($_GET['token']);
 }
 
 header('Location: /');

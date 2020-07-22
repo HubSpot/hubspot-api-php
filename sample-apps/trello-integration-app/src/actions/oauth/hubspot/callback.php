@@ -3,7 +3,6 @@
 use Helpers\OAuth2Helper;
 use HubSpot\Client\Auth\OAuth\Model\TokenResponseIF;
 use HubSpot\Factory;
-use Repositories\TokensRepository;
 
 // https://developers.hubspot.com/docs-beta/working-with-oauth
 $token = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
@@ -15,12 +14,14 @@ $token = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
 );
 
 if ($token instanceof TokenResponseIF) {
-    TokensRepository::save([
-        'refresh_token' => $token->getRefreshToken(),
-        'access_token' => $token->getAccessToken(),
-        'expires_in' => $token->getExpiresIn(),
-        'expires_at' => OAuth2Helper::getExpiresAt($token->getExpiresIn()),
-    ]);
+    OAuth2Helper::saveToken(
+        [
+            'refresh_token' => $token->getRefreshToken(),
+            'access_token' => $token->getAccessToken(),
+            'expires_in' => $token->getExpiresIn(),
+            'expires_at' => OAuth2Helper::getExpiresAt($token->getExpiresIn()),
+        ]
+    );
 }
 
 header('Location: /');

@@ -3,7 +3,7 @@
 namespace Helpers;
 
 use HubSpot\Factory;
-use Repositories\TokensRepository;
+use Repositories\SettingsRepository;
 
 class OAuth2Helper
 {
@@ -38,16 +38,23 @@ class OAuth2Helper
 
     public static function isAuthenticated(): bool
     {
-        return !empty(TokensRepository::getToken());
+        return !empty(SettingsRepository::getSetting(SettingsRepository::HUBSPOT_TOKEN));
     }
 
-    public static function refreshAndGetAccessToken(): string
+    public static function getToken()
     {
-        $token = TokensRepository::getToken();
+        $token = SettingsRepository::getSetting(SettingsRepository::HUBSPOT_TOKEN);
 
         if (empty($token)) {
             throw new \Exception('Please authorize via OAuth2');
         }
+
+        return json_decode($token);
+    }
+
+    public static function refreshAndGetAccessToken(): string
+    {
+        $token = static::getToken();
 
         if (time() > $token['expires_at']) {
             $response = Factory::create()->auth()->oAuth()->defaultApi()->createToken(
@@ -59,16 +66,24 @@ class OAuth2Helper
                 $token['refresh_token']
             );
 
-            TokensRepository::save([
-                'refresh_token' => $response->getRefreshToken(),
-                'access_token' => $response->getAccessToken(),
-                'expires_in' => $response->getExpiresIn(),
-                'expires_at' => OAuth2Helper::getExpiresAt($response->getExpiresIn()),
-            ]);
+            SettingsRepository::save(
+                SettingsRepository::HUBSPOT_TOKEN,
+                json_encode([
+                    'refresh_token' => $response->getRefreshToken(),
+                    'access_token' => $response->getAccessToken(),
+                    'expires_in' => $response->getExpiresIn(),
+                    'expires_at' => OAuth2Helper::getExpiresAt($response->getExpiresIn()),
+                ])
+            );
 
             return $response->getAccessToken();
         }
 
         return $token['access_token'];
+    }
+
+    public static function saveToken(array $token)
+    {
+        SettingsRepository::save(SettingsRepository::HUBSPOT_TOKEN, json_encode($token));
     }
 }
