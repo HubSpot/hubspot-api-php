@@ -7,4 +7,5 @@ return [
     '/trello/search',
     '/trello/delete-association',
     '/trello/search-frame-success',
+    '/readme',
 ];
