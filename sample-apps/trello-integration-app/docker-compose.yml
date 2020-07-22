@@ -6,7 +6,6 @@ services:
         env_file:
             - .env
         depends_on:
-            - redis
             - db
         build:
             dockerfile: ./sample-apps/trello-integration-app/Dockerfile
@@ -14,8 +13,6 @@ services:
         ports:
             - 8999:80
         environment:
-            REDIS_HOST: redis
-            REDIS_PORT: 6379
             DB_HOST: db
             DB_NAME: trello
             DB_USERNAME: hubspoter
@@ -23,11 +20,6 @@ services:
         volumes:
             - ./src:/app/src
             - ./sql:/app/sql
-    redis:
-        container_name: php-trello-integration-app-redis
-        image: redis:latest
-        volumes:
-            - ./db/redis:/data
     ngrok:
         container_name: php-trello-integration-app-ngrok
         image: gtriggiano/ngrok-tunnel
