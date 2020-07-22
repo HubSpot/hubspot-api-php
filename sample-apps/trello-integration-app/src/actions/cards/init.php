@@ -57,6 +57,7 @@ if (empty($cardId)) {
 
 if ($card instanceof CardResponse) {
     CardRepository::saveCardId($card->getId());
+    $_SESSION['initUrl'] = UrlHelper::generateServerUri();
 }
 
 header('Location: /');

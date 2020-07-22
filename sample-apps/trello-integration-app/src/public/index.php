@@ -3,13 +3,14 @@
 use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
 use Helpers\TrelloOAuth;
+use Helpers\UrlHelper;
 
 include_once '../../vendor/autoload.php';
 session_start();
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-//try {
+try {
     DBClientHelper::runMigrations();
 
     // allowed for anonymous
@@ -18,7 +19,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /cards/init');
+        header('Location: /readme');
         exit();
     }
 
@@ -29,6 +30,11 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
         }
     }
 
+    if (('/cards/init' !== $uri) && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
+        header('Location: /cards/init');
+        exit();
+    }
+
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
         http_response_code(404);
         exit();
@@ -36,8 +42,8 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
     $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
-//} catch (Throwable $t) {
-//    $message = $t->getMessage();
-//    include __DIR__.'/../views/error.php';
-//    exit();
-//}
+} catch (Throwable $t) {
+    $message = $t->getMessage();
+    include __DIR__.'/../views/error.php';
+    exit();
+}
