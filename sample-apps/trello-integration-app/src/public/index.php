@@ -29,8 +29,8 @@ try {
             exit();
         }
     }
-    
-    if (($uri !== '/cards/init') && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
+
+    if (('/cards/init' !== $uri) && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
         header('Location: /cards/init');
         exit();
     }
