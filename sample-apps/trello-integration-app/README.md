@@ -1,12 +1,14 @@
 # HubSpot PHP Sample Trello Integration App
 
-This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the rate limit mechanism. It will be useful for you if you often reach rate limit (429 http error).
+This is a sample app for the [hubspot-php SDK](../../../../). 
+This is a sample app for the hubspot-python SDK. Currently, this app focuses on demonstrating
+of Trello integration, Trello cards and HubSpot deals in particular.
 
 Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
 ### HubSpot Public API endpoints used in this application
 
-  - [CRM Card](https://developers.hubspot.com/docs/api/crm/extensions/custom-cards)
+  - [CRM Custom Cards](https://developers.hubspot.com/docs/api/crm/extensions/custom-cards)
   - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
 
 ### Setup App
@@ -16,9 +18,9 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 ### Configure
 
 1. Copy .env.template to .env
-2. Specify authorization data in .env:
-
-    - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
+2. Paste your HUBSPOT_CLIENT_ID, HUBSPOT_CLIENT_SECRET, HUBSPOT_APPLICATION_ID and HUBSPOT_DEVELOPER_API_KEY
+3. Paste youк TRELLO_API_KEY. You can obtain it from [https://trello.com/app-key](https://trello.com/app-key)
+4. Go to [https://trello.com/app-key](https://trello.com/app-key) page and paste https://*.ngrok.io to "New Allowed Origin" ("Allowed Resources" section)
 
 ### Running
 
@@ -27,12 +29,5 @@ The best way to run this project (with the least configuration), is using docker
 ```bash
 docker-compose up --build
 ```
-You should now be able to navigate to [http://localhost:8999](http://localhost:8999). 
-Firstly you will need to authorize via OAuth there.
-Than you can to go to the terminal window and start the following command in the application root
 
-```bash
-docker-compose exec web php /app/src/console/example.php
-```
-
-Please note this app starts a few workers in order to reach rate limit faster.
+Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.

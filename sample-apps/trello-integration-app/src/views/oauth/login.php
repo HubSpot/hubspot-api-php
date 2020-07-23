@@ -20,7 +20,7 @@ Helpers\TrelloOAuth::getAuthUrl(
         </pre>
         <ol>
           <li>Go to <a href="https://trello.com/app-key" target="_blank">https://trello.com/app-key</a> page</li>
-          <li>Add <?php echo UrlHelper::generateServerUri(); ?> to "Allowed Resources" section</li>
+          <li>Add https://*.ngrok.io to "Allowed Resources" section</li>
           <li>Continue with <a class="button" href="/oauth/trello/authorize">Authorize</a></li>
         </ol>
         <?php if (TrelloOAuth::isAuthenticated()) { ?>
