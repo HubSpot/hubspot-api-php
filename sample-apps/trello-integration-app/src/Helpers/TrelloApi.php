@@ -12,6 +12,11 @@ class TrelloApi
 
         return TrelloApi::send('https://api.trello.com/1/search', $params);
     }
+    
+    public static function getBoards(string $member = 'me')
+    {
+        return TrelloApi::send('https://api.trello.com/1/members/'.$member.'/boards');
+    }
 
     public static function getCard(string $cardId)
     {

@@ -17,6 +17,12 @@
                 </a>
                 <ul class="navigation-list float-right">
                     <li class="navigation-item">
+                        <a class="navigation-link" href="/mappings/boards">Mappings</a>
+                    </li>
+                    <li class="navigation-item">
+                        <a class="navigation-link" href="/cards/init">ReadMe</a>
+                    </li>
+                    <li class="navigation-item">
                         <a class="navigation-link" href="/cards/init">Init</a>
                     </li>
                     <li class="navigation-item">

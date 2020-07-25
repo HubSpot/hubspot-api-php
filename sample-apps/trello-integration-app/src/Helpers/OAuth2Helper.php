@@ -49,7 +49,7 @@ class OAuth2Helper
             throw new \Exception('Please authorize via OAuth2');
         }
 
-        return json_decode($token);
+        return (array) json_decode($token);
     }
 
     public static function refreshAndGetAccessToken(): string

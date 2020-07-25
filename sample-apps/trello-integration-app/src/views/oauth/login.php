@@ -2,7 +2,6 @@
 
 use Helpers\OAuth2Helper;
 use Helpers\TrelloOAuth;
-use Helpers\UrlHelper;
 
 include __DIR__.'/../_partials/header.php';
 ?>
