@@ -12,7 +12,7 @@ class SettingsRepository
     const HUBSPOT_TOKEN = 'HubSpotToken';
     const TRELLO_TOKEN = 'TrelloToken';
 
-    public static function getSetting(string $name)
+    public static function getSettingData(string $name)
     {
         $query = DBClientHelper::getClient()
             ->prepare('select * from '.static::TABLE.' where name = ? limit 1')
@@ -20,12 +20,17 @@ class SettingsRepository
 
         $query->execute([$name]);
 
-        $response = $query->fetch(PDO::FETCH_ASSOC);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public static function getSetting(string $name)
+    {
+        $response = static::getSettingData($name);
 
         if (!empty($response)) {
             return $response['data'];
         }
-
+        
         return null;
     }
 
@@ -41,9 +46,10 @@ class SettingsRepository
     }
 
     public static function update(string $name, string $data)
-    {
+    {   
         $db = DBClientHelper::getClient();
         $query = $db->prepare('update '.static::TABLE.' set data = ? where name = ?');
+        
         $query->execute([
             $data,
             $name,
@@ -52,7 +58,7 @@ class SettingsRepository
 
     public static function save(string $name, string $data)
     {
-        if (!empty(static::getSetting($name))) {
+        if (!empty(static::getSettingData($name))) {
             static::update($name, $data);
         } else {
             static::insert($name, $data);
