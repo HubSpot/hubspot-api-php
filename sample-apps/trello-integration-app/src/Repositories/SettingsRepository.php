@@ -22,7 +22,7 @@ class SettingsRepository
 
         return $query->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     public static function getSetting(string $name)
     {
         $response = static::getSettingData($name);
@@ -30,7 +30,7 @@ class SettingsRepository
         if (!empty($response)) {
             return $response['data'];
         }
-        
+
         return null;
     }
 
@@ -46,10 +46,10 @@ class SettingsRepository
     }
 
     public static function update(string $name, string $data)
-    {   
+    {
         $db = DBClientHelper::getClient();
         $query = $db->prepare('update '.static::TABLE.' set data = ? where name = ?');
-        
+
         $query->execute([
             $data,
             $name,

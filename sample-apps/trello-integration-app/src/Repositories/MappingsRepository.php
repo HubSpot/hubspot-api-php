@@ -12,15 +12,17 @@ class MappingsRepository
     public static function create(string $boardId, string $listId, string $pipelineId, string $stageId)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('insert into '.static::TABLE.' (board_id, board_list_id, pipeline_id, pipeline_stage_id) values (?, ?, ?, ?)');
-        
+            ->prepare('insert into '.static::TABLE.' (board_id, board_list_id, pipeline_id, pipeline_stage_id) values (?, ?, ?, ?)')
+        ;
+
         $query->execute([$boardId, $listId, $pipelineId, $stageId]);
     }
 
     public static function findByBoardIdAndPipelineId(string $boardId, string $pipelineId)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('select * from '.static::TABLE.' where board_id = ? and pipeline_id = ?');
+            ->prepare('select * from '.static::TABLE.' where board_id = ? and pipeline_id = ?')
+        ;
 
         $query->execute([
             $boardId,

@@ -29,7 +29,7 @@ try {
             exit();
         }
     }
-    
+
     if (OAuth2Helper::isAuthenticated() && TrelloOAuth::isAuthenticated()) {
         if (('/cards/init' !== $uri) && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
             header('Location: /cards/init');

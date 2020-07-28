@@ -12,17 +12,17 @@ class TrelloApi
 
         return TrelloApi::send('search', $params);
     }
-    
+
     public static function getBoards(string $member = 'me')
     {
         return TrelloApi::send('members/'.$member.'/boards');
     }
-    
+
     public static function getBoard(string $id)
     {
         return TrelloApi::send('boards/'.$id);
     }
-    
+
     public static function getBoardList(string $id)
     {
         return TrelloApi::send('boards/'.$id.'/lists');

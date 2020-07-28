@@ -17,7 +17,7 @@ $boards = TrelloApi::getBoards();
         <?php foreach ($boards as $board) { ?>
         <tr>
             <td>
-                <a href="/mappings/pipelines?board_id=<?php echo $board->id;?>"><?php echo $board->name;?></a>
+                <a href="/mappings/pipelines?board_id=<?php echo $board->id; ?>"><?php echo $board->name; ?></a>
             </td>
         </tr>
         <?php } ?>
