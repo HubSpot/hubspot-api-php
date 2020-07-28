@@ -22,6 +22,11 @@ class TrelloApi
     {
         return TrelloApi::send('boards/'.$id);
     }
+    
+    public static function getBoardList(string $id)
+    {
+        return TrelloApi::send('boards/'.$id.'/lists');
+    }
 
     public static function getCard(string $cardId)
     {

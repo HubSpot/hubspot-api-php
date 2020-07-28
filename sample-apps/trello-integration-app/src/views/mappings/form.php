@@ -3,8 +3,8 @@
 <h3>Map board lists with pipelines stages</h3>
 
 <pre>
-// src/routes/mappings.py
-pipeline = hubspot.crm.pipelines.pipelines_api.get_by_id("deals", pipeline_id)
+// src/actions/mappings/form.php
+$hubspot->crm()->pipelines()->pipelinesApi()->getById('deals', $pipelineId);
 </pre>
 
 <pre>Note: selected Trello board list and Pipeline stage must be unique for all rows</pre>
@@ -18,45 +18,41 @@ pipeline = hubspot.crm.pipelines.pipelines_api.get_by_id("deals", pipeline_id)
                 <th></th>
             </tr>
         </thead>
-      <tbody>
-        {% for mapping in mappings %}
-          <tr>
-            <td>
-              <select name="board_list_ids[]">
-                <option disabled {% if mapping.board_list_id is none %} selected {% endif %} value>-- select trello list --</option>
-                {% for list in board_lists %}
-                  <option
-                          value="{{ mapping.id~JOIN_SEPARATOR~list.id }}"
-                          {% if list.id == mapping.board_list_id %} selected {% endif %}>
-                    {{ list.name }}
-                  </option>
-                {% endfor %}
-              </select>
-            </td>
-            <td>
-              <select name="pipeline_stage_id[]">
-                <option disabled {% if mapping.pipeline_stage_id is none %} selected {% endif %} value>-- select pipeline stage --</option>
-                {% for stage in pipeline.stages %}
-                  <option
-                          value="{{ mapping.id~JOIN_SEPARATOR~stage.id }}"
-                          {% if stage.id == mapping.pipeline_stage_id %} selected {% endif %}>
-                    {{ stage.label }}
-                  </option>
-                {% endfor %}
-              </select>
-            </td>
-            <td>
-              {% if mapping.id %}
-                <a href="{{ url_for("mappings.delete_row", board_id=board.id, pipeline_id=pipeline.id, mapping_id=mapping.id) }}">
-                  <button type="button">Remove</button>
-                </a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
+        <tbody>
+            <?php foreach ($mappings as $mapping) { ?>
+            <tr>
+                <td>
+                    <select name="board_list_ids[]">
+                        <option disabled <?php if (empty($mapping['board_list_id'])) { ?> selected <?php } ?> value>-- select trello list --</option>
+                        <?php foreach ($lists as $list) { ?>
+                        <option value="<?php echo $list->id?>"<?php
+                            if($list->id == $mapping['board_list_id']) { ?> selected <?php } ?>><?php
+                            echo $list->name; ?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select name="pipeline_stage_id[]">
+                        <option disabled <?php if (empty($mapping['pipeline_stage_id'])) { ?> selected <?php } ?> value>-- select pipeline stage --</option>
+                        <?php foreach ($pipeline->getStages() as $stage) { ?>
+                        <option value="<?php echo $stage->getId();?>"
+                        <?php if ($stage->getId() == $mapping['pipeline_stage_id']) { ?> selected <?php } ?>><?php
+                        echo $stage->getLabel(); ?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <?php if (empty($mapping['id'])) { ?>
+                    <a href="/mappings/delete-row?board_id=<?php echo $boardId;?>&pipeline_id=<?php echo $pipelineId;?>&mapping_id=<?php echo $mapping['id'];?>">
+                        <button type="button">Remove</button>
+                    </a>
+                    <?php } ?>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
     </table>
     <button type="submit">Save</button>
 </form>
 
-{<?php include __DIR__.'/../_partials/footer.php';?>
+<?php include __DIR__.'/../_partials/footer.php';?>
