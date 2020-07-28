@@ -4,6 +4,10 @@ use Helpers\HubspotClientHelper;
 use Helpers\TrelloApi;
 use Repositories\MappingsRepository;
 
+if (!isset($_GET['board_id']) || !isset($_GET['pipeline_id'])) {
+    header('Location: /mappings/boards');
+}
+
 $boardId = $_GET['board_id'];
 $pipelineId = $_GET['pipeline_id'];
 
@@ -15,10 +19,10 @@ $pipeline = HubspotClientHelper::createFactory()
 
 $mappings = MappingsRepository::findByBoardIdAndPipelineId($boardId, $pipelineId);
 
-$mappings[] = [
+$row = [
     'id' => null,
     'board_list_id' => null,
     'pipeline_stage_id' => null,
 ];
 
-include __DIR__.'/../../views/mappings/form.php';
+include __DIR__.'/../../views/mappings/list.php';

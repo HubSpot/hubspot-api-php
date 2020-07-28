@@ -9,7 +9,8 @@ return [
     '/trello/search-frame-success',
     '/readme',
     '/mappings/boards',
+    '/mappings/create-row',
     '/mappings/delete-row',
     '/mappings/pipelines',
-    '/mappings/form',
+    '/mappings/list',
 ];

@@ -3,17 +3,18 @@
 namespace Repositories;
 
 use Helpers\DBClientHelper;
+use PDO;
 
 class MappingsRepository
 {
     const TABLE = 'mappings';
 
-    public static function create(string $dealId, string $cardId)
+    public static function create(string $boardId, string $listId, string $pipelineId, string $stageId)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('insert into '.static::TABLE.' (deal_id, card_id) values (?, ?)');
+            ->prepare('insert into '.static::TABLE.' (board_id, board_list_id, pipeline_id, pipeline_stage_id) values (?, ?, ?, ?)');
         
-        $query->execute([$dealId, $cardId]);
+        $query->execute([$boardId, $listId, $pipelineId, $stageId]);
     }
 
     public static function findByBoardIdAndPipelineId(string $boardId, string $pipelineId)
@@ -26,17 +27,17 @@ class MappingsRepository
             $pipelineId,
         ]);
 
-        return $query->fetch();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function delete(string $dealId)
+    public static function delete(int $id)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('delete from '.static::TABLE.' where deal_id = ?')
+            ->prepare('delete from '.static::TABLE.' where id = ?')
         ;
 
         $query->execute([
-            $dealId,
+            $id,
         ]);
     }
 }

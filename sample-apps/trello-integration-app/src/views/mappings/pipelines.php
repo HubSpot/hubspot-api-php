@@ -12,7 +12,7 @@ $hubspot->crm()->pipelines()->pipelinesApi()->getAll('deals');
         <?php foreach ($pipelines->getResults() as $pipeline) { ?>
         <tr>
             <td>
-                <a href="/mappings/form?board_id=<?php echo $boardId;?>&pipeline_id=<?php echo $pipeline->getId();?>"><?php echo $pipeline->getLabel();?></a>
+                <a href="/mappings/list?board_id=<?php echo $boardId;?>&pipeline_id=<?php echo $pipeline->getId();?>"><?php echo $pipeline->getLabel();?></a>
             </td>
         </tr>
         <?php } ?>
