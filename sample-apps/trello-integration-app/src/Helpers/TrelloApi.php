@@ -10,14 +10,29 @@ class TrelloApi
     {
         $params = ['query' => $query];
 
-        return TrelloApi::send('https://api.trello.com/1/search', $params);
+        return TrelloApi::send('search', $params);
+    }
+
+    public static function getBoards(string $member = 'me')
+    {
+        return TrelloApi::send('members/'.$member.'/boards');
+    }
+
+    public static function getBoard(string $id)
+    {
+        return TrelloApi::send('boards/'.$id);
+    }
+
+    public static function getBoardList(string $id)
+    {
+        return TrelloApi::send('boards/'.$id.'/lists');
     }
 
     public static function getCard(string $cardId)
     {
         $params = ['members' => true];
 
-        return TrelloApi::send('https://api.trello.com/1/cards/'.$cardId, $params);
+        return TrelloApi::send('cards/'.$cardId, $params);
     }
 
     protected static function send(string $url, array $params = [])
@@ -31,7 +46,7 @@ class TrelloApi
 
         $client = new Client();
         $response = $client->get(
-            $url.'?'.http_build_query($params),
+            'https://api.trello.com/1/'.$url.'?'.http_build_query($params),
             ['headers' => $headers]
         );
 

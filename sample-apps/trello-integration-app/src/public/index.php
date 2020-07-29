@@ -30,9 +30,11 @@ try {
         }
     }
 
-    if (('/cards/init' !== $uri) && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
-        header('Location: /cards/init');
-        exit();
+    if (OAuth2Helper::isAuthenticated() && TrelloOAuth::isAuthenticated()) {
+        if (('/cards/init' !== $uri) && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
+            header('Location: /cards/init');
+            exit();
+        }
     }
 
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {

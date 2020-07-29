@@ -8,4 +8,9 @@ return [
     '/trello/delete-association',
     '/trello/search-frame-success',
     '/readme',
+    '/mappings/boards',
+    '/mappings/create-row',
+    '/mappings/delete-row',
+    '/mappings/pipelines',
+    '/mappings/list',
 ];
