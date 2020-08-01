@@ -35,7 +35,7 @@ class TrelloApi
         return TrelloApi::send('cards/'.$cardId, $params);
     }
 
-    protected static function send(string $url, array $params = [])
+    protected static function send(string $url, array $params = [], $method = 'GET')
     {
         $headers = [
             'Accept' => 'application/json',
@@ -45,7 +45,8 @@ class TrelloApi
         $params['token'] = TrelloOAuth::getToken();
 
         $client = new Client();
-        $response = $client->get(
+        $response = $client->request(
+            $method,
             'https://api.trello.com/1/'.$url.'?'.http_build_query($params),
             ['headers' => $headers]
         );

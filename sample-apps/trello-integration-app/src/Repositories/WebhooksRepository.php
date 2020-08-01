@@ -5,21 +5,17 @@ namespace Repositories;
 use Helpers\DBClientHelper;
 use PDO;
 
-class SettingsRepository
+class WebhooksRepository
 {
-    const TABLE = 'settings';
+    const TABLE = 'card_webhooks';
 
-    const HUBSPOT_TOKEN = 'HubSpotToken';
-    const TRELLO_TOKEN = 'TrelloToken';
-    const INIT_URL = 'InitUrl';
-
-    public static function getSettingData(string $name)
+    public static function findOneByCardId(string $cardId)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('select * from '.static::TABLE.' where name = ? limit 1')
+            ->prepare('select * from '.static::TABLE.' where card_id = ? limit 1')
         ;
 
-        $query->execute([$name]);
+        $query->execute([$cardId]);
 
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -35,14 +31,26 @@ class SettingsRepository
         return null;
     }
 
-    public static function insert(string $name, string $data)
+    public static function insert(string $cardId, string $webhookId)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('insert into '.static::TABLE.' (name, data) values (?, ?)')
+            ->prepare('insert into '.static::TABLE.' (card_id, webhook_id) values (?, ?)')
         ;
+        
         $query->execute([
-            $name,
-            $data,
+            $cardId,
+            $webhookId,
+        ]);
+    }
+    
+    public static function delete(int $id)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('delete from '.static::TABLE.' where id = ?')
+        ;
+
+        $query->execute([
+            $id,
         ]);
     }
 
@@ -65,4 +73,5 @@ class SettingsRepository
             static::insert($name, $data);
         }
     }
+
 }

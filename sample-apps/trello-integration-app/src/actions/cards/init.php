@@ -10,6 +10,7 @@ use HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest;
 use HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse;
 use Repositories\CardRepository;
+use Repositories\SettingsRepository;
 
 $cardId = CardRepository::getCardId();
 
@@ -57,7 +58,7 @@ if (empty($cardId)) {
 
 if ($card instanceof CardResponse) {
     CardRepository::saveCardId($card->getId());
-    $_SESSION['initUrl'] = UrlHelper::generateServerUri();
+    SettingsRepository::save(SettingsRepository::INIT_URL, UrlHelper::generateServerUri());
 }
 
 header('Location: /');

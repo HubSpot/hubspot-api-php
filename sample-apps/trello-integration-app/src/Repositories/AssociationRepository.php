@@ -3,6 +3,7 @@
 namespace Repositories;
 
 use Helpers\DBClientHelper;
+use PDO;
 
 class AssociationRepository
 {
@@ -24,17 +25,28 @@ class AssociationRepository
 
         $query->execute([$dealId]);
 
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function delete(string $dealId)
+    public static function countByCardId(string $cardId)
     {
         $query = DBClientHelper::getClient()
-            ->prepare('delete from '.static::TABLE.' where deal_id = ?')
+            ->prepare('select count(*) from '.static::TABLE.' where card_id = ?')
+        ;
+
+        $query->execute([$cardId]);
+
+        return $query->fetchColumn();
+    }
+
+    public static function delete(int $id)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('delete from '.static::TABLE.' where id = ?')
         ;
 
         $query->execute([
-            $dealId,
+            $id,
         ]);
     }
 }
