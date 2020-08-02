@@ -18,6 +18,18 @@ class WebhooksTrelloApi extends TrelloApi
         );
     }
     
+    public static function update(string $id, string $cardId)
+    {
+        return static::send(
+            'webhooks/'.$id, 
+            [
+                'callbackURL' => static::getCallbackUrl(),
+                'idModel' => $cardId,
+            ],
+            'PUT'
+        );
+    }
+    
     public static function delete(string $cardId)
     {
         return static::send(

@@ -8,7 +8,15 @@ use PDO;
 class WebhooksRepository
 {
     const TABLE = 'card_webhooks';
+    
+    public static function getAllWithAssociations()
+    {
+        $query = DBClientHelper::getClient()
+            ->query('select distinct '.static::TABLE.'.id , '.AssociationRepository::TABLE.'.card_id, '.static::TABLE.'.webhook_id from '.AssociationRepository::TABLE.' left join  '.static::TABLE.' on '.AssociationRepository::TABLE.'.card_id = '.static::TABLE.'.card_id;');
 
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     public static function findOneByCardId(string $cardId)
     {
         $query = DBClientHelper::getClient()
@@ -18,17 +26,6 @@ class WebhooksRepository
         $query->execute([$cardId]);
 
         return $query->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public static function getSetting(string $name)
-    {
-        $response = static::getSettingData($name);
-
-        if (!empty($response)) {
-            return $response['data'];
-        }
-
-        return null;
     }
 
     public static function insert(string $cardId, string $webhookId)
@@ -43,6 +40,17 @@ class WebhooksRepository
         ]);
     }
     
+    public static function update(int $id, string $webhookId)
+    {
+        $db = DBClientHelper::getClient();
+        $query = $db->prepare('update '.static::TABLE.' set webhook_id = ? where id = ?');
+
+        $query->execute([
+            $webhookId,
+            $id,
+        ]);
+    }
+    
     public static function delete(int $id)
     {
         $query = DBClientHelper::getClient()
@@ -52,26 +60,6 @@ class WebhooksRepository
         $query->execute([
             $id,
         ]);
-    }
-
-    public static function update(string $name, string $data)
-    {
-        $db = DBClientHelper::getClient();
-        $query = $db->prepare('update '.static::TABLE.' set data = ? where name = ?');
-
-        $query->execute([
-            $data,
-            $name,
-        ]);
-    }
-
-    public static function save(string $name, string $data)
-    {
-        if (!empty(static::getSettingData($name))) {
-            static::update($name, $data);
-        } else {
-            static::insert($name, $data);
-        }
     }
 
 }
