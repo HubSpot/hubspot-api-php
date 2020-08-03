@@ -1,10 +1,10 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use Repositories\AssociationRepository;
-use Repositories\MappingsRepository;
 use HubSpot\Client\Crm\Deals\Model\SimplePublicObject;
 use HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput;
+use Repositories\AssociationRepository;
+use Repositories\MappingsRepository;
 
 $data = json_decode(file_get_contents('php://input'));
 
@@ -16,7 +16,7 @@ if (isset($data->action->data->listAfter)) {
 
     if (!empty($associations)) {
         $hubSpot = HubspotClientHelper::createFactory();
-        
+
         foreach ($associations as $association) {
             $deal = $hubSpot->crm()->deals()->basicApi()->getById($association['deal_id']);
             if ($deal instanceof SimplePublicObject) {
@@ -35,5 +35,3 @@ if (isset($data->action->data->listAfter)) {
         }
     }
 }
-
-http_response_code(204);

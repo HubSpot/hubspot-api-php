@@ -1,9 +1,10 @@
 <?php
 
 use Helpers\CardHelper;
-use Helpers\WebhooksTrelloApi;
 use Helpers\WebhooksHelper;
-use Repositories\{CardRepository, WebhooksRepository};
+use Helpers\WebhooksTrelloApi;
+use Repositories\CardRepository;
+use Repositories\WebhooksRepository;
 
 $cardId = CardRepository::getCardId();
 
@@ -17,7 +18,7 @@ CardHelper::createOrUpdate($cardId);
 $webhooks = WebhooksRepository::getAllWithAssociations();
 
 foreach ($webhooks as $webhook) {
-    if(empty($webhook['id'])) {
+    if (empty($webhook['id'])) {
         WebhooksHelper::create($webhook['card_id']);
     } else {
         WebhooksTrelloApi::update($webhook['webhook_id'], $webhook['card_id']);

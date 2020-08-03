@@ -32,7 +32,7 @@ try {
     }
 
     if (OAuth2Helper::isAuthenticated() && TrelloOAuth::isAuthenticated()) {
-        if (('/cards/init' !== $uri) 
+        if (('/cards/init' !== $uri)
                 && (SettingsRepository::getSetting(SettingsRepository::INIT_URL) != UrlHelper::generateServerUri())) {
             header('Location: /cards/init');
             exit();

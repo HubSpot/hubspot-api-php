@@ -8,15 +8,16 @@ use PDO;
 class WebhooksRepository
 {
     const TABLE = 'card_webhooks';
-    
+
     public static function getAllWithAssociations()
     {
         $query = DBClientHelper::getClient()
-            ->query('select distinct '.static::TABLE.'.id , '.AssociationRepository::TABLE.'.card_id, '.static::TABLE.'.webhook_id from '.AssociationRepository::TABLE.' left join  '.static::TABLE.' on '.AssociationRepository::TABLE.'.card_id = '.static::TABLE.'.card_id;');
+            ->query('select distinct '.static::TABLE.'.id , '.AssociationRepository::TABLE.'.card_id, '.static::TABLE.'.webhook_id from '.AssociationRepository::TABLE.' left join  '.static::TABLE.' on '.AssociationRepository::TABLE.'.card_id = '.static::TABLE.'.card_id;')
+        ;
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     public static function findOneByCardId(string $cardId)
     {
         $query = DBClientHelper::getClient()
@@ -33,13 +34,13 @@ class WebhooksRepository
         $query = DBClientHelper::getClient()
             ->prepare('insert into '.static::TABLE.' (card_id, webhook_id) values (?, ?)')
         ;
-        
+
         $query->execute([
             $cardId,
             $webhookId,
         ]);
     }
-    
+
     public static function update(int $id, string $webhookId)
     {
         $db = DBClientHelper::getClient();
@@ -50,7 +51,7 @@ class WebhooksRepository
             $id,
         ]);
     }
-    
+
     public static function delete(int $id)
     {
         $query = DBClientHelper::getClient()
@@ -61,5 +62,4 @@ class WebhooksRepository
             $id,
         ]);
     }
-
 }

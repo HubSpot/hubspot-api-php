@@ -31,7 +31,7 @@ class MappingsRepository
 
         return $query->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     public static function findByBoardIdAndPipelineId(string $boardId, string $pipelineId)
     {
         $query = DBClientHelper::getClient()

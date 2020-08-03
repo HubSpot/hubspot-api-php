@@ -12,7 +12,8 @@ use HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse;
 use Repositories\CardRepository;
 use Repositories\SettingsRepository;
 
-class CardHelper {
+class CardHelper
+{
     public static function createOrUpdate($cardId)
     {
         $appId = getEnvOrException('HUBSPOT_APPLICATION_ID');
@@ -38,7 +39,7 @@ class CardHelper {
             SettingsRepository::save(SettingsRepository::INIT_URL, UrlHelper::generateServerUri());
         }
     }
-    
+
     protected static function getFetchBody()
     {
         $objectType = new CardObjectTypeBody();
@@ -48,24 +49,25 @@ class CardHelper {
         $fetchBody = new CardFetchBody();
         $fetchBody->setTargetUrl(UrlHelper::getUrl('/trello/cards'));
         $fetchBody->setObjectTypes([$objectType]);
-        
+
         return $fetchBody;
     }
-    
+
     protected static function getAction()
     {
         $action = new CardActions();
         $action->setBaseUrls([UrlHelper::generateServerUri()]);
-        
+
         return $action;
     }
-    
-    protected static function prepareRequest($request) {
+
+    protected static function prepareRequest($request)
+    {
         $request->setTitle(CardRepository::CARD_TITLE);
         $request->setActions(static::getAction());
         $request->setFetch(static::getFetchBody());
         $request->setDisplay(new CardDisplayBody());
-        
+
         return $request;
     }
 }
