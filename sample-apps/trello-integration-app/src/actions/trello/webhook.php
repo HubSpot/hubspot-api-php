@@ -35,3 +35,5 @@ if (isset($data->action->data->listAfter)) {
         }
     }
 }
+
+http_response_code(204);
