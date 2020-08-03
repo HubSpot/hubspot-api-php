@@ -361,13 +361,13 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Companies\Model\SimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
      */
-    public function create($simple_public_object_input = null)
+    public function create($simple_public_object_input)
     {
         list($response) = $this->createWithHttpInfo($simple_public_object_input);
         return $response;
@@ -378,13 +378,13 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Companies\Model\SimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($simple_public_object_input = null)
+    public function createWithHttpInfo($simple_public_object_input)
     {
         $request = $this->createRequest($simple_public_object_input);
 
@@ -486,12 +486,12 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($simple_public_object_input = null)
+    public function createAsync($simple_public_object_input)
     {
         return $this->createAsyncWithHttpInfo($simple_public_object_input)
             ->then(
@@ -506,12 +506,12 @@ class BasicApi
      *
      * Create
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($simple_public_object_input = null)
+    public function createAsyncWithHttpInfo($simple_public_object_input)
     {
         $returnType = '\HubSpot\Client\Crm\Companies\Model\SimplePublicObject';
         $request = $this->createRequest($simple_public_object_input);
@@ -553,13 +553,19 @@ class BasicApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($simple_public_object_input = null)
+    protected function createRequest($simple_public_object_input)
     {
+        // verify the required parameter 'simple_public_object_input' is set
+        if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $simple_public_object_input when calling create'
+            );
+        }
 
         $resourcePath = '/crm/v3/objects/companies';
         $formParams = [];
@@ -1328,13 +1334,13 @@ class BasicApi
      * Update
      *
      * @param  string $company_id company_id (required)
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Companies\Model\SimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
      */
-    public function update($company_id, $simple_public_object_input = null)
+    public function update($company_id, $simple_public_object_input)
     {
         list($response) = $this->updateWithHttpInfo($company_id, $simple_public_object_input);
         return $response;
@@ -1346,13 +1352,13 @@ class BasicApi
      * Update
      *
      * @param  string $company_id (required)
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Companies\Model\SimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($company_id, $simple_public_object_input = null)
+    public function updateWithHttpInfo($company_id, $simple_public_object_input)
     {
         $request = $this->updateRequest($company_id, $simple_public_object_input);
 
@@ -1455,12 +1461,12 @@ class BasicApi
      * Update
      *
      * @param  string $company_id (required)
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($company_id, $simple_public_object_input = null)
+    public function updateAsync($company_id, $simple_public_object_input)
     {
         return $this->updateAsyncWithHttpInfo($company_id, $simple_public_object_input)
             ->then(
@@ -1476,12 +1482,12 @@ class BasicApi
      * Update
      *
      * @param  string $company_id (required)
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($company_id, $simple_public_object_input = null)
+    public function updateAsyncWithHttpInfo($company_id, $simple_public_object_input)
     {
         $returnType = '\HubSpot\Client\Crm\Companies\Model\SimplePublicObject';
         $request = $this->updateRequest($company_id, $simple_public_object_input);
@@ -1524,17 +1530,23 @@ class BasicApi
      * Create request for operation 'update'
      *
      * @param  string $company_id (required)
-     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput $simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRequest($company_id, $simple_public_object_input = null)
+    protected function updateRequest($company_id, $simple_public_object_input)
     {
         // verify the required parameter 'company_id' is set
         if ($company_id === null || (is_array($company_id) && count($company_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $company_id when calling update'
+            );
+        }
+        // verify the required parameter 'simple_public_object_input' is set
+        if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $simple_public_object_input when calling update'
             );
         }
 

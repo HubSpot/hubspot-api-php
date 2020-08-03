@@ -416,7 +416,7 @@ class AssociationsApi
     /**
      * Operation create
      *
-     * Associate two companies
+     * Associate a company with another object
      *
      * @param  string $company_id company_id (required)
      * @param  string $to_object_type to_object_type (required)
@@ -436,7 +436,7 @@ class AssociationsApi
     /**
      * Operation createWithHttpInfo
      *
-     * Associate two companies
+     * Associate a company with another object
      *
      * @param  string $company_id (required)
      * @param  string $to_object_type (required)
@@ -547,7 +547,7 @@ class AssociationsApi
     /**
      * Operation createAsync
      *
-     * Associate two companies
+     * Associate a company with another object
      *
      * @param  string $company_id (required)
      * @param  string $to_object_type (required)
@@ -570,7 +570,7 @@ class AssociationsApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Associate two companies
+     * Associate a company with another object
      *
      * @param  string $company_id (required)
      * @param  string $to_object_type (required)

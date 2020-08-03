@@ -57,8 +57,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'properties' => 'map[string,string]'
+        'properties' => 'map[string,string]',
+        'id' => 'string'
     ];
 
     /**
@@ -67,8 +67,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'properties' => null
+        'properties' => null,
+        'id' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'properties' => 'properties'
+        'properties' => 'properties',
+        'id' => 'id'
     ];
 
     /**
@@ -108,8 +108,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'properties' => 'setProperties'
+        'properties' => 'setProperties',
+        'id' => 'setId'
     ];
 
     /**
@@ -118,8 +118,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'properties' => 'getProperties'
+        'properties' => 'getProperties',
+        'id' => 'getId'
     ];
 
     /**
@@ -182,8 +182,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['properties'] = isset($data['properties']) ? $data['properties'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -195,11 +195,11 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,30 +215,6 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets properties
@@ -260,6 +236,30 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess
     public function setProperties($properties)
     {
         $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

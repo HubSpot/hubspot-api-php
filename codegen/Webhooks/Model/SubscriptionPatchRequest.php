@@ -58,7 +58,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'enabled' => 'bool'
+        'active' => 'bool'
     ];
 
     /**
@@ -67,7 +67,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'enabled' => null
+        'active' => null
     ];
 
     /**
@@ -97,7 +97,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'enabled' => 'enabled'
+        'active' => 'active'
     ];
 
     /**
@@ -106,7 +106,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'enabled' => 'setEnabled'
+        'active' => 'setActive'
     ];
 
     /**
@@ -115,7 +115,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'enabled' => 'getEnabled'
+        'active' => 'getActive'
     ];
 
     /**
@@ -178,7 +178,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['enabled'] = isset($data['enabled']) ? $data['enabled'] : null;
+        $this->container['active'] = isset($data['active']) ? $data['active'] : null;
     }
 
     /**
@@ -206,25 +206,25 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets enabled
+     * Gets active
      *
      * @return bool|null
      */
-    public function getEnabled()
+    public function getActive()
     {
-        return $this->container['enabled'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets enabled
+     * Sets active
      *
-     * @param bool|null $enabled Determines if the subscription is active or paused.
+     * @param bool|null $active Determines if the subscription is active or paused.
      *
      * @return $this
      */
-    public function setEnabled($enabled)
+    public function setActive($active)
     {
-        $this->container['enabled'] = $enabled;
+        $this->container['active'] = $active;
 
         return $this;
     }

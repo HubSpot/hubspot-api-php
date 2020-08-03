@@ -120,13 +120,13 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      *
      * @throws \HubSpot\Client\Crm\Products\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Products\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Products\Model\Error
      */
-    public function doSearch($public_object_search_request = null)
+    public function doSearch($public_object_search_request)
     {
         list($response) = $this->doSearchWithHttpInfo($public_object_search_request);
         return $response;
@@ -137,13 +137,13 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \HubSpot\Client\Crm\Products\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Products\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Products\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function doSearchWithHttpInfo($public_object_search_request = null)
+    public function doSearchWithHttpInfo($public_object_search_request)
     {
         $request = $this->doSearchRequest($public_object_search_request);
 
@@ -245,12 +245,12 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsync($public_object_search_request = null)
+    public function doSearchAsync($public_object_search_request)
     {
         return $this->doSearchAsyncWithHttpInfo($public_object_search_request)
             ->then(
@@ -265,12 +265,12 @@ class SearchApi
      *
      * Filter, Sort, and Search CRM Objects
      *
-     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsyncWithHttpInfo($public_object_search_request = null)
+    public function doSearchAsyncWithHttpInfo($public_object_search_request)
     {
         $returnType = '\HubSpot\Client\Crm\Products\Model\CollectionResponseWithTotalSimplePublicObject';
         $request = $this->doSearchRequest($public_object_search_request);
@@ -312,13 +312,19 @@ class SearchApi
     /**
      * Create request for operation 'doSearch'
      *
-     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (optional)
+     * @param  \HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function doSearchRequest($public_object_search_request = null)
+    protected function doSearchRequest($public_object_search_request)
     {
+        // verify the required parameter 'public_object_search_request' is set
+        if ($public_object_search_request === null || (is_array($public_object_search_request) && count($public_object_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $public_object_search_request when calling doSearch'
+            );
+        }
 
         $resourcePath = '/crm/v3/objects/products/search';
         $formParams = [];

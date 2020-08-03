@@ -57,13 +57,12 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject[]',
-        'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Crm\Tickets\Model\Error[]',
         'status' => 'string',
+        'results' => '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime'
+        'completed_at' => '\DateTime',
+        'links' => 'map[string,string]'
     ];
 
     /**
@@ -72,13 +71,12 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'num_errors' => 'int32',
-        'errors' => null,
         'status' => null,
+        'results' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time'
+        'completed_at' => 'date-time',
+        'links' => null
     ];
 
     /**
@@ -108,13 +106,12 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'num_errors' => 'numErrors',
-        'errors' => 'errors',
         'status' => 'status',
+        'results' => 'results',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt'
+        'completed_at' => 'completedAt',
+        'links' => 'links'
     ];
 
     /**
@@ -123,13 +120,12 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'num_errors' => 'setNumErrors',
-        'errors' => 'setErrors',
         'status' => 'setStatus',
+        'results' => 'setResults',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt'
+        'completed_at' => 'setCompletedAt',
+        'links' => 'setLinks'
     ];
 
     /**
@@ -138,13 +134,12 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'num_errors' => 'getNumErrors',
-        'errors' => 'getErrors',
         'status' => 'getStatus',
+        'results' => 'getResults',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt'
+        'completed_at' => 'getCompletedAt',
+        'links' => 'getLinks'
     ];
 
     /**
@@ -226,13 +221,12 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
-        $this->container['num_errors'] = isset($data['num_errors']) ? $data['num_errors'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
         $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
         $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
         $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
     /**
@@ -244,9 +238,6 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -258,6 +249,9 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         if ($this->container['started_at'] === null) {
             $invalidProperties[] = "'started_at' can't be null";
         }
@@ -278,78 +272,6 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Tickets\Model\SimplePublicObject[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Tickets\Model\SimplePublicObject[] $results results
-     *
-     * @return $this
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets num_errors
-     *
-     * @return int|null
-     */
-    public function getNumErrors()
-    {
-        return $this->container['num_errors'];
-    }
-
-    /**
-     * Sets num_errors
-     *
-     * @param int|null $num_errors num_errors
-     *
-     * @return $this
-     */
-    public function setNumErrors($num_errors)
-    {
-        $this->container['num_errors'] = $num_errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Crm\Tickets\Model\Error[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Crm\Tickets\Model\Error[]|null $errors errors
-     *
-     * @return $this
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
 
     /**
      * Gets status
@@ -380,6 +302,30 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Tickets\Model\SimplePublicObject[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Tickets\Model\SimplePublicObject[] $results results
+     *
+     * @return $this
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }
@@ -452,6 +398,30 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess
     public function setCompletedAt($completed_at)
     {
         $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return map[string,string]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param map[string,string]|null $links links
+     *
+     * @return $this
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
 
         return $this;
     }

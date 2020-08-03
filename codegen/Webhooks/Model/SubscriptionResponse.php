@@ -58,12 +58,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'event_type' => 'string',
         'property_name' => 'string',
-        'active' => 'bool'
+        'active' => 'bool',
+        'id' => 'string',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -72,12 +72,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
         'event_type' => null,
         'property_name' => null,
-        'active' => null
+        'active' => null,
+        'id' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -107,12 +107,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
         'event_type' => 'eventType',
         'property_name' => 'propertyName',
-        'active' => 'active'
+        'active' => 'active',
+        'id' => 'id',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -121,12 +121,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
         'event_type' => 'setEventType',
         'property_name' => 'setPropertyName',
-        'active' => 'setActive'
+        'active' => 'setActive',
+        'id' => 'setId',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -135,12 +135,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
         'event_type' => 'getEventType',
         'property_name' => 'getPropertyName',
-        'active' => 'getActive'
+        'active' => 'getActive',
+        'id' => 'getId',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -234,12 +234,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['event_type'] = isset($data['event_type']) ? $data['event_type'] : null;
         $this->container['property_name'] = isset($data['property_name']) ? $data['property_name'] : null;
         $this->container['active'] = isset($data['active']) ? $data['active'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
     }
 
     /**
@@ -251,12 +251,6 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['event_type'] === null) {
             $invalidProperties[] = "'event_type' can't be null";
         }
@@ -268,6 +262,15 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -282,6 +285,87 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets event_type
+     *
+     * @return string
+     */
+    public function getEventType()
+    {
+        return $this->container['event_type'];
+    }
+
+    /**
+     * Sets event_type
+     *
+     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
+     * @return $this
+     */
+    public function setEventType($event_type)
+    {
+        $allowedValues = $this->getEventTypeAllowableValues();
+        if (!in_array($event_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'event_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['event_type'] = $event_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets property_name
+     *
+     * @return string|null
+     */
+    public function getPropertyName()
+    {
+        return $this->container['property_name'];
+    }
+
+    /**
+     * Sets property_name
+     *
+     * @param string|null $property_name The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.
+     *
+     * @return $this
+     */
+    public function setPropertyName($property_name)
+    {
+        $this->container['property_name'] = $property_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool $active Determines if the subscription is active or paused.
+     *
+     * @return $this
+     */
+    public function setActive($active)
+    {
+        $this->container['active'] = $active;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -351,87 +435,6 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_type
-     *
-     * @return string
-     */
-    public function getEventType()
-    {
-        return $this->container['event_type'];
-    }
-
-    /**
-     * Sets event_type
-     *
-     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
-     *
-     * @return $this
-     */
-    public function setEventType($event_type)
-    {
-        $allowedValues = $this->getEventTypeAllowableValues();
-        if (!in_array($event_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'event_type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event_type'] = $event_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets property_name
-     *
-     * @return string|null
-     */
-    public function getPropertyName()
-    {
-        return $this->container['property_name'];
-    }
-
-    /**
-     * Sets property_name
-     *
-     * @param string|null $property_name The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.
-     *
-     * @return $this
-     */
-    public function setPropertyName($property_name)
-    {
-        $this->container['property_name'] = $property_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return $this
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
 
         return $this;
     }

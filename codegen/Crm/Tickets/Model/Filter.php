@@ -57,9 +57,9 @@ class Filter implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'value' => 'string',
         'property_name' => 'string',
-        'operator' => 'string',
-        'value' => 'string'
+        'operator' => 'string'
     ];
 
     /**
@@ -68,9 +68,9 @@ class Filter implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'value' => null,
         'property_name' => null,
-        'operator' => null,
-        'value' => null
+        'operator' => null
     ];
 
     /**
@@ -100,9 +100,9 @@ class Filter implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'value' => 'value',
         'property_name' => 'propertyName',
-        'operator' => 'operator',
-        'value' => 'value'
+        'operator' => 'operator'
     ];
 
     /**
@@ -111,9 +111,9 @@ class Filter implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'value' => 'setValue',
         'property_name' => 'setPropertyName',
-        'operator' => 'setOperator',
-        'value' => 'setValue'
+        'operator' => 'setOperator'
     ];
 
     /**
@@ -122,9 +122,9 @@ class Filter implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'value' => 'getValue',
         'property_name' => 'getPropertyName',
-        'operator' => 'getOperator',
-        'value' => 'getValue'
+        'operator' => 'getOperator'
     ];
 
     /**
@@ -174,9 +174,6 @@ class Filter implements ModelInterface, ArrayAccess
     const OPERATOR_LTE = 'LTE';
     const OPERATOR_GT = 'GT';
     const OPERATOR_GTE = 'GTE';
-    const OPERATOR_BETWEEN = 'BETWEEN';
-    const OPERATOR_IN = 'IN';
-    const OPERATOR_NOT_IN = 'NOT_IN';
     const OPERATOR_HAS_PROPERTY = 'HAS_PROPERTY';
     const OPERATOR_NOT_HAS_PROPERTY = 'NOT_HAS_PROPERTY';
     const OPERATOR_CONTAINS_TOKEN = 'CONTAINS_TOKEN';
@@ -198,9 +195,6 @@ class Filter implements ModelInterface, ArrayAccess
             self::OPERATOR_LTE,
             self::OPERATOR_GT,
             self::OPERATOR_GTE,
-            self::OPERATOR_BETWEEN,
-            self::OPERATOR_IN,
-            self::OPERATOR_NOT_IN,
             self::OPERATOR_HAS_PROPERTY,
             self::OPERATOR_NOT_HAS_PROPERTY,
             self::OPERATOR_CONTAINS_TOKEN,
@@ -224,9 +218,9 @@ class Filter implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
         $this->container['property_name'] = isset($data['property_name']) ? $data['property_name'] : null;
         $this->container['operator'] = isset($data['operator']) ? $data['operator'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -266,6 +260,30 @@ class Filter implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets value
+     *
+     * @return string|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string|null $value value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
 
     /**
      * Gets property_name
@@ -320,30 +338,6 @@ class Filter implements ModelInterface, ArrayAccess
             );
         }
         $this->container['operator'] = $operator;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string|null $value value
-     *
-     * @return $this
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
 
         return $this;
     }

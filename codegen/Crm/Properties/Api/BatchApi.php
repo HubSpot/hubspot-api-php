@@ -121,13 +121,13 @@ class BatchApi
      * Archive a batch of properties
      *
      * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name batch_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name batch_input_property_name (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type, $batch_input_property_name = null)
+    public function archive($object_type, $batch_input_property_name)
     {
         $this->archiveWithHttpInfo($object_type, $batch_input_property_name);
     }
@@ -138,13 +138,13 @@ class BatchApi
      * Archive a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type, $batch_input_property_name = null)
+    public function archiveWithHttpInfo($object_type, $batch_input_property_name)
     {
         $request = $this->archiveRequest($object_type, $batch_input_property_name);
 
@@ -199,12 +199,12 @@ class BatchApi
      * Archive a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type, $batch_input_property_name = null)
+    public function archiveAsync($object_type, $batch_input_property_name)
     {
         return $this->archiveAsyncWithHttpInfo($object_type, $batch_input_property_name)
             ->then(
@@ -220,12 +220,12 @@ class BatchApi
      * Archive a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type, $batch_input_property_name = null)
+    public function archiveAsyncWithHttpInfo($object_type, $batch_input_property_name)
     {
         $returnType = '';
         $request = $this->archiveRequest($object_type, $batch_input_property_name);
@@ -257,17 +257,23 @@ class BatchApi
      * Create request for operation 'archive'
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyName $batch_input_property_name (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveRequest($object_type, $batch_input_property_name = null)
+    protected function archiveRequest($object_type, $batch_input_property_name)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling archive'
+            );
+        }
+        // verify the required parameter 'batch_input_property_name' is set
+        if ($batch_input_property_name === null || (is_array($batch_input_property_name) && count($batch_input_property_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_property_name when calling archive'
             );
         }
 
@@ -370,13 +376,13 @@ class BatchApi
      * Create a batch of properties
      *
      * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create batch_input_property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create batch_input_property_create (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function create($object_type, $batch_input_property_create = null)
+    public function create($object_type, $batch_input_property_create)
     {
         list($response) = $this->createWithHttpInfo($object_type, $batch_input_property_create);
         return $response;
@@ -388,13 +394,13 @@ class BatchApi
      * Create a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($object_type, $batch_input_property_create = null)
+    public function createWithHttpInfo($object_type, $batch_input_property_create)
     {
         $request = $this->createRequest($object_type, $batch_input_property_create);
 
@@ -517,12 +523,12 @@ class BatchApi
      * Create a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($object_type, $batch_input_property_create = null)
+    public function createAsync($object_type, $batch_input_property_create)
     {
         return $this->createAsyncWithHttpInfo($object_type, $batch_input_property_create)
             ->then(
@@ -538,12 +544,12 @@ class BatchApi
      * Create a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($object_type, $batch_input_property_create = null)
+    public function createAsyncWithHttpInfo($object_type, $batch_input_property_create)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty';
         $request = $this->createRequest($object_type, $batch_input_property_create);
@@ -586,17 +592,23 @@ class BatchApi
      * Create request for operation 'create'
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchInputPropertyCreate $batch_input_property_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($object_type, $batch_input_property_create = null)
+    protected function createRequest($object_type, $batch_input_property_create)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling create'
+            );
+        }
+        // verify the required parameter 'batch_input_property_create' is set
+        if ($batch_input_property_create === null || (is_array($batch_input_property_create) && count($batch_input_property_create) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_property_create when calling create'
             );
         }
 
@@ -699,13 +711,13 @@ class BatchApi
      * Read a batch of properties
      *
      * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name batch_read_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name batch_read_input_property_name (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function read($object_type, $batch_read_input_property_name = null)
+    public function read($object_type, $batch_read_input_property_name)
     {
         list($response) = $this->readWithHttpInfo($object_type, $batch_read_input_property_name);
         return $response;
@@ -717,13 +729,13 @@ class BatchApi
      * Read a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readWithHttpInfo($object_type, $batch_read_input_property_name = null)
+    public function readWithHttpInfo($object_type, $batch_read_input_property_name)
     {
         $request = $this->readRequest($object_type, $batch_read_input_property_name);
 
@@ -846,12 +858,12 @@ class BatchApi
      * Read a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsync($object_type, $batch_read_input_property_name = null)
+    public function readAsync($object_type, $batch_read_input_property_name)
     {
         return $this->readAsyncWithHttpInfo($object_type, $batch_read_input_property_name)
             ->then(
@@ -867,12 +879,12 @@ class BatchApi
      * Read a batch of properties
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsyncWithHttpInfo($object_type, $batch_read_input_property_name = null)
+    public function readAsyncWithHttpInfo($object_type, $batch_read_input_property_name)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty';
         $request = $this->readRequest($object_type, $batch_read_input_property_name);
@@ -915,17 +927,23 @@ class BatchApi
      * Create request for operation 'read'
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName $batch_read_input_property_name (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function readRequest($object_type, $batch_read_input_property_name = null)
+    protected function readRequest($object_type, $batch_read_input_property_name)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling read'
+            );
+        }
+        // verify the required parameter 'batch_read_input_property_name' is set
+        if ($batch_read_input_property_name === null || (is_array($batch_read_input_property_name) && count($batch_read_input_property_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_read_input_property_name when calling read'
             );
         }
 

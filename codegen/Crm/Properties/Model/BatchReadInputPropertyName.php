@@ -57,8 +57,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'archived' => 'bool',
-        'inputs' => '\HubSpot\Client\Crm\Properties\Model\PropertyName[]'
+        'inputs' => '\HubSpot\Client\Crm\Properties\Model\PropertyName[]',
+        'archived' => 'bool'
     ];
 
     /**
@@ -67,8 +67,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'archived' => null,
-        'inputs' => null
+        'inputs' => null,
+        'archived' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'archived' => 'archived',
-        'inputs' => 'inputs'
+        'inputs' => 'inputs',
+        'archived' => 'archived'
     ];
 
     /**
@@ -108,8 +108,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'archived' => 'setArchived',
-        'inputs' => 'setInputs'
+        'inputs' => 'setInputs',
+        'archived' => 'setArchived'
     ];
 
     /**
@@ -118,8 +118,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'archived' => 'getArchived',
-        'inputs' => 'getInputs'
+        'inputs' => 'getInputs',
+        'archived' => 'getArchived'
     ];
 
     /**
@@ -182,8 +182,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
         $this->container['inputs'] = isset($data['inputs']) ? $data['inputs'] : null;
+        $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
     }
 
     /**
@@ -195,11 +195,11 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         if ($this->container['inputs'] === null) {
             $invalidProperties[] = "'inputs' can't be null";
+        }
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,30 +215,6 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived archived
-     *
-     * @return $this
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
 
     /**
      * Gets inputs
@@ -260,6 +236,30 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess
     public function setInputs($inputs)
     {
         $this->container['inputs'] = $inputs;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool $archived archived
+     *
+     * @return $this
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
 
         return $this;
     }

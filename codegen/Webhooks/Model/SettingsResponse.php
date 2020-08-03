@@ -58,10 +58,10 @@ class SettingsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'target_url' => 'string',
-        'throttling' => '\HubSpot\Client\Webhooks\Model\ThrottlingSettings'
+        'throttling' => '\HubSpot\Client\Webhooks\Model\ThrottlingSettings',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -70,10 +70,10 @@ class SettingsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
         'target_url' => null,
-        'throttling' => null
+        'throttling' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -103,10 +103,10 @@ class SettingsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
         'target_url' => 'targetUrl',
-        'throttling' => 'throttling'
+        'throttling' => 'throttling',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -115,10 +115,10 @@ class SettingsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
         'target_url' => 'setTargetUrl',
-        'throttling' => 'setThrottling'
+        'throttling' => 'setThrottling',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -127,10 +127,10 @@ class SettingsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
         'target_url' => 'getTargetUrl',
-        'throttling' => 'getThrottling'
+        'throttling' => 'getThrottling',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -193,10 +193,10 @@ class SettingsResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['target_url'] = isset($data['target_url']) ? $data['target_url'] : null;
         $this->container['throttling'] = isset($data['throttling']) ? $data['throttling'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
     }
 
     /**
@@ -208,14 +208,14 @@ class SettingsResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['target_url'] === null) {
             $invalidProperties[] = "'target_url' can't be null";
         }
         if ($this->container['throttling'] === null) {
             $invalidProperties[] = "'throttling' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,54 +231,6 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
-     *
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
-     *
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
 
     /**
      * Gets target_url
@@ -324,6 +276,54 @@ class SettingsResponse implements ModelInterface, ArrayAccess
     public function setThrottling($throttling)
     {
         $this->container['throttling'] = $throttling;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     *
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

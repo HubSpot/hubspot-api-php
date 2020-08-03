@@ -64,7 +64,8 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         'description' => 'string',
         'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
         'display_order' => 'int',
-        'hidden' => 'bool'
+        'hidden' => 'bool',
+        'form_field' => 'bool'
     ];
 
     /**
@@ -80,7 +81,8 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         'description' => null,
         'options' => null,
         'display_order' => 'int32',
-        'hidden' => null
+        'hidden' => null,
+        'form_field' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         'description' => 'description',
         'options' => 'options',
         'display_order' => 'displayOrder',
-        'hidden' => 'hidden'
+        'hidden' => 'hidden',
+        'form_field' => 'formField'
     ];
 
     /**
@@ -133,7 +136,8 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         'description' => 'setDescription',
         'options' => 'setOptions',
         'display_order' => 'setDisplayOrder',
-        'hidden' => 'setHidden'
+        'hidden' => 'setHidden',
+        'form_field' => 'setFormField'
     ];
 
     /**
@@ -149,7 +153,8 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         'description' => 'getDescription',
         'options' => 'getOptions',
         'display_order' => 'getDisplayOrder',
-        'hidden' => 'getHidden'
+        'hidden' => 'getHidden',
+        'form_field' => 'getFormField'
     ];
 
     /**
@@ -270,6 +275,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
         $this->container['options'] = isset($data['options']) ? $data['options'] : null;
         $this->container['display_order'] = isset($data['display_order']) ? $data['display_order'] : null;
         $this->container['hidden'] = isset($data['hidden']) ? $data['hidden'] : null;
+        $this->container['form_field'] = isset($data['form_field']) ? $data['form_field'] : null;
     }
 
     /**
@@ -518,6 +524,30 @@ class PropertyUpdate implements ModelInterface, ArrayAccess
     public function setHidden($hidden)
     {
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_field
+     *
+     * @return bool|null
+     */
+    public function getFormField()
+    {
+        return $this->container['form_field'];
+    }
+
+    /**
+     * Sets form_field
+     *
+     * @param bool|null $form_field Whether or not the property can be used in a HubSpot form.
+     *
+     * @return $this
+     */
+    public function setFormField($form_field)
+    {
+        $this->container['form_field'] = $form_field;
 
         return $this;
     }

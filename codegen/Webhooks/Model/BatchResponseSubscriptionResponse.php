@@ -59,8 +59,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'status' => 'string',
         'results' => '\HubSpot\Client\Webhooks\Model\SubscriptionResponse[]',
-        'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Webhooks\Model\Error[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
         'completed_at' => '\DateTime',
@@ -75,8 +73,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'status' => null,
         'results' => null,
-        'num_errors' => 'int32',
-        'errors' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
         'completed_at' => 'date-time',
@@ -112,8 +108,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'status' => 'status',
         'results' => 'results',
-        'num_errors' => 'numErrors',
-        'errors' => 'errors',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
         'completed_at' => 'completedAt',
@@ -128,8 +122,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     protected static $setters = [
         'status' => 'setStatus',
         'results' => 'setResults',
-        'num_errors' => 'setNumErrors',
-        'errors' => 'setErrors',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
         'completed_at' => 'setCompletedAt',
@@ -144,8 +136,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     protected static $getters = [
         'status' => 'getStatus',
         'results' => 'getResults',
-        'num_errors' => 'getNumErrors',
-        'errors' => 'getErrors',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
         'completed_at' => 'getCompletedAt',
@@ -233,8 +223,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     {
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['results'] = isset($data['results']) ? $data['results'] : null;
-        $this->container['num_errors'] = isset($data['num_errors']) ? $data['num_errors'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
         $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
         $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
         $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
@@ -338,54 +326,6 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess
     public function setResults($results)
     {
         $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets num_errors
-     *
-     * @return int|null
-     */
-    public function getNumErrors()
-    {
-        return $this->container['num_errors'];
-    }
-
-    /**
-     * Sets num_errors
-     *
-     * @param int|null $num_errors num_errors
-     *
-     * @return $this
-     */
-    public function setNumErrors($num_errors)
-    {
-        $this->container['num_errors'] = $num_errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Webhooks\Model\Error[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Webhooks\Model\Error[]|null $errors errors
-     *
-     * @return $this
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
 
         return $this;
     }

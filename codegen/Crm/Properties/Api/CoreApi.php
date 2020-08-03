@@ -381,13 +381,13 @@ class CoreApi
      * Create a property
      *
      * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create property_create (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function create($object_type, $property_create = null)
+    public function create($object_type, $property_create)
     {
         list($response) = $this->createWithHttpInfo($object_type, $property_create);
         return $response;
@@ -399,13 +399,13 @@ class CoreApi
      * Create a property
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($object_type, $property_create = null)
+    public function createWithHttpInfo($object_type, $property_create)
     {
         $request = $this->createRequest($object_type, $property_create);
 
@@ -508,12 +508,12 @@ class CoreApi
      * Create a property
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($object_type, $property_create = null)
+    public function createAsync($object_type, $property_create)
     {
         return $this->createAsyncWithHttpInfo($object_type, $property_create)
             ->then(
@@ -529,12 +529,12 @@ class CoreApi
      * Create a property
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($object_type, $property_create = null)
+    public function createAsyncWithHttpInfo($object_type, $property_create)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
         $request = $this->createRequest($object_type, $property_create);
@@ -577,17 +577,23 @@ class CoreApi
      * Create request for operation 'create'
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyCreate $property_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($object_type, $property_create = null)
+    protected function createRequest($object_type, $property_create)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling create'
+            );
+        }
+        // verify the required parameter 'property_create' is set
+        if ($property_create === null || (is_array($property_create) && count($property_create) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $property_create when calling create'
             );
         }
 
@@ -1330,13 +1336,13 @@ class CoreApi
      *
      * @param  string $object_type object_type (required)
      * @param  string $property_name property_name (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update property_update (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update property_update (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function update($object_type, $property_name, $property_update = null)
+    public function update($object_type, $property_name, $property_update)
     {
         list($response) = $this->updateWithHttpInfo($object_type, $property_name, $property_update);
         return $response;
@@ -1349,13 +1355,13 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (required)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($object_type, $property_name, $property_update = null)
+    public function updateWithHttpInfo($object_type, $property_name, $property_update)
     {
         $request = $this->updateRequest($object_type, $property_name, $property_update);
 
@@ -1459,12 +1465,12 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($object_type, $property_name, $property_update = null)
+    public function updateAsync($object_type, $property_name, $property_update)
     {
         return $this->updateAsyncWithHttpInfo($object_type, $property_name, $property_update)
             ->then(
@@ -1481,12 +1487,12 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($object_type, $property_name, $property_update = null)
+    public function updateAsyncWithHttpInfo($object_type, $property_name, $property_update)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
         $request = $this->updateRequest($object_type, $property_name, $property_update);
@@ -1530,12 +1536,12 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  string $property_name (required)
-     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (optional)
+     * @param  \HubSpot\Client\Crm\Properties\Model\PropertyUpdate $property_update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRequest($object_type, $property_name, $property_update = null)
+    protected function updateRequest($object_type, $property_name, $property_update)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -1547,6 +1553,12 @@ class CoreApi
         if ($property_name === null || (is_array($property_name) && count($property_name) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $property_name when calling update'
+            );
+        }
+        // verify the required parameter 'property_update' is set
+        if ($property_update === null || (is_array($property_update) && count($property_update) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $property_update when calling update'
             );
         }
 

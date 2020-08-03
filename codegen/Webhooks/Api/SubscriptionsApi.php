@@ -1302,13 +1302,13 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id The ID of the subscription to update. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function update($subscription_id, $app_id, $subscription_patch_request = null)
+    public function update($subscription_id, $app_id, $subscription_patch_request)
     {
         list($response) = $this->updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request);
         return $response;
@@ -1321,13 +1321,13 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id The ID of the subscription to update. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request = null)
+    public function updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
     {
         $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request);
 
@@ -1431,12 +1431,12 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id The ID of the subscription to update. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($subscription_id, $app_id, $subscription_patch_request = null)
+    public function updateAsync($subscription_id, $app_id, $subscription_patch_request)
     {
         return $this->updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
             ->then(
@@ -1453,12 +1453,12 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id The ID of the subscription to update. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request = null)
+    public function updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
         $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request);
@@ -1502,12 +1502,12 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id The ID of the subscription to update. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (optional)
+     * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRequest($subscription_id, $app_id, $subscription_patch_request = null)
+    protected function updateRequest($subscription_id, $app_id, $subscription_patch_request)
     {
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -1519,6 +1519,12 @@ class SubscriptionsApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling update'
+            );
+        }
+        // verify the required parameter 'subscription_patch_request' is set
+        if ($subscription_patch_request === null || (is_array($subscription_patch_request) && count($subscription_patch_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $subscription_patch_request when calling update'
             );
         }
 
@@ -1624,12 +1630,12 @@ class SubscriptionsApi
      *
      * Batch update subscriptions
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Collection of updated details for the specified subscription. (required)
+     * @param  int $app_id The app ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Updated details for the specified subscriptions. (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
+     * @return \HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors|\HubSpot\Client\Webhooks\Model\Error
      */
     public function updateBatch($app_id, $batch_input_subscription_batch_update_request)
     {
@@ -1642,12 +1648,12 @@ class SubscriptionsApi
      *
      * Batch update subscriptions
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Collection of updated details for the specified subscription. (required)
+     * @param  int $app_id The app ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Updated details for the specified subscriptions. (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateBatchWithHttpInfo($app_id, $batch_input_subscription_batch_update_request)
     {
@@ -1696,14 +1702,14 @@ class SubscriptionsApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1748,7 +1754,7 @@ class SubscriptionsApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse',
+                        '\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1771,8 +1777,8 @@ class SubscriptionsApi
      *
      * Batch update subscriptions
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Collection of updated details for the specified subscription. (required)
+     * @param  int $app_id The app ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Updated details for the specified subscriptions. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1792,8 +1798,8 @@ class SubscriptionsApi
      *
      * Batch update subscriptions
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Collection of updated details for the specified subscription. (required)
+     * @param  int $app_id The app ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Updated details for the specified subscriptions. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1840,8 +1846,8 @@ class SubscriptionsApi
     /**
      * Create request for operation 'updateBatch'
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Collection of updated details for the specified subscription. (required)
+     * @param  int $app_id The app ID of the target app. (required)
+     * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request Updated details for the specified subscriptions. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

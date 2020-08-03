@@ -120,13 +120,13 @@ class BatchApi
      *
      * Archive a batch of tickets by ID
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($batch_input_simple_public_object_id = null)
+    public function archive($batch_input_simple_public_object_id)
     {
         $this->archiveWithHttpInfo($batch_input_simple_public_object_id);
     }
@@ -136,13 +136,13 @@ class BatchApi
      *
      * Archive a batch of tickets by ID
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($batch_input_simple_public_object_id = null)
+    public function archiveWithHttpInfo($batch_input_simple_public_object_id)
     {
         $request = $this->archiveRequest($batch_input_simple_public_object_id);
 
@@ -196,12 +196,12 @@ class BatchApi
      *
      * Archive a batch of tickets by ID
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($batch_input_simple_public_object_id = null)
+    public function archiveAsync($batch_input_simple_public_object_id)
     {
         return $this->archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
             ->then(
@@ -216,12 +216,12 @@ class BatchApi
      *
      * Archive a batch of tickets by ID
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($batch_input_simple_public_object_id = null)
+    public function archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
     {
         $returnType = '';
         $request = $this->archiveRequest($batch_input_simple_public_object_id);
@@ -252,13 +252,19 @@ class BatchApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveRequest($batch_input_simple_public_object_id = null)
+    protected function archiveRequest($batch_input_simple_public_object_id)
     {
+        // verify the required parameter 'batch_input_simple_public_object_id' is set
+        if ($batch_input_simple_public_object_id === null || (is_array($batch_input_simple_public_object_id) && count($batch_input_simple_public_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_simple_public_object_id when calling archive'
+            );
+        }
 
         $resourcePath = '/crm/v3/objects/tickets/batch/archive';
         $formParams = [];
@@ -350,13 +356,13 @@ class BatchApi
      *
      * Create a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (required)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error
+     * @return \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Tickets\Model\Error
      */
-    public function create($batch_input_simple_public_object_input = null)
+    public function create($batch_input_simple_public_object_input)
     {
         list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input);
         return $response;
@@ -367,13 +373,13 @@ class BatchApi
      *
      * Create a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($batch_input_simple_public_object_input = null)
+    public function createWithHttpInfo($batch_input_simple_public_object_input)
     {
         $request = $this->createRequest($batch_input_simple_public_object_input);
 
@@ -420,14 +426,14 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -472,7 +478,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -495,12 +501,12 @@ class BatchApi
      *
      * Create a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($batch_input_simple_public_object_input = null)
+    public function createAsync($batch_input_simple_public_object_input)
     {
         return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input)
             ->then(
@@ -515,12 +521,12 @@ class BatchApi
      *
      * Create a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input = null)
+    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input)
     {
         $returnType = '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject';
         $request = $this->createRequest($batch_input_simple_public_object_input);
@@ -562,13 +568,19 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($batch_input_simple_public_object_input = null)
+    protected function createRequest($batch_input_simple_public_object_input)
     {
+        // verify the required parameter 'batch_input_simple_public_object_input' is set
+        if ($batch_input_simple_public_object_input === null || (is_array($batch_input_simple_public_object_input) && count($batch_input_simple_public_object_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_simple_public_object_input when calling create'
+            );
+        }
 
         $resourcePath = '/crm/v3/objects/tickets/batch/create';
         $formParams = [];
@@ -660,16 +672,16 @@ class BatchApi
      *
      * Read a batch of tickets by internal ID, or unique property values
      *
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (optional)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error
+     * @return \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Tickets\Model\Error
      */
-    public function read($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function read($batch_read_input_simple_public_object_id, $archived = false)
     {
-        list($response) = $this->readWithHttpInfo($archived, $batch_read_input_simple_public_object_id);
+        list($response) = $this->readWithHttpInfo($batch_read_input_simple_public_object_id, $archived);
         return $response;
     }
 
@@ -678,16 +690,16 @@ class BatchApi
      *
      * Read a batch of tickets by internal ID, or unique property values
      *
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function readWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
     {
-        $request = $this->readRequest($archived, $batch_read_input_simple_public_object_id);
+        $request = $this->readRequest($batch_read_input_simple_public_object_id, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -732,14 +744,14 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -784,7 +796,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -807,15 +819,15 @@ class BatchApi
      *
      * Read a batch of tickets by internal ID, or unique property values
      *
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsync($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function readAsync($batch_read_input_simple_public_object_id, $archived = false)
     {
-        return $this->readAsyncWithHttpInfo($archived, $batch_read_input_simple_public_object_id)
+        return $this->readAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -828,16 +840,16 @@ class BatchApi
      *
      * Read a batch of tickets by internal ID, or unique property values
      *
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsyncWithHttpInfo($archived = false, $batch_read_input_simple_public_object_id = null)
+    public function readAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject';
-        $request = $this->readRequest($archived, $batch_read_input_simple_public_object_id);
+        $request = $this->readRequest($batch_read_input_simple_public_object_id, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -876,14 +888,20 @@ class BatchApi
     /**
      * Create request for operation 'read'
      *
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function readRequest($archived = false, $batch_read_input_simple_public_object_id = null)
+    protected function readRequest($batch_read_input_simple_public_object_id, $archived = false)
     {
+        // verify the required parameter 'batch_read_input_simple_public_object_id' is set
+        if ($batch_read_input_simple_public_object_id === null || (is_array($batch_read_input_simple_public_object_id) && count($batch_read_input_simple_public_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_read_input_simple_public_object_id when calling read'
+            );
+        }
 
         $resourcePath = '/crm/v3/objects/tickets/batch/read';
         $formParams = [];
@@ -979,13 +997,13 @@ class BatchApi
      *
      * Update a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (required)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error
+     * @return \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Tickets\Model\Error
      */
-    public function update($batch_input_simple_public_object_batch_input = null)
+    public function update($batch_input_simple_public_object_batch_input)
     {
         list($response) = $this->updateWithHttpInfo($batch_input_simple_public_object_batch_input);
         return $response;
@@ -996,13 +1014,13 @@ class BatchApi
      *
      * Update a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($batch_input_simple_public_object_batch_input = null)
+    public function updateWithHttpInfo($batch_input_simple_public_object_batch_input)
     {
         $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
@@ -1049,14 +1067,14 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1101,7 +1119,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1124,12 +1142,12 @@ class BatchApi
      *
      * Update a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($batch_input_simple_public_object_batch_input = null)
+    public function updateAsync($batch_input_simple_public_object_batch_input)
     {
         return $this->updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
             ->then(
@@ -1144,12 +1162,12 @@ class BatchApi
      *
      * Update a batch of tickets
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input = null)
+    public function updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
     {
         $returnType = '\HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject';
         $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
@@ -1191,13 +1209,19 @@ class BatchApi
     /**
      * Create request for operation 'update'
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (optional)
+     * @param  \HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRequest($batch_input_simple_public_object_batch_input = null)
+    protected function updateRequest($batch_input_simple_public_object_batch_input)
     {
+        // verify the required parameter 'batch_input_simple_public_object_batch_input' is set
+        if ($batch_input_simple_public_object_batch_input === null || (is_array($batch_input_simple_public_object_batch_input) && count($batch_input_simple_public_object_batch_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_simple_public_object_batch_input when calling update'
+            );
+        }
 
         $resourcePath = '/crm/v3/objects/tickets/batch/update';
         $formParams = [];

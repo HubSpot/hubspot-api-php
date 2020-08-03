@@ -57,13 +57,14 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'status' => 'string',
         'results' => '\HubSpot\Client\Crm\Properties\Model\Property[]',
         'num_errors' => 'int',
         'errors' => '\HubSpot\Client\Crm\Properties\Model\Error[]',
-        'status' => 'string',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime'
+        'completed_at' => '\DateTime',
+        'links' => 'map[string,string]'
     ];
 
     /**
@@ -72,13 +73,14 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'status' => null,
         'results' => null,
         'num_errors' => 'int32',
         'errors' => null,
-        'status' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time'
+        'completed_at' => 'date-time',
+        'links' => null
     ];
 
     /**
@@ -108,13 +110,14 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'status' => 'status',
         'results' => 'results',
         'num_errors' => 'numErrors',
         'errors' => 'errors',
-        'status' => 'status',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt'
+        'completed_at' => 'completedAt',
+        'links' => 'links'
     ];
 
     /**
@@ -123,13 +126,14 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'status' => 'setStatus',
         'results' => 'setResults',
         'num_errors' => 'setNumErrors',
         'errors' => 'setErrors',
-        'status' => 'setStatus',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt'
+        'completed_at' => 'setCompletedAt',
+        'links' => 'setLinks'
     ];
 
     /**
@@ -138,13 +142,14 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'status' => 'getStatus',
         'results' => 'getResults',
         'num_errors' => 'getNumErrors',
         'errors' => 'getErrors',
-        'status' => 'getStatus',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt'
+        'completed_at' => 'getCompletedAt',
+        'links' => 'getLinks'
     ];
 
     /**
@@ -226,13 +231,14 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['results'] = isset($data['results']) ? $data['results'] : null;
         $this->container['num_errors'] = isset($data['num_errors']) ? $data['num_errors'] : null;
         $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
         $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
         $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
     /**
@@ -244,12 +250,6 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -261,6 +261,9 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         if ($this->container['started_at'] === null) {
             $invalidProperties[] = "'started_at' can't be null";
         }
@@ -281,6 +284,39 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
 
     /**
      * Gets results
@@ -333,7 +369,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\Properties\Model\Error[]
+     * @return \HubSpot\Client\Crm\Properties\Model\Error[]|null
      */
     public function getErrors()
     {
@@ -343,46 +379,13 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Properties\Model\Error[] $errors errors
+     * @param \HubSpot\Client\Crm\Properties\Model\Error[]|null $errors errors
      *
      * @return $this
      */
     public function setErrors($errors)
     {
         $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
 
         return $this;
     }
@@ -455,6 +458,30 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess
     public function setCompletedAt($completed_at)
     {
         $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return map[string,string]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param map[string,string]|null $links links
+     *
+     * @return $this
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
 
         return $this;
     }

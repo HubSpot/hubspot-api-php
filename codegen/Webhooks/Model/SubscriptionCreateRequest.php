@@ -58,9 +58,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'active' => 'bool',
         'event_type' => 'string',
-        'property_name' => 'string'
+        'property_name' => 'string',
+        'active' => 'bool'
     ];
 
     /**
@@ -69,9 +69,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'active' => null,
         'event_type' => null,
-        'property_name' => null
+        'property_name' => null,
+        'active' => null
     ];
 
     /**
@@ -101,9 +101,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'active' => 'active',
         'event_type' => 'eventType',
-        'property_name' => 'propertyName'
+        'property_name' => 'propertyName',
+        'active' => 'active'
     ];
 
     /**
@@ -112,9 +112,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'active' => 'setActive',
         'event_type' => 'setEventType',
-        'property_name' => 'setPropertyName'
+        'property_name' => 'setPropertyName',
+        'active' => 'setActive'
     ];
 
     /**
@@ -123,9 +123,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'active' => 'getActive',
         'event_type' => 'getEventType',
-        'property_name' => 'getPropertyName'
+        'property_name' => 'getPropertyName',
+        'active' => 'getActive'
     ];
 
     /**
@@ -219,9 +219,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['active'] = isset($data['active']) ? $data['active'] : null;
         $this->container['event_type'] = isset($data['event_type']) ? $data['event_type'] : null;
         $this->container['property_name'] = isset($data['property_name']) ? $data['property_name'] : null;
+        $this->container['active'] = isset($data['active']) ? $data['active'] : false;
     }
 
     /**
@@ -258,30 +258,6 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return $this
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
-
-        return $this;
-    }
 
     /**
      * Gets event_type
@@ -336,6 +312,30 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess
     public function setPropertyName($property_name)
     {
         $this->container['property_name'] = $property_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool|null
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool|null $active Determines if the subscription is active or paused. Defaults to false.
+     *
+     * @return $this
+     */
+    public function setActive($active)
+    {
+        $this->container['active'] = $active;
 
         return $this;
     }

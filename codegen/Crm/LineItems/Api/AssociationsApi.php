@@ -416,7 +416,7 @@ class AssociationsApi
     /**
      * Operation create
      *
-     * Associate two line items
+     * Associate a line item with another object
      *
      * @param  string $line_item_id line_item_id (required)
      * @param  string $to_object_type to_object_type (required)
@@ -436,7 +436,7 @@ class AssociationsApi
     /**
      * Operation createWithHttpInfo
      *
-     * Associate two line items
+     * Associate a line item with another object
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)
@@ -547,7 +547,7 @@ class AssociationsApi
     /**
      * Operation createAsync
      *
-     * Associate two line items
+     * Associate a line item with another object
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)
@@ -570,7 +570,7 @@ class AssociationsApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Associate two line items
+     * Associate a line item with another object
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)

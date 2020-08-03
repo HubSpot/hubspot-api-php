@@ -66,7 +66,8 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
         'display_order' => 'int',
         'has_unique_value' => 'bool',
-        'hidden' => 'bool'
+        'hidden' => 'bool',
+        'form_field' => 'bool'
     ];
 
     /**
@@ -84,7 +85,8 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         'options' => null,
         'display_order' => 'int32',
         'has_unique_value' => null,
-        'hidden' => null
+        'hidden' => null,
+        'form_field' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         'options' => 'options',
         'display_order' => 'displayOrder',
         'has_unique_value' => 'hasUniqueValue',
-        'hidden' => 'hidden'
+        'hidden' => 'hidden',
+        'form_field' => 'formField'
     ];
 
     /**
@@ -141,7 +144,8 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         'options' => 'setOptions',
         'display_order' => 'setDisplayOrder',
         'has_unique_value' => 'setHasUniqueValue',
-        'hidden' => 'setHidden'
+        'hidden' => 'setHidden',
+        'form_field' => 'setFormField'
     ];
 
     /**
@@ -159,7 +163,8 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         'options' => 'getOptions',
         'display_order' => 'getDisplayOrder',
         'has_unique_value' => 'getHasUniqueValue',
-        'hidden' => 'getHidden'
+        'hidden' => 'getHidden',
+        'form_field' => 'getFormField'
     ];
 
     /**
@@ -282,6 +287,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess
         $this->container['display_order'] = isset($data['display_order']) ? $data['display_order'] : null;
         $this->container['has_unique_value'] = isset($data['has_unique_value']) ? $data['has_unique_value'] : null;
         $this->container['hidden'] = isset($data['hidden']) ? $data['hidden'] : null;
+        $this->container['form_field'] = isset($data['form_field']) ? $data['form_field'] : null;
     }
 
     /**
@@ -593,6 +599,30 @@ class PropertyCreate implements ModelInterface, ArrayAccess
     public function setHidden($hidden)
     {
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_field
+     *
+     * @return bool|null
+     */
+    public function getFormField()
+    {
+        return $this->container['form_field'];
+    }
+
+    /**
+     * Sets form_field
+     *
+     * @param bool|null $form_field Whether or not the property can be used in a HubSpot form.
+     *
+     * @return $this
+     */
+    public function setFormField($form_field)
+    {
+        $this->container['form_field'] = $form_field;
 
         return $this;
     }
