@@ -28,6 +28,17 @@ class AssociationRepository
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function findByCardId(string $cardId)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('select * from '.static::TABLE.' where card_id = ? ')
+        ;
+
+        $query->execute([$cardId]);
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function countByCardId(string $cardId)
     {
         $query = DBClientHelper::getClient()
