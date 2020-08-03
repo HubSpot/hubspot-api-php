@@ -7,6 +7,7 @@ return [
     '/trello/search',
     '/trello/delete-association',
     '/trello/search-frame-success',
+    '/trello/webhook',
     '/readme',
     '/mappings/boards',
     '/mappings/create-row',

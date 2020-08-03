@@ -18,6 +18,20 @@ class MappingsRepository
         $query->execute([$boardId, $listId, $pipelineId, $stageId]);
     }
 
+    public static function findOneByBoardListIdAndPipelineId(string $boardListId, string $pipelineId)
+    {
+        $query = DBClientHelper::getClient()
+            ->prepare('select * from '.static::TABLE.' where board_list_id = ? and pipeline_id = ? limit 1')
+        ;
+
+        $query->execute([
+            $boardListId,
+            $pipelineId,
+        ]);
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
     public static function findByBoardIdAndPipelineId(string $boardId, string $pipelineId)
     {
         $query = DBClientHelper::getClient()

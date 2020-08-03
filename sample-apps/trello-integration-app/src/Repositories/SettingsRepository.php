@@ -11,6 +11,7 @@ class SettingsRepository
 
     const HUBSPOT_TOKEN = 'HubSpotToken';
     const TRELLO_TOKEN = 'TrelloToken';
+    const INIT_URL = 'InitUrl';
 
     public static function getSettingData(string $name)
     {
