@@ -37,7 +37,7 @@ class WebhooksTrelloApi extends TrelloApi
         );
     }
 
-    protected static function getCallbackUrl()
+    public static function getCallbackUrl()
     {
         return UrlHelper::getUrl('/trello/webhook');
     }
