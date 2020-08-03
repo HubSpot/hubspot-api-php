@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
     <link rel="stylesheet" href="/css/main.css?<?php echo filemtime('./css/main.css'); ?>">
+    <link href="/favicon-32x32.webp" rel="shortcut icon">
+    <link href="/favicon-32x32.webp" rel="apple-touch-icon">
 </head>
 <body>
     <main class="wrapper">
@@ -16,6 +18,12 @@
                     <h3 class="title">HubSpot PHP Sample Trello Integration App</h3>
                 </a>
                 <ul class="navigation-list float-right">
+                    <li class="navigation-item">
+                        <a class="navigation-link" href="/mappings/boards">Mappings</a>
+                    </li>
+                    <li class="navigation-item">
+                        <a class="navigation-link" href="/readme">ReadMe</a>
+                    </li>
                     <li class="navigation-item">
                         <a class="navigation-link" href="/cards/init">Init</a>
                     </li>

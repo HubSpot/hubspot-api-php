@@ -4,6 +4,7 @@ use Helpers\DBClientHelper;
 use Helpers\OAuth2Helper;
 use Helpers\TrelloOAuth;
 use Helpers\UrlHelper;
+use Repositories\SettingsRepository;
 
 include_once '../../vendor/autoload.php';
 session_start();
@@ -30,9 +31,12 @@ try {
         }
     }
 
-    if (('/cards/init' !== $uri) && ($_SESSION['initUrl'] != UrlHelper::generateServerUri())) {
-        header('Location: /cards/init');
-        exit();
+    if (OAuth2Helper::isAuthenticated() && TrelloOAuth::isAuthenticated()) {
+        if (('/cards/init' !== $uri)
+                && (SettingsRepository::getSetting(SettingsRepository::INIT_URL) != UrlHelper::generateServerUri())) {
+            header('Location: /cards/init');
+            exit();
+        }
     }
 
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
