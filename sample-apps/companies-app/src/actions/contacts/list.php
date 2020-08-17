@@ -37,16 +37,14 @@ if (isset($_GET['search'])) {
 
 $associatedContacts = [];
 if (count($contactList->getResults()) > 0) {
-    $inputId = new BatchInputPublicObjectId(['inputs' => [$companyId]]);
 
-    $associationResponse = $hubSpot->crm()->associations()->batchApi()
-        ->read(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
-        ->getResults()
-    ;
+    $associationResponse = $hubSpot->crm()->companies()->associationsApi()
+        ->getAll($companyId, ObjectType::CONTACTS)->getResults();
+    
     if (!empty($associationResponse)) {
         $associatedContacts = array_map(function ($contact) {
             return $contact->getId();
-        }, $associationResponse[0]->getTo());
+        }, $associationResponse);
     }
 }
 include __DIR__.'/../../views/contacts/list.php';
