@@ -1,7 +1,6 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\Filter;
 use HubSpot\Client\Crm\Contacts\Model\FilterGroup;
 use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
@@ -37,10 +36,9 @@ if (isset($_GET['search'])) {
 
 $associatedContacts = [];
 if (count($contactList->getResults()) > 0) {
-
     $associationResponse = $hubSpot->crm()->companies()->associationsApi()
         ->getAll($companyId, ObjectType::CONTACTS)->getResults();
-    
+
     if (!empty($associationResponse)) {
         $associatedContacts = array_map(function ($contact) {
             return $contact->getId();

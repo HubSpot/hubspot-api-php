@@ -9,10 +9,10 @@ class Config
     const API_KEY_IDENTIFIER = 'hapikey';
 
     /** @var string */
-    protected $apiKey = null;
+    protected $apiKey;
 
     /** @var string */
-    protected $accessToken = null;
+    protected $accessToken;
 
     /** @var string */
     protected $userAgent;
@@ -33,7 +33,7 @@ class Config
     {
         /** @var Configuration $clientConfig */
         $clientConfig = new $clientConfigClassName();
-        
+
         $clientConfig->setApiKey(static::API_KEY_IDENTIFIER, $this->apiKey);
         $clientConfig->setAccessToken($this->accessToken);
 

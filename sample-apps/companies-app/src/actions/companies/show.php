@@ -39,9 +39,10 @@ if (!empty($contactsIds)) {
             return (new SimplePublicObjectId())->setId($objectId->getId());
         }, array_slice($contactsIds, 0, 20))
     );
-        
+
     $contactsList = $hubSpot->crm()->contacts()->batchApi()
-        ->read($contactsIdsRequest);
+        ->read($contactsIdsRequest)
+    ;
 
     $contacts = array_map(function ($contact) {
         return [
