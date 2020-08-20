@@ -41,7 +41,7 @@ foreach ($_POST['contactIds'] as $id) {
 $request = new BatchReadInputSimplePublicObjectId();
 $request->setInputs($ids);
 
-$contacts = $hubSpot->crm()->contacts()->batchApi()->read(false, $request);
+$contacts = $hubSpot->crm()->contacts()->batchApi()->read($request);
 
 foreach ($contacts->getResults() as $contact) {
     $sendInvitationAndCreateTimelineEvent($invitation, $contact->getProperties()['email']);

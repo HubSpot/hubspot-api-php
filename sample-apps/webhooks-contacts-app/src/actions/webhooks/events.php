@@ -27,7 +27,7 @@ if (count($contactsIds) > 0) {
         return $contactId;
     }, $contactsIds));
 
-    $response = $hubSpot->crm()->contacts()->batchApi()->read(false, $request);
+    $response = $hubSpot->crm()->contacts()->batchApi()->read($request);
 
     $names = [];
     if (!empty($response->getResults())) {
