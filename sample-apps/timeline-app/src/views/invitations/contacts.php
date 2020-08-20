@@ -43,7 +43,7 @@ $hubSpot->crm()->contacts()->basicApi()->getPage()
 <?php }
 if (count($contacts->getResults()) > 0) {
     ?>
-<form method="post" action="/invitations/send.php?id=<?php echo $_GET['id']; ?>">
+<form method="post" action="/invitations/send?id=<?php echo $_GET['id']; ?>">
     <table class="contacts-list">
         <thead>
             <tr>

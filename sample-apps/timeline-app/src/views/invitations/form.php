@@ -15,7 +15,7 @@ include __DIR__.'/../_partials/header.php';
     <label for="text">Event Url</label>
     <textarea type="url" required placeholder="https://example-event.com" id="event_url" name="event_url"><?php echo $invitation['event_url']; ?></textarea>
     <input id="save" class="button-primary" type="submit" value="Save">
-    <a id='cancel' class="button" href="/invitations/list.php">Cansel</a>
+    <a id='cancel' class="button" href="/invitations/list">Cancel</a>
 </fieldset>
 </form>
 

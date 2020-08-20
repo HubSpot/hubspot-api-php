@@ -41,10 +41,10 @@ foreach ($_POST['contactIds'] as $id) {
 $request = new BatchReadInputSimplePublicObjectId();
 $request->setInputs($ids);
 
-$contacts = $hubSpot->crm()->contacts()->batchApi()->read(false, $request);
+$contacts = $hubSpot->crm()->contacts()->batchApi()->read($request);
 
 foreach ($contacts->getResults() as $contact) {
     $sendInvitationAndCreateTimelineEvent($invitation, $contact->getProperties()['email']);
 }
 
-header('Location: /invitations/contacts.php?send=true&id='.$_GET['id']);
+header('Location: /invitations/contacts?send=true&id='.$_GET['id']);

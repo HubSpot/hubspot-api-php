@@ -5,7 +5,7 @@ use HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!array_key_exists('template_id', $_GET) || !array_key_exists('name', $_GET)) {
-    header('Location: /templates/list.php');
+    header('Location: /templates/list');
 }
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
@@ -21,7 +21,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         )
     ;
 
-    header('Location: /templates/show.php?id='.$_GET['template_id']);
+    header('Location: /templates/show?id='.$_GET['template_id']);
 }
 
 $template = $hubSpot->crm()->timeline()->templatesApi()->getById(

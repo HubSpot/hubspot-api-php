@@ -33,8 +33,8 @@ $hubSpot->crm()->timeline()->templatesApi()
             </tbody>
         </table>
         <div>
-            <a id='template-update' class="button" href="/templates/update.php?id=<?php echo $template->getId(); ?>">Update</a>
-            <a id='template-delete' class="button" href="/templates/delete.php?id=<?php echo $template->getId(); ?>">Delete</a>
+            <a id='template-update' class="button" href="/templates/update?id=<?php echo $template->getId(); ?>">Update</a>
+            <a id='template-delete' class="button" href="/templates/delete?id=<?php echo $template->getId(); ?>">Delete</a>
         </div>
         <pre>
 // src/actions/templates/delete.php

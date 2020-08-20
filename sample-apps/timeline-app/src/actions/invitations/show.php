@@ -3,7 +3,7 @@
 use Repositories\InvitationsRepository;
 
 if (!array_key_exists('id', $_GET)) {
-    header('Location: /invitations/list.php');
+    header('Location: /invitations/list');
 }
 
 $invitation = InvitationsRepository::getById($_GET['id']);

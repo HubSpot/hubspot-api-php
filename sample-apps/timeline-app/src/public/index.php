@@ -10,7 +10,7 @@ require_once '../../vendor/autoload.php';
 session_start();
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-//try {
+try {
     DBClientHelper::runMigrations();
 
     $publicRoutes = require '../routes/public.php';
@@ -18,15 +18,15 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
     if (!in_array($uri, $publicRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
         } elseif (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)
                 || !EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::USER_INVITATION_ACTION)) {
-            header('Location: /events/init.php');
+            header('Location: /events/init');
         }
     }
 
     if ('/' === $uri) {
-        header('Location: /telegram/link.php');
+        header('Location: /telegram/link');
         exit();
     }
 
@@ -35,10 +35,10 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
     require $path;
-//} catch (Throwable $throwable) {
-//    $message = $throwable->getMessage();
-//    include __DIR__.'/../views/error.php';
-//    exit();
-//}
+} catch (Throwable $throwable) {
+    $message = $throwable->getMessage();
+    include __DIR__.'/../views/error.php';
+    exit();
+}

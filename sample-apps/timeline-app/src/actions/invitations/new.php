@@ -11,7 +11,7 @@ $invitation = [
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
     InvitationsRepository::insert($invitation);
 
-    header('Location: /invitations/list.php');
+    header('Location: /invitations/list');
 }
 
 include __DIR__.'/../../views/invitations/form.php';

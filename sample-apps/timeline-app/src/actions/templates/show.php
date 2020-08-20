@@ -4,7 +4,7 @@ use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!array_key_exists('id', $_GET)) {
-    header('Location: /templates/list.php');
+    header('Location: /templates/list');
 }
 
 $template = $hubSpot->crm()->timeline()->templatesApi()

@@ -32,6 +32,12 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 The best way to run this project (with the least configuration), is using docker compose.  Change to the webroot and start it
 
 ```bash
-docker-compose up --build
+docker-compose up -d --build
 ```
 You should now be able to navigate to [http://localhost:8999](http://localhost:8999) and use the application.
+Firstly you will need to authorize via OAuth there.
+Than you can to go to the terminal window and start the following command in the application root
+
+```bash
+docker-compose exec web php /app/src/console/example.php
+```

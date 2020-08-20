@@ -1,8 +1,6 @@
 <?php
 
 use Helpers\HubspotClientHelper;
-use HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId;
-use HubSpot\Client\Crm\Companies\Model\CollectionResponseSimplePublicObjectId;
 use HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput;
 use HubSpot\Client\Crm\Contacts\Model\BatchReadInputSimplePublicObjectId;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId;
@@ -16,12 +14,11 @@ $id = $_GET['id'];
 
 $hubSpot = HubspotClientHelper::createFactory();
 
-$company = new SimplePublicObjectInput([
-    'name' => null,
-    'domain' => null,
-]);
-
 if (isset($_POST['name'])) {
+    $company = new SimplePublicObjectInput([
+        'name' => null,
+        'domain' => null,
+    ]);
     $company->setProperties($_POST);
     $hubSpot->crm()->companies()->basicApi()->update($id, $company);
 
@@ -30,15 +27,9 @@ if (isset($_POST['name'])) {
 }
 
 $company = $hubSpot->crm()->companies()->basicApi()->getById($id);
-/**
- * @var CollectionResponseSimplePublicObjectId
- */
-$inputId = new BatchInputPublicObjectId();
-$inputId->setInputs([$id]);
-$contactsIds = $hubSpot->crm()->associations()->batchApi()
-    ->read(ObjectType::COMPANIES, ObjectType::CONTACTS, $inputId)
-    ->getResults()
-;
+
+$contactsIds = $hubSpot->crm()->companies()->associationsApi()
+    ->getAll($id, ObjectType::CONTACTS)->getResults();
 
 $contacts = [];
 if (!empty($contactsIds)) {
@@ -46,11 +37,11 @@ if (!empty($contactsIds)) {
     $contactsIdsRequest->setInputs(
         array_map(function ($objectId) {
             return (new SimplePublicObjectId())->setId($objectId->getId());
-        }, $contactsIds[0]->getTo())
+        }, array_slice($contactsIds, 0, 20))
     );
 
     $contactsList = $hubSpot->crm()->contacts()->batchApi()
-        ->read(false, $contactsIdsRequest)
+        ->read($contactsIdsRequest)
     ;
 
     $contacts = array_map(function ($contact) {
