@@ -28,11 +28,12 @@ if (!EventTypesRepository::getHubspotEventIDByCode(EventTypeCode::BOT_ADDED)) {
     $botAddedRequest->setHeaderTemplate('# Telegram Bot added');
     $botAddedRequest->setDetailTemplate('This event happened on {{#formatDate timestamp}}{{/formatDate}}');
     $botAddedRequest->setObjectType(ObjectType::CONTACTS);
+    $botAddedRequest->setTokens([]);
 
     $botAdded = $hubSpot->crm()->timeline()->templatesApi()
         ->create($appId, $botAddedRequest)
     ;
-
+    
     if ($botAdded instanceof TimelineEventTemplate) {
         EventTypesRepository::insert([
             'code' => EventTypeCode::BOT_ADDED,

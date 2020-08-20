@@ -7,7 +7,7 @@ use HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest;
 use Telegram\TelegramBot;
 
 if (!array_key_exists('id', $_GET)) {
-    header('Location: /invitations/list.php');
+    header('Location: /invitations/list');
 }
 
 TelegramBot::init();

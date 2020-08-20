@@ -17,16 +17,16 @@
             </a>
             <ul class="navigation-list float-right">
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/telegram/link.php">Manage Telegram Bot Invites </a>
+                    <a class="navigation-link" href="/telegram/link">Manage Telegram Bot Invites </a>
                 </li>
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/templates/list.php">Manage Event Templates</a>
+                    <a class="navigation-link" href="/templates/list">Manage Event Templates</a>
                 </li>
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/invitations/list.php">Manage Invitations</a>
+                    <a class="navigation-link" href="/invitations/list">Manage Invitations</a>
                 </li>
                 <li class="navigation-item">
-                    <a class="navigation-link" href="/oauth/login.php">OAuth2</a>
+                    <a class="navigation-link" href="/oauth/login">OAuth2</a>
                 </li>
             </ul>
         </div>

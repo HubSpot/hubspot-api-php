@@ -15,8 +15,8 @@ if (count($template->getTokens()) > 0) {
             <td><?php echo $property->getName(); ?></td>
             <td><?php echo htmlentities($property->getLabel()); ?></td>
             <td>
-                <a class="button" href="/templates/properties/update.php?template_id=<?php echo $template->getId(); ?>&name=<?php echo $property->getName(); ?>">Update</a>
-                <a class="button" href="/templates/properties/delete.php?template_id=<?php echo $template->getId(); ?>&name=<?php echo $property->getName(); ?>">Delete</a>
+                <a class="button" href="/templates/properties/update?template_id=<?php echo $template->getId(); ?>&name=<?php echo $property->getName(); ?>">Update</a>
+                <a class="button" href="/templates/properties/delete?template_id=<?php echo $template->getId(); ?>&name=<?php echo $property->getName(); ?>">Delete</a>
             </td>
         </tr>
     <?php } ?>
@@ -27,7 +27,7 @@ if (count($template->getTokens()) > 0) {
     <h4>This template have no properties</h4>
 <?php } ?>
 <div>
-    <a id='type-new' class="button" href="/templates/properties/new.php?id=<?php echo $template->getId(); ?>">New property</a>
+    <a id='type-new' class="button" href="/templates/properties/new?id=<?php echo $template->getId(); ?>">New property</a>
 </div>
 <pre>
 // src/actions/templates/properties/delete.php

@@ -47,4 +47,4 @@ foreach ($contacts->getResults() as $contact) {
     $sendInvitationAndCreateTimelineEvent($invitation, $contact->getProperties()['email']);
 }
 
-header('Location: /invitations/contacts.php?send=true&id='.$_GET['id']);
+header('Location: /invitations/contacts?send=true&id='.$_GET['id']);

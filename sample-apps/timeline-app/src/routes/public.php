@@ -1,8 +1,8 @@
 <?php
 
 return [
-    '/events/init.php',
-    '/oauth/login.php',
-    '/oauth/authorize.php',
-    '/oauth/callback.php',
+    '/events/init',
+    '/oauth/login',
+    '/oauth/authorize',
+    '/oauth/callback',
 ];

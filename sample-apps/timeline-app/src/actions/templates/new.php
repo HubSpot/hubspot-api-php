@@ -19,7 +19,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         )
     ;
 
-    header('Location: /templates/show.php?id='.$response->getId());
+    header('Location: /templates/show?id='.$response->getId());
 }
 
 include __DIR__.'/../../views/templates/form.php';

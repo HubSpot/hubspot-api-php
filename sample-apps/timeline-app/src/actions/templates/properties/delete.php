@@ -4,7 +4,7 @@ use Helpers\HubspotClientHelper;
 
 $hubSpot = HubspotClientHelper::createFactoryWithDeveloperAPIKey();
 if (!array_key_exists('template_id', $_GET) || !array_key_exists('name', $_GET)) {
-    header('Location: /templates/list.php');
+    header('Location: /templates/list');
 }
 
 $response = $hubSpot->crm()->timeline()->tokensApi()
@@ -15,4 +15,4 @@ $response = $hubSpot->crm()->timeline()->tokensApi()
     )
 ;
 
-header('Location: /templates/show.php?id='.$_GET['template_id']);
+header('Location: /templates/show?id='.$_GET['template_id']);

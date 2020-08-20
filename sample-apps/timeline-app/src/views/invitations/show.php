@@ -19,9 +19,9 @@ include __DIR__.'/../_partials/header.php';
             </tbody>
         </table>
         <div>
-            <a id='invitation-update' class="button" href="/invitations/update.php?id=<?php echo $invitation['id']; ?>">Update</a>
-            <a id='invitation-delete' class="button" href="/invitations/delete.php?id=<?php echo $invitation['id']; ?>">Delete</a>
-            <a id='invitation-delete' class="button" href="/invitations/list.php">List</a>
+            <a id='invitation-update' class="button" href="/invitations/update?id=<?php echo $invitation['id']; ?>">Update</a>
+            <a id='invitation-delete' class="button" href="/invitations/delete?id=<?php echo $invitation['id']; ?>">Delete</a>
+            <a id='invitation-delete' class="button" href="/invitations/list">List</a>
         </div>
     </div>
 </div>
