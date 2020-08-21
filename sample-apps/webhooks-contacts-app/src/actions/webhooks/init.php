@@ -16,6 +16,7 @@ $webhooksClient = HubspotClientHelper::createFactoryWithDeveloperAPIKey()
 ;
 
 $appId = getEnvOrException('HUBSPOT_APPLICATION_ID');
+$appUrl = UrlHelper::generateServerUri().'/webhooks/handle.php';
 
 $subscriptions = $webhooksClient->subscriptionsApi()->getAll($appId);
 
@@ -25,7 +26,7 @@ $necessarySubscriptions = WebhooksHelper::getNecessarySubscriptions($subscriptio
 WebhooksHelper::updateSubscriptions($appId, $activeSubscriptions, false);
 
 $request = new SettingsChangeRequest();
-$request->setTargetUrl(UrlHelper::generateServerUri().'/webhooks/handle.php');
+$request->setTargetUrl($appUrl);
 
 $response = $webhooksClient->settingsApi()
     ->configure($appId, $request)
