@@ -16,7 +16,7 @@ class TimelineEventHelper
         $request->setId(uniqid());
         $request->setEmail(UsersRepository::getEmailByTelegramChatId($telegramChatId));
         $request->setEventTemplateId(EventTypesRepository::getHubspotEventIDByCode($eventTypeCode));
-        
+
         if (!empty($tokens)) {
             $request->setTokens($tokens);
         }
