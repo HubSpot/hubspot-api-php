@@ -9,11 +9,12 @@ class WebhooksHelper
 {
     public static function create(string $cardId)
     {
-        $webhook = WebhooksTrelloApi::create($cardId);
+        if (empty(WebhooksRepository::findOneByCardId($cardId))) {
+            
+            $webhook = WebhooksTrelloApi::create($cardId);
 
-        WebhooksRepository::insert($cardId, $webhook->id);
-
-        return $webhook;
+            WebhooksRepository::insert($cardId, $webhook->id);
+        }
     }
 
     public static function update(int $id, string $cardId, string $webhookId)
