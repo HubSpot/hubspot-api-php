@@ -33,12 +33,9 @@ class Config
     {
         /** @var Configuration $clientConfig */
         $clientConfig = new $clientConfigClassName();
-        if (null !== $this->apiKey) {
-            $clientConfig->setApiKey(static::API_KEY_IDENTIFIER, $this->apiKey);
-        }
-        if (null !== $this->accessToken) {
-            $clientConfig->setAccessToken($this->accessToken);
-        }
+
+        $clientConfig->setApiKey(static::API_KEY_IDENTIFIER, $this->apiKey);
+        $clientConfig->setAccessToken($this->accessToken);
 
         $clientConfig->setUserAgent($this->userAgent);
 
