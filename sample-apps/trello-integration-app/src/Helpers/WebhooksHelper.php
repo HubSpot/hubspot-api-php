@@ -10,7 +10,6 @@ class WebhooksHelper
     public static function create(string $cardId)
     {
         if (empty(WebhooksRepository::findOneByCardId($cardId))) {
-            
             $webhook = WebhooksTrelloApi::create($cardId);
 
             WebhooksRepository::insert($cardId, $webhook->id);
