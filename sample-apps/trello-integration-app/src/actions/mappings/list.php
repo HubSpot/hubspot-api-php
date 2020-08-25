@@ -19,10 +19,4 @@ $pipeline = HubspotClientHelper::createFactory()
 
 $mappings = MappingsRepository::findByBoardIdAndPipelineId($boardId, $pipelineId);
 
-$row = [
-    'id' => null,
-    'board_list_id' => null,
-    'pipeline_stage_id' => null,
-];
-
 include __DIR__.'/../../views/mappings/list.php';
