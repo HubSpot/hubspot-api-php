@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -58,7 +58,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'event_template_id' => 'string',
         'email' => 'string',
         'object_id' => 'string',
@@ -67,7 +66,8 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         'timestamp' => '\DateTime',
         'tokens' => 'map[string,string]',
         'extra_data' => 'object',
-        'timeline_i_frame' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventIFrame'
+        'timeline_i_frame' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventIFrame',
+        'id' => 'string'
     ];
 
     /**
@@ -76,7 +76,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'event_template_id' => null,
         'email' => null,
         'object_id' => null,
@@ -85,7 +84,8 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         'timestamp' => 'date-time',
         'tokens' => null,
         'extra_data' => null,
-        'timeline_i_frame' => null
+        'timeline_i_frame' => null,
+        'id' => null
     ];
 
     /**
@@ -115,7 +115,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'event_template_id' => 'eventTemplateId',
         'email' => 'email',
         'object_id' => 'objectId',
@@ -124,7 +123,8 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         'timestamp' => 'timestamp',
         'tokens' => 'tokens',
         'extra_data' => 'extraData',
-        'timeline_i_frame' => 'timelineIFrame'
+        'timeline_i_frame' => 'timelineIFrame',
+        'id' => 'id'
     ];
 
     /**
@@ -133,7 +133,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'event_template_id' => 'setEventTemplateId',
         'email' => 'setEmail',
         'object_id' => 'setObjectId',
@@ -142,7 +141,8 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         'timestamp' => 'setTimestamp',
         'tokens' => 'setTokens',
         'extra_data' => 'setExtraData',
-        'timeline_i_frame' => 'setTimelineIFrame'
+        'timeline_i_frame' => 'setTimelineIFrame',
+        'id' => 'setId'
     ];
 
     /**
@@ -151,7 +151,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'event_template_id' => 'getEventTemplateId',
         'email' => 'getEmail',
         'object_id' => 'getObjectId',
@@ -160,7 +159,8 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         'timestamp' => 'getTimestamp',
         'tokens' => 'getTokens',
         'extra_data' => 'getExtraData',
-        'timeline_i_frame' => 'getTimelineIFrame'
+        'timeline_i_frame' => 'getTimelineIFrame',
+        'id' => 'getId'
     ];
 
     /**
@@ -223,7 +223,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['event_template_id'] = isset($data['event_template_id']) ? $data['event_template_id'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['object_id'] = isset($data['object_id']) ? $data['object_id'] : null;
@@ -233,6 +232,7 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         $this->container['tokens'] = isset($data['tokens']) ? $data['tokens'] : null;
         $this->container['extra_data'] = isset($data['extra_data']) ? $data['extra_data'] : null;
         $this->container['timeline_i_frame'] = isset($data['timeline_i_frame']) ? $data['timeline_i_frame'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -244,14 +244,14 @@ class TimelineEvent implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['event_template_id'] === null) {
             $invalidProperties[] = "'event_template_id' can't be null";
         }
         if ($this->container['tokens'] === null) {
             $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -267,30 +267,6 @@ class TimelineEvent implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets event_template_id
@@ -504,6 +480,30 @@ class TimelineEvent implements ModelInterface, ArrayAccess
     public function setTimelineIFrame($timeline_i_frame)
     {
         $this->container['timeline_i_frame'] = $timeline_i_frame;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

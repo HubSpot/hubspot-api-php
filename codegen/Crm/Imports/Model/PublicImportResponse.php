@@ -58,11 +58,12 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_at' => '\DateTime',
-        'metadata' => '\HubSpot\Client\Crm\Imports\Model\PublicImportMetadata',
-        'updated_at' => '\DateTime',
         'state' => 'string',
         'import_request_json' => 'object',
+        'created_at' => '\DateTime',
+        'metadata' => '\HubSpot\Client\Crm\Imports\Model\PublicImportMetadata',
+        'import_name' => 'string',
+        'updated_at' => '\DateTime',
         'opt_out_import' => 'bool',
         'id' => 'string'
     ];
@@ -73,11 +74,12 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'created_at' => 'date-time',
-        'metadata' => null,
-        'updated_at' => 'date-time',
         'state' => null,
         'import_request_json' => null,
+        'created_at' => 'date-time',
+        'metadata' => null,
+        'import_name' => null,
+        'updated_at' => 'date-time',
         'opt_out_import' => null,
         'id' => null
     ];
@@ -109,11 +111,12 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'createdAt',
-        'metadata' => 'metadata',
-        'updated_at' => 'updatedAt',
         'state' => 'state',
         'import_request_json' => 'importRequestJson',
+        'created_at' => 'createdAt',
+        'metadata' => 'metadata',
+        'import_name' => 'importName',
+        'updated_at' => 'updatedAt',
         'opt_out_import' => 'optOutImport',
         'id' => 'id'
     ];
@@ -124,11 +127,12 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'metadata' => 'setMetadata',
-        'updated_at' => 'setUpdatedAt',
         'state' => 'setState',
         'import_request_json' => 'setImportRequestJson',
+        'created_at' => 'setCreatedAt',
+        'metadata' => 'setMetadata',
+        'import_name' => 'setImportName',
+        'updated_at' => 'setUpdatedAt',
         'opt_out_import' => 'setOptOutImport',
         'id' => 'setId'
     ];
@@ -139,11 +143,12 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'metadata' => 'getMetadata',
-        'updated_at' => 'getUpdatedAt',
         'state' => 'getState',
         'import_request_json' => 'getImportRequestJson',
+        'created_at' => 'getCreatedAt',
+        'metadata' => 'getMetadata',
+        'import_name' => 'getImportName',
+        'updated_at' => 'getUpdatedAt',
         'opt_out_import' => 'getOptOutImport',
         'id' => 'getId'
     ];
@@ -229,11 +234,12 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         $this->container['import_request_json'] = isset($data['import_request_json']) ? $data['import_request_json'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
+        $this->container['import_name'] = isset($data['import_name']) ? $data['import_name'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['opt_out_import'] = isset($data['opt_out_import']) ? $data['opt_out_import'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
@@ -247,15 +253,6 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['metadata'] === null) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
@@ -267,6 +264,15 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         if ($this->container['opt_out_import'] === null) {
             $invalidProperties[] = "'opt_out_import' can't be null";
         }
@@ -287,78 +293,6 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return \HubSpot\Client\Crm\Imports\Model\PublicImportMetadata
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param \HubSpot\Client\Crm\Imports\Model\PublicImportMetadata $metadata metadata
-     *
-     * @return $this
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
 
     /**
      * Gets state
@@ -413,6 +347,102 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
     public function setImportRequestJson($import_request_json)
     {
         $this->container['import_request_json'] = $import_request_json;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \HubSpot\Client\Crm\Imports\Model\PublicImportMetadata
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \HubSpot\Client\Crm\Imports\Model\PublicImportMetadata $metadata metadata
+     *
+     * @return $this
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets import_name
+     *
+     * @return string|null
+     */
+    public function getImportName()
+    {
+        return $this->container['import_name'];
+    }
+
+    /**
+     * Sets import_name
+     *
+     * @param string|null $import_name import_name
+     *
+     * @return $this
+     */
+    public function setImportName($import_name)
+    {
+        $this->container['import_name'] = $import_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

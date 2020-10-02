@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -58,14 +58,14 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'object_type' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'name' => 'string',
         'header_template' => 'string',
         'detail_template' => 'string',
-        'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]'
+        'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]',
+        'id' => 'string',
+        'object_type' => 'string',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -74,14 +74,14 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'object_type' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
         'name' => null,
         'header_template' => null,
         'detail_template' => null,
-        'tokens' => null
+        'tokens' => null,
+        'id' => null,
+        'object_type' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -111,14 +111,14 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'object_type' => 'objectType',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
         'name' => 'name',
         'header_template' => 'headerTemplate',
         'detail_template' => 'detailTemplate',
-        'tokens' => 'tokens'
+        'tokens' => 'tokens',
+        'id' => 'id',
+        'object_type' => 'objectType',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -127,14 +127,14 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'object_type' => 'setObjectType',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
         'name' => 'setName',
         'header_template' => 'setHeaderTemplate',
         'detail_template' => 'setDetailTemplate',
-        'tokens' => 'setTokens'
+        'tokens' => 'setTokens',
+        'id' => 'setId',
+        'object_type' => 'setObjectType',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -143,14 +143,14 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'object_type' => 'getObjectType',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
         'name' => 'getName',
         'header_template' => 'getHeaderTemplate',
         'detail_template' => 'getDetailTemplate',
-        'tokens' => 'getTokens'
+        'tokens' => 'getTokens',
+        'id' => 'getId',
+        'object_type' => 'getObjectType',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -213,14 +213,14 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['object_type'] = isset($data['object_type']) ? $data['object_type'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['header_template'] = isset($data['header_template']) ? $data['header_template'] : null;
         $this->container['detail_template'] = isset($data['detail_template']) ? $data['detail_template'] : null;
         $this->container['tokens'] = isset($data['tokens']) ? $data['tokens'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['object_type'] = isset($data['object_type']) ? $data['object_type'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
     }
 
     /**
@@ -232,17 +232,17 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['object_type'] === null) {
-            $invalidProperties[] = "'object_type' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['tokens'] === null) {
             $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['object_type'] === null) {
+            $invalidProperties[] = "'object_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -258,102 +258,6 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The template ID.
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_type
-     *
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->container['object_type'];
-    }
-
-    /**
-     * Sets object_type
-     *
-     * @param string $object_type The type of CRM object you want this template applicable for. Currently we support [contacts, companies, deals].
-     *
-     * @return $this
-     */
-    public function setObjectType($object_type)
-    {
-        $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at The date and time that the Event Template was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
-     *
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at The date and time that the Event Template was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
-     *
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -447,6 +351,102 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
     public function setTokens($tokens)
     {
         $this->container['tokens'] = $tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The template ID.
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type
+     *
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->container['object_type'];
+    }
+
+    /**
+     * Sets object_type
+     *
+     * @param string $object_type The type of CRM object you want this template applicable for. Currently we support [contacts, companies, tickets, deals].
+     *
+     * @return $this
+     */
+    public function setObjectType($object_type)
+    {
+        $this->container['object_type'] = $object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at The date and time that the Event Template was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at The date and time that the Event Template was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
+     *
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

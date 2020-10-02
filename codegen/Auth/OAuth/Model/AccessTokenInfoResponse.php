@@ -61,6 +61,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => 'string',
         'hub_domain' => 'string',
         'scopes' => 'string[]',
+        'scope_to_scope_group_pks' => 'int[]',
         'hub_id' => 'int',
         'app_id' => 'int',
         'expires_in' => 'int',
@@ -78,6 +79,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => null,
         'hub_domain' => null,
         'scopes' => null,
+        'scope_to_scope_group_pks' => 'int32',
         'hub_id' => 'int32',
         'app_id' => 'int32',
         'expires_in' => 'int32',
@@ -116,6 +118,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => 'user',
         'hub_domain' => 'hub_domain',
         'scopes' => 'scopes',
+        'scope_to_scope_group_pks' => 'scope_to_scope_group_pks',
         'hub_id' => 'hub_id',
         'app_id' => 'app_id',
         'expires_in' => 'expires_in',
@@ -133,6 +136,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => 'setUser',
         'hub_domain' => 'setHubDomain',
         'scopes' => 'setScopes',
+        'scope_to_scope_group_pks' => 'setScopeToScopeGroupPks',
         'hub_id' => 'setHubId',
         'app_id' => 'setAppId',
         'expires_in' => 'setExpiresIn',
@@ -150,6 +154,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         'user' => 'getUser',
         'hub_domain' => 'getHubDomain',
         'scopes' => 'getScopes',
+        'scope_to_scope_group_pks' => 'getScopeToScopeGroupPks',
         'hub_id' => 'getHubId',
         'app_id' => 'getAppId',
         'expires_in' => 'getExpiresIn',
@@ -221,6 +226,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
         $this->container['hub_domain'] = isset($data['hub_domain']) ? $data['hub_domain'] : null;
         $this->container['scopes'] = isset($data['scopes']) ? $data['scopes'] : null;
+        $this->container['scope_to_scope_group_pks'] = isset($data['scope_to_scope_group_pks']) ? $data['scope_to_scope_group_pks'] : null;
         $this->container['hub_id'] = isset($data['hub_id']) ? $data['hub_id'] : null;
         $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
         $this->container['expires_in'] = isset($data['expires_in']) ? $data['expires_in'] : null;
@@ -242,6 +248,9 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
         }
         if ($this->container['scopes'] === null) {
             $invalidProperties[] = "'scopes' can't be null";
+        }
+        if ($this->container['scope_to_scope_group_pks'] === null) {
+            $invalidProperties[] = "'scope_to_scope_group_pks' can't be null";
         }
         if ($this->container['hub_id'] === null) {
             $invalidProperties[] = "'hub_id' can't be null";
@@ -365,6 +374,30 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess
     public function setScopes($scopes)
     {
         $this->container['scopes'] = $scopes;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope_to_scope_group_pks
+     *
+     * @return int[]
+     */
+    public function getScopeToScopeGroupPks()
+    {
+        return $this->container['scope_to_scope_group_pks'];
+    }
+
+    /**
+     * Sets scope_to_scope_group_pks
+     *
+     * @param int[] $scope_to_scope_group_pks scope_to_scope_group_pks
+     *
+     * @return $this
+     */
+    public function setScopeToScopeGroupPks($scope_to_scope_group_pks)
+    {
+        $this->container['scope_to_scope_group_pks'] = $scope_to_scope_group_pks;
 
         return $this;
     }

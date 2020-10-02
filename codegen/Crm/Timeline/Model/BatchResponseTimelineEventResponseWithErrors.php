@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchResponseTimelineEventResponse
+ * BatchResponseTimelineEventResponseWithErrors
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
 
 /**
- * BatchResponseTimelineEventResponse Class Doc Comment
+ * BatchResponseTimelineEventResponseWithErrors Class Doc Comment
  *
  * @category Class
- * @description The state of the batch event request.
  * @package  HubSpot\Client\Crm\Timeline
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
+class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponseTimelineEventResponse';
+    protected static $openAPIModelName = 'BatchResponseTimelineEventResponseWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,6 +59,8 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'status' => 'string',
         'results' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]',
+        'num_errors' => 'int',
+        'errors' => '\HubSpot\Client\Crm\Timeline\Model\Error[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
         'completed_at' => '\DateTime',
@@ -74,6 +75,8 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'status' => null,
         'results' => null,
+        'num_errors' => 'int32',
+        'errors' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
         'completed_at' => 'date-time',
@@ -109,6 +112,8 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'status' => 'status',
         'results' => 'results',
+        'num_errors' => 'numErrors',
+        'errors' => 'errors',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
         'completed_at' => 'completedAt',
@@ -123,6 +128,8 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     protected static $setters = [
         'status' => 'setStatus',
         'results' => 'setResults',
+        'num_errors' => 'setNumErrors',
+        'errors' => 'setErrors',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
         'completed_at' => 'setCompletedAt',
@@ -137,6 +144,8 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     protected static $getters = [
         'status' => 'getStatus',
         'results' => 'getResults',
+        'num_errors' => 'getNumErrors',
+        'errors' => 'getErrors',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
         'completed_at' => 'getCompletedAt',
@@ -224,6 +233,8 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     {
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['results'] = isset($data['results']) ? $data['results'] : null;
+        $this->container['num_errors'] = isset($data['num_errors']) ? $data['num_errors'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
         $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
         $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
         $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
@@ -287,7 +298,7 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status The status of the batch response. Should always be COMPLETED if processed.
+     * @param string $status status
      *
      * @return $this
      */
@@ -320,13 +331,61 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[] $results Successfully created events.
+     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[] $results results
      *
      * @return $this
      */
     public function setResults($results)
     {
         $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_errors
+     *
+     * @return int|null
+     */
+    public function getNumErrors()
+    {
+        return $this->container['num_errors'];
+    }
+
+    /**
+     * Sets num_errors
+     *
+     * @param int|null $num_errors num_errors
+     *
+     * @return $this
+     */
+    public function setNumErrors($num_errors)
+    {
+        $this->container['num_errors'] = $num_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Crm\Timeline\Model\Error[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Crm\Timeline\Model\Error[]|null $errors errors
+     *
+     * @return $this
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -344,7 +403,7 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The time the request occurred.
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return $this
      */
@@ -368,7 +427,7 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The time the request began processing.
+     * @param \DateTime $started_at started_at
      *
      * @return $this
      */
@@ -392,7 +451,7 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at The time the request was completed.
+     * @param \DateTime $completed_at completed_at
      *
      * @return $this
      */
