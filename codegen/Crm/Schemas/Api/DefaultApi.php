@@ -116,7 +116,7 @@ class DefaultApi
     }
 
     /**
-     * Operation archive
+     * Operation purge
      *
      * @param  string $object_type object_type (required)
      *
@@ -124,13 +124,13 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type)
+    public function purge($object_type)
     {
-        $this->archiveWithHttpInfo($object_type);
+        $this->purgeWithHttpInfo($object_type);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation purgeWithHttpInfo
      *
      * @param  string $object_type (required)
      *
@@ -138,9 +138,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type)
+    public function purgeWithHttpInfo($object_type)
     {
-        $request = $this->archiveRequest($object_type);
+        $request = $this->purgeRequest($object_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -188,7 +188,7 @@ class DefaultApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation purgeAsync
      *
      * 
      *
@@ -197,9 +197,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type)
+    public function purgeAsync($object_type)
     {
-        return $this->archiveAsyncWithHttpInfo($object_type)
+        return $this->purgeAsyncWithHttpInfo($object_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -208,7 +208,7 @@ class DefaultApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation purgeAsyncWithHttpInfo
      *
      * 
      *
@@ -217,10 +217,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type)
+    public function purgeAsyncWithHttpInfo($object_type)
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type);
+        $request = $this->purgeRequest($object_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -246,19 +246,19 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'purge'
      *
      * @param  string $object_type (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveRequest($object_type)
+    protected function purgeRequest($object_type)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling archive'
+                'Missing the required parameter $object_type when calling purge'
             );
         }
 

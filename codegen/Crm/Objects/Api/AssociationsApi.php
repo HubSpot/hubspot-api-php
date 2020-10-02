@@ -819,7 +819,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getPage
+     * Operation getAll
      *
      * List associations of an object by type
      *
@@ -834,14 +834,14 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Objects\Model\Error
      */
-    public function getPage($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAll($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
     {
-        list($response) = $this->getPageWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit);
+        list($response) = $this->getAllWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit);
         return $response;
     }
 
     /**
-     * Operation getPageWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * List associations of an object by type
      *
@@ -856,9 +856,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
     {
-        $request = $this->getPageRequest($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit);
+        $request = $this->getAllRequest($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -954,7 +954,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getPageAsync
+     * Operation getAllAsync
      *
      * List associations of an object by type
      *
@@ -968,9 +968,9 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllAsync($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
     {
-        return $this->getPageAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit)
+        return $this->getAllAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -979,7 +979,7 @@ class AssociationsApi
     }
 
     /**
-     * Operation getPageAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * List associations of an object by type
      *
@@ -993,10 +993,10 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId';
-        $request = $this->getPageRequest($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit);
+        $request = $this->getAllRequest($object_type, $object_id, $to_object_type, $paginate_associations, $after, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1033,7 +1033,7 @@ class AssociationsApi
     }
 
     /**
-     * Create request for operation 'getPage'
+     * Create request for operation 'getAll'
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -1045,24 +1045,24 @@ class AssociationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPageRequest($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    protected function getAllRequest($object_type, $object_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getPage'
+                'Missing the required parameter $object_type when calling getAll'
             );
         }
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPage'
+                'Missing the required parameter $object_id when calling getAll'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling getPage'
+                'Missing the required parameter $to_object_type when calling getAll'
             );
         }
 
