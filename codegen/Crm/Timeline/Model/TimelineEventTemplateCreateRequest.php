@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -58,11 +58,11 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_type' => 'string',
         'name' => 'string',
         'header_template' => 'string',
         'detail_template' => 'string',
-        'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]'
+        'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]',
+        'object_type' => 'string'
     ];
 
     /**
@@ -71,11 +71,11 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'object_type' => null,
         'name' => null,
         'header_template' => null,
         'detail_template' => null,
-        'tokens' => null
+        'tokens' => null,
+        'object_type' => null
     ];
 
     /**
@@ -105,11 +105,11 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_type' => 'objectType',
         'name' => 'name',
         'header_template' => 'headerTemplate',
         'detail_template' => 'detailTemplate',
-        'tokens' => 'tokens'
+        'tokens' => 'tokens',
+        'object_type' => 'objectType'
     ];
 
     /**
@@ -118,11 +118,11 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object_type' => 'setObjectType',
         'name' => 'setName',
         'header_template' => 'setHeaderTemplate',
         'detail_template' => 'setDetailTemplate',
-        'tokens' => 'setTokens'
+        'tokens' => 'setTokens',
+        'object_type' => 'setObjectType'
     ];
 
     /**
@@ -131,11 +131,11 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object_type' => 'getObjectType',
         'name' => 'getName',
         'header_template' => 'getHeaderTemplate',
         'detail_template' => 'getDetailTemplate',
-        'tokens' => 'getTokens'
+        'tokens' => 'getTokens',
+        'object_type' => 'getObjectType'
     ];
 
     /**
@@ -198,11 +198,11 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object_type'] = isset($data['object_type']) ? $data['object_type'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['header_template'] = isset($data['header_template']) ? $data['header_template'] : null;
         $this->container['detail_template'] = isset($data['detail_template']) ? $data['detail_template'] : null;
         $this->container['tokens'] = isset($data['tokens']) ? $data['tokens'] : null;
+        $this->container['object_type'] = isset($data['object_type']) ? $data['object_type'] : null;
     }
 
     /**
@@ -214,14 +214,14 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['object_type'] === null) {
-            $invalidProperties[] = "'object_type' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['tokens'] === null) {
             $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['object_type'] === null) {
+            $invalidProperties[] = "'object_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -237,30 +237,6 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets object_type
-     *
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->container['object_type'];
-    }
-
-    /**
-     * Sets object_type
-     *
-     * @param string $object_type The type of CRM object you want this template applicable for. Currently we support [contacts, companies, deals].
-     *
-     * @return $this
-     */
-    public function setObjectType($object_type)
-    {
-        $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -354,6 +330,30 @@ class TimelineEventTemplateCreateRequest implements ModelInterface, ArrayAccess
     public function setTokens($tokens)
     {
         $this->container['tokens'] = $tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type
+     *
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->container['object_type'];
+    }
+
+    /**
+     * Sets object_type
+     *
+     * @param string $object_type The type of CRM object you want this template applicable for. Currently we support [contacts, companies, tickets, deals].
+     *
+     * @return $this
+     */
+    public function setObjectType($object_type)
+    {
+        $this->container['object_type'] = $object_type;
 
         return $this;
     }

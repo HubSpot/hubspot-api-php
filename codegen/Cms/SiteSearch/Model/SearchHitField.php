@@ -58,7 +58,7 @@ class SearchHitField implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'metadata_field' => 'bool',
-        'values' => 'object[]',
+        'values' => 'array',
         'name' => 'string',
         'value' => 'object'
     ];
@@ -261,7 +261,7 @@ class SearchHitField implements ModelInterface, ArrayAccess
     /**
      * Gets values
      *
-     * @return object[]
+     * @return array
      */
     public function getValues()
     {
@@ -271,7 +271,7 @@ class SearchHitField implements ModelInterface, ArrayAccess
     /**
      * Sets values
      *
-     * @param object[] $values values
+     * @param array $values values
      *
      * @return $this
      */

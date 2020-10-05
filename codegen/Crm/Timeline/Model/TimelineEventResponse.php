@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -58,8 +58,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_type' => 'string',
-        'created_at' => '\DateTime',
         'id' => 'string',
         'event_template_id' => 'string',
         'email' => 'string',
@@ -69,7 +67,9 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         'timestamp' => '\DateTime',
         'tokens' => 'map[string,string]',
         'extra_data' => 'object',
-        'timeline_i_frame' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventIFrame'
+        'timeline_i_frame' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventIFrame',
+        'object_type' => 'string',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -78,8 +78,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'object_type' => null,
-        'created_at' => 'date-time',
         'id' => null,
         'event_template_id' => null,
         'email' => null,
@@ -89,7 +87,9 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         'timestamp' => 'date-time',
         'tokens' => null,
         'extra_data' => null,
-        'timeline_i_frame' => null
+        'timeline_i_frame' => null,
+        'object_type' => null,
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -119,8 +119,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_type' => 'objectType',
-        'created_at' => 'createdAt',
         'id' => 'id',
         'event_template_id' => 'eventTemplateId',
         'email' => 'email',
@@ -130,7 +128,9 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         'timestamp' => 'timestamp',
         'tokens' => 'tokens',
         'extra_data' => 'extraData',
-        'timeline_i_frame' => 'timelineIFrame'
+        'timeline_i_frame' => 'timelineIFrame',
+        'object_type' => 'objectType',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -139,8 +139,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object_type' => 'setObjectType',
-        'created_at' => 'setCreatedAt',
         'id' => 'setId',
         'event_template_id' => 'setEventTemplateId',
         'email' => 'setEmail',
@@ -150,7 +148,9 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         'timestamp' => 'setTimestamp',
         'tokens' => 'setTokens',
         'extra_data' => 'setExtraData',
-        'timeline_i_frame' => 'setTimelineIFrame'
+        'timeline_i_frame' => 'setTimelineIFrame',
+        'object_type' => 'setObjectType',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -159,8 +159,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object_type' => 'getObjectType',
-        'created_at' => 'getCreatedAt',
         'id' => 'getId',
         'event_template_id' => 'getEventTemplateId',
         'email' => 'getEmail',
@@ -170,7 +168,9 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         'timestamp' => 'getTimestamp',
         'tokens' => 'getTokens',
         'extra_data' => 'getExtraData',
-        'timeline_i_frame' => 'getTimelineIFrame'
+        'timeline_i_frame' => 'getTimelineIFrame',
+        'object_type' => 'getObjectType',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -233,8 +233,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object_type'] = isset($data['object_type']) ? $data['object_type'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['event_template_id'] = isset($data['event_template_id']) ? $data['event_template_id'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
@@ -245,6 +243,8 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         $this->container['tokens'] = isset($data['tokens']) ? $data['tokens'] : null;
         $this->container['extra_data'] = isset($data['extra_data']) ? $data['extra_data'] : null;
         $this->container['timeline_i_frame'] = isset($data['timeline_i_frame']) ? $data['timeline_i_frame'] : null;
+        $this->container['object_type'] = isset($data['object_type']) ? $data['object_type'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
     }
 
     /**
@@ -256,9 +256,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['object_type'] === null) {
-            $invalidProperties[] = "'object_type' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -267,6 +264,9 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         }
         if ($this->container['tokens'] === null) {
             $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['object_type'] === null) {
+            $invalidProperties[] = "'object_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -282,54 +282,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets object_type
-     *
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->container['object_type'];
-    }
-
-    /**
-     * Sets object_type
-     *
-     * @param string $object_type The ObjectType associated with the EventTemplate.
-     *
-     * @return $this
-     */
-    public function setObjectType($object_type)
-    {
-        $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -567,6 +519,54 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess
     public function setTimelineIFrame($timeline_i_frame)
     {
         $this->container['timeline_i_frame'] = $timeline_i_frame;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type
+     *
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->container['object_type'];
+    }
+
+    /**
+     * Sets object_type
+     *
+     * @param string $object_type The ObjectType associated with the EventTemplate.
+     *
+     * @return $this
+     */
+    public function setObjectType($object_type)
+    {
+        $this->container['object_type'] = $object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

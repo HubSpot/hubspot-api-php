@@ -57,7 +57,8 @@ class Paging implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next' => '\HubSpot\Client\Crm\Companies\Model\NextPage'
+        'next' => '\HubSpot\Client\Crm\Companies\Model\NextPage',
+        'prev' => '\HubSpot\Client\Crm\Companies\Model\PreviousPage'
     ];
 
     /**
@@ -66,7 +67,8 @@ class Paging implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'next' => null
+        'next' => null,
+        'prev' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class Paging implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'next' => 'next'
+        'next' => 'next',
+        'prev' => 'prev'
     ];
 
     /**
@@ -105,7 +108,8 @@ class Paging implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'next' => 'setNext'
+        'next' => 'setNext',
+        'prev' => 'setPrev'
     ];
 
     /**
@@ -114,7 +118,8 @@ class Paging implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'next' => 'getNext'
+        'next' => 'getNext',
+        'prev' => 'getPrev'
     ];
 
     /**
@@ -178,6 +183,7 @@ class Paging implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['next'] = isset($data['next']) ? $data['next'] : null;
+        $this->container['prev'] = isset($data['prev']) ? $data['prev'] : null;
     }
 
     /**
@@ -224,6 +230,30 @@ class Paging implements ModelInterface, ArrayAccess
     public function setNext($next)
     {
         $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets prev
+     *
+     * @return \HubSpot\Client\Crm\Companies\Model\PreviousPage|null
+     */
+    public function getPrev()
+    {
+        return $this->container['prev'];
+    }
+
+    /**
+     * Sets prev
+     *
+     * @param \HubSpot\Client\Crm\Companies\Model\PreviousPage|null $prev prev
+     *
+     * @return $this
+     */
+    public function setPrev($prev)
+    {
+        $this->container['prev'] = $prev;
 
         return $this;
     }

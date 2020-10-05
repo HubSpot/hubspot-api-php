@@ -12,7 +12,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -120,13 +120,13 @@ class EventsApi
      *
      * Create a single event
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function create($timeline_event = null)
+    public function create($timeline_event)
     {
         list($response) = $this->createWithHttpInfo($timeline_event);
         return $response;
@@ -137,13 +137,13 @@ class EventsApi
      *
      * Create a single event
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($timeline_event = null)
+    public function createWithHttpInfo($timeline_event)
     {
         $request = $this->createRequest($timeline_event);
 
@@ -245,12 +245,12 @@ class EventsApi
      *
      * Create a single event
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($timeline_event = null)
+    public function createAsync($timeline_event)
     {
         return $this->createAsyncWithHttpInfo($timeline_event)
             ->then(
@@ -265,12 +265,12 @@ class EventsApi
      *
      * Create a single event
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($timeline_event = null)
+    public function createAsyncWithHttpInfo($timeline_event)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse';
         $request = $this->createRequest($timeline_event);
@@ -312,13 +312,19 @@ class EventsApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event The timeline event definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($timeline_event = null)
+    protected function createRequest($timeline_event)
     {
+        // verify the required parameter 'timeline_event' is set
+        if ($timeline_event === null || (is_array($timeline_event) && count($timeline_event) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $timeline_event when calling create'
+            );
+        }
 
         $resourcePath = '/crm/v3/timeline/events';
         $formParams = [];
@@ -375,11 +381,6 @@ class EventsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -410,13 +411,13 @@ class EventsApi
      *
      * Creates multiple events
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error
+     * @return \HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function createBatch($batch_input_timeline_event = null)
+    public function createBatch($batch_input_timeline_event)
     {
         list($response) = $this->createBatchWithHttpInfo($batch_input_timeline_event);
         return $response;
@@ -427,13 +428,13 @@ class EventsApi
      *
      * Creates multiple events
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBatchWithHttpInfo($batch_input_timeline_event = null)
+    public function createBatchWithHttpInfo($batch_input_timeline_event)
     {
         $request = $this->createBatchRequest($batch_input_timeline_event);
 
@@ -480,14 +481,14 @@ class EventsApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -532,7 +533,7 @@ class EventsApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse',
+                        '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -555,12 +556,12 @@ class EventsApi
      *
      * Creates multiple events
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsync($batch_input_timeline_event = null)
+    public function createBatchAsync($batch_input_timeline_event)
     {
         return $this->createBatchAsyncWithHttpInfo($batch_input_timeline_event)
             ->then(
@@ -575,12 +576,12 @@ class EventsApi
      *
      * Creates multiple events
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsyncWithHttpInfo($batch_input_timeline_event = null)
+    public function createBatchAsyncWithHttpInfo($batch_input_timeline_event)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse';
         $request = $this->createBatchRequest($batch_input_timeline_event);
@@ -622,13 +623,19 @@ class EventsApi
     /**
      * Create request for operation 'createBatch'
      *
-     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (optional)
+     * @param  \HubSpot\Client\Crm\Timeline\Model\BatchInputTimelineEvent $batch_input_timeline_event The timeline event definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createBatchRequest($batch_input_timeline_event = null)
+    protected function createBatchRequest($batch_input_timeline_event)
     {
+        // verify the required parameter 'batch_input_timeline_event' is set
+        if ($batch_input_timeline_event === null || (is_array($batch_input_timeline_event) && count($batch_input_timeline_event) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_timeline_event when calling createBatch'
+            );
+        }
 
         $resourcePath = '/crm/v3/timeline/events/batch/create';
         $formParams = [];
@@ -685,11 +692,6 @@ class EventsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1005,11 +1007,6 @@ class EventsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1325,11 +1322,6 @@ class EventsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1654,11 +1646,6 @@ class EventsApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();

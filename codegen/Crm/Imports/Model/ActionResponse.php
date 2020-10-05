@@ -60,7 +60,8 @@ class ActionResponse implements ModelInterface, ArrayAccess
         'status' => 'string',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime'
+        'completed_at' => '\DateTime',
+        'links' => 'map[string,string]'
     ];
 
     /**
@@ -72,7 +73,8 @@ class ActionResponse implements ModelInterface, ArrayAccess
         'status' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time'
+        'completed_at' => 'date-time',
+        'links' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class ActionResponse implements ModelInterface, ArrayAccess
         'status' => 'status',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt'
+        'completed_at' => 'completedAt',
+        'links' => 'links'
     ];
 
     /**
@@ -117,7 +120,8 @@ class ActionResponse implements ModelInterface, ArrayAccess
         'status' => 'setStatus',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt'
+        'completed_at' => 'setCompletedAt',
+        'links' => 'setLinks'
     ];
 
     /**
@@ -129,7 +133,8 @@ class ActionResponse implements ModelInterface, ArrayAccess
         'status' => 'getStatus',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt'
+        'completed_at' => 'getCompletedAt',
+        'links' => 'getLinks'
     ];
 
     /**
@@ -215,6 +220,7 @@ class ActionResponse implements ModelInterface, ArrayAccess
         $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
         $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
         $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
     /**
@@ -359,6 +365,30 @@ class ActionResponse implements ModelInterface, ArrayAccess
     public function setCompletedAt($completed_at)
     {
         $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return map[string,string]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param map[string,string]|null $links links
+     *
+     * @return $this
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
 
         return $this;
     }

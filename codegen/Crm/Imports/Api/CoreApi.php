@@ -421,16 +421,16 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format. (optional)
      * @param  \SplFileObject $files A list of files containing the data to import (optional)
+     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error
      */
-    public function create($import_request = null, $files = null)
+    public function create($files = null, $import_request = null)
     {
-        list($response) = $this->createWithHttpInfo($import_request, $files);
+        list($response) = $this->createWithHttpInfo($files, $import_request);
         return $response;
     }
 
@@ -439,16 +439,16 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format. (optional)
      * @param  \SplFileObject $files A list of files containing the data to import (optional)
+     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($import_request = null, $files = null)
+    public function createWithHttpInfo($files = null, $import_request = null)
     {
-        $request = $this->createRequest($import_request, $files);
+        $request = $this->createRequest($files, $import_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -548,15 +548,15 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format. (optional)
      * @param  \SplFileObject $files A list of files containing the data to import (optional)
+     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($import_request = null, $files = null)
+    public function createAsync($files = null, $import_request = null)
     {
-        return $this->createAsyncWithHttpInfo($import_request, $files)
+        return $this->createAsyncWithHttpInfo($files, $import_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -569,16 +569,16 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format. (optional)
      * @param  \SplFileObject $files A list of files containing the data to import (optional)
+     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($import_request = null, $files = null)
+    public function createAsyncWithHttpInfo($files = null, $import_request = null)
     {
         $returnType = '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse';
-        $request = $this->createRequest($import_request, $files);
+        $request = $this->createRequest($files, $import_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -617,13 +617,13 @@ class CoreApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format. (optional)
      * @param  \SplFileObject $files A list of files containing the data to import (optional)
+     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($import_request = null, $files = null)
+    protected function createRequest($files = null, $import_request = null)
     {
 
         $resourcePath = '/crm/v3/imports/';
@@ -636,13 +636,13 @@ class CoreApi
 
 
         // form params
-        if ($import_request !== null) {
-            $formParams['importRequest'] = ObjectSerializer::toFormValue($import_request);
-        }
-        // form params
         if ($files !== null) {
             $multipart = true;
             $formParams['files'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($files), 'rb');
+        }
+        // form params
+        if ($import_request !== null) {
+            $formParams['importRequest'] = ObjectSerializer::toFormValue($import_request);
         }
         // body params
         $_tempBody = null;

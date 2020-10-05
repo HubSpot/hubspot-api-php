@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -58,13 +58,13 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'label' => 'string',
+        'object_property_name' => 'string',
+        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]',
         'name' => 'string',
         'type' => 'string',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -73,13 +73,13 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'label' => null,
+        'object_property_name' => null,
+        'options' => null,
         'name' => null,
         'type' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -109,13 +109,13 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'label' => 'label',
+        'object_property_name' => 'objectPropertyName',
+        'options' => 'options',
         'name' => 'name',
         'type' => 'type',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -124,13 +124,13 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'label' => 'setLabel',
+        'object_property_name' => 'setObjectPropertyName',
+        'options' => 'setOptions',
         'name' => 'setName',
         'type' => 'setType',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -139,13 +139,13 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'label' => 'getLabel',
+        'object_property_name' => 'getObjectPropertyName',
+        'options' => 'getOptions',
         'name' => 'getName',
         'type' => 'getType',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -227,13 +227,13 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
+        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
     }
 
     /**
@@ -245,6 +245,12 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -259,12 +265,6 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
             );
         }
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -279,6 +279,78 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label Used for list segmentation and reporting.
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_property_name
+     *
+     * @return string|null
+     */
+    public function getObjectPropertyName()
+    {
+        return $this->container['object_property_name'];
+    }
+
+    /**
+     * Sets object_property_name
+     *
+     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
+     *
+     * @return $this
+     */
+    public function setObjectPropertyName($object_property_name)
+    {
+        $this->container['object_property_name'] = $object_property_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
+     *
+     * @return $this
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -381,78 +453,6 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label Used for list segmentation and reporting.
-     *
-     * @return $this
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_property_name
-     *
-     * @return string|null
-     */
-    public function getObjectPropertyName()
-    {
-        return $this->container['object_property_name'];
-    }
-
-    /**
-     * Sets object_property_name
-     *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
-     *
-     * @return $this
-     */
-    public function setObjectPropertyName($object_property_name)
-    {
-        $this->container['object_property_name'] = $object_property_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
 
         return $this;
     }

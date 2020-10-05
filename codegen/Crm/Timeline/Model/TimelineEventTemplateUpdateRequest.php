@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -58,11 +58,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'name' => 'string',
         'header_template' => 'string',
         'detail_template' => 'string',
-        'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]'
+        'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]',
+        'id' => 'string'
     ];
 
     /**
@@ -71,11 +71,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'name' => null,
         'header_template' => null,
         'detail_template' => null,
-        'tokens' => null
+        'tokens' => null,
+        'id' => null
     ];
 
     /**
@@ -105,11 +105,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'name' => 'name',
         'header_template' => 'headerTemplate',
         'detail_template' => 'detailTemplate',
-        'tokens' => 'tokens'
+        'tokens' => 'tokens',
+        'id' => 'id'
     ];
 
     /**
@@ -118,11 +118,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'name' => 'setName',
         'header_template' => 'setHeaderTemplate',
         'detail_template' => 'setDetailTemplate',
-        'tokens' => 'setTokens'
+        'tokens' => 'setTokens',
+        'id' => 'setId'
     ];
 
     /**
@@ -131,11 +131,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'name' => 'getName',
         'header_template' => 'getHeaderTemplate',
         'detail_template' => 'getDetailTemplate',
-        'tokens' => 'getTokens'
+        'tokens' => 'getTokens',
+        'id' => 'getId'
     ];
 
     /**
@@ -198,11 +198,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['header_template'] = isset($data['header_template']) ? $data['header_template'] : null;
         $this->container['detail_template'] = isset($data['detail_template']) ? $data['detail_template'] : null;
         $this->container['tokens'] = isset($data['tokens']) ? $data['tokens'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -214,14 +214,14 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['tokens'] === null) {
             $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -237,30 +237,6 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The template ID.
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -354,6 +330,30 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess
     public function setTokens($tokens)
     {
         $this->container['tokens'] = $tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The template ID.
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
