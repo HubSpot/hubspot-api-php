@@ -12,11 +12,13 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Extensions\Discovery   extensions()
  * @method Imports\Discovery      imports()
  * @method LineItems\Discovery    lineItems()
+ * @method Objects\Discovery      objects()
  * @method Owners\Discovery       owners()
  * @method Pipelines\Discovery    pipelines()
  * @method Products\Discovery     products()
  * @method Properties\Discovery   properties()
  * @method Quotes\Discovery       quotes()
+ * @method Schemas\Discovery      schemas()
  * @method Tickets\Discovery      tickets()
  * @method Timeline\Discovery     timeline()
  */
