@@ -96,6 +96,11 @@ $newProperties->setProperties($_POST);
 $hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
 ```
 
+#### Get custom objects page:
+```php 
+$hubSpot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS)
+```
+
 ## Contributing
 
 ### Run spec tests
