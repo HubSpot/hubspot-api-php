@@ -16,8 +16,8 @@ $redirectParams = [
 ];
 
 if (isset($_POST['contactsIds'])) {
-    $ation = $_POST['action'];
-    $redirectParams['action'] = $ation;
+    $action = $_POST['action'];
+    $redirectParams['action'] = $action;
 
     // List all the valid association types available between two object types
     // $hubSpot->crm()->associations()->typesApi()->getTypes($from_object_type, $to_object_type);
@@ -31,7 +31,7 @@ if (isset($_POST['contactsIds'])) {
             ->setType($type)
         ;
     }, array_keys($_POST['contactsIds'])));
-    $hubSpot->crm()->associations()->batchApi()->{$ation}(
+    $hubSpot->crm()->associations()->batchApi()->{$action}(
         ObjectType::COMPANIES,
         ObjectType::CONTACTS,
         $request
