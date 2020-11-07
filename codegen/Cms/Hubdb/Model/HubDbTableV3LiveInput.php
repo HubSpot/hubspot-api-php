@@ -1,19 +1,19 @@
 <?php
 /**
- * TimelineEventTemplateTokenUpdateRequest
+ * HubDbTableV3LiveInput
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,21 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * TimelineEventTemplateTokenUpdateRequest Class Doc Comment
+ * HubDbTableV3LiveInput Class Doc Comment
  *
  * @category Class
- * @description State of the token definition for update requests.
- * @package  HubSpot\Client\Crm\Timeline
+ * @description Model for input data to publish or unpublish or restore a table
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAccess
+class HubDbTableV3LiveInput implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TimelineEventTemplateTokenUpdateRequest';
+    protected static $openAPIModelName = 'HubDbTableV3LiveInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
+        'archived' => 'bool',
+        'name' => 'string',
         'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'published' => 'bool'
     ];
 
     /**
@@ -69,9 +70,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'archived' => null,
+        'name' => null,
         'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'published' => null
     ];
 
     /**
@@ -101,9 +103,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
+        'archived' => 'archived',
+        'name' => 'name',
         'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'published' => 'published'
     ];
 
     /**
@@ -112,9 +115,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
+        'archived' => 'setArchived',
+        'name' => 'setName',
         'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'published' => 'setPublished'
     ];
 
     /**
@@ -123,9 +127,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
+        'archived' => 'getArchived',
+        'name' => 'getName',
         'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'published' => 'getPublished'
     ];
 
     /**
@@ -188,9 +193,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
+        $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['published'] = isset($data['published']) ? $data['published'] : null;
     }
 
     /**
@@ -202,12 +208,6 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -224,9 +224,57 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
 
 
     /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived Specifies whether to restore a table
+     *
+     * @return $this
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name New name of the table
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets label
      *
-     * @return string
+     * @return string|null
      */
     public function getLabel()
     {
@@ -236,7 +284,7 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     /**
      * Sets label
      *
-     * @param string $label Used for list segmentation and reporting.
+     * @param string|null $label New Label of the table
      *
      * @return $this
      */
@@ -248,49 +296,25 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets object_property_name
+     * Gets published
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getObjectPropertyName()
+    public function getPublished()
     {
-        return $this->container['object_property_name'];
+        return $this->container['published'];
     }
 
     /**
-     * Sets object_property_name
+     * Sets published
      *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
+     * @param bool|null $published Specifies whether to publish or unpublish a live table
      *
      * @return $this
      */
-    public function setObjectPropertyName($object_property_name)
+    public function setPublished($published)
     {
-        $this->container['object_property_name'] = $object_property_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
+        $this->container['published'] = $published;
 
         return $this;
     }

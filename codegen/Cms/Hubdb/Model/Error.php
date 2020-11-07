@@ -1,19 +1,19 @@
 <?php
 /**
- * ErrorDetail
+ * Error
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * ErrorDetail Class Doc Comment
+ * Error Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ErrorDetail implements ModelInterface, ArrayAccess
+class Error implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorDetail';
+    protected static $openAPIModelName = 'Error';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'in' => 'string',
-        'code' => 'string',
+        'correlation_id' => 'string',
+        'category' => 'string',
         'sub_category' => 'string',
-        'context' => 'map[string,string[]]'
+        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]',
+        'context' => 'map[string,string[]]',
+        'links' => 'map[string,string]'
     ];
 
     /**
@@ -71,10 +73,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'message' => null,
-        'in' => null,
-        'code' => null,
+        'correlation_id' => 'uuid',
+        'category' => null,
         'sub_category' => null,
-        'context' => null
+        'errors' => null,
+        'context' => null,
+        'links' => null
     ];
 
     /**
@@ -105,10 +109,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'message' => 'message',
-        'in' => 'in',
-        'code' => 'code',
+        'correlation_id' => 'correlationId',
+        'category' => 'category',
         'sub_category' => 'subCategory',
-        'context' => 'context'
+        'errors' => 'errors',
+        'context' => 'context',
+        'links' => 'links'
     ];
 
     /**
@@ -118,10 +124,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'message' => 'setMessage',
-        'in' => 'setIn',
-        'code' => 'setCode',
+        'correlation_id' => 'setCorrelationId',
+        'category' => 'setCategory',
         'sub_category' => 'setSubCategory',
-        'context' => 'setContext'
+        'errors' => 'setErrors',
+        'context' => 'setContext',
+        'links' => 'setLinks'
     ];
 
     /**
@@ -131,10 +139,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'message' => 'getMessage',
-        'in' => 'getIn',
-        'code' => 'getCode',
+        'correlation_id' => 'getCorrelationId',
+        'category' => 'getCategory',
         'sub_category' => 'getSubCategory',
-        'context' => 'getContext'
+        'errors' => 'getErrors',
+        'context' => 'getContext',
+        'links' => 'getLinks'
     ];
 
     /**
@@ -198,10 +208,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['in'] = isset($data['in']) ? $data['in'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['correlation_id'] = isset($data['correlation_id']) ? $data['correlation_id'] : null;
+        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
         $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
         $this->container['context'] = isset($data['context']) ? $data['context'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
     /**
@@ -215,6 +227,12 @@ class ErrorDetail implements ModelInterface, ArrayAccess
 
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['correlation_id'] === null) {
+            $invalidProperties[] = "'correlation_id' can't be null";
+        }
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
         return $invalidProperties;
     }
@@ -256,49 +274,49 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets in
+     * Gets correlation_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getIn()
+    public function getCorrelationId()
     {
-        return $this->container['in'];
+        return $this->container['correlation_id'];
     }
 
     /**
-     * Sets in
+     * Sets correlation_id
      *
-     * @param string|null $in The name of the field or parameter in which the error was found.
+     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
      *
      * @return $this
      */
-    public function setIn($in)
+    public function setCorrelationId($correlation_id)
     {
-        $this->container['in'] = $in;
+        $this->container['correlation_id'] = $correlation_id;
 
         return $this;
     }
 
     /**
-     * Gets code
+     * Gets category
      *
-     * @return string|null
+     * @return string
      */
-    public function getCode()
+    public function getCategory()
     {
-        return $this->container['code'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets code
+     * Sets category
      *
-     * @param string|null $code The status code associated with the error detail
+     * @param string $category The error category
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setCategory($category)
     {
-        $this->container['code'] = $code;
+        $this->container['category'] = $category;
 
         return $this;
     }
@@ -328,6 +346,30 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null $errors further information about the error
+     *
+     * @return $this
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
      * Gets context
      *
      * @return map[string,string[]]|null
@@ -347,6 +389,30 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     public function setContext($context)
     {
         $this->container['context'] = $context;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return map[string,string]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param map[string,string]|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+     *
+     * @return $this
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
 
         return $this;
     }

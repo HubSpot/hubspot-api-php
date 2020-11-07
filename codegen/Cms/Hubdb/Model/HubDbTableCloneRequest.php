@@ -1,19 +1,19 @@
 <?php
 /**
- * TimelineEventTemplateTokenUpdateRequest
+ * HubDbTableCloneRequest
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,21 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * TimelineEventTemplateTokenUpdateRequest Class Doc Comment
+ * HubDbTableCloneRequest Class Doc Comment
  *
  * @category Class
- * @description State of the token definition for update requests.
- * @package  HubSpot\Client\Crm\Timeline
+ * @description Model for table clone operation
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAccess
+class HubDbTableCloneRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TimelineEventTemplateTokenUpdateRequest';
+    protected static $openAPIModelName = 'HubDbTableCloneRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'new_name' => 'string',
+        'new_label' => 'string',
+        'copy_rows' => 'bool'
     ];
 
     /**
@@ -69,9 +69,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'new_name' => null,
+        'new_label' => null,
+        'copy_rows' => null
     ];
 
     /**
@@ -101,9 +101,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'new_name' => 'newName',
+        'new_label' => 'newLabel',
+        'copy_rows' => 'copyRows'
     ];
 
     /**
@@ -112,9 +112,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'new_name' => 'setNewName',
+        'new_label' => 'setNewLabel',
+        'copy_rows' => 'setCopyRows'
     ];
 
     /**
@@ -123,9 +123,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'new_name' => 'getNewName',
+        'new_label' => 'getNewLabel',
+        'copy_rows' => 'getCopyRows'
     ];
 
     /**
@@ -188,9 +188,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['new_name'] = isset($data['new_name']) ? $data['new_name'] : null;
+        $this->container['new_label'] = isset($data['new_label']) ? $data['new_label'] : null;
+        $this->container['copy_rows'] = isset($data['copy_rows']) ? $data['copy_rows'] : null;
     }
 
     /**
@@ -202,11 +202,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['new_name'] === null) {
+            $invalidProperties[] = "'new_name' can't be null";
         }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
+        if ($this->container['new_label'] === null) {
+            $invalidProperties[] = "'new_label' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,73 +224,73 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets label
+     * Gets new_name
      *
      * @return string
      */
-    public function getLabel()
+    public function getNewName()
     {
-        return $this->container['label'];
+        return $this->container['new_name'];
     }
 
     /**
-     * Sets label
+     * Sets new_name
      *
-     * @param string $label Used for list segmentation and reporting.
+     * @param string $new_name The new name for the cloned table
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setNewName($new_name)
     {
-        $this->container['label'] = $label;
+        $this->container['new_name'] = $new_name;
 
         return $this;
     }
 
     /**
-     * Gets object_property_name
+     * Gets new_label
      *
-     * @return string|null
+     * @return string
      */
-    public function getObjectPropertyName()
+    public function getNewLabel()
     {
-        return $this->container['object_property_name'];
+        return $this->container['new_label'];
     }
 
     /**
-     * Sets object_property_name
+     * Sets new_label
      *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
+     * @param string $new_label The new label for the cloned table
      *
      * @return $this
      */
-    public function setObjectPropertyName($object_property_name)
+    public function setNewLabel($new_label)
     {
-        $this->container['object_property_name'] = $object_property_name;
+        $this->container['new_label'] = $new_label;
 
         return $this;
     }
 
     /**
-     * Gets options
+     * Gets copy_rows
      *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
+     * @return bool|null
      */
-    public function getOptions()
+    public function getCopyRows()
     {
-        return $this->container['options'];
+        return $this->container['copy_rows'];
     }
 
     /**
-     * Sets options
+     * Sets copy_rows
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
+     * @param bool|null $copy_rows Specifies whether to copy the rows during clone
      *
      * @return $this
      */
-    public function setOptions($options)
+    public function setCopyRows($copy_rows)
     {
-        $this->container['options'] = $options;
+        $this->container['copy_rows'] = $copy_rows;
 
         return $this;
     }

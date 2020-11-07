@@ -1,19 +1,19 @@
 <?php
 /**
- * TimelineEventTemplateTokenUpdateRequest
+ * ErrorDetail
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,21 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * TimelineEventTemplateTokenUpdateRequest Class Doc Comment
+ * ErrorDetail Class Doc Comment
  *
  * @category Class
- * @description State of the token definition for update requests.
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAccess
+class ErrorDetail implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TimelineEventTemplateTokenUpdateRequest';
+    protected static $openAPIModelName = 'ErrorDetail';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'message' => 'string',
+        'in' => 'string',
+        'code' => 'string',
+        'sub_category' => 'string',
+        'context' => 'map[string,string[]]'
     ];
 
     /**
@@ -69,9 +70,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'message' => null,
+        'in' => null,
+        'code' => null,
+        'sub_category' => null,
+        'context' => null
     ];
 
     /**
@@ -101,9 +104,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'message' => 'message',
+        'in' => 'in',
+        'code' => 'code',
+        'sub_category' => 'subCategory',
+        'context' => 'context'
     ];
 
     /**
@@ -112,9 +117,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'message' => 'setMessage',
+        'in' => 'setIn',
+        'code' => 'setCode',
+        'sub_category' => 'setSubCategory',
+        'context' => 'setContext'
     ];
 
     /**
@@ -123,9 +130,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'message' => 'getMessage',
+        'in' => 'getIn',
+        'code' => 'getCode',
+        'sub_category' => 'getSubCategory',
+        'context' => 'getContext'
     ];
 
     /**
@@ -188,9 +197,11 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['in'] = isset($data['in']) ? $data['in'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
+        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
     }
 
     /**
@@ -202,11 +213,8 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,73 +232,121 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets label
+     * Gets message
      *
      * @return string
      */
-    public function getLabel()
+    public function getMessage()
     {
-        return $this->container['label'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets label
+     * Sets message
      *
-     * @param string $label Used for list segmentation and reporting.
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setMessage($message)
     {
-        $this->container['label'] = $label;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets object_property_name
+     * Gets in
      *
      * @return string|null
      */
-    public function getObjectPropertyName()
+    public function getIn()
     {
-        return $this->container['object_property_name'];
+        return $this->container['in'];
     }
 
     /**
-     * Sets object_property_name
+     * Sets in
      *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
+     * @param string|null $in The name of the field or parameter in which the error was found.
      *
      * @return $this
      */
-    public function setObjectPropertyName($object_property_name)
+    public function setIn($in)
     {
-        $this->container['object_property_name'] = $object_property_name;
+        $this->container['in'] = $in;
 
         return $this;
     }
 
     /**
-     * Gets options
+     * Gets code
      *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
+     * @return string|null
      */
-    public function getOptions()
+    public function getCode()
     {
-        return $this->container['options'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets options
+     * Sets code
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
+     * @param string|null $code The status code associated with the error detail
      *
      * @return $this
      */
-    public function setOptions($options)
+    public function setCode($code)
     {
-        $this->container['options'] = $options;
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return string|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return map[string,string[]]|null
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param map[string,string[]]|null $context Context about the error condition
+     *
+     * @return $this
+     */
+    public function setContext($context)
+    {
+        $this->container['context'] = $context;
 
         return $this;
     }

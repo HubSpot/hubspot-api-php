@@ -1,19 +1,19 @@
 <?php
 /**
- * TimelineEventTemplateTokenUpdateRequest
+ * SimpleUser
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,21 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * TimelineEventTemplateTokenUpdateRequest Class Doc Comment
+ * SimpleUser Class Doc Comment
  *
  * @category Class
- * @description State of the token definition for update requests.
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAccess
+class SimpleUser implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TimelineEventTemplateTokenUpdateRequest';
+    protected static $openAPIModelName = 'SimpleUser';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'id' => 'string',
+        'email' => 'string',
+        'first_name' => 'string',
+        'last_name' => 'string'
     ];
 
     /**
@@ -69,9 +69,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'id' => null,
+        'email' => null,
+        'first_name' => null,
+        'last_name' => null
     ];
 
     /**
@@ -101,9 +102,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'id' => 'id',
+        'email' => 'email',
+        'first_name' => 'firstName',
+        'last_name' => 'lastName'
     ];
 
     /**
@@ -112,9 +114,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'id' => 'setId',
+        'email' => 'setEmail',
+        'first_name' => 'setFirstName',
+        'last_name' => 'setLastName'
     ];
 
     /**
@@ -123,9 +126,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'id' => 'getId',
+        'email' => 'getEmail',
+        'first_name' => 'getFirstName',
+        'last_name' => 'getLastName'
     ];
 
     /**
@@ -188,9 +192,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
+        $this->container['last_name'] = isset($data['last_name']) ? $data['last_name'] : null;
     }
 
     /**
@@ -202,11 +207,17 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
+        if ($this->container['email'] === null) {
+            $invalidProperties[] = "'email' can't be null";
+        }
+        if ($this->container['first_name'] === null) {
+            $invalidProperties[] = "'first_name' can't be null";
+        }
+        if ($this->container['last_name'] === null) {
+            $invalidProperties[] = "'last_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,73 +235,97 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets label
+     * Gets id
      *
      * @return string
      */
-    public function getLabel()
+    public function getId()
     {
-        return $this->container['label'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets label
+     * Sets id
      *
-     * @param string $label Used for list segmentation and reporting.
+     * @param string $id id
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setId($id)
     {
-        $this->container['label'] = $label;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets object_property_name
+     * Gets email
      *
-     * @return string|null
+     * @return string
      */
-    public function getObjectPropertyName()
+    public function getEmail()
     {
-        return $this->container['object_property_name'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets object_property_name
+     * Sets email
      *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
+     * @param string $email email
      *
      * @return $this
      */
-    public function setObjectPropertyName($object_property_name)
+    public function setEmail($email)
     {
-        $this->container['object_property_name'] = $object_property_name;
+        $this->container['email'] = $email;
 
         return $this;
     }
 
     /**
-     * Gets options
+     * Gets first_name
      *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
+     * @return string
      */
-    public function getOptions()
+    public function getFirstName()
     {
-        return $this->container['options'];
+        return $this->container['first_name'];
     }
 
     /**
-     * Sets options
+     * Sets first_name
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
+     * @param string $first_name first_name
      *
      * @return $this
      */
-    public function setOptions($options)
+    public function setFirstName($first_name)
     {
-        $this->container['options'] = $options;
+        $this->container['first_name'] = $first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_name
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->container['last_name'];
+    }
+
+    /**
+     * Sets last_name
+     *
+     * @param string $last_name last_name
+     *
+     * @return $this
+     */
+    public function setLastName($last_name)
+    {
+        $this->container['last_name'] = $last_name;
 
         return $this;
     }

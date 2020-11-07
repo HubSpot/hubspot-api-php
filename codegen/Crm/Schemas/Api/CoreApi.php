@@ -266,7 +266,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}';
+        $resourcePath = '/crm/v3/schemas/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -514,7 +514,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}';
+        $resourcePath = '/crm/v3/schemas/{objectType}/associations/{associationIdentifier}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -819,7 +819,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas';
+        $resourcePath = '/crm/v3/schemas';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1126,7 +1126,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}/associations';
+        $resourcePath = '/crm/v3/schemas/{objectType}/associations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1419,7 +1419,7 @@ class CoreApi
     protected function getAllRequest()
     {
 
-        $resourcePath = '/crm-object-schemas/v3/schemas';
+        $resourcePath = '/crm/v3/schemas';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1712,7 +1712,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}';
+        $resourcePath = '/crm/v3/schemas/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2024,7 +2024,7 @@ class CoreApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}';
+        $resourcePath = '/crm/v3/schemas/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

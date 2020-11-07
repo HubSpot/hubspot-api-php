@@ -1,19 +1,19 @@
 <?php
 /**
- * TimelineEventTemplateToken
+ * Option
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,21 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * TimelineEventTemplateToken Class Doc Comment
+ * Option Class Doc Comment
  *
  * @category Class
- * @description State of the token definition.
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
+class Option implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TimelineEventTemplateToken';
+    protected static $openAPIModelName = 'Option';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +57,10 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]',
+        'id' => 'string',
         'name' => 'string',
         'type' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'order' => 'int'
     ];
 
     /**
@@ -73,13 +69,10 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'object_property_name' => null,
-        'options' => null,
+        'id' => null,
         'name' => null,
         'type' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'order' => 'int32'
     ];
 
     /**
@@ -109,13 +102,10 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options',
+        'id' => 'id',
         'name' => 'name',
         'type' => 'type',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'order' => 'order'
     ];
 
     /**
@@ -124,13 +114,10 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions',
+        'id' => 'setId',
         'name' => 'setName',
         'type' => 'setType',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'order' => 'setOrder'
     ];
 
     /**
@@ -139,13 +126,10 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions',
+        'id' => 'getId',
         'name' => 'getName',
         'type' => 'getType',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'order' => 'getOrder'
     ];
 
     /**
@@ -189,27 +173,8 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const TYPE_DATE = 'date';
-    const TYPE_ENUMERATION = 'enumeration';
-    const TYPE_NUMBER = 'number';
-    const TYPE_STRING = 'string';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_DATE,
-            self::TYPE_ENUMERATION,
-            self::TYPE_NUMBER,
-            self::TYPE_STRING,
-        ];
-    }
     
 
     /**
@@ -227,13 +192,10 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['order'] = isset($data['order']) ? $data['order'] : null;
     }
 
     /**
@@ -245,11 +207,8 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -257,14 +216,9 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['order'] === null) {
+            $invalidProperties[] = "'order' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -281,73 +235,25 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets label
+     * Gets id
      *
      * @return string
      */
-    public function getLabel()
+    public function getId()
     {
-        return $this->container['label'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets label
+     * Sets id
      *
-     * @param string $label Used for list segmentation and reporting.
+     * @param string $id id
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setId($id)
     {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_property_name
-     *
-     * @return string|null
-     */
-    public function getObjectPropertyName()
-    {
-        return $this->container['object_property_name'];
-    }
-
-    /**
-     * Sets object_property_name
-     *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
-     *
-     * @return $this
-     */
-    public function setObjectPropertyName($object_property_name)
-    {
-        $this->container['object_property_name'] = $object_property_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -365,7 +271,7 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).
+     * @param string $name name
      *
      * @return $this
      */
@@ -389,70 +295,37 @@ class TimelineEventTemplateToken implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type The data type of the token. You can currently choose from [string, number, date, enumeration].
+     * @param string $type type
      *
      * @return $this
      */
     public function setType($type)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'type', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets order
      *
-     * @return \DateTime|null
+     * @return int
      */
-    public function getCreatedAt()
+    public function getOrder()
     {
-        return $this->container['created_at'];
+        return $this->container['order'];
     }
 
     /**
-     * Sets created_at
+     * Sets order
      *
-     * @param \DateTime|null $created_at The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
+     * @param int $order order
      *
      * @return $this
      */
-    public function setCreatedAt($created_at)
+    public function setOrder($order)
     {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at The date and time that the Event Template Token was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
-     *
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['order'] = $order;
 
         return $this;
     }

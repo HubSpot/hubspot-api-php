@@ -1,19 +1,19 @@
 <?php
 /**
- * TimelineEventTemplateTokenUpdateRequest
+ * ImportResult
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,21 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * TimelineEventTemplateTokenUpdateRequest Class Doc Comment
+ * ImportResult Class Doc Comment
  *
  * @category Class
- * @description State of the token definition for update requests.
- * @package  HubSpot\Client\Crm\Timeline
+ * @description The result of import operation
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAccess
+class ImportResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TimelineEventTemplateTokenUpdateRequest';
+    protected static $openAPIModelName = 'ImportResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\Error[]',
+        'rows_imported' => 'int',
+        'duplicate_rows' => 'int',
+        'row_limit_exceeded' => 'bool'
     ];
 
     /**
@@ -69,9 +70,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'errors' => null,
+        'rows_imported' => 'int32',
+        'duplicate_rows' => 'int32',
+        'row_limit_exceeded' => null
     ];
 
     /**
@@ -101,9 +103,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'errors' => 'errors',
+        'rows_imported' => 'rowsImported',
+        'duplicate_rows' => 'duplicateRows',
+        'row_limit_exceeded' => 'rowLimitExceeded'
     ];
 
     /**
@@ -112,9 +115,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'errors' => 'setErrors',
+        'rows_imported' => 'setRowsImported',
+        'duplicate_rows' => 'setDuplicateRows',
+        'row_limit_exceeded' => 'setRowLimitExceeded'
     ];
 
     /**
@@ -123,9 +127,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'errors' => 'getErrors',
+        'rows_imported' => 'getRowsImported',
+        'duplicate_rows' => 'getDuplicateRows',
+        'row_limit_exceeded' => 'getRowLimitExceeded'
     ];
 
     /**
@@ -188,9 +193,10 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['object_property_name'] = isset($data['object_property_name']) ? $data['object_property_name'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+        $this->container['rows_imported'] = isset($data['rows_imported']) ? $data['rows_imported'] : null;
+        $this->container['duplicate_rows'] = isset($data['duplicate_rows']) ? $data['duplicate_rows'] : null;
+        $this->container['row_limit_exceeded'] = isset($data['row_limit_exceeded']) ? $data['row_limit_exceeded'] : null;
     }
 
     /**
@@ -202,11 +208,17 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
+        if ($this->container['rows_imported'] === null) {
+            $invalidProperties[] = "'rows_imported' can't be null";
+        }
+        if ($this->container['duplicate_rows'] === null) {
+            $invalidProperties[] = "'duplicate_rows' can't be null";
+        }
+        if ($this->container['row_limit_exceeded'] === null) {
+            $invalidProperties[] = "'row_limit_exceeded' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,73 +236,97 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets label
+     * Gets errors
      *
-     * @return string
+     * @return \HubSpot\Client\Cms\Hubdb\Model\Error[]
      */
-    public function getLabel()
+    public function getErrors()
     {
-        return $this->container['label'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets label
+     * Sets errors
      *
-     * @param string $label Used for list segmentation and reporting.
+     * @param \HubSpot\Client\Cms\Hubdb\Model\Error[] $errors List of errors during import
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setErrors($errors)
     {
-        $this->container['label'] = $label;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets object_property_name
+     * Gets rows_imported
      *
-     * @return string|null
+     * @return int
      */
-    public function getObjectPropertyName()
+    public function getRowsImported()
     {
-        return $this->container['object_property_name'];
+        return $this->container['rows_imported'];
     }
 
     /**
-     * Sets object_property_name
+     * Sets rows_imported
      *
-     * @param string|null $object_property_name The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
+     * @param int $rows_imported Specifies number of rows imported
      *
      * @return $this
      */
-    public function setObjectPropertyName($object_property_name)
+    public function setRowsImported($rows_imported)
     {
-        $this->container['object_property_name'] = $object_property_name;
+        $this->container['rows_imported'] = $rows_imported;
 
         return $this;
     }
 
     /**
-     * Gets options
+     * Gets duplicate_rows
      *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
+     * @return int
      */
-    public function getOptions()
+    public function getDuplicateRows()
     {
-        return $this->container['options'];
+        return $this->container['duplicate_rows'];
     }
 
     /**
-     * Sets options
+     * Sets duplicate_rows
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
+     * @param int $duplicate_rows Specifies number of duplicate rows
      *
      * @return $this
      */
-    public function setOptions($options)
+    public function setDuplicateRows($duplicate_rows)
     {
-        $this->container['options'] = $options;
+        $this->container['duplicate_rows'] = $duplicate_rows;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_limit_exceeded
+     *
+     * @return bool
+     */
+    public function getRowLimitExceeded()
+    {
+        return $this->container['row_limit_exceeded'];
+    }
+
+    /**
+     * Sets row_limit_exceeded
+     *
+     * @param bool $row_limit_exceeded Specifies whether row limit exceeded during import
+     *
+     * @return $this
+     */
+    public function setRowLimitExceeded($row_limit_exceeded)
+    {
+        $this->container['row_limit_exceeded'] = $row_limit_exceeded;
 
         return $this;
     }

@@ -12,7 +12,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -350,10 +350,6 @@ class TemplatesApi
         if ($apiKey !== null) {
             $queryParams['hapikey'] = $apiKey;
         }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -665,10 +661,6 @@ class TemplatesApi
         if ($apiKey !== null) {
             $queryParams['hapikey'] = $apiKey;
         }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -965,10 +957,6 @@ class TemplatesApi
         $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
         if ($apiKey !== null) {
             $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -1285,10 +1273,6 @@ class TemplatesApi
         $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
         if ($apiKey !== null) {
             $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -1619,10 +1603,6 @@ class TemplatesApi
         $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
         if ($apiKey !== null) {
             $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
         $defaultHeaders = [];

@@ -262,7 +262,7 @@ class DefaultApi
             );
         }
 
-        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}/purge';
+        $resourcePath = '/crm/v3/schemas/{objectType}/purge';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

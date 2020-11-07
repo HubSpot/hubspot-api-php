@@ -1,19 +1,19 @@
 <?php
 /**
- * BatchResponseTimelineEventResponseWithErrors
+ * BatchResponseHubDbTableRowV3WithErrors
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Timeline events
+ * HubDB endpoints
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Crm\Timeline\Model;
+namespace HubSpot\Client\Cms\Hubdb\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Crm\Timeline\ObjectSerializer;
+use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * BatchResponseTimelineEventResponseWithErrors Class Doc Comment
+ * BatchResponseHubDbTableRowV3WithErrors Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Crm\Timeline
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, ArrayAccess
+class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponseTimelineEventResponseWithErrors';
+    protected static $openAPIModelName = 'BatchResponseHubDbTableRowV3WithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, Ar
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'results' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]',
+        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Crm\Timeline\Model\Error[]',
+        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\Error[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
         'completed_at' => '\DateTime',
@@ -321,7 +321,7 @@ class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, Ar
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]
      */
     public function getResults()
     {
@@ -331,7 +331,7 @@ class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, Ar
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[] $results results
+     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[] $results results
      *
      * @return $this
      */
@@ -369,7 +369,7 @@ class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, Ar
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\Timeline\Model\Error[]|null
+     * @return \HubSpot\Client\Cms\Hubdb\Model\Error[]|null
      */
     public function getErrors()
     {
@@ -379,7 +379,7 @@ class BatchResponseTimelineEventResponseWithErrors implements ModelInterface, Ar
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Timeline\Model\Error[]|null $errors errors
+     * @param \HubSpot\Client\Cms\Hubdb\Model\Error[]|null $errors errors
      *
      * @return $this
      */
