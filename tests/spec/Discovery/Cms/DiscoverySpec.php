@@ -22,6 +22,7 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->auditLogs()->shouldHaveType(\HubSpot\Discovery\Cms\AuditLogs\Discovery::class);
         $this->domains()->shouldHaveType(\HubSpot\Discovery\Cms\Domains\Discovery::class);
+        $this->hubdb()->shouldHaveType(\HubSpot\Discovery\Cms\Hubdb\Discovery::class);
         $this->performance()->shouldHaveType(\HubSpot\Discovery\Cms\Performance\Discovery::class);
         $this->siteSearch()->shouldHaveType(\HubSpot\Discovery\Cms\SiteSearch\Discovery::class);
         $this->urlRedirects()->shouldHaveType(\HubSpot\Discovery\Cms\UrlRedirects\Discovery::class);
