@@ -13,7 +13,7 @@
 /**
  * Timeline events
  *
- * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM object like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
+ * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -392,7 +392,7 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess
     /**
      * Sets object_type
      *
-     * @param string $object_type The type of CRM object you want this template applicable for. Currently we support [contacts, companies, tickets, deals].
+     * @param string $object_type The type of CRM object this template is for. [Contacts, companies, tickets, and deals] are supported.
      *
      * @return $this
      */
