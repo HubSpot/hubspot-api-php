@@ -38,7 +38,7 @@ $request = json_encode([
     ],
 ]);
 
-$import = $hubSpot->crm()->imports()->coreApi()->create($request, $file);
+$import = $hubSpot->crm()->imports()->coreApi()->create($file, $request);
 
 @unlink($file);
 
