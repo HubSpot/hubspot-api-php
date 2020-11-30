@@ -21,6 +21,7 @@ class DiscoverySpec extends ObjectBehavior
     public function it_creates_clients()
     {
         $this->auditLogs()->shouldHaveType(\HubSpot\Discovery\Cms\AuditLogs\Discovery::class);
+        $this->blogs()->shouldHaveType(\HubSpot\Discovery\Cms\Blogs\Discovery::class);
         $this->domains()->shouldHaveType(\HubSpot\Discovery\Cms\Domains\Discovery::class);
         $this->hubdb()->shouldHaveType(\HubSpot\Discovery\Cms\Hubdb\Discovery::class);
         $this->performance()->shouldHaveType(\HubSpot\Discovery\Cms\Performance\Discovery::class);
