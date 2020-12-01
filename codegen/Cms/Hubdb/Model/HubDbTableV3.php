@@ -13,7 +13,7 @@
 /**
  * HubDB endpoints
  *
- * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field. HubDB tables now support `DRAFT` and `PUBLISHED` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it.
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `live` versions and you can publish and unpublish the live version. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, pushed to live version, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -36,7 +36,7 @@ use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
  * HubDbTableV3 Class Doc Comment
  *
  * @category Class
- * @description Model for HubDb table
+ * @description Model for HubDB table
  * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -62,6 +62,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
         'name' => 'string',
         'label' => 'string',
         'columns' => '\HubSpot\Client\Cms\Hubdb\Model\Column[]',
+        'published' => 'bool',
         'row_count' => 'int',
         'created_by' => '\HubSpot\Client\Cms\Hubdb\Model\SimpleUser',
         'updated_by' => '\HubSpot\Client\Cms\Hubdb\Model\SimpleUser',
@@ -87,6 +88,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
         'name' => null,
         'label' => null,
         'columns' => null,
+        'published' => null,
         'row_count' => 'int32',
         'created_by' => null,
         'updated_by' => null,
@@ -133,6 +135,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
         'name' => 'name',
         'label' => 'label',
         'columns' => 'columns',
+        'published' => 'published',
         'row_count' => 'rowCount',
         'created_by' => 'createdBy',
         'updated_by' => 'updatedBy',
@@ -158,6 +161,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
         'name' => 'setName',
         'label' => 'setLabel',
         'columns' => 'setColumns',
+        'published' => 'setPublished',
         'row_count' => 'setRowCount',
         'created_by' => 'setCreatedBy',
         'updated_by' => 'setUpdatedBy',
@@ -183,6 +187,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
         'name' => 'getName',
         'label' => 'getLabel',
         'columns' => 'getColumns',
+        'published' => 'getPublished',
         'row_count' => 'getRowCount',
         'created_by' => 'getCreatedBy',
         'updated_by' => 'getUpdatedBy',
@@ -262,6 +267,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['columns'] = isset($data['columns']) ? $data['columns'] : null;
+        $this->container['published'] = isset($data['published']) ? $data['published'] : null;
         $this->container['row_count'] = isset($data['row_count']) ? $data['row_count'] : null;
         $this->container['created_by'] = isset($data['created_by']) ? $data['created_by'] : null;
         $this->container['updated_by'] = isset($data['updated_by']) ? $data['updated_by'] : null;
@@ -399,6 +405,30 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess
     public function setColumns($columns)
     {
         $this->container['columns'] = $columns;
+
+        return $this;
+    }
+
+    /**
+     * Gets published
+     *
+     * @return bool|null
+     */
+    public function getPublished()
+    {
+        return $this->container['published'];
+    }
+
+    /**
+     * Sets published
+     *
+     * @param bool|null $published published
+     *
+     * @return $this
+     */
+    public function setPublished($published)
+    {
+        $this->container['published'] = $published;
 
         return $this;
     }
