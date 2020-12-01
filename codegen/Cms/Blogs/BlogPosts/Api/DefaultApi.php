@@ -1485,376 +1485,6 @@ class DefaultApi
     }
 
     /**
-     * Operation getAll
-     *
-     * Get all Blog Posts
-     *
-     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function getAll($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
-    {
-        list($response) = $this->getAllWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
-        return $response;
-    }
-
-    /**
-     * Operation getAllWithHttpInfo
-     *
-     * Get all Blog Posts
-     *
-     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getAllWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
-    {
-        $request = $this->getAllRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getAllAsync
-     *
-     * Get all Blog Posts
-     *
-     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAllAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
-    {
-        return $this->getAllAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAllAsyncWithHttpInfo
-     *
-     * Get all Blog Posts
-     *
-     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAllAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost';
-        $request = $this->getAllRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getAll'
-     *
-     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function getAllRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
-    {
-
-        $resourcePath = '/cms/v3/blogs/posts';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($created_at !== null) {
-            $queryParams['createdAt'] = ObjectSerializer::toQueryValue($created_at);
-        }
-        // query params
-        if ($created_after !== null) {
-            $queryParams['createdAfter'] = ObjectSerializer::toQueryValue($created_after);
-        }
-        // query params
-        if ($created_before !== null) {
-            $queryParams['createdBefore'] = ObjectSerializer::toQueryValue($created_before);
-        }
-        // query params
-        if ($updated_at !== null) {
-            $queryParams['updatedAt'] = ObjectSerializer::toQueryValue($updated_at);
-        }
-        // query params
-        if ($updated_after !== null) {
-            $queryParams['updatedAfter'] = ObjectSerializer::toQueryValue($updated_after);
-        }
-        // query params
-        if ($updated_before !== null) {
-            $queryParams['updatedBefore'] = ObjectSerializer::toQueryValue($updated_before);
-        }
-        // query params
-        if (is_array($sort)) {
-            $sort = ObjectSerializer::serializeCollection($sort, 'multi', true);
-        }
-        if ($sort !== null) {
-            $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
-        }
-        // query params
-        if ($after !== null) {
-            $queryParams['after'] = ObjectSerializer::toQueryValue($after);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getById
      *
      * Retrieve a Blog Post
@@ -2386,6 +2016,376 @@ class DefaultApi
                 $resourcePath
             );
         }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPage
+     *
+     * Get all Blog Posts
+     *
+     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
+     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
+     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
+     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
+     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
+     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
+     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
+     */
+    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    {
+        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        return $response;
+    }
+
+    /**
+     * Operation getPageWithHttpInfo
+     *
+     * Get all Blog Posts
+     *
+     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
+     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
+     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
+     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
+     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
+     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
+     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    {
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPageAsync
+     *
+     * Get all Blog Posts
+     *
+     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
+     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
+     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
+     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
+     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
+     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
+     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    {
+        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPageAsyncWithHttpInfo
+     *
+     * Get all Blog Posts
+     *
+     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
+     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
+     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
+     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
+     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
+     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
+     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    {
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPost';
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPage'
+     *
+     * @param  \DateTime $created_at Only return Blog Posts created at exactly the specified time. (optional)
+     * @param  \DateTime $created_after Only return Blog Posts created after the specified time. (optional)
+     * @param  \DateTime $created_before Only return Blog Posts created before the specified time. (optional)
+     * @param  \DateTime $updated_at Only return Blog Posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime $updated_after Only return Blog Posts last updated after the specified time. (optional)
+     * @param  \DateTime $updated_before Only return Blog Posts last updated before the specified time. (optional)
+     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
+     * @param  bool $archived Specifies whether to return archived Blog Posts. Defaults to &#x60;false&#x60;. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    {
+
+        $resourcePath = '/cms/v3/blogs/posts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($created_at !== null) {
+            $queryParams['createdAt'] = ObjectSerializer::toQueryValue($created_at);
+        }
+        // query params
+        if ($created_after !== null) {
+            $queryParams['createdAfter'] = ObjectSerializer::toQueryValue($created_after);
+        }
+        // query params
+        if ($created_before !== null) {
+            $queryParams['createdBefore'] = ObjectSerializer::toQueryValue($created_before);
+        }
+        // query params
+        if ($updated_at !== null) {
+            $queryParams['updatedAt'] = ObjectSerializer::toQueryValue($updated_at);
+        }
+        // query params
+        if ($updated_after !== null) {
+            $queryParams['updatedAfter'] = ObjectSerializer::toQueryValue($updated_after);
+        }
+        // query params
+        if ($updated_before !== null) {
+            $queryParams['updatedBefore'] = ObjectSerializer::toQueryValue($updated_before);
+        }
+        // query params
+        if (is_array($sort)) {
+            $sort = ObjectSerializer::serializeCollection($sort, 'multi', true);
+        }
+        if ($sort !== null) {
+            $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
+        }
+        // query params
+        if ($after !== null) {
+            $queryParams['after'] = ObjectSerializer::toQueryValue($after);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($archived !== null) {
+            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
+        }
+
 
         // body params
         $_tempBody = null;
