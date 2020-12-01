@@ -1,18 +1,18 @@
 <?php
 /**
- * DefaultApi
+ * RowsApi
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Blogs\Authors
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Blog Post endpoints
+ * HubDB endpoints
  *
- * \"Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags\"
+ * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `live` versions and you can publish and unpublish the live version. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, pushed to live version, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the live version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication.
  *
  * The version of the OpenAPI document: v3
  * 
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Blogs\Authors\Api;
+namespace HubSpot\Client\Cms\Hubdb\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,20 +34,20 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Cms\Blogs\Authors\ApiException;
-use HubSpot\Client\Cms\Blogs\Authors\Configuration;
-use HubSpot\Client\Cms\Blogs\Authors\HeaderSelector;
-use HubSpot\Client\Cms\Blogs\Authors\ObjectSerializer;
+use HubSpot\Client\Cms\Hubdb\ApiException;
+use HubSpot\Client\Cms\Hubdb\Configuration;
+use HubSpot\Client\Cms\Hubdb\HeaderSelector;
+use HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * DefaultApi Class Doc Comment
+ * RowsApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Blogs\Authors
+ * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class DefaultApi
+class RowsApi
 {
     /**
      * @var ClientInterface
@@ -116,35 +116,38 @@ class DefaultApi
     }
 
     /**
-     * Operation archive
+     * Operation cloneDraftTableRow
      *
-     * Archive a batch of Blog Authors
+     * Clone a row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function archive($batch_input_string)
+    public function cloneDraftTableRow($row_id, $table_id_or_name)
     {
-        $this->archiveWithHttpInfo($batch_input_string);
+        list($response) = $this->cloneDraftTableRowWithHttpInfo($row_id, $table_id_or_name);
+        return $response;
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation cloneDraftTableRowWithHttpInfo
      *
-     * Archive a batch of Blog Authors
+     * Clone a row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($batch_input_string)
+    public function cloneDraftTableRowWithHttpInfo($row_id, $table_id_or_name)
     {
-        $request = $this->archiveRequest($batch_input_string);
+        $request = $this->cloneDraftTableRowRequest($row_id, $table_id_or_name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -174,14 +177,62 @@ class DefaultApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,18 +243,19 @@ class DefaultApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation cloneDraftTableRowAsync
      *
-     * Archive a batch of Blog Authors
+     * Clone a row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($batch_input_string)
+    public function cloneDraftTableRowAsync($row_id, $table_id_or_name)
     {
-        return $this->archiveAsyncWithHttpInfo($batch_input_string)
+        return $this->cloneDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -212,25 +264,37 @@ class DefaultApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation cloneDraftTableRowAsyncWithHttpInfo
      *
-     * Archive a batch of Blog Authors
+     * Clone a row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($batch_input_string)
+    public function cloneDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name)
     {
-        $returnType = '';
-        $request = $this->archiveRequest($batch_input_string);
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+        $request = $this->cloneDraftTableRowRequest($row_id, $table_id_or_name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -250,23 +314,34 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'cloneDraftTableRow'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveRequest($batch_input_string)
+    protected function cloneDraftTableRowRequest($row_id, $table_id_or_name)
     {
-        // verify the required parameter 'batch_input_string' is set
-        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
+        // verify the required parameter 'row_id' is set
+        if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling archive'
+                'Missing the required parameter $row_id when calling cloneDraftTableRow'
+            );
+        }
+        if (!preg_match("/\\d+/", $row_id)) {
+            throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.cloneDraftTableRow, must conform to the pattern /\\d+/.");
+        }
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling cloneDraftTableRow'
             );
         }
 
-        $resourcePath = '/cms/v3/blogs/authors/batch/archive';
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft/clone';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -274,20 +349,348 @@ class DefaultApi
         $multipart = false;
 
 
+        // path params
+        if ($row_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'rowId' . '}',
+                ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;
-        if (isset($batch_input_string)) {
-            $_tempBody = $batch_input_string;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createTableRow
+     *
+     * Add a new row to a table
+     *
+     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The row definition JSON, formatted as described above. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function createTableRow($table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        list($response) = $this->createTableRowWithHttpInfo($table_id_or_name, $hub_db_table_row_v3_input);
+        return $response;
+    }
+
+    /**
+     * Operation createTableRowWithHttpInfo
+     *
+     * Add a new row to a table
+     *
+     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The row definition JSON, formatted as described above. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createTableRowWithHttpInfo($table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        $request = $this->createTableRowRequest($table_id_or_name, $hub_db_table_row_v3_input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createTableRowAsync
+     *
+     * Add a new row to a table
+     *
+     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The row definition JSON, formatted as described above. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTableRowAsync($table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        return $this->createTableRowAsyncWithHttpInfo($table_id_or_name, $hub_db_table_row_v3_input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createTableRowAsyncWithHttpInfo
+     *
+     * Add a new row to a table
+     *
+     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The row definition JSON, formatted as described above. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTableRowAsyncWithHttpInfo($table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+        $request = $this->createTableRowRequest($table_id_or_name, $hub_db_table_row_v3_input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createTableRow'
+     *
+     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The row definition JSON, formatted as described above. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createTableRowRequest($table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling createTableRow'
+            );
+        }
+        // verify the required parameter 'hub_db_table_row_v3_input' is set
+        if ($hub_db_table_row_v3_input === null || (is_array($hub_db_table_row_v3_input) && count($hub_db_table_row_v3_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hub_db_table_row_v3_input when calling createTableRow'
+            );
+        }
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($hub_db_table_row_v3_input)) {
+            $_tempBody = $hub_db_table_row_v3_input;
         }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
+                ['application/json', '*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
+                ['application/json', '*/*'],
                 ['application/json']
             );
         }
@@ -321,6 +724,11 @@ class DefaultApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -347,37 +755,1028 @@ class DefaultApi
     }
 
     /**
-     * Operation archive_0
+     * Operation getDraftTableRowById
      *
-     * Delete a Blog Author
+     * Get a row from the draft table
      *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Whether to return only results that have been archived. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function archive_0($object_id, $archived = null)
+    public function getDraftTableRowById($row_id, $table_id_or_name)
     {
-        $this->archive_0WithHttpInfo($object_id, $archived);
+        list($response) = $this->getDraftTableRowByIdWithHttpInfo($row_id, $table_id_or_name);
+        return $response;
     }
 
     /**
-     * Operation archive_0WithHttpInfo
+     * Operation getDraftTableRowByIdWithHttpInfo
      *
-     * Delete a Blog Author
+     * Get a row from the draft table
      *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Whether to return only results that have been archived. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDraftTableRowByIdWithHttpInfo($row_id, $table_id_or_name)
+    {
+        $request = $this->getDraftTableRowByIdRequest($row_id, $table_id_or_name);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getDraftTableRowByIdAsync
+     *
+     * Get a row from the draft table
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDraftTableRowByIdAsync($row_id, $table_id_or_name)
+    {
+        return $this->getDraftTableRowByIdAsyncWithHttpInfo($row_id, $table_id_or_name)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDraftTableRowByIdAsyncWithHttpInfo
+     *
+     * Get a row from the draft table
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDraftTableRowByIdAsyncWithHttpInfo($row_id, $table_id_or_name)
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+        $request = $this->getDraftTableRowByIdRequest($row_id, $table_id_or_name);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDraftTableRowById'
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getDraftTableRowByIdRequest($row_id, $table_id_or_name)
+    {
+        // verify the required parameter 'row_id' is set
+        if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $row_id when calling getDraftTableRowById'
+            );
+        }
+        if (!preg_match("/\\d+/", $row_id)) {
+            throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.getDraftTableRowById, must conform to the pattern /\\d+/.");
+        }
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling getDraftTableRowById'
+            );
+        }
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($row_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'rowId' . '}',
+                ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getTableRow
+     *
+     * Get a table row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function getTableRow($row_id, $table_id_or_name)
+    {
+        list($response) = $this->getTableRowWithHttpInfo($row_id, $table_id_or_name);
+        return $response;
+    }
+
+    /**
+     * Operation getTableRowWithHttpInfo
+     *
+     * Get a table row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTableRowWithHttpInfo($row_id, $table_id_or_name)
+    {
+        $request = $this->getTableRowRequest($row_id, $table_id_or_name);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getTableRowAsync
+     *
+     * Get a table row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTableRowAsync($row_id, $table_id_or_name)
+    {
+        return $this->getTableRowAsyncWithHttpInfo($row_id, $table_id_or_name)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTableRowAsyncWithHttpInfo
+     *
+     * Get a table row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTableRowAsyncWithHttpInfo($row_id, $table_id_or_name)
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+        $request = $this->getTableRowRequest($row_id, $table_id_or_name);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTableRow'
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getTableRowRequest($row_id, $table_id_or_name)
+    {
+        // verify the required parameter 'row_id' is set
+        if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $row_id when calling getTableRow'
+            );
+        }
+        if (!preg_match("/\\d+/", $row_id)) {
+            throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.getTableRow, must conform to the pattern /\\d+/.");
+        }
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling getTableRow'
+            );
+        }
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($row_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'rowId' . '}',
+                ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getTableRows
+     *
+     * Get rows for a table
+     *
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function getTableRows($table_id_or_name, $properties = null, $after = null, $limit = null, $sort = null)
+    {
+        list($response) = $this->getTableRowsWithHttpInfo($table_id_or_name, $properties, $after, $limit, $sort);
+        return $response;
+    }
+
+    /**
+     * Operation getTableRowsWithHttpInfo
+     *
+     * Get rows for a table
+     *
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTableRowsWithHttpInfo($table_id_or_name, $properties = null, $after = null, $limit = null, $sort = null)
+    {
+        $request = $this->getTableRowsRequest($table_id_or_name, $properties, $after, $limit, $sort);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getTableRowsAsync
+     *
+     * Get rows for a table
+     *
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTableRowsAsync($table_id_or_name, $properties = null, $after = null, $limit = null, $sort = null)
+    {
+        return $this->getTableRowsAsyncWithHttpInfo($table_id_or_name, $properties, $after, $limit, $sort)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTableRowsAsyncWithHttpInfo
+     *
+     * Get rows for a table
+     *
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTableRowsAsyncWithHttpInfo($table_id_or_name, $properties = null, $after = null, $limit = null, $sort = null)
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging';
+        $request = $this->getTableRowsRequest($table_id_or_name, $properties, $after, $limit, $sort);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTableRows'
+     *
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
+     * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getTableRowsRequest($table_id_or_name, $properties = null, $after = null, $limit = null, $sort = null)
+    {
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling getTableRows'
+            );
+        }
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($properties)) {
+            $properties = ObjectSerializer::serializeCollection($properties, 'multi', true);
+        }
+        if ($properties !== null) {
+            $queryParams['properties'] = ObjectSerializer::toQueryValue($properties);
+        }
+        // query params
+        if ($after !== null) {
+            $queryParams['after'] = ObjectSerializer::toQueryValue($after);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if (is_array($sort)) {
+            $sort = ObjectSerializer::serializeCollection($sort, 'multi', true);
+        }
+        if ($sort !== null) {
+            $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
+        }
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation purgeDraftTableRow
+     *
+     * Permanently deletes a row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function purgeDraftTableRow($row_id, $table_id_or_name)
+    {
+        $this->purgeDraftTableRowWithHttpInfo($row_id, $table_id_or_name);
+    }
+
+    /**
+     * Operation purgeDraftTableRowWithHttpInfo
+     *
+     * Permanently deletes a row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archive_0WithHttpInfo($object_id, $archived = null)
+    public function purgeDraftTableRowWithHttpInfo($row_id, $table_id_or_name)
     {
-        $request = $this->archive_0Request($object_id, $archived);
+        $request = $this->purgeDraftTableRowRequest($row_id, $table_id_or_name);
 
         try {
             $options = $this->createHttpClientOption();
@@ -414,7 +1813,7 @@ class DefaultApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -425,19 +1824,19 @@ class DefaultApi
     }
 
     /**
-     * Operation archive_0Async
+     * Operation purgeDraftTableRowAsync
      *
-     * Delete a Blog Author
+     * Permanently deletes a row
      *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Whether to return only results that have been archived. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archive_0Async($object_id, $archived = null)
+    public function purgeDraftTableRowAsync($row_id, $table_id_or_name)
     {
-        return $this->archive_0AsyncWithHttpInfo($object_id, $archived)
+        return $this->purgeDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -446,20 +1845,20 @@ class DefaultApi
     }
 
     /**
-     * Operation archive_0AsyncWithHttpInfo
+     * Operation purgeDraftTableRowAsyncWithHttpInfo
      *
-     * Delete a Blog Author
+     * Permanently deletes a row
      *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Whether to return only results that have been archived. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archive_0AsyncWithHttpInfo($object_id, $archived = null)
+    public function purgeDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name)
     {
         $returnType = '';
-        $request = $this->archive_0Request($object_id, $archived);
+        $request = $this->purgeDraftTableRowRequest($row_id, $table_id_or_name);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -485,40 +1884,54 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'archive_0'
+     * Create request for operation 'purgeDraftTableRow'
      *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Whether to return only results that have been archived. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archive_0Request($object_id, $archived = null)
+    protected function purgeDraftTableRowRequest($row_id, $table_id_or_name)
     {
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
+        // verify the required parameter 'row_id' is set
+        if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling archive_0'
+                'Missing the required parameter $row_id when calling purgeDraftTableRow'
+            );
+        }
+        if (!preg_match("/\\d+/", $row_id)) {
+            throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.purgeDraftTableRow, must conform to the pattern /\\d+/.");
+        }
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling purgeDraftTableRow'
             );
         }
 
-        $resourcePath = '/cms/v3/blogs/authors/{objectId}';
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
 
         // path params
-        if ($object_id !== null) {
+        if ($row_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
+                '{' . 'rowId' . '}',
+                ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -566,6 +1979,11 @@ class DefaultApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -592,656 +2010,44 @@ class DefaultApi
     }
 
     /**
-     * Operation create
+     * Operation readDraftTableRows
      *
-     * Create a new Blog Author
+     * Get rows from draft table
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of a new Blog Author. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
-     */
-    public function create($blog_author)
-    {
-        list($response) = $this->createWithHttpInfo($blog_author);
-        return $response;
-    }
-
-    /**
-     * Operation createWithHttpInfo
-     *
-     * Create a new Blog Author
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of a new Blog Author. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createWithHttpInfo($blog_author)
-    {
-        $request = $this->createRequest($blog_author);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsync
-     *
-     * Create a new Blog Author
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of a new Blog Author. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsync($blog_author)
-    {
-        return $this->createAsyncWithHttpInfo($blog_author)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncWithHttpInfo
-     *
-     * Create a new Blog Author
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of a new Blog Author. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncWithHttpInfo($blog_author)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-        $request = $this->createRequest($blog_author);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'create'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of a new Blog Author. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function createRequest($blog_author)
-    {
-        // verify the required parameter 'blog_author' is set
-        if ($blog_author === null || (is_array($blog_author) && count($blog_author) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $blog_author when calling create'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/authors';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($blog_author)) {
-            $_tempBody = $blog_author;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation create_0
-     *
-     * Create a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputBlogAuthor $batch_input_blog_author The JSON array of new Blog Authors to create. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
-     */
-    public function create_0($batch_input_blog_author)
-    {
-        list($response) = $this->create_0WithHttpInfo($batch_input_blog_author);
-        return $response;
-    }
-
-    /**
-     * Operation create_0WithHttpInfo
-     *
-     * Create a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputBlogAuthor $batch_input_blog_author The JSON array of new Blog Authors to create. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function create_0WithHttpInfo($batch_input_blog_author)
-    {
-        $request = $this->create_0Request($batch_input_blog_author);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 207:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = 'object';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation create_0Async
-     *
-     * Create a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputBlogAuthor $batch_input_blog_author The JSON array of new Blog Authors to create. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function create_0Async($batch_input_blog_author)
-    {
-        return $this->create_0AsyncWithHttpInfo($batch_input_blog_author)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation create_0AsyncWithHttpInfo
-     *
-     * Create a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputBlogAuthor $batch_input_blog_author The JSON array of new Blog Authors to create. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function create_0AsyncWithHttpInfo($batch_input_blog_author)
-    {
-        $returnType = 'object';
-        $request = $this->create_0Request($batch_input_blog_author);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'create_0'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputBlogAuthor $batch_input_blog_author The JSON array of new Blog Authors to create. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function create_0Request($batch_input_blog_author)
-    {
-        // verify the required parameter 'batch_input_blog_author' is set
-        if ($batch_input_blog_author === null || (is_array($batch_input_blog_author) && count($batch_input_blog_author) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_blog_author when calling create_0'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/authors/batch/create';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($batch_input_blog_author)) {
-            $_tempBody = $batch_input_blog_author;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getAll
-     *
-     * Get all Blog Authors
-     *
-     * @param  \DateTime $created_at Only return Blog Authors created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Authors created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Authors created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Authors last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Authors last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Authors last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. (optional)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
+     * @return \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getAll($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function readDraftTableRows($table_id_or_name, $after = null, $properties = null, $limit = null, $sort = null)
     {
-        list($response) = $this->getAllWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $after, $properties, $limit, $sort);
         return $response;
     }
 
     /**
-     * Operation getAllWithHttpInfo
+     * Operation readDraftTableRowsWithHttpInfo
      *
-     * Get all Blog Authors
+     * Get rows from draft table
      *
-     * @param  \DateTime $created_at Only return Blog Authors created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Authors created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Authors created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Authors last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Authors last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Authors last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. (optional)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $after = null, $properties = null, $limit = null, $sort = null)
     {
-        $request = $this->getAllRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $after, $properties, $limit, $sort);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1274,32 +2080,32 @@ class DefaultApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor';
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1318,7 +2124,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor',
+                        '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1326,7 +2132,7 @@ class DefaultApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1337,27 +2143,22 @@ class DefaultApi
     }
 
     /**
-     * Operation getAllAsync
+     * Operation readDraftTableRowsAsync
      *
-     * Get all Blog Authors
+     * Get rows from draft table
      *
-     * @param  \DateTime $created_at Only return Blog Authors created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Authors created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Authors created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Authors last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Authors last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Authors last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function readDraftTableRowsAsync($table_id_or_name, $after = null, $properties = null, $limit = null, $sort = null)
     {
-        return $this->getAllAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived)
+        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $after, $properties, $limit, $sort)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1366,28 +2167,23 @@ class DefaultApi
     }
 
     /**
-     * Operation getAllAsyncWithHttpInfo
+     * Operation readDraftTableRowsAsyncWithHttpInfo
      *
-     * Get all Blog Authors
+     * Get rows from draft table
      *
-     * @param  \DateTime $created_at Only return Blog Authors created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Authors created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Authors created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Authors last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Authors last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Authors last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $after = null, $properties = null, $limit = null, $sort = null)
     {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthor';
-        $request = $this->getAllRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging';
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $after, $properties, $limit, $sort);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1424,26 +2220,27 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'getAll'
+     * Create request for operation 'readDraftTableRows'
      *
-     * @param  \DateTime $created_at Only return Blog Authors created at exactly the specified time. (optional)
-     * @param  \DateTime $created_after Only return Blog Authors created after the specified time. (optional)
-     * @param  \DateTime $created_before Only return Blog Authors created before the specified time. (optional)
-     * @param  \DateTime $updated_at Only return Blog Authors last updated at exactly the specified time. (optional)
-     * @param  \DateTime $updated_after Only return Blog Authors last updated after the specified time. (optional)
-     * @param  \DateTime $updated_before Only return Blog Authors last updated before the specified time. (optional)
-     * @param  string[] $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
+     * @param  string $table_id_or_name The ID or name of the table to query. (required)
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string[] $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
+     * @param  int $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
+     * @param  string[] $sort Specifies the column names to sort the results by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAllRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    protected function readDraftTableRowsRequest($table_id_or_name, $after = null, $properties = null, $limit = null, $sort = null)
     {
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling readDraftTableRows'
+            );
+        }
 
-        $resourcePath = '/cms/v3/blogs/authors';
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1451,28 +2248,19 @@ class DefaultApi
         $multipart = false;
 
         // query params
-        if ($created_at !== null) {
-            $queryParams['createdAt'] = ObjectSerializer::toQueryValue($created_at);
+        if ($after !== null) {
+            $queryParams['after'] = ObjectSerializer::toQueryValue($after);
         }
         // query params
-        if ($created_after !== null) {
-            $queryParams['createdAfter'] = ObjectSerializer::toQueryValue($created_after);
+        if (is_array($properties)) {
+            $properties = ObjectSerializer::serializeCollection($properties, 'multi', true);
+        }
+        if ($properties !== null) {
+            $queryParams['properties'] = ObjectSerializer::toQueryValue($properties);
         }
         // query params
-        if ($created_before !== null) {
-            $queryParams['createdBefore'] = ObjectSerializer::toQueryValue($created_before);
-        }
-        // query params
-        if ($updated_at !== null) {
-            $queryParams['updatedAt'] = ObjectSerializer::toQueryValue($updated_at);
-        }
-        // query params
-        if ($updated_after !== null) {
-            $queryParams['updatedAfter'] = ObjectSerializer::toQueryValue($updated_after);
-        }
-        // query params
-        if ($updated_before !== null) {
-            $queryParams['updatedBefore'] = ObjectSerializer::toQueryValue($updated_before);
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
         }
         // query params
         if (is_array($sort)) {
@@ -1481,321 +2269,12 @@ class DefaultApi
         if ($sort !== null) {
             $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
         }
-        // query params
-        if ($after !== null) {
-            $queryParams['after'] = ObjectSerializer::toQueryValue($after);
-        }
-        // query params
-        if ($limit !== null) {
-            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
-        }
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getById
-     *
-     * Retrieve a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
-     */
-    public function getById($object_id, $archived = null)
-    {
-        list($response) = $this->getByIdWithHttpInfo($object_id, $archived);
-        return $response;
-    }
-
-    /**
-     * Operation getByIdWithHttpInfo
-     *
-     * Retrieve a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getByIdWithHttpInfo($object_id, $archived = null)
-    {
-        $request = $this->getByIdRequest($object_id, $archived);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getByIdAsync
-     *
-     * Retrieve a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsync($object_id, $archived = null)
-    {
-        return $this->getByIdAsyncWithHttpInfo($object_id, $archived)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getByIdAsyncWithHttpInfo
-     *
-     * Retrieve a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsyncWithHttpInfo($object_id, $archived = null)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-        $request = $this->getByIdRequest($object_id, $archived);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getById'
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function getByIdRequest($object_id, $archived = null)
-    {
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getById'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/authors/{objectId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
 
         // path params
-        if ($object_id !== null) {
+        if ($table_id_or_name !== null) {
             $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -1843,6 +2322,11 @@ class DefaultApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1869,38 +2353,40 @@ class DefaultApi
     }
 
     /**
-     * Operation read
+     * Operation replaceDraftTableRow
      *
-     * Retrieve a batch of Blog Authors
+     * Replaces an existing row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row (required)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function read($batch_input_string, $archived = null)
+    public function replaceDraftTableRow($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
     {
-        list($response) = $this->readWithHttpInfo($batch_input_string, $archived);
+        list($response) = $this->replaceDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input);
         return $response;
     }
 
     /**
-     * Operation readWithHttpInfo
+     * Operation replaceDraftTableRowWithHttpInfo
      *
-     * Retrieve a batch of Blog Authors
+     * Replaces an existing row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row (required)
      *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readWithHttpInfo($batch_input_string, $archived = null)
+    public function replaceDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
     {
-        $request = $this->readRequest($batch_input_string, $archived);
+        $request = $this->replaceDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1933,44 +2419,32 @@ class DefaultApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 207:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1989,15 +2463,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors',
+                        '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2005,7 +2471,7 @@ class DefaultApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2016,19 +2482,20 @@ class DefaultApi
     }
 
     /**
-     * Operation readAsync
+     * Operation replaceDraftTableRowAsync
      *
-     * Retrieve a batch of Blog Authors
+     * Replaces an existing row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsync($batch_input_string, $archived = null)
+    public function replaceDraftTableRowAsync($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
     {
-        return $this->readAsyncWithHttpInfo($batch_input_string, $archived)
+        return $this->replaceDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2037,20 +2504,21 @@ class DefaultApi
     }
 
     /**
-     * Operation readAsyncWithHttpInfo
+     * Operation replaceDraftTableRowAsyncWithHttpInfo
      *
-     * Retrieve a batch of Blog Authors
+     * Replaces an existing row
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsyncWithHttpInfo($batch_input_string, $archived = null)
+    public function replaceDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
     {
-        $returnType = 'object';
-        $request = $this->readRequest($batch_input_string, $archived);
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+        $request = $this->replaceDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2087,679 +2555,69 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'read'
+     * Create request for operation 'replaceDraftTableRow'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputString $batch_input_string The JSON array of Blog Author ids. (required)
-     * @param  bool $archived Specifies whether to return archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function readRequest($batch_input_string, $archived = null)
+    protected function replaceDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
     {
-        // verify the required parameter 'batch_input_string' is set
-        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
+        // verify the required parameter 'row_id' is set
+        if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling read'
+                'Missing the required parameter $row_id when calling replaceDraftTableRow'
+            );
+        }
+        if (!preg_match("/\\d+/", $row_id)) {
+            throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.replaceDraftTableRow, must conform to the pattern /\\d+/.");
+        }
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling replaceDraftTableRow'
+            );
+        }
+        // verify the required parameter 'hub_db_table_row_v3_input' is set
+        if ($hub_db_table_row_v3_input === null || (is_array($hub_db_table_row_v3_input) && count($hub_db_table_row_v3_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hub_db_table_row_v3_input when calling replaceDraftTableRow'
             );
         }
 
-        $resourcePath = '/cms/v3/blogs/authors/batch/read';
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($batch_input_string)) {
-            $_tempBody = $batch_input_string;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation update
-     *
-     * Update a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Authors. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
-     */
-    public function update($batch_input_json_node, $archived = null)
-    {
-        list($response) = $this->updateWithHttpInfo($batch_input_json_node, $archived);
-        return $response;
-    }
-
-    /**
-     * Operation updateWithHttpInfo
-     *
-     * Update a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Authors. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updateWithHttpInfo($batch_input_json_node, $archived = null)
-    {
-        $request = $this->updateRequest($batch_input_json_node, $archived);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('object' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, 'object', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 207:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = 'object';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\BatchResponseBlogAuthorWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateAsync
-     *
-     * Update a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Authors. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateAsync($batch_input_json_node, $archived = null)
-    {
-        return $this->updateAsyncWithHttpInfo($batch_input_json_node, $archived)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateAsyncWithHttpInfo
-     *
-     * Update a batch of Blog Authors
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Authors. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateAsyncWithHttpInfo($batch_input_json_node, $archived = null)
-    {
-        $returnType = 'object';
-        $request = $this->updateRequest($batch_input_json_node, $archived);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'update'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Authors. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function updateRequest($batch_input_json_node, $archived = null)
-    {
-        // verify the required parameter 'batch_input_json_node' is set
-        if ($batch_input_json_node === null || (is_array($batch_input_json_node) && count($batch_input_json_node) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_json_node when calling update'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/authors/batch/update';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($batch_input_json_node)) {
-            $_tempBody = $batch_input_json_node;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation update_0
-     *
-     * Update a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of the updated Blog Author. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
-     */
-    public function update_0($object_id, $blog_author, $archived = null)
-    {
-        list($response) = $this->update_0WithHttpInfo($object_id, $blog_author, $archived);
-        return $response;
-    }
-
-    /**
-     * Operation update_0WithHttpInfo
-     *
-     * Update a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of the updated Blog Author. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function update_0WithHttpInfo($object_id, $blog_author, $archived = null)
-    {
-        $request = $this->update_0Request($object_id, $blog_author, $archived);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\Authors\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation update_0Async
-     *
-     * Update a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of the updated Blog Author. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function update_0Async($object_id, $blog_author, $archived = null)
-    {
-        return $this->update_0AsyncWithHttpInfo($object_id, $blog_author, $archived)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation update_0AsyncWithHttpInfo
-     *
-     * Update a Blog Author
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of the updated Blog Author. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function update_0AsyncWithHttpInfo($object_id, $blog_author, $archived = null)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-        $request = $this->update_0Request($object_id, $blog_author, $archived);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'update_0'
-     *
-     * @param  string $object_id The Blog Author id. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor $blog_author The JSON representation of the updated Blog Author. (required)
-     * @param  bool $archived Specifies whether to update archived Blog Authors. Defaults to &#x60;false&#x60;. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function update_0Request($object_id, $blog_author, $archived = null)
-    {
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling update_0'
-            );
-        }
-        // verify the required parameter 'blog_author' is set
-        if ($blog_author === null || (is_array($blog_author) && count($blog_author) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $blog_author when calling update_0'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/authors/{objectId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($archived !== null) {
-            $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
-        }
 
         // path params
-        if ($object_id !== null) {
+        if ($row_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
+                '{' . 'rowId' . '}',
+                ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
 
         // body params
         $_tempBody = null;
-        if (isset($blog_author)) {
-            $_tempBody = $blog_author;
+        if (isset($hub_db_table_row_v3_input)) {
+            $_tempBody = $hub_db_table_row_v3_input;
         }
 
         if ($multipart) {
@@ -2802,6 +2660,349 @@ class DefaultApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateDraftTableRow
+     *
+     * Updates an existing row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row with necessary fields that needs to be updated. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function updateDraftTableRow($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        list($response) = $this->updateDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input);
+        return $response;
+    }
+
+    /**
+     * Operation updateDraftTableRowWithHttpInfo
+     *
+     * Updates an existing row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row with necessary fields that needs to be updated. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        $request = $this->updateDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Hubdb\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Hubdb\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateDraftTableRowAsync
+     *
+     * Updates an existing row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row with necessary fields that needs to be updated. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDraftTableRowAsync($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        return $this->updateDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateDraftTableRowAsyncWithHttpInfo
+     *
+     * Updates an existing row
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row with necessary fields that needs to be updated. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
+        $request = $this->updateDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateDraftTableRow'
+     *
+     * @param  string $row_id The ID of the row (required)
+     * @param  string $table_id_or_name The ID or name of the table (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Input $hub_db_table_row_v3_input The JSON object of the row with necessary fields that needs to be updated. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_input)
+    {
+        // verify the required parameter 'row_id' is set
+        if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $row_id when calling updateDraftTableRow'
+            );
+        }
+        if (!preg_match("/\\d+/", $row_id)) {
+            throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.updateDraftTableRow, must conform to the pattern /\\d+/.");
+        }
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling updateDraftTableRow'
+            );
+        }
+        // verify the required parameter 'hub_db_table_row_v3_input' is set
+        if ($hub_db_table_row_v3_input === null || (is_array($hub_db_table_row_v3_input) && count($hub_db_table_row_v3_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hub_db_table_row_v3_input when calling updateDraftTableRow'
+            );
+        }
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($row_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'rowId' . '}',
+                ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($hub_db_table_row_v3_input)) {
+            $_tempBody = $hub_db_table_row_v3_input;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
