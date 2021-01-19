@@ -39,5 +39,6 @@ if (count($history->getResults()) > 0) {
     <h3>No imports.</h3>
 <?php
 }
+
 include __DIR__.'/../_partials/footer.php';
 ?>

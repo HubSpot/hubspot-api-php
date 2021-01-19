@@ -14,6 +14,7 @@ if (!Webhooks::isHubspotSignatureValid(
     $_SERVER['HTTP_X_HUBSPOT_SIGNATURE_VERSION']
 )) {
     header('HTTP/1.1 401 Unauthorized');
+
     exit();
 }
 

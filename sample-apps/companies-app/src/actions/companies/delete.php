@@ -10,4 +10,5 @@ HubspotClientHelper::createFactory()->crm()->companies()->basicApi()
 ;
 
 header('Location: /companies/list');
+
 exit();

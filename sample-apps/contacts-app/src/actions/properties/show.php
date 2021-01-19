@@ -15,6 +15,7 @@ if (isset($_POST['name'])) {
     );
 
     header('Location: /properties/list');
+
     exit();
 }
 

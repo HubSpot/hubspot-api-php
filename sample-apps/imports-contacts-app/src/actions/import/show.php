@@ -4,6 +4,7 @@ use Helpers\HubspotClientHelper;
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('Location: /import/history');
+
     exit();
 }
 

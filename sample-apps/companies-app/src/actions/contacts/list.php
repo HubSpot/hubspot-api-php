@@ -45,4 +45,5 @@ if (count($contactList->getResults()) > 0) {
         }, $associationResponse);
     }
 }
+
 include __DIR__.'/../../views/contacts/list.php';

@@ -10,6 +10,7 @@ $cardId = CardRepository::getCardId();
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     include __DIR__.'/../../views/cards/init.php';
+
     exit();
 }
 

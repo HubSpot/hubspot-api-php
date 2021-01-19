@@ -4,6 +4,7 @@ use Helpers\HubspotClientHelper;
 
 if (!array_key_exists('file', $_FILES)) {
     header('Location: /import/start');
+
     exit();
 }
 

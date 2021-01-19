@@ -15,6 +15,7 @@ if (isset($_POST['name'])) {
     $response = $hubSpot->crm()->companies()->basicApi()->create($company);
 
     header('Location: /companies/show?id='.$response->getId().'&created=1');
+
     exit();
 }
 

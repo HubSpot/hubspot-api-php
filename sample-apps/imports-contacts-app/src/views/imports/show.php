@@ -9,5 +9,6 @@ $hubSpot->crm()->imports()->coreApi()->getById($importId);
 
 <?php
 include __DIR__.'/_details.php';
+
 include __DIR__.'/../_partials/footer.php';
 ?>
