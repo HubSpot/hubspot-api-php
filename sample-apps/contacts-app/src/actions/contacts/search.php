@@ -10,6 +10,7 @@ $search = $_GET['search'];
 
 if (empty($search)) {
     header('Location: /contacts/list');
+
     exit();
 }
 

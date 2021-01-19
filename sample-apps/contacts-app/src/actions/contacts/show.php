@@ -15,6 +15,7 @@ if (isset($_POST['buttonDelete'])) {
     // https://developers.hubspot.com/docs-beta/crm/contacts
     $hubSpot->crm()->contacts()->basicApi()->archive($contactId);
     header('Location: /');
+
     exit();
 }
 
@@ -23,6 +24,7 @@ if (isset($_POST['email'])) {
     $newProperties->setProperties($_POST);
     $hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
     header('Location: /contacts/show?updated=true&id='.$contactId);
+
     exit();
 }
 

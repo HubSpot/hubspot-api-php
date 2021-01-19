@@ -23,6 +23,7 @@ if (isset($_POST['name'])) {
     $hubSpot->crm()->companies()->basicApi()->update($id, $company);
 
     header('Location: /companies/list');
+
     exit();
 }
 

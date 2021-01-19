@@ -32,5 +32,6 @@
 <?php } ?>
 <?php
 include __DIR__.'/../_partials/pagination.php';
+
 include __DIR__.'/../_partials/footer.php';
 ?>

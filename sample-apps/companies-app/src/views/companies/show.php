@@ -3,6 +3,7 @@
 <?php
       if (isset($errorResponse)) {
           include __DIR__.'/../_partials/error_response.php';
+
           exit();
       }
 ?>

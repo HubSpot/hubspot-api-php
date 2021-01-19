@@ -10,6 +10,7 @@ use Repositories\EventTypesRepository;
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     include __DIR__.'/../../views/events/init.php';
+
     exit();
 }
 

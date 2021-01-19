@@ -18,30 +18,37 @@ try {
 
     if ('/' === $uri) {
         header('Location: /webhooks/events.php');
+
         exit();
     }
 
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
             header('Location: /oauth/login.php');
+
             exit();
         }
 
         if (('/webhooks/init.php' !== $uri) && empty($_SESSION['init'])) {
             header('Location: /webhooks/init.php');
+
             exit();
         }
     }
 
     if (!in_array($uri, array_merge($publicRoutes, $protectedRoutes))) {
         http_response_code(404);
+
         exit();
     }
 
     $path = __DIR__.'/../actions'.$uri;
+
     require $path;
 } catch (Throwable $t) {
     $message = $t->getMessage();
+
     include __DIR__.'/../views/error.php';
+
     exit();
 }

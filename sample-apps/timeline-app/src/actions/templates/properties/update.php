@@ -43,6 +43,7 @@ if (count($template->getTokens()) > 0) {
 
 if (is_null($property)) {
     http_response_code(404);
+
     exit();
 }
 

@@ -9,6 +9,7 @@ if (isset($_GET['hs_object_id'], $_POST['card_id'])) {
     WebhooksHelper::create($_POST['card_id']);
 
     header('Location: /trello/search-frame-success');
+
     exit();
 }
 

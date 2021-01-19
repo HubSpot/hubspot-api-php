@@ -13,6 +13,7 @@ if (isset($_POST['email'])) {
     $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 
     header('Location: /contacts/show?id='.$contact['id'].'&created=true');
+
     exit();
 }
 

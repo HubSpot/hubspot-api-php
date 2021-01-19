@@ -52,4 +52,5 @@ if (count($contactsIds) > 0) {
 } else {
     $contacts = [];
 }
+
 include __DIR__.'/../../views/webhooks/events.php';
