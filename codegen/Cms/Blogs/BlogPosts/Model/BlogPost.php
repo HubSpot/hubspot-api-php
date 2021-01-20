@@ -89,24 +89,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'int',
         'page_expiry_redirect_url' => 'string',
         'use_featured_image' => 'bool',
+        'tag_ids' => 'int[]',
+        'enable_google_amp_output_override' => 'bool',
         'post_body' => 'string',
         'post_summary' => 'string',
         'rss_body' => 'string',
         'rss_summary' => 'string',
-        'tag_ids' => 'int[]',
-        'enable_google_amp_output_override' => 'bool',
         'password' => 'string',
-        'publish_immediately' => 'bool',
-        'link_rel_canonical_url' => 'string',
-        'current_state' => 'string',
-        'include_default_custom_css' => 'bool',
-        'enable_layout_stylesheets' => 'bool',
-        'enable_domain_stylesheets' => 'bool',
         'attached_stylesheets' => 'object[]',
+        'include_default_custom_css' => 'bool',
+        'enable_domain_stylesheets' => 'bool',
+        'enable_layout_stylesheets' => 'bool',
         'meta_description' => 'string',
+        'publish_immediately' => 'bool',
         'head_html' => 'string',
         'footer_html' => 'string',
         'content_type_category' => 'string',
+        'current_state' => 'string',
+        'link_rel_canonical_url' => 'string',
         'featured_image' => 'string',
         'featured_image_alt_text' => 'string',
         'public_access_rules_enabled' => 'bool',
@@ -158,24 +158,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'int64',
         'page_expiry_redirect_url' => null,
         'use_featured_image' => null,
+        'tag_ids' => 'int64',
+        'enable_google_amp_output_override' => null,
         'post_body' => null,
         'post_summary' => null,
         'rss_body' => null,
         'rss_summary' => null,
-        'tag_ids' => 'int64',
-        'enable_google_amp_output_override' => null,
         'password' => null,
-        'publish_immediately' => null,
-        'link_rel_canonical_url' => null,
-        'current_state' => null,
-        'include_default_custom_css' => null,
-        'enable_layout_stylesheets' => null,
-        'enable_domain_stylesheets' => null,
         'attached_stylesheets' => null,
+        'include_default_custom_css' => null,
+        'enable_domain_stylesheets' => null,
+        'enable_layout_stylesheets' => null,
         'meta_description' => null,
+        'publish_immediately' => null,
         'head_html' => null,
         'footer_html' => null,
         'content_type_category' => null,
+        'current_state' => null,
+        'link_rel_canonical_url' => null,
         'featured_image' => null,
         'featured_image_alt_text' => null,
         'public_access_rules_enabled' => null,
@@ -248,24 +248,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'pageExpiryRedirectId',
         'page_expiry_redirect_url' => 'pageExpiryRedirectUrl',
         'use_featured_image' => 'useFeaturedImage',
+        'tag_ids' => 'tagIds',
+        'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
         'post_body' => 'postBody',
         'post_summary' => 'postSummary',
         'rss_body' => 'rssBody',
         'rss_summary' => 'rssSummary',
-        'tag_ids' => 'tagIds',
-        'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
         'password' => 'password',
-        'publish_immediately' => 'publishImmediately',
-        'link_rel_canonical_url' => 'linkRelCanonicalUrl',
-        'current_state' => 'currentState',
-        'include_default_custom_css' => 'includeDefaultCustomCss',
-        'enable_layout_stylesheets' => 'enableLayoutStylesheets',
-        'enable_domain_stylesheets' => 'enableDomainStylesheets',
         'attached_stylesheets' => 'attachedStylesheets',
+        'include_default_custom_css' => 'includeDefaultCustomCss',
+        'enable_domain_stylesheets' => 'enableDomainStylesheets',
+        'enable_layout_stylesheets' => 'enableLayoutStylesheets',
         'meta_description' => 'metaDescription',
+        'publish_immediately' => 'publishImmediately',
         'head_html' => 'headHtml',
         'footer_html' => 'footerHtml',
         'content_type_category' => 'contentTypeCategory',
+        'current_state' => 'currentState',
+        'link_rel_canonical_url' => 'linkRelCanonicalUrl',
         'featured_image' => 'featuredImage',
         'featured_image_alt_text' => 'featuredImageAltText',
         'public_access_rules_enabled' => 'publicAccessRulesEnabled',
@@ -317,24 +317,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'setPageExpiryRedirectId',
         'page_expiry_redirect_url' => 'setPageExpiryRedirectUrl',
         'use_featured_image' => 'setUseFeaturedImage',
+        'tag_ids' => 'setTagIds',
+        'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
         'post_body' => 'setPostBody',
         'post_summary' => 'setPostSummary',
         'rss_body' => 'setRssBody',
         'rss_summary' => 'setRssSummary',
-        'tag_ids' => 'setTagIds',
-        'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
         'password' => 'setPassword',
-        'publish_immediately' => 'setPublishImmediately',
-        'link_rel_canonical_url' => 'setLinkRelCanonicalUrl',
-        'current_state' => 'setCurrentState',
-        'include_default_custom_css' => 'setIncludeDefaultCustomCss',
-        'enable_layout_stylesheets' => 'setEnableLayoutStylesheets',
-        'enable_domain_stylesheets' => 'setEnableDomainStylesheets',
         'attached_stylesheets' => 'setAttachedStylesheets',
+        'include_default_custom_css' => 'setIncludeDefaultCustomCss',
+        'enable_domain_stylesheets' => 'setEnableDomainStylesheets',
+        'enable_layout_stylesheets' => 'setEnableLayoutStylesheets',
         'meta_description' => 'setMetaDescription',
+        'publish_immediately' => 'setPublishImmediately',
         'head_html' => 'setHeadHtml',
         'footer_html' => 'setFooterHtml',
         'content_type_category' => 'setContentTypeCategory',
+        'current_state' => 'setCurrentState',
+        'link_rel_canonical_url' => 'setLinkRelCanonicalUrl',
         'featured_image' => 'setFeaturedImage',
         'featured_image_alt_text' => 'setFeaturedImageAltText',
         'public_access_rules_enabled' => 'setPublicAccessRulesEnabled',
@@ -386,24 +386,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'getPageExpiryRedirectId',
         'page_expiry_redirect_url' => 'getPageExpiryRedirectUrl',
         'use_featured_image' => 'getUseFeaturedImage',
+        'tag_ids' => 'getTagIds',
+        'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
         'post_body' => 'getPostBody',
         'post_summary' => 'getPostSummary',
         'rss_body' => 'getRssBody',
         'rss_summary' => 'getRssSummary',
-        'tag_ids' => 'getTagIds',
-        'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
         'password' => 'getPassword',
-        'publish_immediately' => 'getPublishImmediately',
-        'link_rel_canonical_url' => 'getLinkRelCanonicalUrl',
-        'current_state' => 'getCurrentState',
-        'include_default_custom_css' => 'getIncludeDefaultCustomCss',
-        'enable_layout_stylesheets' => 'getEnableLayoutStylesheets',
-        'enable_domain_stylesheets' => 'getEnableDomainStylesheets',
         'attached_stylesheets' => 'getAttachedStylesheets',
+        'include_default_custom_css' => 'getIncludeDefaultCustomCss',
+        'enable_domain_stylesheets' => 'getEnableDomainStylesheets',
+        'enable_layout_stylesheets' => 'getEnableLayoutStylesheets',
         'meta_description' => 'getMetaDescription',
+        'publish_immediately' => 'getPublishImmediately',
         'head_html' => 'getHeadHtml',
         'footer_html' => 'getFooterHtml',
         'content_type_category' => 'getContentTypeCategory',
+        'current_state' => 'getCurrentState',
+        'link_rel_canonical_url' => 'getLinkRelCanonicalUrl',
         'featured_image' => 'getFeaturedImage',
         'featured_image_alt_text' => 'getFeaturedImageAltText',
         'public_access_rules_enabled' => 'getPublicAccessRulesEnabled',
@@ -1177,6 +1177,13 @@ class BlogPost implements ModelInterface, ArrayAccess
     const LANGUAGE_ZH_HANT = 'zh-hant';
     const LANGUAGE_ZU = 'zu';
     const LANGUAGE_ZU_ZA = 'zu-za';
+    const CONTENT_TYPE_CATEGORY__0 = '0';
+    const CONTENT_TYPE_CATEGORY__1 = '1';
+    const CONTENT_TYPE_CATEGORY__2 = '2';
+    const CONTENT_TYPE_CATEGORY__3 = '3';
+    const CONTENT_TYPE_CATEGORY__4 = '4';
+    const CONTENT_TYPE_CATEGORY__5 = '5';
+    const CONTENT_TYPE_CATEGORY__6 = '6';
     const CURRENT_STATE_AUTOMATED = 'AUTOMATED';
     const CURRENT_STATE_AUTOMATED_DRAFT = 'AUTOMATED_DRAFT';
     const CURRENT_STATE_AUTOMATED_SENDING = 'AUTOMATED_SENDING';
@@ -1208,13 +1215,6 @@ class BlogPost implements ModelInterface, ArrayAccess
     const CURRENT_STATE_AUTOMATED_DRAFT_AB = 'AUTOMATED_DRAFT_AB';
     const CURRENT_STATE_AUTOMATED_DRAFT_ABVARIANT = 'AUTOMATED_DRAFT_ABVARIANT';
     const CURRENT_STATE_AUTOMATED_LOSER_ABVARIANT = 'AUTOMATED_LOSER_ABVARIANT';
-    const CONTENT_TYPE_CATEGORY__0 = '0';
-    const CONTENT_TYPE_CATEGORY__1 = '1';
-    const CONTENT_TYPE_CATEGORY__2 = '2';
-    const CONTENT_TYPE_CATEGORY__3 = '3';
-    const CONTENT_TYPE_CATEGORY__4 = '4';
-    const CONTENT_TYPE_CATEGORY__5 = '5';
-    const CONTENT_TYPE_CATEGORY__6 = '6';
     
 
     
@@ -1963,6 +1963,24 @@ class BlogPost implements ModelInterface, ArrayAccess
      *
      * @return string[]
      */
+    public function getContentTypeCategoryAllowableValues()
+    {
+        return [
+            self::CONTENT_TYPE_CATEGORY__0,
+            self::CONTENT_TYPE_CATEGORY__1,
+            self::CONTENT_TYPE_CATEGORY__2,
+            self::CONTENT_TYPE_CATEGORY__3,
+            self::CONTENT_TYPE_CATEGORY__4,
+            self::CONTENT_TYPE_CATEGORY__5,
+            self::CONTENT_TYPE_CATEGORY__6,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getCurrentStateAllowableValues()
     {
         return [
@@ -1997,24 +2015,6 @@ class BlogPost implements ModelInterface, ArrayAccess
             self::CURRENT_STATE_AUTOMATED_DRAFT_AB,
             self::CURRENT_STATE_AUTOMATED_DRAFT_ABVARIANT,
             self::CURRENT_STATE_AUTOMATED_LOSER_ABVARIANT,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getContentTypeCategoryAllowableValues()
-    {
-        return [
-            self::CONTENT_TYPE_CATEGORY__0,
-            self::CONTENT_TYPE_CATEGORY__1,
-            self::CONTENT_TYPE_CATEGORY__2,
-            self::CONTENT_TYPE_CATEGORY__3,
-            self::CONTENT_TYPE_CATEGORY__4,
-            self::CONTENT_TYPE_CATEGORY__5,
-            self::CONTENT_TYPE_CATEGORY__6,
         ];
     }
     
@@ -2065,24 +2065,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         $this->container['page_expiry_redirect_id'] = isset($data['page_expiry_redirect_id']) ? $data['page_expiry_redirect_id'] : null;
         $this->container['page_expiry_redirect_url'] = isset($data['page_expiry_redirect_url']) ? $data['page_expiry_redirect_url'] : null;
         $this->container['use_featured_image'] = isset($data['use_featured_image']) ? $data['use_featured_image'] : null;
+        $this->container['tag_ids'] = isset($data['tag_ids']) ? $data['tag_ids'] : null;
+        $this->container['enable_google_amp_output_override'] = isset($data['enable_google_amp_output_override']) ? $data['enable_google_amp_output_override'] : null;
         $this->container['post_body'] = isset($data['post_body']) ? $data['post_body'] : null;
         $this->container['post_summary'] = isset($data['post_summary']) ? $data['post_summary'] : null;
         $this->container['rss_body'] = isset($data['rss_body']) ? $data['rss_body'] : null;
         $this->container['rss_summary'] = isset($data['rss_summary']) ? $data['rss_summary'] : null;
-        $this->container['tag_ids'] = isset($data['tag_ids']) ? $data['tag_ids'] : null;
-        $this->container['enable_google_amp_output_override'] = isset($data['enable_google_amp_output_override']) ? $data['enable_google_amp_output_override'] : null;
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
-        $this->container['publish_immediately'] = isset($data['publish_immediately']) ? $data['publish_immediately'] : null;
-        $this->container['link_rel_canonical_url'] = isset($data['link_rel_canonical_url']) ? $data['link_rel_canonical_url'] : null;
-        $this->container['current_state'] = isset($data['current_state']) ? $data['current_state'] : null;
-        $this->container['include_default_custom_css'] = isset($data['include_default_custom_css']) ? $data['include_default_custom_css'] : null;
-        $this->container['enable_layout_stylesheets'] = isset($data['enable_layout_stylesheets']) ? $data['enable_layout_stylesheets'] : null;
-        $this->container['enable_domain_stylesheets'] = isset($data['enable_domain_stylesheets']) ? $data['enable_domain_stylesheets'] : null;
         $this->container['attached_stylesheets'] = isset($data['attached_stylesheets']) ? $data['attached_stylesheets'] : null;
+        $this->container['include_default_custom_css'] = isset($data['include_default_custom_css']) ? $data['include_default_custom_css'] : null;
+        $this->container['enable_domain_stylesheets'] = isset($data['enable_domain_stylesheets']) ? $data['enable_domain_stylesheets'] : null;
+        $this->container['enable_layout_stylesheets'] = isset($data['enable_layout_stylesheets']) ? $data['enable_layout_stylesheets'] : null;
         $this->container['meta_description'] = isset($data['meta_description']) ? $data['meta_description'] : null;
+        $this->container['publish_immediately'] = isset($data['publish_immediately']) ? $data['publish_immediately'] : null;
         $this->container['head_html'] = isset($data['head_html']) ? $data['head_html'] : null;
         $this->container['footer_html'] = isset($data['footer_html']) ? $data['footer_html'] : null;
         $this->container['content_type_category'] = isset($data['content_type_category']) ? $data['content_type_category'] : null;
+        $this->container['current_state'] = isset($data['current_state']) ? $data['current_state'] : null;
+        $this->container['link_rel_canonical_url'] = isset($data['link_rel_canonical_url']) ? $data['link_rel_canonical_url'] : null;
         $this->container['featured_image'] = isset($data['featured_image']) ? $data['featured_image'] : null;
         $this->container['featured_image_alt_text'] = isset($data['featured_image_alt_text']) ? $data['featured_image_alt_text'] : null;
         $this->container['public_access_rules_enabled'] = isset($data['public_access_rules_enabled']) ? $data['public_access_rules_enabled'] : null;
@@ -2219,6 +2219,12 @@ class BlogPost implements ModelInterface, ArrayAccess
         if ($this->container['use_featured_image'] === null) {
             $invalidProperties[] = "'use_featured_image' can't be null";
         }
+        if ($this->container['tag_ids'] === null) {
+            $invalidProperties[] = "'tag_ids' can't be null";
+        }
+        if ($this->container['enable_google_amp_output_override'] === null) {
+            $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
+        }
         if ($this->container['post_body'] === null) {
             $invalidProperties[] = "'post_body' can't be null";
         }
@@ -2231,46 +2237,26 @@ class BlogPost implements ModelInterface, ArrayAccess
         if ($this->container['rss_summary'] === null) {
             $invalidProperties[] = "'rss_summary' can't be null";
         }
-        if ($this->container['tag_ids'] === null) {
-            $invalidProperties[] = "'tag_ids' can't be null";
-        }
-        if ($this->container['enable_google_amp_output_override'] === null) {
-            $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
-        }
         if ($this->container['password'] === null) {
             $invalidProperties[] = "'password' can't be null";
-        }
-        if ($this->container['publish_immediately'] === null) {
-            $invalidProperties[] = "'publish_immediately' can't be null";
-        }
-        if ($this->container['link_rel_canonical_url'] === null) {
-            $invalidProperties[] = "'link_rel_canonical_url' can't be null";
-        }
-        if ($this->container['current_state'] === null) {
-            $invalidProperties[] = "'current_state' can't be null";
-        }
-        $allowedValues = $this->getCurrentStateAllowableValues();
-        if (!is_null($this->container['current_state']) && !in_array($this->container['current_state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'current_state', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['include_default_custom_css'] === null) {
-            $invalidProperties[] = "'include_default_custom_css' can't be null";
-        }
-        if ($this->container['enable_layout_stylesheets'] === null) {
-            $invalidProperties[] = "'enable_layout_stylesheets' can't be null";
-        }
-        if ($this->container['enable_domain_stylesheets'] === null) {
-            $invalidProperties[] = "'enable_domain_stylesheets' can't be null";
         }
         if ($this->container['attached_stylesheets'] === null) {
             $invalidProperties[] = "'attached_stylesheets' can't be null";
         }
+        if ($this->container['include_default_custom_css'] === null) {
+            $invalidProperties[] = "'include_default_custom_css' can't be null";
+        }
+        if ($this->container['enable_domain_stylesheets'] === null) {
+            $invalidProperties[] = "'enable_domain_stylesheets' can't be null";
+        }
+        if ($this->container['enable_layout_stylesheets'] === null) {
+            $invalidProperties[] = "'enable_layout_stylesheets' can't be null";
+        }
         if ($this->container['meta_description'] === null) {
             $invalidProperties[] = "'meta_description' can't be null";
+        }
+        if ($this->container['publish_immediately'] === null) {
+            $invalidProperties[] = "'publish_immediately' can't be null";
         }
         if ($this->container['head_html'] === null) {
             $invalidProperties[] = "'head_html' can't be null";
@@ -2289,6 +2275,20 @@ class BlogPost implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['current_state'] === null) {
+            $invalidProperties[] = "'current_state' can't be null";
+        }
+        $allowedValues = $this->getCurrentStateAllowableValues();
+        if (!is_null($this->container['current_state']) && !in_array($this->container['current_state'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'current_state', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['link_rel_canonical_url'] === null) {
+            $invalidProperties[] = "'link_rel_canonical_url' can't be null";
+        }
         if ($this->container['featured_image'] === null) {
             $invalidProperties[] = "'featured_image' can't be null";
         }
@@ -3107,6 +3107,54 @@ class BlogPost implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets tag_ids
+     *
+     * @return int[]
+     */
+    public function getTagIds()
+    {
+        return $this->container['tag_ids'];
+    }
+
+    /**
+     * Sets tag_ids
+     *
+     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
+     *
+     * @return $this
+     */
+    public function setTagIds($tag_ids)
+    {
+        $this->container['tag_ids'] = $tag_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_google_amp_output_override
+     *
+     * @return bool
+     */
+    public function getEnableGoogleAmpOutputOverride()
+    {
+        return $this->container['enable_google_amp_output_override'];
+    }
+
+    /**
+     * Sets enable_google_amp_output_override
+     *
+     * @param bool $enable_google_amp_output_override Boolean to allow overriding the AMP settings for the blog.
+     *
+     * @return $this
+     */
+    public function setEnableGoogleAmpOutputOverride($enable_google_amp_output_override)
+    {
+        $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
+
+        return $this;
+    }
+
+    /**
      * Gets post_body
      *
      * @return string
@@ -3203,54 +3251,6 @@ class BlogPost implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets tag_ids
-     *
-     * @return int[]
-     */
-    public function getTagIds()
-    {
-        return $this->container['tag_ids'];
-    }
-
-    /**
-     * Sets tag_ids
-     *
-     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
-     *
-     * @return $this
-     */
-    public function setTagIds($tag_ids)
-    {
-        $this->container['tag_ids'] = $tag_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_google_amp_output_override
-     *
-     * @return bool
-     */
-    public function getEnableGoogleAmpOutputOverride()
-    {
-        return $this->container['enable_google_amp_output_override'];
-    }
-
-    /**
-     * Sets enable_google_amp_output_override
-     *
-     * @param bool $enable_google_amp_output_override Boolean to allow overriding the AMP settings for the blog.
-     *
-     * @return $this
-     */
-    public function setEnableGoogleAmpOutputOverride($enable_google_amp_output_override)
-    {
-        $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
-
-        return $this;
-    }
-
-    /**
      * Gets password
      *
      * @return string
@@ -3270,159 +3270,6 @@ class BlogPost implements ModelInterface, ArrayAccess
     public function setPassword($password)
     {
         $this->container['password'] = $password;
-
-        return $this;
-    }
-
-    /**
-     * Gets publish_immediately
-     *
-     * @return bool
-     */
-    public function getPublishImmediately()
-    {
-        return $this->container['publish_immediately'];
-    }
-
-    /**
-     * Sets publish_immediately
-     *
-     * @param bool $publish_immediately Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
-     *
-     * @return $this
-     */
-    public function setPublishImmediately($publish_immediately)
-    {
-        $this->container['publish_immediately'] = $publish_immediately;
-
-        return $this;
-    }
-
-    /**
-     * Gets link_rel_canonical_url
-     *
-     * @return string
-     */
-    public function getLinkRelCanonicalUrl()
-    {
-        return $this->container['link_rel_canonical_url'];
-    }
-
-    /**
-     * Sets link_rel_canonical_url
-     *
-     * @param string $link_rel_canonical_url Optional override to set the URL to be used in the rel=canonical link tag on the page.
-     *
-     * @return $this
-     */
-    public function setLinkRelCanonicalUrl($link_rel_canonical_url)
-    {
-        $this->container['link_rel_canonical_url'] = $link_rel_canonical_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets current_state
-     *
-     * @return string
-     */
-    public function getCurrentState()
-    {
-        return $this->container['current_state'];
-    }
-
-    /**
-     * Sets current_state
-     *
-     * @param string $current_state A generated ENUM descibing the current state of this Blog Post. Should always match state.
-     *
-     * @return $this
-     */
-    public function setCurrentState($current_state)
-    {
-        $allowedValues = $this->getCurrentStateAllowableValues();
-        if (!in_array($current_state, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'current_state', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['current_state'] = $current_state;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_default_custom_css
-     *
-     * @return bool
-     */
-    public function getIncludeDefaultCustomCss()
-    {
-        return $this->container['include_default_custom_css'];
-    }
-
-    /**
-     * Sets include_default_custom_css
-     *
-     * @param bool $include_default_custom_css Boolean to determine whether or not the Primary CSS Files should be applied.
-     *
-     * @return $this
-     */
-    public function setIncludeDefaultCustomCss($include_default_custom_css)
-    {
-        $this->container['include_default_custom_css'] = $include_default_custom_css;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_layout_stylesheets
-     *
-     * @return bool
-     */
-    public function getEnableLayoutStylesheets()
-    {
-        return $this->container['enable_layout_stylesheets'];
-    }
-
-    /**
-     * Sets enable_layout_stylesheets
-     *
-     * @param bool $enable_layout_stylesheets Boolean to determine whether or not the styles from the template should be applied.
-     *
-     * @return $this
-     */
-    public function setEnableLayoutStylesheets($enable_layout_stylesheets)
-    {
-        $this->container['enable_layout_stylesheets'] = $enable_layout_stylesheets;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_domain_stylesheets
-     *
-     * @return bool
-     */
-    public function getEnableDomainStylesheets()
-    {
-        return $this->container['enable_domain_stylesheets'];
-    }
-
-    /**
-     * Sets enable_domain_stylesheets
-     *
-     * @param bool $enable_domain_stylesheets Boolean to determine whether or not the styles from the template should be applied.
-     *
-     * @return $this
-     */
-    public function setEnableDomainStylesheets($enable_domain_stylesheets)
-    {
-        $this->container['enable_domain_stylesheets'] = $enable_domain_stylesheets;
 
         return $this;
     }
@@ -3452,6 +3299,78 @@ class BlogPost implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets include_default_custom_css
+     *
+     * @return bool
+     */
+    public function getIncludeDefaultCustomCss()
+    {
+        return $this->container['include_default_custom_css'];
+    }
+
+    /**
+     * Sets include_default_custom_css
+     *
+     * @param bool $include_default_custom_css Boolean to determine whether or not the Primary CSS Files should be applied.
+     *
+     * @return $this
+     */
+    public function setIncludeDefaultCustomCss($include_default_custom_css)
+    {
+        $this->container['include_default_custom_css'] = $include_default_custom_css;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_domain_stylesheets
+     *
+     * @return bool
+     */
+    public function getEnableDomainStylesheets()
+    {
+        return $this->container['enable_domain_stylesheets'];
+    }
+
+    /**
+     * Sets enable_domain_stylesheets
+     *
+     * @param bool $enable_domain_stylesheets Boolean to determine whether or not the styles from the template should be applied.
+     *
+     * @return $this
+     */
+    public function setEnableDomainStylesheets($enable_domain_stylesheets)
+    {
+        $this->container['enable_domain_stylesheets'] = $enable_domain_stylesheets;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_layout_stylesheets
+     *
+     * @return bool
+     */
+    public function getEnableLayoutStylesheets()
+    {
+        return $this->container['enable_layout_stylesheets'];
+    }
+
+    /**
+     * Sets enable_layout_stylesheets
+     *
+     * @param bool $enable_layout_stylesheets Boolean to determine whether or not the styles from the template should be applied.
+     *
+     * @return $this
+     */
+    public function setEnableLayoutStylesheets($enable_layout_stylesheets)
+    {
+        $this->container['enable_layout_stylesheets'] = $enable_layout_stylesheets;
+
+        return $this;
+    }
+
+    /**
      * Gets meta_description
      *
      * @return string
@@ -3471,6 +3390,30 @@ class BlogPost implements ModelInterface, ArrayAccess
     public function setMetaDescription($meta_description)
     {
         $this->container['meta_description'] = $meta_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets publish_immediately
+     *
+     * @return bool
+     */
+    public function getPublishImmediately()
+    {
+        return $this->container['publish_immediately'];
+    }
+
+    /**
+     * Sets publish_immediately
+     *
+     * @param bool $publish_immediately Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
+     *
+     * @return $this
+     */
+    public function setPublishImmediately($publish_immediately)
+    {
+        $this->container['publish_immediately'] = $publish_immediately;
 
         return $this;
     }
@@ -3552,6 +3495,63 @@ class BlogPost implements ModelInterface, ArrayAccess
             );
         }
         $this->container['content_type_category'] = $content_type_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets current_state
+     *
+     * @return string
+     */
+    public function getCurrentState()
+    {
+        return $this->container['current_state'];
+    }
+
+    /**
+     * Sets current_state
+     *
+     * @param string $current_state A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     *
+     * @return $this
+     */
+    public function setCurrentState($current_state)
+    {
+        $allowedValues = $this->getCurrentStateAllowableValues();
+        if (!in_array($current_state, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'current_state', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['current_state'] = $current_state;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_rel_canonical_url
+     *
+     * @return string
+     */
+    public function getLinkRelCanonicalUrl()
+    {
+        return $this->container['link_rel_canonical_url'];
+    }
+
+    /**
+     * Sets link_rel_canonical_url
+     *
+     * @param string $link_rel_canonical_url Optional override to set the URL to be used in the rel=canonical link tag on the page.
+     *
+     * @return $this
+     */
+    public function setLinkRelCanonicalUrl($link_rel_canonical_url)
+    {
+        $this->container['link_rel_canonical_url'] = $link_rel_canonical_url;
 
         return $this;
     }
