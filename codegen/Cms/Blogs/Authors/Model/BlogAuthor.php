@@ -60,13 +60,13 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'id' => 'string',
         'email' => 'string',
-        'display_name' => 'string',
         'bio' => 'string',
         'website' => 'string',
         'twitter' => 'string',
         'facebook' => 'string',
         'linkedin' => 'string',
         'avatar' => 'string',
+        'display_name' => 'string',
         'deleted_at' => '\DateTime',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -80,13 +80,13 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'id' => null,
         'email' => null,
-        'display_name' => null,
         'bio' => null,
         'website' => null,
         'twitter' => null,
         'facebook' => null,
         'linkedin' => null,
         'avatar' => null,
+        'display_name' => null,
         'deleted_at' => 'date-time',
         'created_at' => 'date-time',
         'updated_at' => 'date-time'
@@ -121,13 +121,13 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'email' => 'email',
-        'display_name' => 'displayName',
         'bio' => 'bio',
         'website' => 'website',
         'twitter' => 'twitter',
         'facebook' => 'facebook',
         'linkedin' => 'linkedin',
         'avatar' => 'avatar',
+        'display_name' => 'displayName',
         'deleted_at' => 'deletedAt',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
@@ -141,13 +141,13 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'email' => 'setEmail',
-        'display_name' => 'setDisplayName',
         'bio' => 'setBio',
         'website' => 'setWebsite',
         'twitter' => 'setTwitter',
         'facebook' => 'setFacebook',
         'linkedin' => 'setLinkedin',
         'avatar' => 'setAvatar',
+        'display_name' => 'setDisplayName',
         'deleted_at' => 'setDeletedAt',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
@@ -161,13 +161,13 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'email' => 'getEmail',
-        'display_name' => 'getDisplayName',
         'bio' => 'getBio',
         'website' => 'getWebsite',
         'twitter' => 'getTwitter',
         'facebook' => 'getFacebook',
         'linkedin' => 'getLinkedin',
         'avatar' => 'getAvatar',
+        'display_name' => 'getDisplayName',
         'deleted_at' => 'getDeletedAt',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
@@ -235,13 +235,13 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
         $this->container['bio'] = isset($data['bio']) ? $data['bio'] : null;
         $this->container['website'] = isset($data['website']) ? $data['website'] : null;
         $this->container['twitter'] = isset($data['twitter']) ? $data['twitter'] : null;
         $this->container['facebook'] = isset($data['facebook']) ? $data['facebook'] : null;
         $this->container['linkedin'] = isset($data['linkedin']) ? $data['linkedin'] : null;
         $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
+        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
         $this->container['deleted_at'] = isset($data['deleted_at']) ? $data['deleted_at'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
@@ -262,9 +262,6 @@ class BlogAuthor implements ModelInterface, ArrayAccess
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
-        if ($this->container['display_name'] === null) {
-            $invalidProperties[] = "'display_name' can't be null";
-        }
         if ($this->container['bio'] === null) {
             $invalidProperties[] = "'bio' can't be null";
         }
@@ -282,6 +279,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess
         }
         if ($this->container['avatar'] === null) {
             $invalidProperties[] = "'avatar' can't be null";
+        }
+        if ($this->container['display_name'] === null) {
+            $invalidProperties[] = "'display_name' can't be null";
         }
         if ($this->container['deleted_at'] === null) {
             $invalidProperties[] = "'deleted_at' can't be null";
@@ -351,30 +351,6 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     public function setEmail($email)
     {
         $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_name
-     *
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        return $this->container['display_name'];
-    }
-
-    /**
-     * Sets display_name
-     *
-     * @param string $display_name The full name of the Blog Author to be displayed.
-     *
-     * @return $this
-     */
-    public function setDisplayName($display_name)
-    {
-        $this->container['display_name'] = $display_name;
 
         return $this;
     }
@@ -519,6 +495,30 @@ class BlogAuthor implements ModelInterface, ArrayAccess
     public function setAvatar($avatar)
     {
         $this->container['avatar'] = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string $display_name The full name of the Blog Author to be displayed.
+     *
+     * @return $this
+     */
+    public function setDisplayName($display_name)
+    {
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }
