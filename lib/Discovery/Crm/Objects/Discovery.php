@@ -9,10 +9,11 @@ use HubSpot\Client\Crm\Objects\Api\SearchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method AssociationsApi associationsApi()
- * @method BasicApi        basicApi()
- * @method BatchApi        batchApi()
- * @method SearchApi       searchApi()
+ * @method AssociationsApi               associationsApi()
+ * @method BasicApi                      basicApi()
+ * @method BatchApi                      batchApi()
+ * @method FeedbackSubmissions\Discovery feedbackSubmissions()
+ * @method SearchApi                     searchApi()
  */
 class Discovery extends DiscoveryBase
 {
