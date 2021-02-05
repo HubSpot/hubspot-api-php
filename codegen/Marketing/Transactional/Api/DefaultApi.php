@@ -354,6 +354,293 @@ class DefaultApi
     }
 
     /**
+     * Operation createToken
+     *
+     * Create a SMTP API token.
+     *
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
+     *
+     * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView|\HubSpot\Client\Marketing\Transactional\Model\Error
+     */
+    public function createToken($smtp_api_token_request_egg = null)
+    {
+        list($response) = $this->createTokenWithHttpInfo($smtp_api_token_request_egg);
+        return $response;
+    }
+
+    /**
+     * Operation createTokenWithHttpInfo
+     *
+     * Create a SMTP API token.
+     *
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
+     *
+     * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView|\HubSpot\Client\Marketing\Transactional\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createTokenWithHttpInfo($smtp_api_token_request_egg = null)
+    {
+        $request = $this->createTokenRequest($smtp_api_token_request_egg);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Marketing\Transactional\Model\Error' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Transactional\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = (string) $responseBody;
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Transactional\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createTokenAsync
+     *
+     * Create a SMTP API token.
+     *
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTokenAsync($smtp_api_token_request_egg = null)
+    {
+        return $this->createTokenAsyncWithHttpInfo($smtp_api_token_request_egg)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createTokenAsyncWithHttpInfo
+     *
+     * Create a SMTP API token.
+     *
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTokenAsyncWithHttpInfo($smtp_api_token_request_egg = null)
+    {
+        $returnType = '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView';
+        $request = $this->createTokenRequest($smtp_api_token_request_egg);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createToken'
+     *
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createTokenRequest($smtp_api_token_request_egg = null)
+    {
+
+        $resourcePath = '/marketing/v3/transactional/smtp-tokens';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($smtp_api_token_request_egg)) {
+            $_tempBody = $smtp_api_token_request_egg;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getTokenById
      *
      * Query a single token by ID.
@@ -988,293 +1275,6 @@ class DefaultApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation reateToken
-     *
-     * Create a SMTP API token.
-     *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
-     *
-     * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView|\HubSpot\Client\Marketing\Transactional\Model\Error
-     */
-    public function reateToken($smtp_api_token_request_egg = null)
-    {
-        list($response) = $this->reateTokenWithHttpInfo($smtp_api_token_request_egg);
-        return $response;
-    }
-
-    /**
-     * Operation reateTokenWithHttpInfo
-     *
-     * Create a SMTP API token.
-     *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
-     *
-     * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView|\HubSpot\Client\Marketing\Transactional\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function reateTokenWithHttpInfo($smtp_api_token_request_egg = null)
-    {
-        $request = $this->reateTokenRequest($smtp_api_token_request_egg);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Marketing\Transactional\Model\Error' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Transactional\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = (string) $responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Transactional\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation reateTokenAsync
-     *
-     * Create a SMTP API token.
-     *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function reateTokenAsync($smtp_api_token_request_egg = null)
-    {
-        return $this->reateTokenAsyncWithHttpInfo($smtp_api_token_request_egg)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation reateTokenAsyncWithHttpInfo
-     *
-     * Create a SMTP API token.
-     *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function reateTokenAsyncWithHttpInfo($smtp_api_token_request_egg = null)
-    {
-        $returnType = '\HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenView';
-        $request = $this->reateTokenRequest($smtp_api_token_request_egg);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'reateToken'
-     *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function reateTokenRequest($smtp_api_token_request_egg = null)
-    {
-
-        $resourcePath = '/marketing/v3/transactional/smtp-tokens';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($smtp_api_token_request_egg)) {
-            $_tempBody = $smtp_api_token_request_egg;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
