@@ -3,8 +3,8 @@
 namespace spec\HubSpot\Discovery\Files;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Files\Files\Api\FilesApi;
-use HubSpot\Client\Files\Files\Api\FoldersApi;
+use HubSpot\Client\Files\Api\FilesApi;
+use HubSpot\Client\Files\Api\FoldersApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
