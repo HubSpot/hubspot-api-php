@@ -1,11 +1,11 @@
 <?php
 /**
- * FolderInput
+ * CollectionResponseFile
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,21 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * FolderInput Class Doc Comment
+ * CollectionResponseFile Class Doc Comment
  *
  * @category Class
- * @description Object for creating a folder.
- * @package  HubSpot\Client\Files\Files
+ * @description Collections of files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FolderInput implements ModelInterface, ArrayAccess
+class CollectionResponseFile implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FolderInput implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FolderInput';
+    protected static $openAPIModelName = 'CollectionResponseFile';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class FolderInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'parent_folder_id' => 'string',
-        'parent_path' => 'string'
+        'results' => '\HubSpot\Client\Files\Model\File[]',
+        'paging' => '\HubSpot\Client\Files\Model\Paging'
     ];
 
     /**
@@ -69,9 +68,8 @@ class FolderInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'parent_folder_id' => null,
-        'parent_path' => null
+        'results' => null,
+        'paging' => null
     ];
 
     /**
@@ -101,9 +99,8 @@ class FolderInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'parent_folder_id' => 'parentFolderId',
-        'parent_path' => 'parentPath'
+        'results' => 'results',
+        'paging' => 'paging'
     ];
 
     /**
@@ -112,9 +109,8 @@ class FolderInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'parent_folder_id' => 'setParentFolderId',
-        'parent_path' => 'setParentPath'
+        'results' => 'setResults',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -123,9 +119,8 @@ class FolderInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'parent_folder_id' => 'getParentFolderId',
-        'parent_path' => 'getParentPath'
+        'results' => 'getResults',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -188,9 +183,8 @@ class FolderInput implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
-        $this->container['parent_path'] = isset($data['parent_path']) ? $data['parent_path'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
+        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
     }
 
     /**
@@ -202,8 +196,8 @@ class FolderInput implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -221,73 +215,49 @@ class FolderInput implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Files\Model\File[]
      */
-    public function getName()
+    public function getResults()
     {
-        return $this->container['name'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets name
+     * Sets results
      *
-     * @param string $name Desired name for the folder.
+     * @param \HubSpot\Client\Files\Model\File[] $results results
      *
      * @return $this
      */
-    public function setName($name)
+    public function setResults($results)
     {
-        $this->container['name'] = $name;
+        $this->container['results'] = $results;
 
         return $this;
     }
 
     /**
-     * Gets parent_folder_id
+     * Gets paging
      *
-     * @return string|null
+     * @return \HubSpot\Client\Files\Model\Paging|null
      */
-    public function getParentFolderId()
+    public function getPaging()
     {
-        return $this->container['parent_folder_id'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets parent_folder_id
+     * Sets paging
      *
-     * @param string|null $parent_folder_id Folder ID of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     * @param \HubSpot\Client\Files\Model\Paging|null $paging paging
      *
      * @return $this
      */
-    public function setParentFolderId($parent_folder_id)
+    public function setPaging($paging)
     {
-        $this->container['parent_folder_id'] = $parent_folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_path
-     *
-     * @return string|null
-     */
-    public function getParentPath()
-    {
-        return $this->container['parent_path'];
-    }
-
-    /**
-     * Sets parent_path
-     *
-     * @param string|null $parent_path Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
-     *
-     * @return $this
-     */
-    public function setParentPath($parent_path)
-    {
-        $this->container['parent_path'] = $parent_path;
+        $this->container['paging'] = $paging;
 
         return $this;
     }

@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Api;
+namespace HubSpot\Client\Files\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Files\Files\ApiException;
-use HubSpot\Client\Files\Files\Configuration;
-use HubSpot\Client\Files\Files\HeaderSelector;
-use HubSpot\Client\Files\Files\ObjectSerializer;
+use HubSpot\Client\Files\ApiException;
+use HubSpot\Client\Files\Configuration;
+use HubSpot\Client\Files\HeaderSelector;
+use HubSpot\Client\Files\ObjectSerializer;
 
 /**
  * FilesApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -122,7 +122,7 @@ class FilesApi
      *
      * @param  string $file_id File ID to delete (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -138,7 +138,7 @@ class FilesApi
      *
      * @param  string $file_id File ID to delete (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -181,7 +181,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -368,7 +368,7 @@ class FilesApi
      *
      * @param  string $file_id ID of file to GDPR delete (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -384,7 +384,7 @@ class FilesApi
      *
      * @param  string $file_id ID of file to GDPR delete (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -427,7 +427,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -614,9 +614,9 @@ class FilesApi
      *
      * @param  string $task_id Import by URL task ID (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\FileActionResponse|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\FileActionResponse|\HubSpot\Client\Files\Model\Error
      */
     public function checkImport($task_id)
     {
@@ -631,9 +631,9 @@ class FilesApi
      *
      * @param  string $task_id Import by URL task ID (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\FileActionResponse|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\FileActionResponse|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function checkImportWithHttpInfo($task_id)
     {
@@ -670,32 +670,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\FileActionResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\FileActionResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\FileActionResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\FileActionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\FileActionResponse';
+            $returnType = '\HubSpot\Client\Files\Model\FileActionResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -714,7 +714,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\FileActionResponse',
+                        '\HubSpot\Client\Files\Model\FileActionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -722,7 +722,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -764,7 +764,7 @@ class FilesApi
      */
     public function checkImportAsyncWithHttpInfo($task_id)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\FileActionResponse';
+        $returnType = '\HubSpot\Client\Files\Model\FileActionResponse';
         $request = $this->checkImportRequest($task_id);
 
         return $this->client
@@ -935,9 +935,9 @@ class FilesApi
      * @param  bool $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
      * @param  bool $allows_anonymous_access If &#39;true&#39; will show private files; if &#39;false&#39; will show public files (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\CollectionResponseFile|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\CollectionResponseFile|\HubSpot\Client\Files\Model\Error
      */
     public function doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $updated_at = null, $name = null, $path = null, $parent_folder_id = null, $size = null, $height = null, $width = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null)
     {
@@ -971,9 +971,9 @@ class FilesApi
      * @param  bool $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
      * @param  bool $allows_anonymous_access If &#39;true&#39; will show private files; if &#39;false&#39; will show public files (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\CollectionResponseFile|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\CollectionResponseFile|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function doSearchWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $updated_at = null, $name = null, $path = null, $parent_folder_id = null, $size = null, $height = null, $width = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null)
     {
@@ -1010,32 +1010,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\CollectionResponseFile' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\CollectionResponseFile' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\CollectionResponseFile', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\CollectionResponseFile', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\CollectionResponseFile';
+            $returnType = '\HubSpot\Client\Files\Model\CollectionResponseFile';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1054,7 +1054,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\CollectionResponseFile',
+                        '\HubSpot\Client\Files\Model\CollectionResponseFile',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1062,7 +1062,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1142,7 +1142,7 @@ class FilesApi
      */
     public function doSearchAsyncWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $updated_at = null, $name = null, $path = null, $parent_folder_id = null, $size = null, $height = null, $width = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\CollectionResponseFile';
+        $returnType = '\HubSpot\Client\Files\Model\CollectionResponseFile';
         $request = $this->doSearchRequest($properties, $after, $before, $limit, $sort, $id, $created_at, $updated_at, $name, $path, $parent_folder_id, $size, $height, $width, $encoding, $type, $extension, $url, $is_usable_in_content, $allows_anonymous_access);
 
         return $this->client
@@ -1520,9 +1520,9 @@ class FilesApi
      * @param  string $file_id Id of the desired file. (required)
      * @param  string[] $properties properties (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error
      */
     public function getById($file_id, $properties = null)
     {
@@ -1538,9 +1538,9 @@ class FilesApi
      * @param  string $file_id Id of the desired file. (required)
      * @param  string[] $properties (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getByIdWithHttpInfo($file_id, $properties = null)
     {
@@ -1577,32 +1577,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\File' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\File' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\File', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\File', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\File';
+            $returnType = '\HubSpot\Client\Files\Model\File';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1621,7 +1621,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\File',
+                        '\HubSpot\Client\Files\Model\File',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1629,7 +1629,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1673,7 +1673,7 @@ class FilesApi
      */
     public function getByIdAsyncWithHttpInfo($file_id, $properties = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\File';
+        $returnType = '\HubSpot\Client\Files\Model\File';
         $request = $this->getByIdRequest($file_id, $properties);
 
         return $this->client
@@ -1844,9 +1844,9 @@ class FilesApi
      * @param  int $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\SignedUrl|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\SignedUrl|\HubSpot\Client\Files\Model\Error
      */
     public function getSignedUrl($file_id, $size = null, $expiration_seconds = null, $upscale = null)
     {
@@ -1864,9 +1864,9 @@ class FilesApi
      * @param  int $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\SignedUrl|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\SignedUrl|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSignedUrlWithHttpInfo($file_id, $size = null, $expiration_seconds = null, $upscale = null)
     {
@@ -1903,32 +1903,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\SignedUrl' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\SignedUrl' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\SignedUrl', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\SignedUrl', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\SignedUrl';
+            $returnType = '\HubSpot\Client\Files\Model\SignedUrl';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1947,7 +1947,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\SignedUrl',
+                        '\HubSpot\Client\Files\Model\SignedUrl',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1955,7 +1955,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2003,7 +2003,7 @@ class FilesApi
      */
     public function getSignedUrlAsyncWithHttpInfo($file_id, $size = null, $expiration_seconds = null, $upscale = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\SignedUrl';
+        $returnType = '\HubSpot\Client\Files\Model\SignedUrl';
         $request = $this->getSignedUrlRequest($file_id, $size, $expiration_seconds, $upscale);
 
         return $this->client
@@ -2193,11 +2193,11 @@ class FilesApi
      *
      * Import a file from a URL into the file manager.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\ImportFromUrlInput $import_from_url_input import_from_url_input (required)
+     * @param  \HubSpot\Client\Files\Model\ImportFromUrlInput $import_from_url_input import_from_url_input (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\ImportFromUrlTaskLocator|\HubSpot\Client\Files\Model\Error
      */
     public function importFromUrl($import_from_url_input)
     {
@@ -2210,11 +2210,11 @@ class FilesApi
      *
      * Import a file from a URL into the file manager.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\ImportFromUrlInput $import_from_url_input (required)
+     * @param  \HubSpot\Client\Files\Model\ImportFromUrlInput $import_from_url_input (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\ImportFromUrlTaskLocator|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function importFromUrlWithHttpInfo($import_from_url_input)
     {
@@ -2251,32 +2251,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 202:
-                    if ('\HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\ImportFromUrlTaskLocator' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\ImportFromUrlTaskLocator', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator';
+            $returnType = '\HubSpot\Client\Files\Model\ImportFromUrlTaskLocator';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2295,7 +2295,7 @@ class FilesApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator',
+                        '\HubSpot\Client\Files\Model\ImportFromUrlTaskLocator',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2303,7 +2303,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2318,7 +2318,7 @@ class FilesApi
      *
      * Import a file from a URL into the file manager.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\ImportFromUrlInput $import_from_url_input (required)
+     * @param  \HubSpot\Client\Files\Model\ImportFromUrlInput $import_from_url_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2338,14 +2338,14 @@ class FilesApi
      *
      * Import a file from a URL into the file manager.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\ImportFromUrlInput $import_from_url_input (required)
+     * @param  \HubSpot\Client\Files\Model\ImportFromUrlInput $import_from_url_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function importFromUrlAsyncWithHttpInfo($import_from_url_input)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\ImportFromUrlTaskLocator';
+        $returnType = '\HubSpot\Client\Files\Model\ImportFromUrlTaskLocator';
         $request = $this->importFromUrlRequest($import_from_url_input);
 
         return $this->client
@@ -2385,7 +2385,7 @@ class FilesApi
     /**
      * Create request for operation 'importFromUrl'
      *
-     * @param  \HubSpot\Client\Files\Files\Model\ImportFromUrlInput $import_from_url_input (required)
+     * @param  \HubSpot\Client\Files\Model\ImportFromUrlInput $import_from_url_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2496,9 +2496,9 @@ class FilesApi
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error
      */
     public function replace($file_id, $user_agent = null, $file = null, $charset_hunch = null, $options = null)
     {
@@ -2517,9 +2517,9 @@ class FilesApi
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function replaceWithHttpInfo($file_id, $user_agent = null, $file = null, $charset_hunch = null, $options = null)
     {
@@ -2556,32 +2556,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\File' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\File' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\File', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\File', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\File';
+            $returnType = '\HubSpot\Client\Files\Model\File';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2600,7 +2600,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\File',
+                        '\HubSpot\Client\Files\Model\File',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2608,7 +2608,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2658,7 +2658,7 @@ class FilesApi
      */
     public function replaceAsyncWithHttpInfo($file_id, $user_agent = null, $file = null, $charset_hunch = null, $options = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\File';
+        $returnType = '\HubSpot\Client\Files\Model\File';
         $request = $this->replaceRequest($file_id, $user_agent, $file, $charset_hunch, $options);
 
         return $this->client
@@ -2833,11 +2833,11 @@ class FilesApi
      * update file properties
      *
      * @param  string $file_id ID of file to update (required)
-     * @param  \HubSpot\Client\Files\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
+     * @param  \HubSpot\Client\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error
      */
     public function updateProperties($file_id, $file_update_input)
     {
@@ -2851,11 +2851,11 @@ class FilesApi
      * update file properties
      *
      * @param  string $file_id ID of file to update (required)
-     * @param  \HubSpot\Client\Files\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
+     * @param  \HubSpot\Client\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePropertiesWithHttpInfo($file_id, $file_update_input)
     {
@@ -2892,32 +2892,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\File' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\File' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\File', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\File', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\File';
+            $returnType = '\HubSpot\Client\Files\Model\File';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2936,7 +2936,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\File',
+                        '\HubSpot\Client\Files\Model\File',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2944,7 +2944,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2960,7 +2960,7 @@ class FilesApi
      * update file properties
      *
      * @param  string $file_id ID of file to update (required)
-     * @param  \HubSpot\Client\Files\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
+     * @param  \HubSpot\Client\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2981,14 +2981,14 @@ class FilesApi
      * update file properties
      *
      * @param  string $file_id ID of file to update (required)
-     * @param  \HubSpot\Client\Files\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
+     * @param  \HubSpot\Client\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updatePropertiesAsyncWithHttpInfo($file_id, $file_update_input)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\File';
+        $returnType = '\HubSpot\Client\Files\Model\File';
         $request = $this->updatePropertiesRequest($file_id, $file_update_input);
 
         return $this->client
@@ -3029,7 +3029,7 @@ class FilesApi
      * Create request for operation 'updateProperties'
      *
      * @param  string $file_id ID of file to update (required)
-     * @param  \HubSpot\Client\Files\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
+     * @param  \HubSpot\Client\Files\Model\FileUpdateInput $file_update_input Options to update. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3160,9 +3160,9 @@ class FilesApi
      * @param  string $charset_hunch Character set of the uploaded file. (optional)
      * @param  string $options JSON string representing FileUploadOptions. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error
      */
     public function upload($user_agent = null, $file = null, $folder_id = null, $folder_path = null, $file_name = null, $charset_hunch = null, $options = null)
     {
@@ -3183,9 +3183,9 @@ class FilesApi
      * @param  string $charset_hunch Character set of the uploaded file. (optional)
      * @param  string $options JSON string representing FileUploadOptions. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\File|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\File|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadWithHttpInfo($user_agent = null, $file = null, $folder_id = null, $folder_path = null, $file_name = null, $charset_hunch = null, $options = null)
     {
@@ -3222,32 +3222,32 @@ class FilesApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
-                    if ('\HubSpot\Client\Files\Files\Model\File' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\File' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\File', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\File', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\File';
+            $returnType = '\HubSpot\Client\Files\Model\File';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -3266,7 +3266,7 @@ class FilesApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\File',
+                        '\HubSpot\Client\Files\Model\File',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3274,7 +3274,7 @@ class FilesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3328,7 +3328,7 @@ class FilesApi
      */
     public function uploadAsyncWithHttpInfo($user_agent = null, $file = null, $folder_id = null, $folder_path = null, $file_name = null, $charset_hunch = null, $options = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\File';
+        $returnType = '\HubSpot\Client\Files\Model\File';
         $request = $this->uploadRequest($user_agent, $file, $folder_id, $folder_path, $file_name, $charset_hunch, $options);
 
         return $this->client

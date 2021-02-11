@@ -1,11 +1,11 @@
 <?php
 /**
- * FolderUpdateInput
+ * Paging
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,21 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * FolderUpdateInput Class Doc Comment
+ * Paging Class Doc Comment
  *
  * @category Class
- * @description Object for updating folders.
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FolderUpdateInput implements ModelInterface, ArrayAccess
+class Paging implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FolderUpdateInput';
+    protected static $openAPIModelName = 'Paging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,8 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'parent_folder_id' => 'int'
+        'next' => '\HubSpot\Client\Files\Model\NextPage',
+        'prev' => '\HubSpot\Client\Files\Model\PreviousPage'
     ];
 
     /**
@@ -69,9 +67,8 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'parent_folder_id' => 'int64'
+        'next' => null,
+        'prev' => null
     ];
 
     /**
@@ -101,9 +98,8 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'parent_folder_id' => 'parentFolderId'
+        'next' => 'next',
+        'prev' => 'prev'
     ];
 
     /**
@@ -112,9 +108,8 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'parent_folder_id' => 'setParentFolderId'
+        'next' => 'setNext',
+        'prev' => 'setPrev'
     ];
 
     /**
@@ -123,9 +118,8 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'parent_folder_id' => 'getParentFolderId'
+        'next' => 'getNext',
+        'prev' => 'getPrev'
     ];
 
     /**
@@ -188,9 +182,8 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
+        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
+        $this->container['prev'] = isset($data['prev']) ? $data['prev'] : null;
     }
 
     /**
@@ -202,9 +195,6 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -221,73 +211,49 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets next
      *
-     * @return string
+     * @return \HubSpot\Client\Files\Model\NextPage|null
      */
-    public function getId()
+    public function getNext()
     {
-        return $this->container['id'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets id
+     * Sets next
      *
-     * @param string $id Id of the folder to change.
+     * @param \HubSpot\Client\Files\Model\NextPage|null $next next
      *
      * @return $this
      */
-    public function setId($id)
+    public function setNext($next)
     {
-        $this->container['id'] = $id;
+        $this->container['next'] = $next;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets prev
      *
-     * @return string|null
+     * @return \HubSpot\Client\Files\Model\PreviousPage|null
      */
-    public function getName()
+    public function getPrev()
     {
-        return $this->container['name'];
+        return $this->container['prev'];
     }
 
     /**
-     * Sets name
+     * Sets prev
      *
-     * @param string|null $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param \HubSpot\Client\Files\Model\PreviousPage|null $prev prev
      *
      * @return $this
      */
-    public function setName($name)
+    public function setPrev($prev)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_folder_id
-     *
-     * @return int|null
-     */
-    public function getParentFolderId()
-    {
-        return $this->container['parent_folder_id'];
-    }
-
-    /**
-     * Sets parent_folder_id
-     *
-     * @param int|null $parent_folder_id New parent folder ID. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
-     *
-     * @return $this
-     */
-    public function setParentFolderId($parent_folder_id)
-    {
-        $this->container['parent_folder_id'] = $parent_folder_id;
+        $this->container['prev'] = $prev;
 
         return $this;
     }

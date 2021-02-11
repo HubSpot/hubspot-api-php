@@ -1,11 +1,11 @@
 <?php
 /**
- * ImportFromUrlTaskLocator
+ * Error
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,21 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * ImportFromUrlTaskLocator Class Doc Comment
+ * Error Class Doc Comment
  *
  * @category Class
- * @description Information on the task that has been started, and where to check it&#39;s status.
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
+class Error implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ImportFromUrlTaskLocator';
+    protected static $openAPIModelName = 'Error';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +57,12 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'message' => 'string',
+        'correlation_id' => 'string',
+        'category' => 'string',
+        'sub_category' => 'string',
+        'errors' => '\HubSpot\Client\Files\Model\ErrorDetail[]',
+        'context' => 'map[string,string[]]',
         'links' => 'map[string,string]'
     ];
 
@@ -68,7 +72,12 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'message' => null,
+        'correlation_id' => 'uuid',
+        'category' => null,
+        'sub_category' => null,
+        'errors' => null,
+        'context' => null,
         'links' => null
     ];
 
@@ -99,7 +108,12 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'message' => 'message',
+        'correlation_id' => 'correlationId',
+        'category' => 'category',
+        'sub_category' => 'subCategory',
+        'errors' => 'errors',
+        'context' => 'context',
         'links' => 'links'
     ];
 
@@ -109,7 +123,12 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'message' => 'setMessage',
+        'correlation_id' => 'setCorrelationId',
+        'category' => 'setCategory',
+        'sub_category' => 'setSubCategory',
+        'errors' => 'setErrors',
+        'context' => 'setContext',
         'links' => 'setLinks'
     ];
 
@@ -119,7 +138,12 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'message' => 'getMessage',
+        'correlation_id' => 'getCorrelationId',
+        'category' => 'getCategory',
+        'sub_category' => 'getSubCategory',
+        'errors' => 'getErrors',
+        'context' => 'getContext',
         'links' => 'getLinks'
     ];
 
@@ -183,7 +207,12 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['correlation_id'] = isset($data['correlation_id']) ? $data['correlation_id'] : null;
+        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
         $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
@@ -196,8 +225,14 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['correlation_id'] === null) {
+            $invalidProperties[] = "'correlation_id' can't be null";
+        }
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,25 +250,145 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets message
      *
      * @return string
      */
-    public function getId()
+    public function getMessage()
     {
-        return $this->container['id'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets id
+     * Sets message
      *
-     * @param string $id The ID of the task
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
      *
      * @return $this
      */
-    public function setId($id)
+    public function setMessage($message)
     {
-        $this->container['id'] = $id;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets correlation_id
+     *
+     * @return string
+     */
+    public function getCorrelationId()
+    {
+        return $this->container['correlation_id'];
+    }
+
+    /**
+     * Sets correlation_id
+     *
+     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
+     *
+     * @return $this
+     */
+    public function setCorrelationId($correlation_id)
+    {
+        $this->container['correlation_id'] = $correlation_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param string $category The error category
+     *
+     * @return $this
+     */
+    public function setCategory($category)
+    {
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return string|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Files\Model\ErrorDetail[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Files\Model\ErrorDetail[]|null $errors further information about the error
+     *
+     * @return $this
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return map[string,string[]]|null
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param map[string,string[]]|null $context Context about the error condition
+     *
+     * @return $this
+     */
+    public function setContext($context)
+    {
+        $this->container['context'] = $context;
 
         return $this;
     }
@@ -251,7 +406,7 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param map[string,string]|null $links Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
+     * @param map[string,string]|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
      *
      * @return $this
      */

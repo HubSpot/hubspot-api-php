@@ -1,11 +1,11 @@
 <?php
 /**
- * CollectionResponseFolder
+ * FolderUpdateInput
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * CollectionResponseFolder Class Doc Comment
+ * FolderUpdateInput Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @description Object for updating folders.
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CollectionResponseFolder implements ModelInterface, ArrayAccess
+class FolderUpdateInput implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseFolder';
+    protected static $openAPIModelName = 'FolderUpdateInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,9 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Files\Files\Model\Folder[]',
-        'paging' => '\HubSpot\Client\Files\Files\Model\Paging'
+        'id' => 'string',
+        'name' => 'string',
+        'parent_folder_id' => 'int'
     ];
 
     /**
@@ -67,8 +69,9 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'id' => null,
+        'name' => null,
+        'parent_folder_id' => 'int64'
     ];
 
     /**
@@ -98,8 +101,9 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'id' => 'id',
+        'name' => 'name',
+        'parent_folder_id' => 'parentFolderId'
     ];
 
     /**
@@ -108,8 +112,9 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'id' => 'setId',
+        'name' => 'setName',
+        'parent_folder_id' => 'setParentFolderId'
     ];
 
     /**
@@ -118,8 +123,9 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'id' => 'getId',
+        'name' => 'getName',
+        'parent_folder_id' => 'getParentFolderId'
     ];
 
     /**
@@ -182,8 +188,9 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
-        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
     }
 
     /**
@@ -195,8 +202,8 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +221,73 @@ class CollectionResponseFolder implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets results
+     * Gets id
      *
-     * @return \HubSpot\Client\Files\Files\Model\Folder[]
+     * @return string
      */
-    public function getResults()
+    public function getId()
     {
-        return $this->container['results'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets results
+     * Sets id
      *
-     * @param \HubSpot\Client\Files\Files\Model\Folder[] $results results
+     * @param string $id Id of the folder to change.
      *
      * @return $this
      */
-    public function setResults($results)
+    public function setId($id)
     {
-        $this->container['results'] = $results;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets name
      *
-     * @return \HubSpot\Client\Files\Files\Model\Paging|null
+     * @return string|null
      */
-    public function getPaging()
+    public function getName()
     {
-        return $this->container['paging'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets paging
+     * Sets name
      *
-     * @param \HubSpot\Client\Files\Files\Model\Paging|null $paging paging
+     * @param string|null $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
      *
      * @return $this
      */
-    public function setPaging($paging)
+    public function setName($name)
     {
-        $this->container['paging'] = $paging;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_folder_id
+     *
+     * @return int|null
+     */
+    public function getParentFolderId()
+    {
+        return $this->container['parent_folder_id'];
+    }
+
+    /**
+     * Sets parent_folder_id
+     *
+     * @param int|null $parent_folder_id New parent folder ID. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     *
+     * @return $this
+     */
+    public function setParentFolderId($parent_folder_id)
+    {
+        $this->container['parent_folder_id'] = $parent_folder_id;
 
         return $this;
     }

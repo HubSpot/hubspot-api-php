@@ -1,11 +1,11 @@
 <?php
 /**
- * FileActionResponse
+ * FolderActionResponse
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * FileActionResponse Class Doc Comment
+ * FolderActionResponse Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FileActionResponse implements ModelInterface, ArrayAccess
+class FolderActionResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FileActionResponse';
+    protected static $openAPIModelName = 'FolderActionResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class FileActionResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'result' => '\HubSpot\Client\Files\Files\Model\File',
+        'result' => '\HubSpot\Client\Files\Model\Folder',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Files\Files\Model\StandardError[]',
+        'errors' => '\HubSpot\Client\Files\Model\StandardError[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
         'completed_at' => '\DateTime',
@@ -327,7 +327,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Gets result
      *
-     * @return \HubSpot\Client\Files\Files\Model\File|null
+     * @return \HubSpot\Client\Files\Model\Folder|null
      */
     public function getResult()
     {
@@ -337,7 +337,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets result
      *
-     * @param \HubSpot\Client\Files\Files\Model\File|null $result result
+     * @param \HubSpot\Client\Files\Model\Folder|null $result result
      *
      * @return $this
      */
@@ -361,7 +361,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets num_errors
      *
-     * @param int|null $num_errors Number of errors resulting from the task.
+     * @param int|null $num_errors Number of errors resulting from the requested changes.
      *
      * @return $this
      */
@@ -375,7 +375,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Files\Files\Model\StandardError[]|null
+     * @return \HubSpot\Client\Files\Model\StandardError[]|null
      */
     public function getErrors()
     {
@@ -385,7 +385,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Files\Files\Model\StandardError[]|null $errors Descriptive error messages.
+     * @param \HubSpot\Client\Files\Model\StandardError[]|null $errors Detailed errors resulting from the task.
      *
      * @return $this
      */
@@ -409,7 +409,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at Timestamp of when the task was requested.
+     * @param \DateTime|null $requested_at Timestamp representing when the task was requested.
      *
      * @return $this
      */
@@ -433,7 +433,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at Timestamp of when the task was started.
+     * @param \DateTime $started_at Timestamp representing when the task was started at.
      *
      * @return $this
      */
@@ -457,7 +457,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at Time of completion of task.
+     * @param \DateTime $completed_at When the requested changes have been completed.
      *
      * @return $this
      */
@@ -481,7 +481,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param map[string,string]|null $links Link to check the status of the requested task.
+     * @param map[string,string]|null $links Link to check the status of the task.
      *
      * @return $this
      */
@@ -505,7 +505,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets task_id
      *
-     * @param string $task_id If of the requested task.
+     * @param string $task_id Id of the task.
      *
      * @return $this
      */
