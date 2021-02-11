@@ -24,6 +24,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->automation()->shouldHaveType(\HubSpot\Discovery\Automation\Discovery::class);
         $this->cms()->shouldHaveType(\HubSpot\Discovery\Cms\Discovery::class);
         $this->crm()->shouldHaveType(\HubSpot\Discovery\Crm\Discovery::class);
+        $this->files()->shouldHaveType(\HubSpot\Discovery\Files\Discovery::class);
         $this->marketing()->shouldHaveType(\HubSpot\Discovery\Marketing\Discovery::class);
         $this->webhooks()->shouldHaveType(\HubSpot\Discovery\Webhooks\Discovery::class);
     }
