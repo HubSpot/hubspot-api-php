@@ -1,11 +1,11 @@
 <?php
 /**
- * FolderUpdateTaskLocator
+ * ImportFromUrlTaskLocator
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,21 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * FolderUpdateTaskLocator Class Doc Comment
+ * ImportFromUrlTaskLocator Class Doc Comment
  *
  * @category Class
  * @description Information on the task that has been started, and where to check it&#39;s status.
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FolderUpdateTaskLocator implements ModelInterface, ArrayAccess
+class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FolderUpdateTaskLocator implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FolderUpdateTaskLocator';
+    protected static $openAPIModelName = 'ImportFromUrlTaskLocator';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

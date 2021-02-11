@@ -1,11 +1,11 @@
 <?php
 /**
- * ErrorDetail
+ * CollectionResponseFolder
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * ErrorDetail Class Doc Comment
+ * CollectionResponseFolder Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ErrorDetail implements ModelInterface, ArrayAccess
+class CollectionResponseFolder implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorDetail';
+    protected static $openAPIModelName = 'CollectionResponseFolder';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'in' => 'string',
-        'code' => 'string',
-        'sub_category' => 'string',
-        'context' => 'map[string,string[]]'
+        'results' => '\HubSpot\Client\Files\Model\Folder[]',
+        'paging' => '\HubSpot\Client\Files\Model\Paging'
     ];
 
     /**
@@ -70,11 +67,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'in' => null,
-        'code' => null,
-        'sub_category' => null,
-        'context' => null
+        'results' => null,
+        'paging' => null
     ];
 
     /**
@@ -104,11 +98,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'in' => 'in',
-        'code' => 'code',
-        'sub_category' => 'subCategory',
-        'context' => 'context'
+        'results' => 'results',
+        'paging' => 'paging'
     ];
 
     /**
@@ -117,11 +108,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'in' => 'setIn',
-        'code' => 'setCode',
-        'sub_category' => 'setSubCategory',
-        'context' => 'setContext'
+        'results' => 'setResults',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -130,11 +118,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'in' => 'getIn',
-        'code' => 'getCode',
-        'sub_category' => 'getSubCategory',
-        'context' => 'getContext'
+        'results' => 'getResults',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -197,11 +182,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['in'] = isset($data['in']) ? $data['in'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
-        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
+        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
     }
 
     /**
@@ -213,8 +195,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,121 +214,49 @@ class ErrorDetail implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets message
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Files\Model\Folder[]
      */
-    public function getMessage()
+    public function getResults()
     {
-        return $this->container['message'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets message
+     * Sets results
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param \HubSpot\Client\Files\Model\Folder[] $results results
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setResults($results)
     {
-        $this->container['message'] = $message;
+        $this->container['results'] = $results;
 
         return $this;
     }
 
     /**
-     * Gets in
+     * Gets paging
      *
-     * @return string|null
+     * @return \HubSpot\Client\Files\Model\Paging|null
      */
-    public function getIn()
+    public function getPaging()
     {
-        return $this->container['in'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets in
+     * Sets paging
      *
-     * @param string|null $in The name of the field or parameter in which the error was found.
+     * @param \HubSpot\Client\Files\Model\Paging|null $paging paging
      *
      * @return $this
      */
-    public function setIn($in)
+    public function setPaging($paging)
     {
-        $this->container['in'] = $in;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code The status code associated with the error detail
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_category
-     *
-     * @return string|null
-     */
-    public function getSubCategory()
-    {
-        return $this->container['sub_category'];
-    }
-
-    /**
-     * Sets sub_category
-     *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
-     *
-     * @return $this
-     */
-    public function setSubCategory($sub_category)
-    {
-        $this->container['sub_category'] = $sub_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets context
-     *
-     * @return map[string,string[]]|null
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param map[string,string[]]|null $context Context about the error condition
-     *
-     * @return $this
-     */
-    public function setContext($context)
-    {
-        $this->container['context'] = $context;
+        $this->container['paging'] = $paging;
 
         return $this;
     }

@@ -1,11 +1,11 @@
 <?php
 /**
- * PreviousPage
+ * NextPage
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * PreviousPage Class Doc Comment
+ * NextPage Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PreviousPage implements ModelInterface, ArrayAccess
+class NextPage implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PreviousPage';
+    protected static $openAPIModelName = 'NextPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'before' => 'string',
+        'after' => 'string',
         'link' => 'string'
     ];
 
@@ -67,7 +67,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'before' => null,
+        'after' => null,
         'link' => null
     ];
 
@@ -98,7 +98,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'before' => 'before',
+        'after' => 'after',
         'link' => 'link'
     ];
 
@@ -108,7 +108,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'before' => 'setBefore',
+        'after' => 'setAfter',
         'link' => 'setLink'
     ];
 
@@ -118,7 +118,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'before' => 'getBefore',
+        'after' => 'getAfter',
         'link' => 'getLink'
     ];
 
@@ -182,7 +182,7 @@ class PreviousPage implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['before'] = isset($data['before']) ? $data['before'] : null;
+        $this->container['after'] = isset($data['after']) ? $data['after'] : null;
         $this->container['link'] = isset($data['link']) ? $data['link'] : null;
     }
 
@@ -195,8 +195,8 @@ class PreviousPage implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['before'] === null) {
-            $invalidProperties[] = "'before' can't be null";
+        if ($this->container['after'] === null) {
+            $invalidProperties[] = "'after' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,25 +214,25 @@ class PreviousPage implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets before
+     * Gets after
      *
      * @return string
      */
-    public function getBefore()
+    public function getAfter()
     {
-        return $this->container['before'];
+        return $this->container['after'];
     }
 
     /**
-     * Sets before
+     * Sets after
      *
-     * @param string $before before
+     * @param string $after after
      *
      * @return $this
      */
-    public function setBefore($before)
+    public function setAfter($after)
     {
-        $this->container['before'] = $before;
+        $this->container['after'] = $after;
 
         return $this;
     }

@@ -1,11 +1,11 @@
 <?php
 /**
- * StandardError
+ * Folder
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * StandardError Class Doc Comment
+ * Folder Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class StandardError implements ModelInterface, ArrayAccess
+class Folder implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class StandardError implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'StandardError';
+    protected static $openAPIModelName = 'Folder';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,14 @@ class StandardError implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
         'id' => 'string',
-        'category' => '\HubSpot\Client\Files\Files\Model\ErrorCategory',
-        'sub_category' => 'object',
-        'message' => 'string',
-        'errors' => '\HubSpot\Client\Files\Files\Model\ErrorDetail[]',
-        'context' => 'map[string,string[]]',
-        'links' => 'map[string,string]'
+        'created_at' => '\DateTime',
+        'archived_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'archived' => 'bool',
+        'parent_folder_id' => 'string',
+        'name' => 'string',
+        'path' => 'string'
     ];
 
     /**
@@ -73,14 +73,14 @@ class StandardError implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'status' => null,
         'id' => null,
-        'category' => null,
-        'sub_category' => null,
-        'message' => null,
-        'errors' => null,
-        'context' => null,
-        'links' => null
+        'created_at' => 'date-time',
+        'archived_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'archived' => null,
+        'parent_folder_id' => null,
+        'name' => null,
+        'path' => null
     ];
 
     /**
@@ -110,14 +110,14 @@ class StandardError implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
         'id' => 'id',
-        'category' => 'category',
-        'sub_category' => 'subCategory',
-        'message' => 'message',
-        'errors' => 'errors',
-        'context' => 'context',
-        'links' => 'links'
+        'created_at' => 'createdAt',
+        'archived_at' => 'archivedAt',
+        'updated_at' => 'updatedAt',
+        'archived' => 'archived',
+        'parent_folder_id' => 'parentFolderId',
+        'name' => 'name',
+        'path' => 'path'
     ];
 
     /**
@@ -126,14 +126,14 @@ class StandardError implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
         'id' => 'setId',
-        'category' => 'setCategory',
-        'sub_category' => 'setSubCategory',
-        'message' => 'setMessage',
-        'errors' => 'setErrors',
-        'context' => 'setContext',
-        'links' => 'setLinks'
+        'created_at' => 'setCreatedAt',
+        'archived_at' => 'setArchivedAt',
+        'updated_at' => 'setUpdatedAt',
+        'archived' => 'setArchived',
+        'parent_folder_id' => 'setParentFolderId',
+        'name' => 'setName',
+        'path' => 'setPath'
     ];
 
     /**
@@ -142,14 +142,14 @@ class StandardError implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
         'id' => 'getId',
-        'category' => 'getCategory',
-        'sub_category' => 'getSubCategory',
-        'message' => 'getMessage',
-        'errors' => 'getErrors',
-        'context' => 'getContext',
-        'links' => 'getLinks'
+        'created_at' => 'getCreatedAt',
+        'archived_at' => 'getArchivedAt',
+        'updated_at' => 'getUpdatedAt',
+        'archived' => 'getArchived',
+        'parent_folder_id' => 'getParentFolderId',
+        'name' => 'getName',
+        'path' => 'getPath'
     ];
 
     /**
@@ -212,14 +212,14 @@ class StandardError implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
-        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
-        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['archived_at'] = isset($data['archived_at']) ? $data['archived_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
+        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
     }
 
     /**
@@ -231,23 +231,17 @@ class StandardError implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['links'] === null) {
-            $invalidProperties[] = "'links' can't be null";
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
         }
         return $invalidProperties;
     }
@@ -265,33 +259,9 @@ class StandardError implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -301,7 +271,7 @@ class StandardError implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string $id Id of the folder.
      *
      * @return $this
      */
@@ -313,145 +283,169 @@ class StandardError implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets category
+     * Gets created_at
      *
-     * @return \HubSpot\Client\Files\Files\Model\ErrorCategory
+     * @return \DateTime
      */
-    public function getCategory()
+    public function getCreatedAt()
     {
-        return $this->container['category'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets category
+     * Sets created_at
      *
-     * @param \HubSpot\Client\Files\Files\Model\ErrorCategory $category category
+     * @param \DateTime $created_at Timestamp of folder creation.
      *
      * @return $this
      */
-    public function setCategory($category)
+    public function setCreatedAt($created_at)
     {
-        $this->container['category'] = $category;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets sub_category
+     * Gets archived_at
      *
-     * @return object|null
+     * @return \DateTime|null
      */
-    public function getSubCategory()
+    public function getArchivedAt()
     {
-        return $this->container['sub_category'];
+        return $this->container['archived_at'];
     }
 
     /**
-     * Sets sub_category
+     * Sets archived_at
      *
-     * @param object|null $sub_category sub_category
+     * @param \DateTime|null $archived_at Timestamp of folder deletion.
      *
      * @return $this
      */
-    public function setSubCategory($sub_category)
+    public function setArchivedAt($archived_at)
     {
-        $this->container['sub_category'] = $sub_category;
+        $this->container['archived_at'] = $archived_at;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets updated_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getMessage()
+    public function getUpdatedAt()
     {
-        return $this->container['message'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets message
+     * Sets updated_at
      *
-     * @param string $message message
+     * @param \DateTime $updated_at Timestamp of the latest update to the folder.
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['message'] = $message;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets archived
      *
-     * @return \HubSpot\Client\Files\Files\Model\ErrorDetail[]
+     * @return bool
      */
-    public function getErrors()
+    public function getArchived()
     {
-        return $this->container['errors'];
+        return $this->container['archived'];
     }
 
     /**
-     * Sets errors
+     * Sets archived
      *
-     * @param \HubSpot\Client\Files\Files\Model\ErrorDetail[] $errors errors
+     * @param bool $archived Marks weather the folder is deleted or not.
      *
      * @return $this
      */
-    public function setErrors($errors)
+    public function setArchived($archived)
     {
-        $this->container['errors'] = $errors;
+        $this->container['archived'] = $archived;
 
         return $this;
     }
 
     /**
-     * Gets context
+     * Gets parent_folder_id
      *
-     * @return map[string,string[]]
+     * @return string|null
      */
-    public function getContext()
+    public function getParentFolderId()
     {
-        return $this->container['context'];
+        return $this->container['parent_folder_id'];
     }
 
     /**
-     * Sets context
+     * Sets parent_folder_id
      *
-     * @param map[string,string[]] $context context
+     * @param string|null $parent_folder_id Id of the parent folder.
      *
      * @return $this
      */
-    public function setContext($context)
+    public function setParentFolderId($parent_folder_id)
     {
-        $this->container['context'] = $context;
+        $this->container['parent_folder_id'] = $parent_folder_id;
 
         return $this;
     }
 
     /**
-     * Gets links
+     * Gets name
      *
-     * @return map[string,string]
+     * @return string|null
      */
-    public function getLinks()
+    public function getName()
     {
-        return $this->container['links'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets links
+     * Sets name
      *
-     * @param map[string,string] $links links
+     * @param string|null $name Name of the folder.
      *
      * @return $this
      */
-    public function setLinks($links)
+    public function setName($name)
     {
-        $this->container['links'] = $links;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path Path of the folder in the file manager.
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

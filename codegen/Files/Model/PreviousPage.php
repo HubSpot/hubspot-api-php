@@ -1,11 +1,11 @@
 <?php
 /**
- * FileUpdateInput
+ * PreviousPage
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,21 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * FileUpdateInput Class Doc Comment
+ * PreviousPage Class Doc Comment
  *
  * @category Class
- * @description Object for updating files.
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FileUpdateInput implements ModelInterface, ArrayAccess
+class PreviousPage implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FileUpdateInput';
+    protected static $openAPIModelName = 'PreviousPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +57,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'parent_folder_id' => 'string',
-        'parent_folder_path' => 'string',
-        'is_usable_in_content' => 'bool',
-        'access' => 'string'
+        'before' => 'string',
+        'link' => 'string'
     ];
 
     /**
@@ -71,11 +67,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'parent_folder_id' => null,
-        'parent_folder_path' => null,
-        'is_usable_in_content' => null,
-        'access' => null
+        'before' => null,
+        'link' => null
     ];
 
     /**
@@ -105,11 +98,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'parent_folder_id' => 'parentFolderId',
-        'parent_folder_path' => 'parentFolderPath',
-        'is_usable_in_content' => 'isUsableInContent',
-        'access' => 'access'
+        'before' => 'before',
+        'link' => 'link'
     ];
 
     /**
@@ -118,11 +108,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'parent_folder_id' => 'setParentFolderId',
-        'parent_folder_path' => 'setParentFolderPath',
-        'is_usable_in_content' => 'setIsUsableInContent',
-        'access' => 'setAccess'
+        'before' => 'setBefore',
+        'link' => 'setLink'
     ];
 
     /**
@@ -131,11 +118,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'parent_folder_id' => 'getParentFolderId',
-        'parent_folder_path' => 'getParentFolderPath',
-        'is_usable_in_content' => 'getIsUsableInContent',
-        'access' => 'getAccess'
+        'before' => 'getBefore',
+        'link' => 'getLink'
     ];
 
     /**
@@ -179,25 +163,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const ACCESS_PUBLIC_INDEXABLE = 'PUBLIC_INDEXABLE';
-    const ACCESS_PUBLIC_NOT_INDEXABLE = 'PUBLIC_NOT_INDEXABLE';
-    const ACCESS__PRIVATE = 'PRIVATE';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAccessAllowableValues()
-    {
-        return [
-            self::ACCESS_PUBLIC_INDEXABLE,
-            self::ACCESS_PUBLIC_NOT_INDEXABLE,
-            self::ACCESS__PRIVATE,
-        ];
-    }
     
 
     /**
@@ -215,11 +182,8 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
-        $this->container['parent_folder_path'] = isset($data['parent_folder_path']) ? $data['parent_folder_path'] : null;
-        $this->container['is_usable_in_content'] = isset($data['is_usable_in_content']) ? $data['is_usable_in_content'] : null;
-        $this->container['access'] = isset($data['access']) ? $data['access'] : null;
+        $this->container['before'] = isset($data['before']) ? $data['before'] : null;
+        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
     }
 
     /**
@@ -231,14 +195,9 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAccessAllowableValues();
-        if (!is_null($this->container['access']) && !in_array($this->container['access'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'access', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['before'] === null) {
+            $invalidProperties[] = "'before' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -255,130 +214,49 @@ class FileUpdateInput implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets before
      *
-     * @return string|null
+     * @return string
      */
-    public function getName()
+    public function getBefore()
     {
-        return $this->container['name'];
+        return $this->container['before'];
     }
 
     /**
-     * Sets name
+     * Sets before
      *
-     * @param string|null $name New name for the file.
+     * @param string $before before
      *
      * @return $this
      */
-    public function setName($name)
+    public function setBefore($before)
     {
-        $this->container['name'] = $name;
+        $this->container['before'] = $before;
 
         return $this;
     }
 
     /**
-     * Gets parent_folder_id
+     * Gets link
      *
      * @return string|null
      */
-    public function getParentFolderId()
+    public function getLink()
     {
-        return $this->container['parent_folder_id'];
+        return $this->container['link'];
     }
 
     /**
-     * Sets parent_folder_id
+     * Sets link
      *
-     * @param string|null $parent_folder_id Folder ID where the file should be moved to.  folderId and folderPath cannot be set at the same time.
+     * @param string|null $link link
      *
      * @return $this
      */
-    public function setParentFolderId($parent_folder_id)
+    public function setLink($link)
     {
-        $this->container['parent_folder_id'] = $parent_folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_folder_path
-     *
-     * @return string|null
-     */
-    public function getParentFolderPath()
-    {
-        return $this->container['parent_folder_path'];
-    }
-
-    /**
-     * Sets parent_folder_path
-     *
-     * @param string|null $parent_folder_path Folder path where the file should be moved to. folderId and folderPath cannot be set at the same time.
-     *
-     * @return $this
-     */
-    public function setParentFolderPath($parent_folder_path)
-    {
-        $this->container['parent_folder_path'] = $parent_folder_path;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_usable_in_content
-     *
-     * @return bool|null
-     */
-    public function getIsUsableInContent()
-    {
-        return $this->container['is_usable_in_content'];
-    }
-
-    /**
-     * Sets is_usable_in_content
-     *
-     * @param bool|null $is_usable_in_content Mark weather the file should be used in new content or not.
-     *
-     * @return $this
-     */
-    public function setIsUsableInContent($is_usable_in_content)
-    {
-        $this->container['is_usable_in_content'] = $is_usable_in_content;
-
-        return $this;
-    }
-
-    /**
-     * Gets access
-     *
-     * @return string|null
-     */
-    public function getAccess()
-    {
-        return $this->container['access'];
-    }
-
-    /**
-     * Sets access
-     *
-     * @param string|null $access NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
-     *
-     * @return $this
-     */
-    public function setAccess($access)
-    {
-        $allowedValues = $this->getAccessAllowableValues();
-        if (!is_null($access) && !in_array($access, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'access', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['access'] = $access;
+        $this->container['link'] = $link;
 
         return $this;
     }
