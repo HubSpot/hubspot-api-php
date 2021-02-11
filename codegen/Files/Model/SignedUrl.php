@@ -1,11 +1,11 @@
 <?php
 /**
- * Error
+ * SignedUrl
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * SignedUrl Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class Error implements ModelInterface, ArrayAccess
+class SignedUrl implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Error implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'SignedUrl';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,14 @@ class Error implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'correlation_id' => 'string',
-        'category' => 'string',
-        'sub_category' => 'string',
-        'errors' => '\HubSpot\Client\Files\Files\Model\ErrorDetail[]',
-        'context' => 'map[string,string[]]',
-        'links' => 'map[string,string]'
+        'expires_at' => '\DateTime',
+        'url' => 'string',
+        'name' => 'string',
+        'extension' => 'string',
+        'type' => 'string',
+        'size' => 'int',
+        'height' => 'int',
+        'width' => 'int'
     ];
 
     /**
@@ -72,13 +73,14 @@ class Error implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'correlation_id' => 'uuid',
-        'category' => null,
-        'sub_category' => null,
-        'errors' => null,
-        'context' => null,
-        'links' => null
+        'expires_at' => 'date-time',
+        'url' => null,
+        'name' => null,
+        'extension' => null,
+        'type' => null,
+        'size' => 'int32',
+        'height' => 'int32',
+        'width' => 'int32'
     ];
 
     /**
@@ -108,13 +110,14 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'correlation_id' => 'correlationId',
-        'category' => 'category',
-        'sub_category' => 'subCategory',
-        'errors' => 'errors',
-        'context' => 'context',
-        'links' => 'links'
+        'expires_at' => 'expiresAt',
+        'url' => 'url',
+        'name' => 'name',
+        'extension' => 'extension',
+        'type' => 'type',
+        'size' => 'size',
+        'height' => 'height',
+        'width' => 'width'
     ];
 
     /**
@@ -123,13 +126,14 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'correlation_id' => 'setCorrelationId',
-        'category' => 'setCategory',
-        'sub_category' => 'setSubCategory',
-        'errors' => 'setErrors',
-        'context' => 'setContext',
-        'links' => 'setLinks'
+        'expires_at' => 'setExpiresAt',
+        'url' => 'setUrl',
+        'name' => 'setName',
+        'extension' => 'setExtension',
+        'type' => 'setType',
+        'size' => 'setSize',
+        'height' => 'setHeight',
+        'width' => 'setWidth'
     ];
 
     /**
@@ -138,13 +142,14 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'correlation_id' => 'getCorrelationId',
-        'category' => 'getCategory',
-        'sub_category' => 'getSubCategory',
-        'errors' => 'getErrors',
-        'context' => 'getContext',
-        'links' => 'getLinks'
+        'expires_at' => 'getExpiresAt',
+        'url' => 'getUrl',
+        'name' => 'getName',
+        'extension' => 'getExtension',
+        'type' => 'getType',
+        'size' => 'getSize',
+        'height' => 'getHeight',
+        'width' => 'getWidth'
     ];
 
     /**
@@ -207,13 +212,14 @@ class Error implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['correlation_id'] = isset($data['correlation_id']) ? $data['correlation_id'] : null;
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
-        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
-        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
-        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
+        $this->container['expires_at'] = isset($data['expires_at']) ? $data['expires_at'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['extension'] = isset($data['extension']) ? $data['extension'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
     }
 
     /**
@@ -225,14 +231,23 @@ class Error implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
         }
-        if ($this->container['correlation_id'] === null) {
-            $invalidProperties[] = "'correlation_id' can't be null";
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['extension'] === null) {
+            $invalidProperties[] = "'extension' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,169 +265,193 @@ class Error implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets message
+     * Gets expires_at
+     *
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param \DateTime $expires_at Timestamp of when the URL will no longer grant access to the file.
+     *
+     * @return $this
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
      *
      * @return string
      */
-    public function getMessage()
+    public function getUrl()
     {
-        return $this->container['message'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets message
+     * Sets url
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param string $url Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setUrl($url)
     {
-        $this->container['message'] = $message;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets correlation_id
+     * Gets name
      *
      * @return string
      */
-    public function getCorrelationId()
+    public function getName()
     {
-        return $this->container['correlation_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets correlation_id
+     * Sets name
      *
-     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
+     * @param string $name Name of the requested file.
      *
      * @return $this
      */
-    public function setCorrelationId($correlation_id)
+    public function setName($name)
     {
-        $this->container['correlation_id'] = $correlation_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets extension
      *
      * @return string
      */
-    public function getCategory()
+    public function getExtension()
     {
-        return $this->container['category'];
+        return $this->container['extension'];
     }
 
     /**
-     * Sets category
+     * Sets extension
      *
-     * @param string $category The error category
+     * @param string $extension Extension of the requested file.
      *
      * @return $this
      */
-    public function setCategory($category)
+    public function setExtension($extension)
     {
-        $this->container['category'] = $category;
+        $this->container['extension'] = $extension;
 
         return $this;
     }
 
     /**
-     * Gets sub_category
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getSubCategory()
+    public function getType()
     {
-        return $this->container['sub_category'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets sub_category
+     * Sets type
      *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     * @param string $type Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
      *
      * @return $this
      */
-    public function setSubCategory($sub_category)
+    public function setType($type)
     {
-        $this->container['sub_category'] = $sub_category;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets size
      *
-     * @return \HubSpot\Client\Files\Files\Model\ErrorDetail[]|null
+     * @return int
      */
-    public function getErrors()
+    public function getSize()
     {
-        return $this->container['errors'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets errors
+     * Sets size
      *
-     * @param \HubSpot\Client\Files\Files\Model\ErrorDetail[]|null $errors further information about the error
+     * @param int $size Size in bytes of the requested file.
      *
      * @return $this
      */
-    public function setErrors($errors)
+    public function setSize($size)
     {
-        $this->container['errors'] = $errors;
+        $this->container['size'] = $size;
 
         return $this;
     }
 
     /**
-     * Gets context
+     * Gets height
      *
-     * @return map[string,string[]]|null
+     * @return int|null
      */
-    public function getContext()
+    public function getHeight()
     {
-        return $this->container['context'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets context
+     * Sets height
      *
-     * @param map[string,string[]]|null $context Context about the error condition
+     * @param int|null $height For image and video files. The height of the file.
      *
      * @return $this
      */
-    public function setContext($context)
+    public function setHeight($height)
     {
-        $this->container['context'] = $context;
+        $this->container['height'] = $height;
 
         return $this;
     }
 
     /**
-     * Gets links
+     * Gets width
      *
-     * @return map[string,string]|null
+     * @return int|null
      */
-    public function getLinks()
+    public function getWidth()
     {
-        return $this->container['links'];
+        return $this->container['width'];
     }
 
     /**
-     * Sets links
+     * Sets width
      *
-     * @param map[string,string]|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+     * @param int|null $width For image and video files. The width of the file.
      *
      * @return $this
      */
-    public function setLinks($links)
+    public function setWidth($width)
     {
-        $this->container['links'] = $links;
+        $this->container['width'] = $width;
 
         return $this;
     }

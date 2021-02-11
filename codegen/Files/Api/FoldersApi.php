@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Api;
+namespace HubSpot\Client\Files\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Files\Files\ApiException;
-use HubSpot\Client\Files\Files\Configuration;
-use HubSpot\Client\Files\Files\HeaderSelector;
-use HubSpot\Client\Files\Files\ObjectSerializer;
+use HubSpot\Client\Files\ApiException;
+use HubSpot\Client\Files\Configuration;
+use HubSpot\Client\Files\HeaderSelector;
+use HubSpot\Client\Files\ObjectSerializer;
 
 /**
  * FoldersApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -122,7 +122,7 @@ class FoldersApi
      *
      * @param  string $folder_id ID of folder to delete. (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -138,7 +138,7 @@ class FoldersApi
      *
      * @param  string $folder_id ID of folder to delete. (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -181,7 +181,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -368,7 +368,7 @@ class FoldersApi
      *
      * @param  string $folder_path Path of folder to delete (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -384,7 +384,7 @@ class FoldersApi
      *
      * @param  string $folder_path Path of folder to delete (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -427,7 +427,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -614,9 +614,9 @@ class FoldersApi
      *
      * @param  string $task_id Task ID of folder update (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\FolderActionResponse|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\FolderActionResponse|\HubSpot\Client\Files\Model\Error
      */
     public function checkUpdateStatus($task_id)
     {
@@ -631,9 +631,9 @@ class FoldersApi
      *
      * @param  string $task_id Task ID of folder update (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\FolderActionResponse|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\FolderActionResponse|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function checkUpdateStatusWithHttpInfo($task_id)
     {
@@ -670,32 +670,32 @@ class FoldersApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\FolderActionResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\FolderActionResponse' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\FolderActionResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\FolderActionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\FolderActionResponse';
+            $returnType = '\HubSpot\Client\Files\Model\FolderActionResponse';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -714,7 +714,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\FolderActionResponse',
+                        '\HubSpot\Client\Files\Model\FolderActionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -722,7 +722,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -764,7 +764,7 @@ class FoldersApi
      */
     public function checkUpdateStatusAsyncWithHttpInfo($task_id)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\FolderActionResponse';
+        $returnType = '\HubSpot\Client\Files\Model\FolderActionResponse';
         $request = $this->checkUpdateStatusRequest($task_id);
 
         return $this->client
@@ -914,11 +914,11 @@ class FoldersApi
      *
      * Create folder.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderInput $folder_input Folder creation options (required)
+     * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\Folder|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error
      */
     public function create($folder_input)
     {
@@ -931,11 +931,11 @@ class FoldersApi
      *
      * Create folder.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderInput $folder_input Folder creation options (required)
+     * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\Folder|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($folder_input)
     {
@@ -972,32 +972,32 @@ class FoldersApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 201:
-                    if ('\HubSpot\Client\Files\Files\Model\Folder' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Folder' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Folder', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Folder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\Folder';
+            $returnType = '\HubSpot\Client\Files\Model\Folder';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1016,7 +1016,7 @@ class FoldersApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Folder',
+                        '\HubSpot\Client\Files\Model\Folder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1024,7 +1024,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1039,7 +1039,7 @@ class FoldersApi
      *
      * Create folder.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderInput $folder_input Folder creation options (required)
+     * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1059,14 +1059,14 @@ class FoldersApi
      *
      * Create folder.
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderInput $folder_input Folder creation options (required)
+     * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createAsyncWithHttpInfo($folder_input)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\Folder';
+        $returnType = '\HubSpot\Client\Files\Model\Folder';
         $request = $this->createRequest($folder_input);
 
         return $this->client
@@ -1106,7 +1106,7 @@ class FoldersApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderInput $folder_input Folder creation options (required)
+     * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1223,9 +1223,9 @@ class FoldersApi
      * @param  string $path Search for folders by path. (optional)
      * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\CollectionResponseFolder|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\CollectionResponseFolder|\HubSpot\Client\Files\Model\Error
      */
     public function doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $updated_at = null, $name = null, $path = null, $parent_folder_id = null)
     {
@@ -1250,9 +1250,9 @@ class FoldersApi
      * @param  string $path Search for folders by path. (optional)
      * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\CollectionResponseFolder|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\CollectionResponseFolder|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function doSearchWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $updated_at = null, $name = null, $path = null, $parent_folder_id = null)
     {
@@ -1289,32 +1289,32 @@ class FoldersApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\CollectionResponseFolder' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\CollectionResponseFolder' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\CollectionResponseFolder', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\CollectionResponseFolder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\CollectionResponseFolder';
+            $returnType = '\HubSpot\Client\Files\Model\CollectionResponseFolder';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1333,7 +1333,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\CollectionResponseFolder',
+                        '\HubSpot\Client\Files\Model\CollectionResponseFolder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1341,7 +1341,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1403,7 +1403,7 @@ class FoldersApi
      */
     public function doSearchAsyncWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $updated_at = null, $name = null, $path = null, $parent_folder_id = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\CollectionResponseFolder';
+        $returnType = '\HubSpot\Client\Files\Model\CollectionResponseFolder';
         $request = $this->doSearchRequest($properties, $after, $before, $limit, $sort, $id, $created_at, $updated_at, $name, $path, $parent_folder_id);
 
         return $this->client
@@ -1673,9 +1673,9 @@ class FoldersApi
      * @param  string $folder_id ID of desired folder (required)
      * @param  string[] $properties Properties to set on returned folder. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\Folder|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error
      */
     public function getById($folder_id, $properties = null)
     {
@@ -1691,9 +1691,9 @@ class FoldersApi
      * @param  string $folder_id ID of desired folder (required)
      * @param  string[] $properties Properties to set on returned folder. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\Folder|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getByIdWithHttpInfo($folder_id, $properties = null)
     {
@@ -1730,32 +1730,32 @@ class FoldersApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\Folder' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Folder' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Folder', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Folder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\Folder';
+            $returnType = '\HubSpot\Client\Files\Model\Folder';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1774,7 +1774,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Folder',
+                        '\HubSpot\Client\Files\Model\Folder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1782,7 +1782,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1826,7 +1826,7 @@ class FoldersApi
      */
     public function getByIdAsyncWithHttpInfo($folder_id, $properties = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\Folder';
+        $returnType = '\HubSpot\Client\Files\Model\Folder';
         $request = $this->getByIdRequest($folder_id, $properties);
 
         return $this->client
@@ -1995,9 +1995,9 @@ class FoldersApi
      * @param  string $folder_path Path of desired folder. (required)
      * @param  string[] $properties Properties to set on returned folder. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\Folder|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error
      */
     public function getByPath($folder_path, $properties = null)
     {
@@ -2013,9 +2013,9 @@ class FoldersApi
      * @param  string $folder_path Path of desired folder. (required)
      * @param  string[] $properties Properties to set on returned folder. (optional)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\Folder|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getByPathWithHttpInfo($folder_path, $properties = null)
     {
@@ -2052,32 +2052,32 @@ class FoldersApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Files\Files\Model\Folder' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Folder' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Folder', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Folder', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\Folder';
+            $returnType = '\HubSpot\Client\Files\Model\Folder';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2096,7 +2096,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Folder',
+                        '\HubSpot\Client\Files\Model\Folder',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2104,7 +2104,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2148,7 +2148,7 @@ class FoldersApi
      */
     public function getByPathAsyncWithHttpInfo($folder_path, $properties = null)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\Folder';
+        $returnType = '\HubSpot\Client\Files\Model\Folder';
         $request = $this->getByPathRequest($folder_path, $properties);
 
         return $this->client
@@ -2314,11 +2314,11 @@ class FoldersApi
      *
      * Update folder properties
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
+     * @param  \HubSpot\Client\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator|\HubSpot\Client\Files\Files\Model\Error
+     * @return \HubSpot\Client\Files\Model\FolderUpdateTaskLocator|\HubSpot\Client\Files\Model\Error
      */
     public function updateProperties($folder_update_input)
     {
@@ -2331,11 +2331,11 @@ class FoldersApi
      *
      * Update folder properties
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
+     * @param  \HubSpot\Client\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
      *
-     * @throws \HubSpot\Client\Files\Files\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator|\HubSpot\Client\Files\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Files\Model\FolderUpdateTaskLocator|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePropertiesWithHttpInfo($folder_update_input)
     {
@@ -2372,32 +2372,32 @@ class FoldersApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 202:
-                    if ('\HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\FolderUpdateTaskLocator' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\FolderUpdateTaskLocator', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Files\Files\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Files\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator';
+            $returnType = '\HubSpot\Client\Files\Model\FolderUpdateTaskLocator';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2416,7 +2416,7 @@ class FoldersApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator',
+                        '\HubSpot\Client\Files\Model\FolderUpdateTaskLocator',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2424,7 +2424,7 @@ class FoldersApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Files\Files\Model\Error',
+                        '\HubSpot\Client\Files\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2439,7 +2439,7 @@ class FoldersApi
      *
      * Update folder properties
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
+     * @param  \HubSpot\Client\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2459,14 +2459,14 @@ class FoldersApi
      *
      * Update folder properties
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
+     * @param  \HubSpot\Client\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updatePropertiesAsyncWithHttpInfo($folder_update_input)
     {
-        $returnType = '\HubSpot\Client\Files\Files\Model\FolderUpdateTaskLocator';
+        $returnType = '\HubSpot\Client\Files\Model\FolderUpdateTaskLocator';
         $request = $this->updatePropertiesRequest($folder_update_input);
 
         return $this->client
@@ -2506,7 +2506,7 @@ class FoldersApi
     /**
      * Create request for operation 'updateProperties'
      *
-     * @param  \HubSpot\Client\Files\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
+     * @param  \HubSpot\Client\Files\Model\FolderUpdateInput $folder_update_input Properties to change in the folder (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

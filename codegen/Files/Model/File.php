@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
  * File Class Doc Comment
  *
  * @category Class
  * @description File
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

@@ -1,11 +1,11 @@
 <?php
 /**
- * CollectionResponseFile
+ * FileUpdateInput
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,21 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * CollectionResponseFile Class Doc Comment
+ * FileUpdateInput Class Doc Comment
  *
  * @category Class
- * @description Collections of files
- * @package  HubSpot\Client\Files\Files
+ * @description Object for updating files.
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CollectionResponseFile implements ModelInterface, ArrayAccess
+class FileUpdateInput implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseFile';
+    protected static $openAPIModelName = 'FileUpdateInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Files\Files\Model\File[]',
-        'paging' => '\HubSpot\Client\Files\Files\Model\Paging'
+        'name' => 'string',
+        'parent_folder_id' => 'string',
+        'parent_folder_path' => 'string',
+        'is_usable_in_content' => 'bool',
+        'access' => 'string'
     ];
 
     /**
@@ -68,8 +71,11 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'name' => null,
+        'parent_folder_id' => null,
+        'parent_folder_path' => null,
+        'is_usable_in_content' => null,
+        'access' => null
     ];
 
     /**
@@ -99,8 +105,11 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'name' => 'name',
+        'parent_folder_id' => 'parentFolderId',
+        'parent_folder_path' => 'parentFolderPath',
+        'is_usable_in_content' => 'isUsableInContent',
+        'access' => 'access'
     ];
 
     /**
@@ -109,8 +118,11 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'name' => 'setName',
+        'parent_folder_id' => 'setParentFolderId',
+        'parent_folder_path' => 'setParentFolderPath',
+        'is_usable_in_content' => 'setIsUsableInContent',
+        'access' => 'setAccess'
     ];
 
     /**
@@ -119,8 +131,11 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'name' => 'getName',
+        'parent_folder_id' => 'getParentFolderId',
+        'parent_folder_path' => 'getParentFolderPath',
+        'is_usable_in_content' => 'getIsUsableInContent',
+        'access' => 'getAccess'
     ];
 
     /**
@@ -164,8 +179,25 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const ACCESS_PUBLIC_INDEXABLE = 'PUBLIC_INDEXABLE';
+    const ACCESS_PUBLIC_NOT_INDEXABLE = 'PUBLIC_NOT_INDEXABLE';
+    const ACCESS__PRIVATE = 'PRIVATE';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAccessAllowableValues()
+    {
+        return [
+            self::ACCESS_PUBLIC_INDEXABLE,
+            self::ACCESS_PUBLIC_NOT_INDEXABLE,
+            self::ACCESS__PRIVATE,
+        ];
+    }
     
 
     /**
@@ -183,8 +215,11 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
-        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
+        $this->container['parent_folder_path'] = isset($data['parent_folder_path']) ? $data['parent_folder_path'] : null;
+        $this->container['is_usable_in_content'] = isset($data['is_usable_in_content']) ? $data['is_usable_in_content'] : null;
+        $this->container['access'] = isset($data['access']) ? $data['access'] : null;
     }
 
     /**
@@ -196,9 +231,14 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
+        $allowedValues = $this->getAccessAllowableValues();
+        if (!is_null($this->container['access']) && !in_array($this->container['access'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'access', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -215,49 +255,130 @@ class CollectionResponseFile implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets results
+     * Gets name
      *
-     * @return \HubSpot\Client\Files\Files\Model\File[]
+     * @return string|null
      */
-    public function getResults()
+    public function getName()
     {
-        return $this->container['results'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets results
+     * Sets name
      *
-     * @param \HubSpot\Client\Files\Files\Model\File[] $results results
+     * @param string|null $name New name for the file.
      *
      * @return $this
      */
-    public function setResults($results)
+    public function setName($name)
     {
-        $this->container['results'] = $results;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets paging
+     * Gets parent_folder_id
      *
-     * @return \HubSpot\Client\Files\Files\Model\Paging|null
+     * @return string|null
      */
-    public function getPaging()
+    public function getParentFolderId()
     {
-        return $this->container['paging'];
+        return $this->container['parent_folder_id'];
     }
 
     /**
-     * Sets paging
+     * Sets parent_folder_id
      *
-     * @param \HubSpot\Client\Files\Files\Model\Paging|null $paging paging
+     * @param string|null $parent_folder_id Folder ID where the file should be moved to.  folderId and folderPath cannot be set at the same time.
      *
      * @return $this
      */
-    public function setPaging($paging)
+    public function setParentFolderId($parent_folder_id)
     {
-        $this->container['paging'] = $paging;
+        $this->container['parent_folder_id'] = $parent_folder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_folder_path
+     *
+     * @return string|null
+     */
+    public function getParentFolderPath()
+    {
+        return $this->container['parent_folder_path'];
+    }
+
+    /**
+     * Sets parent_folder_path
+     *
+     * @param string|null $parent_folder_path Folder path where the file should be moved to. folderId and folderPath cannot be set at the same time.
+     *
+     * @return $this
+     */
+    public function setParentFolderPath($parent_folder_path)
+    {
+        $this->container['parent_folder_path'] = $parent_folder_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_usable_in_content
+     *
+     * @return bool|null
+     */
+    public function getIsUsableInContent()
+    {
+        return $this->container['is_usable_in_content'];
+    }
+
+    /**
+     * Sets is_usable_in_content
+     *
+     * @param bool|null $is_usable_in_content Mark weather the file should be used in new content or not.
+     *
+     * @return $this
+     */
+    public function setIsUsableInContent($is_usable_in_content)
+    {
+        $this->container['is_usable_in_content'] = $is_usable_in_content;
+
+        return $this;
+    }
+
+    /**
+     * Gets access
+     *
+     * @return string|null
+     */
+    public function getAccess()
+    {
+        return $this->container['access'];
+    }
+
+    /**
+     * Sets access
+     *
+     * @param string|null $access NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+     *
+     * @return $this
+     */
+    public function setAccess($access)
+    {
+        $allowedValues = $this->getAccessAllowableValues();
+        if (!is_null($access) && !in_array($access, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'access', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['access'] = $access;
 
         return $this;
     }

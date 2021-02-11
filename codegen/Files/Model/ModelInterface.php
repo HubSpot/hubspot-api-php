@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files\Model
+ * @package  HubSpot\Client\Files\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,12 +27,12 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package HubSpot\Client\Files\Files\Model
+ * @package HubSpot\Client\Files\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

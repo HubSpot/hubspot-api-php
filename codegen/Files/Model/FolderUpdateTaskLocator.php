@@ -1,11 +1,11 @@
 <?php
 /**
- * NextPage
+ * FolderUpdateTaskLocator
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * NextPage Class Doc Comment
+ * FolderUpdateTaskLocator Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @description Information on the task that has been started, and where to check it&#39;s status.
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class NextPage implements ModelInterface, ArrayAccess
+class FolderUpdateTaskLocator implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class NextPage implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NextPage';
+    protected static $openAPIModelName = 'FolderUpdateTaskLocator';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,8 @@ class NextPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'id' => 'string',
+        'links' => 'map[string,string]'
     ];
 
     /**
@@ -67,8 +68,8 @@ class NextPage implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'id' => null,
+        'links' => null
     ];
 
     /**
@@ -98,8 +99,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'id' => 'id',
+        'links' => 'links'
     ];
 
     /**
@@ -108,8 +109,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'id' => 'setId',
+        'links' => 'setLinks'
     ];
 
     /**
@@ -118,8 +119,8 @@ class NextPage implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'id' => 'getId',
+        'links' => 'getLinks'
     ];
 
     /**
@@ -182,8 +183,8 @@ class NextPage implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = isset($data['after']) ? $data['after'] : null;
-        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
     /**
@@ -195,8 +196,8 @@ class NextPage implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +215,49 @@ class NextPage implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets after
+     * Gets id
      *
      * @return string
      */
-    public function getAfter()
+    public function getId()
     {
-        return $this->container['after'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets after
+     * Sets id
      *
-     * @param string $after after
+     * @param string $id The ID of the task
      *
      * @return $this
      */
-    public function setAfter($after)
+    public function setId($id)
     {
-        $this->container['after'] = $after;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets link
+     * Gets links
      *
-     * @return string|null
+     * @return map[string,string]|null
      */
-    public function getLink()
+    public function getLinks()
     {
-        return $this->container['link'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets link
+     * Sets links
      *
-     * @param string|null $link link
+     * @param map[string,string]|null $links Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
      *
      * @return $this
      */
-    public function setLink($link)
+    public function setLinks($links)
     {
-        $this->container['link'] = $link;
+        $this->container['links'] = $links;
 
         return $this;
     }

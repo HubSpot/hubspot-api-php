@@ -1,11 +1,11 @@
 <?php
 /**
- * SignedUrl
+ * FolderInput
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * SignedUrl Class Doc Comment
+ * FolderInput Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @description Object for creating a folder.
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SignedUrl implements ModelInterface, ArrayAccess
+class FolderInput implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class SignedUrl implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SignedUrl';
+    protected static $openAPIModelName = 'FolderInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +58,9 @@ class SignedUrl implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'expires_at' => '\DateTime',
-        'url' => 'string',
         'name' => 'string',
-        'extension' => 'string',
-        'type' => 'string',
-        'size' => 'int',
-        'height' => 'int',
-        'width' => 'int'
+        'parent_folder_id' => 'string',
+        'parent_path' => 'string'
     ];
 
     /**
@@ -73,14 +69,9 @@ class SignedUrl implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'expires_at' => 'date-time',
-        'url' => null,
         'name' => null,
-        'extension' => null,
-        'type' => null,
-        'size' => 'int32',
-        'height' => 'int32',
-        'width' => 'int32'
+        'parent_folder_id' => null,
+        'parent_path' => null
     ];
 
     /**
@@ -110,14 +101,9 @@ class SignedUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'expires_at' => 'expiresAt',
-        'url' => 'url',
         'name' => 'name',
-        'extension' => 'extension',
-        'type' => 'type',
-        'size' => 'size',
-        'height' => 'height',
-        'width' => 'width'
+        'parent_folder_id' => 'parentFolderId',
+        'parent_path' => 'parentPath'
     ];
 
     /**
@@ -126,14 +112,9 @@ class SignedUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'expires_at' => 'setExpiresAt',
-        'url' => 'setUrl',
         'name' => 'setName',
-        'extension' => 'setExtension',
-        'type' => 'setType',
-        'size' => 'setSize',
-        'height' => 'setHeight',
-        'width' => 'setWidth'
+        'parent_folder_id' => 'setParentFolderId',
+        'parent_path' => 'setParentPath'
     ];
 
     /**
@@ -142,14 +123,9 @@ class SignedUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'expires_at' => 'getExpiresAt',
-        'url' => 'getUrl',
         'name' => 'getName',
-        'extension' => 'getExtension',
-        'type' => 'getType',
-        'size' => 'getSize',
-        'height' => 'getHeight',
-        'width' => 'getWidth'
+        'parent_folder_id' => 'getParentFolderId',
+        'parent_path' => 'getParentPath'
     ];
 
     /**
@@ -212,14 +188,9 @@ class SignedUrl implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['expires_at'] = isset($data['expires_at']) ? $data['expires_at'] : null;
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['extension'] = isset($data['extension']) ? $data['extension'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
-        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
-        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['parent_folder_id'] = isset($data['parent_folder_id']) ? $data['parent_folder_id'] : null;
+        $this->container['parent_path'] = isset($data['parent_path']) ? $data['parent_path'] : null;
     }
 
     /**
@@ -231,23 +202,8 @@ class SignedUrl implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['expires_at'] === null) {
-            $invalidProperties[] = "'expires_at' can't be null";
-        }
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['extension'] === null) {
-            $invalidProperties[] = "'extension' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -265,54 +221,6 @@ class SignedUrl implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets expires_at
-     *
-     * @return \DateTime
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param \DateTime $expires_at Timestamp of when the URL will no longer grant access to the file.
-     *
-     * @return $this
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -325,7 +233,7 @@ class SignedUrl implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of the requested file.
+     * @param string $name Desired name for the folder.
      *
      * @return $this
      */
@@ -337,121 +245,49 @@ class SignedUrl implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets extension
+     * Gets parent_folder_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getExtension()
+    public function getParentFolderId()
     {
-        return $this->container['extension'];
+        return $this->container['parent_folder_id'];
     }
 
     /**
-     * Sets extension
+     * Sets parent_folder_id
      *
-     * @param string $extension Extension of the requested file.
+     * @param string|null $parent_folder_id Folder ID of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
      *
      * @return $this
      */
-    public function setExtension($extension)
+    public function setParentFolderId($parent_folder_id)
     {
-        $this->container['extension'] = $extension;
+        $this->container['parent_folder_id'] = $parent_folder_id;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets parent_path
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getParentPath()
     {
-        return $this->container['type'];
+        return $this->container['parent_path'];
     }
 
     /**
-     * Sets type
+     * Sets parent_path
      *
-     * @param string $type Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+     * @param string|null $parent_path Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
      *
      * @return $this
      */
-    public function setType($type)
+    public function setParentPath($parent_path)
     {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int $size Size in bytes of the requested file.
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return int|null
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param int|null $height For image and video files. The height of the file.
-     *
-     * @return $this
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return int|null
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param int|null $width For image and video files. The width of the file.
-     *
-     * @return $this
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
+        $this->container['parent_path'] = $parent_path;
 
         return $this;
     }

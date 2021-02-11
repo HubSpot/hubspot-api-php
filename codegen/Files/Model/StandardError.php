@@ -1,11 +1,11 @@
 <?php
 /**
- * FolderActionResponse
+ * StandardError
  *
  * PHP version 5
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,20 +27,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Files\Files\Model;
+namespace HubSpot\Client\Files\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Files\Files\ObjectSerializer;
+use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * FolderActionResponse Class Doc Comment
+ * StandardError Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Files\Files
+ * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class FolderActionResponse implements ModelInterface, ArrayAccess
+class StandardError implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FolderActionResponse';
+    protected static $openAPIModelName = 'StandardError';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'result' => '\HubSpot\Client\Files\Files\Model\Folder',
-        'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Files\Files\Model\StandardError[]',
-        'requested_at' => '\DateTime',
-        'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
-        'links' => 'map[string,string]',
-        'task_id' => 'string'
+        'id' => 'string',
+        'category' => '\HubSpot\Client\Files\Model\ErrorCategory',
+        'sub_category' => 'object',
+        'message' => 'string',
+        'errors' => '\HubSpot\Client\Files\Model\ErrorDetail[]',
+        'context' => 'map[string,string[]]',
+        'links' => 'map[string,string]'
     ];
 
     /**
@@ -75,14 +74,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'result' => null,
-        'num_errors' => 'int32',
+        'id' => null,
+        'category' => null,
+        'sub_category' => null,
+        'message' => null,
         'errors' => null,
-        'requested_at' => 'date-time',
-        'started_at' => 'date-time',
-        'completed_at' => 'date-time',
-        'links' => null,
-        'task_id' => null
+        'context' => null,
+        'links' => null
     ];
 
     /**
@@ -113,14 +111,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'result' => 'result',
-        'num_errors' => 'numErrors',
+        'id' => 'id',
+        'category' => 'category',
+        'sub_category' => 'subCategory',
+        'message' => 'message',
         'errors' => 'errors',
-        'requested_at' => 'requestedAt',
-        'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
-        'links' => 'links',
-        'task_id' => 'taskId'
+        'context' => 'context',
+        'links' => 'links'
     ];
 
     /**
@@ -130,14 +127,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'result' => 'setResult',
-        'num_errors' => 'setNumErrors',
+        'id' => 'setId',
+        'category' => 'setCategory',
+        'sub_category' => 'setSubCategory',
+        'message' => 'setMessage',
         'errors' => 'setErrors',
-        'requested_at' => 'setRequestedAt',
-        'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
-        'links' => 'setLinks',
-        'task_id' => 'setTaskId'
+        'context' => 'setContext',
+        'links' => 'setLinks'
     ];
 
     /**
@@ -147,14 +143,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'result' => 'getResult',
-        'num_errors' => 'getNumErrors',
+        'id' => 'getId',
+        'category' => 'getCategory',
+        'sub_category' => 'getSubCategory',
+        'message' => 'getMessage',
         'errors' => 'getErrors',
-        'requested_at' => 'getRequestedAt',
-        'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
-        'links' => 'getLinks',
-        'task_id' => 'getTaskId'
+        'context' => 'getContext',
+        'links' => 'getLinks'
     ];
 
     /**
@@ -198,27 +193,8 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const STATUS_PENDING = 'PENDING';
-    const STATUS_PROCESSING = 'PROCESSING';
-    const STATUS_CANCELED = 'CANCELED';
-    const STATUS_COMPLETE = 'COMPLETE';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PENDING,
-            self::STATUS_PROCESSING,
-            self::STATUS_CANCELED,
-            self::STATUS_COMPLETE,
-        ];
-    }
     
 
     /**
@@ -237,14 +213,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['result'] = isset($data['result']) ? $data['result'] : null;
-        $this->container['num_errors'] = isset($data['num_errors']) ? $data['num_errors'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['sub_category'] = isset($data['sub_category']) ? $data['sub_category'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
-        $this->container['requested_at'] = isset($data['requested_at']) ? $data['requested_at'] : null;
-        $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
-        $this->container['completed_at'] = isset($data['completed_at']) ? $data['completed_at'] : null;
+        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
         $this->container['links'] = isset($data['links']) ? $data['links'] : null;
-        $this->container['task_id'] = isset($data['task_id']) ? $data['task_id'] : null;
     }
 
     /**
@@ -259,22 +234,20 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
-
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
-        if ($this->container['task_id'] === null) {
-            $invalidProperties[] = "'task_id' can't be null";
+        if ($this->container['context'] === null) {
+            $invalidProperties[] = "'context' can't be null";
+        }
+        if ($this->container['links'] === null) {
+            $invalidProperties[] = "'links' can't be null";
         }
         return $invalidProperties;
     }
@@ -304,70 +277,109 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status Current status of the task.
+     * @param string $status status
      *
      * @return $this
      */
     public function setStatus($status)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets result
+     * Gets id
      *
-     * @return \HubSpot\Client\Files\Files\Model\Folder|null
+     * @return string|null
      */
-    public function getResult()
+    public function getId()
     {
-        return $this->container['result'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets result
+     * Sets id
      *
-     * @param \HubSpot\Client\Files\Files\Model\Folder|null $result result
+     * @param string|null $id id
      *
      * @return $this
      */
-    public function setResult($result)
+    public function setId($id)
     {
-        $this->container['result'] = $result;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets num_errors
+     * Gets category
      *
-     * @return int|null
+     * @return \HubSpot\Client\Files\Model\ErrorCategory
      */
-    public function getNumErrors()
+    public function getCategory()
     {
-        return $this->container['num_errors'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets num_errors
+     * Sets category
      *
-     * @param int|null $num_errors Number of errors resulting from the requested changes.
+     * @param \HubSpot\Client\Files\Model\ErrorCategory $category category
      *
      * @return $this
      */
-    public function setNumErrors($num_errors)
+    public function setCategory($category)
     {
-        $this->container['num_errors'] = $num_errors;
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return object|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param object|null $sub_category sub_category
+     *
+     * @return $this
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
 
         return $this;
     }
@@ -375,7 +387,7 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Files\Files\Model\StandardError[]|null
+     * @return \HubSpot\Client\Files\Model\ErrorDetail[]
      */
     public function getErrors()
     {
@@ -385,7 +397,7 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Files\Files\Model\StandardError[]|null $errors Detailed errors resulting from the task.
+     * @param \HubSpot\Client\Files\Model\ErrorDetail[] $errors errors
      *
      * @return $this
      */
@@ -397,73 +409,25 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets requested_at
+     * Gets context
      *
-     * @return \DateTime|null
+     * @return map[string,string[]]
      */
-    public function getRequestedAt()
+    public function getContext()
     {
-        return $this->container['requested_at'];
+        return $this->container['context'];
     }
 
     /**
-     * Sets requested_at
+     * Sets context
      *
-     * @param \DateTime|null $requested_at Timestamp representing when the task was requested.
+     * @param map[string,string[]] $context context
      *
      * @return $this
      */
-    public function setRequestedAt($requested_at)
+    public function setContext($context)
     {
-        $this->container['requested_at'] = $requested_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets started_at
-     *
-     * @return \DateTime
-     */
-    public function getStartedAt()
-    {
-        return $this->container['started_at'];
-    }
-
-    /**
-     * Sets started_at
-     *
-     * @param \DateTime $started_at Timestamp representing when the task was started at.
-     *
-     * @return $this
-     */
-    public function setStartedAt($started_at)
-    {
-        $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets completed_at
-     *
-     * @return \DateTime
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime $completed_at When the requested changes have been completed.
-     *
-     * @return $this
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
+        $this->container['context'] = $context;
 
         return $this;
     }
@@ -471,7 +435,7 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     /**
      * Gets links
      *
-     * @return map[string,string]|null
+     * @return map[string,string]
      */
     public function getLinks()
     {
@@ -481,37 +445,13 @@ class FolderActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param map[string,string]|null $links Link to check the status of the task.
+     * @param map[string,string] $links links
      *
      * @return $this
      */
     public function setLinks($links)
     {
         $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_id
-     *
-     * @return string
-     */
-    public function getTaskId()
-    {
-        return $this->container['task_id'];
-    }
-
-    /**
-     * Sets task_id
-     *
-     * @param string $task_id Id of the task.
-     *
-     * @return $this
-     */
-    public function setTaskId($task_id)
-    {
-        $this->container['task_id'] = $task_id;
 
         return $this;
     }
