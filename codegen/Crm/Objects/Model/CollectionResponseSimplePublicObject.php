@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectWithAssociations
+ * CollectionResponseSimplePublicObject
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * SimplePublicObjectWithAssociations Class Doc Comment
+ * CollectionResponseSimplePublicObject Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
+class CollectionResponseSimplePublicObject implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectWithAssociations';
+    protected static $openAPIModelName = 'CollectionResponseSimplePublicObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'properties' => 'map[string,string]',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'archived' => 'bool',
-        'archived_at' => '\DateTime',
-        'associations' => 'map[string,\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId]'
+        'results' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicObject[]',
+        'paging' => '\HubSpot\Client\Crm\Objects\Model\Paging'
     ];
 
     /**
@@ -72,13 +67,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'properties' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'archived' => null,
-        'archived_at' => 'date-time',
-        'associations' => null
+        'results' => null,
+        'paging' => null
     ];
 
     /**
@@ -108,13 +98,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'properties' => 'properties',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'archived' => 'archived',
-        'archived_at' => 'archivedAt',
-        'associations' => 'associations'
+        'results' => 'results',
+        'paging' => 'paging'
     ];
 
     /**
@@ -123,13 +108,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'properties' => 'setProperties',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'archived' => 'setArchived',
-        'archived_at' => 'setArchivedAt',
-        'associations' => 'setAssociations'
+        'results' => 'setResults',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -138,13 +118,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'properties' => 'getProperties',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'archived' => 'getArchived',
-        'archived_at' => 'getArchivedAt',
-        'associations' => 'getAssociations'
+        'results' => 'getResults',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -207,13 +182,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['properties'] = isset($data['properties']) ? $data['properties'] : null;
-        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
-        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
-        $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
-        $this->container['archived_at'] = isset($data['archived_at']) ? $data['archived_at'] : null;
-        $this->container['associations'] = isset($data['associations']) ? $data['associations'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
+        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
     }
 
     /**
@@ -225,17 +195,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -253,169 +214,49 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicObject[]
      */
-    public function getId()
+    public function getResults()
     {
-        return $this->container['id'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets id
+     * Sets results
      *
-     * @param string $id id
+     * @param \HubSpot\Client\Crm\Objects\Model\SimplePublicObject[] $results results
      *
      * @return $this
      */
-    public function setId($id)
+    public function setResults($results)
     {
-        $this->container['id'] = $id;
+        $this->container['results'] = $results;
 
         return $this;
     }
 
     /**
-     * Gets properties
+     * Gets paging
      *
-     * @return map[string,string]
+     * @return \HubSpot\Client\Crm\Objects\Model\Paging|null
      */
-    public function getProperties()
+    public function getPaging()
     {
-        return $this->container['properties'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets properties
+     * Sets paging
      *
-     * @param map[string,string] $properties properties
+     * @param \HubSpot\Client\Crm\Objects\Model\Paging|null $paging paging
      *
      * @return $this
      */
-    public function setProperties($properties)
+    public function setPaging($paging)
     {
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return $this
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return $this
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool|null
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool|null $archived archived
-     *
-     * @return $this
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return \DateTime|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param \DateTime|null $archived_at archived_at
-     *
-     * @return $this
-     */
-    public function setArchivedAt($archived_at)
-    {
-        $this->container['archived_at'] = $archived_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets associations
-     *
-     * @return map[string,\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId]|null
-     */
-    public function getAssociations()
-    {
-        return $this->container['associations'];
-    }
-
-    /**
-     * Sets associations
-     *
-     * @param map[string,\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId]|null $associations associations
-     *
-     * @return $this
-     */
-    public function setAssociations($associations)
-    {
-        $this->container['associations'] = $associations;
+        $this->container['paging'] = $paging;
 
         return $this;
     }

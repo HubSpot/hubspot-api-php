@@ -1,6 +1,6 @@
 <?php
 /**
- * ForwardPaging
+ * CollectionResponseWithTotalSimplePublicObject
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * ForwardPaging Class Doc Comment
+ * CollectionResponseWithTotalSimplePublicObject Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ForwardPaging implements ModelInterface, ArrayAccess
+class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ForwardPaging implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ForwardPaging';
+    protected static $openAPIModelName = 'CollectionResponseWithTotalSimplePublicObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,9 @@ class ForwardPaging implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next' => '\HubSpot\Client\Crm\Objects\Model\NextPage'
+        'total' => 'int',
+        'results' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicObject[]',
+        'paging' => '\HubSpot\Client\Crm\Objects\Model\Paging'
     ];
 
     /**
@@ -66,7 +68,9 @@ class ForwardPaging implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'next' => null
+        'total' => 'int32',
+        'results' => null,
+        'paging' => null
     ];
 
     /**
@@ -96,7 +100,9 @@ class ForwardPaging implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'next' => 'next'
+        'total' => 'total',
+        'results' => 'results',
+        'paging' => 'paging'
     ];
 
     /**
@@ -105,7 +111,9 @@ class ForwardPaging implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'next' => 'setNext'
+        'total' => 'setTotal',
+        'results' => 'setResults',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -114,7 +122,9 @@ class ForwardPaging implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'next' => 'getNext'
+        'total' => 'getTotal',
+        'results' => 'getResults',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -177,7 +187,9 @@ class ForwardPaging implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['results'] = isset($data['results']) ? $data['results'] : null;
+        $this->container['paging'] = isset($data['paging']) ? $data['paging'] : null;
     }
 
     /**
@@ -189,6 +201,12 @@ class ForwardPaging implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
+        }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -205,25 +223,73 @@ class ForwardPaging implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets next
+     * Gets total
      *
-     * @return \HubSpot\Client\Crm\Objects\Model\NextPage|null
+     * @return int
      */
-    public function getNext()
+    public function getTotal()
     {
-        return $this->container['next'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets next
+     * Sets total
      *
-     * @param \HubSpot\Client\Crm\Objects\Model\NextPage|null $next next
+     * @param int $total The number of available results
      *
      * @return $this
      */
-    public function setNext($next)
+    public function setTotal($total)
     {
-        $this->container['next'] = $next;
+        $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicObject[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Objects\Model\SimplePublicObject[] $results results
+     *
+     * @return $this
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets paging
+     *
+     * @return \HubSpot\Client\Crm\Objects\Model\Paging|null
+     */
+    public function getPaging()
+    {
+        return $this->container['paging'];
+    }
+
+    /**
+     * Sets paging
+     *
+     * @param \HubSpot\Client\Crm\Objects\Model\Paging|null $paging paging
+     *
+     * @return $this
+     */
+    public function setPaging($paging)
+    {
+        $this->container['paging'] = $paging;
 
         return $this;
     }

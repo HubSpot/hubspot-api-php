@@ -61,6 +61,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => 'map[string,string]',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
+        'associations' => 'map[string,\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId]',
         'archived' => 'bool',
         'archived_at' => '\DateTime'
     ];
@@ -75,6 +76,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
+        'associations' => null,
         'archived' => null,
         'archived_at' => 'date-time'
     ];
@@ -110,6 +112,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => 'properties',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
+        'associations' => 'associations',
         'archived' => 'archived',
         'archived_at' => 'archivedAt'
     ];
@@ -124,6 +127,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => 'setProperties',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
+        'associations' => 'setAssociations',
         'archived' => 'setArchived',
         'archived_at' => 'setArchivedAt'
     ];
@@ -138,6 +142,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         'properties' => 'getProperties',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
+        'associations' => 'getAssociations',
         'archived' => 'getArchived',
         'archived_at' => 'getArchivedAt'
     ];
@@ -206,6 +211,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
         $this->container['properties'] = isset($data['properties']) ? $data['properties'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['associations'] = isset($data['associations']) ? $data['associations'] : null;
         $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
         $this->container['archived_at'] = isset($data['archived_at']) ? $data['archived_at'] : null;
     }
@@ -338,6 +344,30 @@ class SimplePublicObject implements ModelInterface, ArrayAccess
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets associations
+     *
+     * @return map[string,\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId]|null
+     */
+    public function getAssociations()
+    {
+        return $this->container['associations'];
+    }
+
+    /**
+     * Sets associations
+     *
+     * @param map[string,\HubSpot\Client\Crm\Objects\Model\CollectionResponseAssociatedId]|null $associations associations
+     *
+     * @return $this
+     */
+    public function setAssociations($associations)
+    {
+        $this->container['associations'] = $associations;
 
         return $this;
     }

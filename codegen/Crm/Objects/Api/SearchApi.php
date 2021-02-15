@@ -116,7 +116,7 @@ class SearchApi
     }
 
     /**
-     * Operation doSearch
+     * Operation search
      *
      * Filter, Sort, and Search CRM Objects
      *
@@ -125,16 +125,16 @@ class SearchApi
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Objects\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error
      */
-    public function doSearch($object_type, $public_object_search_request)
+    public function search($object_type, $public_object_search_request)
     {
-        list($response) = $this->doSearchWithHttpInfo($object_type, $public_object_search_request);
+        list($response) = $this->searchWithHttpInfo($object_type, $public_object_search_request);
         return $response;
     }
 
     /**
-     * Operation doSearchWithHttpInfo
+     * Operation searchWithHttpInfo
      *
      * Filter, Sort, and Search CRM Objects
      *
@@ -143,11 +143,11 @@ class SearchApi
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function doSearchWithHttpInfo($object_type, $public_object_search_request)
+    public function searchWithHttpInfo($object_type, $public_object_search_request)
     {
-        $request = $this->doSearchRequest($object_type, $public_object_search_request);
+        $request = $this->searchRequest($object_type, $public_object_search_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -180,14 +180,14 @@ class SearchApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -205,7 +205,7 @@ class SearchApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging';
+            $returnType = '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -224,7 +224,7 @@ class SearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging',
+                        '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -243,7 +243,7 @@ class SearchApi
     }
 
     /**
-     * Operation doSearchAsync
+     * Operation searchAsync
      *
      * Filter, Sort, and Search CRM Objects
      *
@@ -253,9 +253,9 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsync($object_type, $public_object_search_request)
+    public function searchAsync($object_type, $public_object_search_request)
     {
-        return $this->doSearchAsyncWithHttpInfo($object_type, $public_object_search_request)
+        return $this->searchAsyncWithHttpInfo($object_type, $public_object_search_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -264,7 +264,7 @@ class SearchApi
     }
 
     /**
-     * Operation doSearchAsyncWithHttpInfo
+     * Operation searchAsyncWithHttpInfo
      *
      * Filter, Sort, and Search CRM Objects
      *
@@ -274,10 +274,10 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsyncWithHttpInfo($object_type, $public_object_search_request)
+    public function searchAsyncWithHttpInfo($object_type, $public_object_search_request)
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging';
-        $request = $this->doSearchRequest($object_type, $public_object_search_request);
+        $returnType = '\HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObject';
+        $request = $this->searchRequest($object_type, $public_object_search_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,7 +314,7 @@ class SearchApi
     }
 
     /**
-     * Create request for operation 'doSearch'
+     * Create request for operation 'search'
      *
      * @param  string $object_type (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
@@ -322,18 +322,18 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function doSearchRequest($object_type, $public_object_search_request)
+    protected function searchRequest($object_type, $public_object_search_request)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling doSearch'
+                'Missing the required parameter $object_type when calling search'
             );
         }
         // verify the required parameter 'public_object_search_request' is set
         if ($public_object_search_request === null || (is_array($public_object_search_request) && count($public_object_search_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_object_search_request when calling doSearch'
+                'Missing the required parameter $public_object_search_request when calling search'
             );
         }
 
