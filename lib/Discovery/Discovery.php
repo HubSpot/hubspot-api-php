@@ -9,7 +9,6 @@ namespace HubSpot\Discovery;
  * @method Conversations\Discovery conversations()
  * @method Crm\Discovery           crm()
  * @method Events\Discovery        events()
- * @method Files\Discovery         files()
  * @method Marketing\Discovery     marketing()
  * @method Webhooks\Discovery      webhooks()
  */
