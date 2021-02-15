@@ -114,6 +114,23 @@ class SearchApi
     {
         return $this->config;
     }
+    
+    /**
+     * Operation search
+     *
+     * Filter, Sort, and Search CRM Objects
+     *
+     * @param  string $object_type object_type (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Objects\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Objects\Model\Error
+     * @deprecated since version 2.8.0
+     */
+    public function search($object_type, $public_object_search_request) {
+        $this->doSearch($object_type, $public_object_search_request);
+    }
 
     /**
      * Operation doSearch
