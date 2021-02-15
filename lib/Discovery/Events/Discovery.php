@@ -6,7 +6,7 @@ use HubSpot\Client\Events\Api\EventsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method EventsApi    eventsApi()
+ * @method EventsApi eventsApi()
  */
 class Discovery extends DiscoveryBase
 {
