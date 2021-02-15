@@ -23,6 +23,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->auth()->shouldHaveType(\HubSpot\Discovery\Auth\Discovery::class);
         $this->automation()->shouldHaveType(\HubSpot\Discovery\Automation\Discovery::class);
         $this->cms()->shouldHaveType(\HubSpot\Discovery\Cms\Discovery::class);
+        $this->сonversations()->shouldHaveType(\HubSpot\Discovery\Conversations\Discovery::class);
         $this->crm()->shouldHaveType(\HubSpot\Discovery\Crm\Discovery::class);
         $this->events()->shouldHaveType(\HubSpot\Discovery\Events\Discovery::class);
         $this->files()->shouldHaveType(\HubSpot\Discovery\Files\Discovery::class);
