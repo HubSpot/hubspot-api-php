@@ -116,7 +116,7 @@ class GenerateApi
     }
 
     /**
-     * Operation postVisitorIdentificationV3TokensCreate
+     * Operation generateToken
      *
      * Generate a token
      *
@@ -126,14 +126,14 @@ class GenerateApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Conversations\VisitorIdentification\Model\IdentificationTokenResponse|\HubSpot\Client\Conversations\VisitorIdentification\Model\Error
      */
-    public function postVisitorIdentificationV3TokensCreate($identification_token_generation_request)
+    public function generateToken($identification_token_generation_request)
     {
-        list($response) = $this->postVisitorIdentificationV3TokensCreateWithHttpInfo($identification_token_generation_request);
+        list($response) = $this->generateTokenWithHttpInfo($identification_token_generation_request);
         return $response;
     }
 
     /**
-     * Operation postVisitorIdentificationV3TokensCreateWithHttpInfo
+     * Operation generateTokenWithHttpInfo
      *
      * Generate a token
      *
@@ -143,9 +143,9 @@ class GenerateApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Conversations\VisitorIdentification\Model\IdentificationTokenResponse|\HubSpot\Client\Conversations\VisitorIdentification\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postVisitorIdentificationV3TokensCreateWithHttpInfo($identification_token_generation_request)
+    public function generateTokenWithHttpInfo($identification_token_generation_request)
     {
-        $request = $this->postVisitorIdentificationV3TokensCreateRequest($identification_token_generation_request);
+        $request = $this->generateTokenRequest($identification_token_generation_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -241,7 +241,7 @@ class GenerateApi
     }
 
     /**
-     * Operation postVisitorIdentificationV3TokensCreateAsync
+     * Operation generateTokenAsync
      *
      * Generate a token
      *
@@ -250,9 +250,9 @@ class GenerateApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVisitorIdentificationV3TokensCreateAsync($identification_token_generation_request)
+    public function generateTokenAsync($identification_token_generation_request)
     {
-        return $this->postVisitorIdentificationV3TokensCreateAsyncWithHttpInfo($identification_token_generation_request)
+        return $this->generateTokenAsyncWithHttpInfo($identification_token_generation_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -261,7 +261,7 @@ class GenerateApi
     }
 
     /**
-     * Operation postVisitorIdentificationV3TokensCreateAsyncWithHttpInfo
+     * Operation generateTokenAsyncWithHttpInfo
      *
      * Generate a token
      *
@@ -270,10 +270,10 @@ class GenerateApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVisitorIdentificationV3TokensCreateAsyncWithHttpInfo($identification_token_generation_request)
+    public function generateTokenAsyncWithHttpInfo($identification_token_generation_request)
     {
         $returnType = '\HubSpot\Client\Conversations\VisitorIdentification\Model\IdentificationTokenResponse';
-        $request = $this->postVisitorIdentificationV3TokensCreateRequest($identification_token_generation_request);
+        $request = $this->generateTokenRequest($identification_token_generation_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -310,19 +310,19 @@ class GenerateApi
     }
 
     /**
-     * Create request for operation 'postVisitorIdentificationV3TokensCreate'
+     * Create request for operation 'generateToken'
      *
      * @param  \HubSpot\Client\Conversations\VisitorIdentification\Model\IdentificationTokenGenerationRequest $identification_token_generation_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function postVisitorIdentificationV3TokensCreateRequest($identification_token_generation_request)
+    protected function generateTokenRequest($identification_token_generation_request)
     {
         // verify the required parameter 'identification_token_generation_request' is set
         if ($identification_token_generation_request === null || (is_array($identification_token_generation_request) && count($identification_token_generation_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $identification_token_generation_request when calling postVisitorIdentificationV3TokensCreate'
+                'Missing the required parameter $identification_token_generation_request when calling generateToken'
             );
         }
 
