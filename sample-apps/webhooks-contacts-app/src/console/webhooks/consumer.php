@@ -6,7 +6,7 @@ require_once '/app/vendor/autoload.php';
 use Helpers\KafkaHelper;
 
 KafkaHelper::getConsumer([$_ENV['EVENT_TOPIC']])
-    ->start(function ($topic, $part, $message): void {
+    ->start(function ($topic, $part, $message) {
         $event = (array) json_decode($message['message']['value']);
 
         var_dump($event);

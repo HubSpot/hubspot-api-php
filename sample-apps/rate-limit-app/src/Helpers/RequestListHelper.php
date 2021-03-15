@@ -17,7 +17,7 @@ class RequestListHelper
         return (count($range) < static::LIMIT) || (static::getLastElement($range) < $begin);
     }
 
-    public static function addTimestamp(): void
+    public static function addTimestamp()
     {
         RedisHelper::getClient()->lpush(static::LIST_NAME, round(microtime(true) * 1000));
     }

@@ -28,7 +28,7 @@ class TelegramBot
         );
     }
 
-    public function processUpdates(): void
+    public function processUpdates()
     {
         $maxUpdateId = TelegramUpdatesRepository::findMaxId();
         $updates = Request::getUpdates(['offset' => $maxUpdateId + 1])->getResult();

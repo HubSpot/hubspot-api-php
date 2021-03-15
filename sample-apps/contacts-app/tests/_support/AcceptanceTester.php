@@ -20,7 +20,7 @@ class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
-    public function createContact(string $email): void
+    public function createContact(string $email)
     {
         $this->amOnPage('/');
         $this->click('#contact-new');

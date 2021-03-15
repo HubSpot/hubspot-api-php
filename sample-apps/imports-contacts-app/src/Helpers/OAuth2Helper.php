@@ -41,7 +41,7 @@ class OAuth2Helper
         return static::APP_REQUIRED_SCOPES;
     }
 
-    public static function saveTokenResponse(TokenResponseIF $tokens): void
+    public static function saveTokenResponse(TokenResponseIF $tokens)
     {
         $_SESSION[static::SESSION_TOKENS_KEY] = [
             'access_token' => $tokens->getAccessToken(),

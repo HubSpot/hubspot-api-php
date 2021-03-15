@@ -6,7 +6,7 @@ use Helpers\DBClientHelper;
 
 class UsersRepository
 {
-    public static function assignEmailToTelegramChatId(string $email, int $telegramChatId): void
+    public static function assignEmailToTelegramChatId(string $email, int $telegramChatId)
     {
         $db = DBClientHelper::getClient();
         $params = [$telegramChatId, $email, $email];
