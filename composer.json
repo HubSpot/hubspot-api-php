@@ -10,7 +10,7 @@
         "api"
     ],
     "homepage": "https://hubspot.com/",
-    "license": "proprietary",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "HubSpot",
