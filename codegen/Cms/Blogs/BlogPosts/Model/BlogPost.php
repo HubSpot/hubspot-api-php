@@ -76,12 +76,18 @@ class BlogPost implements ModelInterface, ArrayAccess
         'subcategory' => 'string',
         'ab_status' => 'string',
         'folder_id' => 'string',
-        'widget_containers' => 'object',
-        'widgets' => 'object',
+        'widget_containers' => 'map[string,object]',
+        'widgets' => 'map[string,object]',
         'language' => 'string',
         'translated_from_id' => 'string',
         'dynamic_page_hub_db_table_id' => 'string',
         'blog_author_id' => 'string',
+        'tag_ids' => 'int[]',
+        'post_body' => 'string',
+        'post_summary' => 'string',
+        'rss_body' => 'string',
+        'rss_summary' => 'string',
+        'enable_google_amp_output_override' => 'bool',
         'html_title' => 'string',
         'page_redirected' => 'bool',
         'page_expiry_enabled' => 'bool',
@@ -89,14 +95,8 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'int',
         'page_expiry_redirect_url' => 'string',
         'use_featured_image' => 'bool',
-        'tag_ids' => 'int[]',
-        'enable_google_amp_output_override' => 'bool',
-        'post_body' => 'string',
-        'post_summary' => 'string',
-        'rss_body' => 'string',
-        'rss_summary' => 'string',
         'password' => 'string',
-        'attached_stylesheets' => 'object[]',
+        'attached_stylesheets' => 'map[string,object][]',
         'include_default_custom_css' => 'bool',
         'enable_domain_stylesheets' => 'bool',
         'enable_layout_stylesheets' => 'bool',
@@ -112,7 +112,7 @@ class BlogPost implements ModelInterface, ArrayAccess
         'public_access_rules_enabled' => 'bool',
         'public_access_rules' => 'object[]',
         'layout_sections' => 'map[string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection]',
-        'theme_settings_values' => 'object',
+        'theme_settings_values' => 'map[string,object]',
         'url' => 'string',
         'publish_date' => '\DateTime',
         'deleted_at' => '\DateTime',
@@ -151,6 +151,12 @@ class BlogPost implements ModelInterface, ArrayAccess
         'translated_from_id' => null,
         'dynamic_page_hub_db_table_id' => null,
         'blog_author_id' => null,
+        'tag_ids' => 'int64',
+        'post_body' => null,
+        'post_summary' => null,
+        'rss_body' => null,
+        'rss_summary' => null,
+        'enable_google_amp_output_override' => null,
         'html_title' => null,
         'page_redirected' => null,
         'page_expiry_enabled' => null,
@@ -158,12 +164,6 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'int64',
         'page_expiry_redirect_url' => null,
         'use_featured_image' => null,
-        'tag_ids' => 'int64',
-        'enable_google_amp_output_override' => null,
-        'post_body' => null,
-        'post_summary' => null,
-        'rss_body' => null,
-        'rss_summary' => null,
         'password' => null,
         'attached_stylesheets' => null,
         'include_default_custom_css' => null,
@@ -241,6 +241,12 @@ class BlogPost implements ModelInterface, ArrayAccess
         'translated_from_id' => 'translatedFromId',
         'dynamic_page_hub_db_table_id' => 'dynamicPageHubDbTableId',
         'blog_author_id' => 'blogAuthorId',
+        'tag_ids' => 'tagIds',
+        'post_body' => 'postBody',
+        'post_summary' => 'postSummary',
+        'rss_body' => 'rssBody',
+        'rss_summary' => 'rssSummary',
+        'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
         'html_title' => 'htmlTitle',
         'page_redirected' => 'pageRedirected',
         'page_expiry_enabled' => 'pageExpiryEnabled',
@@ -248,12 +254,6 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'pageExpiryRedirectId',
         'page_expiry_redirect_url' => 'pageExpiryRedirectUrl',
         'use_featured_image' => 'useFeaturedImage',
-        'tag_ids' => 'tagIds',
-        'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
-        'post_body' => 'postBody',
-        'post_summary' => 'postSummary',
-        'rss_body' => 'rssBody',
-        'rss_summary' => 'rssSummary',
         'password' => 'password',
         'attached_stylesheets' => 'attachedStylesheets',
         'include_default_custom_css' => 'includeDefaultCustomCss',
@@ -310,6 +310,12 @@ class BlogPost implements ModelInterface, ArrayAccess
         'translated_from_id' => 'setTranslatedFromId',
         'dynamic_page_hub_db_table_id' => 'setDynamicPageHubDbTableId',
         'blog_author_id' => 'setBlogAuthorId',
+        'tag_ids' => 'setTagIds',
+        'post_body' => 'setPostBody',
+        'post_summary' => 'setPostSummary',
+        'rss_body' => 'setRssBody',
+        'rss_summary' => 'setRssSummary',
+        'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
         'html_title' => 'setHtmlTitle',
         'page_redirected' => 'setPageRedirected',
         'page_expiry_enabled' => 'setPageExpiryEnabled',
@@ -317,12 +323,6 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'setPageExpiryRedirectId',
         'page_expiry_redirect_url' => 'setPageExpiryRedirectUrl',
         'use_featured_image' => 'setUseFeaturedImage',
-        'tag_ids' => 'setTagIds',
-        'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
-        'post_body' => 'setPostBody',
-        'post_summary' => 'setPostSummary',
-        'rss_body' => 'setRssBody',
-        'rss_summary' => 'setRssSummary',
         'password' => 'setPassword',
         'attached_stylesheets' => 'setAttachedStylesheets',
         'include_default_custom_css' => 'setIncludeDefaultCustomCss',
@@ -379,6 +379,12 @@ class BlogPost implements ModelInterface, ArrayAccess
         'translated_from_id' => 'getTranslatedFromId',
         'dynamic_page_hub_db_table_id' => 'getDynamicPageHubDbTableId',
         'blog_author_id' => 'getBlogAuthorId',
+        'tag_ids' => 'getTagIds',
+        'post_body' => 'getPostBody',
+        'post_summary' => 'getPostSummary',
+        'rss_body' => 'getRssBody',
+        'rss_summary' => 'getRssSummary',
+        'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
         'html_title' => 'getHtmlTitle',
         'page_redirected' => 'getPageRedirected',
         'page_expiry_enabled' => 'getPageExpiryEnabled',
@@ -386,12 +392,6 @@ class BlogPost implements ModelInterface, ArrayAccess
         'page_expiry_redirect_id' => 'getPageExpiryRedirectId',
         'page_expiry_redirect_url' => 'getPageExpiryRedirectUrl',
         'use_featured_image' => 'getUseFeaturedImage',
-        'tag_ids' => 'getTagIds',
-        'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
-        'post_body' => 'getPostBody',
-        'post_summary' => 'getPostSummary',
-        'rss_body' => 'getRssBody',
-        'rss_summary' => 'getRssSummary',
         'password' => 'getPassword',
         'attached_stylesheets' => 'getAttachedStylesheets',
         'include_default_custom_css' => 'getIncludeDefaultCustomCss',
@@ -1184,6 +1184,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     const CONTENT_TYPE_CATEGORY__4 = '4';
     const CONTENT_TYPE_CATEGORY__5 = '5';
     const CONTENT_TYPE_CATEGORY__6 = '6';
+    const CONTENT_TYPE_CATEGORY__7 = '7';
     const CURRENT_STATE_AUTOMATED = 'AUTOMATED';
     const CURRENT_STATE_AUTOMATED_DRAFT = 'AUTOMATED_DRAFT';
     const CURRENT_STATE_AUTOMATED_SENDING = 'AUTOMATED_SENDING';
@@ -1973,6 +1974,7 @@ class BlogPost implements ModelInterface, ArrayAccess
             self::CONTENT_TYPE_CATEGORY__4,
             self::CONTENT_TYPE_CATEGORY__5,
             self::CONTENT_TYPE_CATEGORY__6,
+            self::CONTENT_TYPE_CATEGORY__7,
         ];
     }
     
@@ -2058,6 +2060,12 @@ class BlogPost implements ModelInterface, ArrayAccess
         $this->container['translated_from_id'] = isset($data['translated_from_id']) ? $data['translated_from_id'] : null;
         $this->container['dynamic_page_hub_db_table_id'] = isset($data['dynamic_page_hub_db_table_id']) ? $data['dynamic_page_hub_db_table_id'] : null;
         $this->container['blog_author_id'] = isset($data['blog_author_id']) ? $data['blog_author_id'] : null;
+        $this->container['tag_ids'] = isset($data['tag_ids']) ? $data['tag_ids'] : null;
+        $this->container['post_body'] = isset($data['post_body']) ? $data['post_body'] : null;
+        $this->container['post_summary'] = isset($data['post_summary']) ? $data['post_summary'] : null;
+        $this->container['rss_body'] = isset($data['rss_body']) ? $data['rss_body'] : null;
+        $this->container['rss_summary'] = isset($data['rss_summary']) ? $data['rss_summary'] : null;
+        $this->container['enable_google_amp_output_override'] = isset($data['enable_google_amp_output_override']) ? $data['enable_google_amp_output_override'] : null;
         $this->container['html_title'] = isset($data['html_title']) ? $data['html_title'] : null;
         $this->container['page_redirected'] = isset($data['page_redirected']) ? $data['page_redirected'] : null;
         $this->container['page_expiry_enabled'] = isset($data['page_expiry_enabled']) ? $data['page_expiry_enabled'] : null;
@@ -2065,12 +2073,6 @@ class BlogPost implements ModelInterface, ArrayAccess
         $this->container['page_expiry_redirect_id'] = isset($data['page_expiry_redirect_id']) ? $data['page_expiry_redirect_id'] : null;
         $this->container['page_expiry_redirect_url'] = isset($data['page_expiry_redirect_url']) ? $data['page_expiry_redirect_url'] : null;
         $this->container['use_featured_image'] = isset($data['use_featured_image']) ? $data['use_featured_image'] : null;
-        $this->container['tag_ids'] = isset($data['tag_ids']) ? $data['tag_ids'] : null;
-        $this->container['enable_google_amp_output_override'] = isset($data['enable_google_amp_output_override']) ? $data['enable_google_amp_output_override'] : null;
-        $this->container['post_body'] = isset($data['post_body']) ? $data['post_body'] : null;
-        $this->container['post_summary'] = isset($data['post_summary']) ? $data['post_summary'] : null;
-        $this->container['rss_body'] = isset($data['rss_body']) ? $data['rss_body'] : null;
-        $this->container['rss_summary'] = isset($data['rss_summary']) ? $data['rss_summary'] : null;
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
         $this->container['attached_stylesheets'] = isset($data['attached_stylesheets']) ? $data['attached_stylesheets'] : null;
         $this->container['include_default_custom_css'] = isset($data['include_default_custom_css']) ? $data['include_default_custom_css'] : null;
@@ -2198,6 +2200,24 @@ class BlogPost implements ModelInterface, ArrayAccess
         if ($this->container['blog_author_id'] === null) {
             $invalidProperties[] = "'blog_author_id' can't be null";
         }
+        if ($this->container['tag_ids'] === null) {
+            $invalidProperties[] = "'tag_ids' can't be null";
+        }
+        if ($this->container['post_body'] === null) {
+            $invalidProperties[] = "'post_body' can't be null";
+        }
+        if ($this->container['post_summary'] === null) {
+            $invalidProperties[] = "'post_summary' can't be null";
+        }
+        if ($this->container['rss_body'] === null) {
+            $invalidProperties[] = "'rss_body' can't be null";
+        }
+        if ($this->container['rss_summary'] === null) {
+            $invalidProperties[] = "'rss_summary' can't be null";
+        }
+        if ($this->container['enable_google_amp_output_override'] === null) {
+            $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
+        }
         if ($this->container['html_title'] === null) {
             $invalidProperties[] = "'html_title' can't be null";
         }
@@ -2218,24 +2238,6 @@ class BlogPost implements ModelInterface, ArrayAccess
         }
         if ($this->container['use_featured_image'] === null) {
             $invalidProperties[] = "'use_featured_image' can't be null";
-        }
-        if ($this->container['tag_ids'] === null) {
-            $invalidProperties[] = "'tag_ids' can't be null";
-        }
-        if ($this->container['enable_google_amp_output_override'] === null) {
-            $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
-        }
-        if ($this->container['post_body'] === null) {
-            $invalidProperties[] = "'post_body' can't be null";
-        }
-        if ($this->container['post_summary'] === null) {
-            $invalidProperties[] = "'post_summary' can't be null";
-        }
-        if ($this->container['rss_body'] === null) {
-            $invalidProperties[] = "'rss_body' can't be null";
-        }
-        if ($this->container['rss_summary'] === null) {
-            $invalidProperties[] = "'rss_summary' can't be null";
         }
         if ($this->container['password'] === null) {
             $invalidProperties[] = "'password' can't be null";
@@ -2788,7 +2790,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Gets widget_containers
      *
-     * @return object
+     * @return map[string,object]
      */
     public function getWidgetContainers()
     {
@@ -2798,7 +2800,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Sets widget_containers
      *
-     * @param object $widget_containers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     * @param map[string,object] $widget_containers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
      *
      * @return $this
      */
@@ -2812,7 +2814,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Gets widgets
      *
-     * @return object
+     * @return map[string,object]
      */
     public function getWidgets()
     {
@@ -2822,7 +2824,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Sets widgets
      *
-     * @param object $widgets A data structure containing the data for all the modules for this page.
+     * @param map[string,object] $widgets A data structure containing the data for all the modules for this page.
      *
      * @return $this
      */
@@ -2934,6 +2936,150 @@ class BlogPost implements ModelInterface, ArrayAccess
     public function setBlogAuthorId($blog_author_id)
     {
         $this->container['blog_author_id'] = $blog_author_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tag_ids
+     *
+     * @return int[]
+     */
+    public function getTagIds()
+    {
+        return $this->container['tag_ids'];
+    }
+
+    /**
+     * Sets tag_ids
+     *
+     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
+     *
+     * @return $this
+     */
+    public function setTagIds($tag_ids)
+    {
+        $this->container['tag_ids'] = $tag_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets post_body
+     *
+     * @return string
+     */
+    public function getPostBody()
+    {
+        return $this->container['post_body'];
+    }
+
+    /**
+     * Sets post_body
+     *
+     * @param string $post_body The HTML of the main post body.
+     *
+     * @return $this
+     */
+    public function setPostBody($post_body)
+    {
+        $this->container['post_body'] = $post_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets post_summary
+     *
+     * @return string
+     */
+    public function getPostSummary()
+    {
+        return $this->container['post_summary'];
+    }
+
+    /**
+     * Sets post_summary
+     *
+     * @param string $post_summary The summary of the blog post that will appear on the main listing page.
+     *
+     * @return $this
+     */
+    public function setPostSummary($post_summary)
+    {
+        $this->container['post_summary'] = $post_summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets rss_body
+     *
+     * @return string
+     */
+    public function getRssBody()
+    {
+        return $this->container['rss_body'];
+    }
+
+    /**
+     * Sets rss_body
+     *
+     * @param string $rss_body The contents of the RSS body for this Blog Post.
+     *
+     * @return $this
+     */
+    public function setRssBody($rss_body)
+    {
+        $this->container['rss_body'] = $rss_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets rss_summary
+     *
+     * @return string
+     */
+    public function getRssSummary()
+    {
+        return $this->container['rss_summary'];
+    }
+
+    /**
+     * Sets rss_summary
+     *
+     * @param string $rss_summary The contents of the RSS summary for this Blog Post.
+     *
+     * @return $this
+     */
+    public function setRssSummary($rss_summary)
+    {
+        $this->container['rss_summary'] = $rss_summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_google_amp_output_override
+     *
+     * @return bool
+     */
+    public function getEnableGoogleAmpOutputOverride()
+    {
+        return $this->container['enable_google_amp_output_override'];
+    }
+
+    /**
+     * Sets enable_google_amp_output_override
+     *
+     * @param bool $enable_google_amp_output_override Boolean to allow overriding the AMP settings for the blog.
+     *
+     * @return $this
+     */
+    public function setEnableGoogleAmpOutputOverride($enable_google_amp_output_override)
+    {
+        $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
 
         return $this;
     }
@@ -3107,150 +3253,6 @@ class BlogPost implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets tag_ids
-     *
-     * @return int[]
-     */
-    public function getTagIds()
-    {
-        return $this->container['tag_ids'];
-    }
-
-    /**
-     * Sets tag_ids
-     *
-     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
-     *
-     * @return $this
-     */
-    public function setTagIds($tag_ids)
-    {
-        $this->container['tag_ids'] = $tag_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_google_amp_output_override
-     *
-     * @return bool
-     */
-    public function getEnableGoogleAmpOutputOverride()
-    {
-        return $this->container['enable_google_amp_output_override'];
-    }
-
-    /**
-     * Sets enable_google_amp_output_override
-     *
-     * @param bool $enable_google_amp_output_override Boolean to allow overriding the AMP settings for the blog.
-     *
-     * @return $this
-     */
-    public function setEnableGoogleAmpOutputOverride($enable_google_amp_output_override)
-    {
-        $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
-
-        return $this;
-    }
-
-    /**
-     * Gets post_body
-     *
-     * @return string
-     */
-    public function getPostBody()
-    {
-        return $this->container['post_body'];
-    }
-
-    /**
-     * Sets post_body
-     *
-     * @param string $post_body The HTML of the main post body.
-     *
-     * @return $this
-     */
-    public function setPostBody($post_body)
-    {
-        $this->container['post_body'] = $post_body;
-
-        return $this;
-    }
-
-    /**
-     * Gets post_summary
-     *
-     * @return string
-     */
-    public function getPostSummary()
-    {
-        return $this->container['post_summary'];
-    }
-
-    /**
-     * Sets post_summary
-     *
-     * @param string $post_summary The summary of the blog post that will appear on the main listing page.
-     *
-     * @return $this
-     */
-    public function setPostSummary($post_summary)
-    {
-        $this->container['post_summary'] = $post_summary;
-
-        return $this;
-    }
-
-    /**
-     * Gets rss_body
-     *
-     * @return string
-     */
-    public function getRssBody()
-    {
-        return $this->container['rss_body'];
-    }
-
-    /**
-     * Sets rss_body
-     *
-     * @param string $rss_body The contents of the RSS body for this Blog Post.
-     *
-     * @return $this
-     */
-    public function setRssBody($rss_body)
-    {
-        $this->container['rss_body'] = $rss_body;
-
-        return $this;
-    }
-
-    /**
-     * Gets rss_summary
-     *
-     * @return string
-     */
-    public function getRssSummary()
-    {
-        return $this->container['rss_summary'];
-    }
-
-    /**
-     * Sets rss_summary
-     *
-     * @param string $rss_summary The contents of the RSS summary for this Blog Post.
-     *
-     * @return $this
-     */
-    public function setRssSummary($rss_summary)
-    {
-        $this->container['rss_summary'] = $rss_summary;
-
-        return $this;
-    }
-
-    /**
      * Gets password
      *
      * @return string
@@ -3277,7 +3279,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Gets attached_stylesheets
      *
-     * @return object[]
+     * @return map[string,object][]
      */
     public function getAttachedStylesheets()
     {
@@ -3287,7 +3289,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Sets attached_stylesheets
      *
-     * @param object[] $attached_stylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     * @param map[string,object][] $attached_stylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
      *
      * @return $this
      */
@@ -3679,7 +3681,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Gets theme_settings_values
      *
-     * @return object
+     * @return map[string,object]
      */
     public function getThemeSettingsValues()
     {
@@ -3689,7 +3691,7 @@ class BlogPost implements ModelInterface, ArrayAccess
     /**
      * Sets theme_settings_values
      *
-     * @param object $theme_settings_values theme_settings_values
+     * @param map[string,object] $theme_settings_values theme_settings_values
      *
      * @return $this
      */

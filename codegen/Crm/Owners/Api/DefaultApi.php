@@ -122,14 +122,15 @@ class DefaultApi
      *
      * @param  int $owner_id owner_id (required)
      * @param  string $id_property id_property (optional, default to 'id')
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Owners\Model\PublicOwner|\HubSpot\Client\Crm\Owners\Model\Error
      */
-    public function getById($owner_id, $id_property = 'id')
+    public function getById($owner_id, $id_property = 'id', $archived = false)
     {
-        list($response) = $this->getByIdWithHttpInfo($owner_id, $id_property);
+        list($response) = $this->getByIdWithHttpInfo($owner_id, $id_property, $archived);
         return $response;
     }
 
@@ -140,14 +141,15 @@ class DefaultApi
      *
      * @param  int $owner_id (required)
      * @param  string $id_property (optional, default to 'id')
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Owners\Model\PublicOwner|\HubSpot\Client\Crm\Owners\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($owner_id, $id_property = 'id')
+    public function getByIdWithHttpInfo($owner_id, $id_property = 'id', $archived = false)
     {
-        $request = $this->getByIdRequest($owner_id, $id_property);
+        $request = $this->getByIdRequest($owner_id, $id_property, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -249,13 +251,14 @@ class DefaultApi
      *
      * @param  int $owner_id (required)
      * @param  string $id_property (optional, default to 'id')
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($owner_id, $id_property = 'id')
+    public function getByIdAsync($owner_id, $id_property = 'id', $archived = false)
     {
-        return $this->getByIdAsyncWithHttpInfo($owner_id, $id_property)
+        return $this->getByIdAsyncWithHttpInfo($owner_id, $id_property, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -270,14 +273,15 @@ class DefaultApi
      *
      * @param  int $owner_id (required)
      * @param  string $id_property (optional, default to 'id')
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($owner_id, $id_property = 'id')
+    public function getByIdAsyncWithHttpInfo($owner_id, $id_property = 'id', $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Owners\Model\PublicOwner';
-        $request = $this->getByIdRequest($owner_id, $id_property);
+        $request = $this->getByIdRequest($owner_id, $id_property, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -318,11 +322,12 @@ class DefaultApi
      *
      * @param  int $owner_id (required)
      * @param  string $id_property (optional, default to 'id')
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getByIdRequest($owner_id, $id_property = 'id')
+    protected function getByIdRequest($owner_id, $id_property = 'id', $archived = false)
     {
         // verify the required parameter 'owner_id' is set
         if ($owner_id === null || (is_array($owner_id) && count($owner_id) === 0)) {
@@ -347,6 +352,17 @@ class DefaultApi
             }
             else {
                 $queryParams['idProperty'] = $id_property;
+            }
+        }
+        // query params
+        if ($archived !== null) {
+            if('form' === 'form' && is_array($archived)) {
+                foreach($archived as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['archived'] = $archived;
             }
         }
 
@@ -441,14 +457,15 @@ class DefaultApi
      * @param  string $email Filter by email address (optional) (optional)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 100)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner|\HubSpot\Client\Crm\Owners\Model\Error
+     * @return \HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging|\HubSpot\Client\Crm\Owners\Model\Error
      */
-    public function getPage($email = null, $after = null, $limit = 100)
+    public function getPage($email = null, $after = null, $limit = 100, $archived = false)
     {
-        list($response) = $this->getPageWithHttpInfo($email, $after, $limit);
+        list($response) = $this->getPageWithHttpInfo($email, $after, $limit, $archived);
         return $response;
     }
 
@@ -460,14 +477,15 @@ class DefaultApi
      * @param  string $email Filter by email address (optional) (optional)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 100)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner|\HubSpot\Client\Crm\Owners\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging|\HubSpot\Client\Crm\Owners\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($email = null, $after = null, $limit = 100)
+    public function getPageWithHttpInfo($email = null, $after = null, $limit = 100, $archived = false)
     {
-        $request = $this->getPageRequest($email, $after, $limit);
+        $request = $this->getPageRequest($email, $after, $limit, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -500,14 +518,14 @@ class DefaultApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -525,7 +543,7 @@ class DefaultApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner';
+            $returnType = '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -544,7 +562,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner',
+                        '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -570,13 +588,14 @@ class DefaultApi
      * @param  string $email Filter by email address (optional) (optional)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 100)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($email = null, $after = null, $limit = 100)
+    public function getPageAsync($email = null, $after = null, $limit = 100, $archived = false)
     {
-        return $this->getPageAsyncWithHttpInfo($email, $after, $limit)
+        return $this->getPageAsyncWithHttpInfo($email, $after, $limit, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -592,14 +611,15 @@ class DefaultApi
      * @param  string $email Filter by email address (optional) (optional)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 100)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($email = null, $after = null, $limit = 100)
+    public function getPageAsyncWithHttpInfo($email = null, $after = null, $limit = 100, $archived = false)
     {
-        $returnType = '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwner';
-        $request = $this->getPageRequest($email, $after, $limit);
+        $returnType = '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging';
+        $request = $this->getPageRequest($email, $after, $limit, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -641,11 +661,12 @@ class DefaultApi
      * @param  string $email Filter by email address (optional) (optional)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 100)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPageRequest($email = null, $after = null, $limit = 100)
+    protected function getPageRequest($email = null, $after = null, $limit = 100, $archived = false)
     {
 
         $resourcePath = '/crm/v3/owners/';
@@ -686,6 +707,17 @@ class DefaultApi
             }
             else {
                 $queryParams['limit'] = $limit;
+            }
+        }
+        // query params
+        if ($archived !== null) {
+            if('form' === 'form' && is_array($archived)) {
+                foreach($archived as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['archived'] = $archived;
             }
         }
 

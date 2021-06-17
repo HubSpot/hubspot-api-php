@@ -57,8 +57,8 @@ class SearchHitField implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'values' => 'object[]',
         'metadata_field' => 'bool',
-        'values' => 'array',
         'name' => 'string',
         'value' => 'object'
     ];
@@ -69,8 +69,8 @@ class SearchHitField implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'metadata_field' => null,
         'values' => null,
+        'metadata_field' => null,
         'name' => null,
         'value' => null
     ];
@@ -102,8 +102,8 @@ class SearchHitField implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'metadata_field' => 'metadataField',
         'values' => 'values',
+        'metadata_field' => 'metadataField',
         'name' => 'name',
         'value' => 'value'
     ];
@@ -114,8 +114,8 @@ class SearchHitField implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'metadata_field' => 'setMetadataField',
         'values' => 'setValues',
+        'metadata_field' => 'setMetadataField',
         'name' => 'setName',
         'value' => 'setValue'
     ];
@@ -126,8 +126,8 @@ class SearchHitField implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'metadata_field' => 'getMetadataField',
         'values' => 'getValues',
+        'metadata_field' => 'getMetadataField',
         'name' => 'getName',
         'value' => 'getValue'
     ];
@@ -192,8 +192,8 @@ class SearchHitField implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['metadata_field'] = isset($data['metadata_field']) ? $data['metadata_field'] : null;
         $this->container['values'] = isset($data['values']) ? $data['values'] : null;
+        $this->container['metadata_field'] = isset($data['metadata_field']) ? $data['metadata_field'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
@@ -207,11 +207,11 @@ class SearchHitField implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['metadata_field'] === null) {
-            $invalidProperties[] = "'metadata_field' can't be null";
-        }
         if ($this->container['values'] === null) {
             $invalidProperties[] = "'values' can't be null";
+        }
+        if ($this->container['metadata_field'] === null) {
+            $invalidProperties[] = "'metadata_field' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -235,6 +235,30 @@ class SearchHitField implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets values
+     *
+     * @return object[]
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param object[] $values values
+     *
+     * @return $this
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
      * Gets metadata_field
      *
      * @return bool
@@ -254,30 +278,6 @@ class SearchHitField implements ModelInterface, ArrayAccess
     public function setMetadataField($metadata_field)
     {
         $this->container['metadata_field'] = $metadata_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets values
-     *
-     * @return array
-     */
-    public function getValues()
-    {
-        return $this->container['values'];
-    }
-
-    /**
-     * Sets values
-     *
-     * @param array $values values
-     *
-     * @return $this
-     */
-    public function setValues($values)
-    {
-        $this->container['values'] = $values;
 
         return $this;
     }

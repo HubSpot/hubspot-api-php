@@ -378,13 +378,13 @@ class CardsApi
      * Create a new card
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function create($app_id, $card_create_request = null)
+    public function create($app_id, $card_create_request)
     {
         list($response) = $this->createWithHttpInfo($app_id, $card_create_request);
         return $response;
@@ -396,13 +396,13 @@ class CardsApi
      * Create a new card
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($app_id, $card_create_request = null)
+    public function createWithHttpInfo($app_id, $card_create_request)
     {
         $request = $this->createRequest($app_id, $card_create_request);
 
@@ -505,12 +505,12 @@ class CardsApi
      * Create a new card
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($app_id, $card_create_request = null)
+    public function createAsync($app_id, $card_create_request)
     {
         return $this->createAsyncWithHttpInfo($app_id, $card_create_request)
             ->then(
@@ -526,12 +526,12 @@ class CardsApi
      * Create a new card
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($app_id, $card_create_request = null)
+    public function createAsyncWithHttpInfo($app_id, $card_create_request)
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
         $request = $this->createRequest($app_id, $card_create_request);
@@ -574,17 +574,23 @@ class CardsApi
      * Create request for operation 'create'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardCreateRequest $card_create_request The new card definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($app_id, $card_create_request = null)
+    protected function createRequest($app_id, $card_create_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling create'
+            );
+        }
+        // verify the required parameter 'card_create_request' is set
+        if ($card_create_request === null || (is_array($card_create_request) && count($card_create_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $card_create_request when calling create'
             );
         }
 
@@ -1300,13 +1306,13 @@ class CardsApi
      *
      * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function update($app_id, $card_id, $card_patch_request = null)
+    public function update($app_id, $card_id, $card_patch_request)
     {
         list($response) = $this->updateWithHttpInfo($app_id, $card_id, $card_patch_request);
         return $response;
@@ -1319,13 +1325,13 @@ class CardsApi
      *
      * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $card_id, $card_patch_request = null)
+    public function updateWithHttpInfo($app_id, $card_id, $card_patch_request)
     {
         $request = $this->updateRequest($app_id, $card_id, $card_patch_request);
 
@@ -1429,12 +1435,12 @@ class CardsApi
      *
      * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $card_id, $card_patch_request = null)
+    public function updateAsync($app_id, $card_id, $card_patch_request)
     {
         return $this->updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request)
             ->then(
@@ -1451,12 +1457,12 @@ class CardsApi
      *
      * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request = null)
+    public function updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request)
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
         $request = $this->updateRequest($app_id, $card_id, $card_patch_request);
@@ -1500,12 +1506,12 @@ class CardsApi
      *
      * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRequest($app_id, $card_id, $card_patch_request = null)
+    protected function updateRequest($app_id, $card_id, $card_patch_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
@@ -1517,6 +1523,12 @@ class CardsApi
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling update'
+            );
+        }
+        // verify the required parameter 'card_patch_request' is set
+        if ($card_patch_request === null || (is_array($card_patch_request) && count($card_patch_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $card_patch_request when calling update'
             );
         }
 

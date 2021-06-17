@@ -199,6 +199,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
     const STATE_DONE = 'DONE';
     const STATE_FAILED = 'FAILED';
     const STATE_CANCELED = 'CANCELED';
+    const STATE_DEFERRED = 'DEFERRED';
     
 
     
@@ -215,6 +216,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess
             self::STATE_DONE,
             self::STATE_FAILED,
             self::STATE_CANCELED,
+            self::STATE_DEFERRED,
         ];
     }
     

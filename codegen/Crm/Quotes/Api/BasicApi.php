@@ -123,17 +123,16 @@ class BasicApi
      * @param  string $quote_id quote_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error
+     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function getById($quote_id, $properties = null, $associations = null, $paginate_associations = false, $archived = false, $id_property = null)
+    public function getById($quote_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        list($response) = $this->getByIdWithHttpInfo($quote_id, $properties, $associations, $paginate_associations, $archived, $id_property);
+        list($response) = $this->getByIdWithHttpInfo($quote_id, $properties, $associations, $archived, $id_property);
         return $response;
     }
 
@@ -145,17 +144,16 @@ class BasicApi
      * @param  string $quote_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($quote_id, $properties = null, $associations = null, $paginate_associations = false, $archived = false, $id_property = null)
+    public function getByIdWithHttpInfo($quote_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        $request = $this->getByIdRequest($quote_id, $properties, $associations, $paginate_associations, $archived, $id_property);
+        $request = $this->getByIdRequest($quote_id, $properties, $associations, $archived, $id_property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -188,14 +186,14 @@ class BasicApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -213,7 +211,7 @@ class BasicApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -232,7 +230,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject',
+                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,16 +256,15 @@ class BasicApi
      * @param  string $quote_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($quote_id, $properties = null, $associations = null, $paginate_associations = false, $archived = false, $id_property = null)
+    public function getByIdAsync($quote_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        return $this->getByIdAsyncWithHttpInfo($quote_id, $properties, $associations, $paginate_associations, $archived, $id_property)
+        return $this->getByIdAsyncWithHttpInfo($quote_id, $properties, $associations, $archived, $id_property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -283,17 +280,16 @@ class BasicApi
      * @param  string $quote_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($quote_id, $properties = null, $associations = null, $paginate_associations = false, $archived = false, $id_property = null)
+    public function getByIdAsyncWithHttpInfo($quote_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
-        $request = $this->getByIdRequest($quote_id, $properties, $associations, $paginate_associations, $archived, $id_property);
+        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations';
+        $request = $this->getByIdRequest($quote_id, $properties, $associations, $archived, $id_property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -335,14 +331,13 @@ class BasicApi
      * @param  string $quote_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getByIdRequest($quote_id, $properties = null, $associations = null, $paginate_associations = false, $archived = false, $id_property = null)
+    protected function getByIdRequest($quote_id, $properties = null, $associations = null, $archived = false, $id_property = null)
     {
         // verify the required parameter 'quote_id' is set
         if ($quote_id === null || (is_array($quote_id) && count($quote_id) === 0)) {
@@ -378,17 +373,6 @@ class BasicApi
             }
             else {
                 $queryParams['associations'] = $associations;
-            }
-        }
-        // query params
-        if ($paginate_associations !== null) {
-            if('form' === 'form' && is_array($paginate_associations)) {
-                foreach($paginate_associations as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['paginateAssociations'] = $paginate_associations;
             }
         }
         // query params
@@ -502,16 +486,15 @@ class BasicApi
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error
+     * @return \HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function getPage($limit = 10, $after = null, $properties = null, $associations = null, $paginate_associations = false, $archived = false)
+    public function getPage($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
-        list($response) = $this->getPageWithHttpInfo($limit, $after, $properties, $associations, $paginate_associations, $archived);
+        list($response) = $this->getPageWithHttpInfo($limit, $after, $properties, $associations, $archived);
         return $response;
     }
 
@@ -524,16 +507,15 @@ class BasicApi
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($limit = 10, $after = null, $properties = null, $associations = null, $paginate_associations = false, $archived = false)
+    public function getPageWithHttpInfo($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
-        $request = $this->getPageRequest($limit, $after, $properties, $associations, $paginate_associations, $archived);
+        $request = $this->getPageRequest($limit, $after, $properties, $associations, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -566,14 +548,14 @@ class BasicApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -591,7 +573,7 @@ class BasicApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -610,7 +592,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -637,15 +619,14 @@ class BasicApi
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($limit = 10, $after = null, $properties = null, $associations = null, $paginate_associations = false, $archived = false)
+    public function getPageAsync($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
-        return $this->getPageAsyncWithHttpInfo($limit, $after, $properties, $associations, $paginate_associations, $archived)
+        return $this->getPageAsyncWithHttpInfo($limit, $after, $properties, $associations, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -662,16 +643,15 @@ class BasicApi
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($limit = 10, $after = null, $properties = null, $associations = null, $paginate_associations = false, $archived = false)
+    public function getPageAsyncWithHttpInfo($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
-        $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObject';
-        $request = $this->getPageRequest($limit, $after, $properties, $associations, $paginate_associations, $archived);
+        $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
+        $request = $this->getPageRequest($limit, $after, $properties, $associations, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -714,13 +694,12 @@ class BasicApi
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPageRequest($limit = 10, $after = null, $properties = null, $associations = null, $paginate_associations = false, $archived = false)
+    protected function getPageRequest($limit = 10, $after = null, $properties = null, $associations = null, $archived = false)
     {
 
         $resourcePath = '/crm/v3/objects/quotes';
@@ -772,17 +751,6 @@ class BasicApi
             }
             else {
                 $queryParams['associations'] = $associations;
-            }
-        }
-        // query params
-        if ($paginate_associations !== null) {
-            if('form' === 'form' && is_array($paginate_associations)) {
-                foreach($paginate_associations as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['paginateAssociations'] = $paginate_associations;
             }
         }
         // query params

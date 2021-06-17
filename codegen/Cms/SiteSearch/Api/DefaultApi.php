@@ -454,7 +454,6 @@ class DefaultApi
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
-     * @param  string $key_string key_string (optional)
      * @param  string[] $domain A domain to match search results for. Multiple domains can be provided with &amp;. (optional)
      * @param  string[] $type Specifies the type of content to search. Can be one or more of SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, and KNOWLEDGE_ARTICLE. Defaults to all content types except LANDING_PAGE and KNOWLEDGE_ARTICLE (optional)
      * @param  string[] $path_prefix Specifies a path prefix to filter search results. Will only return results with URL paths that start with the specified parameter. Can be used multiple times. (optional)
@@ -466,9 +465,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error
      */
-    public function search($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $key_string = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function search($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
-        list($response) = $this->searchWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $key_string, $domain, $type, $path_prefix, $property, $length, $group_id);
+        list($response) = $this->searchWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
         return $response;
     }
 
@@ -489,7 +488,6 @@ class DefaultApi
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
-     * @param  string $key_string (optional)
      * @param  string[] $domain A domain to match search results for. Multiple domains can be provided with &amp;. (optional)
      * @param  string[] $type Specifies the type of content to search. Can be one or more of SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, and KNOWLEDGE_ARTICLE. Defaults to all content types except LANDING_PAGE and KNOWLEDGE_ARTICLE (optional)
      * @param  string[] $path_prefix Specifies a path prefix to filter search results. Will only return results with URL paths that start with the specified parameter. Can be used multiple times. (optional)
@@ -501,9 +499,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $key_string = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
-        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $key_string, $domain, $type, $path_prefix, $property, $length, $group_id);
+        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -615,7 +613,6 @@ class DefaultApi
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
-     * @param  string $key_string (optional)
      * @param  string[] $domain A domain to match search results for. Multiple domains can be provided with &amp;. (optional)
      * @param  string[] $type Specifies the type of content to search. Can be one or more of SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, and KNOWLEDGE_ARTICLE. Defaults to all content types except LANDING_PAGE and KNOWLEDGE_ARTICLE (optional)
      * @param  string[] $path_prefix Specifies a path prefix to filter search results. Will only return results with URL paths that start with the specified parameter. Can be used multiple times. (optional)
@@ -626,9 +623,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAsync($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $key_string = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchAsync($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
-        return $this->searchAsyncWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $key_string, $domain, $type, $path_prefix, $property, $length, $group_id)
+        return $this->searchAsyncWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -653,7 +650,6 @@ class DefaultApi
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
-     * @param  string $key_string (optional)
      * @param  string[] $domain A domain to match search results for. Multiple domains can be provided with &amp;. (optional)
      * @param  string[] $type Specifies the type of content to search. Can be one or more of SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, and KNOWLEDGE_ARTICLE. Defaults to all content types except LANDING_PAGE and KNOWLEDGE_ARTICLE (optional)
      * @param  string[] $path_prefix Specifies a path prefix to filter search results. Will only return results with URL paths that start with the specified parameter. Can be used multiple times. (optional)
@@ -664,10 +660,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAsyncWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $key_string = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchAsyncWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
         $returnType = '\HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults';
-        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $key_string, $domain, $type, $path_prefix, $property, $length, $group_id);
+        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -718,7 +714,6 @@ class DefaultApi
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
-     * @param  string $key_string (optional)
      * @param  string[] $domain A domain to match search results for. Multiple domains can be provided with &amp;. (optional)
      * @param  string[] $type Specifies the type of content to search. Can be one or more of SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, and KNOWLEDGE_ARTICLE. Defaults to all content types except LANDING_PAGE and KNOWLEDGE_ARTICLE (optional)
      * @param  string[] $path_prefix Specifies a path prefix to filter search results. Will only return results with URL paths that start with the specified parameter. Can be used multiple times. (optional)
@@ -729,7 +724,7 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchRequest($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $key_string = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    protected function searchRequest($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
 
         $resourcePath = '/cms/v3/site-search/search';
@@ -869,17 +864,6 @@ class DefaultApi
             }
             else {
                 $queryParams['hubdbQuery'] = $hubdb_query;
-            }
-        }
-        // query params
-        if ($key_string !== null) {
-            if('form' === 'form' && is_array($key_string)) {
-                foreach($key_string as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['keyString'] = $key_string;
             }
         }
         // query params

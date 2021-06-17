@@ -62,7 +62,7 @@ class LayoutSection implements ModelInterface, ArrayAccess
         'name' => 'string',
         'label' => 'string',
         'type' => 'string',
-        'params' => 'object',
+        'params' => 'map[string,object]',
         'rows' => 'map[string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection][]',
         'row_meta_data' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[]',
         'cells' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection[]',
@@ -438,7 +438,7 @@ class LayoutSection implements ModelInterface, ArrayAccess
     /**
      * Gets params
      *
-     * @return object
+     * @return map[string,object]
      */
     public function getParams()
     {
@@ -448,7 +448,7 @@ class LayoutSection implements ModelInterface, ArrayAccess
     /**
      * Sets params
      *
-     * @param object $params params
+     * @param map[string,object] $params params
      *
      * @return $this
      */

@@ -209,6 +209,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess
     const TYPE_DATE = 'date';
     const TYPE_DATETIME = 'datetime';
     const TYPE_ENUMERATION = 'enumeration';
+    const TYPE_BOOL = 'bool';
     
 
     
@@ -225,6 +226,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess
             self::TYPE_DATE,
             self::TYPE_DATETIME,
             self::TYPE_ENUMERATION,
+            self::TYPE_BOOL,
         ];
     }
     
