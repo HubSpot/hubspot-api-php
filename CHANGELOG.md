@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/3.0.1) - 2021-06-18
 
-### Fixed (breaking changes)
+### Fixed
 
 - fix composer json
 
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed (breaking changes)
 
 - rename method "search" => "doSearch" `crm()->objects()->searchApi()` API clients
-- regenerate all client 
+- regenerate all clients
 
 ## [2.8.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/2.8.1) - 2021-02-17
 
