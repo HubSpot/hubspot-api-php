@@ -63,6 +63,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         'searchable_properties' => 'string[]',
         'primary_display_property' => 'string',
         'secondary_display_properties' => 'string[]',
+        'archived' => 'bool',
         'id' => 'string',
         'fully_qualified_name' => 'string',
         'created_at' => '\DateTime',
@@ -84,6 +85,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         'searchable_properties' => null,
         'primary_display_property' => null,
         'secondary_display_properties' => null,
+        'archived' => null,
         'id' => null,
         'fully_qualified_name' => null,
         'created_at' => 'date-time',
@@ -126,6 +128,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         'searchable_properties' => 'searchableProperties',
         'primary_display_property' => 'primaryDisplayProperty',
         'secondary_display_properties' => 'secondaryDisplayProperties',
+        'archived' => 'archived',
         'id' => 'id',
         'fully_qualified_name' => 'fullyQualifiedName',
         'created_at' => 'createdAt',
@@ -147,6 +150,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         'searchable_properties' => 'setSearchableProperties',
         'primary_display_property' => 'setPrimaryDisplayProperty',
         'secondary_display_properties' => 'setSecondaryDisplayProperties',
+        'archived' => 'setArchived',
         'id' => 'setId',
         'fully_qualified_name' => 'setFullyQualifiedName',
         'created_at' => 'setCreatedAt',
@@ -168,6 +172,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         'searchable_properties' => 'getSearchableProperties',
         'primary_display_property' => 'getPrimaryDisplayProperty',
         'secondary_display_properties' => 'getSecondaryDisplayProperties',
+        'archived' => 'getArchived',
         'id' => 'getId',
         'fully_qualified_name' => 'getFullyQualifiedName',
         'created_at' => 'getCreatedAt',
@@ -243,6 +248,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         $this->container['searchable_properties'] = isset($data['searchable_properties']) ? $data['searchable_properties'] : null;
         $this->container['primary_display_property'] = isset($data['primary_display_property']) ? $data['primary_display_property'] : null;
         $this->container['secondary_display_properties'] = isset($data['secondary_display_properties']) ? $data['secondary_display_properties'] : null;
+        $this->container['archived'] = isset($data['archived']) ? $data['archived'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['fully_qualified_name'] = isset($data['fully_qualified_name']) ? $data['fully_qualified_name'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
@@ -273,6 +279,9 @@ class ObjectSchema implements ModelInterface, ArrayAccess
         }
         if ($this->container['secondary_display_properties'] === null) {
             $invalidProperties[] = "'secondary_display_properties' can't be null";
+        }
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -423,6 +432,30 @@ class ObjectSchema implements ModelInterface, ArrayAccess
     public function setSecondaryDisplayProperties($secondary_display_properties)
     {
         $this->container['secondary_display_properties'] = $secondary_display_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool $archived archived
+     *
+     * @return $this
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
 
         return $this;
     }

@@ -62,7 +62,8 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
         'url' => 'string',
         'height' => 'int',
         'width' => 'int',
-        'is_ready' => 'bool'
+        'is_ready' => 'bool',
+        'supports_custom_objects' => 'bool'
     ];
 
     /**
@@ -75,7 +76,8 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
         'url' => null,
         'height' => 'int32',
         'width' => 'int32',
-        'is_ready' => null
+        'is_ready' => null,
+        'supports_custom_objects' => null
     ];
 
     /**
@@ -109,7 +111,8 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
         'url' => 'url',
         'height' => 'height',
         'width' => 'width',
-        'is_ready' => 'isReady'
+        'is_ready' => 'isReady',
+        'supports_custom_objects' => 'supportsCustomObjects'
     ];
 
     /**
@@ -122,7 +125,8 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
         'url' => 'setUrl',
         'height' => 'setHeight',
         'width' => 'setWidth',
-        'is_ready' => 'setIsReady'
+        'is_ready' => 'setIsReady',
+        'supports_custom_objects' => 'setSupportsCustomObjects'
     ];
 
     /**
@@ -135,7 +139,8 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
         'url' => 'getUrl',
         'height' => 'getHeight',
         'width' => 'getWidth',
-        'is_ready' => 'getIsReady'
+        'is_ready' => 'getIsReady',
+        'supports_custom_objects' => 'getSupportsCustomObjects'
     ];
 
     /**
@@ -203,6 +208,7 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['is_ready'] = isset($data['is_ready']) ? $data['is_ready'] : null;
+        $this->container['supports_custom_objects'] = isset($data['supports_custom_objects']) ? $data['supports_custom_objects'] : null;
     }
 
     /**
@@ -345,6 +351,30 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess
     public function setIsReady($is_ready)
     {
         $this->container['is_ready'] = $is_ready;
+
+        return $this;
+    }
+
+    /**
+     * Gets supports_custom_objects
+     *
+     * @return bool|null
+     */
+    public function getSupportsCustomObjects()
+    {
+        return $this->container['supports_custom_objects'];
+    }
+
+    /**
+     * Sets supports_custom_objects
+     *
+     * @param bool|null $supports_custom_objects When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.
+     *
+     * @return $this
+     */
+    public function setSupportsCustomObjects($supports_custom_objects)
+    {
+        $this->container['supports_custom_objects'] = $supports_custom_objects;
 
         return $this;
     }

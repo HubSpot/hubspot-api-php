@@ -63,6 +63,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         'height' => 'int',
         'width' => 'int',
         'is_ready' => 'bool',
+        'supports_custom_objects' => 'bool',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     ];
@@ -78,6 +79,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         'height' => 'int32',
         'width' => 'int32',
         'is_ready' => null,
+        'supports_custom_objects' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time'
     ];
@@ -114,6 +116,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         'height' => 'height',
         'width' => 'width',
         'is_ready' => 'isReady',
+        'supports_custom_objects' => 'supportsCustomObjects',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
@@ -129,6 +132,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         'height' => 'setHeight',
         'width' => 'setWidth',
         'is_ready' => 'setIsReady',
+        'supports_custom_objects' => 'setSupportsCustomObjects',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -144,6 +148,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         'height' => 'getHeight',
         'width' => 'getWidth',
         'is_ready' => 'getIsReady',
+        'supports_custom_objects' => 'getSupportsCustomObjects',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -213,6 +218,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['is_ready'] = isset($data['is_ready']) ? $data['is_ready'] : null;
+        $this->container['supports_custom_objects'] = isset($data['supports_custom_objects']) ? $data['supports_custom_objects'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
     }
@@ -240,6 +246,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess
         }
         if ($this->container['is_ready'] === null) {
             $invalidProperties[] = "'is_ready' can't be null";
+        }
+        if ($this->container['supports_custom_objects'] === null) {
+            $invalidProperties[] = "'supports_custom_objects' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -378,6 +387,30 @@ class SettingsResponse implements ModelInterface, ArrayAccess
     public function setIsReady($is_ready)
     {
         $this->container['is_ready'] = $is_ready;
+
+        return $this;
+    }
+
+    /**
+     * Gets supports_custom_objects
+     *
+     * @return bool
+     */
+    public function getSupportsCustomObjects()
+    {
+        return $this->container['supports_custom_objects'];
+    }
+
+    /**
+     * Sets supports_custom_objects
+     *
+     * @param bool $supports_custom_objects When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.
+     *
+     * @return $this
+     */
+    public function setSupportsCustomObjects($supports_custom_objects)
+    {
+        $this->container['supports_custom_objects'] = $supports_custom_objects;
 
         return $this;
     }

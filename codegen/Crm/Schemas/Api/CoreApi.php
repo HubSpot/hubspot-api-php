@@ -120,15 +120,16 @@ class CoreApi
      *
      * Delete a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type)
+    public function archive($object_type, $archived = false)
     {
-        $this->archiveWithHttpInfo($object_type);
+        $this->archiveWithHttpInfo($object_type, $archived);
     }
 
     /**
@@ -136,15 +137,16 @@ class CoreApi
      *
      * Delete a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type)
+    public function archiveWithHttpInfo($object_type, $archived = false)
     {
-        $request = $this->archiveRequest($object_type);
+        $request = $this->archiveRequest($object_type, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,14 +198,15 @@ class CoreApi
      *
      * Delete a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type)
+    public function archiveAsync($object_type, $archived = false)
     {
-        return $this->archiveAsyncWithHttpInfo($object_type)
+        return $this->archiveAsyncWithHttpInfo($object_type, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -216,15 +219,16 @@ class CoreApi
      *
      * Delete a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type)
+    public function archiveAsyncWithHttpInfo($object_type, $archived = false)
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type);
+        $request = $this->archiveRequest($object_type, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -252,12 +256,13 @@ class CoreApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function archiveRequest($object_type)
+    protected function archiveRequest($object_type, $archived = false)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -273,6 +278,17 @@ class CoreApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($archived !== null) {
+            if('form' === 'form' && is_array($archived)) {
+                foreach($archived as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['archived'] = $archived;
+            }
+        }
 
 
         // path params
@@ -358,7 +374,7 @@ class CoreApi
      *
      * Remove an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  string $association_identifier Unique ID of the association to remove. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
@@ -375,7 +391,7 @@ class CoreApi
      *
      * Remove an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  string $association_identifier Unique ID of the association to remove. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
@@ -436,7 +452,7 @@ class CoreApi
      *
      * Remove an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  string $association_identifier Unique ID of the association to remove. (required)
      *
      * @throws \InvalidArgumentException
@@ -457,7 +473,7 @@ class CoreApi
      *
      * Remove an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  string $association_identifier Unique ID of the association to remove. (required)
      *
      * @throws \InvalidArgumentException
@@ -494,7 +510,7 @@ class CoreApi
     /**
      * Create request for operation 'archiveAssociation'
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  string $association_identifier Unique ID of the association to remove. (required)
      *
      * @throws \InvalidArgumentException
@@ -912,7 +928,7 @@ class CoreApi
      *
      * Create an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the primary schema to associate. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  \HubSpot\Client\Crm\Schemas\Model\AssociationDefinitionEgg $association_definition_egg Attributes that define the association. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
@@ -930,7 +946,7 @@ class CoreApi
      *
      * Create an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the primary schema to associate. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  \HubSpot\Client\Crm\Schemas\Model\AssociationDefinitionEgg $association_definition_egg Attributes that define the association. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
@@ -1039,7 +1055,7 @@ class CoreApi
      *
      * Create an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the primary schema to associate. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  \HubSpot\Client\Crm\Schemas\Model\AssociationDefinitionEgg $association_definition_egg Attributes that define the association. (required)
      *
      * @throws \InvalidArgumentException
@@ -1060,7 +1076,7 @@ class CoreApi
      *
      * Create an association
      *
-     * @param  string $object_type Fully qualified name or object type ID for the primary schema to associate. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  \HubSpot\Client\Crm\Schemas\Model\AssociationDefinitionEgg $association_definition_egg Attributes that define the association. (required)
      *
      * @throws \InvalidArgumentException
@@ -1108,7 +1124,7 @@ class CoreApi
     /**
      * Create request for operation 'createAssociation'
      *
-     * @param  string $object_type Fully qualified name or object type ID for the primary schema to associate. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      * @param  \HubSpot\Client\Crm\Schemas\Model\AssociationDefinitionEgg $association_definition_egg Attributes that define the association. (required)
      *
      * @throws \InvalidArgumentException
@@ -1228,14 +1244,15 @@ class CoreApi
      *
      * Get all schemas
      *
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema|\HubSpot\Client\Crm\Schemas\Model\Error
+     * @return \HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging|\HubSpot\Client\Crm\Schemas\Model\Error
      */
-    public function getAll()
+    public function getAll($archived = false)
     {
-        list($response) = $this->getAllWithHttpInfo();
+        list($response) = $this->getAllWithHttpInfo($archived);
         return $response;
     }
 
@@ -1244,14 +1261,15 @@ class CoreApi
      *
      * Get all schemas
      *
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema|\HubSpot\Client\Crm\Schemas\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging|\HubSpot\Client\Crm\Schemas\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo()
+    public function getAllWithHttpInfo($archived = false)
     {
-        $request = $this->getAllRequest();
+        $request = $this->getAllRequest($archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1284,14 +1302,14 @@ class CoreApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1309,7 +1327,7 @@ class CoreApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema';
+            $returnType = '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1328,7 +1346,7 @@ class CoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema',
+                        '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1351,13 +1369,14 @@ class CoreApi
      *
      * Get all schemas
      *
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync()
+    public function getAllAsync($archived = false)
     {
-        return $this->getAllAsyncWithHttpInfo()
+        return $this->getAllAsyncWithHttpInfo($archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1370,14 +1389,15 @@ class CoreApi
      *
      * Get all schemas
      *
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo()
+    public function getAllAsyncWithHttpInfo($archived = false)
     {
-        $returnType = '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchema';
-        $request = $this->getAllRequest();
+        $returnType = '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging';
+        $request = $this->getAllRequest($archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1416,11 +1436,12 @@ class CoreApi
     /**
      * Create request for operation 'getAll'
      *
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAllRequest()
+    protected function getAllRequest($archived = false)
     {
 
         $resourcePath = '/crm/v3/schemas';
@@ -1430,6 +1451,17 @@ class CoreApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($archived !== null) {
+            if('form' === 'form' && is_array($archived)) {
+                foreach($archived as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['archived'] = $archived;
+            }
+        }
 
 
 
@@ -1511,7 +1543,7 @@ class CoreApi
      *
      * Get an existing schema
      *
-     * @param  string $object_type Fully qualified name or object type ID of the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1528,7 +1560,7 @@ class CoreApi
      *
      * Get an existing schema
      *
-     * @param  string $object_type Fully qualified name or object type ID of the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1636,7 +1668,7 @@ class CoreApi
      *
      * Get an existing schema
      *
-     * @param  string $object_type Fully qualified name or object type ID of the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1656,7 +1688,7 @@ class CoreApi
      *
      * Get an existing schema
      *
-     * @param  string $object_type Fully qualified name or object type ID of the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1703,7 +1735,7 @@ class CoreApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  string $object_type Fully qualified name or object type ID of the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1813,8 +1845,8 @@ class CoreApi
      *
      * Update a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
-     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in your schema. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1831,8 +1863,8 @@ class CoreApi
      *
      * Update a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
-     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in your schema. (required)
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1940,8 +1972,8 @@ class CoreApi
      *
      * Update a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
-     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in your schema. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1961,8 +1993,8 @@ class CoreApi
      *
      * Update a schema
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
-     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in your schema. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2009,8 +2041,8 @@ class CoreApi
     /**
      * Create request for operation 'update'
      *
-     * @param  string $object_type Fully qualified name or object type ID for the target schema. (required)
-     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in the target schema. (required)
+     * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch $object_type_definition_patch Attributes to update in your schema. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -359,13 +359,13 @@ class SettingsApi
      * Configure a calling extension
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function create($app_id, $settings_request = null)
+    public function create($app_id, $settings_request)
     {
         list($response) = $this->createWithHttpInfo($app_id, $settings_request);
         return $response;
@@ -377,13 +377,13 @@ class SettingsApi
      * Configure a calling extension
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($app_id, $settings_request = null)
+    public function createWithHttpInfo($app_id, $settings_request)
     {
         $request = $this->createRequest($app_id, $settings_request);
 
@@ -486,12 +486,12 @@ class SettingsApi
      * Configure a calling extension
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($app_id, $settings_request = null)
+    public function createAsync($app_id, $settings_request)
     {
         return $this->createAsyncWithHttpInfo($app_id, $settings_request)
             ->then(
@@ -507,12 +507,12 @@ class SettingsApi
      * Configure a calling extension
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($app_id, $settings_request = null)
+    public function createAsyncWithHttpInfo($app_id, $settings_request)
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
         $request = $this->createRequest($app_id, $settings_request);
@@ -555,17 +555,23 @@ class SettingsApi
      * Create request for operation 'create'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($app_id, $settings_request = null)
+    protected function createRequest($app_id, $settings_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling create'
+            );
+        }
+        // verify the required parameter 'settings_request' is set
+        if ($settings_request === null || (is_array($settings_request) && count($settings_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settings_request when calling create'
             );
         }
 
@@ -963,13 +969,13 @@ class SettingsApi
      * Update settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function update($app_id, $settings_patch_request = null)
+    public function update($app_id, $settings_patch_request)
     {
         list($response) = $this->updateWithHttpInfo($app_id, $settings_patch_request);
         return $response;
@@ -981,13 +987,13 @@ class SettingsApi
      * Update settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $settings_patch_request = null)
+    public function updateWithHttpInfo($app_id, $settings_patch_request)
     {
         $request = $this->updateRequest($app_id, $settings_patch_request);
 
@@ -1090,12 +1096,12 @@ class SettingsApi
      * Update settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $settings_patch_request = null)
+    public function updateAsync($app_id, $settings_patch_request)
     {
         return $this->updateAsyncWithHttpInfo($app_id, $settings_patch_request)
             ->then(
@@ -1111,12 +1117,12 @@ class SettingsApi
      * Update settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $settings_patch_request = null)
+    public function updateAsyncWithHttpInfo($app_id, $settings_patch_request)
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
         $request = $this->updateRequest($app_id, $settings_patch_request);
@@ -1159,17 +1165,23 @@ class SettingsApi
      * Create request for operation 'update'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (optional)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRequest($app_id, $settings_patch_request = null)
+    protected function updateRequest($app_id, $settings_patch_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling update'
+            );
+        }
+        // verify the required parameter 'settings_patch_request' is set
+        if ($settings_patch_request === null || (is_array($settings_patch_request) && count($settings_patch_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settings_patch_request when calling update'
             );
         }
 

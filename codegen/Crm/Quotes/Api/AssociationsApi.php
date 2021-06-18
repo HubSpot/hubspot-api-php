@@ -122,17 +122,16 @@ class AssociationsApi
      *
      * @param  string $quote_id quote_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  bool $paginate_associations paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Quotes\Model\Error
+     * @return \HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function getAll($quote_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAll($quote_id, $to_object_type, $after = null, $limit = 500)
     {
-        list($response) = $this->getAllWithHttpInfo($quote_id, $to_object_type, $paginate_associations, $after, $limit);
+        list($response) = $this->getAllWithHttpInfo($quote_id, $to_object_type, $after, $limit);
         return $response;
     }
 
@@ -143,17 +142,16 @@ class AssociationsApi
      *
      * @param  string $quote_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($quote_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllWithHttpInfo($quote_id, $to_object_type, $after = null, $limit = 500)
     {
-        $request = $this->getAllRequest($quote_id, $to_object_type, $paginate_associations, $after, $limit);
+        $request = $this->getAllRequest($quote_id, $to_object_type, $after, $limit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -186,14 +184,14 @@ class AssociationsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -211,7 +209,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId';
+            $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -230,7 +228,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId',
+                        '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -255,16 +253,15 @@ class AssociationsApi
      *
      * @param  string $quote_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($quote_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllAsync($quote_id, $to_object_type, $after = null, $limit = 500)
     {
-        return $this->getAllAsyncWithHttpInfo($quote_id, $to_object_type, $paginate_associations, $after, $limit)
+        return $this->getAllAsyncWithHttpInfo($quote_id, $to_object_type, $after, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -279,17 +276,16 @@ class AssociationsApi
      *
      * @param  string $quote_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($quote_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllAsyncWithHttpInfo($quote_id, $to_object_type, $after = null, $limit = 500)
     {
-        $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedId';
-        $request = $this->getAllRequest($quote_id, $to_object_type, $paginate_associations, $after, $limit);
+        $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseAssociatedIdForwardPaging';
+        $request = $this->getAllRequest($quote_id, $to_object_type, $after, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -330,14 +326,13 @@ class AssociationsApi
      *
      * @param  string $quote_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAllRequest($quote_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    protected function getAllRequest($quote_id, $to_object_type, $after = null, $limit = 500)
     {
         // verify the required parameter 'quote_id' is set
         if ($quote_id === null || (is_array($quote_id) && count($quote_id) === 0)) {
@@ -359,17 +354,6 @@ class AssociationsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($paginate_associations !== null) {
-            if('form' === 'form' && is_array($paginate_associations)) {
-                foreach($paginate_associations as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['paginateAssociations'] = $paginate_associations;
-            }
-        }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {

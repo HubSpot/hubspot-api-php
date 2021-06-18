@@ -60,9 +60,7 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'from_object_type_id' => 'string',
         'to_object_type_id' => 'string',
-        'name' => 'string',
-        'cardinality' => 'string',
-        'inverse_cardinality' => 'string'
+        'name' => 'string'
     ];
 
     /**
@@ -73,9 +71,7 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'from_object_type_id' => null,
         'to_object_type_id' => null,
-        'name' => null,
-        'cardinality' => null,
-        'inverse_cardinality' => null
+        'name' => null
     ];
 
     /**
@@ -107,9 +103,7 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'from_object_type_id' => 'fromObjectTypeId',
         'to_object_type_id' => 'toObjectTypeId',
-        'name' => 'name',
-        'cardinality' => 'cardinality',
-        'inverse_cardinality' => 'inverseCardinality'
+        'name' => 'name'
     ];
 
     /**
@@ -120,9 +114,7 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
     protected static $setters = [
         'from_object_type_id' => 'setFromObjectTypeId',
         'to_object_type_id' => 'setToObjectTypeId',
-        'name' => 'setName',
-        'cardinality' => 'setCardinality',
-        'inverse_cardinality' => 'setInverseCardinality'
+        'name' => 'setName'
     ];
 
     /**
@@ -133,9 +125,7 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
     protected static $getters = [
         'from_object_type_id' => 'getFromObjectTypeId',
         'to_object_type_id' => 'getToObjectTypeId',
-        'name' => 'getName',
-        'cardinality' => 'getCardinality',
-        'inverse_cardinality' => 'getInverseCardinality'
+        'name' => 'getName'
     ];
 
     /**
@@ -179,38 +169,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const CARDINALITY_ONE = 'ONE_TO_ONE';
-    const CARDINALITY_MANY = 'ONE_TO_MANY';
-    const INVERSE_CARDINALITY_ONE = 'ONE_TO_ONE';
-    const INVERSE_CARDINALITY_MANY = 'ONE_TO_MANY';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCardinalityAllowableValues()
-    {
-        return [
-            self::CARDINALITY_ONE,
-            self::CARDINALITY_MANY,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getInverseCardinalityAllowableValues()
-    {
-        return [
-            self::INVERSE_CARDINALITY_ONE,
-            self::INVERSE_CARDINALITY_MANY,
-        ];
-    }
     
 
     /**
@@ -231,8 +191,6 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
         $this->container['from_object_type_id'] = isset($data['from_object_type_id']) ? $data['from_object_type_id'] : null;
         $this->container['to_object_type_id'] = isset($data['to_object_type_id']) ? $data['to_object_type_id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['cardinality'] = isset($data['cardinality']) ? $data['cardinality'] : null;
-        $this->container['inverse_cardinality'] = isset($data['inverse_cardinality']) ? $data['inverse_cardinality'] : null;
     }
 
     /**
@@ -250,28 +208,6 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
         if ($this->container['to_object_type_id'] === null) {
             $invalidProperties[] = "'to_object_type_id' can't be null";
         }
-        if ($this->container['cardinality'] === null) {
-            $invalidProperties[] = "'cardinality' can't be null";
-        }
-        $allowedValues = $this->getCardinalityAllowableValues();
-        if (!is_null($this->container['cardinality']) && !in_array($this->container['cardinality'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'cardinality', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['inverse_cardinality'] === null) {
-            $invalidProperties[] = "'inverse_cardinality' can't be null";
-        }
-        $allowedValues = $this->getInverseCardinalityAllowableValues();
-        if (!is_null($this->container['inverse_cardinality']) && !in_array($this->container['inverse_cardinality'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'inverse_cardinality', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -355,72 +291,6 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets cardinality
-     *
-     * @return string
-     */
-    public function getCardinality()
-    {
-        return $this->container['cardinality'];
-    }
-
-    /**
-     * Sets cardinality
-     *
-     * @param string $cardinality cardinality
-     *
-     * @return $this
-     */
-    public function setCardinality($cardinality)
-    {
-        $allowedValues = $this->getCardinalityAllowableValues();
-        if (!in_array($cardinality, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'cardinality', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['cardinality'] = $cardinality;
-
-        return $this;
-    }
-
-    /**
-     * Gets inverse_cardinality
-     *
-     * @return string
-     */
-    public function getInverseCardinality()
-    {
-        return $this->container['inverse_cardinality'];
-    }
-
-    /**
-     * Sets inverse_cardinality
-     *
-     * @param string $inverse_cardinality inverse_cardinality
-     *
-     * @return $this
-     */
-    public function setInverseCardinality($inverse_cardinality)
-    {
-        $allowedValues = $this->getInverseCardinalityAllowableValues();
-        if (!in_array($inverse_cardinality, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'inverse_cardinality', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['inverse_cardinality'] = $inverse_cardinality;
 
         return $this;
     }

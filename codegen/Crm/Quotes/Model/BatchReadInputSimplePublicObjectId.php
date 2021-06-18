@@ -57,9 +57,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[]',
         'properties' => 'string[]',
-        'id_property' => 'string'
+        'id_property' => 'string',
+        'inputs' => '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[]'
     ];
 
     /**
@@ -68,9 +68,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'inputs' => null,
         'properties' => null,
-        'id_property' => null
+        'id_property' => null,
+        'inputs' => null
     ];
 
     /**
@@ -100,9 +100,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'inputs' => 'inputs',
         'properties' => 'properties',
-        'id_property' => 'idProperty'
+        'id_property' => 'idProperty',
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -111,9 +111,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'inputs' => 'setInputs',
         'properties' => 'setProperties',
-        'id_property' => 'setIdProperty'
+        'id_property' => 'setIdProperty',
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -122,9 +122,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'inputs' => 'getInputs',
         'properties' => 'getProperties',
-        'id_property' => 'getIdProperty'
+        'id_property' => 'getIdProperty',
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -187,9 +187,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['inputs'] = isset($data['inputs']) ? $data['inputs'] : null;
         $this->container['properties'] = isset($data['properties']) ? $data['properties'] : null;
         $this->container['id_property'] = isset($data['id_property']) ? $data['id_property'] : null;
+        $this->container['inputs'] = isset($data['inputs']) ? $data['inputs'] : null;
     }
 
     /**
@@ -201,11 +201,11 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['inputs'] === null) {
-            $invalidProperties[] = "'inputs' can't be null";
-        }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
+        }
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -221,30 +221,6 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets inputs
-     *
-     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[]
-     */
-    public function getInputs()
-    {
-        return $this->container['inputs'];
-    }
-
-    /**
-     * Sets inputs
-     *
-     * @param \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[] $inputs inputs
-     *
-     * @return $this
-     */
-    public function setInputs($inputs)
-    {
-        $this->container['inputs'] = $inputs;
-
-        return $this;
-    }
 
     /**
      * Gets properties
@@ -290,6 +266,30 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess
     public function setIdProperty($id_property)
     {
         $this->container['id_property'] = $id_property;
+
+        return $this;
+    }
+
+    /**
+     * Gets inputs
+     *
+     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[]
+     */
+    public function getInputs()
+    {
+        return $this->container['inputs'];
+    }
+
+    /**
+     * Sets inputs
+     *
+     * @param \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectId[] $inputs inputs
+     *
+     * @return $this
+     */
+    public function setInputs($inputs)
+    {
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }

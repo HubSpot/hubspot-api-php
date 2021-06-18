@@ -423,15 +423,14 @@ class AssociationsApi
      * @param  string $to_object_type to_object_type (required)
      * @param  string $to_object_id to_object_id (required)
      * @param  string $association_type association_type (required)
-     * @param  bool $paginate_associations paginate_associations (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\LineItems\Model\Error
      */
-    public function create($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations = false)
+    public function create($line_item_id, $to_object_type, $to_object_id, $association_type)
     {
-        list($response) = $this->createWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations);
+        list($response) = $this->createWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type);
         return $response;
     }
 
@@ -444,15 +443,14 @@ class AssociationsApi
      * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
      * @param  string $association_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObject|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations = false)
+    public function createWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type)
     {
-        $request = $this->createRequest($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations);
+        $request = $this->createRequest($line_item_id, $to_object_type, $to_object_id, $association_type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -485,14 +483,14 @@ class AssociationsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -510,7 +508,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -529,7 +527,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject',
+                        '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -556,14 +554,13 @@ class AssociationsApi
      * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
      * @param  string $association_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations = false)
+    public function createAsync($line_item_id, $to_object_type, $to_object_id, $association_type)
     {
-        return $this->createAsyncWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations)
+        return $this->createAsyncWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -580,15 +577,14 @@ class AssociationsApi
      * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
      * @param  string $association_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations = false)
+    public function createAsyncWithHttpInfo($line_item_id, $to_object_type, $to_object_id, $association_type)
     {
-        $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObject';
-        $request = $this->createRequest($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations);
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations';
+        $request = $this->createRequest($line_item_id, $to_object_type, $to_object_id, $association_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -631,12 +627,11 @@ class AssociationsApi
      * @param  string $to_object_type (required)
      * @param  string $to_object_id (required)
      * @param  string $association_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRequest($line_item_id, $to_object_type, $to_object_id, $association_type, $paginate_associations = false)
+    protected function createRequest($line_item_id, $to_object_type, $to_object_id, $association_type)
     {
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
@@ -670,17 +665,6 @@ class AssociationsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($paginate_associations !== null) {
-            if('form' === 'form' && is_array($paginate_associations)) {
-                foreach($paginate_associations as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['paginateAssociations'] = $paginate_associations;
-            }
-        }
 
 
         // path params
@@ -796,17 +780,16 @@ class AssociationsApi
      *
      * @param  string $line_item_id line_item_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  bool $paginate_associations paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\LineItems\Model\Error
+     * @return \HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\LineItems\Model\Error
      */
-    public function getAll($line_item_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAll($line_item_id, $to_object_type, $after = null, $limit = 500)
     {
-        list($response) = $this->getAllWithHttpInfo($line_item_id, $to_object_type, $paginate_associations, $after, $limit);
+        list($response) = $this->getAllWithHttpInfo($line_item_id, $to_object_type, $after, $limit);
         return $response;
     }
 
@@ -817,17 +800,16 @@ class AssociationsApi
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\LineItems\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\LineItems\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($line_item_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllWithHttpInfo($line_item_id, $to_object_type, $after = null, $limit = 500)
     {
-        $request = $this->getAllRequest($line_item_id, $to_object_type, $paginate_associations, $after, $limit);
+        $request = $this->getAllRequest($line_item_id, $to_object_type, $after, $limit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -860,14 +842,14 @@ class AssociationsApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -885,7 +867,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId';
+            $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -904,7 +886,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId',
+                        '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -929,16 +911,15 @@ class AssociationsApi
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($line_item_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllAsync($line_item_id, $to_object_type, $after = null, $limit = 500)
     {
-        return $this->getAllAsyncWithHttpInfo($line_item_id, $to_object_type, $paginate_associations, $after, $limit)
+        return $this->getAllAsyncWithHttpInfo($line_item_id, $to_object_type, $after, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -953,17 +934,16 @@ class AssociationsApi
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($line_item_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    public function getAllAsyncWithHttpInfo($line_item_id, $to_object_type, $after = null, $limit = 500)
     {
-        $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedId';
-        $request = $this->getAllRequest($line_item_id, $to_object_type, $paginate_associations, $after, $limit);
+        $returnType = '\HubSpot\Client\Crm\LineItems\Model\CollectionResponseAssociatedIdForwardPaging';
+        $request = $this->getAllRequest($line_item_id, $to_object_type, $after, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1004,14 +984,13 @@ class AssociationsApi
      *
      * @param  string $line_item_id (required)
      * @param  string $to_object_type (required)
-     * @param  bool $paginate_associations (optional, default to false)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAllRequest($line_item_id, $to_object_type, $paginate_associations = false, $after = null, $limit = 500)
+    protected function getAllRequest($line_item_id, $to_object_type, $after = null, $limit = 500)
     {
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
@@ -1033,17 +1012,6 @@ class AssociationsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($paginate_associations !== null) {
-            if('form' === 'form' && is_array($paginate_associations)) {
-                foreach($paginate_associations as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['paginateAssociations'] = $paginate_associations;
-            }
-        }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {

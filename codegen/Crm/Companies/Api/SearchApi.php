@@ -124,7 +124,7 @@ class SearchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
+     * @return \HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Companies\Model\Error
      */
     public function doSearch($public_object_search_request)
     {
@@ -141,7 +141,7 @@ class SearchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function doSearchWithHttpInfo($public_object_search_request)
     {
@@ -178,14 +178,14 @@ class SearchApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -203,7 +203,7 @@ class SearchApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -222,7 +222,7 @@ class SearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject',
+                        '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +272,7 @@ class SearchApi
      */
     public function doSearchAsyncWithHttpInfo($public_object_search_request)
     {
-        $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\Companies\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging';
         $request = $this->doSearchRequest($public_object_search_request);
 
         return $this->client

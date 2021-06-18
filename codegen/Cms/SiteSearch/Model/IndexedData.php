@@ -172,7 +172,6 @@ class IndexedData implements ModelInterface, ArrayAccess
     const TYPE_LANDING_PAGE = 'LANDING_PAGE';
     const TYPE_BLOG_POST = 'BLOG_POST';
     const TYPE_SITE_PAGE = 'SITE_PAGE';
-    const TYPE_DOCUMENT = 'DOCUMENT';
     const TYPE_KNOWLEDGE_ARTICLE = 'KNOWLEDGE_ARTICLE';
     const TYPE_LISTING_PAGE = 'LISTING_PAGE';
     
@@ -189,7 +188,6 @@ class IndexedData implements ModelInterface, ArrayAccess
             self::TYPE_LANDING_PAGE,
             self::TYPE_BLOG_POST,
             self::TYPE_SITE_PAGE,
-            self::TYPE_DOCUMENT,
             self::TYPE_KNOWLEDGE_ARTICLE,
             self::TYPE_LISTING_PAGE,
         ];
@@ -270,7 +268,7 @@ class IndexedData implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id The ID of the document in HubSpot.
      *
      * @return $this
      */
@@ -294,7 +292,7 @@ class IndexedData implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.
      *
      * @return $this
      */
@@ -327,7 +325,7 @@ class IndexedData implements ModelInterface, ArrayAccess
     /**
      * Sets fields
      *
-     * @param map[string,\HubSpot\Client\Cms\SiteSearch\Model\SearchHitField] $fields fields
+     * @param map[string,\HubSpot\Client\Cms\SiteSearch\Model\SearchHitField] $fields The indexed fields in HubSpot.
      *
      * @return $this
      */

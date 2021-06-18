@@ -242,7 +242,6 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     const TYPE_LANDING_PAGE = 'LANDING_PAGE';
     const TYPE_BLOG_POST = 'BLOG_POST';
     const TYPE_SITE_PAGE = 'SITE_PAGE';
-    const TYPE_DOCUMENT = 'DOCUMENT';
     const TYPE_KNOWLEDGE_ARTICLE = 'KNOWLEDGE_ARTICLE';
     const TYPE_LISTING_PAGE = 'LISTING_PAGE';
     const LANGUAGE_AF = 'af';
@@ -969,7 +968,6 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
             self::TYPE_LANDING_PAGE,
             self::TYPE_BLOG_POST,
             self::TYPE_SITE_PAGE,
-            self::TYPE_DOCUMENT,
             self::TYPE_KNOWLEDGE_ARTICLE,
             self::TYPE_LISTING_PAGE,
         ];
@@ -1799,7 +1797,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id id
+     * @param int $id The ID of the content.
      *
      * @return $this
      */
@@ -1823,7 +1821,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param float $score score
+     * @param float $score The matching score of the document.
      *
      * @return $this
      */
@@ -1847,7 +1845,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.
      *
      * @return $this
      */
@@ -1880,7 +1878,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets domain
      *
-     * @param string $domain domain
+     * @param string $domain The domain the document is hosted on.
      *
      * @return $this
      */
@@ -1904,7 +1902,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url url
+     * @param string $url The url of the document.
      *
      * @return $this
      */
@@ -1928,7 +1926,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets featured_image_url
      *
-     * @param string|null $featured_image_url featured_image_url
+     * @param string|null $featured_image_url URL of the featured image.
      *
      * @return $this
      */
@@ -1952,7 +1950,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets language
      *
-     * @param string|null $language language
+     * @param string|null $language The document's language.
      *
      * @return $this
      */
@@ -1985,7 +1983,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets title
      *
-     * @param string|null $title title
+     * @param string|null $title The title of the returned document.
      *
      * @return $this
      */
@@ -2009,7 +2007,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description The result's description. The content will be determined by the value of `length` in the request.
      *
      * @return $this
      */
@@ -2033,7 +2031,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param string|null $category category
+     * @param string|null $category For knowledge articles, the category of the article.
      *
      * @return $this
      */
@@ -2057,7 +2055,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets subcategory
      *
-     * @param string|null $subcategory subcategory
+     * @param string|null $subcategory For knowledge articles, the subcategory of the article.
      *
      * @return $this
      */
@@ -2081,7 +2079,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets author_full_name
      *
-     * @param string|null $author_full_name author_full_name
+     * @param string|null $author_full_name Name of the author.
      *
      * @return $this
      */
@@ -2105,7 +2103,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets tags
      *
-     * @param string[]|null $tags tags
+     * @param string[]|null $tags If a blog post, the tags associated with it.
      *
      * @return $this
      */
@@ -2129,7 +2127,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets table_id
      *
-     * @param int|null $table_id table_id
+     * @param int|null $table_id If a dynamic page, the ID of the HubDB table.
      *
      * @return $this
      */
@@ -2153,7 +2151,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets row_id
      *
-     * @param int|null $row_id row_id
+     * @param int|null $row_id If a dynamic page, the row ID in the HubDB table.
      *
      * @return $this
      */
@@ -2177,7 +2175,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets published_date
      *
-     * @param int|null $published_date published_date
+     * @param int|null $published_date The date the content was published.
      *
      * @return $this
      */
@@ -2201,7 +2199,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess
     /**
      * Sets combined_id
      *
-     * @param string|null $combined_id combined_id
+     * @param string|null $combined_id The ID of the document in HubSpot.
      *
      * @return $this
      */
