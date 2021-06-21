@@ -23,6 +23,7 @@ if (isset($_POST['name'])) {
 $property = new Property();
 $property
     ->setType('string')
+    ->setFieldType('text')
     ->setGroupName('contactinformation')
 ;
 
