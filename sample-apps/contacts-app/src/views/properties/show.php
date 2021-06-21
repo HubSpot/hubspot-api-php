@@ -41,9 +41,9 @@ $hubSpot
         <input type="text" name="group_name" id="group-name" value="<?php echo htmlentities($property->getGroupName()); ?>" />
 
         <label for="type">Type</label>
-        <input readonly type="text" name="type" id="type" value="<?php echo htmlentities($property->getType()); ?>"<?php echo $readOnly; ?> />
+        <input readonly type="text" name="type" id="type" value="<?php echo htmlentities($property->getType()); ?>" />
 
-        <input readonly type="hidden" name="field_type" id="fieldType" value="<?php echo htmlentities($property->getFieldType()); ?>" />
+        <input readonly type="text" name="field_type" id="fieldType" value="<?php echo htmlentities($property->getFieldType()); ?>" />
 <?php if (empty($readOnly)) { ?>
         <input id="save" class="button-primary" type="submit" value="Save">
 <?php } ?>

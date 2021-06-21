@@ -20,7 +20,7 @@ $companiesPage = $hubSpot->crm()->companies()->searchApi()->doSearch($searchRequ
 </pre>
 <?php } ?>
 
-<form action="/companies/search.php">
+<form action="/companies/search">
     <fieldset>
         <input type="text" name="search" placeholder="Search by domain.." id="search" value="<?php echo $_GET['search']; ?>">
     </fieldset>
