@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "byjg/anydataset",
-            "version": "4.0.1.x-dev",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/anydataset.git",
-                "reference": "ccb0b68d28e900e7b3e87371d61a56e142bf3afb"
+                "reference": "73be85447d4a4c21541f576ecbee09fe59a0abd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/anydataset/zipball/ccb0b68d28e900e7b3e87371d61a56e142bf3afb",
-                "reference": "ccb0b68d28e900e7b3e87371d61a56e142bf3afb",
+                "url": "https://api.github.com/repos/byjg/anydataset/zipball/73be85447d4a4c21541f576ecbee09fe59a0abd8",
+                "reference": "73be85447d4a4c21541f576ecbee09fe59a0abd8",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,11 @@
                 }
             ],
             "description": "Anydataset is an agnostic data source abstraction layer in PHP. Core Module.",
-            "time": "2020-04-11T16:45:01+00:00"
+            "support": {
+                "issues": "https://github.com/byjg/anydataset/issues",
+                "source": "https://github.com/byjg/anydataset/tree/master"
+            },
+            "time": "2020-04-11T16:50:42+00:00"
         },
         {
             "name": "byjg/anydataset-array",
@@ -88,20 +92,24 @@
                 }
             ],
             "description": "Anydataset Array abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
+            "support": {
+                "issues": "https://github.com/byjg/anydataset-array/issues",
+                "source": "https://github.com/byjg/anydataset-array/tree/master"
+            },
             "time": "2018-11-24T15:20:06+00:00"
         },
         {
             "name": "byjg/anydataset-db",
-            "version": "4.0.4.x-dev",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/anydataset-db.git",
-                "reference": "209952cad1d5d3f4d7d79b42ce703bb38dbb7ea4"
+                "reference": "285da83562d5ff73af58a96e65b70a3ab295a823"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/anydataset-db/zipball/209952cad1d5d3f4d7d79b42ce703bb38dbb7ea4",
-                "reference": "209952cad1d5d3f4d7d79b42ce703bb38dbb7ea4",
+                "url": "https://api.github.com/repos/byjg/anydataset-db/zipball/285da83562d5ff73af58a96e65b70a3ab295a823",
+                "reference": "285da83562d5ff73af58a96e65b70a3ab295a823",
                 "shasum": ""
             },
             "require": {
@@ -140,20 +148,24 @@
                 }
             ],
             "description": "Anydataset Database Relational abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
-            "time": "2020-04-02T07:08:00+00:00"
+            "support": {
+                "issues": "https://github.com/byjg/anydataset-db/issues",
+                "source": "https://github.com/byjg/anydataset-db/tree/4.0.3"
+            },
+            "time": "2020-04-02T18:22:52+00:00"
         },
         {
             "name": "byjg/migration",
-            "version": "4.0.3.x-dev",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/migration.git",
-                "reference": "e1e2c12bebabe6a35d238e8bfff7e82f9f1e6cfd"
+                "reference": "a79949d9164523e2ecd0501a547de450fea3bb2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/migration/zipball/e1e2c12bebabe6a35d238e8bfff7e82f9f1e6cfd",
-                "reference": "e1e2c12bebabe6a35d238e8bfff7e82f9f1e6cfd",
+                "url": "https://api.github.com/repos/byjg/migration/zipball/a79949d9164523e2ecd0501a547de450fea3bb2c",
+                "reference": "a79949d9164523e2ecd0501a547de450fea3bb2c",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +192,11 @@
                 }
             ],
             "description": "Simple library in PHP for database version control. Supports Sqlite, MySql, Sql Server and Postgres.",
-            "time": "2020-04-02T05:55:04+00:00"
+            "support": {
+                "issues": "https://github.com/byjg/migration/issues",
+                "source": "https://github.com/byjg/migration/tree/master"
+            },
+            "time": "2020-04-02T05:58:29+00:00"
         },
         {
             "name": "byjg/serializer",
@@ -224,20 +240,24 @@
                 }
             ],
             "description": "Serialize any object into array and format it JSON or XML",
+            "support": {
+                "issues": "https://github.com/byjg/serializer/issues",
+                "source": "https://github.com/byjg/serializer/tree/master"
+            },
             "time": "2018-03-09T05:59:31+00:00"
         },
         {
             "name": "byjg/uri",
-            "version": "2.0.1.x-dev",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/byjg/uri.git",
-                "reference": "0761c2228ff5b0f8494a465af21c025f9a0001ba"
+                "reference": "527d458241469d226518f2b760e243258a1e2258"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byjg/uri/zipball/0761c2228ff5b0f8494a465af21c025f9a0001ba",
-                "reference": "0761c2228ff5b0f8494a465af21c025f9a0001ba",
+                "url": "https://api.github.com/repos/byjg/uri/zipball/527d458241469d226518f2b760e243258a1e2258",
+                "reference": "527d458241469d226518f2b760e243258a1e2258",
                 "shasum": ""
             },
             "require": {
@@ -264,7 +284,11 @@
                 }
             ],
             "description": "An implementation of PSR UriInterface ",
-            "time": "2020-04-07T05:34:31+00:00"
+            "support": {
+                "issues": "https://github.com/byjg/uri/issues",
+                "source": "https://github.com/byjg/uri/tree/master"
+            },
+            "time": "2020-04-10T16:08:00+00:00"
         },
         {
             "name": "byjg/xmlutil",
@@ -303,6 +327,10 @@
                 }
             ],
             "description": "A utility class to make easy work with XML in PHP.",
+            "support": {
+                "issues": "https://github.com/byjg/xmlutil/issues",
+                "source": "https://github.com/byjg/xmlutil/tree/master"
+            },
             "time": "2018-03-10T14:43:36+00:00"
         },
         {
@@ -311,12 +339,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
+                "reference": "e8ed4dbf49b260ff129ff0e0400718c3269971bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
-                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/e8ed4dbf49b260ff129ff0e0400718c3269971bf",
+                "reference": "e8ed4dbf49b260ff129ff0e0400718c3269971bf",
                 "shasum": ""
             },
             "require": {
@@ -324,7 +352,7 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.11"
+                "symfony/polyfill-intl-idn": "^1.17.0"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -370,7 +398,33 @@
                 "rest",
                 "web service"
             ],
-            "time": "2020-04-18T10:38:46+00:00"
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/alexeyshockov",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/gmponos",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/sagikazarmark",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-02T06:52:04+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -378,20 +432,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "89b1a76b7fda5853401297dc4b2a093cba1fda23"
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/89b1a76b7fda5853401297dc4b2a093cba1fda23",
-                "reference": "89b1a76b7fda5853401297dc4b2a093cba1fda23",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/8e7d04f1f6450fef59366c399cfad4b9383aa30d",
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=5.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.27 || ^7.5"
+                "symfony/phpunit-bridge": "^4.4 || ^5.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -421,7 +476,11 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2020-02-15T23:33:03+00:00"
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/1.4.1"
+            },
+            "time": "2021-03-07T09:25:29+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -429,12 +488,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "c73b502efd02beb2602500aa36793fb405e383ac"
+                "reference": "dc960a912984efb74d0a90222870c72c87f10c91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c73b502efd02beb2602500aa36793fb405e383ac",
-                "reference": "c73b502efd02beb2602500aa36793fb405e383ac",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/dc960a912984efb74d0a90222870c72c87f10c91",
+                "reference": "dc960a912984efb74d0a90222870c72c87f10c91",
                 "shasum": ""
             },
             "require": {
@@ -447,7 +506,7 @@
             },
             "require-dev": {
                 "ext-zlib": "*",
-                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
             },
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
@@ -455,7 +514,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -492,21 +551,26 @@
                 "uri",
                 "url"
             ],
-            "time": "2020-02-12T23:13:46+00:00"
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.x"
+            },
+            "time": "2021-04-26T09:17:50+00:00"
         },
         {
             "name": "hubspot/api-client",
-            "version": "1.0.0-beta",
+            "version": "3.0.2",
             "dist": {
                 "type": "path",
                 "url": "/sdk",
-                "reference": "379915953db2196d7cf56e02e77a7438f3bd6294"
+                "reference": "7e39a10f99801ee61d4deca0bc12a639a8475636"
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "guzzlehttp/guzzle": "^6.2",
+                "guzzlehttp/guzzle": "^6.2 | ^7.0",
+                "guzzlehttp/psr7": "1.*",
                 "php": ">=7.2"
             },
             "require-dev": {
@@ -523,7 +587,7 @@
                 }
             },
             "license": [
-                "proprietary"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -539,7 +603,10 @@
                 "php",
                 "sdk",
                 "swagger"
-            ]
+            ],
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "longman/telegram-bot",
@@ -600,20 +667,24 @@
                 "bot",
                 "telegram"
             ],
+            "support": {
+                "issues": "https://github.com/php-telegram-bot/core/issues",
+                "source": "https://github.com/php-telegram-bot/core"
+            },
             "time": "2019-11-23T21:48:39+00:00"
         },
         {
             "name": "psr/cache",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "b9aa2cd4dd36cec02779bee07ee9dab8bd2d07d7"
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/b9aa2cd4dd36cec02779bee07ee9dab8bd2d07d7",
-                "reference": "b9aa2cd4dd36cec02779bee07ee9dab8bd2d07d7",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
                 "shasum": ""
             },
             "require": {
@@ -646,7 +717,10 @@
                 "psr",
                 "psr-6"
             ],
-            "time": "2019-10-04T14:04:41+00:00"
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/master"
+            },
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "psr/http-message",
@@ -665,6 +739,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -696,6 +771,9 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
             "time": "2019-08-29T13:16:46+00:00"
         },
         {
@@ -704,17 +782,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -733,7 +812,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -743,7 +822,10 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2020-03-23T09:12:05+00:00"
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -783,6 +865,10 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -791,32 +877,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spomky-Labs/base64url.git",
-                "reference": "a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d"
+                "reference": "7752ce931ec285da4ed1f4c5aa27e45e097be61d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/base64url/zipball/a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d",
-                "reference": "a5eaf0352b89abdd93f7fb4668dd4dbfe8831f6d",
+                "url": "https://api.github.com/repos/Spomky-Labs/base64url/zipball/7752ce931ec285da4ed1f4c5aa27e45e097be61d",
+                "reference": "7752ce931ec285da4ed1f4c5aa27e45e097be61d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1|^8.0"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "php-coveralls/php-coveralls": "^2.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-beberlei-assert": "^0.11.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0|^8.0"
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.11|^0.12",
+                "phpstan/phpstan-beberlei-assert": "^0.11|^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.11|^0.12",
+                "phpstan/phpstan-phpunit": "^0.11|^0.12",
+                "phpstan/phpstan-strict-rules": "^0.11|^0.12"
             },
+            "default-branch": true,
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Base64Url\\": "src/"
@@ -840,34 +921,53 @@
                 "safe",
                 "url"
             ],
-            "time": "2019-04-18T11:52:47+00:00"
+            "support": {
+                "issues": "https://github.com/Spomky-Labs/base64url/issues",
+                "source": "https://github.com/Spomky-Labs/base64url/tree/v2.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Spomky",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/FlorentMorselli",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-11-03T09:10:25+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-master",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf"
+                "reference": "65bd267525e82759e7d8c4e8ceea44f398838e65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
-                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/65bd267525e82759e7d8c4e8ceea44f398838e65",
+                "reference": "65bd267525e82759e7d8c4e8ceea44f398838e65",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
-                "symfony/polyfill-mbstring": "^1.3",
+                "php": ">=7.1",
+                "symfony/polyfill-intl-normalizer": "^1.10",
                 "symfony/polyfill-php72": "^1.10"
             },
             "suggest": {
                 "ext-intl": "For best performance"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-main": "1.23-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -888,6 +988,10 @@
                     "email": "laurent@bassin.info"
                 },
                 {
+                    "name": "Trevor Rowbotham",
+                    "email": "trevor.rowbotham@pm.me"
+                },
+                {
                     "name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
@@ -902,6 +1006,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -916,40 +1023,48 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-09T19:04:49+00:00"
+            "time": "2021-05-27T09:27:20+00:00"
         },
         {
-            "name": "symfony/polyfill-mbstring",
-            "version": "dev-master",
+            "name": "symfony/polyfill-intl-normalizer",
+            "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac"
+                "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
+                "reference": "8590a5f561694770bdcd3f9b5c69dde6945028e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
-                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/8590a5f561694770bdcd3f9b5c69dde6945028e8",
+                "reference": "8590a5f561694770bdcd3f9b5c69dde6945028e8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.1"
             },
             "suggest": {
-                "ext-mbstring": "For best performance"
+                "ext-intl": "For best performance"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-main": "1.23-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
+                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
                 },
                 "files": [
                     "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -966,15 +1081,19 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony polyfill for the Mbstring extension",
+            "description": "Symfony polyfill for intl's Normalizer class and related functions",
             "homepage": "https://symfony.com",
             "keywords": [
                 "compatibility",
-                "mbstring",
+                "intl",
+                "normalizer",
                 "polyfill",
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -989,29 +1108,34 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-09T19:04:49+00:00"
+            "time": "2021-02-19T12:13:01+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "dev-master",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "41d115ace412a5a006a92f29a51c7d863e28482b"
+                "reference": "9a142215a36a3888e30d0a9eeea9766764e96976"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/41d115ace412a5a006a92f29a51c7d863e28482b",
-                "reference": "41d115ace412a5a006a92f29a51c7d863e28482b",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9a142215a36a3888e30d0a9eeea9766764e96976",
+                "reference": "9a142215a36a3888e30d0a9eeea9766764e96976",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.1"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-main": "1.23-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -1044,6 +1168,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php72/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -1058,7 +1185,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-13T15:22:19+00:00"
+            "time": "2021-05-27T09:17:38+00:00"
         }
     ],
     "packages-dev": [],
@@ -1073,5 +1200,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.1.0"
 }
