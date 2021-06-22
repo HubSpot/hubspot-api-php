@@ -60,7 +60,7 @@ This is caused by a large amount of weebhooks events being sent to Ngrok tunnel.
 
 ### Configure webhooks
 
-Required webhooks url should look like https://***.ngrok.io/webhooks/handle.php
+Required webhooks url should look like https://***.ngrok.io/webhooks/handle
 
 Following [Webhooks Setup](https://developers.hubspot.com/docs/methods/webhooks/webhooks-overview) guide please note:
 - Every time the app is restarted you should update the webhooks url

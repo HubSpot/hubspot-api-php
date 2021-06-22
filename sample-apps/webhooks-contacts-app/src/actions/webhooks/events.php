@@ -15,7 +15,7 @@ function formatEvent($event)
 }
 
 $hubSpot = HubspotClientHelper::createFactory();
-$paginator = new Paginator(EventsRepository::getEventsCount(), '/webhooks/events.php');
+$paginator = new Paginator(EventsRepository::getEventsCount(), '/webhooks/events');
 $contactsIds = EventsRepository::findLastModifiedObjectsIds($paginator->getFrom(), $paginator->getPerPage());
 
 if (count($contactsIds) > 0) {

@@ -17,7 +17,7 @@ $webhooksClient = HubspotClientHelper::createFactoryWithDeveloperAPIKey()
 ;
 
 $appId = getEnvOrException('HUBSPOT_APPLICATION_ID');
-$appUrl = UrlHelper::generateServerUri().'/webhooks/handle.php';
+$appUrl = UrlHelper::generateServerUri().'/webhooks/handle';
 
 $subscriptions = $webhooksClient->subscriptionsApi()->getAll($appId);
 
@@ -52,4 +52,4 @@ if (($settings instanceof SettingsResponse) && ($settings->getTargetUrl() == $ap
     throw new Exception('Something went wrong...');
 }
 
-header('Location: /webhooks/events.php');
+header('Location: /webhooks/events');
