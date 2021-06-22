@@ -17,20 +17,20 @@ try {
     $protectedRoutes = require '../routes/protected.php';
 
     if ('/' === $uri) {
-        header('Location: /webhooks/events.php');
+        header('Location: /webhooks/events');
 
         exit();
     }
 
     if (in_array($uri, $protectedRoutes)) {
         if (!OAuth2Helper::isAuthenticated()) {
-            header('Location: /oauth/login.php');
+            header('Location: /oauth/login');
 
             exit();
         }
 
-        if (('/webhooks/init.php' !== $uri) && empty($_SESSION['init'])) {
-            header('Location: /webhooks/init.php');
+        if (('/webhooks/init' !== $uri) && empty($_SESSION['init'])) {
+            header('Location: /webhooks/init');
 
             exit();
         }
@@ -42,7 +42,7 @@ try {
         exit();
     }
 
-    $path = __DIR__.'/../actions'.$uri;
+    $path = __DIR__.'/../actions'.$uri.'.php';
 
     require $path;
 } catch (Throwable $t) {

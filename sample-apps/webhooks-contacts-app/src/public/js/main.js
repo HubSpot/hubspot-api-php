@@ -4,7 +4,7 @@ function reloadPage() {
 
 function requestNotShownEventsCount() {
     return new Promise((resolve) => {
-        $.getJSON("/ajax/events.php?mark=" + $('#alert-not-shown-events').attr('datetime-mark') , data => {
+        $.getJSON("/ajax/events?mark=" + $('#alert-not-shown-events').attr('datetime-mark') , data => {
             const { notShownEventsCount } = data;
             resolve(notShownEventsCount);
         });

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '/webhooks/events.php',
-    '/webhooks/delete.php',
-    '/webhooks/init.php',
+    '/webhooks/events',
+    '/webhooks/delete',
+    '/webhooks/init',
 ];
