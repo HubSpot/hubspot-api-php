@@ -7,8 +7,8 @@ use HubSpot\Client\CommunicationPreferences\Api\StatusApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method DefinitionApi    definitionApi()
- * @method StatusApi        statusApi()
+ * @method DefinitionApi definitionApi()
+ * @method StatusApi     statusApi()
  */
 class Discovery extends DiscoveryBase
 {
