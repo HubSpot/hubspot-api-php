@@ -97,8 +97,22 @@ $hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
 ```
 
 #### Get custom objects page:
+
 ```php 
 $hubSpot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS)
+```
+
+#### File uploading
+
+```php 
+$file = new \SplFileObject(“file path”);
+$response = $hubSpot->files()->filesApi()->upload($file, null, ‘/’, null, null, json_encode([
+    “access” => “PRIVATE”,
+    “ttl” => “P2W”,
+    “overwrite” => false,
+    “duplicateValidationStrategy” => “NONE”,
+    “duplicateValidationScope” => “EXACT_FOLDER”
+]) );
 ```
 
 ## Contributing
