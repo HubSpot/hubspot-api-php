@@ -2,11 +2,11 @@
 
 namespace HubSpot\Discovery\Cms\Blogs\BlogPosts;
 
-use HubSpot\Client\Cms\Blogs\BlogPosts\Api\DefaultApi;
+use HubSpot\Client\Cms\Blogs\BlogPosts\Api\BlogPostApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method DefaultApi defaultApi()
+ * @method BlogPostApi blogPostApi()
  */
 class Discovery extends DiscoveryBase
 {

@@ -2,11 +2,11 @@
 
 namespace HubSpot\Discovery\Cms\AuditLogs;
 
-use HubSpot\Client\Cms\AuditLogs\Api\DefaultApi;
+use HubSpot\Client\Cms\AuditLogs\Api\AuditLogsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method DefaultApi defaultApi()
+ * @method AuditLogsApi auditLogsApi()
  */
 class Discovery extends DiscoveryBase
 {

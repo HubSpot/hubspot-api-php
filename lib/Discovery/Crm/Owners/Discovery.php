@@ -2,11 +2,11 @@
 
 namespace HubSpot\Discovery\Crm\Owners;
 
-use HubSpot\Client\Crm\Owners\Api\DefaultApi;
+use HubSpot\Client\Crm\Owners\Api\OwnersApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method DefaultApi defaultApi()
+ * @method OwnersApi ownersApi()
  */
 class Discovery extends DiscoveryBase
 {
@@ -16,7 +16,7 @@ class Discovery extends DiscoveryBase
         $after = null;
 
         do {
-            $page = $this->defaultApi()->getPage(null, $after, 100);
+            $page = $this->OwnersApi()->getPage(null, $after, 100);
 
             $owners = array_merge($owners, $page->getResults());
 

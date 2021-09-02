@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\Blogs\BlogPosts;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\Blogs\BlogPosts\Api\DefaultApi;
+use HubSpot\Client\Cms\Blogs\BlogPosts\Api\BlogPostApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -21,6 +21,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->defaultApi()->shouldHaveType(DefaultApi::class);
+        $this->blogPostApi()->shouldHaveType(BlogPostApi::class);
     }
 }

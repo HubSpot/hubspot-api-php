@@ -3,6 +3,9 @@
 namespace spec\HubSpot\Discovery\Auth\OAuth;
 
 use GuzzleHttp\Client;
+use HubSpot\Client\Auth\OAuth\Api\AccessTokensApi;
+use HubSpot\Client\Auth\OAuth\Api\RefreshTokensApi;
+use HubSpot\Client\Auth\OAuth\Api\TokensApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -20,6 +23,8 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->defaultApi()->shouldHaveType(\HubSpot\Client\Auth\OAuth\Api\DefaultApi::class);
+        $this->accessTokensApi()->shouldHaveType(AccessTokensApi::class);
+        $this->refreshTokensApi()->shouldHaveType(RefreshTokensApi::class);
+        $this->tokensApi()->shouldHaveType(TokensApi::class);
     }
 }

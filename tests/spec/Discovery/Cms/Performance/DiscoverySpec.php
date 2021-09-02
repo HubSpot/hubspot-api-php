@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\Performance;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\Performance\Api\DefaultApi;
+use HubSpot\Client\Cms\Performance\Api\PublicPerformanceApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -21,6 +21,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->defaultApi()->shouldHaveType(DefaultApi::class);
+        $this->publicPerformanceApi()->shouldHaveType(PublicPerformanceApi::class);
     }
 }
