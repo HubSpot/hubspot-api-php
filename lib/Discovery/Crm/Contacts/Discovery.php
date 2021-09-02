@@ -13,7 +13,7 @@ use HubSpot\Discovery\Crm\ObjectDiscovery;
  * @method AssociationsApi associationsApi()
  * @method BasicApi        basicApi()
  * @method BatchApi        batchApi()
- * @method GDPRApi              gdprApi
+ * @method GDPRApi              gdprApi()
  * @method SearchApi searchApi()
  */
 class Discovery extends ObjectDiscovery
