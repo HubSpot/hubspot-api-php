@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\SiteSearch;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\SiteSearch\Api\DefaultApi;
+use HubSpot\Client\Cms\SiteSearch\Api\PublicApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -21,6 +21,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->defaultApi()->shouldHaveType(DefaultApi::class);
+        $this->publicApi()->shouldHaveType(PublicApi::class);
     }
 }

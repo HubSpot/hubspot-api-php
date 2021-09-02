@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Crm\Owners;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Owners\Api\DefaultApi;
+use HubSpot\Client\Crm\Owners\Api\OwnersApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Owners\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +22,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->defaultApi()->shouldHaveType(DefaultApi::class);
+        $this->ownersApi()->shouldHaveType(OwnersApi::class);
     }
 }
