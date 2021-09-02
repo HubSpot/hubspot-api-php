@@ -19,4 +19,8 @@ use HubSpot\Discovery\DiscoveryBase;
  */
 class Discovery extends DiscoveryBase
 {
+    public function gdprApi()
+    {
+        return new GDPRApi();
+    }
 }
