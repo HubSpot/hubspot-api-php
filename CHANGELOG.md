@@ -5,7 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/3.1.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/4.0.0...HEAD)
+
+## [4.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/3.1.0) - 2021-09-06
+
+### Added
+
+- `crm()->objects()->gdprApi()` API client
+- `crm()->contacts()->gdprApi()` API client
+- `crm()->schemas()->coreApi()` API client
+- `marketing()->transactional()->singleSendApi()` API client
+
+### Fixed (breaking changes)
+
+- `oauth()` totaly rewrite the client
+- `cms()->auditLogs()->defaultApi()` => `cms()->auditLogs()->auditLogsApi()`
+- `cms()->blogs()->authors()->defaultApi()` => `cms()->blogs()->authors()->authorApi()`
+- `cms()->blogs()->blogPosts()->defaultApi()` => `cms()->blogs()->blogPosts()->blogPostApi()`
+- `cms()->blogs()->tags()->defaultApi()` => `cms()->blogs()->tags()->tagApi()`
+- `cms()->performance()->defaultApi()` => `cms()->performance()->publicPerformanceApi()`
+- `cms()->siteSearch()->defaultApi()` => `cms()->siteSearch()->publicApi()`
+- `crm()->imports()->defaultApi()` => `crm()->imports()->publicImportsApi()`
+- `crm()->owners()->defaultApi()` => `crm()->owners()->ownersApi()`
+- `crm()->schemas()->defaultApi()` => `crm()->schemas()->publicObjectSchemasApi()`
+- `marketing()->transactional()->defaultApi()` => `marketing()->transactional()->publicSmtpTokensApi()`
 
 ## [3.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/3.1.0) - 2021-07-22
 
