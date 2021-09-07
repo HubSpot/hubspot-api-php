@@ -115,35 +115,35 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsContactId
+     * Operation purgeByEmail
      *
      * DELETE
      *
-     * @param  int $contact_id contact_id (required)
+     * @param  string $email email (required)
      *
      * @throws \HubSpot\Client\Crm\Contacts\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteCrmV3ObjectsGdprContactsContactId($contact_id)
+    public function purgeByEmail($email)
     {
-        $this->deleteCrmV3ObjectsGdprContactsContactIdWithHttpInfo($contact_id);
+        $this->purgeByEmailWithHttpInfo($email);
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsContactIdWithHttpInfo
+     * Operation purgeByEmailWithHttpInfo
      *
      * DELETE
      *
-     * @param  int $contact_id (required)
+     * @param  string $email (required)
      *
      * @throws \HubSpot\Client\Crm\Contacts\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCrmV3ObjectsGdprContactsContactIdWithHttpInfo($contact_id)
+    public function purgeByEmailWithHttpInfo($email)
     {
-        $request = $this->deleteCrmV3ObjectsGdprContactsContactIdRequest($contact_id);
+        $request = $this->purgeByEmailRequest($email);
 
         try {
             $options = $this->createHttpClientOption();
@@ -191,18 +191,18 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsContactIdAsync
+     * Operation purgeByEmailAsync
      *
      * DELETE
      *
-     * @param  int $contact_id (required)
+     * @param  string $email (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprContactsContactIdAsync($contact_id)
+    public function purgeByEmailAsync($email)
     {
-        return $this->deleteCrmV3ObjectsGdprContactsContactIdAsyncWithHttpInfo($contact_id)
+        return $this->purgeByEmailAsyncWithHttpInfo($email)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -211,19 +211,19 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsContactIdAsyncWithHttpInfo
+     * Operation purgeByEmailAsyncWithHttpInfo
      *
      * DELETE
      *
-     * @param  int $contact_id (required)
+     * @param  string $email (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprContactsContactIdAsyncWithHttpInfo($contact_id)
+    public function purgeByEmailAsyncWithHttpInfo($email)
     {
         $returnType = '';
-        $request = $this->deleteCrmV3ObjectsGdprContactsContactIdRequest($contact_id);
+        $request = $this->purgeByEmailRequest($email);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -249,23 +249,23 @@ class GDPRApi
     }
 
     /**
-     * Create request for operation 'deleteCrmV3ObjectsGdprContactsContactId'
+     * Create request for operation 'purgeByEmail'
      *
-     * @param  int $contact_id (required)
+     * @param  string $email (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCrmV3ObjectsGdprContactsContactIdRequest($contact_id)
+    public function purgeByEmailRequest($email)
     {
-        // verify the required parameter 'contact_id' is set
-        if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
+        // verify the required parameter 'email' is set
+        if ($email === null || (is_array($email) && count($email) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $contact_id when calling deleteCrmV3ObjectsGdprContactsContactId'
+                'Missing the required parameter $email when calling purgeByEmail'
             );
         }
 
-        $resourcePath = '/crm/v3/objects/gdpr/contacts/{contactId}';
+        $resourcePath = '/crm/v3/objects/gdpr/contacts/email/{email}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -275,10 +275,10 @@ class GDPRApi
 
 
         // path params
-        if ($contact_id !== null) {
+        if ($email !== null) {
             $resourcePath = str_replace(
-                '{' . 'contactId' . '}',
-                ObjectSerializer::toPathValue($contact_id),
+                '{' . 'email' . '}',
+                ObjectSerializer::toPathValue($email),
                 $resourcePath
             );
         }
@@ -355,35 +355,35 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsEmailEmail
+     * Operation purgeById
      *
      * DELETE
      *
-     * @param  string $email email (required)
+     * @param  int $contact_id contact_id (required)
      *
      * @throws \HubSpot\Client\Crm\Contacts\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteCrmV3ObjectsGdprContactsEmailEmail($email)
+    public function purgeById($contact_id)
     {
-        $this->deleteCrmV3ObjectsGdprContactsEmailEmailWithHttpInfo($email);
+        $this->purgeByIdWithHttpInfo($contact_id);
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsEmailEmailWithHttpInfo
+     * Operation purgeByIdWithHttpInfo
      *
      * DELETE
      *
-     * @param  string $email (required)
+     * @param  int $contact_id (required)
      *
      * @throws \HubSpot\Client\Crm\Contacts\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCrmV3ObjectsGdprContactsEmailEmailWithHttpInfo($email)
+    public function purgeByIdWithHttpInfo($contact_id)
     {
-        $request = $this->deleteCrmV3ObjectsGdprContactsEmailEmailRequest($email);
+        $request = $this->purgeByIdRequest($contact_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -431,18 +431,18 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsEmailEmailAsync
+     * Operation purgeByIdAsync
      *
      * DELETE
      *
-     * @param  string $email (required)
+     * @param  int $contact_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprContactsEmailEmailAsync($email)
+    public function purgeByIdAsync($contact_id)
     {
-        return $this->deleteCrmV3ObjectsGdprContactsEmailEmailAsyncWithHttpInfo($email)
+        return $this->purgeByIdAsyncWithHttpInfo($contact_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -451,19 +451,19 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprContactsEmailEmailAsyncWithHttpInfo
+     * Operation purgeByIdAsyncWithHttpInfo
      *
      * DELETE
      *
-     * @param  string $email (required)
+     * @param  int $contact_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprContactsEmailEmailAsyncWithHttpInfo($email)
+    public function purgeByIdAsyncWithHttpInfo($contact_id)
     {
         $returnType = '';
-        $request = $this->deleteCrmV3ObjectsGdprContactsEmailEmailRequest($email);
+        $request = $this->purgeByIdRequest($contact_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -489,23 +489,23 @@ class GDPRApi
     }
 
     /**
-     * Create request for operation 'deleteCrmV3ObjectsGdprContactsEmailEmail'
+     * Create request for operation 'purgeById'
      *
-     * @param  string $email (required)
+     * @param  int $contact_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCrmV3ObjectsGdprContactsEmailEmailRequest($email)
+    public function purgeByIdRequest($contact_id)
     {
-        // verify the required parameter 'email' is set
-        if ($email === null || (is_array($email) && count($email) === 0)) {
+        // verify the required parameter 'contact_id' is set
+        if ($contact_id === null || (is_array($contact_id) && count($contact_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $email when calling deleteCrmV3ObjectsGdprContactsEmailEmail'
+                'Missing the required parameter $contact_id when calling purgeById'
             );
         }
 
-        $resourcePath = '/crm/v3/objects/gdpr/contacts/email/{email}';
+        $resourcePath = '/crm/v3/objects/gdpr/contacts/{contactId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -515,10 +515,10 @@ class GDPRApi
 
 
         // path params
-        if ($email !== null) {
+        if ($contact_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'email' . '}',
-                ObjectSerializer::toPathValue($email),
+                '{' . 'contactId' . '}',
+                ObjectSerializer::toPathValue($contact_id),
                 $resourcePath
             );
         }

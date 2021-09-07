@@ -115,7 +115,7 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeEmailEmail
+     * Operation purgeByEmail
      *
      * DELETE
      *
@@ -126,13 +126,13 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeEmailEmail($object_type, $email)
+    public function purgeByEmail($object_type, $email)
     {
-        $this->deleteCrmV3ObjectsGdprObjectTypeEmailEmailWithHttpInfo($object_type, $email);
+        $this->purgeByEmailWithHttpInfo($object_type, $email);
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeEmailEmailWithHttpInfo
+     * Operation purgeByEmailWithHttpInfo
      *
      * DELETE
      *
@@ -143,9 +143,9 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeEmailEmailWithHttpInfo($object_type, $email)
+    public function purgeByEmailWithHttpInfo($object_type, $email)
     {
-        $request = $this->deleteCrmV3ObjectsGdprObjectTypeEmailEmailRequest($object_type, $email);
+        $request = $this->purgeByEmailRequest($object_type, $email);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,7 +193,7 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeEmailEmailAsync
+     * Operation purgeByEmailAsync
      *
      * DELETE
      *
@@ -203,9 +203,9 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeEmailEmailAsync($object_type, $email)
+    public function purgeByEmailAsync($object_type, $email)
     {
-        return $this->deleteCrmV3ObjectsGdprObjectTypeEmailEmailAsyncWithHttpInfo($object_type, $email)
+        return $this->purgeByEmailAsyncWithHttpInfo($object_type, $email)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -214,7 +214,7 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeEmailEmailAsyncWithHttpInfo
+     * Operation purgeByEmailAsyncWithHttpInfo
      *
      * DELETE
      *
@@ -224,10 +224,10 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeEmailEmailAsyncWithHttpInfo($object_type, $email)
+    public function purgeByEmailAsyncWithHttpInfo($object_type, $email)
     {
         $returnType = '';
-        $request = $this->deleteCrmV3ObjectsGdprObjectTypeEmailEmailRequest($object_type, $email);
+        $request = $this->purgeByEmailRequest($object_type, $email);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -253,7 +253,7 @@ class GDPRApi
     }
 
     /**
-     * Create request for operation 'deleteCrmV3ObjectsGdprObjectTypeEmailEmail'
+     * Create request for operation 'purgeByEmail'
      *
      * @param  string $object_type (required)
      * @param  string $email (required)
@@ -261,18 +261,18 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeEmailEmailRequest($object_type, $email)
+    public function purgeByEmailRequest($object_type, $email)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling deleteCrmV3ObjectsGdprObjectTypeEmailEmail'
+                'Missing the required parameter $object_type when calling purgeByEmail'
             );
         }
         // verify the required parameter 'email' is set
         if ($email === null || (is_array($email) && count($email) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $email when calling deleteCrmV3ObjectsGdprObjectTypeEmailEmail'
+                'Missing the required parameter $email when calling purgeByEmail'
             );
         }
 
@@ -374,7 +374,7 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeObjectId
+     * Operation purgeById
      *
      * DELETE
      *
@@ -385,13 +385,13 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeObjectId($object_type, $object_id)
+    public function purgeById($object_type, $object_id)
     {
-        $this->deleteCrmV3ObjectsGdprObjectTypeObjectIdWithHttpInfo($object_type, $object_id);
+        $this->purgeByIdWithHttpInfo($object_type, $object_id);
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeObjectIdWithHttpInfo
+     * Operation purgeByIdWithHttpInfo
      *
      * DELETE
      *
@@ -402,9 +402,9 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeObjectIdWithHttpInfo($object_type, $object_id)
+    public function purgeByIdWithHttpInfo($object_type, $object_id)
     {
-        $request = $this->deleteCrmV3ObjectsGdprObjectTypeObjectIdRequest($object_type, $object_id);
+        $request = $this->purgeByIdRequest($object_type, $object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -452,7 +452,7 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeObjectIdAsync
+     * Operation purgeByIdAsync
      *
      * DELETE
      *
@@ -462,9 +462,9 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeObjectIdAsync($object_type, $object_id)
+    public function purgeByIdAsync($object_type, $object_id)
     {
-        return $this->deleteCrmV3ObjectsGdprObjectTypeObjectIdAsyncWithHttpInfo($object_type, $object_id)
+        return $this->purgeByIdAsyncWithHttpInfo($object_type, $object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -473,7 +473,7 @@ class GDPRApi
     }
 
     /**
-     * Operation deleteCrmV3ObjectsGdprObjectTypeObjectIdAsyncWithHttpInfo
+     * Operation purgeByIdAsyncWithHttpInfo
      *
      * DELETE
      *
@@ -483,10 +483,10 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeObjectIdAsyncWithHttpInfo($object_type, $object_id)
+    public function purgeByIdAsyncWithHttpInfo($object_type, $object_id)
     {
         $returnType = '';
-        $request = $this->deleteCrmV3ObjectsGdprObjectTypeObjectIdRequest($object_type, $object_id);
+        $request = $this->purgeByIdRequest($object_type, $object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -512,7 +512,7 @@ class GDPRApi
     }
 
     /**
-     * Create request for operation 'deleteCrmV3ObjectsGdprObjectTypeObjectId'
+     * Create request for operation 'purgeById'
      *
      * @param  string $object_type (required)
      * @param  int $object_id (required)
@@ -520,18 +520,18 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCrmV3ObjectsGdprObjectTypeObjectIdRequest($object_type, $object_id)
+    public function purgeByIdRequest($object_type, $object_id)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling deleteCrmV3ObjectsGdprObjectTypeObjectId'
+                'Missing the required parameter $object_type when calling purgeById'
             );
         }
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling deleteCrmV3ObjectsGdprObjectTypeObjectId'
+                'Missing the required parameter $object_id when calling purgeById'
             );
         }
 
