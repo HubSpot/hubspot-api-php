@@ -7,14 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/4.0.0...HEAD)
 
-## [4.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/3.1.0) - 2021-09-06
+## [4.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/3.1.0) - 2021-09-07
 
 ### Added
 
 - `crm()->objects()->gdprApi()` API client
 - `crm()->contacts()->gdprApi()` API client
-- `crm()->schemas()->coreApi()` API client
-- `marketing()->transactional()->singleSendApi()` API client
 
 ### Fixed (breaking changes)
 
@@ -27,8 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `cms()->siteSearch()->defaultApi()` => `cms()->siteSearch()->publicApi()`
 - `crm()->imports()->defaultApi()` => `crm()->imports()->publicImportsApi()`
 - `crm()->owners()->defaultApi()` => `crm()->owners()->ownersApi()`
-- `crm()->schemas()->defaultApi()` => `crm()->schemas()->publicObjectSchemasApi()`
-- `marketing()->transactional()->defaultApi()` => `marketing()->transactional()->publicSmtpTokensApi()`
+- `crm()->schemas()->defaultApi()` => `crm()->schemas()->publicObjectSchemasApi()` and `crm()->schemas()->coreApi()`
+- `marketing()->transactional()->defaultApi()` => `marketing()->transactional()->publicSmtpTokensApi()` and `marketing()->transactional()->singleSendApi()`
 
 ## [3.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/3.1.0) - 2021-07-22
 
