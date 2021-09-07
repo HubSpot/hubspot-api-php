@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed (breaking changes)
 
-- `oauth()` totaly rewrite the client
+- `oauth()` fully regenerated
 - `cms()->auditLogs()->defaultApi()` => `cms()->auditLogs()->auditLogsApi()`
 - `cms()->blogs()->authors()->defaultApi()` => `cms()->blogs()->authors()->authorApi()`
 - `cms()->blogs()->blogPosts()->defaultApi()` => `cms()->blogs()->blogPosts()->blogPostApi()`
