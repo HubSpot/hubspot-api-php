@@ -7,7 +7,9 @@ PHP [HubSpot API](https://developers.hubspot.com/docs-beta/overview) v3  SDK(Cli
 composer require hubspot/api-client
 ```
 
-Sample Applications can be found in [sample-apps](sample-apps/) folder
+### Sample apps
+
+Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-list)
 
 ## Quickstart
 
