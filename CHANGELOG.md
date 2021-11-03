@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/4.0.0...HEAD)
 
+### Fixed (breaking changes)
+
+- Now requires `guzzlehttp/guzzle^7.3.0` and removes deprecated functions from older versions of Guzzle
+
 ## [4.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/4.0.0) - 2021-09-07
 
 ### Added
