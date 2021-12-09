@@ -2,11 +2,11 @@
 
 namespace HubSpot\Discovery\Cms\Blogs\Authors;
 
-use HubSpot\Client\Cms\Blogs\Authors\Api\AuthorApi;
+use HubSpot\Client\Cms\Blogs\Authors\Api\BlogAuthorsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method AuthorApi authorApi()
+ * @method BlogAuthorsApi blogAuthorsApi()
  */
 class Discovery extends DiscoveryBase
 {
