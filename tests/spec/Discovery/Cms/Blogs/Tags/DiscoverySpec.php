@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\Blogs\Tags;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\Blogs\Tags\Api\TagApi;
+use HubSpot\Client\Cms\Blogs\Tags\Api\BlogTagsApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -21,6 +21,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->tagApi()->shouldHaveType(TagApi::class);
+        $this->blogTagsApi()->shouldHaveType(BlogTagsApi::class);
     }
 }
