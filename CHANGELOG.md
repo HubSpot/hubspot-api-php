@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/5.0.0...HEAD)
 
-## [5.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.0.0) - 2021-09-07
+## [5.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.0.0) - 2021-12-14
 
 ### Updated
  - Update Guzzle version (^7.3)
