@@ -84,7 +84,9 @@ $contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchReques
 
 ```php
 $contactInput = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
-$contactInput->setProperties($_POST);
+$contactInput->setProperties([
+    'email' => 'example@example.com'
+]);
 
 $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 ```
@@ -93,9 +95,17 @@ $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 
 ```php
 $newProperties = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
-$newProperties->setProperties($_POST);
+$newProperties->setProperties($[
+    'email' => 'updatedExample@example.com'
+]);
 
 $hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
+```
+
+#### Archive a contact:
+
+```php
+$hubSpot->crm()->contacts()->basicApi()->archive($contactId);
 ```
 
 #### Get custom objects page:
