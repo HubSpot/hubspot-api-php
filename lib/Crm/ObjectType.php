@@ -4,11 +4,11 @@ namespace HubSpot\Crm;
 
 class ObjectType
 {
-    const CONTACTS = 'contacts';
-    const COMPANIES = 'companies';
-    const DEALS = 'deals';
-    const LINE_ITEMS = 'line_items';
-    const PRODUCTS = 'products';
-    const TICKETS = 'tickets';
-    const QUOTES = 'quotes';
+    public const CONTACTS = 'contacts';
+    public const COMPANIES = 'companies';
+    public const DEALS = 'deals';
+    public const LINE_ITEMS = 'line_items';
+    public const PRODUCTS = 'products';
+    public const TICKETS = 'tickets';
+    public const QUOTES = 'quotes';
 }
