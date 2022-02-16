@@ -6,7 +6,7 @@ use HubSpot\Client\Crm\Contacts\Configuration;
 
 class Config
 {
-    const API_KEY_IDENTIFIER = 'hapikey';
+    public const API_KEY_IDENTIFIER = 'hapikey';
 
     /** @var string */
     protected $apiKey;
