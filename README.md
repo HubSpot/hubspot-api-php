@@ -95,7 +95,7 @@ $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
 
 ```php
 $newProperties = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
-$newProperties->setProperties($[
+$newProperties->setProperties([
     'email' => 'updatedExample@example.com'
 ]);
 
