@@ -1173,44 +1173,44 @@ class PublicSmtpTokensApi
         if ($campaign_name !== null) {
             if('form' === 'form' && is_array($campaign_name)) {
                 foreach($campaign_name as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['campaignName'] = $campaign_name;
+                $queryParams['campaignName'] = ObjectSerializer::toQueryValue($campaign_name);
             }
         }
         // query params
         if ($email_campaign_id !== null) {
             if('form' === 'form' && is_array($email_campaign_id)) {
                 foreach($email_campaign_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['emailCampaignId'] = $email_campaign_id;
+                $queryParams['emailCampaignId'] = ObjectSerializer::toQueryValue($email_campaign_id);
             }
         }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {
                 foreach($after as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['after'] = $after;
+                $queryParams['after'] = ObjectSerializer::toQueryValue($after);
             }
         }
         // query params
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
                 foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['limit'] = $limit;
+                $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
             }
         }
 

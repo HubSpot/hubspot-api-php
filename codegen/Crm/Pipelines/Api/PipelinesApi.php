@@ -300,11 +300,11 @@ class PipelinesApi
         if ($validate_references_before_delete !== null) {
             if('form' === 'form' && is_array($validate_references_before_delete)) {
                 foreach($validate_references_before_delete as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['validateReferencesBeforeDelete'] = $validate_references_before_delete;
+                $queryParams['validateReferencesBeforeDelete'] = ObjectSerializer::toQueryValue($validate_references_before_delete);
             }
         }
 
@@ -369,7 +369,7 @@ class PipelinesApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -686,7 +686,7 @@ class PipelinesApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -941,11 +941,11 @@ class PipelinesApi
         if ($archived !== null) {
             if('form' === 'form' && is_array($archived)) {
                 foreach($archived as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['archived'] = $archived;
+                $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
             }
         }
 
@@ -1002,7 +1002,7 @@ class PipelinesApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1268,11 +1268,11 @@ class PipelinesApi
         if ($archived !== null) {
             if('form' === 'form' && is_array($archived)) {
                 foreach($archived as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['archived'] = $archived;
+                $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
             }
         }
 
@@ -1337,7 +1337,7 @@ class PipelinesApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1614,11 +1614,11 @@ class PipelinesApi
         if ($validate_references_before_delete !== null) {
             if('form' === 'form' && is_array($validate_references_before_delete)) {
                 foreach($validate_references_before_delete as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['validateReferencesBeforeDelete'] = $validate_references_before_delete;
+                $queryParams['validateReferencesBeforeDelete'] = ObjectSerializer::toQueryValue($validate_references_before_delete);
             }
         }
 
@@ -1689,7 +1689,7 @@ class PipelinesApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1971,22 +1971,22 @@ class PipelinesApi
         if ($archived !== null) {
             if('form' === 'form' && is_array($archived)) {
                 foreach($archived as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['archived'] = $archived;
+                $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
             }
         }
         // query params
         if ($validate_references_before_delete !== null) {
             if('form' === 'form' && is_array($validate_references_before_delete)) {
                 foreach($validate_references_before_delete as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['validateReferencesBeforeDelete'] = $validate_references_before_delete;
+                $queryParams['validateReferencesBeforeDelete'] = ObjectSerializer::toQueryValue($validate_references_before_delete);
             }
         }
 
@@ -2057,7 +2057,7 @@ class PipelinesApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 

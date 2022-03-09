@@ -928,11 +928,11 @@ class DefinitionsApi
         if ($archived !== null) {
             if('form' === 'form' && is_array($archived)) {
                 foreach($archived as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['archived'] = $archived;
+                $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
             }
         }
 
@@ -1258,33 +1258,33 @@ class DefinitionsApi
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
                 foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['limit'] = $limit;
+                $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
             }
         }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {
                 foreach($after as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['after'] = $after;
+                $queryParams['after'] = ObjectSerializer::toQueryValue($after);
             }
         }
         // query params
         if ($archived !== null) {
             if('form' === 'form' && is_array($archived)) {
                 foreach($archived as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['archived'] = $archived;
+                $queryParams['archived'] = ObjectSerializer::toQueryValue($archived);
             }
         }
 
