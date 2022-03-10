@@ -375,99 +375,99 @@ class EventsApi
         if ($occurred_after !== null) {
             if('form' === 'form' && is_array($occurred_after)) {
                 foreach($occurred_after as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['occurredAfter'] = $occurred_after;
+                $queryParams['occurredAfter'] = ObjectSerializer::toQueryValue($occurred_after);
             }
         }
         // query params
         if ($occurred_before !== null) {
             if('form' === 'form' && is_array($occurred_before)) {
                 foreach($occurred_before as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['occurredBefore'] = $occurred_before;
+                $queryParams['occurredBefore'] = ObjectSerializer::toQueryValue($occurred_before);
             }
         }
         // query params
         if ($object_type !== null) {
             if('form' === 'form' && is_array($object_type)) {
                 foreach($object_type as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['objectType'] = $object_type;
+                $queryParams['objectType'] = ObjectSerializer::toQueryValue($object_type);
             }
         }
         // query params
         if ($object_id !== null) {
             if('form' === 'form' && is_array($object_id)) {
                 foreach($object_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['objectId'] = $object_id;
+                $queryParams['objectId'] = ObjectSerializer::toQueryValue($object_id);
             }
         }
         // query params
         if ($event_type !== null) {
             if('form' === 'form' && is_array($event_type)) {
                 foreach($event_type as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['eventType'] = $event_type;
+                $queryParams['eventType'] = ObjectSerializer::toQueryValue($event_type);
             }
         }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {
                 foreach($after as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['after'] = $after;
+                $queryParams['after'] = ObjectSerializer::toQueryValue($after);
             }
         }
         // query params
         if ($before !== null) {
             if('form' === 'form' && is_array($before)) {
                 foreach($before as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['before'] = $before;
+                $queryParams['before'] = ObjectSerializer::toQueryValue($before);
             }
         }
         // query params
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
                 foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['limit'] = $limit;
+                $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
             }
         }
         // query params
         if ($sort !== null) {
             if('form' === 'form' && is_array($sort)) {
                 foreach($sort as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['sort'] = $sort;
+                $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
             }
         }
 
@@ -516,7 +516,7 @@ class EventsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 

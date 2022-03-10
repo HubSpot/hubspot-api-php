@@ -350,11 +350,11 @@ class PublicApi
         if ($type !== null) {
             if('form' === 'form' && is_array($type)) {
                 foreach($type as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['type'] = $type;
+                $queryParams['type'] = ObjectSerializer::toQueryValue($type);
             }
         }
 
@@ -411,7 +411,7 @@ class PublicApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -740,198 +740,198 @@ class PublicApi
         if ($q !== null) {
             if('form' === 'form' && is_array($q)) {
                 foreach($q as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['q'] = $q;
+                $queryParams['q'] = ObjectSerializer::toQueryValue($q);
             }
         }
         // query params
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
                 foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['limit'] = $limit;
+                $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
             }
         }
         // query params
         if ($offset !== null) {
             if('form' === 'form' && is_array($offset)) {
                 foreach($offset as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['offset'] = $offset;
+                $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
             }
         }
         // query params
         if ($language !== null) {
             if('form' === 'form' && is_array($language)) {
                 foreach($language as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['language'] = $language;
+                $queryParams['language'] = ObjectSerializer::toQueryValue($language);
             }
         }
         // query params
         if ($match_prefix !== null) {
             if('form' === 'form' && is_array($match_prefix)) {
                 foreach($match_prefix as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['matchPrefix'] = $match_prefix;
+                $queryParams['matchPrefix'] = ObjectSerializer::toQueryValue($match_prefix);
             }
         }
         // query params
         if ($autocomplete !== null) {
             if('form' === 'form' && is_array($autocomplete)) {
                 foreach($autocomplete as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['autocomplete'] = $autocomplete;
+                $queryParams['autocomplete'] = ObjectSerializer::toQueryValue($autocomplete);
             }
         }
         // query params
         if ($popularity_boost !== null) {
             if('form' === 'form' && is_array($popularity_boost)) {
                 foreach($popularity_boost as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['popularityBoost'] = $popularity_boost;
+                $queryParams['popularityBoost'] = ObjectSerializer::toQueryValue($popularity_boost);
             }
         }
         // query params
         if ($boost_limit !== null) {
             if('form' === 'form' && is_array($boost_limit)) {
                 foreach($boost_limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['boostLimit'] = $boost_limit;
+                $queryParams['boostLimit'] = ObjectSerializer::toQueryValue($boost_limit);
             }
         }
         // query params
         if ($min_score !== null) {
             if('form' === 'form' && is_array($min_score)) {
                 foreach($min_score as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['minScore'] = $min_score;
+                $queryParams['minScore'] = ObjectSerializer::toQueryValue($min_score);
             }
         }
         // query params
         if ($boost_recent !== null) {
             if('form' === 'form' && is_array($boost_recent)) {
                 foreach($boost_recent as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['boostRecent'] = $boost_recent;
+                $queryParams['boostRecent'] = ObjectSerializer::toQueryValue($boost_recent);
             }
         }
         // query params
         if ($table_id !== null) {
             if('form' === 'form' && is_array($table_id)) {
                 foreach($table_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['tableId'] = $table_id;
+                $queryParams['tableId'] = ObjectSerializer::toQueryValue($table_id);
             }
         }
         // query params
         if ($hubdb_query !== null) {
             if('form' === 'form' && is_array($hubdb_query)) {
                 foreach($hubdb_query as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['hubdbQuery'] = $hubdb_query;
+                $queryParams['hubdbQuery'] = ObjectSerializer::toQueryValue($hubdb_query);
             }
         }
         // query params
         if ($domain !== null) {
             if('form' === 'form' && is_array($domain)) {
                 foreach($domain as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['domain'] = $domain;
+                $queryParams['domain'] = ObjectSerializer::toQueryValue($domain);
             }
         }
         // query params
         if ($type !== null) {
             if('form' === 'form' && is_array($type)) {
                 foreach($type as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['type'] = $type;
+                $queryParams['type'] = ObjectSerializer::toQueryValue($type);
             }
         }
         // query params
         if ($path_prefix !== null) {
             if('form' === 'form' && is_array($path_prefix)) {
                 foreach($path_prefix as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['pathPrefix'] = $path_prefix;
+                $queryParams['pathPrefix'] = ObjectSerializer::toQueryValue($path_prefix);
             }
         }
         // query params
         if ($property !== null) {
             if('form' === 'form' && is_array($property)) {
                 foreach($property as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['property'] = $property;
+                $queryParams['property'] = ObjectSerializer::toQueryValue($property);
             }
         }
         // query params
         if ($length !== null) {
             if('form' === 'form' && is_array($length)) {
                 foreach($length as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['length'] = $length;
+                $queryParams['length'] = ObjectSerializer::toQueryValue($length);
             }
         }
         // query params
         if ($group_id !== null) {
             if('form' === 'form' && is_array($group_id)) {
                 foreach($group_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['groupId'] = $group_id;
+                $queryParams['groupId'] = ObjectSerializer::toQueryValue($group_id);
             }
         }
 
@@ -980,7 +980,7 @@ class PublicApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 

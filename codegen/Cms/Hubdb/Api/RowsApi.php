@@ -414,7 +414,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -731,7 +731,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1054,7 +1054,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1377,7 +1377,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1647,44 +1647,44 @@ class RowsApi
         if ($sort !== null) {
             if('form' === 'form' && is_array($sort)) {
                 foreach($sort as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['sort'] = $sort;
+                $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
             }
         }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {
                 foreach($after as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['after'] = $after;
+                $queryParams['after'] = ObjectSerializer::toQueryValue($after);
             }
         }
         // query params
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
                 foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['limit'] = $limit;
+                $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
             }
         }
         // query params
         if ($properties !== null) {
             if('form' === 'form' && is_array($properties)) {
                 foreach($properties as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['properties'] = $properties;
+                $queryParams['properties'] = ObjectSerializer::toQueryValue($properties);
             }
         }
 
@@ -1741,7 +1741,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2007,7 +2007,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2277,44 +2277,44 @@ class RowsApi
         if ($sort !== null) {
             if('form' === 'form' && is_array($sort)) {
                 foreach($sort as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['sort'] = $sort;
+                $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
             }
         }
         // query params
         if ($after !== null) {
             if('form' === 'form' && is_array($after)) {
                 foreach($after as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['after'] = $after;
+                $queryParams['after'] = ObjectSerializer::toQueryValue($after);
             }
         }
         // query params
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
                 foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['limit'] = $limit;
+                $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
             }
         }
         // query params
         if ($properties !== null) {
             if('form' === 'form' && is_array($properties)) {
                 foreach($properties as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['properties'] = $properties;
+                $queryParams['properties'] = ObjectSerializer::toQueryValue($properties);
             }
         }
 
@@ -2371,7 +2371,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2711,7 +2711,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -3051,7 +3051,7 @@ class RowsApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 

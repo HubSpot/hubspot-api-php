@@ -357,11 +357,11 @@ class InvoiceApi
         if ($account_id !== null) {
             if('form' === 'form' && is_array($account_id)) {
                 foreach($account_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['accountId'] = $account_id;
+                $queryParams['accountId'] = ObjectSerializer::toQueryValue($account_id);
             }
         }
 
@@ -424,7 +424,7 @@ class InvoiceApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -685,11 +685,11 @@ class InvoiceApi
         if ($account_id !== null) {
             if('form' === 'form' && is_array($account_id)) {
                 foreach($account_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['accountId'] = $account_id;
+                $queryParams['accountId'] = ObjectSerializer::toQueryValue($account_id);
             }
         }
 
@@ -746,7 +746,7 @@ class InvoiceApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1018,11 +1018,11 @@ class InvoiceApi
         if ($account_id !== null) {
             if('form' === 'form' && is_array($account_id)) {
                 foreach($account_id as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['accountId'] = $account_id;
+                $queryParams['accountId'] = ObjectSerializer::toQueryValue($account_id);
             }
         }
 
@@ -1085,7 +1085,7 @@ class InvoiceApi
             $queryParams['hapikey'] = $apiKey;
         }
         // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 

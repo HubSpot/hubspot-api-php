@@ -370,88 +370,88 @@ class PublicPerformanceApi
         if ($domain !== null) {
             if('form' === 'form' && is_array($domain)) {
                 foreach($domain as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['domain'] = $domain;
+                $queryParams['domain'] = ObjectSerializer::toQueryValue($domain);
             }
         }
         // query params
         if ($path !== null) {
             if('form' === 'form' && is_array($path)) {
                 foreach($path as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['path'] = $path;
+                $queryParams['path'] = ObjectSerializer::toQueryValue($path);
             }
         }
         // query params
         if ($pad !== null) {
             if('form' === 'form' && is_array($pad)) {
                 foreach($pad as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['pad'] = $pad;
+                $queryParams['pad'] = ObjectSerializer::toQueryValue($pad);
             }
         }
         // query params
         if ($sum !== null) {
             if('form' === 'form' && is_array($sum)) {
                 foreach($sum as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['sum'] = $sum;
+                $queryParams['sum'] = ObjectSerializer::toQueryValue($sum);
             }
         }
         // query params
         if ($period !== null) {
             if('form' === 'form' && is_array($period)) {
                 foreach($period as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['period'] = $period;
+                $queryParams['period'] = ObjectSerializer::toQueryValue($period);
             }
         }
         // query params
         if ($interval !== null) {
             if('form' === 'form' && is_array($interval)) {
                 foreach($interval as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['interval'] = $interval;
+                $queryParams['interval'] = ObjectSerializer::toQueryValue($interval);
             }
         }
         // query params
         if ($start !== null) {
             if('form' === 'form' && is_array($start)) {
                 foreach($start as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['start'] = $start;
+                $queryParams['start'] = ObjectSerializer::toQueryValue($start);
             }
         }
         // query params
         if ($end !== null) {
             if('form' === 'form' && is_array($end)) {
                 foreach($end as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['end'] = $end;
+                $queryParams['end'] = ObjectSerializer::toQueryValue($end);
             }
         }
 
@@ -775,88 +775,88 @@ class PublicPerformanceApi
         if ($domain !== null) {
             if('form' === 'form' && is_array($domain)) {
                 foreach($domain as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['domain'] = $domain;
+                $queryParams['domain'] = ObjectSerializer::toQueryValue($domain);
             }
         }
         // query params
         if ($path !== null) {
             if('form' === 'form' && is_array($path)) {
                 foreach($path as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['path'] = $path;
+                $queryParams['path'] = ObjectSerializer::toQueryValue($path);
             }
         }
         // query params
         if ($pad !== null) {
             if('form' === 'form' && is_array($pad)) {
                 foreach($pad as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['pad'] = $pad;
+                $queryParams['pad'] = ObjectSerializer::toQueryValue($pad);
             }
         }
         // query params
         if ($sum !== null) {
             if('form' === 'form' && is_array($sum)) {
                 foreach($sum as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['sum'] = $sum;
+                $queryParams['sum'] = ObjectSerializer::toQueryValue($sum);
             }
         }
         // query params
         if ($period !== null) {
             if('form' === 'form' && is_array($period)) {
                 foreach($period as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['period'] = $period;
+                $queryParams['period'] = ObjectSerializer::toQueryValue($period);
             }
         }
         // query params
         if ($interval !== null) {
             if('form' === 'form' && is_array($interval)) {
                 foreach($interval as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['interval'] = $interval;
+                $queryParams['interval'] = ObjectSerializer::toQueryValue($interval);
             }
         }
         // query params
         if ($start !== null) {
             if('form' === 'form' && is_array($start)) {
                 foreach($start as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['start'] = $start;
+                $queryParams['start'] = ObjectSerializer::toQueryValue($start);
             }
         }
         // query params
         if ($end !== null) {
             if('form' === 'form' && is_array($end)) {
                 foreach($end as $key => $value) {
-                    $queryParams[$key] = $value;
+                    $queryParams[$key] = ObjectSerializer::toQueryValue($value);
                 }
             }
             else {
-                $queryParams['end'] = $end;
+                $queryParams['end'] = ObjectSerializer::toQueryValue($end);
             }
         }
 
