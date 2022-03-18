@@ -1,10 +1,10 @@
 <?php
 /**
- * ValidationApi
+ * ExtractApi
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Api;
+namespace HubSpot\Client\Cms\SourceCode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,20 +34,20 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Cms\Source-code\ApiException;
-use HubSpot\Client\Cms\Source-code\Configuration;
-use HubSpot\Client\Cms\Source-code\HeaderSelector;
-use HubSpot\Client\Cms\Source-code\ObjectSerializer;
+use HubSpot\Client\Cms\SourceCode\ApiException;
+use HubSpot\Client\Cms\SourceCode\Configuration;
+use HubSpot\Client\Cms\SourceCode\HeaderSelector;
+use HubSpot\Client\Cms\SourceCode\ObjectSerializer;
 
 /**
- * ValidationApi Class Doc Comment
+ * ExtractApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ValidationApi
+class ExtractApi
 {
     /**
      * @var ClientInterface
@@ -116,38 +116,37 @@ class ValidationApi
     }
 
     /**
-     * Operation doValidate
+     * Operation extractByPath
      *
-     * Validate the contents of a file
+     * Extracts a zip file
      *
-     * @param  string $path The file system location of the file. (required)
-     * @param  \SplFileObject $file The file to validate. (optional)
+     * @param  string $path The file system location of the zip file. (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Source-code\Model\Error
+     * @return void
+     * @deprecated
      */
-    public function doValidate($path, $file = null)
+    public function extractByPath($path)
     {
-        list($response) = $this->doValidateWithHttpInfo($path, $file);
-        return $response;
+        $this->extractByPathWithHttpInfo($path);
     }
 
     /**
-     * Operation doValidateWithHttpInfo
+     * Operation extractByPathWithHttpInfo
      *
-     * Validate the contents of a file
+     * Extracts a zip file
      *
-     * @param  string $path The file system location of the file. (required)
-     * @param  \SplFileObject $file The file to validate. (optional)
+     * @param  string $path The file system location of the zip file. (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Source-code\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function doValidateWithHttpInfo($path, $file = null)
+    public function extractByPathWithHttpInfo($path)
     {
-        $request = $this->doValidateRequest($path, $file);
+        $request = $this->extractByPathRequest($path);
 
         try {
             $options = $this->createHttpClientOption();
@@ -184,40 +183,14 @@ class ValidationApi
                 );
             }
 
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Source-code\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\Error',
+                        '\HubSpot\Client\Cms\SourceCode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -228,19 +201,19 @@ class ValidationApi
     }
 
     /**
-     * Operation doValidateAsync
+     * Operation extractByPathAsync
      *
-     * Validate the contents of a file
+     * Extracts a zip file
      *
-     * @param  string $path The file system location of the file. (required)
-     * @param  \SplFileObject $file The file to validate. (optional)
+     * @param  string $path The file system location of the zip file. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function doValidateAsync($path, $file = null)
+    public function extractByPathAsync($path)
     {
-        return $this->doValidateAsyncWithHttpInfo($path, $file)
+        return $this->extractByPathAsyncWithHttpInfo($path)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -249,36 +222,26 @@ class ValidationApi
     }
 
     /**
-     * Operation doValidateAsyncWithHttpInfo
+     * Operation extractByPathAsyncWithHttpInfo
      *
-     * Validate the contents of a file
+     * Extracts a zip file
      *
-     * @param  string $path The file system location of the file. (required)
-     * @param  \SplFileObject $file The file to validate. (optional)
+     * @param  string $path The file system location of the zip file. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function doValidateAsyncWithHttpInfo($path, $file = null)
+    public function extractByPathAsyncWithHttpInfo($path)
     {
-        $returnType = '\HubSpot\Client\Cms\Source-code\Model\Error';
-        $request = $this->doValidateRequest($path, $file);
+        $returnType = '';
+        $request = $this->extractByPathRequest($path);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -298,28 +261,28 @@ class ValidationApi
     }
 
     /**
-     * Create request for operation 'doValidate'
+     * Create request for operation 'extractByPath'
      *
-     * @param  string $path The file system location of the file. (required)
-     * @param  \SplFileObject $file The file to validate. (optional)
+     * @param  string $path The file system location of the zip file. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function doValidateRequest($path, $file = null)
+    public function extractByPathRequest($path)
     {
         // verify the required parameter 'path' is set
         if ($path === null || (is_array($path) && count($path) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $path when calling doValidate'
+                'Missing the required parameter $path when calling extractByPath'
             );
         }
         if (!preg_match("/.+/", $path)) {
-            throw new \InvalidArgumentException("invalid value for \"path\" when calling ValidationApi.doValidate, must conform to the pattern /.+/.");
+            throw new \InvalidArgumentException("invalid value for \"path\" when calling ExtractApi.extractByPath, must conform to the pattern /.+/.");
         }
 
 
-        $resourcePath = '/cms/v3/source-code/{environment}/validate/{path}';
+        $resourcePath = '/cms/v3/source-code/extract/{path}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -337,18 +300,6 @@ class ValidationApi
             );
         }
 
-        // form params
-        if ($file !== null) {
-            $multipart = true;
-            $formParams['file'] = [];
-            $paramFiles = is_array($file) ? $file : [$file];
-            foreach ($paramFiles as $paramFile) {
-                $formParams['file'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
-                    ObjectSerializer::toFormValue($paramFile),
-                    'rb'
-                );
-            }
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -357,7 +308,7 @@ class ValidationApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['*/*'],
-                ['multipart/form-data']
+                []
             );
         }
 

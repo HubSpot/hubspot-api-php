@@ -5,7 +5,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Model;
+namespace HubSpot\Client\Cms\SourceCode\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Cms\Source-code\ObjectSerializer;
+use \HubSpot\Client\Cms\SourceCode\ObjectSerializer;
 
 /**
  * FileExtractRequest Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>

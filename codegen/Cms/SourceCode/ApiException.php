@@ -4,7 +4,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code;
+namespace HubSpot\Client\Cms\SourceCode;
 
 use \Exception;
 
@@ -33,7 +33,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

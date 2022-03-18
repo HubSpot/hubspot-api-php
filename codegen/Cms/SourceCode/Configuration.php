@@ -4,7 +4,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,14 +25,14 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code;
+namespace HubSpot\Client\Cms\SourceCode;
 
 /**
  * Configuration Class Doc Comment
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -395,7 +395,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (HubSpot\Client\Cms\Source-code) Debug Report:' . PHP_EOL;
+        $report  = 'PHP SDK (HubSpot\Client\Cms\SourceCode) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: v3' . PHP_EOL;

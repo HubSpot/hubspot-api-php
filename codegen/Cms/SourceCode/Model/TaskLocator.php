@@ -1,11 +1,11 @@
 <?php
 /**
- * AssetFileMetadata
+ * TaskLocator
  *
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,24 +26,23 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Model;
+namespace HubSpot\Client\Cms\SourceCode\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Cms\Source-code\ObjectSerializer;
+use \HubSpot\Client\Cms\SourceCode\ObjectSerializer;
 
 /**
- * AssetFileMetadata Class Doc Comment
+ * TaskLocator Class Doc Comment
  *
  * @category Class
- * @description The object metadata of a file.
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +51,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssetFileMetadata';
+    protected static $openAPIModelName = 'TaskLocator';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,12 +60,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'name' => 'string',
-        'folder' => 'bool',
-        'children' => 'string[]',
-        'updated_at' => 'int',
-        'created_at' => 'int',
-        'archived_at' => 'int'
+        'links' => 'array<string,string>'
     ];
 
     /**
@@ -78,12 +72,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'name' => null,
-        'folder' => null,
-        'children' => null,
-        'updated_at' => 'int32',
-        'created_at' => 'int32',
-        'archived_at' => 'int64'
+        'links' => null
     ];
 
     /**
@@ -114,12 +103,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name',
-        'folder' => 'folder',
-        'children' => 'children',
-        'updated_at' => 'updatedAt',
-        'created_at' => 'createdAt',
-        'archived_at' => 'archivedAt'
+        'links' => 'links'
     ];
 
     /**
@@ -129,12 +113,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName',
-        'folder' => 'setFolder',
-        'children' => 'setChildren',
-        'updated_at' => 'setUpdatedAt',
-        'created_at' => 'setCreatedAt',
-        'archived_at' => 'setArchivedAt'
+        'links' => 'setLinks'
     ];
 
     /**
@@ -144,12 +123,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName',
-        'folder' => 'getFolder',
-        'children' => 'getChildren',
-        'updated_at' => 'getUpdatedAt',
-        'created_at' => 'getCreatedAt',
-        'archived_at' => 'getArchivedAt'
+        'links' => 'getLinks'
     ];
 
     /**
@@ -210,12 +184,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['folder'] = $data['folder'] ?? null;
-        $this->container['children'] = $data['children'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['archived_at'] = $data['archived_at'] ?? null;
+        $this->container['links'] = $data['links'] ?? null;
     }
 
     /**
@@ -229,18 +198,6 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['folder'] === null) {
-            $invalidProperties[] = "'folder' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -270,7 +227,7 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string $id The path of the file in the CMS Developer File System.
+     * @param string $id id
      *
      * @return self
      */
@@ -282,145 +239,25 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets name
+     * Gets links
      *
-     * @return string
+     * @return array<string,string>|null
      */
-    public function getName()
+    public function getLinks()
     {
-        return $this->container['name'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets name
+     * Sets links
      *
-     * @param string $name The name of the file.
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
-    public function setName($name)
+    public function setLinks($links)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets folder
-     *
-     * @return bool
-     */
-    public function getFolder()
-    {
-        return $this->container['folder'];
-    }
-
-    /**
-     * Sets folder
-     *
-     * @param bool $folder Determines whether or not this path points to a folder.
-     *
-     * @return self
-     */
-    public function setFolder($folder)
-    {
-        $this->container['folder'] = $folder;
-
-        return $this;
-    }
-
-    /**
-     * Gets children
-     *
-     * @return string[]|null
-     */
-    public function getChildren()
-    {
-        return $this->container['children'];
-    }
-
-    /**
-     * Sets children
-     *
-     * @param string[]|null $children If the object is a folder, contains the filenames of the files within the folder.
-     *
-     * @return self
-     */
-    public function setChildren($children)
-    {
-        $this->container['children'] = $children;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return int
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param int $updated_at Timestamp of when the object was last updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return int
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param int $created_at Timestamp of when the object was first created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return int|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param int|null $archived_at Timestamp of when the object was archived (deleted).
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        $this->container['archived_at'] = $archived_at;
+        $this->container['links'] = $links;
 
         return $this;
     }

@@ -4,7 +4,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Api;
+namespace HubSpot\Client\Cms\SourceCode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Cms\Source-code\ApiException;
-use HubSpot\Client\Cms\Source-code\Configuration;
-use HubSpot\Client\Cms\Source-code\HeaderSelector;
-use HubSpot\Client\Cms\Source-code\ObjectSerializer;
+use HubSpot\Client\Cms\SourceCode\ApiException;
+use HubSpot\Client\Cms\SourceCode\Configuration;
+use HubSpot\Client\Cms\SourceCode\HeaderSelector;
+use HubSpot\Client\Cms\SourceCode\ObjectSerializer;
 
 /**
  * MetadataApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -123,9 +123,9 @@ class MetadataApi
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata|\HubSpot\Client\Cms\Source-code\Model\Error
+     * @return \HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata|\HubSpot\Client\Cms\SourceCode\Model\Error
      */
     public function get($environment, $path)
     {
@@ -141,9 +141,9 @@ class MetadataApi
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata|\HubSpot\Client\Cms\Source-code\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata|\HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWithHttpInfo($environment, $path)
     {
@@ -186,32 +186,32 @@ class MetadataApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata';
+            $returnType = '\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -229,7 +229,7 @@ class MetadataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata',
+                        '\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -237,7 +237,7 @@ class MetadataApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\Error',
+                        '\HubSpot\Client\Cms\SourceCode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -281,7 +281,7 @@ class MetadataApi
      */
     public function getAsyncWithHttpInfo($environment, $path)
     {
-        $returnType = '\HubSpot\Client\Cms\Source-code\Model\AssetFileMetadata';
+        $returnType = '\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata';
         $request = $this->getRequest($environment, $path);
 
         return $this->client

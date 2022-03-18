@@ -5,7 +5,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code;
+namespace HubSpot\Client\Cms\SourceCode;
 
-use HubSpot\Client\Cms\Source-code\Model\ModelInterface;
+use HubSpot\Client\Cms\SourceCode\Model\ModelInterface;
 use GuzzleHttp\Psr7\Utils;
 
 /**
  * ObjectSerializer Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -391,7 +391,7 @@ class ObjectSerializer
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = '\HubSpot\Client\Cms\Source-code\Model\\' . $data->{$discriminator};
+                $subclass = '\HubSpot\Client\Cms\SourceCode\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }

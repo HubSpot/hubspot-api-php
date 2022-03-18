@@ -1,11 +1,11 @@
 <?php
 /**
- * Error
+ * ErrorDetail
  *
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,23 +26,23 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Model;
+namespace HubSpot\Client\Cms\SourceCode\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Cms\Source-code\ObjectSerializer;
+use \HubSpot\Client\Cms\SourceCode\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * ErrorDetail Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'ErrorDetail';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,12 +60,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'correlation_id' => 'string',
-        'category' => 'string',
+        'in' => 'string',
+        'code' => 'string',
         'sub_category' => 'string',
-        'errors' => '\HubSpot\Client\Cms\Source-code\Model\ErrorDetail[]',
-        'context' => 'array<string,string[]>',
-        'links' => 'array<string,string>'
+        'context' => 'array<string,string[]>'
     ];
 
     /**
@@ -77,12 +75,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'message' => null,
-        'correlation_id' => 'uuid',
-        'category' => null,
+        'in' => null,
+        'code' => null,
         'sub_category' => null,
-        'errors' => null,
-        'context' => null,
-        'links' => null
+        'context' => null
     ];
 
     /**
@@ -113,12 +109,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'message' => 'message',
-        'correlation_id' => 'correlationId',
-        'category' => 'category',
+        'in' => 'in',
+        'code' => 'code',
         'sub_category' => 'subCategory',
-        'errors' => 'errors',
-        'context' => 'context',
-        'links' => 'links'
+        'context' => 'context'
     ];
 
     /**
@@ -128,12 +122,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'message' => 'setMessage',
-        'correlation_id' => 'setCorrelationId',
-        'category' => 'setCategory',
+        'in' => 'setIn',
+        'code' => 'setCode',
         'sub_category' => 'setSubCategory',
-        'errors' => 'setErrors',
-        'context' => 'setContext',
-        'links' => 'setLinks'
+        'context' => 'setContext'
     ];
 
     /**
@@ -143,12 +135,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'message' => 'getMessage',
-        'correlation_id' => 'getCorrelationId',
-        'category' => 'getCategory',
+        'in' => 'getIn',
+        'code' => 'getCode',
         'sub_category' => 'getSubCategory',
-        'errors' => 'getErrors',
-        'context' => 'getContext',
-        'links' => 'getLinks'
+        'context' => 'getContext'
     ];
 
     /**
@@ -209,12 +199,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['message'] = $data['message'] ?? null;
-        $this->container['correlation_id'] = $data['correlation_id'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
+        $this->container['in'] = $data['in'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
         $this->container['sub_category'] = $data['sub_category'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
-        $this->container['links'] = $data['links'] ?? null;
     }
 
     /**
@@ -228,12 +216,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['correlation_id'] === null) {
-            $invalidProperties[] = "'correlation_id' can't be null";
-        }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
         }
         return $invalidProperties;
     }
@@ -275,49 +257,49 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets correlation_id
+     * Gets in
      *
-     * @return string
+     * @return string|null
      */
-    public function getCorrelationId()
+    public function getIn()
     {
-        return $this->container['correlation_id'];
+        return $this->container['in'];
     }
 
     /**
-     * Sets correlation_id
+     * Sets in
      *
-     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
+     * @param string|null $in The name of the field or parameter in which the error was found.
      *
      * @return self
      */
-    public function setCorrelationId($correlation_id)
+    public function setIn($in)
     {
-        $this->container['correlation_id'] = $correlation_id;
+        $this->container['in'] = $in;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets code
      *
-     * @return string
+     * @return string|null
      */
-    public function getCategory()
+    public function getCode()
     {
-        return $this->container['category'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets category
+     * Sets code
      *
-     * @param string $category The error category
+     * @param string|null $code The status code associated with the error detail
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setCode($code)
     {
-        $this->container['category'] = $category;
+        $this->container['code'] = $code;
 
         return $this;
     }
@@ -347,30 +329,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Cms\Source-code\Model\ErrorDetail[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Cms\Source-code\Model\ErrorDetail[]|null $errors further information about the error
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
      * Gets context
      *
      * @return array<string,string[]>|null
@@ -390,30 +348,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContext($context)
     {
         $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return array<string,string>|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        $this->container['links'] = $links;
 
         return $this;
     }

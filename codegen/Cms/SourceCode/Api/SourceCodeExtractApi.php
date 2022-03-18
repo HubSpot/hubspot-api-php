@@ -4,7 +4,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Api;
+namespace HubSpot\Client\Cms\SourceCode\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Cms\Source-code\ApiException;
-use HubSpot\Client\Cms\Source-code\Configuration;
-use HubSpot\Client\Cms\Source-code\HeaderSelector;
-use HubSpot\Client\Cms\Source-code\ObjectSerializer;
+use HubSpot\Client\Cms\SourceCode\ApiException;
+use HubSpot\Client\Cms\SourceCode\Configuration;
+use HubSpot\Client\Cms\SourceCode\HeaderSelector;
+use HubSpot\Client\Cms\SourceCode\ObjectSerializer;
 
 /**
  * SourceCodeExtractApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code
+ * @package  HubSpot\Client\Cms\SourceCode
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -118,11 +118,11 @@ class SourceCodeExtractApi
     /**
      * Operation doAsync
      *
-     * @param  \HubSpot\Client\Cms\Source-code\Model\FileExtractRequest $file_extract_request file_extract_request (required)
+     * @param  \HubSpot\Client\Cms\SourceCode\Model\FileExtractRequest $file_extract_request file_extract_request (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Source-code\Model\TaskLocator|\HubSpot\Client\Cms\Source-code\Model\Error
+     * @return \HubSpot\Client\Cms\SourceCode\Model\TaskLocator|\HubSpot\Client\Cms\SourceCode\Model\Error
      */
     public function doAsync($file_extract_request)
     {
@@ -133,11 +133,11 @@ class SourceCodeExtractApi
     /**
      * Operation doAsyncWithHttpInfo
      *
-     * @param  \HubSpot\Client\Cms\Source-code\Model\FileExtractRequest $file_extract_request (required)
+     * @param  \HubSpot\Client\Cms\SourceCode\Model\FileExtractRequest $file_extract_request (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Source-code\Model\TaskLocator|\HubSpot\Client\Cms\Source-code\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\SourceCode\Model\TaskLocator|\HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function doAsyncWithHttpInfo($file_extract_request)
     {
@@ -180,32 +180,32 @@ class SourceCodeExtractApi
 
             switch($statusCode) {
                 case 202:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\TaskLocator' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\TaskLocator' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\TaskLocator', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\TaskLocator', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Cms\Source-code\Model\TaskLocator';
+            $returnType = '\HubSpot\Client\Cms\SourceCode\Model\TaskLocator';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -223,7 +223,7 @@ class SourceCodeExtractApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\TaskLocator',
+                        '\HubSpot\Client\Cms\SourceCode\Model\TaskLocator',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -231,7 +231,7 @@ class SourceCodeExtractApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\Error',
+                        '\HubSpot\Client\Cms\SourceCode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -244,7 +244,7 @@ class SourceCodeExtractApi
     /**
      * Operation doAsyncAsync
      *
-     * @param  \HubSpot\Client\Cms\Source-code\Model\FileExtractRequest $file_extract_request (required)
+     * @param  \HubSpot\Client\Cms\SourceCode\Model\FileExtractRequest $file_extract_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -262,14 +262,14 @@ class SourceCodeExtractApi
     /**
      * Operation doAsyncAsyncWithHttpInfo
      *
-     * @param  \HubSpot\Client\Cms\Source-code\Model\FileExtractRequest $file_extract_request (required)
+     * @param  \HubSpot\Client\Cms\SourceCode\Model\FileExtractRequest $file_extract_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function doAsyncAsyncWithHttpInfo($file_extract_request)
     {
-        $returnType = '\HubSpot\Client\Cms\Source-code\Model\TaskLocator';
+        $returnType = '\HubSpot\Client\Cms\SourceCode\Model\TaskLocator';
         $request = $this->doAsyncRequest($file_extract_request);
 
         return $this->client
@@ -308,7 +308,7 @@ class SourceCodeExtractApi
     /**
      * Create request for operation 'doAsync'
      *
-     * @param  \HubSpot\Client\Cms\Source-code\Model\FileExtractRequest $file_extract_request (required)
+     * @param  \HubSpot\Client\Cms\SourceCode\Model\FileExtractRequest $file_extract_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -410,9 +410,9 @@ class SourceCodeExtractApi
      *
      * @param  int $task_id task_id (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Source-code\Model\ActionResponse|\HubSpot\Client\Cms\Source-code\Model\Error
+     * @return \HubSpot\Client\Cms\SourceCode\Model\ActionResponse|\HubSpot\Client\Cms\SourceCode\Model\Error
      */
     public function getAsyncStatus($task_id)
     {
@@ -425,9 +425,9 @@ class SourceCodeExtractApi
      *
      * @param  int $task_id (required)
      *
-     * @throws \HubSpot\Client\Cms\Source-code\ApiException on non-2xx response
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Source-code\Model\ActionResponse|\HubSpot\Client\Cms\Source-code\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\SourceCode\Model\ActionResponse|\HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAsyncStatusWithHttpInfo($task_id)
     {
@@ -470,32 +470,32 @@ class SourceCodeExtractApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\ActionResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\ActionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\ActionResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\ActionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Cms\Source-code\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Source-code\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Cms\Source-code\Model\ActionResponse';
+            $returnType = '\HubSpot\Client\Cms\SourceCode\Model\ActionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -513,7 +513,7 @@ class SourceCodeExtractApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\ActionResponse',
+                        '\HubSpot\Client\Cms\SourceCode\Model\ActionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -521,7 +521,7 @@ class SourceCodeExtractApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Source-code\Model\Error',
+                        '\HubSpot\Client\Cms\SourceCode\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -559,7 +559,7 @@ class SourceCodeExtractApi
      */
     public function getAsyncStatusAsyncWithHttpInfo($task_id)
     {
-        $returnType = '\HubSpot\Client\Cms\Source-code\Model\ActionResponse';
+        $returnType = '\HubSpot\Client\Cms\SourceCode\Model\ActionResponse';
         $request = $this->getAsyncStatusRequest($task_id);
 
         return $this->client

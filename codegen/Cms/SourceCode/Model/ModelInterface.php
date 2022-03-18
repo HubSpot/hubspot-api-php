@@ -5,7 +5,7 @@
  * PHP version 7.3
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Source-code\Model
+ * @package  HubSpot\Client\Cms\SourceCode\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,12 +26,12 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Source-code\Model;
+namespace HubSpot\Client\Cms\SourceCode\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package HubSpot\Client\Cms\Source-code\Model
+ * @package HubSpot\Client\Cms\SourceCode\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface
