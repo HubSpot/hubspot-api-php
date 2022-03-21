@@ -20,6 +20,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
+        $this->events()->shouldHaveType(\HubSpot\Discovery\Marketing\Events\Discovery::class);
         $this->transactional()->shouldHaveType(\HubSpot\Discovery\Marketing\Transactional\Discovery::class);
     }
 }
