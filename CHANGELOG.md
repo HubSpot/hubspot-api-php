@@ -5,7 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/5.1.1...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/6.0.0...HEAD)
+
+## [6.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/6.0.0) - 2022-03-21
+
+### Added
+- `cms()->sourceCode()` API client
+- `crm()->objects()->сalls()` API client
+- `crm()->objects()->emails()` API client
+- `crm()->objects()->meetings()` API client
+- `crm()->objects()->notes()` API client
+- `crm()->objects()->tasks()` API client
+- `marketing()->events()` API client
+- `settings()->users()` API client
+
+### Fixed
+ - Fix warnings on php 8.1
+ - Reneme `crm()->contacts()->gdprApi()->postCrmV3ObjectsContactsGdprDelete()` to `crm()->contacts()->gdprApi()->delete()`
+ - Reneme `crm()->objects()->gdprApi()->postCrmV3ObjectsContactsGdprDelete()` to `crm()->objects()->gdprApi()->delete()`
 
 ## [5.1.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.1.1) - 2022-03-10
 
