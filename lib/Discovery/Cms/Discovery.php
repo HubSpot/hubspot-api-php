@@ -11,6 +11,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Hubdb\Discovery        hubdb()
  * @method Performance\Discovery  performance()
  * @method SiteSearch\Discovery   siteSearch()
+ * @method SourceCode\Discovery   sourceCode()
  * @method UrlRedirects\Discovery urlRedirects()
  */
 class Discovery extends DiscoveryBase

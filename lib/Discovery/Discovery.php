@@ -12,6 +12,7 @@ namespace HubSpot\Discovery;
  * @method Events\Discovery                   events()
  * @method Files\Discovery                    files()
  * @method Marketing\Discovery                marketing()
+ * @method Settings\Discovery                 settings()
  * @method Webhooks\Discovery                 webhooks()
  */
 class Discovery extends DiscoveryBase
