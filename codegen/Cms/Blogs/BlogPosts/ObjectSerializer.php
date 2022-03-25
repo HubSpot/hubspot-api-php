@@ -171,10 +171,10 @@ class ObjectSerializer
     {
         if (is_array($object)) {
             return implode(',', $object);
-        } elseif (is_bool($value)) {
-            return $value ? 'true' : 'false';
+        } elseif (is_bool($object)) {
+            return $object ? 'true' : 'false';
         } else {
-            return $value;
+            return $object;
         }
     }
 
