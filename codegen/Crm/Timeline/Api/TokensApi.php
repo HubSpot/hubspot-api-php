@@ -123,15 +123,14 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($event_template_id, $token_name, $app_id, $app_id2)
+    public function archive($event_template_id, $token_name, $app_id)
     {
-        $this->archiveWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2);
+        $this->archiveWithHttpInfo($event_template_id, $token_name, $app_id);
     }
 
     /**
@@ -142,15 +141,14 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2)
+    public function archiveWithHttpInfo($event_template_id, $token_name, $app_id)
     {
-        $request = $this->archiveRequest($event_template_id, $token_name, $app_id, $app_id2);
+        $request = $this->archiveRequest($event_template_id, $token_name, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -212,14 +210,13 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($event_template_id, $token_name, $app_id, $app_id2)
+    public function archiveAsync($event_template_id, $token_name, $app_id)
     {
-        return $this->archiveAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2)
+        return $this->archiveAsyncWithHttpInfo($event_template_id, $token_name, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -235,15 +232,14 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2)
+    public function archiveAsyncWithHttpInfo($event_template_id, $token_name, $app_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($event_template_id, $token_name, $app_id, $app_id2);
+        $request = $this->archiveRequest($event_template_id, $token_name, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -274,12 +270,11 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($event_template_id, $token_name, $app_id, $app_id2)
+    public function archiveRequest($event_template_id, $token_name, $app_id)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
@@ -297,12 +292,6 @@ class TokensApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling archive'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling archive'
             );
         }
 
@@ -336,14 +325,6 @@ class TokensApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -418,16 +399,15 @@ class TokensApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token The new token definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function create($event_template_id, $app_id, $app_id2, $timeline_event_template_token)
+    public function create($event_template_id, $app_id, $timeline_event_template_token)
     {
-        list($response) = $this->createWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_token);
+        list($response) = $this->createWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token);
         return $response;
     }
 
@@ -438,16 +418,15 @@ class TokensApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token The new token definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_token)
+    public function createWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token)
     {
-        $request = $this->createRequest($event_template_id, $app_id, $app_id2, $timeline_event_template_token);
+        $request = $this->createRequest($event_template_id, $app_id, $timeline_event_template_token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -554,15 +533,14 @@ class TokensApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token The new token definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($event_template_id, $app_id, $app_id2, $timeline_event_template_token)
+    public function createAsync($event_template_id, $app_id, $timeline_event_template_token)
     {
-        return $this->createAsyncWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_token)
+        return $this->createAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -577,16 +555,15 @@ class TokensApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token The new token definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_token)
+    public function createAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken';
-        $request = $this->createRequest($event_template_id, $app_id, $app_id2, $timeline_event_template_token);
+        $request = $this->createRequest($event_template_id, $app_id, $timeline_event_template_token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -626,13 +603,12 @@ class TokensApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token The new token definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($event_template_id, $app_id, $app_id2, $timeline_event_template_token)
+    public function createRequest($event_template_id, $app_id, $timeline_event_template_token)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
@@ -644,12 +620,6 @@ class TokensApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling create'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling create'
             );
         }
         // verify the required parameter 'timeline_event_template_token' is set
@@ -681,14 +651,6 @@ class TokensApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -770,16 +732,15 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request The updated token definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function update($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request)
+    public function update($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
     {
-        list($response) = $this->updateWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request);
+        list($response) = $this->updateWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
         return $response;
     }
 
@@ -791,16 +752,15 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request The updated token definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request)
+    public function updateWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
     {
-        $request = $this->updateRequest($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request);
+        $request = $this->updateRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -908,15 +868,14 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request The updated token definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request)
+    public function updateAsync($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
     {
-        return $this->updateAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request)
+        return $this->updateAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -932,16 +891,15 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request The updated token definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request)
+    public function updateAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken';
-        $request = $this->updateRequest($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request);
+        $request = $this->updateRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -982,13 +940,12 @@ class TokensApi
      * @param  string $event_template_id The event template ID. (required)
      * @param  string $token_name The token name. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request The updated token definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($event_template_id, $token_name, $app_id, $app_id2, $timeline_event_template_token_update_request)
+    public function updateRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
@@ -1006,12 +963,6 @@ class TokensApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling update'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling update'
             );
         }
         // verify the required parameter 'timeline_event_template_token_update_request' is set
@@ -1051,14 +1002,6 @@ class TokensApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
