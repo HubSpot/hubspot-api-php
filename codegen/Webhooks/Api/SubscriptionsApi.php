@@ -120,15 +120,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id subscription_id (required)
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($subscription_id, $app_id, $app_id2)
+    public function archive($subscription_id, $app_id)
     {
-        $this->archiveWithHttpInfo($subscription_id, $app_id, $app_id2);
+        $this->archiveWithHttpInfo($subscription_id, $app_id);
     }
 
     /**
@@ -136,15 +135,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($subscription_id, $app_id, $app_id2)
+    public function archiveWithHttpInfo($subscription_id, $app_id)
     {
-        $request = $this->archiveRequest($subscription_id, $app_id, $app_id2);
+        $request = $this->archiveRequest($subscription_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -203,14 +201,13 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($subscription_id, $app_id, $app_id2)
+    public function archiveAsync($subscription_id, $app_id)
     {
-        return $this->archiveAsyncWithHttpInfo($subscription_id, $app_id, $app_id2)
+        return $this->archiveAsyncWithHttpInfo($subscription_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -223,15 +220,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($subscription_id, $app_id, $app_id2)
+    public function archiveAsyncWithHttpInfo($subscription_id, $app_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($subscription_id, $app_id, $app_id2);
+        $request = $this->archiveRequest($subscription_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -261,12 +257,11 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($subscription_id, $app_id, $app_id2)
+    public function archiveRequest($subscription_id, $app_id)
     {
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -278,12 +273,6 @@ class SubscriptionsApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling archive'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling archive'
             );
         }
 
@@ -309,14 +298,6 @@ class SubscriptionsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -388,16 +369,15 @@ class SubscriptionsApi
      * Operation create
      *
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request subscription_create_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function create($app_id, $app_id2, $subscription_create_request)
+    public function create($app_id, $subscription_create_request)
     {
-        list($response) = $this->createWithHttpInfo($app_id, $app_id2, $subscription_create_request);
+        list($response) = $this->createWithHttpInfo($app_id, $subscription_create_request);
         return $response;
     }
 
@@ -405,16 +385,15 @@ class SubscriptionsApi
      * Operation createWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($app_id, $app_id2, $subscription_create_request)
+    public function createWithHttpInfo($app_id, $subscription_create_request)
     {
-        $request = $this->createRequest($app_id, $app_id2, $subscription_create_request);
+        $request = $this->createRequest($app_id, $subscription_create_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -518,15 +497,14 @@ class SubscriptionsApi
      * Operation createAsync
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($app_id, $app_id2, $subscription_create_request)
+    public function createAsync($app_id, $subscription_create_request)
     {
-        return $this->createAsyncWithHttpInfo($app_id, $app_id2, $subscription_create_request)
+        return $this->createAsyncWithHttpInfo($app_id, $subscription_create_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -538,16 +516,15 @@ class SubscriptionsApi
      * Operation createAsyncWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($app_id, $app_id2, $subscription_create_request)
+    public function createAsyncWithHttpInfo($app_id, $subscription_create_request)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->createRequest($app_id, $app_id2, $subscription_create_request);
+        $request = $this->createRequest($app_id, $subscription_create_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -586,24 +563,17 @@ class SubscriptionsApi
      * Create request for operation 'create'
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($app_id, $app_id2, $subscription_create_request)
+    public function createRequest($app_id, $subscription_create_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling create'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling create'
             );
         }
         // verify the required parameter 'subscription_create_request' is set
@@ -627,14 +597,6 @@ class SubscriptionsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -712,15 +674,14 @@ class SubscriptionsApi
      * Operation getAll
      *
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getAll($app_id, $app_id2)
+    public function getAll($app_id)
     {
-        list($response) = $this->getAllWithHttpInfo($app_id, $app_id2);
+        list($response) = $this->getAllWithHttpInfo($app_id);
         return $response;
     }
 
@@ -728,15 +689,14 @@ class SubscriptionsApi
      * Operation getAllWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($app_id, $app_id2)
+    public function getAllWithHttpInfo($app_id)
     {
-        $request = $this->getAllRequest($app_id, $app_id2);
+        $request = $this->getAllRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -840,14 +800,13 @@ class SubscriptionsApi
      * Operation getAllAsync
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($app_id, $app_id2)
+    public function getAllAsync($app_id)
     {
-        return $this->getAllAsyncWithHttpInfo($app_id, $app_id2)
+        return $this->getAllAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -859,15 +818,14 @@ class SubscriptionsApi
      * Operation getAllAsyncWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($app_id, $app_id2)
+    public function getAllAsyncWithHttpInfo($app_id)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse';
-        $request = $this->getAllRequest($app_id, $app_id2);
+        $request = $this->getAllRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -906,23 +864,16 @@ class SubscriptionsApi
      * Create request for operation 'getAll'
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($app_id, $app_id2)
+    public function getAllRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling getAll'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling getAll'
             );
         }
 
@@ -940,14 +891,6 @@ class SubscriptionsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -1020,15 +963,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id subscription_id (required)
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getById($subscription_id, $app_id, $app_id2)
+    public function getById($subscription_id, $app_id)
     {
-        list($response) = $this->getByIdWithHttpInfo($subscription_id, $app_id, $app_id2);
+        list($response) = $this->getByIdWithHttpInfo($subscription_id, $app_id);
         return $response;
     }
 
@@ -1037,15 +979,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($subscription_id, $app_id, $app_id2)
+    public function getByIdWithHttpInfo($subscription_id, $app_id)
     {
-        $request = $this->getByIdRequest($subscription_id, $app_id, $app_id2);
+        $request = $this->getByIdRequest($subscription_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1150,14 +1091,13 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($subscription_id, $app_id, $app_id2)
+    public function getByIdAsync($subscription_id, $app_id)
     {
-        return $this->getByIdAsyncWithHttpInfo($subscription_id, $app_id, $app_id2)
+        return $this->getByIdAsyncWithHttpInfo($subscription_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1170,15 +1110,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($subscription_id, $app_id, $app_id2)
+    public function getByIdAsyncWithHttpInfo($subscription_id, $app_id)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->getByIdRequest($subscription_id, $app_id, $app_id2);
+        $request = $this->getByIdRequest($subscription_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1218,12 +1157,11 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($subscription_id, $app_id, $app_id2)
+    public function getByIdRequest($subscription_id, $app_id)
     {
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -1235,12 +1173,6 @@ class SubscriptionsApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling getById'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling getById'
             );
         }
 
@@ -1266,14 +1198,6 @@ class SubscriptionsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -1346,16 +1270,15 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id subscription_id (required)
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request subscription_patch_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function update($subscription_id, $app_id, $app_id2, $subscription_patch_request)
+    public function update($subscription_id, $app_id, $subscription_patch_request)
     {
-        list($response) = $this->updateWithHttpInfo($subscription_id, $app_id, $app_id2, $subscription_patch_request);
+        list($response) = $this->updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request);
         return $response;
     }
 
@@ -1364,16 +1287,15 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($subscription_id, $app_id, $app_id2, $subscription_patch_request)
+    public function updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
     {
-        $request = $this->updateRequest($subscription_id, $app_id, $app_id2, $subscription_patch_request);
+        $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1478,15 +1400,14 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($subscription_id, $app_id, $app_id2, $subscription_patch_request)
+    public function updateAsync($subscription_id, $app_id, $subscription_patch_request)
     {
-        return $this->updateAsyncWithHttpInfo($subscription_id, $app_id, $app_id2, $subscription_patch_request)
+        return $this->updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1499,16 +1420,15 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($subscription_id, $app_id, $app_id2, $subscription_patch_request)
+    public function updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->updateRequest($subscription_id, $app_id, $app_id2, $subscription_patch_request);
+        $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1548,13 +1468,12 @@ class SubscriptionsApi
      *
      * @param  int $subscription_id (required)
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($subscription_id, $app_id, $app_id2, $subscription_patch_request)
+    public function updateRequest($subscription_id, $app_id, $subscription_patch_request)
     {
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -1566,12 +1485,6 @@ class SubscriptionsApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling update'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling update'
             );
         }
         // verify the required parameter 'subscription_patch_request' is set
@@ -1603,14 +1516,6 @@ class SubscriptionsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -1688,16 +1593,15 @@ class SubscriptionsApi
      * Operation updateBatch
      *
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request batch_input_subscription_batch_update_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function updateBatch($app_id, $app_id2, $batch_input_subscription_batch_update_request)
+    public function updateBatch($app_id, $batch_input_subscription_batch_update_request)
     {
-        list($response) = $this->updateBatchWithHttpInfo($app_id, $app_id2, $batch_input_subscription_batch_update_request);
+        list($response) = $this->updateBatchWithHttpInfo($app_id, $batch_input_subscription_batch_update_request);
         return $response;
     }
 
@@ -1705,16 +1609,15 @@ class SubscriptionsApi
      * Operation updateBatchWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse|\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponseWithErrors|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateBatchWithHttpInfo($app_id, $app_id2, $batch_input_subscription_batch_update_request)
+    public function updateBatchWithHttpInfo($app_id, $batch_input_subscription_batch_update_request)
     {
-        $request = $this->updateBatchRequest($app_id, $app_id2, $batch_input_subscription_batch_update_request);
+        $request = $this->updateBatchRequest($app_id, $batch_input_subscription_batch_update_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1838,15 +1741,14 @@ class SubscriptionsApi
      * Operation updateBatchAsync
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBatchAsync($app_id, $app_id2, $batch_input_subscription_batch_update_request)
+    public function updateBatchAsync($app_id, $batch_input_subscription_batch_update_request)
     {
-        return $this->updateBatchAsyncWithHttpInfo($app_id, $app_id2, $batch_input_subscription_batch_update_request)
+        return $this->updateBatchAsyncWithHttpInfo($app_id, $batch_input_subscription_batch_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1858,16 +1760,15 @@ class SubscriptionsApi
      * Operation updateBatchAsyncWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBatchAsyncWithHttpInfo($app_id, $app_id2, $batch_input_subscription_batch_update_request)
+    public function updateBatchAsyncWithHttpInfo($app_id, $batch_input_subscription_batch_update_request)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\BatchResponseSubscriptionResponse';
-        $request = $this->updateBatchRequest($app_id, $app_id2, $batch_input_subscription_batch_update_request);
+        $request = $this->updateBatchRequest($app_id, $batch_input_subscription_batch_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1906,24 +1807,17 @@ class SubscriptionsApi
      * Create request for operation 'updateBatch'
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateBatchRequest($app_id, $app_id2, $batch_input_subscription_batch_update_request)
+    public function updateBatchRequest($app_id, $batch_input_subscription_batch_update_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling updateBatch'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling updateBatch'
             );
         }
         // verify the required parameter 'batch_input_subscription_batch_update_request' is set
@@ -1947,14 +1841,6 @@ class SubscriptionsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }

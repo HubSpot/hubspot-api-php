@@ -119,30 +119,28 @@ class SettingsApi
      * Operation clear
      *
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function clear($app_id, $app_id2)
+    public function clear($app_id)
     {
-        $this->clearWithHttpInfo($app_id, $app_id2);
+        $this->clearWithHttpInfo($app_id);
     }
 
     /**
      * Operation clearWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function clearWithHttpInfo($app_id, $app_id2)
+    public function clearWithHttpInfo($app_id)
     {
-        $request = $this->clearRequest($app_id, $app_id2);
+        $request = $this->clearRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -200,14 +198,13 @@ class SettingsApi
      * Operation clearAsync
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function clearAsync($app_id, $app_id2)
+    public function clearAsync($app_id)
     {
-        return $this->clearAsyncWithHttpInfo($app_id, $app_id2)
+        return $this->clearAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -219,15 +216,14 @@ class SettingsApi
      * Operation clearAsyncWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function clearAsyncWithHttpInfo($app_id, $app_id2)
+    public function clearAsyncWithHttpInfo($app_id)
     {
         $returnType = '';
-        $request = $this->clearRequest($app_id, $app_id2);
+        $request = $this->clearRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -256,23 +252,16 @@ class SettingsApi
      * Create request for operation 'clear'
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function clearRequest($app_id, $app_id2)
+    public function clearRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling clear'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling clear'
             );
         }
 
@@ -290,14 +279,6 @@ class SettingsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -369,16 +350,15 @@ class SettingsApi
      * Operation configure
      *
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request settings_change_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function configure($app_id, $app_id2, $settings_change_request)
+    public function configure($app_id, $settings_change_request)
     {
-        list($response) = $this->configureWithHttpInfo($app_id, $app_id2, $settings_change_request);
+        list($response) = $this->configureWithHttpInfo($app_id, $settings_change_request);
         return $response;
     }
 
@@ -386,16 +366,15 @@ class SettingsApi
      * Operation configureWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function configureWithHttpInfo($app_id, $app_id2, $settings_change_request)
+    public function configureWithHttpInfo($app_id, $settings_change_request)
     {
-        $request = $this->configureRequest($app_id, $app_id2, $settings_change_request);
+        $request = $this->configureRequest($app_id, $settings_change_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -499,15 +478,14 @@ class SettingsApi
      * Operation configureAsync
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureAsync($app_id, $app_id2, $settings_change_request)
+    public function configureAsync($app_id, $settings_change_request)
     {
-        return $this->configureAsyncWithHttpInfo($app_id, $app_id2, $settings_change_request)
+        return $this->configureAsyncWithHttpInfo($app_id, $settings_change_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -519,16 +497,15 @@ class SettingsApi
      * Operation configureAsyncWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureAsyncWithHttpInfo($app_id, $app_id2, $settings_change_request)
+    public function configureAsyncWithHttpInfo($app_id, $settings_change_request)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SettingsResponse';
-        $request = $this->configureRequest($app_id, $app_id2, $settings_change_request);
+        $request = $this->configureRequest($app_id, $settings_change_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -567,24 +544,17 @@ class SettingsApi
      * Create request for operation 'configure'
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function configureRequest($app_id, $app_id2, $settings_change_request)
+    public function configureRequest($app_id, $settings_change_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling configure'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling configure'
             );
         }
         // verify the required parameter 'settings_change_request' is set
@@ -608,14 +578,6 @@ class SettingsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -693,15 +655,14 @@ class SettingsApi
      * Operation getAll
      *
      * @param  int $app_id app_id (required)
-     * @param  int $app_id2 app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getAll($app_id, $app_id2)
+    public function getAll($app_id)
     {
-        list($response) = $this->getAllWithHttpInfo($app_id, $app_id2);
+        list($response) = $this->getAllWithHttpInfo($app_id);
         return $response;
     }
 
@@ -709,15 +670,14 @@ class SettingsApi
      * Operation getAllWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($app_id, $app_id2)
+    public function getAllWithHttpInfo($app_id)
     {
-        $request = $this->getAllRequest($app_id, $app_id2);
+        $request = $this->getAllRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -821,14 +781,13 @@ class SettingsApi
      * Operation getAllAsync
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($app_id, $app_id2)
+    public function getAllAsync($app_id)
     {
-        return $this->getAllAsyncWithHttpInfo($app_id, $app_id2)
+        return $this->getAllAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -840,15 +799,14 @@ class SettingsApi
      * Operation getAllAsyncWithHttpInfo
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($app_id, $app_id2)
+    public function getAllAsyncWithHttpInfo($app_id)
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SettingsResponse';
-        $request = $this->getAllRequest($app_id, $app_id2);
+        $request = $this->getAllRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -887,23 +845,16 @@ class SettingsApi
      * Create request for operation 'getAll'
      *
      * @param  int $app_id (required)
-     * @param  int $app_id2 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($app_id, $app_id2)
+    public function getAllRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling getAll'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling getAll'
             );
         }
 
@@ -921,14 +872,6 @@ class SettingsApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }

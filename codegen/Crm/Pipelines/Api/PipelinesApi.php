@@ -118,7 +118,7 @@ class PipelinesApi
     /**
      * Operation archive
      *
-     * Archive a pipeline
+     * Delete a pipeline
      *
      * @param  string $object_type object_type (required)
      * @param  string $pipeline_id pipeline_id (required)
@@ -136,7 +136,7 @@ class PipelinesApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Archive a pipeline
+     * Delete a pipeline
      *
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
@@ -205,7 +205,7 @@ class PipelinesApi
     /**
      * Operation archiveAsync
      *
-     * Archive a pipeline
+     * Delete a pipeline
      *
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
@@ -227,7 +227,7 @@ class PipelinesApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Archive a pipeline
+     * Delete a pipeline
      *
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)

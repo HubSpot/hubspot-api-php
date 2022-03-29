@@ -122,15 +122,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($event_template_id, $app_id, $app_id2)
+    public function archive($event_template_id, $app_id)
     {
-        $this->archiveWithHttpInfo($event_template_id, $app_id, $app_id2);
+        $this->archiveWithHttpInfo($event_template_id, $app_id);
     }
 
     /**
@@ -140,15 +139,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($event_template_id, $app_id, $app_id2)
+    public function archiveWithHttpInfo($event_template_id, $app_id)
     {
-        $request = $this->archiveRequest($event_template_id, $app_id, $app_id2);
+        $request = $this->archiveRequest($event_template_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -209,14 +207,13 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($event_template_id, $app_id, $app_id2)
+    public function archiveAsync($event_template_id, $app_id)
     {
-        return $this->archiveAsyncWithHttpInfo($event_template_id, $app_id, $app_id2)
+        return $this->archiveAsyncWithHttpInfo($event_template_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -231,15 +228,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($event_template_id, $app_id, $app_id2)
+    public function archiveAsyncWithHttpInfo($event_template_id, $app_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($event_template_id, $app_id, $app_id2);
+        $request = $this->archiveRequest($event_template_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -269,12 +265,11 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($event_template_id, $app_id, $app_id2)
+    public function archiveRequest($event_template_id, $app_id)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
@@ -286,12 +281,6 @@ class TemplatesApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling archive'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling archive'
             );
         }
 
@@ -317,14 +306,6 @@ class TemplatesApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -398,16 +379,15 @@ class TemplatesApi
      * Create an event template for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request The new event template definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function create($app_id, $app_id2, $timeline_event_template_create_request)
+    public function create($app_id, $timeline_event_template_create_request)
     {
-        list($response) = $this->createWithHttpInfo($app_id, $app_id2, $timeline_event_template_create_request);
+        list($response) = $this->createWithHttpInfo($app_id, $timeline_event_template_create_request);
         return $response;
     }
 
@@ -417,16 +397,15 @@ class TemplatesApi
      * Create an event template for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request The new event template definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($app_id, $app_id2, $timeline_event_template_create_request)
+    public function createWithHttpInfo($app_id, $timeline_event_template_create_request)
     {
-        $request = $this->createRequest($app_id, $app_id2, $timeline_event_template_create_request);
+        $request = $this->createRequest($app_id, $timeline_event_template_create_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -532,15 +511,14 @@ class TemplatesApi
      * Create an event template for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request The new event template definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($app_id, $app_id2, $timeline_event_template_create_request)
+    public function createAsync($app_id, $timeline_event_template_create_request)
     {
-        return $this->createAsyncWithHttpInfo($app_id, $app_id2, $timeline_event_template_create_request)
+        return $this->createAsyncWithHttpInfo($app_id, $timeline_event_template_create_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -554,16 +532,15 @@ class TemplatesApi
      * Create an event template for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request The new event template definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($app_id, $app_id2, $timeline_event_template_create_request)
+    public function createAsyncWithHttpInfo($app_id, $timeline_event_template_create_request)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate';
-        $request = $this->createRequest($app_id, $app_id2, $timeline_event_template_create_request);
+        $request = $this->createRequest($app_id, $timeline_event_template_create_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -602,24 +579,17 @@ class TemplatesApi
      * Create request for operation 'create'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request The new event template definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($app_id, $app_id2, $timeline_event_template_create_request)
+    public function createRequest($app_id, $timeline_event_template_create_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling create'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling create'
             );
         }
         // verify the required parameter 'timeline_event_template_create_request' is set
@@ -643,14 +613,6 @@ class TemplatesApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -730,15 +692,14 @@ class TemplatesApi
      * List all event templates for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\CollectionResponseTimelineEventTemplateNoPaging|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function getAll($app_id, $app_id2)
+    public function getAll($app_id)
     {
-        list($response) = $this->getAllWithHttpInfo($app_id, $app_id2);
+        list($response) = $this->getAllWithHttpInfo($app_id);
         return $response;
     }
 
@@ -748,15 +709,14 @@ class TemplatesApi
      * List all event templates for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\CollectionResponseTimelineEventTemplateNoPaging|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($app_id, $app_id2)
+    public function getAllWithHttpInfo($app_id)
     {
-        $request = $this->getAllRequest($app_id, $app_id2);
+        $request = $this->getAllRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -862,14 +822,13 @@ class TemplatesApi
      * List all event templates for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($app_id, $app_id2)
+    public function getAllAsync($app_id)
     {
-        return $this->getAllAsyncWithHttpInfo($app_id, $app_id2)
+        return $this->getAllAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -883,15 +842,14 @@ class TemplatesApi
      * List all event templates for your app
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($app_id, $app_id2)
+    public function getAllAsyncWithHttpInfo($app_id)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\CollectionResponseTimelineEventTemplateNoPaging';
-        $request = $this->getAllRequest($app_id, $app_id2);
+        $request = $this->getAllRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -930,23 +888,16 @@ class TemplatesApi
      * Create request for operation 'getAll'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($app_id, $app_id2)
+    public function getAllRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling getAll'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling getAll'
             );
         }
 
@@ -964,14 +915,6 @@ class TemplatesApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -1046,15 +989,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function getById($event_template_id, $app_id, $app_id2)
+    public function getById($event_template_id, $app_id)
     {
-        list($response) = $this->getByIdWithHttpInfo($event_template_id, $app_id, $app_id2);
+        list($response) = $this->getByIdWithHttpInfo($event_template_id, $app_id);
         return $response;
     }
 
@@ -1065,15 +1007,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($event_template_id, $app_id, $app_id2)
+    public function getByIdWithHttpInfo($event_template_id, $app_id)
     {
-        $request = $this->getByIdRequest($event_template_id, $app_id, $app_id2);
+        $request = $this->getByIdRequest($event_template_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1180,14 +1121,13 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($event_template_id, $app_id, $app_id2)
+    public function getByIdAsync($event_template_id, $app_id)
     {
-        return $this->getByIdAsyncWithHttpInfo($event_template_id, $app_id, $app_id2)
+        return $this->getByIdAsyncWithHttpInfo($event_template_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1202,15 +1142,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($event_template_id, $app_id, $app_id2)
+    public function getByIdAsyncWithHttpInfo($event_template_id, $app_id)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate';
-        $request = $this->getByIdRequest($event_template_id, $app_id, $app_id2);
+        $request = $this->getByIdRequest($event_template_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1250,12 +1189,11 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($event_template_id, $app_id, $app_id2)
+    public function getByIdRequest($event_template_id, $app_id)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
@@ -1267,12 +1205,6 @@ class TemplatesApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling getById'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling getById'
             );
         }
 
@@ -1298,14 +1230,6 @@ class TemplatesApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
@@ -1380,16 +1304,15 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request The updated event template definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error
      */
-    public function update($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request)
+    public function update($event_template_id, $app_id, $timeline_event_template_update_request)
     {
-        list($response) = $this->updateWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request);
+        list($response) = $this->updateWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request);
         return $response;
     }
 
@@ -1400,16 +1323,15 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request The updated event template definition. (required)
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request)
+    public function updateWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request)
     {
-        $request = $this->updateRequest($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request);
+        $request = $this->updateRequest($event_template_id, $app_id, $timeline_event_template_update_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1516,15 +1438,14 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request The updated event template definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request)
+    public function updateAsync($event_template_id, $app_id, $timeline_event_template_update_request)
     {
-        return $this->updateAsyncWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request)
+        return $this->updateAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1539,16 +1460,15 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request The updated event template definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request)
+    public function updateAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request)
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate';
-        $request = $this->updateRequest($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request);
+        $request = $this->updateRequest($event_template_id, $app_id, $timeline_event_template_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1588,13 +1508,12 @@ class TemplatesApi
      *
      * @param  string $event_template_id The event template ID. (required)
      * @param  int $app_id The ID of the target app. (required)
-     * @param  int $app_id2 The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request The updated event template definition. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($event_template_id, $app_id, $app_id2, $timeline_event_template_update_request)
+    public function updateRequest($event_template_id, $app_id, $timeline_event_template_update_request)
     {
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
@@ -1606,12 +1525,6 @@ class TemplatesApi
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $app_id when calling update'
-            );
-        }
-        // verify the required parameter 'app_id2' is set
-        if ($app_id2 === null || (is_array($app_id2) && count($app_id2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id2 when calling update'
             );
         }
         // verify the required parameter 'timeline_event_template_update_request' is set
@@ -1643,14 +1556,6 @@ class TemplatesApi
             $resourcePath = str_replace(
                 '{' . 'appId' . '}',
                 ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($app_id2 !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id2),
                 $resourcePath
             );
         }
