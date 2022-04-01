@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Filter
  *
@@ -47,32 +48,34 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'Filter';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'value' => 'string',
+        'values' => 'array',
         'property_name' => 'string',
         'operator' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'value' => null,
+        'values' => null,
         'property_name' => null,
         'operator' => null
     ];
@@ -105,6 +108,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'value' => 'value',
+        'values' => 'values',
         'property_name' => 'propertyName',
         'operator' => 'operator'
     ];
@@ -116,6 +120,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'value' => 'setValue',
+        'values' => 'setValues',
         'property_name' => 'setPropertyName',
         'operator' => 'setOperator'
     ];
@@ -127,6 +132,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'value' => 'getValue',
+        'values' => 'getValues',
         'property_name' => 'getPropertyName',
         'operator' => 'getOperator'
     ];
@@ -226,6 +232,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['value'] = $data['value'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;
         $this->container['operator'] = $data['operator'] ?? null;
     }
@@ -252,6 +259,13 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['operator'],
                 implode("', '", $allowedValues)
             );
+        }
+        if (
+            !empty($this->container['operator']) &&
+            in_array($this->container['operator'], [self::OPERATOR_IN, self::OPERATOR_NOT_IN]) &&
+            (empty($this->container['values']) || !is_array($this->container['values']))
+        ) {
+            $invalidProperties[] = "invalid value for 'operator', must be of type array";
         }
 
         return $invalidProperties;
@@ -289,6 +303,30 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     *
+     * @return string|null
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string|null $value value
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
 
         return $this;
     }
@@ -414,7 +452,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -440,5 +478,3 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
