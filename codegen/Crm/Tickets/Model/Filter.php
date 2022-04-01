@@ -61,7 +61,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'value' => 'string',
-        'value' => 'array',
+        'values' => 'array',
         'property_name' => 'string',
         'operator' => 'string'
     ];
