@@ -63,7 +63,7 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'object' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
         'user' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser',
         'id' => 'string',
-        'updated' => '\DateTime'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -77,7 +77,7 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'object' => null,
         'user' => null,
         'id' => null,
-        'updated' => 'date-time'
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -110,7 +110,7 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'object' => 'object',
         'user' => 'user',
         'id' => 'id',
-        'updated' => 'updated'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -122,7 +122,7 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'object' => 'setObject',
         'user' => 'setUser',
         'id' => 'setId',
-        'updated' => 'setUpdated'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -134,7 +134,7 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'object' => 'getObject',
         'user' => 'getUser',
         'id' => 'getId',
-        'updated' => 'getUpdated'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -197,7 +197,7 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['object'] = $data['object'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -218,8 +218,8 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['updated'] === null) {
-            $invalidProperties[] = "'updated' can't be null";
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -309,25 +309,25 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated
+     * Gets updated_at
      *
      * @return \DateTime
      */
-    public function getUpdated()
+    public function getUpdatedAt()
     {
-        return $this->container['updated'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets updated
+     * Sets updated_at
      *
-     * @param \DateTime $updated The timestamp (ISO8601 format) when this version was updated.
+     * @param \DateTime $updated_at updated_at
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['updated'] = $updated;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

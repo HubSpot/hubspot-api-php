@@ -70,9 +70,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'string',
         'tag_ids' => 'int[]',
         'archived_in_dashboard' => 'bool',
-        'publish_date' => '\DateTime',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'created' => '\DateTime',
+        'updated' => '\DateTime',
+        'publish_date' => '\DateTime'
     ];
 
     /**
@@ -94,9 +94,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => null,
         'tag_ids' => 'int64',
         'archived_in_dashboard' => null,
-        'publish_date' => 'date-time',
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'created' => 'date-time',
+        'updated' => 'date-time',
+        'publish_date' => 'date-time'
     ];
 
     /**
@@ -137,9 +137,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'campaign',
         'tag_ids' => 'tagIds',
         'archived_in_dashboard' => 'archivedInDashboard',
-        'publish_date' => 'publishDate',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'created' => 'created',
+        'updated' => 'updated',
+        'publish_date' => 'publishDate'
     ];
 
     /**
@@ -159,9 +159,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'setCampaign',
         'tag_ids' => 'setTagIds',
         'archived_in_dashboard' => 'setArchivedInDashboard',
-        'publish_date' => 'setPublishDate',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'created' => 'setCreated',
+        'updated' => 'setUpdated',
+        'publish_date' => 'setPublishDate'
     ];
 
     /**
@@ -181,9 +181,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'getCampaign',
         'tag_ids' => 'getTagIds',
         'archived_in_dashboard' => 'getArchivedInDashboard',
-        'publish_date' => 'getPublishDate',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'created' => 'getCreated',
+        'updated' => 'getUpdated',
+        'publish_date' => 'getPublishDate'
     ];
 
     /**
@@ -254,9 +254,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['campaign'] = $data['campaign'] ?? null;
         $this->container['tag_ids'] = $data['tag_ids'] ?? null;
         $this->container['archived_in_dashboard'] = $data['archived_in_dashboard'] ?? null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
         $this->container['publish_date'] = $data['publish_date'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -298,14 +298,14 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['archived_in_dashboard'] === null) {
             $invalidProperties[] = "'archived_in_dashboard' can't be null";
         }
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
+        }
+        if ($this->container['updated'] === null) {
+            $invalidProperties[] = "'updated' can't be null";
+        }
         if ($this->container['publish_date'] === null) {
             $invalidProperties[] = "'publish_date' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -587,6 +587,54 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime $updated updated
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
      * Gets publish_date
      *
      * @return \DateTime
@@ -606,54 +654,6 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPublishDate($publish_date)
     {
         $this->container['publish_date'] = $publish_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

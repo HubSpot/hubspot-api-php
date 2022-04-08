@@ -616,6 +616,284 @@ class BlogPostsApi
     }
 
     /**
+     * Operation attachToLangGroup
+     *
+     * Attach a Blog Post to a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
+     */
+    public function attachToLangGroup($attach_to_lang_primary_request_v_next)
+    {
+        list($response) = $this->attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next);
+        return $response;
+    }
+
+    /**
+     * Operation attachToLangGroupWithHttpInfo
+     *
+     * Attach a Blog Post to a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next)
+    {
+        $request = $this->attachToLangGroupRequest($attach_to_lang_primary_request_v_next);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                default:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation attachToLangGroupAsync
+     *
+     * Attach a Blog Post to a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function attachToLangGroupAsync($attach_to_lang_primary_request_v_next)
+    {
+        return $this->attachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation attachToLangGroupAsyncWithHttpInfo
+     *
+     * Attach a Blog Post to a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function attachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next)
+    {
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
+        $request = $this->attachToLangGroupRequest($attach_to_lang_primary_request_v_next);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'attachToLangGroup'
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function attachToLangGroupRequest($attach_to_lang_primary_request_v_next)
+    {
+        // verify the required parameter 'attach_to_lang_primary_request_v_next' is set
+        if ($attach_to_lang_primary_request_v_next === null || (is_array($attach_to_lang_primary_request_v_next) && count($attach_to_lang_primary_request_v_next) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $attach_to_lang_primary_request_v_next when calling attachToLangGroup'
+            );
+        }
+
+        $resourcePath = '/cms/v3/blogs/posts/multi-language/attach-to-lang-group';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($attach_to_lang_primary_request_v_next)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($attach_to_lang_primary_request_v_next));
+            } else {
+                $httpBody = $attach_to_lang_primary_request_v_next;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation callClone
      *
      * Clone a Blog Post
@@ -1474,6 +1752,582 @@ class BlogPostsApi
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_blog_post));
             } else {
                 $httpBody = $batch_input_blog_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createLangVariation
+     *
+     * Create a new language variation
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
+     */
+    public function createLangVariation($blog_post_language_clone_request_v_next)
+    {
+        list($response) = $this->createLangVariationWithHttpInfo($blog_post_language_clone_request_v_next);
+        return $response;
+    }
+
+    /**
+     * Operation createLangVariationWithHttpInfo
+     *
+     * Create a new language variation
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createLangVariationWithHttpInfo($blog_post_language_clone_request_v_next)
+    {
+        $request = $this->createLangVariationRequest($blog_post_language_clone_request_v_next);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createLangVariationAsync
+     *
+     * Create a new language variation
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLangVariationAsync($blog_post_language_clone_request_v_next)
+    {
+        return $this->createLangVariationAsyncWithHttpInfo($blog_post_language_clone_request_v_next)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createLangVariationAsyncWithHttpInfo
+     *
+     * Create a new language variation
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLangVariationAsyncWithHttpInfo($blog_post_language_clone_request_v_next)
+    {
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost';
+        $request = $this->createLangVariationRequest($blog_post_language_clone_request_v_next);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createLangVariation'
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createLangVariationRequest($blog_post_language_clone_request_v_next)
+    {
+        // verify the required parameter 'blog_post_language_clone_request_v_next' is set
+        if ($blog_post_language_clone_request_v_next === null || (is_array($blog_post_language_clone_request_v_next) && count($blog_post_language_clone_request_v_next) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $blog_post_language_clone_request_v_next when calling createLangVariation'
+            );
+        }
+
+        $resourcePath = '/cms/v3/blogs/posts/multi-language/create-language-variation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($blog_post_language_clone_request_v_next)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($blog_post_language_clone_request_v_next));
+            } else {
+                $httpBody = $blog_post_language_clone_request_v_next;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation detachFromLangGroup
+     *
+     * Detach a Blog Post from a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
+     */
+    public function detachFromLangGroup($detach_from_lang_group_request_v_next)
+    {
+        list($response) = $this->detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next);
+        return $response;
+    }
+
+    /**
+     * Operation detachFromLangGroupWithHttpInfo
+     *
+     * Detach a Blog Post from a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next)
+    {
+        $request = $this->detachFromLangGroupRequest($detach_from_lang_group_request_v_next);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                default:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation detachFromLangGroupAsync
+     *
+     * Detach a Blog Post from a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function detachFromLangGroupAsync($detach_from_lang_group_request_v_next)
+    {
+        return $this->detachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation detachFromLangGroupAsyncWithHttpInfo
+     *
+     * Detach a Blog Post from a multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function detachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next)
+    {
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
+        $request = $this->detachFromLangGroupRequest($detach_from_lang_group_request_v_next);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'detachFromLangGroup'
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function detachFromLangGroupRequest($detach_from_lang_group_request_v_next)
+    {
+        // verify the required parameter 'detach_from_lang_group_request_v_next' is set
+        if ($detach_from_lang_group_request_v_next === null || (is_array($detach_from_lang_group_request_v_next) && count($detach_from_lang_group_request_v_next) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $detach_from_lang_group_request_v_next when calling detachFromLangGroup'
+            );
+        }
+
+        $resourcePath = '/cms/v3/blogs/posts/multi-language/detach-from-lang-group';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($detach_from_lang_group_request_v_next)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($detach_from_lang_group_request_v_next));
+            } else {
+                $httpBody = $detach_from_lang_group_request_v_next;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3254,1138 +4108,6 @@ class BlogPostsApi
     }
 
     /**
-     * Operation postCmsV3BlogsPostsMultiLanguageAttachToLangGroup
-     *
-     * Attach a Blog Post to a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function postCmsV3BlogsPostsMultiLanguageAttachToLangGroup($attach_to_lang_primary_request_v_next)
-    {
-        list($response) = $this->postCmsV3BlogsPostsMultiLanguageAttachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next);
-        return $response;
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageAttachToLangGroupWithHttpInfo
-     *
-     * Attach a Blog Post to a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postCmsV3BlogsPostsMultiLanguageAttachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next)
-    {
-        $request = $this->postCmsV3BlogsPostsMultiLanguageAttachToLangGroupRequest($attach_to_lang_primary_request_v_next);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageAttachToLangGroupAsync
-     *
-     * Attach a Blog Post to a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageAttachToLangGroupAsync($attach_to_lang_primary_request_v_next)
-    {
-        return $this->postCmsV3BlogsPostsMultiLanguageAttachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageAttachToLangGroupAsyncWithHttpInfo
-     *
-     * Attach a Blog Post to a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageAttachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
-        $request = $this->postCmsV3BlogsPostsMultiLanguageAttachToLangGroupRequest($attach_to_lang_primary_request_v_next);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postCmsV3BlogsPostsMultiLanguageAttachToLangGroup'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postCmsV3BlogsPostsMultiLanguageAttachToLangGroupRequest($attach_to_lang_primary_request_v_next)
-    {
-        // verify the required parameter 'attach_to_lang_primary_request_v_next' is set
-        if ($attach_to_lang_primary_request_v_next === null || (is_array($attach_to_lang_primary_request_v_next) && count($attach_to_lang_primary_request_v_next) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $attach_to_lang_primary_request_v_next when calling postCmsV3BlogsPostsMultiLanguageAttachToLangGroup'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/posts/multi-language/attach-to-lang-group';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($attach_to_lang_primary_request_v_next)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($attach_to_lang_primary_request_v_next));
-            } else {
-                $httpBody = $attach_to_lang_primary_request_v_next;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageCreateLanguageVariation
-     *
-     * Create a new language variation
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next The JSON representation of the ContentLanguageCloneRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function postCmsV3BlogsPostsMultiLanguageCreateLanguageVariation($content_language_clone_request_v_next)
-    {
-        list($response) = $this->postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationWithHttpInfo($content_language_clone_request_v_next);
-        return $response;
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationWithHttpInfo
-     *
-     * Create a new language variation
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next The JSON representation of the ContentLanguageCloneRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationWithHttpInfo($content_language_clone_request_v_next)
-    {
-        $request = $this->postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationRequest($content_language_clone_request_v_next);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationAsync
-     *
-     * Create a new language variation
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next The JSON representation of the ContentLanguageCloneRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationAsync($content_language_clone_request_v_next)
-    {
-        return $this->postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationAsyncWithHttpInfo($content_language_clone_request_v_next)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationAsyncWithHttpInfo
-     *
-     * Create a new language variation
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next The JSON representation of the ContentLanguageCloneRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationAsyncWithHttpInfo($content_language_clone_request_v_next)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost';
-        $request = $this->postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationRequest($content_language_clone_request_v_next);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postCmsV3BlogsPostsMultiLanguageCreateLanguageVariation'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next The JSON representation of the ContentLanguageCloneRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postCmsV3BlogsPostsMultiLanguageCreateLanguageVariationRequest($content_language_clone_request_v_next)
-    {
-        // verify the required parameter 'content_language_clone_request_v_next' is set
-        if ($content_language_clone_request_v_next === null || (is_array($content_language_clone_request_v_next) && count($content_language_clone_request_v_next) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $content_language_clone_request_v_next when calling postCmsV3BlogsPostsMultiLanguageCreateLanguageVariation'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/posts/multi-language/create-language-variation';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($content_language_clone_request_v_next)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($content_language_clone_request_v_next));
-            } else {
-                $httpBody = $content_language_clone_request_v_next;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageDetachFromLangGroup
-     *
-     * Detach a Blog Post from a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function postCmsV3BlogsPostsMultiLanguageDetachFromLangGroup($detach_from_lang_group_request_v_next)
-    {
-        list($response) = $this->postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next);
-        return $response;
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupWithHttpInfo
-     *
-     * Detach a Blog Post from a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next)
-    {
-        $request = $this->postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupRequest($detach_from_lang_group_request_v_next);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupAsync
-     *
-     * Detach a Blog Post from a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupAsync($detach_from_lang_group_request_v_next)
-    {
-        return $this->postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupAsyncWithHttpInfo
-     *
-     * Detach a Blog Post from a multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
-        $request = $this->postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupRequest($detach_from_lang_group_request_v_next);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postCmsV3BlogsPostsMultiLanguageDetachFromLangGroup'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postCmsV3BlogsPostsMultiLanguageDetachFromLangGroupRequest($detach_from_lang_group_request_v_next)
-    {
-        // verify the required parameter 'detach_from_lang_group_request_v_next' is set
-        if ($detach_from_lang_group_request_v_next === null || (is_array($detach_from_lang_group_request_v_next) && count($detach_from_lang_group_request_v_next) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $detach_from_lang_group_request_v_next when calling postCmsV3BlogsPostsMultiLanguageDetachFromLangGroup'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/posts/multi-language/detach-from-lang-group';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($detach_from_lang_group_request_v_next)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($detach_from_lang_group_request_v_next));
-            } else {
-                $httpBody = $detach_from_lang_group_request_v_next;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageUpdateLanguages
-     *
-     * Update languages of multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function postCmsV3BlogsPostsMultiLanguageUpdateLanguages($update_languages_request_v_next)
-    {
-        list($response) = $this->postCmsV3BlogsPostsMultiLanguageUpdateLanguagesWithHttpInfo($update_languages_request_v_next);
-        return $response;
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageUpdateLanguagesWithHttpInfo
-     *
-     * Update languages of multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postCmsV3BlogsPostsMultiLanguageUpdateLanguagesWithHttpInfo($update_languages_request_v_next)
-    {
-        $request = $this->postCmsV3BlogsPostsMultiLanguageUpdateLanguagesRequest($update_languages_request_v_next);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageUpdateLanguagesAsync
-     *
-     * Update languages of multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageUpdateLanguagesAsync($update_languages_request_v_next)
-    {
-        return $this->postCmsV3BlogsPostsMultiLanguageUpdateLanguagesAsyncWithHttpInfo($update_languages_request_v_next)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postCmsV3BlogsPostsMultiLanguageUpdateLanguagesAsyncWithHttpInfo
-     *
-     * Update languages of multi-language group
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postCmsV3BlogsPostsMultiLanguageUpdateLanguagesAsyncWithHttpInfo($update_languages_request_v_next)
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
-        $request = $this->postCmsV3BlogsPostsMultiLanguageUpdateLanguagesRequest($update_languages_request_v_next);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postCmsV3BlogsPostsMultiLanguageUpdateLanguages'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postCmsV3BlogsPostsMultiLanguageUpdateLanguagesRequest($update_languages_request_v_next)
-    {
-        // verify the required parameter 'update_languages_request_v_next' is set
-        if ($update_languages_request_v_next === null || (is_array($update_languages_request_v_next) && count($update_languages_request_v_next) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $update_languages_request_v_next when calling postCmsV3BlogsPostsMultiLanguageUpdateLanguages'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/posts/multi-language/update-languages';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($update_languages_request_v_next)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_languages_request_v_next));
-            } else {
-                $httpBody = $update_languages_request_v_next;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation pushLive
      *
      * Push Blog Post draft edits live
@@ -4622,247 +4344,6 @@ class BlogPostsApi
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation putCmsV3BlogsPostsMultiLanguageSetNewLangPrimary
-     *
-     * Set a new primary language
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function putCmsV3BlogsPostsMultiLanguageSetNewLangPrimary($set_new_language_primary_request_v_next)
-    {
-        $this->putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next);
-    }
-
-    /**
-     * Operation putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryWithHttpInfo
-     *
-     * Set a new primary language
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next)
-    {
-        $request = $this->putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryRequest($set_new_language_primary_request_v_next);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryAsync
-     *
-     * Set a new primary language
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryAsync($set_new_language_primary_request_v_next)
-    {
-        return $this->putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryAsyncWithHttpInfo
-     *
-     * Set a new primary language
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next)
-    {
-        $returnType = '';
-        $request = $this->putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryRequest($set_new_language_primary_request_v_next);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'putCmsV3BlogsPostsMultiLanguageSetNewLangPrimary'
-     *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function putCmsV3BlogsPostsMultiLanguageSetNewLangPrimaryRequest($set_new_language_primary_request_v_next)
-    {
-        // verify the required parameter 'set_new_language_primary_request_v_next' is set
-        if ($set_new_language_primary_request_v_next === null || (is_array($set_new_language_primary_request_v_next) && count($set_new_language_primary_request_v_next) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $set_new_language_primary_request_v_next when calling putCmsV3BlogsPostsMultiLanguageSetNewLangPrimary'
-            );
-        }
-
-        $resourcePath = '/cms/v3/blogs/posts/multi-language/set-new-lang-primary';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($set_new_language_primary_request_v_next)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($set_new_language_primary_request_v_next));
-            } else {
-                $httpBody = $set_new_language_primary_request_v_next;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -6326,6 +5807,247 @@ class BlogPostsApi
     }
 
     /**
+     * Operation setLangPrimary
+     *
+     * Set a new primary language
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function setLangPrimary($set_new_language_primary_request_v_next)
+    {
+        $this->setLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next);
+    }
+
+    /**
+     * Operation setLangPrimaryWithHttpInfo
+     *
+     * Set a new primary language
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next)
+    {
+        $request = $this->setLangPrimaryRequest($set_new_language_primary_request_v_next);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setLangPrimaryAsync
+     *
+     * Set a new primary language
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setLangPrimaryAsync($set_new_language_primary_request_v_next)
+    {
+        return $this->setLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setLangPrimaryAsyncWithHttpInfo
+     *
+     * Set a new primary language
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next)
+    {
+        $returnType = '';
+        $request = $this->setLangPrimaryRequest($set_new_language_primary_request_v_next);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setLangPrimary'
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setLangPrimaryRequest($set_new_language_primary_request_v_next)
+    {
+        // verify the required parameter 'set_new_language_primary_request_v_next' is set
+        if ($set_new_language_primary_request_v_next === null || (is_array($set_new_language_primary_request_v_next) && count($set_new_language_primary_request_v_next) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $set_new_language_primary_request_v_next when calling setLangPrimary'
+            );
+        }
+
+        $resourcePath = '/cms/v3/blogs/posts/multi-language/set-new-lang-primary';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($set_new_language_primary_request_v_next)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($set_new_language_primary_request_v_next));
+            } else {
+                $httpBody = $set_new_language_primary_request_v_next;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation update
      *
      * Update a Blog Post
@@ -7303,6 +7025,284 @@ class BlogPostsApi
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateLangs
+     *
+     * Update languages of multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
+     */
+    public function updateLangs($update_languages_request_v_next)
+    {
+        list($response) = $this->updateLangsWithHttpInfo($update_languages_request_v_next);
+        return $response;
+    }
+
+    /**
+     * Operation updateLangsWithHttpInfo
+     *
+     * Update languages of multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateLangsWithHttpInfo($update_languages_request_v_next)
+    {
+        $request = $this->updateLangsRequest($update_languages_request_v_next);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                default:
+                    if ('\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateLangsAsync
+     *
+     * Update languages of multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLangsAsync($update_languages_request_v_next)
+    {
+        return $this->updateLangsAsyncWithHttpInfo($update_languages_request_v_next)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateLangsAsyncWithHttpInfo
+     *
+     * Update languages of multi-language group
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLangsAsyncWithHttpInfo($update_languages_request_v_next)
+    {
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
+        $request = $this->updateLangsRequest($update_languages_request_v_next);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateLangs'
+     *
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateLangsRequest($update_languages_request_v_next)
+    {
+        // verify the required parameter 'update_languages_request_v_next' is set
+        if ($update_languages_request_v_next === null || (is_array($update_languages_request_v_next) && count($update_languages_request_v_next) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_languages_request_v_next when calling updateLangs'
+            );
+        }
+
+        $resourcePath = '/cms/v3/blogs/posts/multi-language/update-languages';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($update_languages_request_v_next)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($update_languages_request_v_next));
+            } else {
+                $httpBody = $update_languages_request_v_next;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

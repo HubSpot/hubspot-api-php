@@ -1,6 +1,6 @@
 <?php
 /**
- * ContentLanguageCloneRequestVNext
+ * BlogPostLanguageCloneRequestVNext
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \HubSpot\Client\Cms\Blogs\BlogPosts\ObjectSerializer;
 
 /**
- * ContentLanguageCloneRequestVNext Class Doc Comment
+ * BlogPostLanguageCloneRequestVNext Class Doc Comment
  *
  * @category Class
- * @description Request body object for creating new language variant content.
+ * @description Request body object for creating new blog post language variant.
  * @package  HubSpot\Client\Cms\Blogs\BlogPosts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \HubSpot\Client\Cms\Blogs\BlogPosts\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializable
+class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ContentLanguageCloneRequestVNext';
+    protected static $openAPIModelName = 'BlogPostLanguageCloneRequestVNext';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,9 +61,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'language' => 'string',
-        'primary_language' => 'string',
-        'content_group_id' => 'int'
+        'language' => 'string'
     ];
 
     /**
@@ -75,9 +73,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'language' => null,
-        'primary_language' => null,
-        'content_group_id' => 'int64'
+        'language' => null
     ];
 
     /**
@@ -108,9 +104,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'language' => 'language',
-        'primary_language' => 'primaryLanguage',
-        'content_group_id' => 'contentGroupId'
+        'language' => 'language'
     ];
 
     /**
@@ -120,9 +114,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'id' => 'setId',
-        'language' => 'setLanguage',
-        'primary_language' => 'setPrimaryLanguage',
-        'content_group_id' => 'setContentGroupId'
+        'language' => 'setLanguage'
     ];
 
     /**
@@ -132,9 +124,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'id' => 'getId',
-        'language' => 'getLanguage',
-        'primary_language' => 'getPrimaryLanguage',
-        'content_group_id' => 'getContentGroupId'
+        'language' => 'getLanguage'
     ];
 
     /**
@@ -196,8 +186,6 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
-        $this->container['primary_language'] = $data['primary_language'] ?? null;
-        $this->container['content_group_id'] = $data['content_group_id'] ?? null;
     }
 
     /**
@@ -240,7 +228,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     /**
      * Sets id
      *
-     * @param string $id ID of content to clone.
+     * @param string $id ID of blog post to clone.
      *
      * @return self
      */
@@ -271,54 +259,6 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     public function setLanguage($language)
     {
         $this->container['language'] = $language;
-
-        return $this;
-    }
-
-    /**
-     * Gets primary_language
-     *
-     * @return string|null
-     */
-    public function getPrimaryLanguage()
-    {
-        return $this->container['primary_language'];
-    }
-
-    /**
-     * Sets primary_language
-     *
-     * @param string|null $primary_language Language of primary content to clone.
-     *
-     * @return self
-     */
-    public function setPrimaryLanguage($primary_language)
-    {
-        $this->container['primary_language'] = $primary_language;
-
-        return $this;
-    }
-
-    /**
-     * Gets content_group_id
-     *
-     * @return int|null
-     */
-    public function getContentGroupId()
-    {
-        return $this->container['content_group_id'];
-    }
-
-    /**
-     * Sets content_group_id
-     *
-     * @param int|null $content_group_id content_group_id
-     *
-     * @return self
-     */
-    public function setContentGroupId($content_group_id)
-    {
-        $this->container['content_group_id'] = $content_group_id;
 
         return $this;
     }

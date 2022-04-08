@@ -679,6 +679,7 @@ class UpdateLanguagesRequestVNext implements ModelInterface, ArrayAccess, \JsonS
     const LANGUAGES_NL = 'nl';
     const LANGUAGES_NL_AW = 'nl-aw';
     const LANGUAGES_NL_BE = 'nl-be';
+    const LANGUAGES_NL_CH = 'nl-ch';
     const LANGUAGES_NL_BQ = 'nl-bq';
     const LANGUAGES_NL_CW = 'nl-cw';
     const LANGUAGES_NL_LU = 'nl-lu';
@@ -1401,6 +1402,7 @@ class UpdateLanguagesRequestVNext implements ModelInterface, ArrayAccess, \JsonS
             self::LANGUAGES_NL,
             self::LANGUAGES_NL_AW,
             self::LANGUAGES_NL_BE,
+            self::LANGUAGES_NL_CH,
             self::LANGUAGES_NL_BQ,
             self::LANGUAGES_NL_CW,
             self::LANGUAGES_NL_LU,
