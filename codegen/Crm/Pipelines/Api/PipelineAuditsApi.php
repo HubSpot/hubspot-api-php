@@ -116,7 +116,7 @@ class PipelineAuditsApi
     }
 
     /**
-     * Operation getCrmV3PipelinesObjectTypePipelineIdAudit
+     * Operation getAudit
      *
      * Return an audit of all changes to the pipeline
      *
@@ -127,14 +127,14 @@ class PipelineAuditsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getCrmV3PipelinesObjectTypePipelineIdAudit($object_type, $pipeline_id)
+    public function getAudit($object_type, $pipeline_id)
     {
-        list($response) = $this->getCrmV3PipelinesObjectTypePipelineIdAuditWithHttpInfo($object_type, $pipeline_id);
+        list($response) = $this->getAuditWithHttpInfo($object_type, $pipeline_id);
         return $response;
     }
 
     /**
-     * Operation getCrmV3PipelinesObjectTypePipelineIdAuditWithHttpInfo
+     * Operation getAuditWithHttpInfo
      *
      * Return an audit of all changes to the pipeline
      *
@@ -145,9 +145,9 @@ class PipelineAuditsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCrmV3PipelinesObjectTypePipelineIdAuditWithHttpInfo($object_type, $pipeline_id)
+    public function getAuditWithHttpInfo($object_type, $pipeline_id)
     {
-        $request = $this->getCrmV3PipelinesObjectTypePipelineIdAuditRequest($object_type, $pipeline_id);
+        $request = $this->getAuditRequest($object_type, $pipeline_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -248,7 +248,7 @@ class PipelineAuditsApi
     }
 
     /**
-     * Operation getCrmV3PipelinesObjectTypePipelineIdAuditAsync
+     * Operation getAuditAsync
      *
      * Return an audit of all changes to the pipeline
      *
@@ -258,9 +258,9 @@ class PipelineAuditsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PipelinesObjectTypePipelineIdAuditAsync($object_type, $pipeline_id)
+    public function getAuditAsync($object_type, $pipeline_id)
     {
-        return $this->getCrmV3PipelinesObjectTypePipelineIdAuditAsyncWithHttpInfo($object_type, $pipeline_id)
+        return $this->getAuditAsyncWithHttpInfo($object_type, $pipeline_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -269,7 +269,7 @@ class PipelineAuditsApi
     }
 
     /**
-     * Operation getCrmV3PipelinesObjectTypePipelineIdAuditAsyncWithHttpInfo
+     * Operation getAuditAsyncWithHttpInfo
      *
      * Return an audit of all changes to the pipeline
      *
@@ -279,10 +279,10 @@ class PipelineAuditsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCrmV3PipelinesObjectTypePipelineIdAuditAsyncWithHttpInfo($object_type, $pipeline_id)
+    public function getAuditAsyncWithHttpInfo($object_type, $pipeline_id)
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging';
-        $request = $this->getCrmV3PipelinesObjectTypePipelineIdAuditRequest($object_type, $pipeline_id);
+        $request = $this->getAuditRequest($object_type, $pipeline_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -318,7 +318,7 @@ class PipelineAuditsApi
     }
 
     /**
-     * Create request for operation 'getCrmV3PipelinesObjectTypePipelineIdAudit'
+     * Create request for operation 'getAudit'
      *
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
@@ -326,18 +326,18 @@ class PipelineAuditsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCrmV3PipelinesObjectTypePipelineIdAuditRequest($object_type, $pipeline_id)
+    public function getAuditRequest($object_type, $pipeline_id)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getCrmV3PipelinesObjectTypePipelineIdAudit'
+                'Missing the required parameter $object_type when calling getAudit'
             );
         }
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getCrmV3PipelinesObjectTypePipelineIdAudit'
+                'Missing the required parameter $pipeline_id when calling getAudit'
             );
         }
 

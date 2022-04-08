@@ -74,9 +74,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         'facebook' => 'string',
         'linkedin' => 'string',
         'avatar' => 'string',
-        'deleted_at' => '\DateTime',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'created' => '\DateTime',
+        'updated' => '\DateTime',
+        'deleted_at' => '\DateTime'
     ];
 
     /**
@@ -101,9 +101,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         'facebook' => null,
         'linkedin' => null,
         'avatar' => null,
-        'deleted_at' => 'date-time',
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'created' => 'date-time',
+        'updated' => 'date-time',
+        'deleted_at' => 'date-time'
     ];
 
     /**
@@ -147,9 +147,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         'facebook' => 'facebook',
         'linkedin' => 'linkedin',
         'avatar' => 'avatar',
-        'deleted_at' => 'deletedAt',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'created' => 'created',
+        'updated' => 'updated',
+        'deleted_at' => 'deletedAt'
     ];
 
     /**
@@ -172,9 +172,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         'facebook' => 'setFacebook',
         'linkedin' => 'setLinkedin',
         'avatar' => 'setAvatar',
-        'deleted_at' => 'setDeletedAt',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'created' => 'setCreated',
+        'updated' => 'setUpdated',
+        'deleted_at' => 'setDeletedAt'
     ];
 
     /**
@@ -197,9 +197,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         'facebook' => 'getFacebook',
         'linkedin' => 'getLinkedin',
         'avatar' => 'getAvatar',
-        'deleted_at' => 'getDeletedAt',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'created' => 'getCreated',
+        'updated' => 'getUpdated',
+        'deleted_at' => 'getDeletedAt'
     ];
 
     /**
@@ -754,6 +754,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     const LANGUAGE_NL = 'nl';
     const LANGUAGE_NL_AW = 'nl-aw';
     const LANGUAGE_NL_BE = 'nl-be';
+    const LANGUAGE_NL_CH = 'nl-ch';
     const LANGUAGE_NL_BQ = 'nl-bq';
     const LANGUAGE_NL_CW = 'nl-cw';
     const LANGUAGE_NL_LU = 'nl-lu';
@@ -1476,6 +1477,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_NL,
             self::LANGUAGE_NL_AW,
             self::LANGUAGE_NL_BE,
+            self::LANGUAGE_NL_CH,
             self::LANGUAGE_NL_BQ,
             self::LANGUAGE_NL_CW,
             self::LANGUAGE_NL_LU,
@@ -1710,9 +1712,9 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['facebook'] = $data['facebook'] ?? null;
         $this->container['linkedin'] = $data['linkedin'] ?? null;
         $this->container['avatar'] = $data['avatar'] ?? null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -1775,14 +1777,14 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['avatar'] === null) {
             $invalidProperties[] = "'avatar' can't be null";
         }
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
+        }
+        if ($this->container['updated'] === null) {
+            $invalidProperties[] = "'updated' can't be null";
+        }
         if ($this->container['deleted_at'] === null) {
             $invalidProperties[] = "'deleted_at' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -2146,6 +2148,54 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime $updated updated
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
      * Gets deleted_at
      *
      * @return \DateTime
@@ -2165,54 +2215,6 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeletedAt($deleted_at)
     {
         $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at The timestamp (ISO8601 format) when this Blog Author was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at The timestamp (ISO8601 format) when this Blog Author was last updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

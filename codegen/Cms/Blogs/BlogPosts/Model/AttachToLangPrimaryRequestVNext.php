@@ -689,6 +689,7 @@ class AttachToLangPrimaryRequestVNext implements ModelInterface, ArrayAccess, \J
     const LANGUAGE_NL = 'nl';
     const LANGUAGE_NL_AW = 'nl-aw';
     const LANGUAGE_NL_BE = 'nl-be';
+    const LANGUAGE_NL_CH = 'nl-ch';
     const LANGUAGE_NL_BQ = 'nl-bq';
     const LANGUAGE_NL_CW = 'nl-cw';
     const LANGUAGE_NL_LU = 'nl-lu';
@@ -1402,6 +1403,7 @@ class AttachToLangPrimaryRequestVNext implements ModelInterface, ArrayAccess, \J
     const PRIMARY_LANGUAGE_NL = 'nl';
     const PRIMARY_LANGUAGE_NL_AW = 'nl-aw';
     const PRIMARY_LANGUAGE_NL_BE = 'nl-be';
+    const PRIMARY_LANGUAGE_NL_CH = 'nl-ch';
     const PRIMARY_LANGUAGE_NL_BQ = 'nl-bq';
     const PRIMARY_LANGUAGE_NL_CW = 'nl-cw';
     const PRIMARY_LANGUAGE_NL_LU = 'nl-lu';
@@ -2124,6 +2126,7 @@ class AttachToLangPrimaryRequestVNext implements ModelInterface, ArrayAccess, \J
             self::LANGUAGE_NL,
             self::LANGUAGE_NL_AW,
             self::LANGUAGE_NL_BE,
+            self::LANGUAGE_NL_CH,
             self::LANGUAGE_NL_BQ,
             self::LANGUAGE_NL_CW,
             self::LANGUAGE_NL_LU,
@@ -2848,6 +2851,7 @@ class AttachToLangPrimaryRequestVNext implements ModelInterface, ArrayAccess, \J
             self::PRIMARY_LANGUAGE_NL,
             self::PRIMARY_LANGUAGE_NL_AW,
             self::PRIMARY_LANGUAGE_NL_BE,
+            self::PRIMARY_LANGUAGE_NL_CH,
             self::PRIMARY_LANGUAGE_NL_BQ,
             self::PRIMARY_LANGUAGE_NL_CW,
             self::PRIMARY_LANGUAGE_NL_LU,
