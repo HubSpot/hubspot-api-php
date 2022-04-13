@@ -59,8 +59,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'http_status' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'http_status' => 'string'
     ];
 
     /**
@@ -71,8 +71,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'http_status' => null,
-        'name' => null
+        'name' => null,
+        'http_status' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'http_status' => 'httpStatus',
-        'name' => 'name'
+        'name' => 'name',
+        'http_status' => 'httpStatus'
     ];
 
     /**
@@ -112,8 +112,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'http_status' => 'setHttpStatus',
-        'name' => 'setName'
+        'name' => 'setName',
+        'http_status' => 'setHttpStatus'
     ];
 
     /**
@@ -122,8 +122,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'http_status' => 'getHttpStatus',
-        'name' => 'getName'
+        'name' => 'getName',
+        'http_status' => 'getHttpStatus'
     ];
 
     /**
@@ -318,8 +318,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['http_status'] = $data['http_status'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['http_status'] = $data['http_status'] ?? null;
     }
 
     /**
@@ -331,6 +331,9 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         if ($this->container['http_status'] === null) {
             $invalidProperties[] = "'http_status' can't be null";
         }
@@ -343,9 +346,6 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -360,6 +360,30 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
 
     /**
      * Gets http_status
@@ -391,30 +415,6 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['http_status'] = $http_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
 
         return $this;
     }

@@ -60,6 +60,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'value' => 'string',
+        'values' => 'string[]',
         'property_name' => 'string',
         'operator' => 'string'
     ];
@@ -73,6 +74,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'value' => null,
+        'values' => null,
         'property_name' => null,
         'operator' => null
     ];
@@ -105,6 +107,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'value' => 'value',
+        'values' => 'values',
         'property_name' => 'propertyName',
         'operator' => 'operator'
     ];
@@ -116,6 +119,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'value' => 'setValue',
+        'values' => 'setValues',
         'property_name' => 'setPropertyName',
         'operator' => 'setOperator'
     ];
@@ -127,6 +131,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'value' => 'getValue',
+        'values' => 'getValues',
         'property_name' => 'getPropertyName',
         'operator' => 'getOperator'
     ];
@@ -226,6 +231,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['value'] = $data['value'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;
         $this->container['operator'] = $data['operator'] ?? null;
     }
@@ -289,6 +295,30 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     *
+     * @return string[]|null
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param string[]|null $values values
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
 
         return $this;
     }
