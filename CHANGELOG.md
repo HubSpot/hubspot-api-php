@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/8.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/8.1.0...HEAD)
+
+## [8.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.1.0) - 2022-04-14
+
+ ### Added
+
+- `crm()->companies()->publicObjectApi`
+- `crm()->contacts()->publicObjectApi`
+- `crm()->deals()->publicObjectApi`
+- `crm()->lineItems()->publicObjectApi`
+- `crm()->objects()->calls()->publicObjectApi`
+- `crm()->objects()->publicObjectApi`
+- `crm()->objects()->emails()->publicObjectApi`
+- `crm()->objects()->meetings()->publicObjectApi`
+- `crm()->objects()->notes()->publicObjectApi`
+- `crm()->objects()->tasks()->publicObjectApi`
+- `crm()->products()->publicObjectApi`
+- `crm()->tickets()->publicObjectApi`
+- add field "values" to all CRM objects `Filter`
 
 ## [8.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.0.0) - 2022-04-08
 
