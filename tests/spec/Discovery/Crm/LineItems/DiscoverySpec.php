@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Crm\LineItems\Api\AssociationsApi;
 use HubSpot\Client\Crm\LineItems\Api\BasicApi;
 use HubSpot\Client\Crm\LineItems\Api\BatchApi;
+use HubSpot\Client\Crm\LineItems\Api\PublicObjectApi;
 use HubSpot\Client\Crm\LineItems\Api\SearchApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
@@ -27,6 +28,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
         $this->associationsApi()->shouldHaveType(AssociationsApi::class);
+        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }
 }

@@ -11,12 +11,12 @@ use HubSpot\Client\Crm\Contacts\Api\SearchApi;
 use HubSpot\Discovery\Crm\ObjectDiscovery;
 
 /**
- * @method AssociationsApi  associationsApi()
- * @method BasicApi         basicApi()
- * @method BatchApi         batchApi()
- * @method GDPRApi          gdprApi()
- * @method PublicObjectApi  publicObjectApi()
- * @method SearchApi        searchApi()
+ * @method AssociationsApi associationsApi()
+ * @method BasicApi        basicApi()
+ * @method BatchApi        batchApi()
+ * @method GDPRApi         gdprApi()
+ * @method PublicObjectApi publicObjectApi()
+ * @method SearchApi       searchApi()
  */
 class Discovery extends ObjectDiscovery
 {

@@ -10,11 +10,11 @@ use HubSpot\Client\Crm\Products\Api\SearchApi;
 use HubSpot\Discovery\Crm\ObjectDiscovery;
 
 /**
- * @method AssociationsApi  associationsApi()
- * @method BasicApi         basicApi()
- * @method BatchApi         batchApi()
- * @method PublicObjectApi  publicObjectApi()
- * @method SearchApi        searchApi()
+ * @method AssociationsApi associationsApi()
+ * @method BasicApi        basicApi()
+ * @method BatchApi        batchApi()
+ * @method PublicObjectApi publicObjectApi()
+ * @method SearchApi       searchApi()
  */
 class Discovery extends ObjectDiscovery
 {
