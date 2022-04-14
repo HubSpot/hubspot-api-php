@@ -7,6 +7,7 @@ use HubSpot\Client\Crm\Contacts\Api\AssociationsApi;
 use HubSpot\Client\Crm\Contacts\Api\BasicApi;
 use HubSpot\Client\Crm\Contacts\Api\BatchApi;
 use HubSpot\Client\Crm\Contacts\Api\GDPRApi;
+use HubSpot\Client\Crm\Contacts\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Contacts\Api\SearchApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
@@ -29,6 +30,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->batchApi()->shouldHaveType(BatchApi::class);
         $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->gdprApi()->shouldHaveType(GDPRApi::class);
+        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }
 }

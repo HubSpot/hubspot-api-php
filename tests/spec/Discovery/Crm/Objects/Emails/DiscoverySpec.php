@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Objects\Emails\Api\AssociationsApi;
 use HubSpot\Client\Crm\Objects\Emails\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Emails\Api\BatchApi;
+use HubSpot\Client\Crm\Objects\Emails\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Objects\Emails\Api\SearchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Objects\Emails\Discovery;
@@ -28,6 +29,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
+        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }
 }

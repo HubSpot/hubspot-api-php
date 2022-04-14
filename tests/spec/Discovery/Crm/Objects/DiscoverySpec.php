@@ -7,6 +7,7 @@ use HubSpot\Client\Crm\Objects\Api\AssociationsApi;
 use HubSpot\Client\Crm\Objects\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Api\BatchApi;
 use HubSpot\Client\Crm\Objects\Api\GDPRApi;
+use HubSpot\Client\Crm\Objects\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Objects\Api\SearchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Objects\Calls\Discovery as CallsDiscovery;
@@ -41,6 +42,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->feedbackSubmissions()->shouldHaveType(FeedbackSubmissionsDiscovery::class);
         $this->meetings()->shouldHaveType(MeetingsDiscovery::class);
         $this->notes()->shouldHaveType(NotesDiscovery::class);
+        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
         $this->tasks()->shouldHaveType(TasksDiscovery::class);
     }
