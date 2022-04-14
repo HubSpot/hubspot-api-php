@@ -6,6 +6,7 @@ use HubSpot\Client\Crm\Objects\Api\AssociationsApi;
 use HubSpot\Client\Crm\Objects\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Api\BatchApi;
 use HubSpot\Client\Crm\Objects\Api\GDPRApi;
+use HubSpot\Client\Crm\Objects\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Objects\Api\SearchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
@@ -19,6 +20,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method FeedbackSubmissions\Discovery feedbackSubmissions()
  * @method Meetings\Discovery            meetings()
  * @method Notes\Discovery               notes()
+ * @method PublicObjectApi               publicObjectApi()
  * @method SearchApi                     searchApi()
  * @method Tasks\Discovery               tasks()
  */
