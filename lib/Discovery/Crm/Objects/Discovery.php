@@ -8,6 +8,7 @@ use HubSpot\Client\Crm\Objects\Api\BatchApi;
 use HubSpot\Client\Crm\Objects\Api\GDPRApi;
 use HubSpot\Client\Crm\Objects\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Objects\Api\SearchApi;
+use HubSpot\Client\Crm\Objects\Configuration;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
@@ -28,6 +29,8 @@ class Discovery extends DiscoveryBase
 {
     public function gdprApi()
     {
-        return new GDPRApi();
+        $config = $this->config->convertToClientConfig(Configuration::class);
+
+        return new GDPRApi($this->client, $config);
     }
 }
