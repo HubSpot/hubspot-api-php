@@ -7,6 +7,7 @@ use HubSpot\Client\Crm\Quotes\Api\AssociationsApi;
 use HubSpot\Client\Crm\Quotes\Api\BasicApi;
 use HubSpot\Client\Crm\Quotes\Api\BatchApi;
 use HubSpot\Client\Crm\Quotes\Api\SearchApi;
+use HubSpot\Client\Crm\Quotes\Api\PublicObjectApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -28,5 +29,6 @@ class DiscoverySpec extends ObjectBehavior
         $this->batchApi()->shouldHaveType(BatchApi::class);
         $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
+        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
     }
 }

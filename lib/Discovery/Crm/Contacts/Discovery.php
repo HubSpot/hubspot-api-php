@@ -24,7 +24,8 @@ class Discovery extends ObjectDiscovery
     public function gdprApi()
     {
         $config = $this->config->convertToClientConfig(Configuration::class);
-
+        $config::setDefaultConfiguration($config);
+        
         return new GDPRApi($this->client, $config);
     }
 }
