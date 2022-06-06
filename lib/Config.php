@@ -38,6 +38,8 @@ class Config
         $clientConfig->setAccessToken($this->accessToken);
 
         $clientConfig->setUserAgent($this->userAgent);
+        $clientConfig->setBooleanFormatForQueryString($clientConfig::BOOLEAN_FORMAT_STRING);
+        $clientConfig::setDefaultConfiguration($clientConfig);
 
         return $clientConfig;
     }
