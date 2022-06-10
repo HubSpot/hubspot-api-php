@@ -116,7 +116,573 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch
+     * Operation archive
+     *
+     * Archive a batch of feedback submissions by ID
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function archive($batch_input_simple_public_object_id)
+    {
+        $this->archiveWithHttpInfo($batch_input_simple_public_object_id);
+    }
+
+    /**
+     * Operation archiveWithHttpInfo
+     *
+     * Archive a batch of feedback submissions by ID
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function archiveWithHttpInfo($batch_input_simple_public_object_id)
+    {
+        $request = $this->archiveRequest($batch_input_simple_public_object_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation archiveAsync
+     *
+     * Archive a batch of feedback submissions by ID
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsync($batch_input_simple_public_object_id)
+    {
+        return $this->archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation archiveAsyncWithHttpInfo
+     *
+     * Archive a batch of feedback submissions by ID
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
+    {
+        $returnType = '';
+        $request = $this->archiveRequest($batch_input_simple_public_object_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'archive'
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function archiveRequest($batch_input_simple_public_object_id)
+    {
+        // verify the required parameter 'batch_input_simple_public_object_id' is set
+        if ($batch_input_simple_public_object_id === null || (is_array($batch_input_simple_public_object_id) && count($batch_input_simple_public_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_simple_public_object_id when calling archive'
+            );
+        }
+
+        $resourcePath = '/crm/v3/objects/feedback_submissions/batch/archive';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($batch_input_simple_public_object_id)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_id));
+            } else {
+                $httpBody = $batch_input_simple_public_object_id;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * Create a batch of feedback submissions
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
+     */
+    public function create($batch_input_simple_public_object_input)
+    {
+        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * Create a batch of feedback submissions
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($batch_input_simple_public_object_input)
+    {
+        $request = $this->createRequest($batch_input_simple_public_object_input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 207:
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * Create a batch of feedback submissions
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($batch_input_simple_public_object_input)
+    {
+        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * Create a batch of feedback submissions
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input)
+    {
+        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject';
+        $request = $this->createRequest($batch_input_simple_public_object_input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRequest($batch_input_simple_public_object_input)
+    {
+        // verify the required parameter 'batch_input_simple_public_object_input' is set
+        if ($batch_input_simple_public_object_input === null || (is_array($batch_input_simple_public_object_input) && count($batch_input_simple_public_object_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_simple_public_object_input when calling create'
+            );
+        }
+
+        $resourcePath = '/crm/v3/objects/feedback_submissions/batch/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($batch_input_simple_public_object_input)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_input));
+            } else {
+                $httpBody = $batch_input_simple_public_object_input;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation read
      *
      * Read a batch of feedback submissions by internal ID, or unique property values
      *
@@ -127,14 +693,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
-    public function readBatch($batch_read_input_simple_public_object_id, $archived = false)
+    public function read($batch_read_input_simple_public_object_id, $archived = false)
     {
-        list($response) = $this->readBatchWithHttpInfo($batch_read_input_simple_public_object_id, $archived);
+        list($response) = $this->readWithHttpInfo($batch_read_input_simple_public_object_id, $archived);
         return $response;
     }
 
     /**
-     * Operation readBatchWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * Read a batch of feedback submissions by internal ID, or unique property values
      *
@@ -145,9 +711,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readBatchWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
+    public function readWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
     {
-        $request = $this->readBatchRequest($batch_read_input_simple_public_object_id, $archived);
+        $request = $this->readRequest($batch_read_input_simple_public_object_id, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -280,7 +846,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsync
+     * Operation readAsync
      *
      * Read a batch of feedback submissions by internal ID, or unique property values
      *
@@ -290,9 +856,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsync($batch_read_input_simple_public_object_id, $archived = false)
+    public function readAsync($batch_read_input_simple_public_object_id, $archived = false)
     {
-        return $this->readBatchAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived)
+        return $this->readAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -301,7 +867,7 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * Read a batch of feedback submissions by internal ID, or unique property values
      *
@@ -311,10 +877,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
+    public function readAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject';
-        $request = $this->readBatchRequest($batch_read_input_simple_public_object_id, $archived);
+        $request = $this->readRequest($batch_read_input_simple_public_object_id, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -353,7 +919,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'readBatch'
+     * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -361,12 +927,12 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function readBatchRequest($batch_read_input_simple_public_object_id, $archived = false)
+    public function readRequest($batch_read_input_simple_public_object_id, $archived = false)
     {
         // verify the required parameter 'batch_read_input_simple_public_object_id' is set
         if ($batch_read_input_simple_public_object_id === null || (is_array($batch_read_input_simple_public_object_id) && count($batch_read_input_simple_public_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_read_input_simple_public_object_id when calling readBatch'
+                'Missing the required parameter $batch_read_input_simple_public_object_id when calling read'
             );
         }
 
@@ -459,573 +1025,7 @@ class BatchApi
     }
 
     /**
-     * Operation submissionsBatchArchive
-     *
-     * Archive a batch of feedback submissions by ID
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function submissionsBatchArchive($batch_input_simple_public_object_id)
-    {
-        $this->submissionsBatchArchiveWithHttpInfo($batch_input_simple_public_object_id);
-    }
-
-    /**
-     * Operation submissionsBatchArchiveWithHttpInfo
-     *
-     * Archive a batch of feedback submissions by ID
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function submissionsBatchArchiveWithHttpInfo($batch_input_simple_public_object_id)
-    {
-        $request = $this->submissionsBatchArchiveRequest($batch_input_simple_public_object_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation submissionsBatchArchiveAsync
-     *
-     * Archive a batch of feedback submissions by ID
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsBatchArchiveAsync($batch_input_simple_public_object_id)
-    {
-        return $this->submissionsBatchArchiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation submissionsBatchArchiveAsyncWithHttpInfo
-     *
-     * Archive a batch of feedback submissions by ID
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsBatchArchiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
-    {
-        $returnType = '';
-        $request = $this->submissionsBatchArchiveRequest($batch_input_simple_public_object_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'submissionsBatchArchive'
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function submissionsBatchArchiveRequest($batch_input_simple_public_object_id)
-    {
-        // verify the required parameter 'batch_input_simple_public_object_id' is set
-        if ($batch_input_simple_public_object_id === null || (is_array($batch_input_simple_public_object_id) && count($batch_input_simple_public_object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_id when calling submissionsBatchArchive'
-            );
-        }
-
-        $resourcePath = '/crm/v3/objects/feedback_submissions/batch/archive';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($batch_input_simple_public_object_id)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_id));
-            } else {
-                $httpBody = $batch_input_simple_public_object_id;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation submissionsBatchCreate
-     *
-     * Create a batch of feedback submissions
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
-     */
-    public function submissionsBatchCreate($batch_input_simple_public_object_input)
-    {
-        list($response) = $this->submissionsBatchCreateWithHttpInfo($batch_input_simple_public_object_input);
-        return $response;
-    }
-
-    /**
-     * Operation submissionsBatchCreateWithHttpInfo
-     *
-     * Create a batch of feedback submissions
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function submissionsBatchCreateWithHttpInfo($batch_input_simple_public_object_input)
-    {
-        $request = $this->submissionsBatchCreateRequest($batch_input_simple_public_object_input);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 207:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation submissionsBatchCreateAsync
-     *
-     * Create a batch of feedback submissions
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsBatchCreateAsync($batch_input_simple_public_object_input)
-    {
-        return $this->submissionsBatchCreateAsyncWithHttpInfo($batch_input_simple_public_object_input)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation submissionsBatchCreateAsyncWithHttpInfo
-     *
-     * Create a batch of feedback submissions
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsBatchCreateAsyncWithHttpInfo($batch_input_simple_public_object_input)
-    {
-        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject';
-        $request = $this->submissionsBatchCreateRequest($batch_input_simple_public_object_input);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'submissionsBatchCreate'
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function submissionsBatchCreateRequest($batch_input_simple_public_object_input)
-    {
-        // verify the required parameter 'batch_input_simple_public_object_input' is set
-        if ($batch_input_simple_public_object_input === null || (is_array($batch_input_simple_public_object_input) && count($batch_input_simple_public_object_input) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_input when calling submissionsBatchCreate'
-            );
-        }
-
-        $resourcePath = '/crm/v3/objects/feedback_submissions/batch/create';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($batch_input_simple_public_object_input)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_input));
-            } else {
-                $httpBody = $batch_input_simple_public_object_input;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation submissionsBatchUpdate
+     * Operation update
      *
      * Update a batch of feedback submissions
      *
@@ -1035,14 +1035,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
-    public function submissionsBatchUpdate($batch_input_simple_public_object_batch_input)
+    public function update($batch_input_simple_public_object_batch_input)
     {
-        list($response) = $this->submissionsBatchUpdateWithHttpInfo($batch_input_simple_public_object_batch_input);
+        list($response) = $this->updateWithHttpInfo($batch_input_simple_public_object_batch_input);
         return $response;
     }
 
     /**
-     * Operation submissionsBatchUpdateWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update a batch of feedback submissions
      *
@@ -1052,9 +1052,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function submissionsBatchUpdateWithHttpInfo($batch_input_simple_public_object_batch_input)
+    public function updateWithHttpInfo($batch_input_simple_public_object_batch_input)
     {
-        $request = $this->submissionsBatchUpdateRequest($batch_input_simple_public_object_batch_input);
+        $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1187,7 +1187,7 @@ class BatchApi
     }
 
     /**
-     * Operation submissionsBatchUpdateAsync
+     * Operation updateAsync
      *
      * Update a batch of feedback submissions
      *
@@ -1196,9 +1196,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submissionsBatchUpdateAsync($batch_input_simple_public_object_batch_input)
+    public function updateAsync($batch_input_simple_public_object_batch_input)
     {
-        return $this->submissionsBatchUpdateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
+        return $this->updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1207,7 +1207,7 @@ class BatchApi
     }
 
     /**
-     * Operation submissionsBatchUpdateAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update a batch of feedback submissions
      *
@@ -1216,10 +1216,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submissionsBatchUpdateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
+    public function updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject';
-        $request = $this->submissionsBatchUpdateRequest($batch_input_simple_public_object_batch_input);
+        $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1258,19 +1258,19 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'submissionsBatchUpdate'
+     * Create request for operation 'update'
      *
      * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function submissionsBatchUpdateRequest($batch_input_simple_public_object_batch_input)
+    public function updateRequest($batch_input_simple_public_object_batch_input)
     {
         // verify the required parameter 'batch_input_simple_public_object_batch_input' is set
         if ($batch_input_simple_public_object_batch_input === null || (is_array($batch_input_simple_public_object_batch_input) && count($batch_input_simple_public_object_batch_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_batch_input when calling submissionsBatchUpdate'
+                'Missing the required parameter $batch_input_simple_public_object_batch_input when calling update'
             );
         }
 

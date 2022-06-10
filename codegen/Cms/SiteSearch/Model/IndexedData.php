@@ -62,7 +62,7 @@ class IndexedData implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'type' => 'string',
-        'fields' => 'array<string,\HubSpot\Client\Cms\SiteSearch\Model\SearchHitField>'
+        'fields' => 'array<string,\HubSpot\Client\Cms\SiteSearch\Model\IndexedField>'
     ];
 
     /**
@@ -318,7 +318,7 @@ class IndexedData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fields
      *
-     * @return array<string,\HubSpot\Client\Cms\SiteSearch\Model\SearchHitField>
+     * @return array<string,\HubSpot\Client\Cms\SiteSearch\Model\IndexedField>
      */
     public function getFields()
     {
@@ -328,7 +328,7 @@ class IndexedData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fields
      *
-     * @param array<string,\HubSpot\Client\Cms\SiteSearch\Model\SearchHitField> $fields The indexed fields in HubSpot.
+     * @param array<string,\HubSpot\Client\Cms\SiteSearch\Model\IndexedField> $fields The indexed fields in HubSpot.
      *
      * @return self
      */

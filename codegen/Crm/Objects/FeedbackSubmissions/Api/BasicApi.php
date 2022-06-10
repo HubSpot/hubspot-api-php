@@ -116,6 +116,551 @@ class BasicApi
     }
 
     /**
+     * Operation archive
+     *
+     * Archive
+     *
+     * @param  string $feedback_submission_id feedback_submission_id (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function archive($feedback_submission_id)
+    {
+        $this->archiveWithHttpInfo($feedback_submission_id);
+    }
+
+    /**
+     * Operation archiveWithHttpInfo
+     *
+     * Archive
+     *
+     * @param  string $feedback_submission_id (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function archiveWithHttpInfo($feedback_submission_id)
+    {
+        $request = $this->archiveRequest($feedback_submission_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation archiveAsync
+     *
+     * Archive
+     *
+     * @param  string $feedback_submission_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsync($feedback_submission_id)
+    {
+        return $this->archiveAsyncWithHttpInfo($feedback_submission_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation archiveAsyncWithHttpInfo
+     *
+     * Archive
+     *
+     * @param  string $feedback_submission_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsyncWithHttpInfo($feedback_submission_id)
+    {
+        $returnType = '';
+        $request = $this->archiveRequest($feedback_submission_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'archive'
+     *
+     * @param  string $feedback_submission_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function archiveRequest($feedback_submission_id)
+    {
+        // verify the required parameter 'feedback_submission_id' is set
+        if ($feedback_submission_id === null || (is_array($feedback_submission_id) && count($feedback_submission_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $feedback_submission_id when calling archive'
+            );
+        }
+
+        $resourcePath = '/crm/v3/objects/feedback_submissions/{feedbackSubmissionId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($feedback_submission_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'feedbackSubmissionId' . '}',
+                ObjectSerializer::toPathValue($feedback_submission_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
+     */
+    public function create($simple_public_object_input)
+    {
+        list($response) = $this->createWithHttpInfo($simple_public_object_input);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     *
+     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($simple_public_object_input)
+    {
+        $request = $this->createRequest($simple_public_object_input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($simple_public_object_input)
+    {
+        return $this->createAsyncWithHttpInfo($simple_public_object_input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($simple_public_object_input)
+    {
+        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject';
+        $request = $this->createRequest($simple_public_object_input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRequest($simple_public_object_input)
+    {
+        // verify the required parameter 'simple_public_object_input' is set
+        if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $simple_public_object_input when calling create'
+            );
+        }
+
+        $resourcePath = '/crm/v3/objects/feedback_submissions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($simple_public_object_input)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($simple_public_object_input));
+            } else {
+                $httpBody = $simple_public_object_input;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getById
      *
      * Read
@@ -867,552 +1412,7 @@ class BasicApi
     }
 
     /**
-     * Operation submissions
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
-     */
-    public function submissions($simple_public_object_input)
-    {
-        list($response) = $this->submissionsWithHttpInfo($simple_public_object_input);
-        return $response;
-    }
-
-    /**
-     * Operation submissionsWithHttpInfo
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function submissionsWithHttpInfo($simple_public_object_input)
-    {
-        $request = $this->submissionsRequest($simple_public_object_input);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation submissionsAsync
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsAsync($simple_public_object_input)
-    {
-        return $this->submissionsAsyncWithHttpInfo($simple_public_object_input)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation submissionsAsyncWithHttpInfo
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsAsyncWithHttpInfo($simple_public_object_input)
-    {
-        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject';
-        $request = $this->submissionsRequest($simple_public_object_input);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'submissions'
-     *
-     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function submissionsRequest($simple_public_object_input)
-    {
-        // verify the required parameter 'simple_public_object_input' is set
-        if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $simple_public_object_input when calling submissions'
-            );
-        }
-
-        $resourcePath = '/crm/v3/objects/feedback_submissions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($simple_public_object_input)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($simple_public_object_input));
-            } else {
-                $httpBody = $simple_public_object_input;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation submissionsFeedbackSubmissionId
-     *
-     * Archive
-     *
-     * @param  string $feedback_submission_id feedback_submission_id (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function submissionsFeedbackSubmissionId($feedback_submission_id)
-    {
-        $this->submissionsFeedbackSubmissionIdWithHttpInfo($feedback_submission_id);
-    }
-
-    /**
-     * Operation submissionsFeedbackSubmissionIdWithHttpInfo
-     *
-     * Archive
-     *
-     * @param  string $feedback_submission_id (required)
-     *
-     * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function submissionsFeedbackSubmissionIdWithHttpInfo($feedback_submission_id)
-    {
-        $request = $this->submissionsFeedbackSubmissionIdRequest($feedback_submission_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation submissionsFeedbackSubmissionIdAsync
-     *
-     * Archive
-     *
-     * @param  string $feedback_submission_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsFeedbackSubmissionIdAsync($feedback_submission_id)
-    {
-        return $this->submissionsFeedbackSubmissionIdAsyncWithHttpInfo($feedback_submission_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation submissionsFeedbackSubmissionIdAsyncWithHttpInfo
-     *
-     * Archive
-     *
-     * @param  string $feedback_submission_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submissionsFeedbackSubmissionIdAsyncWithHttpInfo($feedback_submission_id)
-    {
-        $returnType = '';
-        $request = $this->submissionsFeedbackSubmissionIdRequest($feedback_submission_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'submissionsFeedbackSubmissionId'
-     *
-     * @param  string $feedback_submission_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function submissionsFeedbackSubmissionIdRequest($feedback_submission_id)
-    {
-        // verify the required parameter 'feedback_submission_id' is set
-        if ($feedback_submission_id === null || (is_array($feedback_submission_id) && count($feedback_submission_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $feedback_submission_id when calling submissionsFeedbackSubmissionId'
-            );
-        }
-
-        $resourcePath = '/crm/v3/objects/feedback_submissions/{feedbackSubmissionId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($feedback_submission_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'feedbackSubmissionId' . '}',
-                ObjectSerializer::toPathValue($feedback_submission_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation submissionsFeedbackSubmissionId_0
+     * Operation update
      *
      * Update
      *
@@ -1424,14 +1424,14 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
-    public function submissionsFeedbackSubmissionId_0($feedback_submission_id, $simple_public_object_input, $id_property = null)
+    public function update($feedback_submission_id, $simple_public_object_input, $id_property = null)
     {
-        list($response) = $this->submissionsFeedbackSubmissionId_0WithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property);
+        list($response) = $this->updateWithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property);
         return $response;
     }
 
     /**
-     * Operation submissionsFeedbackSubmissionId_0WithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update
      *
@@ -1443,9 +1443,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function submissionsFeedbackSubmissionId_0WithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property = null)
+    public function updateWithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property = null)
     {
-        $request = $this->submissionsFeedbackSubmissionId_0Request($feedback_submission_id, $simple_public_object_input, $id_property);
+        $request = $this->updateRequest($feedback_submission_id, $simple_public_object_input, $id_property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1555,7 +1555,7 @@ class BasicApi
     }
 
     /**
-     * Operation submissionsFeedbackSubmissionId_0Async
+     * Operation updateAsync
      *
      * Update
      *
@@ -1566,9 +1566,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submissionsFeedbackSubmissionId_0Async($feedback_submission_id, $simple_public_object_input, $id_property = null)
+    public function updateAsync($feedback_submission_id, $simple_public_object_input, $id_property = null)
     {
-        return $this->submissionsFeedbackSubmissionId_0AsyncWithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property)
+        return $this->updateAsyncWithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1577,7 +1577,7 @@ class BasicApi
     }
 
     /**
-     * Operation submissionsFeedbackSubmissionId_0AsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update
      *
@@ -1588,10 +1588,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submissionsFeedbackSubmissionId_0AsyncWithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property = null)
+    public function updateAsyncWithHttpInfo($feedback_submission_id, $simple_public_object_input, $id_property = null)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject';
-        $request = $this->submissionsFeedbackSubmissionId_0Request($feedback_submission_id, $simple_public_object_input, $id_property);
+        $request = $this->updateRequest($feedback_submission_id, $simple_public_object_input, $id_property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1630,7 +1630,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'submissionsFeedbackSubmissionId_0'
+     * Create request for operation 'update'
      *
      * @param  string $feedback_submission_id (required)
      * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectInput $simple_public_object_input (required)
@@ -1639,18 +1639,18 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function submissionsFeedbackSubmissionId_0Request($feedback_submission_id, $simple_public_object_input, $id_property = null)
+    public function updateRequest($feedback_submission_id, $simple_public_object_input, $id_property = null)
     {
         // verify the required parameter 'feedback_submission_id' is set
         if ($feedback_submission_id === null || (is_array($feedback_submission_id) && count($feedback_submission_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $feedback_submission_id when calling submissionsFeedbackSubmissionId_0'
+                'Missing the required parameter $feedback_submission_id when calling update'
             );
         }
         // verify the required parameter 'simple_public_object_input' is set
         if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $simple_public_object_input when calling submissionsFeedbackSubmissionId_0'
+                'Missing the required parameter $simple_public_object_input when calling update'
             );
         }
 

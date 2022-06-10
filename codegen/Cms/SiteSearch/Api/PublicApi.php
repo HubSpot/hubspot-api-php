@@ -458,7 +458,6 @@ class PublicApi
      * @param  bool $autocomplete Specifies whether or not you are showing autocomplete results. Defaults to false. (optional)
      * @param  float $popularity_boost Specifies how strongly a result is boosted based on its view count. Defaults to 1.0. (optional)
      * @param  float $boost_limit Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html). (optional)
-     * @param  float $min_score Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall. (optional)
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
@@ -473,9 +472,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error
      */
-    public function search($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function search($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
-        list($response) = $this->searchWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
+        list($response) = $this->searchWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
         return $response;
     }
 
@@ -492,7 +491,6 @@ class PublicApi
      * @param  bool $autocomplete Specifies whether or not you are showing autocomplete results. Defaults to false. (optional)
      * @param  float $popularity_boost Specifies how strongly a result is boosted based on its view count. Defaults to 1.0. (optional)
      * @param  float $boost_limit Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html). (optional)
-     * @param  float $min_score Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall. (optional)
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
@@ -507,9 +505,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
-        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
+        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -631,7 +629,6 @@ class PublicApi
      * @param  bool $autocomplete Specifies whether or not you are showing autocomplete results. Defaults to false. (optional)
      * @param  float $popularity_boost Specifies how strongly a result is boosted based on its view count. Defaults to 1.0. (optional)
      * @param  float $boost_limit Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html). (optional)
-     * @param  float $min_score Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall. (optional)
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
@@ -645,9 +642,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAsync($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchAsync($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
-        return $this->searchAsyncWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id)
+        return $this->searchAsyncWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -668,7 +665,6 @@ class PublicApi
      * @param  bool $autocomplete Specifies whether or not you are showing autocomplete results. Defaults to false. (optional)
      * @param  float $popularity_boost Specifies how strongly a result is boosted based on its view count. Defaults to 1.0. (optional)
      * @param  float $boost_limit Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html). (optional)
-     * @param  float $min_score Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall. (optional)
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
@@ -682,10 +678,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAsyncWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchAsyncWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
         $returnType = '\HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults';
-        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $min_score, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
+        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -734,7 +730,6 @@ class PublicApi
      * @param  bool $autocomplete Specifies whether or not you are showing autocomplete results. Defaults to false. (optional)
      * @param  float $popularity_boost Specifies how strongly a result is boosted based on its view count. Defaults to 1.0. (optional)
      * @param  float $boost_limit Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html). (optional)
-     * @param  float $min_score Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall. (optional)
      * @param  string $boost_recent Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent&#x3D;10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days). (optional)
      * @param  int $table_id Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the &#x60;hubdbQuery&#x60; parameter to further filter results. (optional)
      * @param  string $hubdb_query Specify a HubDB query to further filter the search results. (optional)
@@ -748,7 +743,7 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchRequest($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $min_score = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
+    public function searchRequest($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null)
     {
 
         $resourcePath = '/cms/v3/site-search/search';
@@ -825,15 +820,6 @@ class PublicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $boost_limit,
             'boostLimit', // param base name
-            'number', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $min_score,
-            'minScore', // param base name
             'number', // openApiType
             'form', // style
             true, // explode

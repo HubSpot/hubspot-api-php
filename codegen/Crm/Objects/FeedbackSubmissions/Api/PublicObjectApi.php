@@ -116,7 +116,7 @@ class PublicObjectApi
     }
 
     /**
-     * Operation submissionsMerge
+     * Operation merge
      *
      * Merge two feedback submissions with same type
      *
@@ -126,14 +126,14 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
-    public function submissionsMerge($public_merge_input)
+    public function merge($public_merge_input)
     {
-        list($response) = $this->submissionsMergeWithHttpInfo($public_merge_input);
+        list($response) = $this->mergeWithHttpInfo($public_merge_input);
         return $response;
     }
 
     /**
-     * Operation submissionsMergeWithHttpInfo
+     * Operation mergeWithHttpInfo
      *
      * Merge two feedback submissions with same type
      *
@@ -143,9 +143,9 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function submissionsMergeWithHttpInfo($public_merge_input)
+    public function mergeWithHttpInfo($public_merge_input)
     {
-        $request = $this->submissionsMergeRequest($public_merge_input);
+        $request = $this->mergeRequest($public_merge_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,7 +255,7 @@ class PublicObjectApi
     }
 
     /**
-     * Operation submissionsMergeAsync
+     * Operation mergeAsync
      *
      * Merge two feedback submissions with same type
      *
@@ -264,9 +264,9 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submissionsMergeAsync($public_merge_input)
+    public function mergeAsync($public_merge_input)
     {
-        return $this->submissionsMergeAsyncWithHttpInfo($public_merge_input)
+        return $this->mergeAsyncWithHttpInfo($public_merge_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -275,7 +275,7 @@ class PublicObjectApi
     }
 
     /**
-     * Operation submissionsMergeAsyncWithHttpInfo
+     * Operation mergeAsyncWithHttpInfo
      *
      * Merge two feedback submissions with same type
      *
@@ -284,10 +284,10 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submissionsMergeAsyncWithHttpInfo($public_merge_input)
+    public function mergeAsyncWithHttpInfo($public_merge_input)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject';
-        $request = $this->submissionsMergeRequest($public_merge_input);
+        $request = $this->mergeRequest($public_merge_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,19 +326,19 @@ class PublicObjectApi
     }
 
     /**
-     * Create request for operation 'submissionsMerge'
+     * Create request for operation 'merge'
      *
      * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\PublicMergeInput $public_merge_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function submissionsMergeRequest($public_merge_input)
+    public function mergeRequest($public_merge_input)
     {
         // verify the required parameter 'public_merge_input' is set
         if ($public_merge_input === null || (is_array($public_merge_input) && count($public_merge_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_merge_input when calling submissionsMerge'
+                'Missing the required parameter $public_merge_input when calling merge'
             );
         }
 
