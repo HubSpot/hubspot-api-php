@@ -328,6 +328,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_CCP_IN = 'ccp-in';
     public const LANGUAGE_CE = 'ce';
     public const LANGUAGE_CE_RU = 'ce-ru';
+    public const LANGUAGE_CEB = 'ceb';
+    public const LANGUAGE_CEB_PH = 'ceb-ph';
     public const LANGUAGE_CGG = 'cgg';
     public const LANGUAGE_CGG_UG = 'cgg-ug';
     public const LANGUAGE_CHR = 'chr';
@@ -357,6 +359,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_DE_LU = 'de-lu';
     public const LANGUAGE_DJE = 'dje';
     public const LANGUAGE_DJE_NE = 'dje-ne';
+    public const LANGUAGE_DOI = 'doi';
+    public const LANGUAGE_DOI_IN = 'doi-in';
     public const LANGUAGE_DSB = 'dsb';
     public const LANGUAGE_DSB_DE = 'dsb-de';
     public const LANGUAGE_DUA = 'dua';
@@ -376,6 +380,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_EN = 'en';
     public const LANGUAGE_EN_001 = 'en-001';
     public const LANGUAGE_EN_150 = 'en-150';
+    public const LANGUAGE_EN_AE = 'en-ae';
     public const LANGUAGE_EN_AG = 'en-ag';
     public const LANGUAGE_EN_AI = 'en-ai';
     public const LANGUAGE_EN_AS = 'en-as';
@@ -427,6 +432,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_EN_LC = 'en-lc';
     public const LANGUAGE_EN_LR = 'en-lr';
     public const LANGUAGE_EN_LS = 'en-ls';
+    public const LANGUAGE_EN_LU = 'en-lu';
     public const LANGUAGE_EN_MG = 'en-mg';
     public const LANGUAGE_EN_MH = 'en-mh';
     public const LANGUAGE_EN_MO = 'en-mo';
@@ -519,9 +525,17 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_FA_AF = 'fa-af';
     public const LANGUAGE_FA_IR = 'fa-ir';
     public const LANGUAGE_FF = 'ff';
+    public const LANGUAGE_FF_BF = 'ff-bf';
     public const LANGUAGE_FF_CM = 'ff-cm';
+    public const LANGUAGE_FF_GH = 'ff-gh';
+    public const LANGUAGE_FF_GM = 'ff-gm';
     public const LANGUAGE_FF_GN = 'ff-gn';
+    public const LANGUAGE_FF_GW = 'ff-gw';
+    public const LANGUAGE_FF_LR = 'ff-lr';
     public const LANGUAGE_FF_MR = 'ff-mr';
+    public const LANGUAGE_FF_NE = 'ff-ne';
+    public const LANGUAGE_FF_NG = 'ff-ng';
+    public const LANGUAGE_FF_SL = 'ff-sl';
     public const LANGUAGE_FF_SN = 'ff-sn';
     public const LANGUAGE_FI = 'fi';
     public const LANGUAGE_FI_FI = 'fi-fi';
@@ -582,6 +596,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_FY = 'fy';
     public const LANGUAGE_FY_NL = 'fy-nl';
     public const LANGUAGE_GA = 'ga';
+    public const LANGUAGE_GA_GB = 'ga-gb';
     public const LANGUAGE_GA_IE = 'ga-ie';
     public const LANGUAGE_GD = 'gd';
     public const LANGUAGE_GD_GB = 'gd-gb';
@@ -615,6 +630,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_HU_HU = 'hu-hu';
     public const LANGUAGE_HY = 'hy';
     public const LANGUAGE_HY_AM = 'hy-am';
+    public const LANGUAGE_IA = 'ia';
+    public const LANGUAGE_IA_001 = 'ia-001';
     public const LANGUAGE_ID = 'id';
     public const LANGUAGE_IG = 'ig';
     public const LANGUAGE_IG_NG = 'ig-ng';
@@ -637,6 +654,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_YI_001 = 'yi-001';
     public const LANGUAGE_JMC = 'jmc';
     public const LANGUAGE_JMC_TZ = 'jmc-tz';
+    public const LANGUAGE_JV = 'jv';
+    public const LANGUAGE_JV_ID = 'jv-id';
     public const LANGUAGE_KA = 'ka';
     public const LANGUAGE_KA_GE = 'ka-ge';
     public const LANGUAGE_KAB = 'kab';
@@ -678,6 +697,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_KSH_DE = 'ksh-de';
     public const LANGUAGE_KW = 'kw';
     public const LANGUAGE_KW_GB = 'kw-gb';
+    public const LANGUAGE_KU = 'ku';
+    public const LANGUAGE_KU_TR = 'ku-tr';
     public const LANGUAGE_KY = 'ky';
     public const LANGUAGE_KY_KG = 'ky-kg';
     public const LANGUAGE_LAG = 'lag';
@@ -708,6 +729,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_LUY_KE = 'luy-ke';
     public const LANGUAGE_LV = 'lv';
     public const LANGUAGE_LV_LV = 'lv-lv';
+    public const LANGUAGE_MAI = 'mai';
+    public const LANGUAGE_MAI_IN = 'mai-in';
     public const LANGUAGE_MAS = 'mas';
     public const LANGUAGE_MAS_KE = 'mas-ke';
     public const LANGUAGE_MAS_TZ = 'mas-tz';
@@ -721,16 +744,21 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_MGH_MZ = 'mgh-mz';
     public const LANGUAGE_MGO = 'mgo';
     public const LANGUAGE_MGO_CM = 'mgo-cm';
+    public const LANGUAGE_MI = 'mi';
+    public const LANGUAGE_MI_NZ = 'mi-nz';
     public const LANGUAGE_MK = 'mk';
     public const LANGUAGE_MK_MK = 'mk-mk';
     public const LANGUAGE_ML = 'ml';
     public const LANGUAGE_ML_IN = 'ml-in';
     public const LANGUAGE_MN = 'mn';
     public const LANGUAGE_MN_MN = 'mn-mn';
+    public const LANGUAGE_MNI = 'mni';
+    public const LANGUAGE_MNI_IN = 'mni-in';
     public const LANGUAGE_MR = 'mr';
     public const LANGUAGE_MR_IN = 'mr-in';
     public const LANGUAGE_MS = 'ms';
     public const LANGUAGE_MS_BN = 'ms-bn';
+    public const LANGUAGE_MS_ID = 'ms-id';
     public const LANGUAGE_MS_MY = 'ms-my';
     public const LANGUAGE_MS_SG = 'ms-sg';
     public const LANGUAGE_MT = 'mt';
@@ -757,8 +785,10 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_NL = 'nl';
     public const LANGUAGE_NL_AW = 'nl-aw';
     public const LANGUAGE_NL_BE = 'nl-be';
+    public const LANGUAGE_NL_CH = 'nl-ch';
     public const LANGUAGE_NL_BQ = 'nl-bq';
     public const LANGUAGE_NL_CW = 'nl-cw';
+    public const LANGUAGE_NL_LU = 'nl-lu';
     public const LANGUAGE_NL_NL = 'nl-nl';
     public const LANGUAGE_NL_SR = 'nl-sr';
     public const LANGUAGE_NL_SX = 'nl-sx';
@@ -785,12 +815,15 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_PA = 'pa';
     public const LANGUAGE_PA_IN = 'pa-in';
     public const LANGUAGE_PA_PK = 'pa-pk';
+    public const LANGUAGE_PCM = 'pcm';
+    public const LANGUAGE_PCM_NG = 'pcm-ng';
     public const LANGUAGE_PL = 'pl';
     public const LANGUAGE_PL_PL = 'pl-pl';
     public const LANGUAGE_PRG = 'prg';
     public const LANGUAGE_PRG_001 = 'prg-001';
     public const LANGUAGE_PS = 'ps';
     public const LANGUAGE_PS_AF = 'ps-af';
+    public const LANGUAGE_PS_PK = 'ps-pk';
     public const LANGUAGE_PT = 'pt';
     public const LANGUAGE_PT_AO = 'pt-ao';
     public const LANGUAGE_PT_BR = 'pt-br';
@@ -829,13 +862,17 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_RWK = 'rwk';
     public const LANGUAGE_RWK_TZ = 'rwk-tz';
     public const LANGUAGE_SA = 'sa';
+    public const LANGUAGE_SA_IN = 'sa-in';
     public const LANGUAGE_SAH = 'sah';
     public const LANGUAGE_SAH_RU = 'sah-ru';
     public const LANGUAGE_SAQ = 'saq';
     public const LANGUAGE_SAQ_KE = 'saq-ke';
+    public const LANGUAGE_SAT = 'sat';
+    public const LANGUAGE_SAT_IN = 'sat-in';
     public const LANGUAGE_SBP = 'sbp';
     public const LANGUAGE_SBP_TZ = 'sbp-tz';
     public const LANGUAGE_SD = 'sd';
+    public const LANGUAGE_SD_IN = 'sd-in';
     public const LANGUAGE_SD_PK = 'sd-pk';
     public const LANGUAGE_SE = 'se';
     public const LANGUAGE_SE_FI = 'se-fi';
@@ -874,6 +911,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_SR_ME = 'sr-me';
     public const LANGUAGE_SR_RS = 'sr-rs';
     public const LANGUAGE_SR_XK = 'sr-xk';
+    public const LANGUAGE_SU = 'su';
+    public const LANGUAGE_SU_ID = 'su-id';
     public const LANGUAGE_SV = 'sv';
     public const LANGUAGE_SV_AX = 'sv-ax';
     public const LANGUAGE_SV_FI = 'sv-fi';
@@ -903,6 +942,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_TI_ET = 'ti-et';
     public const LANGUAGE_TK = 'tk';
     public const LANGUAGE_TK_TM = 'tk-tm';
+    public const LANGUAGE_TL = 'tl';
     public const LANGUAGE_TO = 'to';
     public const LANGUAGE_TO_TO = 'to-to';
     public const LANGUAGE_TR = 'tr';
@@ -936,6 +976,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_WAE_CH = 'wae-ch';
     public const LANGUAGE_WO = 'wo';
     public const LANGUAGE_WO_SN = 'wo-sn';
+    public const LANGUAGE_XH = 'xh';
+    public const LANGUAGE_XH_ZA = 'xh-za';
     public const LANGUAGE_XOG = 'xog';
     public const LANGUAGE_XOG_UG = 'xog-ug';
     public const LANGUAGE_YAV = 'yav';
@@ -1063,6 +1105,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_CCP_IN,
             self::LANGUAGE_CE,
             self::LANGUAGE_CE_RU,
+            self::LANGUAGE_CEB,
+            self::LANGUAGE_CEB_PH,
             self::LANGUAGE_CGG,
             self::LANGUAGE_CGG_UG,
             self::LANGUAGE_CHR,
@@ -1092,6 +1136,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_DE_LU,
             self::LANGUAGE_DJE,
             self::LANGUAGE_DJE_NE,
+            self::LANGUAGE_DOI,
+            self::LANGUAGE_DOI_IN,
             self::LANGUAGE_DSB,
             self::LANGUAGE_DSB_DE,
             self::LANGUAGE_DUA,
@@ -1111,6 +1157,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_EN,
             self::LANGUAGE_EN_001,
             self::LANGUAGE_EN_150,
+            self::LANGUAGE_EN_AE,
             self::LANGUAGE_EN_AG,
             self::LANGUAGE_EN_AI,
             self::LANGUAGE_EN_AS,
@@ -1162,6 +1209,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_EN_LC,
             self::LANGUAGE_EN_LR,
             self::LANGUAGE_EN_LS,
+            self::LANGUAGE_EN_LU,
             self::LANGUAGE_EN_MG,
             self::LANGUAGE_EN_MH,
             self::LANGUAGE_EN_MO,
@@ -1254,9 +1302,17 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_FA_AF,
             self::LANGUAGE_FA_IR,
             self::LANGUAGE_FF,
+            self::LANGUAGE_FF_BF,
             self::LANGUAGE_FF_CM,
+            self::LANGUAGE_FF_GH,
+            self::LANGUAGE_FF_GM,
             self::LANGUAGE_FF_GN,
+            self::LANGUAGE_FF_GW,
+            self::LANGUAGE_FF_LR,
             self::LANGUAGE_FF_MR,
+            self::LANGUAGE_FF_NE,
+            self::LANGUAGE_FF_NG,
+            self::LANGUAGE_FF_SL,
             self::LANGUAGE_FF_SN,
             self::LANGUAGE_FI,
             self::LANGUAGE_FI_FI,
@@ -1317,6 +1373,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_FY,
             self::LANGUAGE_FY_NL,
             self::LANGUAGE_GA,
+            self::LANGUAGE_GA_GB,
             self::LANGUAGE_GA_IE,
             self::LANGUAGE_GD,
             self::LANGUAGE_GD_GB,
@@ -1350,6 +1407,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_HU_HU,
             self::LANGUAGE_HY,
             self::LANGUAGE_HY_AM,
+            self::LANGUAGE_IA,
+            self::LANGUAGE_IA_001,
             self::LANGUAGE_ID,
             self::LANGUAGE_IG,
             self::LANGUAGE_IG_NG,
@@ -1372,6 +1431,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_YI_001,
             self::LANGUAGE_JMC,
             self::LANGUAGE_JMC_TZ,
+            self::LANGUAGE_JV,
+            self::LANGUAGE_JV_ID,
             self::LANGUAGE_KA,
             self::LANGUAGE_KA_GE,
             self::LANGUAGE_KAB,
@@ -1413,6 +1474,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_KSH_DE,
             self::LANGUAGE_KW,
             self::LANGUAGE_KW_GB,
+            self::LANGUAGE_KU,
+            self::LANGUAGE_KU_TR,
             self::LANGUAGE_KY,
             self::LANGUAGE_KY_KG,
             self::LANGUAGE_LAG,
@@ -1443,6 +1506,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_LUY_KE,
             self::LANGUAGE_LV,
             self::LANGUAGE_LV_LV,
+            self::LANGUAGE_MAI,
+            self::LANGUAGE_MAI_IN,
             self::LANGUAGE_MAS,
             self::LANGUAGE_MAS_KE,
             self::LANGUAGE_MAS_TZ,
@@ -1456,16 +1521,21 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_MGH_MZ,
             self::LANGUAGE_MGO,
             self::LANGUAGE_MGO_CM,
+            self::LANGUAGE_MI,
+            self::LANGUAGE_MI_NZ,
             self::LANGUAGE_MK,
             self::LANGUAGE_MK_MK,
             self::LANGUAGE_ML,
             self::LANGUAGE_ML_IN,
             self::LANGUAGE_MN,
             self::LANGUAGE_MN_MN,
+            self::LANGUAGE_MNI,
+            self::LANGUAGE_MNI_IN,
             self::LANGUAGE_MR,
             self::LANGUAGE_MR_IN,
             self::LANGUAGE_MS,
             self::LANGUAGE_MS_BN,
+            self::LANGUAGE_MS_ID,
             self::LANGUAGE_MS_MY,
             self::LANGUAGE_MS_SG,
             self::LANGUAGE_MT,
@@ -1492,8 +1562,10 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_NL,
             self::LANGUAGE_NL_AW,
             self::LANGUAGE_NL_BE,
+            self::LANGUAGE_NL_CH,
             self::LANGUAGE_NL_BQ,
             self::LANGUAGE_NL_CW,
+            self::LANGUAGE_NL_LU,
             self::LANGUAGE_NL_NL,
             self::LANGUAGE_NL_SR,
             self::LANGUAGE_NL_SX,
@@ -1520,12 +1592,15 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_PA,
             self::LANGUAGE_PA_IN,
             self::LANGUAGE_PA_PK,
+            self::LANGUAGE_PCM,
+            self::LANGUAGE_PCM_NG,
             self::LANGUAGE_PL,
             self::LANGUAGE_PL_PL,
             self::LANGUAGE_PRG,
             self::LANGUAGE_PRG_001,
             self::LANGUAGE_PS,
             self::LANGUAGE_PS_AF,
+            self::LANGUAGE_PS_PK,
             self::LANGUAGE_PT,
             self::LANGUAGE_PT_AO,
             self::LANGUAGE_PT_BR,
@@ -1564,13 +1639,17 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_RWK,
             self::LANGUAGE_RWK_TZ,
             self::LANGUAGE_SA,
+            self::LANGUAGE_SA_IN,
             self::LANGUAGE_SAH,
             self::LANGUAGE_SAH_RU,
             self::LANGUAGE_SAQ,
             self::LANGUAGE_SAQ_KE,
+            self::LANGUAGE_SAT,
+            self::LANGUAGE_SAT_IN,
             self::LANGUAGE_SBP,
             self::LANGUAGE_SBP_TZ,
             self::LANGUAGE_SD,
+            self::LANGUAGE_SD_IN,
             self::LANGUAGE_SD_PK,
             self::LANGUAGE_SE,
             self::LANGUAGE_SE_FI,
@@ -1609,6 +1688,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_SR_ME,
             self::LANGUAGE_SR_RS,
             self::LANGUAGE_SR_XK,
+            self::LANGUAGE_SU,
+            self::LANGUAGE_SU_ID,
             self::LANGUAGE_SV,
             self::LANGUAGE_SV_AX,
             self::LANGUAGE_SV_FI,
@@ -1638,6 +1719,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_TI_ET,
             self::LANGUAGE_TK,
             self::LANGUAGE_TK_TM,
+            self::LANGUAGE_TL,
             self::LANGUAGE_TO,
             self::LANGUAGE_TO_TO,
             self::LANGUAGE_TR,
@@ -1671,6 +1753,8 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_WAE_CH,
             self::LANGUAGE_WO,
             self::LANGUAGE_WO_SN,
+            self::LANGUAGE_XH,
+            self::LANGUAGE_XH_ZA,
             self::LANGUAGE_XOG,
             self::LANGUAGE_XOG_UG,
             self::LANGUAGE_YAV,

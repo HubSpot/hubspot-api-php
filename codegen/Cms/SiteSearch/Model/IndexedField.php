@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchHitField
+ * IndexedField
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Cms\SiteSearch\ObjectSerializer;
 
 /**
- * SearchHitField Class Doc Comment
+ * IndexedField Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Cms\SiteSearch
@@ -42,7 +42,7 @@ use \HubSpot\Client\Cms\SiteSearch\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
+class IndexedField implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SearchHitField';
+    protected static $openAPIModelName = 'IndexedField';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,10 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metadata_field' => 'bool',
-        'values' => 'object[]',
         'name' => 'string',
-        'value' => 'object'
+        'value' => 'object',
+        'values' => 'object[]',
+        'metadata_field' => 'bool'
     ];
 
     /**
@@ -73,10 +73,10 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'metadata_field' => null,
-        'values' => null,
         'name' => null,
-        'value' => null
+        'value' => null,
+        'values' => null,
+        'metadata_field' => null
     ];
 
     /**
@@ -106,10 +106,10 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'metadata_field' => 'metadataField',
-        'values' => 'values',
         'name' => 'name',
-        'value' => 'value'
+        'value' => 'value',
+        'values' => 'values',
+        'metadata_field' => 'metadataField'
     ];
 
     /**
@@ -118,10 +118,10 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'metadata_field' => 'setMetadataField',
-        'values' => 'setValues',
         'name' => 'setName',
-        'value' => 'setValue'
+        'value' => 'setValue',
+        'values' => 'setValues',
+        'metadata_field' => 'setMetadataField'
     ];
 
     /**
@@ -130,10 +130,10 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'metadata_field' => 'getMetadataField',
-        'values' => 'getValues',
         'name' => 'getName',
-        'value' => 'getValue'
+        'value' => 'getValue',
+        'values' => 'getValues',
+        'metadata_field' => 'getMetadataField'
     ];
 
     /**
@@ -193,10 +193,10 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['metadata_field'] = $data['metadata_field'] ?? null;
-        $this->container['values'] = $data['values'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
+        $this->container['metadata_field'] = $data['metadata_field'] ?? null;
     }
 
     /**
@@ -208,17 +208,17 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['metadata_field'] === null) {
-            $invalidProperties[] = "'metadata_field' can't be null";
-        }
-        if ($this->container['values'] === null) {
-            $invalidProperties[] = "'values' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
+        }
+        if ($this->container['values'] === null) {
+            $invalidProperties[] = "'values' can't be null";
+        }
+        if ($this->container['metadata_field'] === null) {
+            $invalidProperties[] = "'metadata_field' can't be null";
         }
         return $invalidProperties;
     }
@@ -234,54 +234,6 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets metadata_field
-     *
-     * @return bool
-     */
-    public function getMetadataField()
-    {
-        return $this->container['metadata_field'];
-    }
-
-    /**
-     * Sets metadata_field
-     *
-     * @param bool $metadata_field metadata_field
-     *
-     * @return self
-     */
-    public function setMetadataField($metadata_field)
-    {
-        $this->container['metadata_field'] = $metadata_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets values
-     *
-     * @return object[]
-     */
-    public function getValues()
-    {
-        return $this->container['values'];
-    }
-
-    /**
-     * Sets values
-     *
-     * @param object[] $values values
-     *
-     * @return self
-     */
-    public function setValues($values)
-    {
-        $this->container['values'] = $values;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -327,6 +279,54 @@ class SearchHitField implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     *
+     * @return object[]
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param object[] $values values
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata_field
+     *
+     * @return bool
+     */
+    public function getMetadataField()
+    {
+        return $this->container['metadata_field'];
+    }
+
+    /**
+     * Sets metadata_field
+     *
+     * @param bool $metadata_field metadata_field
+     *
+     * @return self
+     */
+    public function setMetadataField($metadata_field)
+    {
+        $this->container['metadata_field'] = $metadata_field;
 
         return $this;
     }
