@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  ### Fixed
 
 - `crm()->objects()->feedbackSubmissions()` method names
+- `crm()->quotes()->publicObjectApi()`
 
 ## [8.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.2.0) - 2022-06-07
 
