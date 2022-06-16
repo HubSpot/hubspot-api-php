@@ -13,17 +13,12 @@ Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-
 
 ## Quickstart
 
-#### To instantiate API Client using HubSpot API Key use Factory:
-
-```php
-$hubSpot = \HubSpot\Factory::createWithApiKey('api-key');
-```
-
-#### or using OAuth2 access token:
+#### To instantiate API Client using access token use Factory:
 
 ```php
 $hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
 ```
+You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain [OAuth2](https://developers.hubspot.com/docs/api/working-with-oauth) access token.
 
 #### also you can pass custom client to Factory:
 
