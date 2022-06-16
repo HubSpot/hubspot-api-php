@@ -1,5 +1,5 @@
 # hubspot-api-php
-PHP [HubSpot API](https://developers.hubspot.com/docs-beta/overview) v3 SDK(Client) files
+PHP [HubSpot API](https://developers.hubspot.com/docs/api/overview) v3 SDK(Client) files
 
 ## Installation
 
