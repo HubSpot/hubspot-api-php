@@ -11,7 +11,7 @@ class Webhooks
 {
     /**
      * Validation of Hubspot Signature.
-     * 
+     *
      * @deprecated
      *
      * @param string $signature   hubspot signarute

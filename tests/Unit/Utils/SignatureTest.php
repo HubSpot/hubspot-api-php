@@ -35,12 +35,12 @@ class SignatureTest extends TestCase
             'requestBody' => '{"example_field":"example_value"}',
             'httpUri' => 'https://www.example.com/webhook_uri',
             'httpMethod' => 'POST',
-            'signatureVersion' => 'v2'
-        ])); 
-        
+            'signatureVersion' => 'v2',
+        ]));
+
         $this->assertTrue(Signature::isValid(static::getOptionsForSignatureV3()));
 
-        $timestamp =  Timestamp::getCurrentTimestampWithMilliseconds() - (Signature::MAX_ALLOWED_TIMESTAMP + 500);
+        $timestamp = Timestamp::getCurrentTimestampWithMilliseconds() - (Signature::MAX_ALLOWED_TIMESTAMP + 500);
         $options = static::getOptionsForSignatureV3($timestamp);
         $this->assertFalse(Signature::isValid($options));
 
@@ -62,21 +62,20 @@ class SignatureTest extends TestCase
             'timestamp' => $timestamp,
         ];
         $options['signature'] = static::generateHubspotSignatureV3($options['secret'], $options['requestBody'], $options['httpUri'], $options['httpMethod'], $options['timestamp']);
-        
+
         return $options;
     }
 
     /** @test */
-    public function UnexpectedValueExceptionVersionTest(): void
+    public function unexpectedValueExceptionVersionTest(): void
     {
         $this->expectException(UnexpectedValueException::class);
         $this->expectExceptionMessage('Not supported signature version: v4');
         Signature::isValid(['signatureVersion' => 'v4']);
     }
 
-
     /** @test */
-    public function UnexpectedValueExceptionTimestampTest(): void
+    public function unexpectedValueExceptionTimestampTest(): void
     {
         $this->expectException(UnexpectedValueException::class);
         $this->expectExceptionMessage('Timestamp parameter can`t be null');
@@ -86,14 +85,6 @@ class SignatureTest extends TestCase
         ]);
     }
 
-    /**
-     * @param string $secret
-     * @param string $requestBody
-     * @param string|null $httpUri
-     * @param string $httpMethod
-     * @param int|null $timestamp
-     * @return string
-     */
     public static function generateHubspotSignatureV3(
         string $secret,
         string $requestBody,
@@ -101,7 +92,8 @@ class SignatureTest extends TestCase
         string $httpMethod = 'POST',
         int $timestamp = null
     ): string {
-        $sourceString = $httpMethod . $httpUri . $requestBody . $timestamp;
+        $sourceString = $httpMethod.$httpUri.$requestBody.$timestamp;
+
         return base64_encode(hash_hmac('sha256', $sourceString, $secret, true));
     }
 }
