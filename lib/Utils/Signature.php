@@ -2,7 +2,7 @@
 
 namespace HubSpot\Utils;
 
-use Exception;
+use UnexpectedValueException;
 
 class Signature
 {
@@ -21,19 +21,23 @@ class Signature
      * @param string $secret['requestBody']         the request body include the payload of the request as a JSON string.
      * @param string $secret['httpUri']             the full URL of the incoming request, including the http:// prefix, the path of your endpoint, and any query parameters
      * @param string $secret['httpMethod']          the method of the incoming request, such as GET or POST
-     * @param string $secret['timestamp']           a unix timestamp of the request, provided in the X-HubSpot-Request-Timestamp header
+     * @param string $secret['timestamp']           a unix timestamp of the request, provided in the X-HubSpot-Request-Timestamp header (Reject the request if the timestamp is older than 5 minutes)
      * @param string $secret['signatureVersion']    signature version (V1, V2 or V3)
+     * @param bool   $secret['checkTimestamp']      check timestamp or not (default value true)
      */
     public static function isValid(
         array $options
     ): bool {
-        $signatureVersion = static::getOption('signatureVersion', $options);
+        $signatureVersion = static::getOption('signatureVersion', $options, 'v1');
 
-        if ($signatureVersion === 'v3') {
-            $currentTimestamp = intval(microtime(true) * 1000);
+        if ($signatureVersion === 'v3' && static::getOption('checkTimestamp', $options, true)) {
+            $currentTimestamp = Timestamp::getCurrentTimestamp13Digits();
             $timestamp = (int) static::getOption('timestamp', $options);
+            if ($timestamp === 0) {
+                throw new UnexpectedValueException ('Timestamp parameter can`t be null');
+            }
             if (($currentTimestamp - $timestamp) > static::MAX_ALLOWED_TIMESTAMP) {
-                throw new Exception("Timestamp is invalid, reject request");
+                return false;
             }
         }
 
@@ -62,22 +66,26 @@ class Signature
                 $sourceString = static::getOption('secret', $options).static::getOption('requestBody', $options);
                 return hash('sha256', $sourceString);
             case 'v2': 
-                $sourceString = static::getOption('secret', $options).static::getOption('httpMethod', $options).static::getOption('httpMethod', $options).static::getOption('requestBody', $options);
+                $sourceString = static::getOption('secret', $options).static::getOption('httpMethod', $options).static::getOption('httpUri', $options).static::getOption('requestBody', $options);
                 return hash('sha256', $sourceString);
             case 'v3':
                 $sourceString = static::getOption('httpMethod', $options).static::getOption('httpUri', $options).static::getOption('requestBody', $options).static::getOption('timestamp', $options);
                 return base64_encode(hash_hmac('sha256', $sourceString, static::getOption('secret', $options), true));
             default:
-                throw new Exception("Not supported signature version: {$signatureVersion}");
+                throw new UnexpectedValueException("Not supported signature version: {$signatureVersion}");
         }
     }
 
-    protected static function getOption(string $name, array $options)
+    protected static function getOption(string $name, array $options, $default = null)
     {
         if (array_key_exists($name, $options)) {
             return $options[$name];
         }
 
-        throw new Exception("Not provided {$name}");
+        if ($default !== null) {
+            return $default;
+        }
+
+        throw new UnexpectedValueException("Not provided {$name}");
     }
 }
