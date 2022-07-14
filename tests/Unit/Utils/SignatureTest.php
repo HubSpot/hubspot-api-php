@@ -40,7 +40,7 @@ class SignatureTest extends TestCase
         
         $this->assertTrue(Signature::isValid(static::getOptionsForSignatureV3()));
 
-        $timestamp =  Timestamp::getCurrentTimestamp13Digits() - (Signature::MAX_ALLOWED_TIMESTAMP + 500);
+        $timestamp =  Timestamp::getCurrentTimestampWithMilliseconds() - (Signature::MAX_ALLOWED_TIMESTAMP + 500);
         $options = static::getOptionsForSignatureV3($timestamp);
         $this->assertFalse(Signature::isValid($options));
 
@@ -51,7 +51,7 @@ class SignatureTest extends TestCase
     public static function getOptionsForSignatureV3(int $timestamp = 0): array
     {
         if (empty($timestamp)) {
-            $timestamp = Timestamp::getCurrentTimestamp13Digits();
+            $timestamp = Timestamp::getCurrentTimestampWithMilliseconds();
         }
         $options = [
             'secret' => 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
