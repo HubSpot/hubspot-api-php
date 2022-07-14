@@ -28,11 +28,11 @@ class Signature
     public static function isValid(
         array $options
     ): bool {
-        $signatureVersion = static::getOptionOrThrow('signatureVersion', $options, 'v1');
+        $signatureVersion = static::getOptionOrThrow($options, 'signatureVersion', 'v1');
 
-        if ($signatureVersion === 'v3' && static::getOptionOrThrow('checkTimestamp', $options, true)) {
+        if ($signatureVersion === 'v3' && static::getOptionOrThrow($options, 'checkTimestamp', true)) {
             $currentTimestamp = Timestamp::getCurrentTimestampWithMilliseconds();
-            $timestamp = (int) static::getOptionOrThrow('timestamp', $options);
+            $timestamp = (int) static::getOptionOrThrow($options, 'timestamp');
             if ($timestamp === 0) {
                 throw new UnexpectedValueException ('Timestamp parameter can`t be null');
             }
@@ -43,7 +43,7 @@ class Signature
 
         $hash = static::getHashedSignature($signatureVersion, $options);
 
-        return hash_equals(static::getOptionOrThrow('signature', $options), $hash);
+        return hash_equals(static::getOptionOrThrow($options, 'signature'), $hash);
     }
 
      /**
@@ -63,20 +63,20 @@ class Signature
     ): string {
         switch ($signatureVersion) {
             case 'v1': 
-                $sourceString = static::getOptionOrThrow('secret', $options).static::getOptionOrThrow('requestBody', $options);
+                $sourceString = static::getOptionOrThrow($options, 'secret').static::getOptionOrThrow($options, 'requestBody');
                 return hash('sha256', $sourceString);
             case 'v2': 
-                $sourceString = static::getOptionOrThrow('secret', $options).static::getOptionOrThrow('httpMethod', $options).static::getOptionOrThrow('httpUri', $options).static::getOptionOrThrow('requestBody', $options);
+                $sourceString = static::getOptionOrThrow($options, 'secret').static::getOptionOrThrow($options, 'httpMethod').static::getOptionOrThrow($options, 'httpUri').static::getOptionOrThrow($options, 'requestBody');
                 return hash('sha256', $sourceString);
             case 'v3':
-                $sourceString = static::getOptionOrThrow('httpMethod', $options).static::getOptionOrThrow('httpUri', $options).static::getOptionOrThrow('requestBody', $options).static::getOptionOrThrow('timestamp', $options);
-                return base64_encode(hash_hmac('sha256', $sourceString, static::getOptionOrThrow('secret', $options), true));
+                $sourceString = static::getOptionOrThrow($options, 'httpMethod').static::getOptionOrThrow($options, 'httpUri').static::getOptionOrThrow($options, 'requestBody').static::getOptionOrThrow($options, 'timestamp');
+                return base64_encode(hash_hmac('sha256', $sourceString, static::getOptionOrThrow($options, 'secret'), true));
             default:
                 throw new UnexpectedValueException("Not supported signature version: {$signatureVersion}");
         }
     }
 
-    protected static function getOptionOrThrow(string $name, array $options, $default = null)
+    protected static function getOptionOrThrow(array $options, string $name, $default = null)
     {
         if (array_key_exists($name, $options)) {
             return $options[$name];
