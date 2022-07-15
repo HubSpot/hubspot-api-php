@@ -33,9 +33,6 @@ class Signature
         if ('v3' === $signatureVersion && static::getOptionOrThrow($options, 'checkTimestamp', true)) {
             $currentTimestamp = Timestamp::getCurrentTimestampWithMilliseconds();
             $timestamp = (int) static::getOptionOrThrow($options, 'timestamp');
-            if (0 === $timestamp) {
-                throw new UnexpectedValueException('Timestamp parameter can`t be null');
-            }
             if (($currentTimestamp - $timestamp) > static::MAX_ALLOWED_TIMESTAMP) {
                 return false;
             }
