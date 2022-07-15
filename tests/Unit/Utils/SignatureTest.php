@@ -78,10 +78,9 @@ class SignatureTest extends TestCase
     public function unexpectedValueExceptionTimestampTest(): void
     {
         $this->expectException(UnexpectedValueException::class);
-        $this->expectExceptionMessage('Timestamp parameter can`t be null');
+        $this->expectExceptionMessage('Not provided timestamp');
         Signature::isValid([
             'signatureVersion' => 'v3',
-            'timestamp' => null,
         ]);
     }
 
