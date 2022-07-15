@@ -4,10 +4,15 @@ namespace HubSpot\Utils;
 
 use Exception;
 
+/**
+ * @deprecated
+ */
 class Webhooks
 {
     /**
      * Validation of Hubspot Signature.
+     *
+     * @deprecated
      *
      * @param string $signature   hubspot signarute
      * @param string $secret      the Secret of your app
