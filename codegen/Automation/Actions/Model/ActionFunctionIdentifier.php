@@ -171,6 +171,7 @@ class ActionFunctionIdentifier implements ModelInterface, ArrayAccess, \JsonSeri
     public const FUNCTION_TYPE_PRE_ACTION_EXECUTION = 'PRE_ACTION_EXECUTION';
     public const FUNCTION_TYPE_PRE_FETCH_OPTIONS = 'PRE_FETCH_OPTIONS';
     public const FUNCTION_TYPE_POST_FETCH_OPTIONS = 'POST_FETCH_OPTIONS';
+    public const FUNCTION_TYPE_POST_ACTION_EXECUTION = 'POST_ACTION_EXECUTION';
 
     /**
      * Gets allowable values of the enum
@@ -183,6 +184,7 @@ class ActionFunctionIdentifier implements ModelInterface, ArrayAccess, \JsonSeri
             self::FUNCTION_TYPE_PRE_ACTION_EXECUTION,
             self::FUNCTION_TYPE_PRE_FETCH_OPTIONS,
             self::FUNCTION_TYPE_POST_FETCH_OPTIONS,
+            self::FUNCTION_TYPE_POST_ACTION_EXECUTION,
         ];
     }
 
