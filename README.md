@@ -16,7 +16,7 @@ Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-
 #### To instantiate API Client using access token use Factory:
 
 ```php
-$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token');
+$hubspot = \HubSpot\Factory::createWithAccessToken('access-token');
 ```
 You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain [OAuth2](https://developers.hubspot.com/docs/api/working-with-oauth) access token.
 
@@ -25,7 +25,7 @@ You'll need to create a [private app](https://developers.hubspot.com/docs/api/pr
 ```php
 $client = new \GuzzleHttp\Client([...]);
 
-$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
+$hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
 #### API Client comes with Middleware for implementation of Rate and Concurrent Limiting.
@@ -47,13 +47,13 @@ $handlerStack->push(
 
 $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
 
-$hubSpot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
+$hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
 #### Get contacts page:
 
 ```php
-$response = $hubSpot->crm()->contacts()->basicApi()->getPage();
+$response = $hubspot->crm()->contacts()->basicApi()->getPage();
 ```
 
 #### Search for a contact:
@@ -72,7 +72,7 @@ $searchRequest = new \HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchReques
 $searchRequest->setFilterGroups([$filterGroup]);
 
 // @var CollectionResponseWithTotalSimplePublicObject $contactsPage
-$contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+$contactsPage = $hubspot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 ```
 
 #### Create a contact:
@@ -83,7 +83,7 @@ $contactInput->setProperties([
     'email' => 'example@example.com'
 ]);
 
-$contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
+$contact = $hubspot->crm()->contacts()->basicApi()->create($contactInput);
 ```
 
 #### Update a contact:
@@ -94,31 +94,31 @@ $newProperties->setProperties([
     'email' => 'updatedExample@example.com'
 ]);
 
-$hubSpot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
+$hubspot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
 ```
 
 #### Archive a contact:
 
 ```php
-$hubSpot->crm()->contacts()->basicApi()->archive($contactId);
+$hubspot->crm()->contacts()->basicApi()->archive($contactId);
 ```
 
 #### Get custom objects page:
 
 ```php 
-$hubSpot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS)
+$hubspot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS)
 ```
 
 #### File uploading
 
 ```php 
-$file = new \SplFileObject(“file path”);
-$response = $hubSpot->files()->filesApi()->upload($file, null, ‘/’, null, null, json_encode([
-    “access” => “PRIVATE”,
-    “ttl” => “P2W”,
-    “overwrite” => false,
-    “duplicateValidationStrategy” => “NONE”,
-    “duplicateValidationScope” => “EXACT_FOLDER”
+$file = new \SplFileObject('file path');
+$response = $hubspot->files()->filesApi()->upload($file, null, '/', null, null, json_encode([
+    'access' => 'PRIVATE',
+    'ttl' => 'P2W',
+    'overwrite' => false,
+    'duplicateValidationStrategy' => 'NONE',
+    'duplicateValidationScope' => 'EXACT_FOLDER'
 ]) );
 ```
 
