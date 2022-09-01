@@ -16,13 +16,13 @@ class OAuth2
      *
      * @return string
      */
-    public static function getAuthUrl($clientId, $redirectURI, array $scopesArray = [], array $optionalScopesArray = [])
+    public static function getAuthUrl(string $clientId, string $redirectURI, array $scopesArray = [], array $optionalScopesArray = [])
     {
         return static::AUTHORIZE_URL.'?'.http_build_query([
             'client_id' => $clientId,
             'redirect_uri' => $redirectURI,
             'scope' => implode(' ', $scopesArray),
             'optional_scope' => implode(' ', $optionalScopesArray),
-        ], null, '&', PHP_QUERY_RFC3986);
+        ], '', '&', PHP_QUERY_RFC3986);
     }
 }
