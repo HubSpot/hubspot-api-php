@@ -1,4 +1,7 @@
 # hubspot-api-php
+[![Latest Packagist Version](https://img.shields.io/packagist/v/hubspot/api-client?logo=github&logoColor=white&style=flat-square)](https://packagist.org/packages/hubspot/api-client)
+[![Total Downloads](https://img.shields.io/packagist/dt/hubspot/api-client.svg?logo=github&logoColor=white&style=flat-square)](https://packagist.org/packages/hubspot/api-client)
+
 PHP [HubSpot API](https://developers.hubspot.com/docs/api/overview) v3 SDK(Client) files
 
 ## Installation
