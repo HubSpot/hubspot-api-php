@@ -10,6 +10,12 @@ PHP [HubSpot API](https://developers.hubspot.com/docs/api/overview) v3 SDK(Clien
 composer require hubspot/api-client
 ```
 
+## Requirements
+
+The current package requirements are:
+
+PHP >= 7.3
+
 ### Sample apps
 
 Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-list)
