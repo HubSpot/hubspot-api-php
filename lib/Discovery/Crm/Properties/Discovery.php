@@ -10,7 +10,7 @@ use HubSpot\Discovery\DiscoveryBase;
 /**
  * @method BatchApi batchApi()
  * @method CoreApi  coreApi()
- * @method GroupsApi groupsApi
+ * @method GroupsApi groupsApi()
  */
 class Discovery extends DiscoveryBase
 {
