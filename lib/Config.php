@@ -15,6 +15,9 @@ class Config
     protected $accessToken;
 
     /** @var string */
+    protected $basePath;
+
+    /** @var string */
     protected $userAgent;
 
     public function __construct()
@@ -38,6 +41,9 @@ class Config
         $clientConfig->setAccessToken($this->accessToken);
 
         $clientConfig->setUserAgent($this->userAgent);
+        if (!empty($this->basePath)) {
+            $clientConfig->setHost($this->basePath);
+        }
         $clientConfig->setBooleanFormatForQueryString($clientConfig::BOOLEAN_FORMAT_STRING);
         $clientConfig::setDefaultConfiguration($clientConfig);
 
@@ -90,6 +96,22 @@ class Config
     public function setApiKey($apiKey)
     {
         $this->apiKey = $apiKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBasePath()
+    {
+        return $this->basePath;
+    }
+
+    /**
+     * @param string $basePath
+     */
+    public function setBasePath($basePath)
+    {
+        $this->basePath = $basePath;
     }
 
     protected function extractPackageNameAndVersionFromComposerFile()
