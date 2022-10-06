@@ -27,15 +27,10 @@ class Discovery extends DiscoveryBase
      *      'headers' => array, // Optional.
      *      'body' => mixed, // Optional.
      *      'authType' => enum(none, accessToken, hapikey), // Optional.
+     *      'baseUrl' => string, // Optional.
+     *      'qs' => array, // Optional.
+     *      'defaultJson' => bool, // Optional.
      *  ]
-     * $options[method] string
-     * headers?: { [key: string]: string }
-     * body?: any
-     * authType?: string
-     * overlapUrl?: string
-     * path?: string
-     * qs?: { [key: string]: any }
-     * defaultJson?: boolean
      */
     public function apiRequest(array $options = [])
     {

@@ -51,7 +51,7 @@ class Request
         if (!empty($this->headers)) {
             $options['headers'] = $this->headers;
         }
-        
+
         return $options;
     }
 
@@ -98,8 +98,8 @@ class Request
 
     protected function generateUrl(): string {
         $urlStr = $this->baseUrl;
-        if (array_key_exists('overlapUrl', $this->options)) {
-            $urlStr = $this->options['overlapUrl'];
+        if (array_key_exists('baseUrl', $this->options)) {
+            $urlStr = $this->options['baseUrl'];
         }
         $urlStr .= $this->options['path'] ?? '';
         
