@@ -2,7 +2,7 @@
 
 namespace HubSpot\Discovery;
 
-use Hubspot\Http\Request;
+use HubSpot\Http\Request;
 
 /**
  * @method Auth\Discovery                     auth()
@@ -20,7 +20,12 @@ use Hubspot\Http\Request;
 class Discovery extends DiscoveryBase
 {
     /**
-     * method?: string
+     * @param array $options 
+     *  $options = [
+     *      'method' => 'string', // Optional. Default value GET
+     *      'path' => 'string', // Optional. Default value null
+     *  ]
+     * $options[method] string
      * headers?: { [key: string]: string }
      * body?: any
      * authType?: string
@@ -33,6 +38,6 @@ class Discovery extends DiscoveryBase
     {
         $request = new Request($this->config, $options);
 
-        return $request;
+        return $this->client->request($request->getMethod(), $request->getUrl(), $request->getOptionsForSending());
     }
 }
