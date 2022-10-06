@@ -11,10 +11,10 @@ class Auth
         $auth = [
             'type' => null,
             'value' => null,
-        ]; 
-
+        ];
+        
         if (array_key_exists('authType', $options)) {
-            if ($options['authType'] !== 'none' && in_array($options['authType'], static::getAuthTypes())) {
+            if ($options['authType'] !== 'none' && array_key_exists($options['authType'], static::getAuthTypes())) {
                 $method = static::getAuthTypes()[$options['authType']];
                 if (!empty($config->$method())) {
                     $auth['type'] = $options['authType'];
@@ -37,8 +37,8 @@ class Auth
     public static function getAuthTypes(): array
     {
         return [
-            'hapikey' => 'getApiKey',
             'accessToken' => 'getAccessToken',
+            'hapikey' => 'getApiKey',
         ];
     }
 
