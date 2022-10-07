@@ -118,17 +118,4 @@ class Request
           }
         }
     }
-    
-    // public getSendData() {
-    //     let sendData = {
-    //       method: this.method,
-    //       headers: this.headers,
-    //     }
-    
-    //     if (this.body) {
-    //       sendData = Object.assign(sendData, { body: this.body })
-    //     }
-    
-    //     return sendData
-    //   }
 }
