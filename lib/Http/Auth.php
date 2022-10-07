@@ -12,25 +12,26 @@ class Auth
             'type' => null,
             'value' => null,
         ];
-        
+
         if (array_key_exists('authType', $options)) {
-            if ($options['authType'] !== 'none' && array_key_exists($options['authType'], static::getAuthTypes())) {
+            if ('none' !== $options['authType'] && array_key_exists($options['authType'], static::getAuthTypes())) {
                 $method = static::getAuthTypes()[$options['authType']];
-                if (!empty($config->$method())) {
+                if (!empty($config->{$method}())) {
                     $auth['type'] = $options['authType'];
-                    $auth['value'] = $config->$method();
+                    $auth['value'] = $config->{$method}();
                 }
             }
         } else {
-            foreach(static::getAuthTypes() as $type => $method) {
-                if (!empty($config->$method())) {
+            foreach (static::getAuthTypes() as $type => $method) {
+                if (!empty($config->{$method}())) {
                     $auth['type'] = $type;
-                    $auth['value'] = $config->$method();
+                    $auth['value'] = $config->{$method}();
+
                     break;
                 }
             }
         }
-    
+
         return $auth;
     }
 
@@ -41,5 +42,4 @@ class Auth
             'hapikey' => 'getApiKey',
         ];
     }
-
 }

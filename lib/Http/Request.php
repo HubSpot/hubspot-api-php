@@ -15,7 +15,7 @@ class Request
     protected string $method;
     protected array  $headers = [];
 
-    public function __construct(Config $config, array $options = []) 
+    public function __construct(Config $config, array $options = [])
     {
         $this->config = $config;
         $this->options = $options;
@@ -35,17 +35,17 @@ class Request
         $this->setBody();
     }
 
-    public function getUrl(): string 
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    public function getMethod(): string 
+    public function getMethod(): string
     {
         return $this->method;
     }
 
-    public function getOptionsForSending(): array 
+    public function getOptionsForSending(): array
     {
         $options = [];
         if (!empty($this->headers)) {
@@ -55,20 +55,21 @@ class Request
         return $options;
     }
 
-    protected function applyAuth() {
+    protected function applyAuth()
+    {
         $auth = Auth::chooseAuth($this->options, $this->config);
 
         if ($auth['type']) {
-          if ($auth['type'] === 'hapikey') {
-            $this->options['qs']['hapikey'] = $auth['value'];
-          }
+            if ('hapikey' === $auth['type']) {
+                $this->options['qs']['hapikey'] = $auth['value'];
+            }
 
-          if ($auth['type'] === 'accessToken') {
-            $this->headers['Authorization'] = "Bearer {$auth['value']}";
-          }
+            if ('accessToken' === $auth['type']) {
+                $this->headers['Authorization'] = "Bearer {$auth['value']}";
+            }
         }
     }
-    
+
     protected function initHeaders()
     {
         if ($this->defaultJson) {
@@ -76,7 +77,7 @@ class Request
                 'Content-Type' => 'application/json',
             ];
         }
-    
+
         $this->headers = array_merge($this->headers, $this->getDefaultHeaders());
         if (array_key_exists('headers', $this->options)) {
             $this->headers = array_merge($this->headers, $this->options['headers']);
@@ -96,26 +97,28 @@ class Request
         return $headers;
     }
 
-    protected function generateUrl(): string {
+    protected function generateUrl(): string
+    {
         $urlStr = $this->baseUrl;
         if (array_key_exists('baseUrl', $this->options)) {
             $urlStr = $this->options['baseUrl'];
         }
         $urlStr .= $this->options['path'] ?? '';
-        
+
         if (array_key_exists('qs', $this->options) && !empty($this->options['qs'])) {
             $urlStr .= '?'.http_build_query($this->options['qs'], '', '&', PHP_QUERY_RFC3986);
         }
+
         return $urlStr;
     }
 
     protected function setBody()
     {
         if (array_key_exists('body', $this->options)) {
-          $this->body = $this->options['body'];
-          if ($this->defaultJson) {
+            $this->body = $this->options['body'];
+            if ($this->defaultJson) {
                 $this->body = json_encode($this->body);
-          }
+            }
         }
     }
 }
