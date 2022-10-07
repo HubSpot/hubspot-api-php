@@ -20,17 +20,16 @@ use HubSpot\Http\Request;
 class Discovery extends DiscoveryBase
 {
     /**
-     * @param array $options
-     *                       $options = [
-     *                       'method' => string, // Optional. Default value GET
-     *                       'path' => string, // Optional. Default value null
-     *                       'headers' => array, // Optional.
-     *                       'body' => mixed, // Optional.
-     *                       'authType' => enum(none, accessToken, hapikey), // Optional.
-     *                       'baseUrl' => string, // Optional.
-     *                       'qs' => array, // Optional.
-     *                       'defaultJson' => bool, // Optional.
-     *                       ]
+     * @param $options = [
+     * 'method' => string, // Optional. Default value GET
+     * 'path' => string, // Optional. Default value null
+     * 'headers' => array, // Optional.
+     * 'body' => mixed, // Optional.
+     * 'authType' => enum(none, accessToken, hapikey), // Optional.
+     * 'baseUrl' => string, // Optional.
+     * 'qs' => array, // Optional.
+     * 'defaultJson' => bool, // Optional.
+     * ]
      */
     public function apiRequest(array $options = [])
     {
