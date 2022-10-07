@@ -52,6 +52,10 @@ class Request
             $options['headers'] = $this->headers;
         }
 
+        if (!empty($this->body)) {
+            $options['body'] = $this->body;
+        }
+
         return $options;
     }
 
