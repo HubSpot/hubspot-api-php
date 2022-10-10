@@ -5,7 +5,6 @@ namespace Hubspot\Tests\Unit\Utils;
 use HubSpot\Config;
 use HubSpot\Http\Request;
 use PHPUnit\Framework\TestCase;
-use UnexpectedValueException;
 
 /**
  * @internal
@@ -13,7 +12,7 @@ use UnexpectedValueException;
  */
 class RequestTest extends TestCase
 {
-    const BASE_URL = 'https://api.hubapi.com';
+    public const BASE_URL = 'https://api.hubapi.com';
 
     /** @test */
     public function emptyConfigAndOptions(): void
@@ -25,8 +24,8 @@ class RequestTest extends TestCase
         $this->assertSame($this::BASE_URL, $request->getUrl());
         $this->assertSame('GET', $request->getMethod());
         $this->assertSame(['headers' => $this->getHeaders($config)], $request->getOptionsForSending());
-    } 
-    
+    }
+
     /** @test */
     public function getContacts(): void
     {
@@ -37,11 +36,11 @@ class RequestTest extends TestCase
             'path' => '/crm/v3/objects/contacts',
         ]);
 
-        $this->assertSame($this::BASE_URL . '/crm/v3/objects/contacts?hapikey=api-key', $request->getUrl());
+        $this->assertSame($this::BASE_URL.'/crm/v3/objects/contacts?hapikey=api-key', $request->getUrl());
         $this->assertSame('GET', $request->getMethod());
         $this->assertSame(['headers' => $this->getHeaders($config)], $request->getOptionsForSending());
     }
-    
+
     /** @test */
     public function createContacts(): void
     {
@@ -59,7 +58,7 @@ class RequestTest extends TestCase
             'body' => $body,
         ]);
 
-        $this->assertSame($this::BASE_URL . '/crm/v3/objects/contacts', $request->getUrl());
+        $this->assertSame($this::BASE_URL.'/crm/v3/objects/contacts', $request->getUrl());
         $this->assertSame('POST', $request->getMethod());
         $this->assertSame([
             'headers' => $this->getHeaders($config),
@@ -85,7 +84,7 @@ class RequestTest extends TestCase
             'defaultJson' => false,
         ]);
 
-        $this->assertSame($request->getUrl(), $this::BASE_URL . '/crm/v3/objects/contacts');
+        $this->assertSame($request->getUrl(), $this::BASE_URL.'/crm/v3/objects/contacts');
         $this->assertSame($request->getMethod(), 'POST');
         $this->assertSame([
             'headers' => $this->getHeaders($config, false),
@@ -102,8 +101,7 @@ class RequestTest extends TestCase
         ];
 
         if (!$defaultJson) {
-            unset($headers['Accept']);
-            unset($headers['Content-Type']);
+            unset($headers['Accept'], $headers['Content-Type']);
         }
 
         return $headers;
