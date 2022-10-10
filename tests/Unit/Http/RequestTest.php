@@ -84,8 +84,8 @@ class RequestTest extends TestCase
             'defaultJson' => false,
         ]);
 
-        $this->assertSame($request->getUrl(), $this::BASE_URL.'/crm/v3/objects/contacts');
-        $this->assertSame($request->getMethod(), 'POST');
+        $this->assertSame($this::BASE_URL.'/crm/v3/objects/contacts', $request->getUrl());
+        $this->assertSame('POST', $request->getMethod());
         $this->assertSame([
             'headers' => $this->getHeaders($config, false),
             'body' => $body,
