@@ -131,6 +131,42 @@ $response = $hubspot->files()->filesApi()->upload($file, null, '/', null, null, 
 ]) );
 ```
 
+#### Not wrapped endpoint(s) 
+
+It is possible to access the hubspot request method directly, it could be handy if client doesn't have implementation for some endpoint yet. Exposed request method benefits by having all configured client params.
+
+```php
+$response = $hubspot->apiRequest([
+    'method' => 'PUT',
+    'path' => '/some/api/not/wrapped/yet',
+    'body' => ['key' => 'value'],
+]);
+```
+
+#### apiRequest options
+
+```php
+[
+    'method' => string, // Http method (e.g.: GET, POST, etc). Default value GET
+    'path' => string, // URL path (e.g.: '/crm/v3/objects/contacts'). Optional
+    'headers' => array, // Http headers. Optional.
+    'body' => mixed, // Request body (if defaultJson set body will be transforted to json string).Optional.
+    'authType' => enum(none, accessToken, hapikey), // Auth type. if it isn't set it will use accessToken or hapikey. Default value is non empty auth type.
+    'baseUrl' => string, // Base URL. Default value 'https://api.hubapi.com'.
+    'qs' => array, // Query parameters. Optional.
+    'defaultJson' => bool, // Default Json. if it is set to true it add to headers [ 'Content-Type' => 'application/json', 'Accept' => 'application/json, */*;q=0.8',]
+    // and transfort body to json string. Default value true
+];
+```
+
+#### get contacts
+
+```php
+$response = $hubspot->apiRequest([
+    'path' => '/crm/v3/objects/contacts',
+]);
+```
+
 ## Contributing
 
 ### Run spec tests
