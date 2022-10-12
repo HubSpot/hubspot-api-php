@@ -37,6 +37,16 @@ $client = new \GuzzleHttp\Client([...]);
 $hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
+#### To change the base path:
+
+```php
+$config = new \GuzzleHttp\Config();
+$config->setBasePath('*');
+$config->setAccessToken('*');
+
+$hubspot = \HubSpot\Factory::create(null, $config);
+```
+
 #### API Client comes with Middleware for implementation of Rate and Concurrent Limiting.
 It provides an ability to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
 
@@ -129,6 +139,42 @@ $response = $hubspot->files()->filesApi()->upload($file, null, '/', null, null, 
     'duplicateValidationStrategy' => 'NONE',
     'duplicateValidationScope' => 'EXACT_FOLDER'
 ]) );
+```
+
+#### Not wrapped endpoint(s) 
+
+It is possible to access the hubspot request method directly, it could be handy if client doesn't have implementation for some endpoint yet. Exposed request method benefits by having all configured client params.
+
+```php
+$response = $hubspot->apiRequest([
+    'method' => 'PUT',
+    'path' => '/some/api/not/wrapped/yet',
+    'body' => ['key' => 'value'],
+]);
+```
+
+#### apiRequest options
+
+```php
+[
+    'method' => string, // Http method (e.g.: GET, POST, etc). Default value GET
+    'path' => string, // URL path (e.g.: '/crm/v3/objects/contacts'). Optional
+    'headers' => array, // Http headers. Optional.
+    'body' => mixed, // Request body (if defaultJson set body will be transforted to json string).Optional.
+    'authType' => enum(none, accessToken, hapikey), // Auth type. if it isn't set it will use accessToken or hapikey. Default value is non empty auth type.
+    'baseUrl' => string, // Base URL. Default value 'https://api.hubapi.com'.
+    'qs' => array, // Query parameters. Optional.
+    'defaultJson' => bool, // Default Json. if it is set to true it add to headers [ 'Content-Type' => 'application/json', 'Accept' => 'application/json, */*;q=0.8',]
+    // and transfort body to json string. Default value true
+];
+```
+
+#### get contacts
+
+```php
+$response = $hubspot->apiRequest([
+    'path' => '/crm/v3/objects/contacts',
+]);
 ```
 
 ## Contributing
