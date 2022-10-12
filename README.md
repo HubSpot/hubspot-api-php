@@ -37,6 +37,16 @@ $client = new \GuzzleHttp\Client([...]);
 $hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
+#### To change the base path:
+
+```php
+$config = new \GuzzleHttp\Config();
+$config->setBasePath('*');
+$config->setAccessToken('*');
+
+$hubspot = \HubSpot\Factory::create(null, $config);
+```
+
 #### API Client comes with Middleware for implementation of Rate and Concurrent Limiting.
 It provides an ability to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
 
