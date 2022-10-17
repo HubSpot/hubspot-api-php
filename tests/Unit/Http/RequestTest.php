@@ -1,6 +1,6 @@
 <?php
 
-namespace Hubspot\Tests\Unit\Utils;
+namespace Hubspot\Tests\Unit\Http;
 
 use HubSpot\Config;
 use HubSpot\Http\Request;
