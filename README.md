@@ -29,6 +29,12 @@ $hubspot = \HubSpot\Factory::createWithAccessToken('access-token');
 ```
 You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain [OAuth2](https://developers.hubspot.com/docs/api/working-with-oauth) access token.
 
+#### To instantiate API Client using developer apikey use Factory:
+
+```php
+$hubspot = \HubSpot\Factory::createWithAccessToken('access-token');
+```
+
 #### also you can pass custom client to Factory:
 
 ```php

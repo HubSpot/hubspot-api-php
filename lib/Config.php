@@ -7,9 +7,13 @@ use HubSpot\Client\Crm\Contacts\Configuration;
 class Config
 {
     public const API_KEY_IDENTIFIER = 'hapikey';
+    public const DEVELOPER_API_KEY_IDENTIFIER = 'hapikey';
 
     /** @var string */
     protected $apiKey;
+
+    /** @var string */
+    protected $developerApiKey;
 
     /** @var string */
     protected $accessToken;
@@ -38,6 +42,9 @@ class Config
         $clientConfig = new $clientConfigClassName();
 
         $clientConfig->setApiKey(static::API_KEY_IDENTIFIER, $this->apiKey);
+        if (!empty($this->developerApiKey)) {
+            $clientConfig->setApiKey(static::DEVELOPER_API_KEY_IDENTIFIER, $this->developerApiKey);
+        }
         $clientConfig->setAccessToken($this->accessToken);
 
         $clientConfig->setUserAgent($this->userAgent);
@@ -96,6 +103,22 @@ class Config
     public function setApiKey($apiKey)
     {
         $this->apiKey = $apiKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeveloperApiKey()
+    {
+        return $this->developerApiKey;
+    }
+
+    /**
+     * @param string $developerApiKey
+     */
+    public function setDeveloperApiKey($developerApiKey)
+    {
+        $this->developerApiKey = $developerApiKey;
     }
 
     /**

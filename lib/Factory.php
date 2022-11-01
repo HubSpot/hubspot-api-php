@@ -27,6 +27,14 @@ class Factory
         return static::create($client, $config);
     }
 
+    public static function createWithDeveloperApiKey(string $apiKey, ClientInterface $client = null): Discovery
+    {
+        $config = new Config();
+        $config->setDeveloperApiKey($apiKey);
+
+        return static::create($client, $config);
+    }
+
     public static function createWithAccessToken(string $accessToken, ClientInterface $client = null): Discovery
     {
         $config = new Config();
