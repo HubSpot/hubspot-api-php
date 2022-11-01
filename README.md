@@ -32,7 +32,7 @@ You'll need to create a [private app](https://developers.hubspot.com/docs/api/pr
 #### To instantiate API Client using developer apikey use Factory:
 
 ```php
-$hubspot = \HubSpot\Factory::createWithAccessToken('access-token');
+$hubspot = \HubSpot\Factory::createWithDeveloperApiKey('developer-apikey');
 ```
 
 #### also you can pass custom client to Factory:
@@ -49,6 +49,7 @@ $hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 $config = new \GuzzleHttp\Config();
 $config->setBasePath('*');
 $config->setAccessToken('*');
+$config->setDeveloperApiKey('*');
 
 $hubspot = \HubSpot\Factory::create(null, $config);
 ```
