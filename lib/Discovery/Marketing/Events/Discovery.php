@@ -8,9 +8,9 @@ use HubSpot\Client\Marketing\Events\Api\SettingsExternalApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method AttendanceSubscriberStateChangesApi                  attendanceSubscriberStateChangesApi()
- * @method MarketingEventsExternalApi                           marketingEventsExternalApi()
- * @method SettingsExternalApi                                  settingsExternalApi()
+ * @method AttendanceSubscriberStateChangesApi attendanceSubscriberStateChangesApi()
+ * @method MarketingEventsExternalApi          marketingEventsExternalApi()
+ * @method SettingsExternalApi                 settingsExternalApi()
  */
 class Discovery extends DiscoveryBase
 {
