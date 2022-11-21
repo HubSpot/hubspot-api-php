@@ -125,6 +125,7 @@ class SettingsApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Accounting\Model\AccountingAppSettings|\HubSpot\Client\Crm\Extensions\Accounting\Model\Error
+     * @deprecated
      */
     public function getById($app_id)
     {
@@ -434,6 +435,7 @@ class SettingsApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
+     * @deprecated
      */
     public function replace($app_id, $accounting_app_settings)
     {

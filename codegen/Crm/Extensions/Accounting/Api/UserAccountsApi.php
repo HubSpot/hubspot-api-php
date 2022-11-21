@@ -125,6 +125,7 @@ class UserAccountsApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
+     * @deprecated
      */
     public function archive($account_id)
     {
@@ -368,6 +369,7 @@ class UserAccountsApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
+     * @deprecated
      */
     public function replace($create_user_account_request_external)
     {
