@@ -15,6 +15,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method SettingsApi     settingsApi()
  * @method SyncApi         syncApi()
  * @method UserAccountsApi userAccountsApi()
+ *
  * @deprecated
  */
 class Discovery extends DiscoveryBase
