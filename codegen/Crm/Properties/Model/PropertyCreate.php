@@ -217,6 +217,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
     public const TYPE_ENUMERATION = 'enumeration';
+    public const TYPE_BOOL = 'bool';
     public const FIELD_TYPE_TEXTAREA = 'textarea';
     public const FIELD_TYPE_TEXT = 'text';
     public const FIELD_TYPE_DATE = 'date';
@@ -240,6 +241,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_DATE,
             self::TYPE_DATETIME,
             self::TYPE_ENUMERATION,
+            self::TYPE_BOOL
         ];
     }
 
