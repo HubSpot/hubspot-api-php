@@ -118,39 +118,37 @@ class AssociationsApi
     /**
      * Operation archive
      *
-     * Remove an association between two feedback submissions
+     * Delete
      *
-     * @param  string $feedback_submission_id feedback_submission_id (required)
+     * @param  int $feedback_submission_id feedback_submission_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  string $to_object_id to_object_id (required)
-     * @param  string $association_type association_type (required)
+     * @param  int $to_object_id to_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function archive($feedback_submission_id, $to_object_type, $to_object_id)
     {
-        $this->archiveWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type);
+        $this->archiveWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id);
     }
 
     /**
      * Operation archiveWithHttpInfo
      *
-     * Remove an association between two feedback submissions
+     * Delete
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id)
     {
-        $request = $this->archiveRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($feedback_submission_id, $to_object_type, $to_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,19 +205,18 @@ class AssociationsApi
     /**
      * Operation archiveAsync
      *
-     * Remove an association between two feedback submissions
+     * Delete
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsync($feedback_submission_id, $to_object_type, $to_object_id)
     {
-        return $this->archiveAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+        return $this->archiveAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -230,20 +227,19 @@ class AssociationsApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Remove an association between two feedback submissions
+     * Delete
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($feedback_submission_id, $to_object_type, $to_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -271,15 +267,14 @@ class AssociationsApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveRequest($feedback_submission_id, $to_object_type, $to_object_id)
     {
         // verify the required parameter 'feedback_submission_id' is set
         if ($feedback_submission_id === null || (is_array($feedback_submission_id) && count($feedback_submission_id) === 0)) {
@@ -297,12 +292,6 @@ class AssociationsApi
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $to_object_id when calling archive'
-            );
-        }
-        // verify the required parameter 'association_type' is set
-        if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling archive'
             );
         }
 
@@ -336,14 +325,6 @@ class AssociationsApi
             $resourcePath = str_replace(
                 '{' . 'toObjectId' . '}',
                 ObjectSerializer::toPathValue($to_object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($association_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'associationType' . '}',
-                ObjectSerializer::toPathValue($association_type),
                 $resourcePath
             );
         }
@@ -418,40 +399,40 @@ class AssociationsApi
     /**
      * Operation create
      *
-     * Associate a feedback submission with another object
+     * Create
      *
-     * @param  string $feedback_submission_id feedback_submission_id (required)
+     * @param  int $feedback_submission_id feedback_submission_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  string $to_object_id to_object_id (required)
-     * @param  string $association_type association_type (required)
+     * @param  int $to_object_id to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociationSpec[] $association_spec association_spec (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
-    public function create($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function create($feedback_submission_id, $to_object_type, $to_object_id, $association_spec)
     {
-        list($response) = $this->createWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type);
+        list($response) = $this->createWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_spec);
         return $response;
     }
 
     /**
      * Operation createWithHttpInfo
      *
-     * Associate a feedback submission with another object
+     * Create
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function createWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_spec)
     {
-        $request = $this->createRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->createRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_spec);
 
         try {
             $options = $this->createHttpClientOption();
@@ -489,18 +470,18 @@ class AssociationsApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations' === '\SplFileObject') {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -521,7 +502,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations';
+            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -539,10 +520,10 @@ class AssociationsApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations',
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -563,19 +544,19 @@ class AssociationsApi
     /**
      * Operation createAsync
      *
-     * Associate a feedback submission with another object
+     * Create
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsync($feedback_submission_id, $to_object_type, $to_object_id, $association_spec)
     {
-        return $this->createAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+        return $this->createAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_spec)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -586,20 +567,20 @@ class AssociationsApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Associate a feedback submission with another object
+     * Create
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $to_object_id, $association_spec)
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations';
-        $request = $this->createRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_type);
+        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\LabelsBetweenObjectPair';
+        $request = $this->createRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_spec);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -640,15 +621,15 @@ class AssociationsApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_type)
+    public function createRequest($feedback_submission_id, $to_object_type, $to_object_id, $association_spec)
     {
         // verify the required parameter 'feedback_submission_id' is set
         if ($feedback_submission_id === null || (is_array($feedback_submission_id) && count($feedback_submission_id) === 0)) {
@@ -668,10 +649,10 @@ class AssociationsApi
                 'Missing the required parameter $to_object_id when calling create'
             );
         }
-        // verify the required parameter 'association_type' is set
-        if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
+        // verify the required parameter 'association_spec' is set
+        if ($association_spec === null || (is_array($association_spec) && count($association_spec) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling create'
+                'Missing the required parameter $association_spec when calling create'
             );
         }
 
@@ -708,14 +689,6 @@ class AssociationsApi
                 $resourcePath
             );
         }
-        // path params
-        if ($association_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'associationType' . '}',
-                ObjectSerializer::toPathValue($association_type),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -725,12 +698,18 @@ class AssociationsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', '*/*'],
-                []
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($association_spec)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($association_spec));
+            } else {
+                $httpBody = $association_spec;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -787,16 +766,16 @@ class AssociationsApi
     /**
      * Operation getPage
      *
-     * List associations of a feedback submission by type
+     * List
      *
-     * @param  string $feedback_submission_id feedback_submission_id (required)
+     * @param  int $feedback_submission_id feedback_submission_id (required)
      * @param  string $to_object_type to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
     public function getPage($feedback_submission_id, $to_object_type, $after = null, $limit = 500)
     {
@@ -807,16 +786,16 @@ class AssociationsApi
     /**
      * Operation getPageWithHttpInfo
      *
-     * List associations of a feedback submission by type
+     * List
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPageWithHttpInfo($feedback_submission_id, $to_object_type, $after = null, $limit = 500)
     {
@@ -859,17 +838,17 @@ class AssociationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -890,7 +869,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging';
+            $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -911,7 +890,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging',
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -932,9 +911,9 @@ class AssociationsApi
     /**
      * Operation getPageAsync
      *
-     * List associations of a feedback submission by type
+     * List
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
@@ -955,9 +934,9 @@ class AssociationsApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * List associations of a feedback submission by type
+     * List
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
@@ -967,7 +946,7 @@ class AssociationsApi
      */
     public function getPageAsyncWithHttpInfo($feedback_submission_id, $to_object_type, $after = null, $limit = 500)
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseAssociatedIdForwardPaging';
+        $returnType = '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
         $request = $this->getPageRequest($feedback_submission_id, $to_object_type, $after, $limit);
 
         return $this->client
@@ -1009,7 +988,7 @@ class AssociationsApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string $feedback_submission_id (required)
+     * @param  int $feedback_submission_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)

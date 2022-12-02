@@ -118,39 +118,37 @@ class AssociationsApi
     /**
      * Operation archive
      *
-     * Remove an association between two tasks
+     * Delete
      *
-     * @param  string $task_id task_id (required)
+     * @param  int $task_id task_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  string $to_object_id to_object_id (required)
-     * @param  string $association_type association_type (required)
+     * @param  int $to_object_id to_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\Tasks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($task_id, $to_object_type, $to_object_id, $association_type)
+    public function archive($task_id, $to_object_type, $to_object_id)
     {
-        $this->archiveWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type);
+        $this->archiveWithHttpInfo($task_id, $to_object_type, $to_object_id);
     }
 
     /**
      * Operation archiveWithHttpInfo
      *
-     * Remove an association between two tasks
+     * Delete
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\Tasks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveWithHttpInfo($task_id, $to_object_type, $to_object_id)
     {
-        $request = $this->archiveRequest($task_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($task_id, $to_object_type, $to_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,19 +205,18 @@ class AssociationsApi
     /**
      * Operation archiveAsync
      *
-     * Remove an association between two tasks
+     * Delete
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($task_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsync($task_id, $to_object_type, $to_object_id)
     {
-        return $this->archiveAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type)
+        return $this->archiveAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -230,20 +227,19 @@ class AssociationsApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Remove an association between two tasks
+     * Delete
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($task_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->archiveRequest($task_id, $to_object_type, $to_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -271,15 +267,14 @@ class AssociationsApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($task_id, $to_object_type, $to_object_id, $association_type)
+    public function archiveRequest($task_id, $to_object_type, $to_object_id)
     {
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -297,12 +292,6 @@ class AssociationsApi
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $to_object_id when calling archive'
-            );
-        }
-        // verify the required parameter 'association_type' is set
-        if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling archive'
             );
         }
 
@@ -336,14 +325,6 @@ class AssociationsApi
             $resourcePath = str_replace(
                 '{' . 'toObjectId' . '}',
                 ObjectSerializer::toPathValue($to_object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($association_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'associationType' . '}',
-                ObjectSerializer::toPathValue($association_type),
                 $resourcePath
             );
         }
@@ -418,40 +399,40 @@ class AssociationsApi
     /**
      * Operation create
      *
-     * Associate a task with another object
+     * Create
      *
-     * @param  string $task_id task_id (required)
+     * @param  int $task_id task_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  string $to_object_id to_object_id (required)
-     * @param  string $association_type association_type (required)
+     * @param  int $to_object_id to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\Tasks\Model\AssociationSpec[] $association_spec association_spec (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\Tasks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\Tasks\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Objects\Tasks\Model\Error
      */
-    public function create($task_id, $to_object_type, $to_object_id, $association_type)
+    public function create($task_id, $to_object_type, $to_object_id, $association_spec)
     {
-        list($response) = $this->createWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type);
+        list($response) = $this->createWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_spec);
         return $response;
     }
 
     /**
      * Operation createWithHttpInfo
      *
-     * Associate a task with another object
+     * Create
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\Tasks\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\Tasks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\Tasks\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Objects\Tasks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type)
+    public function createWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_spec)
     {
-        $request = $this->createRequest($task_id, $to_object_type, $to_object_id, $association_type);
+        $request = $this->createRequest($task_id, $to_object_type, $to_object_id, $association_spec);
 
         try {
             $options = $this->createHttpClientOption();
@@ -489,18 +470,18 @@ class AssociationsApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations' === '\SplFileObject') {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -521,7 +502,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations';
+            $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -539,10 +520,10 @@ class AssociationsApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations',
+                        '\HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -563,19 +544,19 @@ class AssociationsApi
     /**
      * Operation createAsync
      *
-     * Associate a task with another object
+     * Create
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\Tasks\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($task_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsync($task_id, $to_object_type, $to_object_id, $association_spec)
     {
-        return $this->createAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type)
+        return $this->createAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_spec)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -586,20 +567,20 @@ class AssociationsApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Associate a task with another object
+     * Create
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\Tasks\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_type)
+    public function createAsyncWithHttpInfo($task_id, $to_object_type, $to_object_id, $association_spec)
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations';
-        $request = $this->createRequest($task_id, $to_object_type, $to_object_id, $association_type);
+        $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\LabelsBetweenObjectPair';
+        $request = $this->createRequest($task_id, $to_object_type, $to_object_id, $association_spec);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -640,15 +621,15 @@ class AssociationsApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
-     * @param  string $to_object_id (required)
-     * @param  string $association_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Objects\Tasks\Model\AssociationSpec[] $association_spec (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($task_id, $to_object_type, $to_object_id, $association_type)
+    public function createRequest($task_id, $to_object_type, $to_object_id, $association_spec)
     {
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -668,10 +649,10 @@ class AssociationsApi
                 'Missing the required parameter $to_object_id when calling create'
             );
         }
-        // verify the required parameter 'association_type' is set
-        if ($association_type === null || (is_array($association_type) && count($association_type) === 0)) {
+        // verify the required parameter 'association_spec' is set
+        if ($association_spec === null || (is_array($association_spec) && count($association_spec) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $association_type when calling create'
+                'Missing the required parameter $association_spec when calling create'
             );
         }
 
@@ -708,14 +689,6 @@ class AssociationsApi
                 $resourcePath
             );
         }
-        // path params
-        if ($association_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'associationType' . '}',
-                ObjectSerializer::toPathValue($association_type),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -725,12 +698,18 @@ class AssociationsApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', '*/*'],
-                []
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($association_spec)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($association_spec));
+            } else {
+                $httpBody = $association_spec;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -787,16 +766,16 @@ class AssociationsApi
     /**
      * Operation getAll
      *
-     * List associations of a task by type
+     * List
      *
-     * @param  string $task_id task_id (required)
+     * @param  int $task_id task_id (required)
      * @param  string $to_object_type to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\Objects\Tasks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\Objects\Tasks\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Objects\Tasks\Model\Error
      */
     public function getAll($task_id, $to_object_type, $after = null, $limit = 500)
     {
@@ -807,16 +786,16 @@ class AssociationsApi
     /**
      * Operation getAllWithHttpInfo
      *
-     * List associations of a task by type
+     * List
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
      *
      * @throws \HubSpot\Client\Crm\Objects\Tasks\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging|\HubSpot\Client\Crm\Objects\Tasks\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Objects\Tasks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllWithHttpInfo($task_id, $to_object_type, $after = null, $limit = 500)
     {
@@ -859,17 +838,17 @@ class AssociationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -890,7 +869,7 @@ class AssociationsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging';
+            $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -911,7 +890,7 @@ class AssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging',
+                        '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -932,9 +911,9 @@ class AssociationsApi
     /**
      * Operation getAllAsync
      *
-     * List associations of a task by type
+     * List
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
@@ -955,9 +934,9 @@ class AssociationsApi
     /**
      * Operation getAllAsyncWithHttpInfo
      *
-     * List associations of a task by type
+     * List
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
@@ -967,7 +946,7 @@ class AssociationsApi
      */
     public function getAllAsyncWithHttpInfo($task_id, $to_object_type, $after = null, $limit = 500)
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseAssociatedIdForwardPaging';
+        $returnType = '\HubSpot\Client\Crm\Objects\Tasks\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
         $request = $this->getAllRequest($task_id, $to_object_type, $after, $limit);
 
         return $this->client
@@ -1009,7 +988,7 @@ class AssociationsApi
     /**
      * Create request for operation 'getAll'
      *
-     * @param  string $task_id (required)
+     * @param  int $task_id (required)
      * @param  string $to_object_type (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional, default to 500)
