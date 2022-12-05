@@ -1,13 +1,14 @@
 {
-    "name": "hubspot/api-client",
+    "name": "ibrhaim13/api-client",
     "version": "9.0.1",
-    "description": "Hubspot API client",
+    "description": "Hubspot API client - php 7.1",
     "keywords": [
         "hubspot",
         "swagger",
         "php",
         "sdk",
-        "api"
+        "api",
+        "ibrhaim13"
     ],
     "homepage": "https://hubspot.com/",
     "license": "Apache-2.0",
@@ -18,7 +19,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.1",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
