@@ -97,6 +97,9 @@ $filterGroup->setFilters([$filter]);
 $searchRequest = new \HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest();
 $searchRequest->setFilterGroups([$filterGroup]);
 
+// Get specific properties
+$searchRequest->setProperties(['firstname', 'lastname', 'date_of_birth', 'email']);
+
 // @var CollectionResponseWithTotalSimplePublicObject $contactsPage
 $contactsPage = $hubspot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 ```
