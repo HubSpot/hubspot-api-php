@@ -1,21 +1,22 @@
 {
     "name": "ibrhaim13/api-client",
     "version": "9.0.1",
-    "description": "Hubspot API client - php 7.1",
+    "description": "This fork of (Hubspot API client/official package) to be compatible with php 7.1 or above with some customize",
     "keywords": [
         "hubspot",
         "swagger",
         "php",
         "sdk",
         "api",
-        "ibrhaim13"
+        "ibrhaim13",
+        "ibrahim"
     ],
-    "homepage": "https://hubspot.com/",
+    "homepage": "https://github.com/ibrhaim13/hubspot-api-php",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "HubSpot",
-            "homepage": "https://hubspot.com/"
+            "name": "Ibrahim Musabeh",
+            "homepage": "https://github.com/ibrhaim13/hubspot-api-php"
         }
     ],
     "require": {
