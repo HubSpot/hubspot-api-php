@@ -1,6 +1,7 @@
 {
     "name": "ibrhaim13/api-client",
     "version": "9.1",
+    "type": "library",
     "description": "This fork of (Hubspot API client/official package) to be compatible with php 7.1 or above with some customize",
     "keywords": [
         "hubspot",
@@ -12,7 +13,7 @@
         "ibrahim"
     ],
     "homepage": "https://github.com/ibrhaim13/hubspot-api-php",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ibrahim Musabeh",
