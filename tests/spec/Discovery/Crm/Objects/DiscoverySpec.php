@@ -16,6 +16,7 @@ use HubSpot\Discovery\Crm\Objects\Emails\Discovery as EmailsDiscovery;
 use HubSpot\Discovery\Crm\Objects\FeedbackSubmissions\Discovery as FeedbackSubmissionsDiscovery;
 use HubSpot\Discovery\Crm\Objects\Meetings\Discovery as MeetingsDiscovery;
 use HubSpot\Discovery\Crm\Objects\Notes\Discovery as NotesDiscovery;
+use HubSpot\Discovery\Crm\Objects\PostalMail\Discovery as PostalMailDiscovery;
 use HubSpot\Discovery\Crm\Objects\Tasks\Discovery as TasksDiscovery;
 use PhpSpec\ObjectBehavior;
 
@@ -42,6 +43,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->feedbackSubmissions()->shouldHaveType(FeedbackSubmissionsDiscovery::class);
         $this->meetings()->shouldHaveType(MeetingsDiscovery::class);
         $this->notes()->shouldHaveType(NotesDiscovery::class);
+        $this->postalMail()->shouldHaveType(PostalMailDiscovery::class);
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
         $this->tasks()->shouldHaveType(TasksDiscovery::class);
