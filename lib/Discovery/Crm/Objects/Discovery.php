@@ -21,6 +21,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method FeedbackSubmissions\Discovery feedbackSubmissions()
  * @method Meetings\Discovery            meetings()
  * @method Notes\Discovery               notes()
+ * @method PostalMail\Discovery          postalMail()
  * @method PublicObjectApi               publicObjectApi()
  * @method SearchApi                     searchApi()
  * @method Tasks\Discovery               tasks()
