@@ -1,15 +1,15 @@
 <?php
 
-namespace spec\HubSpot\Discovery\Crm\Objects\Notes;
+namespace spec\HubSpot\Discovery\Crm\Objects\PostalMail;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Objects\Notes\Api\AssociationsApi;
-use HubSpot\Client\Crm\Objects\Notes\Api\BasicApi;
-use HubSpot\Client\Crm\Objects\Notes\Api\BatchApi;
-use HubSpot\Client\Crm\Objects\Notes\Api\PublicObjectApi;
-use HubSpot\Client\Crm\Objects\Notes\Api\SearchApi;
+use HubSpot\Client\Crm\Objects\PostalMail\Api\AssociationsApi;
+use HubSpot\Client\Crm\Objects\PostalMail\Api\BasicApi;
+use HubSpot\Client\Crm\Objects\PostalMail\Api\BatchApi;
+use HubSpot\Client\Crm\Objects\PostalMail\Api\PublicObjectApi;
+use HubSpot\Client\Crm\Objects\PostalMail\Api\SearchApi;
 use HubSpot\Config;
-use HubSpot\Discovery\Crm\Objects\Notes\Discovery;
+use HubSpot\Discovery\Crm\Objects\PostalMail\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
