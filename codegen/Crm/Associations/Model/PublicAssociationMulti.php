@@ -58,7 +58,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'from' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\Model\AssociatedId[]'
+        'to' => '\HubSpot\Client\Crm\Associations\Model\AssociatedId[]',
+        'paging' => '\HubSpot\Client\Crm\Associations\Model\Paging'
     ];
 
     /**
@@ -70,7 +71,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'from' => null,
-        'to' => null
+        'to' => null,
+        'paging' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'from' => 'from',
-        'to' => 'to'
+        'to' => 'to',
+        'paging' => 'paging'
     ];
 
     /**
@@ -111,7 +114,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'from' => 'setFrom',
-        'to' => 'setTo'
+        'to' => 'setTo',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -121,7 +125,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'from' => 'getFrom',
-        'to' => 'getTo'
+        'to' => 'getTo',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -183,6 +188,7 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['paging'] = $data['paging'] ?? null;
     }
 
     /**
@@ -259,6 +265,30 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets paging
+     *
+     * @return \HubSpot\Client\Crm\Associations\Model\Paging|null
+     */
+    public function getPaging()
+    {
+        return $this->container['paging'];
+    }
+
+    /**
+     * Sets paging
+     *
+     * @param \HubSpot\Client\Crm\Associations\Model\Paging|null $paging paging
+     *
+     * @return self
+     */
+    public function setPaging($paging)
+    {
+        $this->container['paging'] = $paging;
 
         return $this;
     }

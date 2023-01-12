@@ -125,7 +125,7 @@ class TypesApi
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton|\HubSpot\Client\Crm\Associations\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging|\HubSpot\Client\Crm\Associations\Model\Error
      */
     public function getAll($from_object_type, $to_object_type)
     {
@@ -143,7 +143,7 @@ class TypesApi
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllWithHttpInfo($from_object_type, $to_object_type)
     {
@@ -186,17 +186,17 @@ class TypesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -217,7 +217,7 @@ class TypesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton';
+            $returnType = '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -238,7 +238,7 @@ class TypesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton',
+                        '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -290,7 +290,7 @@ class TypesApi
      */
     public function getAllAsyncWithHttpInfo($from_object_type, $to_object_type)
     {
-        $returnType = '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefiniton';
+        $returnType = '\HubSpot\Client\Crm\Associations\Model\CollectionResponsePublicAssociationDefinitionNoPaging';
         $request = $this->getAllRequest($from_object_type, $to_object_type);
 
         return $this->client

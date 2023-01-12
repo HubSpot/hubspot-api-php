@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicAssociationDefiniton
+ * CollectionResponsePublicAssociationDefinitionNoPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\ObjectSerializer;
 
 /**
- * PublicAssociationDefiniton Class Doc Comment
+ * CollectionResponsePublicAssociationDefinitionNoPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponsePublicAssociationDefinitionNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicAssociationDefiniton';
+    protected static $openAPIModelName = 'CollectionResponsePublicAssociationDefinitionNoPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string'
+        'results' => '\HubSpot\Client\Crm\Associations\Model\PublicAssociationDefinition[]'
     ];
 
     /**
@@ -69,8 +68,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null
+        'results' => null
     ];
 
     /**
@@ -100,8 +98,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name'
+        'results' => 'results'
     ];
 
     /**
@@ -110,8 +107,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName'
+        'results' => 'setResults'
     ];
 
     /**
@@ -120,8 +116,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName'
+        'results' => 'getResults'
     ];
 
     /**
@@ -181,8 +176,7 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -194,11 +188,8 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -216,49 +207,25 @@ class PublicAssociationDefiniton implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets id
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Associations\Model\PublicAssociationDefinition[]
      */
-    public function getId()
+    public function getResults()
     {
-        return $this->container['id'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets id
+     * Sets results
      *
-     * @param string $id id
+     * @param \HubSpot\Client\Crm\Associations\Model\PublicAssociationDefinition[] $results results
      *
      * @return self
      */
-    public function setId($id)
+    public function setResults($results)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
+        $this->container['results'] = $results;
 
         return $this;
     }
