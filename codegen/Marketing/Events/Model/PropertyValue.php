@@ -68,7 +68,9 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_vid' => 'int[]',
         'source_metadata' => 'string',
         'request_id' => 'string',
-        'updated_by_user_id' => 'int'
+        'updated_by_user_id' => 'int',
+        'persistence_timestamp' => 'int',
+        'use_timestamp_as_persistence_timestamp' => 'bool'
     ];
 
     /**
@@ -90,7 +92,9 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_vid' => 'int64',
         'source_metadata' => null,
         'request_id' => null,
-        'updated_by_user_id' => 'int32'
+        'updated_by_user_id' => 'int32',
+        'persistence_timestamp' => 'int64',
+        'use_timestamp_as_persistence_timestamp' => null
     ];
 
     /**
@@ -131,7 +135,9 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_vid' => 'sourceVid',
         'source_metadata' => 'sourceMetadata',
         'request_id' => 'requestId',
-        'updated_by_user_id' => 'updatedByUserId'
+        'updated_by_user_id' => 'updatedByUserId',
+        'persistence_timestamp' => 'persistenceTimestamp',
+        'use_timestamp_as_persistence_timestamp' => 'useTimestampAsPersistenceTimestamp'
     ];
 
     /**
@@ -151,7 +157,9 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_vid' => 'setSourceVid',
         'source_metadata' => 'setSourceMetadata',
         'request_id' => 'setRequestId',
-        'updated_by_user_id' => 'setUpdatedByUserId'
+        'updated_by_user_id' => 'setUpdatedByUserId',
+        'persistence_timestamp' => 'setPersistenceTimestamp',
+        'use_timestamp_as_persistence_timestamp' => 'setUseTimestampAsPersistenceTimestamp'
     ];
 
     /**
@@ -171,7 +179,9 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'source_vid' => 'getSourceVid',
         'source_metadata' => 'getSourceMetadata',
         'request_id' => 'getRequestId',
-        'updated_by_user_id' => 'getUpdatedByUserId'
+        'updated_by_user_id' => 'getUpdatedByUserId',
+        'persistence_timestamp' => 'getPersistenceTimestamp',
+        'use_timestamp_as_persistence_timestamp' => 'getUseTimestampAsPersistenceTimestamp'
     ];
 
     /**
@@ -412,6 +422,8 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['source_metadata'] = $data['source_metadata'] ?? null;
         $this->container['request_id'] = $data['request_id'] ?? null;
         $this->container['updated_by_user_id'] = $data['updated_by_user_id'] ?? null;
+        $this->container['persistence_timestamp'] = $data['persistence_timestamp'] ?? null;
+        $this->container['use_timestamp_as_persistence_timestamp'] = $data['use_timestamp_as_persistence_timestamp'] ?? null;
     }
 
     /**
@@ -774,6 +786,54 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedByUserId($updated_by_user_id)
     {
         $this->container['updated_by_user_id'] = $updated_by_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets persistence_timestamp
+     *
+     * @return int|null
+     */
+    public function getPersistenceTimestamp()
+    {
+        return $this->container['persistence_timestamp'];
+    }
+
+    /**
+     * Sets persistence_timestamp
+     *
+     * @param int|null $persistence_timestamp persistence_timestamp
+     *
+     * @return self
+     */
+    public function setPersistenceTimestamp($persistence_timestamp)
+    {
+        $this->container['persistence_timestamp'] = $persistence_timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_timestamp_as_persistence_timestamp
+     *
+     * @return bool|null
+     */
+    public function getUseTimestampAsPersistenceTimestamp()
+    {
+        return $this->container['use_timestamp_as_persistence_timestamp'];
+    }
+
+    /**
+     * Sets use_timestamp_as_persistence_timestamp
+     *
+     * @param bool|null $use_timestamp_as_persistence_timestamp use_timestamp_as_persistence_timestamp
+     *
+     * @return self
+     */
+    public function setUseTimestampAsPersistenceTimestamp($use_timestamp_as_persistence_timestamp)
+    {
+        $this->container['use_timestamp_as_persistence_timestamp'] = $use_timestamp_as_persistence_timestamp;
 
         return $this;
     }

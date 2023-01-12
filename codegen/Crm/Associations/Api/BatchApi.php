@@ -122,13 +122,13 @@ class BatchApi
      *
      * @param  string $from_object_type from_object_type (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association batch_input_public_association (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archive($from_object_type, $to_object_type, $batch_input_public_association)
     {
         $this->archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association);
     }
@@ -140,13 +140,13 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
     {
         $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association);
 
@@ -209,12 +209,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveAsync($from_object_type, $to_object_type, $batch_input_public_association)
     {
         return $this->archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
             ->then(
@@ -231,12 +231,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
     {
         $returnType = '';
         $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association);
@@ -269,12 +269,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function archiveRequest($from_object_type, $to_object_type, $batch_input_public_association)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
@@ -286,6 +286,12 @@ class BatchApi
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $to_object_type when calling archive'
+            );
+        }
+        // verify the required parameter 'batch_input_public_association' is set
+        if ($batch_input_public_association === null || (is_array($batch_input_public_association) && count($batch_input_public_association) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_public_association when calling archive'
             );
         }
 
@@ -395,13 +401,13 @@ class BatchApi
      *
      * @param  string $from_object_type from_object_type (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association batch_input_public_association (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors|\HubSpot\Client\Crm\Associations\Model\Error
      */
-    public function create($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function create($from_object_type, $to_object_type, $batch_input_public_association)
     {
         list($response) = $this->createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association);
         return $response;
@@ -414,13 +420,13 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
     {
         $request = $this->createRequest($from_object_type, $to_object_type, $batch_input_public_association);
 
@@ -476,17 +482,17 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -536,7 +542,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation',
+                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -561,12 +567,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createAsync($from_object_type, $to_object_type, $batch_input_public_association)
     {
         return $this->createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
             ->then(
@@ -583,12 +589,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation';
         $request = $this->createRequest($from_object_type, $to_object_type, $batch_input_public_association);
@@ -634,12 +640,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($from_object_type, $to_object_type, $batch_input_public_association = null)
+    public function createRequest($from_object_type, $to_object_type, $batch_input_public_association)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
@@ -651,6 +657,12 @@ class BatchApi
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $to_object_type when calling create'
+            );
+        }
+        // verify the required parameter 'batch_input_public_association' is set
+        if ($batch_input_public_association === null || (is_array($batch_input_public_association) && count($batch_input_public_association) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_public_association when calling create'
             );
         }
 
@@ -760,13 +772,13 @@ class BatchApi
      *
      * @param  string $from_object_type from_object_type (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id batch_input_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id batch_input_public_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors|\HubSpot\Client\Crm\Associations\Model\Error
      */
-    public function read($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function read($from_object_type, $to_object_type, $batch_input_public_object_id)
     {
         list($response) = $this->readWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id);
         return $response;
@@ -779,13 +791,13 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id)
     {
         $request = $this->readRequest($from_object_type, $to_object_type, $batch_input_public_object_id);
 
@@ -841,17 +853,17 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -901,7 +913,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti',
+                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -926,12 +938,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsync($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readAsync($from_object_type, $to_object_type, $batch_input_public_object_id)
     {
         return $this->readAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id)
             ->then(
@@ -948,12 +960,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti';
         $request = $this->readRequest($from_object_type, $to_object_type, $batch_input_public_object_id);
@@ -999,12 +1011,12 @@ class BatchApi
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (optional)
+     * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function readRequest($from_object_type, $to_object_type, $batch_input_public_object_id = null)
+    public function readRequest($from_object_type, $to_object_type, $batch_input_public_object_id)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
@@ -1016,6 +1028,12 @@ class BatchApi
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $to_object_type when calling read'
+            );
+        }
+        // verify the required parameter 'batch_input_public_object_id' is set
+        if ($batch_input_public_object_id === null || (is_array($batch_input_public_object_id) && count($batch_input_public_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_public_object_id when calling read'
             );
         }
 

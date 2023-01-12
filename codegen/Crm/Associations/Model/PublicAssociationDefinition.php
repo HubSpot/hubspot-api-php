@@ -1,6 +1,6 @@
 <?php
 /**
- * Paging
+ * PublicAssociationDefinition
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\ObjectSerializer;
 
 /**
- * Paging Class Doc Comment
+ * PublicAssociationDefinition Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Paging';
+    protected static $openAPIModelName = 'PublicAssociationDefinition';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next' => '\HubSpot\Client\Crm\Associations\Model\NextPage',
-        'prev' => '\HubSpot\Client\Crm\Associations\Model\PreviousPage'
+        'id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'next' => null,
-        'prev' => null
+        'id' => null,
+        'name' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'next' => 'next',
-        'prev' => 'prev'
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -110,8 +110,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'next' => 'setNext',
-        'prev' => 'setPrev'
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -120,8 +120,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'next' => 'getNext',
-        'prev' => 'getPrev'
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -181,8 +181,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['next'] = $data['next'] ?? null;
-        $this->container['prev'] = $data['prev'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -194,6 +194,12 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -210,49 +216,49 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets next
+     * Gets id
      *
-     * @return \HubSpot\Client\Crm\Associations\Model\NextPage|null
+     * @return string
      */
-    public function getNext()
+    public function getId()
     {
-        return $this->container['next'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets next
+     * Sets id
      *
-     * @param \HubSpot\Client\Crm\Associations\Model\NextPage|null $next next
+     * @param string $id id
      *
      * @return self
      */
-    public function setNext($next)
+    public function setId($id)
     {
-        $this->container['next'] = $next;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets prev
+     * Gets name
      *
-     * @return \HubSpot\Client\Crm\Associations\Model\PreviousPage|null
+     * @return string
      */
-    public function getPrev()
+    public function getName()
     {
-        return $this->container['prev'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets prev
+     * Sets name
      *
-     * @param \HubSpot\Client\Crm\Associations\Model\PreviousPage|null $prev prev
+     * @param string $name name
      *
      * @return self
      */
-    public function setPrev($prev)
+    public function setName($name)
     {
-        $this->container['prev'] = $prev;
+        $this->container['name'] = $name;
 
         return $this;
     }
