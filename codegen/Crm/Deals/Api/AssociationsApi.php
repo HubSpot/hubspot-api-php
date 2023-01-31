@@ -401,9 +401,9 @@ class AssociationsApi
      *
      * Create
      *
-     * @param  int $deal_id deal_id (required)
+     * @param  string $deal_id deal_id (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  int $to_object_id to_object_id (required)
+     * @param  string $to_object_id to_object_id (required)
      * @param  \HubSpot\Client\Crm\Deals\Model\AssociationSpec[] $association_spec association_spec (required)
      *
      * @throws \HubSpot\Client\Crm\Deals\ApiException on non-2xx response
