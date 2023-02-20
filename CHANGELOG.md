@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/9.2.2...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/9.3.0...HEAD)
+
+## [9.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.3.0) - 2023-02-20
+
+### Added
+
+ - `crm()->associations()->v4` API client
+ 
+ ### Fixed
+
+ - Fix `auth()->oauth()->refreshTokensApi()->archiveRefreshToken()` method
 
 ## [9.2.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.2) - 2023-01-12
 
@@ -128,8 +138,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Update
 
- - rename crm()->pipelines()->pipelineStagesApi()->getCrmV3PipelinesObjectTypePipelineIdAudit() => crm()->pipelines()->pipelineStagesApi()->getAudit()
- - rename crm()->pipelines()->pipelinesApi()->getCrmV3PipelinesObjectTypePipelineIdStagesStageIdAudit() => crm()->pipelines()->pipelinesApi()->getAudit()
+ - rename `crm()->pipelines()->pipelineStagesApi()->getCrmV3PipelinesObjectTypePipelineIdAudit()` => `crm()->pipelines()->pipelineStagesApi()->getAudit()`
+ - rename `crm()->pipelines()->pipelinesApi()->getCrmV3PipelinesObjectTypePipelineIdStagesStageIdAudit()` => `crm()->pipelines()->pipelinesApi()->getAudit()`
 
 ## [7.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/7.0.0) - 2022-03-21
 
@@ -430,3 +440,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [9.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.0
 [9.2.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.1
 [9.2.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.2
+[9.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.3.0
