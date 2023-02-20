@@ -5,8 +5,8 @@ namespace spec\HubSpot\Discovery\Crm\Associations;
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Associations\Api\BatchApi;
 use HubSpot\Client\Crm\Associations\Api\TypesApi;
-use HubSpot\Discovery\Crm\Associations\V4\Discovery;
 use HubSpot\Config;
+use HubSpot\Discovery\Crm\Associations\V4\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior

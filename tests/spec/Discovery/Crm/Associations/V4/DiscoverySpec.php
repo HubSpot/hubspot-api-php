@@ -5,7 +5,6 @@ namespace spec\HubSpot\Discovery\Crm\Associations\V4;
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Associations\V4\Api\BatchApi;
 use HubSpot\Client\Crm\Associations\V4\Api\DefinitionsApi;
-use HubSpot\Discovery\Crm\Associations\V4\Discovery;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
