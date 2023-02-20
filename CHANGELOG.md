@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
  - `crm()->associations()->v4` API client
  
- ### Fixed
+### Fixed
 
  - Fix `auth()->oauth()->refreshTokensApi()->archiveRefreshToken()` method
 
