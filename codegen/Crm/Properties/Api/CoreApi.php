@@ -713,14 +713,15 @@ class CoreApi
      *
      * @param  string $object_type object_type (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties properties (optional)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
+     * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getAll($object_type, $archived = false)
+    public function getAll($object_type, $archived = false, $properties = null)
     {
-        list($response) = $this->getAllWithHttpInfo($object_type, $archived);
+        list($response) = $this->getAllWithHttpInfo($object_type, $archived, $properties);
         return $response;
     }
 
@@ -731,14 +732,15 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($object_type, $archived = false)
+    public function getAllWithHttpInfo($object_type, $archived = false, $properties = null)
     {
-        $request = $this->getAllRequest($object_type, $archived);
+        $request = $this->getAllRequest($object_type, $archived, $properties);
 
         try {
             $options = $this->createHttpClientOption();
@@ -777,17 +779,17 @@ class CoreApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -808,7 +810,7 @@ class CoreApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty';
+            $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -829,7 +831,7 @@ class CoreApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty',
+                        '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -854,13 +856,14 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($object_type, $archived = false)
+    public function getAllAsync($object_type, $archived = false, $properties = null)
     {
-        return $this->getAllAsyncWithHttpInfo($object_type, $archived)
+        return $this->getAllAsyncWithHttpInfo($object_type, $archived, $properties)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -875,14 +878,15 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($object_type, $archived = false)
+    public function getAllAsyncWithHttpInfo($object_type, $archived = false, $properties = null)
     {
-        $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponseProperty';
-        $request = $this->getAllRequest($object_type, $archived);
+        $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyNoPaging';
+        $request = $this->getAllRequest($object_type, $archived, $properties);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -925,11 +929,12 @@ class CoreApi
      *
      * @param  string $object_type (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($object_type, $archived = false)
+    public function getAllRequest($object_type, $archived = false, $properties = null)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -950,6 +955,15 @@ class CoreApi
             $archived,
             'archived', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1040,14 +1054,15 @@ class CoreApi
      * @param  string $object_type object_type (required)
      * @param  string $property_name property_name (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties properties (optional)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getByName($object_type, $property_name, $archived = false)
+    public function getByName($object_type, $property_name, $archived = false, $properties = null)
     {
-        list($response) = $this->getByNameWithHttpInfo($object_type, $property_name, $archived);
+        list($response) = $this->getByNameWithHttpInfo($object_type, $property_name, $archived, $properties);
         return $response;
     }
 
@@ -1059,14 +1074,15 @@ class CoreApi
      * @param  string $object_type (required)
      * @param  string $property_name (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\Property|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByNameWithHttpInfo($object_type, $property_name, $archived = false)
+    public function getByNameWithHttpInfo($object_type, $property_name, $archived = false, $properties = null)
     {
-        $request = $this->getByNameRequest($object_type, $property_name, $archived);
+        $request = $this->getByNameRequest($object_type, $property_name, $archived, $properties);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1183,13 +1199,14 @@ class CoreApi
      * @param  string $object_type (required)
      * @param  string $property_name (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByNameAsync($object_type, $property_name, $archived = false)
+    public function getByNameAsync($object_type, $property_name, $archived = false, $properties = null)
     {
-        return $this->getByNameAsyncWithHttpInfo($object_type, $property_name, $archived)
+        return $this->getByNameAsyncWithHttpInfo($object_type, $property_name, $archived, $properties)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1205,14 +1222,15 @@ class CoreApi
      * @param  string $object_type (required)
      * @param  string $property_name (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByNameAsyncWithHttpInfo($object_type, $property_name, $archived = false)
+    public function getByNameAsyncWithHttpInfo($object_type, $property_name, $archived = false, $properties = null)
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\Property';
-        $request = $this->getByNameRequest($object_type, $property_name, $archived);
+        $request = $this->getByNameRequest($object_type, $property_name, $archived, $properties);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1256,11 +1274,12 @@ class CoreApi
      * @param  string $object_type (required)
      * @param  string $property_name (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByNameRequest($object_type, $property_name, $archived = false)
+    public function getByNameRequest($object_type, $property_name, $archived = false, $properties = null)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -1287,6 +1306,15 @@ class CoreApi
             $archived,
             'archived', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

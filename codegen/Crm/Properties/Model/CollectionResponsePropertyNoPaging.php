@@ -1,6 +1,6 @@
 <?php
 /**
- * NextPage
+ * CollectionResponsePropertyNoPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * NextPage Class Doc Comment
+ * CollectionResponsePropertyNoPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Properties
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Properties\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NextPage';
+    protected static $openAPIModelName = 'CollectionResponsePropertyNoPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'results' => '\HubSpot\Client\Crm\Properties\Model\Property[]'
     ];
 
     /**
@@ -69,8 +68,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'results' => null
     ];
 
     /**
@@ -100,8 +98,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'results' => 'results'
     ];
 
     /**
@@ -110,8 +107,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'results' => 'setResults'
     ];
 
     /**
@@ -120,8 +116,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'results' => 'getResults'
     ];
 
     /**
@@ -181,8 +176,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = $data['after'] ?? null;
-        $this->container['link'] = $data['link'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -194,8 +188,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -213,49 +207,25 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets after
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Properties\Model\Property[]
      */
-    public function getAfter()
+    public function getResults()
     {
-        return $this->container['after'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets after
+     * Sets results
      *
-     * @param string $after after
+     * @param \HubSpot\Client\Crm\Properties\Model\Property[] $results results
      *
      * @return self
      */
-    public function setAfter($after)
+    public function setResults($results)
     {
-        $this->container['after'] = $after;
-
-        return $this;
-    }
-
-    /**
-     * Gets link
-     *
-     * @return string|null
-     */
-    public function getLink()
-    {
-        return $this->container['link'];
-    }
-
-    /**
-     * Sets link
-     *
-     * @param string|null $link link
-     *
-     * @return self
-     */
-    public function setLink($link)
-    {
-        $this->container['link'] = $link;
+        $this->container['results'] = $results;
 
         return $this;
     }
