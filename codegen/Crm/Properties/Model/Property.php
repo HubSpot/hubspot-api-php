@@ -79,8 +79,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'hubspot_defined' => 'bool',
         'show_currency_symbol' => 'bool',
         'modification_metadata' => '\HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata',
-        'form_field' => 'bool',
-        'calculation_formula' => 'string'
+        'form_field' => 'bool'
     ];
 
     /**
@@ -113,8 +112,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'hubspot_defined' => null,
         'show_currency_symbol' => null,
         'modification_metadata' => null,
-        'form_field' => null,
-        'calculation_formula' => null
+        'form_field' => null
     ];
 
     /**
@@ -166,8 +164,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'hubspot_defined' => 'hubspotDefined',
         'show_currency_symbol' => 'showCurrencySymbol',
         'modification_metadata' => 'modificationMetadata',
-        'form_field' => 'formField',
-        'calculation_formula' => 'calculationFormula'
+        'form_field' => 'formField'
     ];
 
     /**
@@ -198,8 +195,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'hubspot_defined' => 'setHubspotDefined',
         'show_currency_symbol' => 'setShowCurrencySymbol',
         'modification_metadata' => 'setModificationMetadata',
-        'form_field' => 'setFormField',
-        'calculation_formula' => 'setCalculationFormula'
+        'form_field' => 'setFormField'
     ];
 
     /**
@@ -230,8 +226,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'hubspot_defined' => 'getHubspotDefined',
         'show_currency_symbol' => 'getShowCurrencySymbol',
         'modification_metadata' => 'getModificationMetadata',
-        'form_field' => 'getFormField',
-        'calculation_formula' => 'getCalculationFormula'
+        'form_field' => 'getFormField'
     ];
 
     /**
@@ -314,7 +309,6 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['show_currency_symbol'] = $data['show_currency_symbol'] ?? null;
         $this->container['modification_metadata'] = $data['modification_metadata'] ?? null;
         $this->container['form_field'] = $data['form_field'] ?? null;
-        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
     }
 
     /**
@@ -910,30 +904,6 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFormField($form_field)
     {
         $this->container['form_field'] = $form_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_formula
-     *
-     * @return string|null
-     */
-    public function getCalculationFormula()
-    {
-        return $this->container['calculation_formula'];
-    }
-
-    /**
-     * Sets calculation_formula
-     *
-     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
-     *
-     * @return self
-     */
-    public function setCalculationFormula($calculation_formula)
-    {
-        $this->container['calculation_formula'] = $calculation_formula;
 
         return $this;
     }

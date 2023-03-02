@@ -65,8 +65,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
         'display_order' => 'int',
         'hidden' => 'bool',
-        'form_field' => 'bool',
-        'calculation_formula' => 'string'
+        'form_field' => 'bool'
     ];
 
     /**
@@ -85,8 +84,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => null,
         'display_order' => 'int32',
         'hidden' => null,
-        'form_field' => null,
-        'calculation_formula' => null
+        'form_field' => null
     ];
 
     /**
@@ -124,8 +122,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => 'options',
         'display_order' => 'displayOrder',
         'hidden' => 'hidden',
-        'form_field' => 'formField',
-        'calculation_formula' => 'calculationFormula'
+        'form_field' => 'formField'
     ];
 
     /**
@@ -142,8 +139,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => 'setOptions',
         'display_order' => 'setDisplayOrder',
         'hidden' => 'setHidden',
-        'form_field' => 'setFormField',
-        'calculation_formula' => 'setCalculationFormula'
+        'form_field' => 'setFormField'
     ];
 
     /**
@@ -160,8 +156,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => 'getOptions',
         'display_order' => 'getDisplayOrder',
         'hidden' => 'getHidden',
-        'form_field' => 'getFormField',
-        'calculation_formula' => 'getCalculationFormula'
+        'form_field' => 'getFormField'
     ];
 
     /**
@@ -210,7 +205,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
     public const TYPE_ENUMERATION = 'enumeration';
-    public const TYPE_BOOL = 'bool';
     public const FIELD_TYPE_TEXTAREA = 'textarea';
     public const FIELD_TYPE_TEXT = 'text';
     public const FIELD_TYPE_DATE = 'date';
@@ -220,7 +214,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FIELD_TYPE_RADIO = 'radio';
     public const FIELD_TYPE_CHECKBOX = 'checkbox';
     public const FIELD_TYPE_BOOLEANCHECKBOX = 'booleancheckbox';
-    public const FIELD_TYPE_CALCULATION_EQUATION = 'calculation_equation';
 
     /**
      * Gets allowable values of the enum
@@ -235,7 +228,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_DATE,
             self::TYPE_DATETIME,
             self::TYPE_ENUMERATION,
-            self::TYPE_BOOL,
         ];
     }
 
@@ -256,7 +248,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FIELD_TYPE_RADIO,
             self::FIELD_TYPE_CHECKBOX,
             self::FIELD_TYPE_BOOLEANCHECKBOX,
-            self::FIELD_TYPE_CALCULATION_EQUATION,
         ];
     }
 
@@ -284,7 +275,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['display_order'] = $data['display_order'] ?? null;
         $this->container['hidden'] = $data['hidden'] ?? null;
         $this->container['form_field'] = $data['form_field'] ?? null;
-        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
     }
 
     /**
@@ -561,30 +551,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFormField($form_field)
     {
         $this->container['form_field'] = $form_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_formula
-     *
-     * @return string|null
-     */
-    public function getCalculationFormula()
-    {
-        return $this->container['calculation_formula'];
-    }
-
-    /**
-     * Sets calculation_formula
-     *
-     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
-     *
-     * @return self
-     */
-    public function setCalculationFormula($calculation_formula)
-    {
-        $this->container['calculation_formula'] = $calculation_formula;
 
         return $this;
     }

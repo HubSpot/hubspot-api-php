@@ -67,10 +67,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_order' => 'int',
         'has_unique_value' => 'bool',
         'hidden' => 'bool',
-        'form_field' => 'bool',
-        'external_options' => 'bool',
-        'referenced_object_type' => 'string',
-        'calculation_formula' => 'string'
+        'form_field' => 'bool'
     ];
 
     /**
@@ -91,10 +88,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_order' => 'int32',
         'has_unique_value' => null,
         'hidden' => null,
-        'form_field' => null,
-        'external_options' => null,
-        'referenced_object_type' => null,
-        'calculation_formula' => null
+        'form_field' => null
     ];
 
     /**
@@ -134,10 +128,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_order' => 'displayOrder',
         'has_unique_value' => 'hasUniqueValue',
         'hidden' => 'hidden',
-        'form_field' => 'formField',
-        'external_options' => 'externalOptions',
-        'referenced_object_type' => 'referencedObjectType',
-        'calculation_formula' => 'calculationFormula'
+        'form_field' => 'formField'
     ];
 
     /**
@@ -156,10 +147,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_order' => 'setDisplayOrder',
         'has_unique_value' => 'setHasUniqueValue',
         'hidden' => 'setHidden',
-        'form_field' => 'setFormField',
-        'external_options' => 'setExternalOptions',
-        'referenced_object_type' => 'setReferencedObjectType',
-        'calculation_formula' => 'setCalculationFormula'
+        'form_field' => 'setFormField'
     ];
 
     /**
@@ -178,10 +166,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_order' => 'getDisplayOrder',
         'has_unique_value' => 'getHasUniqueValue',
         'hidden' => 'getHidden',
-        'form_field' => 'getFormField',
-        'external_options' => 'getExternalOptions',
-        'referenced_object_type' => 'getReferencedObjectType',
-        'calculation_formula' => 'getCalculationFormula'
+        'form_field' => 'getFormField'
     ];
 
     /**
@@ -230,7 +215,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
     public const TYPE_ENUMERATION = 'enumeration';
-    public const TYPE_BOOL = 'bool';
     public const FIELD_TYPE_TEXTAREA = 'textarea';
     public const FIELD_TYPE_TEXT = 'text';
     public const FIELD_TYPE_DATE = 'date';
@@ -240,7 +224,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FIELD_TYPE_RADIO = 'radio';
     public const FIELD_TYPE_CHECKBOX = 'checkbox';
     public const FIELD_TYPE_BOOLEANCHECKBOX = 'booleancheckbox';
-    public const FIELD_TYPE_CALCULATION_EQUATION = 'calculation_equation';
 
     /**
      * Gets allowable values of the enum
@@ -255,7 +238,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_DATE,
             self::TYPE_DATETIME,
             self::TYPE_ENUMERATION,
-            self::TYPE_BOOL,
         ];
     }
 
@@ -276,7 +258,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FIELD_TYPE_RADIO,
             self::FIELD_TYPE_CHECKBOX,
             self::FIELD_TYPE_BOOLEANCHECKBOX,
-            self::FIELD_TYPE_CALCULATION_EQUATION,
         ];
     }
 
@@ -306,9 +287,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
         $this->container['hidden'] = $data['hidden'] ?? null;
         $this->container['form_field'] = $data['form_field'] ?? null;
-        $this->container['external_options'] = $data['external_options'] ?? null;
-        $this->container['referenced_object_type'] = $data['referenced_object_type'] ?? null;
-        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
     }
 
     /**
@@ -648,78 +626,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFormField($form_field)
     {
         $this->container['form_field'] = $form_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_options
-     *
-     * @return bool|null
-     */
-    public function getExternalOptions()
-    {
-        return $this->container['external_options'];
-    }
-
-    /**
-     * Sets external_options
-     *
-     * @param bool|null $external_options Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.
-     *
-     * @return self
-     */
-    public function setExternalOptions($external_options)
-    {
-        $this->container['external_options'] = $external_options;
-
-        return $this;
-    }
-
-    /**
-     * Gets referenced_object_type
-     *
-     * @return string|null
-     */
-    public function getReferencedObjectType()
-    {
-        return $this->container['referenced_object_type'];
-    }
-
-    /**
-     * Sets referenced_object_type
-     *
-     * @param string|null $referenced_object_type Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.
-     *
-     * @return self
-     */
-    public function setReferencedObjectType($referenced_object_type)
-    {
-        $this->container['referenced_object_type'] = $referenced_object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_formula
-     *
-     * @return string|null
-     */
-    public function getCalculationFormula()
-    {
-        return $this->container['calculation_formula'];
-    }
-
-    /**
-     * Sets calculation_formula
-     *
-     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
-     *
-     * @return self
-     */
-    public function setCalculationFormula($calculation_formula)
-    {
-        $this->container['calculation_formula'] = $calculation_formula;
 
         return $this;
     }

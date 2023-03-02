@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchReadInputPropertyName
+ * Paging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * BatchReadInputPropertyName Class Doc Comment
+ * Paging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Properties
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Properties\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSerializable
+class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchReadInputPropertyName';
+    protected static $openAPIModelName = 'Paging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Properties\Model\PropertyName[]',
-        'archived' => 'bool'
+        'next' => '\HubSpot\Client\Crm\Properties\Model\NextPage'
     ];
 
     /**
@@ -69,8 +68,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'inputs' => null,
-        'archived' => null
+        'next' => null
     ];
 
     /**
@@ -100,8 +98,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'inputs' => 'inputs',
-        'archived' => 'archived'
+        'next' => 'next'
     ];
 
     /**
@@ -110,8 +107,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'inputs' => 'setInputs',
-        'archived' => 'setArchived'
+        'next' => 'setNext'
     ];
 
     /**
@@ -120,8 +116,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'inputs' => 'getInputs',
-        'archived' => 'getArchived'
+        'next' => 'getNext'
     ];
 
     /**
@@ -181,8 +176,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['inputs'] = $data['inputs'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['next'] = $data['next'] ?? null;
     }
 
     /**
@@ -194,12 +188,6 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['inputs'] === null) {
-            $invalidProperties[] = "'inputs' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -216,49 +204,25 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets inputs
+     * Gets next
      *
-     * @return \HubSpot\Client\Crm\Properties\Model\PropertyName[]
+     * @return \HubSpot\Client\Crm\Properties\Model\NextPage|null
      */
-    public function getInputs()
+    public function getNext()
     {
-        return $this->container['inputs'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets inputs
+     * Sets next
      *
-     * @param \HubSpot\Client\Crm\Properties\Model\PropertyName[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Properties\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setInputs($inputs)
+    public function setNext($next)
     {
-        $this->container['inputs'] = $inputs;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
+        $this->container['next'] = $next;
 
         return $this;
     }

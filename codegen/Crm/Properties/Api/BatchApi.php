@@ -385,7 +385,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error
+     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
      */
     public function create($object_type, $batch_input_property_create)
     {
@@ -403,7 +403,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($object_type, $batch_input_property_create)
     {
@@ -461,17 +461,17 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -521,7 +521,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors',
+                        '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -737,7 +737,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error
+     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
      */
     public function read($object_type, $batch_read_input_property_name)
     {
@@ -755,7 +755,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($object_type, $batch_read_input_property_name)
     {
@@ -813,17 +813,17 @@ class BatchApi
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -873,7 +873,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors',
+                        '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
