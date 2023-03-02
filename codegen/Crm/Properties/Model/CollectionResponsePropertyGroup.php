@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponsePropertyGroupNoPaging
+ * CollectionResponsePropertyGroup
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * CollectionResponsePropertyGroupNoPaging Class Doc Comment
+ * CollectionResponsePropertyGroup Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Properties
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Properties\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponsePropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponsePropertyGroupNoPaging';
+    protected static $openAPIModelName = 'CollectionResponsePropertyGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Properties\Model\PropertyGroup[]'
+        'results' => '\HubSpot\Client\Crm\Properties\Model\PropertyGroup[]',
+        'paging' => '\HubSpot\Client\Crm\Properties\Model\Paging'
     ];
 
     /**
@@ -68,7 +69,8 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null
+        'results' => null,
+        'paging' => null
     ];
 
     /**
@@ -98,7 +100,8 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results'
+        'results' => 'results',
+        'paging' => 'paging'
     ];
 
     /**
@@ -107,7 +110,8 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults'
+        'results' => 'setResults',
+        'paging' => 'setPaging'
     ];
 
     /**
@@ -116,7 +120,8 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults'
+        'results' => 'getResults',
+        'paging' => 'getPaging'
     ];
 
     /**
@@ -177,6 +182,7 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
     public function __construct(array $data = null)
     {
         $this->container['results'] = $data['results'] ?? null;
+        $this->container['paging'] = $data['paging'] ?? null;
     }
 
     /**
@@ -226,6 +232,30 @@ class CollectionResponsePropertyGroupNoPaging implements ModelInterface, ArrayAc
     public function setResults($results)
     {
         $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets paging
+     *
+     * @return \HubSpot\Client\Crm\Properties\Model\Paging|null
+     */
+    public function getPaging()
+    {
+        return $this->container['paging'];
+    }
+
+    /**
+     * Sets paging
+     *
+     * @param \HubSpot\Client\Crm\Properties\Model\Paging|null $paging paging
+     *
+     * @return self
+     */
+    public function setPaging($paging)
+    {
+        $this->container['paging'] = $paging;
 
         return $this;
     }

@@ -57,8 +57,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'http_status' => 'string'
+        'http_status' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'http_status' => null
+        'http_status' => null,
+        'name' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'http_status' => 'httpStatus'
+        'http_status' => 'httpStatus',
+        'name' => 'name'
     ];
 
     /**
@@ -110,8 +110,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'http_status' => 'setHttpStatus'
+        'http_status' => 'setHttpStatus',
+        'name' => 'setName'
     ];
 
     /**
@@ -120,8 +120,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'http_status' => 'getHttpStatus'
+        'http_status' => 'getHttpStatus',
+        'name' => 'getName'
     ];
 
     /**
@@ -215,7 +215,6 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     public const HTTP_STATUS_REQUEST_HEADERS_FIELDS_TOO_LARGE = 'REQUEST_HEADERS_FIELDS_TOO_LARGE';
     public const HTTP_STATUS_INTERNAL_STALE_SERVICE_DISCOVERY = 'INTERNAL_STALE_SERVICE_DISCOVERY';
     public const HTTP_STATUS_UNAVAILABLE_FOR_LEGAL_REASONS = 'UNAVAILABLE_FOR_LEGAL_REASONS';
-    public const HTTP_STATUS_MIGRATION_IN_PROGRESS = 'MIGRATION_IN_PROGRESS';
     public const HTTP_STATUS_INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';
     public const HTTP_STATUS_NOT_IMPLEMENTED = 'NOT_IMPLEMENTED';
     public const HTTP_STATUS_BAD_GATEWAY = 'BAD_GATEWAY';
@@ -286,7 +285,6 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             self::HTTP_STATUS_REQUEST_HEADERS_FIELDS_TOO_LARGE,
             self::HTTP_STATUS_INTERNAL_STALE_SERVICE_DISCOVERY,
             self::HTTP_STATUS_UNAVAILABLE_FOR_LEGAL_REASONS,
-            self::HTTP_STATUS_MIGRATION_IN_PROGRESS,
             self::HTTP_STATUS_INTERNAL_SERVER_ERROR,
             self::HTTP_STATUS_NOT_IMPLEMENTED,
             self::HTTP_STATUS_BAD_GATEWAY,
@@ -316,8 +314,8 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['http_status'] = $data['http_status'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -329,9 +327,6 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['http_status'] === null) {
             $invalidProperties[] = "'http_status' can't be null";
         }
@@ -344,6 +339,9 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -358,30 +356,6 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets http_status
@@ -413,6 +387,30 @@ class ErrorCategory implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['http_status'] = $http_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

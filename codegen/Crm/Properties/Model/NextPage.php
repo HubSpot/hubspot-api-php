@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponsePropertyNoPaging
+ * NextPage
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * CollectionResponsePropertyNoPaging Class Doc Comment
+ * NextPage Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Properties
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Properties\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
+class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponsePropertyNoPaging';
+    protected static $openAPIModelName = 'NextPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Properties\Model\Property[]'
+        'after' => 'string',
+        'link' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null
+        'after' => null,
+        'link' => null
     ];
 
     /**
@@ -98,7 +100,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results'
+        'after' => 'after',
+        'link' => 'link'
     ];
 
     /**
@@ -107,7 +110,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults'
+        'after' => 'setAfter',
+        'link' => 'setLink'
     ];
 
     /**
@@ -116,7 +120,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults'
+        'after' => 'getAfter',
+        'link' => 'getLink'
     ];
 
     /**
@@ -176,7 +181,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['after'] = $data['after'] ?? null;
+        $this->container['link'] = $data['link'] ?? null;
     }
 
     /**
@@ -188,8 +194,8 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
+        if ($this->container['after'] === null) {
+            $invalidProperties[] = "'after' can't be null";
         }
         return $invalidProperties;
     }
@@ -207,25 +213,49 @@ class CollectionResponsePropertyNoPaging implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets results
+     * Gets after
      *
-     * @return \HubSpot\Client\Crm\Properties\Model\Property[]
+     * @return string
      */
-    public function getResults()
+    public function getAfter()
     {
-        return $this->container['results'];
+        return $this->container['after'];
     }
 
     /**
-     * Sets results
+     * Sets after
      *
-     * @param \HubSpot\Client\Crm\Properties\Model\Property[] $results results
+     * @param string $after after
      *
      * @return self
      */
-    public function setResults($results)
+    public function setAfter($after)
     {
-        $this->container['results'] = $results;
+        $this->container['after'] = $after;
+
+        return $this;
+    }
+
+    /**
+     * Gets link
+     *
+     * @return string|null
+     */
+    public function getLink()
+    {
+        return $this->container['link'];
+    }
+
+    /**
+     * Sets link
+     *
+     * @param string|null $link link
+     *
+     * @return self
+     */
+    public function setLink($link)
+    {
+        $this->container['link'] = $link;
 
         return $this;
     }
