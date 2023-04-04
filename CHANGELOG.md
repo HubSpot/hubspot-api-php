@@ -52,6 +52,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
  - Fix all association APIs
+
+ ### Updated
+
+ - crm.{objects}.associationApi.create($contact_id, $to_object_type, $to_object_id, string $association_type => AssociationSpec[] $association_spec) 
  
  ## [9.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.0.0) - 2022-11-21
 
