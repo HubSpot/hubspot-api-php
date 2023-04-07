@@ -3,7 +3,6 @@
 namespace spec\HubSpot\Discovery\Crm\Objects\Notes;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Objects\Notes\Api\AssociationsApi;
 use HubSpot\Client\Crm\Objects\Notes\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Notes\Api\BatchApi;
 use HubSpot\Client\Crm\Objects\Notes\Api\PublicObjectApi;
@@ -26,7 +25,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);

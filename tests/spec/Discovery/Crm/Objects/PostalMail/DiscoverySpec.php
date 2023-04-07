@@ -26,7 +26,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
