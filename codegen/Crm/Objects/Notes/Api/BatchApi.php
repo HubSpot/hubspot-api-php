@@ -361,15 +361,15 @@ class BatchApi
      *
      * Create a batch of notes
      *
-     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input batch_input_simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create batch_input_simple_public_object_input_for_create (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\Notes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Notes\Model\Error
      */
-    public function create($batch_input_simple_public_object_input)
+    public function create($batch_input_simple_public_object_input_for_create)
     {
-        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input);
+        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input_for_create);
         return $response;
     }
 
@@ -378,15 +378,15 @@ class BatchApi
      *
      * Create a batch of notes
      *
-     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\Notes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Notes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($batch_input_simple_public_object_input)
+    public function createWithHttpInfo($batch_input_simple_public_object_input_for_create)
     {
-        $request = $this->createRequest($batch_input_simple_public_object_input);
+        $request = $this->createRequest($batch_input_simple_public_object_input_for_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -523,14 +523,14 @@ class BatchApi
      *
      * Create a batch of notes
      *
-     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($batch_input_simple_public_object_input)
+    public function createAsync($batch_input_simple_public_object_input_for_create)
     {
-        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input)
+        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -543,15 +543,15 @@ class BatchApi
      *
      * Create a batch of notes
      *
-     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input)
+    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObject';
-        $request = $this->createRequest($batch_input_simple_public_object_input);
+        $request = $this->createRequest($batch_input_simple_public_object_input_for_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -592,17 +592,17 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInput $batch_input_simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($batch_input_simple_public_object_input)
+    public function createRequest($batch_input_simple_public_object_input_for_create)
     {
-        // verify the required parameter 'batch_input_simple_public_object_input' is set
-        if ($batch_input_simple_public_object_input === null || (is_array($batch_input_simple_public_object_input) && count($batch_input_simple_public_object_input) === 0)) {
+        // verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
+        if ($batch_input_simple_public_object_input_for_create === null || (is_array($batch_input_simple_public_object_input_for_create) && count($batch_input_simple_public_object_input_for_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_input when calling create'
+                'Missing the required parameter $batch_input_simple_public_object_input_for_create when calling create'
             );
         }
 
@@ -629,11 +629,11 @@ class BatchApi
         }
 
         // for model (json/xml)
-        if (isset($batch_input_simple_public_object_input)) {
+        if (isset($batch_input_simple_public_object_input_for_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_input));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_input_for_create));
             } else {
-                $httpBody = $batch_input_simple_public_object_input;
+                $httpBody = $batch_input_simple_public_object_input_for_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

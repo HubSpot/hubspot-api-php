@@ -60,7 +60,8 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
         'path' => 'string',
         'name' => 'string',
         'child_table_id' => 'int',
-        'values' => 'array<string,object>'
+        'values' => 'array<string,object>',
+        'display_index' => 'int'
     ];
 
     /**
@@ -74,7 +75,8 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
         'path' => null,
         'name' => null,
         'child_table_id' => 'int32',
-        'values' => null
+        'values' => null,
+        'display_index' => 'int32'
     ];
 
     /**
@@ -107,7 +109,8 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
         'path' => 'path',
         'name' => 'name',
         'child_table_id' => 'childTableId',
-        'values' => 'values'
+        'values' => 'values',
+        'display_index' => 'displayIndex'
     ];
 
     /**
@@ -119,7 +122,8 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
         'path' => 'setPath',
         'name' => 'setName',
         'child_table_id' => 'setChildTableId',
-        'values' => 'setValues'
+        'values' => 'setValues',
+        'display_index' => 'setDisplayIndex'
     ];
 
     /**
@@ -131,7 +135,8 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
         'path' => 'getPath',
         'name' => 'getName',
         'child_table_id' => 'getChildTableId',
-        'values' => 'getValues'
+        'values' => 'getValues',
+        'display_index' => 'getDisplayIndex'
     ];
 
     /**
@@ -195,6 +200,7 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['name'] = $data['name'] ?? null;
         $this->container['child_table_id'] = $data['child_table_id'] ?? null;
         $this->container['values'] = $data['values'] ?? null;
+        $this->container['display_index'] = $data['display_index'] ?? null;
     }
 
     /**
@@ -316,6 +322,30 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
     public function setValues($values)
     {
         $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_index
+     *
+     * @return int|null
+     */
+    public function getDisplayIndex()
+    {
+        return $this->container['display_index'];
+    }
+
+    /**
+     * Sets display_index
+     *
+     * @param int|null $display_index display_index
+     *
+     * @return self
+     */
+    public function setDisplayIndex($display_index)
+    {
+        $this->container['display_index'] = $display_index;
 
         return $this;
     }

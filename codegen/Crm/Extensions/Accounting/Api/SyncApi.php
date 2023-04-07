@@ -126,7 +126,6 @@ class SyncApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Accounting\Model\ActionResponse|\HubSpot\Client\Crm\Extensions\Accounting\Model\Error
-     * @deprecated
      */
     public function createContact($app_id, $sync_contacts_request)
     {
@@ -456,7 +455,6 @@ class SyncApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Accounting\Model\ActionResponse|\HubSpot\Client\Crm\Extensions\Accounting\Model\Error
-     * @deprecated
      */
     public function createProduct($app_id, $sync_products_request)
     {
