@@ -114,7 +114,7 @@ class RefreshTokensApi
     }
 
     /**
-     * Operation archiveRefreshToken
+     * Operation archive
      *
      * @param  string $token token (required)
      *
@@ -122,13 +122,13 @@ class RefreshTokensApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveRefreshToken($token)
+    public function archive($token)
     {
-        $this->archiveRefreshTokenWithHttpInfo($token);
+        $this->archiveWithHttpInfo($token);
     }
 
     /**
-     * Operation archiveRefreshTokenWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * @param  string $token (required)
      *
@@ -136,9 +136,9 @@ class RefreshTokensApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveRefreshTokenWithHttpInfo($token)
+    public function archiveWithHttpInfo($token)
     {
-        $request = $this->archiveRefreshTokenRequest($token);
+        $request = $this->archiveRequest($token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,16 +193,16 @@ class RefreshTokensApi
     }
 
     /**
-     * Operation archiveRefreshTokenAsync
+     * Operation archiveAsync
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveRefreshTokenAsync($token)
+    public function archiveAsync($token)
     {
-        return $this->archiveRefreshTokenAsyncWithHttpInfo($token)
+        return $this->archiveAsyncWithHttpInfo($token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -211,17 +211,17 @@ class RefreshTokensApi
     }
 
     /**
-     * Operation archiveRefreshTokenAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveRefreshTokenAsyncWithHttpInfo($token)
+    public function archiveAsyncWithHttpInfo($token)
     {
         $returnType = '';
-        $request = $this->archiveRefreshTokenRequest($token);
+        $request = $this->archiveRequest($token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -247,19 +247,19 @@ class RefreshTokensApi
     }
 
     /**
-     * Create request for operation 'archiveRefreshToken'
+     * Create request for operation 'archive'
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRefreshTokenRequest($token)
+    public function archiveRequest($token)
     {
         // verify the required parameter 'token' is set
         if ($token === null || (is_array($token) && count($token) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling archiveRefreshToken'
+                'Missing the required parameter $token when calling archive'
             );
         }
 
@@ -340,7 +340,7 @@ class RefreshTokensApi
     }
 
     /**
-     * Operation getRefreshToken
+     * Operation get
      *
      * @param  string $token token (required)
      *
@@ -348,14 +348,14 @@ class RefreshTokensApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error
      */
-    public function getRefreshToken($token)
+    public function get($token)
     {
-        list($response) = $this->getRefreshTokenWithHttpInfo($token);
+        list($response) = $this->getWithHttpInfo($token);
         return $response;
     }
 
     /**
-     * Operation getRefreshTokenWithHttpInfo
+     * Operation getWithHttpInfo
      *
      * @param  string $token (required)
      *
@@ -363,9 +363,9 @@ class RefreshTokensApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRefreshTokenWithHttpInfo($token)
+    public function getWithHttpInfo($token)
     {
-        $request = $this->getRefreshTokenRequest($token);
+        $request = $this->getRequest($token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -475,16 +475,16 @@ class RefreshTokensApi
     }
 
     /**
-     * Operation getRefreshTokenAsync
+     * Operation getAsync
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRefreshTokenAsync($token)
+    public function getAsync($token)
     {
-        return $this->getRefreshTokenAsyncWithHttpInfo($token)
+        return $this->getAsyncWithHttpInfo($token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -493,17 +493,17 @@ class RefreshTokensApi
     }
 
     /**
-     * Operation getRefreshTokenAsyncWithHttpInfo
+     * Operation getAsyncWithHttpInfo
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRefreshTokenAsyncWithHttpInfo($token)
+    public function getAsyncWithHttpInfo($token)
     {
         $returnType = '\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse';
-        $request = $this->getRefreshTokenRequest($token);
+        $request = $this->getRequest($token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -542,19 +542,19 @@ class RefreshTokensApi
     }
 
     /**
-     * Create request for operation 'getRefreshToken'
+     * Create request for operation 'get'
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRefreshTokenRequest($token)
+    public function getRequest($token)
     {
         // verify the required parameter 'token' is set
         if ($token === null || (is_array($token) && count($token) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getRefreshToken'
+                'Missing the required parameter $token when calling get'
             );
         }
 

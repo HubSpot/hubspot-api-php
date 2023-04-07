@@ -127,7 +127,6 @@ class InvoiceApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Accounting\Model\InvoiceUpdateResponse|\HubSpot\Client\Crm\Extensions\Accounting\Model\Error
-     * @deprecated
      */
     public function createPayment($invoice_id, $invoice_create_payment_request, $account_id = null)
     {
@@ -470,7 +469,6 @@ class InvoiceApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Accounting\Model\InvoiceReadResponse|\HubSpot\Client\Crm\Extensions\Accounting\Model\Error
-     * @deprecated
      */
     public function getById($invoice_id, $account_id)
     {
@@ -804,7 +802,6 @@ class InvoiceApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Accounting\Model\InvoiceUpdateResponse|\HubSpot\Client\Crm\Extensions\Accounting\Model\Error
-     * @deprecated
      */
     public function update($invoice_id, $account_id, $invoice_update_request)
     {

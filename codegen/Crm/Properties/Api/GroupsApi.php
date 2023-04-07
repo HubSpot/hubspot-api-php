@@ -715,7 +715,7 @@ class GroupsApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
+     * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging|\HubSpot\Client\Crm\Properties\Model\Error
      */
     public function getAll($object_type)
     {
@@ -732,7 +732,7 @@ class GroupsApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllWithHttpInfo($object_type)
     {
@@ -775,17 +775,17 @@ class GroupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -806,7 +806,7 @@ class GroupsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup';
+            $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -827,7 +827,7 @@ class GroupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup',
+                        '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -877,7 +877,7 @@ class GroupsApi
      */
     public function getAllAsyncWithHttpInfo($object_type)
     {
-        $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroup';
+        $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging';
         $request = $this->getAllRequest($object_type);
 
         return $this->client

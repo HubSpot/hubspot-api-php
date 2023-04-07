@@ -126,7 +126,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function createCustomer($request_id, $result_id_accounting_response)
     {
@@ -387,7 +386,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated 
      */
     public function createExchangeRate($request_id, $exchange_rate_response)
     {
@@ -648,7 +646,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function createInvoice($request_id, $result_id_accounting_response)
     {
@@ -909,7 +906,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function createTerm($request_id, $terms_response)
     {
@@ -1170,7 +1166,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function doCustomerSearch($request_id, $customer_search_response_external)
     {
@@ -1431,7 +1426,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function doInvoiceSearch($request_id, $invoice_search_response)
     {
@@ -1692,7 +1686,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function doProductSearch($request_id, $product_search_response)
     {
@@ -1953,7 +1946,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function doTaxSearch($request_id, $tax_search_response)
     {
@@ -2214,7 +2206,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function getById($request_id, $invoices_response_external)
     {
@@ -2475,7 +2466,6 @@ class CallbacksApi
      * @throws \HubSpot\Client\Crm\Extensions\Accounting\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
-     * @deprecated
      */
     public function invoicePdf($request_id, $invoice_pdf_response)
     {

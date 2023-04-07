@@ -114,7 +114,7 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getAccessToken
+     * Operation get
      *
      * @param  string $token token (required)
      *
@@ -122,14 +122,14 @@ class AccessTokensApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error
      */
-    public function getAccessToken($token)
+    public function get($token)
     {
-        list($response) = $this->getAccessTokenWithHttpInfo($token);
+        list($response) = $this->getWithHttpInfo($token);
         return $response;
     }
 
     /**
-     * Operation getAccessTokenWithHttpInfo
+     * Operation getWithHttpInfo
      *
      * @param  string $token (required)
      *
@@ -137,9 +137,9 @@ class AccessTokensApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAccessTokenWithHttpInfo($token)
+    public function getWithHttpInfo($token)
     {
-        $request = $this->getAccessTokenRequest($token);
+        $request = $this->getRequest($token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -249,16 +249,16 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getAccessTokenAsync
+     * Operation getAsync
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAccessTokenAsync($token)
+    public function getAsync($token)
     {
-        return $this->getAccessTokenAsyncWithHttpInfo($token)
+        return $this->getAsyncWithHttpInfo($token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -267,17 +267,17 @@ class AccessTokensApi
     }
 
     /**
-     * Operation getAccessTokenAsyncWithHttpInfo
+     * Operation getAsyncWithHttpInfo
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAccessTokenAsyncWithHttpInfo($token)
+    public function getAsyncWithHttpInfo($token)
     {
         $returnType = '\HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse';
-        $request = $this->getAccessTokenRequest($token);
+        $request = $this->getRequest($token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -316,19 +316,19 @@ class AccessTokensApi
     }
 
     /**
-     * Create request for operation 'getAccessToken'
+     * Create request for operation 'get'
      *
      * @param  string $token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAccessTokenRequest($token)
+    public function getRequest($token)
     {
         // verify the required parameter 'token' is set
         if ($token === null || (is_array($token) && count($token) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling getAccessToken'
+                'Missing the required parameter $token when calling get'
             );
         }
 

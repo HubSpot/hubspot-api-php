@@ -206,6 +206,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_FOREIGN_ID = 'FOREIGN_ID';
     public const TYPE_VIDEO = 'VIDEO';
     public const TYPE_CTA = 'CTA';
+    public const TYPE_FILE = 'FILE';
 
     /**
      * Gets allowable values of the enum
@@ -231,6 +232,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_FOREIGN_ID,
             self::TYPE_VIDEO,
             self::TYPE_CTA,
+            self::TYPE_FILE,
         ];
     }
 

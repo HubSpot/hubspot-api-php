@@ -58,6 +58,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'value' => 'string',
+        'high_value' => 'string',
         'values' => 'string[]',
         'property_name' => 'string',
         'operator' => 'string'
@@ -72,6 +73,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'value' => null,
+        'high_value' => null,
         'values' => null,
         'property_name' => null,
         'operator' => null
@@ -105,6 +107,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'value' => 'value',
+        'high_value' => 'highValue',
         'values' => 'values',
         'property_name' => 'propertyName',
         'operator' => 'operator'
@@ -117,6 +120,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'value' => 'setValue',
+        'high_value' => 'setHighValue',
         'values' => 'setValues',
         'property_name' => 'setPropertyName',
         'operator' => 'setOperator'
@@ -129,6 +133,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'value' => 'getValue',
+        'high_value' => 'getHighValue',
         'values' => 'getValues',
         'property_name' => 'getPropertyName',
         'operator' => 'getOperator'
@@ -229,6 +234,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['value'] = $data['value'] ?? null;
+        $this->container['high_value'] = $data['high_value'] ?? null;
         $this->container['values'] = $data['values'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;
         $this->container['operator'] = $data['operator'] ?? null;
@@ -293,6 +299,30 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets high_value
+     *
+     * @return string|null
+     */
+    public function getHighValue()
+    {
+        return $this->container['high_value'];
+    }
+
+    /**
+     * Sets high_value
+     *
+     * @param string|null $high_value high_value
+     *
+     * @return self
+     */
+    public function setHighValue($high_value)
+    {
+        $this->container['high_value'] = $high_value;
 
         return $this;
     }

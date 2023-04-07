@@ -114,7 +114,7 @@ class TokensApi
     }
 
     /**
-     * Operation createToken
+     * Operation create
      *
      * @param  string $grant_type grant_type (optional)
      * @param  string $code code (optional)
@@ -127,14 +127,14 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Auth\OAuth\Model\TokenResponseIF|\HubSpot\Client\Auth\OAuth\Model\Error
      */
-    public function createToken($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function create($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
-        list($response) = $this->createTokenWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        list($response) = $this->createWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
         return $response;
     }
 
     /**
-     * Operation createTokenWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)
@@ -147,9 +147,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Auth\OAuth\Model\TokenResponseIF|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTokenWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function createWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
-        $request = $this->createTokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
 
         try {
             $options = $this->createHttpClientOption();
@@ -259,7 +259,7 @@ class TokensApi
     }
 
     /**
-     * Operation createTokenAsync
+     * Operation createAsync
      *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)
@@ -271,9 +271,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTokenAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function createAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
-        return $this->createTokenAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token)
+        return $this->createAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -282,7 +282,7 @@ class TokensApi
     }
 
     /**
-     * Operation createTokenAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)
@@ -294,10 +294,10 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTokenAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function createAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
         $returnType = '\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF';
-        $request = $this->createTokenRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
+        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -336,7 +336,7 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'createToken'
+     * Create request for operation 'create'
      *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)
@@ -348,7 +348,7 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTokenRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
+    public function createRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null)
     {
 
         $resourcePath = '/oauth/v1/token';

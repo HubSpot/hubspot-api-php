@@ -59,6 +59,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
+        'label' => 'string',
         'type' => 'string',
         'order' => 'int'
     ];
@@ -73,6 +74,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
+        'label' => null,
         'type' => null,
         'order' => 'int32'
     ];
@@ -106,6 +108,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'label' => 'label',
         'type' => 'type',
         'order' => 'order'
     ];
@@ -118,6 +121,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'label' => 'setLabel',
         'type' => 'setType',
         'order' => 'setOrder'
     ];
@@ -130,6 +134,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'label' => 'getLabel',
         'type' => 'getType',
         'order' => 'getOrder'
     ];
@@ -193,6 +198,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['order'] = $data['order'] ?? null;
     }
@@ -277,6 +283,30 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }
