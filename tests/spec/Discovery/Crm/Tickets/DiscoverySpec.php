@@ -3,7 +3,6 @@
 namespace spec\HubSpot\Discovery\Crm\Tickets;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Tickets\Api\AssociationsApi;
 use HubSpot\Client\Crm\Tickets\Api\BasicApi;
 use HubSpot\Client\Crm\Tickets\Api\BatchApi;
 use HubSpot\Client\Crm\Tickets\Api\PublicObjectApi;
@@ -27,7 +26,6 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
-        $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }

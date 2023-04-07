@@ -5,6 +5,7 @@ namespace spec\HubSpot\Discovery\Marketing\Events;
 use GuzzleHttp\Client;
 use HubSpot\Client\Marketing\Events\Api\AttendanceSubscriberStateChangesApi;
 use HubSpot\Client\Marketing\Events\Api\MarketingEventsExternalApi;
+use HubSpot\Client\Marketing\Events\Api\SearchApi;
 use HubSpot\Client\Marketing\Events\Api\SettingsExternalApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
@@ -25,6 +26,7 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->attendanceSubscriberStateChangesApi()->shouldHaveType(AttendanceSubscriberStateChangesApi::class);
         $this->marketingEventsExternalApi()->shouldHaveType(MarketingEventsExternalApi::class);
+        $this->searchApi()->shouldHaveType(SearchApi::class);
         $this->settingsExternalApi()->shouldHaveType(SettingsExternalApi::class);
     }
 }
