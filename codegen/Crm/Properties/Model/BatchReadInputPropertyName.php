@@ -57,8 +57,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Properties\Model\PropertyName[]',
-        'archived' => 'bool'
+        'archived' => 'bool',
+        'inputs' => '\HubSpot\Client\Crm\Properties\Model\PropertyName[]'
     ];
 
     /**
@@ -69,8 +69,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'inputs' => null,
-        'archived' => null
+        'archived' => null,
+        'inputs' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'inputs' => 'inputs',
-        'archived' => 'archived'
+        'archived' => 'archived',
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -110,8 +110,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'inputs' => 'setInputs',
-        'archived' => 'setArchived'
+        'archived' => 'setArchived',
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -120,8 +120,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'inputs' => 'getInputs',
-        'archived' => 'getArchived'
+        'archived' => 'getArchived',
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -181,8 +181,8 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['inputs'] = $data['inputs'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['inputs'] = $data['inputs'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['inputs'] === null) {
-            $invalidProperties[] = "'inputs' can't be null";
-        }
         if ($this->container['archived'] === null) {
             $invalidProperties[] = "'archived' can't be null";
+        }
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets inputs
-     *
-     * @return \HubSpot\Client\Crm\Properties\Model\PropertyName[]
-     */
-    public function getInputs()
-    {
-        return $this->container['inputs'];
-    }
-
-    /**
-     * Sets inputs
-     *
-     * @param \HubSpot\Client\Crm\Properties\Model\PropertyName[] $inputs inputs
-     *
-     * @return self
-     */
-    public function setInputs($inputs)
-    {
-        $this->container['inputs'] = $inputs;
-
-        return $this;
-    }
 
     /**
      * Gets archived
@@ -259,6 +235,30 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
     public function setArchived($archived)
     {
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets inputs
+     *
+     * @return \HubSpot\Client\Crm\Properties\Model\PropertyName[]
+     */
+    public function getInputs()
+    {
+        return $this->container['inputs'];
+    }
+
+    /**
+     * Sets inputs
+     *
+     * @param \HubSpot\Client\Crm\Properties\Model\PropertyName[] $inputs inputs
+     *
+     * @return self
+     */
+    public function setInputs($inputs)
+    {
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }

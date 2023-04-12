@@ -116,7 +116,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchCloneDraftTableRows
+     * Operation cloneDraftTableRows
      *
      * Clone rows in batch
      *
@@ -127,14 +127,14 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function batchCloneDraftTableRows($table_id_or_name, $batch_input_string)
+    public function cloneDraftTableRows($table_id_or_name, $batch_input_string)
     {
-        list($response) = $this->batchCloneDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
+        list($response) = $this->cloneDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
         return $response;
     }
 
     /**
-     * Operation batchCloneDraftTableRowsWithHttpInfo
+     * Operation cloneDraftTableRowsWithHttpInfo
      *
      * Clone rows in batch
      *
@@ -145,9 +145,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchCloneDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function cloneDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
     {
-        $request = $this->batchCloneDraftTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->cloneDraftTableRowsRequest($table_id_or_name, $batch_input_string);
 
         try {
             $options = $this->createHttpClientOption();
@@ -257,7 +257,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchCloneDraftTableRowsAsync
+     * Operation cloneDraftTableRowsAsync
      *
      * Clone rows in batch
      *
@@ -267,9 +267,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchCloneDraftTableRowsAsync($table_id_or_name, $batch_input_string)
+    public function cloneDraftTableRowsAsync($table_id_or_name, $batch_input_string)
     {
-        return $this->batchCloneDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+        return $this->cloneDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -278,7 +278,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchCloneDraftTableRowsAsyncWithHttpInfo
+     * Operation cloneDraftTableRowsAsyncWithHttpInfo
      *
      * Clone rows in batch
      *
@@ -288,10 +288,10 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchCloneDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function cloneDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
-        $request = $this->batchCloneDraftTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->cloneDraftTableRowsRequest($table_id_or_name, $batch_input_string);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -330,7 +330,7 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchCloneDraftTableRows'
+     * Create request for operation 'cloneDraftTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string The JSON array of row ids (required)
@@ -338,18 +338,18 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchCloneDraftTableRowsRequest($table_id_or_name, $batch_input_string)
+    public function cloneDraftTableRowsRequest($table_id_or_name, $batch_input_string)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchCloneDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling cloneDraftTableRows'
             );
         }
         // verify the required parameter 'batch_input_string' is set
         if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling batchCloneDraftTableRows'
+                'Missing the required parameter $batch_input_string when calling cloneDraftTableRows'
             );
         }
 
@@ -445,7 +445,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchCreateDraftTableRows
+     * Operation createDraftTableRows
      *
      * Create rows in batch
      *
@@ -456,14 +456,14 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function batchCreateDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function createDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
     {
-        list($response) = $this->batchCreateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
+        list($response) = $this->createDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
         return $response;
     }
 
     /**
-     * Operation batchCreateDraftTableRowsWithHttpInfo
+     * Operation createDraftTableRowsWithHttpInfo
      *
      * Create rows in batch
      *
@@ -474,9 +474,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchCreateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function createDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
     {
-        $request = $this->batchCreateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
+        $request = $this->createDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -609,7 +609,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchCreateDraftTableRowsAsync
+     * Operation createDraftTableRowsAsync
      *
      * Create rows in batch
      *
@@ -619,9 +619,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchCreateDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function createDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
     {
-        return $this->batchCreateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+        return $this->createDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -630,7 +630,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchCreateDraftTableRowsAsyncWithHttpInfo
+     * Operation createDraftTableRowsAsyncWithHttpInfo
      *
      * Create rows in batch
      *
@@ -640,10 +640,10 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchCreateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function createDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
-        $request = $this->batchCreateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
+        $request = $this->createDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -682,7 +682,7 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchCreateDraftTableRows'
+     * Create request for operation 'createDraftTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request JSON array of row objects (required)
@@ -690,18 +690,18 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchCreateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function createDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchCreateDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling createDraftTableRows'
             );
         }
         // verify the required parameter 'batch_input_hub_db_table_row_v3_request' is set
         if ($batch_input_hub_db_table_row_v3_request === null || (is_array($batch_input_hub_db_table_row_v3_request) && count($batch_input_hub_db_table_row_v3_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_hub_db_table_row_v3_request when calling batchCreateDraftTableRows'
+                'Missing the required parameter $batch_input_hub_db_table_row_v3_request when calling createDraftTableRows'
             );
         }
 
@@ -797,7 +797,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchPurgeDraftTableRows
+     * Operation purgeDraftTableRows
      *
      * Permanently deletes rows
      *
@@ -808,13 +808,13 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function batchPurgeDraftTableRows($table_id_or_name, $batch_input_string)
+    public function purgeDraftTableRows($table_id_or_name, $batch_input_string)
     {
-        $this->batchPurgeDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
+        $this->purgeDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
     }
 
     /**
-     * Operation batchPurgeDraftTableRowsWithHttpInfo
+     * Operation purgeDraftTableRowsWithHttpInfo
      *
      * Permanently deletes rows
      *
@@ -825,9 +825,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchPurgeDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function purgeDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
     {
-        $request = $this->batchPurgeDraftTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->purgeDraftTableRowsRequest($table_id_or_name, $batch_input_string);
 
         try {
             $options = $this->createHttpClientOption();
@@ -882,7 +882,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchPurgeDraftTableRowsAsync
+     * Operation purgeDraftTableRowsAsync
      *
      * Permanently deletes rows
      *
@@ -892,9 +892,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchPurgeDraftTableRowsAsync($table_id_or_name, $batch_input_string)
+    public function purgeDraftTableRowsAsync($table_id_or_name, $batch_input_string)
     {
-        return $this->batchPurgeDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+        return $this->purgeDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -903,7 +903,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchPurgeDraftTableRowsAsyncWithHttpInfo
+     * Operation purgeDraftTableRowsAsyncWithHttpInfo
      *
      * Permanently deletes rows
      *
@@ -913,10 +913,10 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchPurgeDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function purgeDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
     {
         $returnType = '';
-        $request = $this->batchPurgeDraftTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->purgeDraftTableRowsRequest($table_id_or_name, $batch_input_string);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -942,7 +942,7 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchPurgeDraftTableRows'
+     * Create request for operation 'purgeDraftTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string JSON array of row ids. (required)
@@ -950,18 +950,18 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchPurgeDraftTableRowsRequest($table_id_or_name, $batch_input_string)
+    public function purgeDraftTableRowsRequest($table_id_or_name, $batch_input_string)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchPurgeDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling purgeDraftTableRows'
             );
         }
         // verify the required parameter 'batch_input_string' is set
         if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling batchPurgeDraftTableRows'
+                'Missing the required parameter $batch_input_string when calling purgeDraftTableRows'
             );
         }
 
@@ -1057,7 +1057,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReadDraftTableRows
+     * Operation readDraftTableRows
      *
      * Get a set of rows from draft table
      *
@@ -1068,14 +1068,14 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function batchReadDraftTableRows($table_id_or_name, $batch_input_string)
+    public function readDraftTableRows($table_id_or_name, $batch_input_string)
     {
-        list($response) = $this->batchReadDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
+        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
         return $response;
     }
 
     /**
-     * Operation batchReadDraftTableRowsWithHttpInfo
+     * Operation readDraftTableRowsWithHttpInfo
      *
      * Get a set of rows from draft table
      *
@@ -1086,9 +1086,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchReadDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
     {
-        $request = $this->batchReadDraftTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $batch_input_string);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1221,7 +1221,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReadDraftTableRowsAsync
+     * Operation readDraftTableRowsAsync
      *
      * Get a set of rows from draft table
      *
@@ -1231,9 +1231,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchReadDraftTableRowsAsync($table_id_or_name, $batch_input_string)
+    public function readDraftTableRowsAsync($table_id_or_name, $batch_input_string)
     {
-        return $this->batchReadDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1242,7 +1242,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReadDraftTableRowsAsyncWithHttpInfo
+     * Operation readDraftTableRowsAsyncWithHttpInfo
      *
      * Get a set of rows from draft table
      *
@@ -1252,10 +1252,10 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchReadDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
-        $request = $this->batchReadDraftTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $batch_input_string);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1294,7 +1294,7 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchReadDraftTableRows'
+     * Create request for operation 'readDraftTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string JSON array of row ids. (required)
@@ -1302,18 +1302,18 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchReadDraftTableRowsRequest($table_id_or_name, $batch_input_string)
+    public function readDraftTableRowsRequest($table_id_or_name, $batch_input_string)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchReadDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling readDraftTableRows'
             );
         }
         // verify the required parameter 'batch_input_string' is set
         if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling batchReadDraftTableRows'
+                'Missing the required parameter $batch_input_string when calling readDraftTableRows'
             );
         }
 
@@ -1409,7 +1409,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReadTableRows
+     * Operation readTableRows
      *
      * Get a set of rows
      *
@@ -1420,14 +1420,14 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function batchReadTableRows($table_id_or_name, $batch_input_string)
+    public function readTableRows($table_id_or_name, $batch_input_string)
     {
-        list($response) = $this->batchReadTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
+        list($response) = $this->readTableRowsWithHttpInfo($table_id_or_name, $batch_input_string);
         return $response;
     }
 
     /**
-     * Operation batchReadTableRowsWithHttpInfo
+     * Operation readTableRowsWithHttpInfo
      *
      * Get a set of rows
      *
@@ -1438,9 +1438,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchReadTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function readTableRowsWithHttpInfo($table_id_or_name, $batch_input_string)
     {
-        $request = $this->batchReadTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->readTableRowsRequest($table_id_or_name, $batch_input_string);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1573,7 +1573,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReadTableRowsAsync
+     * Operation readTableRowsAsync
      *
      * Get a set of rows
      *
@@ -1583,9 +1583,9 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchReadTableRowsAsync($table_id_or_name, $batch_input_string)
+    public function readTableRowsAsync($table_id_or_name, $batch_input_string)
     {
-        return $this->batchReadTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+        return $this->readTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1594,7 +1594,7 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReadTableRowsAsyncWithHttpInfo
+     * Operation readTableRowsAsyncWithHttpInfo
      *
      * Get a set of rows
      *
@@ -1604,10 +1604,10 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchReadTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
+    public function readTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
-        $request = $this->batchReadTableRowsRequest($table_id_or_name, $batch_input_string);
+        $request = $this->readTableRowsRequest($table_id_or_name, $batch_input_string);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1646,7 +1646,7 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchReadTableRows'
+     * Create request for operation 'readTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table to query. (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string The JSON array of row ids (required)
@@ -1654,18 +1654,18 @@ class RowsBatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchReadTableRowsRequest($table_id_or_name, $batch_input_string)
+    public function readTableRowsRequest($table_id_or_name, $batch_input_string)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchReadTableRows'
+                'Missing the required parameter $table_id_or_name when calling readTableRows'
             );
         }
         // verify the required parameter 'batch_input_string' is set
         if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling batchReadTableRows'
+                'Missing the required parameter $batch_input_string when calling readTableRows'
             );
         }
 
@@ -1761,38 +1761,38 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReplaceDraftTableRows
+     * Operation replaceDraftTableRows
      *
      * Replace rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function batchReplaceDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function replaceDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
-        list($response) = $this->batchReplaceDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
+        list($response) = $this->replaceDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request);
         return $response;
     }
 
     /**
-     * Operation batchReplaceDraftTableRowsWithHttpInfo
+     * Operation replaceDraftTableRowsWithHttpInfo
      *
      * Replace rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchReplaceDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function replaceDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
-        $request = $this->batchReplaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
+        $request = $this->replaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1925,19 +1925,19 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReplaceDraftTableRowsAsync
+     * Operation replaceDraftTableRowsAsync
      *
      * Replace rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchReplaceDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function replaceDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
-        return $this->batchReplaceDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+        return $this->replaceDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1946,20 +1946,20 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchReplaceDraftTableRowsAsyncWithHttpInfo
+     * Operation replaceDraftTableRowsAsyncWithHttpInfo
      *
      * Replace rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchReplaceDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function replaceDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
-        $request = $this->batchReplaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request);
+        $request = $this->replaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1998,26 +1998,26 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchReplaceDraftTableRows'
+     * Create request for operation 'replaceDraftTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchReplaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request)
+    public function replaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchReplaceDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling replaceDraftTableRows'
             );
         }
-        // verify the required parameter 'batch_input_hub_db_table_row_v3_request' is set
-        if ($batch_input_hub_db_table_row_v3_request === null || (is_array($batch_input_hub_db_table_row_v3_request) && count($batch_input_hub_db_table_row_v3_request) === 0)) {
+        // verify the required parameter 'batch_input_hub_db_table_row_v3_batch_update_request' is set
+        if ($batch_input_hub_db_table_row_v3_batch_update_request === null || (is_array($batch_input_hub_db_table_row_v3_batch_update_request) && count($batch_input_hub_db_table_row_v3_batch_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_hub_db_table_row_v3_request when calling batchReplaceDraftTableRows'
+                'Missing the required parameter $batch_input_hub_db_table_row_v3_batch_update_request when calling replaceDraftTableRows'
             );
         }
 
@@ -2052,11 +2052,11 @@ class RowsBatchApi
         }
 
         // for model (json/xml)
-        if (isset($batch_input_hub_db_table_row_v3_request)) {
+        if (isset($batch_input_hub_db_table_row_v3_batch_update_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_v3_request));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_v3_batch_update_request));
             } else {
-                $httpBody = $batch_input_hub_db_table_row_v3_request;
+                $httpBody = $batch_input_hub_db_table_row_v3_batch_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2113,38 +2113,38 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchUpdateDraftTableRows
+     * Operation updateDraftTableRows
      *
      * Update rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputJsonNode $batch_input_json_node JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function batchUpdateDraftTableRows($table_id_or_name, $batch_input_json_node)
+    public function updateDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
-        list($response) = $this->batchUpdateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_json_node);
+        list($response) = $this->updateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request);
         return $response;
     }
 
     /**
-     * Operation batchUpdateDraftTableRowsWithHttpInfo
+     * Operation updateDraftTableRowsWithHttpInfo
      *
      * Update rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputJsonNode $batch_input_json_node JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchUpdateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_json_node)
+    public function updateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
-        $request = $this->batchUpdateDraftTableRowsRequest($table_id_or_name, $batch_input_json_node);
+        $request = $this->updateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2277,19 +2277,19 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchUpdateDraftTableRowsAsync
+     * Operation updateDraftTableRowsAsync
      *
      * Update rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputJsonNode $batch_input_json_node JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchUpdateDraftTableRowsAsync($table_id_or_name, $batch_input_json_node)
+    public function updateDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
-        return $this->batchUpdateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_json_node)
+        return $this->updateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2298,20 +2298,20 @@ class RowsBatchApi
     }
 
     /**
-     * Operation batchUpdateDraftTableRowsAsyncWithHttpInfo
+     * Operation updateDraftTableRowsAsyncWithHttpInfo
      *
      * Update rows in batch in draft table
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputJsonNode $batch_input_json_node JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchUpdateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_json_node)
+    public function updateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
-        $request = $this->batchUpdateDraftTableRowsRequest($table_id_or_name, $batch_input_json_node);
+        $request = $this->updateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2350,26 +2350,26 @@ class RowsBatchApi
     }
 
     /**
-     * Create request for operation 'batchUpdateDraftTableRows'
+     * Create request for operation 'updateDraftTableRows'
      *
      * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputJsonNode $batch_input_json_node JSON array of row objects. (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request JSON array of row objects. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchUpdateDraftTableRowsRequest($table_id_or_name, $batch_input_json_node)
+    public function updateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling batchUpdateDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling updateDraftTableRows'
             );
         }
-        // verify the required parameter 'batch_input_json_node' is set
-        if ($batch_input_json_node === null || (is_array($batch_input_json_node) && count($batch_input_json_node) === 0)) {
+        // verify the required parameter 'batch_input_hub_db_table_row_v3_batch_update_request' is set
+        if ($batch_input_hub_db_table_row_v3_batch_update_request === null || (is_array($batch_input_hub_db_table_row_v3_batch_update_request) && count($batch_input_hub_db_table_row_v3_batch_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_json_node when calling batchUpdateDraftTableRows'
+                'Missing the required parameter $batch_input_hub_db_table_row_v3_batch_update_request when calling updateDraftTableRows'
             );
         }
 
@@ -2404,11 +2404,11 @@ class RowsBatchApi
         }
 
         // for model (json/xml)
-        if (isset($batch_input_json_node)) {
+        if (isset($batch_input_hub_db_table_row_v3_batch_update_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_json_node));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_v3_batch_update_request));
             } else {
-                $httpBody = $batch_input_json_node;
+                $httpBody = $batch_input_hub_db_table_row_v3_batch_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

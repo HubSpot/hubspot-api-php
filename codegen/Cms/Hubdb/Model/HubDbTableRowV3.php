@@ -58,12 +58,13 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'values' => 'array<string,object>',
         'path' => 'string',
         'name' => 'string',
+        'child_table_id' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'child_table_id' => 'string',
-        'values' => 'array<string,object>'
+        'published_at' => '\DateTime'
     ];
 
     /**
@@ -75,12 +76,13 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'values' => null,
         'path' => null,
         'name' => null,
+        'child_table_id' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'child_table_id' => null,
-        'values' => null
+        'published_at' => 'date-time'
     ];
 
     /**
@@ -111,12 +113,13 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'values' => 'values',
         'path' => 'path',
         'name' => 'name',
+        'child_table_id' => 'childTableId',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'child_table_id' => 'childTableId',
-        'values' => 'values'
+        'published_at' => 'publishedAt'
     ];
 
     /**
@@ -126,12 +129,13 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'values' => 'setValues',
         'path' => 'setPath',
         'name' => 'setName',
+        'child_table_id' => 'setChildTableId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'child_table_id' => 'setChildTableId',
-        'values' => 'setValues'
+        'published_at' => 'setPublishedAt'
     ];
 
     /**
@@ -141,12 +145,13 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'values' => 'getValues',
         'path' => 'getPath',
         'name' => 'getName',
+        'child_table_id' => 'getChildTableId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'child_table_id' => 'getChildTableId',
-        'values' => 'getValues'
+        'published_at' => 'getPublishedAt'
     ];
 
     /**
@@ -207,12 +212,13 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
         $this->container['path'] = $data['path'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['child_table_id'] = $data['child_table_id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['child_table_id'] = $data['child_table_id'] ?? null;
-        $this->container['values'] = $data['values'] ?? null;
+        $this->container['published_at'] = $data['published_at'] ?? null;
     }
 
     /**
@@ -267,6 +273,30 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets values
+     *
+     * @return array<string,object>
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param array<string,object> $values List of key value pairs with the column name and column value
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
      * Gets path
      *
      * @return string|null
@@ -310,6 +340,30 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets child_table_id
+     *
+     * @return string|null
+     */
+    public function getChildTableId()
+    {
+        return $this->container['child_table_id'];
+    }
+
+    /**
+     * Sets child_table_id
+     *
+     * @param string|null $child_table_id Specifies the value for the column child table id
+     *
+     * @return self
+     */
+    public function setChildTableId($child_table_id)
+    {
+        $this->container['child_table_id'] = $child_table_id;
 
         return $this;
     }
@@ -363,49 +417,25 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets child_table_id
+     * Gets published_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getChildTableId()
+    public function getPublishedAt()
     {
-        return $this->container['child_table_id'];
+        return $this->container['published_at'];
     }
 
     /**
-     * Sets child_table_id
+     * Sets published_at
      *
-     * @param string|null $child_table_id Specifies the value for the column child table id
+     * @param \DateTime|null $published_at published_at
      *
      * @return self
      */
-    public function setChildTableId($child_table_id)
+    public function setPublishedAt($published_at)
     {
-        $this->container['child_table_id'] = $child_table_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets values
-     *
-     * @return array<string,object>
-     */
-    public function getValues()
-    {
-        return $this->container['values'];
-    }
-
-    /**
-     * Sets values
-     *
-     * @param array<string,object> $values List of key value pairs with the column name and column value
-     *
-     * @return self
-     */
-    public function setValues($values)
-    {
-        $this->container['values'] = $values;
+        $this->container['published_at'] = $published_at;
 
         return $this;
     }

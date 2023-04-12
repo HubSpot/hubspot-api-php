@@ -3,7 +3,6 @@
 namespace spec\HubSpot\Discovery\Crm\Deals;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Deals\Api\AssociationsApi;
 use HubSpot\Client\Crm\Deals\Api\BasicApi;
 use HubSpot\Client\Crm\Deals\Api\BatchApi;
 use HubSpot\Client\Crm\Deals\Api\PublicObjectApi;
@@ -27,7 +26,6 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
-        $this->associationsApi()->shouldHaveType(AssociationsApi::class);
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }

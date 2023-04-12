@@ -383,15 +383,15 @@ class BasicApi
      * Create
      *
      * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create simple_public_object_input_for_create (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error
      */
-    public function create($object_type, $simple_public_object_input)
+    public function create($object_type, $simple_public_object_input_for_create)
     {
-        list($response) = $this->createWithHttpInfo($object_type, $simple_public_object_input);
+        list($response) = $this->createWithHttpInfo($object_type, $simple_public_object_input_for_create);
         return $response;
     }
 
@@ -401,15 +401,15 @@ class BasicApi
      * Create
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($object_type, $simple_public_object_input)
+    public function createWithHttpInfo($object_type, $simple_public_object_input_for_create)
     {
-        $request = $this->createRequest($object_type, $simple_public_object_input);
+        $request = $this->createRequest($object_type, $simple_public_object_input_for_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -524,14 +524,14 @@ class BasicApi
      * Create
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($object_type, $simple_public_object_input)
+    public function createAsync($object_type, $simple_public_object_input_for_create)
     {
-        return $this->createAsyncWithHttpInfo($object_type, $simple_public_object_input)
+        return $this->createAsyncWithHttpInfo($object_type, $simple_public_object_input_for_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -545,15 +545,15 @@ class BasicApi
      * Create
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($object_type, $simple_public_object_input)
+    public function createAsyncWithHttpInfo($object_type, $simple_public_object_input_for_create)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\Model\SimplePublicObject';
-        $request = $this->createRequest($object_type, $simple_public_object_input);
+        $request = $this->createRequest($object_type, $simple_public_object_input_for_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -595,12 +595,12 @@ class BasicApi
      * Create request for operation 'create'
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput $simple_public_object_input (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($object_type, $simple_public_object_input)
+    public function createRequest($object_type, $simple_public_object_input_for_create)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -608,10 +608,10 @@ class BasicApi
                 'Missing the required parameter $object_type when calling create'
             );
         }
-        // verify the required parameter 'simple_public_object_input' is set
-        if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
+        // verify the required parameter 'simple_public_object_input_for_create' is set
+        if ($simple_public_object_input_for_create === null || (is_array($simple_public_object_input_for_create) && count($simple_public_object_input_for_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $simple_public_object_input when calling create'
+                'Missing the required parameter $simple_public_object_input_for_create when calling create'
             );
         }
 
@@ -646,11 +646,11 @@ class BasicApi
         }
 
         // for model (json/xml)
-        if (isset($simple_public_object_input)) {
+        if (isset($simple_public_object_input_for_create)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($simple_public_object_input));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($simple_public_object_input_for_create));
             } else {
-                $httpBody = $simple_public_object_input;
+                $httpBody = $simple_public_object_input_for_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

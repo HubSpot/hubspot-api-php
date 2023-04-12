@@ -63,18 +63,19 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'string',
         'columns' => '\HubSpot\Client\Cms\Hubdb\Model\Column[]',
         'published' => 'bool',
+        'deleted' => 'bool',
         'column_count' => 'int',
         'row_count' => 'int',
         'created_by' => '\HubSpot\Client\Cms\Hubdb\Model\SimpleUser',
         'updated_by' => '\HubSpot\Client\Cms\Hubdb\Model\SimpleUser',
-        'published_at' => '\DateTime',
-        'dynamic_meta_tags' => 'array<string,int>',
-        'created_at' => '\DateTime',
-        'archived' => 'bool',
-        'allow_public_api_access' => 'bool',
         'use_for_pages' => 'bool',
-        'enable_child_table_pages' => 'bool',
         'allow_child_tables' => 'bool',
+        'enable_child_table_pages' => 'bool',
+        'is_ordered_manually' => 'bool',
+        'dynamic_meta_tags' => 'array<string,int>',
+        'allow_public_api_access' => 'bool',
+        'created_at' => '\DateTime',
+        'published_at' => '\DateTime',
         'updated_at' => '\DateTime'
     ];
 
@@ -91,18 +92,19 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => null,
         'columns' => null,
         'published' => null,
+        'deleted' => null,
         'column_count' => 'int32',
         'row_count' => 'int32',
         'created_by' => null,
         'updated_by' => null,
-        'published_at' => 'date-time',
-        'dynamic_meta_tags' => 'int32',
-        'created_at' => 'date-time',
-        'archived' => null,
-        'allow_public_api_access' => null,
         'use_for_pages' => null,
-        'enable_child_table_pages' => null,
         'allow_child_tables' => null,
+        'enable_child_table_pages' => null,
+        'is_ordered_manually' => null,
+        'dynamic_meta_tags' => 'int32',
+        'allow_public_api_access' => null,
+        'created_at' => 'date-time',
+        'published_at' => 'date-time',
         'updated_at' => 'date-time'
     ];
 
@@ -138,18 +140,19 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'label',
         'columns' => 'columns',
         'published' => 'published',
+        'deleted' => 'deleted',
         'column_count' => 'columnCount',
         'row_count' => 'rowCount',
         'created_by' => 'createdBy',
         'updated_by' => 'updatedBy',
-        'published_at' => 'publishedAt',
-        'dynamic_meta_tags' => 'dynamicMetaTags',
-        'created_at' => 'createdAt',
-        'archived' => 'archived',
-        'allow_public_api_access' => 'allowPublicApiAccess',
         'use_for_pages' => 'useForPages',
-        'enable_child_table_pages' => 'enableChildTablePages',
         'allow_child_tables' => 'allowChildTables',
+        'enable_child_table_pages' => 'enableChildTablePages',
+        'is_ordered_manually' => 'isOrderedManually',
+        'dynamic_meta_tags' => 'dynamicMetaTags',
+        'allow_public_api_access' => 'allowPublicApiAccess',
+        'created_at' => 'createdAt',
+        'published_at' => 'publishedAt',
         'updated_at' => 'updatedAt'
     ];
 
@@ -164,18 +167,19 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'setLabel',
         'columns' => 'setColumns',
         'published' => 'setPublished',
+        'deleted' => 'setDeleted',
         'column_count' => 'setColumnCount',
         'row_count' => 'setRowCount',
         'created_by' => 'setCreatedBy',
         'updated_by' => 'setUpdatedBy',
-        'published_at' => 'setPublishedAt',
-        'dynamic_meta_tags' => 'setDynamicMetaTags',
-        'created_at' => 'setCreatedAt',
-        'archived' => 'setArchived',
-        'allow_public_api_access' => 'setAllowPublicApiAccess',
         'use_for_pages' => 'setUseForPages',
-        'enable_child_table_pages' => 'setEnableChildTablePages',
         'allow_child_tables' => 'setAllowChildTables',
+        'enable_child_table_pages' => 'setEnableChildTablePages',
+        'is_ordered_manually' => 'setIsOrderedManually',
+        'dynamic_meta_tags' => 'setDynamicMetaTags',
+        'allow_public_api_access' => 'setAllowPublicApiAccess',
+        'created_at' => 'setCreatedAt',
+        'published_at' => 'setPublishedAt',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -190,18 +194,19 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'getLabel',
         'columns' => 'getColumns',
         'published' => 'getPublished',
+        'deleted' => 'getDeleted',
         'column_count' => 'getColumnCount',
         'row_count' => 'getRowCount',
         'created_by' => 'getCreatedBy',
         'updated_by' => 'getUpdatedBy',
-        'published_at' => 'getPublishedAt',
-        'dynamic_meta_tags' => 'getDynamicMetaTags',
-        'created_at' => 'getCreatedAt',
-        'archived' => 'getArchived',
-        'allow_public_api_access' => 'getAllowPublicApiAccess',
         'use_for_pages' => 'getUseForPages',
-        'enable_child_table_pages' => 'getEnableChildTablePages',
         'allow_child_tables' => 'getAllowChildTables',
+        'enable_child_table_pages' => 'getEnableChildTablePages',
+        'is_ordered_manually' => 'getIsOrderedManually',
+        'dynamic_meta_tags' => 'getDynamicMetaTags',
+        'allow_public_api_access' => 'getAllowPublicApiAccess',
+        'created_at' => 'getCreatedAt',
+        'published_at' => 'getPublishedAt',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -267,18 +272,19 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['label'] = $data['label'] ?? null;
         $this->container['columns'] = $data['columns'] ?? null;
         $this->container['published'] = $data['published'] ?? null;
+        $this->container['deleted'] = $data['deleted'] ?? null;
         $this->container['column_count'] = $data['column_count'] ?? null;
         $this->container['row_count'] = $data['row_count'] ?? null;
         $this->container['created_by'] = $data['created_by'] ?? null;
         $this->container['updated_by'] = $data['updated_by'] ?? null;
-        $this->container['published_at'] = $data['published_at'] ?? null;
-        $this->container['dynamic_meta_tags'] = $data['dynamic_meta_tags'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
-        $this->container['allow_public_api_access'] = $data['allow_public_api_access'] ?? null;
         $this->container['use_for_pages'] = $data['use_for_pages'] ?? null;
-        $this->container['enable_child_table_pages'] = $data['enable_child_table_pages'] ?? null;
         $this->container['allow_child_tables'] = $data['allow_child_tables'] ?? null;
+        $this->container['enable_child_table_pages'] = $data['enable_child_table_pages'] ?? null;
+        $this->container['is_ordered_manually'] = $data['is_ordered_manually'] ?? null;
+        $this->container['dynamic_meta_tags'] = $data['dynamic_meta_tags'] ?? null;
+        $this->container['allow_public_api_access'] = $data['allow_public_api_access'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['published_at'] = $data['published_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -433,6 +439,30 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets deleted
+     *
+     * @return bool|null
+     */
+    public function getDeleted()
+    {
+        return $this->container['deleted'];
+    }
+
+    /**
+     * Sets deleted
+     *
+     * @param bool|null $deleted deleted
+     *
+     * @return self
+     */
+    public function setDeleted($deleted)
+    {
+        $this->container['deleted'] = $deleted;
+
+        return $this;
+    }
+
+    /**
      * Gets column_count
      *
      * @return int|null
@@ -529,126 +559,6 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets published_at
-     *
-     * @return \DateTime|null
-     */
-    public function getPublishedAt()
-    {
-        return $this->container['published_at'];
-    }
-
-    /**
-     * Sets published_at
-     *
-     * @param \DateTime|null $published_at Timestamp at which the table is published recently
-     *
-     * @return self
-     */
-    public function setPublishedAt($published_at)
-    {
-        $this->container['published_at'] = $published_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets dynamic_meta_tags
-     *
-     * @return array<string,int>|null
-     */
-    public function getDynamicMetaTags()
-    {
-        return $this->container['dynamic_meta_tags'];
-    }
-
-    /**
-     * Sets dynamic_meta_tags
-     *
-     * @param array<string,int>|null $dynamic_meta_tags Specifies the key value pairs of the metadata fields with the associated column ids
-     *
-     * @return self
-     */
-    public function setDynamicMetaTags($dynamic_meta_tags)
-    {
-        $this->container['dynamic_meta_tags'] = $dynamic_meta_tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at Timestamp at which the table is created
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool|null
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool|null $archived Specifies whether table is archived or not
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets allow_public_api_access
-     *
-     * @return bool|null
-     */
-    public function getAllowPublicApiAccess()
-    {
-        return $this->container['allow_public_api_access'];
-    }
-
-    /**
-     * Sets allow_public_api_access
-     *
-     * @param bool|null $allow_public_api_access Specifies whether the table can be read by public without authorization
-     *
-     * @return self
-     */
-    public function setAllowPublicApiAccess($allow_public_api_access)
-    {
-        $this->container['allow_public_api_access'] = $allow_public_api_access;
-
-        return $this;
-    }
-
-    /**
      * Gets use_for_pages
      *
      * @return bool|null
@@ -668,6 +578,30 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUseForPages($use_for_pages)
     {
         $this->container['use_for_pages'] = $use_for_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_child_tables
+     *
+     * @return bool|null
+     */
+    public function getAllowChildTables()
+    {
+        return $this->container['allow_child_tables'];
+    }
+
+    /**
+     * Sets allow_child_tables
+     *
+     * @param bool|null $allow_child_tables Specifies whether child tables can be created
+     *
+     * @return self
+     */
+    public function setAllowChildTables($allow_child_tables)
+    {
+        $this->container['allow_child_tables'] = $allow_child_tables;
 
         return $this;
     }
@@ -697,25 +631,121 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allow_child_tables
+     * Gets is_ordered_manually
      *
      * @return bool|null
      */
-    public function getAllowChildTables()
+    public function getIsOrderedManually()
     {
-        return $this->container['allow_child_tables'];
+        return $this->container['is_ordered_manually'];
     }
 
     /**
-     * Sets allow_child_tables
+     * Sets is_ordered_manually
      *
-     * @param bool|null $allow_child_tables Specifies whether child tables can be created
+     * @param bool|null $is_ordered_manually is_ordered_manually
      *
      * @return self
      */
-    public function setAllowChildTables($allow_child_tables)
+    public function setIsOrderedManually($is_ordered_manually)
     {
-        $this->container['allow_child_tables'] = $allow_child_tables;
+        $this->container['is_ordered_manually'] = $is_ordered_manually;
+
+        return $this;
+    }
+
+    /**
+     * Gets dynamic_meta_tags
+     *
+     * @return array<string,int>|null
+     */
+    public function getDynamicMetaTags()
+    {
+        return $this->container['dynamic_meta_tags'];
+    }
+
+    /**
+     * Sets dynamic_meta_tags
+     *
+     * @param array<string,int>|null $dynamic_meta_tags Specifies the key value pairs of the metadata fields with the associated column ids
+     *
+     * @return self
+     */
+    public function setDynamicMetaTags($dynamic_meta_tags)
+    {
+        $this->container['dynamic_meta_tags'] = $dynamic_meta_tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_public_api_access
+     *
+     * @return bool|null
+     */
+    public function getAllowPublicApiAccess()
+    {
+        return $this->container['allow_public_api_access'];
+    }
+
+    /**
+     * Sets allow_public_api_access
+     *
+     * @param bool|null $allow_public_api_access Specifies whether the table can be read by public without authorization
+     *
+     * @return self
+     */
+    public function setAllowPublicApiAccess($allow_public_api_access)
+    {
+        $this->container['allow_public_api_access'] = $allow_public_api_access;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at Timestamp at which the table is created
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets published_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPublishedAt()
+    {
+        return $this->container['published_at'];
+    }
+
+    /**
+     * Sets published_at
+     *
+     * @param \DateTime|null $published_at Timestamp at which the table is published recently
+     *
+     * @return self
+     */
+    public function setPublishedAt($published_at)
+    {
+        $this->container['published_at'] = $published_at;
 
         return $this;
     }

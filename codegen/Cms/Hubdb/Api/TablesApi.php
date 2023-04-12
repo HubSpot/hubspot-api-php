@@ -2521,16 +2521,16 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getDraftTableDetailsById($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getDraftTableDetailsById($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
-        list($response) = $this->getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids);
+        list($response) = $this->getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $include_foreign_ids, $archived);
         return $response;
     }
 
@@ -2540,16 +2540,16 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
-        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $archived, $include_foreign_ids);
+        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $include_foreign_ids, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2664,15 +2664,15 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDraftTableDetailsByIdAsync($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getDraftTableDetailsByIdAsync($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
-        return $this->getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids)
+        return $this->getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $include_foreign_ids, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2686,16 +2686,16 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3';
-        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $archived, $include_foreign_ids);
+        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $include_foreign_ids, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2737,13 +2737,13 @@ class TablesApi
      * Create request for operation 'getDraftTableDetailsById'
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDraftTableDetailsByIdRequest($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getDraftTableDetailsByIdRequest($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
@@ -2761,8 +2761,8 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
+            $include_foreign_ids,
+            'includeForeignIds', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2770,8 +2770,8 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_foreign_ids,
-            'includeForeignIds', // param base name
+            $archived,
+            'archived', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2861,16 +2861,16 @@ class TablesApi
      * Get details for a published table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getTableDetails($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getTableDetails($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
-        list($response) = $this->getTableDetailsWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids);
+        list($response) = $this->getTableDetailsWithHttpInfo($table_id_or_name, $include_foreign_ids, $archived);
         return $response;
     }
 
@@ -2880,16 +2880,16 @@ class TablesApi
      * Get details for a published table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTableDetailsWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getTableDetailsWithHttpInfo($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
-        $request = $this->getTableDetailsRequest($table_id_or_name, $archived, $include_foreign_ids);
+        $request = $this->getTableDetailsRequest($table_id_or_name, $include_foreign_ids, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3004,15 +3004,15 @@ class TablesApi
      * Get details for a published table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableDetailsAsync($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getTableDetailsAsync($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
-        return $this->getTableDetailsAsyncWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids)
+        return $this->getTableDetailsAsyncWithHttpInfo($table_id_or_name, $include_foreign_ids, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3026,16 +3026,16 @@ class TablesApi
      * Get details for a published table
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableDetailsAsyncWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getTableDetailsAsyncWithHttpInfo($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3';
-        $request = $this->getTableDetailsRequest($table_id_or_name, $archived, $include_foreign_ids);
+        $request = $this->getTableDetailsRequest($table_id_or_name, $include_foreign_ids, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3077,13 +3077,13 @@ class TablesApi
      * Create request for operation 'getTableDetails'
      *
      * @param  string $table_id_or_name The ID or name of the table to return. (required)
-     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Set this to &#x60;true&#x60; to return details for an archived table. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTableDetailsRequest($table_id_or_name, $archived = null, $include_foreign_ids = null)
+    public function getTableDetailsRequest($table_id_or_name, $include_foreign_ids = null, $archived = null)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
@@ -3101,8 +3101,8 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
+            $include_foreign_ids,
+            'includeForeignIds', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3110,8 +3110,8 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_foreign_ids,
-            'includeForeignIds', // param base name
+            $archived,
+            'archived', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4518,16 +4518,16 @@ class TablesApi
      *
      * @param  string $table_id_or_name The ID or name of the table to update. (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request The JSON schema for the table being updated. (required)
-     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function updateDraftTable($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null)
+    public function updateDraftTable($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids = null, $archived = null)
     {
-        list($response) = $this->updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids);
+        list($response) = $this->updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids, $archived);
         return $response;
     }
 
@@ -4538,16 +4538,16 @@ class TablesApi
      *
      * @param  string $table_id_or_name The ID or name of the table to update. (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request The JSON schema for the table being updated. (required)
-     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null)
+    public function updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids = null, $archived = null)
     {
-        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids);
+        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4663,15 +4663,15 @@ class TablesApi
      *
      * @param  string $table_id_or_name The ID or name of the table to update. (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request The JSON schema for the table being updated. (required)
-     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDraftTableAsync($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null)
+    public function updateDraftTableAsync($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids = null, $archived = null)
     {
-        return $this->updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids)
+        return $this->updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4686,16 +4686,16 @@ class TablesApi
      *
      * @param  string $table_id_or_name The ID or name of the table to update. (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request The JSON schema for the table being updated. (required)
-     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null)
+    public function updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids = null, $archived = null)
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3';
-        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids);
+        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4738,13 +4738,13 @@ class TablesApi
      *
      * @param  string $table_id_or_name The ID or name of the table to update. (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request The JSON schema for the table being updated. (required)
-     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      * @param  bool $include_foreign_ids Set this to &#x60;true&#x60; to populate foreign ID values in the result. (optional)
+     * @param  bool $archived Specifies whether to return archived tables. Defaults to &#x60;false&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null)
+    public function updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $include_foreign_ids = null, $archived = null)
     {
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
@@ -4768,8 +4768,8 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
+            $include_foreign_ids,
+            'includeForeignIds', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4777,8 +4777,8 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_foreign_ids,
-            'includeForeignIds', // param base name
+            $archived,
+            'archived', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
