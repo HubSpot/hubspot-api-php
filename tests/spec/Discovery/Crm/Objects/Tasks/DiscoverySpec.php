@@ -3,7 +3,6 @@
 namespace spec\HubSpot\Discovery\Crm\Objects\Tasks;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Objects\Tasks\Api\AssociationsApi;
 use HubSpot\Client\Crm\Objects\Tasks\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Tasks\Api\BatchApi;
 use HubSpot\Client\Crm\Objects\Tasks\Api\PublicObjectApi;
