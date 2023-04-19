@@ -171,7 +171,7 @@ $response = $hubspot->apiRequest([
     'path' => string, // URL path (e.g.: '/crm/v3/objects/contacts'). Optional
     'headers' => array, // Http headers. Optional.
     'body' => mixed, // Request body (if defaultJson set body will be transforted to json string).Optional.
-    'authType' => enum(none, accessToken, hapikey), // Auth type. if it isn't set it will use accessToken or hapikey. Default value is non empty auth type.
+    'authType' => enum(none, accessToken, hapikey, developerApiKey), // Auth type. if it isn't set it will use accessToken or hapikey. Default value is non empty auth type.
     'baseUrl' => string, // Base URL. Default value 'https://api.hubapi.com'.
     'qs' => array, // Query parameters. Optional.
     'defaultJson' => bool, // Default Json. if it is set to true it add to headers [ 'Content-Type' => 'application/json', 'Accept' => 'application/json, */*;q=0.8',]

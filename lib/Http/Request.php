@@ -67,6 +67,9 @@ class Request
             if ('hapikey' === $auth['type']) {
                 $this->options['qs']['hapikey'] = $auth['value'];
             }
+            if ('developerApiKey' === $auth['type']) {
+                $this->options['qs']['hapikey'] = $auth['value'];
+            }
 
             if ('accessToken' === $auth['type']) {
                 $this->headers['Authorization'] = "Bearer {$auth['value']}";
@@ -110,7 +113,7 @@ class Request
         $urlStr .= $this->options['path'] ?? '';
 
         if (array_key_exists('qs', $this->options) && !empty($this->options['qs'])) {
-            $urlStr .= '?'.http_build_query($this->options['qs'], '', '&', PHP_QUERY_RFC3986);
+            $urlStr .= '?' . http_build_query($this->options['qs'], '', '&', PHP_QUERY_RFC3986);
         }
 
         return $urlStr;
