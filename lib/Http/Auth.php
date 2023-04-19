@@ -39,6 +39,7 @@ class Auth
     {
         return [
             'accessToken' => 'getAccessToken',
+            'developerApiKey' => 'getDeveloperApiKey',
             'hapikey' => 'getApiKey',
         ];
     }
