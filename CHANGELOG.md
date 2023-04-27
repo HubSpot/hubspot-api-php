@@ -5,9 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.0.0-beta...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.0.0-beta.2...HEAD)
 
-## [10.0.0-beta](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta0) - 2023-04-12
+## [10.0.0-beta.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.2) - 2023-04-27
+
+## Updated
+
+- Add new event types to webhooks.
+
+## [10.0.0-beta](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta) - 2023-04-12
 
 ## Updated
 
@@ -522,3 +528,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [9.2.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.2
 [9.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.3.0
 [9.4.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/9.4.0
+[10.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta
+[10.0.0-beta.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.2

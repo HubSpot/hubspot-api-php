@@ -1,6 +1,6 @@
 {
     "name": "hubspot/api-client",
-    "version": "10.0.0-beta",
+    "version": "10.0.0-beta.2",
     "description": "Hubspot API client",
     "keywords": [
         "hubspot",
