@@ -210,6 +210,23 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public const EVENT_TYPE_CONVERSATION_NEW_MESSAGE = 'conversation.newMessage';
     public const EVENT_TYPE_CONVERSATION_PRIVACY_DELETION = 'conversation.privacyDeletion';
     public const EVENT_TYPE_CONVERSATION_PROPERTY_CHANGE = 'conversation.propertyChange';
+    public const EVENT_TYPE_CONTACT_MERGE = 'contact.merge';
+    public const EVENT_TYPE_COMPANY_MERGE = 'company.merge';
+    public const EVENT_TYPE_DEAL_MERGE = 'deal.merge';
+    public const EVENT_TYPE_TICKET_MERGE = 'ticket.merge';
+    public const EVENT_TYPE_PRODUCT_MERGE = 'product.merge';
+    public const EVENT_TYPE_LINE_ITEM_MERGE = 'line_item.merge';
+    public const EVENT_TYPE_CONTACT_RESTORE = 'contact.restore';
+    public const EVENT_TYPE_COMPANY_RESTORE = 'company.restore';
+    public const EVENT_TYPE_DEAL_RESTORE = 'deal.restore';
+    public const EVENT_TYPE_TICKET_RESTORE = 'ticket.restore';
+    public const EVENT_TYPE_PRODUCT_RESTORE = 'product.restore';
+    public const EVENT_TYPE_LINE_ITEM_RESTORE = 'line_item.restore';
+    public const EVENT_TYPE_CONTACT_ASSOCIATION_CHANGE = 'contact.associationChange';
+    public const EVENT_TYPE_COMPANY_ASSOCIATION_CHANGE = 'company.associationChange';
+    public const EVENT_TYPE_DEAL_ASSOCIATION_CHANGE = 'deal.associationChange';
+    public const EVENT_TYPE_TICKET_ASSOCIATION_CHANGE = 'ticket.associationChange';
+    public const EVENT_TYPE_LINE_ITEM_ASSOCIATION_CHANGE = 'line_item.associationChange';
 
     /**
      * Gets allowable values of the enum
@@ -243,6 +260,23 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             self::EVENT_TYPE_CONVERSATION_NEW_MESSAGE,
             self::EVENT_TYPE_CONVERSATION_PRIVACY_DELETION,
             self::EVENT_TYPE_CONVERSATION_PROPERTY_CHANGE,
+            self::EVENT_TYPE_CONTACT_MERGE,
+            self::EVENT_TYPE_COMPANY_MERGE,
+            self::EVENT_TYPE_DEAL_MERGE,
+            self::EVENT_TYPE_TICKET_MERGE,
+            self::EVENT_TYPE_PRODUCT_MERGE,
+            self::EVENT_TYPE_LINE_ITEM_MERGE,
+            self::EVENT_TYPE_CONTACT_RESTORE,
+            self::EVENT_TYPE_COMPANY_RESTORE,
+            self::EVENT_TYPE_DEAL_RESTORE,
+            self::EVENT_TYPE_TICKET_RESTORE,
+            self::EVENT_TYPE_PRODUCT_RESTORE,
+            self::EVENT_TYPE_LINE_ITEM_RESTORE,
+            self::EVENT_TYPE_CONTACT_ASSOCIATION_CHANGE,
+            self::EVENT_TYPE_COMPANY_ASSOCIATION_CHANGE,
+            self::EVENT_TYPE_DEAL_ASSOCIATION_CHANGE,
+            self::EVENT_TYPE_TICKET_ASSOCIATION_CHANGE,
+            self::EVENT_TYPE_LINE_ITEM_ASSOCIATION_CHANGE,
         ];
     }
 
