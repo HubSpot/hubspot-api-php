@@ -12,19 +12,20 @@ use HubSpot\Client\Crm\Objects\Configuration;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method AssociationsApi               associationsApi()
- * @method BasicApi                      basicApi()
- * @method BatchApi                      batchApi()
- * @method Calls\Discovery               сalls()
- * @method GDPRApi                       gdprApi()
- * @method Emails\Discovery              emails()
- * @method FeedbackSubmissions\Discovery feedbackSubmissions()
- * @method Meetings\Discovery            meetings()
- * @method Notes\Discovery               notes()
- * @method PostalMail\Discovery          postalMail()
- * @method PublicObjectApi               publicObjectApi()
- * @method SearchApi                     searchApi()
- * @method Tasks\Discovery               tasks()
+ * @method AssociationsApi                  associationsApi()
+ * @method BasicApi                         basicApi()
+ * @method BatchApi                         batchApi()
+ * @method Calls\Discovery                  сalls()
+ * @method Communications\Discovery         communications()
+ * @method GDPRApi                          gdprApi()
+ * @method Emails\Discovery                 emails()
+ * @method FeedbackSubmissions\Discovery    feedbackSubmissions()
+ * @method Meetings\Discovery               meetings()
+ * @method Notes\Discovery                  notes()
+ * @method PostalMail\Discovery             postalMail()
+ * @method PublicObjectApi                  publicObjectApi()
+ * @method SearchApi                        searchApi()
+ * @method Tasks\Discovery                  tasks()
  */
 class Discovery extends DiscoveryBase
 {
