@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.0.0-beta.2...HEAD)
 
+## [10.0.0-beta.3](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.3) - 2023-05-11
+
+## Added
+
+- `crm()->objects()->communications()` Api client.
+- `crm()->associations()->v4()->basicApi()` Api.
+- `Enums\AssociationTypes` Enum.
+
+## Updated
+
+- `crm()->associations()->typesApi()` => `crm()->associations()->schema()->typesApi()`.
+- `crm()->associations()->v4()->definitionsApi()` => `crm()->associations()->v4()->schema()->definitionsApi()`.
+- Removed deprecated `Webhooks` util.
+
+
 ## [10.0.0-beta.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.2) - 2023-04-27
 
 ## Updated

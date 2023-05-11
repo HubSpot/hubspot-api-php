@@ -1,4 +1,5 @@
 <?php
+namespace Enums;
 
 class AssociationTypes
 {
