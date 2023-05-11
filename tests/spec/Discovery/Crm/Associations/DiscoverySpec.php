@@ -4,7 +4,6 @@ namespace spec\HubSpot\Discovery\Crm\Associations;
 
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Associations\Api\BatchApi;
-use HubSpot\Client\Crm\Associations\Api\TypesApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Associations\Schema\Discovery as SchemaDiscovery;
 use HubSpot\Discovery\Crm\Associations\V4\Discovery as V4Discovery;
