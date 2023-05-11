@@ -2,13 +2,14 @@
 
 namespace HubSpot\Discovery\Crm\Associations\V4;
 
+use HubSpot\Client\Crm\Associations\V4\Api\BasicApi;
 use HubSpot\Client\Crm\Associations\V4\Api\BatchApi;
-use HubSpot\Client\Crm\Associations\V4\Api\DefinitionsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BatchApi       batchApi()
- * @method DefinitionsApi definitionsApi()
+ * @method BasicApi         basicApi()
+ * @method BatchApi         batchApi()
+ * @method Schema\Discovery schema()
  */
 class Discovery extends DiscoveryBase
 {
