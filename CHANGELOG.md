@@ -21,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `crm()->associations()->v4()->definitionsApi()` => `crm()->associations()->v4()->schema()->definitionsApi()`.
 - Removed deprecated `Webhooks` util.
 
-
 ## [10.0.0-beta.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.2) - 2023-04-27
 
 ## Updated
@@ -102,23 +101,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
- - Update models for `crm()->properties()` API client
+- Update models for `crm()->properties()` API client
 
 ## [9.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.3.0) - 2023-02-20
 
 ### Added
 
- - `crm()->associations()->v4` API client
- 
+- `crm()->associations()->v4` API client
+
 ### Fixed
 
- - Fix `auth()->oauth()->refreshTokensApi()->archiveRefreshToken()` method
+- Fix `auth()->oauth()->refreshTokensApi()->archiveRefreshToken()` method
 
 ## [9.2.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.2) - 2023-01-12
 
 ### Fixed
 
- - Fix `crm()->associations()` API client
+- Fix `crm()->associations()` API client
 
 ## [9.2.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.2.1) - 2022-12-22
 
@@ -136,84 +135,85 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 
- - Added Private App access token to `cms()->domains()`
+- Added Private App access token to `cms()->domains()`
 
 ## [9.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.0.1) - 2022-12-05
 
 ### Fixed
 
- - Fix all association APIs
-
- ### Updated
-
- - `crm()->{objects}()->associationApi()->create($contact_id, $to_object_type, $to_object_id, string $association_type => AssociationSpec[] $association_spec)`
- 
- ## [9.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.0.0) - 2022-11-21
+- Fix all association APIs
 
 ### Updated
- - Regenerate all clients 
- - Added Private App access token to `crm()->schemas()` , `crm()->imports()` and `crm()->objects()->feedbackSubmissions()`
- - Updated `marketing()->events()` API client
- - Deprecated `crm()->extensions()->accounting()` API client
+
+- `crm()->{objects}()->associationApi()->create($contact_id, $to_object_type, $to_object_id, string $association_type => AssociationSpec[] $association_spec)`
+
+## [9.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/9.0.0) - 2022-11-21
+
+### Updated
+
+- Regenerate all clients
+- Added Private App access token to `crm()->schemas()` , `crm()->imports()` and `crm()->objects()->feedbackSubmissions()`
+- Updated `marketing()->events()` API client
+- Deprecated `crm()->extensions()->accounting()` API client
 
 ## [8.4.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.4.1) - 2022-10-17
 
- ### Fixed
+### Fixed
 
 - Fixed RequestTest namespace
 
 ## [8.4.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.4.0) - 2022-10-12
 
- ### Added
+### Added
 
 - add `apiRequest` method
 
 ## [8.3.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.3.1) - 2022-09-01
 
- ### Fixed
+### Fixed
 
 - adapt OAuth Util for php 8.1
 
 ## [8.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.3.0) - 2022-07-15
 
- ### Added
+### Added
 
 - Signature's Util `HubSpot\Utils\Signature`
 
- ### Deprecated
+### Deprecated
 
 - Webhook's Util `HubSpot\Utils\Webhooks`
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.2.1) - 2022-06-10
 
- ### Fixed
+### Fixed
 
 - `crm()->objects()->feedbackSubmissions()` method names
 - `crm()->quotes()->publicObjectApi()`
 
 ## [8.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.2.0) - 2022-06-07
 
- ### Added
+### Added
 
 - `crm()->quotes()->publicObjectApi()`
 - added `$id_property` to `update` and `getById` methods of `crm()->contacts()->basicApi()` 
 
 ## [8.1.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.1.2) - 2022-05-12
 
- ### Fixed
+### Fixed
 
 - `crm()->contacts()->gdprApi()`
 - `crm()->objects()->gdprApi()`
 
 ## [8.1.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.1.1) - 2022-05-12
 
- ### Fixed
+### Fixed
 
 - add $properties_with_history to `crm->*object's apis*->getAll` methods
 
 ## [8.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.1.0) - 2022-04-14
 
- ### Added
+### Added
 
 - `crm()->companies()->publicObjectApi`
 - `crm()->contacts()->publicObjectApi`
@@ -231,7 +231,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [8.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.0.0) - 2022-04-08
 
- ### Added
+### Added
 
 - add to `cms()->blogs()->authors()->blogAuthorsApi` Language methods
 - add to `cms()->blogs()->blogPosts()->blogPostsApi` Language methods
@@ -239,27 +239,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Update
 
- - rename `crm()->pipelines()->pipelineStagesApi()->getCrmV3PipelinesObjectTypePipelineIdAudit()` => `crm()->pipelines()->pipelineStagesApi()->getAudit()`
- - rename `crm()->pipelines()->pipelinesApi()->getCrmV3PipelinesObjectTypePipelineIdStagesStageIdAudit()` => `crm()->pipelines()->pipelinesApi()->getAudit()`
+- rename `crm()->pipelines()->pipelineStagesApi()->getCrmV3PipelinesObjectTypePipelineIdAudit()` => `crm()->pipelines()->pipelineStagesApi()->getAudit()`
+- rename `crm()->pipelines()->pipelinesApi()->getCrmV3PipelinesObjectTypePipelineIdStagesStageIdAudit()` => `crm()->pipelines()->pipelinesApi()->getAudit()`
 
 ## [7.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/7.0.0) - 2022-03-21
 
 ### Update
- - Rename `crm()->contacts()->gdprApi()->delete()` to `crm()->contacts()->gdprApi()->purge()`
- - Rename `crm()->objects()->gdprApi()->delete()` to `crm()->objects()->gdprApi()->purge()`
+
+- Rename `crm()->contacts()->gdprApi()->delete()` to `crm()->contacts()->gdprApi()->purge()`
+- Rename `crm()->objects()->gdprApi()->delete()` to `crm()->objects()->gdprApi()->purge()`
 
 ### Fixed
- - TimelineEvents
- - Webhooks and Timeline double appId
+
+- TimelineEvents
+- Webhooks and Timeline double appId
 
 ## [6.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/6.0.1) - 2022-03-25
 
 ### Fixed
- - Fix bugs in all ObjectSerializers
+
+- Fix bugs in all ObjectSerializers
 
 ## [6.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/6.0.0) - 2022-03-21
 
 ### Added
+
 - `cms()->sourceCode()` API client
 - `crm()->objects()->сalls()` API client
 - `crm()->objects()->emails()` API client
@@ -270,29 +274,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `settings()->users()` API client
 
 ### Fixed
- - Fix warnings on php 8.1
- - Rename `crm()->contacts()->gdprApi()->postCrmV3ObjectsContactsGdprDelete()` to `crm()->contacts()->gdprApi()->delete()`
- - Rename `crm()->objects()->gdprApi()->postCrmV3ObjectsContactsGdprDelete()` to `crm()->objects()->gdprApi()->delete()`
+
+- Fix warnings on php 8.1
+- Rename `crm()->contacts()->gdprApi()->postCrmV3ObjectsContactsGdprDelete()` to `crm()->contacts()->gdprApi()->delete()`
+- Rename `crm()->objects()->gdprApi()->postCrmV3ObjectsContactsGdprDelete()` to `crm()->objects()->gdprApi()->delete()`
 
 ## [5.1.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.1.1) - 2022-03-10
 
 ### Updated
- - Regenerate all clients 
+
+- Regenerate all clients
 
 ### Fixed
- - Fix Archived params in all clients
+
+- Fix Archived params in all clients
 
 ## [5.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.1.0) - 2022-02-17
 
 ### Updated
- - Regenerate all clients 
- - Update all dev dependencies 
 
-## [5.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.0.0) - 2021-12-15
+- Regenerate all clients
+- Update all dev dependencies
+
+## [5.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/5.0.0)- 2021-12-15
 
 ### Updated
- - Update Guzzle version (^7.3)
- - Update Php version (>=7.3)
+
+- Update Guzzle version (^7.3)
+- Update Php version (>=7.3)
 
 ### Fixed (breaking changes)
 
@@ -405,7 +414,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/2.3.0) - 2020-11-18
 
 ### Updated
- - Update Guzzle version (^6.2 | ^7.0)
+
+- Update Guzzle version (^6.2 | ^7.0)
 
 ## [2.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/2.2.0) - 2020-11-09
 
@@ -415,8 +425,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
- - `cms()->schemas()` change urls
- - `crm()->timeline()->tokensApi` and `crm()->timeline()->templatesApi` remove OAuth token
+- `cms()->schemas()` change urls
+- `crm()->timeline()->tokensApi` and `crm()->timeline()->templatesApi` remove OAuth token
 
 ## [2.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/2.1.0) - 2020-10-07
 
@@ -428,17 +438,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/2.0.0) - 2020-08-25
 
 ### Updated (Breaking changes)
- - swap method's params in batch read methods
+
+- swap method's params in batch read methods
 
 ## [1.3.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.3.2) - 2020-08-20
 
 ### Fixed
- - Fixed HubSpot/Configs
+
+- Fixed HubSpot/Configs
 
 ## [1.3.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.3.1) - 2020-06-25
 
 ### Fixed
- - Parsing response in cms()->siteSearch()->defaultApi()->getById() method
+
+- Parsing response in cms()->siteSearch()->defaultApi()->getById() method
 
 ## [1.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.3.0) - 2020-06-17
 
@@ -449,7 +462,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `cms()->performance()` API client
 - `cms()->siteSearch()` API client
 - `cms()->urlRedirects()` API client
-
 
 ## [1.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0) - 2020-06-02
 
@@ -470,7 +482,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - This CHANGELOG.md file.
 - Imports API (crm()->imports())
 
-### Breaking changes:
+### Breaking changes
 
 - Updated clients method names:
   1. archiveBatch => archive (crm()->associations()->batchApi())
