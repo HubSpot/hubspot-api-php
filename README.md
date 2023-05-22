@@ -1,4 +1,5 @@
 # hubspot-api-php
+
 [![Latest Packagist Version](https://img.shields.io/packagist/v/hubspot/api-client?logo=github&logoColor=white&style=flat-square)](https://packagist.org/packages/hubspot/api-client)
 [![Total Downloads](https://img.shields.io/packagist/dt/hubspot/api-client.svg?logo=github&logoColor=white&style=flat-square)](https://packagist.org/packages/hubspot/api-client)
 
@@ -22,20 +23,21 @@ Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-
 
 ## Quickstart
 
-#### To instantiate API Client using access token use Factory:
+### To instantiate API Client using access token use Factory
 
 ```php
 $hubspot = \HubSpot\Factory::createWithAccessToken('access-token');
 ```
+
 You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain [OAuth2](https://developers.hubspot.com/docs/api/working-with-oauth) access token.
 
-#### To instantiate API Client using developer apikey use Factory:
+#### To instantiate API Client using developer apikey use Factory
 
 ```php
 $hubspot = \HubSpot\Factory::createWithDeveloperApiKey('developer-apikey');
 ```
 
-#### also you can pass custom client to Factory:
+#### also you can pass custom client to Factory
 
 ```php
 $client = new \GuzzleHttp\Client([...]);
@@ -43,7 +45,7 @@ $client = new \GuzzleHttp\Client([...]);
 $hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
-#### To change the base path:
+#### To change the base path
 
 ```php
 $config = new \GuzzleHttp\Config();
@@ -54,7 +56,8 @@ $config->setDeveloperApiKey('*');
 $hubspot = \HubSpot\Factory::create(null, $config);
 ```
 
-#### API Client comes with Middleware for implementation of Rate and Concurrent Limiting.
+#### API Client comes with Middleware for implementation of Rate and Concurrent Limiting
+
 It provides an ability to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
 
 ```php
@@ -76,13 +79,13 @@ $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
 $hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 ```
 
-#### Get contacts page:
+#### Get contacts page
 
 ```php
 $response = $hubspot->crm()->contacts()->basicApi()->getPage();
 ```
 
-#### Search for a contact:
+#### Search for a contact
 
 ```php
 $filter = new \HubSpot\Client\Crm\Contacts\Model\Filter();
@@ -104,7 +107,7 @@ $searchRequest->setProperties(['firstname', 'lastname', 'date_of_birth', 'email'
 $contactsPage = $hubspot->crm()->contacts()->searchApi()->doSearch($searchRequest);
 ```
 
-#### Create a contact:
+#### Create a contact
 
 ```php
 $contactInput = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
@@ -115,7 +118,7 @@ $contactInput->setProperties([
 $contact = $hubspot->crm()->contacts()->basicApi()->create($contactInput);
 ```
 
-#### Update a contact:
+#### Update a contact
 
 ```php
 $newProperties = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
@@ -126,21 +129,21 @@ $newProperties->setProperties([
 $hubspot->crm()->contacts()->basicApi()->update($contactId, $newProperties);
 ```
 
-#### Archive a contact:
+#### Archive a contact
 
 ```php
 $hubspot->crm()->contacts()->basicApi()->archive($contactId);
 ```
 
-#### Get custom objects page:
+#### Get custom objects page
 
-```php 
+```php
 $hubspot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS)
 ```
 
 #### File uploading
 
-```php 
+```php
 $file = new \SplFileObject('file path');
 $response = $hubspot->files()->filesApi()->upload($file, null, '/', null, null, json_encode([
     'access' => 'PRIVATE',
@@ -151,7 +154,7 @@ $response = $hubspot->files()->filesApi()->upload($file, null, '/', null, null, 
 ]) );
 ```
 
-#### Not wrapped endpoint(s) 
+#### Not wrapped endpoint(s)
 
 It is possible to access the hubspot request method directly, it could be handy if client doesn't have implementation for some endpoint yet. Exposed request method benefits by having all configured client params.
 
@@ -191,12 +194,12 @@ $response = $hubspot->apiRequest([
 
 ### Run spec tests
 
-```
+```bash
 vendor/bin/phpspec run
 ```
 
 ### Run unit tests
 
-```
+```bash
 vendor/bin/phpunit ./tests
 ```
