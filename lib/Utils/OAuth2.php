@@ -18,11 +18,19 @@ class OAuth2
      */
     public static function getAuthUrl(string $clientId, string $redirectURI, array $scopesArray = [], array $optionalScopesArray = [])
     {
-        return static::AUTHORIZE_URL.'?'.http_build_query([
+        $queryParams = [
             'client_id' => $clientId,
             'redirect_uri' => $redirectURI,
-            'scope' => implode(' ', $scopesArray),
-            'optional_scope' => implode(' ', $optionalScopesArray),
-        ], '', '&', PHP_QUERY_RFC3986);
+        ];
+
+        if (!empty($scopesArray)) {
+            $queryParams['scope'] = implode(' ', $scopesArray);
+        }
+
+        if (!empty($optionalScopesArray)) {
+            $queryParams['optional_scope'] = implode(' ', $optionalScopesArray);
+        }
+
+        return static::AUTHORIZE_URL.'?'.http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986);
     }
 }

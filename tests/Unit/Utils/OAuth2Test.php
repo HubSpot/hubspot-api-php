@@ -25,4 +25,18 @@ class OAuth2Test extends TestCase
             $authUrl
         );
     }
+
+    /** @test */
+    public function buildAuthorizationUrlWithEmptyOptionalScope()
+    {
+        $authUrl = OAuth2::getAuthUrl(
+            'clientid',
+            'http://localhost',
+            ['contacts', 'timeline']
+        );
+        $this->assertSame(
+            'https://app.hubspot.com/oauth/authorize?client_id=clientid&redirect_uri=http%3A%2F%2Flocalhost&scope=contacts%20timeline',
+            $authUrl
+        );
+    }
 }
