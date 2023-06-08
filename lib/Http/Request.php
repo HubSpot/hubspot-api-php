@@ -6,14 +6,27 @@ use HubSpot\Config;
 
 class Request
 {
-    protected array $options = [];
-    protected string $baseUrl = 'https://api.hubapi.com';
+    /** @var array */
+    protected $options = [];
+
+    /** @var string */
+    protected $baseUrl = 'https://api.hubapi.com';
     protected $body;
-    protected Config $config;
-    protected bool $defaultJson = true;
-    protected string $url;
-    protected string $method;
-    protected array  $headers = [];
+
+    /** @var Config */
+    protected $config;
+
+    /** @var bool */
+    protected $defaultJson = true;
+
+    /** @var string */
+    protected $url;
+
+    /** @var string */
+    protected $method;
+
+    /** @var array */
+    protected $headers = [];
 
     public function __construct(Config $config, array $options = [])
     {

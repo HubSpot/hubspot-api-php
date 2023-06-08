@@ -11,9 +11,6 @@ use HubSpot\Discovery\Discovery;
  */
 class Factory
 {
-    /**
-     * @param array $config
-     */
     public static function create(ClientInterface $client = null, Config $config = null): Discovery
     {
         return new Discovery($client ?: new Client(), $config ?: new Config());

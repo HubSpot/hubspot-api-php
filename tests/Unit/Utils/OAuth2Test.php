@@ -20,6 +20,7 @@ class OAuth2Test extends TestCase
             ['contacts', 'timeline'],
             ['scope1', 'scope2']
         );
+
         $this->assertSame(
             'https://app.hubspot.com/oauth/authorize?client_id=clientid&redirect_uri=http%3A%2F%2Flocalhost&scope=contacts%20timeline&optional_scope=scope1%20scope2',
             $authUrl
@@ -34,6 +35,7 @@ class OAuth2Test extends TestCase
             'http://localhost',
             ['contacts', 'timeline']
         );
+        
         $this->assertSame(
             'https://app.hubspot.com/oauth/authorize?client_id=clientid&redirect_uri=http%3A%2F%2Flocalhost&scope=contacts%20timeline',
             $authUrl
