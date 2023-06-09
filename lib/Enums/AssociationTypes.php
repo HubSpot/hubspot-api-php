@@ -37,7 +37,7 @@ class AssociationTypes
     public const COMPANY_TO_MEETING = 187;
     public const MEETING_TO_COMPANY = 188;
     public const COMPANY_TO_NOTE = 189;
-    public const NOTE_To_COMPANY = 190;
+    public const NOTE_TO_COMPANY = 190;
     public const COMPANY_TO_TASK = 191;
     public const TASK_TO_COMPANY = 192;
     public const CONTACT_TO_CALL = 193;
