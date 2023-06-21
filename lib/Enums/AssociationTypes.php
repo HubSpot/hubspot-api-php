@@ -1,6 +1,6 @@
 <?php
 
-namespace Enums;
+namespace HubSpot\Enums;
 
 class AssociationTypes
 {
