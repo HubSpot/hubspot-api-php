@@ -116,7 +116,7 @@ class BatchApi
     }
 
     /**
-     * Operation archive
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchive
      *
      * Delete
      *
@@ -128,13 +128,13 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchive($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
     {
-        $this->archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive);
+        $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveWithHttpInfo
      *
      * Delete
      *
@@ -146,9 +146,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
     {
-        $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive);
 
         try {
             $options = $this->createHttpClientOption();
@@ -203,7 +203,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveAsync
      *
      * Delete
      *
@@ -214,9 +214,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveAsync($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
     {
-        return $this->archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
+        return $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -225,7 +225,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveAsyncWithHttpInfo
      *
      * Delete
      *
@@ -236,10 +236,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
     {
         $returnType = '';
-        $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -265,7 +265,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchive'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -274,24 +274,24 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling archive'
+                'Missing the required parameter $from_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchive'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling archive'
+                'Missing the required parameter $to_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchive'
             );
         }
         // verify the required parameter 'batch_input_public_association_multi_archive' is set
         if ($batch_input_public_association_multi_archive === null || (is_array($batch_input_public_association_multi_archive) && count($batch_input_public_association_multi_archive) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_association_multi_archive when calling archive'
+                'Missing the required parameter $batch_input_public_association_multi_archive when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchArchive'
             );
         }
 
@@ -364,11 +364,6 @@ class BatchApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -395,39 +390,40 @@ class BatchApi
     }
 
     /**
-     * Operation archiveLabels
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefault
      *
-     * Delete Specific Labels
+     * Create Default Associations
      *
      * @param  string $from_object_type from_object_type (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post batch_input_public_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post batch_input_public_default_association_multi_post (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
-    public function archiveLabels($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefault($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
     {
-        $this->archiveLabelsWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
+        list($response) = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post);
+        return $response;
     }
 
     /**
-     * Operation archiveLabelsWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultWithHttpInfo
      *
-     * Delete Specific Labels
+     * Create Default Associations
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveLabelsWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
     {
-        $request = $this->archiveLabelsRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultRequest($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post);
 
         try {
             $options = $this->createHttpClientOption();
@@ -464,10 +460,65 @@ class BatchApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -482,20 +533,20 @@ class BatchApi
     }
 
     /**
-     * Operation archiveLabelsAsync
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultAsync
      *
-     * Delete Specific Labels
+     * Create Default Associations
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveLabelsAsync($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultAsync($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
     {
-        return $this->archiveLabelsAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+        return $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -504,27 +555,40 @@ class BatchApi
     }
 
     /**
-     * Operation archiveLabelsAsyncWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultAsyncWithHttpInfo
      *
-     * Delete Specific Labels
+     * Create Default Associations
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveLabelsAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
     {
-        $returnType = '';
-        $request = $this->archiveLabelsRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
+        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultRequest($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -544,37 +608,37 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'archiveLabels'
+     * Create request for operation 'postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefault'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveLabelsRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefaultRequest($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling archiveLabels'
+                'Missing the required parameter $from_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefault'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling archiveLabels'
+                'Missing the required parameter $to_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefault'
             );
         }
-        // verify the required parameter 'batch_input_public_association_multi_post' is set
-        if ($batch_input_public_association_multi_post === null || (is_array($batch_input_public_association_multi_post) && count($batch_input_public_association_multi_post) === 0)) {
+        // verify the required parameter 'batch_input_public_default_association_multi_post' is set
+        if ($batch_input_public_default_association_multi_post === null || (is_array($batch_input_public_default_association_multi_post) && count($batch_input_public_default_association_multi_post) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_association_multi_post when calling archiveLabels'
+                'Missing the required parameter $batch_input_public_default_association_multi_post when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchAssociateDefault'
             );
         }
 
-        $resourcePath = '/crm/v4/associations/{fromObjectType}/{toObjectType}/batch/labels/archive';
+        $resourcePath = '/crm/v4/associations/{fromObjectType}/{toObjectType}/batch/associate/default';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -603,21 +667,21 @@ class BatchApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
+                ['application/json', '*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
+                ['application/json', '*/*'],
                 ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($batch_input_public_association_multi_post)) {
+        if (isset($batch_input_public_default_association_multi_post)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_public_association_multi_post));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_public_default_association_multi_post));
             } else {
-                $httpBody = $batch_input_public_association_multi_post;
+                $httpBody = $batch_input_public_default_association_multi_post;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -643,11 +707,6 @@ class BatchApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -674,7 +733,7 @@ class BatchApi
     }
 
     /**
-     * Operation create
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreate
      *
      * Create
      *
@@ -686,14 +745,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
-    public function create($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreate($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        list($response) = $this->createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
+        list($response) = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateWithHttpInfo
      *
      * Create
      *
@@ -705,9 +764,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        $request = $this->createRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
 
         try {
             $options = $this->createHttpClientOption();
@@ -840,7 +899,7 @@ class BatchApi
     }
 
     /**
-     * Operation createAsync
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateAsync
      *
      * Create
      *
@@ -851,9 +910,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateAsync($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        return $this->createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+        return $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -862,7 +921,7 @@ class BatchApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateAsyncWithHttpInfo
      *
      * Create
      *
@@ -873,10 +932,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair';
-        $request = $this->createRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -915,7 +974,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreate'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -924,24 +983,24 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreateRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling create'
+                'Missing the required parameter $from_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreate'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling create'
+                'Missing the required parameter $to_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreate'
             );
         }
         // verify the required parameter 'batch_input_public_association_multi_post' is set
         if ($batch_input_public_association_multi_post === null || (is_array($batch_input_public_association_multi_post) && count($batch_input_public_association_multi_post) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_association_multi_post when calling create'
+                'Missing the required parameter $batch_input_public_association_multi_post when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchCreate'
             );
         }
 
@@ -1014,11 +1073,6 @@ class BatchApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1045,40 +1099,39 @@ class BatchApi
     }
 
     /**
-     * Operation createDefault
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchive
      *
-     * Create Default Associations
+     * Delete Specific Labels
      *
      * @param  string $from_object_type from_object_type (required)
      * @param  string $to_object_type to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post batch_input_public_default_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post batch_input_public_association_multi_post (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return void
      */
-    public function createDefault($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchive($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        list($response) = $this->createDefaultWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post);
-        return $response;
+        $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
     }
 
     /**
-     * Operation createDefaultWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveWithHttpInfo
      *
-     * Create Default Associations
+     * Delete Specific Labels
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDefaultWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        $request = $this->createDefaultRequest($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1115,65 +1168,10 @@ class BatchApi
                 );
             }
 
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1188,20 +1186,20 @@ class BatchApi
     }
 
     /**
-     * Operation createDefaultAsync
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveAsync
      *
-     * Create Default Associations
+     * Delete Specific Labels
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDefaultAsync($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveAsync($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        return $this->createDefaultAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
+        return $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1210,40 +1208,27 @@ class BatchApi
     }
 
     /**
-     * Operation createDefaultAsyncWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveAsyncWithHttpInfo
      *
-     * Create Default Associations
+     * Delete Specific Labels
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDefaultAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
-        $request = $this->createDefaultRequest($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post);
+        $returnType = '';
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1263,37 +1248,37 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'createDefault'
+     * Create request for operation 'postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchive'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createDefaultRequest($from_object_type, $to_object_type, $batch_input_public_default_association_multi_post)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling createDefault'
+                'Missing the required parameter $from_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchive'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling createDefault'
+                'Missing the required parameter $to_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchive'
             );
         }
-        // verify the required parameter 'batch_input_public_default_association_multi_post' is set
-        if ($batch_input_public_default_association_multi_post === null || (is_array($batch_input_public_default_association_multi_post) && count($batch_input_public_default_association_multi_post) === 0)) {
+        // verify the required parameter 'batch_input_public_association_multi_post' is set
+        if ($batch_input_public_association_multi_post === null || (is_array($batch_input_public_association_multi_post) && count($batch_input_public_association_multi_post) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_default_association_multi_post when calling createDefault'
+                'Missing the required parameter $batch_input_public_association_multi_post when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchLabelsArchive'
             );
         }
 
-        $resourcePath = '/crm/v4/associations/{fromObjectType}/{toObjectType}/batch/associate/default';
+        $resourcePath = '/crm/v4/associations/{fromObjectType}/{toObjectType}/batch/labels/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1322,21 +1307,21 @@ class BatchApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['*/*'],
                 ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($batch_input_public_default_association_multi_post)) {
+        if (isset($batch_input_public_association_multi_post)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_public_default_association_multi_post));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_public_association_multi_post));
             } else {
-                $httpBody = $batch_input_public_default_association_multi_post;
+                $httpBody = $batch_input_public_association_multi_post;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1362,11 +1347,6 @@ class BatchApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1393,7 +1373,7 @@ class BatchApi
     }
 
     /**
-     * Operation getPage
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchRead
      *
      * Read
      *
@@ -1405,14 +1385,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
-    public function getPage($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchRead($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
     {
-        list($response) = $this->getPageWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request);
+        list($response) = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request);
         return $response;
     }
 
     /**
-     * Operation getPageWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadWithHttpInfo
      *
      * Read
      *
@@ -1424,9 +1404,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
     {
-        $request = $this->getPageRequest($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadRequest($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1559,7 +1539,7 @@ class BatchApi
     }
 
     /**
-     * Operation getPageAsync
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadAsync
      *
      * Read
      *
@@ -1570,9 +1550,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadAsync($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
     {
-        return $this->getPageAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
+        return $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1581,7 +1561,7 @@ class BatchApi
     }
 
     /**
-     * Operation getPageAsyncWithHttpInfo
+     * Operation postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadAsyncWithHttpInfo
      *
      * Read
      *
@@ -1592,10 +1572,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel';
-        $request = $this->getPageRequest($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request);
+        $request = $this->postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadRequest($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1634,7 +1614,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'getPage'
+     * Create request for operation 'postCrmV4AssociationsFromObjectTypeToObjectTypeBatchRead'
      *
      * @param  string $from_object_type (required)
      * @param  string $to_object_type (required)
@@ -1643,24 +1623,24 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
+    public function postCrmV4AssociationsFromObjectTypeToObjectTypeBatchReadRequest($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request)
     {
         // verify the required parameter 'from_object_type' is set
         if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling getPage'
+                'Missing the required parameter $from_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchRead'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling getPage'
+                'Missing the required parameter $to_object_type when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchRead'
             );
         }
         // verify the required parameter 'batch_input_public_fetch_associations_batch_request' is set
         if ($batch_input_public_fetch_associations_batch_request === null || (is_array($batch_input_public_fetch_associations_batch_request) && count($batch_input_public_fetch_associations_batch_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_fetch_associations_batch_request when calling getPage'
+                'Missing the required parameter $batch_input_public_fetch_associations_batch_request when calling postCrmV4AssociationsFromObjectTypeToObjectTypeBatchRead'
             );
         }
 
@@ -1733,11 +1713,6 @@ class BatchApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();

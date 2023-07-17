@@ -63,8 +63,8 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'string',
         'columns' => '\HubSpot\Client\Cms\Hubdb\Model\Column[]',
         'published' => 'bool',
-        'deleted' => 'bool',
         'column_count' => 'int',
+        'deleted' => 'bool',
         'row_count' => 'int',
         'created_by' => '\HubSpot\Client\Cms\Hubdb\Model\SimpleUser',
         'updated_by' => '\HubSpot\Client\Cms\Hubdb\Model\SimpleUser',
@@ -92,8 +92,8 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => null,
         'columns' => null,
         'published' => null,
-        'deleted' => null,
         'column_count' => 'int32',
+        'deleted' => null,
         'row_count' => 'int32',
         'created_by' => null,
         'updated_by' => null,
@@ -140,8 +140,8 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'label',
         'columns' => 'columns',
         'published' => 'published',
-        'deleted' => 'deleted',
         'column_count' => 'columnCount',
+        'deleted' => 'deleted',
         'row_count' => 'rowCount',
         'created_by' => 'createdBy',
         'updated_by' => 'updatedBy',
@@ -167,8 +167,8 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'setLabel',
         'columns' => 'setColumns',
         'published' => 'setPublished',
-        'deleted' => 'setDeleted',
         'column_count' => 'setColumnCount',
+        'deleted' => 'setDeleted',
         'row_count' => 'setRowCount',
         'created_by' => 'setCreatedBy',
         'updated_by' => 'setUpdatedBy',
@@ -194,8 +194,8 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'getLabel',
         'columns' => 'getColumns',
         'published' => 'getPublished',
-        'deleted' => 'getDeleted',
         'column_count' => 'getColumnCount',
+        'deleted' => 'getDeleted',
         'row_count' => 'getRowCount',
         'created_by' => 'getCreatedBy',
         'updated_by' => 'getUpdatedBy',
@@ -272,8 +272,8 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['label'] = $data['label'] ?? null;
         $this->container['columns'] = $data['columns'] ?? null;
         $this->container['published'] = $data['published'] ?? null;
-        $this->container['deleted'] = $data['deleted'] ?? null;
         $this->container['column_count'] = $data['column_count'] ?? null;
+        $this->container['deleted'] = $data['deleted'] ?? null;
         $this->container['row_count'] = $data['row_count'] ?? null;
         $this->container['created_by'] = $data['created_by'] ?? null;
         $this->container['updated_by'] = $data['updated_by'] ?? null;
@@ -439,30 +439,6 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets deleted
-     *
-     * @return bool|null
-     */
-    public function getDeleted()
-    {
-        return $this->container['deleted'];
-    }
-
-    /**
-     * Sets deleted
-     *
-     * @param bool|null $deleted deleted
-     *
-     * @return self
-     */
-    public function setDeleted($deleted)
-    {
-        $this->container['deleted'] = $deleted;
-
-        return $this;
-    }
-
-    /**
      * Gets column_count
      *
      * @return int|null
@@ -482,6 +458,30 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setColumnCount($column_count)
     {
         $this->container['column_count'] = $column_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted
+     *
+     * @return bool|null
+     */
+    public function getDeleted()
+    {
+        return $this->container['deleted'];
+    }
+
+    /**
+     * Sets deleted
+     *
+     * @param bool|null $deleted deleted
+     *
+     * @return self
+     */
+    public function setDeleted($deleted)
+    {
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }

@@ -116,7 +116,7 @@ class BasicApi
     }
 
     /**
-     * Operation archive
+     * Operation deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId
      *
      * Delete
      *
@@ -129,13 +129,13 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type, $object_id, $to_object_type, $to_object_id)
+    public function deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId($object_type, $object_id, $to_object_type, $to_object_id)
     {
-        $this->archiveWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id);
+        $this->deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdWithHttpInfo
      *
      * Delete
      *
@@ -148,9 +148,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id)
+    public function deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id)
     {
-        $request = $this->archiveRequest($object_type, $object_id, $to_object_type, $to_object_id);
+        $request = $this->deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdRequest($object_type, $object_id, $to_object_type, $to_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -205,7 +205,7 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsync
      *
      * Delete
      *
@@ -217,9 +217,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type, $object_id, $to_object_type, $to_object_id)
+    public function deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsync($object_type, $object_id, $to_object_type, $to_object_id)
     {
-        return $this->archiveAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id)
+        return $this->deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -228,7 +228,7 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsyncWithHttpInfo
      *
      * Delete
      *
@@ -240,10 +240,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id)
+    public function deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type, $object_id, $to_object_type, $to_object_id);
+        $request = $this->deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdRequest($object_type, $object_id, $to_object_type, $to_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -269,7 +269,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
      *
      * @param  string $object_type (required)
      * @param  int $object_id (required)
@@ -279,30 +279,30 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($object_type, $object_id, $to_object_type, $to_object_id)
+    public function deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdRequest($object_type, $object_id, $to_object_type, $to_object_id)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling archive'
+                'Missing the required parameter $object_type when calling deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
             );
         }
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling archive'
+                'Missing the required parameter $object_id when calling deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling archive'
+                'Missing the required parameter $to_object_type when calling deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
             );
         }
         // verify the required parameter 'to_object_id' is set
         if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling archive'
+                'Missing the required parameter $to_object_id when calling deleteCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
             );
         }
 
@@ -385,11 +385,6 @@ class BasicApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -416,762 +411,7 @@ class BasicApi
     }
 
     /**
-     * Operation create
-     *
-     * Create
-     *
-     * @param  string $object_type object_type (required)
-     * @param  int $object_id object_id (required)
-     * @param  string $to_object_type to_object_type (required)
-     * @param  int $to_object_id to_object_id (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec association_spec (required)
-     *
-     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error
-     */
-    public function create($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
-    {
-        list($response) = $this->createWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec);
-        return $response;
-    }
-
-    /**
-     * Operation createWithHttpInfo
-     *
-     * Create
-     *
-     * @param  string $object_type (required)
-     * @param  int $object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
-     *
-     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
-    {
-        $request = $this->createRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsync
-     *
-     * Create
-     *
-     * @param  string $object_type (required)
-     * @param  int $object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsync($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
-    {
-        return $this->createAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncWithHttpInfo
-     *
-     * Create
-     *
-     * @param  string $object_type (required)
-     * @param  int $object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
-    {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair';
-        $request = $this->createRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'create'
-     *
-     * @param  string $object_type (required)
-     * @param  int $object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
-    {
-        // verify the required parameter 'object_type' is set
-        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling create'
-            );
-        }
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling create'
-            );
-        }
-        // verify the required parameter 'to_object_type' is set
-        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling create'
-            );
-        }
-        // verify the required parameter 'to_object_id' is set
-        if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling create'
-            );
-        }
-        // verify the required parameter 'association_spec' is set
-        if ($association_spec === null || (is_array($association_spec) && count($association_spec) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $association_spec when calling create'
-            );
-        }
-
-        $resourcePath = '/crm/v4/objects/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectType' . '}',
-                ObjectSerializer::toPathValue($object_type),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($to_object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'toObjectType' . '}',
-                ObjectSerializer::toPathValue($to_object_type),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($to_object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'toObjectId' . '}',
-                ObjectSerializer::toPathValue($to_object_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($association_spec)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($association_spec));
-            } else {
-                $httpBody = $association_spec;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation createDefault
-     *
-     * Create Default
-     *
-     * @param  string $from_object_type from_object_type (required)
-     * @param  int $from_object_id from_object_id (required)
-     * @param  string $to_object_type to_object_type (required)
-     * @param  int $to_object_id to_object_id (required)
-     *
-     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error
-     */
-    public function createDefault($from_object_type, $from_object_id, $to_object_type, $to_object_id)
-    {
-        list($response) = $this->createDefaultWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id);
-        return $response;
-    }
-
-    /**
-     * Operation createDefaultWithHttpInfo
-     *
-     * Create Default
-     *
-     * @param  string $from_object_type (required)
-     * @param  int $from_object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     *
-     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createDefaultWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id)
-    {
-        $request = $this->createDefaultRequest($from_object_type, $from_object_id, $to_object_type, $to_object_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createDefaultAsync
-     *
-     * Create Default
-     *
-     * @param  string $from_object_type (required)
-     * @param  int $from_object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createDefaultAsync($from_object_type, $from_object_id, $to_object_type, $to_object_id)
-    {
-        return $this->createDefaultAsyncWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createDefaultAsyncWithHttpInfo
-     *
-     * Create Default
-     *
-     * @param  string $from_object_type (required)
-     * @param  int $from_object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createDefaultAsyncWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id)
-    {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
-        $request = $this->createDefaultRequest($from_object_type, $from_object_id, $to_object_type, $to_object_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createDefault'
-     *
-     * @param  string $from_object_type (required)
-     * @param  int $from_object_id (required)
-     * @param  string $to_object_type (required)
-     * @param  int $to_object_id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createDefaultRequest($from_object_type, $from_object_id, $to_object_type, $to_object_id)
-    {
-        // verify the required parameter 'from_object_type' is set
-        if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_type when calling createDefault'
-            );
-        }
-        // verify the required parameter 'from_object_id' is set
-        if ($from_object_id === null || (is_array($from_object_id) && count($from_object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $from_object_id when calling createDefault'
-            );
-        }
-        // verify the required parameter 'to_object_type' is set
-        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling createDefault'
-            );
-        }
-        // verify the required parameter 'to_object_id' is set
-        if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_id when calling createDefault'
-            );
-        }
-
-        $resourcePath = '/crm/v4/objects/{fromObjectType}/{fromObjectId}/associations/default/{toObjectType}/{toObjectId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($from_object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'fromObjectType' . '}',
-                ObjectSerializer::toPathValue($from_object_type),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($from_object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'fromObjectId' . '}',
-                ObjectSerializer::toPathValue($from_object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($to_object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'toObjectType' . '}',
-                ObjectSerializer::toPathValue($to_object_type),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($to_object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'toObjectId' . '}',
-                ObjectSerializer::toPathValue($to_object_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getPage
+     * Operation getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectType
      *
      * List
      *
@@ -1185,14 +425,14 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
-    public function getPage($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
+    public function getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectType($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
     {
-        list($response) = $this->getPageWithHttpInfo($object_type, $object_id, $to_object_type, $after, $limit);
+        list($response) = $this->getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeWithHttpInfo($object_type, $object_id, $to_object_type, $after, $limit);
         return $response;
     }
 
     /**
-     * Operation getPageWithHttpInfo
+     * Operation getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeWithHttpInfo
      *
      * List
      *
@@ -1206,9 +446,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
+    public function getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeWithHttpInfo($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
     {
-        $request = $this->getPageRequest($object_type, $object_id, $to_object_type, $after, $limit);
+        $request = $this->getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeRequest($object_type, $object_id, $to_object_type, $after, $limit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1318,7 +558,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPageAsync
+     * Operation getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeAsync
      *
      * List
      *
@@ -1331,9 +571,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
+    public function getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeAsync($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
     {
-        return $this->getPageAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $after, $limit)
+        return $this->getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $after, $limit)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1342,7 +582,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPageAsyncWithHttpInfo
+     * Operation getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeAsyncWithHttpInfo
      *
      * List
      *
@@ -1355,10 +595,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
+    public function getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
     {
         $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
-        $request = $this->getPageRequest($object_type, $object_id, $to_object_type, $after, $limit);
+        $request = $this->getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeRequest($object_type, $object_id, $to_object_type, $after, $limit);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1397,7 +637,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getPage'
+     * Create request for operation 'getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectType'
      *
      * @param  string $object_type (required)
      * @param  int $object_id (required)
@@ -1408,24 +648,24 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
+    public function getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeRequest($object_type, $object_id, $to_object_type, $after = null, $limit = 500)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getPage'
+                'Missing the required parameter $object_type when calling getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectType'
             );
         }
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPage'
+                'Missing the required parameter $object_id when calling getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectType'
             );
         }
         // verify the required parameter 'to_object_type' is set
         if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $to_object_type when calling getPage'
+                'Missing the required parameter $to_object_type when calling getCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectType'
             );
         }
 
@@ -1518,11 +758,6 @@ class BasicApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
@@ -1542,6 +777,751 @@ class BasicApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId
+     *
+     * Create Default
+     *
+     * @param  string $from_object_type from_object_type (required)
+     * @param  int $from_object_id from_object_id (required)
+     * @param  string $to_object_type to_object_type (required)
+     * @param  int $to_object_id to_object_id (required)
+     *
+     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     */
+    public function putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId($from_object_type, $from_object_id, $to_object_type, $to_object_id)
+    {
+        list($response) = $this->putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id);
+        return $response;
+    }
+
+    /**
+     * Operation putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdWithHttpInfo
+     *
+     * Create Default
+     *
+     * @param  string $from_object_type (required)
+     * @param  int $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     *
+     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id)
+    {
+        $request = $this->putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdRequest($from_object_type, $from_object_id, $to_object_type, $to_object_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdAsync
+     *
+     * Create Default
+     *
+     * @param  string $from_object_type (required)
+     * @param  int $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdAsync($from_object_type, $from_object_id, $to_object_type, $to_object_id)
+    {
+        return $this->putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdAsyncWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdAsyncWithHttpInfo
+     *
+     * Create Default
+     *
+     * @param  string $from_object_type (required)
+     * @param  int $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdAsyncWithHttpInfo($from_object_type, $from_object_id, $to_object_type, $to_object_id)
+    {
+        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicDefaultAssociation';
+        $request = $this->putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdRequest($from_object_type, $from_object_id, $to_object_type, $to_object_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId'
+     *
+     * @param  string $from_object_type (required)
+     * @param  int $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectIdRequest($from_object_type, $from_object_id, $to_object_type, $to_object_id)
+    {
+        // verify the required parameter 'from_object_type' is set
+        if ($from_object_type === null || (is_array($from_object_type) && count($from_object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from_object_type when calling putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'from_object_id' is set
+        if ($from_object_id === null || (is_array($from_object_id) && count($from_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from_object_id when calling putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'to_object_type' is set
+        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to_object_type when calling putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'to_object_id' is set
+        if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to_object_id when calling putCrmV4ObjectsFromObjectTypeFromObjectIdAssociationsDefaultToObjectTypeToObjectId'
+            );
+        }
+
+        $resourcePath = '/crm/v4/objects/{fromObjectType}/{fromObjectId}/associations/default/{toObjectType}/{toObjectId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($from_object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'fromObjectType' . '}',
+                ObjectSerializer::toPathValue($from_object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($from_object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'fromObjectId' . '}',
+                ObjectSerializer::toPathValue($from_object_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($to_object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'toObjectType' . '}',
+                ObjectSerializer::toPathValue($to_object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($to_object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'toObjectId' . '}',
+                ObjectSerializer::toPathValue($to_object_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId
+     *
+     * Create
+     *
+     * @param  string $object_type object_type (required)
+     * @param  int $object_id object_id (required)
+     * @param  string $to_object_type to_object_type (required)
+     * @param  int $to_object_id to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec association_spec (required)
+     *
+     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     */
+    public function putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
+    {
+        list($response) = $this->putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec);
+        return $response;
+    }
+
+    /**
+     * Operation putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdWithHttpInfo
+     *
+     * Create
+     *
+     * @param  string $object_type (required)
+     * @param  int $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
+     *
+     * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
+    {
+        $request = $this->putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Associations\V4\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Associations\V4\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsync
+     *
+     * Create
+     *
+     * @param  string $object_type (required)
+     * @param  int $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsync($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
+    {
+        return $this->putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsyncWithHttpInfo
+     *
+     * Create
+     *
+     * @param  string $object_type (required)
+     * @param  int $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
+    {
+        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair';
+        $request = $this->putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
+     *
+     * @param  string $object_type (required)
+     * @param  int $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  int $to_object_id (required)
+     * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectIdRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec)
+    {
+        // verify the required parameter 'object_type' is set
+        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type when calling putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'object_id' is set
+        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_id when calling putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'to_object_type' is set
+        if ($to_object_type === null || (is_array($to_object_type) && count($to_object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to_object_type when calling putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'to_object_id' is set
+        if ($to_object_id === null || (is_array($to_object_id) && count($to_object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to_object_id when calling putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
+            );
+        }
+        // verify the required parameter 'association_spec' is set
+        if ($association_spec === null || (is_array($association_spec) && count($association_spec) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $association_spec when calling putCrmV4ObjectsObjectTypeObjectIdAssociationsToObjectTypeToObjectId'
+            );
+        }
+
+        $resourcePath = '/crm/v4/objects/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectType' . '}',
+                ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectId' . '}',
+                ObjectSerializer::toPathValue($object_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($to_object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'toObjectType' . '}',
+                ObjectSerializer::toPathValue($to_object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($to_object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'toObjectId' . '}',
+                ObjectSerializer::toPathValue($to_object_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($association_spec)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($association_spec));
+            } else {
+                $httpBody = $association_spec;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

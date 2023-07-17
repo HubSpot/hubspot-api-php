@@ -57,8 +57,8 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'to_object_id' => 'int',
-        'association_types' => '\HubSpot\Client\Crm\Associations\V4\Model\AssociationSpecWithLabel[]'
+        'association_types' => '\HubSpot\Client\Crm\Associations\V4\Model\AssociationSpecWithLabel[]',
+        'to_object_id' => 'int'
     ];
 
     /**
@@ -69,8 +69,8 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'to_object_id' => 'int32',
-        'association_types' => null
+        'association_types' => null,
+        'to_object_id' => 'int32'
     ];
 
     /**
@@ -100,8 +100,8 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'to_object_id' => 'toObjectId',
-        'association_types' => 'associationTypes'
+        'association_types' => 'associationTypes',
+        'to_object_id' => 'toObjectId'
     ];
 
     /**
@@ -110,8 +110,8 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'to_object_id' => 'setToObjectId',
-        'association_types' => 'setAssociationTypes'
+        'association_types' => 'setAssociationTypes',
+        'to_object_id' => 'setToObjectId'
     ];
 
     /**
@@ -120,8 +120,8 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'to_object_id' => 'getToObjectId',
-        'association_types' => 'getAssociationTypes'
+        'association_types' => 'getAssociationTypes',
+        'to_object_id' => 'getToObjectId'
     ];
 
     /**
@@ -181,8 +181,8 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['to_object_id'] = $data['to_object_id'] ?? null;
         $this->container['association_types'] = $data['association_types'] ?? null;
+        $this->container['to_object_id'] = $data['to_object_id'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['to_object_id'] === null) {
-            $invalidProperties[] = "'to_object_id' can't be null";
-        }
         if ($this->container['association_types'] === null) {
             $invalidProperties[] = "'association_types' can't be null";
+        }
+        if ($this->container['to_object_id'] === null) {
+            $invalidProperties[] = "'to_object_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets to_object_id
-     *
-     * @return int
-     */
-    public function getToObjectId()
-    {
-        return $this->container['to_object_id'];
-    }
-
-    /**
-     * Sets to_object_id
-     *
-     * @param int $to_object_id to_object_id
-     *
-     * @return self
-     */
-    public function setToObjectId($to_object_id)
-    {
-        $this->container['to_object_id'] = $to_object_id;
-
-        return $this;
-    }
 
     /**
      * Gets association_types
@@ -259,6 +235,30 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
     public function setAssociationTypes($association_types)
     {
         $this->container['association_types'] = $association_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_object_id
+     *
+     * @return int
+     */
+    public function getToObjectId()
+    {
+        return $this->container['to_object_id'];
+    }
+
+    /**
+     * Sets to_object_id
+     *
+     * @param int $to_object_id to_object_id
+     *
+     * @return self
+     */
+    public function setToObjectId($to_object_id)
+    {
+        $this->container['to_object_id'] = $to_object_id;
 
         return $this;
     }

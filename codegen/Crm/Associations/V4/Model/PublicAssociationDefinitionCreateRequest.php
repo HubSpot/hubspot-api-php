@@ -57,8 +57,8 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'label' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'name' => null
+        'name' => null,
+        'label' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'name' => 'name'
+        'name' => 'name',
+        'label' => 'label'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'name' => 'setName'
+        'name' => 'setName',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'name' => 'getName'
+        'name' => 'getName',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -259,6 +235,30 @@ class PublicAssociationDefinitionCreateRequest implements ModelInterface, ArrayA
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

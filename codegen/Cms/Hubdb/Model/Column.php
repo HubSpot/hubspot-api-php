@@ -68,8 +68,8 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'foreign_ids' => '\HubSpot\Client\Cms\Hubdb\Model\ForeignId[]',
         'type' => 'string',
-        'foreign_ids_by_name' => 'array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>',
         'foreign_ids_by_id' => 'array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>',
+        'foreign_ids_by_name' => 'array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>',
         'option_count' => 'int'
     ];
 
@@ -92,8 +92,8 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'foreign_ids' => null,
         'type' => null,
-        'foreign_ids_by_name' => null,
         'foreign_ids_by_id' => null,
+        'foreign_ids_by_name' => null,
         'option_count' => 'int32'
     ];
 
@@ -135,8 +135,8 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'foreign_ids' => 'foreignIds',
         'type' => 'type',
-        'foreign_ids_by_name' => 'foreignIdsByName',
         'foreign_ids_by_id' => 'foreignIdsById',
+        'foreign_ids_by_name' => 'foreignIdsByName',
         'option_count' => 'optionCount'
     ];
 
@@ -157,8 +157,8 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'foreign_ids' => 'setForeignIds',
         'type' => 'setType',
-        'foreign_ids_by_name' => 'setForeignIdsByName',
         'foreign_ids_by_id' => 'setForeignIdsById',
+        'foreign_ids_by_name' => 'setForeignIdsByName',
         'option_count' => 'setOptionCount'
     ];
 
@@ -179,8 +179,8 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'foreign_ids' => 'getForeignIds',
         'type' => 'getType',
-        'foreign_ids_by_name' => 'getForeignIdsByName',
         'foreign_ids_by_id' => 'getForeignIdsById',
+        'foreign_ids_by_name' => 'getForeignIdsByName',
         'option_count' => 'getOptionCount'
     ];
 
@@ -297,8 +297,8 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['description'] = $data['description'] ?? null;
         $this->container['foreign_ids'] = $data['foreign_ids'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['foreign_ids_by_name'] = $data['foreign_ids_by_name'] ?? null;
         $this->container['foreign_ids_by_id'] = $data['foreign_ids_by_id'] ?? null;
+        $this->container['foreign_ids_by_name'] = $data['foreign_ids_by_name'] ?? null;
         $this->container['option_count'] = $data['option_count'] ?? null;
     }
 
@@ -619,30 +619,6 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets foreign_ids_by_name
-     *
-     * @return array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null
-     */
-    public function getForeignIdsByName()
-    {
-        return $this->container['foreign_ids_by_name'];
-    }
-
-    /**
-     * Sets foreign_ids_by_name
-     *
-     * @param array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null $foreign_ids_by_name Foreign ids by name
-     *
-     * @return self
-     */
-    public function setForeignIdsByName($foreign_ids_by_name)
-    {
-        $this->container['foreign_ids_by_name'] = $foreign_ids_by_name;
-
-        return $this;
-    }
-
-    /**
      * Gets foreign_ids_by_id
      *
      * @return array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null
@@ -662,6 +638,30 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setForeignIdsById($foreign_ids_by_id)
     {
         $this->container['foreign_ids_by_id'] = $foreign_ids_by_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets foreign_ids_by_name
+     *
+     * @return array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null
+     */
+    public function getForeignIdsByName()
+    {
+        return $this->container['foreign_ids_by_name'];
+    }
+
+    /**
+     * Sets foreign_ids_by_name
+     *
+     * @param array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null $foreign_ids_by_name Foreign ids by name
+     *
+     * @return self
+     */
+    public function setForeignIdsByName($foreign_ids_by_name)
+    {
+        $this->container['foreign_ids_by_name'] = $foreign_ids_by_name;
 
         return $this;
     }
