@@ -5,7 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.0.1...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.1.0...HEAD)
+
+## [10.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.0) - 2023-07-27
+
+## Removed `hapikey` from
+
+- `automation()->actions()->callbacksApi()` Api.
+- `cms()` (all Api clients).
+- `communicationPreferences()` (all Api clients).
+- `conversations()` (all API clients).
+- `crm()` (all Api clients).
+- `events()` (all Api clients).
+- `files()` (all Api clients).
+- `marketing()->events()->settingsExternalApi()` Api.
+- `marketing()->transactional()` Api client.
+
+## Updated
+
+- Cnange type from `object` to `string` in `HubSpot\Client\Cms\Hubdb\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Associations\V4\Model\StandardError[]` to `\HubSpot\Client\Crm\Associations\V4\Model\StandardError1[]` in `\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseSimplePublicObjectWithErrors::errors`.
+- Cnange type from `\HubSpot\Client\Crm\Companies\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Companies\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Contacts\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Contacts\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Deals\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Deals\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\LineItems\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\LineItems\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Calls\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Calls\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Communications\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Communications\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Emails\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Emails\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Meetings\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Meetings\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Notes\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Notes\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\PostalMail\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\PostalMail\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Tasks\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Tasks\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Products\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Products\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Properties\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Properties\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Quotes\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Quotes\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Tickets\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Tickets\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Webhooks\Model\ErrorCategory` to `string` in`HubSpot\Client\Webhooks\Model\StandardError::category`.
 
 ## [10.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.1) - 2023-07-27
 
@@ -572,3 +609,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [10.0.0-beta.3]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.3
 [10.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0
 [10.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.1
+[10.1.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.0
