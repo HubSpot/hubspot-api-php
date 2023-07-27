@@ -12,7 +12,7 @@ class AssociationTypes
     public const PRIMARY_COMPANY_TO_DEAL = 6;
     public const CONTACT_TO_TICKET = 15;
     public const TICKET_TO_CONTACT = 16;
-    public const DEAL_TOLINE_ITEM = 19;
+    public const DEAL_TO_LINE_ITEM = 19;
     public const LINE_ITEM_TO_DEAL = 20;
     public const PRIMARY_COMPANY_TO_TICKET = 25;
     public const PRIMARY_TICKET_TO_COMPANY = 26;
@@ -21,7 +21,7 @@ class AssociationTypes
     public const DEAL_TO_QUOTE = 63;
     public const QUOTE_TO_DEAL = 64;
     public const QUOTE_TO_LINE_ITEM = 67;
-    public const LINE_ITEM_TO_TO_QUOTE = 68;
+    public const LINE_ITEM_TO_QUOTE = 68;
     public const QUOTE_TO_CONTACT = 69;
     public const CONTACT_TO_QUOTE = 70;
     public const QUOTE_TO_COMPANY = 71;
