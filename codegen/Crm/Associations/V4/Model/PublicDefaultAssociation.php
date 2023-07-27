@@ -57,9 +57,9 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
+        'association_spec' => '\HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec',
         'from' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId',
-        'association_spec' => '\HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec'
+        'to' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId'
     ];
 
     /**
@@ -70,9 +70,9 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'association_spec' => null,
         'from' => null,
-        'to' => null,
-        'association_spec' => null
+        'to' => null
     ];
 
     /**
@@ -102,9 +102,9 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
+        'association_spec' => 'associationSpec',
         'from' => 'from',
-        'to' => 'to',
-        'association_spec' => 'associationSpec'
+        'to' => 'to'
     ];
 
     /**
@@ -113,9 +113,9 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
+        'association_spec' => 'setAssociationSpec',
         'from' => 'setFrom',
-        'to' => 'setTo',
-        'association_spec' => 'setAssociationSpec'
+        'to' => 'setTo'
     ];
 
     /**
@@ -124,9 +124,9 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
+        'association_spec' => 'getAssociationSpec',
         'from' => 'getFrom',
-        'to' => 'getTo',
-        'association_spec' => 'getAssociationSpec'
+        'to' => 'getTo'
     ];
 
     /**
@@ -186,9 +186,9 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
+        $this->container['association_spec'] = $data['association_spec'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
-        $this->container['association_spec'] = $data['association_spec'] ?? null;
     }
 
     /**
@@ -200,14 +200,14 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['association_spec'] === null) {
+            $invalidProperties[] = "'association_spec' can't be null";
+        }
         if ($this->container['from'] === null) {
             $invalidProperties[] = "'from' can't be null";
         }
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
-        }
-        if ($this->container['association_spec'] === null) {
-            $invalidProperties[] = "'association_spec' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,6 +223,30 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets association_spec
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec
+     */
+    public function getAssociationSpec()
+    {
+        return $this->container['association_spec'];
+    }
+
+    /**
+     * Sets association_spec
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec $association_spec association_spec
+     *
+     * @return self
+     */
+    public function setAssociationSpec($association_spec)
+    {
+        $this->container['association_spec'] = $association_spec;
+
+        return $this;
+    }
 
     /**
      * Gets from
@@ -268,30 +292,6 @@ class PublicDefaultAssociation implements ModelInterface, ArrayAccess, \JsonSeri
     public function setTo($to)
     {
         $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets association_spec
-     *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec
-     */
-    public function getAssociationSpec()
-    {
-        return $this->container['association_spec'];
-    }
-
-    /**
-     * Sets association_spec
-     *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec $association_spec association_spec
-     *
-     * @return self
-     */
-    public function setAssociationSpec($association_spec)
-    {
-        $this->container['association_spec'] = $association_spec;
 
         return $this;
     }

@@ -57,8 +57,8 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]',
-        'paging' => '\HubSpot\Client\Crm\Associations\V4\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Crm\Associations\V4\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]'
     ];
 
     /**
@@ -69,8 +69,8 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -110,8 +110,8 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -120,8 +120,8 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -181,8 +181,8 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
 
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Associations\V4\Model\ForwardPaging|null
@@ -256,6 +232,30 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }
