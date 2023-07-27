@@ -59,7 +59,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'status' => 'string',
         'id' => 'string',
-        'category' => '\HubSpot\Client\Crm\Deals\Model\ErrorCategory',
+        'category' => 'string',
         'sub_category' => 'object',
         'message' => 'string',
         'errors' => '\HubSpot\Client\Crm\Deals\Model\ErrorDetail[]',
@@ -314,7 +314,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\ErrorCategory
+     * @return string
      */
     public function getCategory()
     {
@@ -324,7 +324,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\ErrorCategory $category category
+     * @param string $category category
      *
      * @return self
      */

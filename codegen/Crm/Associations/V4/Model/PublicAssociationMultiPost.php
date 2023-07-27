@@ -57,9 +57,9 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'types' => '\HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[]',
         'from' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId',
-        'types' => '\HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[]'
+        'to' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId'
     ];
 
     /**
@@ -70,9 +70,9 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'types' => null,
         'from' => null,
-        'to' => null,
-        'types' => null
+        'to' => null
     ];
 
     /**
@@ -102,9 +102,9 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'types' => 'types',
         'from' => 'from',
-        'to' => 'to',
-        'types' => 'types'
+        'to' => 'to'
     ];
 
     /**
@@ -113,9 +113,9 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'types' => 'setTypes',
         'from' => 'setFrom',
-        'to' => 'setTo',
-        'types' => 'setTypes'
+        'to' => 'setTo'
     ];
 
     /**
@@ -124,9 +124,9 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'types' => 'getTypes',
         'from' => 'getFrom',
-        'to' => 'getTo',
-        'types' => 'getTypes'
+        'to' => 'getTo'
     ];
 
     /**
@@ -186,9 +186,9 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
+        $this->container['types'] = $data['types'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
-        $this->container['types'] = $data['types'] ?? null;
     }
 
     /**
@@ -200,14 +200,14 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['types'] === null) {
+            $invalidProperties[] = "'types' can't be null";
+        }
         if ($this->container['from'] === null) {
             $invalidProperties[] = "'from' can't be null";
         }
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
-        }
-        if ($this->container['types'] === null) {
-            $invalidProperties[] = "'types' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,6 +223,30 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets types
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[]
+     */
+    public function getTypes()
+    {
+        return $this->container['types'];
+    }
+
+    /**
+     * Sets types
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $types types
+     *
+     * @return self
+     */
+    public function setTypes($types)
+    {
+        $this->container['types'] = $types;
+
+        return $this;
+    }
 
     /**
      * Gets from
@@ -268,30 +292,6 @@ class PublicAssociationMultiPost implements ModelInterface, ArrayAccess, \JsonSe
     public function setTo($to)
     {
         $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets types
-     *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[]
-     */
-    public function getTypes()
-    {
-        return $this->container['types'];
-    }
-
-    /**
-     * Sets types
-     *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $types types
-     *
-     * @return self
-     */
-    public function setTypes($types)
-    {
-        $this->container['types'] = $types;
 
         return $this;
     }

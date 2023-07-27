@@ -58,9 +58,9 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'from_object_type_id' => 'string',
-        'from_object_id' => 'int',
-        'to_object_type_id' => 'string',
         'to_object_id' => 'int',
+        'to_object_type_id' => 'string',
+        'from_object_id' => 'int',
         'labels' => 'string[]'
     ];
 
@@ -73,9 +73,9 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'from_object_type_id' => null,
-        'from_object_id' => 'int32',
-        'to_object_type_id' => null,
         'to_object_id' => 'int32',
+        'to_object_type_id' => null,
+        'from_object_id' => 'int32',
         'labels' => null
     ];
 
@@ -107,9 +107,9 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'from_object_type_id' => 'fromObjectTypeId',
-        'from_object_id' => 'fromObjectId',
-        'to_object_type_id' => 'toObjectTypeId',
         'to_object_id' => 'toObjectId',
+        'to_object_type_id' => 'toObjectTypeId',
+        'from_object_id' => 'fromObjectId',
         'labels' => 'labels'
     ];
 
@@ -120,9 +120,9 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'from_object_type_id' => 'setFromObjectTypeId',
-        'from_object_id' => 'setFromObjectId',
-        'to_object_type_id' => 'setToObjectTypeId',
         'to_object_id' => 'setToObjectId',
+        'to_object_type_id' => 'setToObjectTypeId',
+        'from_object_id' => 'setFromObjectId',
         'labels' => 'setLabels'
     ];
 
@@ -133,9 +133,9 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'from_object_type_id' => 'getFromObjectTypeId',
-        'from_object_id' => 'getFromObjectId',
-        'to_object_type_id' => 'getToObjectTypeId',
         'to_object_id' => 'getToObjectId',
+        'to_object_type_id' => 'getToObjectTypeId',
+        'from_object_id' => 'getFromObjectId',
         'labels' => 'getLabels'
     ];
 
@@ -197,9 +197,9 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->container['from_object_type_id'] = $data['from_object_type_id'] ?? null;
-        $this->container['from_object_id'] = $data['from_object_id'] ?? null;
-        $this->container['to_object_type_id'] = $data['to_object_type_id'] ?? null;
         $this->container['to_object_id'] = $data['to_object_id'] ?? null;
+        $this->container['to_object_type_id'] = $data['to_object_type_id'] ?? null;
+        $this->container['from_object_id'] = $data['from_object_id'] ?? null;
         $this->container['labels'] = $data['labels'] ?? null;
     }
 
@@ -215,14 +215,14 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['from_object_type_id'] === null) {
             $invalidProperties[] = "'from_object_type_id' can't be null";
         }
-        if ($this->container['from_object_id'] === null) {
-            $invalidProperties[] = "'from_object_id' can't be null";
+        if ($this->container['to_object_id'] === null) {
+            $invalidProperties[] = "'to_object_id' can't be null";
         }
         if ($this->container['to_object_type_id'] === null) {
             $invalidProperties[] = "'to_object_type_id' can't be null";
         }
-        if ($this->container['to_object_id'] === null) {
-            $invalidProperties[] = "'to_object_id' can't be null";
+        if ($this->container['from_object_id'] === null) {
+            $invalidProperties[] = "'from_object_id' can't be null";
         }
         if ($this->container['labels'] === null) {
             $invalidProperties[] = "'labels' can't be null";
@@ -267,25 +267,25 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets from_object_id
+     * Gets to_object_id
      *
      * @return int
      */
-    public function getFromObjectId()
+    public function getToObjectId()
     {
-        return $this->container['from_object_id'];
+        return $this->container['to_object_id'];
     }
 
     /**
-     * Sets from_object_id
+     * Sets to_object_id
      *
-     * @param int $from_object_id from_object_id
+     * @param int $to_object_id to_object_id
      *
      * @return self
      */
-    public function setFromObjectId($from_object_id)
+    public function setToObjectId($to_object_id)
     {
-        $this->container['from_object_id'] = $from_object_id;
+        $this->container['to_object_id'] = $to_object_id;
 
         return $this;
     }
@@ -315,25 +315,25 @@ class LabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets to_object_id
+     * Gets from_object_id
      *
      * @return int
      */
-    public function getToObjectId()
+    public function getFromObjectId()
     {
-        return $this->container['to_object_id'];
+        return $this->container['from_object_id'];
     }
 
     /**
-     * Sets to_object_id
+     * Sets from_object_id
      *
-     * @param int $to_object_id to_object_id
+     * @param int $from_object_id from_object_id
      *
      * @return self
      */
-    public function setToObjectId($to_object_id)
+    public function setFromObjectId($from_object_id)
     {
-        $this->container['to_object_id'] = $to_object_id;
+        $this->container['from_object_id'] = $from_object_id;
 
         return $this;
     }

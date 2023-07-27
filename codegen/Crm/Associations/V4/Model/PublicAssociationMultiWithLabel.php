@@ -58,8 +58,8 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'from' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]',
-        'paging' => '\HubSpot\Client\Crm\Associations\V4\Model\Paging'
+        'paging' => '\HubSpot\Client\Crm\Associations\V4\Model\Paging',
+        'to' => '\HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]'
     ];
 
     /**
@@ -71,8 +71,8 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'from' => null,
-        'to' => null,
-        'paging' => null
+        'paging' => null,
+        'to' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'from' => 'from',
-        'to' => 'to',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'to' => 'to'
     ];
 
     /**
@@ -114,8 +114,8 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'from' => 'setFrom',
-        'to' => 'setTo',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'to' => 'setTo'
     ];
 
     /**
@@ -125,8 +125,8 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'from' => 'getFrom',
-        'to' => 'getTo',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'to' => 'getTo'
     ];
 
     /**
@@ -187,8 +187,8 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->container['from'] = $data['from'] ?? null;
-        $this->container['to'] = $data['to'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['to'] = $data['to'] ?? null;
     }
 
     /**
@@ -246,30 +246,6 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets to
-     *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[] $to to
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Associations\V4\Model\Paging|null
@@ -289,6 +265,30 @@ class PublicAssociationMultiWithLabel implements ModelInterface, ArrayAccess, \J
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[] $to to
+     *
+     * @return self
+     */
+    public function setTo($to)
+    {
+        $this->container['to'] = $to;
 
         return $this;
     }

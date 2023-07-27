@@ -59,9 +59,9 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'errors' => '\HubSpot\Client\Cms\Hubdb\Model\Error[]',
-        'rows_imported' => 'int',
         'duplicate_rows' => 'int',
-        'row_limit_exceeded' => 'bool'
+        'row_limit_exceeded' => 'bool',
+        'rows_imported' => 'int'
     ];
 
     /**
@@ -73,9 +73,9 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'errors' => null,
-        'rows_imported' => 'int32',
         'duplicate_rows' => 'int32',
-        'row_limit_exceeded' => null
+        'row_limit_exceeded' => null,
+        'rows_imported' => 'int32'
     ];
 
     /**
@@ -106,9 +106,9 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'errors' => 'errors',
-        'rows_imported' => 'rowsImported',
         'duplicate_rows' => 'duplicateRows',
-        'row_limit_exceeded' => 'rowLimitExceeded'
+        'row_limit_exceeded' => 'rowLimitExceeded',
+        'rows_imported' => 'rowsImported'
     ];
 
     /**
@@ -118,9 +118,9 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'errors' => 'setErrors',
-        'rows_imported' => 'setRowsImported',
         'duplicate_rows' => 'setDuplicateRows',
-        'row_limit_exceeded' => 'setRowLimitExceeded'
+        'row_limit_exceeded' => 'setRowLimitExceeded',
+        'rows_imported' => 'setRowsImported'
     ];
 
     /**
@@ -130,9 +130,9 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'errors' => 'getErrors',
-        'rows_imported' => 'getRowsImported',
         'duplicate_rows' => 'getDuplicateRows',
-        'row_limit_exceeded' => 'getRowLimitExceeded'
+        'row_limit_exceeded' => 'getRowLimitExceeded',
+        'rows_imported' => 'getRowsImported'
     ];
 
     /**
@@ -193,9 +193,9 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['errors'] = $data['errors'] ?? null;
-        $this->container['rows_imported'] = $data['rows_imported'] ?? null;
         $this->container['duplicate_rows'] = $data['duplicate_rows'] ?? null;
         $this->container['row_limit_exceeded'] = $data['row_limit_exceeded'] ?? null;
+        $this->container['rows_imported'] = $data['rows_imported'] ?? null;
     }
 
     /**
@@ -210,14 +210,14 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['errors'] === null) {
             $invalidProperties[] = "'errors' can't be null";
         }
-        if ($this->container['rows_imported'] === null) {
-            $invalidProperties[] = "'rows_imported' can't be null";
-        }
         if ($this->container['duplicate_rows'] === null) {
             $invalidProperties[] = "'duplicate_rows' can't be null";
         }
         if ($this->container['row_limit_exceeded'] === null) {
             $invalidProperties[] = "'row_limit_exceeded' can't be null";
+        }
+        if ($this->container['rows_imported'] === null) {
+            $invalidProperties[] = "'rows_imported' can't be null";
         }
         return $invalidProperties;
     }
@@ -254,30 +254,6 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrors($errors)
     {
         $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets rows_imported
-     *
-     * @return int
-     */
-    public function getRowsImported()
-    {
-        return $this->container['rows_imported'];
-    }
-
-    /**
-     * Sets rows_imported
-     *
-     * @param int $rows_imported Specifies number of rows imported
-     *
-     * @return self
-     */
-    public function setRowsImported($rows_imported)
-    {
-        $this->container['rows_imported'] = $rows_imported;
 
         return $this;
     }
@@ -326,6 +302,30 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRowLimitExceeded($row_limit_exceeded)
     {
         $this->container['row_limit_exceeded'] = $row_limit_exceeded;
+
+        return $this;
+    }
+
+    /**
+     * Gets rows_imported
+     *
+     * @return int
+     */
+    public function getRowsImported()
+    {
+        return $this->container['rows_imported'];
+    }
+
+    /**
+     * Sets rows_imported
+     *
+     * @param int $rows_imported Specifies number of rows imported
+     *
+     * @return self
+     */
+    public function setRowsImported($rows_imported)
+    {
+        $this->container['rows_imported'] = $rows_imported;
 
         return $this;
     }

@@ -57,8 +57,8 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'association_type_id' => 'int'
+        'association_type_id' => 'int',
+        'label' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'association_type_id' => 'int32'
+        'association_type_id' => 'int32',
+        'label' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'association_type_id' => 'associationTypeId'
+        'association_type_id' => 'associationTypeId',
+        'label' => 'label'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'association_type_id' => 'setAssociationTypeId'
+        'association_type_id' => 'setAssociationTypeId',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'association_type_id' => 'getAssociationTypeId'
+        'association_type_id' => 'getAssociationTypeId',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['association_type_id'] = $data['association_type_id'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['association_type_id'] === null) {
             $invalidProperties[] = "'association_type_id' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
 
     /**
      * Gets association_type_id
@@ -259,6 +235,30 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
     public function setAssociationTypeId($association_type_id)
     {
         $this->container['association_type_id'] = $association_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }
