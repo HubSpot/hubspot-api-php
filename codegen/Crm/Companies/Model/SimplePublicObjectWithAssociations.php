@@ -284,7 +284,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     /**
      * Gets properties
      *
-     * @return array<string,string>
+     * @return array<string,string|null>
      */
     public function getProperties()
     {
