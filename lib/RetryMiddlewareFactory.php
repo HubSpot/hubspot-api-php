@@ -2,7 +2,6 @@
 
 namespace HubSpot;
 
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -62,8 +61,7 @@ class RetryMiddlewareFactory
         return function (
             $retries,
             Request $request,
-            Response $response = null,
-            ?RequestException $exception = null
+            Response $response = null
         ) use ($from, $to, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
@@ -84,8 +82,7 @@ class RetryMiddlewareFactory
         return function (
             $retries,
             Request $request,
-            Response $response = null,
-            ?RequestException $exception = null
+            Response $response = null
         ) use ($codes, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
