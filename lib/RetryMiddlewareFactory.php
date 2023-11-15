@@ -63,7 +63,7 @@ class RetryMiddlewareFactory
             $retries,
             Request $request,
             Response $response = null,
-            RequestException $exception = null
+            ?RequestException $exception = null
         ) use ($from, $to, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
@@ -85,7 +85,7 @@ class RetryMiddlewareFactory
             $retries,
             Request $request,
             Response $response = null,
-            RequestException $exception = null
+            ?RequestException $exception = null
         ) use ($codes, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
