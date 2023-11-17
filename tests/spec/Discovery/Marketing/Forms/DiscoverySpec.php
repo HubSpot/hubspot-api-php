@@ -21,6 +21,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->forms()->shouldHaveType(FormsApi::class);
+        $this->formsApi()->shouldHaveType(FormsApi::class);
     }
 }
