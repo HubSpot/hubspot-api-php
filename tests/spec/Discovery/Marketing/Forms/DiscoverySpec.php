@@ -16,7 +16,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Marketing\Events\Discovery::class);
+        $this->shouldHaveType(\HubSpot\Discovery\Marketing\Forms\Discovery::class);
     }
 
     public function it_creates_clients()
