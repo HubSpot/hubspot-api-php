@@ -32,6 +32,8 @@ class Config
     }
 
     /**
+     * @param mixed $clientConfigClassName
+     *
      * @return Configuration
      */
     public function convertToClientConfig($clientConfigClassName)
