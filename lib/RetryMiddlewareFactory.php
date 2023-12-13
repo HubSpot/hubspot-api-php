@@ -23,7 +23,7 @@ class RetryMiddlewareFactory
     }
 
     /**
-     * @param string $delayType Currently supports сonstant delay, exponential delay,
+     * @param string $delayType Currently supports constant delay, exponential delay,
      *                          linear delay or null
      */
     public static function createMiddlewareByHttpCodes(
@@ -38,7 +38,7 @@ class RetryMiddlewareFactory
     }
 
     /**
-     * @param string $delayType Currently supports сonstant delay, exponential delay,
+     * @param string $delayType Currently supports constant delay, exponential delay,
      *                          linear delay or null
      */
     public static function createMiddlewareByHttpCodeRange(
