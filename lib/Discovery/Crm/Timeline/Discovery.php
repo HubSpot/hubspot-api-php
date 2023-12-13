@@ -12,6 +12,4 @@ use HubSpot\Discovery\Crm\ObjectDiscovery;
  * @method TemplatesApi templatesApi()
  * @method TokensApi    tokensApi()
  */
-class Discovery extends ObjectDiscovery
-{
-}
+class Discovery extends ObjectDiscovery {}

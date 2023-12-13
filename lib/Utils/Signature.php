@@ -2,8 +2,6 @@
 
 namespace HubSpot\Utils;
 
-use UnexpectedValueException;
-
 class Signature
 {
     /**
@@ -16,14 +14,6 @@ class Signature
      * Validation of Hubspot Signature.
      *
      * @param array<signature: string, secret: string, requestBody: string, httpUri: string, httpMethod: string, timestamp?: string, signatureVersion?: string, checkTimestamp?: string> $options
-     * @param string $secret['signature']        hubspot signarute
-     * @param string $secret['secret']           the Secret of your app
-     * @param string $secret['requestBody']      the request body include the payload of the request as a JSON string
-     * @param string $secret['httpUri']          the full URL of the incoming request, including the http:// prefix, the path of your endpoint, and any query parameters
-     * @param string $secret['httpMethod']       the method of the incoming request, such as GET or POST
-     * @param string $secret['timestamp']        a unix timestamp of the request, provided in the X-HubSpot-Request-Timestamp header (Reject the request if the timestamp is older than 5 minutes)
-     * @param string $secret['signatureVersion'] signature version (V1, V2 or V3)
-     * @param bool   $secret['checkTimestamp']   check timestamp or not (default value true)
      */
     public static function isValid(
         array $options
@@ -48,11 +38,6 @@ class Signature
      *
      * @param string $signatureVersion signature version (V1, V2 or V3)
      * @param array<signature: string, secret: string, requestBody: string, httpUri: string, httpMethod: string, timestamp?: string, signatureVersion: string> $options
-     * @param string $secret['secret']      the Secret of your app
-     * @param string $secret['requestBody'] the request body include the payload of the request as a JSON string
-     * @param string $secret['httpUri']     the full URL of the incoming request, including the http:// prefix, the path of your endpoint, and any query parameters
-     * @param string $secret['httpMethod']  the method of the incoming request, such as GET or POST
-     * @param string $secret['timestamp']   a unix timestamp of the request, provided in the X-HubSpot-Request-Timestamp header
      */
     public static function getHashedSignature(
         string $signatureVersion,
@@ -75,7 +60,7 @@ class Signature
                 return base64_encode(hash_hmac('sha256', $sourceString, static::getOptionOrThrow($options, 'secret'), true));
 
             default:
-                throw new UnexpectedValueException("Not supported signature version: {$signatureVersion}");
+                throw new \UnexpectedValueException("Not supported signature version: {$signatureVersion}");
         }
     }
 
@@ -89,6 +74,6 @@ class Signature
             return $default;
         }
 
-        throw new UnexpectedValueException("Not provided {$name}");
+        throw new \UnexpectedValueException("Not provided {$name}");
     }
 }

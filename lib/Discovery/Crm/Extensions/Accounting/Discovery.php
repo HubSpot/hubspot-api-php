@@ -18,6 +18,4 @@ use HubSpot\Discovery\DiscoveryBase;
  *
  * @deprecated
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

@@ -14,6 +14,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method PipelineStageAuditsApi pipelineStageAuditsApi()
  * @method PipelineStagesApi      pipelineStagesApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

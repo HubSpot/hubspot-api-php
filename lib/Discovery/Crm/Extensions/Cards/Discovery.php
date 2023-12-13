@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method CardsApi          cardsApi()
  * @method SampleResponseApi sampleResponseApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

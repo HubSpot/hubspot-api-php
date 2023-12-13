@@ -8,6 +8,4 @@ use HubSpot\Discovery\DiscoveryBase;
 /**
  * @method BlogTagsApi blogTagsApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

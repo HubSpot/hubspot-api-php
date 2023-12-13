@@ -14,6 +14,4 @@ use HubSpot\Discovery\Crm\ObjectDiscovery;
  * @method PublicObjectApi publicObjectApi()
  * @method SearchApi       searchApi()
  */
-class Discovery extends ObjectDiscovery
-{
-}
+class Discovery extends ObjectDiscovery {}

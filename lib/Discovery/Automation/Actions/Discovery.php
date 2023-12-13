@@ -14,6 +14,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method FunctionsApi   functionsApi()
  * @method RevisionsApi   revisionsApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

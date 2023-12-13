@@ -8,6 +8,4 @@ use HubSpot\Discovery\DiscoveryBase;
 /**
  * @method FormsApi formsApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

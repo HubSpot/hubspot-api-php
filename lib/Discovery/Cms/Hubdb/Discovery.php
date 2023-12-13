@@ -12,6 +12,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method RowsBatchApi rowsBatchApi()
  * @method TablesApi    tablesApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

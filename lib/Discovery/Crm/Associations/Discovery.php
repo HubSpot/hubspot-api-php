@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Schema\Discovery schema()
  * @method V4\Discovery     v4()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

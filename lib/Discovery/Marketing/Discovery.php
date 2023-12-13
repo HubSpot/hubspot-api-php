@@ -9,6 +9,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Forms\Discovery         forms()
  * @method Transactional\Discovery transactional()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

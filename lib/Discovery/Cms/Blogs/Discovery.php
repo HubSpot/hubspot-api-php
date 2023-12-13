@@ -9,6 +9,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method BlogPosts\Discovery blogPosts()
  * @method Tags\Discovery      tags()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

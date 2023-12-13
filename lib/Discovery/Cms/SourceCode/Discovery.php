@@ -16,6 +16,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method SourceCodeExtractApi sourceCodeExtractApi()
  * @method ValidationApi        validationApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}
