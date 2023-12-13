@@ -5,11 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.2.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.3.0...HEAD)
+
+## [10.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0) - 2023-12-13
+
+## Updated
+
+- Added `cms()->pages()` api client.
+- Added `crm()->lists()` api client.
+- Added `crm()->objects()->goals()` api client.
+- Added `crm()->objects()->taxes()` api client.
+- Added `events()->send()` api client.
+- Added `settings()->businessUnits()` api client.
+
+## Fixed
+
+- Fix non ascii chars.
 
 ## [10.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.2.0) - 2023-11-23
 
-### Updated
+## Updated
 
 - Added `marketing()->forms()` api client.
 - Removed `composer.lock`.
@@ -628,4 +643,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [10.0.0-beta.3]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0-beta.3
 [10.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.0
 [10.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.1
-[10.1.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.0
+[10.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.0
+[10.1.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.1
+[10.1.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.2
+[10.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.2.0
+[10.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0
