@@ -19,6 +19,7 @@ use HubSpot\Discovery\Crm\Objects\Meetings\Discovery as MeetingsDiscovery;
 use HubSpot\Discovery\Crm\Objects\Notes\Discovery as NotesDiscovery;
 use HubSpot\Discovery\Crm\Objects\PostalMail\Discovery as PostalMailDiscovery;
 use HubSpot\Discovery\Crm\Objects\Tasks\Discovery as TasksDiscovery;
+use HubSpot\Discovery\Crm\Objects\Taxes\Discovery as TaxesDiscovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -49,5 +50,6 @@ class DiscoverySpec extends ObjectBehavior
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
         $this->tasks()->shouldHaveType(TasksDiscovery::class);
+        $this->taxes()->shouldHaveType(TaxesDiscovery::class);
     }
 }

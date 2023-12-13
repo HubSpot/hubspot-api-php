@@ -15,6 +15,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method SourceCode\Discovery   sourceCode()
  * @method UrlRedirects\Discovery urlRedirects()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

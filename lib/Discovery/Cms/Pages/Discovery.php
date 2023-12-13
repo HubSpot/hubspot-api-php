@@ -7,9 +7,7 @@ use HubSpot\Client\Cms\Pages\Api\SitePagesApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method LandingPagesApi  landingPagesApi()
- * @method SitePagesApi     sitePagesApi()
+ * @method LandingPagesApi landingPagesApi()
+ * @method SitePagesApi    sitePagesApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

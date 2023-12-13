@@ -26,6 +26,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method PublicObjectApi               publicObjectApi()
  * @method SearchApi                     searchApi()
  * @method Tasks\Discovery               tasks()
+ * @method Taxes\Discovery               taxes()
  */
 class Discovery extends DiscoveryBase
 {
