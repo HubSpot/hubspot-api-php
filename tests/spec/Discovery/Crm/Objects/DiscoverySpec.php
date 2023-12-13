@@ -15,10 +15,12 @@ use HubSpot\Discovery\Crm\Objects\Communications\Discovery as CommunicationsDisc
 use HubSpot\Discovery\Crm\Objects\Discovery;
 use HubSpot\Discovery\Crm\Objects\Emails\Discovery as EmailsDiscovery;
 use HubSpot\Discovery\Crm\Objects\FeedbackSubmissions\Discovery as FeedbackSubmissionsDiscovery;
+use HubSpot\Discovery\Crm\Objects\Goals\Discovery as GoalsDiscovery;
 use HubSpot\Discovery\Crm\Objects\Meetings\Discovery as MeetingsDiscovery;
 use HubSpot\Discovery\Crm\Objects\Notes\Discovery as NotesDiscovery;
 use HubSpot\Discovery\Crm\Objects\PostalMail\Discovery as PostalMailDiscovery;
 use HubSpot\Discovery\Crm\Objects\Tasks\Discovery as TasksDiscovery;
+use HubSpot\Discovery\Crm\Objects\Taxes\Discovery as TaxesDiscovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -43,11 +45,13 @@ class DiscoverySpec extends ObjectBehavior
         $this->gdprApi()->shouldHaveType(GDPRApi::class);
         $this->emails()->shouldHaveType(EmailsDiscovery::class);
         $this->feedbackSubmissions()->shouldHaveType(FeedbackSubmissionsDiscovery::class);
+        $this->goals()->shouldHaveType(GoalsDiscovery::class);
         $this->meetings()->shouldHaveType(MeetingsDiscovery::class);
         $this->notes()->shouldHaveType(NotesDiscovery::class);
         $this->postalMail()->shouldHaveType(PostalMailDiscovery::class);
         $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
         $this->tasks()->shouldHaveType(TasksDiscovery::class);
+        $this->taxes()->shouldHaveType(TaxesDiscovery::class);
     }
 }

@@ -20,12 +20,14 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method GDPRApi                       gdprApi()
  * @method Emails\Discovery              emails()
  * @method FeedbackSubmissions\Discovery feedbackSubmissions()
+ * @method Goals\Discovery               goals()
  * @method Meetings\Discovery            meetings()
  * @method Notes\Discovery               notes()
  * @method PostalMail\Discovery          postalMail()
  * @method PublicObjectApi               publicObjectApi()
  * @method SearchApi                     searchApi()
  * @method Tasks\Discovery               tasks()
+ * @method Taxes\Discovery               taxes()
  */
 class Discovery extends DiscoveryBase
 {

@@ -12,6 +12,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Extensions\Discovery   extensions()
  * @method Imports\Discovery      imports()
  * @method LineItems\Discovery    lineItems()
+ * @method Lists\Discovery        lists()
  * @method Objects\Discovery      objects()
  * @method Owners\Discovery       owners()
  * @method Pipelines\Discovery    pipelines()
@@ -22,6 +23,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Tickets\Discovery      tickets()
  * @method Timeline\Discovery     timeline()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

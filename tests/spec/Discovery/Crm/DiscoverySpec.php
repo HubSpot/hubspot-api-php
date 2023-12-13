@@ -27,6 +27,7 @@ class DiscoverySpec extends ObjectBehavior
         $this->extensions()->shouldHaveType(\HubSpot\Discovery\Crm\Extensions\Discovery::class);
         $this->imports()->shouldHaveType(\HubSpot\Discovery\Crm\Imports\Discovery::class);
         $this->lineItems()->shouldHaveType(\HubSpot\Discovery\Crm\LineItems\Discovery::class);
+        $this->lists()->shouldHaveType(\HubSpot\Discovery\Crm\Lists\Discovery::class);
         $this->objects()->shouldHaveType(\HubSpot\Discovery\Crm\Objects\Discovery::class);
         $this->owners()->shouldHaveType(\HubSpot\Discovery\Crm\Owners\Discovery::class);
         $this->pipelines()->shouldHaveType(\HubSpot\Discovery\Crm\Pipelines\Discovery::class);

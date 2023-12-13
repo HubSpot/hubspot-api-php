@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\HubSpot\Discovery\Events;
+namespace spec\HubSpot\Discovery\Settings\BusinessUnits;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Events\Api\EventsApi;
+use HubSpot\Client\Settings\BusinessUnits\Api\BusinessUnitApi;
 use HubSpot\Config;
 use PhpSpec\ObjectBehavior;
 
@@ -16,12 +16,11 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Events\Discovery::class);
+        $this->shouldHaveType(\HubSpot\Discovery\Settings\BusinessUnits\Discovery::class);
     }
 
     public function it_creates_clients()
     {
-        $this->eventsApi()->shouldHaveType(EventsApi::class);
-        $this->send()->shouldHaveType(\HubSpot\Discovery\Events\Send\Discovery::class);
+        $this->businessUnitApi()->shouldHaveType(BusinessUnitApi::class);
     }
 }
