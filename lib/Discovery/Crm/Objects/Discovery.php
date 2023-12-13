@@ -15,7 +15,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method AssociationsApi               associationsApi()
  * @method BasicApi                      basicApi()
  * @method BatchApi                      batchApi()
- * @method Calls\Discovery               сalls()
+ * @method Calls\Discovery               calls()
  * @method Communications\Discovery      communications()
  * @method GDPRApi                       gdprApi()
  * @method Emails\Discovery              emails()
