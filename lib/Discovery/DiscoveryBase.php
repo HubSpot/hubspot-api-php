@@ -2,11 +2,8 @@
 
 namespace HubSpot\Discovery;
 
-use Exception;
 use GuzzleHttp\Client;
 use HubSpot\Config;
-use ReflectionClass;
-use ReflectionException;
 
 class DiscoveryBase
 {
@@ -26,10 +23,10 @@ class DiscoveryBase
      * @param string $name
      * @param mixed  $args
      *
-     * @throws Exception
-     * @throws ReflectionException
-     *
      * @return mixed
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
     public function __call($name, $args)
     {
@@ -37,7 +34,7 @@ class DiscoveryBase
             return $this->{$name}(...$args);
         }
 
-        $namespace = (new ReflectionClass(get_class($this)))->getNamespaceName();
+        $namespace = (new \ReflectionClass(get_class($this)))->getNamespaceName();
 
         $intermediateDiscoveryClassName = $namespace.'\\'.ucfirst($name).'\\Discovery';
         if (class_exists($intermediateDiscoveryClassName)) {
@@ -53,6 +50,6 @@ class DiscoveryBase
             return new $targetClientClassName($this->client, $config);
         }
 
-        throw new Exception('Unable to discover "'.$name.'" client');
+        throw new \Exception('Unable to discover "'.$name.'" client');
     }
 }

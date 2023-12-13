@@ -22,10 +22,6 @@ class RetryMiddlewareFactory
         return static::createMiddlewareByHttpCodes([429], $delayFunction, $maxRetries);
     }
 
-    /**
-     * @param string $delayType Currently supports constant delay, exponential delay,
-     *                          linear delay or null
-     */
     public static function createMiddlewareByHttpCodes(
         array $codes,
         callable $delayFunction,
@@ -37,10 +33,6 @@ class RetryMiddlewareFactory
         );
     }
 
-    /**
-     * @param string $delayType Currently supports constant delay, exponential delay,
-     *                          linear delay or null
-     */
     public static function createMiddlewareByHttpCodeRange(
         int $from,
         int $to,

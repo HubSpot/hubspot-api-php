@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Cards\Discovery             cards()
  * @method Videoconferencing\Discovery videoconferencing()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

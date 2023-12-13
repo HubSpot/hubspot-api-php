@@ -11,6 +11,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method BatchApi         batchApi()
  * @method Schema\Discovery schema()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

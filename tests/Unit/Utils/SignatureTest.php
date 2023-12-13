@@ -5,10 +5,10 @@ namespace Hubspot\Tests\Unit\Utils;
 use HubSpot\Utils\Signature;
 use HubSpot\Utils\Timestamp;
 use PHPUnit\Framework\TestCase;
-use UnexpectedValueException;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class SignatureTest extends TestCase
@@ -69,7 +69,7 @@ class SignatureTest extends TestCase
     /** @test */
     public function unexpectedValueExceptionVersionTest(): void
     {
-        $this->expectException(UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionMessage('Not supported signature version: v4');
         Signature::isValid(['signatureVersion' => 'v4']);
     }
@@ -77,7 +77,7 @@ class SignatureTest extends TestCase
     /** @test */
     public function unexpectedValueExceptionTimestampTest(): void
     {
-        $this->expectException(UnexpectedValueException::class);
+        $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionMessage('Not provided timestamp');
         Signature::isValid([
             'signatureVersion' => 'v3',

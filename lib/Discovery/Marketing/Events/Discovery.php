@@ -14,6 +14,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method SearchApi                           searchApi()
  * @method SettingsExternalApi                 settingsExternalApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

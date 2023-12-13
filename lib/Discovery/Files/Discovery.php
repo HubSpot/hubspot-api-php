@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method FilesApi   filesApi()
  * @method FoldersApi foldersApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

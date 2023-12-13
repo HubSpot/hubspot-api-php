@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method CoreApi          coreApi()
  * @method PublicImportsApi publicImportsApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

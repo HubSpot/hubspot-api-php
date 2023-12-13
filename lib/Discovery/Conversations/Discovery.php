@@ -7,6 +7,4 @@ use HubSpot\Discovery\DiscoveryBase;
 /**
  * @method VisitorIdentification\Discovery visitorIdentification()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

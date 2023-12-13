@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method PublicSmtpTokensApi publicSmtpTokensApi()
  * @method SingleSendApi       singleSendApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

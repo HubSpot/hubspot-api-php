@@ -12,6 +12,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method CoreApi   coreApi()
  * @method GroupsApi groupsApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

@@ -10,6 +10,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method DefinitionApi definitionApi()
  * @method StatusApi     statusApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

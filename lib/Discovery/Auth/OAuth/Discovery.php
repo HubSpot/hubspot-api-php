@@ -12,6 +12,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method RefreshTokensApi refreshTokensApi()
  * @method TokensApi        tokensApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

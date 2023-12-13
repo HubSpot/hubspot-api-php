@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 class OAuth2Test extends TestCase
