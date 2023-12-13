@@ -12,6 +12,4 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method TeamsApi teamsApi()
  * @method UsersApi usersApi()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}

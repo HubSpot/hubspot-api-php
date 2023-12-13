@@ -5,8 +5,7 @@ namespace HubSpot\Discovery\Settings;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method Users\Discovery users()
+ * @method BusinessUnits\Discovery businessUnits()
+ * @method Users\Discovery         users()
  */
-class Discovery extends DiscoveryBase
-{
-}
+class Discovery extends DiscoveryBase {}
