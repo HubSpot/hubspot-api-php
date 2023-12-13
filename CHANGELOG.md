@@ -333,7 +333,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `cms()->sourceCode()` API client
-- `crm()->objects()->сalls()` API client
+- `crm()->objects()->calls()` API client
 - `crm()->objects()->emails()` API client
 - `crm()->objects()->meetings()` API client
 - `crm()->objects()->notes()` API client
