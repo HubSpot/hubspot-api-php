@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.3.0...HEAD)
 
+## [11.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0) - 2024-02-14
+
+## Updated
+
+- `automation()->actions()->definitionsApi()->create($app_id, ExtensionActionDefinition $extension_action_definition_input => PublicActionDefinition $extension_action_definition_input): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
+- `automation()->actions()->definitionsApi()->getById(): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
+- `automation()->actions()->definitionsApi()->getPage(): CollectionResponseExtensionActionDefinitionForwardPaging|Error => CollectionResponsePublicActionDefinitionForwardPaging|Error`.
+- `automation()->actions()->definitionsApi()->update($definition_id, $app_id, ExtensionActionDefinitionPatch $extension_action_definition_patch => PublicActionDefinition $public_action_definition_patch): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
+- `automation()->actions()->functionsApi()->createOrReplace(): ActionFunctionIdentifier|Error => PublicActionFunctionIdentifier|Error`.
+- `automation()->actions()->functionsApi()->createOrReplaceByFunctionType(): ActionFunctionIdentifier|Error => PublicActionFunctionIdentifier|Error`.
+- `automation()->actions()->functionsApi()->getByFunctionType(): ActionFunction|Error => PublicActionFunction|Error`.
+- `automation()->actions()->functionsApi()->getById(): ActionFunction|Error => PublicActionFunction|Error`.
+- `automation()->actions()->functionsApi()->getPage(): CollectionResponseActionFunctionIdentifierNoPaging|Error => CollectionResponsePublicActionFunctionIdentifierNoPaging|Error`.
+- `automation()->actions()->revisionsApi()->getById(): ActionRevision|Error => PublicActionRevision|Error`.
+- `automation()->actions()->revisionsApi()->getPage(): CollectionResponseActionRevisionForwardPaging|Error => CollectionResponsePublicActionRevisionForwardPaging|Error`.
+- Added new params to `codegen/Automation/Actions/Model/FieldTypeDefinition`.
+
+```php
+  'help_text' => 'string',
+  'name' => 'string',
+  'description' => 'string',
+  'external_options_reference_type' => 'string',
+  'label' => 'string',
+  'type' => 'string',
+  'field_type' => 'string',
+  'options_url' => 'string',
+  'external_options' => 'bool'
+```
+
+- Added new param `'automation_field_type' => 'string'` to `codegen/Automation/Actions/Model/InputFieldDefinition`.
+
+
+
 ## [10.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0) - 2023-12-13
 
 ## Updated
