@@ -11,7 +11,7 @@
  */
 
 /**
- * URL redirects
+ * CMS Url Redirects
  *
  * URL redirect operations
  *
@@ -57,16 +57,16 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'precedence' => 'int',
-        'is_only_after_not_found' => 'bool',
-        'is_match_full_url' => 'bool',
-        'is_match_query_string' => 'bool',
-        'is_pattern' => 'bool',
         'is_trailing_slash_optional' => 'bool',
-        'is_protocol_agnostic' => 'bool',
+        'is_match_query_string' => 'bool',
+        'redirect_style' => 'int',
         'route_prefix' => 'string',
+        'is_match_full_url' => 'bool',
+        'is_protocol_agnostic' => 'bool',
         'destination' => 'string',
-        'redirect_style' => 'int'
+        'is_only_after_not_found' => 'bool',
+        'is_pattern' => 'bool',
+        'precedence' => 'int'
     ];
 
     /**
@@ -77,16 +77,16 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'precedence' => 'int32',
-        'is_only_after_not_found' => null,
-        'is_match_full_url' => null,
-        'is_match_query_string' => null,
-        'is_pattern' => null,
         'is_trailing_slash_optional' => null,
-        'is_protocol_agnostic' => null,
+        'is_match_query_string' => null,
+        'redirect_style' => 'int32',
         'route_prefix' => null,
+        'is_match_full_url' => null,
+        'is_protocol_agnostic' => null,
         'destination' => null,
-        'redirect_style' => 'int32'
+        'is_only_after_not_found' => null,
+        'is_pattern' => null,
+        'precedence' => 'int32'
     ];
 
     /**
@@ -116,16 +116,16 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'precedence' => 'precedence',
-        'is_only_after_not_found' => 'isOnlyAfterNotFound',
-        'is_match_full_url' => 'isMatchFullUrl',
-        'is_match_query_string' => 'isMatchQueryString',
-        'is_pattern' => 'isPattern',
         'is_trailing_slash_optional' => 'isTrailingSlashOptional',
-        'is_protocol_agnostic' => 'isProtocolAgnostic',
+        'is_match_query_string' => 'isMatchQueryString',
+        'redirect_style' => 'redirectStyle',
         'route_prefix' => 'routePrefix',
+        'is_match_full_url' => 'isMatchFullUrl',
+        'is_protocol_agnostic' => 'isProtocolAgnostic',
         'destination' => 'destination',
-        'redirect_style' => 'redirectStyle'
+        'is_only_after_not_found' => 'isOnlyAfterNotFound',
+        'is_pattern' => 'isPattern',
+        'precedence' => 'precedence'
     ];
 
     /**
@@ -134,16 +134,16 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'precedence' => 'setPrecedence',
-        'is_only_after_not_found' => 'setIsOnlyAfterNotFound',
-        'is_match_full_url' => 'setIsMatchFullUrl',
-        'is_match_query_string' => 'setIsMatchQueryString',
-        'is_pattern' => 'setIsPattern',
         'is_trailing_slash_optional' => 'setIsTrailingSlashOptional',
-        'is_protocol_agnostic' => 'setIsProtocolAgnostic',
+        'is_match_query_string' => 'setIsMatchQueryString',
+        'redirect_style' => 'setRedirectStyle',
         'route_prefix' => 'setRoutePrefix',
+        'is_match_full_url' => 'setIsMatchFullUrl',
+        'is_protocol_agnostic' => 'setIsProtocolAgnostic',
         'destination' => 'setDestination',
-        'redirect_style' => 'setRedirectStyle'
+        'is_only_after_not_found' => 'setIsOnlyAfterNotFound',
+        'is_pattern' => 'setIsPattern',
+        'precedence' => 'setPrecedence'
     ];
 
     /**
@@ -152,16 +152,16 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'precedence' => 'getPrecedence',
-        'is_only_after_not_found' => 'getIsOnlyAfterNotFound',
-        'is_match_full_url' => 'getIsMatchFullUrl',
-        'is_match_query_string' => 'getIsMatchQueryString',
-        'is_pattern' => 'getIsPattern',
         'is_trailing_slash_optional' => 'getIsTrailingSlashOptional',
-        'is_protocol_agnostic' => 'getIsProtocolAgnostic',
+        'is_match_query_string' => 'getIsMatchQueryString',
+        'redirect_style' => 'getRedirectStyle',
         'route_prefix' => 'getRoutePrefix',
+        'is_match_full_url' => 'getIsMatchFullUrl',
+        'is_protocol_agnostic' => 'getIsProtocolAgnostic',
         'destination' => 'getDestination',
-        'redirect_style' => 'getRedirectStyle'
+        'is_only_after_not_found' => 'getIsOnlyAfterNotFound',
+        'is_pattern' => 'getIsPattern',
+        'precedence' => 'getPrecedence'
     ];
 
     /**
@@ -221,16 +221,16 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['precedence'] = $data['precedence'] ?? null;
-        $this->container['is_only_after_not_found'] = $data['is_only_after_not_found'] ?? null;
-        $this->container['is_match_full_url'] = $data['is_match_full_url'] ?? null;
-        $this->container['is_match_query_string'] = $data['is_match_query_string'] ?? null;
-        $this->container['is_pattern'] = $data['is_pattern'] ?? null;
         $this->container['is_trailing_slash_optional'] = $data['is_trailing_slash_optional'] ?? null;
-        $this->container['is_protocol_agnostic'] = $data['is_protocol_agnostic'] ?? null;
-        $this->container['route_prefix'] = $data['route_prefix'] ?? null;
-        $this->container['destination'] = $data['destination'] ?? null;
+        $this->container['is_match_query_string'] = $data['is_match_query_string'] ?? null;
         $this->container['redirect_style'] = $data['redirect_style'] ?? null;
+        $this->container['route_prefix'] = $data['route_prefix'] ?? null;
+        $this->container['is_match_full_url'] = $data['is_match_full_url'] ?? null;
+        $this->container['is_protocol_agnostic'] = $data['is_protocol_agnostic'] ?? null;
+        $this->container['destination'] = $data['destination'] ?? null;
+        $this->container['is_only_after_not_found'] = $data['is_only_after_not_found'] ?? null;
+        $this->container['is_pattern'] = $data['is_pattern'] ?? null;
+        $this->container['precedence'] = $data['precedence'] ?? null;
     }
 
     /**
@@ -242,14 +242,14 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['redirect_style'] === null) {
+            $invalidProperties[] = "'redirect_style' can't be null";
+        }
         if ($this->container['route_prefix'] === null) {
             $invalidProperties[] = "'route_prefix' can't be null";
         }
         if ($this->container['destination'] === null) {
             $invalidProperties[] = "'destination' can't be null";
-        }
-        if ($this->container['redirect_style'] === null) {
-            $invalidProperties[] = "'redirect_style' can't be null";
         }
         return $invalidProperties;
     }
@@ -267,73 +267,25 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets precedence
-     *
-     * @return int|null
-     */
-    public function getPrecedence()
-    {
-        return $this->container['precedence'];
-    }
-
-    /**
-     * Sets precedence
-     *
-     * @param int|null $precedence precedence
-     *
-     * @return self
-     */
-    public function setPrecedence($precedence)
-    {
-        $this->container['precedence'] = $precedence;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_only_after_not_found
+     * Gets is_trailing_slash_optional
      *
      * @return bool|null
      */
-    public function getIsOnlyAfterNotFound()
+    public function getIsTrailingSlashOptional()
     {
-        return $this->container['is_only_after_not_found'];
+        return $this->container['is_trailing_slash_optional'];
     }
 
     /**
-     * Sets is_only_after_not_found
+     * Sets is_trailing_slash_optional
      *
-     * @param bool|null $is_only_after_not_found is_only_after_not_found
+     * @param bool|null $is_trailing_slash_optional is_trailing_slash_optional
      *
      * @return self
      */
-    public function setIsOnlyAfterNotFound($is_only_after_not_found)
+    public function setIsTrailingSlashOptional($is_trailing_slash_optional)
     {
-        $this->container['is_only_after_not_found'] = $is_only_after_not_found;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_match_full_url
-     *
-     * @return bool|null
-     */
-    public function getIsMatchFullUrl()
-    {
-        return $this->container['is_match_full_url'];
-    }
-
-    /**
-     * Sets is_match_full_url
-     *
-     * @param bool|null $is_match_full_url is_match_full_url
-     *
-     * @return self
-     */
-    public function setIsMatchFullUrl($is_match_full_url)
-    {
-        $this->container['is_match_full_url'] = $is_match_full_url;
+        $this->container['is_trailing_slash_optional'] = $is_trailing_slash_optional;
 
         return $this;
     }
@@ -363,73 +315,25 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets is_pattern
+     * Gets redirect_style
      *
-     * @return bool|null
+     * @return int
      */
-    public function getIsPattern()
+    public function getRedirectStyle()
     {
-        return $this->container['is_pattern'];
+        return $this->container['redirect_style'];
     }
 
     /**
-     * Sets is_pattern
+     * Sets redirect_style
      *
-     * @param bool|null $is_pattern is_pattern
+     * @param int $redirect_style redirect_style
      *
      * @return self
      */
-    public function setIsPattern($is_pattern)
+    public function setRedirectStyle($redirect_style)
     {
-        $this->container['is_pattern'] = $is_pattern;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_trailing_slash_optional
-     *
-     * @return bool|null
-     */
-    public function getIsTrailingSlashOptional()
-    {
-        return $this->container['is_trailing_slash_optional'];
-    }
-
-    /**
-     * Sets is_trailing_slash_optional
-     *
-     * @param bool|null $is_trailing_slash_optional is_trailing_slash_optional
-     *
-     * @return self
-     */
-    public function setIsTrailingSlashOptional($is_trailing_slash_optional)
-    {
-        $this->container['is_trailing_slash_optional'] = $is_trailing_slash_optional;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_protocol_agnostic
-     *
-     * @return bool|null
-     */
-    public function getIsProtocolAgnostic()
-    {
-        return $this->container['is_protocol_agnostic'];
-    }
-
-    /**
-     * Sets is_protocol_agnostic
-     *
-     * @param bool|null $is_protocol_agnostic is_protocol_agnostic
-     *
-     * @return self
-     */
-    public function setIsProtocolAgnostic($is_protocol_agnostic)
-    {
-        $this->container['is_protocol_agnostic'] = $is_protocol_agnostic;
+        $this->container['redirect_style'] = $redirect_style;
 
         return $this;
     }
@@ -459,6 +363,54 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets is_match_full_url
+     *
+     * @return bool|null
+     */
+    public function getIsMatchFullUrl()
+    {
+        return $this->container['is_match_full_url'];
+    }
+
+    /**
+     * Sets is_match_full_url
+     *
+     * @param bool|null $is_match_full_url is_match_full_url
+     *
+     * @return self
+     */
+    public function setIsMatchFullUrl($is_match_full_url)
+    {
+        $this->container['is_match_full_url'] = $is_match_full_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_protocol_agnostic
+     *
+     * @return bool|null
+     */
+    public function getIsProtocolAgnostic()
+    {
+        return $this->container['is_protocol_agnostic'];
+    }
+
+    /**
+     * Sets is_protocol_agnostic
+     *
+     * @param bool|null $is_protocol_agnostic is_protocol_agnostic
+     *
+     * @return self
+     */
+    public function setIsProtocolAgnostic($is_protocol_agnostic)
+    {
+        $this->container['is_protocol_agnostic'] = $is_protocol_agnostic;
+
+        return $this;
+    }
+
+    /**
      * Gets destination
      *
      * @return string
@@ -483,25 +435,73 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets redirect_style
+     * Gets is_only_after_not_found
      *
-     * @return int
+     * @return bool|null
      */
-    public function getRedirectStyle()
+    public function getIsOnlyAfterNotFound()
     {
-        return $this->container['redirect_style'];
+        return $this->container['is_only_after_not_found'];
     }
 
     /**
-     * Sets redirect_style
+     * Sets is_only_after_not_found
      *
-     * @param int $redirect_style redirect_style
+     * @param bool|null $is_only_after_not_found is_only_after_not_found
      *
      * @return self
      */
-    public function setRedirectStyle($redirect_style)
+    public function setIsOnlyAfterNotFound($is_only_after_not_found)
     {
-        $this->container['redirect_style'] = $redirect_style;
+        $this->container['is_only_after_not_found'] = $is_only_after_not_found;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_pattern
+     *
+     * @return bool|null
+     */
+    public function getIsPattern()
+    {
+        return $this->container['is_pattern'];
+    }
+
+    /**
+     * Sets is_pattern
+     *
+     * @param bool|null $is_pattern is_pattern
+     *
+     * @return self
+     */
+    public function setIsPattern($is_pattern)
+    {
+        $this->container['is_pattern'] = $is_pattern;
+
+        return $this;
+    }
+
+    /**
+     * Gets precedence
+     *
+     * @return int|null
+     */
+    public function getPrecedence()
+    {
+        return $this->container['precedence'];
+    }
+
+    /**
+     * Sets precedence
+     *
+     * @param int|null $precedence precedence
+     *
+     * @return self
+     */
+    public function setPrecedence($precedence)
+    {
+        $this->container['precedence'] = $precedence;
 
         return $this;
     }

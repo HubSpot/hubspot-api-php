@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -57,9 +57,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'x' => 'int',
-        'w' => 'int',
-        'name' => 'string',
+        'css_style' => 'string',
         'label' => 'string',
         'type' => 'string',
         'params' => 'array<string,object>',
@@ -67,8 +65,10 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         'row_meta_data' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[]',
         'cells' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection[]',
         'css_class' => 'string',
-        'css_style' => 'string',
+        'w' => 'int',
         'css_id' => 'string',
+        'x' => 'int',
+        'name' => 'string',
         'styles' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles'
     ];
 
@@ -80,9 +80,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'x' => 'int32',
-        'w' => 'int32',
-        'name' => null,
+        'css_style' => null,
         'label' => null,
         'type' => null,
         'params' => null,
@@ -90,8 +88,10 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         'row_meta_data' => null,
         'cells' => null,
         'css_class' => null,
-        'css_style' => null,
+        'w' => 'int32',
         'css_id' => null,
+        'x' => 'int32',
+        'name' => null,
         'styles' => null
     ];
 
@@ -122,9 +122,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'x',
-        'w' => 'w',
-        'name' => 'name',
+        'css_style' => 'cssStyle',
         'label' => 'label',
         'type' => 'type',
         'params' => 'params',
@@ -132,8 +130,10 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         'row_meta_data' => 'rowMetaData',
         'cells' => 'cells',
         'css_class' => 'cssClass',
-        'css_style' => 'cssStyle',
+        'w' => 'w',
         'css_id' => 'cssId',
+        'x' => 'x',
+        'name' => 'name',
         'styles' => 'styles'
     ];
 
@@ -143,9 +143,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'w' => 'setW',
-        'name' => 'setName',
+        'css_style' => 'setCssStyle',
         'label' => 'setLabel',
         'type' => 'setType',
         'params' => 'setParams',
@@ -153,8 +151,10 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         'row_meta_data' => 'setRowMetaData',
         'cells' => 'setCells',
         'css_class' => 'setCssClass',
-        'css_style' => 'setCssStyle',
+        'w' => 'setW',
         'css_id' => 'setCssId',
+        'x' => 'setX',
+        'name' => 'setName',
         'styles' => 'setStyles'
     ];
 
@@ -164,9 +164,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'w' => 'getW',
-        'name' => 'getName',
+        'css_style' => 'getCssStyle',
         'label' => 'getLabel',
         'type' => 'getType',
         'params' => 'getParams',
@@ -174,8 +172,10 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         'row_meta_data' => 'getRowMetaData',
         'cells' => 'getCells',
         'css_class' => 'getCssClass',
-        'css_style' => 'getCssStyle',
+        'w' => 'getW',
         'css_id' => 'getCssId',
+        'x' => 'getX',
+        'name' => 'getName',
         'styles' => 'getStyles'
     ];
 
@@ -236,9 +236,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['x'] = $data['x'] ?? null;
-        $this->container['w'] = $data['w'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['css_style'] = $data['css_style'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['params'] = $data['params'] ?? null;
@@ -246,8 +244,10 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['row_meta_data'] = $data['row_meta_data'] ?? null;
         $this->container['cells'] = $data['cells'] ?? null;
         $this->container['css_class'] = $data['css_class'] ?? null;
-        $this->container['css_style'] = $data['css_style'] ?? null;
+        $this->container['w'] = $data['w'] ?? null;
         $this->container['css_id'] = $data['css_id'] ?? null;
+        $this->container['x'] = $data['x'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['styles'] = $data['styles'] ?? null;
     }
 
@@ -260,14 +260,8 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['x'] === null) {
-            $invalidProperties[] = "'x' can't be null";
-        }
-        if ($this->container['w'] === null) {
-            $invalidProperties[] = "'w' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['css_style'] === null) {
+            $invalidProperties[] = "'css_style' can't be null";
         }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
@@ -290,11 +284,17 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['css_class'] === null) {
             $invalidProperties[] = "'css_class' can't be null";
         }
-        if ($this->container['css_style'] === null) {
-            $invalidProperties[] = "'css_style' can't be null";
+        if ($this->container['w'] === null) {
+            $invalidProperties[] = "'w' can't be null";
         }
         if ($this->container['css_id'] === null) {
             $invalidProperties[] = "'css_id' can't be null";
+        }
+        if ($this->container['x'] === null) {
+            $invalidProperties[] = "'x' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['styles'] === null) {
             $invalidProperties[] = "'styles' can't be null";
@@ -315,73 +315,25 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets x
-     *
-     * @return int
-     */
-    public function getX()
-    {
-        return $this->container['x'];
-    }
-
-    /**
-     * Sets x
-     *
-     * @param int $x x
-     *
-     * @return self
-     */
-    public function setX($x)
-    {
-        $this->container['x'] = $x;
-
-        return $this;
-    }
-
-    /**
-     * Gets w
-     *
-     * @return int
-     */
-    public function getW()
-    {
-        return $this->container['w'];
-    }
-
-    /**
-     * Sets w
-     *
-     * @param int $w w
-     *
-     * @return self
-     */
-    public function setW($w)
-    {
-        $this->container['w'] = $w;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets css_style
      *
      * @return string
      */
-    public function getName()
+    public function getCssStyle()
     {
-        return $this->container['name'];
+        return $this->container['css_style'];
     }
 
     /**
-     * Sets name
+     * Sets css_style
      *
-     * @param string $name name
+     * @param string $css_style css_style
      *
      * @return self
      */
-    public function setName($name)
+    public function setCssStyle($css_style)
     {
-        $this->container['name'] = $name;
+        $this->container['css_style'] = $css_style;
 
         return $this;
     }
@@ -555,25 +507,25 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets css_style
+     * Gets w
      *
-     * @return string
+     * @return int
      */
-    public function getCssStyle()
+    public function getW()
     {
-        return $this->container['css_style'];
+        return $this->container['w'];
     }
 
     /**
-     * Sets css_style
+     * Sets w
      *
-     * @param string $css_style css_style
+     * @param int $w w
      *
      * @return self
      */
-    public function setCssStyle($css_style)
+    public function setW($w)
     {
-        $this->container['css_style'] = $css_style;
+        $this->container['w'] = $w;
 
         return $this;
     }
@@ -598,6 +550,54 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCssId($css_id)
     {
         $this->container['css_id'] = $css_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets x
+     *
+     * @return int
+     */
+    public function getX()
+    {
+        return $this->container['x'];
+    }
+
+    /**
+     * Sets x
+     *
+     * @param int $x x
+     *
+     * @return self
+     */
+    public function setX($x)
+    {
+        $this->container['x'] = $x;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

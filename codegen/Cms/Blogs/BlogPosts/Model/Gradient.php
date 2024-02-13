@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -57,8 +57,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'side_or_corner' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner',
         'angle' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Angle',
+        'side_or_corner' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner',
         'colors' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ColorStop[]'
     ];
 
@@ -70,8 +70,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'side_or_corner' => null,
         'angle' => null,
+        'side_or_corner' => null,
         'colors' => null
     ];
 
@@ -102,8 +102,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'side_or_corner' => 'sideOrCorner',
         'angle' => 'angle',
+        'side_or_corner' => 'sideOrCorner',
         'colors' => 'colors'
     ];
 
@@ -113,8 +113,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'side_or_corner' => 'setSideOrCorner',
         'angle' => 'setAngle',
+        'side_or_corner' => 'setSideOrCorner',
         'colors' => 'setColors'
     ];
 
@@ -124,8 +124,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'side_or_corner' => 'getSideOrCorner',
         'angle' => 'getAngle',
+        'side_or_corner' => 'getSideOrCorner',
         'colors' => 'getColors'
     ];
 
@@ -186,8 +186,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['side_or_corner'] = $data['side_or_corner'] ?? null;
         $this->container['angle'] = $data['angle'] ?? null;
+        $this->container['side_or_corner'] = $data['side_or_corner'] ?? null;
         $this->container['colors'] = $data['colors'] ?? null;
     }
 
@@ -200,11 +200,11 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['side_or_corner'] === null) {
-            $invalidProperties[] = "'side_or_corner' can't be null";
-        }
         if ($this->container['angle'] === null) {
             $invalidProperties[] = "'angle' can't be null";
+        }
+        if ($this->container['side_or_corner'] === null) {
+            $invalidProperties[] = "'side_or_corner' can't be null";
         }
         if ($this->container['colors'] === null) {
             $invalidProperties[] = "'colors' can't be null";
@@ -223,30 +223,6 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets side_or_corner
-     *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner
-     */
-    public function getSideOrCorner()
-    {
-        return $this->container['side_or_corner'];
-    }
-
-    /**
-     * Sets side_or_corner
-     *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner $side_or_corner side_or_corner
-     *
-     * @return self
-     */
-    public function setSideOrCorner($side_or_corner)
-    {
-        $this->container['side_or_corner'] = $side_or_corner;
-
-        return $this;
-    }
 
     /**
      * Gets angle
@@ -268,6 +244,30 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAngle($angle)
     {
         $this->container['angle'] = $angle;
+
+        return $this;
+    }
+
+    /**
+     * Gets side_or_corner
+     *
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner
+     */
+    public function getSideOrCorner()
+    {
+        return $this->container['side_or_corner'];
+    }
+
+    /**
+     * Sets side_or_corner
+     *
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner $side_or_corner side_or_corner
+     *
+     * @return self
+     */
+    public function setSideOrCorner($side_or_corner)
+    {
+        $this->container['side_or_corner'] = $side_or_corner;
 
         return $this;
     }

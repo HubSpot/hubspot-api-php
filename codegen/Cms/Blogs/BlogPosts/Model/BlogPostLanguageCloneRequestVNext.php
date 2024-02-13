@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,8 +58,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'language' => 'string'
+        'language' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'language' => null
+        'language' => null,
+        'id' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'language' => 'language'
+        'language' => 'language',
+        'id' => 'id'
     ];
 
     /**
@@ -111,8 +111,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'language' => 'setLanguage'
+        'language' => 'setLanguage',
+        'id' => 'setId'
     ];
 
     /**
@@ -121,8 +121,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'language' => 'getLanguage'
+        'language' => 'getLanguage',
+        'id' => 'getId'
     ];
 
     /**
@@ -182,8 +182,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -214,30 +214,6 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id ID of blog post to clone.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets language
      *
      * @return string|null
@@ -257,6 +233,30 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
     public function setLanguage($language)
     {
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id ID of blog post to clone.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

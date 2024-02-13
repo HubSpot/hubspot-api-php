@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Authors
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,8 +58,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'language' => 'string',
+        'id' => 'string',
         'primary_language' => 'string',
         'blog_author' => '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor'
     ];
@@ -72,8 +72,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'language' => null,
+        'id' => null,
         'primary_language' => null,
         'blog_author' => null
     ];
@@ -105,8 +105,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'language' => 'language',
+        'id' => 'id',
         'primary_language' => 'primaryLanguage',
         'blog_author' => 'blogAuthor'
     ];
@@ -117,8 +117,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'language' => 'setLanguage',
+        'id' => 'setId',
         'primary_language' => 'setPrimaryLanguage',
         'blog_author' => 'setBlogAuthor'
     ];
@@ -129,8 +129,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'language' => 'getLanguage',
+        'id' => 'getId',
         'primary_language' => 'getPrimaryLanguage',
         'blog_author' => 'getBlogAuthor'
     ];
@@ -192,8 +192,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['primary_language'] = $data['primary_language'] ?? null;
         $this->container['blog_author'] = $data['blog_author'] ?? null;
     }
@@ -229,30 +229,6 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id ID of the object to be cloned.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets language
      *
      * @return string|null
@@ -272,6 +248,30 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
     public function setLanguage($language)
     {
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id ID of the object to be cloned.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

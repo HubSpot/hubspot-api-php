@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -58,10 +58,10 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\Error[]',
-        'duplicate_rows' => 'int',
         'row_limit_exceeded' => 'bool',
-        'rows_imported' => 'int'
+        'duplicate_rows' => 'int',
+        'rows_imported' => 'int',
+        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\Error[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'errors' => null,
-        'duplicate_rows' => 'int32',
         'row_limit_exceeded' => null,
-        'rows_imported' => 'int32'
+        'duplicate_rows' => 'int32',
+        'rows_imported' => 'int32',
+        'errors' => null
     ];
 
     /**
@@ -105,10 +105,10 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'errors' => 'errors',
-        'duplicate_rows' => 'duplicateRows',
         'row_limit_exceeded' => 'rowLimitExceeded',
-        'rows_imported' => 'rowsImported'
+        'duplicate_rows' => 'duplicateRows',
+        'rows_imported' => 'rowsImported',
+        'errors' => 'errors'
     ];
 
     /**
@@ -117,10 +117,10 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'errors' => 'setErrors',
-        'duplicate_rows' => 'setDuplicateRows',
         'row_limit_exceeded' => 'setRowLimitExceeded',
-        'rows_imported' => 'setRowsImported'
+        'duplicate_rows' => 'setDuplicateRows',
+        'rows_imported' => 'setRowsImported',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -129,10 +129,10 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'errors' => 'getErrors',
-        'duplicate_rows' => 'getDuplicateRows',
         'row_limit_exceeded' => 'getRowLimitExceeded',
-        'rows_imported' => 'getRowsImported'
+        'duplicate_rows' => 'getDuplicateRows',
+        'rows_imported' => 'getRowsImported',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -192,10 +192,10 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['errors'] = $data['errors'] ?? null;
-        $this->container['duplicate_rows'] = $data['duplicate_rows'] ?? null;
         $this->container['row_limit_exceeded'] = $data['row_limit_exceeded'] ?? null;
+        $this->container['duplicate_rows'] = $data['duplicate_rows'] ?? null;
         $this->container['rows_imported'] = $data['rows_imported'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
     }
 
     /**
@@ -207,17 +207,17 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['row_limit_exceeded'] === null) {
+            $invalidProperties[] = "'row_limit_exceeded' can't be null";
         }
         if ($this->container['duplicate_rows'] === null) {
             $invalidProperties[] = "'duplicate_rows' can't be null";
         }
-        if ($this->container['row_limit_exceeded'] === null) {
-            $invalidProperties[] = "'row_limit_exceeded' can't be null";
-        }
         if ($this->container['rows_imported'] === null) {
             $invalidProperties[] = "'rows_imported' can't be null";
+        }
+        if ($this->container['errors'] === null) {
+            $invalidProperties[] = "'errors' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,25 +235,25 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets row_limit_exceeded
      *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\Error[]
+     * @return bool
      */
-    public function getErrors()
+    public function getRowLimitExceeded()
     {
-        return $this->container['errors'];
+        return $this->container['row_limit_exceeded'];
     }
 
     /**
-     * Sets errors
+     * Sets row_limit_exceeded
      *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\Error[] $errors List of errors during import
+     * @param bool $row_limit_exceeded Specifies whether row limit exceeded during import
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setRowLimitExceeded($row_limit_exceeded)
     {
-        $this->container['errors'] = $errors;
+        $this->container['row_limit_exceeded'] = $row_limit_exceeded;
 
         return $this;
     }
@@ -283,30 +283,6 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets row_limit_exceeded
-     *
-     * @return bool
-     */
-    public function getRowLimitExceeded()
-    {
-        return $this->container['row_limit_exceeded'];
-    }
-
-    /**
-     * Sets row_limit_exceeded
-     *
-     * @param bool $row_limit_exceeded Specifies whether row limit exceeded during import
-     *
-     * @return self
-     */
-    public function setRowLimitExceeded($row_limit_exceeded)
-    {
-        $this->container['row_limit_exceeded'] = $row_limit_exceeded;
-
-        return $this;
-    }
-
-    /**
      * Gets rows_imported
      *
      * @return int
@@ -326,6 +302,30 @@ class ImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRowsImported($rows_imported)
     {
         $this->container['rows_imported'] = $rows_imported;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\Error[]
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\Error[] $errors List of errors during import
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * URL redirects
+ * CMS Url Redirects
  *
  * URL redirect operations
  *

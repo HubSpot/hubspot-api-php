@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,14 +57,14 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'values' => 'array<string,object>',
         'path' => 'string',
-        'name' => 'string',
-        'child_table_id' => 'string',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'published_at' => '\DateTime'
+        'child_table_id' => 'string',
+        'published_at' => '\DateTime',
+        'values' => 'array<string,object>',
+        'name' => 'string',
+        'id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -75,14 +75,14 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'values' => null,
         'path' => null,
-        'name' => null,
-        'child_table_id' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'published_at' => 'date-time'
+        'child_table_id' => null,
+        'published_at' => 'date-time',
+        'values' => null,
+        'name' => null,
+        'id' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -112,14 +112,14 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'values' => 'values',
         'path' => 'path',
-        'name' => 'name',
-        'child_table_id' => 'childTableId',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'published_at' => 'publishedAt'
+        'child_table_id' => 'childTableId',
+        'published_at' => 'publishedAt',
+        'values' => 'values',
+        'name' => 'name',
+        'id' => 'id',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -128,14 +128,14 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'values' => 'setValues',
         'path' => 'setPath',
-        'name' => 'setName',
-        'child_table_id' => 'setChildTableId',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'published_at' => 'setPublishedAt'
+        'child_table_id' => 'setChildTableId',
+        'published_at' => 'setPublishedAt',
+        'values' => 'setValues',
+        'name' => 'setName',
+        'id' => 'setId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -144,14 +144,14 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'values' => 'getValues',
         'path' => 'getPath',
-        'name' => 'getName',
-        'child_table_id' => 'getChildTableId',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'published_at' => 'getPublishedAt'
+        'child_table_id' => 'getChildTableId',
+        'published_at' => 'getPublishedAt',
+        'values' => 'getValues',
+        'name' => 'getName',
+        'id' => 'getId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -211,14 +211,14 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['values'] = $data['values'] ?? null;
         $this->container['path'] = $data['path'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['child_table_id'] = $data['child_table_id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['child_table_id'] = $data['child_table_id'] ?? null;
         $this->container['published_at'] = $data['published_at'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -249,54 +249,6 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id The id of the table row
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets values
-     *
-     * @return array<string,object>
-     */
-    public function getValues()
-    {
-        return $this->container['values'];
-    }
-
-    /**
-     * Sets values
-     *
-     * @param array<string,object> $values List of key value pairs with the column name and column value
-     *
-     * @return self
-     */
-    public function setValues($values)
-    {
-        $this->container['values'] = $values;
-
-        return $this;
-    }
-
-    /**
      * Gets path
      *
      * @return string|null
@@ -316,54 +268,6 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPath($path)
     {
         $this->container['path'] = $path;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets child_table_id
-     *
-     * @return string|null
-     */
-    public function getChildTableId()
-    {
-        return $this->container['child_table_id'];
-    }
-
-    /**
-     * Sets child_table_id
-     *
-     * @param string|null $child_table_id Specifies the value for the column child table id
-     *
-     * @return self
-     */
-    public function setChildTableId($child_table_id)
-    {
-        $this->container['child_table_id'] = $child_table_id;
 
         return $this;
     }
@@ -393,25 +297,25 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated_at
+     * Gets child_table_id
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getUpdatedAt()
+    public function getChildTableId()
     {
-        return $this->container['updated_at'];
+        return $this->container['child_table_id'];
     }
 
     /**
-     * Sets updated_at
+     * Sets child_table_id
      *
-     * @param \DateTime|null $updated_at Timestamp at which the row is updated last time
+     * @param string|null $child_table_id Specifies the value for the column child table id
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setChildTableId($child_table_id)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['child_table_id'] = $child_table_id;
 
         return $this;
     }
@@ -436,6 +340,102 @@ class HubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPublishedAt($published_at)
     {
         $this->container['published_at'] = $published_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     *
+     * @return array<string,object>
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param array<string,object> $values List of key value pairs with the column name and column value
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id The id of the table row
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at Timestamp at which the row is updated last time
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

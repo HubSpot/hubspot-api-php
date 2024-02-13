@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -170,35 +170,6 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const BACKGROUND_POSITION_TOP_LEFT = 'TOP_LEFT';
-    public const BACKGROUND_POSITION_TOP_CENTER = 'TOP_CENTER';
-    public const BACKGROUND_POSITION_TOP_RIGHT = 'TOP_RIGHT';
-    public const BACKGROUND_POSITION_MIDDLE_LEFT = 'MIDDLE_LEFT';
-    public const BACKGROUND_POSITION_MIDDLE_CENTER = 'MIDDLE_CENTER';
-    public const BACKGROUND_POSITION_MIDDLE_RIGHT = 'MIDDLE_RIGHT';
-    public const BACKGROUND_POSITION_BOTTOM_LEFT = 'BOTTOM_LEFT';
-    public const BACKGROUND_POSITION_BOTTOM_CENTER = 'BOTTOM_CENTER';
-    public const BACKGROUND_POSITION_BOTTOM_RIGHT = 'BOTTOM_RIGHT';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBackgroundPositionAllowableValues()
-    {
-        return [
-            self::BACKGROUND_POSITION_TOP_LEFT,
-            self::BACKGROUND_POSITION_TOP_CENTER,
-            self::BACKGROUND_POSITION_TOP_RIGHT,
-            self::BACKGROUND_POSITION_MIDDLE_LEFT,
-            self::BACKGROUND_POSITION_MIDDLE_CENTER,
-            self::BACKGROUND_POSITION_MIDDLE_RIGHT,
-            self::BACKGROUND_POSITION_BOTTOM_LEFT,
-            self::BACKGROUND_POSITION_BOTTOM_CENTER,
-            self::BACKGROUND_POSITION_BOTTOM_RIGHT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -238,15 +209,6 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['background_position'] === null) {
             $invalidProperties[] = "'background_position' can't be null";
         }
-        $allowedValues = $this->getBackgroundPositionAllowableValues();
-        if (!is_null($this->container['background_position']) && !in_array($this->container['background_position'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'background_position', must be one of '%s'",
-                $this->container['background_position'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -329,16 +291,6 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setBackgroundPosition($background_position)
     {
-        $allowedValues = $this->getBackgroundPositionAllowableValues();
-        if (!in_array($background_position, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'background_position', must be one of '%s'",
-                    $background_position,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['background_position'] = $background_position;
 
         return $this;

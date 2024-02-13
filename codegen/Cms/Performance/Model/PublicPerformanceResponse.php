@@ -11,7 +11,7 @@
  */
 
 /**
- * CMS Performance API
+ * CMS Performance
  *
  * Use these endpoints to get a time series view of your website's performance.
  *
@@ -57,13 +57,13 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
+        'path' => 'string',
+        'period' => 'string',
+        'start_interval' => 'int',
         'data' => '\HubSpot\Client\Cms\Performance\Model\PerformanceView[]',
         'domain' => 'string',
-        'path' => 'string',
-        'start_interval' => 'int',
-        'end_interval' => 'int',
         'interval' => 'string',
-        'period' => 'string'
+        'end_interval' => 'int'
     ];
 
     /**
@@ -74,13 +74,13 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'path' => null,
+        'period' => null,
+        'start_interval' => 'int64',
         'data' => null,
         'domain' => null,
-        'path' => null,
-        'start_interval' => 'int64',
-        'end_interval' => 'int64',
         'interval' => null,
-        'period' => null
+        'end_interval' => 'int64'
     ];
 
     /**
@@ -110,13 +110,13 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'path' => 'path',
+        'period' => 'period',
+        'start_interval' => 'startInterval',
         'data' => 'data',
         'domain' => 'domain',
-        'path' => 'path',
-        'start_interval' => 'startInterval',
-        'end_interval' => 'endInterval',
         'interval' => 'interval',
-        'period' => 'period'
+        'end_interval' => 'endInterval'
     ];
 
     /**
@@ -125,13 +125,13 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'path' => 'setPath',
+        'period' => 'setPeriod',
+        'start_interval' => 'setStartInterval',
         'data' => 'setData',
         'domain' => 'setDomain',
-        'path' => 'setPath',
-        'start_interval' => 'setStartInterval',
-        'end_interval' => 'setEndInterval',
         'interval' => 'setInterval',
-        'period' => 'setPeriod'
+        'end_interval' => 'setEndInterval'
     ];
 
     /**
@@ -140,13 +140,13 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'path' => 'getPath',
+        'period' => 'getPeriod',
+        'start_interval' => 'getStartInterval',
         'data' => 'getData',
         'domain' => 'getDomain',
-        'path' => 'getPath',
-        'start_interval' => 'getStartInterval',
-        'end_interval' => 'getEndInterval',
         'interval' => 'getInterval',
-        'period' => 'getPeriod'
+        'end_interval' => 'getEndInterval'
     ];
 
     /**
@@ -190,16 +190,6 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const INTERVAL_ONE_MINUTE = 'ONE_MINUTE';
-    public const INTERVAL_FIVE_MINUTES = 'FIVE_MINUTES';
-    public const INTERVAL_TEN_MINUTES = 'TEN_MINUTES';
-    public const INTERVAL_FIFTEEN_MINUTES = 'FIFTEEN_MINUTES';
-    public const INTERVAL_THIRTY_MINUTES = 'THIRTY_MINUTES';
-    public const INTERVAL_ONE_HOUR = 'ONE_HOUR';
-    public const INTERVAL_FOUR_HOURS = 'FOUR_HOURS';
-    public const INTERVAL_TWELVE_HOURS = 'TWELVE_HOURS';
-    public const INTERVAL_ONE_DAY = 'ONE_DAY';
-    public const INTERVAL_ONE_WEEK = 'ONE_WEEK';
     public const PERIOD_ONE_MINUTE = 'ONE_MINUTE';
     public const PERIOD_FIVE_MINUTES = 'FIVE_MINUTES';
     public const PERIOD_TEN_MINUTES = 'TEN_MINUTES';
@@ -210,27 +200,16 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
     public const PERIOD_TWELVE_HOURS = 'TWELVE_HOURS';
     public const PERIOD_ONE_DAY = 'ONE_DAY';
     public const PERIOD_ONE_WEEK = 'ONE_WEEK';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getIntervalAllowableValues()
-    {
-        return [
-            self::INTERVAL_ONE_MINUTE,
-            self::INTERVAL_FIVE_MINUTES,
-            self::INTERVAL_TEN_MINUTES,
-            self::INTERVAL_FIFTEEN_MINUTES,
-            self::INTERVAL_THIRTY_MINUTES,
-            self::INTERVAL_ONE_HOUR,
-            self::INTERVAL_FOUR_HOURS,
-            self::INTERVAL_TWELVE_HOURS,
-            self::INTERVAL_ONE_DAY,
-            self::INTERVAL_ONE_WEEK,
-        ];
-    }
+    public const INTERVAL_ONE_MINUTE = 'ONE_MINUTE';
+    public const INTERVAL_FIVE_MINUTES = 'FIVE_MINUTES';
+    public const INTERVAL_TEN_MINUTES = 'TEN_MINUTES';
+    public const INTERVAL_FIFTEEN_MINUTES = 'FIFTEEN_MINUTES';
+    public const INTERVAL_THIRTY_MINUTES = 'THIRTY_MINUTES';
+    public const INTERVAL_ONE_HOUR = 'ONE_HOUR';
+    public const INTERVAL_FOUR_HOURS = 'FOUR_HOURS';
+    public const INTERVAL_TWELVE_HOURS = 'TWELVE_HOURS';
+    public const INTERVAL_ONE_DAY = 'ONE_DAY';
+    public const INTERVAL_ONE_WEEK = 'ONE_WEEK';
 
     /**
      * Gets allowable values of the enum
@@ -254,6 +233,27 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIntervalAllowableValues()
+    {
+        return [
+            self::INTERVAL_ONE_MINUTE,
+            self::INTERVAL_FIVE_MINUTES,
+            self::INTERVAL_TEN_MINUTES,
+            self::INTERVAL_FIFTEEN_MINUTES,
+            self::INTERVAL_THIRTY_MINUTES,
+            self::INTERVAL_ONE_HOUR,
+            self::INTERVAL_FOUR_HOURS,
+            self::INTERVAL_TWELVE_HOURS,
+            self::INTERVAL_ONE_DAY,
+            self::INTERVAL_ONE_WEEK,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -268,13 +268,13 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
+        $this->container['path'] = $data['path'] ?? null;
+        $this->container['period'] = $data['period'] ?? null;
+        $this->container['start_interval'] = $data['start_interval'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
         $this->container['domain'] = $data['domain'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
-        $this->container['start_interval'] = $data['start_interval'] ?? null;
-        $this->container['end_interval'] = $data['end_interval'] ?? null;
         $this->container['interval'] = $data['interval'] ?? null;
-        $this->container['period'] = $data['period'] ?? null;
+        $this->container['end_interval'] = $data['end_interval'] ?? null;
     }
 
     /**
@@ -286,14 +286,20 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        $allowedValues = $this->getPeriodAllowableValues();
+        if (!is_null($this->container['period']) && !in_array($this->container['period'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'period', must be one of '%s'",
+                $this->container['period'],
+                implode("', '", $allowedValues)
+            );
         }
+
         if ($this->container['start_interval'] === null) {
             $invalidProperties[] = "'start_interval' can't be null";
         }
-        if ($this->container['end_interval'] === null) {
-            $invalidProperties[] = "'end_interval' can't be null";
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
         if ($this->container['interval'] === null) {
             $invalidProperties[] = "'interval' can't be null";
@@ -307,15 +313,9 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        $allowedValues = $this->getPeriodAllowableValues();
-        if (!is_null($this->container['period']) && !in_array($this->container['period'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'period', must be one of '%s'",
-                $this->container['period'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['end_interval'] === null) {
+            $invalidProperties[] = "'end_interval' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -330,6 +330,88 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path path
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return string|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param string|null $period period
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $allowedValues = $this->getPeriodAllowableValues();
+        if (!is_null($period) && !in_array($period, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'period', must be one of '%s'",
+                    $period,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_interval
+     *
+     * @return int
+     */
+    public function getStartInterval()
+    {
+        return $this->container['start_interval'];
+    }
+
+    /**
+     * Sets start_interval
+     *
+     * @param int $start_interval start_interval
+     *
+     * @return self
+     */
+    public function setStartInterval($start_interval)
+    {
+        $this->container['start_interval'] = $start_interval;
+
+        return $this;
+    }
 
     /**
      * Gets data
@@ -380,78 +462,6 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets path
-     *
-     * @return string|null
-     */
-    public function getPath()
-    {
-        return $this->container['path'];
-    }
-
-    /**
-     * Sets path
-     *
-     * @param string|null $path path
-     *
-     * @return self
-     */
-    public function setPath($path)
-    {
-        $this->container['path'] = $path;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_interval
-     *
-     * @return int
-     */
-    public function getStartInterval()
-    {
-        return $this->container['start_interval'];
-    }
-
-    /**
-     * Sets start_interval
-     *
-     * @param int $start_interval start_interval
-     *
-     * @return self
-     */
-    public function setStartInterval($start_interval)
-    {
-        $this->container['start_interval'] = $start_interval;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_interval
-     *
-     * @return int
-     */
-    public function getEndInterval()
-    {
-        return $this->container['end_interval'];
-    }
-
-    /**
-     * Sets end_interval
-     *
-     * @param int $end_interval end_interval
-     *
-     * @return self
-     */
-    public function setEndInterval($end_interval)
-    {
-        $this->container['end_interval'] = $end_interval;
-
-        return $this;
-    }
-
-    /**
      * Gets interval
      *
      * @return string
@@ -486,35 +496,25 @@ class PublicPerformanceResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets period
+     * Gets end_interval
      *
-     * @return string|null
+     * @return int
      */
-    public function getPeriod()
+    public function getEndInterval()
     {
-        return $this->container['period'];
+        return $this->container['end_interval'];
     }
 
     /**
-     * Sets period
+     * Sets end_interval
      *
-     * @param string|null $period period
+     * @param int $end_interval end_interval
      *
      * @return self
      */
-    public function setPeriod($period)
+    public function setEndInterval($end_interval)
     {
-        $allowedValues = $this->getPeriodAllowableValues();
-        if (!is_null($period) && !in_array($period, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'period', must be one of '%s'",
-                    $period,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['period'] = $period;
+        $this->container['end_interval'] = $end_interval;
 
         return $this;
     }

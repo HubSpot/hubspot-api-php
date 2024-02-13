@@ -57,8 +57,8 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'links' => 'array<string,string>'
+        'links' => 'array<string,string>',
+        'id' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'links' => null
+        'links' => null,
+        'id' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'links' => 'links'
+        'links' => 'links',
+        'id' => 'id'
     ];
 
     /**
@@ -110,8 +110,8 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'links' => 'setLinks'
+        'links' => 'setLinks',
+        'id' => 'setId'
     ];
 
     /**
@@ -120,8 +120,8 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'links' => 'getLinks'
+        'links' => 'getLinks',
+        'id' => 'getId'
     ];
 
     /**
@@ -181,8 +181,8 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -256,6 +232,30 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

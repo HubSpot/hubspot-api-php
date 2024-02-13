@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -57,20 +57,20 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'slug' => 'string',
-        'state' => 'string',
-        'author_name' => 'string',
-        'password' => 'string',
-        'public_access_rules_enabled' => 'bool',
-        'public_access_rules' => 'object[]',
-        'campaign' => 'string',
-        'tag_ids' => 'int[]',
         'archived_in_dashboard' => 'bool',
         'created' => '\DateTime',
+        'tag_ids' => 'int[]',
+        'publish_date' => '\DateTime',
+        'public_access_rules' => 'object[]',
+        'password' => 'string',
+        'author_name' => 'string',
+        'public_access_rules_enabled' => 'bool',
+        'name' => 'string',
+        'campaign' => 'string',
+        'id' => 'int',
+        'state' => 'string',
         'updated' => '\DateTime',
-        'publish_date' => '\DateTime'
+        'slug' => 'string'
     ];
 
     /**
@@ -81,20 +81,20 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int64',
-        'name' => null,
-        'slug' => null,
-        'state' => null,
-        'author_name' => null,
-        'password' => null,
-        'public_access_rules_enabled' => null,
-        'public_access_rules' => null,
-        'campaign' => null,
-        'tag_ids' => 'int64',
         'archived_in_dashboard' => null,
         'created' => 'date-time',
+        'tag_ids' => 'int64',
+        'publish_date' => 'date-time',
+        'public_access_rules' => null,
+        'password' => null,
+        'author_name' => null,
+        'public_access_rules_enabled' => null,
+        'name' => null,
+        'campaign' => null,
+        'id' => 'int64',
+        'state' => null,
         'updated' => 'date-time',
-        'publish_date' => 'date-time'
+        'slug' => null
     ];
 
     /**
@@ -124,20 +124,20 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'slug' => 'slug',
-        'state' => 'state',
-        'author_name' => 'authorName',
-        'password' => 'password',
-        'public_access_rules_enabled' => 'publicAccessRulesEnabled',
-        'public_access_rules' => 'publicAccessRules',
-        'campaign' => 'campaign',
-        'tag_ids' => 'tagIds',
         'archived_in_dashboard' => 'archivedInDashboard',
         'created' => 'created',
+        'tag_ids' => 'tagIds',
+        'publish_date' => 'publishDate',
+        'public_access_rules' => 'publicAccessRules',
+        'password' => 'password',
+        'author_name' => 'authorName',
+        'public_access_rules_enabled' => 'publicAccessRulesEnabled',
+        'name' => 'name',
+        'campaign' => 'campaign',
+        'id' => 'id',
+        'state' => 'state',
         'updated' => 'updated',
-        'publish_date' => 'publishDate'
+        'slug' => 'slug'
     ];
 
     /**
@@ -146,20 +146,20 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'slug' => 'setSlug',
-        'state' => 'setState',
-        'author_name' => 'setAuthorName',
-        'password' => 'setPassword',
-        'public_access_rules_enabled' => 'setPublicAccessRulesEnabled',
-        'public_access_rules' => 'setPublicAccessRules',
-        'campaign' => 'setCampaign',
-        'tag_ids' => 'setTagIds',
         'archived_in_dashboard' => 'setArchivedInDashboard',
         'created' => 'setCreated',
+        'tag_ids' => 'setTagIds',
+        'publish_date' => 'setPublishDate',
+        'public_access_rules' => 'setPublicAccessRules',
+        'password' => 'setPassword',
+        'author_name' => 'setAuthorName',
+        'public_access_rules_enabled' => 'setPublicAccessRulesEnabled',
+        'name' => 'setName',
+        'campaign' => 'setCampaign',
+        'id' => 'setId',
+        'state' => 'setState',
         'updated' => 'setUpdated',
-        'publish_date' => 'setPublishDate'
+        'slug' => 'setSlug'
     ];
 
     /**
@@ -168,20 +168,20 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'slug' => 'getSlug',
-        'state' => 'getState',
-        'author_name' => 'getAuthorName',
-        'password' => 'getPassword',
-        'public_access_rules_enabled' => 'getPublicAccessRulesEnabled',
-        'public_access_rules' => 'getPublicAccessRules',
-        'campaign' => 'getCampaign',
-        'tag_ids' => 'getTagIds',
         'archived_in_dashboard' => 'getArchivedInDashboard',
         'created' => 'getCreated',
+        'tag_ids' => 'getTagIds',
+        'publish_date' => 'getPublishDate',
+        'public_access_rules' => 'getPublicAccessRules',
+        'password' => 'getPassword',
+        'author_name' => 'getAuthorName',
+        'public_access_rules_enabled' => 'getPublicAccessRulesEnabled',
+        'name' => 'getName',
+        'campaign' => 'getCampaign',
+        'id' => 'getId',
+        'state' => 'getState',
         'updated' => 'getUpdated',
-        'publish_date' => 'getPublishDate'
+        'slug' => 'getSlug'
     ];
 
     /**
@@ -241,20 +241,20 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['state'] = $data['state'] ?? null;
-        $this->container['author_name'] = $data['author_name'] ?? null;
-        $this->container['password'] = $data['password'] ?? null;
-        $this->container['public_access_rules_enabled'] = $data['public_access_rules_enabled'] ?? null;
-        $this->container['public_access_rules'] = $data['public_access_rules'] ?? null;
-        $this->container['campaign'] = $data['campaign'] ?? null;
-        $this->container['tag_ids'] = $data['tag_ids'] ?? null;
         $this->container['archived_in_dashboard'] = $data['archived_in_dashboard'] ?? null;
         $this->container['created'] = $data['created'] ?? null;
-        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['tag_ids'] = $data['tag_ids'] ?? null;
         $this->container['publish_date'] = $data['publish_date'] ?? null;
+        $this->container['public_access_rules'] = $data['public_access_rules'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
+        $this->container['author_name'] = $data['author_name'] ?? null;
+        $this->container['public_access_rules_enabled'] = $data['public_access_rules_enabled'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['campaign'] = $data['campaign'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['state'] = $data['state'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
     }
 
     /**
@@ -266,44 +266,44 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['slug'] === null) {
-            $invalidProperties[] = "'slug' can't be null";
-        }
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
-        }
-        if ($this->container['author_name'] === null) {
-            $invalidProperties[] = "'author_name' can't be null";
-        }
-        if ($this->container['password'] === null) {
-            $invalidProperties[] = "'password' can't be null";
-        }
-        if ($this->container['public_access_rules_enabled'] === null) {
-            $invalidProperties[] = "'public_access_rules_enabled' can't be null";
-        }
-        if ($this->container['public_access_rules'] === null) {
-            $invalidProperties[] = "'public_access_rules' can't be null";
-        }
-        if ($this->container['campaign'] === null) {
-            $invalidProperties[] = "'campaign' can't be null";
-        }
         if ($this->container['archived_in_dashboard'] === null) {
             $invalidProperties[] = "'archived_in_dashboard' can't be null";
         }
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
         }
+        if ($this->container['publish_date'] === null) {
+            $invalidProperties[] = "'publish_date' can't be null";
+        }
+        if ($this->container['public_access_rules'] === null) {
+            $invalidProperties[] = "'public_access_rules' can't be null";
+        }
+        if ($this->container['password'] === null) {
+            $invalidProperties[] = "'password' can't be null";
+        }
+        if ($this->container['author_name'] === null) {
+            $invalidProperties[] = "'author_name' can't be null";
+        }
+        if ($this->container['public_access_rules_enabled'] === null) {
+            $invalidProperties[] = "'public_access_rules_enabled' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['campaign'] === null) {
+            $invalidProperties[] = "'campaign' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
         if ($this->container['updated'] === null) {
             $invalidProperties[] = "'updated' can't be null";
         }
-        if ($this->container['publish_date'] === null) {
-            $invalidProperties[] = "'publish_date' can't be null";
+        if ($this->container['slug'] === null) {
+            $invalidProperties[] = "'slug' can't be null";
         }
         return $invalidProperties;
     }
@@ -319,246 +319,6 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string $state state
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets author_name
-     *
-     * @return string
-     */
-    public function getAuthorName()
-    {
-        return $this->container['author_name'];
-    }
-
-    /**
-     * Sets author_name
-     *
-     * @param string $author_name author_name
-     *
-     * @return self
-     */
-    public function setAuthorName($author_name)
-    {
-        $this->container['author_name'] = $author_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->container['password'];
-    }
-
-    /**
-     * Sets password
-     *
-     * @param string $password password
-     *
-     * @return self
-     */
-    public function setPassword($password)
-    {
-        $this->container['password'] = $password;
-
-        return $this;
-    }
-
-    /**
-     * Gets public_access_rules_enabled
-     *
-     * @return bool
-     */
-    public function getPublicAccessRulesEnabled()
-    {
-        return $this->container['public_access_rules_enabled'];
-    }
-
-    /**
-     * Sets public_access_rules_enabled
-     *
-     * @param bool $public_access_rules_enabled public_access_rules_enabled
-     *
-     * @return self
-     */
-    public function setPublicAccessRulesEnabled($public_access_rules_enabled)
-    {
-        $this->container['public_access_rules_enabled'] = $public_access_rules_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets public_access_rules
-     *
-     * @return object[]
-     */
-    public function getPublicAccessRules()
-    {
-        return $this->container['public_access_rules'];
-    }
-
-    /**
-     * Sets public_access_rules
-     *
-     * @param object[] $public_access_rules public_access_rules
-     *
-     * @return self
-     */
-    public function setPublicAccessRules($public_access_rules)
-    {
-        $this->container['public_access_rules'] = $public_access_rules;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign
-     *
-     * @return string
-     */
-    public function getCampaign()
-    {
-        return $this->container['campaign'];
-    }
-
-    /**
-     * Sets campaign
-     *
-     * @param string $campaign campaign
-     *
-     * @return self
-     */
-    public function setCampaign($campaign)
-    {
-        $this->container['campaign'] = $campaign;
-
-        return $this;
-    }
-
-    /**
-     * Gets tag_ids
-     *
-     * @return int[]|null
-     */
-    public function getTagIds()
-    {
-        return $this->container['tag_ids'];
-    }
-
-    /**
-     * Sets tag_ids
-     *
-     * @param int[]|null $tag_ids tag_ids
-     *
-     * @return self
-     */
-    public function setTagIds($tag_ids)
-    {
-        $this->container['tag_ids'] = $tag_ids;
-
-        return $this;
-    }
 
     /**
      * Gets archived_in_dashboard
@@ -609,25 +369,25 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets updated
+     * Gets tag_ids
      *
-     * @return \DateTime
+     * @return int[]|null
      */
-    public function getUpdated()
+    public function getTagIds()
     {
-        return $this->container['updated'];
+        return $this->container['tag_ids'];
     }
 
     /**
-     * Sets updated
+     * Sets tag_ids
      *
-     * @param \DateTime $updated updated
+     * @param int[]|null $tag_ids tag_ids
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setTagIds($tag_ids)
     {
-        $this->container['updated'] = $updated;
+        $this->container['tag_ids'] = $tag_ids;
 
         return $this;
     }
@@ -652,6 +412,246 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPublishDate($publish_date)
     {
         $this->container['publish_date'] = $publish_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_access_rules
+     *
+     * @return object[]
+     */
+    public function getPublicAccessRules()
+    {
+        return $this->container['public_access_rules'];
+    }
+
+    /**
+     * Sets public_access_rules
+     *
+     * @param object[] $public_access_rules public_access_rules
+     *
+     * @return self
+     */
+    public function setPublicAccessRules($public_access_rules)
+    {
+        $this->container['public_access_rules'] = $public_access_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     *
+     * @param string $password password
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_name
+     *
+     * @return string
+     */
+    public function getAuthorName()
+    {
+        return $this->container['author_name'];
+    }
+
+    /**
+     * Sets author_name
+     *
+     * @param string $author_name author_name
+     *
+     * @return self
+     */
+    public function setAuthorName($author_name)
+    {
+        $this->container['author_name'] = $author_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_access_rules_enabled
+     *
+     * @return bool
+     */
+    public function getPublicAccessRulesEnabled()
+    {
+        return $this->container['public_access_rules_enabled'];
+    }
+
+    /**
+     * Sets public_access_rules_enabled
+     *
+     * @param bool $public_access_rules_enabled public_access_rules_enabled
+     *
+     * @return self
+     */
+    public function setPublicAccessRulesEnabled($public_access_rules_enabled)
+    {
+        $this->container['public_access_rules_enabled'] = $public_access_rules_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign
+     *
+     * @return string
+     */
+    public function getCampaign()
+    {
+        return $this->container['campaign'];
+    }
+
+    /**
+     * Sets campaign
+     *
+     * @param string $campaign campaign
+     *
+     * @return self
+     */
+    public function setCampaign($campaign)
+    {
+        $this->container['campaign'] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string $state state
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime $updated updated
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string $slug slug
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
 
         return $this;
     }

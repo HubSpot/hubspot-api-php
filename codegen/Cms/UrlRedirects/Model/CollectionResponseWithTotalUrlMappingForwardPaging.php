@@ -11,7 +11,7 @@
  */
 
 /**
- * URL redirects
+ * CMS Url Redirects
  *
  * URL redirect operations
  *
@@ -58,8 +58,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'results' => '\HubSpot\Client\Cms\UrlRedirects\Model\UrlMapping[]',
-        'paging' => '\HubSpot\Client\Cms\UrlRedirects\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Cms\UrlRedirects\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Cms\UrlRedirects\Model\UrlMapping[]'
     ];
 
     /**
@@ -71,8 +71,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
       */
     protected static $openAPIFormats = [
         'total' => 'int32',
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
      */
     protected static $attributeMap = [
         'total' => 'total',
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -114,8 +114,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
      */
     protected static $setters = [
         'total' => 'setTotal',
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -125,8 +125,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
      */
     protected static $getters = [
         'total' => 'getTotal',
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -187,8 +187,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
     public function __construct(array $data = null)
     {
         $this->container['total'] = $data['total'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -246,30 +246,6 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
     }
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\UrlRedirects\Model\UrlMapping[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\UrlRedirects\Model\UrlMapping[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Cms\UrlRedirects\Model\ForwardPaging|null
@@ -289,6 +265,30 @@ class CollectionResponseWithTotalUrlMappingForwardPaging implements ModelInterfa
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\UrlRedirects\Model\UrlMapping[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\UrlRedirects\Model\UrlMapping[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

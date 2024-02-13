@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -58,9 +58,9 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'path' => 'string',
-        'name' => 'string',
         'child_table_id' => 'int',
         'values' => 'array<string,object>',
+        'name' => 'string',
         'display_index' => 'int'
     ];
 
@@ -73,9 +73,9 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'path' => null,
-        'name' => null,
         'child_table_id' => 'int32',
         'values' => null,
+        'name' => null,
         'display_index' => 'int32'
     ];
 
@@ -107,9 +107,9 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'path' => 'path',
-        'name' => 'name',
         'child_table_id' => 'childTableId',
         'values' => 'values',
+        'name' => 'name',
         'display_index' => 'displayIndex'
     ];
 
@@ -120,9 +120,9 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'path' => 'setPath',
-        'name' => 'setName',
         'child_table_id' => 'setChildTableId',
         'values' => 'setValues',
+        'name' => 'setName',
         'display_index' => 'setDisplayIndex'
     ];
 
@@ -133,9 +133,9 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'path' => 'getPath',
-        'name' => 'getName',
         'child_table_id' => 'getChildTableId',
         'values' => 'getValues',
+        'name' => 'getName',
         'display_index' => 'getDisplayIndex'
     ];
 
@@ -197,9 +197,9 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['path'] = $data['path'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['child_table_id'] = $data['child_table_id'] ?? null;
         $this->container['values'] = $data['values'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['display_index'] = $data['display_index'] ?? null;
     }
 
@@ -255,30 +255,6 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets child_table_id
      *
      * @return int|null
@@ -322,6 +298,30 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
     public function setValues($values)
     {
         $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

@@ -122,14 +122,15 @@ class MetadataApi
      *
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
+     * @param  string $properties properties (optional)
      *
      * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata|\HubSpot\Client\Cms\SourceCode\Model\Error
      */
-    public function get($environment, $path)
+    public function get($environment, $path, $properties = null)
     {
-        list($response) = $this->getWithHttpInfo($environment, $path);
+        list($response) = $this->getWithHttpInfo($environment, $path, $properties);
         return $response;
     }
 
@@ -140,14 +141,15 @@ class MetadataApi
      *
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
+     * @param  string $properties (optional)
      *
      * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata|\HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWithHttpInfo($environment, $path)
+    public function getWithHttpInfo($environment, $path, $properties = null)
     {
-        $request = $this->getRequest($environment, $path);
+        $request = $this->getRequest($environment, $path, $properties);
 
         try {
             $options = $this->createHttpClientOption();
@@ -263,13 +265,14 @@ class MetadataApi
      *
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAsync($environment, $path)
+    public function getAsync($environment, $path, $properties = null)
     {
-        return $this->getAsyncWithHttpInfo($environment, $path)
+        return $this->getAsyncWithHttpInfo($environment, $path, $properties)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -284,14 +287,15 @@ class MetadataApi
      *
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAsyncWithHttpInfo($environment, $path)
+    public function getAsyncWithHttpInfo($environment, $path, $properties = null)
     {
         $returnType = '\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata';
-        $request = $this->getRequest($environment, $path);
+        $request = $this->getRequest($environment, $path, $properties);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -334,11 +338,12 @@ class MetadataApi
      *
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
+     * @param  string $properties (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRequest($environment, $path)
+    public function getRequest($environment, $path, $properties = null)
     {
         // verify the required parameter 'environment' is set
         if ($environment === null || (is_array($environment) && count($environment) === 0)) {
@@ -364,6 +369,15 @@ class MetadataApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,14 +58,14 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'id' => 'string',
-        'category' => 'object',
         'sub_category' => 'object',
+        'context' => 'array<string,string[]>',
+        'links' => 'array<string,string>',
+        'id' => 'string',
+        'category' => 'string',
         'message' => 'string',
         'errors' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ErrorDetail[]',
-        'context' => 'array<string,string[]>',
-        'links' => 'array<string,string>'
+        'status' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
+        'sub_category' => null,
+        'context' => null,
+        'links' => null,
         'id' => null,
         'category' => null,
-        'sub_category' => null,
         'message' => null,
         'errors' => null,
-        'context' => null,
-        'links' => null
+        'status' => null
     ];
 
     /**
@@ -113,14 +113,14 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
+        'sub_category' => 'subCategory',
+        'context' => 'context',
+        'links' => 'links',
         'id' => 'id',
         'category' => 'category',
-        'sub_category' => 'subCategory',
         'message' => 'message',
         'errors' => 'errors',
-        'context' => 'context',
-        'links' => 'links'
+        'status' => 'status'
     ];
 
     /**
@@ -129,14 +129,14 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
+        'sub_category' => 'setSubCategory',
+        'context' => 'setContext',
+        'links' => 'setLinks',
         'id' => 'setId',
         'category' => 'setCategory',
-        'sub_category' => 'setSubCategory',
         'message' => 'setMessage',
         'errors' => 'setErrors',
-        'context' => 'setContext',
-        'links' => 'setLinks'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -145,14 +145,14 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
+        'sub_category' => 'getSubCategory',
+        'context' => 'getContext',
+        'links' => 'getLinks',
         'id' => 'getId',
         'category' => 'getCategory',
-        'sub_category' => 'getSubCategory',
         'message' => 'getMessage',
         'errors' => 'getErrors',
-        'context' => 'getContext',
-        'links' => 'getLinks'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -212,14 +212,14 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
         $this->container['sub_category'] = $data['sub_category'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['category'] = $data['category'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -231,8 +231,11 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['context'] === null) {
+            $invalidProperties[] = "'context' can't be null";
+        }
+        if ($this->container['links'] === null) {
+            $invalidProperties[] = "'links' can't be null";
         }
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
@@ -243,11 +246,8 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['errors'] === null) {
             $invalidProperties[] = "'errors' can't be null";
         }
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['links'] === null) {
-            $invalidProperties[] = "'links' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -265,25 +265,73 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets status
+     * Gets sub_category
      *
-     * @return string
+     * @return object|null
      */
-    public function getStatus()
+    public function getSubCategory()
     {
-        return $this->container['status'];
+        return $this->container['sub_category'];
     }
 
     /**
-     * Sets status
+     * Sets sub_category
      *
-     * @param string $status Error status.
+     * @param object|null $sub_category Error subcategory.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setSubCategory($sub_category)
     {
-        $this->container['status'] = $status;
+        $this->container['sub_category'] = $sub_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return array<string,string[]>
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param array<string,string[]> $context Error context.
+     *
+     * @return self
+     */
+    public function setContext($context)
+    {
+        $this->container['context'] = $context;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return array<string,string>
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param array<string,string> $links Error links.
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
 
         return $this;
     }
@@ -315,7 +363,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category
      *
-     * @return object
+     * @return string
      */
     public function getCategory()
     {
@@ -325,37 +373,13 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category
      *
-     * @param object $category Model definition for an error category.
+     * @param string $category Error category.
      *
      * @return self
      */
     public function setCategory($category)
     {
         $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_category
-     *
-     * @return object|null
-     */
-    public function getSubCategory()
-    {
-        return $this->container['sub_category'];
-    }
-
-    /**
-     * Sets sub_category
-     *
-     * @param object|null $sub_category Error subcategory.
-     *
-     * @return self
-     */
-    public function setSubCategory($sub_category)
-    {
-        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }
@@ -409,49 +433,25 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets context
+     * Gets status
      *
-     * @return array<string,string[]>
+     * @return string
      */
-    public function getContext()
+    public function getStatus()
     {
-        return $this->container['context'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets context
+     * Sets status
      *
-     * @param array<string,string[]> $context Error context.
+     * @param string $status Error status.
      *
      * @return self
      */
-    public function setContext($context)
+    public function setStatus($status)
     {
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return array<string,string>
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param array<string,string> $links Error links.
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        $this->container['links'] = $links;
+        $this->container['status'] = $status;
 
         return $this;
     }

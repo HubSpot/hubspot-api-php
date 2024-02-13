@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,13 +57,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'correlation_id' => 'string',
-        'category' => 'string',
         'sub_category' => 'string',
-        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]',
         'context' => 'array<string,string[]>',
-        'links' => 'array<string,string>'
+        'correlation_id' => 'string',
+        'links' => 'array<string,string>',
+        'message' => 'string',
+        'category' => 'string',
+        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]'
     ];
 
     /**
@@ -74,13 +74,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'correlation_id' => 'uuid',
-        'category' => null,
         'sub_category' => null,
-        'errors' => null,
         'context' => null,
-        'links' => null
+        'correlation_id' => 'uuid',
+        'links' => null,
+        'message' => null,
+        'category' => null,
+        'errors' => null
     ];
 
     /**
@@ -110,13 +110,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'correlation_id' => 'correlationId',
-        'category' => 'category',
         'sub_category' => 'subCategory',
-        'errors' => 'errors',
         'context' => 'context',
-        'links' => 'links'
+        'correlation_id' => 'correlationId',
+        'links' => 'links',
+        'message' => 'message',
+        'category' => 'category',
+        'errors' => 'errors'
     ];
 
     /**
@@ -125,13 +125,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'correlation_id' => 'setCorrelationId',
-        'category' => 'setCategory',
         'sub_category' => 'setSubCategory',
-        'errors' => 'setErrors',
         'context' => 'setContext',
-        'links' => 'setLinks'
+        'correlation_id' => 'setCorrelationId',
+        'links' => 'setLinks',
+        'message' => 'setMessage',
+        'category' => 'setCategory',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -140,13 +140,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'correlation_id' => 'getCorrelationId',
-        'category' => 'getCategory',
         'sub_category' => 'getSubCategory',
-        'errors' => 'getErrors',
         'context' => 'getContext',
-        'links' => 'getLinks'
+        'correlation_id' => 'getCorrelationId',
+        'links' => 'getLinks',
+        'message' => 'getMessage',
+        'category' => 'getCategory',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -206,13 +206,13 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['correlation_id'] = $data['correlation_id'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
         $this->container['sub_category'] = $data['sub_category'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
+        $this->container['correlation_id'] = $data['correlation_id'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['category'] = $data['category'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
     }
 
     /**
@@ -224,11 +224,11 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
         if ($this->container['correlation_id'] === null) {
             $invalidProperties[] = "'correlation_id' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
@@ -247,78 +247,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets correlation_id
-     *
-     * @return string
-     */
-    public function getCorrelationId()
-    {
-        return $this->container['correlation_id'];
-    }
-
-    /**
-     * Sets correlation_id
-     *
-     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
-     *
-     * @return self
-     */
-    public function setCorrelationId($correlation_id)
-    {
-        $this->container['correlation_id'] = $correlation_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string $category The error category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        $this->container['category'] = $category;
-
-        return $this;
-    }
 
     /**
      * Gets sub_category
@@ -340,30 +268,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSubCategory($sub_category)
     {
         $this->container['sub_category'] = $sub_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null $errors further information about the error
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -393,6 +297,30 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets correlation_id
+     *
+     * @return string
+     */
+    public function getCorrelationId()
+    {
+        return $this->container['correlation_id'];
+    }
+
+    /**
+     * Sets correlation_id
+     *
+     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
+     *
+     * @return self
+     */
+    public function setCorrelationId($correlation_id)
+    {
+        $this->container['correlation_id'] = $correlation_id;
+
+        return $this;
+    }
+
+    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -412,6 +340,78 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param string $category The error category
+     *
+     * @return self
+     */
+    public function setCategory($category)
+    {
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null $errors further information about the error
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
 
         return $this;
     }

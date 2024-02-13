@@ -11,7 +11,7 @@
  */
 
 /**
- * CMS Audit Logs
+ * Cms Content Audit
  *
  * Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.
  *
@@ -58,8 +58,8 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Cms\AuditLogs\Model\PublicAuditLog[]',
-        'paging' => '\HubSpot\Client\Cms\AuditLogs\Model\Paging'
+        'paging' => '\HubSpot\Client\Cms\AuditLogs\Model\Paging',
+        'results' => '\HubSpot\Client\Cms\AuditLogs\Model\PublicAuditLog[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -111,8 +111,8 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -121,8 +121,8 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -182,8 +182,8 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -214,30 +214,6 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\AuditLogs\Model\PublicAuditLog[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\AuditLogs\Model\PublicAuditLog[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Cms\AuditLogs\Model\Paging|null
@@ -257,6 +233,30 @@ class CollectionResponsePublicAuditLog implements ModelInterface, ArrayAccess, \
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\AuditLogs\Model\PublicAuditLog[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\AuditLogs\Model\PublicAuditLog[] $results 
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,67 +58,67 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'publish_date' => '\DateTime',
+        'language' => 'string',
+        'enable_layout_stylesheets' => 'bool',
+        'meta_description' => 'string',
+        'attached_stylesheets' => 'array<string,object>[]',
+        'password' => 'string',
+        'html_title' => 'string',
+        'publish_immediately' => 'bool',
+        'translations' => 'array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation>',
         'id' => 'string',
-        'slug' => 'string',
-        'content_group_id' => 'string',
-        'campaign' => 'string',
-        'category_id' => 'int',
         'state' => 'string',
-        'name' => 'string',
-        'mab_experiment_id' => 'string',
-        'archived' => 'bool',
-        'author_name' => 'string',
-        'ab_test_id' => 'string',
+        'slug' => 'string',
         'created_by_id' => 'string',
+        'rss_body' => 'string',
+        'currently_published' => 'bool',
+        'archived_in_dashboard' => 'bool',
+        'created' => '\DateTime',
+        'content_type_category' => 'string',
+        'mab_experiment_id' => 'string',
         'updated_by_id' => 'string',
-        'domain' => 'string',
-        'ab_status' => 'string',
+        'translated_from_id' => 'string',
         'folder_id' => 'string',
         'widget_containers' => 'array<string,object>',
-        'widgets' => 'array<string,object>',
-        'language' => 'string',
-        'translated_from_id' => 'string',
-        'translations' => 'array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation>',
-        'dynamic_page_data_source_type' => 'int',
-        'dynamic_page_data_source_id' => 'string',
-        'blog_author_id' => 'string',
-        'tag_ids' => 'int[]',
-        'html_title' => 'string',
-        'enable_google_amp_output_override' => 'bool',
-        'use_featured_image' => 'bool',
-        'post_body' => 'string',
-        'post_summary' => 'string',
-        'rss_body' => 'string',
-        'rss_summary' => 'string',
-        'currently_published' => 'bool',
-        'page_expiry_enabled' => 'bool',
         'page_expiry_redirect_id' => 'int',
-        'page_expiry_redirect_url' => 'string',
-        'page_expiry_date' => 'int',
-        'include_default_custom_css' => 'bool',
-        'enable_layout_stylesheets' => 'bool',
-        'enable_domain_stylesheets' => 'bool',
-        'publish_immediately' => 'bool',
+        'dynamic_page_data_source_type' => 'int',
         'featured_image' => 'string',
-        'featured_image_alt_text' => 'string',
-        'link_rel_canonical_url' => 'string',
-        'content_type_category' => 'string',
-        'attached_stylesheets' => 'array<string,object>[]',
-        'meta_description' => 'string',
-        'head_html' => 'string',
-        'footer_html' => 'string',
-        'archived_in_dashboard' => 'bool',
-        'public_access_rules_enabled' => 'bool',
-        'public_access_rules' => 'object[]',
+        'author_name' => 'string',
+        'domain' => 'string',
+        'name' => 'string',
+        'dynamic_page_hub_db_table_id' => 'string',
+        'campaign' => 'string',
+        'dynamic_page_data_source_id' => 'string',
+        'enable_domain_stylesheets' => 'bool',
+        'include_default_custom_css' => 'bool',
         'layout_sections' => 'array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>',
-        'theme_settings_values' => 'array<string,object>',
-        'url' => 'string',
-        'password' => 'string',
-        'current_state' => 'string',
-        'publish_date' => '\DateTime',
-        'created' => '\DateTime',
         'updated' => '\DateTime',
-        'deleted_at' => '\DateTime'
+        'footer_html' => 'string',
+        'tag_ids' => 'int[]',
+        'widgets' => 'array<string,object>',
+        'post_summary' => 'string',
+        'head_html' => 'string',
+        'page_expiry_redirect_url' => 'string',
+        'ab_status' => 'string',
+        'use_featured_image' => 'bool',
+        'ab_test_id' => 'string',
+        'featured_image_alt_text' => 'string',
+        'blog_author_id' => 'string',
+        'content_group_id' => 'string',
+        'rss_summary' => 'string',
+        'page_expiry_enabled' => 'bool',
+        'url' => 'string',
+        'public_access_rules' => 'object[]',
+        'enable_google_amp_output_override' => 'bool',
+        'archived_at' => 'int',
+        'post_body' => 'string',
+        'theme_settings_values' => 'array<string,object>',
+        'page_expiry_date' => 'int',
+        'public_access_rules_enabled' => 'bool',
+        'current_state' => 'string',
+        'category_id' => 'int',
+        'link_rel_canonical_url' => 'string'
     ];
 
     /**
@@ -129,67 +129,67 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'publish_date' => 'date-time',
+        'language' => null,
+        'enable_layout_stylesheets' => null,
+        'meta_description' => null,
+        'attached_stylesheets' => null,
+        'password' => null,
+        'html_title' => null,
+        'publish_immediately' => null,
+        'translations' => null,
         'id' => null,
-        'slug' => null,
-        'content_group_id' => null,
-        'campaign' => null,
-        'category_id' => 'int32',
         'state' => null,
-        'name' => null,
-        'mab_experiment_id' => null,
-        'archived' => null,
-        'author_name' => null,
-        'ab_test_id' => null,
+        'slug' => null,
         'created_by_id' => null,
+        'rss_body' => null,
+        'currently_published' => null,
+        'archived_in_dashboard' => null,
+        'created' => 'date-time',
+        'content_type_category' => null,
+        'mab_experiment_id' => null,
         'updated_by_id' => null,
-        'domain' => null,
-        'ab_status' => null,
+        'translated_from_id' => null,
         'folder_id' => null,
         'widget_containers' => null,
-        'widgets' => null,
-        'language' => null,
-        'translated_from_id' => null,
-        'translations' => null,
-        'dynamic_page_data_source_type' => 'int32',
-        'dynamic_page_data_source_id' => null,
-        'blog_author_id' => null,
-        'tag_ids' => 'int64',
-        'html_title' => null,
-        'enable_google_amp_output_override' => null,
-        'use_featured_image' => null,
-        'post_body' => null,
-        'post_summary' => null,
-        'rss_body' => null,
-        'rss_summary' => null,
-        'currently_published' => null,
-        'page_expiry_enabled' => null,
         'page_expiry_redirect_id' => 'int64',
-        'page_expiry_redirect_url' => null,
-        'page_expiry_date' => 'int64',
-        'include_default_custom_css' => null,
-        'enable_layout_stylesheets' => null,
-        'enable_domain_stylesheets' => null,
-        'publish_immediately' => null,
+        'dynamic_page_data_source_type' => 'int32',
         'featured_image' => null,
-        'featured_image_alt_text' => null,
-        'link_rel_canonical_url' => null,
-        'content_type_category' => null,
-        'attached_stylesheets' => null,
-        'meta_description' => null,
-        'head_html' => null,
-        'footer_html' => null,
-        'archived_in_dashboard' => null,
-        'public_access_rules_enabled' => null,
-        'public_access_rules' => null,
+        'author_name' => null,
+        'domain' => null,
+        'name' => null,
+        'dynamic_page_hub_db_table_id' => null,
+        'campaign' => null,
+        'dynamic_page_data_source_id' => null,
+        'enable_domain_stylesheets' => null,
+        'include_default_custom_css' => null,
         'layout_sections' => null,
-        'theme_settings_values' => null,
-        'url' => null,
-        'password' => null,
-        'current_state' => null,
-        'publish_date' => 'date-time',
-        'created' => 'date-time',
         'updated' => 'date-time',
-        'deleted_at' => 'date-time'
+        'footer_html' => null,
+        'tag_ids' => 'int64',
+        'widgets' => null,
+        'post_summary' => null,
+        'head_html' => null,
+        'page_expiry_redirect_url' => null,
+        'ab_status' => null,
+        'use_featured_image' => null,
+        'ab_test_id' => null,
+        'featured_image_alt_text' => null,
+        'blog_author_id' => null,
+        'content_group_id' => null,
+        'rss_summary' => null,
+        'page_expiry_enabled' => null,
+        'url' => null,
+        'public_access_rules' => null,
+        'enable_google_amp_output_override' => null,
+        'archived_at' => 'int64',
+        'post_body' => null,
+        'theme_settings_values' => null,
+        'page_expiry_date' => 'int64',
+        'public_access_rules_enabled' => null,
+        'current_state' => null,
+        'category_id' => 'int32',
+        'link_rel_canonical_url' => null
     ];
 
     /**
@@ -219,67 +219,67 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'publish_date' => 'publishDate',
+        'language' => 'language',
+        'enable_layout_stylesheets' => 'enableLayoutStylesheets',
+        'meta_description' => 'metaDescription',
+        'attached_stylesheets' => 'attachedStylesheets',
+        'password' => 'password',
+        'html_title' => 'htmlTitle',
+        'publish_immediately' => 'publishImmediately',
+        'translations' => 'translations',
         'id' => 'id',
-        'slug' => 'slug',
-        'content_group_id' => 'contentGroupId',
-        'campaign' => 'campaign',
-        'category_id' => 'categoryId',
         'state' => 'state',
-        'name' => 'name',
-        'mab_experiment_id' => 'mabExperimentId',
-        'archived' => 'archived',
-        'author_name' => 'authorName',
-        'ab_test_id' => 'abTestId',
+        'slug' => 'slug',
         'created_by_id' => 'createdById',
+        'rss_body' => 'rssBody',
+        'currently_published' => 'currentlyPublished',
+        'archived_in_dashboard' => 'archivedInDashboard',
+        'created' => 'created',
+        'content_type_category' => 'contentTypeCategory',
+        'mab_experiment_id' => 'mabExperimentId',
         'updated_by_id' => 'updatedById',
-        'domain' => 'domain',
-        'ab_status' => 'abStatus',
+        'translated_from_id' => 'translatedFromId',
         'folder_id' => 'folderId',
         'widget_containers' => 'widgetContainers',
-        'widgets' => 'widgets',
-        'language' => 'language',
-        'translated_from_id' => 'translatedFromId',
-        'translations' => 'translations',
-        'dynamic_page_data_source_type' => 'dynamicPageDataSourceType',
-        'dynamic_page_data_source_id' => 'dynamicPageDataSourceId',
-        'blog_author_id' => 'blogAuthorId',
-        'tag_ids' => 'tagIds',
-        'html_title' => 'htmlTitle',
-        'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
-        'use_featured_image' => 'useFeaturedImage',
-        'post_body' => 'postBody',
-        'post_summary' => 'postSummary',
-        'rss_body' => 'rssBody',
-        'rss_summary' => 'rssSummary',
-        'currently_published' => 'currentlyPublished',
-        'page_expiry_enabled' => 'pageExpiryEnabled',
         'page_expiry_redirect_id' => 'pageExpiryRedirectId',
-        'page_expiry_redirect_url' => 'pageExpiryRedirectUrl',
-        'page_expiry_date' => 'pageExpiryDate',
-        'include_default_custom_css' => 'includeDefaultCustomCss',
-        'enable_layout_stylesheets' => 'enableLayoutStylesheets',
-        'enable_domain_stylesheets' => 'enableDomainStylesheets',
-        'publish_immediately' => 'publishImmediately',
+        'dynamic_page_data_source_type' => 'dynamicPageDataSourceType',
         'featured_image' => 'featuredImage',
-        'featured_image_alt_text' => 'featuredImageAltText',
-        'link_rel_canonical_url' => 'linkRelCanonicalUrl',
-        'content_type_category' => 'contentTypeCategory',
-        'attached_stylesheets' => 'attachedStylesheets',
-        'meta_description' => 'metaDescription',
-        'head_html' => 'headHtml',
-        'footer_html' => 'footerHtml',
-        'archived_in_dashboard' => 'archivedInDashboard',
-        'public_access_rules_enabled' => 'publicAccessRulesEnabled',
-        'public_access_rules' => 'publicAccessRules',
+        'author_name' => 'authorName',
+        'domain' => 'domain',
+        'name' => 'name',
+        'dynamic_page_hub_db_table_id' => 'dynamicPageHubDbTableId',
+        'campaign' => 'campaign',
+        'dynamic_page_data_source_id' => 'dynamicPageDataSourceId',
+        'enable_domain_stylesheets' => 'enableDomainStylesheets',
+        'include_default_custom_css' => 'includeDefaultCustomCss',
         'layout_sections' => 'layoutSections',
-        'theme_settings_values' => 'themeSettingsValues',
-        'url' => 'url',
-        'password' => 'password',
-        'current_state' => 'currentState',
-        'publish_date' => 'publishDate',
-        'created' => 'created',
         'updated' => 'updated',
-        'deleted_at' => 'deletedAt'
+        'footer_html' => 'footerHtml',
+        'tag_ids' => 'tagIds',
+        'widgets' => 'widgets',
+        'post_summary' => 'postSummary',
+        'head_html' => 'headHtml',
+        'page_expiry_redirect_url' => 'pageExpiryRedirectUrl',
+        'ab_status' => 'abStatus',
+        'use_featured_image' => 'useFeaturedImage',
+        'ab_test_id' => 'abTestId',
+        'featured_image_alt_text' => 'featuredImageAltText',
+        'blog_author_id' => 'blogAuthorId',
+        'content_group_id' => 'contentGroupId',
+        'rss_summary' => 'rssSummary',
+        'page_expiry_enabled' => 'pageExpiryEnabled',
+        'url' => 'url',
+        'public_access_rules' => 'publicAccessRules',
+        'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
+        'archived_at' => 'archivedAt',
+        'post_body' => 'postBody',
+        'theme_settings_values' => 'themeSettingsValues',
+        'page_expiry_date' => 'pageExpiryDate',
+        'public_access_rules_enabled' => 'publicAccessRulesEnabled',
+        'current_state' => 'currentState',
+        'category_id' => 'categoryId',
+        'link_rel_canonical_url' => 'linkRelCanonicalUrl'
     ];
 
     /**
@@ -288,67 +288,67 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'publish_date' => 'setPublishDate',
+        'language' => 'setLanguage',
+        'enable_layout_stylesheets' => 'setEnableLayoutStylesheets',
+        'meta_description' => 'setMetaDescription',
+        'attached_stylesheets' => 'setAttachedStylesheets',
+        'password' => 'setPassword',
+        'html_title' => 'setHtmlTitle',
+        'publish_immediately' => 'setPublishImmediately',
+        'translations' => 'setTranslations',
         'id' => 'setId',
-        'slug' => 'setSlug',
-        'content_group_id' => 'setContentGroupId',
-        'campaign' => 'setCampaign',
-        'category_id' => 'setCategoryId',
         'state' => 'setState',
-        'name' => 'setName',
-        'mab_experiment_id' => 'setMabExperimentId',
-        'archived' => 'setArchived',
-        'author_name' => 'setAuthorName',
-        'ab_test_id' => 'setAbTestId',
+        'slug' => 'setSlug',
         'created_by_id' => 'setCreatedById',
+        'rss_body' => 'setRssBody',
+        'currently_published' => 'setCurrentlyPublished',
+        'archived_in_dashboard' => 'setArchivedInDashboard',
+        'created' => 'setCreated',
+        'content_type_category' => 'setContentTypeCategory',
+        'mab_experiment_id' => 'setMabExperimentId',
         'updated_by_id' => 'setUpdatedById',
-        'domain' => 'setDomain',
-        'ab_status' => 'setAbStatus',
+        'translated_from_id' => 'setTranslatedFromId',
         'folder_id' => 'setFolderId',
         'widget_containers' => 'setWidgetContainers',
-        'widgets' => 'setWidgets',
-        'language' => 'setLanguage',
-        'translated_from_id' => 'setTranslatedFromId',
-        'translations' => 'setTranslations',
-        'dynamic_page_data_source_type' => 'setDynamicPageDataSourceType',
-        'dynamic_page_data_source_id' => 'setDynamicPageDataSourceId',
-        'blog_author_id' => 'setBlogAuthorId',
-        'tag_ids' => 'setTagIds',
-        'html_title' => 'setHtmlTitle',
-        'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
-        'use_featured_image' => 'setUseFeaturedImage',
-        'post_body' => 'setPostBody',
-        'post_summary' => 'setPostSummary',
-        'rss_body' => 'setRssBody',
-        'rss_summary' => 'setRssSummary',
-        'currently_published' => 'setCurrentlyPublished',
-        'page_expiry_enabled' => 'setPageExpiryEnabled',
         'page_expiry_redirect_id' => 'setPageExpiryRedirectId',
-        'page_expiry_redirect_url' => 'setPageExpiryRedirectUrl',
-        'page_expiry_date' => 'setPageExpiryDate',
-        'include_default_custom_css' => 'setIncludeDefaultCustomCss',
-        'enable_layout_stylesheets' => 'setEnableLayoutStylesheets',
-        'enable_domain_stylesheets' => 'setEnableDomainStylesheets',
-        'publish_immediately' => 'setPublishImmediately',
+        'dynamic_page_data_source_type' => 'setDynamicPageDataSourceType',
         'featured_image' => 'setFeaturedImage',
-        'featured_image_alt_text' => 'setFeaturedImageAltText',
-        'link_rel_canonical_url' => 'setLinkRelCanonicalUrl',
-        'content_type_category' => 'setContentTypeCategory',
-        'attached_stylesheets' => 'setAttachedStylesheets',
-        'meta_description' => 'setMetaDescription',
-        'head_html' => 'setHeadHtml',
-        'footer_html' => 'setFooterHtml',
-        'archived_in_dashboard' => 'setArchivedInDashboard',
-        'public_access_rules_enabled' => 'setPublicAccessRulesEnabled',
-        'public_access_rules' => 'setPublicAccessRules',
+        'author_name' => 'setAuthorName',
+        'domain' => 'setDomain',
+        'name' => 'setName',
+        'dynamic_page_hub_db_table_id' => 'setDynamicPageHubDbTableId',
+        'campaign' => 'setCampaign',
+        'dynamic_page_data_source_id' => 'setDynamicPageDataSourceId',
+        'enable_domain_stylesheets' => 'setEnableDomainStylesheets',
+        'include_default_custom_css' => 'setIncludeDefaultCustomCss',
         'layout_sections' => 'setLayoutSections',
-        'theme_settings_values' => 'setThemeSettingsValues',
-        'url' => 'setUrl',
-        'password' => 'setPassword',
-        'current_state' => 'setCurrentState',
-        'publish_date' => 'setPublishDate',
-        'created' => 'setCreated',
         'updated' => 'setUpdated',
-        'deleted_at' => 'setDeletedAt'
+        'footer_html' => 'setFooterHtml',
+        'tag_ids' => 'setTagIds',
+        'widgets' => 'setWidgets',
+        'post_summary' => 'setPostSummary',
+        'head_html' => 'setHeadHtml',
+        'page_expiry_redirect_url' => 'setPageExpiryRedirectUrl',
+        'ab_status' => 'setAbStatus',
+        'use_featured_image' => 'setUseFeaturedImage',
+        'ab_test_id' => 'setAbTestId',
+        'featured_image_alt_text' => 'setFeaturedImageAltText',
+        'blog_author_id' => 'setBlogAuthorId',
+        'content_group_id' => 'setContentGroupId',
+        'rss_summary' => 'setRssSummary',
+        'page_expiry_enabled' => 'setPageExpiryEnabled',
+        'url' => 'setUrl',
+        'public_access_rules' => 'setPublicAccessRules',
+        'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
+        'archived_at' => 'setArchivedAt',
+        'post_body' => 'setPostBody',
+        'theme_settings_values' => 'setThemeSettingsValues',
+        'page_expiry_date' => 'setPageExpiryDate',
+        'public_access_rules_enabled' => 'setPublicAccessRulesEnabled',
+        'current_state' => 'setCurrentState',
+        'category_id' => 'setCategoryId',
+        'link_rel_canonical_url' => 'setLinkRelCanonicalUrl'
     ];
 
     /**
@@ -357,67 +357,67 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'publish_date' => 'getPublishDate',
+        'language' => 'getLanguage',
+        'enable_layout_stylesheets' => 'getEnableLayoutStylesheets',
+        'meta_description' => 'getMetaDescription',
+        'attached_stylesheets' => 'getAttachedStylesheets',
+        'password' => 'getPassword',
+        'html_title' => 'getHtmlTitle',
+        'publish_immediately' => 'getPublishImmediately',
+        'translations' => 'getTranslations',
         'id' => 'getId',
-        'slug' => 'getSlug',
-        'content_group_id' => 'getContentGroupId',
-        'campaign' => 'getCampaign',
-        'category_id' => 'getCategoryId',
         'state' => 'getState',
-        'name' => 'getName',
-        'mab_experiment_id' => 'getMabExperimentId',
-        'archived' => 'getArchived',
-        'author_name' => 'getAuthorName',
-        'ab_test_id' => 'getAbTestId',
+        'slug' => 'getSlug',
         'created_by_id' => 'getCreatedById',
+        'rss_body' => 'getRssBody',
+        'currently_published' => 'getCurrentlyPublished',
+        'archived_in_dashboard' => 'getArchivedInDashboard',
+        'created' => 'getCreated',
+        'content_type_category' => 'getContentTypeCategory',
+        'mab_experiment_id' => 'getMabExperimentId',
         'updated_by_id' => 'getUpdatedById',
-        'domain' => 'getDomain',
-        'ab_status' => 'getAbStatus',
+        'translated_from_id' => 'getTranslatedFromId',
         'folder_id' => 'getFolderId',
         'widget_containers' => 'getWidgetContainers',
-        'widgets' => 'getWidgets',
-        'language' => 'getLanguage',
-        'translated_from_id' => 'getTranslatedFromId',
-        'translations' => 'getTranslations',
-        'dynamic_page_data_source_type' => 'getDynamicPageDataSourceType',
-        'dynamic_page_data_source_id' => 'getDynamicPageDataSourceId',
-        'blog_author_id' => 'getBlogAuthorId',
-        'tag_ids' => 'getTagIds',
-        'html_title' => 'getHtmlTitle',
-        'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
-        'use_featured_image' => 'getUseFeaturedImage',
-        'post_body' => 'getPostBody',
-        'post_summary' => 'getPostSummary',
-        'rss_body' => 'getRssBody',
-        'rss_summary' => 'getRssSummary',
-        'currently_published' => 'getCurrentlyPublished',
-        'page_expiry_enabled' => 'getPageExpiryEnabled',
         'page_expiry_redirect_id' => 'getPageExpiryRedirectId',
-        'page_expiry_redirect_url' => 'getPageExpiryRedirectUrl',
-        'page_expiry_date' => 'getPageExpiryDate',
-        'include_default_custom_css' => 'getIncludeDefaultCustomCss',
-        'enable_layout_stylesheets' => 'getEnableLayoutStylesheets',
-        'enable_domain_stylesheets' => 'getEnableDomainStylesheets',
-        'publish_immediately' => 'getPublishImmediately',
+        'dynamic_page_data_source_type' => 'getDynamicPageDataSourceType',
         'featured_image' => 'getFeaturedImage',
-        'featured_image_alt_text' => 'getFeaturedImageAltText',
-        'link_rel_canonical_url' => 'getLinkRelCanonicalUrl',
-        'content_type_category' => 'getContentTypeCategory',
-        'attached_stylesheets' => 'getAttachedStylesheets',
-        'meta_description' => 'getMetaDescription',
-        'head_html' => 'getHeadHtml',
-        'footer_html' => 'getFooterHtml',
-        'archived_in_dashboard' => 'getArchivedInDashboard',
-        'public_access_rules_enabled' => 'getPublicAccessRulesEnabled',
-        'public_access_rules' => 'getPublicAccessRules',
+        'author_name' => 'getAuthorName',
+        'domain' => 'getDomain',
+        'name' => 'getName',
+        'dynamic_page_hub_db_table_id' => 'getDynamicPageHubDbTableId',
+        'campaign' => 'getCampaign',
+        'dynamic_page_data_source_id' => 'getDynamicPageDataSourceId',
+        'enable_domain_stylesheets' => 'getEnableDomainStylesheets',
+        'include_default_custom_css' => 'getIncludeDefaultCustomCss',
         'layout_sections' => 'getLayoutSections',
-        'theme_settings_values' => 'getThemeSettingsValues',
-        'url' => 'getUrl',
-        'password' => 'getPassword',
-        'current_state' => 'getCurrentState',
-        'publish_date' => 'getPublishDate',
-        'created' => 'getCreated',
         'updated' => 'getUpdated',
-        'deleted_at' => 'getDeletedAt'
+        'footer_html' => 'getFooterHtml',
+        'tag_ids' => 'getTagIds',
+        'widgets' => 'getWidgets',
+        'post_summary' => 'getPostSummary',
+        'head_html' => 'getHeadHtml',
+        'page_expiry_redirect_url' => 'getPageExpiryRedirectUrl',
+        'ab_status' => 'getAbStatus',
+        'use_featured_image' => 'getUseFeaturedImage',
+        'ab_test_id' => 'getAbTestId',
+        'featured_image_alt_text' => 'getFeaturedImageAltText',
+        'blog_author_id' => 'getBlogAuthorId',
+        'content_group_id' => 'getContentGroupId',
+        'rss_summary' => 'getRssSummary',
+        'page_expiry_enabled' => 'getPageExpiryEnabled',
+        'url' => 'getUrl',
+        'public_access_rules' => 'getPublicAccessRules',
+        'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
+        'archived_at' => 'getArchivedAt',
+        'post_body' => 'getPostBody',
+        'theme_settings_values' => 'getThemeSettingsValues',
+        'page_expiry_date' => 'getPageExpiryDate',
+        'public_access_rules_enabled' => 'getPublicAccessRulesEnabled',
+        'current_state' => 'getCurrentState',
+        'category_id' => 'getCategoryId',
+        'link_rel_canonical_url' => 'getLinkRelCanonicalUrl'
     ];
 
     /**
@@ -461,14 +461,6 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const AB_STATUS_MASTER = 'master';
-    public const AB_STATUS_VARIANT = 'variant';
-    public const AB_STATUS_LOSER_VARIANT = 'loser_variant';
-    public const AB_STATUS_MAB_MASTER = 'mab_master';
-    public const AB_STATUS_MAB_VARIANT = 'mab_variant';
-    public const AB_STATUS_AUTOMATED_MASTER = 'automated_master';
-    public const AB_STATUS_AUTOMATED_VARIANT = 'automated_variant';
-    public const AB_STATUS_AUTOMATED_LOSER_VARIANT = 'automated_loser_variant';
     public const LANGUAGE_AF = 'af';
     public const LANGUAGE_AF_NA = 'af-na';
     public const LANGUAGE_AF_ZA = 'af-za';
@@ -549,6 +541,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_CCP_IN = 'ccp-in';
     public const LANGUAGE_CE = 'ce';
     public const LANGUAGE_CE_RU = 'ce-ru';
+    public const LANGUAGE_CEB = 'ceb';
+    public const LANGUAGE_CEB_PH = 'ceb-ph';
     public const LANGUAGE_CGG = 'cgg';
     public const LANGUAGE_CGG_UG = 'cgg-ug';
     public const LANGUAGE_CHR = 'chr';
@@ -578,6 +572,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_DE_LU = 'de-lu';
     public const LANGUAGE_DJE = 'dje';
     public const LANGUAGE_DJE_NE = 'dje-ne';
+    public const LANGUAGE_DOI = 'doi';
+    public const LANGUAGE_DOI_IN = 'doi-in';
     public const LANGUAGE_DSB = 'dsb';
     public const LANGUAGE_DSB_DE = 'dsb-de';
     public const LANGUAGE_DUA = 'dua';
@@ -615,6 +611,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_CH = 'en-ch';
     public const LANGUAGE_EN_CK = 'en-ck';
     public const LANGUAGE_EN_CM = 'en-cm';
+    public const LANGUAGE_EN_CN = 'en-cn';
     public const LANGUAGE_EN_CX = 'en-cx';
     public const LANGUAGE_EN_CY = 'en-cy';
     public const LANGUAGE_EN_DE = 'en-de';
@@ -658,6 +655,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_MT = 'en-mt';
     public const LANGUAGE_EN_MU = 'en-mu';
     public const LANGUAGE_EN_MW = 'en-mw';
+    public const LANGUAGE_EN_MX = 'en-mx';
     public const LANGUAGE_EN_MY = 'en-my';
     public const LANGUAGE_EN_NA = 'en-na';
     public const LANGUAGE_EN_NF = 'en-nf';
@@ -742,9 +740,17 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FA_AF = 'fa-af';
     public const LANGUAGE_FA_IR = 'fa-ir';
     public const LANGUAGE_FF = 'ff';
+    public const LANGUAGE_FF_BF = 'ff-bf';
     public const LANGUAGE_FF_CM = 'ff-cm';
+    public const LANGUAGE_FF_GH = 'ff-gh';
+    public const LANGUAGE_FF_GM = 'ff-gm';
     public const LANGUAGE_FF_GN = 'ff-gn';
+    public const LANGUAGE_FF_GW = 'ff-gw';
+    public const LANGUAGE_FF_LR = 'ff-lr';
     public const LANGUAGE_FF_MR = 'ff-mr';
+    public const LANGUAGE_FF_NE = 'ff-ne';
+    public const LANGUAGE_FF_NG = 'ff-ng';
+    public const LANGUAGE_FF_SL = 'ff-sl';
     public const LANGUAGE_FF_SN = 'ff-sn';
     public const LANGUAGE_FI = 'fi';
     public const LANGUAGE_FI_FI = 'fi-fi';
@@ -805,6 +811,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FY = 'fy';
     public const LANGUAGE_FY_NL = 'fy-nl';
     public const LANGUAGE_GA = 'ga';
+    public const LANGUAGE_GA_GB = 'ga-gb';
     public const LANGUAGE_GA_IE = 'ga-ie';
     public const LANGUAGE_GD = 'gd';
     public const LANGUAGE_GD_GB = 'gd-gb';
@@ -838,6 +845,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_HU_HU = 'hu-hu';
     public const LANGUAGE_HY = 'hy';
     public const LANGUAGE_HY_AM = 'hy-am';
+    public const LANGUAGE_IA = 'ia';
+    public const LANGUAGE_IA_001 = 'ia-001';
     public const LANGUAGE_ID = 'id';
     public const LANGUAGE_IG = 'ig';
     public const LANGUAGE_IG_NG = 'ig-ng';
@@ -860,6 +869,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_YI_001 = 'yi-001';
     public const LANGUAGE_JMC = 'jmc';
     public const LANGUAGE_JMC_TZ = 'jmc-tz';
+    public const LANGUAGE_JV = 'jv';
+    public const LANGUAGE_JV_ID = 'jv-id';
     public const LANGUAGE_KA = 'ka';
     public const LANGUAGE_KA_GE = 'ka-ge';
     public const LANGUAGE_KAB = 'kab';
@@ -901,6 +912,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_KSH_DE = 'ksh-de';
     public const LANGUAGE_KW = 'kw';
     public const LANGUAGE_KW_GB = 'kw-gb';
+    public const LANGUAGE_KU = 'ku';
+    public const LANGUAGE_KU_TR = 'ku-tr';
     public const LANGUAGE_KY = 'ky';
     public const LANGUAGE_KY_KG = 'ky-kg';
     public const LANGUAGE_LAG = 'lag';
@@ -931,6 +944,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_LUY_KE = 'luy-ke';
     public const LANGUAGE_LV = 'lv';
     public const LANGUAGE_LV_LV = 'lv-lv';
+    public const LANGUAGE_MAI = 'mai';
+    public const LANGUAGE_MAI_IN = 'mai-in';
     public const LANGUAGE_MAS = 'mas';
     public const LANGUAGE_MAS_KE = 'mas-ke';
     public const LANGUAGE_MAS_TZ = 'mas-tz';
@@ -944,16 +959,21 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_MGH_MZ = 'mgh-mz';
     public const LANGUAGE_MGO = 'mgo';
     public const LANGUAGE_MGO_CM = 'mgo-cm';
+    public const LANGUAGE_MI = 'mi';
+    public const LANGUAGE_MI_NZ = 'mi-nz';
     public const LANGUAGE_MK = 'mk';
     public const LANGUAGE_MK_MK = 'mk-mk';
     public const LANGUAGE_ML = 'ml';
     public const LANGUAGE_ML_IN = 'ml-in';
     public const LANGUAGE_MN = 'mn';
     public const LANGUAGE_MN_MN = 'mn-mn';
+    public const LANGUAGE_MNI = 'mni';
+    public const LANGUAGE_MNI_IN = 'mni-in';
     public const LANGUAGE_MR = 'mr';
     public const LANGUAGE_MR_IN = 'mr-in';
     public const LANGUAGE_MS = 'ms';
     public const LANGUAGE_MS_BN = 'ms-bn';
+    public const LANGUAGE_MS_ID = 'ms-id';
     public const LANGUAGE_MS_MY = 'ms-my';
     public const LANGUAGE_MS_SG = 'ms-sg';
     public const LANGUAGE_MT = 'mt';
@@ -1010,12 +1030,15 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_PA = 'pa';
     public const LANGUAGE_PA_IN = 'pa-in';
     public const LANGUAGE_PA_PK = 'pa-pk';
+    public const LANGUAGE_PCM = 'pcm';
+    public const LANGUAGE_PCM_NG = 'pcm-ng';
     public const LANGUAGE_PL = 'pl';
     public const LANGUAGE_PL_PL = 'pl-pl';
     public const LANGUAGE_PRG = 'prg';
     public const LANGUAGE_PRG_001 = 'prg-001';
     public const LANGUAGE_PS = 'ps';
     public const LANGUAGE_PS_AF = 'ps-af';
+    public const LANGUAGE_PS_PK = 'ps-pk';
     public const LANGUAGE_PT = 'pt';
     public const LANGUAGE_PT_AO = 'pt-ao';
     public const LANGUAGE_PT_BR = 'pt-br';
@@ -1054,13 +1077,17 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_RWK = 'rwk';
     public const LANGUAGE_RWK_TZ = 'rwk-tz';
     public const LANGUAGE_SA = 'sa';
+    public const LANGUAGE_SA_IN = 'sa-in';
     public const LANGUAGE_SAH = 'sah';
     public const LANGUAGE_SAH_RU = 'sah-ru';
     public const LANGUAGE_SAQ = 'saq';
     public const LANGUAGE_SAQ_KE = 'saq-ke';
+    public const LANGUAGE_SAT = 'sat';
+    public const LANGUAGE_SAT_IN = 'sat-in';
     public const LANGUAGE_SBP = 'sbp';
     public const LANGUAGE_SBP_TZ = 'sbp-tz';
     public const LANGUAGE_SD = 'sd';
+    public const LANGUAGE_SD_IN = 'sd-in';
     public const LANGUAGE_SD_PK = 'sd-pk';
     public const LANGUAGE_SE = 'se';
     public const LANGUAGE_SE_FI = 'se-fi';
@@ -1099,6 +1126,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SR_ME = 'sr-me';
     public const LANGUAGE_SR_RS = 'sr-rs';
     public const LANGUAGE_SR_XK = 'sr-xk';
+    public const LANGUAGE_SU = 'su';
+    public const LANGUAGE_SU_ID = 'su-id';
     public const LANGUAGE_SV = 'sv';
     public const LANGUAGE_SV_AX = 'sv-ax';
     public const LANGUAGE_SV_FI = 'sv-fi';
@@ -1128,6 +1157,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_TI_ET = 'ti-et';
     public const LANGUAGE_TK = 'tk';
     public const LANGUAGE_TK_TM = 'tk-tm';
+    public const LANGUAGE_TL = 'tl';
     public const LANGUAGE_TO = 'to';
     public const LANGUAGE_TO_TO = 'to-to';
     public const LANGUAGE_TR = 'tr';
@@ -1161,6 +1191,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_WAE_CH = 'wae-ch';
     public const LANGUAGE_WO = 'wo';
     public const LANGUAGE_WO_SN = 'wo-sn';
+    public const LANGUAGE_XH = 'xh';
+    public const LANGUAGE_XH_ZA = 'xh-za';
     public const LANGUAGE_XOG = 'xog';
     public const LANGUAGE_XOG_UG = 'xog-ug';
     public const LANGUAGE_YAV = 'yav';
@@ -1193,6 +1225,17 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CONTENT_TYPE_CATEGORY__7 = '7';
     public const CONTENT_TYPE_CATEGORY__8 = '8';
     public const CONTENT_TYPE_CATEGORY__9 = '9';
+    public const CONTENT_TYPE_CATEGORY__10 = '10';
+    public const CONTENT_TYPE_CATEGORY__11 = '11';
+    public const CONTENT_TYPE_CATEGORY__12 = '12';
+    public const AB_STATUS_MASTER = 'master';
+    public const AB_STATUS_VARIANT = 'variant';
+    public const AB_STATUS_LOSER_VARIANT = 'loser_variant';
+    public const AB_STATUS_MAB_MASTER = 'mab_master';
+    public const AB_STATUS_MAB_VARIANT = 'mab_variant';
+    public const AB_STATUS_AUTOMATED_MASTER = 'automated_master';
+    public const AB_STATUS_AUTOMATED_VARIANT = 'automated_variant';
+    public const AB_STATUS_AUTOMATED_LOSER_VARIANT = 'automated_loser_variant';
     public const CURRENT_STATE_AUTOMATED = 'AUTOMATED';
     public const CURRENT_STATE_AUTOMATED_DRAFT = 'AUTOMATED_DRAFT';
     public const CURRENT_STATE_AUTOMATED_SENDING = 'AUTOMATED_SENDING';
@@ -1224,25 +1267,6 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENT_STATE_AUTOMATED_DRAFT_AB = 'AUTOMATED_DRAFT_AB';
     public const CURRENT_STATE_AUTOMATED_DRAFT_ABVARIANT = 'AUTOMATED_DRAFT_ABVARIANT';
     public const CURRENT_STATE_AUTOMATED_LOSER_ABVARIANT = 'AUTOMATED_LOSER_ABVARIANT';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAbStatusAllowableValues()
-    {
-        return [
-            self::AB_STATUS_MASTER,
-            self::AB_STATUS_VARIANT,
-            self::AB_STATUS_LOSER_VARIANT,
-            self::AB_STATUS_MAB_MASTER,
-            self::AB_STATUS_MAB_VARIANT,
-            self::AB_STATUS_AUTOMATED_MASTER,
-            self::AB_STATUS_AUTOMATED_VARIANT,
-            self::AB_STATUS_AUTOMATED_LOSER_VARIANT,
-        ];
-    }
 
     /**
      * Gets allowable values of the enum
@@ -1332,6 +1356,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_CCP_IN,
             self::LANGUAGE_CE,
             self::LANGUAGE_CE_RU,
+            self::LANGUAGE_CEB,
+            self::LANGUAGE_CEB_PH,
             self::LANGUAGE_CGG,
             self::LANGUAGE_CGG_UG,
             self::LANGUAGE_CHR,
@@ -1361,6 +1387,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_DE_LU,
             self::LANGUAGE_DJE,
             self::LANGUAGE_DJE_NE,
+            self::LANGUAGE_DOI,
+            self::LANGUAGE_DOI_IN,
             self::LANGUAGE_DSB,
             self::LANGUAGE_DSB_DE,
             self::LANGUAGE_DUA,
@@ -1398,6 +1426,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_CH,
             self::LANGUAGE_EN_CK,
             self::LANGUAGE_EN_CM,
+            self::LANGUAGE_EN_CN,
             self::LANGUAGE_EN_CX,
             self::LANGUAGE_EN_CY,
             self::LANGUAGE_EN_DE,
@@ -1441,6 +1470,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_MT,
             self::LANGUAGE_EN_MU,
             self::LANGUAGE_EN_MW,
+            self::LANGUAGE_EN_MX,
             self::LANGUAGE_EN_MY,
             self::LANGUAGE_EN_NA,
             self::LANGUAGE_EN_NF,
@@ -1525,9 +1555,17 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FA_AF,
             self::LANGUAGE_FA_IR,
             self::LANGUAGE_FF,
+            self::LANGUAGE_FF_BF,
             self::LANGUAGE_FF_CM,
+            self::LANGUAGE_FF_GH,
+            self::LANGUAGE_FF_GM,
             self::LANGUAGE_FF_GN,
+            self::LANGUAGE_FF_GW,
+            self::LANGUAGE_FF_LR,
             self::LANGUAGE_FF_MR,
+            self::LANGUAGE_FF_NE,
+            self::LANGUAGE_FF_NG,
+            self::LANGUAGE_FF_SL,
             self::LANGUAGE_FF_SN,
             self::LANGUAGE_FI,
             self::LANGUAGE_FI_FI,
@@ -1588,6 +1626,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FY,
             self::LANGUAGE_FY_NL,
             self::LANGUAGE_GA,
+            self::LANGUAGE_GA_GB,
             self::LANGUAGE_GA_IE,
             self::LANGUAGE_GD,
             self::LANGUAGE_GD_GB,
@@ -1621,6 +1660,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_HU_HU,
             self::LANGUAGE_HY,
             self::LANGUAGE_HY_AM,
+            self::LANGUAGE_IA,
+            self::LANGUAGE_IA_001,
             self::LANGUAGE_ID,
             self::LANGUAGE_IG,
             self::LANGUAGE_IG_NG,
@@ -1643,6 +1684,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_YI_001,
             self::LANGUAGE_JMC,
             self::LANGUAGE_JMC_TZ,
+            self::LANGUAGE_JV,
+            self::LANGUAGE_JV_ID,
             self::LANGUAGE_KA,
             self::LANGUAGE_KA_GE,
             self::LANGUAGE_KAB,
@@ -1684,6 +1727,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_KSH_DE,
             self::LANGUAGE_KW,
             self::LANGUAGE_KW_GB,
+            self::LANGUAGE_KU,
+            self::LANGUAGE_KU_TR,
             self::LANGUAGE_KY,
             self::LANGUAGE_KY_KG,
             self::LANGUAGE_LAG,
@@ -1714,6 +1759,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_LUY_KE,
             self::LANGUAGE_LV,
             self::LANGUAGE_LV_LV,
+            self::LANGUAGE_MAI,
+            self::LANGUAGE_MAI_IN,
             self::LANGUAGE_MAS,
             self::LANGUAGE_MAS_KE,
             self::LANGUAGE_MAS_TZ,
@@ -1727,16 +1774,21 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_MGH_MZ,
             self::LANGUAGE_MGO,
             self::LANGUAGE_MGO_CM,
+            self::LANGUAGE_MI,
+            self::LANGUAGE_MI_NZ,
             self::LANGUAGE_MK,
             self::LANGUAGE_MK_MK,
             self::LANGUAGE_ML,
             self::LANGUAGE_ML_IN,
             self::LANGUAGE_MN,
             self::LANGUAGE_MN_MN,
+            self::LANGUAGE_MNI,
+            self::LANGUAGE_MNI_IN,
             self::LANGUAGE_MR,
             self::LANGUAGE_MR_IN,
             self::LANGUAGE_MS,
             self::LANGUAGE_MS_BN,
+            self::LANGUAGE_MS_ID,
             self::LANGUAGE_MS_MY,
             self::LANGUAGE_MS_SG,
             self::LANGUAGE_MT,
@@ -1793,12 +1845,15 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_PA,
             self::LANGUAGE_PA_IN,
             self::LANGUAGE_PA_PK,
+            self::LANGUAGE_PCM,
+            self::LANGUAGE_PCM_NG,
             self::LANGUAGE_PL,
             self::LANGUAGE_PL_PL,
             self::LANGUAGE_PRG,
             self::LANGUAGE_PRG_001,
             self::LANGUAGE_PS,
             self::LANGUAGE_PS_AF,
+            self::LANGUAGE_PS_PK,
             self::LANGUAGE_PT,
             self::LANGUAGE_PT_AO,
             self::LANGUAGE_PT_BR,
@@ -1837,13 +1892,17 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_RWK,
             self::LANGUAGE_RWK_TZ,
             self::LANGUAGE_SA,
+            self::LANGUAGE_SA_IN,
             self::LANGUAGE_SAH,
             self::LANGUAGE_SAH_RU,
             self::LANGUAGE_SAQ,
             self::LANGUAGE_SAQ_KE,
+            self::LANGUAGE_SAT,
+            self::LANGUAGE_SAT_IN,
             self::LANGUAGE_SBP,
             self::LANGUAGE_SBP_TZ,
             self::LANGUAGE_SD,
+            self::LANGUAGE_SD_IN,
             self::LANGUAGE_SD_PK,
             self::LANGUAGE_SE,
             self::LANGUAGE_SE_FI,
@@ -1882,6 +1941,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SR_ME,
             self::LANGUAGE_SR_RS,
             self::LANGUAGE_SR_XK,
+            self::LANGUAGE_SU,
+            self::LANGUAGE_SU_ID,
             self::LANGUAGE_SV,
             self::LANGUAGE_SV_AX,
             self::LANGUAGE_SV_FI,
@@ -1911,6 +1972,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_TI_ET,
             self::LANGUAGE_TK,
             self::LANGUAGE_TK_TM,
+            self::LANGUAGE_TL,
             self::LANGUAGE_TO,
             self::LANGUAGE_TO_TO,
             self::LANGUAGE_TR,
@@ -1944,6 +2006,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_WAE_CH,
             self::LANGUAGE_WO,
             self::LANGUAGE_WO_SN,
+            self::LANGUAGE_XH,
+            self::LANGUAGE_XH_ZA,
             self::LANGUAGE_XOG,
             self::LANGUAGE_XOG_UG,
             self::LANGUAGE_YAV,
@@ -1987,6 +2051,28 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CONTENT_TYPE_CATEGORY__7,
             self::CONTENT_TYPE_CATEGORY__8,
             self::CONTENT_TYPE_CATEGORY__9,
+            self::CONTENT_TYPE_CATEGORY__10,
+            self::CONTENT_TYPE_CATEGORY__11,
+            self::CONTENT_TYPE_CATEGORY__12,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAbStatusAllowableValues()
+    {
+        return [
+            self::AB_STATUS_MASTER,
+            self::AB_STATUS_VARIANT,
+            self::AB_STATUS_LOSER_VARIANT,
+            self::AB_STATUS_MAB_MASTER,
+            self::AB_STATUS_MAB_VARIANT,
+            self::AB_STATUS_AUTOMATED_MASTER,
+            self::AB_STATUS_AUTOMATED_VARIANT,
+            self::AB_STATUS_AUTOMATED_LOSER_VARIANT,
         ];
     }
 
@@ -2047,67 +2133,67 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['publish_date'] = $data['publish_date'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
+        $this->container['enable_layout_stylesheets'] = $data['enable_layout_stylesheets'] ?? null;
+        $this->container['meta_description'] = $data['meta_description'] ?? null;
+        $this->container['attached_stylesheets'] = $data['attached_stylesheets'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
+        $this->container['html_title'] = $data['html_title'] ?? null;
+        $this->container['publish_immediately'] = $data['publish_immediately'] ?? null;
+        $this->container['translations'] = $data['translations'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['content_group_id'] = $data['content_group_id'] ?? null;
-        $this->container['campaign'] = $data['campaign'] ?? null;
-        $this->container['category_id'] = $data['category_id'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['mab_experiment_id'] = $data['mab_experiment_id'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
-        $this->container['author_name'] = $data['author_name'] ?? null;
-        $this->container['ab_test_id'] = $data['ab_test_id'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
         $this->container['created_by_id'] = $data['created_by_id'] ?? null;
+        $this->container['rss_body'] = $data['rss_body'] ?? null;
+        $this->container['currently_published'] = $data['currently_published'] ?? null;
+        $this->container['archived_in_dashboard'] = $data['archived_in_dashboard'] ?? null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['content_type_category'] = $data['content_type_category'] ?? null;
+        $this->container['mab_experiment_id'] = $data['mab_experiment_id'] ?? null;
         $this->container['updated_by_id'] = $data['updated_by_id'] ?? null;
-        $this->container['domain'] = $data['domain'] ?? null;
-        $this->container['ab_status'] = $data['ab_status'] ?? null;
+        $this->container['translated_from_id'] = $data['translated_from_id'] ?? null;
         $this->container['folder_id'] = $data['folder_id'] ?? null;
         $this->container['widget_containers'] = $data['widget_containers'] ?? null;
-        $this->container['widgets'] = $data['widgets'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['translated_from_id'] = $data['translated_from_id'] ?? null;
-        $this->container['translations'] = $data['translations'] ?? null;
-        $this->container['dynamic_page_data_source_type'] = $data['dynamic_page_data_source_type'] ?? null;
-        $this->container['dynamic_page_data_source_id'] = $data['dynamic_page_data_source_id'] ?? null;
-        $this->container['blog_author_id'] = $data['blog_author_id'] ?? null;
-        $this->container['tag_ids'] = $data['tag_ids'] ?? null;
-        $this->container['html_title'] = $data['html_title'] ?? null;
-        $this->container['enable_google_amp_output_override'] = $data['enable_google_amp_output_override'] ?? null;
-        $this->container['use_featured_image'] = $data['use_featured_image'] ?? null;
-        $this->container['post_body'] = $data['post_body'] ?? null;
-        $this->container['post_summary'] = $data['post_summary'] ?? null;
-        $this->container['rss_body'] = $data['rss_body'] ?? null;
-        $this->container['rss_summary'] = $data['rss_summary'] ?? null;
-        $this->container['currently_published'] = $data['currently_published'] ?? null;
-        $this->container['page_expiry_enabled'] = $data['page_expiry_enabled'] ?? null;
         $this->container['page_expiry_redirect_id'] = $data['page_expiry_redirect_id'] ?? null;
-        $this->container['page_expiry_redirect_url'] = $data['page_expiry_redirect_url'] ?? null;
-        $this->container['page_expiry_date'] = $data['page_expiry_date'] ?? null;
-        $this->container['include_default_custom_css'] = $data['include_default_custom_css'] ?? null;
-        $this->container['enable_layout_stylesheets'] = $data['enable_layout_stylesheets'] ?? null;
-        $this->container['enable_domain_stylesheets'] = $data['enable_domain_stylesheets'] ?? null;
-        $this->container['publish_immediately'] = $data['publish_immediately'] ?? null;
+        $this->container['dynamic_page_data_source_type'] = $data['dynamic_page_data_source_type'] ?? null;
         $this->container['featured_image'] = $data['featured_image'] ?? null;
-        $this->container['featured_image_alt_text'] = $data['featured_image_alt_text'] ?? null;
-        $this->container['link_rel_canonical_url'] = $data['link_rel_canonical_url'] ?? null;
-        $this->container['content_type_category'] = $data['content_type_category'] ?? null;
-        $this->container['attached_stylesheets'] = $data['attached_stylesheets'] ?? null;
-        $this->container['meta_description'] = $data['meta_description'] ?? null;
-        $this->container['head_html'] = $data['head_html'] ?? null;
-        $this->container['footer_html'] = $data['footer_html'] ?? null;
-        $this->container['archived_in_dashboard'] = $data['archived_in_dashboard'] ?? null;
-        $this->container['public_access_rules_enabled'] = $data['public_access_rules_enabled'] ?? null;
-        $this->container['public_access_rules'] = $data['public_access_rules'] ?? null;
+        $this->container['author_name'] = $data['author_name'] ?? null;
+        $this->container['domain'] = $data['domain'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['dynamic_page_hub_db_table_id'] = $data['dynamic_page_hub_db_table_id'] ?? null;
+        $this->container['campaign'] = $data['campaign'] ?? null;
+        $this->container['dynamic_page_data_source_id'] = $data['dynamic_page_data_source_id'] ?? null;
+        $this->container['enable_domain_stylesheets'] = $data['enable_domain_stylesheets'] ?? null;
+        $this->container['include_default_custom_css'] = $data['include_default_custom_css'] ?? null;
         $this->container['layout_sections'] = $data['layout_sections'] ?? null;
-        $this->container['theme_settings_values'] = $data['theme_settings_values'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
-        $this->container['password'] = $data['password'] ?? null;
-        $this->container['current_state'] = $data['current_state'] ?? null;
-        $this->container['publish_date'] = $data['publish_date'] ?? null;
-        $this->container['created'] = $data['created'] ?? null;
         $this->container['updated'] = $data['updated'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['footer_html'] = $data['footer_html'] ?? null;
+        $this->container['tag_ids'] = $data['tag_ids'] ?? null;
+        $this->container['widgets'] = $data['widgets'] ?? null;
+        $this->container['post_summary'] = $data['post_summary'] ?? null;
+        $this->container['head_html'] = $data['head_html'] ?? null;
+        $this->container['page_expiry_redirect_url'] = $data['page_expiry_redirect_url'] ?? null;
+        $this->container['ab_status'] = $data['ab_status'] ?? null;
+        $this->container['use_featured_image'] = $data['use_featured_image'] ?? null;
+        $this->container['ab_test_id'] = $data['ab_test_id'] ?? null;
+        $this->container['featured_image_alt_text'] = $data['featured_image_alt_text'] ?? null;
+        $this->container['blog_author_id'] = $data['blog_author_id'] ?? null;
+        $this->container['content_group_id'] = $data['content_group_id'] ?? null;
+        $this->container['rss_summary'] = $data['rss_summary'] ?? null;
+        $this->container['page_expiry_enabled'] = $data['page_expiry_enabled'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['public_access_rules'] = $data['public_access_rules'] ?? null;
+        $this->container['enable_google_amp_output_override'] = $data['enable_google_amp_output_override'] ?? null;
+        $this->container['archived_at'] = $data['archived_at'] ?? null;
+        $this->container['post_body'] = $data['post_body'] ?? null;
+        $this->container['theme_settings_values'] = $data['theme_settings_values'] ?? null;
+        $this->container['page_expiry_date'] = $data['page_expiry_date'] ?? null;
+        $this->container['public_access_rules_enabled'] = $data['public_access_rules_enabled'] ?? null;
+        $this->container['current_state'] = $data['current_state'] ?? null;
+        $this->container['category_id'] = $data['category_id'] ?? null;
+        $this->container['link_rel_canonical_url'] = $data['link_rel_canonical_url'] ?? null;
     }
 
     /**
@@ -2119,72 +2205,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['slug'] === null) {
-            $invalidProperties[] = "'slug' can't be null";
-        }
-        if ($this->container['content_group_id'] === null) {
-            $invalidProperties[] = "'content_group_id' can't be null";
-        }
-        if ($this->container['campaign'] === null) {
-            $invalidProperties[] = "'campaign' can't be null";
-        }
-        if ($this->container['category_id'] === null) {
-            $invalidProperties[] = "'category_id' can't be null";
-        }
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
-        }
-        if ((mb_strlen($this->container['state']) > 25)) {
-            $invalidProperties[] = "invalid value for 'state', the character length must be smaller than or equal to 25.";
-        }
-
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['mab_experiment_id'] === null) {
-            $invalidProperties[] = "'mab_experiment_id' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
-        if ($this->container['author_name'] === null) {
-            $invalidProperties[] = "'author_name' can't be null";
-        }
-        if ($this->container['ab_test_id'] === null) {
-            $invalidProperties[] = "'ab_test_id' can't be null";
-        }
-        if ($this->container['created_by_id'] === null) {
-            $invalidProperties[] = "'created_by_id' can't be null";
-        }
-        if ($this->container['updated_by_id'] === null) {
-            $invalidProperties[] = "'updated_by_id' can't be null";
-        }
-        if ($this->container['domain'] === null) {
-            $invalidProperties[] = "'domain' can't be null";
-        }
-        if ($this->container['ab_status'] === null) {
-            $invalidProperties[] = "'ab_status' can't be null";
-        }
-        $allowedValues = $this->getAbStatusAllowableValues();
-        if (!is_null($this->container['ab_status']) && !in_array($this->container['ab_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ab_status', must be one of '%s'",
-                $this->container['ab_status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['folder_id'] === null) {
-            $invalidProperties[] = "'folder_id' can't be null";
-        }
-        if ($this->container['widget_containers'] === null) {
-            $invalidProperties[] = "'widget_containers' can't be null";
-        }
-        if ($this->container['widgets'] === null) {
-            $invalidProperties[] = "'widgets' can't be null";
+        if ($this->container['publish_date'] === null) {
+            $invalidProperties[] = "'publish_date' can't be null";
         }
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
@@ -2198,80 +2220,54 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['translated_from_id'] === null) {
-            $invalidProperties[] = "'translated_from_id' can't be null";
+        if ($this->container['enable_layout_stylesheets'] === null) {
+            $invalidProperties[] = "'enable_layout_stylesheets' can't be null";
         }
-        if ($this->container['translations'] === null) {
-            $invalidProperties[] = "'translations' can't be null";
+        if ($this->container['meta_description'] === null) {
+            $invalidProperties[] = "'meta_description' can't be null";
         }
-        if ($this->container['dynamic_page_data_source_type'] === null) {
-            $invalidProperties[] = "'dynamic_page_data_source_type' can't be null";
+        if ($this->container['attached_stylesheets'] === null) {
+            $invalidProperties[] = "'attached_stylesheets' can't be null";
         }
-        if ($this->container['dynamic_page_data_source_id'] === null) {
-            $invalidProperties[] = "'dynamic_page_data_source_id' can't be null";
-        }
-        if ($this->container['blog_author_id'] === null) {
-            $invalidProperties[] = "'blog_author_id' can't be null";
-        }
-        if ($this->container['tag_ids'] === null) {
-            $invalidProperties[] = "'tag_ids' can't be null";
+        if ($this->container['password'] === null) {
+            $invalidProperties[] = "'password' can't be null";
         }
         if ($this->container['html_title'] === null) {
             $invalidProperties[] = "'html_title' can't be null";
         }
-        if ($this->container['enable_google_amp_output_override'] === null) {
-            $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
+        if ($this->container['publish_immediately'] === null) {
+            $invalidProperties[] = "'publish_immediately' can't be null";
         }
-        if ($this->container['use_featured_image'] === null) {
-            $invalidProperties[] = "'use_featured_image' can't be null";
+        if ($this->container['translations'] === null) {
+            $invalidProperties[] = "'translations' can't be null";
         }
-        if ($this->container['post_body'] === null) {
-            $invalidProperties[] = "'post_body' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['post_summary'] === null) {
-            $invalidProperties[] = "'post_summary' can't be null";
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
+        if ((mb_strlen($this->container['state']) > 25)) {
+            $invalidProperties[] = "invalid value for 'state', the character length must be smaller than or equal to 25.";
+        }
+
+        if ($this->container['slug'] === null) {
+            $invalidProperties[] = "'slug' can't be null";
+        }
+        if ($this->container['created_by_id'] === null) {
+            $invalidProperties[] = "'created_by_id' can't be null";
         }
         if ($this->container['rss_body'] === null) {
             $invalidProperties[] = "'rss_body' can't be null";
         }
-        if ($this->container['rss_summary'] === null) {
-            $invalidProperties[] = "'rss_summary' can't be null";
-        }
         if ($this->container['currently_published'] === null) {
             $invalidProperties[] = "'currently_published' can't be null";
         }
-        if ($this->container['page_expiry_enabled'] === null) {
-            $invalidProperties[] = "'page_expiry_enabled' can't be null";
+        if ($this->container['archived_in_dashboard'] === null) {
+            $invalidProperties[] = "'archived_in_dashboard' can't be null";
         }
-        if ($this->container['page_expiry_redirect_id'] === null) {
-            $invalidProperties[] = "'page_expiry_redirect_id' can't be null";
-        }
-        if ($this->container['page_expiry_redirect_url'] === null) {
-            $invalidProperties[] = "'page_expiry_redirect_url' can't be null";
-        }
-        if ($this->container['page_expiry_date'] === null) {
-            $invalidProperties[] = "'page_expiry_date' can't be null";
-        }
-        if ($this->container['include_default_custom_css'] === null) {
-            $invalidProperties[] = "'include_default_custom_css' can't be null";
-        }
-        if ($this->container['enable_layout_stylesheets'] === null) {
-            $invalidProperties[] = "'enable_layout_stylesheets' can't be null";
-        }
-        if ($this->container['enable_domain_stylesheets'] === null) {
-            $invalidProperties[] = "'enable_domain_stylesheets' can't be null";
-        }
-        if ($this->container['publish_immediately'] === null) {
-            $invalidProperties[] = "'publish_immediately' can't be null";
-        }
-        if ($this->container['featured_image'] === null) {
-            $invalidProperties[] = "'featured_image' can't be null";
-        }
-        if ($this->container['featured_image_alt_text'] === null) {
-            $invalidProperties[] = "'featured_image_alt_text' can't be null";
-        }
-        if ($this->container['link_rel_canonical_url'] === null) {
-            $invalidProperties[] = "'link_rel_canonical_url' can't be null";
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
         }
         if ($this->container['content_type_category'] === null) {
             $invalidProperties[] = "'content_type_category' can't be null";
@@ -2285,38 +2281,134 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['attached_stylesheets'] === null) {
-            $invalidProperties[] = "'attached_stylesheets' can't be null";
+        if ($this->container['mab_experiment_id'] === null) {
+            $invalidProperties[] = "'mab_experiment_id' can't be null";
         }
-        if ($this->container['meta_description'] === null) {
-            $invalidProperties[] = "'meta_description' can't be null";
+        if ($this->container['updated_by_id'] === null) {
+            $invalidProperties[] = "'updated_by_id' can't be null";
         }
-        if ($this->container['head_html'] === null) {
-            $invalidProperties[] = "'head_html' can't be null";
+        if ($this->container['translated_from_id'] === null) {
+            $invalidProperties[] = "'translated_from_id' can't be null";
         }
-        if ($this->container['footer_html'] === null) {
-            $invalidProperties[] = "'footer_html' can't be null";
+        if ($this->container['folder_id'] === null) {
+            $invalidProperties[] = "'folder_id' can't be null";
         }
-        if ($this->container['archived_in_dashboard'] === null) {
-            $invalidProperties[] = "'archived_in_dashboard' can't be null";
+        if ($this->container['widget_containers'] === null) {
+            $invalidProperties[] = "'widget_containers' can't be null";
         }
-        if ($this->container['public_access_rules_enabled'] === null) {
-            $invalidProperties[] = "'public_access_rules_enabled' can't be null";
+        if ($this->container['page_expiry_redirect_id'] === null) {
+            $invalidProperties[] = "'page_expiry_redirect_id' can't be null";
         }
-        if ($this->container['public_access_rules'] === null) {
-            $invalidProperties[] = "'public_access_rules' can't be null";
+        if ($this->container['dynamic_page_data_source_type'] === null) {
+            $invalidProperties[] = "'dynamic_page_data_source_type' can't be null";
+        }
+        if ($this->container['featured_image'] === null) {
+            $invalidProperties[] = "'featured_image' can't be null";
+        }
+        if ($this->container['author_name'] === null) {
+            $invalidProperties[] = "'author_name' can't be null";
+        }
+        if ($this->container['domain'] === null) {
+            $invalidProperties[] = "'domain' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['dynamic_page_hub_db_table_id'] === null) {
+            $invalidProperties[] = "'dynamic_page_hub_db_table_id' can't be null";
+        }
+        if ($this->container['campaign'] === null) {
+            $invalidProperties[] = "'campaign' can't be null";
+        }
+        if ($this->container['dynamic_page_data_source_id'] === null) {
+            $invalidProperties[] = "'dynamic_page_data_source_id' can't be null";
+        }
+        if ($this->container['enable_domain_stylesheets'] === null) {
+            $invalidProperties[] = "'enable_domain_stylesheets' can't be null";
+        }
+        if ($this->container['include_default_custom_css'] === null) {
+            $invalidProperties[] = "'include_default_custom_css' can't be null";
         }
         if ($this->container['layout_sections'] === null) {
             $invalidProperties[] = "'layout_sections' can't be null";
         }
-        if ($this->container['theme_settings_values'] === null) {
-            $invalidProperties[] = "'theme_settings_values' can't be null";
+        if ($this->container['updated'] === null) {
+            $invalidProperties[] = "'updated' can't be null";
+        }
+        if ($this->container['footer_html'] === null) {
+            $invalidProperties[] = "'footer_html' can't be null";
+        }
+        if ($this->container['tag_ids'] === null) {
+            $invalidProperties[] = "'tag_ids' can't be null";
+        }
+        if ($this->container['widgets'] === null) {
+            $invalidProperties[] = "'widgets' can't be null";
+        }
+        if ($this->container['post_summary'] === null) {
+            $invalidProperties[] = "'post_summary' can't be null";
+        }
+        if ($this->container['head_html'] === null) {
+            $invalidProperties[] = "'head_html' can't be null";
+        }
+        if ($this->container['page_expiry_redirect_url'] === null) {
+            $invalidProperties[] = "'page_expiry_redirect_url' can't be null";
+        }
+        if ($this->container['ab_status'] === null) {
+            $invalidProperties[] = "'ab_status' can't be null";
+        }
+        $allowedValues = $this->getAbStatusAllowableValues();
+        if (!is_null($this->container['ab_status']) && !in_array($this->container['ab_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ab_status', must be one of '%s'",
+                $this->container['ab_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['use_featured_image'] === null) {
+            $invalidProperties[] = "'use_featured_image' can't be null";
+        }
+        if ($this->container['ab_test_id'] === null) {
+            $invalidProperties[] = "'ab_test_id' can't be null";
+        }
+        if ($this->container['featured_image_alt_text'] === null) {
+            $invalidProperties[] = "'featured_image_alt_text' can't be null";
+        }
+        if ($this->container['blog_author_id'] === null) {
+            $invalidProperties[] = "'blog_author_id' can't be null";
+        }
+        if ($this->container['content_group_id'] === null) {
+            $invalidProperties[] = "'content_group_id' can't be null";
+        }
+        if ($this->container['rss_summary'] === null) {
+            $invalidProperties[] = "'rss_summary' can't be null";
+        }
+        if ($this->container['page_expiry_enabled'] === null) {
+            $invalidProperties[] = "'page_expiry_enabled' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['password'] === null) {
-            $invalidProperties[] = "'password' can't be null";
+        if ($this->container['public_access_rules'] === null) {
+            $invalidProperties[] = "'public_access_rules' can't be null";
+        }
+        if ($this->container['enable_google_amp_output_override'] === null) {
+            $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
+        }
+        if ($this->container['archived_at'] === null) {
+            $invalidProperties[] = "'archived_at' can't be null";
+        }
+        if ($this->container['post_body'] === null) {
+            $invalidProperties[] = "'post_body' can't be null";
+        }
+        if ($this->container['theme_settings_values'] === null) {
+            $invalidProperties[] = "'theme_settings_values' can't be null";
+        }
+        if ($this->container['page_expiry_date'] === null) {
+            $invalidProperties[] = "'page_expiry_date' can't be null";
+        }
+        if ($this->container['public_access_rules_enabled'] === null) {
+            $invalidProperties[] = "'public_access_rules_enabled' can't be null";
         }
         if ($this->container['current_state'] === null) {
             $invalidProperties[] = "'current_state' can't be null";
@@ -2330,17 +2422,11 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['publish_date'] === null) {
-            $invalidProperties[] = "'publish_date' can't be null";
+        if ($this->container['category_id'] === null) {
+            $invalidProperties[] = "'category_id' can't be null";
         }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
-        }
-        if ($this->container['updated'] === null) {
-            $invalidProperties[] = "'updated' can't be null";
-        }
-        if ($this->container['deleted_at'] === null) {
-            $invalidProperties[] = "'deleted_at' can't be null";
+        if ($this->container['link_rel_canonical_url'] === null) {
+            $invalidProperties[] = "'link_rel_canonical_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -2358,447 +2444,25 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets publish_date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getId()
+    public function getPublishDate()
     {
-        return $this->container['id'];
+        return $this->container['publish_date'];
     }
 
     /**
-     * Sets id
+     * Sets publish_date
      *
-     * @param string $id The unique ID of the Blog Post.
+     * @param \DateTime $publish_date The date (ISO8601 format) the blog post is to be published at.
      *
      * @return self
      */
-    public function setId($id)
+    public function setPublishDate($publish_date)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string $slug The path of the this blog post. This field is appended to the domain to construct the url of this post.
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets content_group_id
-     *
-     * @return string
-     */
-    public function getContentGroupId()
-    {
-        return $this->container['content_group_id'];
-    }
-
-    /**
-     * Sets content_group_id
-     *
-     * @param string $content_group_id The ID of the parent Blog this Blog Post is associated with.
-     *
-     * @return self
-     */
-    public function setContentGroupId($content_group_id)
-    {
-        $this->container['content_group_id'] = $content_group_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign
-     *
-     * @return string
-     */
-    public function getCampaign()
-    {
-        return $this->container['campaign'];
-    }
-
-    /**
-     * Sets campaign
-     *
-     * @param string $campaign The GUID of the marketing campaign this Blog Post is a part of.
-     *
-     * @return self
-     */
-    public function setCampaign($campaign)
-    {
-        $this->container['campaign'] = $campaign;
-
-        return $this;
-    }
-
-    /**
-     * Gets category_id
-     *
-     * @return int
-     */
-    public function getCategoryId()
-    {
-        return $this->container['category_id'];
-    }
-
-    /**
-     * Sets category_id
-     *
-     * @param int $category_id ID of the type of object this is. Should always .
-     *
-     * @return self
-     */
-    public function setCategoryId($category_id)
-    {
-        $this->container['category_id'] = $category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string $state An ENUM descibing the current state of this Blog Post.
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        if ((mb_strlen($state) > 25)) {
-            throw new \InvalidArgumentException('invalid length for $state when calling BlogPost., must be smaller than or equal to 25.');
-        }
-
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The internal name of the Blog Post.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets mab_experiment_id
-     *
-     * @return string
-     */
-    public function getMabExperimentId()
-    {
-        return $this->container['mab_experiment_id'];
-    }
-
-    /**
-     * Sets mab_experiment_id
-     *
-     * @param string $mab_experiment_id mab_experiment_id
-     *
-     * @return self
-     */
-    public function setMabExperimentId($mab_experiment_id)
-    {
-        $this->container['mab_experiment_id'] = $mab_experiment_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets author_name
-     *
-     * @return string
-     */
-    public function getAuthorName()
-    {
-        return $this->container['author_name'];
-    }
-
-    /**
-     * Sets author_name
-     *
-     * @param string $author_name The name of the user that updated this Blog Post.
-     *
-     * @return self
-     */
-    public function setAuthorName($author_name)
-    {
-        $this->container['author_name'] = $author_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets ab_test_id
-     *
-     * @return string
-     */
-    public function getAbTestId()
-    {
-        return $this->container['ab_test_id'];
-    }
-
-    /**
-     * Sets ab_test_id
-     *
-     * @param string $ab_test_id ab_test_id
-     *
-     * @return self
-     */
-    public function setAbTestId($ab_test_id)
-    {
-        $this->container['ab_test_id'] = $ab_test_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by_id
-     *
-     * @return string
-     */
-    public function getCreatedById()
-    {
-        return $this->container['created_by_id'];
-    }
-
-    /**
-     * Sets created_by_id
-     *
-     * @param string $created_by_id The ID of the user that created this Blog Post.
-     *
-     * @return self
-     */
-    public function setCreatedById($created_by_id)
-    {
-        $this->container['created_by_id'] = $created_by_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_by_id
-     *
-     * @return string
-     */
-    public function getUpdatedById()
-    {
-        return $this->container['updated_by_id'];
-    }
-
-    /**
-     * Sets updated_by_id
-     *
-     * @param string $updated_by_id The ID of the user that updated this Blog Post.
-     *
-     * @return self
-     */
-    public function setUpdatedById($updated_by_id)
-    {
-        $this->container['updated_by_id'] = $updated_by_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets domain
-     *
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->container['domain'];
-    }
-
-    /**
-     * Sets domain
-     *
-     * @param string $domain The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
-     *
-     * @return self
-     */
-    public function setDomain($domain)
-    {
-        $this->container['domain'] = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Gets ab_status
-     *
-     * @return string
-     */
-    public function getAbStatus()
-    {
-        return $this->container['ab_status'];
-    }
-
-    /**
-     * Sets ab_status
-     *
-     * @param string $ab_status ab_status
-     *
-     * @return self
-     */
-    public function setAbStatus($ab_status)
-    {
-        $allowedValues = $this->getAbStatusAllowableValues();
-        if (!in_array($ab_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ab_status', must be one of '%s'",
-                    $ab_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ab_status'] = $ab_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets folder_id
-     *
-     * @return string
-     */
-    public function getFolderId()
-    {
-        return $this->container['folder_id'];
-    }
-
-    /**
-     * Sets folder_id
-     *
-     * @param string $folder_id folder_id
-     *
-     * @return self
-     */
-    public function setFolderId($folder_id)
-    {
-        $this->container['folder_id'] = $folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets widget_containers
-     *
-     * @return array<string,object>
-     */
-    public function getWidgetContainers()
-    {
-        return $this->container['widget_containers'];
-    }
-
-    /**
-     * Sets widget_containers
-     *
-     * @param array<string,object> $widget_containers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
-     *
-     * @return self
-     */
-    public function setWidgetContainers($widget_containers)
-    {
-        $this->container['widget_containers'] = $widget_containers;
-
-        return $this;
-    }
-
-    /**
-     * Gets widgets
-     *
-     * @return array<string,object>
-     */
-    public function getWidgets()
-    {
-        return $this->container['widgets'];
-    }
-
-    /**
-     * Sets widgets
-     *
-     * @param array<string,object> $widgets A data structure containing the data for all the modules for this page.
-     *
-     * @return self
-     */
-    public function setWidgets($widgets)
-    {
-        $this->container['widgets'] = $widgets;
+        $this->container['publish_date'] = $publish_date;
 
         return $this;
     }
@@ -2838,145 +2502,97 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets translated_from_id
+     * Gets enable_layout_stylesheets
+     *
+     * @return bool
+     */
+    public function getEnableLayoutStylesheets()
+    {
+        return $this->container['enable_layout_stylesheets'];
+    }
+
+    /**
+     * Sets enable_layout_stylesheets
+     *
+     * @param bool $enable_layout_stylesheets Boolean to determine whether or not the styles from the template should be applied.
+     *
+     * @return self
+     */
+    public function setEnableLayoutStylesheets($enable_layout_stylesheets)
+    {
+        $this->container['enable_layout_stylesheets'] = $enable_layout_stylesheets;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_description
      *
      * @return string
      */
-    public function getTranslatedFromId()
+    public function getMetaDescription()
     {
-        return $this->container['translated_from_id'];
+        return $this->container['meta_description'];
     }
 
     /**
-     * Sets translated_from_id
+     * Sets meta_description
      *
-     * @param string $translated_from_id ID of the primary blog post this object was translated from.
+     * @param string $meta_description A description that goes in <meta> tag on the page.
      *
      * @return self
      */
-    public function setTranslatedFromId($translated_from_id)
+    public function setMetaDescription($meta_description)
     {
-        $this->container['translated_from_id'] = $translated_from_id;
+        $this->container['meta_description'] = $meta_description;
 
         return $this;
     }
 
     /**
-     * Gets translations
+     * Gets attached_stylesheets
      *
-     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation>
+     * @return array<string,object>[]
      */
-    public function getTranslations()
+    public function getAttachedStylesheets()
     {
-        return $this->container['translations'];
+        return $this->container['attached_stylesheets'];
     }
 
     /**
-     * Sets translations
+     * Sets attached_stylesheets
      *
-     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation> $translations translations
+     * @param array<string,object>[] $attached_stylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
      *
      * @return self
      */
-    public function setTranslations($translations)
+    public function setAttachedStylesheets($attached_stylesheets)
     {
-        $this->container['translations'] = $translations;
+        $this->container['attached_stylesheets'] = $attached_stylesheets;
 
         return $this;
     }
 
     /**
-     * Gets dynamic_page_data_source_type
-     *
-     * @return int
-     */
-    public function getDynamicPageDataSourceType()
-    {
-        return $this->container['dynamic_page_data_source_type'];
-    }
-
-    /**
-     * Sets dynamic_page_data_source_type
-     *
-     * @param int $dynamic_page_data_source_type dynamic_page_data_source_type
-     *
-     * @return self
-     */
-    public function setDynamicPageDataSourceType($dynamic_page_data_source_type)
-    {
-        $this->container['dynamic_page_data_source_type'] = $dynamic_page_data_source_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets dynamic_page_data_source_id
+     * Gets password
      *
      * @return string
      */
-    public function getDynamicPageDataSourceId()
+    public function getPassword()
     {
-        return $this->container['dynamic_page_data_source_id'];
+        return $this->container['password'];
     }
 
     /**
-     * Sets dynamic_page_data_source_id
+     * Sets password
      *
-     * @param string $dynamic_page_data_source_id dynamic_page_data_source_id
+     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
      *
      * @return self
      */
-    public function setDynamicPageDataSourceId($dynamic_page_data_source_id)
+    public function setPassword($password)
     {
-        $this->container['dynamic_page_data_source_id'] = $dynamic_page_data_source_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets blog_author_id
-     *
-     * @return string
-     */
-    public function getBlogAuthorId()
-    {
-        return $this->container['blog_author_id'];
-    }
-
-    /**
-     * Sets blog_author_id
-     *
-     * @param string $blog_author_id The ID of the Blog Author associated with this Blog Post.
-     *
-     * @return self
-     */
-    public function setBlogAuthorId($blog_author_id)
-    {
-        $this->container['blog_author_id'] = $blog_author_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets tag_ids
-     *
-     * @return int[]
-     */
-    public function getTagIds()
-    {
-        return $this->container['tag_ids'];
-    }
-
-    /**
-     * Sets tag_ids
-     *
-     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
-     *
-     * @return self
-     */
-    public function setTagIds($tag_ids)
-    {
-        $this->container['tag_ids'] = $tag_ids;
+        $this->container['password'] = $password;
 
         return $this;
     }
@@ -3006,97 +2622,149 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets enable_google_amp_output_override
+     * Gets publish_immediately
      *
      * @return bool
      */
-    public function getEnableGoogleAmpOutputOverride()
+    public function getPublishImmediately()
     {
-        return $this->container['enable_google_amp_output_override'];
+        return $this->container['publish_immediately'];
     }
 
     /**
-     * Sets enable_google_amp_output_override
+     * Sets publish_immediately
      *
-     * @param bool $enable_google_amp_output_override Boolean to allow overriding the AMP settings for the blog.
+     * @param bool $publish_immediately Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
      *
      * @return self
      */
-    public function setEnableGoogleAmpOutputOverride($enable_google_amp_output_override)
+    public function setPublishImmediately($publish_immediately)
     {
-        $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
+        $this->container['publish_immediately'] = $publish_immediately;
 
         return $this;
     }
 
     /**
-     * Gets use_featured_image
+     * Gets translations
      *
-     * @return bool
+     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation>
      */
-    public function getUseFeaturedImage()
+    public function getTranslations()
     {
-        return $this->container['use_featured_image'];
+        return $this->container['translations'];
     }
 
     /**
-     * Sets use_featured_image
+     * Sets translations
      *
-     * @param bool $use_featured_image Boolean to determine if this post should use a featuredImage.
+     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation> $translations translations
      *
      * @return self
      */
-    public function setUseFeaturedImage($use_featured_image)
+    public function setTranslations($translations)
     {
-        $this->container['use_featured_image'] = $use_featured_image;
+        $this->container['translations'] = $translations;
 
         return $this;
     }
 
     /**
-     * Gets post_body
+     * Gets id
      *
      * @return string
      */
-    public function getPostBody()
+    public function getId()
     {
-        return $this->container['post_body'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets post_body
+     * Sets id
      *
-     * @param string $post_body The HTML of the main post body.
+     * @param string $id The unique ID of the Blog Post.
      *
      * @return self
      */
-    public function setPostBody($post_body)
+    public function setId($id)
     {
-        $this->container['post_body'] = $post_body;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets post_summary
+     * Gets state
      *
      * @return string
      */
-    public function getPostSummary()
+    public function getState()
     {
-        return $this->container['post_summary'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets post_summary
+     * Sets state
      *
-     * @param string $post_summary The summary of the blog post that will appear on the main listing page.
+     * @param string $state An ENUM descibing the current state of this Blog Post.
      *
      * @return self
      */
-    public function setPostSummary($post_summary)
+    public function setState($state)
     {
-        $this->container['post_summary'] = $post_summary;
+        if ((mb_strlen($state) > 25)) {
+            throw new \InvalidArgumentException('invalid length for $state when calling BlogPost., must be smaller than or equal to 25.');
+        }
+
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string $slug The path of the this blog post. This field is appended to the domain to construct the url of this post.
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_id
+     *
+     * @return string
+     */
+    public function getCreatedById()
+    {
+        return $this->container['created_by_id'];
+    }
+
+    /**
+     * Sets created_by_id
+     *
+     * @param string $created_by_id The ID of the user that created this Blog Post.
+     *
+     * @return self
+     */
+    public function setCreatedById($created_by_id)
+    {
+        $this->container['created_by_id'] = $created_by_id;
 
         return $this;
     }
@@ -3126,30 +2794,6 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets rss_summary
-     *
-     * @return string
-     */
-    public function getRssSummary()
-    {
-        return $this->container['rss_summary'];
-    }
-
-    /**
-     * Sets rss_summary
-     *
-     * @param string $rss_summary The contents of the RSS summary for this Blog Post.
-     *
-     * @return self
-     */
-    public function setRssSummary($rss_summary)
-    {
-        $this->container['rss_summary'] = $rss_summary;
-
-        return $this;
-    }
-
-    /**
      * Gets currently_published
      *
      * @return bool
@@ -3174,265 +2818,49 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets page_expiry_enabled
+     * Gets archived_in_dashboard
      *
      * @return bool
      */
-    public function getPageExpiryEnabled()
+    public function getArchivedInDashboard()
     {
-        return $this->container['page_expiry_enabled'];
+        return $this->container['archived_in_dashboard'];
     }
 
     /**
-     * Sets page_expiry_enabled
+     * Sets archived_in_dashboard
      *
-     * @param bool $page_expiry_enabled page_expiry_enabled
+     * @param bool $archived_in_dashboard If True, the post will not show up in your dashboard, although the post could still be live.
      *
      * @return self
      */
-    public function setPageExpiryEnabled($page_expiry_enabled)
+    public function setArchivedInDashboard($archived_in_dashboard)
     {
-        $this->container['page_expiry_enabled'] = $page_expiry_enabled;
+        $this->container['archived_in_dashboard'] = $archived_in_dashboard;
 
         return $this;
     }
 
     /**
-     * Gets page_expiry_redirect_id
+     * Gets created
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getPageExpiryRedirectId()
+    public function getCreated()
     {
-        return $this->container['page_expiry_redirect_id'];
+        return $this->container['created'];
     }
 
     /**
-     * Sets page_expiry_redirect_id
+     * Sets created
      *
-     * @param int $page_expiry_redirect_id page_expiry_redirect_id
+     * @param \DateTime $created created
      *
      * @return self
      */
-    public function setPageExpiryRedirectId($page_expiry_redirect_id)
+    public function setCreated($created)
     {
-        $this->container['page_expiry_redirect_id'] = $page_expiry_redirect_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_expiry_redirect_url
-     *
-     * @return string
-     */
-    public function getPageExpiryRedirectUrl()
-    {
-        return $this->container['page_expiry_redirect_url'];
-    }
-
-    /**
-     * Sets page_expiry_redirect_url
-     *
-     * @param string $page_expiry_redirect_url page_expiry_redirect_url
-     *
-     * @return self
-     */
-    public function setPageExpiryRedirectUrl($page_expiry_redirect_url)
-    {
-        $this->container['page_expiry_redirect_url'] = $page_expiry_redirect_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_expiry_date
-     *
-     * @return int
-     */
-    public function getPageExpiryDate()
-    {
-        return $this->container['page_expiry_date'];
-    }
-
-    /**
-     * Sets page_expiry_date
-     *
-     * @param int $page_expiry_date page_expiry_date
-     *
-     * @return self
-     */
-    public function setPageExpiryDate($page_expiry_date)
-    {
-        $this->container['page_expiry_date'] = $page_expiry_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_default_custom_css
-     *
-     * @return bool
-     */
-    public function getIncludeDefaultCustomCss()
-    {
-        return $this->container['include_default_custom_css'];
-    }
-
-    /**
-     * Sets include_default_custom_css
-     *
-     * @param bool $include_default_custom_css Boolean to determine whether or not the Primary CSS Files should be applied.
-     *
-     * @return self
-     */
-    public function setIncludeDefaultCustomCss($include_default_custom_css)
-    {
-        $this->container['include_default_custom_css'] = $include_default_custom_css;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_layout_stylesheets
-     *
-     * @return bool
-     */
-    public function getEnableLayoutStylesheets()
-    {
-        return $this->container['enable_layout_stylesheets'];
-    }
-
-    /**
-     * Sets enable_layout_stylesheets
-     *
-     * @param bool $enable_layout_stylesheets Boolean to determine whether or not the styles from the template should be applied.
-     *
-     * @return self
-     */
-    public function setEnableLayoutStylesheets($enable_layout_stylesheets)
-    {
-        $this->container['enable_layout_stylesheets'] = $enable_layout_stylesheets;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_domain_stylesheets
-     *
-     * @return bool
-     */
-    public function getEnableDomainStylesheets()
-    {
-        return $this->container['enable_domain_stylesheets'];
-    }
-
-    /**
-     * Sets enable_domain_stylesheets
-     *
-     * @param bool $enable_domain_stylesheets Boolean to determine whether or not the styles from the template should be applied.
-     *
-     * @return self
-     */
-    public function setEnableDomainStylesheets($enable_domain_stylesheets)
-    {
-        $this->container['enable_domain_stylesheets'] = $enable_domain_stylesheets;
-
-        return $this;
-    }
-
-    /**
-     * Gets publish_immediately
-     *
-     * @return bool
-     */
-    public function getPublishImmediately()
-    {
-        return $this->container['publish_immediately'];
-    }
-
-    /**
-     * Sets publish_immediately
-     *
-     * @param bool $publish_immediately Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
-     *
-     * @return self
-     */
-    public function setPublishImmediately($publish_immediately)
-    {
-        $this->container['publish_immediately'] = $publish_immediately;
-
-        return $this;
-    }
-
-    /**
-     * Gets featured_image
-     *
-     * @return string
-     */
-    public function getFeaturedImage()
-    {
-        return $this->container['featured_image'];
-    }
-
-    /**
-     * Sets featured_image
-     *
-     * @param string $featured_image The featuredImage of this Blog Post.
-     *
-     * @return self
-     */
-    public function setFeaturedImage($featured_image)
-    {
-        $this->container['featured_image'] = $featured_image;
-
-        return $this;
-    }
-
-    /**
-     * Gets featured_image_alt_text
-     *
-     * @return string
-     */
-    public function getFeaturedImageAltText()
-    {
-        return $this->container['featured_image_alt_text'];
-    }
-
-    /**
-     * Sets featured_image_alt_text
-     *
-     * @param string $featured_image_alt_text Alt Text of the featuredImage.
-     *
-     * @return self
-     */
-    public function setFeaturedImageAltText($featured_image_alt_text)
-    {
-        $this->container['featured_image_alt_text'] = $featured_image_alt_text;
-
-        return $this;
-    }
-
-    /**
-     * Gets link_rel_canonical_url
-     *
-     * @return string
-     */
-    public function getLinkRelCanonicalUrl()
-    {
-        return $this->container['link_rel_canonical_url'];
-    }
-
-    /**
-     * Sets link_rel_canonical_url
-     *
-     * @param string $link_rel_canonical_url Optional override to set the URL to be used in the rel=canonical link tag on the page.
-     *
-     * @return self
-     */
-    public function setLinkRelCanonicalUrl($link_rel_canonical_url)
-    {
-        $this->container['link_rel_canonical_url'] = $link_rel_canonical_url;
+        $this->container['created'] = $created;
 
         return $this;
     }
@@ -3472,73 +2900,433 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets attached_stylesheets
+     * Gets mab_experiment_id
      *
-     * @return array<string,object>[]
+     * @return string
      */
-    public function getAttachedStylesheets()
+    public function getMabExperimentId()
     {
-        return $this->container['attached_stylesheets'];
+        return $this->container['mab_experiment_id'];
     }
 
     /**
-     * Sets attached_stylesheets
+     * Sets mab_experiment_id
      *
-     * @param array<string,object>[] $attached_stylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     * @param string $mab_experiment_id 
      *
      * @return self
      */
-    public function setAttachedStylesheets($attached_stylesheets)
+    public function setMabExperimentId($mab_experiment_id)
     {
-        $this->container['attached_stylesheets'] = $attached_stylesheets;
+        $this->container['mab_experiment_id'] = $mab_experiment_id;
 
         return $this;
     }
 
     /**
-     * Gets meta_description
+     * Gets updated_by_id
      *
      * @return string
      */
-    public function getMetaDescription()
+    public function getUpdatedById()
     {
-        return $this->container['meta_description'];
+        return $this->container['updated_by_id'];
     }
 
     /**
-     * Sets meta_description
+     * Sets updated_by_id
      *
-     * @param string $meta_description A description that goes in <meta> tag on the page.
+     * @param string $updated_by_id The ID of the user that updated this Blog Post.
      *
      * @return self
      */
-    public function setMetaDescription($meta_description)
+    public function setUpdatedById($updated_by_id)
     {
-        $this->container['meta_description'] = $meta_description;
+        $this->container['updated_by_id'] = $updated_by_id;
 
         return $this;
     }
 
     /**
-     * Gets head_html
+     * Gets translated_from_id
      *
      * @return string
      */
-    public function getHeadHtml()
+    public function getTranslatedFromId()
     {
-        return $this->container['head_html'];
+        return $this->container['translated_from_id'];
     }
 
     /**
-     * Sets head_html
+     * Sets translated_from_id
      *
-     * @param string $head_html Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     * @param string $translated_from_id ID of the primary blog post this object was translated from.
      *
      * @return self
      */
-    public function setHeadHtml($head_html)
+    public function setTranslatedFromId($translated_from_id)
     {
-        $this->container['head_html'] = $head_html;
+        $this->container['translated_from_id'] = $translated_from_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets folder_id
+     *
+     * @return string
+     */
+    public function getFolderId()
+    {
+        return $this->container['folder_id'];
+    }
+
+    /**
+     * Sets folder_id
+     *
+     * @param string $folder_id 
+     *
+     * @return self
+     */
+    public function setFolderId($folder_id)
+    {
+        $this->container['folder_id'] = $folder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets widget_containers
+     *
+     * @return array<string,object>
+     */
+    public function getWidgetContainers()
+    {
+        return $this->container['widget_containers'];
+    }
+
+    /**
+     * Sets widget_containers
+     *
+     * @param array<string,object> $widget_containers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     *
+     * @return self
+     */
+    public function setWidgetContainers($widget_containers)
+    {
+        $this->container['widget_containers'] = $widget_containers;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_expiry_redirect_id
+     *
+     * @return int
+     */
+    public function getPageExpiryRedirectId()
+    {
+        return $this->container['page_expiry_redirect_id'];
+    }
+
+    /**
+     * Sets page_expiry_redirect_id
+     *
+     * @param int $page_expiry_redirect_id 
+     *
+     * @return self
+     */
+    public function setPageExpiryRedirectId($page_expiry_redirect_id)
+    {
+        $this->container['page_expiry_redirect_id'] = $page_expiry_redirect_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets dynamic_page_data_source_type
+     *
+     * @return int
+     */
+    public function getDynamicPageDataSourceType()
+    {
+        return $this->container['dynamic_page_data_source_type'];
+    }
+
+    /**
+     * Sets dynamic_page_data_source_type
+     *
+     * @param int $dynamic_page_data_source_type dynamic_page_data_source_type
+     *
+     * @return self
+     */
+    public function setDynamicPageDataSourceType($dynamic_page_data_source_type)
+    {
+        $this->container['dynamic_page_data_source_type'] = $dynamic_page_data_source_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets featured_image
+     *
+     * @return string
+     */
+    public function getFeaturedImage()
+    {
+        return $this->container['featured_image'];
+    }
+
+    /**
+     * Sets featured_image
+     *
+     * @param string $featured_image The featuredImage of this Blog Post.
+     *
+     * @return self
+     */
+    public function setFeaturedImage($featured_image)
+    {
+        $this->container['featured_image'] = $featured_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_name
+     *
+     * @return string
+     */
+    public function getAuthorName()
+    {
+        return $this->container['author_name'];
+    }
+
+    /**
+     * Sets author_name
+     *
+     * @param string $author_name The name of the user that updated this Blog Post.
+     *
+     * @return self
+     */
+    public function setAuthorName($author_name)
+    {
+        $this->container['author_name'] = $author_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain
+     *
+     * @return string
+     */
+    public function getDomain()
+    {
+        return $this->container['domain'];
+    }
+
+    /**
+     * Sets domain
+     *
+     * @param string $domain The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
+     *
+     * @return self
+     */
+    public function setDomain($domain)
+    {
+        $this->container['domain'] = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The internal name of the Blog Post.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets dynamic_page_hub_db_table_id
+     *
+     * @return string
+     */
+    public function getDynamicPageHubDbTableId()
+    {
+        return $this->container['dynamic_page_hub_db_table_id'];
+    }
+
+    /**
+     * Sets dynamic_page_hub_db_table_id
+     *
+     * @param string $dynamic_page_hub_db_table_id The ID of the HubDB table this Blog Post references, if applicable
+     *
+     * @return self
+     */
+    public function setDynamicPageHubDbTableId($dynamic_page_hub_db_table_id)
+    {
+        $this->container['dynamic_page_hub_db_table_id'] = $dynamic_page_hub_db_table_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign
+     *
+     * @return string
+     */
+    public function getCampaign()
+    {
+        return $this->container['campaign'];
+    }
+
+    /**
+     * Sets campaign
+     *
+     * @param string $campaign The GUID of the marketing campaign this Blog Post is a part of.
+     *
+     * @return self
+     */
+    public function setCampaign($campaign)
+    {
+        $this->container['campaign'] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Gets dynamic_page_data_source_id
+     *
+     * @return string
+     */
+    public function getDynamicPageDataSourceId()
+    {
+        return $this->container['dynamic_page_data_source_id'];
+    }
+
+    /**
+     * Sets dynamic_page_data_source_id
+     *
+     * @param string $dynamic_page_data_source_id dynamic_page_data_source_id
+     *
+     * @return self
+     */
+    public function setDynamicPageDataSourceId($dynamic_page_data_source_id)
+    {
+        $this->container['dynamic_page_data_source_id'] = $dynamic_page_data_source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_domain_stylesheets
+     *
+     * @return bool
+     */
+    public function getEnableDomainStylesheets()
+    {
+        return $this->container['enable_domain_stylesheets'];
+    }
+
+    /**
+     * Sets enable_domain_stylesheets
+     *
+     * @param bool $enable_domain_stylesheets Boolean to determine whether or not the styles from the template should be applied.
+     *
+     * @return self
+     */
+    public function setEnableDomainStylesheets($enable_domain_stylesheets)
+    {
+        $this->container['enable_domain_stylesheets'] = $enable_domain_stylesheets;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_default_custom_css
+     *
+     * @return bool
+     */
+    public function getIncludeDefaultCustomCss()
+    {
+        return $this->container['include_default_custom_css'];
+    }
+
+    /**
+     * Sets include_default_custom_css
+     *
+     * @param bool $include_default_custom_css Boolean to determine whether or not the Primary CSS Files should be applied.
+     *
+     * @return self
+     */
+    public function setIncludeDefaultCustomCss($include_default_custom_css)
+    {
+        $this->container['include_default_custom_css'] = $include_default_custom_css;
+
+        return $this;
+    }
+
+    /**
+     * Gets layout_sections
+     *
+     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>
+     */
+    public function getLayoutSections()
+    {
+        return $this->container['layout_sections'];
+    }
+
+    /**
+     * Sets layout_sections
+     *
+     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection> $layout_sections 
+     *
+     * @return self
+     */
+    public function setLayoutSections($layout_sections)
+    {
+        $this->container['layout_sections'] = $layout_sections;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->container['updated'];
+    }
+
+    /**
+     * Sets updated
+     *
+     * @param \DateTime $updated updated
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->container['updated'] = $updated;
 
         return $this;
     }
@@ -3568,121 +3356,323 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets archived_in_dashboard
+     * Gets tag_ids
      *
-     * @return bool
+     * @return int[]
      */
-    public function getArchivedInDashboard()
+    public function getTagIds()
     {
-        return $this->container['archived_in_dashboard'];
+        return $this->container['tag_ids'];
     }
 
     /**
-     * Sets archived_in_dashboard
+     * Sets tag_ids
      *
-     * @param bool $archived_in_dashboard If True, the post will not show up in your dashboard, although the post could still be live.
+     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
      *
      * @return self
      */
-    public function setArchivedInDashboard($archived_in_dashboard)
+    public function setTagIds($tag_ids)
     {
-        $this->container['archived_in_dashboard'] = $archived_in_dashboard;
+        $this->container['tag_ids'] = $tag_ids;
 
         return $this;
     }
 
     /**
-     * Gets public_access_rules_enabled
-     *
-     * @return bool
-     */
-    public function getPublicAccessRulesEnabled()
-    {
-        return $this->container['public_access_rules_enabled'];
-    }
-
-    /**
-     * Sets public_access_rules_enabled
-     *
-     * @param bool $public_access_rules_enabled Boolean to determine whether or not to respect publicAccessRules.
-     *
-     * @return self
-     */
-    public function setPublicAccessRulesEnabled($public_access_rules_enabled)
-    {
-        $this->container['public_access_rules_enabled'] = $public_access_rules_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets public_access_rules
-     *
-     * @return object[]
-     */
-    public function getPublicAccessRules()
-    {
-        return $this->container['public_access_rules'];
-    }
-
-    /**
-     * Sets public_access_rules
-     *
-     * @param object[] $public_access_rules Rules for require member registration to access private content.
-     *
-     * @return self
-     */
-    public function setPublicAccessRules($public_access_rules)
-    {
-        $this->container['public_access_rules'] = $public_access_rules;
-
-        return $this;
-    }
-
-    /**
-     * Gets layout_sections
-     *
-     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>
-     */
-    public function getLayoutSections()
-    {
-        return $this->container['layout_sections'];
-    }
-
-    /**
-     * Sets layout_sections
-     *
-     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection> $layout_sections layout_sections
-     *
-     * @return self
-     */
-    public function setLayoutSections($layout_sections)
-    {
-        $this->container['layout_sections'] = $layout_sections;
-
-        return $this;
-    }
-
-    /**
-     * Gets theme_settings_values
+     * Gets widgets
      *
      * @return array<string,object>
      */
-    public function getThemeSettingsValues()
+    public function getWidgets()
     {
-        return $this->container['theme_settings_values'];
+        return $this->container['widgets'];
     }
 
     /**
-     * Sets theme_settings_values
+     * Sets widgets
      *
-     * @param array<string,object> $theme_settings_values theme_settings_values
+     * @param array<string,object> $widgets A data structure containing the data for all the modules for this page.
      *
      * @return self
      */
-    public function setThemeSettingsValues($theme_settings_values)
+    public function setWidgets($widgets)
     {
-        $this->container['theme_settings_values'] = $theme_settings_values;
+        $this->container['widgets'] = $widgets;
+
+        return $this;
+    }
+
+    /**
+     * Gets post_summary
+     *
+     * @return string
+     */
+    public function getPostSummary()
+    {
+        return $this->container['post_summary'];
+    }
+
+    /**
+     * Sets post_summary
+     *
+     * @param string $post_summary The summary of the blog post that will appear on the main listing page.
+     *
+     * @return self
+     */
+    public function setPostSummary($post_summary)
+    {
+        $this->container['post_summary'] = $post_summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets head_html
+     *
+     * @return string
+     */
+    public function getHeadHtml()
+    {
+        return $this->container['head_html'];
+    }
+
+    /**
+     * Sets head_html
+     *
+     * @param string $head_html Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     *
+     * @return self
+     */
+    public function setHeadHtml($head_html)
+    {
+        $this->container['head_html'] = $head_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_expiry_redirect_url
+     *
+     * @return string
+     */
+    public function getPageExpiryRedirectUrl()
+    {
+        return $this->container['page_expiry_redirect_url'];
+    }
+
+    /**
+     * Sets page_expiry_redirect_url
+     *
+     * @param string $page_expiry_redirect_url 
+     *
+     * @return self
+     */
+    public function setPageExpiryRedirectUrl($page_expiry_redirect_url)
+    {
+        $this->container['page_expiry_redirect_url'] = $page_expiry_redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets ab_status
+     *
+     * @return string
+     */
+    public function getAbStatus()
+    {
+        return $this->container['ab_status'];
+    }
+
+    /**
+     * Sets ab_status
+     *
+     * @param string $ab_status 
+     *
+     * @return self
+     */
+    public function setAbStatus($ab_status)
+    {
+        $allowedValues = $this->getAbStatusAllowableValues();
+        if (!in_array($ab_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ab_status', must be one of '%s'",
+                    $ab_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ab_status'] = $ab_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_featured_image
+     *
+     * @return bool
+     */
+    public function getUseFeaturedImage()
+    {
+        return $this->container['use_featured_image'];
+    }
+
+    /**
+     * Sets use_featured_image
+     *
+     * @param bool $use_featured_image Boolean to determine if this post should use a featuredImage.
+     *
+     * @return self
+     */
+    public function setUseFeaturedImage($use_featured_image)
+    {
+        $this->container['use_featured_image'] = $use_featured_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets ab_test_id
+     *
+     * @return string
+     */
+    public function getAbTestId()
+    {
+        return $this->container['ab_test_id'];
+    }
+
+    /**
+     * Sets ab_test_id
+     *
+     * @param string $ab_test_id 
+     *
+     * @return self
+     */
+    public function setAbTestId($ab_test_id)
+    {
+        $this->container['ab_test_id'] = $ab_test_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets featured_image_alt_text
+     *
+     * @return string
+     */
+    public function getFeaturedImageAltText()
+    {
+        return $this->container['featured_image_alt_text'];
+    }
+
+    /**
+     * Sets featured_image_alt_text
+     *
+     * @param string $featured_image_alt_text Alt Text of the featuredImage.
+     *
+     * @return self
+     */
+    public function setFeaturedImageAltText($featured_image_alt_text)
+    {
+        $this->container['featured_image_alt_text'] = $featured_image_alt_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets blog_author_id
+     *
+     * @return string
+     */
+    public function getBlogAuthorId()
+    {
+        return $this->container['blog_author_id'];
+    }
+
+    /**
+     * Sets blog_author_id
+     *
+     * @param string $blog_author_id The ID of the Blog Author associated with this Blog Post.
+     *
+     * @return self
+     */
+    public function setBlogAuthorId($blog_author_id)
+    {
+        $this->container['blog_author_id'] = $blog_author_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_group_id
+     *
+     * @return string
+     */
+    public function getContentGroupId()
+    {
+        return $this->container['content_group_id'];
+    }
+
+    /**
+     * Sets content_group_id
+     *
+     * @param string $content_group_id The ID of the parent Blog this Blog Post is associated with.
+     *
+     * @return self
+     */
+    public function setContentGroupId($content_group_id)
+    {
+        $this->container['content_group_id'] = $content_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets rss_summary
+     *
+     * @return string
+     */
+    public function getRssSummary()
+    {
+        return $this->container['rss_summary'];
+    }
+
+    /**
+     * Sets rss_summary
+     *
+     * @param string $rss_summary The contents of the RSS summary for this Blog Post.
+     *
+     * @return self
+     */
+    public function setRssSummary($rss_summary)
+    {
+        $this->container['rss_summary'] = $rss_summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_expiry_enabled
+     *
+     * @return bool
+     */
+    public function getPageExpiryEnabled()
+    {
+        return $this->container['page_expiry_enabled'];
+    }
+
+    /**
+     * Sets page_expiry_enabled
+     *
+     * @param bool $page_expiry_enabled 
+     *
+     * @return self
+     */
+    public function setPageExpiryEnabled($page_expiry_enabled)
+    {
+        $this->container['page_expiry_enabled'] = $page_expiry_enabled;
 
         return $this;
     }
@@ -3712,25 +3702,169 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets password
+     * Gets public_access_rules
      *
-     * @return string
+     * @return object[]
      */
-    public function getPassword()
+    public function getPublicAccessRules()
     {
-        return $this->container['password'];
+        return $this->container['public_access_rules'];
     }
 
     /**
-     * Sets password
+     * Sets public_access_rules
      *
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
+     * @param object[] $public_access_rules Rules for require member registration to access private content.
      *
      * @return self
      */
-    public function setPassword($password)
+    public function setPublicAccessRules($public_access_rules)
     {
-        $this->container['password'] = $password;
+        $this->container['public_access_rules'] = $public_access_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_google_amp_output_override
+     *
+     * @return bool
+     */
+    public function getEnableGoogleAmpOutputOverride()
+    {
+        return $this->container['enable_google_amp_output_override'];
+    }
+
+    /**
+     * Sets enable_google_amp_output_override
+     *
+     * @param bool $enable_google_amp_output_override Boolean to allow overriding the AMP settings for the blog.
+     *
+     * @return self
+     */
+    public function setEnableGoogleAmpOutputOverride($enable_google_amp_output_override)
+    {
+        $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return int
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param int $archived_at The timestamp (ISO8601 format) when this Blog Post was deleted.
+     *
+     * @return self
+     */
+    public function setArchivedAt($archived_at)
+    {
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets post_body
+     *
+     * @return string
+     */
+    public function getPostBody()
+    {
+        return $this->container['post_body'];
+    }
+
+    /**
+     * Sets post_body
+     *
+     * @param string $post_body The HTML of the main post body.
+     *
+     * @return self
+     */
+    public function setPostBody($post_body)
+    {
+        $this->container['post_body'] = $post_body;
+
+        return $this;
+    }
+
+    /**
+     * Gets theme_settings_values
+     *
+     * @return array<string,object>
+     */
+    public function getThemeSettingsValues()
+    {
+        return $this->container['theme_settings_values'];
+    }
+
+    /**
+     * Sets theme_settings_values
+     *
+     * @param array<string,object> $theme_settings_values 
+     *
+     * @return self
+     */
+    public function setThemeSettingsValues($theme_settings_values)
+    {
+        $this->container['theme_settings_values'] = $theme_settings_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_expiry_date
+     *
+     * @return int
+     */
+    public function getPageExpiryDate()
+    {
+        return $this->container['page_expiry_date'];
+    }
+
+    /**
+     * Sets page_expiry_date
+     *
+     * @param int $page_expiry_date 
+     *
+     * @return self
+     */
+    public function setPageExpiryDate($page_expiry_date)
+    {
+        $this->container['page_expiry_date'] = $page_expiry_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_access_rules_enabled
+     *
+     * @return bool
+     */
+    public function getPublicAccessRulesEnabled()
+    {
+        return $this->container['public_access_rules_enabled'];
+    }
+
+    /**
+     * Sets public_access_rules_enabled
+     *
+     * @param bool $public_access_rules_enabled Boolean to determine whether or not to respect publicAccessRules.
+     *
+     * @return self
+     */
+    public function setPublicAccessRulesEnabled($public_access_rules_enabled)
+    {
+        $this->container['public_access_rules_enabled'] = $public_access_rules_enabled;
 
         return $this;
     }
@@ -3770,97 +3904,49 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets publish_date
+     * Gets category_id
      *
-     * @return \DateTime
+     * @return int
      */
-    public function getPublishDate()
+    public function getCategoryId()
     {
-        return $this->container['publish_date'];
+        return $this->container['category_id'];
     }
 
     /**
-     * Sets publish_date
+     * Sets category_id
      *
-     * @param \DateTime $publish_date The date (ISO8601 format) the blog post is to be published at.
+     * @param int $category_id ID of the type of object this is. Should always .
      *
      * @return self
      */
-    public function setPublishDate($publish_date)
+    public function setCategoryId($category_id)
     {
-        $this->container['publish_date'] = $publish_date;
+        $this->container['category_id'] = $category_id;
 
         return $this;
     }
 
     /**
-     * Gets created
+     * Gets link_rel_canonical_url
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreated()
+    public function getLinkRelCanonicalUrl()
     {
-        return $this->container['created'];
+        return $this->container['link_rel_canonical_url'];
     }
 
     /**
-     * Sets created
+     * Sets link_rel_canonical_url
      *
-     * @param \DateTime $created created
+     * @param string $link_rel_canonical_url Optional override to set the URL to be used in the rel=canonical link tag on the page.
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setLinkRelCanonicalUrl($link_rel_canonical_url)
     {
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \DateTime
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \DateTime $updated updated
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime $deleted_at The timestamp (ISO8601 format) when this Blog Post was deleted.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
+        $this->container['link_rel_canonical_url'] = $link_rel_canonical_url;
 
         return $this;
     }

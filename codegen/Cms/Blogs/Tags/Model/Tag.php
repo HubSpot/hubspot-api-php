@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Tags
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,13 +58,13 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'deleted_at' => '\DateTime',
+        'created' => '\DateTime',
         'name' => 'string',
         'language' => 'string',
+        'id' => 'string',
         'translated_from_id' => 'int',
-        'created' => '\DateTime',
-        'updated' => '\DateTime',
-        'deleted_at' => '\DateTime'
+        'updated' => '\DateTime'
     ];
 
     /**
@@ -75,13 +75,13 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'deleted_at' => 'date-time',
+        'created' => 'date-time',
         'name' => null,
         'language' => null,
+        'id' => null,
         'translated_from_id' => 'int64',
-        'created' => 'date-time',
-        'updated' => 'date-time',
-        'deleted_at' => 'date-time'
+        'updated' => 'date-time'
     ];
 
     /**
@@ -111,13 +111,13 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'deleted_at' => 'deletedAt',
+        'created' => 'created',
         'name' => 'name',
         'language' => 'language',
+        'id' => 'id',
         'translated_from_id' => 'translatedFromId',
-        'created' => 'created',
-        'updated' => 'updated',
-        'deleted_at' => 'deletedAt'
+        'updated' => 'updated'
     ];
 
     /**
@@ -126,13 +126,13 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'deleted_at' => 'setDeletedAt',
+        'created' => 'setCreated',
         'name' => 'setName',
         'language' => 'setLanguage',
+        'id' => 'setId',
         'translated_from_id' => 'setTranslatedFromId',
-        'created' => 'setCreated',
-        'updated' => 'setUpdated',
-        'deleted_at' => 'setDeletedAt'
+        'updated' => 'setUpdated'
     ];
 
     /**
@@ -141,13 +141,13 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'deleted_at' => 'getDeletedAt',
+        'created' => 'getCreated',
         'name' => 'getName',
         'language' => 'getLanguage',
+        'id' => 'getId',
         'translated_from_id' => 'getTranslatedFromId',
-        'created' => 'getCreated',
-        'updated' => 'getUpdated',
-        'deleted_at' => 'getDeletedAt'
+        'updated' => 'getUpdated'
     ];
 
     /**
@@ -271,6 +271,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_CCP_IN = 'ccp-in';
     public const LANGUAGE_CE = 'ce';
     public const LANGUAGE_CE_RU = 'ce-ru';
+    public const LANGUAGE_CEB = 'ceb';
+    public const LANGUAGE_CEB_PH = 'ceb-ph';
     public const LANGUAGE_CGG = 'cgg';
     public const LANGUAGE_CGG_UG = 'cgg-ug';
     public const LANGUAGE_CHR = 'chr';
@@ -300,6 +302,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_DE_LU = 'de-lu';
     public const LANGUAGE_DJE = 'dje';
     public const LANGUAGE_DJE_NE = 'dje-ne';
+    public const LANGUAGE_DOI = 'doi';
+    public const LANGUAGE_DOI_IN = 'doi-in';
     public const LANGUAGE_DSB = 'dsb';
     public const LANGUAGE_DSB_DE = 'dsb-de';
     public const LANGUAGE_DUA = 'dua';
@@ -337,6 +341,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_CH = 'en-ch';
     public const LANGUAGE_EN_CK = 'en-ck';
     public const LANGUAGE_EN_CM = 'en-cm';
+    public const LANGUAGE_EN_CN = 'en-cn';
     public const LANGUAGE_EN_CX = 'en-cx';
     public const LANGUAGE_EN_CY = 'en-cy';
     public const LANGUAGE_EN_DE = 'en-de';
@@ -380,6 +385,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_MT = 'en-mt';
     public const LANGUAGE_EN_MU = 'en-mu';
     public const LANGUAGE_EN_MW = 'en-mw';
+    public const LANGUAGE_EN_MX = 'en-mx';
     public const LANGUAGE_EN_MY = 'en-my';
     public const LANGUAGE_EN_NA = 'en-na';
     public const LANGUAGE_EN_NF = 'en-nf';
@@ -464,9 +470,17 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FA_AF = 'fa-af';
     public const LANGUAGE_FA_IR = 'fa-ir';
     public const LANGUAGE_FF = 'ff';
+    public const LANGUAGE_FF_BF = 'ff-bf';
     public const LANGUAGE_FF_CM = 'ff-cm';
+    public const LANGUAGE_FF_GH = 'ff-gh';
+    public const LANGUAGE_FF_GM = 'ff-gm';
     public const LANGUAGE_FF_GN = 'ff-gn';
+    public const LANGUAGE_FF_GW = 'ff-gw';
+    public const LANGUAGE_FF_LR = 'ff-lr';
     public const LANGUAGE_FF_MR = 'ff-mr';
+    public const LANGUAGE_FF_NE = 'ff-ne';
+    public const LANGUAGE_FF_NG = 'ff-ng';
+    public const LANGUAGE_FF_SL = 'ff-sl';
     public const LANGUAGE_FF_SN = 'ff-sn';
     public const LANGUAGE_FI = 'fi';
     public const LANGUAGE_FI_FI = 'fi-fi';
@@ -527,6 +541,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FY = 'fy';
     public const LANGUAGE_FY_NL = 'fy-nl';
     public const LANGUAGE_GA = 'ga';
+    public const LANGUAGE_GA_GB = 'ga-gb';
     public const LANGUAGE_GA_IE = 'ga-ie';
     public const LANGUAGE_GD = 'gd';
     public const LANGUAGE_GD_GB = 'gd-gb';
@@ -560,6 +575,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_HU_HU = 'hu-hu';
     public const LANGUAGE_HY = 'hy';
     public const LANGUAGE_HY_AM = 'hy-am';
+    public const LANGUAGE_IA = 'ia';
+    public const LANGUAGE_IA_001 = 'ia-001';
     public const LANGUAGE_ID = 'id';
     public const LANGUAGE_IG = 'ig';
     public const LANGUAGE_IG_NG = 'ig-ng';
@@ -582,6 +599,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_YI_001 = 'yi-001';
     public const LANGUAGE_JMC = 'jmc';
     public const LANGUAGE_JMC_TZ = 'jmc-tz';
+    public const LANGUAGE_JV = 'jv';
+    public const LANGUAGE_JV_ID = 'jv-id';
     public const LANGUAGE_KA = 'ka';
     public const LANGUAGE_KA_GE = 'ka-ge';
     public const LANGUAGE_KAB = 'kab';
@@ -623,6 +642,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_KSH_DE = 'ksh-de';
     public const LANGUAGE_KW = 'kw';
     public const LANGUAGE_KW_GB = 'kw-gb';
+    public const LANGUAGE_KU = 'ku';
+    public const LANGUAGE_KU_TR = 'ku-tr';
     public const LANGUAGE_KY = 'ky';
     public const LANGUAGE_KY_KG = 'ky-kg';
     public const LANGUAGE_LAG = 'lag';
@@ -653,6 +674,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_LUY_KE = 'luy-ke';
     public const LANGUAGE_LV = 'lv';
     public const LANGUAGE_LV_LV = 'lv-lv';
+    public const LANGUAGE_MAI = 'mai';
+    public const LANGUAGE_MAI_IN = 'mai-in';
     public const LANGUAGE_MAS = 'mas';
     public const LANGUAGE_MAS_KE = 'mas-ke';
     public const LANGUAGE_MAS_TZ = 'mas-tz';
@@ -666,16 +689,21 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_MGH_MZ = 'mgh-mz';
     public const LANGUAGE_MGO = 'mgo';
     public const LANGUAGE_MGO_CM = 'mgo-cm';
+    public const LANGUAGE_MI = 'mi';
+    public const LANGUAGE_MI_NZ = 'mi-nz';
     public const LANGUAGE_MK = 'mk';
     public const LANGUAGE_MK_MK = 'mk-mk';
     public const LANGUAGE_ML = 'ml';
     public const LANGUAGE_ML_IN = 'ml-in';
     public const LANGUAGE_MN = 'mn';
     public const LANGUAGE_MN_MN = 'mn-mn';
+    public const LANGUAGE_MNI = 'mni';
+    public const LANGUAGE_MNI_IN = 'mni-in';
     public const LANGUAGE_MR = 'mr';
     public const LANGUAGE_MR_IN = 'mr-in';
     public const LANGUAGE_MS = 'ms';
     public const LANGUAGE_MS_BN = 'ms-bn';
+    public const LANGUAGE_MS_ID = 'ms-id';
     public const LANGUAGE_MS_MY = 'ms-my';
     public const LANGUAGE_MS_SG = 'ms-sg';
     public const LANGUAGE_MT = 'mt';
@@ -732,12 +760,15 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_PA = 'pa';
     public const LANGUAGE_PA_IN = 'pa-in';
     public const LANGUAGE_PA_PK = 'pa-pk';
+    public const LANGUAGE_PCM = 'pcm';
+    public const LANGUAGE_PCM_NG = 'pcm-ng';
     public const LANGUAGE_PL = 'pl';
     public const LANGUAGE_PL_PL = 'pl-pl';
     public const LANGUAGE_PRG = 'prg';
     public const LANGUAGE_PRG_001 = 'prg-001';
     public const LANGUAGE_PS = 'ps';
     public const LANGUAGE_PS_AF = 'ps-af';
+    public const LANGUAGE_PS_PK = 'ps-pk';
     public const LANGUAGE_PT = 'pt';
     public const LANGUAGE_PT_AO = 'pt-ao';
     public const LANGUAGE_PT_BR = 'pt-br';
@@ -776,13 +807,17 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_RWK = 'rwk';
     public const LANGUAGE_RWK_TZ = 'rwk-tz';
     public const LANGUAGE_SA = 'sa';
+    public const LANGUAGE_SA_IN = 'sa-in';
     public const LANGUAGE_SAH = 'sah';
     public const LANGUAGE_SAH_RU = 'sah-ru';
     public const LANGUAGE_SAQ = 'saq';
     public const LANGUAGE_SAQ_KE = 'saq-ke';
+    public const LANGUAGE_SAT = 'sat';
+    public const LANGUAGE_SAT_IN = 'sat-in';
     public const LANGUAGE_SBP = 'sbp';
     public const LANGUAGE_SBP_TZ = 'sbp-tz';
     public const LANGUAGE_SD = 'sd';
+    public const LANGUAGE_SD_IN = 'sd-in';
     public const LANGUAGE_SD_PK = 'sd-pk';
     public const LANGUAGE_SE = 'se';
     public const LANGUAGE_SE_FI = 'se-fi';
@@ -821,6 +856,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SR_ME = 'sr-me';
     public const LANGUAGE_SR_RS = 'sr-rs';
     public const LANGUAGE_SR_XK = 'sr-xk';
+    public const LANGUAGE_SU = 'su';
+    public const LANGUAGE_SU_ID = 'su-id';
     public const LANGUAGE_SV = 'sv';
     public const LANGUAGE_SV_AX = 'sv-ax';
     public const LANGUAGE_SV_FI = 'sv-fi';
@@ -850,6 +887,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_TI_ET = 'ti-et';
     public const LANGUAGE_TK = 'tk';
     public const LANGUAGE_TK_TM = 'tk-tm';
+    public const LANGUAGE_TL = 'tl';
     public const LANGUAGE_TO = 'to';
     public const LANGUAGE_TO_TO = 'to-to';
     public const LANGUAGE_TR = 'tr';
@@ -883,6 +921,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_WAE_CH = 'wae-ch';
     public const LANGUAGE_WO = 'wo';
     public const LANGUAGE_WO_SN = 'wo-sn';
+    public const LANGUAGE_XH = 'xh';
+    public const LANGUAGE_XH_ZA = 'xh-za';
     public const LANGUAGE_XOG = 'xog';
     public const LANGUAGE_XOG_UG = 'xog-ug';
     public const LANGUAGE_YAV = 'yav';
@@ -994,6 +1034,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_CCP_IN,
             self::LANGUAGE_CE,
             self::LANGUAGE_CE_RU,
+            self::LANGUAGE_CEB,
+            self::LANGUAGE_CEB_PH,
             self::LANGUAGE_CGG,
             self::LANGUAGE_CGG_UG,
             self::LANGUAGE_CHR,
@@ -1023,6 +1065,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_DE_LU,
             self::LANGUAGE_DJE,
             self::LANGUAGE_DJE_NE,
+            self::LANGUAGE_DOI,
+            self::LANGUAGE_DOI_IN,
             self::LANGUAGE_DSB,
             self::LANGUAGE_DSB_DE,
             self::LANGUAGE_DUA,
@@ -1060,6 +1104,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_CH,
             self::LANGUAGE_EN_CK,
             self::LANGUAGE_EN_CM,
+            self::LANGUAGE_EN_CN,
             self::LANGUAGE_EN_CX,
             self::LANGUAGE_EN_CY,
             self::LANGUAGE_EN_DE,
@@ -1103,6 +1148,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_MT,
             self::LANGUAGE_EN_MU,
             self::LANGUAGE_EN_MW,
+            self::LANGUAGE_EN_MX,
             self::LANGUAGE_EN_MY,
             self::LANGUAGE_EN_NA,
             self::LANGUAGE_EN_NF,
@@ -1187,9 +1233,17 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FA_AF,
             self::LANGUAGE_FA_IR,
             self::LANGUAGE_FF,
+            self::LANGUAGE_FF_BF,
             self::LANGUAGE_FF_CM,
+            self::LANGUAGE_FF_GH,
+            self::LANGUAGE_FF_GM,
             self::LANGUAGE_FF_GN,
+            self::LANGUAGE_FF_GW,
+            self::LANGUAGE_FF_LR,
             self::LANGUAGE_FF_MR,
+            self::LANGUAGE_FF_NE,
+            self::LANGUAGE_FF_NG,
+            self::LANGUAGE_FF_SL,
             self::LANGUAGE_FF_SN,
             self::LANGUAGE_FI,
             self::LANGUAGE_FI_FI,
@@ -1250,6 +1304,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FY,
             self::LANGUAGE_FY_NL,
             self::LANGUAGE_GA,
+            self::LANGUAGE_GA_GB,
             self::LANGUAGE_GA_IE,
             self::LANGUAGE_GD,
             self::LANGUAGE_GD_GB,
@@ -1283,6 +1338,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_HU_HU,
             self::LANGUAGE_HY,
             self::LANGUAGE_HY_AM,
+            self::LANGUAGE_IA,
+            self::LANGUAGE_IA_001,
             self::LANGUAGE_ID,
             self::LANGUAGE_IG,
             self::LANGUAGE_IG_NG,
@@ -1305,6 +1362,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_YI_001,
             self::LANGUAGE_JMC,
             self::LANGUAGE_JMC_TZ,
+            self::LANGUAGE_JV,
+            self::LANGUAGE_JV_ID,
             self::LANGUAGE_KA,
             self::LANGUAGE_KA_GE,
             self::LANGUAGE_KAB,
@@ -1346,6 +1405,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_KSH_DE,
             self::LANGUAGE_KW,
             self::LANGUAGE_KW_GB,
+            self::LANGUAGE_KU,
+            self::LANGUAGE_KU_TR,
             self::LANGUAGE_KY,
             self::LANGUAGE_KY_KG,
             self::LANGUAGE_LAG,
@@ -1376,6 +1437,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_LUY_KE,
             self::LANGUAGE_LV,
             self::LANGUAGE_LV_LV,
+            self::LANGUAGE_MAI,
+            self::LANGUAGE_MAI_IN,
             self::LANGUAGE_MAS,
             self::LANGUAGE_MAS_KE,
             self::LANGUAGE_MAS_TZ,
@@ -1389,16 +1452,21 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_MGH_MZ,
             self::LANGUAGE_MGO,
             self::LANGUAGE_MGO_CM,
+            self::LANGUAGE_MI,
+            self::LANGUAGE_MI_NZ,
             self::LANGUAGE_MK,
             self::LANGUAGE_MK_MK,
             self::LANGUAGE_ML,
             self::LANGUAGE_ML_IN,
             self::LANGUAGE_MN,
             self::LANGUAGE_MN_MN,
+            self::LANGUAGE_MNI,
+            self::LANGUAGE_MNI_IN,
             self::LANGUAGE_MR,
             self::LANGUAGE_MR_IN,
             self::LANGUAGE_MS,
             self::LANGUAGE_MS_BN,
+            self::LANGUAGE_MS_ID,
             self::LANGUAGE_MS_MY,
             self::LANGUAGE_MS_SG,
             self::LANGUAGE_MT,
@@ -1455,12 +1523,15 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_PA,
             self::LANGUAGE_PA_IN,
             self::LANGUAGE_PA_PK,
+            self::LANGUAGE_PCM,
+            self::LANGUAGE_PCM_NG,
             self::LANGUAGE_PL,
             self::LANGUAGE_PL_PL,
             self::LANGUAGE_PRG,
             self::LANGUAGE_PRG_001,
             self::LANGUAGE_PS,
             self::LANGUAGE_PS_AF,
+            self::LANGUAGE_PS_PK,
             self::LANGUAGE_PT,
             self::LANGUAGE_PT_AO,
             self::LANGUAGE_PT_BR,
@@ -1499,13 +1570,17 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_RWK,
             self::LANGUAGE_RWK_TZ,
             self::LANGUAGE_SA,
+            self::LANGUAGE_SA_IN,
             self::LANGUAGE_SAH,
             self::LANGUAGE_SAH_RU,
             self::LANGUAGE_SAQ,
             self::LANGUAGE_SAQ_KE,
+            self::LANGUAGE_SAT,
+            self::LANGUAGE_SAT_IN,
             self::LANGUAGE_SBP,
             self::LANGUAGE_SBP_TZ,
             self::LANGUAGE_SD,
+            self::LANGUAGE_SD_IN,
             self::LANGUAGE_SD_PK,
             self::LANGUAGE_SE,
             self::LANGUAGE_SE_FI,
@@ -1544,6 +1619,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SR_ME,
             self::LANGUAGE_SR_RS,
             self::LANGUAGE_SR_XK,
+            self::LANGUAGE_SU,
+            self::LANGUAGE_SU_ID,
             self::LANGUAGE_SV,
             self::LANGUAGE_SV_AX,
             self::LANGUAGE_SV_FI,
@@ -1573,6 +1650,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_TI_ET,
             self::LANGUAGE_TK,
             self::LANGUAGE_TK_TM,
+            self::LANGUAGE_TL,
             self::LANGUAGE_TO,
             self::LANGUAGE_TO_TO,
             self::LANGUAGE_TR,
@@ -1606,6 +1684,8 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_WAE_CH,
             self::LANGUAGE_WO,
             self::LANGUAGE_WO_SN,
+            self::LANGUAGE_XH,
+            self::LANGUAGE_XH_ZA,
             self::LANGUAGE_XOG,
             self::LANGUAGE_XOG_UG,
             self::LANGUAGE_YAV,
@@ -1646,13 +1726,13 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['created'] = $data['created'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['translated_from_id'] = $data['translated_from_id'] ?? null;
-        $this->container['created'] = $data['created'] ?? null;
         $this->container['updated'] = $data['updated'] ?? null;
-        $this->container['deleted_at'] = $data['deleted_at'] ?? null;
     }
 
     /**
@@ -1664,8 +1744,11 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -1682,17 +1765,14 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['translated_from_id'] === null) {
             $invalidProperties[] = "'translated_from_id' can't be null";
         }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
-        }
         if ($this->container['updated'] === null) {
             $invalidProperties[] = "'updated' can't be null";
-        }
-        if ($this->container['deleted_at'] === null) {
-            $invalidProperties[] = "'deleted_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -1710,25 +1790,49 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets deleted_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getId()
+    public function getDeletedAt()
     {
-        return $this->container['id'];
+        return $this->container['deleted_at'];
     }
 
     /**
-     * Sets id
+     * Sets deleted_at
      *
-     * @param string $id The unique ID of the Blog Tag.
+     * @param \DateTime $deleted_at The timestamp (ISO8601 format) when this Blog Tag was deleted.
      *
      * @return self
      */
-    public function setId($id)
+    public function setDeletedAt($deleted_at)
     {
-        $this->container['id'] = $id;
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
 
         return $this;
     }
@@ -1792,6 +1896,30 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The unique ID of the Blog Tag.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets translated_from_id
      *
      * @return int
@@ -1816,30 +1944,6 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->container['created'];
-    }
-
-    /**
-     * Sets created
-     *
-     * @param \DateTime $created created
-     *
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
      * Gets updated
      *
      * @return \DateTime
@@ -1859,30 +1963,6 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdated($updated)
     {
         $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime $deleted_at The timestamp (ISO8601 format) when this Blog Tag was deleted.
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        $this->container['deleted_at'] = $deleted_at;
 
         return $this;
     }

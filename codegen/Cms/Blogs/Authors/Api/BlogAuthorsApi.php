@@ -10,7 +10,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Authors
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -612,12 +612,11 @@ class BlogAuthorsApi
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\Error
+     * @return void
      */
     public function attachToLangGroup($attach_to_lang_primary_request_v_next)
     {
-        list($response) = $this->attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next);
-        return $response;
+        $this->attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next);
     }
 
     /**
@@ -629,7 +628,7 @@ class BlogAuthorsApi
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next)
     {
@@ -670,39 +669,7 @@ class BlogAuthorsApi
                 );
             }
 
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
@@ -751,27 +718,14 @@ class BlogAuthorsApi
      */
     public function attachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next)
     {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\Error';
+        $returnType = '';
         $request = $this->attachToLangGroupRequest($attach_to_lang_primary_request_v_next);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1832,12 +1786,11 @@ class BlogAuthorsApi
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\Error
+     * @return void
      */
     public function detachFromLangGroup($detach_from_lang_group_request_v_next)
     {
-        list($response) = $this->detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next);
-        return $response;
+        $this->detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next);
     }
 
     /**
@@ -1849,7 +1802,7 @@ class BlogAuthorsApi
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next)
     {
@@ -1890,39 +1843,7 @@ class BlogAuthorsApi
                 );
             }
 
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
@@ -1971,27 +1892,14 @@ class BlogAuthorsApi
      */
     public function detachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next)
     {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\Error';
+        $returnType = '';
         $request = $this->detachFromLangGroupRequest($detach_from_lang_group_request_v_next);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2112,14 +2020,15 @@ class BlogAuthorsApi
      *
      * @param  string $object_id The Blog Author id. (required)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property property (optional)
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
      */
-    public function getById($object_id, $archived = null)
+    public function getById($object_id, $archived = null, $property = null)
     {
-        list($response) = $this->getByIdWithHttpInfo($object_id, $archived);
+        list($response) = $this->getByIdWithHttpInfo($object_id, $archived, $property);
         return $response;
     }
 
@@ -2130,14 +2039,15 @@ class BlogAuthorsApi
      *
      * @param  string $object_id The Blog Author id. (required)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($object_id, $archived = null)
+    public function getByIdWithHttpInfo($object_id, $archived = null, $property = null)
     {
-        $request = $this->getByIdRequest($object_id, $archived);
+        $request = $this->getByIdRequest($object_id, $archived, $property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2253,13 +2163,14 @@ class BlogAuthorsApi
      *
      * @param  string $object_id The Blog Author id. (required)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($object_id, $archived = null)
+    public function getByIdAsync($object_id, $archived = null, $property = null)
     {
-        return $this->getByIdAsyncWithHttpInfo($object_id, $archived)
+        return $this->getByIdAsyncWithHttpInfo($object_id, $archived, $property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2274,14 +2185,15 @@ class BlogAuthorsApi
      *
      * @param  string $object_id The Blog Author id. (required)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($object_id, $archived = null)
+    public function getByIdAsyncWithHttpInfo($object_id, $archived = null, $property = null)
     {
         $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor';
-        $request = $this->getByIdRequest($object_id, $archived);
+        $request = $this->getByIdRequest($object_id, $archived, $property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2324,11 +2236,12 @@ class BlogAuthorsApi
      *
      * @param  string $object_id The Blog Author id. (required)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($object_id, $archived = null)
+    public function getByIdRequest($object_id, $archived = null, $property = null)
     {
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
@@ -2349,6 +2262,15 @@ class BlogAuthorsApi
             $archived,
             'archived', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property,
+            'property', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2441,14 +2363,15 @@ class BlogAuthorsApi
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to return. Default is 100. (optional)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property property (optional)
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthorForwardPaging|\HubSpot\Client\Cms\Blogs\Authors\Model\Error
      */
-    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null)
     {
-        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property);
         return $response;
     }
 
@@ -2467,14 +2390,15 @@ class BlogAuthorsApi
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to return. Default is 100. (optional)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthorForwardPaging|\HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null)
     {
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2598,13 +2522,14 @@ class BlogAuthorsApi
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to return. Default is 100. (optional)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null)
     {
-        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived)
+        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2627,14 +2552,15 @@ class BlogAuthorsApi
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to return. Default is 100. (optional)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null)
     {
         $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\CollectionResponseWithTotalBlogAuthorForwardPaging';
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived);
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2685,11 +2611,12 @@ class BlogAuthorsApi
      * @param  string $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to return. Default is 100. (optional)
      * @param  bool $archived Specifies whether to return deleted Blog Authors. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $property (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null)
+    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null)
     {
 
         $resourcePath = '/cms/v3/blogs/authors';
@@ -2785,6 +2712,15 @@ class BlogAuthorsApi
             $archived,
             'archived', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property,
+            'property', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4121,12 +4057,11 @@ class BlogAuthorsApi
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\Authors\Model\Error
+     * @return void
      */
     public function updateLangs($update_languages_request_v_next)
     {
-        list($response) = $this->updateLangsWithHttpInfo($update_languages_request_v_next);
-        return $response;
+        $this->updateLangsWithHttpInfo($update_languages_request_v_next);
     }
 
     /**
@@ -4138,7 +4073,7 @@ class BlogAuthorsApi
      *
      * @throws \HubSpot\Client\Cms\Blogs\Authors\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\Authors\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLangsWithHttpInfo($update_languages_request_v_next)
     {
@@ -4179,39 +4114,7 @@ class BlogAuthorsApi
                 );
             }
 
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Cms\Blogs\Authors\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\Blogs\Authors\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
@@ -4260,27 +4163,14 @@ class BlogAuthorsApi
      */
     public function updateLangsAsyncWithHttpInfo($update_languages_request_v_next)
     {
-        $returnType = '\HubSpot\Client\Cms\Blogs\Authors\Model\Error';
+        $returnType = '';
         $request = $this->updateLangsRequest($update_languages_request_v_next);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

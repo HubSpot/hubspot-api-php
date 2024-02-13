@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,20 +57,20 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'foreign_table_id' => 'int',
+        'description' => 'string',
         'label' => 'string',
-        'id' => 'string',
+        'type' => 'string',
+        'option_count' => 'int',
+        'foreign_ids' => '\HubSpot\Client\Cms\Hubdb\Model\ForeignId[]',
         'deleted' => 'bool',
+        'name' => 'string',
         'options' => '\HubSpot\Client\Cms\Hubdb\Model\Option[]',
         'width' => 'int',
-        'foreign_table_id' => 'int',
-        'foreign_column_id' => 'int',
-        'description' => 'string',
-        'foreign_ids' => '\HubSpot\Client\Cms\Hubdb\Model\ForeignId[]',
-        'type' => 'string',
-        'foreign_ids_by_name' => 'array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>',
+        'id' => 'string',
         'foreign_ids_by_id' => 'array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>',
-        'option_count' => 'int'
+        'foreign_column_id' => 'int',
+        'foreign_ids_by_name' => 'array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>'
     ];
 
     /**
@@ -81,20 +81,20 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'foreign_table_id' => 'int64',
+        'description' => null,
         'label' => null,
-        'id' => null,
+        'type' => null,
+        'option_count' => 'int32',
+        'foreign_ids' => null,
         'deleted' => null,
+        'name' => null,
         'options' => null,
         'width' => 'int32',
-        'foreign_table_id' => 'int64',
-        'foreign_column_id' => 'int32',
-        'description' => null,
-        'foreign_ids' => null,
-        'type' => null,
-        'foreign_ids_by_name' => null,
+        'id' => null,
         'foreign_ids_by_id' => null,
-        'option_count' => 'int32'
+        'foreign_column_id' => 'int32',
+        'foreign_ids_by_name' => null
     ];
 
     /**
@@ -124,20 +124,20 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'foreign_table_id' => 'foreignTableId',
+        'description' => 'description',
         'label' => 'label',
-        'id' => 'id',
+        'type' => 'type',
+        'option_count' => 'optionCount',
+        'foreign_ids' => 'foreignIds',
         'deleted' => 'deleted',
+        'name' => 'name',
         'options' => 'options',
         'width' => 'width',
-        'foreign_table_id' => 'foreignTableId',
-        'foreign_column_id' => 'foreignColumnId',
-        'description' => 'description',
-        'foreign_ids' => 'foreignIds',
-        'type' => 'type',
-        'foreign_ids_by_name' => 'foreignIdsByName',
+        'id' => 'id',
         'foreign_ids_by_id' => 'foreignIdsById',
-        'option_count' => 'optionCount'
+        'foreign_column_id' => 'foreignColumnId',
+        'foreign_ids_by_name' => 'foreignIdsByName'
     ];
 
     /**
@@ -146,20 +146,20 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'foreign_table_id' => 'setForeignTableId',
+        'description' => 'setDescription',
         'label' => 'setLabel',
-        'id' => 'setId',
+        'type' => 'setType',
+        'option_count' => 'setOptionCount',
+        'foreign_ids' => 'setForeignIds',
         'deleted' => 'setDeleted',
+        'name' => 'setName',
         'options' => 'setOptions',
         'width' => 'setWidth',
-        'foreign_table_id' => 'setForeignTableId',
-        'foreign_column_id' => 'setForeignColumnId',
-        'description' => 'setDescription',
-        'foreign_ids' => 'setForeignIds',
-        'type' => 'setType',
-        'foreign_ids_by_name' => 'setForeignIdsByName',
+        'id' => 'setId',
         'foreign_ids_by_id' => 'setForeignIdsById',
-        'option_count' => 'setOptionCount'
+        'foreign_column_id' => 'setForeignColumnId',
+        'foreign_ids_by_name' => 'setForeignIdsByName'
     ];
 
     /**
@@ -168,20 +168,20 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'foreign_table_id' => 'getForeignTableId',
+        'description' => 'getDescription',
         'label' => 'getLabel',
-        'id' => 'getId',
+        'type' => 'getType',
+        'option_count' => 'getOptionCount',
+        'foreign_ids' => 'getForeignIds',
         'deleted' => 'getDeleted',
+        'name' => 'getName',
         'options' => 'getOptions',
         'width' => 'getWidth',
-        'foreign_table_id' => 'getForeignTableId',
-        'foreign_column_id' => 'getForeignColumnId',
-        'description' => 'getDescription',
-        'foreign_ids' => 'getForeignIds',
-        'type' => 'getType',
-        'foreign_ids_by_name' => 'getForeignIdsByName',
+        'id' => 'getId',
         'foreign_ids_by_id' => 'getForeignIdsById',
-        'option_count' => 'getOptionCount'
+        'foreign_column_id' => 'getForeignColumnId',
+        'foreign_ids_by_name' => 'getForeignIdsByName'
     ];
 
     /**
@@ -286,20 +286,20 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['foreign_table_id'] = $data['foreign_table_id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['option_count'] = $data['option_count'] ?? null;
+        $this->container['foreign_ids'] = $data['foreign_ids'] ?? null;
         $this->container['deleted'] = $data['deleted'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['options'] = $data['options'] ?? null;
         $this->container['width'] = $data['width'] ?? null;
-        $this->container['foreign_table_id'] = $data['foreign_table_id'] ?? null;
-        $this->container['foreign_column_id'] = $data['foreign_column_id'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['foreign_ids'] = $data['foreign_ids'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['foreign_ids_by_name'] = $data['foreign_ids_by_name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['foreign_ids_by_id'] = $data['foreign_ids_by_id'] ?? null;
-        $this->container['option_count'] = $data['option_count'] ?? null;
+        $this->container['foreign_column_id'] = $data['foreign_column_id'] ?? null;
+        $this->container['foreign_ids_by_name'] = $data['foreign_ids_by_name'] ?? null;
     }
 
     /**
@@ -311,9 +311,6 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
         }
@@ -329,6 +326,9 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -345,25 +345,49 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets foreign_table_id
      *
-     * @return string
+     * @return int|null
      */
-    public function getName()
+    public function getForeignTableId()
     {
-        return $this->container['name'];
+        return $this->container['foreign_table_id'];
     }
 
     /**
-     * Sets name
+     * Sets foreign_table_id
      *
-     * @param string $name Name of the column
+     * @param int|null $foreign_table_id Foreign table id referenced
      *
      * @return self
      */
-    public function setName($name)
+    public function setForeignTableId($foreign_table_id)
     {
-        $this->container['name'] = $name;
+        $this->container['foreign_table_id'] = $foreign_table_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -393,25 +417,83 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets id
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets id
+     * Sets type
      *
-     * @param string|null $id Column Id
+     * @param string $type Type of the column
      *
      * @return self
      */
-    public function setId($id)
+    public function setType($type)
     {
-        $this->container['id'] = $id;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets option_count
+     *
+     * @return int|null
+     */
+    public function getOptionCount()
+    {
+        return $this->container['option_count'];
+    }
+
+    /**
+     * Sets option_count
+     *
+     * @param int|null $option_count Number of options available
+     *
+     * @return self
+     */
+    public function setOptionCount($option_count)
+    {
+        $this->container['option_count'] = $option_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets foreign_ids
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\ForeignId[]|null
+     */
+    public function getForeignIds()
+    {
+        return $this->container['foreign_ids'];
+    }
+
+    /**
+     * Sets foreign_ids
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\ForeignId[]|null $foreign_ids Foreign Ids
+     *
+     * @return self
+     */
+    public function setForeignIds($foreign_ids)
+    {
+        $this->container['foreign_ids'] = $foreign_ids;
 
         return $this;
     }
@@ -436,6 +518,30 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeleted($deleted)
     {
         $this->container['deleted'] = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the column
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -489,155 +595,25 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets foreign_table_id
-     *
-     * @return int|null
-     */
-    public function getForeignTableId()
-    {
-        return $this->container['foreign_table_id'];
-    }
-
-    /**
-     * Sets foreign_table_id
-     *
-     * @param int|null $foreign_table_id Foreign table id referenced
-     *
-     * @return self
-     */
-    public function setForeignTableId($foreign_table_id)
-    {
-        $this->container['foreign_table_id'] = $foreign_table_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets foreign_column_id
-     *
-     * @return int|null
-     */
-    public function getForeignColumnId()
-    {
-        return $this->container['foreign_column_id'];
-    }
-
-    /**
-     * Sets foreign_column_id
-     *
-     * @param int|null $foreign_column_id Foreign Column id
-     *
-     * @return self
-     */
-    public function setForeignColumnId($foreign_column_id)
-    {
-        $this->container['foreign_column_id'] = $foreign_column_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
+     * Gets id
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getId()
     {
-        return $this->container['description'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets description
+     * Sets id
      *
-     * @param string|null $description description
+     * @param string|null $id Column Id
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setId($id)
     {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets foreign_ids
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\ForeignId[]|null
-     */
-    public function getForeignIds()
-    {
-        return $this->container['foreign_ids'];
-    }
-
-    /**
-     * Sets foreign_ids
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\ForeignId[]|null $foreign_ids Foreign Ids
-     *
-     * @return self
-     */
-    public function setForeignIds($foreign_ids)
-    {
-        $this->container['foreign_ids'] = $foreign_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Type of the column
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets foreign_ids_by_name
-     *
-     * @return array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null
-     */
-    public function getForeignIdsByName()
-    {
-        return $this->container['foreign_ids_by_name'];
-    }
-
-    /**
-     * Sets foreign_ids_by_name
-     *
-     * @param array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null $foreign_ids_by_name Foreign ids by name
-     *
-     * @return self
-     */
-    public function setForeignIdsByName($foreign_ids_by_name)
-    {
-        $this->container['foreign_ids_by_name'] = $foreign_ids_by_name;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -667,25 +643,49 @@ class Column implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets option_count
+     * Gets foreign_column_id
      *
      * @return int|null
      */
-    public function getOptionCount()
+    public function getForeignColumnId()
     {
-        return $this->container['option_count'];
+        return $this->container['foreign_column_id'];
     }
 
     /**
-     * Sets option_count
+     * Sets foreign_column_id
      *
-     * @param int|null $option_count Number of options available
+     * @param int|null $foreign_column_id Foreign Column id
      *
      * @return self
      */
-    public function setOptionCount($option_count)
+    public function setForeignColumnId($foreign_column_id)
     {
-        $this->container['option_count'] = $option_count;
+        $this->container['foreign_column_id'] = $foreign_column_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets foreign_ids_by_name
+     *
+     * @return array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null
+     */
+    public function getForeignIdsByName()
+    {
+        return $this->container['foreign_ids_by_name'];
+    }
+
+    /**
+     * Sets foreign_ids_by_name
+     *
+     * @param array<string,\HubSpot\Client\Cms\Hubdb\Model\ForeignId>|null $foreign_ids_by_name Foreign ids by name
+     *
+     * @return self
+     */
+    public function setForeignIdsByName($foreign_ids_by_name)
+    {
+        $this->container['foreign_ids_by_name'] = $foreign_ids_by_name;
 
         return $this;
     }

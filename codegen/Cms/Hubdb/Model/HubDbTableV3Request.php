@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,14 +57,14 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'label' => 'string',
-        'use_for_pages' => 'bool',
+        'dynamic_meta_tags' => 'array<string,int>',
         'allow_public_api_access' => 'bool',
-        'allow_child_tables' => 'bool',
-        'enable_child_table_pages' => 'bool',
+        'use_for_pages' => 'bool',
         'columns' => '\HubSpot\Client\Cms\Hubdb\Model\ColumnRequest[]',
-        'dynamic_meta_tags' => 'array<string,int>'
+        'name' => 'string',
+        'enable_child_table_pages' => 'bool',
+        'label' => 'string',
+        'allow_child_tables' => 'bool'
     ];
 
     /**
@@ -75,14 +75,14 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'label' => null,
-        'use_for_pages' => null,
+        'dynamic_meta_tags' => 'int32',
         'allow_public_api_access' => null,
-        'allow_child_tables' => null,
-        'enable_child_table_pages' => null,
+        'use_for_pages' => null,
         'columns' => null,
-        'dynamic_meta_tags' => 'int32'
+        'name' => null,
+        'enable_child_table_pages' => null,
+        'label' => null,
+        'allow_child_tables' => null
     ];
 
     /**
@@ -112,14 +112,14 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'label' => 'label',
-        'use_for_pages' => 'useForPages',
+        'dynamic_meta_tags' => 'dynamicMetaTags',
         'allow_public_api_access' => 'allowPublicApiAccess',
-        'allow_child_tables' => 'allowChildTables',
-        'enable_child_table_pages' => 'enableChildTablePages',
+        'use_for_pages' => 'useForPages',
         'columns' => 'columns',
-        'dynamic_meta_tags' => 'dynamicMetaTags'
+        'name' => 'name',
+        'enable_child_table_pages' => 'enableChildTablePages',
+        'label' => 'label',
+        'allow_child_tables' => 'allowChildTables'
     ];
 
     /**
@@ -128,14 +128,14 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'label' => 'setLabel',
-        'use_for_pages' => 'setUseForPages',
+        'dynamic_meta_tags' => 'setDynamicMetaTags',
         'allow_public_api_access' => 'setAllowPublicApiAccess',
-        'allow_child_tables' => 'setAllowChildTables',
-        'enable_child_table_pages' => 'setEnableChildTablePages',
+        'use_for_pages' => 'setUseForPages',
         'columns' => 'setColumns',
-        'dynamic_meta_tags' => 'setDynamicMetaTags'
+        'name' => 'setName',
+        'enable_child_table_pages' => 'setEnableChildTablePages',
+        'label' => 'setLabel',
+        'allow_child_tables' => 'setAllowChildTables'
     ];
 
     /**
@@ -144,14 +144,14 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'label' => 'getLabel',
-        'use_for_pages' => 'getUseForPages',
+        'dynamic_meta_tags' => 'getDynamicMetaTags',
         'allow_public_api_access' => 'getAllowPublicApiAccess',
-        'allow_child_tables' => 'getAllowChildTables',
-        'enable_child_table_pages' => 'getEnableChildTablePages',
+        'use_for_pages' => 'getUseForPages',
         'columns' => 'getColumns',
-        'dynamic_meta_tags' => 'getDynamicMetaTags'
+        'name' => 'getName',
+        'enable_child_table_pages' => 'getEnableChildTablePages',
+        'label' => 'getLabel',
+        'allow_child_tables' => 'getAllowChildTables'
     ];
 
     /**
@@ -211,14 +211,14 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['use_for_pages'] = $data['use_for_pages'] ?? null;
-        $this->container['allow_public_api_access'] = $data['allow_public_api_access'] ?? null;
-        $this->container['allow_child_tables'] = $data['allow_child_tables'] ?? null;
-        $this->container['enable_child_table_pages'] = $data['enable_child_table_pages'] ?? null;
-        $this->container['columns'] = $data['columns'] ?? null;
         $this->container['dynamic_meta_tags'] = $data['dynamic_meta_tags'] ?? null;
+        $this->container['allow_public_api_access'] = $data['allow_public_api_access'] ?? null;
+        $this->container['use_for_pages'] = $data['use_for_pages'] ?? null;
+        $this->container['columns'] = $data['columns'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['enable_child_table_pages'] = $data['enable_child_table_pages'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['allow_child_tables'] = $data['allow_child_tables'] ?? null;
     }
 
     /**
@@ -252,73 +252,25 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets name
+     * Gets dynamic_meta_tags
      *
-     * @return string
+     * @return array<string,int>|null
      */
-    public function getName()
+    public function getDynamicMetaTags()
     {
-        return $this->container['name'];
+        return $this->container['dynamic_meta_tags'];
     }
 
     /**
-     * Sets name
+     * Sets dynamic_meta_tags
      *
-     * @param string $name Name of the table
+     * @param array<string,int>|null $dynamic_meta_tags Specifies the key value pairs of the metadata fields with the associated column ids
      *
      * @return self
      */
-    public function setName($name)
+    public function setDynamicMetaTags($dynamic_meta_tags)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label Label of the table
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets use_for_pages
-     *
-     * @return bool|null
-     */
-    public function getUseForPages()
-    {
-        return $this->container['use_for_pages'];
-    }
-
-    /**
-     * Sets use_for_pages
-     *
-     * @param bool|null $use_for_pages Specifies whether the table can be used for creation of dynamic pages
-     *
-     * @return self
-     */
-    public function setUseForPages($use_for_pages)
-    {
-        $this->container['use_for_pages'] = $use_for_pages;
+        $this->container['dynamic_meta_tags'] = $dynamic_meta_tags;
 
         return $this;
     }
@@ -348,49 +300,25 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets allow_child_tables
+     * Gets use_for_pages
      *
      * @return bool|null
      */
-    public function getAllowChildTables()
+    public function getUseForPages()
     {
-        return $this->container['allow_child_tables'];
+        return $this->container['use_for_pages'];
     }
 
     /**
-     * Sets allow_child_tables
+     * Sets use_for_pages
      *
-     * @param bool|null $allow_child_tables Specifies whether child tables can be created
+     * @param bool|null $use_for_pages Specifies whether the table can be used for creation of dynamic pages
      *
      * @return self
      */
-    public function setAllowChildTables($allow_child_tables)
+    public function setUseForPages($use_for_pages)
     {
-        $this->container['allow_child_tables'] = $allow_child_tables;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_child_table_pages
-     *
-     * @return bool|null
-     */
-    public function getEnableChildTablePages()
-    {
-        return $this->container['enable_child_table_pages'];
-    }
-
-    /**
-     * Sets enable_child_table_pages
-     *
-     * @param bool|null $enable_child_table_pages Specifies creation of multi-level dynamic pages using child tables
-     *
-     * @return self
-     */
-    public function setEnableChildTablePages($enable_child_table_pages)
-    {
-        $this->container['enable_child_table_pages'] = $enable_child_table_pages;
+        $this->container['use_for_pages'] = $use_for_pages;
 
         return $this;
     }
@@ -420,25 +348,97 @@ class HubDbTableV3Request implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets dynamic_meta_tags
+     * Gets name
      *
-     * @return array<string,int>|null
+     * @return string
      */
-    public function getDynamicMetaTags()
+    public function getName()
     {
-        return $this->container['dynamic_meta_tags'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets dynamic_meta_tags
+     * Sets name
      *
-     * @param array<string,int>|null $dynamic_meta_tags Specifies the key value pairs of the metadata fields with the associated column ids
+     * @param string $name Name of the table
      *
      * @return self
      */
-    public function setDynamicMetaTags($dynamic_meta_tags)
+    public function setName($name)
     {
-        $this->container['dynamic_meta_tags'] = $dynamic_meta_tags;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_child_table_pages
+     *
+     * @return bool|null
+     */
+    public function getEnableChildTablePages()
+    {
+        return $this->container['enable_child_table_pages'];
+    }
+
+    /**
+     * Sets enable_child_table_pages
+     *
+     * @param bool|null $enable_child_table_pages Specifies creation of multi-level dynamic pages using child tables
+     *
+     * @return self
+     */
+    public function setEnableChildTablePages($enable_child_table_pages)
+    {
+        $this->container['enable_child_table_pages'] = $enable_child_table_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label Label of the table
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_child_tables
+     *
+     * @return bool|null
+     */
+    public function getAllowChildTables()
+    {
+        return $this->container['allow_child_tables'];
+    }
+
+    /**
+     * Sets allow_child_tables
+     *
+     * @param bool|null $allow_child_tables Specifies whether child tables can be created
+     *
+     * @return self
+     */
+    public function setAllowChildTables($allow_child_tables)
+    {
+        $this->container['allow_child_tables'] = $allow_child_tables;
 
         return $this;
     }

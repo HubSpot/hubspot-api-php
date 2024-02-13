@@ -10,7 +10,7 @@
  */
 
 /**
- * CMS Performance API
+ * CMS Performance
  *
  * Use these endpoints to get a time series view of your website's performance.
  *
