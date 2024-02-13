@@ -1,6 +1,6 @@
 <?php
 /**
- * Option
+ * CollectionResponsePublicActionRevisionForwardPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Automation\Actions\ObjectSerializer;
 
 /**
- * Option Class Doc Comment
+ * CollectionResponsePublicActionRevisionForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Automation\Actions
@@ -40,7 +40,7 @@ use \HubSpot\Client\Automation\Actions\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Option implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponsePublicActionRevisionForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Option';
+    protected static $openAPIModelName = 'CollectionResponsePublicActionRevisionForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'hidden' => 'bool',
-        'display_order' => 'int',
-        'double_data' => 'float',
-        'description' => 'string',
-        'read_only' => 'bool',
-        'label' => 'string',
-        'value' => 'string'
+        'paging' => '\HubSpot\Client\Automation\Actions\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Automation\Actions\Model\PublicActionRevision[]'
     ];
 
     /**
@@ -74,13 +69,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'hidden' => null,
-        'display_order' => 'int32',
-        'double_data' => null,
-        'description' => null,
-        'read_only' => null,
-        'label' => null,
-        'value' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -110,13 +100,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'hidden' => 'hidden',
-        'display_order' => 'displayOrder',
-        'double_data' => 'doubleData',
-        'description' => 'description',
-        'read_only' => 'readOnly',
-        'label' => 'label',
-        'value' => 'value'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -125,13 +110,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'hidden' => 'setHidden',
-        'display_order' => 'setDisplayOrder',
-        'double_data' => 'setDoubleData',
-        'description' => 'setDescription',
-        'read_only' => 'setReadOnly',
-        'label' => 'setLabel',
-        'value' => 'setValue'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -140,13 +120,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'hidden' => 'getHidden',
-        'display_order' => 'getDisplayOrder',
-        'double_data' => 'getDoubleData',
-        'description' => 'getDescription',
-        'read_only' => 'getReadOnly',
-        'label' => 'getLabel',
-        'value' => 'getValue'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -206,13 +181,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['hidden'] = $data['hidden'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['double_data'] = $data['double_data'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['read_only'] = $data['read_only'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
+        $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -224,26 +194,8 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['hidden'] === null) {
-            $invalidProperties[] = "'hidden' can't be null";
-        }
-        if ($this->container['display_order'] === null) {
-            $invalidProperties[] = "'display_order' can't be null";
-        }
-        if ($this->container['double_data'] === null) {
-            $invalidProperties[] = "'double_data' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['read_only'] === null) {
-            $invalidProperties[] = "'read_only' can't be null";
-        }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -261,169 +213,49 @@ class Option implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets hidden
+     * Gets paging
      *
-     * @return bool
+     * @return \HubSpot\Client\Automation\Actions\Model\ForwardPaging|null
      */
-    public function getHidden()
+    public function getPaging()
     {
-        return $this->container['hidden'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets hidden
+     * Sets paging
      *
-     * @param bool $hidden hidden
+     * @param \HubSpot\Client\Automation\Actions\Model\ForwardPaging|null $paging paging
      *
      * @return self
      */
-    public function setHidden($hidden)
+    public function setPaging($paging)
     {
-        $this->container['hidden'] = $hidden;
+        $this->container['paging'] = $paging;
 
         return $this;
     }
 
     /**
-     * Gets display_order
+     * Gets results
      *
-     * @return int
+     * @return \HubSpot\Client\Automation\Actions\Model\PublicActionRevision[]
      */
-    public function getDisplayOrder()
+    public function getResults()
     {
-        return $this->container['display_order'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets display_order
+     * Sets results
      *
-     * @param int $display_order display_order
+     * @param \HubSpot\Client\Automation\Actions\Model\PublicActionRevision[] $results results
      *
      * @return self
      */
-    public function setDisplayOrder($display_order)
+    public function setResults($results)
     {
-        $this->container['display_order'] = $display_order;
-
-        return $this;
-    }
-
-    /**
-     * Gets double_data
-     *
-     * @return float
-     */
-    public function getDoubleData()
-    {
-        return $this->container['double_data'];
-    }
-
-    /**
-     * Sets double_data
-     *
-     * @param float $double_data double_data
-     *
-     * @return self
-     */
-    public function setDoubleData($double_data)
-    {
-        $this->container['double_data'] = $double_data;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets read_only
-     *
-     * @return bool
-     */
-    public function getReadOnly()
-    {
-        return $this->container['read_only'];
-    }
-
-    /**
-     * Sets read_only
-     *
-     * @param bool $read_only read_only
-     *
-     * @return self
-     */
-    public function setReadOnly($read_only)
-    {
-        $this->container['read_only'] = $read_only;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
+        $this->container['results'] = $results;
 
         return $this;
     }
