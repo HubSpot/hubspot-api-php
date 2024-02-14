@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,8 +57,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'link' => 'string',
+        'after' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'link' => null,
+        'after' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'link' => 'link',
+        'after' => 'after'
     ];
 
     /**
@@ -110,8 +110,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'link' => 'setLink',
+        'after' => 'setAfter'
     ];
 
     /**
@@ -120,8 +120,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'link' => 'getLink',
+        'after' => 'getAfter'
     ];
 
     /**
@@ -181,8 +181,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = $data['after'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
+        $this->container['after'] = $data['after'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets after
-     *
-     * @return string
-     */
-    public function getAfter()
-    {
-        return $this->container['after'];
-    }
-
-    /**
-     * Sets after
-     *
-     * @param string $after after
-     *
-     * @return self
-     */
-    public function setAfter($after)
-    {
-        $this->container['after'] = $after;
-
-        return $this;
-    }
-
-    /**
      * Gets link
      *
      * @return string|null
@@ -249,13 +225,37 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link link
+     * @param string|null $link 
      *
      * @return self
      */
     public function setLink($link)
     {
         $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets after
+     *
+     * @return string
+     */
+    public function getAfter()
+    {
+        return $this->container['after'];
+    }
+
+    /**
+     * Sets after
+     *
+     * @param string $after 
+     *
+     * @return self
+     */
+    public function setAfter($after)
+    {
+        $this->container['after'] = $after;
 
         return $this;
     }

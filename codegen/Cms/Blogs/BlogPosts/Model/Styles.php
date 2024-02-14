@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -57,13 +57,13 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vertical_alignment' => 'string',
         'background_color' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\RGBAColor',
+        'flexbox_positioning' => 'string',
         'background_image' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage',
-        'background_gradient' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient',
-        'max_width_section_centering' => 'int',
         'force_full_width_section' => 'bool',
-        'flexbox_positioning' => 'string'
+        'vertical_alignment' => 'string',
+        'max_width_section_centering' => 'int',
+        'background_gradient' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient'
     ];
 
     /**
@@ -74,13 +74,13 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vertical_alignment' => null,
         'background_color' => null,
+        'flexbox_positioning' => null,
         'background_image' => null,
-        'background_gradient' => null,
-        'max_width_section_centering' => 'int32',
         'force_full_width_section' => null,
-        'flexbox_positioning' => null
+        'vertical_alignment' => null,
+        'max_width_section_centering' => 'int32',
+        'background_gradient' => null
     ];
 
     /**
@@ -110,13 +110,13 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'vertical_alignment' => 'verticalAlignment',
         'background_color' => 'backgroundColor',
+        'flexbox_positioning' => 'flexboxPositioning',
         'background_image' => 'backgroundImage',
-        'background_gradient' => 'backgroundGradient',
-        'max_width_section_centering' => 'maxWidthSectionCentering',
         'force_full_width_section' => 'forceFullWidthSection',
-        'flexbox_positioning' => 'flexboxPositioning'
+        'vertical_alignment' => 'verticalAlignment',
+        'max_width_section_centering' => 'maxWidthSectionCentering',
+        'background_gradient' => 'backgroundGradient'
     ];
 
     /**
@@ -125,13 +125,13 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'vertical_alignment' => 'setVerticalAlignment',
         'background_color' => 'setBackgroundColor',
+        'flexbox_positioning' => 'setFlexboxPositioning',
         'background_image' => 'setBackgroundImage',
-        'background_gradient' => 'setBackgroundGradient',
-        'max_width_section_centering' => 'setMaxWidthSectionCentering',
         'force_full_width_section' => 'setForceFullWidthSection',
-        'flexbox_positioning' => 'setFlexboxPositioning'
+        'vertical_alignment' => 'setVerticalAlignment',
+        'max_width_section_centering' => 'setMaxWidthSectionCentering',
+        'background_gradient' => 'setBackgroundGradient'
     ];
 
     /**
@@ -140,13 +140,13 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'vertical_alignment' => 'getVerticalAlignment',
         'background_color' => 'getBackgroundColor',
+        'flexbox_positioning' => 'getFlexboxPositioning',
         'background_image' => 'getBackgroundImage',
-        'background_gradient' => 'getBackgroundGradient',
-        'max_width_section_centering' => 'getMaxWidthSectionCentering',
         'force_full_width_section' => 'getForceFullWidthSection',
-        'flexbox_positioning' => 'getFlexboxPositioning'
+        'vertical_alignment' => 'getVerticalAlignment',
+        'max_width_section_centering' => 'getMaxWidthSectionCentering',
+        'background_gradient' => 'getBackgroundGradient'
     ];
 
     /**
@@ -190,52 +190,6 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const VERTICAL_ALIGNMENT_TOP = 'TOP';
-    public const VERTICAL_ALIGNMENT_MIDDLE = 'MIDDLE';
-    public const VERTICAL_ALIGNMENT_BOTTOM = 'BOTTOM';
-    public const FLEXBOX_POSITIONING_TOP_LEFT = 'TOP_LEFT';
-    public const FLEXBOX_POSITIONING_TOP_CENTER = 'TOP_CENTER';
-    public const FLEXBOX_POSITIONING_TOP_RIGHT = 'TOP_RIGHT';
-    public const FLEXBOX_POSITIONING_MIDDLE_LEFT = 'MIDDLE_LEFT';
-    public const FLEXBOX_POSITIONING_MIDDLE_CENTER = 'MIDDLE_CENTER';
-    public const FLEXBOX_POSITIONING_MIDDLE_RIGHT = 'MIDDLE_RIGHT';
-    public const FLEXBOX_POSITIONING_BOTTOM_LEFT = 'BOTTOM_LEFT';
-    public const FLEXBOX_POSITIONING_BOTTOM_CENTER = 'BOTTOM_CENTER';
-    public const FLEXBOX_POSITIONING_BOTTOM_RIGHT = 'BOTTOM_RIGHT';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getVerticalAlignmentAllowableValues()
-    {
-        return [
-            self::VERTICAL_ALIGNMENT_TOP,
-            self::VERTICAL_ALIGNMENT_MIDDLE,
-            self::VERTICAL_ALIGNMENT_BOTTOM,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFlexboxPositioningAllowableValues()
-    {
-        return [
-            self::FLEXBOX_POSITIONING_TOP_LEFT,
-            self::FLEXBOX_POSITIONING_TOP_CENTER,
-            self::FLEXBOX_POSITIONING_TOP_RIGHT,
-            self::FLEXBOX_POSITIONING_MIDDLE_LEFT,
-            self::FLEXBOX_POSITIONING_MIDDLE_CENTER,
-            self::FLEXBOX_POSITIONING_MIDDLE_RIGHT,
-            self::FLEXBOX_POSITIONING_BOTTOM_LEFT,
-            self::FLEXBOX_POSITIONING_BOTTOM_CENTER,
-            self::FLEXBOX_POSITIONING_BOTTOM_RIGHT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -252,13 +206,13 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['vertical_alignment'] = $data['vertical_alignment'] ?? null;
         $this->container['background_color'] = $data['background_color'] ?? null;
-        $this->container['background_image'] = $data['background_image'] ?? null;
-        $this->container['background_gradient'] = $data['background_gradient'] ?? null;
-        $this->container['max_width_section_centering'] = $data['max_width_section_centering'] ?? null;
-        $this->container['force_full_width_section'] = $data['force_full_width_section'] ?? null;
         $this->container['flexbox_positioning'] = $data['flexbox_positioning'] ?? null;
+        $this->container['background_image'] = $data['background_image'] ?? null;
+        $this->container['force_full_width_section'] = $data['force_full_width_section'] ?? null;
+        $this->container['vertical_alignment'] = $data['vertical_alignment'] ?? null;
+        $this->container['max_width_section_centering'] = $data['max_width_section_centering'] ?? null;
+        $this->container['background_gradient'] = $data['background_gradient'] ?? null;
     }
 
     /**
@@ -270,45 +224,27 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['vertical_alignment'] === null) {
-            $invalidProperties[] = "'vertical_alignment' can't be null";
-        }
-        $allowedValues = $this->getVerticalAlignmentAllowableValues();
-        if (!is_null($this->container['vertical_alignment']) && !in_array($this->container['vertical_alignment'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'vertical_alignment', must be one of '%s'",
-                $this->container['vertical_alignment'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['background_color'] === null) {
             $invalidProperties[] = "'background_color' can't be null";
-        }
-        if ($this->container['background_image'] === null) {
-            $invalidProperties[] = "'background_image' can't be null";
-        }
-        if ($this->container['background_gradient'] === null) {
-            $invalidProperties[] = "'background_gradient' can't be null";
-        }
-        if ($this->container['max_width_section_centering'] === null) {
-            $invalidProperties[] = "'max_width_section_centering' can't be null";
-        }
-        if ($this->container['force_full_width_section'] === null) {
-            $invalidProperties[] = "'force_full_width_section' can't be null";
         }
         if ($this->container['flexbox_positioning'] === null) {
             $invalidProperties[] = "'flexbox_positioning' can't be null";
         }
-        $allowedValues = $this->getFlexboxPositioningAllowableValues();
-        if (!is_null($this->container['flexbox_positioning']) && !in_array($this->container['flexbox_positioning'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'flexbox_positioning', must be one of '%s'",
-                $this->container['flexbox_positioning'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['background_image'] === null) {
+            $invalidProperties[] = "'background_image' can't be null";
         }
-
+        if ($this->container['force_full_width_section'] === null) {
+            $invalidProperties[] = "'force_full_width_section' can't be null";
+        }
+        if ($this->container['vertical_alignment'] === null) {
+            $invalidProperties[] = "'vertical_alignment' can't be null";
+        }
+        if ($this->container['max_width_section_centering'] === null) {
+            $invalidProperties[] = "'max_width_section_centering' can't be null";
+        }
+        if ($this->container['background_gradient'] === null) {
+            $invalidProperties[] = "'background_gradient' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -323,40 +259,6 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets vertical_alignment
-     *
-     * @return string
-     */
-    public function getVerticalAlignment()
-    {
-        return $this->container['vertical_alignment'];
-    }
-
-    /**
-     * Sets vertical_alignment
-     *
-     * @param string $vertical_alignment vertical_alignment
-     *
-     * @return self
-     */
-    public function setVerticalAlignment($vertical_alignment)
-    {
-        $allowedValues = $this->getVerticalAlignmentAllowableValues();
-        if (!in_array($vertical_alignment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'vertical_alignment', must be one of '%s'",
-                    $vertical_alignment,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['vertical_alignment'] = $vertical_alignment;
-
-        return $this;
-    }
 
     /**
      * Gets background_color
@@ -378,6 +280,30 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBackgroundColor($background_color)
     {
         $this->container['background_color'] = $background_color;
+
+        return $this;
+    }
+
+    /**
+     * Gets flexbox_positioning
+     *
+     * @return string
+     */
+    public function getFlexboxPositioning()
+    {
+        return $this->container['flexbox_positioning'];
+    }
+
+    /**
+     * Sets flexbox_positioning
+     *
+     * @param string $flexbox_positioning flexbox_positioning
+     *
+     * @return self
+     */
+    public function setFlexboxPositioning($flexbox_positioning)
+    {
+        $this->container['flexbox_positioning'] = $flexbox_positioning;
 
         return $this;
     }
@@ -407,25 +333,49 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets background_gradient
+     * Gets force_full_width_section
      *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient
+     * @return bool
      */
-    public function getBackgroundGradient()
+    public function getForceFullWidthSection()
     {
-        return $this->container['background_gradient'];
+        return $this->container['force_full_width_section'];
     }
 
     /**
-     * Sets background_gradient
+     * Sets force_full_width_section
      *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient $background_gradient background_gradient
+     * @param bool $force_full_width_section force_full_width_section
      *
      * @return self
      */
-    public function setBackgroundGradient($background_gradient)
+    public function setForceFullWidthSection($force_full_width_section)
     {
-        $this->container['background_gradient'] = $background_gradient;
+        $this->container['force_full_width_section'] = $force_full_width_section;
+
+        return $this;
+    }
+
+    /**
+     * Gets vertical_alignment
+     *
+     * @return string
+     */
+    public function getVerticalAlignment()
+    {
+        return $this->container['vertical_alignment'];
+    }
+
+    /**
+     * Sets vertical_alignment
+     *
+     * @param string $vertical_alignment vertical_alignment
+     *
+     * @return self
+     */
+    public function setVerticalAlignment($vertical_alignment)
+    {
+        $this->container['vertical_alignment'] = $vertical_alignment;
 
         return $this;
     }
@@ -455,59 +405,25 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets force_full_width_section
+     * Gets background_gradient
      *
-     * @return bool
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient
      */
-    public function getForceFullWidthSection()
+    public function getBackgroundGradient()
     {
-        return $this->container['force_full_width_section'];
+        return $this->container['background_gradient'];
     }
 
     /**
-     * Sets force_full_width_section
+     * Sets background_gradient
      *
-     * @param bool $force_full_width_section force_full_width_section
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient $background_gradient background_gradient
      *
      * @return self
      */
-    public function setForceFullWidthSection($force_full_width_section)
+    public function setBackgroundGradient($background_gradient)
     {
-        $this->container['force_full_width_section'] = $force_full_width_section;
-
-        return $this;
-    }
-
-    /**
-     * Gets flexbox_positioning
-     *
-     * @return string
-     */
-    public function getFlexboxPositioning()
-    {
-        return $this->container['flexbox_positioning'];
-    }
-
-    /**
-     * Sets flexbox_positioning
-     *
-     * @param string $flexbox_positioning flexbox_positioning
-     *
-     * @return self
-     */
-    public function setFlexboxPositioning($flexbox_positioning)
-    {
-        $allowedValues = $this->getFlexboxPositioningAllowableValues();
-        if (!in_array($flexbox_positioning, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'flexbox_positioning', must be one of '%s'",
-                    $flexbox_positioning,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['flexbox_positioning'] = $flexbox_positioning;
+        $this->container['background_gradient'] = $background_gradient;
 
         return $this;
     }

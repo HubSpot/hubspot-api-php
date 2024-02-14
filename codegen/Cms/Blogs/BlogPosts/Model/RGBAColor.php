@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,10 +58,10 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'a' => 'float',
         'r' => 'int',
-        'g' => 'int',
         'b' => 'int',
-        'a' => 'float'
+        'g' => 'int'
     ];
 
     /**
@@ -72,10 +72,10 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'a' => null,
         'r' => 'int32',
-        'g' => 'int32',
         'b' => 'int32',
-        'a' => null
+        'g' => 'int32'
     ];
 
     /**
@@ -105,10 +105,10 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'a' => 'a',
         'r' => 'r',
-        'g' => 'g',
         'b' => 'b',
-        'a' => 'a'
+        'g' => 'g'
     ];
 
     /**
@@ -117,10 +117,10 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'a' => 'setA',
         'r' => 'setR',
-        'g' => 'setG',
         'b' => 'setB',
-        'a' => 'setA'
+        'g' => 'setG'
     ];
 
     /**
@@ -129,10 +129,10 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'a' => 'getA',
         'r' => 'getR',
-        'g' => 'getG',
         'b' => 'getB',
-        'a' => 'getA'
+        'g' => 'getG'
     ];
 
     /**
@@ -192,10 +192,10 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['r'] = $data['r'] ?? null;
-        $this->container['g'] = $data['g'] ?? null;
-        $this->container['b'] = $data['b'] ?? null;
         $this->container['a'] = $data['a'] ?? null;
+        $this->container['r'] = $data['r'] ?? null;
+        $this->container['b'] = $data['b'] ?? null;
+        $this->container['g'] = $data['g'] ?? null;
     }
 
     /**
@@ -207,17 +207,17 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['a'] === null) {
+            $invalidProperties[] = "'a' can't be null";
+        }
         if ($this->container['r'] === null) {
             $invalidProperties[] = "'r' can't be null";
-        }
-        if ($this->container['g'] === null) {
-            $invalidProperties[] = "'g' can't be null";
         }
         if ($this->container['b'] === null) {
             $invalidProperties[] = "'b' can't be null";
         }
-        if ($this->container['a'] === null) {
-            $invalidProperties[] = "'a' can't be null";
+        if ($this->container['g'] === null) {
+            $invalidProperties[] = "'g' can't be null";
         }
         return $invalidProperties;
     }
@@ -233,6 +233,30 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets a
+     *
+     * @return float
+     */
+    public function getA()
+    {
+        return $this->container['a'];
+    }
+
+    /**
+     * Sets a
+     *
+     * @param float $a Alpha.
+     *
+     * @return self
+     */
+    public function setA($a)
+    {
+        $this->container['a'] = $a;
+
+        return $this;
+    }
 
     /**
      * Gets r
@@ -254,30 +278,6 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setR($r)
     {
         $this->container['r'] = $r;
-
-        return $this;
-    }
-
-    /**
-     * Gets g
-     *
-     * @return int
-     */
-    public function getG()
-    {
-        return $this->container['g'];
-    }
-
-    /**
-     * Sets g
-     *
-     * @param int $g Green.
-     *
-     * @return self
-     */
-    public function setG($g)
-    {
-        $this->container['g'] = $g;
 
         return $this;
     }
@@ -307,25 +307,25 @@ class RGBAColor implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets a
+     * Gets g
      *
-     * @return float
+     * @return int
      */
-    public function getA()
+    public function getG()
     {
-        return $this->container['a'];
+        return $this->container['g'];
     }
 
     /**
-     * Sets a
+     * Sets g
      *
-     * @param float $a Alpha.
+     * @param int $g Green.
      *
      * @return self
      */
-    public function setA($a)
+    public function setG($g)
     {
-        $this->container['a'] = $a;
+        $this->container['g'] = $g;
 
         return $this;
     }

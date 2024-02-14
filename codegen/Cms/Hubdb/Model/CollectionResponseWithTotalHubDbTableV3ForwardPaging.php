@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -58,8 +58,8 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3[]',
-        'paging' => '\HubSpot\Client\Cms\Hubdb\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Cms\Hubdb\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3[]'
     ];
 
     /**
@@ -71,8 +71,8 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
       */
     protected static $openAPIFormats = [
         'total' => 'int32',
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
      */
     protected static $attributeMap = [
         'total' => 'total',
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -114,8 +114,8 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
      */
     protected static $setters = [
         'total' => 'setTotal',
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -125,8 +125,8 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
      */
     protected static $getters = [
         'total' => 'getTotal',
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -187,8 +187,8 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
     public function __construct(array $data = null)
     {
         $this->container['total'] = $data['total'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -234,37 +234,13 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
     /**
      * Sets total
      *
-     * @param int $total total
+     * @param int $total 
      *
      * @return self
      */
     public function setTotal($total)
     {
         $this->container['total'] = $total;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
 
         return $this;
     }
@@ -289,6 +265,30 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging implements ModelInter
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3[] $results 
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

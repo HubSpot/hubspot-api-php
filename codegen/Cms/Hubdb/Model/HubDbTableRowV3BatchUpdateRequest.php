@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -58,11 +58,11 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'path' => 'string',
-        'name' => 'string',
         'child_table_id' => 'int',
         'values' => 'array<string,object>',
-        'display_index' => 'int',
-        'id' => 'int'
+        'name' => 'string',
+        'id' => 'string',
+        'display_index' => 'int'
     ];
 
     /**
@@ -74,11 +74,11 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'path' => null,
-        'name' => null,
         'child_table_id' => 'int32',
         'values' => null,
-        'display_index' => 'int32',
-        'id' => 'int64'
+        'name' => null,
+        'id' => null,
+        'display_index' => 'int32'
     ];
 
     /**
@@ -109,11 +109,11 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'path' => 'path',
-        'name' => 'name',
         'child_table_id' => 'childTableId',
         'values' => 'values',
-        'display_index' => 'displayIndex',
-        'id' => 'id'
+        'name' => 'name',
+        'id' => 'id',
+        'display_index' => 'displayIndex'
     ];
 
     /**
@@ -123,11 +123,11 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'path' => 'setPath',
-        'name' => 'setName',
         'child_table_id' => 'setChildTableId',
         'values' => 'setValues',
-        'display_index' => 'setDisplayIndex',
-        'id' => 'setId'
+        'name' => 'setName',
+        'id' => 'setId',
+        'display_index' => 'setDisplayIndex'
     ];
 
     /**
@@ -137,11 +137,11 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'path' => 'getPath',
-        'name' => 'getName',
         'child_table_id' => 'getChildTableId',
         'values' => 'getValues',
-        'display_index' => 'getDisplayIndex',
-        'id' => 'getId'
+        'name' => 'getName',
+        'id' => 'getId',
+        'display_index' => 'getDisplayIndex'
     ];
 
     /**
@@ -202,11 +202,11 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
     public function __construct(array $data = null)
     {
         $this->container['path'] = $data['path'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['child_table_id'] = $data['child_table_id'] ?? null;
         $this->container['values'] = $data['values'] ?? null;
-        $this->container['display_index'] = $data['display_index'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['display_index'] = $data['display_index'] ?? null;
     }
 
     /**
@@ -264,30 +264,6 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets child_table_id
      *
      * @return int|null
@@ -336,6 +312,54 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The id of the table row
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets display_index
      *
      * @return int|null
@@ -355,30 +379,6 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
     public function setDisplayIndex($display_index)
     {
         $this->container['display_index'] = $display_index;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id The id of the table row
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
 
         return $this;
     }

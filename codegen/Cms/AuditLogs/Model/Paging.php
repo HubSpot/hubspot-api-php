@@ -11,7 +11,7 @@
  */
 
 /**
- * CMS Audit Logs
+ * Cms Content Audit
  *
  * Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.
  *
@@ -57,7 +57,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next' => '\HubSpot\Client\Cms\AuditLogs\Model\NextPage'
+        'next' => '\HubSpot\Client\Cms\AuditLogs\Model\NextPage',
+        'prev' => '\HubSpot\Client\Cms\AuditLogs\Model\PreviousPage'
     ];
 
     /**
@@ -68,7 +69,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'next' => null
+        'next' => null,
+        'prev' => null
     ];
 
     /**
@@ -98,7 +100,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'next' => 'next'
+        'next' => 'next',
+        'prev' => 'prev'
     ];
 
     /**
@@ -107,7 +110,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'next' => 'setNext'
+        'next' => 'setNext',
+        'prev' => 'setPrev'
     ];
 
     /**
@@ -116,7 +120,8 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'next' => 'getNext'
+        'next' => 'getNext',
+        'prev' => 'getPrev'
     ];
 
     /**
@@ -177,6 +182,7 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['next'] = $data['next'] ?? null;
+        $this->container['prev'] = $data['prev'] ?? null;
     }
 
     /**
@@ -223,6 +229,30 @@ class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNext($next)
     {
         $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets prev
+     *
+     * @return \HubSpot\Client\Cms\AuditLogs\Model\PreviousPage|null
+     */
+    public function getPrev()
+    {
+        return $this->container['prev'];
+    }
+
+    /**
+     * Sets prev
+     *
+     * @param \HubSpot\Client\Cms\AuditLogs\Model\PreviousPage|null $prev prev
+     *
+     * @return self
+     */
+    public function setPrev($prev)
+    {
+        $this->container['prev'] = $prev;
 
         return $this;
     }

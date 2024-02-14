@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,8 +58,8 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'clone_name' => 'string'
+        'clone_name' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'clone_name' => null
+        'clone_name' => null,
+        'id' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'clone_name' => 'cloneName'
+        'clone_name' => 'cloneName',
+        'id' => 'id'
     ];
 
     /**
@@ -111,8 +111,8 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'clone_name' => 'setCloneName'
+        'clone_name' => 'setCloneName',
+        'id' => 'setId'
     ];
 
     /**
@@ -121,8 +121,8 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'clone_name' => 'getCloneName'
+        'clone_name' => 'getCloneName',
+        'id' => 'getId'
     ];
 
     /**
@@ -182,8 +182,8 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['clone_name'] = $data['clone_name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -214,30 +214,6 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id ID of the object to be cloned.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets clone_name
      *
      * @return string|null
@@ -257,6 +233,30 @@ class ContentCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
     public function setCloneName($clone_name)
     {
         $this->container['clone_name'] = $clone_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id ID of the object to be cloned.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

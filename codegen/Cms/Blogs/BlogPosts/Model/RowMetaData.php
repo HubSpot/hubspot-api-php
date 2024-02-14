@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -57,8 +57,8 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'styles' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles',
-        'css_class' => 'string'
+        'css_class' => 'string',
+        'styles' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles'
     ];
 
     /**
@@ -69,8 +69,8 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'styles' => null,
-        'css_class' => null
+        'css_class' => null,
+        'styles' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'styles' => 'styles',
-        'css_class' => 'cssClass'
+        'css_class' => 'cssClass',
+        'styles' => 'styles'
     ];
 
     /**
@@ -110,8 +110,8 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'styles' => 'setStyles',
-        'css_class' => 'setCssClass'
+        'css_class' => 'setCssClass',
+        'styles' => 'setStyles'
     ];
 
     /**
@@ -120,8 +120,8 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'styles' => 'getStyles',
-        'css_class' => 'getCssClass'
+        'css_class' => 'getCssClass',
+        'styles' => 'getStyles'
     ];
 
     /**
@@ -181,8 +181,8 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['styles'] = $data['styles'] ?? null;
         $this->container['css_class'] = $data['css_class'] ?? null;
+        $this->container['styles'] = $data['styles'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['styles'] === null) {
-            $invalidProperties[] = "'styles' can't be null";
-        }
         if ($this->container['css_class'] === null) {
             $invalidProperties[] = "'css_class' can't be null";
+        }
+        if ($this->container['styles'] === null) {
+            $invalidProperties[] = "'styles' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets styles
-     *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles
-     */
-    public function getStyles()
-    {
-        return $this->container['styles'];
-    }
-
-    /**
-     * Sets styles
-     *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles $styles styles
-     *
-     * @return self
-     */
-    public function setStyles($styles)
-    {
-        $this->container['styles'] = $styles;
-
-        return $this;
-    }
 
     /**
      * Gets css_class
@@ -259,6 +235,30 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCssClass($css_class)
     {
         $this->container['css_class'] = $css_class;
+
+        return $this;
+    }
+
+    /**
+     * Gets styles
+     *
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles
+     */
+    public function getStyles()
+    {
+        return $this->container['styles'];
+    }
+
+    /**
+     * Sets styles
+     *
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles $styles styles
+     *
+     * @return self
+     */
+    public function setStyles($styles)
+    {
+        $this->container['styles'] = $styles;
 
         return $this;
     }

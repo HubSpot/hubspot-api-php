@@ -11,7 +11,7 @@
  */
 
 /**
- * URL redirects
+ * CMS Url Redirects
  *
  * URL redirect operations
  *
@@ -57,18 +57,18 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'route_prefix' => 'string',
-        'destination' => 'string',
-        'redirect_style' => 'int',
-        'is_only_after_not_found' => 'bool',
-        'is_match_full_url' => 'bool',
-        'is_match_query_string' => 'bool',
-        'is_pattern' => 'bool',
         'is_trailing_slash_optional' => 'bool',
-        'is_protocol_agnostic' => 'bool',
-        'precedence' => 'int',
+        'redirect_style' => 'int',
+        'is_match_query_string' => 'bool',
         'created' => '\DateTime',
+        'is_match_full_url' => 'bool',
+        'destination' => 'string',
+        'is_only_after_not_found' => 'bool',
+        'is_pattern' => 'bool',
+        'precedence' => 'int',
+        'route_prefix' => 'string',
+        'is_protocol_agnostic' => 'bool',
+        'id' => 'string',
         'updated' => '\DateTime'
     ];
 
@@ -80,18 +80,18 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'route_prefix' => null,
-        'destination' => null,
-        'redirect_style' => 'int32',
-        'is_only_after_not_found' => null,
-        'is_match_full_url' => null,
-        'is_match_query_string' => null,
-        'is_pattern' => null,
         'is_trailing_slash_optional' => null,
-        'is_protocol_agnostic' => null,
-        'precedence' => 'int32',
+        'redirect_style' => 'int32',
+        'is_match_query_string' => null,
         'created' => 'date-time',
+        'is_match_full_url' => null,
+        'destination' => null,
+        'is_only_after_not_found' => null,
+        'is_pattern' => null,
+        'precedence' => 'int32',
+        'route_prefix' => null,
+        'is_protocol_agnostic' => null,
+        'id' => null,
         'updated' => 'date-time'
     ];
 
@@ -122,18 +122,18 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'route_prefix' => 'routePrefix',
-        'destination' => 'destination',
-        'redirect_style' => 'redirectStyle',
-        'is_only_after_not_found' => 'isOnlyAfterNotFound',
-        'is_match_full_url' => 'isMatchFullUrl',
-        'is_match_query_string' => 'isMatchQueryString',
-        'is_pattern' => 'isPattern',
         'is_trailing_slash_optional' => 'isTrailingSlashOptional',
-        'is_protocol_agnostic' => 'isProtocolAgnostic',
-        'precedence' => 'precedence',
+        'redirect_style' => 'redirectStyle',
+        'is_match_query_string' => 'isMatchQueryString',
         'created' => 'created',
+        'is_match_full_url' => 'isMatchFullUrl',
+        'destination' => 'destination',
+        'is_only_after_not_found' => 'isOnlyAfterNotFound',
+        'is_pattern' => 'isPattern',
+        'precedence' => 'precedence',
+        'route_prefix' => 'routePrefix',
+        'is_protocol_agnostic' => 'isProtocolAgnostic',
+        'id' => 'id',
         'updated' => 'updated'
     ];
 
@@ -143,18 +143,18 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'route_prefix' => 'setRoutePrefix',
-        'destination' => 'setDestination',
-        'redirect_style' => 'setRedirectStyle',
-        'is_only_after_not_found' => 'setIsOnlyAfterNotFound',
-        'is_match_full_url' => 'setIsMatchFullUrl',
-        'is_match_query_string' => 'setIsMatchQueryString',
-        'is_pattern' => 'setIsPattern',
         'is_trailing_slash_optional' => 'setIsTrailingSlashOptional',
-        'is_protocol_agnostic' => 'setIsProtocolAgnostic',
-        'precedence' => 'setPrecedence',
+        'redirect_style' => 'setRedirectStyle',
+        'is_match_query_string' => 'setIsMatchQueryString',
         'created' => 'setCreated',
+        'is_match_full_url' => 'setIsMatchFullUrl',
+        'destination' => 'setDestination',
+        'is_only_after_not_found' => 'setIsOnlyAfterNotFound',
+        'is_pattern' => 'setIsPattern',
+        'precedence' => 'setPrecedence',
+        'route_prefix' => 'setRoutePrefix',
+        'is_protocol_agnostic' => 'setIsProtocolAgnostic',
+        'id' => 'setId',
         'updated' => 'setUpdated'
     ];
 
@@ -164,18 +164,18 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'route_prefix' => 'getRoutePrefix',
-        'destination' => 'getDestination',
-        'redirect_style' => 'getRedirectStyle',
-        'is_only_after_not_found' => 'getIsOnlyAfterNotFound',
-        'is_match_full_url' => 'getIsMatchFullUrl',
-        'is_match_query_string' => 'getIsMatchQueryString',
-        'is_pattern' => 'getIsPattern',
         'is_trailing_slash_optional' => 'getIsTrailingSlashOptional',
-        'is_protocol_agnostic' => 'getIsProtocolAgnostic',
-        'precedence' => 'getPrecedence',
+        'redirect_style' => 'getRedirectStyle',
+        'is_match_query_string' => 'getIsMatchQueryString',
         'created' => 'getCreated',
+        'is_match_full_url' => 'getIsMatchFullUrl',
+        'destination' => 'getDestination',
+        'is_only_after_not_found' => 'getIsOnlyAfterNotFound',
+        'is_pattern' => 'getIsPattern',
+        'precedence' => 'getPrecedence',
+        'route_prefix' => 'getRoutePrefix',
+        'is_protocol_agnostic' => 'getIsProtocolAgnostic',
+        'id' => 'getId',
         'updated' => 'getUpdated'
     ];
 
@@ -236,18 +236,18 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['route_prefix'] = $data['route_prefix'] ?? null;
-        $this->container['destination'] = $data['destination'] ?? null;
-        $this->container['redirect_style'] = $data['redirect_style'] ?? null;
-        $this->container['is_only_after_not_found'] = $data['is_only_after_not_found'] ?? null;
-        $this->container['is_match_full_url'] = $data['is_match_full_url'] ?? null;
-        $this->container['is_match_query_string'] = $data['is_match_query_string'] ?? null;
-        $this->container['is_pattern'] = $data['is_pattern'] ?? null;
         $this->container['is_trailing_slash_optional'] = $data['is_trailing_slash_optional'] ?? null;
-        $this->container['is_protocol_agnostic'] = $data['is_protocol_agnostic'] ?? null;
-        $this->container['precedence'] = $data['precedence'] ?? null;
+        $this->container['redirect_style'] = $data['redirect_style'] ?? null;
+        $this->container['is_match_query_string'] = $data['is_match_query_string'] ?? null;
         $this->container['created'] = $data['created'] ?? null;
+        $this->container['is_match_full_url'] = $data['is_match_full_url'] ?? null;
+        $this->container['destination'] = $data['destination'] ?? null;
+        $this->container['is_only_after_not_found'] = $data['is_only_after_not_found'] ?? null;
+        $this->container['is_pattern'] = $data['is_pattern'] ?? null;
+        $this->container['precedence'] = $data['precedence'] ?? null;
+        $this->container['route_prefix'] = $data['route_prefix'] ?? null;
+        $this->container['is_protocol_agnostic'] = $data['is_protocol_agnostic'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['updated'] = $data['updated'] ?? null;
     }
 
@@ -260,38 +260,38 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['route_prefix'] === null) {
-            $invalidProperties[] = "'route_prefix' can't be null";
-        }
-        if ($this->container['destination'] === null) {
-            $invalidProperties[] = "'destination' can't be null";
+        if ($this->container['is_trailing_slash_optional'] === null) {
+            $invalidProperties[] = "'is_trailing_slash_optional' can't be null";
         }
         if ($this->container['redirect_style'] === null) {
             $invalidProperties[] = "'redirect_style' can't be null";
         }
-        if ($this->container['is_only_after_not_found'] === null) {
-            $invalidProperties[] = "'is_only_after_not_found' can't be null";
+        if ($this->container['is_match_query_string'] === null) {
+            $invalidProperties[] = "'is_match_query_string' can't be null";
         }
         if ($this->container['is_match_full_url'] === null) {
             $invalidProperties[] = "'is_match_full_url' can't be null";
         }
-        if ($this->container['is_match_query_string'] === null) {
-            $invalidProperties[] = "'is_match_query_string' can't be null";
+        if ($this->container['destination'] === null) {
+            $invalidProperties[] = "'destination' can't be null";
+        }
+        if ($this->container['is_only_after_not_found'] === null) {
+            $invalidProperties[] = "'is_only_after_not_found' can't be null";
         }
         if ($this->container['is_pattern'] === null) {
             $invalidProperties[] = "'is_pattern' can't be null";
         }
-        if ($this->container['is_trailing_slash_optional'] === null) {
-            $invalidProperties[] = "'is_trailing_slash_optional' can't be null";
+        if ($this->container['precedence'] === null) {
+            $invalidProperties[] = "'precedence' can't be null";
+        }
+        if ($this->container['route_prefix'] === null) {
+            $invalidProperties[] = "'route_prefix' can't be null";
         }
         if ($this->container['is_protocol_agnostic'] === null) {
             $invalidProperties[] = "'is_protocol_agnostic' can't be null";
         }
-        if ($this->container['precedence'] === null) {
-            $invalidProperties[] = "'precedence' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -309,73 +309,25 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets is_trailing_slash_optional
      *
-     * @return string
+     * @return bool
      */
-    public function getId()
+    public function getIsTrailingSlashOptional()
     {
-        return $this->container['id'];
+        return $this->container['is_trailing_slash_optional'];
     }
 
     /**
-     * Sets id
+     * Sets is_trailing_slash_optional
      *
-     * @param string $id The unique ID of this URL redirect.
+     * @param bool $is_trailing_slash_optional Whether a trailing slash will be ignored.
      *
      * @return self
      */
-    public function setId($id)
+    public function setIsTrailingSlashOptional($is_trailing_slash_optional)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets route_prefix
-     *
-     * @return string
-     */
-    public function getRoutePrefix()
-    {
-        return $this->container['route_prefix'];
-    }
-
-    /**
-     * Sets route_prefix
-     *
-     * @param string $route_prefix The target incoming URL, path, or pattern to match for redirection.
-     *
-     * @return self
-     */
-    public function setRoutePrefix($route_prefix)
-    {
-        $this->container['route_prefix'] = $route_prefix;
-
-        return $this;
-    }
-
-    /**
-     * Gets destination
-     *
-     * @return string
-     */
-    public function getDestination()
-    {
-        return $this->container['destination'];
-    }
-
-    /**
-     * Sets destination
-     *
-     * @param string $destination The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
-     *
-     * @return self
-     */
-    public function setDestination($destination)
-    {
-        $this->container['destination'] = $destination;
+        $this->container['is_trailing_slash_optional'] = $is_trailing_slash_optional;
 
         return $this;
     }
@@ -405,25 +357,49 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets is_only_after_not_found
+     * Gets is_match_query_string
      *
      * @return bool
      */
-    public function getIsOnlyAfterNotFound()
+    public function getIsMatchQueryString()
     {
-        return $this->container['is_only_after_not_found'];
+        return $this->container['is_match_query_string'];
     }
 
     /**
-     * Sets is_only_after_not_found
+     * Sets is_match_query_string
      *
-     * @param bool $is_only_after_not_found Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+     * @param bool $is_match_query_string Whether the `routePrefix` should match on the entire URL path, including the query string.
      *
      * @return self
      */
-    public function setIsOnlyAfterNotFound($is_only_after_not_found)
+    public function setIsMatchQueryString($is_match_query_string)
     {
-        $this->container['is_only_after_not_found'] = $is_only_after_not_found;
+        $this->container['is_match_query_string'] = $is_match_query_string;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime|null
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime|null $created created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
 
         return $this;
     }
@@ -453,25 +429,49 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets is_match_query_string
+     * Gets destination
      *
-     * @return bool
+     * @return string
      */
-    public function getIsMatchQueryString()
+    public function getDestination()
     {
-        return $this->container['is_match_query_string'];
+        return $this->container['destination'];
     }
 
     /**
-     * Sets is_match_query_string
+     * Sets destination
      *
-     * @param bool $is_match_query_string Whether the `routePrefix` should match on the entire URL path, including the query string.
+     * @param string $destination The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
      *
      * @return self
      */
-    public function setIsMatchQueryString($is_match_query_string)
+    public function setDestination($destination)
     {
-        $this->container['is_match_query_string'] = $is_match_query_string;
+        $this->container['destination'] = $destination;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_only_after_not_found
+     *
+     * @return bool
+     */
+    public function getIsOnlyAfterNotFound()
+    {
+        return $this->container['is_only_after_not_found'];
+    }
+
+    /**
+     * Sets is_only_after_not_found
+     *
+     * @param bool $is_only_after_not_found Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+     *
+     * @return self
+     */
+    public function setIsOnlyAfterNotFound($is_only_after_not_found)
+    {
+        $this->container['is_only_after_not_found'] = $is_only_after_not_found;
 
         return $this;
     }
@@ -501,25 +501,49 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets is_trailing_slash_optional
+     * Gets precedence
      *
-     * @return bool
+     * @return int
      */
-    public function getIsTrailingSlashOptional()
+    public function getPrecedence()
     {
-        return $this->container['is_trailing_slash_optional'];
+        return $this->container['precedence'];
     }
 
     /**
-     * Sets is_trailing_slash_optional
+     * Sets precedence
      *
-     * @param bool $is_trailing_slash_optional Whether a trailing slash will be ignored.
+     * @param int $precedence Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
      *
      * @return self
      */
-    public function setIsTrailingSlashOptional($is_trailing_slash_optional)
+    public function setPrecedence($precedence)
     {
-        $this->container['is_trailing_slash_optional'] = $is_trailing_slash_optional;
+        $this->container['precedence'] = $precedence;
+
+        return $this;
+    }
+
+    /**
+     * Gets route_prefix
+     *
+     * @return string
+     */
+    public function getRoutePrefix()
+    {
+        return $this->container['route_prefix'];
+    }
+
+    /**
+     * Sets route_prefix
+     *
+     * @param string $route_prefix The target incoming URL, path, or pattern to match for redirection.
+     *
+     * @return self
+     */
+    public function setRoutePrefix($route_prefix)
+    {
+        $this->container['route_prefix'] = $route_prefix;
 
         return $this;
     }
@@ -549,49 +573,25 @@ class UrlMapping implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets precedence
+     * Gets id
      *
-     * @return int
+     * @return string
      */
-    public function getPrecedence()
+    public function getId()
     {
-        return $this->container['precedence'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets precedence
+     * Sets id
      *
-     * @param int $precedence Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
+     * @param string $id The unique ID of this URL redirect.
      *
      * @return self
      */
-    public function setPrecedence($precedence)
+    public function setId($id)
     {
-        $this->container['precedence'] = $precedence;
-
-        return $this;
-    }
-
-    /**
-     * Gets created
-     *
-     * @return \DateTime|null
-     */
-    public function getCreated()
-    {
-        return $this->container['created'];
-    }
-
-    /**
-     * Sets created
-     *
-     * @param \DateTime|null $created created
-     *
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        $this->container['created'] = $created;
+        $this->container['id'] = $id;
 
         return $this;
     }

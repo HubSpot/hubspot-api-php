@@ -10,7 +10,7 @@
  */
 
 /**
- * CMS Audit Logs
+ * Cms Content Audit
  *
  * Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.
  *
@@ -120,22 +120,22 @@ class AuditLogsApi
      *
      * Query audit logs
      *
-     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string[] $user_id Comma separated list of user ids to filter by. (optional)
+     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
+     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string $after Timestamp after which audit logs will be returned (optional)
      * @param  string $before Timestamp before which audit logs will be returned (optional)
-     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
-     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
      * @param  int $limit The number of logs to return. (optional)
-     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
      *
      * @throws \HubSpot\Client\Cms\AuditLogs\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\AuditLogs\Model\CollectionResponsePublicAuditLog|\HubSpot\Client\Cms\AuditLogs\Model\Error
      */
-    public function getPage($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)
+    public function getPage($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)
     {
-        list($response) = $this->getPageWithHttpInfo($object_id, $user_id, $after, $before, $sort, $event_type, $limit, $object_type);
+        list($response) = $this->getPageWithHttpInfo($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort);
         return $response;
     }
 
@@ -144,22 +144,22 @@ class AuditLogsApi
      *
      * Query audit logs
      *
-     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string[] $user_id Comma separated list of user ids to filter by. (optional)
+     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
+     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string $after Timestamp after which audit logs will be returned (optional)
      * @param  string $before Timestamp before which audit logs will be returned (optional)
-     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
-     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
      * @param  int $limit The number of logs to return. (optional)
-     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
      *
      * @throws \HubSpot\Client\Cms\AuditLogs\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\AuditLogs\Model\CollectionResponsePublicAuditLog|\HubSpot\Client\Cms\AuditLogs\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)
+    public function getPageWithHttpInfo($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)
     {
-        $request = $this->getPageRequest($object_id, $user_id, $after, $before, $sort, $event_type, $limit, $object_type);
+        $request = $this->getPageRequest($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort);
 
         try {
             $options = $this->createHttpClientOption();
@@ -273,21 +273,21 @@ class AuditLogsApi
      *
      * Query audit logs
      *
-     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string[] $user_id Comma separated list of user ids to filter by. (optional)
+     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
+     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string $after Timestamp after which audit logs will be returned (optional)
      * @param  string $before Timestamp before which audit logs will be returned (optional)
-     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
-     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
      * @param  int $limit The number of logs to return. (optional)
-     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)
+    public function getPageAsync($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)
     {
-        return $this->getPageAsyncWithHttpInfo($object_id, $user_id, $after, $before, $sort, $event_type, $limit, $object_type)
+        return $this->getPageAsyncWithHttpInfo($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -300,22 +300,22 @@ class AuditLogsApi
      *
      * Query audit logs
      *
-     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string[] $user_id Comma separated list of user ids to filter by. (optional)
+     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
+     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string $after Timestamp after which audit logs will be returned (optional)
      * @param  string $before Timestamp before which audit logs will be returned (optional)
-     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
-     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
      * @param  int $limit The number of logs to return. (optional)
-     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)
+    public function getPageAsyncWithHttpInfo($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)
     {
         $returnType = '\HubSpot\Client\Cms\AuditLogs\Model\CollectionResponsePublicAuditLog';
-        $request = $this->getPageRequest($object_id, $user_id, $after, $before, $sort, $event_type, $limit, $object_type);
+        $request = $this->getPageRequest($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -356,19 +356,19 @@ class AuditLogsApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string[] $user_id Comma separated list of user ids to filter by. (optional)
+     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
+     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $object_id Comma separated list of object ids to filter by. (optional)
      * @param  string $after Timestamp after which audit logs will be returned (optional)
      * @param  string $before Timestamp before which audit logs will be returned (optional)
-     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
-     * @param  string[] $event_type Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED). (optional)
      * @param  int $limit The number of logs to return. (optional)
-     * @param  string[] $object_type Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.) (optional)
+     * @param  string[] $sort The sort direction for the audit logs. (Can only sort by timestamp). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)
+    public function getPageRequest($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)
     {
 
         $resourcePath = '/cms/v3/audit-logs/';
@@ -380,8 +380,8 @@ class AuditLogsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_id,
-            'objectId', // param base name
+            $user_id,
+            'userId', // param base name
             'array', // openApiType
             'form', // style
             true, // explode
@@ -389,8 +389,26 @@ class AuditLogsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $user_id,
-            'userId', // param base name
+            $event_type,
+            'eventType', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_type,
+            'objectType', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_id,
+            'objectId', // param base name
             'array', // openApiType
             'form', // style
             true, // explode
@@ -416,24 +434,6 @@ class AuditLogsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $event_type,
-            'eventType', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
             'integer', // openApiType
@@ -443,8 +443,8 @@ class AuditLogsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_type,
-            'objectType', // param base name
+            $sort,
+            'sort', // param base name
             'array', // openApiType
             'form', // style
             true, // explode

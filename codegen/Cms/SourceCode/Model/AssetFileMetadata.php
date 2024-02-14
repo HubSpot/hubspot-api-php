@@ -58,13 +58,14 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
+        'created_at' => 'int',
+        'archived_at' => 'int',
         'folder' => 'bool',
         'children' => 'string[]',
-        'updated_at' => 'int',
-        'created_at' => 'int',
-        'archived_at' => 'int'
+        'name' => 'string',
+        'id' => 'string',
+        'hash' => 'string',
+        'updated_at' => 'int'
     ];
 
     /**
@@ -75,13 +76,14 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
+        'created_at' => 'int32',
+        'archived_at' => 'int64',
         'folder' => null,
         'children' => null,
-        'updated_at' => 'int32',
-        'created_at' => 'int32',
-        'archived_at' => 'int64'
+        'name' => null,
+        'id' => null,
+        'hash' => null,
+        'updated_at' => 'int32'
     ];
 
     /**
@@ -111,13 +113,14 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
+        'created_at' => 'createdAt',
+        'archived_at' => 'archivedAt',
         'folder' => 'folder',
         'children' => 'children',
-        'updated_at' => 'updatedAt',
-        'created_at' => 'createdAt',
-        'archived_at' => 'archivedAt'
+        'name' => 'name',
+        'id' => 'id',
+        'hash' => 'hash',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -126,13 +129,14 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
+        'created_at' => 'setCreatedAt',
+        'archived_at' => 'setArchivedAt',
         'folder' => 'setFolder',
         'children' => 'setChildren',
-        'updated_at' => 'setUpdatedAt',
-        'created_at' => 'setCreatedAt',
-        'archived_at' => 'setArchivedAt'
+        'name' => 'setName',
+        'id' => 'setId',
+        'hash' => 'setHash',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -141,13 +145,14 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
+        'created_at' => 'getCreatedAt',
+        'archived_at' => 'getArchivedAt',
         'folder' => 'getFolder',
         'children' => 'getChildren',
-        'updated_at' => 'getUpdatedAt',
-        'created_at' => 'getCreatedAt',
-        'archived_at' => 'getArchivedAt'
+        'name' => 'getName',
+        'id' => 'getId',
+        'hash' => 'getHash',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -207,13 +212,14 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['folder'] = $data['folder'] ?? null;
-        $this->container['children'] = $data['children'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['archived_at'] = $data['archived_at'] ?? null;
+        $this->container['folder'] = $data['folder'] ?? null;
+        $this->container['children'] = $data['children'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['hash'] = $data['hash'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -225,20 +231,20 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['folder'] === null) {
             $invalidProperties[] = "'folder' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -256,49 +262,49 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets id
+     * Gets created_at
      *
-     * @return string
+     * @return int
      */
-    public function getId()
+    public function getCreatedAt()
     {
-        return $this->container['id'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets id
+     * Sets created_at
      *
-     * @param string $id The path of the file in the CMS Developer File System.
+     * @param int $created_at Timestamp of when the object was first created.
      *
      * @return self
      */
-    public function setId($id)
+    public function setCreatedAt($created_at)
     {
-        $this->container['id'] = $id;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets archived_at
      *
-     * @return string
+     * @return int|null
      */
-    public function getName()
+    public function getArchivedAt()
     {
-        return $this->container['name'];
+        return $this->container['archived_at'];
     }
 
     /**
-     * Sets name
+     * Sets archived_at
      *
-     * @param string $name The name of the file.
+     * @param int|null $archived_at Timestamp of when the object was archived (deleted).
      *
      * @return self
      */
-    public function setName($name)
+    public function setArchivedAt($archived_at)
     {
-        $this->container['name'] = $name;
+        $this->container['archived_at'] = $archived_at;
 
         return $this;
     }
@@ -352,6 +358,78 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The name of the file.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The path of the file in the CMS Developer File System.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash
+     *
+     * @return string|null
+     */
+    public function getHash()
+    {
+        return $this->container['hash'];
+    }
+
+    /**
+     * Sets hash
+     *
+     * @param string|null $hash hash
+     *
+     * @return self
+     */
+    public function setHash($hash)
+    {
+        $this->container['hash'] = $hash;
+
+        return $this;
+    }
+
+    /**
      * Gets updated_at
      *
      * @return int
@@ -371,54 +449,6 @@ class AssetFileMetadata implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return int
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param int $created_at Timestamp of when the object was first created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return int|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param int|null $archived_at Timestamp of when the object was archived (deleted).
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        $this->container['archived_at'] = $archived_at;
 
         return $this;
     }

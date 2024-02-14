@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,8 +58,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'publish_date' => '\DateTime'
+        'publish_date' => '\DateTime',
+        'id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'publish_date' => 'date-time'
+        'publish_date' => 'date-time',
+        'id' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'publish_date' => 'publishDate'
+        'publish_date' => 'publishDate',
+        'id' => 'id'
     ];
 
     /**
@@ -111,8 +111,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'publish_date' => 'setPublishDate'
+        'publish_date' => 'setPublishDate',
+        'id' => 'setId'
     ];
 
     /**
@@ -121,8 +121,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'publish_date' => 'getPublishDate'
+        'publish_date' => 'getPublishDate',
+        'id' => 'getId'
     ];
 
     /**
@@ -182,8 +182,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['publish_date'] = $data['publish_date'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -195,11 +195,11 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['publish_date'] === null) {
             $invalidProperties[] = "'publish_date' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,30 +215,6 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The ID of the object to be scheduled.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets publish_date
@@ -260,6 +236,30 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
     public function setPublishDate($publish_date)
     {
         $this->container['publish_date'] = $publish_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The ID of the object to be scheduled.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

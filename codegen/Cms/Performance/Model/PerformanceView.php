@@ -11,7 +11,7 @@
  */
 
 /**
- * CMS Performance API
+ * CMS Performance
  *
  * Use these endpoints to get a time series view of your website's performance.
  *
@@ -62,24 +62,24 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         '_404' => 'int',
         '_500' => 'int',
         '_504' => 'int',
-        'start_timestamp' => 'int',
-        'end_timestamp' => 'int',
         'start_datetime' => 'string',
-        'end_datetime' => 'string',
-        'total_requests' => 'int',
-        'cache_hits' => 'int',
-        'cache_hit_rate' => 'float',
-        'total_request_time' => 'int',
-        'avg_origin_response_time' => 'int',
         'response_time_ms' => 'int',
+        '_95th' => 'int',
+        'total_requests' => 'int',
+        'cache_hit_rate' => 'float',
+        '_99th' => 'int',
+        'total_request_time' => 'int',
         '_100_x' => 'int',
+        '_50th' => 'int',
+        'cache_hits' => 'int',
         '_20_x' => 'int',
         '_30_x' => 'int',
         '_40_x' => 'int',
+        'end_timestamp' => 'int',
         '_50_x' => 'int',
-        '_50th' => 'int',
-        '_95th' => 'int',
-        '_99th' => 'int'
+        'start_timestamp' => 'int',
+        'end_datetime' => 'string',
+        'avg_origin_response_time' => 'int'
     ];
 
     /**
@@ -94,24 +94,24 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         '_404' => 'int32',
         '_500' => 'int32',
         '_504' => 'int32',
-        'start_timestamp' => 'int64',
-        'end_timestamp' => 'int64',
         'start_datetime' => null,
-        'end_datetime' => null,
-        'total_requests' => 'int32',
-        'cache_hits' => 'int32',
-        'cache_hit_rate' => null,
-        'total_request_time' => 'int32',
-        'avg_origin_response_time' => 'int32',
         'response_time_ms' => 'int32',
+        '_95th' => 'int32',
+        'total_requests' => 'int32',
+        'cache_hit_rate' => null,
+        '_99th' => 'int32',
+        'total_request_time' => 'int32',
         '_100_x' => 'int32',
+        '_50th' => 'int32',
+        'cache_hits' => 'int32',
         '_20_x' => 'int32',
         '_30_x' => 'int32',
         '_40_x' => 'int32',
+        'end_timestamp' => 'int64',
         '_50_x' => 'int32',
-        '_50th' => 'int32',
-        '_95th' => 'int32',
-        '_99th' => 'int32'
+        'start_timestamp' => 'int64',
+        'end_datetime' => null,
+        'avg_origin_response_time' => 'int32'
     ];
 
     /**
@@ -145,24 +145,24 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         '_404' => '404',
         '_500' => '500',
         '_504' => '504',
-        'start_timestamp' => 'startTimestamp',
-        'end_timestamp' => 'endTimestamp',
         'start_datetime' => 'startDatetime',
-        'end_datetime' => 'endDatetime',
-        'total_requests' => 'totalRequests',
-        'cache_hits' => 'cacheHits',
-        'cache_hit_rate' => 'cacheHitRate',
-        'total_request_time' => 'totalRequestTime',
-        'avg_origin_response_time' => 'avgOriginResponseTime',
         'response_time_ms' => 'responseTimeMs',
+        '_95th' => '95th',
+        'total_requests' => 'totalRequests',
+        'cache_hit_rate' => 'cacheHitRate',
+        '_99th' => '99th',
+        'total_request_time' => 'totalRequestTime',
         '_100_x' => '100X',
+        '_50th' => '50th',
+        'cache_hits' => 'cacheHits',
         '_20_x' => '20X',
         '_30_x' => '30X',
         '_40_x' => '40X',
+        'end_timestamp' => 'endTimestamp',
         '_50_x' => '50X',
-        '_50th' => '50th',
-        '_95th' => '95th',
-        '_99th' => '99th'
+        'start_timestamp' => 'startTimestamp',
+        'end_datetime' => 'endDatetime',
+        'avg_origin_response_time' => 'avgOriginResponseTime'
     ];
 
     /**
@@ -175,24 +175,24 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         '_404' => 'set404',
         '_500' => 'set500',
         '_504' => 'set504',
-        'start_timestamp' => 'setStartTimestamp',
-        'end_timestamp' => 'setEndTimestamp',
         'start_datetime' => 'setStartDatetime',
-        'end_datetime' => 'setEndDatetime',
-        'total_requests' => 'setTotalRequests',
-        'cache_hits' => 'setCacheHits',
-        'cache_hit_rate' => 'setCacheHitRate',
-        'total_request_time' => 'setTotalRequestTime',
-        'avg_origin_response_time' => 'setAvgOriginResponseTime',
         'response_time_ms' => 'setResponseTimeMs',
+        '_95th' => 'set95th',
+        'total_requests' => 'setTotalRequests',
+        'cache_hit_rate' => 'setCacheHitRate',
+        '_99th' => 'set99th',
+        'total_request_time' => 'setTotalRequestTime',
         '_100_x' => 'set100X',
+        '_50th' => 'set50th',
+        'cache_hits' => 'setCacheHits',
         '_20_x' => 'set20X',
         '_30_x' => 'set30X',
         '_40_x' => 'set40X',
+        'end_timestamp' => 'setEndTimestamp',
         '_50_x' => 'set50X',
-        '_50th' => 'set50th',
-        '_95th' => 'set95th',
-        '_99th' => 'set99th'
+        'start_timestamp' => 'setStartTimestamp',
+        'end_datetime' => 'setEndDatetime',
+        'avg_origin_response_time' => 'setAvgOriginResponseTime'
     ];
 
     /**
@@ -205,24 +205,24 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         '_404' => 'get404',
         '_500' => 'get500',
         '_504' => 'get504',
-        'start_timestamp' => 'getStartTimestamp',
-        'end_timestamp' => 'getEndTimestamp',
         'start_datetime' => 'getStartDatetime',
-        'end_datetime' => 'getEndDatetime',
-        'total_requests' => 'getTotalRequests',
-        'cache_hits' => 'getCacheHits',
-        'cache_hit_rate' => 'getCacheHitRate',
-        'total_request_time' => 'getTotalRequestTime',
-        'avg_origin_response_time' => 'getAvgOriginResponseTime',
         'response_time_ms' => 'getResponseTimeMs',
+        '_95th' => 'get95th',
+        'total_requests' => 'getTotalRequests',
+        'cache_hit_rate' => 'getCacheHitRate',
+        '_99th' => 'get99th',
+        'total_request_time' => 'getTotalRequestTime',
         '_100_x' => 'get100X',
+        '_50th' => 'get50th',
+        'cache_hits' => 'getCacheHits',
         '_20_x' => 'get20X',
         '_30_x' => 'get30X',
         '_40_x' => 'get40X',
+        'end_timestamp' => 'getEndTimestamp',
         '_50_x' => 'get50X',
-        '_50th' => 'get50th',
-        '_95th' => 'get95th',
-        '_99th' => 'get99th'
+        'start_timestamp' => 'getStartTimestamp',
+        'end_datetime' => 'getEndDatetime',
+        'avg_origin_response_time' => 'getAvgOriginResponseTime'
     ];
 
     /**
@@ -286,24 +286,24 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['_404'] = $data['_404'] ?? null;
         $this->container['_500'] = $data['_500'] ?? null;
         $this->container['_504'] = $data['_504'] ?? null;
-        $this->container['start_timestamp'] = $data['start_timestamp'] ?? null;
-        $this->container['end_timestamp'] = $data['end_timestamp'] ?? null;
         $this->container['start_datetime'] = $data['start_datetime'] ?? null;
-        $this->container['end_datetime'] = $data['end_datetime'] ?? null;
-        $this->container['total_requests'] = $data['total_requests'] ?? null;
-        $this->container['cache_hits'] = $data['cache_hits'] ?? null;
-        $this->container['cache_hit_rate'] = $data['cache_hit_rate'] ?? null;
-        $this->container['total_request_time'] = $data['total_request_time'] ?? null;
-        $this->container['avg_origin_response_time'] = $data['avg_origin_response_time'] ?? null;
         $this->container['response_time_ms'] = $data['response_time_ms'] ?? null;
+        $this->container['_95th'] = $data['_95th'] ?? null;
+        $this->container['total_requests'] = $data['total_requests'] ?? null;
+        $this->container['cache_hit_rate'] = $data['cache_hit_rate'] ?? null;
+        $this->container['_99th'] = $data['_99th'] ?? null;
+        $this->container['total_request_time'] = $data['total_request_time'] ?? null;
         $this->container['_100_x'] = $data['_100_x'] ?? null;
+        $this->container['_50th'] = $data['_50th'] ?? null;
+        $this->container['cache_hits'] = $data['cache_hits'] ?? null;
         $this->container['_20_x'] = $data['_20_x'] ?? null;
         $this->container['_30_x'] = $data['_30_x'] ?? null;
         $this->container['_40_x'] = $data['_40_x'] ?? null;
+        $this->container['end_timestamp'] = $data['end_timestamp'] ?? null;
         $this->container['_50_x'] = $data['_50_x'] ?? null;
-        $this->container['_50th'] = $data['_50th'] ?? null;
-        $this->container['_95th'] = $data['_95th'] ?? null;
-        $this->container['_99th'] = $data['_99th'] ?? null;
+        $this->container['start_timestamp'] = $data['start_timestamp'] ?? null;
+        $this->container['end_datetime'] = $data['end_datetime'] ?? null;
+        $this->container['avg_origin_response_time'] = $data['avg_origin_response_time'] ?? null;
     }
 
     /**
@@ -327,38 +327,29 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['_504'] === null) {
             $invalidProperties[] = "'_504' can't be null";
         }
-        if ($this->container['start_timestamp'] === null) {
-            $invalidProperties[] = "'start_timestamp' can't be null";
+        if ($this->container['response_time_ms'] === null) {
+            $invalidProperties[] = "'response_time_ms' can't be null";
         }
-        if ($this->container['end_timestamp'] === null) {
-            $invalidProperties[] = "'end_timestamp' can't be null";
-        }
-        if ($this->container['start_datetime'] === null) {
-            $invalidProperties[] = "'start_datetime' can't be null";
-        }
-        if ($this->container['end_datetime'] === null) {
-            $invalidProperties[] = "'end_datetime' can't be null";
+        if ($this->container['_95th'] === null) {
+            $invalidProperties[] = "'_95th' can't be null";
         }
         if ($this->container['total_requests'] === null) {
             $invalidProperties[] = "'total_requests' can't be null";
         }
-        if ($this->container['cache_hits'] === null) {
-            $invalidProperties[] = "'cache_hits' can't be null";
-        }
         if ($this->container['cache_hit_rate'] === null) {
             $invalidProperties[] = "'cache_hit_rate' can't be null";
         }
-        if ($this->container['total_request_time'] === null) {
-            $invalidProperties[] = "'total_request_time' can't be null";
-        }
-        if ($this->container['avg_origin_response_time'] === null) {
-            $invalidProperties[] = "'avg_origin_response_time' can't be null";
-        }
-        if ($this->container['response_time_ms'] === null) {
-            $invalidProperties[] = "'response_time_ms' can't be null";
+        if ($this->container['_99th'] === null) {
+            $invalidProperties[] = "'_99th' can't be null";
         }
         if ($this->container['_100_x'] === null) {
             $invalidProperties[] = "'_100_x' can't be null";
+        }
+        if ($this->container['_50th'] === null) {
+            $invalidProperties[] = "'_50th' can't be null";
+        }
+        if ($this->container['cache_hits'] === null) {
+            $invalidProperties[] = "'cache_hits' can't be null";
         }
         if ($this->container['_20_x'] === null) {
             $invalidProperties[] = "'_20_x' can't be null";
@@ -369,17 +360,17 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['_40_x'] === null) {
             $invalidProperties[] = "'_40_x' can't be null";
         }
+        if ($this->container['end_timestamp'] === null) {
+            $invalidProperties[] = "'end_timestamp' can't be null";
+        }
         if ($this->container['_50_x'] === null) {
             $invalidProperties[] = "'_50_x' can't be null";
         }
-        if ($this->container['_50th'] === null) {
-            $invalidProperties[] = "'_50th' can't be null";
+        if ($this->container['start_timestamp'] === null) {
+            $invalidProperties[] = "'start_timestamp' can't be null";
         }
-        if ($this->container['_95th'] === null) {
-            $invalidProperties[] = "'_95th' can't be null";
-        }
-        if ($this->container['_99th'] === null) {
-            $invalidProperties[] = "'_99th' can't be null";
+        if ($this->container['avg_origin_response_time'] === null) {
+            $invalidProperties[] = "'avg_origin_response_time' can't be null";
         }
         return $invalidProperties;
     }
@@ -493,57 +484,9 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets start_timestamp
-     *
-     * @return int
-     */
-    public function getStartTimestamp()
-    {
-        return $this->container['start_timestamp'];
-    }
-
-    /**
-     * Sets start_timestamp
-     *
-     * @param int $start_timestamp The timestamp in milliseconds of the start of this interval.
-     *
-     * @return self
-     */
-    public function setStartTimestamp($start_timestamp)
-    {
-        $this->container['start_timestamp'] = $start_timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_timestamp
-     *
-     * @return int
-     */
-    public function getEndTimestamp()
-    {
-        return $this->container['end_timestamp'];
-    }
-
-    /**
-     * Sets end_timestamp
-     *
-     * @param int $end_timestamp The timestamp in milliseconds of the end of this interval.
-     *
-     * @return self
-     */
-    public function setEndTimestamp($end_timestamp)
-    {
-        $this->container['end_timestamp'] = $end_timestamp;
-
-        return $this;
-    }
-
-    /**
      * Gets start_datetime
      *
-     * @return string
+     * @return string|null
      */
     public function getStartDatetime()
     {
@@ -553,157 +496,13 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_datetime
      *
-     * @param string $start_datetime start_datetime
+     * @param string|null $start_datetime start_datetime
      *
      * @return self
      */
     public function setStartDatetime($start_datetime)
     {
         $this->container['start_datetime'] = $start_datetime;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_datetime
-     *
-     * @return string
-     */
-    public function getEndDatetime()
-    {
-        return $this->container['end_datetime'];
-    }
-
-    /**
-     * Sets end_datetime
-     *
-     * @param string $end_datetime end_datetime
-     *
-     * @return self
-     */
-    public function setEndDatetime($end_datetime)
-    {
-        $this->container['end_datetime'] = $end_datetime;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_requests
-     *
-     * @return int
-     */
-    public function getTotalRequests()
-    {
-        return $this->container['total_requests'];
-    }
-
-    /**
-     * Sets total_requests
-     *
-     * @param int $total_requests The total number of requests received in this period.
-     *
-     * @return self
-     */
-    public function setTotalRequests($total_requests)
-    {
-        $this->container['total_requests'] = $total_requests;
-
-        return $this;
-    }
-
-    /**
-     * Gets cache_hits
-     *
-     * @return int
-     */
-    public function getCacheHits()
-    {
-        return $this->container['cache_hits'];
-    }
-
-    /**
-     * Sets cache_hits
-     *
-     * @param int $cache_hits The total number of requests that were served cached responses.
-     *
-     * @return self
-     */
-    public function setCacheHits($cache_hits)
-    {
-        $this->container['cache_hits'] = $cache_hits;
-
-        return $this;
-    }
-
-    /**
-     * Gets cache_hit_rate
-     *
-     * @return float
-     */
-    public function getCacheHitRate()
-    {
-        return $this->container['cache_hit_rate'];
-    }
-
-    /**
-     * Sets cache_hit_rate
-     *
-     * @param float $cache_hit_rate The percentage of requests that were served cached responses.
-     *
-     * @return self
-     */
-    public function setCacheHitRate($cache_hit_rate)
-    {
-        $this->container['cache_hit_rate'] = $cache_hit_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_request_time
-     *
-     * @return int
-     */
-    public function getTotalRequestTime()
-    {
-        return $this->container['total_request_time'];
-    }
-
-    /**
-     * Sets total_request_time
-     *
-     * @param int $total_request_time total_request_time
-     *
-     * @return self
-     */
-    public function setTotalRequestTime($total_request_time)
-    {
-        $this->container['total_request_time'] = $total_request_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets avg_origin_response_time
-     *
-     * @return int
-     */
-    public function getAvgOriginResponseTime()
-    {
-        return $this->container['avg_origin_response_time'];
-    }
-
-    /**
-     * Sets avg_origin_response_time
-     *
-     * @param int $avg_origin_response_time The average response time in milliseconds from the origin to the edge.
-     *
-     * @return self
-     */
-    public function setAvgOriginResponseTime($avg_origin_response_time)
-    {
-        $this->container['avg_origin_response_time'] = $avg_origin_response_time;
 
         return $this;
     }
@@ -733,6 +532,126 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets _95th
+     *
+     * @return int
+     */
+    public function get95th()
+    {
+        return $this->container['_95th'];
+    }
+
+    /**
+     * Sets _95th
+     *
+     * @param int $_95th The 95th percentile response time.
+     *
+     * @return self
+     */
+    public function set95th($_95th)
+    {
+        $this->container['_95th'] = $_95th;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_requests
+     *
+     * @return int
+     */
+    public function getTotalRequests()
+    {
+        return $this->container['total_requests'];
+    }
+
+    /**
+     * Sets total_requests
+     *
+     * @param int $total_requests The total number of requests received in this period.
+     *
+     * @return self
+     */
+    public function setTotalRequests($total_requests)
+    {
+        $this->container['total_requests'] = $total_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets cache_hit_rate
+     *
+     * @return float
+     */
+    public function getCacheHitRate()
+    {
+        return $this->container['cache_hit_rate'];
+    }
+
+    /**
+     * Sets cache_hit_rate
+     *
+     * @param float $cache_hit_rate The percentage of requests that were served cached responses.
+     *
+     * @return self
+     */
+    public function setCacheHitRate($cache_hit_rate)
+    {
+        $this->container['cache_hit_rate'] = $cache_hit_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets _99th
+     *
+     * @return int
+     */
+    public function get99th()
+    {
+        return $this->container['_99th'];
+    }
+
+    /**
+     * Sets _99th
+     *
+     * @param int $_99th The 99th percentile response time.
+     *
+     * @return self
+     */
+    public function set99th($_99th)
+    {
+        $this->container['_99th'] = $_99th;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_request_time
+     *
+     * @return int|null
+     */
+    public function getTotalRequestTime()
+    {
+        return $this->container['total_request_time'];
+    }
+
+    /**
+     * Sets total_request_time
+     *
+     * @param int|null $total_request_time total_request_time
+     *
+     * @return self
+     */
+    public function setTotalRequestTime($total_request_time)
+    {
+        $this->container['total_request_time'] = $total_request_time;
+
+        return $this;
+    }
+
+    /**
      * Gets _100_x
      *
      * @return int
@@ -752,6 +671,54 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
     public function set100X($_100_x)
     {
         $this->container['_100_x'] = $_100_x;
+
+        return $this;
+    }
+
+    /**
+     * Gets _50th
+     *
+     * @return int
+     */
+    public function get50th()
+    {
+        return $this->container['_50th'];
+    }
+
+    /**
+     * Sets _50th
+     *
+     * @param int $_50th The 50th percentile response time.
+     *
+     * @return self
+     */
+    public function set50th($_50th)
+    {
+        $this->container['_50th'] = $_50th;
+
+        return $this;
+    }
+
+    /**
+     * Gets cache_hits
+     *
+     * @return int
+     */
+    public function getCacheHits()
+    {
+        return $this->container['cache_hits'];
+    }
+
+    /**
+     * Sets cache_hits
+     *
+     * @param int $cache_hits The total number of requests that were served cached responses.
+     *
+     * @return self
+     */
+    public function setCacheHits($cache_hits)
+    {
+        $this->container['cache_hits'] = $cache_hits;
 
         return $this;
     }
@@ -829,6 +796,30 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets end_timestamp
+     *
+     * @return int
+     */
+    public function getEndTimestamp()
+    {
+        return $this->container['end_timestamp'];
+    }
+
+    /**
+     * Sets end_timestamp
+     *
+     * @param int $end_timestamp The timestamp in milliseconds of the end of this interval.
+     *
+     * @return self
+     */
+    public function setEndTimestamp($end_timestamp)
+    {
+        $this->container['end_timestamp'] = $end_timestamp;
+
+        return $this;
+    }
+
+    /**
      * Gets _50_x
      *
      * @return int
@@ -853,73 +844,73 @@ class PerformanceView implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets _50th
+     * Gets start_timestamp
      *
      * @return int
      */
-    public function get50th()
+    public function getStartTimestamp()
     {
-        return $this->container['_50th'];
+        return $this->container['start_timestamp'];
     }
 
     /**
-     * Sets _50th
+     * Sets start_timestamp
      *
-     * @param int $_50th The 50th percentile response time.
+     * @param int $start_timestamp The timestamp in milliseconds of the start of this interval.
      *
      * @return self
      */
-    public function set50th($_50th)
+    public function setStartTimestamp($start_timestamp)
     {
-        $this->container['_50th'] = $_50th;
+        $this->container['start_timestamp'] = $start_timestamp;
 
         return $this;
     }
 
     /**
-     * Gets _95th
+     * Gets end_datetime
      *
-     * @return int
+     * @return string|null
      */
-    public function get95th()
+    public function getEndDatetime()
     {
-        return $this->container['_95th'];
+        return $this->container['end_datetime'];
     }
 
     /**
-     * Sets _95th
+     * Sets end_datetime
      *
-     * @param int $_95th The 95th percentile response time.
+     * @param string|null $end_datetime end_datetime
      *
      * @return self
      */
-    public function set95th($_95th)
+    public function setEndDatetime($end_datetime)
     {
-        $this->container['_95th'] = $_95th;
+        $this->container['end_datetime'] = $end_datetime;
 
         return $this;
     }
 
     /**
-     * Gets _99th
+     * Gets avg_origin_response_time
      *
      * @return int
      */
-    public function get99th()
+    public function getAvgOriginResponseTime()
     {
-        return $this->container['_99th'];
+        return $this->container['avg_origin_response_time'];
     }
 
     /**
-     * Sets _99th
+     * Sets avg_origin_response_time
      *
-     * @param int $_99th The 99th percentile response time.
+     * @param int $avg_origin_response_time The average response time in milliseconds from the origin to the edge.
      *
      * @return self
      */
-    public function set99th($_99th)
+    public function setAvgOriginResponseTime($avg_origin_response_time)
     {
-        $this->container['_99th'] = $_99th;
+        $this->container['avg_origin_response_time'] = $avg_origin_response_time;
 
         return $this;
     }

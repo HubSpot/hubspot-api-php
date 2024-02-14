@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Authors
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,23 +58,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'full_name' => 'string',
-        'email' => 'string',
-        'slug' => 'string',
-        'language' => 'string',
-        'translated_from_id' => 'int',
-        'name' => 'string',
-        'display_name' => 'string',
-        'bio' => 'string',
         'website' => 'string',
-        'twitter' => 'string',
+        'display_name' => 'string',
+        'created' => '\DateTime',
         'facebook' => 'string',
+        'full_name' => 'string',
+        'bio' => 'string',
+        'language' => 'string',
         'linkedin' => 'string',
         'avatar' => 'string',
-        'created' => '\DateTime',
+        'translated_from_id' => 'int',
+        'twitter' => 'string',
+        'deleted_at' => '\DateTime',
+        'name' => 'string',
+        'id' => 'string',
         'updated' => '\DateTime',
-        'deleted_at' => '\DateTime'
+        'email' => 'string',
+        'slug' => 'string'
     ];
 
     /**
@@ -85,23 +85,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'full_name' => null,
-        'email' => null,
-        'slug' => null,
-        'language' => null,
-        'translated_from_id' => 'int64',
-        'name' => null,
-        'display_name' => null,
-        'bio' => null,
         'website' => null,
-        'twitter' => null,
+        'display_name' => null,
+        'created' => 'date-time',
         'facebook' => null,
+        'full_name' => null,
+        'bio' => null,
+        'language' => null,
         'linkedin' => null,
         'avatar' => null,
-        'created' => 'date-time',
+        'translated_from_id' => 'int64',
+        'twitter' => null,
+        'deleted_at' => 'date-time',
+        'name' => null,
+        'id' => null,
         'updated' => 'date-time',
-        'deleted_at' => 'date-time'
+        'email' => null,
+        'slug' => null
     ];
 
     /**
@@ -131,23 +131,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'full_name' => 'fullName',
-        'email' => 'email',
-        'slug' => 'slug',
-        'language' => 'language',
-        'translated_from_id' => 'translatedFromId',
-        'name' => 'name',
-        'display_name' => 'displayName',
-        'bio' => 'bio',
         'website' => 'website',
-        'twitter' => 'twitter',
+        'display_name' => 'displayName',
+        'created' => 'created',
         'facebook' => 'facebook',
+        'full_name' => 'fullName',
+        'bio' => 'bio',
+        'language' => 'language',
         'linkedin' => 'linkedin',
         'avatar' => 'avatar',
-        'created' => 'created',
+        'translated_from_id' => 'translatedFromId',
+        'twitter' => 'twitter',
+        'deleted_at' => 'deletedAt',
+        'name' => 'name',
+        'id' => 'id',
         'updated' => 'updated',
-        'deleted_at' => 'deletedAt'
+        'email' => 'email',
+        'slug' => 'slug'
     ];
 
     /**
@@ -156,23 +156,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'full_name' => 'setFullName',
-        'email' => 'setEmail',
-        'slug' => 'setSlug',
-        'language' => 'setLanguage',
-        'translated_from_id' => 'setTranslatedFromId',
-        'name' => 'setName',
-        'display_name' => 'setDisplayName',
-        'bio' => 'setBio',
         'website' => 'setWebsite',
-        'twitter' => 'setTwitter',
+        'display_name' => 'setDisplayName',
+        'created' => 'setCreated',
         'facebook' => 'setFacebook',
+        'full_name' => 'setFullName',
+        'bio' => 'setBio',
+        'language' => 'setLanguage',
         'linkedin' => 'setLinkedin',
         'avatar' => 'setAvatar',
-        'created' => 'setCreated',
+        'translated_from_id' => 'setTranslatedFromId',
+        'twitter' => 'setTwitter',
+        'deleted_at' => 'setDeletedAt',
+        'name' => 'setName',
+        'id' => 'setId',
         'updated' => 'setUpdated',
-        'deleted_at' => 'setDeletedAt'
+        'email' => 'setEmail',
+        'slug' => 'setSlug'
     ];
 
     /**
@@ -181,23 +181,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'full_name' => 'getFullName',
-        'email' => 'getEmail',
-        'slug' => 'getSlug',
-        'language' => 'getLanguage',
-        'translated_from_id' => 'getTranslatedFromId',
-        'name' => 'getName',
-        'display_name' => 'getDisplayName',
-        'bio' => 'getBio',
         'website' => 'getWebsite',
-        'twitter' => 'getTwitter',
+        'display_name' => 'getDisplayName',
+        'created' => 'getCreated',
         'facebook' => 'getFacebook',
+        'full_name' => 'getFullName',
+        'bio' => 'getBio',
+        'language' => 'getLanguage',
         'linkedin' => 'getLinkedin',
         'avatar' => 'getAvatar',
-        'created' => 'getCreated',
+        'translated_from_id' => 'getTranslatedFromId',
+        'twitter' => 'getTwitter',
+        'deleted_at' => 'getDeletedAt',
+        'name' => 'getName',
+        'id' => 'getId',
         'updated' => 'getUpdated',
-        'deleted_at' => 'getDeletedAt'
+        'email' => 'getEmail',
+        'slug' => 'getSlug'
     ];
 
     /**
@@ -321,6 +321,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_CCP_IN = 'ccp-in';
     public const LANGUAGE_CE = 'ce';
     public const LANGUAGE_CE_RU = 'ce-ru';
+    public const LANGUAGE_CEB = 'ceb';
+    public const LANGUAGE_CEB_PH = 'ceb-ph';
     public const LANGUAGE_CGG = 'cgg';
     public const LANGUAGE_CGG_UG = 'cgg-ug';
     public const LANGUAGE_CHR = 'chr';
@@ -350,6 +352,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_DE_LU = 'de-lu';
     public const LANGUAGE_DJE = 'dje';
     public const LANGUAGE_DJE_NE = 'dje-ne';
+    public const LANGUAGE_DOI = 'doi';
+    public const LANGUAGE_DOI_IN = 'doi-in';
     public const LANGUAGE_DSB = 'dsb';
     public const LANGUAGE_DSB_DE = 'dsb-de';
     public const LANGUAGE_DUA = 'dua';
@@ -387,6 +391,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_CH = 'en-ch';
     public const LANGUAGE_EN_CK = 'en-ck';
     public const LANGUAGE_EN_CM = 'en-cm';
+    public const LANGUAGE_EN_CN = 'en-cn';
     public const LANGUAGE_EN_CX = 'en-cx';
     public const LANGUAGE_EN_CY = 'en-cy';
     public const LANGUAGE_EN_DE = 'en-de';
@@ -430,6 +435,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_MT = 'en-mt';
     public const LANGUAGE_EN_MU = 'en-mu';
     public const LANGUAGE_EN_MW = 'en-mw';
+    public const LANGUAGE_EN_MX = 'en-mx';
     public const LANGUAGE_EN_MY = 'en-my';
     public const LANGUAGE_EN_NA = 'en-na';
     public const LANGUAGE_EN_NF = 'en-nf';
@@ -514,9 +520,17 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FA_AF = 'fa-af';
     public const LANGUAGE_FA_IR = 'fa-ir';
     public const LANGUAGE_FF = 'ff';
+    public const LANGUAGE_FF_BF = 'ff-bf';
     public const LANGUAGE_FF_CM = 'ff-cm';
+    public const LANGUAGE_FF_GH = 'ff-gh';
+    public const LANGUAGE_FF_GM = 'ff-gm';
     public const LANGUAGE_FF_GN = 'ff-gn';
+    public const LANGUAGE_FF_GW = 'ff-gw';
+    public const LANGUAGE_FF_LR = 'ff-lr';
     public const LANGUAGE_FF_MR = 'ff-mr';
+    public const LANGUAGE_FF_NE = 'ff-ne';
+    public const LANGUAGE_FF_NG = 'ff-ng';
+    public const LANGUAGE_FF_SL = 'ff-sl';
     public const LANGUAGE_FF_SN = 'ff-sn';
     public const LANGUAGE_FI = 'fi';
     public const LANGUAGE_FI_FI = 'fi-fi';
@@ -577,6 +591,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FY = 'fy';
     public const LANGUAGE_FY_NL = 'fy-nl';
     public const LANGUAGE_GA = 'ga';
+    public const LANGUAGE_GA_GB = 'ga-gb';
     public const LANGUAGE_GA_IE = 'ga-ie';
     public const LANGUAGE_GD = 'gd';
     public const LANGUAGE_GD_GB = 'gd-gb';
@@ -610,6 +625,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_HU_HU = 'hu-hu';
     public const LANGUAGE_HY = 'hy';
     public const LANGUAGE_HY_AM = 'hy-am';
+    public const LANGUAGE_IA = 'ia';
+    public const LANGUAGE_IA_001 = 'ia-001';
     public const LANGUAGE_ID = 'id';
     public const LANGUAGE_IG = 'ig';
     public const LANGUAGE_IG_NG = 'ig-ng';
@@ -632,6 +649,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_YI_001 = 'yi-001';
     public const LANGUAGE_JMC = 'jmc';
     public const LANGUAGE_JMC_TZ = 'jmc-tz';
+    public const LANGUAGE_JV = 'jv';
+    public const LANGUAGE_JV_ID = 'jv-id';
     public const LANGUAGE_KA = 'ka';
     public const LANGUAGE_KA_GE = 'ka-ge';
     public const LANGUAGE_KAB = 'kab';
@@ -673,6 +692,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_KSH_DE = 'ksh-de';
     public const LANGUAGE_KW = 'kw';
     public const LANGUAGE_KW_GB = 'kw-gb';
+    public const LANGUAGE_KU = 'ku';
+    public const LANGUAGE_KU_TR = 'ku-tr';
     public const LANGUAGE_KY = 'ky';
     public const LANGUAGE_KY_KG = 'ky-kg';
     public const LANGUAGE_LAG = 'lag';
@@ -703,6 +724,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_LUY_KE = 'luy-ke';
     public const LANGUAGE_LV = 'lv';
     public const LANGUAGE_LV_LV = 'lv-lv';
+    public const LANGUAGE_MAI = 'mai';
+    public const LANGUAGE_MAI_IN = 'mai-in';
     public const LANGUAGE_MAS = 'mas';
     public const LANGUAGE_MAS_KE = 'mas-ke';
     public const LANGUAGE_MAS_TZ = 'mas-tz';
@@ -716,16 +739,21 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_MGH_MZ = 'mgh-mz';
     public const LANGUAGE_MGO = 'mgo';
     public const LANGUAGE_MGO_CM = 'mgo-cm';
+    public const LANGUAGE_MI = 'mi';
+    public const LANGUAGE_MI_NZ = 'mi-nz';
     public const LANGUAGE_MK = 'mk';
     public const LANGUAGE_MK_MK = 'mk-mk';
     public const LANGUAGE_ML = 'ml';
     public const LANGUAGE_ML_IN = 'ml-in';
     public const LANGUAGE_MN = 'mn';
     public const LANGUAGE_MN_MN = 'mn-mn';
+    public const LANGUAGE_MNI = 'mni';
+    public const LANGUAGE_MNI_IN = 'mni-in';
     public const LANGUAGE_MR = 'mr';
     public const LANGUAGE_MR_IN = 'mr-in';
     public const LANGUAGE_MS = 'ms';
     public const LANGUAGE_MS_BN = 'ms-bn';
+    public const LANGUAGE_MS_ID = 'ms-id';
     public const LANGUAGE_MS_MY = 'ms-my';
     public const LANGUAGE_MS_SG = 'ms-sg';
     public const LANGUAGE_MT = 'mt';
@@ -782,12 +810,15 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_PA = 'pa';
     public const LANGUAGE_PA_IN = 'pa-in';
     public const LANGUAGE_PA_PK = 'pa-pk';
+    public const LANGUAGE_PCM = 'pcm';
+    public const LANGUAGE_PCM_NG = 'pcm-ng';
     public const LANGUAGE_PL = 'pl';
     public const LANGUAGE_PL_PL = 'pl-pl';
     public const LANGUAGE_PRG = 'prg';
     public const LANGUAGE_PRG_001 = 'prg-001';
     public const LANGUAGE_PS = 'ps';
     public const LANGUAGE_PS_AF = 'ps-af';
+    public const LANGUAGE_PS_PK = 'ps-pk';
     public const LANGUAGE_PT = 'pt';
     public const LANGUAGE_PT_AO = 'pt-ao';
     public const LANGUAGE_PT_BR = 'pt-br';
@@ -826,13 +857,17 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_RWK = 'rwk';
     public const LANGUAGE_RWK_TZ = 'rwk-tz';
     public const LANGUAGE_SA = 'sa';
+    public const LANGUAGE_SA_IN = 'sa-in';
     public const LANGUAGE_SAH = 'sah';
     public const LANGUAGE_SAH_RU = 'sah-ru';
     public const LANGUAGE_SAQ = 'saq';
     public const LANGUAGE_SAQ_KE = 'saq-ke';
+    public const LANGUAGE_SAT = 'sat';
+    public const LANGUAGE_SAT_IN = 'sat-in';
     public const LANGUAGE_SBP = 'sbp';
     public const LANGUAGE_SBP_TZ = 'sbp-tz';
     public const LANGUAGE_SD = 'sd';
+    public const LANGUAGE_SD_IN = 'sd-in';
     public const LANGUAGE_SD_PK = 'sd-pk';
     public const LANGUAGE_SE = 'se';
     public const LANGUAGE_SE_FI = 'se-fi';
@@ -871,6 +906,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SR_ME = 'sr-me';
     public const LANGUAGE_SR_RS = 'sr-rs';
     public const LANGUAGE_SR_XK = 'sr-xk';
+    public const LANGUAGE_SU = 'su';
+    public const LANGUAGE_SU_ID = 'su-id';
     public const LANGUAGE_SV = 'sv';
     public const LANGUAGE_SV_AX = 'sv-ax';
     public const LANGUAGE_SV_FI = 'sv-fi';
@@ -900,6 +937,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_TI_ET = 'ti-et';
     public const LANGUAGE_TK = 'tk';
     public const LANGUAGE_TK_TM = 'tk-tm';
+    public const LANGUAGE_TL = 'tl';
     public const LANGUAGE_TO = 'to';
     public const LANGUAGE_TO_TO = 'to-to';
     public const LANGUAGE_TR = 'tr';
@@ -933,6 +971,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_WAE_CH = 'wae-ch';
     public const LANGUAGE_WO = 'wo';
     public const LANGUAGE_WO_SN = 'wo-sn';
+    public const LANGUAGE_XH = 'xh';
+    public const LANGUAGE_XH_ZA = 'xh-za';
     public const LANGUAGE_XOG = 'xog';
     public const LANGUAGE_XOG_UG = 'xog-ug';
     public const LANGUAGE_YAV = 'yav';
@@ -1044,6 +1084,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_CCP_IN,
             self::LANGUAGE_CE,
             self::LANGUAGE_CE_RU,
+            self::LANGUAGE_CEB,
+            self::LANGUAGE_CEB_PH,
             self::LANGUAGE_CGG,
             self::LANGUAGE_CGG_UG,
             self::LANGUAGE_CHR,
@@ -1073,6 +1115,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_DE_LU,
             self::LANGUAGE_DJE,
             self::LANGUAGE_DJE_NE,
+            self::LANGUAGE_DOI,
+            self::LANGUAGE_DOI_IN,
             self::LANGUAGE_DSB,
             self::LANGUAGE_DSB_DE,
             self::LANGUAGE_DUA,
@@ -1110,6 +1154,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_CH,
             self::LANGUAGE_EN_CK,
             self::LANGUAGE_EN_CM,
+            self::LANGUAGE_EN_CN,
             self::LANGUAGE_EN_CX,
             self::LANGUAGE_EN_CY,
             self::LANGUAGE_EN_DE,
@@ -1153,6 +1198,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_MT,
             self::LANGUAGE_EN_MU,
             self::LANGUAGE_EN_MW,
+            self::LANGUAGE_EN_MX,
             self::LANGUAGE_EN_MY,
             self::LANGUAGE_EN_NA,
             self::LANGUAGE_EN_NF,
@@ -1237,9 +1283,17 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FA_AF,
             self::LANGUAGE_FA_IR,
             self::LANGUAGE_FF,
+            self::LANGUAGE_FF_BF,
             self::LANGUAGE_FF_CM,
+            self::LANGUAGE_FF_GH,
+            self::LANGUAGE_FF_GM,
             self::LANGUAGE_FF_GN,
+            self::LANGUAGE_FF_GW,
+            self::LANGUAGE_FF_LR,
             self::LANGUAGE_FF_MR,
+            self::LANGUAGE_FF_NE,
+            self::LANGUAGE_FF_NG,
+            self::LANGUAGE_FF_SL,
             self::LANGUAGE_FF_SN,
             self::LANGUAGE_FI,
             self::LANGUAGE_FI_FI,
@@ -1300,6 +1354,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FY,
             self::LANGUAGE_FY_NL,
             self::LANGUAGE_GA,
+            self::LANGUAGE_GA_GB,
             self::LANGUAGE_GA_IE,
             self::LANGUAGE_GD,
             self::LANGUAGE_GD_GB,
@@ -1333,6 +1388,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_HU_HU,
             self::LANGUAGE_HY,
             self::LANGUAGE_HY_AM,
+            self::LANGUAGE_IA,
+            self::LANGUAGE_IA_001,
             self::LANGUAGE_ID,
             self::LANGUAGE_IG,
             self::LANGUAGE_IG_NG,
@@ -1355,6 +1412,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_YI_001,
             self::LANGUAGE_JMC,
             self::LANGUAGE_JMC_TZ,
+            self::LANGUAGE_JV,
+            self::LANGUAGE_JV_ID,
             self::LANGUAGE_KA,
             self::LANGUAGE_KA_GE,
             self::LANGUAGE_KAB,
@@ -1396,6 +1455,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_KSH_DE,
             self::LANGUAGE_KW,
             self::LANGUAGE_KW_GB,
+            self::LANGUAGE_KU,
+            self::LANGUAGE_KU_TR,
             self::LANGUAGE_KY,
             self::LANGUAGE_KY_KG,
             self::LANGUAGE_LAG,
@@ -1426,6 +1487,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_LUY_KE,
             self::LANGUAGE_LV,
             self::LANGUAGE_LV_LV,
+            self::LANGUAGE_MAI,
+            self::LANGUAGE_MAI_IN,
             self::LANGUAGE_MAS,
             self::LANGUAGE_MAS_KE,
             self::LANGUAGE_MAS_TZ,
@@ -1439,16 +1502,21 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_MGH_MZ,
             self::LANGUAGE_MGO,
             self::LANGUAGE_MGO_CM,
+            self::LANGUAGE_MI,
+            self::LANGUAGE_MI_NZ,
             self::LANGUAGE_MK,
             self::LANGUAGE_MK_MK,
             self::LANGUAGE_ML,
             self::LANGUAGE_ML_IN,
             self::LANGUAGE_MN,
             self::LANGUAGE_MN_MN,
+            self::LANGUAGE_MNI,
+            self::LANGUAGE_MNI_IN,
             self::LANGUAGE_MR,
             self::LANGUAGE_MR_IN,
             self::LANGUAGE_MS,
             self::LANGUAGE_MS_BN,
+            self::LANGUAGE_MS_ID,
             self::LANGUAGE_MS_MY,
             self::LANGUAGE_MS_SG,
             self::LANGUAGE_MT,
@@ -1505,12 +1573,15 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_PA,
             self::LANGUAGE_PA_IN,
             self::LANGUAGE_PA_PK,
+            self::LANGUAGE_PCM,
+            self::LANGUAGE_PCM_NG,
             self::LANGUAGE_PL,
             self::LANGUAGE_PL_PL,
             self::LANGUAGE_PRG,
             self::LANGUAGE_PRG_001,
             self::LANGUAGE_PS,
             self::LANGUAGE_PS_AF,
+            self::LANGUAGE_PS_PK,
             self::LANGUAGE_PT,
             self::LANGUAGE_PT_AO,
             self::LANGUAGE_PT_BR,
@@ -1549,13 +1620,17 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_RWK,
             self::LANGUAGE_RWK_TZ,
             self::LANGUAGE_SA,
+            self::LANGUAGE_SA_IN,
             self::LANGUAGE_SAH,
             self::LANGUAGE_SAH_RU,
             self::LANGUAGE_SAQ,
             self::LANGUAGE_SAQ_KE,
+            self::LANGUAGE_SAT,
+            self::LANGUAGE_SAT_IN,
             self::LANGUAGE_SBP,
             self::LANGUAGE_SBP_TZ,
             self::LANGUAGE_SD,
+            self::LANGUAGE_SD_IN,
             self::LANGUAGE_SD_PK,
             self::LANGUAGE_SE,
             self::LANGUAGE_SE_FI,
@@ -1594,6 +1669,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SR_ME,
             self::LANGUAGE_SR_RS,
             self::LANGUAGE_SR_XK,
+            self::LANGUAGE_SU,
+            self::LANGUAGE_SU_ID,
             self::LANGUAGE_SV,
             self::LANGUAGE_SV_AX,
             self::LANGUAGE_SV_FI,
@@ -1623,6 +1700,7 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_TI_ET,
             self::LANGUAGE_TK,
             self::LANGUAGE_TK_TM,
+            self::LANGUAGE_TL,
             self::LANGUAGE_TO,
             self::LANGUAGE_TO_TO,
             self::LANGUAGE_TR,
@@ -1656,6 +1734,8 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_WAE_CH,
             self::LANGUAGE_WO,
             self::LANGUAGE_WO_SN,
+            self::LANGUAGE_XH,
+            self::LANGUAGE_XH_ZA,
             self::LANGUAGE_XOG,
             self::LANGUAGE_XOG_UG,
             self::LANGUAGE_YAV,
@@ -1696,23 +1776,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['full_name'] = $data['full_name'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['translated_from_id'] = $data['translated_from_id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['display_name'] = $data['display_name'] ?? null;
-        $this->container['bio'] = $data['bio'] ?? null;
         $this->container['website'] = $data['website'] ?? null;
-        $this->container['twitter'] = $data['twitter'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['created'] = $data['created'] ?? null;
         $this->container['facebook'] = $data['facebook'] ?? null;
+        $this->container['full_name'] = $data['full_name'] ?? null;
+        $this->container['bio'] = $data['bio'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
         $this->container['linkedin'] = $data['linkedin'] ?? null;
         $this->container['avatar'] = $data['avatar'] ?? null;
-        $this->container['created'] = $data['created'] ?? null;
-        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['translated_from_id'] = $data['translated_from_id'] ?? null;
+        $this->container['twitter'] = $data['twitter'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
     }
 
     /**
@@ -1724,17 +1804,23 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['website'] === null) {
+            $invalidProperties[] = "'website' can't be null";
+        }
+        if ($this->container['display_name'] === null) {
+            $invalidProperties[] = "'display_name' can't be null";
+        }
+        if ($this->container['created'] === null) {
+            $invalidProperties[] = "'created' can't be null";
+        }
+        if ($this->container['facebook'] === null) {
+            $invalidProperties[] = "'facebook' can't be null";
         }
         if ($this->container['full_name'] === null) {
             $invalidProperties[] = "'full_name' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
-        }
-        if ($this->container['slug'] === null) {
-            $invalidProperties[] = "'slug' can't be null";
+        if ($this->container['bio'] === null) {
+            $invalidProperties[] = "'bio' can't be null";
         }
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
@@ -1748,41 +1834,35 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['translated_from_id'] === null) {
-            $invalidProperties[] = "'translated_from_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['display_name'] === null) {
-            $invalidProperties[] = "'display_name' can't be null";
-        }
-        if ($this->container['bio'] === null) {
-            $invalidProperties[] = "'bio' can't be null";
-        }
-        if ($this->container['website'] === null) {
-            $invalidProperties[] = "'website' can't be null";
-        }
-        if ($this->container['twitter'] === null) {
-            $invalidProperties[] = "'twitter' can't be null";
-        }
-        if ($this->container['facebook'] === null) {
-            $invalidProperties[] = "'facebook' can't be null";
-        }
         if ($this->container['linkedin'] === null) {
             $invalidProperties[] = "'linkedin' can't be null";
         }
         if ($this->container['avatar'] === null) {
             $invalidProperties[] = "'avatar' can't be null";
         }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
+        if ($this->container['translated_from_id'] === null) {
+            $invalidProperties[] = "'translated_from_id' can't be null";
+        }
+        if ($this->container['twitter'] === null) {
+            $invalidProperties[] = "'twitter' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['updated'] === null) {
             $invalidProperties[] = "'updated' can't be null";
         }
-        if ($this->container['deleted_at'] === null) {
-            $invalidProperties[] = "'deleted_at' can't be null";
+        if ($this->container['email'] === null) {
+            $invalidProperties[] = "'email' can't be null";
+        }
+        if ($this->container['slug'] === null) {
+            $invalidProperties[] = "'slug' can't be null";
         }
         return $invalidProperties;
     }
@@ -1800,25 +1880,97 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets website
      *
      * @return string
      */
-    public function getId()
+    public function getWebsite()
     {
-        return $this->container['id'];
+        return $this->container['website'];
     }
 
     /**
-     * Sets id
+     * Sets website
      *
-     * @param string $id The unique ID of the Blog Author.
+     * @param string $website URL to the website of the Blog Author.
      *
      * @return self
      */
-    public function setId($id)
+    public function setWebsite($website)
     {
-        $this->container['id'] = $id;
+        $this->container['website'] = $website;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string $display_name The full name of the Blog Author to be displayed.
+     *
+     * @return self
+     */
+    public function setDisplayName($display_name)
+    {
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime $created created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets facebook
+     *
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->container['facebook'];
+    }
+
+    /**
+     * Sets facebook
+     *
+     * @param string $facebook URL to the Blog Author's Facebook page.
+     *
+     * @return self
+     */
+    public function setFacebook($facebook)
+    {
+        $this->container['facebook'] = $facebook;
 
         return $this;
     }
@@ -1848,49 +2000,25 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets email
+     * Gets bio
      *
      * @return string
      */
-    public function getEmail()
+    public function getBio()
     {
-        return $this->container['email'];
+        return $this->container['bio'];
     }
 
     /**
-     * Sets email
+     * Sets bio
      *
-     * @param string $email Email address of the Blog Author.
+     * @param string $bio A short biography of the blog author.
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setBio($bio)
     {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
+        $this->container['bio'] = $bio;
 
         return $this;
     }
@@ -1925,174 +2053,6 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['language'] = $language;
-
-        return $this;
-    }
-
-    /**
-     * Gets translated_from_id
-     *
-     * @return int
-     */
-    public function getTranslatedFromId()
-    {
-        return $this->container['translated_from_id'];
-    }
-
-    /**
-     * Sets translated_from_id
-     *
-     * @param int $translated_from_id ID of the primary blog author this object was translated from.
-     *
-     * @return self
-     */
-    public function setTranslatedFromId($translated_from_id)
-    {
-        $this->container['translated_from_id'] = $translated_from_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_name
-     *
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        return $this->container['display_name'];
-    }
-
-    /**
-     * Sets display_name
-     *
-     * @param string $display_name The full name of the Blog Author to be displayed.
-     *
-     * @return self
-     */
-    public function setDisplayName($display_name)
-    {
-        $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets bio
-     *
-     * @return string
-     */
-    public function getBio()
-    {
-        return $this->container['bio'];
-    }
-
-    /**
-     * Sets bio
-     *
-     * @param string $bio A short biography of the blog author.
-     *
-     * @return self
-     */
-    public function setBio($bio)
-    {
-        $this->container['bio'] = $bio;
-
-        return $this;
-    }
-
-    /**
-     * Gets website
-     *
-     * @return string
-     */
-    public function getWebsite()
-    {
-        return $this->container['website'];
-    }
-
-    /**
-     * Sets website
-     *
-     * @param string $website URL to the website of the Blog Author.
-     *
-     * @return self
-     */
-    public function setWebsite($website)
-    {
-        $this->container['website'] = $website;
-
-        return $this;
-    }
-
-    /**
-     * Gets twitter
-     *
-     * @return string
-     */
-    public function getTwitter()
-    {
-        return $this->container['twitter'];
-    }
-
-    /**
-     * Sets twitter
-     *
-     * @param string $twitter URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
-     *
-     * @return self
-     */
-    public function setTwitter($twitter)
-    {
-        $this->container['twitter'] = $twitter;
-
-        return $this;
-    }
-
-    /**
-     * Gets facebook
-     *
-     * @return string
-     */
-    public function getFacebook()
-    {
-        return $this->container['facebook'];
-    }
-
-    /**
-     * Sets facebook
-     *
-     * @param string $facebook URL to the Blog Author's Facebook page.
-     *
-     * @return self
-     */
-    public function setFacebook($facebook)
-    {
-        $this->container['facebook'] = $facebook;
 
         return $this;
     }
@@ -2146,25 +2106,121 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created
+     * Gets translated_from_id
      *
-     * @return \DateTime
+     * @return int
      */
-    public function getCreated()
+    public function getTranslatedFromId()
     {
-        return $this->container['created'];
+        return $this->container['translated_from_id'];
     }
 
     /**
-     * Sets created
+     * Sets translated_from_id
      *
-     * @param \DateTime $created created
+     * @param int $translated_from_id ID of the primary blog author this object was translated from.
      *
      * @return self
      */
-    public function setCreated($created)
+    public function setTranslatedFromId($translated_from_id)
     {
-        $this->container['created'] = $created;
+        $this->container['translated_from_id'] = $translated_from_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets twitter
+     *
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->container['twitter'];
+    }
+
+    /**
+     * Sets twitter
+     *
+     * @param string $twitter URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
+     *
+     * @return self
+     */
+    public function setTwitter($twitter)
+    {
+        $this->container['twitter'] = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->container['deleted_at'];
+    }
+
+    /**
+     * Sets deleted_at
+     *
+     * @param \DateTime $deleted_at The timestamp (ISO8601 format) when this Blog Author was deleted.
+     *
+     * @return self
+     */
+    public function setDeletedAt($deleted_at)
+    {
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The unique ID of the Blog Author.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -2194,25 +2250,49 @@ class BlogAuthor implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets deleted_at
+     * Gets email
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getDeletedAt()
+    public function getEmail()
     {
-        return $this->container['deleted_at'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets deleted_at
+     * Sets email
      *
-     * @param \DateTime $deleted_at The timestamp (ISO8601 format) when this Blog Author was deleted.
+     * @param string $email Email address of the Blog Author.
      *
      * @return self
      */
-    public function setDeletedAt($deleted_at)
+    public function setEmail($email)
     {
-        $this->container['deleted_at'] = $deleted_at;
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string $slug slug
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
 
         return $this;
     }

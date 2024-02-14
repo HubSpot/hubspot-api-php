@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,9 +58,9 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'full_name' => 'string',
         'id' => 'string',
-        'email' => 'string',
-        'full_name' => 'string'
+        'email' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'full_name' => null,
         'id' => null,
-        'email' => null,
-        'full_name' => null
+        'email' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'full_name' => 'fullName',
         'id' => 'id',
-        'email' => 'email',
-        'full_name' => 'fullName'
+        'email' => 'email'
     ];
 
     /**
@@ -114,9 +114,9 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'full_name' => 'setFullName',
         'id' => 'setId',
-        'email' => 'setEmail',
-        'full_name' => 'setFullName'
+        'email' => 'setEmail'
     ];
 
     /**
@@ -125,9 +125,9 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'full_name' => 'getFullName',
         'id' => 'getId',
-        'email' => 'getEmail',
-        'full_name' => 'getFullName'
+        'email' => 'getEmail'
     ];
 
     /**
@@ -187,9 +187,9 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['full_name'] = $data['full_name'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['email'] = $data['email'] ?? null;
-        $this->container['full_name'] = $data['full_name'] ?? null;
     }
 
     /**
@@ -201,14 +201,14 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['full_name'] === null) {
+            $invalidProperties[] = "'full_name' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
-        }
-        if ($this->container['full_name'] === null) {
-            $invalidProperties[] = "'full_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,6 +224,30 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets full_name
+     *
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->container['full_name'];
+    }
+
+    /**
+     * Sets full_name
+     *
+     * @param string $full_name The first and last name of the User.
+     *
+     * @return self
+     */
+    public function setFullName($full_name)
+    {
+        $this->container['full_name'] = $full_name;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -269,30 +293,6 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEmail($email)
     {
         $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets full_name
-     *
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->container['full_name'];
-    }
-
-    /**
-     * Sets full_name
-     *
-     * @param string $full_name The first and last name of the User.
-     *
-     * @return self
-     */
-    public function setFullName($full_name)
-    {
-        $this->container['full_name'] = $full_name;
 
         return $this;
     }

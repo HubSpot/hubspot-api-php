@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,14 +57,14 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]',
+        'completed_at' => '\DateTime',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\StandardError[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
-        'links' => 'array<string,string>'
+        'links' => 'array<string,string>',
+        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]',
+        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\StandardError[]',
+        'status' => 'string'
     ];
 
     /**
@@ -75,14 +75,14 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'results' => null,
+        'completed_at' => 'date-time',
         'num_errors' => 'int32',
-        'errors' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time',
-        'links' => null
+        'links' => null,
+        'results' => null,
+        'errors' => null,
+        'status' => null
     ];
 
     /**
@@ -112,14 +112,14 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'results' => 'results',
+        'completed_at' => 'completedAt',
         'num_errors' => 'numErrors',
-        'errors' => 'errors',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
-        'links' => 'links'
+        'links' => 'links',
+        'results' => 'results',
+        'errors' => 'errors',
+        'status' => 'status'
     ];
 
     /**
@@ -128,14 +128,14 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'results' => 'setResults',
+        'completed_at' => 'setCompletedAt',
         'num_errors' => 'setNumErrors',
-        'errors' => 'setErrors',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
-        'links' => 'setLinks'
+        'links' => 'setLinks',
+        'results' => 'setResults',
+        'errors' => 'setErrors',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -144,14 +144,14 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'results' => 'getResults',
+        'completed_at' => 'getCompletedAt',
         'num_errors' => 'getNumErrors',
-        'errors' => 'getErrors',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
-        'links' => 'getLinks'
+        'links' => 'getLinks',
+        'results' => 'getResults',
+        'errors' => 'getErrors',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -230,14 +230,14 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['num_errors'] = $data['num_errors'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['requested_at'] = $data['requested_at'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -249,6 +249,15 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -261,15 +270,6 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
             );
         }
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -286,59 +286,25 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets status
+     * Gets completed_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getStatus()
+    public function getCompletedAt()
     {
-        return $this->container['status'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets status
+     * Sets completed_at
      *
-     * @param string $status status
+     * @param \DateTime $completed_at 
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCompletedAt($completed_at)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
@@ -356,37 +322,13 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
     /**
      * Sets num_errors
      *
-     * @param int|null $num_errors num_errors
+     * @param int|null $num_errors 
      *
      * @return self
      */
     public function setNumErrors($num_errors)
     {
         $this->container['num_errors'] = $num_errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\StandardError[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -404,7 +346,7 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at requested_at
+     * @param \DateTime|null $requested_at 
      *
      * @return self
      */
@@ -428,37 +370,13 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at started_at
+     * @param \DateTime $started_at 
      *
      * @return self
      */
     public function setStartedAt($started_at)
     {
         $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets completed_at
-     *
-     * @return \DateTime
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime $completed_at completed_at
-     *
-     * @return self
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
@@ -476,13 +394,95 @@ class BatchResponseHubDbTableRowV3WithErrors implements ModelInterface, ArrayAcc
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links links
+     * @param array<string,string>|null $links 
      *
      * @return self
      */
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[] $results 
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\StandardError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\StandardError[]|null $errors 
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status 
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

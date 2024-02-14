@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,11 +57,11 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'in' => 'string',
-        'code' => 'string',
         'sub_category' => 'string',
-        'context' => 'array<string,string[]>'
+        'code' => 'string',
+        'in' => 'string',
+        'context' => 'array<string,string[]>',
+        'message' => 'string'
     ];
 
     /**
@@ -72,11 +72,11 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'in' => null,
-        'code' => null,
         'sub_category' => null,
-        'context' => null
+        'code' => null,
+        'in' => null,
+        'context' => null,
+        'message' => null
     ];
 
     /**
@@ -106,11 +106,11 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'in' => 'in',
-        'code' => 'code',
         'sub_category' => 'subCategory',
-        'context' => 'context'
+        'code' => 'code',
+        'in' => 'in',
+        'context' => 'context',
+        'message' => 'message'
     ];
 
     /**
@@ -119,11 +119,11 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'in' => 'setIn',
-        'code' => 'setCode',
         'sub_category' => 'setSubCategory',
-        'context' => 'setContext'
+        'code' => 'setCode',
+        'in' => 'setIn',
+        'context' => 'setContext',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -132,11 +132,11 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'in' => 'getIn',
-        'code' => 'getCode',
         'sub_category' => 'getSubCategory',
-        'context' => 'getContext'
+        'code' => 'getCode',
+        'in' => 'getIn',
+        'context' => 'getContext',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -196,11 +196,11 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['in'] = $data['in'] ?? null;
-        $this->container['code'] = $data['code'] ?? null;
         $this->container['sub_category'] = $data['sub_category'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
+        $this->container['in'] = $data['in'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
     }
 
     /**
@@ -231,49 +231,25 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets in
+     * Gets sub_category
      *
      * @return string|null
      */
-    public function getIn()
+    public function getSubCategory()
     {
-        return $this->container['in'];
+        return $this->container['sub_category'];
     }
 
     /**
-     * Sets in
+     * Sets sub_category
      *
-     * @param string|null $in The name of the field or parameter in which the error was found.
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
      *
      * @return self
      */
-    public function setIn($in)
+    public function setSubCategory($sub_category)
     {
-        $this->container['in'] = $in;
+        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }
@@ -303,25 +279,25 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets sub_category
+     * Gets in
      *
      * @return string|null
      */
-    public function getSubCategory()
+    public function getIn()
     {
-        return $this->container['sub_category'];
+        return $this->container['in'];
     }
 
     /**
-     * Sets sub_category
+     * Sets in
      *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     * @param string|null $in The name of the field or parameter in which the error was found.
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setIn($in)
     {
-        $this->container['sub_category'] = $sub_category;
+        $this->container['in'] = $in;
 
         return $this;
     }
@@ -346,6 +322,30 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContext($context)
     {
         $this->container['context'] = $context;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
 
         return $this;
     }

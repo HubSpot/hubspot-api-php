@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,12 +57,12 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]',
+        'completed_at' => '\DateTime',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
-        'links' => 'array<string,string>'
+        'links' => 'array<string,string>',
+        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]',
+        'status' => 'string'
     ];
 
     /**
@@ -73,12 +73,12 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'results' => null,
+        'completed_at' => 'date-time',
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time',
-        'links' => null
+        'links' => null,
+        'results' => null,
+        'status' => null
     ];
 
     /**
@@ -108,12 +108,12 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'results' => 'results',
+        'completed_at' => 'completedAt',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
-        'links' => 'links'
+        'links' => 'links',
+        'results' => 'results',
+        'status' => 'status'
     ];
 
     /**
@@ -122,12 +122,12 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'results' => 'setResults',
+        'completed_at' => 'setCompletedAt',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
-        'links' => 'setLinks'
+        'links' => 'setLinks',
+        'results' => 'setResults',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -136,12 +136,12 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'results' => 'getResults',
+        'completed_at' => 'getCompletedAt',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
-        'links' => 'getLinks'
+        'links' => 'getLinks',
+        'results' => 'getResults',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -220,12 +220,12 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['requested_at'] = $data['requested_at'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -262,59 +262,25 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets status
+     * Gets completed_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getStatus()
+    public function getCompletedAt()
     {
-        return $this->container['status'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets status
+     * Sets completed_at
      *
-     * @param string|null $status status
+     * @param \DateTime|null $completed_at completed_at
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCompletedAt($completed_at)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]|null
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]|null $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
@@ -368,30 +334,6 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets completed_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime|null $completed_at completed_at
-     *
-     * @return self
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
-
-        return $this;
-    }
-
-    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -411,6 +353,64 @@ class BatchResponseHubDbTableRowV3 implements ModelInterface, ArrayAccess, \Json
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]|null
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]|null $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

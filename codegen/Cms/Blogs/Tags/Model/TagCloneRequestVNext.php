@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Tags
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,10 +58,10 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'name' => 'string',
         'language' => 'string',
-        'primary_language' => 'string',
-        'name' => 'string'
+        'id' => 'string',
+        'primary_language' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'name' => null,
         'language' => null,
-        'primary_language' => null,
-        'name' => null
+        'id' => null,
+        'primary_language' => null
     ];
 
     /**
@@ -105,10 +105,10 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'name' => 'name',
         'language' => 'language',
-        'primary_language' => 'primaryLanguage',
-        'name' => 'name'
+        'id' => 'id',
+        'primary_language' => 'primaryLanguage'
     ];
 
     /**
@@ -117,10 +117,10 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'name' => 'setName',
         'language' => 'setLanguage',
-        'primary_language' => 'setPrimaryLanguage',
-        'name' => 'setName'
+        'id' => 'setId',
+        'primary_language' => 'setPrimaryLanguage'
     ];
 
     /**
@@ -129,10 +129,10 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'name' => 'getName',
         'language' => 'getLanguage',
-        'primary_language' => 'getPrimaryLanguage',
-        'name' => 'getName'
+        'id' => 'getId',
+        'primary_language' => 'getPrimaryLanguage'
     ];
 
     /**
@@ -192,10 +192,10 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['primary_language'] = $data['primary_language'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['primary_language'] = $data['primary_language'] ?? null;
     }
 
     /**
@@ -207,11 +207,11 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -229,25 +229,25 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets id
+     * Gets name
      *
      * @return string
      */
-    public function getId()
+    public function getName()
     {
-        return $this->container['id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets id
+     * Sets name
      *
-     * @param string $id ID of the object to be cloned.
+     * @param string $name Name of newly cloned blog tag.
      *
      * @return self
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->container['id'] = $id;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -277,6 +277,30 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id ID of the object to be cloned.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets primary_language
      *
      * @return string|null
@@ -296,30 +320,6 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPrimaryLanguage($primary_language)
     {
         $this->container['primary_language'] = $primary_language;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of newly cloned blog tag.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
 
         return $this;
     }

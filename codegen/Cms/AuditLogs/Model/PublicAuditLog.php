@@ -11,7 +11,7 @@
  */
 
 /**
- * CMS Audit Logs
+ * Cms Content Audit
  *
  * Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.
  *
@@ -57,13 +57,14 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_id' => 'string',
-        'user_id' => 'string',
-        'timestamp' => '\DateTime',
+        'meta' => 'object',
         'object_name' => 'string',
         'full_name' => 'string',
         'event' => 'string',
-        'object_type' => 'string'
+        'user_id' => 'string',
+        'object_id' => 'string',
+        'object_type' => 'string',
+        'timestamp' => '\DateTime'
     ];
 
     /**
@@ -74,13 +75,14 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object_id' => null,
-        'user_id' => null,
-        'timestamp' => 'date-time',
+        'meta' => null,
         'object_name' => null,
         'full_name' => null,
         'event' => null,
-        'object_type' => null
+        'user_id' => null,
+        'object_id' => null,
+        'object_type' => null,
+        'timestamp' => 'date-time'
     ];
 
     /**
@@ -110,13 +112,14 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_id' => 'objectId',
-        'user_id' => 'userId',
-        'timestamp' => 'timestamp',
+        'meta' => 'meta',
         'object_name' => 'objectName',
         'full_name' => 'fullName',
         'event' => 'event',
-        'object_type' => 'objectType'
+        'user_id' => 'userId',
+        'object_id' => 'objectId',
+        'object_type' => 'objectType',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -125,13 +128,14 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'object_id' => 'setObjectId',
-        'user_id' => 'setUserId',
-        'timestamp' => 'setTimestamp',
+        'meta' => 'setMeta',
         'object_name' => 'setObjectName',
         'full_name' => 'setFullName',
         'event' => 'setEvent',
-        'object_type' => 'setObjectType'
+        'user_id' => 'setUserId',
+        'object_id' => 'setObjectId',
+        'object_type' => 'setObjectType',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -140,13 +144,14 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'object_id' => 'getObjectId',
-        'user_id' => 'getUserId',
-        'timestamp' => 'getTimestamp',
+        'meta' => 'getMeta',
         'object_name' => 'getObjectName',
         'full_name' => 'getFullName',
         'event' => 'getEvent',
-        'object_type' => 'getObjectType'
+        'user_id' => 'getUserId',
+        'object_id' => 'getObjectId',
+        'object_type' => 'getObjectType',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -195,6 +200,7 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENT_PUBLISHED = 'PUBLISHED';
     public const EVENT_DELETED = 'DELETED';
     public const EVENT_UNPUBLISHED = 'UNPUBLISHED';
+    public const EVENT_RESTORE = 'RESTORE';
     public const OBJECT_TYPE_BLOG = 'BLOG';
     public const OBJECT_TYPE_BLOG_POST = 'BLOG_POST';
     public const OBJECT_TYPE_LANDING_PAGE = 'LANDING_PAGE';
@@ -213,6 +219,8 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     public const OBJECT_TYPE_THEME = 'THEME';
     public const OBJECT_TYPE_CSS = 'CSS';
     public const OBJECT_TYPE_JS = 'JS';
+    public const OBJECT_TYPE_CTA = 'CTA';
+    public const OBJECT_TYPE_FILE = 'FILE';
 
     /**
      * Gets allowable values of the enum
@@ -227,6 +235,7 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_PUBLISHED,
             self::EVENT_DELETED,
             self::EVENT_UNPUBLISHED,
+            self::EVENT_RESTORE,
         ];
     }
 
@@ -256,6 +265,8 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
             self::OBJECT_TYPE_THEME,
             self::OBJECT_TYPE_CSS,
             self::OBJECT_TYPE_JS,
+            self::OBJECT_TYPE_CTA,
+            self::OBJECT_TYPE_FILE,
         ];
     }
 
@@ -274,13 +285,14 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['object_id'] = $data['object_id'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
         $this->container['object_name'] = $data['object_name'] ?? null;
         $this->container['full_name'] = $data['full_name'] ?? null;
         $this->container['event'] = $data['event'] ?? null;
+        $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['object_id'] = $data['object_id'] ?? null;
         $this->container['object_type'] = $data['object_type'] ?? null;
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
     }
 
     /**
@@ -292,15 +304,6 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['object_id'] === null) {
-            $invalidProperties[] = "'object_id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
         if ($this->container['object_name'] === null) {
             $invalidProperties[] = "'object_name' can't be null";
         }
@@ -319,6 +322,12 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['object_id'] === null) {
+            $invalidProperties[] = "'object_id' can't be null";
+        }
         if ($this->container['object_type'] === null) {
             $invalidProperties[] = "'object_type' can't be null";
         }
@@ -331,6 +340,9 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -347,73 +359,25 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets object_id
+     * Gets meta
      *
-     * @return string
+     * @return object|null
      */
-    public function getObjectId()
+    public function getMeta()
     {
-        return $this->container['object_id'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets object_id
+     * Sets meta
      *
-     * @param string $object_id The ID of the object.
+     * @param object|null $meta meta
      *
      * @return self
      */
-    public function setObjectId($object_id)
+    public function setMeta($meta)
     {
-        $this->container['object_id'] = $object_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return string
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param string $user_id The ID of the user who caused the event.
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp The timestamp at which the event occurred.
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
@@ -501,6 +465,54 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets user_id
+     *
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string $user_id The ID of the user who caused the event.
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string $object_id The ID of the object.
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        $this->container['object_id'] = $object_id;
+
+        return $this;
+    }
+
+    /**
      * Gets object_type
      *
      * @return string
@@ -530,6 +542,30 @@ class PublicAuditLog implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['object_type'] = $object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param \DateTime $timestamp The timestamp at which the event occurred.
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

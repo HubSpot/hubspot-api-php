@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Tags
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -59,8 +59,8 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'results' => '\HubSpot\Client\Cms\Blogs\Tags\Model\Tag[]',
-        'paging' => '\HubSpot\Client\Cms\Blogs\Tags\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Cms\Blogs\Tags\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Cms\Blogs\Tags\Model\Tag[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
       */
     protected static $openAPIFormats = [
         'total' => 'int32',
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -104,8 +104,8 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
      */
     protected static $attributeMap = [
         'total' => 'total',
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -115,8 +115,8 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
      */
     protected static $setters = [
         'total' => 'setTotal',
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -126,8 +126,8 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
      */
     protected static $getters = [
         'total' => 'getTotal',
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -188,8 +188,8 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
     public function __construct(array $data = null)
     {
         $this->container['total'] = $data['total'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -247,30 +247,6 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
     }
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\Blogs\Tags\Model\Tag[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\Blogs\Tags\Model\Tag[] $results Collection of blog tags.
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Cms\Blogs\Tags\Model\ForwardPaging|null
@@ -290,6 +266,30 @@ class CollectionResponseWithTotalTagForwardPaging implements ModelInterface, Arr
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\Blogs\Tags\Model\Tag[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\Blogs\Tags\Model\Tag[] $results Collection of blog tags.
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

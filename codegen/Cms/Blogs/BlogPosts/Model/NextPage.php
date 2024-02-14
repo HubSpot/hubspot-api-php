@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,8 +58,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'link' => 'string',
+        'after' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'link' => null,
+        'after' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'link' => 'link',
+        'after' => 'after'
     ];
 
     /**
@@ -111,8 +111,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'link' => 'setLink',
+        'after' => 'setAfter'
     ];
 
     /**
@@ -121,8 +121,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'link' => 'getLink',
+        'after' => 'getAfter'
     ];
 
     /**
@@ -182,8 +182,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = $data['after'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
+        $this->container['after'] = $data['after'] ?? null;
     }
 
     /**
@@ -214,30 +214,6 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets after
-     *
-     * @return string
-     */
-    public function getAfter()
-    {
-        return $this->container['after'];
-    }
-
-    /**
-     * Sets after
-     *
-     * @param string $after after
-     *
-     * @return self
-     */
-    public function setAfter($after)
-    {
-        $this->container['after'] = $after;
-
-        return $this;
-    }
-
-    /**
      * Gets link
      *
      * @return string|null
@@ -250,13 +226,37 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link link
+     * @param string|null $link 
      *
      * @return self
      */
     public function setLink($link)
     {
         $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets after
+     *
+     * @return string
+     */
+    public function getAfter()
+    {
+        return $this->container['after'];
+    }
+
+    /**
+     * Sets after
+     *
+     * @param string $after 
+     *
+     * @return self
+     */
+    public function setAfter($after)
+    {
+        $this->container['after'] = $after;
 
         return $this;
     }

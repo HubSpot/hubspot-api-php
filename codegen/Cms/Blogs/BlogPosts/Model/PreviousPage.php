@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -226,7 +226,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets before
      *
-     * @param string $before before
+     * @param string $before 
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link link
+     * @param string|null $link 
      *
      * @return self
      */

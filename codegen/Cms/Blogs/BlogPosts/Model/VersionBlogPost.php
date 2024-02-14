@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -58,9 +58,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-        'user' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser',
         'id' => 'string',
+        'user' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser',
+        'object' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
         'updated_at' => '\DateTime'
     ];
 
@@ -72,9 +72,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object' => null,
-        'user' => null,
         'id' => null,
+        'user' => null,
+        'object' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -105,9 +105,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'user' => 'user',
         'id' => 'id',
+        'user' => 'user',
+        'object' => 'object',
         'updated_at' => 'updatedAt'
     ];
 
@@ -117,9 +117,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'user' => 'setUser',
         'id' => 'setId',
+        'user' => 'setUser',
+        'object' => 'setObject',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -129,9 +129,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'user' => 'getUser',
         'id' => 'getId',
+        'user' => 'getUser',
+        'object' => 'getObject',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -192,9 +192,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = $data['object'] ?? null;
-        $this->container['user'] = $data['user'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['user'] = $data['user'] ?? null;
+        $this->container['object'] = $data['object'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -207,14 +207,14 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['user'] === null) {
             $invalidProperties[] = "'user' can't be null";
         }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -235,25 +235,25 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets object
+     * Gets id
      *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost
+     * @return string
      */
-    public function getObject()
+    public function getId()
     {
-        return $this->container['object'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets object
+     * Sets id
      *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $object object
+     * @param string $id The id of the version.
      *
      * @return self
      */
-    public function setObject($object)
+    public function setId($id)
     {
-        $this->container['object'] = $object;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -283,25 +283,25 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets id
+     * Gets object
      *
-     * @return string
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost
      */
-    public function getId()
+    public function getObject()
     {
-        return $this->container['id'];
+        return $this->container['object'];
     }
 
     /**
-     * Sets id
+     * Sets object
      *
-     * @param string $id The id of the version.
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $object object
      *
      * @return self
      */
-    public function setId($id)
+    public function setObject($object)
     {
-        $this->container['id'] = $id;
+        $this->container['object'] = $object;
 
         return $this;
     }

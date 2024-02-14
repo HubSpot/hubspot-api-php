@@ -11,7 +11,7 @@
  */
 
 /**
- * HubDB endpoints
+ * Hubdb
  *
  * HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.
  *
@@ -57,12 +57,12 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
+        'foreign_table_id' => 'int',
         'name' => 'string',
+        'options' => '\HubSpot\Client\Cms\Hubdb\Model\Option[]',
+        'id' => 'int',
         'label' => 'string',
         'type' => 'string',
-        'options' => '\HubSpot\Client\Cms\Hubdb\Model\Option[]',
-        'foreign_table_id' => 'int',
         'foreign_column_id' => 'int'
     ];
 
@@ -74,12 +74,12 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
+        'foreign_table_id' => 'int64',
         'name' => null,
+        'options' => null,
+        'id' => 'int32',
         'label' => null,
         'type' => null,
-        'options' => null,
-        'foreign_table_id' => 'int64',
         'foreign_column_id' => 'int32'
     ];
 
@@ -110,12 +110,12 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'foreign_table_id' => 'foreignTableId',
         'name' => 'name',
+        'options' => 'options',
+        'id' => 'id',
         'label' => 'label',
         'type' => 'type',
-        'options' => 'options',
-        'foreign_table_id' => 'foreignTableId',
         'foreign_column_id' => 'foreignColumnId'
     ];
 
@@ -125,12 +125,12 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'foreign_table_id' => 'setForeignTableId',
         'name' => 'setName',
+        'options' => 'setOptions',
+        'id' => 'setId',
         'label' => 'setLabel',
         'type' => 'setType',
-        'options' => 'setOptions',
-        'foreign_table_id' => 'setForeignTableId',
         'foreign_column_id' => 'setForeignColumnId'
     ];
 
@@ -140,12 +140,12 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'foreign_table_id' => 'getForeignTableId',
         'name' => 'getName',
+        'options' => 'getOptions',
+        'id' => 'getId',
         'label' => 'getLabel',
         'type' => 'getType',
-        'options' => 'getOptions',
-        'foreign_table_id' => 'getForeignTableId',
         'foreign_column_id' => 'getForeignColumnId'
     ];
 
@@ -251,12 +251,12 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['foreign_table_id'] = $data['foreign_table_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
-        $this->container['foreign_table_id'] = $data['foreign_table_id'] ?? null;
         $this->container['foreign_column_id'] = $data['foreign_column_id'] ?? null;
     }
 
@@ -269,11 +269,14 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
@@ -290,9 +293,6 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -309,25 +309,25 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets foreign_table_id
      *
-     * @return int
+     * @return int|null
      */
-    public function getId()
+    public function getForeignTableId()
     {
-        return $this->container['id'];
+        return $this->container['foreign_table_id'];
     }
 
     /**
-     * Sets id
+     * Sets foreign_table_id
      *
-     * @param int $id Column Id
+     * @param int|null $foreign_table_id The id of another table to which the column refers/points to.
      *
      * @return self
      */
-    public function setId($id)
+    public function setForeignTableId($foreign_table_id)
     {
-        $this->container['id'] = $id;
+        $this->container['foreign_table_id'] = $foreign_table_id;
 
         return $this;
     }
@@ -352,6 +352,54 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Cms\Hubdb\Model\Option[]
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Cms\Hubdb\Model\Option[] $options Options to choose for select and multi-select columns
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id Column Id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -410,54 +458,6 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\Option[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\Option[] $options Options to choose for select and multi-select columns
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Gets foreign_table_id
-     *
-     * @return int|null
-     */
-    public function getForeignTableId()
-    {
-        return $this->container['foreign_table_id'];
-    }
-
-    /**
-     * Sets foreign_table_id
-     *
-     * @param int|null $foreign_table_id The id of another table to which the column refers/points to.
-     *
-     * @return self
-     */
-    public function setForeignTableId($foreign_table_id)
-    {
-        $this->container['foreign_table_id'] = $foreign_table_id;
 
         return $this;
     }

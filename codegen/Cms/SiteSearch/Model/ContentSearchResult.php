@@ -58,23 +58,23 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'score' => 'float',
-        'type' => 'string',
-        'domain' => 'string',
-        'url' => 'string',
-        'featured_image_url' => 'string',
-        'language' => 'string',
-        'title' => 'string',
+        'combined_id' => 'string',
         'description' => 'string',
-        'category' => 'string',
-        'subcategory' => 'string',
-        'author_full_name' => 'string',
+        'language' => 'string',
+        'type' => 'string',
+        'title' => 'string',
+        'url' => 'string',
         'tags' => 'string[]',
-        'table_id' => 'int',
         'row_id' => 'int',
+        'featured_image_url' => 'string',
+        'score' => 'float',
+        'author_full_name' => 'string',
+        'domain' => 'string',
+        'table_id' => 'int',
+        'id' => 'int',
         'published_date' => 'int',
-        'combined_id' => 'string'
+        'category' => 'string',
+        'subcategory' => 'string'
     ];
 
     /**
@@ -85,23 +85,23 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'score' => null,
-        'type' => null,
-        'domain' => null,
-        'url' => null,
-        'featured_image_url' => null,
-        'language' => null,
-        'title' => null,
+        'combined_id' => null,
         'description' => null,
-        'category' => null,
-        'subcategory' => null,
-        'author_full_name' => null,
+        'language' => null,
+        'type' => null,
+        'title' => null,
+        'url' => null,
         'tags' => null,
-        'table_id' => 'int64',
         'row_id' => 'int64',
+        'featured_image_url' => null,
+        'score' => null,
+        'author_full_name' => null,
+        'domain' => null,
+        'table_id' => 'int64',
+        'id' => 'int32',
         'published_date' => 'int64',
-        'combined_id' => null
+        'category' => null,
+        'subcategory' => null
     ];
 
     /**
@@ -131,23 +131,23 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'score' => 'score',
-        'type' => 'type',
-        'domain' => 'domain',
-        'url' => 'url',
-        'featured_image_url' => 'featuredImageUrl',
-        'language' => 'language',
-        'title' => 'title',
+        'combined_id' => 'combinedId',
         'description' => 'description',
-        'category' => 'category',
-        'subcategory' => 'subcategory',
-        'author_full_name' => 'authorFullName',
+        'language' => 'language',
+        'type' => 'type',
+        'title' => 'title',
+        'url' => 'url',
         'tags' => 'tags',
-        'table_id' => 'tableId',
         'row_id' => 'rowId',
+        'featured_image_url' => 'featuredImageUrl',
+        'score' => 'score',
+        'author_full_name' => 'authorFullName',
+        'domain' => 'domain',
+        'table_id' => 'tableId',
+        'id' => 'id',
         'published_date' => 'publishedDate',
-        'combined_id' => 'combinedId'
+        'category' => 'category',
+        'subcategory' => 'subcategory'
     ];
 
     /**
@@ -156,23 +156,23 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'score' => 'setScore',
-        'type' => 'setType',
-        'domain' => 'setDomain',
-        'url' => 'setUrl',
-        'featured_image_url' => 'setFeaturedImageUrl',
-        'language' => 'setLanguage',
-        'title' => 'setTitle',
+        'combined_id' => 'setCombinedId',
         'description' => 'setDescription',
-        'category' => 'setCategory',
-        'subcategory' => 'setSubcategory',
-        'author_full_name' => 'setAuthorFullName',
+        'language' => 'setLanguage',
+        'type' => 'setType',
+        'title' => 'setTitle',
+        'url' => 'setUrl',
         'tags' => 'setTags',
-        'table_id' => 'setTableId',
         'row_id' => 'setRowId',
+        'featured_image_url' => 'setFeaturedImageUrl',
+        'score' => 'setScore',
+        'author_full_name' => 'setAuthorFullName',
+        'domain' => 'setDomain',
+        'table_id' => 'setTableId',
+        'id' => 'setId',
         'published_date' => 'setPublishedDate',
-        'combined_id' => 'setCombinedId'
+        'category' => 'setCategory',
+        'subcategory' => 'setSubcategory'
     ];
 
     /**
@@ -181,23 +181,23 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'score' => 'getScore',
-        'type' => 'getType',
-        'domain' => 'getDomain',
-        'url' => 'getUrl',
-        'featured_image_url' => 'getFeaturedImageUrl',
-        'language' => 'getLanguage',
-        'title' => 'getTitle',
+        'combined_id' => 'getCombinedId',
         'description' => 'getDescription',
-        'category' => 'getCategory',
-        'subcategory' => 'getSubcategory',
-        'author_full_name' => 'getAuthorFullName',
+        'language' => 'getLanguage',
+        'type' => 'getType',
+        'title' => 'getTitle',
+        'url' => 'getUrl',
         'tags' => 'getTags',
-        'table_id' => 'getTableId',
         'row_id' => 'getRowId',
+        'featured_image_url' => 'getFeaturedImageUrl',
+        'score' => 'getScore',
+        'author_full_name' => 'getAuthorFullName',
+        'domain' => 'getDomain',
+        'table_id' => 'getTableId',
+        'id' => 'getId',
         'published_date' => 'getPublishedDate',
-        'combined_id' => 'getCombinedId'
+        'category' => 'getCategory',
+        'subcategory' => 'getSubcategory'
     ];
 
     /**
@@ -241,11 +241,6 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const TYPE_LANDING_PAGE = 'LANDING_PAGE';
-    public const TYPE_BLOG_POST = 'BLOG_POST';
-    public const TYPE_SITE_PAGE = 'SITE_PAGE';
-    public const TYPE_KNOWLEDGE_ARTICLE = 'KNOWLEDGE_ARTICLE';
-    public const TYPE_LISTING_PAGE = 'LISTING_PAGE';
     public const LANGUAGE_AF = 'af';
     public const LANGUAGE_AF_NA = 'af-na';
     public const LANGUAGE_AF_ZA = 'af-za';
@@ -396,6 +391,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_EN_CH = 'en-ch';
     public const LANGUAGE_EN_CK = 'en-ck';
     public const LANGUAGE_EN_CM = 'en-cm';
+    public const LANGUAGE_EN_CN = 'en-cn';
     public const LANGUAGE_EN_CX = 'en-cx';
     public const LANGUAGE_EN_CY = 'en-cy';
     public const LANGUAGE_EN_DE = 'en-de';
@@ -439,6 +435,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_EN_MT = 'en-mt';
     public const LANGUAGE_EN_MU = 'en-mu';
     public const LANGUAGE_EN_MW = 'en-mw';
+    public const LANGUAGE_EN_MX = 'en-mx';
     public const LANGUAGE_EN_MY = 'en-my';
     public const LANGUAGE_EN_NA = 'en-na';
     public const LANGUAGE_EN_NF = 'en-nf';
@@ -998,22 +995,11 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public const LANGUAGE_ZH_HANT = 'zh-hant';
     public const LANGUAGE_ZU = 'zu';
     public const LANGUAGE_ZU_ZA = 'zu-za';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_LANDING_PAGE,
-            self::TYPE_BLOG_POST,
-            self::TYPE_SITE_PAGE,
-            self::TYPE_KNOWLEDGE_ARTICLE,
-            self::TYPE_LISTING_PAGE,
-        ];
-    }
+    public const TYPE_LANDING_PAGE = 'LANDING_PAGE';
+    public const TYPE_BLOG_POST = 'BLOG_POST';
+    public const TYPE_SITE_PAGE = 'SITE_PAGE';
+    public const TYPE_KNOWLEDGE_ARTICLE = 'KNOWLEDGE_ARTICLE';
+    public const TYPE_LISTING_PAGE = 'LISTING_PAGE';
 
     /**
      * Gets allowable values of the enum
@@ -1173,6 +1159,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_EN_CH,
             self::LANGUAGE_EN_CK,
             self::LANGUAGE_EN_CM,
+            self::LANGUAGE_EN_CN,
             self::LANGUAGE_EN_CX,
             self::LANGUAGE_EN_CY,
             self::LANGUAGE_EN_DE,
@@ -1216,6 +1203,7 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             self::LANGUAGE_EN_MT,
             self::LANGUAGE_EN_MU,
             self::LANGUAGE_EN_MW,
+            self::LANGUAGE_EN_MX,
             self::LANGUAGE_EN_MY,
             self::LANGUAGE_EN_NA,
             self::LANGUAGE_EN_NF,
@@ -1779,6 +1767,22 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_LANDING_PAGE,
+            self::TYPE_BLOG_POST,
+            self::TYPE_SITE_PAGE,
+            self::TYPE_KNOWLEDGE_ARTICLE,
+            self::TYPE_LISTING_PAGE,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -1793,23 +1797,23 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['score'] = $data['score'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['domain'] = $data['domain'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
-        $this->container['featured_image_url'] = $data['featured_image_url'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['combined_id'] = $data['combined_id'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['tags'] = $data['tags'] ?? null;
+        $this->container['row_id'] = $data['row_id'] ?? null;
+        $this->container['featured_image_url'] = $data['featured_image_url'] ?? null;
+        $this->container['score'] = $data['score'] ?? null;
+        $this->container['author_full_name'] = $data['author_full_name'] ?? null;
+        $this->container['domain'] = $data['domain'] ?? null;
+        $this->container['table_id'] = $data['table_id'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['published_date'] = $data['published_date'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
         $this->container['subcategory'] = $data['subcategory'] ?? null;
-        $this->container['author_full_name'] = $data['author_full_name'] ?? null;
-        $this->container['tags'] = $data['tags'] ?? null;
-        $this->container['table_id'] = $data['table_id'] ?? null;
-        $this->container['row_id'] = $data['row_id'] ?? null;
-        $this->container['published_date'] = $data['published_date'] ?? null;
-        $this->container['combined_id'] = $data['combined_id'] ?? null;
     }
 
     /**
@@ -1821,12 +1825,15 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        $allowedValues = $this->getLanguageAllowableValues();
+        if (!is_null($this->container['language']) && !in_array($this->container['language'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'language', must be one of '%s'",
+                $this->container['language'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['score'] === null) {
-            $invalidProperties[] = "'score' can't be null";
-        }
+
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -1839,21 +1846,18 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
-        if ($this->container['domain'] === null) {
-            $invalidProperties[] = "'domain' can't be null";
-        }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        $allowedValues = $this->getLanguageAllowableValues();
-        if (!is_null($this->container['language']) && !in_array($this->container['language'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'language', must be one of '%s'",
-                $this->container['language'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['score'] === null) {
+            $invalidProperties[] = "'score' can't be null";
         }
-
+        if ($this->container['domain'] === null) {
+            $invalidProperties[] = "'domain' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -1870,155 +1874,49 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id The ID of the content.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets score
-     *
-     * @return float
-     */
-    public function getScore()
-    {
-        return $this->container['score'];
-    }
-
-    /**
-     * Sets score
-     *
-     * @param float $score The matching score of the document.
-     *
-     * @return self
-     */
-    public function setScore($score)
-    {
-        $this->container['score'] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets domain
-     *
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->container['domain'];
-    }
-
-    /**
-     * Sets domain
-     *
-     * @param string $domain The domain the document is hosted on.
-     *
-     * @return self
-     */
-    public function setDomain($domain)
-    {
-        $this->container['domain'] = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url The url of the document.
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets featured_image_url
+     * Gets combined_id
      *
      * @return string|null
      */
-    public function getFeaturedImageUrl()
+    public function getCombinedId()
     {
-        return $this->container['featured_image_url'];
+        return $this->container['combined_id'];
     }
 
     /**
-     * Sets featured_image_url
+     * Sets combined_id
      *
-     * @param string|null $featured_image_url URL of the featured image.
+     * @param string|null $combined_id The ID of the document in HubSpot.
      *
      * @return self
      */
-    public function setFeaturedImageUrl($featured_image_url)
+    public function setCombinedId($combined_id)
     {
-        $this->container['featured_image_url'] = $featured_image_url;
+        $this->container['combined_id'] = $combined_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description The result's description. The content will be determined by the value of `length` in the request.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -2058,6 +1956,40 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
      * Gets title
      *
      * @return string|null
@@ -2082,25 +2014,241 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets description
+     * Gets url
      *
-     * @return string|null
+     * @return string
      */
-    public function getDescription()
+    public function getUrl()
     {
-        return $this->container['description'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets description
+     * Sets url
      *
-     * @param string|null $description The result's description. The content will be determined by the value of `length` in the request.
+     * @param string $url The url of the document.
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setUrl($url)
     {
-        $this->container['description'] = $description;
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[]|null $tags If a blog post, the tags associated with it.
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_id
+     *
+     * @return int|null
+     */
+    public function getRowId()
+    {
+        return $this->container['row_id'];
+    }
+
+    /**
+     * Sets row_id
+     *
+     * @param int|null $row_id If a dynamic page, the row ID in the HubDB table.
+     *
+     * @return self
+     */
+    public function setRowId($row_id)
+    {
+        $this->container['row_id'] = $row_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets featured_image_url
+     *
+     * @return string|null
+     */
+    public function getFeaturedImageUrl()
+    {
+        return $this->container['featured_image_url'];
+    }
+
+    /**
+     * Sets featured_image_url
+     *
+     * @param string|null $featured_image_url URL of the featured image.
+     *
+     * @return self
+     */
+    public function setFeaturedImageUrl($featured_image_url)
+    {
+        $this->container['featured_image_url'] = $featured_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets score
+     *
+     * @return float
+     */
+    public function getScore()
+    {
+        return $this->container['score'];
+    }
+
+    /**
+     * Sets score
+     *
+     * @param float $score The matching score of the document.
+     *
+     * @return self
+     */
+    public function setScore($score)
+    {
+        $this->container['score'] = $score;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_full_name
+     *
+     * @return string|null
+     */
+    public function getAuthorFullName()
+    {
+        return $this->container['author_full_name'];
+    }
+
+    /**
+     * Sets author_full_name
+     *
+     * @param string|null $author_full_name Name of the author.
+     *
+     * @return self
+     */
+    public function setAuthorFullName($author_full_name)
+    {
+        $this->container['author_full_name'] = $author_full_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain
+     *
+     * @return string
+     */
+    public function getDomain()
+    {
+        return $this->container['domain'];
+    }
+
+    /**
+     * Sets domain
+     *
+     * @param string $domain The domain the document is hosted on.
+     *
+     * @return self
+     */
+    public function setDomain($domain)
+    {
+        $this->container['domain'] = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets table_id
+     *
+     * @return int|null
+     */
+    public function getTableId()
+    {
+        return $this->container['table_id'];
+    }
+
+    /**
+     * Sets table_id
+     *
+     * @param int|null $table_id If a dynamic page, the ID of the HubDB table.
+     *
+     * @return self
+     */
+    public function setTableId($table_id)
+    {
+        $this->container['table_id'] = $table_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id The ID of the content.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets published_date
+     *
+     * @return int|null
+     */
+    public function getPublishedDate()
+    {
+        return $this->container['published_date'];
+    }
+
+    /**
+     * Sets published_date
+     *
+     * @param int|null $published_date The date the content was published.
+     *
+     * @return self
+     */
+    public function setPublishedDate($published_date)
+    {
+        $this->container['published_date'] = $published_date;
 
         return $this;
     }
@@ -2149,150 +2297,6 @@ class ContentSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSubcategory($subcategory)
     {
         $this->container['subcategory'] = $subcategory;
-
-        return $this;
-    }
-
-    /**
-     * Gets author_full_name
-     *
-     * @return string|null
-     */
-    public function getAuthorFullName()
-    {
-        return $this->container['author_full_name'];
-    }
-
-    /**
-     * Sets author_full_name
-     *
-     * @param string|null $author_full_name Name of the author.
-     *
-     * @return self
-     */
-    public function setAuthorFullName($author_full_name)
-    {
-        $this->container['author_full_name'] = $author_full_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets tags
-     *
-     * @return string[]|null
-     */
-    public function getTags()
-    {
-        return $this->container['tags'];
-    }
-
-    /**
-     * Sets tags
-     *
-     * @param string[]|null $tags If a blog post, the tags associated with it.
-     *
-     * @return self
-     */
-    public function setTags($tags)
-    {
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets table_id
-     *
-     * @return int|null
-     */
-    public function getTableId()
-    {
-        return $this->container['table_id'];
-    }
-
-    /**
-     * Sets table_id
-     *
-     * @param int|null $table_id If a dynamic page, the ID of the HubDB table.
-     *
-     * @return self
-     */
-    public function setTableId($table_id)
-    {
-        $this->container['table_id'] = $table_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_id
-     *
-     * @return int|null
-     */
-    public function getRowId()
-    {
-        return $this->container['row_id'];
-    }
-
-    /**
-     * Sets row_id
-     *
-     * @param int|null $row_id If a dynamic page, the row ID in the HubDB table.
-     *
-     * @return self
-     */
-    public function setRowId($row_id)
-    {
-        $this->container['row_id'] = $row_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets published_date
-     *
-     * @return int|null
-     */
-    public function getPublishedDate()
-    {
-        return $this->container['published_date'];
-    }
-
-    /**
-     * Sets published_date
-     *
-     * @param int|null $published_date The date the content was published.
-     *
-     * @return self
-     */
-    public function setPublishedDate($published_date)
-    {
-        $this->container['published_date'] = $published_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets combined_id
-     *
-     * @return string|null
-     */
-    public function getCombinedId()
-    {
-        return $this->container['combined_id'];
-    }
-
-    /**
-     * Sets combined_id
-     *
-     * @param string|null $combined_id The ID of the document in HubSpot.
-     *
-     * @return self
-     */
-    public function setCombinedId($combined_id)
-    {
-        $this->container['combined_id'] = $combined_id;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Tags
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *

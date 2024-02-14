@@ -729,314 +729,7 @@ class ContentApi
     }
 
     /**
-     * Operation get
-     *
-     * Download a file
-     *
-     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
-     * @param  string $path The file system location of the file. (required)
-     *
-     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\SourceCode\Model\Error
-     */
-    public function get($environment, $path)
-    {
-        list($response) = $this->getWithHttpInfo($environment, $path);
-        return $response;
-    }
-
-    /**
-     * Operation getWithHttpInfo
-     *
-     * Download a file
-     *
-     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
-     * @param  string $path The file system location of the file. (required)
-     *
-     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getWithHttpInfo($environment, $path)
-    {
-        $request = $this->getRequest($environment, $path);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                default:
-                    if ('\HubSpot\Client\Cms\SourceCode\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Cms\SourceCode\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Cms\SourceCode\Model\Error';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\SourceCode\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getAsync
-     *
-     * Download a file
-     *
-     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
-     * @param  string $path The file system location of the file. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAsync($environment, $path)
-    {
-        return $this->getAsyncWithHttpInfo($environment, $path)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAsyncWithHttpInfo
-     *
-     * Download a file
-     *
-     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
-     * @param  string $path The file system location of the file. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAsyncWithHttpInfo($environment, $path)
-    {
-        $returnType = '\HubSpot\Client\Cms\SourceCode\Model\Error';
-        $request = $this->getRequest($environment, $path);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'get'
-     *
-     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
-     * @param  string $path The file system location of the file. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getRequest($environment, $path)
-    {
-        // verify the required parameter 'environment' is set
-        if ($environment === null || (is_array($environment) && count($environment) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $environment when calling get'
-            );
-        }
-        // verify the required parameter 'path' is set
-        if ($path === null || (is_array($path) && count($path) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $path when calling get'
-            );
-        }
-        if (!preg_match("/.+/", $path)) {
-            throw new \InvalidArgumentException("invalid value for \"path\" when calling ContentApi.get, must conform to the pattern /.+/.");
-        }
-
-
-        $resourcePath = '/cms/v3/source-code/{environment}/content/{path}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($environment !== null) {
-            $resourcePath = str_replace(
-                '{' . 'environment' . '}',
-                ObjectSerializer::toPathValue($environment),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($path !== null) {
-            $resourcePath = str_replace(
-                '{' . 'path' . '}',
-                ObjectSerializer::toPathValue($path),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation replace
+     * Operation createOrUpdate
      *
      * Create or update a file
      *
@@ -1048,14 +741,14 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata|\HubSpot\Client\Cms\SourceCode\Model\Error
      */
-    public function replace($environment, $path, $file = null)
+    public function createOrUpdate($environment, $path, $file = null)
     {
-        list($response) = $this->replaceWithHttpInfo($environment, $path, $file);
+        list($response) = $this->createOrUpdateWithHttpInfo($environment, $path, $file);
         return $response;
     }
 
     /**
-     * Operation replaceWithHttpInfo
+     * Operation createOrUpdateWithHttpInfo
      *
      * Create or update a file
      *
@@ -1067,9 +760,9 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata|\HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceWithHttpInfo($environment, $path, $file = null)
+    public function createOrUpdateWithHttpInfo($environment, $path, $file = null)
     {
-        $request = $this->replaceRequest($environment, $path, $file);
+        $request = $this->createOrUpdateRequest($environment, $path, $file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1179,7 +872,7 @@ class ContentApi
     }
 
     /**
-     * Operation replaceAsync
+     * Operation createOrUpdateAsync
      *
      * Create or update a file
      *
@@ -1190,9 +883,9 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsync($environment, $path, $file = null)
+    public function createOrUpdateAsync($environment, $path, $file = null)
     {
-        return $this->replaceAsyncWithHttpInfo($environment, $path, $file)
+        return $this->createOrUpdateAsyncWithHttpInfo($environment, $path, $file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1201,7 +894,7 @@ class ContentApi
     }
 
     /**
-     * Operation replaceAsyncWithHttpInfo
+     * Operation createOrUpdateAsyncWithHttpInfo
      *
      * Create or update a file
      *
@@ -1212,10 +905,10 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsyncWithHttpInfo($environment, $path, $file = null)
+    public function createOrUpdateAsyncWithHttpInfo($environment, $path, $file = null)
     {
         $returnType = '\HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata';
-        $request = $this->replaceRequest($environment, $path, $file);
+        $request = $this->createOrUpdateRequest($environment, $path, $file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1254,7 +947,7 @@ class ContentApi
     }
 
     /**
-     * Create request for operation 'replace'
+     * Create request for operation 'createOrUpdate'
      *
      * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
      * @param  string $path The file system location of the file. (required)
@@ -1263,22 +956,22 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceRequest($environment, $path, $file = null)
+    public function createOrUpdateRequest($environment, $path, $file = null)
     {
         // verify the required parameter 'environment' is set
         if ($environment === null || (is_array($environment) && count($environment) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $environment when calling replace'
+                'Missing the required parameter $environment when calling createOrUpdate'
             );
         }
         // verify the required parameter 'path' is set
         if ($path === null || (is_array($path) && count($path) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $path when calling replace'
+                'Missing the required parameter $path when calling createOrUpdate'
             );
         }
         if (!preg_match("/.+/", $path)) {
-            throw new \InvalidArgumentException("invalid value for \"path\" when calling ContentApi.replace, must conform to the pattern /.+/.");
+            throw new \InvalidArgumentException("invalid value for \"path\" when calling ContentApi.createOrUpdate, must conform to the pattern /.+/.");
         }
 
 
@@ -1376,6 +1069,313 @@ class ContentApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation download
+     *
+     * Download a file
+     *
+     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
+     * @param  string $path The file system location of the file. (required)
+     *
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\SourceCode\Model\Error
+     */
+    public function download($environment, $path)
+    {
+        list($response) = $this->downloadWithHttpInfo($environment, $path);
+        return $response;
+    }
+
+    /**
+     * Operation downloadWithHttpInfo
+     *
+     * Download a file
+     *
+     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
+     * @param  string $path The file system location of the file. (required)
+     *
+     * @throws \HubSpot\Client\Cms\SourceCode\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\SourceCode\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function downloadWithHttpInfo($environment, $path)
+    {
+        $request = $this->downloadRequest($environment, $path);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                default:
+                    if ('\HubSpot\Client\Cms\SourceCode\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Cms\SourceCode\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Cms\SourceCode\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Cms\SourceCode\Model\Error';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\SourceCode\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation downloadAsync
+     *
+     * Download a file
+     *
+     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
+     * @param  string $path The file system location of the file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function downloadAsync($environment, $path)
+    {
+        return $this->downloadAsyncWithHttpInfo($environment, $path)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation downloadAsyncWithHttpInfo
+     *
+     * Download a file
+     *
+     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
+     * @param  string $path The file system location of the file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function downloadAsyncWithHttpInfo($environment, $path)
+    {
+        $returnType = '\HubSpot\Client\Cms\SourceCode\Model\Error';
+        $request = $this->downloadRequest($environment, $path);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'download'
+     *
+     * @param  string $environment The environment of the file (\&quot;draft\&quot; or \&quot;published\&quot;). (required)
+     * @param  string $path The file system location of the file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function downloadRequest($environment, $path)
+    {
+        // verify the required parameter 'environment' is set
+        if ($environment === null || (is_array($environment) && count($environment) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $environment when calling download'
+            );
+        }
+        // verify the required parameter 'path' is set
+        if ($path === null || (is_array($path) && count($path) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $path when calling download'
+            );
+        }
+        if (!preg_match("/.+/", $path)) {
+            throw new \InvalidArgumentException("invalid value for \"path\" when calling ContentApi.download, must conform to the pattern /.+/.");
+        }
+
+
+        $resourcePath = '/cms/v3/source-code/{environment}/content/{path}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($environment !== null) {
+            $resourcePath = str_replace(
+                '{' . 'environment' . '}',
+                ObjectSerializer::toPathValue($environment),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($path !== null) {
+            $resourcePath = str_replace(
+                '{' . 'path' . '}',
+                ObjectSerializer::toPathValue($path),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

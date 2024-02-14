@@ -58,11 +58,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'total' => 'int',
+        'search_term' => 'string',
         'offset' => 'int',
         'limit' => 'int',
-        'results' => '\HubSpot\Client\Cms\SiteSearch\Model\ContentSearchResult[]',
-        'search_term' => 'string',
-        'page' => 'int'
+        'page' => 'int',
+        'results' => '\HubSpot\Client\Cms\SiteSearch\Model\ContentSearchResult[]'
     ];
 
     /**
@@ -74,11 +74,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'total' => 'int32',
+        'search_term' => null,
         'offset' => 'int32',
         'limit' => 'int32',
-        'results' => null,
-        'search_term' => null,
-        'page' => 'int32'
+        'page' => 'int32',
+        'results' => null
     ];
 
     /**
@@ -109,11 +109,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'total' => 'total',
+        'search_term' => 'searchTerm',
         'offset' => 'offset',
         'limit' => 'limit',
-        'results' => 'results',
-        'search_term' => 'searchTerm',
-        'page' => 'page'
+        'page' => 'page',
+        'results' => 'results'
     ];
 
     /**
@@ -123,11 +123,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'total' => 'setTotal',
+        'search_term' => 'setSearchTerm',
         'offset' => 'setOffset',
         'limit' => 'setLimit',
-        'results' => 'setResults',
-        'search_term' => 'setSearchTerm',
-        'page' => 'setPage'
+        'page' => 'setPage',
+        'results' => 'setResults'
     ];
 
     /**
@@ -137,11 +137,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'total' => 'getTotal',
+        'search_term' => 'getSearchTerm',
         'offset' => 'getOffset',
         'limit' => 'getLimit',
-        'results' => 'getResults',
-        'search_term' => 'getSearchTerm',
-        'page' => 'getPage'
+        'page' => 'getPage',
+        'results' => 'getResults'
     ];
 
     /**
@@ -202,11 +202,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['total'] = $data['total'] ?? null;
+        $this->container['search_term'] = $data['search_term'] ?? null;
         $this->container['offset'] = $data['offset'] ?? null;
         $this->container['limit'] = $data['limit'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
-        $this->container['search_term'] = $data['search_term'] ?? null;
         $this->container['page'] = $data['page'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -227,11 +227,11 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['limit'] === null) {
             $invalidProperties[] = "'limit' can't be null";
         }
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
         if ($this->container['page'] === null) {
             $invalidProperties[] = "'page' can't be null";
+        }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -268,6 +268,30 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTotal($total)
     {
         $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_term
+     *
+     * @return string|null
+     */
+    public function getSearchTerm()
+    {
+        return $this->container['search_term'];
+    }
+
+    /**
+     * Sets search_term
+     *
+     * @param string|null $search_term search_term
+     *
+     * @return self
+     */
+    public function setSearchTerm($search_term)
+    {
+        $this->container['search_term'] = $search_term;
 
         return $this;
     }
@@ -321,54 +345,6 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Cms\SiteSearch\Model\ContentSearchResult[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Cms\SiteSearch\Model\ContentSearchResult[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets search_term
-     *
-     * @return string|null
-     */
-    public function getSearchTerm()
-    {
-        return $this->container['search_term'];
-    }
-
-    /**
-     * Sets search_term
-     *
-     * @param string|null $search_term search_term
-     *
-     * @return self
-     */
-    public function setSearchTerm($search_term)
-    {
-        $this->container['search_term'] = $search_term;
-
-        return $this;
-    }
-
-    /**
      * Gets page
      *
      * @return int
@@ -388,6 +364,30 @@ class PublicSearchResults implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPage($page)
     {
         $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Cms\SiteSearch\Model\ContentSearchResult[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Cms\SiteSearch\Model\ContentSearchResult[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Blog Post endpoints
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -57,8 +57,8 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'float',
-        'units' => 'string'
+        'units' => 'string',
+        'value' => 'float'
     ];
 
     /**
@@ -69,8 +69,8 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null,
-        'units' => null
+        'units' => null,
+        'value' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'units' => 'units'
+        'units' => 'units',
+        'value' => 'value'
     ];
 
     /**
@@ -110,8 +110,8 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'units' => 'setUnits'
+        'units' => 'setUnits',
+        'value' => 'setValue'
     ];
 
     /**
@@ -120,8 +120,8 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'units' => 'getUnits'
+        'units' => 'getUnits',
+        'value' => 'getValue'
     ];
 
     /**
@@ -165,25 +165,6 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const UNITS_DEG = 'deg';
-    public const UNITS_GRAD = 'grad';
-    public const UNITS_RAD = 'rad';
-    public const UNITS_TURN = 'turn';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUnitsAllowableValues()
-    {
-        return [
-            self::UNITS_DEG,
-            self::UNITS_GRAD,
-            self::UNITS_RAD,
-            self::UNITS_TURN,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -200,8 +181,8 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
         $this->container['units'] = $data['units'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -213,21 +194,12 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
-        }
         if ($this->container['units'] === null) {
             $invalidProperties[] = "'units' can't be null";
         }
-        $allowedValues = $this->getUnitsAllowableValues();
-        if (!is_null($this->container['units']) && !in_array($this->container['units'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'units', must be one of '%s'",
-                $this->container['units'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -242,6 +214,30 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets units
+     *
+     * @return string
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * Sets units
+     *
+     * @param string $units units
+     *
+     * @return self
+     */
+    public function setUnits($units)
+    {
+        $this->container['units'] = $units;
+
+        return $this;
+    }
 
     /**
      * Gets value
@@ -263,40 +259,6 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets units
-     *
-     * @return string
-     */
-    public function getUnits()
-    {
-        return $this->container['units'];
-    }
-
-    /**
-     * Sets units
-     *
-     * @param string $units units
-     *
-     * @return self
-     */
-    public function setUnits($units)
-    {
-        $allowedValues = $this->getUnitsAllowableValues();
-        if (!in_array($units, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'units', must be one of '%s'",
-                    $units,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['units'] = $units;
 
         return $this;
     }
