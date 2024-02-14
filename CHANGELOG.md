@@ -52,6 +52,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove laguages consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
 - Remove background position's consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage`.
 - Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\BlogPosts\Model\StandardError:category`.
+- `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->tags()->blogTagsApi()->getById()` and `cms()->blogs()->tags()->blogTagsApi()->getPage()`.
+- `cms()->blogs()->tags()->blogTagsApi()->updateLangs():Error` => `cms()->blogs()->tags()->blogTagsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Tags\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Tags\Model\UpdateLanguagesRequestVNext`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Tags\Model\StandardError:category`.
+- Changed type from `int` to `string` in `HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3BatchUpdateRequest:id`.
+- `cms()->sourceCode()->contentApi()->get()` => `cms()->sourceCode()->contentApi()->download()`.
+- `cms()->sourceCode()->contentApi()->replace()` => `cms()->sourceCode()->contentApi()->createOrUpdate()`.
+- Added param `properties` to `cms()->sourceCode()->metadataApi()->get()`.
+- Added param `hash` to `HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata`.
+
 
 
 ## [10.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0) - 2023-12-13
