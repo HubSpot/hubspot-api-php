@@ -58,15 +58,15 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'brand_id' => 'int',
         'name' => 'string',
         'description' => 'string',
-        'status' => 'string',
-        'source_of_status' => 'string',
-        'brand_id' => 'int',
-        'preference_group_name' => 'string',
         'legal_basis' => 'string',
-        'legal_basis_explanation' => 'string'
+        'preference_group_name' => 'string',
+        'id' => 'string',
+        'legal_basis_explanation' => 'string',
+        'status' => 'string',
+        'source_of_status' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'brand_id' => 'int64',
         'name' => null,
         'description' => null,
-        'status' => null,
-        'source_of_status' => null,
-        'brand_id' => 'int64',
-        'preference_group_name' => null,
         'legal_basis' => null,
-        'legal_basis_explanation' => null
+        'preference_group_name' => null,
+        'id' => null,
+        'legal_basis_explanation' => null,
+        'status' => null,
+        'source_of_status' => null
     ];
 
     /**
@@ -115,15 +115,15 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'brand_id' => 'brandId',
         'name' => 'name',
         'description' => 'description',
-        'status' => 'status',
-        'source_of_status' => 'sourceOfStatus',
-        'brand_id' => 'brandId',
-        'preference_group_name' => 'preferenceGroupName',
         'legal_basis' => 'legalBasis',
-        'legal_basis_explanation' => 'legalBasisExplanation'
+        'preference_group_name' => 'preferenceGroupName',
+        'id' => 'id',
+        'legal_basis_explanation' => 'legalBasisExplanation',
+        'status' => 'status',
+        'source_of_status' => 'sourceOfStatus'
     ];
 
     /**
@@ -132,15 +132,15 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'brand_id' => 'setBrandId',
         'name' => 'setName',
         'description' => 'setDescription',
-        'status' => 'setStatus',
-        'source_of_status' => 'setSourceOfStatus',
-        'brand_id' => 'setBrandId',
-        'preference_group_name' => 'setPreferenceGroupName',
         'legal_basis' => 'setLegalBasis',
-        'legal_basis_explanation' => 'setLegalBasisExplanation'
+        'preference_group_name' => 'setPreferenceGroupName',
+        'id' => 'setId',
+        'legal_basis_explanation' => 'setLegalBasisExplanation',
+        'status' => 'setStatus',
+        'source_of_status' => 'setSourceOfStatus'
     ];
 
     /**
@@ -149,15 +149,15 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'brand_id' => 'getBrandId',
         'name' => 'getName',
         'description' => 'getDescription',
-        'status' => 'getStatus',
-        'source_of_status' => 'getSourceOfStatus',
-        'brand_id' => 'getBrandId',
-        'preference_group_name' => 'getPreferenceGroupName',
         'legal_basis' => 'getLegalBasis',
-        'legal_basis_explanation' => 'getLegalBasisExplanation'
+        'preference_group_name' => 'getPreferenceGroupName',
+        'id' => 'getId',
+        'legal_basis_explanation' => 'getLegalBasisExplanation',
+        'status' => 'getStatus',
+        'source_of_status' => 'getSourceOfStatus'
     ];
 
     /**
@@ -201,11 +201,6 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    public const STATUS_SUBSCRIBED = 'SUBSCRIBED';
-    public const STATUS_NOT_SUBSCRIBED = 'NOT_SUBSCRIBED';
-    public const SOURCE_OF_STATUS_PORTAL_WIDE_STATUS = 'PORTAL_WIDE_STATUS';
-    public const SOURCE_OF_STATUS_BRAND_WIDE_STATUS = 'BRAND_WIDE_STATUS';
-    public const SOURCE_OF_STATUS_SUBSCRIPTION_STATUS = 'SUBSCRIPTION_STATUS';
     public const LEGAL_BASIS_LEGITIMATE_INTEREST_PQL = 'LEGITIMATE_INTEREST_PQL';
     public const LEGAL_BASIS_LEGITIMATE_INTEREST_CLIENT = 'LEGITIMATE_INTEREST_CLIENT';
     public const LEGAL_BASIS_PERFORMANCE_OF_CONTRACT = 'PERFORMANCE_OF_CONTRACT';
@@ -213,6 +208,29 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
     public const LEGAL_BASIS_NON_GDPR = 'NON_GDPR';
     public const LEGAL_BASIS_PROCESS_AND_STORE = 'PROCESS_AND_STORE';
     public const LEGAL_BASIS_LEGITIMATE_INTEREST_OTHER = 'LEGITIMATE_INTEREST_OTHER';
+    public const STATUS_SUBSCRIBED = 'SUBSCRIBED';
+    public const STATUS_NOT_SUBSCRIBED = 'NOT_SUBSCRIBED';
+    public const SOURCE_OF_STATUS_PORTAL_WIDE_STATUS = 'PORTAL_WIDE_STATUS';
+    public const SOURCE_OF_STATUS_BRAND_WIDE_STATUS = 'BRAND_WIDE_STATUS';
+    public const SOURCE_OF_STATUS_SUBSCRIPTION_STATUS = 'SUBSCRIPTION_STATUS';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLegalBasisAllowableValues()
+    {
+        return [
+            self::LEGAL_BASIS_LEGITIMATE_INTEREST_PQL,
+            self::LEGAL_BASIS_LEGITIMATE_INTEREST_CLIENT,
+            self::LEGAL_BASIS_PERFORMANCE_OF_CONTRACT,
+            self::LEGAL_BASIS_CONSENT_WITH_NOTICE,
+            self::LEGAL_BASIS_NON_GDPR,
+            self::LEGAL_BASIS_PROCESS_AND_STORE,
+            self::LEGAL_BASIS_LEGITIMATE_INTEREST_OTHER,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -242,24 +260,6 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getLegalBasisAllowableValues()
-    {
-        return [
-            self::LEGAL_BASIS_LEGITIMATE_INTEREST_PQL,
-            self::LEGAL_BASIS_LEGITIMATE_INTEREST_CLIENT,
-            self::LEGAL_BASIS_PERFORMANCE_OF_CONTRACT,
-            self::LEGAL_BASIS_CONSENT_WITH_NOTICE,
-            self::LEGAL_BASIS_NON_GDPR,
-            self::LEGAL_BASIS_PROCESS_AND_STORE,
-            self::LEGAL_BASIS_LEGITIMATE_INTEREST_OTHER,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -274,15 +274,15 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['brand_id'] = $data['brand_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
+        $this->container['legal_basis'] = $data['legal_basis'] ?? null;
+        $this->container['preference_group_name'] = $data['preference_group_name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['legal_basis_explanation'] = $data['legal_basis_explanation'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['source_of_status'] = $data['source_of_status'] ?? null;
-        $this->container['brand_id'] = $data['brand_id'] ?? null;
-        $this->container['preference_group_name'] = $data['preference_group_name'] ?? null;
-        $this->container['legal_basis'] = $data['legal_basis'] ?? null;
-        $this->container['legal_basis_explanation'] = $data['legal_basis_explanation'] ?? null;
     }
 
     /**
@@ -294,14 +294,23 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
+        }
+        $allowedValues = $this->getLegalBasisAllowableValues();
+        if (!is_null($this->container['legal_basis']) && !in_array($this->container['legal_basis'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'legal_basis', must be one of '%s'",
+                $this->container['legal_basis'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -327,15 +336,6 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
 
-        $allowedValues = $this->getLegalBasisAllowableValues();
-        if (!is_null($this->container['legal_basis']) && !in_array($this->container['legal_basis'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'legal_basis', must be one of '%s'",
-                $this->container['legal_basis'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -352,25 +352,25 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets id
+     * Gets brand_id
      *
-     * @return string
+     * @return int|null
      */
-    public function getId()
+    public function getBrandId()
     {
-        return $this->container['id'];
+        return $this->container['brand_id'];
     }
 
     /**
-     * Sets id
+     * Sets brand_id
      *
-     * @param string $id The ID for the subscription.
+     * @param int|null $brand_id The ID of the brand that the subscription is associated with, if there is one.
      *
      * @return self
      */
-    public function setId($id)
+    public function setBrandId($brand_id)
     {
-        $this->container['id'] = $id;
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }
@@ -419,6 +419,112 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
     public function setDescription($description)
     {
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets legal_basis
+     *
+     * @return string|null
+     */
+    public function getLegalBasis()
+    {
+        return $this->container['legal_basis'];
+    }
+
+    /**
+     * Sets legal_basis
+     *
+     * @param string|null $legal_basis The legal reason for the current status of the subscription.
+     *
+     * @return self
+     */
+    public function setLegalBasis($legal_basis)
+    {
+        $allowedValues = $this->getLegalBasisAllowableValues();
+        if (!is_null($legal_basis) && !in_array($legal_basis, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'legal_basis', must be one of '%s'",
+                    $legal_basis,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['legal_basis'] = $legal_basis;
+
+        return $this;
+    }
+
+    /**
+     * Gets preference_group_name
+     *
+     * @return string|null
+     */
+    public function getPreferenceGroupName()
+    {
+        return $this->container['preference_group_name'];
+    }
+
+    /**
+     * Sets preference_group_name
+     *
+     * @param string|null $preference_group_name The name of the preferences group that the subscription is associated with.
+     *
+     * @return self
+     */
+    public function setPreferenceGroupName($preference_group_name)
+    {
+        $this->container['preference_group_name'] = $preference_group_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The ID for the subscription.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets legal_basis_explanation
+     *
+     * @return string|null
+     */
+    public function getLegalBasisExplanation()
+    {
+        return $this->container['legal_basis_explanation'];
+    }
+
+    /**
+     * Sets legal_basis_explanation
+     *
+     * @param string|null $legal_basis_explanation A more detailed explanation to go with the legal basis.
+     *
+     * @return self
+     */
+    public function setLegalBasisExplanation($legal_basis_explanation)
+    {
+        $this->container['legal_basis_explanation'] = $legal_basis_explanation;
 
         return $this;
     }
@@ -487,112 +593,6 @@ class PublicSubscriptionStatus implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
         $this->container['source_of_status'] = $source_of_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_id
-     *
-     * @return int|null
-     */
-    public function getBrandId()
-    {
-        return $this->container['brand_id'];
-    }
-
-    /**
-     * Sets brand_id
-     *
-     * @param int|null $brand_id The ID of the brand that the subscription is associated with, if there is one.
-     *
-     * @return self
-     */
-    public function setBrandId($brand_id)
-    {
-        $this->container['brand_id'] = $brand_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets preference_group_name
-     *
-     * @return string|null
-     */
-    public function getPreferenceGroupName()
-    {
-        return $this->container['preference_group_name'];
-    }
-
-    /**
-     * Sets preference_group_name
-     *
-     * @param string|null $preference_group_name The name of the preferences group that the subscription is associated with.
-     *
-     * @return self
-     */
-    public function setPreferenceGroupName($preference_group_name)
-    {
-        $this->container['preference_group_name'] = $preference_group_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_basis
-     *
-     * @return string|null
-     */
-    public function getLegalBasis()
-    {
-        return $this->container['legal_basis'];
-    }
-
-    /**
-     * Sets legal_basis
-     *
-     * @param string|null $legal_basis The legal reason for the current status of the subscription.
-     *
-     * @return self
-     */
-    public function setLegalBasis($legal_basis)
-    {
-        $allowedValues = $this->getLegalBasisAllowableValues();
-        if (!is_null($legal_basis) && !in_array($legal_basis, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'legal_basis', must be one of '%s'",
-                    $legal_basis,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['legal_basis'] = $legal_basis;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_basis_explanation
-     *
-     * @return string|null
-     */
-    public function getLegalBasisExplanation()
-    {
-        return $this->container['legal_basis_explanation'];
-    }
-
-    /**
-     * Sets legal_basis_explanation
-     *
-     * @param string|null $legal_basis_explanation A more detailed explanation to go with the legal basis.
-     *
-     * @return self
-     */
-    public function setLegalBasisExplanation($legal_basis_explanation)
-    {
-        $this->container['legal_basis_explanation'] = $legal_basis_explanation;
 
         return $this;
     }

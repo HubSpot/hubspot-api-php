@@ -58,9 +58,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'email' => 'string',
         'first_name' => 'string',
-        'last_name' => 'string'
+        'last_name' => 'string',
+        'email' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'email' => null,
         'first_name' => null,
-        'last_name' => null
+        'last_name' => null,
+        'email' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'email' => 'email',
         'first_name' => 'firstName',
-        'last_name' => 'lastName'
+        'last_name' => 'lastName',
+        'email' => 'email'
     ];
 
     /**
@@ -114,9 +114,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'email' => 'setEmail',
         'first_name' => 'setFirstName',
-        'last_name' => 'setLastName'
+        'last_name' => 'setLastName',
+        'email' => 'setEmail'
     ];
 
     /**
@@ -125,9 +125,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'email' => 'getEmail',
         'first_name' => 'getFirstName',
-        'last_name' => 'getLastName'
+        'last_name' => 'getLastName',
+        'email' => 'getEmail'
     ];
 
     /**
@@ -187,9 +187,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['email'] = $data['email'] ?? null;
         $this->container['first_name'] = $data['first_name'] ?? null;
         $this->container['last_name'] = $data['last_name'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
     }
 
     /**
@@ -218,30 +218,6 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string $email The email of the visitor that you wish to identify
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
 
     /**
      * Gets first_name
@@ -287,6 +263,30 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     public function setLastName($last_name)
     {
         $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string $email The email of the visitor that you wish to identify
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
 
         return $this;
     }

@@ -59,8 +59,8 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'email_address' => 'string',
-        'subscription_id' => 'string',
         'legal_basis' => 'string',
+        'subscription_id' => 'string',
         'legal_basis_explanation' => 'string'
     ];
 
@@ -73,8 +73,8 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'email_address' => null,
-        'subscription_id' => null,
         'legal_basis' => null,
+        'subscription_id' => null,
         'legal_basis_explanation' => null
     ];
 
@@ -106,8 +106,8 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'email_address' => 'emailAddress',
-        'subscription_id' => 'subscriptionId',
         'legal_basis' => 'legalBasis',
+        'subscription_id' => 'subscriptionId',
         'legal_basis_explanation' => 'legalBasisExplanation'
     ];
 
@@ -118,8 +118,8 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'email_address' => 'setEmailAddress',
-        'subscription_id' => 'setSubscriptionId',
         'legal_basis' => 'setLegalBasis',
+        'subscription_id' => 'setSubscriptionId',
         'legal_basis_explanation' => 'setLegalBasisExplanation'
     ];
 
@@ -130,8 +130,8 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'email_address' => 'getEmailAddress',
-        'subscription_id' => 'getSubscriptionId',
         'legal_basis' => 'getLegalBasis',
+        'subscription_id' => 'getSubscriptionId',
         'legal_basis_explanation' => 'getLegalBasisExplanation'
     ];
 
@@ -218,8 +218,8 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
     public function __construct(array $data = null)
     {
         $this->container['email_address'] = $data['email_address'] ?? null;
-        $this->container['subscription_id'] = $data['subscription_id'] ?? null;
         $this->container['legal_basis'] = $data['legal_basis'] ?? null;
+        $this->container['subscription_id'] = $data['subscription_id'] ?? null;
         $this->container['legal_basis_explanation'] = $data['legal_basis_explanation'] ?? null;
     }
 
@@ -235,9 +235,6 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
         if ($this->container['email_address'] === null) {
             $invalidProperties[] = "'email_address' can't be null";
         }
-        if ($this->container['subscription_id'] === null) {
-            $invalidProperties[] = "'subscription_id' can't be null";
-        }
         $allowedValues = $this->getLegalBasisAllowableValues();
         if (!is_null($this->container['legal_basis']) && !in_array($this->container['legal_basis'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -247,6 +244,9 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
             );
         }
 
+        if ($this->container['subscription_id'] === null) {
+            $invalidProperties[] = "'subscription_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -287,30 +287,6 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets subscription_id
-     *
-     * @return string
-     */
-    public function getSubscriptionId()
-    {
-        return $this->container['subscription_id'];
-    }
-
-    /**
-     * Sets subscription_id
-     *
-     * @param string $subscription_id ID of the subscription being updated for the contact.
-     *
-     * @return self
-     */
-    public function setSubscriptionId($subscription_id)
-    {
-        $this->container['subscription_id'] = $subscription_id;
-
-        return $this;
-    }
-
-    /**
      * Gets legal_basis
      *
      * @return string|null
@@ -340,6 +316,30 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
             );
         }
         $this->container['legal_basis'] = $legal_basis;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_id
+     *
+     * @return string
+     */
+    public function getSubscriptionId()
+    {
+        return $this->container['subscription_id'];
+    }
+
+    /**
+     * Sets subscription_id
+     *
+     * @param string $subscription_id ID of the subscription being updated for the contact.
+     *
+     * @return self
+     */
+    public function setSubscriptionId($subscription_id)
+    {
+        $this->container['subscription_id'] = $subscription_id;
 
         return $this;
     }
