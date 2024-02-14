@@ -57,15 +57,15 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'purpose' => 'string',
-        'communication_method' => 'string',
-        'is_active' => 'bool',
-        'is_default' => 'bool',
         'is_internal' => 'bool',
         'created_at' => '\DateTime',
+        'is_default' => 'bool',
+        'communication_method' => 'string',
+        'purpose' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'id' => 'string',
+        'is_active' => 'bool',
         'updated_at' => '\DateTime'
     ];
 
@@ -77,15 +77,15 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'description' => null,
-        'purpose' => null,
-        'communication_method' => null,
-        'is_active' => null,
-        'is_default' => null,
         'is_internal' => null,
         'created_at' => 'date-time',
+        'is_default' => null,
+        'communication_method' => null,
+        'purpose' => null,
+        'name' => null,
+        'description' => null,
+        'id' => null,
+        'is_active' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -116,15 +116,15 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'description' => 'description',
-        'purpose' => 'purpose',
-        'communication_method' => 'communicationMethod',
-        'is_active' => 'isActive',
-        'is_default' => 'isDefault',
         'is_internal' => 'isInternal',
         'created_at' => 'createdAt',
+        'is_default' => 'isDefault',
+        'communication_method' => 'communicationMethod',
+        'purpose' => 'purpose',
+        'name' => 'name',
+        'description' => 'description',
+        'id' => 'id',
+        'is_active' => 'isActive',
         'updated_at' => 'updatedAt'
     ];
 
@@ -134,15 +134,15 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'purpose' => 'setPurpose',
-        'communication_method' => 'setCommunicationMethod',
-        'is_active' => 'setIsActive',
-        'is_default' => 'setIsDefault',
         'is_internal' => 'setIsInternal',
         'created_at' => 'setCreatedAt',
+        'is_default' => 'setIsDefault',
+        'communication_method' => 'setCommunicationMethod',
+        'purpose' => 'setPurpose',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'id' => 'setId',
+        'is_active' => 'setIsActive',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -152,15 +152,15 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'purpose' => 'getPurpose',
-        'communication_method' => 'getCommunicationMethod',
-        'is_active' => 'getIsActive',
-        'is_default' => 'getIsDefault',
         'is_internal' => 'getIsInternal',
         'created_at' => 'getCreatedAt',
+        'is_default' => 'getIsDefault',
+        'communication_method' => 'getCommunicationMethod',
+        'purpose' => 'getPurpose',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'id' => 'getId',
+        'is_active' => 'getIsActive',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -221,15 +221,15 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['purpose'] = $data['purpose'] ?? null;
-        $this->container['communication_method'] = $data['communication_method'] ?? null;
-        $this->container['is_active'] = $data['is_active'] ?? null;
-        $this->container['is_default'] = $data['is_default'] ?? null;
         $this->container['is_internal'] = $data['is_internal'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['is_default'] = $data['is_default'] ?? null;
+        $this->container['communication_method'] = $data['communication_method'] ?? null;
+        $this->container['purpose'] = $data['purpose'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['is_active'] = $data['is_active'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -242,8 +242,14 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['is_internal'] === null) {
+            $invalidProperties[] = "'is_internal' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['is_default'] === null) {
+            $invalidProperties[] = "'is_default' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -251,17 +257,11 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['is_active'] === null) {
             $invalidProperties[] = "'is_active' can't be null";
-        }
-        if ($this->container['is_default'] === null) {
-            $invalidProperties[] = "'is_default' can't be null";
-        }
-        if ($this->container['is_internal'] === null) {
-            $invalidProperties[] = "'is_internal' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -282,25 +282,121 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets id
+     * Gets is_internal
      *
-     * @return string
+     * @return bool
      */
-    public function getId()
+    public function getIsInternal()
     {
-        return $this->container['id'];
+        return $this->container['is_internal'];
     }
 
     /**
-     * Sets id
+     * Sets is_internal
      *
-     * @param string $id The ID of the definition.
+     * @param bool $is_internal A default description that is used by some HubSpot tools and cannot be edited.
      *
      * @return self
      */
-    public function setId($id)
+    public function setIsInternal($is_internal)
     {
-        $this->container['id'] = $id;
+        $this->container['is_internal'] = $is_internal;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at Time at which the definition was created.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_default
+     *
+     * @return bool
+     */
+    public function getIsDefault()
+    {
+        return $this->container['is_default'];
+    }
+
+    /**
+     * Sets is_default
+     *
+     * @param bool $is_default A subscription definition created by HubSpot.
+     *
+     * @return self
+     */
+    public function setIsDefault($is_default)
+    {
+        $this->container['is_default'] = $is_default;
+
+        return $this;
+    }
+
+    /**
+     * Gets communication_method
+     *
+     * @return string|null
+     */
+    public function getCommunicationMethod()
+    {
+        return $this->container['communication_method'];
+    }
+
+    /**
+     * Sets communication_method
+     *
+     * @param string|null $communication_method The method or technology used to contact.
+     *
+     * @return self
+     */
+    public function setCommunicationMethod($communication_method)
+    {
+        $this->container['communication_method'] = $communication_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets purpose
+     *
+     * @return string|null
+     */
+    public function getPurpose()
+    {
+        return $this->container['purpose'];
+    }
+
+    /**
+     * Sets purpose
+     *
+     * @param string|null $purpose The purpose of this subscription or the department in your organization that uses it.
+     *
+     * @return self
+     */
+    public function setPurpose($purpose)
+    {
+        $this->container['purpose'] = $purpose;
 
         return $this;
     }
@@ -354,49 +450,25 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets purpose
+     * Gets id
      *
-     * @return string|null
+     * @return string
      */
-    public function getPurpose()
+    public function getId()
     {
-        return $this->container['purpose'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets purpose
+     * Sets id
      *
-     * @param string|null $purpose The purpose of this subscription or the department in your organization that uses it.
+     * @param string $id The ID of the definition.
      *
      * @return self
      */
-    public function setPurpose($purpose)
+    public function setId($id)
     {
-        $this->container['purpose'] = $purpose;
-
-        return $this;
-    }
-
-    /**
-     * Gets communication_method
-     *
-     * @return string|null
-     */
-    public function getCommunicationMethod()
-    {
-        return $this->container['communication_method'];
-    }
-
-    /**
-     * Sets communication_method
-     *
-     * @param string|null $communication_method The method or technology used to contact.
-     *
-     * @return self
-     */
-    public function setCommunicationMethod($communication_method)
-    {
-        $this->container['communication_method'] = $communication_method;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -421,78 +493,6 @@ class SubscriptionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIsActive($is_active)
     {
         $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_default
-     *
-     * @return bool
-     */
-    public function getIsDefault()
-    {
-        return $this->container['is_default'];
-    }
-
-    /**
-     * Sets is_default
-     *
-     * @param bool $is_default A subscription definition created by HubSpot.
-     *
-     * @return self
-     */
-    public function setIsDefault($is_default)
-    {
-        $this->container['is_default'] = $is_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_internal
-     *
-     * @return bool
-     */
-    public function getIsInternal()
-    {
-        return $this->container['is_internal'];
-    }
-
-    /**
-     * Sets is_internal
-     *
-     * @param bool $is_internal A default description that is used by some HubSpot tools and cannot be edited.
-     *
-     * @return self
-     */
-    public function setIsInternal($is_internal)
-    {
-        $this->container['is_internal'] = $is_internal;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at Time at which the definition was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }

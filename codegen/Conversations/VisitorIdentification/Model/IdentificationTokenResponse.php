@@ -220,7 +220,7 @@ class IdentificationTokenResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets token
      *
-     * @param string $token token
+     * @param string $token 
      *
      * @return self
      */
