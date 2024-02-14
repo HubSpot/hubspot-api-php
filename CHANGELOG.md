@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `automation()->actions()->functionsApi()->getPage(): CollectionResponseActionFunctionIdentifierNoPaging|Error => CollectionResponsePublicActionFunctionIdentifierNoPaging|Error`.
 - `automation()->actions()->revisionsApi()->getById(): ActionRevision|Error => PublicActionRevision|Error`.
 - `automation()->actions()->revisionsApi()->getPage(): CollectionResponseActionRevisionForwardPaging|Error => CollectionResponsePublicActionRevisionForwardPaging|Error`.
-- Added new params to `codegen/Automation/Actions/Model/FieldTypeDefinition`.
+- Added new params to `HubSpot\Client\Automation\Actions\Model\FieldTypeDefinition`:
 
 ```php
   'help_text' => 'string',
@@ -36,7 +36,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   'external_options' => 'bool'
 ```
 
-- Added new param `'automation_field_type' => 'string'` to `codegen/Automation/Actions/Model/InputFieldDefinition`.
+- Added new param `'automation_field_type' => 'string'` to `HubSpot\Client\Automation\Actions\Model\InputFieldDefinition`.
+- `cms()->auditLogs()->auditLogsApi()->getPage($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)` => `cms()->auditLogs()->auditLogsApi()->getPage($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)`.
+- Added new param `prev` to `HubSpot\Client\Cms\AuditLogs\Model\Paging`.
+- `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->authors()->blogAuthorsApi()->getById()` and `cms()->blogs()->authors()->blogAuthorsApi()->getPage()`.
+- `cms()->blogs()->authors()->blogAuthorsApi()->updateLangs():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Authors\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Authors\Model\StandardError:category`.
+- `cms()->blogs()->blogPosts()->blogPostsApi()->attachToLangGroup():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->blogPosts()->blogPostsApi()->detachFromLangGroup():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->blogPosts()->blogPostsApi()->getById()` and `cms()->blogs()->blogPosts()->blogPostsApi()->getPage()`.
+- `cms()->blogs()->blogPosts()->blogPostsApi()->updateLangs():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
+- Remove background position's consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\BlogPosts\Model\StandardError:category`.
+- `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->tags()->blogTagsApi()->getById()` and `cms()->blogs()->tags()->blogTagsApi()->getPage()`.
+- `cms()->blogs()->tags()->blogTagsApi()->updateLangs():Error` => `cms()->blogs()->tags()->blogTagsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Tags\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Tags\Model\UpdateLanguagesRequestVNext`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Tags\Model\StandardError:category`.
+- Changed type from `int` to `string` in `HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3BatchUpdateRequest:id`.
+- `cms()->sourceCode()->contentApi()->get()` => `cms()->sourceCode()->contentApi()->download()`.
+- `cms()->sourceCode()->contentApi()->replace()` => `cms()->sourceCode()->contentApi()->createOrUpdate()`.
+- Added param `properties` to `cms()->sourceCode()->metadataApi()->get()`.
+- Added param `hash` to `HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata`.
 
 
 
