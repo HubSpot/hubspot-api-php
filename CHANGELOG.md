@@ -74,7 +74,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\StandardError:category`.
 - `crm()->associations()->v4()->schema()->definitionsApi()->delete()` => `crm()->associations()->v4()->schema()->definitionsApi()->archive()`.
 - Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
+- Added `crm()->extensions()->calling()->recordingSettingsApi()` API.
+- `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
+- `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
+- `crm()->extensions()->cards()->cardsApi()->getAll(): CardListResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getAll(): PublicCardListResponse|Error`.
+- `crm()->extensions()->cards()->cardsApi()->getById($app_id, $card_id): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getById($card_id, $app_id): PublicCardResponse|Error`.
+- `crm()->extensions()->cards()->cardsApi()->update($app_id, $card_id, $card_patch_request): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->update($card_id, $app_id, $card_patch_request): PublicCardResponse|Error`.
+- Added `serverless_function` and `card_type` params to `HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody` and `HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch`.
+- Added `NAME_MARKETING_EVENTS` const to `HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody`.
+- Added `audit_history` param to `HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse`.
+- Added `fetch_accounts_uri` param to `HubSpot\Client\Crm\Extensions\Videoconferencing\Model\ExternalSettings`.
 
+
+## Removed `hapikey` from
+
+- `crm()->extensions()->videoconferencing()` API client.
 
 ## [10.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0) - 2023-12-13
 
