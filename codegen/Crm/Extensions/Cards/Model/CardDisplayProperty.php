@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -58,10 +58,10 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'label' => 'string',
         'data_type' => 'string',
-        'options' => '\HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]'
+        'name' => 'string',
+        'options' => '\HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]',
+        'label' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'label' => null,
         'data_type' => null,
-        'options' => null
+        'name' => null,
+        'options' => null,
+        'label' => null
     ];
 
     /**
@@ -105,10 +105,10 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'label' => 'label',
         'data_type' => 'dataType',
-        'options' => 'options'
+        'name' => 'name',
+        'options' => 'options',
+        'label' => 'label'
     ];
 
     /**
@@ -117,10 +117,10 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'label' => 'setLabel',
         'data_type' => 'setDataType',
-        'options' => 'setOptions'
+        'name' => 'setName',
+        'options' => 'setOptions',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -129,10 +129,10 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'label' => 'getLabel',
         'data_type' => 'getDataType',
-        'options' => 'getOptions'
+        'name' => 'getName',
+        'options' => 'getOptions',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -221,10 +221,10 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['data_type'] = $data['data_type'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['options'] = $data['options'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -236,12 +236,6 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['data_type'] === null) {
             $invalidProperties[] = "'data_type' can't be null";
         }
@@ -254,8 +248,14 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         if ($this->container['options'] === null) {
             $invalidProperties[] = "'options' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -271,54 +271,6 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name An internal identifier for this property. This value must be unique TODO.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label The label for this property as you'd like it displayed to users.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
 
     /**
      * Gets data_type
@@ -355,6 +307,30 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name An internal identifier for this property. This value must be unique TODO.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets options
      *
      * @return \HubSpot\Client\Crm\Extensions\Cards\Model\DisplayOption[]
@@ -374,6 +350,30 @@ class CardDisplayProperty implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setOptions($options)
     {
         $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label The label for this property as you'd like it displayed to users.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

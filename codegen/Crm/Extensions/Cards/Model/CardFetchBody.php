@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -58,8 +58,10 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'target_url' => 'string',
-        'object_types' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[]'
+        'serverless_function' => 'string',
+        'card_type' => 'string',
+        'object_types' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[]',
+        'target_url' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'target_url' => null,
-        'object_types' => null
+        'serverless_function' => null,
+        'card_type' => null,
+        'object_types' => null,
+        'target_url' => null
     ];
 
     /**
@@ -101,8 +105,10 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'target_url' => 'targetUrl',
-        'object_types' => 'objectTypes'
+        'serverless_function' => 'serverlessFunction',
+        'card_type' => 'cardType',
+        'object_types' => 'objectTypes',
+        'target_url' => 'targetUrl'
     ];
 
     /**
@@ -111,8 +117,10 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'target_url' => 'setTargetUrl',
-        'object_types' => 'setObjectTypes'
+        'serverless_function' => 'setServerlessFunction',
+        'card_type' => 'setCardType',
+        'object_types' => 'setObjectTypes',
+        'target_url' => 'setTargetUrl'
     ];
 
     /**
@@ -121,8 +129,10 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'target_url' => 'getTargetUrl',
-        'object_types' => 'getObjectTypes'
+        'serverless_function' => 'getServerlessFunction',
+        'card_type' => 'getCardType',
+        'object_types' => 'getObjectTypes',
+        'target_url' => 'getTargetUrl'
     ];
 
     /**
@@ -166,6 +176,21 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const CARD_TYPE_EXTERNAL = 'EXTERNAL';
+    public const CARD_TYPE_SERVERLESS = 'SERVERLESS';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCardTypeAllowableValues()
+    {
+        return [
+            self::CARD_TYPE_EXTERNAL,
+            self::CARD_TYPE_SERVERLESS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -182,8 +207,10 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['target_url'] = $data['target_url'] ?? null;
+        $this->container['serverless_function'] = $data['serverless_function'] ?? null;
+        $this->container['card_type'] = $data['card_type'] ?? null;
         $this->container['object_types'] = $data['object_types'] ?? null;
+        $this->container['target_url'] = $data['target_url'] ?? null;
     }
 
     /**
@@ -195,11 +222,20 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['target_url'] === null) {
-            $invalidProperties[] = "'target_url' can't be null";
+        $allowedValues = $this->getCardTypeAllowableValues();
+        if (!is_null($this->container['card_type']) && !in_array($this->container['card_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'card_type', must be one of '%s'",
+                $this->container['card_type'],
+                implode("', '", $allowedValues)
+            );
         }
+
         if ($this->container['object_types'] === null) {
             $invalidProperties[] = "'object_types' can't be null";
+        }
+        if ($this->container['target_url'] === null) {
+            $invalidProperties[] = "'target_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,25 +253,59 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets target_url
+     * Gets serverless_function
      *
-     * @return string
+     * @return string|null
      */
-    public function getTargetUrl()
+    public function getServerlessFunction()
     {
-        return $this->container['target_url'];
+        return $this->container['serverless_function'];
     }
 
     /**
-     * Sets target_url
+     * Sets serverless_function
      *
-     * @param string $target_url URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+     * @param string|null $serverless_function serverless_function
      *
      * @return self
      */
-    public function setTargetUrl($target_url)
+    public function setServerlessFunction($serverless_function)
     {
-        $this->container['target_url'] = $target_url;
+        $this->container['serverless_function'] = $serverless_function;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_type
+     *
+     * @return string|null
+     */
+    public function getCardType()
+    {
+        return $this->container['card_type'];
+    }
+
+    /**
+     * Sets card_type
+     *
+     * @param string|null $card_type card_type
+     *
+     * @return self
+     */
+    public function setCardType($card_type)
+    {
+        $allowedValues = $this->getCardTypeAllowableValues();
+        if (!is_null($card_type) && !in_array($card_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'card_type', must be one of '%s'",
+                    $card_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['card_type'] = $card_type;
 
         return $this;
     }
@@ -260,6 +330,30 @@ class CardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setObjectTypes($object_types)
     {
         $this->container['object_types'] = $object_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_url
+     *
+     * @return string
+     */
+    public function getTargetUrl()
+    {
+        return $this->container['target_url'];
+    }
+
+    /**
+     * Sets target_url
+     *
+     * @param string $target_url URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+     *
+     * @return self
+     */
+    public function setTargetUrl($target_url)
+    {
+        $this->container['target_url'] = $target_url;
 
         return $this;
     }

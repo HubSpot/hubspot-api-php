@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -57,9 +57,9 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'data_type' => 'string',
         'name' => 'string',
         'label' => 'string',
-        'data_type' => 'string',
         'value' => 'string'
     ];
 
@@ -71,9 +71,9 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'data_type' => null,
         'name' => null,
         'label' => null,
-        'data_type' => null,
         'value' => null
     ];
 
@@ -104,9 +104,9 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'data_type' => 'dataType',
         'name' => 'name',
         'label' => 'label',
-        'data_type' => 'dataType',
         'value' => 'value'
     ];
 
@@ -116,9 +116,9 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'data_type' => 'setDataType',
         'name' => 'setName',
         'label' => 'setLabel',
-        'data_type' => 'setDataType',
         'value' => 'setValue'
     ];
 
@@ -128,9 +128,9 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'data_type' => 'getDataType',
         'name' => 'getName',
         'label' => 'getLabel',
-        'data_type' => 'getDataType',
         'value' => 'getValue'
     ];
 
@@ -220,9 +220,9 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['data_type'] = $data['data_type'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
-        $this->container['data_type'] = $data['data_type'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
     }
 
@@ -261,6 +261,40 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets data_type
+     *
+     * @return string|null
+     */
+    public function getDataType()
+    {
+        return $this->container['data_type'];
+    }
+
+    /**
+     * Sets data_type
+     *
+     * @param string|null $data_type data_type
+     *
+     * @return self
+     */
+    public function setDataType($data_type)
+    {
+        $allowedValues = $this->getDataTypeAllowableValues();
+        if (!is_null($data_type) && !in_array($data_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'data_type', must be one of '%s'",
+                    $data_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['data_type'] = $data_type;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -306,40 +340,6 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabel($label)
     {
         $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_type
-     *
-     * @return string|null
-     */
-    public function getDataType()
-    {
-        return $this->container['data_type'];
-    }
-
-    /**
-     * Sets data_type
-     *
-     * @param string|null $data_type data_type
-     *
-     * @return self
-     */
-    public function setDataType($data_type)
-    {
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!is_null($data_type) && !in_array($data_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'data_type', must be one of '%s'",
-                    $data_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['data_type'] = $data_type;
 
         return $this;
     }

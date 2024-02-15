@@ -1,6 +1,6 @@
 <?php
 /**
- * CardFetchBodyPatch
+ * CardAuditResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardFetchBodyPatch Class Doc Comment
+ * CardAuditResponse Class Doc Comment
  *
  * @category Class
- * @description Variant of CardFetchBody with fields as optional for patches
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializable
+class CardAuditResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardFetchBodyPatch';
+    protected static $openAPIModelName = 'CardAuditResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,12 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'serverless_function' => 'string',
-        'card_type' => 'string',
-        'object_types' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[]',
-        'target_url' => 'string'
+        'action_type' => 'string',
+        'object_type_id' => 'int',
+        'auth_source' => 'string',
+        'changed_at' => 'int',
+        'application_id' => 'int',
+        'initiating_user_id' => 'int'
     ];
 
     /**
@@ -72,10 +73,12 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'serverless_function' => null,
-        'card_type' => null,
-        'object_types' => null,
-        'target_url' => null
+        'action_type' => null,
+        'object_type_id' => 'int32',
+        'auth_source' => null,
+        'changed_at' => 'int64',
+        'application_id' => 'int32',
+        'initiating_user_id' => 'int32'
     ];
 
     /**
@@ -105,10 +108,12 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'serverless_function' => 'serverlessFunction',
-        'card_type' => 'cardType',
-        'object_types' => 'objectTypes',
-        'target_url' => 'targetUrl'
+        'action_type' => 'actionType',
+        'object_type_id' => 'objectTypeId',
+        'auth_source' => 'authSource',
+        'changed_at' => 'changedAt',
+        'application_id' => 'applicationId',
+        'initiating_user_id' => 'initiatingUserId'
     ];
 
     /**
@@ -117,10 +122,12 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'serverless_function' => 'setServerlessFunction',
-        'card_type' => 'setCardType',
-        'object_types' => 'setObjectTypes',
-        'target_url' => 'setTargetUrl'
+        'action_type' => 'setActionType',
+        'object_type_id' => 'setObjectTypeId',
+        'auth_source' => 'setAuthSource',
+        'changed_at' => 'setChangedAt',
+        'application_id' => 'setApplicationId',
+        'initiating_user_id' => 'setInitiatingUserId'
     ];
 
     /**
@@ -129,10 +136,12 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'serverless_function' => 'getServerlessFunction',
-        'card_type' => 'getCardType',
-        'object_types' => 'getObjectTypes',
-        'target_url' => 'getTargetUrl'
+        'action_type' => 'getActionType',
+        'object_type_id' => 'getObjectTypeId',
+        'auth_source' => 'getAuthSource',
+        'changed_at' => 'getChangedAt',
+        'application_id' => 'getApplicationId',
+        'initiating_user_id' => 'getInitiatingUserId'
     ];
 
     /**
@@ -176,19 +185,38 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
-    public const CARD_TYPE_EXTERNAL = 'EXTERNAL';
-    public const CARD_TYPE_SERVERLESS = 'SERVERLESS';
+    public const ACTION_TYPE_CREATE = 'CREATE';
+    public const ACTION_TYPE_UPDATE = 'UPDATE';
+    public const ACTION_TYPE_DELETE = 'DELETE';
+    public const AUTH_SOURCE_INTERNAL = 'INTERNAL';
+    public const AUTH_SOURCE_APP = 'APP';
+    public const AUTH_SOURCE_EXTERNAL = 'EXTERNAL';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getCardTypeAllowableValues()
+    public function getActionTypeAllowableValues()
     {
         return [
-            self::CARD_TYPE_EXTERNAL,
-            self::CARD_TYPE_SERVERLESS,
+            self::ACTION_TYPE_CREATE,
+            self::ACTION_TYPE_UPDATE,
+            self::ACTION_TYPE_DELETE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAuthSourceAllowableValues()
+    {
+        return [
+            self::AUTH_SOURCE_INTERNAL,
+            self::AUTH_SOURCE_APP,
+            self::AUTH_SOURCE_EXTERNAL,
         ];
     }
 
@@ -207,10 +235,12 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['serverless_function'] = $data['serverless_function'] ?? null;
-        $this->container['card_type'] = $data['card_type'] ?? null;
-        $this->container['object_types'] = $data['object_types'] ?? null;
-        $this->container['target_url'] = $data['target_url'] ?? null;
+        $this->container['action_type'] = $data['action_type'] ?? null;
+        $this->container['object_type_id'] = $data['object_type_id'] ?? null;
+        $this->container['auth_source'] = $data['auth_source'] ?? null;
+        $this->container['changed_at'] = $data['changed_at'] ?? null;
+        $this->container['application_id'] = $data['application_id'] ?? null;
+        $this->container['initiating_user_id'] = $data['initiating_user_id'] ?? null;
     }
 
     /**
@@ -222,17 +252,41 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCardTypeAllowableValues();
-        if (!is_null($this->container['card_type']) && !in_array($this->container['card_type'], $allowedValues, true)) {
+        if ($this->container['action_type'] === null) {
+            $invalidProperties[] = "'action_type' can't be null";
+        }
+        $allowedValues = $this->getActionTypeAllowableValues();
+        if (!is_null($this->container['action_type']) && !in_array($this->container['action_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'card_type', must be one of '%s'",
-                $this->container['card_type'],
+                "invalid value '%s' for 'action_type', must be one of '%s'",
+                $this->container['action_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['object_types'] === null) {
-            $invalidProperties[] = "'object_types' can't be null";
+        if ($this->container['object_type_id'] === null) {
+            $invalidProperties[] = "'object_type_id' can't be null";
+        }
+        if ($this->container['auth_source'] === null) {
+            $invalidProperties[] = "'auth_source' can't be null";
+        }
+        $allowedValues = $this->getAuthSourceAllowableValues();
+        if (!is_null($this->container['auth_source']) && !in_array($this->container['auth_source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'auth_source', must be one of '%s'",
+                $this->container['auth_source'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['changed_at'] === null) {
+            $invalidProperties[] = "'changed_at' can't be null";
+        }
+        if ($this->container['application_id'] === null) {
+            $invalidProperties[] = "'application_id' can't be null";
+        }
+        if ($this->container['initiating_user_id'] === null) {
+            $invalidProperties[] = "'initiating_user_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,107 +304,165 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets serverless_function
+     * Gets action_type
      *
-     * @return string|null
+     * @return string
      */
-    public function getServerlessFunction()
+    public function getActionType()
     {
-        return $this->container['serverless_function'];
+        return $this->container['action_type'];
     }
 
     /**
-     * Sets serverless_function
+     * Sets action_type
      *
-     * @param string|null $serverless_function serverless_function
+     * @param string $action_type action_type
      *
      * @return self
      */
-    public function setServerlessFunction($serverless_function)
+    public function setActionType($action_type)
     {
-        $this->container['serverless_function'] = $serverless_function;
-
-        return $this;
-    }
-
-    /**
-     * Gets card_type
-     *
-     * @return string|null
-     */
-    public function getCardType()
-    {
-        return $this->container['card_type'];
-    }
-
-    /**
-     * Sets card_type
-     *
-     * @param string|null $card_type card_type
-     *
-     * @return self
-     */
-    public function setCardType($card_type)
-    {
-        $allowedValues = $this->getCardTypeAllowableValues();
-        if (!is_null($card_type) && !in_array($card_type, $allowedValues, true)) {
+        $allowedValues = $this->getActionTypeAllowableValues();
+        if (!in_array($action_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'card_type', must be one of '%s'",
-                    $card_type,
+                    "Invalid value '%s' for 'action_type', must be one of '%s'",
+                    $action_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['card_type'] = $card_type;
+        $this->container['action_type'] = $action_type;
 
         return $this;
     }
 
     /**
-     * Gets object_types
+     * Gets object_type_id
      *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[]
+     * @return int
      */
-    public function getObjectTypes()
+    public function getObjectTypeId()
     {
-        return $this->container['object_types'];
+        return $this->container['object_type_id'];
     }
 
     /**
-     * Sets object_types
+     * Sets object_type_id
      *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[] $object_types An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
+     * @param int $object_type_id object_type_id
      *
      * @return self
      */
-    public function setObjectTypes($object_types)
+    public function setObjectTypeId($object_type_id)
     {
-        $this->container['object_types'] = $object_types;
+        $this->container['object_type_id'] = $object_type_id;
 
         return $this;
     }
 
     /**
-     * Gets target_url
+     * Gets auth_source
      *
-     * @return string|null
+     * @return string
      */
-    public function getTargetUrl()
+    public function getAuthSource()
     {
-        return $this->container['target_url'];
+        return $this->container['auth_source'];
     }
 
     /**
-     * Sets target_url
+     * Sets auth_source
      *
-     * @param string|null $target_url URL to a service endpoint that will respond with details for this card. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+     * @param string $auth_source auth_source
      *
      * @return self
      */
-    public function setTargetUrl($target_url)
+    public function setAuthSource($auth_source)
     {
-        $this->container['target_url'] = $target_url;
+        $allowedValues = $this->getAuthSourceAllowableValues();
+        if (!in_array($auth_source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'auth_source', must be one of '%s'",
+                    $auth_source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['auth_source'] = $auth_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets changed_at
+     *
+     * @return int
+     */
+    public function getChangedAt()
+    {
+        return $this->container['changed_at'];
+    }
+
+    /**
+     * Sets changed_at
+     *
+     * @param int $changed_at changed_at
+     *
+     * @return self
+     */
+    public function setChangedAt($changed_at)
+    {
+        $this->container['changed_at'] = $changed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets application_id
+     *
+     * @return int
+     */
+    public function getApplicationId()
+    {
+        return $this->container['application_id'];
+    }
+
+    /**
+     * Sets application_id
+     *
+     * @param int $application_id application_id
+     *
+     * @return self
+     */
+    public function setApplicationId($application_id)
+    {
+        $this->container['application_id'] = $application_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets initiating_user_id
+     *
+     * @return int
+     */
+    public function getInitiatingUserId()
+    {
+        return $this->container['initiating_user_id'];
+    }
+
+    /**
+     * Sets initiating_user_id
+     *
+     * @param int $initiating_user_id initiating_user_id
+     *
+     * @return self
+     */
+    public function setInitiatingUserId($initiating_user_id)
+    {
+        $this->container['initiating_user_id'] = $initiating_user_id;
 
         return $this;
     }

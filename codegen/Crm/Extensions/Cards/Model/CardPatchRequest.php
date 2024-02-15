@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -58,9 +58,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
         'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch',
         'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
+        'title' => 'string',
         'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
     ];
 
@@ -72,9 +72,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
         'fetch' => null,
         'display' => null,
+        'title' => null,
         'actions' => null
     ];
 
@@ -105,9 +105,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
         'fetch' => 'fetch',
         'display' => 'display',
+        'title' => 'title',
         'actions' => 'actions'
     ];
 
@@ -117,9 +117,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
         'fetch' => 'setFetch',
         'display' => 'setDisplay',
+        'title' => 'setTitle',
         'actions' => 'setActions'
     ];
 
@@ -129,9 +129,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
         'fetch' => 'getFetch',
         'display' => 'getDisplay',
+        'title' => 'getTitle',
         'actions' => 'getActions'
     ];
 
@@ -192,9 +192,9 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['fetch'] = $data['fetch'] ?? null;
         $this->container['display'] = $data['display'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['actions'] = $data['actions'] ?? null;
     }
 
@@ -221,30 +221,6 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
 
     /**
      * Gets fetch
@@ -290,6 +266,30 @@ class CardPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDisplay($display)
     {
         $this->container['display'] = $display;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title The top-level title for this card. Displayed to users in the CRM UI.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }
