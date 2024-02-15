@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added new param `'automation_field_type' => 'string'` to `HubSpot\Client\Automation\Actions\Model\InputFieldDefinition`.
 - `cms()->auditLogs()->auditLogsApi()->getPage($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)` => `cms()->auditLogs()->auditLogsApi()->getPage($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)`.
+- Removed params `scope_to_scope_group_pks`, `trial_scopes` and `trial_scope_to_scope_group_pks` from `HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse`.
 - Added new param `prev` to `HubSpot\Client\Cms\AuditLogs\Model\Paging`.
 - `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():void`.
 - `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():void`.
