@@ -10,7 +10,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -123,14 +123,15 @@ class PipelinesApi
      * @param  string $object_type object_type (required)
      * @param  string $pipeline_id pipeline_id (required)
      * @param  bool $validate_references_before_delete validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type, $pipeline_id, $validate_references_before_delete = false)
+    public function archive($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        $this->archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete);
+        $this->archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
     }
 
     /**
@@ -141,14 +142,15 @@ class PipelinesApi
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false)
+    public function archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete);
+        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
 
         try {
             $options = $this->createHttpClientOption();
@@ -210,13 +212,14 @@ class PipelinesApi
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type, $pipeline_id, $validate_references_before_delete = false)
+    public function archiveAsync($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        return $this->archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete)
+        return $this->archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -232,14 +235,15 @@ class PipelinesApi
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false)
+    public function archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete);
+        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -270,11 +274,12 @@ class PipelinesApi
      * @param  string $object_type (required)
      * @param  string $pipeline_id (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($object_type, $pipeline_id, $validate_references_before_delete = false)
+    public function archiveRequest($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -300,6 +305,15 @@ class PipelinesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $validate_references_before_delete,
             'validateReferencesBeforeDelete', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $validate_deal_stage_usages_before_delete,
+            'validateDealStageUsagesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -1352,14 +1366,15 @@ class PipelinesApi
      * @param  string $pipeline_id pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input pipeline_input (required)
      * @param  bool $validate_references_before_delete validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function replace($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false)
+    public function replace($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        list($response) = $this->replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete);
+        list($response) = $this->replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
         return $response;
     }
 
@@ -1372,14 +1387,15 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false)
+    public function replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete);
+        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1497,13 +1513,14 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsync($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false)
+    public function replaceAsync($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        return $this->replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete)
+        return $this->replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1520,14 +1537,15 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false)
+    public function replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete);
+        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1572,11 +1590,12 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceRequest($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false)
+    public function replaceRequest($object_type, $pipeline_id, $pipeline_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -1608,6 +1627,15 @@ class PipelinesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $validate_references_before_delete,
             'validateReferencesBeforeDelete', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $validate_deal_stage_usages_before_delete,
+            'validateDealStageUsagesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -1709,14 +1737,15 @@ class PipelinesApi
      * @param  string $pipeline_id pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input pipeline_patch_input (required)
      * @param  bool $validate_references_before_delete validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function update($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false)
+    public function update($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        list($response) = $this->updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete);
+        list($response) = $this->updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
         return $response;
     }
 
@@ -1729,14 +1758,15 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false)
+    public function updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete);
+        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1854,13 +1884,14 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false)
+    public function updateAsync($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
-        return $this->updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete)
+        return $this->updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1877,14 +1908,15 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false)
+    public function updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete);
+        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1929,11 +1961,12 @@ class PipelinesApi
      * @param  string $pipeline_id (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool $validate_references_before_delete (optional, default to false)
+     * @param  bool $validate_deal_stage_usages_before_delete (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false)
+    public function updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false)
     {
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
@@ -1965,6 +1998,15 @@ class PipelinesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $validate_references_before_delete,
             'validateReferencesBeforeDelete', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $validate_deal_stage_usages_before_delete,
+            'validateDealStageUsagesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

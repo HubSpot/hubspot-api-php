@@ -57,16 +57,16 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'group_name' => 'string',
+        'hidden' => 'bool',
+        'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
+        'display_order' => 'int',
+        'description' => 'string',
+        'calculation_formula' => 'string',
         'label' => 'string',
         'type' => 'string',
         'field_type' => 'string',
-        'group_name' => 'string',
-        'description' => 'string',
-        'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
-        'display_order' => 'int',
-        'hidden' => 'bool',
-        'form_field' => 'bool',
-        'calculation_formula' => 'string'
+        'form_field' => 'bool'
     ];
 
     /**
@@ -77,16 +77,16 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'group_name' => null,
+        'hidden' => null,
+        'options' => null,
+        'display_order' => 'int32',
+        'description' => null,
+        'calculation_formula' => null,
         'label' => null,
         'type' => null,
         'field_type' => null,
-        'group_name' => null,
-        'description' => null,
-        'options' => null,
-        'display_order' => 'int32',
-        'hidden' => null,
-        'form_field' => null,
-        'calculation_formula' => null
+        'form_field' => null
     ];
 
     /**
@@ -116,16 +116,16 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'group_name' => 'groupName',
+        'hidden' => 'hidden',
+        'options' => 'options',
+        'display_order' => 'displayOrder',
+        'description' => 'description',
+        'calculation_formula' => 'calculationFormula',
         'label' => 'label',
         'type' => 'type',
         'field_type' => 'fieldType',
-        'group_name' => 'groupName',
-        'description' => 'description',
-        'options' => 'options',
-        'display_order' => 'displayOrder',
-        'hidden' => 'hidden',
-        'form_field' => 'formField',
-        'calculation_formula' => 'calculationFormula'
+        'form_field' => 'formField'
     ];
 
     /**
@@ -134,16 +134,16 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'group_name' => 'setGroupName',
+        'hidden' => 'setHidden',
+        'options' => 'setOptions',
+        'display_order' => 'setDisplayOrder',
+        'description' => 'setDescription',
+        'calculation_formula' => 'setCalculationFormula',
         'label' => 'setLabel',
         'type' => 'setType',
         'field_type' => 'setFieldType',
-        'group_name' => 'setGroupName',
-        'description' => 'setDescription',
-        'options' => 'setOptions',
-        'display_order' => 'setDisplayOrder',
-        'hidden' => 'setHidden',
-        'form_field' => 'setFormField',
-        'calculation_formula' => 'setCalculationFormula'
+        'form_field' => 'setFormField'
     ];
 
     /**
@@ -152,16 +152,16 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'group_name' => 'getGroupName',
+        'hidden' => 'getHidden',
+        'options' => 'getOptions',
+        'display_order' => 'getDisplayOrder',
+        'description' => 'getDescription',
+        'calculation_formula' => 'getCalculationFormula',
         'label' => 'getLabel',
         'type' => 'getType',
         'field_type' => 'getFieldType',
-        'group_name' => 'getGroupName',
-        'description' => 'getDescription',
-        'options' => 'getOptions',
-        'display_order' => 'getDisplayOrder',
-        'hidden' => 'getHidden',
-        'form_field' => 'getFormField',
-        'calculation_formula' => 'getCalculationFormula'
+        'form_field' => 'getFormField'
     ];
 
     /**
@@ -275,16 +275,16 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['group_name'] = $data['group_name'] ?? null;
+        $this->container['hidden'] = $data['hidden'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['field_type'] = $data['field_type'] ?? null;
-        $this->container['group_name'] = $data['group_name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['hidden'] = $data['hidden'] ?? null;
         $this->container['form_field'] = $data['form_field'] ?? null;
-        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
     }
 
     /**
@@ -328,6 +328,150 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets group_name
+     *
+     * @return string|null
+     */
+    public function getGroupName()
+    {
+        return $this->container['group_name'];
+    }
+
+    /**
+     * Sets group_name
+     *
+     * @param string|null $group_name The name of the property group the property belongs to.
+     *
+     * @return self
+     */
+    public function setGroupName($group_name)
+    {
+        $this->container['group_name'] = $group_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets hidden
+     *
+     * @return bool|null
+     */
+    public function getHidden()
+    {
+        return $this->container['hidden'];
+    }
+
+    /**
+     * Sets hidden
+     *
+     * @param bool|null $hidden If true, the property won't be visible and can't be used in HubSpot.
+     *
+     * @return self
+     */
+    public function setHidden($hidden)
+    {
+        $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null $options A list of valid options for the property.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_order
+     *
+     * @return int|null
+     */
+    public function getDisplayOrder()
+    {
+        return $this->container['display_order'];
+    }
+
+    /**
+     * Sets display_order
+     *
+     * @param int|null $display_order Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
+     *
+     * @return self
+     */
+    public function setDisplayOrder($display_order)
+    {
+        $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets calculation_formula
+     *
+     * @return string|null
+     */
+    public function getCalculationFormula()
+    {
+        return $this->container['calculation_formula'];
+    }
+
+    /**
+     * Sets calculation_formula
+     *
+     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
+     *
+     * @return self
+     */
+    public function setCalculationFormula($calculation_formula)
+    {
+        $this->container['calculation_formula'] = $calculation_formula;
+
+        return $this;
+    }
 
     /**
      * Gets label
@@ -422,126 +566,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets group_name
-     *
-     * @return string|null
-     */
-    public function getGroupName()
-    {
-        return $this->container['group_name'];
-    }
-
-    /**
-     * Sets group_name
-     *
-     * @param string|null $group_name The name of the property group the property belongs to.
-     *
-     * @return self
-     */
-    public function setGroupName($group_name)
-    {
-        $this->container['group_name'] = $group_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null $options A list of valid options for the property.
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_order
-     *
-     * @return int|null
-     */
-    public function getDisplayOrder()
-    {
-        return $this->container['display_order'];
-    }
-
-    /**
-     * Sets display_order
-     *
-     * @param int|null $display_order Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
-     *
-     * @return self
-     */
-    public function setDisplayOrder($display_order)
-    {
-        $this->container['display_order'] = $display_order;
-
-        return $this;
-    }
-
-    /**
-     * Gets hidden
-     *
-     * @return bool|null
-     */
-    public function getHidden()
-    {
-        return $this->container['hidden'];
-    }
-
-    /**
-     * Sets hidden
-     *
-     * @param bool|null $hidden If true, the property won't be visible and can't be used in HubSpot.
-     *
-     * @return self
-     */
-    public function setHidden($hidden)
-    {
-        $this->container['hidden'] = $hidden;
-
-        return $this;
-    }
-
-    /**
      * Gets form_field
      *
      * @return bool|null
@@ -561,30 +585,6 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFormField($form_field)
     {
         $this->container['form_field'] = $form_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_formula
-     *
-     * @return string|null
-     */
-    public function getCalculationFormula()
-    {
-        return $this->container['calculation_formula'];
-    }
-
-    /**
-     * Sets calculation_formula
-     *
-     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
-     *
-     * @return self
-     */
-    public function setCalculationFormula($calculation_formula)
-    {
-        $this->container['calculation_formula'] = $calculation_formula;
 
         return $this;
     }

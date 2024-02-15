@@ -58,11 +58,11 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'value' => 'string',
-        'description' => 'string',
+        'hidden' => 'bool',
         'display_order' => 'int',
-        'hidden' => 'bool'
+        'description' => 'string',
+        'label' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -73,11 +73,11 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'value' => null,
-        'description' => null,
+        'hidden' => null,
         'display_order' => 'int32',
-        'hidden' => null
+        'description' => null,
+        'label' => null,
+        'value' => null
     ];
 
     /**
@@ -107,11 +107,11 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'value' => 'value',
-        'description' => 'description',
+        'hidden' => 'hidden',
         'display_order' => 'displayOrder',
-        'hidden' => 'hidden'
+        'description' => 'description',
+        'label' => 'label',
+        'value' => 'value'
     ];
 
     /**
@@ -120,11 +120,11 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'value' => 'setValue',
-        'description' => 'setDescription',
+        'hidden' => 'setHidden',
         'display_order' => 'setDisplayOrder',
-        'hidden' => 'setHidden'
+        'description' => 'setDescription',
+        'label' => 'setLabel',
+        'value' => 'setValue'
     ];
 
     /**
@@ -133,11 +133,11 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'value' => 'getValue',
-        'description' => 'getDescription',
+        'hidden' => 'getHidden',
         'display_order' => 'getDisplayOrder',
-        'hidden' => 'getHidden'
+        'description' => 'getDescription',
+        'label' => 'getLabel',
+        'value' => 'getValue'
     ];
 
     /**
@@ -197,11 +197,11 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['hidden'] = $data['hidden'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['hidden'] = $data['hidden'] ?? null;
     }
 
     /**
@@ -213,17 +213,17 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['hidden'] === null) {
+            $invalidProperties[] = "'hidden' can't be null";
+        }
+        if ($this->container['display_order'] === null) {
+            $invalidProperties[] = "'display_order' can't be null";
+        }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
         }
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
-        }
-        if ($this->container['display_order'] === null) {
-            $invalidProperties[] = "'display_order' can't be null";
-        }
-        if ($this->container['hidden'] === null) {
-            $invalidProperties[] = "'hidden' can't be null";
         }
         return $invalidProperties;
     }
@@ -239,6 +239,78 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets hidden
+     *
+     * @return bool
+     */
+    public function getHidden()
+    {
+        return $this->container['hidden'];
+    }
+
+    /**
+     * Sets hidden
+     *
+     * @param bool $hidden Hidden options won't be shown in HubSpot.
+     *
+     * @return self
+     */
+    public function setHidden($hidden)
+    {
+        $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_order
+     *
+     * @return int
+     */
+    public function getDisplayOrder()
+    {
+        return $this->container['display_order'];
+    }
+
+    /**
+     * Sets display_order
+     *
+     * @param int $display_order Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
+     *
+     * @return self
+     */
+    public function setDisplayOrder($display_order)
+    {
+        $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description A description of the option.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
 
     /**
      * Gets label
@@ -284,78 +356,6 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A description of the option.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_order
-     *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->container['display_order'];
-    }
-
-    /**
-     * Sets display_order
-     *
-     * @param int $display_order Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
-     *
-     * @return self
-     */
-    public function setDisplayOrder($display_order)
-    {
-        $this->container['display_order'] = $display_order;
-
-        return $this;
-    }
-
-    /**
-     * Gets hidden
-     *
-     * @return bool
-     */
-    public function getHidden()
-    {
-        return $this->container['hidden'];
-    }
-
-    /**
-     * Sets hidden
-     *
-     * @param bool $hidden Hidden options won't be shown in HubSpot.
-     *
-     * @return self
-     */
-    public function setHidden($hidden)
-    {
-        $this->container['hidden'] = $hidden;
 
         return $this;
     }

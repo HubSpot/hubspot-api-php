@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -58,12 +58,12 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'results' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]',
+        'completed_at' => '\DateTime',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
-        'links' => 'array<string,string>'
+        'links' => 'array<string,string>',
+        'results' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]',
+        'status' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'results' => null,
+        'completed_at' => 'date-time',
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time',
-        'links' => null
+        'links' => null,
+        'results' => null,
+        'status' => null
     ];
 
     /**
@@ -109,12 +109,12 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'results' => 'results',
+        'completed_at' => 'completedAt',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
-        'links' => 'links'
+        'links' => 'links',
+        'results' => 'results',
+        'status' => 'status'
     ];
 
     /**
@@ -123,12 +123,12 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'results' => 'setResults',
+        'completed_at' => 'setCompletedAt',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
-        'links' => 'setLinks'
+        'links' => 'setLinks',
+        'results' => 'setResults',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -137,12 +137,12 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'results' => 'getResults',
+        'completed_at' => 'getCompletedAt',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
-        'links' => 'getLinks'
+        'links' => 'getLinks',
+        'results' => 'getResults',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -221,12 +221,12 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['requested_at'] = $data['requested_at'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -238,6 +238,15 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -250,15 +259,6 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
             );
         }
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -275,59 +275,25 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets status
+     * Gets completed_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getStatus()
+    public function getCompletedAt()
     {
-        return $this->container['status'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets status
+     * Sets completed_at
      *
-     * @param string $status The status of the batch response. Should always be COMPLETED if processed.
+     * @param \DateTime $completed_at The time the request was completed.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCompletedAt($completed_at)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[] $results Successfully created events.
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
@@ -381,30 +347,6 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets completed_at
-     *
-     * @return \DateTime
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime $completed_at The time the request was completed.
-     *
-     * @return self
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
-
-        return $this;
-    }
-
-    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -424,6 +366,64 @@ class BatchResponseTimelineEventResponse implements ModelInterface, ArrayAccess,
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse[] $results Successfully created events.
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status The status of the batch response. Should always be COMPLETED if processed.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

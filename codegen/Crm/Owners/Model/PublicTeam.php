@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Owners
+ * Crm Owners
  *
  * HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.
  *
@@ -57,8 +57,8 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'name' => 'string',
+        'id' => 'string',
         'primary' => 'bool'
     ];
 
@@ -70,8 +70,8 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'name' => null,
+        'id' => null,
         'primary' => null
     ];
 
@@ -102,8 +102,8 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'name' => 'name',
+        'id' => 'id',
         'primary' => 'primary'
     ];
 
@@ -113,8 +113,8 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'name' => 'setName',
+        'id' => 'setId',
         'primary' => 'setPrimary'
     ];
 
@@ -124,8 +124,8 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'name' => 'getName',
+        'id' => 'getId',
         'primary' => 'getPrimary'
     ];
 
@@ -186,8 +186,8 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['primary'] = $data['primary'] ?? null;
     }
 
@@ -200,11 +200,11 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['primary'] === null) {
             $invalidProperties[] = "'primary' can't be null";
@@ -223,30 +223,6 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -268,6 +244,30 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

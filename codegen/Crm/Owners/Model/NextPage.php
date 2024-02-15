@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Owners
+ * Crm Owners
  *
  * HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.
  *
@@ -57,8 +57,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'after' => 'string',
-        'link' => 'string'
+        'link' => 'string',
+        'after' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'after' => null,
-        'link' => null
+        'link' => null,
+        'after' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'after' => 'after',
-        'link' => 'link'
+        'link' => 'link',
+        'after' => 'after'
     ];
 
     /**
@@ -110,8 +110,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'after' => 'setAfter',
-        'link' => 'setLink'
+        'link' => 'setLink',
+        'after' => 'setAfter'
     ];
 
     /**
@@ -120,8 +120,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'after' => 'getAfter',
-        'link' => 'getLink'
+        'link' => 'getLink',
+        'after' => 'getAfter'
     ];
 
     /**
@@ -181,8 +181,8 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['after'] = $data['after'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
+        $this->container['after'] = $data['after'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets after
-     *
-     * @return string
-     */
-    public function getAfter()
-    {
-        return $this->container['after'];
-    }
-
-    /**
-     * Sets after
-     *
-     * @param string $after after
-     *
-     * @return self
-     */
-    public function setAfter($after)
-    {
-        $this->container['after'] = $after;
-
-        return $this;
-    }
-
-    /**
      * Gets link
      *
      * @return string|null
@@ -256,6 +232,30 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLink($link)
     {
         $this->container['link'] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Gets after
+     *
+     * @return string
+     */
+    public function getAfter()
+    {
+        return $this->container['after'];
+    }
+
+    /**
+     * Sets after
+     *
+     * @param string $after after
+     *
+     * @return self
+     */
+    public function setAfter($after)
+    {
+        $this->container['after'] = $after;
 
         return $this;
     }

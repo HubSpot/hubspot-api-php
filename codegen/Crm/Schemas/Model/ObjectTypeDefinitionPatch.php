@@ -58,12 +58,13 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
+        'secondary_display_properties' => 'string[]',
         'required_properties' => 'string[]',
         'searchable_properties' => 'string[]',
         'primary_display_property' => 'string',
-        'secondary_display_properties' => 'string[]',
-        'restorable' => 'bool'
+        'description' => 'string',
+        'restorable' => 'bool',
+        'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels'
     ];
 
     /**
@@ -74,12 +75,13 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'labels' => null,
+        'secondary_display_properties' => null,
         'required_properties' => null,
         'searchable_properties' => null,
         'primary_display_property' => null,
-        'secondary_display_properties' => null,
-        'restorable' => null
+        'description' => null,
+        'restorable' => null,
+        'labels' => null
     ];
 
     /**
@@ -109,12 +111,13 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'labels' => 'labels',
+        'secondary_display_properties' => 'secondaryDisplayProperties',
         'required_properties' => 'requiredProperties',
         'searchable_properties' => 'searchableProperties',
         'primary_display_property' => 'primaryDisplayProperty',
-        'secondary_display_properties' => 'secondaryDisplayProperties',
-        'restorable' => 'restorable'
+        'description' => 'description',
+        'restorable' => 'restorable',
+        'labels' => 'labels'
     ];
 
     /**
@@ -123,12 +126,13 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'labels' => 'setLabels',
+        'secondary_display_properties' => 'setSecondaryDisplayProperties',
         'required_properties' => 'setRequiredProperties',
         'searchable_properties' => 'setSearchableProperties',
         'primary_display_property' => 'setPrimaryDisplayProperty',
-        'secondary_display_properties' => 'setSecondaryDisplayProperties',
-        'restorable' => 'setRestorable'
+        'description' => 'setDescription',
+        'restorable' => 'setRestorable',
+        'labels' => 'setLabels'
     ];
 
     /**
@@ -137,12 +141,13 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'labels' => 'getLabels',
+        'secondary_display_properties' => 'getSecondaryDisplayProperties',
         'required_properties' => 'getRequiredProperties',
         'searchable_properties' => 'getSearchableProperties',
         'primary_display_property' => 'getPrimaryDisplayProperty',
-        'secondary_display_properties' => 'getSecondaryDisplayProperties',
-        'restorable' => 'getRestorable'
+        'description' => 'getDescription',
+        'restorable' => 'getRestorable',
+        'labels' => 'getLabels'
     ];
 
     /**
@@ -202,12 +207,13 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['labels'] = $data['labels'] ?? null;
+        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
         $this->container['required_properties'] = $data['required_properties'] ?? null;
         $this->container['searchable_properties'] = $data['searchable_properties'] ?? null;
         $this->container['primary_display_property'] = $data['primary_display_property'] ?? null;
-        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['restorable'] = $data['restorable'] ?? null;
+        $this->container['labels'] = $data['labels'] ?? null;
     }
 
     /**
@@ -235,25 +241,25 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets labels
+     * Gets secondary_display_properties
      *
-     * @return \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels|null
+     * @return string[]|null
      */
-    public function getLabels()
+    public function getSecondaryDisplayProperties()
     {
-        return $this->container['labels'];
+        return $this->container['secondary_display_properties'];
     }
 
     /**
-     * Sets labels
+     * Sets secondary_display_properties
      *
-     * @param \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels|null $labels labels
+     * @param string[]|null $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @return self
      */
-    public function setLabels($labels)
+    public function setSecondaryDisplayProperties($secondary_display_properties)
     {
-        $this->container['labels'] = $labels;
+        $this->container['secondary_display_properties'] = $secondary_display_properties;
 
         return $this;
     }
@@ -331,25 +337,25 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets secondary_display_properties
+     * Gets description
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getSecondaryDisplayProperties()
+    public function getDescription()
     {
-        return $this->container['secondary_display_properties'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets secondary_display_properties
+     * Sets description
      *
-     * @param string[]|null $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setSecondaryDisplayProperties($secondary_display_properties)
+    public function setDescription($description)
     {
-        $this->container['secondary_display_properties'] = $secondary_display_properties;
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -374,6 +380,30 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
     public function setRestorable($restorable)
     {
         $this->container['restorable'] = $restorable;
+
+        return $this;
+    }
+
+    /**
+     * Gets labels
+     *
+     * @return \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels|null
+     */
+    public function getLabels()
+    {
+        return $this->container['labels'];
+    }
+
+    /**
+     * Sets labels
+     *
+     * @param \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels|null $labels labels
+     *
+     * @return self
+     */
+    public function setLabels($labels)
+    {
+        $this->container['labels'] = $labels;
 
         return $this;
     }

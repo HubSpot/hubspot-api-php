@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -58,9 +58,9 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
         'display_order' => 'int',
-        'stages' => '\HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput[]'
+        'stages' => '\HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput[]',
+        'label' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
         'display_order' => 'int32',
-        'stages' => null
+        'stages' => null,
+        'label' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
         'display_order' => 'displayOrder',
-        'stages' => 'stages'
+        'stages' => 'stages',
+        'label' => 'label'
     ];
 
     /**
@@ -114,9 +114,9 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
         'display_order' => 'setDisplayOrder',
-        'stages' => 'setStages'
+        'stages' => 'setStages',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -125,9 +125,9 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
         'display_order' => 'getDisplayOrder',
-        'stages' => 'getStages'
+        'stages' => 'getStages',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -187,9 +187,9 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['display_order'] = $data['display_order'] ?? null;
         $this->container['stages'] = $data['stages'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -201,14 +201,14 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['display_order'] === null) {
             $invalidProperties[] = "'display_order' can't be null";
         }
         if ($this->container['stages'] === null) {
             $invalidProperties[] = "'stages' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,30 +224,6 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label A unique label used to organize pipelines in HubSpot's UI
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
 
     /**
      * Gets display_order
@@ -293,6 +269,30 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStages($stages)
     {
         $this->container['stages'] = $stages;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label A unique label used to organize pipelines in HubSpot's UI
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

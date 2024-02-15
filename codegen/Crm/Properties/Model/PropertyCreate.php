@@ -57,20 +57,20 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'hidden' => 'bool',
+        'display_order' => 'int',
+        'description' => 'string',
         'label' => 'string',
         'type' => 'string',
-        'field_type' => 'string',
-        'group_name' => 'string',
-        'description' => 'string',
-        'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
-        'display_order' => 'int',
-        'has_unique_value' => 'bool',
-        'hidden' => 'bool',
         'form_field' => 'bool',
-        'external_options' => 'bool',
+        'group_name' => 'string',
         'referenced_object_type' => 'string',
-        'calculation_formula' => 'string'
+        'name' => 'string',
+        'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
+        'calculation_formula' => 'string',
+        'has_unique_value' => 'bool',
+        'field_type' => 'string',
+        'external_options' => 'bool'
     ];
 
     /**
@@ -81,20 +81,20 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'hidden' => null,
+        'display_order' => 'int32',
+        'description' => null,
         'label' => null,
         'type' => null,
-        'field_type' => null,
-        'group_name' => null,
-        'description' => null,
-        'options' => null,
-        'display_order' => 'int32',
-        'has_unique_value' => null,
-        'hidden' => null,
         'form_field' => null,
-        'external_options' => null,
+        'group_name' => null,
         'referenced_object_type' => null,
-        'calculation_formula' => null
+        'name' => null,
+        'options' => null,
+        'calculation_formula' => null,
+        'has_unique_value' => null,
+        'field_type' => null,
+        'external_options' => null
     ];
 
     /**
@@ -124,20 +124,20 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'hidden' => 'hidden',
+        'display_order' => 'displayOrder',
+        'description' => 'description',
         'label' => 'label',
         'type' => 'type',
-        'field_type' => 'fieldType',
-        'group_name' => 'groupName',
-        'description' => 'description',
-        'options' => 'options',
-        'display_order' => 'displayOrder',
-        'has_unique_value' => 'hasUniqueValue',
-        'hidden' => 'hidden',
         'form_field' => 'formField',
-        'external_options' => 'externalOptions',
+        'group_name' => 'groupName',
         'referenced_object_type' => 'referencedObjectType',
-        'calculation_formula' => 'calculationFormula'
+        'name' => 'name',
+        'options' => 'options',
+        'calculation_formula' => 'calculationFormula',
+        'has_unique_value' => 'hasUniqueValue',
+        'field_type' => 'fieldType',
+        'external_options' => 'externalOptions'
     ];
 
     /**
@@ -146,20 +146,20 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'hidden' => 'setHidden',
+        'display_order' => 'setDisplayOrder',
+        'description' => 'setDescription',
         'label' => 'setLabel',
         'type' => 'setType',
-        'field_type' => 'setFieldType',
-        'group_name' => 'setGroupName',
-        'description' => 'setDescription',
-        'options' => 'setOptions',
-        'display_order' => 'setDisplayOrder',
-        'has_unique_value' => 'setHasUniqueValue',
-        'hidden' => 'setHidden',
         'form_field' => 'setFormField',
-        'external_options' => 'setExternalOptions',
+        'group_name' => 'setGroupName',
         'referenced_object_type' => 'setReferencedObjectType',
-        'calculation_formula' => 'setCalculationFormula'
+        'name' => 'setName',
+        'options' => 'setOptions',
+        'calculation_formula' => 'setCalculationFormula',
+        'has_unique_value' => 'setHasUniqueValue',
+        'field_type' => 'setFieldType',
+        'external_options' => 'setExternalOptions'
     ];
 
     /**
@@ -168,20 +168,20 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'hidden' => 'getHidden',
+        'display_order' => 'getDisplayOrder',
+        'description' => 'getDescription',
         'label' => 'getLabel',
         'type' => 'getType',
-        'field_type' => 'getFieldType',
-        'group_name' => 'getGroupName',
-        'description' => 'getDescription',
-        'options' => 'getOptions',
-        'display_order' => 'getDisplayOrder',
-        'has_unique_value' => 'getHasUniqueValue',
-        'hidden' => 'getHidden',
         'form_field' => 'getFormField',
-        'external_options' => 'getExternalOptions',
+        'group_name' => 'getGroupName',
         'referenced_object_type' => 'getReferencedObjectType',
-        'calculation_formula' => 'getCalculationFormula'
+        'name' => 'getName',
+        'options' => 'getOptions',
+        'calculation_formula' => 'getCalculationFormula',
+        'has_unique_value' => 'getHasUniqueValue',
+        'field_type' => 'getFieldType',
+        'external_options' => 'getExternalOptions'
     ];
 
     /**
@@ -295,20 +295,20 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['hidden'] = $data['hidden'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['field_type'] = $data['field_type'] ?? null;
-        $this->container['group_name'] = $data['group_name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
-        $this->container['hidden'] = $data['hidden'] ?? null;
         $this->container['form_field'] = $data['form_field'] ?? null;
-        $this->container['external_options'] = $data['external_options'] ?? null;
+        $this->container['group_name'] = $data['group_name'] ?? null;
         $this->container['referenced_object_type'] = $data['referenced_object_type'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
+        $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
+        $this->container['field_type'] = $data['field_type'] ?? null;
+        $this->container['external_options'] = $data['external_options'] ?? null;
     }
 
     /**
@@ -320,9 +320,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
         }
@@ -338,6 +335,12 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['group_name'] === null) {
+            $invalidProperties[] = "'group_name' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         if ($this->container['field_type'] === null) {
             $invalidProperties[] = "'field_type' can't be null";
         }
@@ -350,9 +353,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['group_name'] === null) {
-            $invalidProperties[] = "'group_name' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -369,25 +369,73 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets hidden
      *
-     * @return string
+     * @return bool|null
      */
-    public function getName()
+    public function getHidden()
     {
-        return $this->container['name'];
+        return $this->container['hidden'];
     }
 
     /**
-     * Sets name
+     * Sets hidden
      *
-     * @param string $name The internal property name, which must be used when referencing the property via the API.
+     * @param bool|null $hidden If true, the property won't be visible and can't be used in HubSpot.
      *
      * @return self
      */
-    public function setName($name)
+    public function setHidden($hidden)
     {
-        $this->container['name'] = $name;
+        $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_order
+     *
+     * @return int|null
+     */
+    public function getDisplayOrder()
+    {
+        return $this->container['display_order'];
+    }
+
+    /**
+     * Sets display_order
+     *
+     * @param int|null $display_order Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
+     *
+     * @return self
+     */
+    public function setDisplayOrder($display_order)
+    {
+        $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -451,6 +499,174 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets form_field
+     *
+     * @return bool|null
+     */
+    public function getFormField()
+    {
+        return $this->container['form_field'];
+    }
+
+    /**
+     * Sets form_field
+     *
+     * @param bool|null $form_field Whether or not the property can be used in a HubSpot form.
+     *
+     * @return self
+     */
+    public function setFormField($form_field)
+    {
+        $this->container['form_field'] = $form_field;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_name
+     *
+     * @return string
+     */
+    public function getGroupName()
+    {
+        return $this->container['group_name'];
+    }
+
+    /**
+     * Sets group_name
+     *
+     * @param string $group_name The name of the property group the property belongs to.
+     *
+     * @return self
+     */
+    public function setGroupName($group_name)
+    {
+        $this->container['group_name'] = $group_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets referenced_object_type
+     *
+     * @return string|null
+     */
+    public function getReferencedObjectType()
+    {
+        return $this->container['referenced_object_type'];
+    }
+
+    /**
+     * Sets referenced_object_type
+     *
+     * @param string|null $referenced_object_type Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.
+     *
+     * @return self
+     */
+    public function setReferencedObjectType($referenced_object_type)
+    {
+        $this->container['referenced_object_type'] = $referenced_object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The internal property name, which must be used when referencing the property via the API.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null $options A list of valid options for the property. This field is required for enumerated properties.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets calculation_formula
+     *
+     * @return string|null
+     */
+    public function getCalculationFormula()
+    {
+        return $this->container['calculation_formula'];
+    }
+
+    /**
+     * Sets calculation_formula
+     *
+     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
+     *
+     * @return self
+     */
+    public function setCalculationFormula($calculation_formula)
+    {
+        $this->container['calculation_formula'] = $calculation_formula;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_unique_value
+     *
+     * @return bool|null
+     */
+    public function getHasUniqueValue()
+    {
+        return $this->container['has_unique_value'];
+    }
+
+    /**
+     * Sets has_unique_value
+     *
+     * @param bool|null $has_unique_value Whether or not the property's value must be unique. Once set, this can't be changed.
+     *
+     * @return self
+     */
+    public function setHasUniqueValue($has_unique_value)
+    {
+        $this->container['has_unique_value'] = $has_unique_value;
+
+        return $this;
+    }
+
+    /**
      * Gets field_type
      *
      * @return string
@@ -485,174 +701,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets group_name
-     *
-     * @return string
-     */
-    public function getGroupName()
-    {
-        return $this->container['group_name'];
-    }
-
-    /**
-     * Sets group_name
-     *
-     * @param string $group_name The name of the property group the property belongs to.
-     *
-     * @return self
-     */
-    public function setGroupName($group_name)
-    {
-        $this->container['group_name'] = $group_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null $options A list of valid options for the property. This field is required for enumerated properties.
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_order
-     *
-     * @return int|null
-     */
-    public function getDisplayOrder()
-    {
-        return $this->container['display_order'];
-    }
-
-    /**
-     * Sets display_order
-     *
-     * @param int|null $display_order Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
-     *
-     * @return self
-     */
-    public function setDisplayOrder($display_order)
-    {
-        $this->container['display_order'] = $display_order;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_unique_value
-     *
-     * @return bool|null
-     */
-    public function getHasUniqueValue()
-    {
-        return $this->container['has_unique_value'];
-    }
-
-    /**
-     * Sets has_unique_value
-     *
-     * @param bool|null $has_unique_value Whether or not the property's value must be unique. Once set, this can't be changed.
-     *
-     * @return self
-     */
-    public function setHasUniqueValue($has_unique_value)
-    {
-        $this->container['has_unique_value'] = $has_unique_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets hidden
-     *
-     * @return bool|null
-     */
-    public function getHidden()
-    {
-        return $this->container['hidden'];
-    }
-
-    /**
-     * Sets hidden
-     *
-     * @param bool|null $hidden If true, the property won't be visible and can't be used in HubSpot.
-     *
-     * @return self
-     */
-    public function setHidden($hidden)
-    {
-        $this->container['hidden'] = $hidden;
-
-        return $this;
-    }
-
-    /**
-     * Gets form_field
-     *
-     * @return bool|null
-     */
-    public function getFormField()
-    {
-        return $this->container['form_field'];
-    }
-
-    /**
-     * Sets form_field
-     *
-     * @param bool|null $form_field Whether or not the property can be used in a HubSpot form.
-     *
-     * @return self
-     */
-    public function setFormField($form_field)
-    {
-        $this->container['form_field'] = $form_field;
-
-        return $this;
-    }
-
-    /**
      * Gets external_options
      *
      * @return bool|null
@@ -672,54 +720,6 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExternalOptions($external_options)
     {
         $this->container['external_options'] = $external_options;
-
-        return $this;
-    }
-
-    /**
-     * Gets referenced_object_type
-     *
-     * @return string|null
-     */
-    public function getReferencedObjectType()
-    {
-        return $this->container['referenced_object_type'];
-    }
-
-    /**
-     * Sets referenced_object_type
-     *
-     * @param string|null $referenced_object_type Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.
-     *
-     * @return self
-     */
-    public function setReferencedObjectType($referenced_object_type)
-    {
-        $this->container['referenced_object_type'] = $referenced_object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_formula
-     *
-     * @return string|null
-     */
-    public function getCalculationFormula()
-    {
-        return $this->container['calculation_formula'];
-    }
-
-    /**
-     * Sets calculation_formula
-     *
-     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
-     *
-     * @return self
-     */
-    public function setCalculationFormula($calculation_formula)
-    {
-        $this->container['calculation_formula'] = $calculation_formula;
 
         return $this;
     }

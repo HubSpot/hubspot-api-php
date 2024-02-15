@@ -58,10 +58,10 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'archived' => 'bool',
         'name' => 'string',
-        'label' => 'string',
         'display_order' => 'int',
-        'archived' => 'bool'
+        'label' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'archived' => null,
         'name' => null,
-        'label' => null,
         'display_order' => 'int32',
-        'archived' => null
+        'label' => null
     ];
 
     /**
@@ -105,10 +105,10 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'archived' => 'archived',
         'name' => 'name',
-        'label' => 'label',
         'display_order' => 'displayOrder',
-        'archived' => 'archived'
+        'label' => 'label'
     ];
 
     /**
@@ -117,10 +117,10 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'archived' => 'setArchived',
         'name' => 'setName',
-        'label' => 'setLabel',
         'display_order' => 'setDisplayOrder',
-        'archived' => 'setArchived'
+        'label' => 'setLabel'
     ];
 
     /**
@@ -129,10 +129,10 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'archived' => 'getArchived',
         'name' => 'getName',
-        'label' => 'getLabel',
         'display_order' => 'getDisplayOrder',
-        'archived' => 'getArchived'
+        'label' => 'getLabel'
     ];
 
     /**
@@ -192,10 +192,10 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -207,17 +207,17 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
         }
         if ($this->container['display_order'] === null) {
             $invalidProperties[] = "'display_order' can't be null";
         }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -233,6 +233,30 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets archived
+     *
+     * @return bool
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool $archived archived
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -254,30 +278,6 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label A human-readable label that will be shown in HubSpot.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
 
         return $this;
     }
@@ -307,25 +307,25 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets archived
+     * Gets label
      *
-     * @return bool
+     * @return string
      */
-    public function getArchived()
+    public function getLabel()
     {
-        return $this->container['archived'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets archived
+     * Sets label
      *
-     * @param bool $archived archived
+     * @param string $label A human-readable label that will be shown in HubSpot.
      *
      * @return self
      */
-    public function setArchived($archived)
+    public function setLabel($label)
     {
-        $this->container['archived'] = $archived;
+        $this->container['label'] = $label;
 
         return $this;
     }

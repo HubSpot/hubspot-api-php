@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -58,14 +58,15 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'display_order' => 'int',
-        'metadata' => 'array<string,string>',
-        'id' => 'string',
         'created_at' => '\DateTime',
         'archived_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'archived' => 'bool'
+        'archived' => 'bool',
+        'metadata' => 'array<string,string>',
+        'display_order' => 'int',
+        'write_permissions' => 'string',
+        'label' => 'string',
+        'id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -76,14 +77,15 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'display_order' => 'int32',
-        'metadata' => null,
-        'id' => null,
         'created_at' => 'date-time',
         'archived_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'archived' => null
+        'archived' => null,
+        'metadata' => null,
+        'display_order' => 'int32',
+        'write_permissions' => null,
+        'label' => null,
+        'id' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -113,14 +115,15 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'display_order' => 'displayOrder',
-        'metadata' => 'metadata',
-        'id' => 'id',
         'created_at' => 'createdAt',
         'archived_at' => 'archivedAt',
-        'updated_at' => 'updatedAt',
-        'archived' => 'archived'
+        'archived' => 'archived',
+        'metadata' => 'metadata',
+        'display_order' => 'displayOrder',
+        'write_permissions' => 'writePermissions',
+        'label' => 'label',
+        'id' => 'id',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -129,14 +132,15 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'display_order' => 'setDisplayOrder',
-        'metadata' => 'setMetadata',
-        'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'archived_at' => 'setArchivedAt',
-        'updated_at' => 'setUpdatedAt',
-        'archived' => 'setArchived'
+        'archived' => 'setArchived',
+        'metadata' => 'setMetadata',
+        'display_order' => 'setDisplayOrder',
+        'write_permissions' => 'setWritePermissions',
+        'label' => 'setLabel',
+        'id' => 'setId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -145,14 +149,15 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'display_order' => 'getDisplayOrder',
-        'metadata' => 'getMetadata',
-        'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'archived_at' => 'getArchivedAt',
-        'updated_at' => 'getUpdatedAt',
-        'archived' => 'getArchived'
+        'archived' => 'getArchived',
+        'metadata' => 'getMetadata',
+        'display_order' => 'getDisplayOrder',
+        'write_permissions' => 'getWritePermissions',
+        'label' => 'getLabel',
+        'id' => 'getId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -196,6 +201,23 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const WRITE_PERMISSIONS_CRM_PERMISSIONS_ENFORCEMENT = 'CRM_PERMISSIONS_ENFORCEMENT';
+    public const WRITE_PERMISSIONS_READ_ONLY = 'READ_ONLY';
+    public const WRITE_PERMISSIONS_INTERNAL_ONLY = 'INTERNAL_ONLY';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getWritePermissionsAllowableValues()
+    {
+        return [
+            self::WRITE_PERMISSIONS_CRM_PERMISSIONS_ENFORCEMENT,
+            self::WRITE_PERMISSIONS_READ_ONLY,
+            self::WRITE_PERMISSIONS_INTERNAL_ONLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -212,14 +234,15 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['write_permissions'] = $data['write_permissions'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -231,26 +254,35 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['display_order'] === null) {
-            $invalidProperties[] = "'display_order' can't be null";
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
         }
         if ($this->container['metadata'] === null) {
             $invalidProperties[] = "'metadata' can't be null";
         }
+        if ($this->container['display_order'] === null) {
+            $invalidProperties[] = "'display_order' can't be null";
+        }
+        $allowedValues = $this->getWritePermissionsAllowableValues();
+        if (!is_null($this->container['write_permissions']) && !in_array($this->container['write_permissions'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'write_permissions', must be one of '%s'",
+                $this->container['write_permissions'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
         }
         return $invalidProperties;
     }
@@ -266,102 +298,6 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_order
-     *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->container['display_order'];
-    }
-
-    /**
-     * Sets display_order
-     *
-     * @param int $display_order The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
-     *
-     * @return self
-     */
-    public function setDisplayOrder($display_order)
-    {
-        $this->container['display_order'] = $display_order;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return array<string,string>
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param array<string,string> $metadata A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id A unique identifier generated by HubSpot that can be used to retrieve and update the pipeline stage.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets created_at
@@ -412,30 +348,6 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at The date the pipeline stage was last updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
      * Gets archived
      *
      * @return bool
@@ -455,6 +367,160 @@ class PipelineStage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setArchived($archived)
     {
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string> $metadata A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_order
+     *
+     * @return int
+     */
+    public function getDisplayOrder()
+    {
+        return $this->container['display_order'];
+    }
+
+    /**
+     * Sets display_order
+     *
+     * @param int $display_order The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     *
+     * @return self
+     */
+    public function setDisplayOrder($display_order)
+    {
+        $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets write_permissions
+     *
+     * @return string|null
+     */
+    public function getWritePermissions()
+    {
+        return $this->container['write_permissions'];
+    }
+
+    /**
+     * Sets write_permissions
+     *
+     * @param string|null $write_permissions write_permissions
+     *
+     * @return self
+     */
+    public function setWritePermissions($write_permissions)
+    {
+        $allowedValues = $this->getWritePermissionsAllowableValues();
+        if (!is_null($write_permissions) && !in_array($write_permissions, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'write_permissions', must be one of '%s'",
+                    $write_permissions,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['write_permissions'] = $write_permissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id A unique identifier generated by HubSpot that can be used to retrieve and update the pipeline stage.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at The date the pipeline stage was last updated.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

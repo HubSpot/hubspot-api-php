@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -58,11 +58,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'header_template' => 'string',
         'detail_template' => 'string',
+        'name' => 'string',
         'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]',
-        'id' => 'string'
+        'id' => 'string',
+        'header_template' => 'string'
     ];
 
     /**
@@ -73,11 +73,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'header_template' => null,
         'detail_template' => null,
+        'name' => null,
         'tokens' => null,
-        'id' => null
+        'id' => null,
+        'header_template' => null
     ];
 
     /**
@@ -107,11 +107,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'header_template' => 'headerTemplate',
         'detail_template' => 'detailTemplate',
+        'name' => 'name',
         'tokens' => 'tokens',
-        'id' => 'id'
+        'id' => 'id',
+        'header_template' => 'headerTemplate'
     ];
 
     /**
@@ -120,11 +120,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'header_template' => 'setHeaderTemplate',
         'detail_template' => 'setDetailTemplate',
+        'name' => 'setName',
         'tokens' => 'setTokens',
-        'id' => 'setId'
+        'id' => 'setId',
+        'header_template' => 'setHeaderTemplate'
     ];
 
     /**
@@ -133,11 +133,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'header_template' => 'getHeaderTemplate',
         'detail_template' => 'getDetailTemplate',
+        'name' => 'getName',
         'tokens' => 'getTokens',
-        'id' => 'getId'
+        'id' => 'getId',
+        'header_template' => 'getHeaderTemplate'
     ];
 
     /**
@@ -197,11 +197,11 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['header_template'] = $data['header_template'] ?? null;
         $this->container['detail_template'] = $data['detail_template'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['tokens'] = $data['tokens'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['header_template'] = $data['header_template'] ?? null;
     }
 
     /**
@@ -238,54 +238,6 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The template name.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets header_template
-     *
-     * @return string|null
-     */
-    public function getHeaderTemplate()
-    {
-        return $this->container['header_template'];
-    }
-
-    /**
-     * Sets header_template
-     *
-     * @param string|null $header_template This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.
-     *
-     * @return self
-     */
-    public function setHeaderTemplate($header_template)
-    {
-        $this->container['header_template'] = $header_template;
-
-        return $this;
-    }
-
-    /**
      * Gets detail_template
      *
      * @return string|null
@@ -305,6 +257,30 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
     public function setDetailTemplate($detail_template)
     {
         $this->container['detail_template'] = $detail_template;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The template name.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -353,6 +329,30 @@ class TimelineEventTemplateUpdateRequest implements ModelInterface, ArrayAccess,
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets header_template
+     *
+     * @return string|null
+     */
+    public function getHeaderTemplate()
+    {
+        return $this->container['header_template'];
+    }
+
+    /**
+     * Sets header_template
+     *
+     * @param string|null $header_template This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.
+     *
+     * @return self
+     */
+    public function setHeaderTemplate($header_template)
+    {
+        $this->container['header_template'] = $header_template;
 
         return $this;
     }

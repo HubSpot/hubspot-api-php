@@ -57,30 +57,30 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'updated_at' => '\DateTime',
-        'created_at' => '\DateTime',
-        'archived_at' => '\DateTime',
-        'name' => 'string',
+        'created_user_id' => 'string',
+        'hidden' => 'bool',
+        'modification_metadata' => '\HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata',
+        'display_order' => 'int',
+        'description' => 'string',
+        'show_currency_symbol' => 'bool',
         'label' => 'string',
         'type' => 'string',
-        'field_type' => 'string',
-        'description' => 'string',
+        'hubspot_defined' => 'bool',
+        'form_field' => 'bool',
+        'created_at' => '\DateTime',
+        'archived_at' => '\DateTime',
+        'archived' => 'bool',
         'group_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Properties\Model\Option[]',
-        'created_user_id' => 'string',
-        'updated_user_id' => 'string',
         'referenced_object_type' => 'string',
-        'display_order' => 'int',
+        'name' => 'string',
+        'options' => '\HubSpot\Client\Crm\Properties\Model\Option[]',
+        'calculation_formula' => 'string',
+        'has_unique_value' => 'bool',
+        'field_type' => 'string',
+        'updated_user_id' => 'string',
         'calculated' => 'bool',
         'external_options' => 'bool',
-        'archived' => 'bool',
-        'has_unique_value' => 'bool',
-        'hidden' => 'bool',
-        'hubspot_defined' => 'bool',
-        'show_currency_symbol' => 'bool',
-        'modification_metadata' => '\HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata',
-        'form_field' => 'bool',
-        'calculation_formula' => 'string'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -91,30 +91,30 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'updated_at' => 'date-time',
-        'created_at' => 'date-time',
-        'archived_at' => 'date-time',
-        'name' => null,
+        'created_user_id' => null,
+        'hidden' => null,
+        'modification_metadata' => null,
+        'display_order' => 'int32',
+        'description' => null,
+        'show_currency_symbol' => null,
         'label' => null,
         'type' => null,
-        'field_type' => null,
-        'description' => null,
+        'hubspot_defined' => null,
+        'form_field' => null,
+        'created_at' => 'date-time',
+        'archived_at' => 'date-time',
+        'archived' => null,
         'group_name' => null,
-        'options' => null,
-        'created_user_id' => null,
-        'updated_user_id' => null,
         'referenced_object_type' => null,
-        'display_order' => 'int32',
+        'name' => null,
+        'options' => null,
+        'calculation_formula' => null,
+        'has_unique_value' => null,
+        'field_type' => null,
+        'updated_user_id' => null,
         'calculated' => null,
         'external_options' => null,
-        'archived' => null,
-        'has_unique_value' => null,
-        'hidden' => null,
-        'hubspot_defined' => null,
-        'show_currency_symbol' => null,
-        'modification_metadata' => null,
-        'form_field' => null,
-        'calculation_formula' => null
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -144,30 +144,30 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'updated_at' => 'updatedAt',
-        'created_at' => 'createdAt',
-        'archived_at' => 'archivedAt',
-        'name' => 'name',
+        'created_user_id' => 'createdUserId',
+        'hidden' => 'hidden',
+        'modification_metadata' => 'modificationMetadata',
+        'display_order' => 'displayOrder',
+        'description' => 'description',
+        'show_currency_symbol' => 'showCurrencySymbol',
         'label' => 'label',
         'type' => 'type',
-        'field_type' => 'fieldType',
-        'description' => 'description',
+        'hubspot_defined' => 'hubspotDefined',
+        'form_field' => 'formField',
+        'created_at' => 'createdAt',
+        'archived_at' => 'archivedAt',
+        'archived' => 'archived',
         'group_name' => 'groupName',
-        'options' => 'options',
-        'created_user_id' => 'createdUserId',
-        'updated_user_id' => 'updatedUserId',
         'referenced_object_type' => 'referencedObjectType',
-        'display_order' => 'displayOrder',
+        'name' => 'name',
+        'options' => 'options',
+        'calculation_formula' => 'calculationFormula',
+        'has_unique_value' => 'hasUniqueValue',
+        'field_type' => 'fieldType',
+        'updated_user_id' => 'updatedUserId',
         'calculated' => 'calculated',
         'external_options' => 'externalOptions',
-        'archived' => 'archived',
-        'has_unique_value' => 'hasUniqueValue',
-        'hidden' => 'hidden',
-        'hubspot_defined' => 'hubspotDefined',
-        'show_currency_symbol' => 'showCurrencySymbol',
-        'modification_metadata' => 'modificationMetadata',
-        'form_field' => 'formField',
-        'calculation_formula' => 'calculationFormula'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -176,30 +176,30 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'updated_at' => 'setUpdatedAt',
-        'created_at' => 'setCreatedAt',
-        'archived_at' => 'setArchivedAt',
-        'name' => 'setName',
+        'created_user_id' => 'setCreatedUserId',
+        'hidden' => 'setHidden',
+        'modification_metadata' => 'setModificationMetadata',
+        'display_order' => 'setDisplayOrder',
+        'description' => 'setDescription',
+        'show_currency_symbol' => 'setShowCurrencySymbol',
         'label' => 'setLabel',
         'type' => 'setType',
-        'field_type' => 'setFieldType',
-        'description' => 'setDescription',
+        'hubspot_defined' => 'setHubspotDefined',
+        'form_field' => 'setFormField',
+        'created_at' => 'setCreatedAt',
+        'archived_at' => 'setArchivedAt',
+        'archived' => 'setArchived',
         'group_name' => 'setGroupName',
-        'options' => 'setOptions',
-        'created_user_id' => 'setCreatedUserId',
-        'updated_user_id' => 'setUpdatedUserId',
         'referenced_object_type' => 'setReferencedObjectType',
-        'display_order' => 'setDisplayOrder',
+        'name' => 'setName',
+        'options' => 'setOptions',
+        'calculation_formula' => 'setCalculationFormula',
+        'has_unique_value' => 'setHasUniqueValue',
+        'field_type' => 'setFieldType',
+        'updated_user_id' => 'setUpdatedUserId',
         'calculated' => 'setCalculated',
         'external_options' => 'setExternalOptions',
-        'archived' => 'setArchived',
-        'has_unique_value' => 'setHasUniqueValue',
-        'hidden' => 'setHidden',
-        'hubspot_defined' => 'setHubspotDefined',
-        'show_currency_symbol' => 'setShowCurrencySymbol',
-        'modification_metadata' => 'setModificationMetadata',
-        'form_field' => 'setFormField',
-        'calculation_formula' => 'setCalculationFormula'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -208,30 +208,30 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'updated_at' => 'getUpdatedAt',
-        'created_at' => 'getCreatedAt',
-        'archived_at' => 'getArchivedAt',
-        'name' => 'getName',
+        'created_user_id' => 'getCreatedUserId',
+        'hidden' => 'getHidden',
+        'modification_metadata' => 'getModificationMetadata',
+        'display_order' => 'getDisplayOrder',
+        'description' => 'getDescription',
+        'show_currency_symbol' => 'getShowCurrencySymbol',
         'label' => 'getLabel',
         'type' => 'getType',
-        'field_type' => 'getFieldType',
-        'description' => 'getDescription',
+        'hubspot_defined' => 'getHubspotDefined',
+        'form_field' => 'getFormField',
+        'created_at' => 'getCreatedAt',
+        'archived_at' => 'getArchivedAt',
+        'archived' => 'getArchived',
         'group_name' => 'getGroupName',
-        'options' => 'getOptions',
-        'created_user_id' => 'getCreatedUserId',
-        'updated_user_id' => 'getUpdatedUserId',
         'referenced_object_type' => 'getReferencedObjectType',
-        'display_order' => 'getDisplayOrder',
+        'name' => 'getName',
+        'options' => 'getOptions',
+        'calculation_formula' => 'getCalculationFormula',
+        'has_unique_value' => 'getHasUniqueValue',
+        'field_type' => 'getFieldType',
+        'updated_user_id' => 'getUpdatedUserId',
         'calculated' => 'getCalculated',
         'external_options' => 'getExternalOptions',
-        'archived' => 'getArchived',
-        'has_unique_value' => 'getHasUniqueValue',
-        'hidden' => 'getHidden',
-        'hubspot_defined' => 'getHubspotDefined',
-        'show_currency_symbol' => 'getShowCurrencySymbol',
-        'modification_metadata' => 'getModificationMetadata',
-        'form_field' => 'getFormField',
-        'calculation_formula' => 'getCalculationFormula'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -291,30 +291,30 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['created_user_id'] = $data['created_user_id'] ?? null;
+        $this->container['hidden'] = $data['hidden'] ?? null;
+        $this->container['modification_metadata'] = $data['modification_metadata'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['show_currency_symbol'] = $data['show_currency_symbol'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['field_type'] = $data['field_type'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
+        $this->container['hubspot_defined'] = $data['hubspot_defined'] ?? null;
+        $this->container['form_field'] = $data['form_field'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['archived_at'] = $data['archived_at'] ?? null;
+        $this->container['archived'] = $data['archived'] ?? null;
         $this->container['group_name'] = $data['group_name'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
-        $this->container['created_user_id'] = $data['created_user_id'] ?? null;
-        $this->container['updated_user_id'] = $data['updated_user_id'] ?? null;
         $this->container['referenced_object_type'] = $data['referenced_object_type'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
+        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
+        $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
+        $this->container['field_type'] = $data['field_type'] ?? null;
+        $this->container['updated_user_id'] = $data['updated_user_id'] ?? null;
         $this->container['calculated'] = $data['calculated'] ?? null;
         $this->container['external_options'] = $data['external_options'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
-        $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
-        $this->container['hidden'] = $data['hidden'] ?? null;
-        $this->container['hubspot_defined'] = $data['hubspot_defined'] ?? null;
-        $this->container['show_currency_symbol'] = $data['show_currency_symbol'] ?? null;
-        $this->container['modification_metadata'] = $data['modification_metadata'] ?? null;
-        $this->container['form_field'] = $data['form_field'] ?? null;
-        $this->container['calculation_formula'] = $data['calculation_formula'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -326,8 +326,8 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
         }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
@@ -335,17 +335,17 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['field_type'] === null) {
-            $invalidProperties[] = "'field_type' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if ($this->container['group_name'] === null) {
             $invalidProperties[] = "'group_name' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         if ($this->container['options'] === null) {
             $invalidProperties[] = "'options' can't be null";
+        }
+        if ($this->container['field_type'] === null) {
+            $invalidProperties[] = "'field_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -363,97 +363,145 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets updated_at
+     * Gets created_user_id
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getUpdatedAt()
+    public function getCreatedUserId()
     {
-        return $this->container['updated_at'];
+        return $this->container['created_user_id'];
     }
 
     /**
-     * Sets updated_at
+     * Sets created_user_id
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param string|null $created_user_id The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setCreatedUserId($created_user_id)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['created_user_id'] = $created_user_id;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets hidden
      *
-     * @return \DateTime|null
+     * @return bool|null
      */
-    public function getCreatedAt()
+    public function getHidden()
     {
-        return $this->container['created_at'];
+        return $this->container['hidden'];
     }
 
     /**
-     * Sets created_at
+     * Sets hidden
      *
-     * @param \DateTime|null $created_at created_at
+     * @param bool|null $hidden Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setHidden($hidden)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['hidden'] = $hidden;
 
         return $this;
     }
 
     /**
-     * Gets archived_at
+     * Gets modification_metadata
      *
-     * @return \DateTime|null
+     * @return \HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata|null
      */
-    public function getArchivedAt()
+    public function getModificationMetadata()
     {
-        return $this->container['archived_at'];
+        return $this->container['modification_metadata'];
     }
 
     /**
-     * Sets archived_at
+     * Sets modification_metadata
      *
-     * @param \DateTime|null $archived_at When the property was archived.
+     * @param \HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata|null $modification_metadata modification_metadata
      *
      * @return self
      */
-    public function setArchivedAt($archived_at)
+    public function setModificationMetadata($modification_metadata)
     {
-        $this->container['archived_at'] = $archived_at;
+        $this->container['modification_metadata'] = $modification_metadata;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets display_order
+     *
+     * @return int|null
+     */
+    public function getDisplayOrder()
+    {
+        return $this->container['display_order'];
+    }
+
+    /**
+     * Sets display_order
+     *
+     * @param int|null $display_order Properties are shown in order, starting with the lowest positive integer value.
+     *
+     * @return self
+     */
+    public function setDisplayOrder($display_order)
+    {
+        $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
      *
      * @return string
      */
-    public function getName()
+    public function getDescription()
     {
-        return $this->container['name'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets name
+     * Sets description
      *
-     * @param string $name The internal property name, which must be used when referencing the property via the API.
+     * @param string $description A description of the property that will be shown as help text in HubSpot.
      *
      * @return self
      */
-    public function setName($name)
+    public function setDescription($description)
     {
-        $this->container['name'] = $name;
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_currency_symbol
+     *
+     * @return bool|null
+     */
+    public function getShowCurrencySymbol()
+    {
+        return $this->container['show_currency_symbol'];
+    }
+
+    /**
+     * Sets show_currency_symbol
+     *
+     * @param bool|null $show_currency_symbol Whether or not the property will display the currency symbol set in the account settings.
+     *
+     * @return self
+     */
+    public function setShowCurrencySymbol($show_currency_symbol)
+    {
+        $this->container['show_currency_symbol'] = $show_currency_symbol;
 
         return $this;
     }
@@ -507,49 +555,121 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets field_type
+     * Gets hubspot_defined
      *
-     * @return string
+     * @return bool|null
      */
-    public function getFieldType()
+    public function getHubspotDefined()
     {
-        return $this->container['field_type'];
+        return $this->container['hubspot_defined'];
     }
 
     /**
-     * Sets field_type
+     * Sets hubspot_defined
      *
-     * @param string $field_type Controls how the property appears in HubSpot.
+     * @param bool|null $hubspot_defined This will be true for default object properties built into HubSpot.
      *
      * @return self
      */
-    public function setFieldType($field_type)
+    public function setHubspotDefined($hubspot_defined)
     {
-        $this->container['field_type'] = $field_type;
+        $this->container['hubspot_defined'] = $hubspot_defined;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets form_field
      *
-     * @return string
+     * @return bool|null
      */
-    public function getDescription()
+    public function getFormField()
     {
-        return $this->container['description'];
+        return $this->container['form_field'];
     }
 
     /**
-     * Sets description
+     * Sets form_field
      *
-     * @param string $description A description of the property that will be shown as help text in HubSpot.
+     * @param bool|null $form_field Whether or not the property can be used in a HubSpot form.
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setFormField($form_field)
     {
-        $this->container['description'] = $description;
+        $this->container['form_field'] = $form_field;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at 
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return \DateTime|null
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param \DateTime|null $archived_at When the property was archived.
+     *
+     * @return self
+     */
+    public function setArchivedAt($archived_at)
+    {
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived Whether or not the property is archived.
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
 
         return $this;
     }
@@ -579,78 +699,6 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Properties\Model\Option[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Properties\Model\Option[] $options A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_user_id
-     *
-     * @return string|null
-     */
-    public function getCreatedUserId()
-    {
-        return $this->container['created_user_id'];
-    }
-
-    /**
-     * Sets created_user_id
-     *
-     * @param string|null $created_user_id The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.
-     *
-     * @return self
-     */
-    public function setCreatedUserId($created_user_id)
-    {
-        $this->container['created_user_id'] = $created_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_user_id
-     *
-     * @return string|null
-     */
-    public function getUpdatedUserId()
-    {
-        return $this->container['updated_user_id'];
-    }
-
-    /**
-     * Sets updated_user_id
-     *
-     * @param string|null $updated_user_id The internal user ID of the user who updated the property in HubSpot. This field may not exist if the property was updated outside of HubSpot.
-     *
-     * @return self
-     */
-    public function setUpdatedUserId($updated_user_id)
-    {
-        $this->container['updated_user_id'] = $updated_user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets referenced_object_type
      *
      * @return string|null
@@ -675,25 +723,145 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets display_order
+     * Gets name
      *
-     * @return int|null
+     * @return string
      */
-    public function getDisplayOrder()
+    public function getName()
     {
-        return $this->container['display_order'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets display_order
+     * Sets name
      *
-     * @param int|null $display_order Properties are shown in order, starting with the lowest positive integer value.
+     * @param string $name The internal property name, which must be used when referencing the property via the API.
      *
      * @return self
      */
-    public function setDisplayOrder($display_order)
+    public function setName($name)
     {
-        $this->container['display_order'] = $display_order;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Crm\Properties\Model\Option[]
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Crm\Properties\Model\Option[] $options A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets calculation_formula
+     *
+     * @return string|null
+     */
+    public function getCalculationFormula()
+    {
+        return $this->container['calculation_formula'];
+    }
+
+    /**
+     * Sets calculation_formula
+     *
+     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
+     *
+     * @return self
+     */
+    public function setCalculationFormula($calculation_formula)
+    {
+        $this->container['calculation_formula'] = $calculation_formula;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_unique_value
+     *
+     * @return bool|null
+     */
+    public function getHasUniqueValue()
+    {
+        return $this->container['has_unique_value'];
+    }
+
+    /**
+     * Sets has_unique_value
+     *
+     * @param bool|null $has_unique_value Whether or not the property's value must be unique. Once set, this can't be changed.
+     *
+     * @return self
+     */
+    public function setHasUniqueValue($has_unique_value)
+    {
+        $this->container['has_unique_value'] = $has_unique_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets field_type
+     *
+     * @return string
+     */
+    public function getFieldType()
+    {
+        return $this->container['field_type'];
+    }
+
+    /**
+     * Sets field_type
+     *
+     * @param string $field_type Controls how the property appears in HubSpot.
+     *
+     * @return self
+     */
+    public function setFieldType($field_type)
+    {
+        $this->container['field_type'] = $field_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_user_id
+     *
+     * @return string|null
+     */
+    public function getUpdatedUserId()
+    {
+        return $this->container['updated_user_id'];
+    }
+
+    /**
+     * Sets updated_user_id
+     *
+     * @param string|null $updated_user_id The internal user ID of the user who updated the property in HubSpot. This field may not exist if the property was updated outside of HubSpot.
+     *
+     * @return self
+     */
+    public function setUpdatedUserId($updated_user_id)
+    {
+        $this->container['updated_user_id'] = $updated_user_id;
 
         return $this;
     }
@@ -747,193 +915,25 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets archived
+     * Gets updated_at
      *
-     * @return bool|null
+     * @return \DateTime|null
      */
-    public function getArchived()
+    public function getUpdatedAt()
     {
-        return $this->container['archived'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets archived
+     * Sets updated_at
      *
-     * @param bool|null $archived Whether or not the property is archived.
+     * @param \DateTime|null $updated_at 
      *
      * @return self
      */
-    public function setArchived($archived)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_unique_value
-     *
-     * @return bool|null
-     */
-    public function getHasUniqueValue()
-    {
-        return $this->container['has_unique_value'];
-    }
-
-    /**
-     * Sets has_unique_value
-     *
-     * @param bool|null $has_unique_value Whether or not the property's value must be unique. Once set, this can't be changed.
-     *
-     * @return self
-     */
-    public function setHasUniqueValue($has_unique_value)
-    {
-        $this->container['has_unique_value'] = $has_unique_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets hidden
-     *
-     * @return bool|null
-     */
-    public function getHidden()
-    {
-        return $this->container['hidden'];
-    }
-
-    /**
-     * Sets hidden
-     *
-     * @param bool|null $hidden Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.
-     *
-     * @return self
-     */
-    public function setHidden($hidden)
-    {
-        $this->container['hidden'] = $hidden;
-
-        return $this;
-    }
-
-    /**
-     * Gets hubspot_defined
-     *
-     * @return bool|null
-     */
-    public function getHubspotDefined()
-    {
-        return $this->container['hubspot_defined'];
-    }
-
-    /**
-     * Sets hubspot_defined
-     *
-     * @param bool|null $hubspot_defined This will be true for default object properties built into HubSpot.
-     *
-     * @return self
-     */
-    public function setHubspotDefined($hubspot_defined)
-    {
-        $this->container['hubspot_defined'] = $hubspot_defined;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_currency_symbol
-     *
-     * @return bool|null
-     */
-    public function getShowCurrencySymbol()
-    {
-        return $this->container['show_currency_symbol'];
-    }
-
-    /**
-     * Sets show_currency_symbol
-     *
-     * @param bool|null $show_currency_symbol Whether or not the property will display the currency symbol set in the account settings.
-     *
-     * @return self
-     */
-    public function setShowCurrencySymbol($show_currency_symbol)
-    {
-        $this->container['show_currency_symbol'] = $show_currency_symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets modification_metadata
-     *
-     * @return \HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata|null
-     */
-    public function getModificationMetadata()
-    {
-        return $this->container['modification_metadata'];
-    }
-
-    /**
-     * Sets modification_metadata
-     *
-     * @param \HubSpot\Client\Crm\Properties\Model\PropertyModificationMetadata|null $modification_metadata modification_metadata
-     *
-     * @return self
-     */
-    public function setModificationMetadata($modification_metadata)
-    {
-        $this->container['modification_metadata'] = $modification_metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets form_field
-     *
-     * @return bool|null
-     */
-    public function getFormField()
-    {
-        return $this->container['form_field'];
-    }
-
-    /**
-     * Sets form_field
-     *
-     * @param bool|null $form_field Whether or not the property can be used in a HubSpot form.
-     *
-     * @return self
-     */
-    public function setFormField($form_field)
-    {
-        $this->container['form_field'] = $form_field;
-
-        return $this;
-    }
-
-    /**
-     * Gets calculation_formula
-     *
-     * @return string|null
-     */
-    public function getCalculationFormula()
-    {
-        return $this->container['calculation_formula'];
-    }
-
-    /**
-     * Sets calculation_formula
-     *
-     * @param string|null $calculation_formula Represents a formula that is used to compute a calculated property.
-     *
-     * @return self
-     */
-    public function setCalculationFormula($calculation_formula)
-    {
-        $this->container['calculation_formula'] = $calculation_formula;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

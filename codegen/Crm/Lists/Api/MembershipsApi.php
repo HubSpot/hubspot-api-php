@@ -1021,244 +1021,6 @@ class MembershipsApi
     }
 
     /**
-     * Operation deleteAll
-     *
-     * Delete All Records from a List
-     *
-     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function deleteAll($list_id)
-    {
-        $this->deleteAllWithHttpInfo($list_id);
-    }
-
-    /**
-     * Operation deleteAllWithHttpInfo
-     *
-     * Delete All Records from a List
-     *
-     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function deleteAllWithHttpInfo($list_id)
-    {
-        $request = $this->deleteAllRequest($list_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation deleteAllAsync
-     *
-     * Delete All Records from a List
-     *
-     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteAllAsync($list_id)
-    {
-        return $this->deleteAllAsyncWithHttpInfo($list_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deleteAllAsyncWithHttpInfo
-     *
-     * Delete All Records from a List
-     *
-     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteAllAsyncWithHttpInfo($list_id)
-    {
-        $returnType = '';
-        $request = $this->deleteAllRequest($list_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'deleteAll'
-     *
-     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function deleteAllRequest($list_id)
-    {
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling deleteAll'
-            );
-        }
-
-        $resourcePath = '/crm/v3/lists/{listId}/memberships';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getPage
      *
      * Fetch List Memberships Ordered by ID
@@ -1925,6 +1687,244 @@ class MembershipsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeAll
+     *
+     * Delete All Records from a List
+     *
+     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeAll($list_id)
+    {
+        $this->removeAllWithHttpInfo($list_id);
+    }
+
+    /**
+     * Operation removeAllWithHttpInfo
+     *
+     * Delete All Records from a List
+     *
+     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAllWithHttpInfo($list_id)
+    {
+        $request = $this->removeAllRequest($list_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAllAsync
+     *
+     * Delete All Records from a List
+     *
+     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAllAsync($list_id)
+    {
+        return $this->removeAllAsyncWithHttpInfo($list_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAllAsyncWithHttpInfo
+     *
+     * Delete All Records from a List
+     *
+     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAllAsyncWithHttpInfo($list_id)
+    {
+        $returnType = '';
+        $request = $this->removeAllRequest($list_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAll'
+     *
+     * @param  int $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAllRequest($list_id)
+    {
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling removeAll'
+            );
+        }
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
