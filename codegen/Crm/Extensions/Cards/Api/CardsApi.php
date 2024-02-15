@@ -10,7 +10,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -120,16 +120,16 @@ class CardsApi
      *
      * Delete a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($app_id, $card_id)
+    public function archive($card_id, $app_id)
     {
-        $this->archiveWithHttpInfo($app_id, $card_id);
+        $this->archiveWithHttpInfo($card_id, $app_id);
     }
 
     /**
@@ -137,16 +137,16 @@ class CardsApi
      *
      * Delete a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($app_id, $card_id)
+    public function archiveWithHttpInfo($card_id, $app_id)
     {
-        $request = $this->archiveRequest($app_id, $card_id);
+        $request = $this->archiveRequest($card_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -205,15 +205,15 @@ class CardsApi
      *
      * Delete a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($app_id, $card_id)
+    public function archiveAsync($card_id, $app_id)
     {
-        return $this->archiveAsyncWithHttpInfo($app_id, $card_id)
+        return $this->archiveAsyncWithHttpInfo($card_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -226,16 +226,16 @@ class CardsApi
      *
      * Delete a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($app_id, $card_id)
+    public function archiveAsyncWithHttpInfo($card_id, $app_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($app_id, $card_id);
+        $request = $this->archiveRequest($card_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -263,28 +263,28 @@ class CardsApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($app_id, $card_id)
+    public function archiveRequest($card_id, $app_id)
     {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive'
-            );
-        }
         // verify the required parameter 'card_id' is set
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling archive'
             );
         }
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling archive'
+            );
+        }
 
-        $resourcePath = '/crm/v3/extensions/cards/{appId}/{cardId}';
+        $resourcePath = '/crm/v3/extensions/cards-dev/{appId}/{cardId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -294,18 +294,18 @@ class CardsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($card_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'cardId' . '}',
                 ObjectSerializer::toPathValue($card_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -383,7 +383,7 @@ class CardsApi
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
     public function create($app_id, $card_create_request)
     {
@@ -401,7 +401,7 @@ class CardsApi
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($app_id, $card_create_request)
     {
@@ -444,17 +444,17 @@ class CardsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -475,7 +475,7 @@ class CardsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -496,7 +496,7 @@ class CardsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse',
+                        '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -548,7 +548,7 @@ class CardsApi
      */
     public function createAsyncWithHttpInfo($app_id, $card_create_request)
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
+        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
         $request = $this->createRequest($app_id, $card_create_request);
 
         return $this->client
@@ -611,7 +611,7 @@ class CardsApi
             );
         }
 
-        $resourcePath = '/crm/v3/extensions/cards/{appId}';
+        $resourcePath = '/crm/v3/extensions/cards-dev/{appId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -707,7 +707,7 @@ class CardsApi
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
     public function getAll($app_id)
     {
@@ -724,7 +724,7 @@ class CardsApi
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllWithHttpInfo($app_id)
     {
@@ -767,17 +767,17 @@ class CardsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -798,7 +798,7 @@ class CardsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -819,7 +819,7 @@ class CardsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse',
+                        '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -869,7 +869,7 @@ class CardsApi
      */
     public function getAllAsyncWithHttpInfo($app_id)
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardListResponse';
+        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardListResponse';
         $request = $this->getAllRequest($app_id);
 
         return $this->client
@@ -925,7 +925,7 @@ class CardsApi
             );
         }
 
-        $resourcePath = '/crm/v3/extensions/cards/{appId}';
+        $resourcePath = '/crm/v3/extensions/cards-dev/{appId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1011,16 +1011,16 @@ class CardsApi
      *
      * Get a card.
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the target card. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function getById($app_id, $card_id)
+    public function getById($card_id, $app_id)
     {
-        list($response) = $this->getByIdWithHttpInfo($app_id, $card_id);
+        list($response) = $this->getByIdWithHttpInfo($card_id, $app_id);
         return $response;
     }
 
@@ -1029,16 +1029,16 @@ class CardsApi
      *
      * Get a card.
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the target card. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($app_id, $card_id)
+    public function getByIdWithHttpInfo($card_id, $app_id)
     {
-        $request = $this->getByIdRequest($app_id, $card_id);
+        $request = $this->getByIdRequest($card_id, $app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1077,17 +1077,17 @@ class CardsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1108,7 +1108,7 @@ class CardsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1129,7 +1129,7 @@ class CardsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse',
+                        '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1152,15 +1152,15 @@ class CardsApi
      *
      * Get a card.
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the target card. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($app_id, $card_id)
+    public function getByIdAsync($card_id, $app_id)
     {
-        return $this->getByIdAsyncWithHttpInfo($app_id, $card_id)
+        return $this->getByIdAsyncWithHttpInfo($card_id, $app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1173,16 +1173,16 @@ class CardsApi
      *
      * Get a card.
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the target card. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($app_id, $card_id)
+    public function getByIdAsyncWithHttpInfo($card_id, $app_id)
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
-        $request = $this->getByIdRequest($app_id, $card_id);
+        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
+        $request = $this->getByIdRequest($card_id, $app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1223,28 +1223,28 @@ class CardsApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the target card. (required)
+     * @param  int $app_id The ID of the target app. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($app_id, $card_id)
+    public function getByIdRequest($card_id, $app_id)
     {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById'
-            );
-        }
         // verify the required parameter 'card_id' is set
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling getById'
             );
         }
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getById'
+            );
+        }
 
-        $resourcePath = '/crm/v3/extensions/cards/{appId}/{cardId}';
+        $resourcePath = '/crm/v3/extensions/cards-dev/{appId}/{cardId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1254,18 +1254,18 @@ class CardsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($card_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'cardId' . '}',
                 ObjectSerializer::toPathValue($card_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -1338,17 +1338,17 @@ class CardsApi
      *
      * Update a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function update($app_id, $card_id, $card_patch_request)
+    public function update($card_id, $app_id, $card_patch_request)
     {
-        list($response) = $this->updateWithHttpInfo($app_id, $card_id, $card_patch_request);
+        list($response) = $this->updateWithHttpInfo($card_id, $app_id, $card_patch_request);
         return $response;
     }
 
@@ -1357,17 +1357,17 @@ class CardsApi
      *
      * Update a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $card_id, $card_patch_request)
+    public function updateWithHttpInfo($card_id, $app_id, $card_patch_request)
     {
-        $request = $this->updateRequest($app_id, $card_id, $card_patch_request);
+        $request = $this->updateRequest($card_id, $app_id, $card_patch_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1406,17 +1406,17 @@ class CardsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1437,7 +1437,7 @@ class CardsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1458,7 +1458,7 @@ class CardsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse',
+                        '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1481,16 +1481,16 @@ class CardsApi
      *
      * Update a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $card_id, $card_patch_request)
+    public function updateAsync($card_id, $app_id, $card_patch_request)
     {
-        return $this->updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request)
+        return $this->updateAsyncWithHttpInfo($card_id, $app_id, $card_patch_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1503,17 +1503,17 @@ class CardsApi
      *
      * Update a card
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request)
+    public function updateAsyncWithHttpInfo($card_id, $app_id, $card_patch_request)
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardResponse';
-        $request = $this->updateRequest($app_id, $card_id, $card_patch_request);
+        $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
+        $request = $this->updateRequest($card_id, $app_id, $card_patch_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1554,25 +1554,25 @@ class CardsApi
     /**
      * Create request for operation 'update'
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  string $card_id The ID of the card to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request Card definition fields to be updated. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($app_id, $card_id, $card_patch_request)
+    public function updateRequest($card_id, $app_id, $card_patch_request)
     {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update'
-            );
-        }
         // verify the required parameter 'card_id' is set
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling update'
+            );
+        }
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling update'
             );
         }
         // verify the required parameter 'card_patch_request' is set
@@ -1582,7 +1582,7 @@ class CardsApi
             );
         }
 
-        $resourcePath = '/crm/v3/extensions/cards/{appId}/{cardId}';
+        $resourcePath = '/crm/v3/extensions/cards-dev/{appId}/{cardId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1592,18 +1592,18 @@ class CardsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($card_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'cardId' . '}',
                 ObjectSerializer::toPathValue($card_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }

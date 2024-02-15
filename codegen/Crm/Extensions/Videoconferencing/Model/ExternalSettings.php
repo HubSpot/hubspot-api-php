@@ -11,7 +11,7 @@
  */
 
 /**
- * Video Conference Extension
+ * Video Conferencing Extension
  *
  * These APIs allow you to specify URLs that can be used to interact with a video conferencing application, to allow HubSpot to add video conference links to meeting requests with contacts.
  *
@@ -58,10 +58,11 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'user_verify_url' => 'string',
+        'fetch_accounts_uri' => 'string',
         'create_meeting_url' => 'string',
         'update_meeting_url' => 'string',
-        'delete_meeting_url' => 'string',
-        'user_verify_url' => 'string'
+        'delete_meeting_url' => 'string'
     ];
 
     /**
@@ -72,10 +73,11 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'user_verify_url' => null,
+        'fetch_accounts_uri' => null,
         'create_meeting_url' => null,
         'update_meeting_url' => null,
-        'delete_meeting_url' => null,
-        'user_verify_url' => null
+        'delete_meeting_url' => null
     ];
 
     /**
@@ -105,10 +107,11 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'user_verify_url' => 'userVerifyUrl',
+        'fetch_accounts_uri' => 'fetchAccountsUri',
         'create_meeting_url' => 'createMeetingUrl',
         'update_meeting_url' => 'updateMeetingUrl',
-        'delete_meeting_url' => 'deleteMeetingUrl',
-        'user_verify_url' => 'userVerifyUrl'
+        'delete_meeting_url' => 'deleteMeetingUrl'
     ];
 
     /**
@@ -117,10 +120,11 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'user_verify_url' => 'setUserVerifyUrl',
+        'fetch_accounts_uri' => 'setFetchAccountsUri',
         'create_meeting_url' => 'setCreateMeetingUrl',
         'update_meeting_url' => 'setUpdateMeetingUrl',
-        'delete_meeting_url' => 'setDeleteMeetingUrl',
-        'user_verify_url' => 'setUserVerifyUrl'
+        'delete_meeting_url' => 'setDeleteMeetingUrl'
     ];
 
     /**
@@ -129,10 +133,11 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'user_verify_url' => 'getUserVerifyUrl',
+        'fetch_accounts_uri' => 'getFetchAccountsUri',
         'create_meeting_url' => 'getCreateMeetingUrl',
         'update_meeting_url' => 'getUpdateMeetingUrl',
-        'delete_meeting_url' => 'getDeleteMeetingUrl',
-        'user_verify_url' => 'getUserVerifyUrl'
+        'delete_meeting_url' => 'getDeleteMeetingUrl'
     ];
 
     /**
@@ -192,10 +197,11 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['user_verify_url'] = $data['user_verify_url'] ?? null;
+        $this->container['fetch_accounts_uri'] = $data['fetch_accounts_uri'] ?? null;
         $this->container['create_meeting_url'] = $data['create_meeting_url'] ?? null;
         $this->container['update_meeting_url'] = $data['update_meeting_url'] ?? null;
         $this->container['delete_meeting_url'] = $data['delete_meeting_url'] ?? null;
-        $this->container['user_verify_url'] = $data['user_verify_url'] ?? null;
     }
 
     /**
@@ -224,6 +230,54 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets user_verify_url
+     *
+     * @return string|null
+     */
+    public function getUserVerifyUrl()
+    {
+        return $this->container['user_verify_url'];
+    }
+
+    /**
+     * Sets user_verify_url
+     *
+     * @param string|null $user_verify_url The URL that HubSpot will use to verify that a user exists in the video conference application.
+     *
+     * @return self
+     */
+    public function setUserVerifyUrl($user_verify_url)
+    {
+        $this->container['user_verify_url'] = $user_verify_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets fetch_accounts_uri
+     *
+     * @return string|null
+     */
+    public function getFetchAccountsUri()
+    {
+        return $this->container['fetch_accounts_uri'];
+    }
+
+    /**
+     * Sets fetch_accounts_uri
+     *
+     * @param string|null $fetch_accounts_uri fetch_accounts_uri
+     *
+     * @return self
+     */
+    public function setFetchAccountsUri($fetch_accounts_uri)
+    {
+        $this->container['fetch_accounts_uri'] = $fetch_accounts_uri;
+
+        return $this;
+    }
 
     /**
      * Gets create_meeting_url
@@ -293,30 +347,6 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeleteMeetingUrl($delete_meeting_url)
     {
         $this->container['delete_meeting_url'] = $delete_meeting_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_verify_url
-     *
-     * @return string|null
-     */
-    public function getUserVerifyUrl()
-    {
-        return $this->container['user_verify_url'];
-    }
-
-    /**
-     * Sets user_verify_url
-     *
-     * @param string|null $user_verify_url The URL that HubSpot will use to verify that a user exists in the video conference application.
-     *
-     * @return self
-     */
-    public function setUserVerifyUrl($user_verify_url)
-    {
-        $this->container['user_verify_url'] = $user_verify_url;
 
         return $this;
     }

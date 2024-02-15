@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -57,12 +57,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
+        'property_names_included' => 'string[]',
         'width' => 'int',
-        'height' => 'int',
-        'url' => 'string',
         'label' => 'string',
-        'property_names_included' => 'string[]'
+        'type' => 'string',
+        'url' => 'string',
+        'height' => 'int'
     ];
 
     /**
@@ -73,12 +73,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
+        'property_names_included' => null,
         'width' => 'int32',
-        'height' => 'int32',
-        'url' => null,
         'label' => null,
-        'property_names_included' => null
+        'type' => null,
+        'url' => null,
+        'height' => 'int32'
     ];
 
     /**
@@ -108,12 +108,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
+        'property_names_included' => 'propertyNamesIncluded',
         'width' => 'width',
-        'height' => 'height',
-        'url' => 'url',
         'label' => 'label',
-        'property_names_included' => 'propertyNamesIncluded'
+        'type' => 'type',
+        'url' => 'url',
+        'height' => 'height'
     ];
 
     /**
@@ -122,12 +122,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
+        'property_names_included' => 'setPropertyNamesIncluded',
         'width' => 'setWidth',
-        'height' => 'setHeight',
-        'url' => 'setUrl',
         'label' => 'setLabel',
-        'property_names_included' => 'setPropertyNamesIncluded'
+        'type' => 'setType',
+        'url' => 'setUrl',
+        'height' => 'setHeight'
     ];
 
     /**
@@ -136,12 +136,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
+        'property_names_included' => 'getPropertyNamesIncluded',
         'width' => 'getWidth',
-        'height' => 'getHeight',
-        'url' => 'getUrl',
         'label' => 'getLabel',
-        'property_names_included' => 'getPropertyNamesIncluded'
+        'type' => 'getType',
+        'url' => 'getUrl',
+        'height' => 'getHeight'
     ];
 
     /**
@@ -214,12 +214,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? 'IFRAME';
-        $this->container['width'] = $data['width'] ?? null;
-        $this->container['height'] = $data['height'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['property_names_included'] = $data['property_names_included'] ?? null;
+        $this->container['width'] = $data['width'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['type'] = $data['type'] ?? 'IFRAME';
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['height'] = $data['height'] ?? null;
     }
 
     /**
@@ -231,6 +231,12 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['property_names_included'] === null) {
+            $invalidProperties[] = "'property_names_included' can't be null";
+        }
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
+        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -243,17 +249,11 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['width'] === null) {
-            $invalidProperties[] = "'width' can't be null";
-        }
-        if ($this->container['height'] === null) {
-            $invalidProperties[] = "'height' can't be null";
-        }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['property_names_included'] === null) {
-            $invalidProperties[] = "'property_names_included' can't be null";
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
         }
         return $invalidProperties;
     }
@@ -269,6 +269,78 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets property_names_included
+     *
+     * @return string[]
+     */
+    public function getPropertyNamesIncluded()
+    {
+        return $this->container['property_names_included'];
+    }
+
+    /**
+     * Sets property_names_included
+     *
+     * @param string[] $property_names_included property_names_included
+     *
+     * @return self
+     */
+    public function setPropertyNamesIncluded($property_names_included)
+    {
+        $this->container['property_names_included'] = $property_names_included;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param int $width width
+     *
+     * @return self
+     */
+    public function setWidth($width)
+    {
+        $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
 
     /**
      * Gets type
@@ -305,54 +377,6 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets width
-     *
-     * @return int
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param int $width width
-     *
-     * @return self
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return int
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param int $height height
-     *
-     * @return self
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
      * Gets url
      *
      * @return string
@@ -377,49 +401,25 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets label
+     * Gets height
      *
-     * @return string|null
+     * @return int
      */
-    public function getLabel()
+    public function getHeight()
     {
-        return $this->container['label'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets label
+     * Sets height
      *
-     * @param string|null $label label
+     * @param int $height height
      *
      * @return self
      */
-    public function setLabel($label)
+    public function setHeight($height)
     {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets property_names_included
-     *
-     * @return string[]
-     */
-    public function getPropertyNamesIncluded()
-    {
-        return $this->container['property_names_included'];
-    }
-
-    /**
-     * Sets property_names_included
-     *
-     * @param string[] $property_names_included property_names_included
-     *
-     * @return self
-     */
-    public function setPropertyNamesIncluded($property_names_included)
-    {
-        $this->container['property_names_included'] = $property_names_included;
+        $this->container['height'] = $height;
 
         return $this;
     }

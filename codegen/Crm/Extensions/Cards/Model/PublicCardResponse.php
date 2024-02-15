@@ -1,6 +1,6 @@
 <?php
 /**
- * CardActions
+ * PublicCardResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardActions Class Doc Comment
+ * PublicCardResponse Class Doc Comment
  *
  * @category Class
- * @description Configuration for custom user actions on cards.
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicCardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardActions';
+    protected static $openAPIModelName = 'PublicCardResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +57,14 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'base_urls' => 'string[]'
+        'created_at' => '\DateTime',
+        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardFetchBody',
+        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
+        'id' => 'string',
+        'title' => 'string',
+        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions',
+        'audit_history' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardAuditResponse[]',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -69,7 +75,14 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'base_urls' => null
+        'created_at' => 'date-time',
+        'fetch' => null,
+        'display' => null,
+        'id' => null,
+        'title' => null,
+        'actions' => null,
+        'audit_history' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -99,7 +112,14 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'base_urls' => 'baseUrls'
+        'created_at' => 'createdAt',
+        'fetch' => 'fetch',
+        'display' => 'display',
+        'id' => 'id',
+        'title' => 'title',
+        'actions' => 'actions',
+        'audit_history' => 'auditHistory',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -108,7 +128,14 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'base_urls' => 'setBaseUrls'
+        'created_at' => 'setCreatedAt',
+        'fetch' => 'setFetch',
+        'display' => 'setDisplay',
+        'id' => 'setId',
+        'title' => 'setTitle',
+        'actions' => 'setActions',
+        'audit_history' => 'setAuditHistory',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -117,7 +144,14 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'base_urls' => 'getBaseUrls'
+        'created_at' => 'getCreatedAt',
+        'fetch' => 'getFetch',
+        'display' => 'getDisplay',
+        'id' => 'getId',
+        'title' => 'getTitle',
+        'actions' => 'getActions',
+        'audit_history' => 'getAuditHistory',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -177,7 +211,14 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['base_urls'] = $data['base_urls'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['fetch'] = $data['fetch'] ?? null;
+        $this->container['display'] = $data['display'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['actions'] = $data['actions'] ?? null;
+        $this->container['audit_history'] = $data['audit_history'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -189,8 +230,23 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['base_urls'] === null) {
-            $invalidProperties[] = "'base_urls' can't be null";
+        if ($this->container['fetch'] === null) {
+            $invalidProperties[] = "'fetch' can't be null";
+        }
+        if ($this->container['display'] === null) {
+            $invalidProperties[] = "'display' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['actions'] === null) {
+            $invalidProperties[] = "'actions' can't be null";
+        }
+        if ($this->container['audit_history'] === null) {
+            $invalidProperties[] = "'audit_history' can't be null";
         }
         return $invalidProperties;
     }
@@ -208,25 +264,193 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets base_urls
+     * Gets created_at
      *
-     * @return string[]
+     * @return \DateTime|null
      */
-    public function getBaseUrls()
+    public function getCreatedAt()
     {
-        return $this->container['base_urls'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets base_urls
+     * Sets created_at
      *
-     * @param string[] $base_urls A list of URL prefixes that will be accepted for card action URLs. If your data fetch response includes an action URL that doesn't begin with one of these values, it will result in an error and the card will not be displayed.
+     * @param \DateTime|null $created_at created_at
      *
      * @return self
      */
-    public function setBaseUrls($base_urls)
+    public function setCreatedAt($created_at)
     {
-        $this->container['base_urls'] = $base_urls;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets fetch
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardFetchBody
+     */
+    public function getFetch()
+    {
+        return $this->container['fetch'];
+    }
+
+    /**
+     * Sets fetch
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardFetchBody $fetch fetch
+     *
+     * @return self
+     */
+    public function setFetch($fetch)
+    {
+        $this->container['fetch'] = $fetch;
+
+        return $this;
+    }
+
+    /**
+     * Gets display
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody
+     */
+    public function getDisplay()
+    {
+        return $this->container['display'];
+    }
+
+    /**
+     * Sets display
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody $display display
+     *
+     * @return self
+     */
+    public function setDisplay($display)
+    {
+        $this->container['display'] = $display;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets actions
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions
+     */
+    public function getActions()
+    {
+        return $this->container['actions'];
+    }
+
+    /**
+     * Sets actions
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions $actions actions
+     *
+     * @return self
+     */
+    public function setActions($actions)
+    {
+        $this->container['actions'] = $actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets audit_history
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardAuditResponse[]
+     */
+    public function getAuditHistory()
+    {
+        return $this->container['audit_history'];
+    }
+
+    /**
+     * Sets audit_history
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardAuditResponse[] $audit_history audit_history
+     *
+     * @return self
+     */
+    public function setAuditHistory($audit_history)
+    {
+        $this->container['audit_history'] = $audit_history;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -57,10 +57,10 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'title' => 'string',
         'link_url' => 'string',
         'tokens' => '\HubSpot\Client\Crm\Extensions\Cards\Model\ObjectToken[]',
+        'id' => 'string',
+        'title' => 'string',
         'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[]'
     ];
 
@@ -72,10 +72,10 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'title' => null,
         'link_url' => null,
         'tokens' => null,
+        'id' => null,
+        'title' => null,
         'actions' => null
     ];
 
@@ -106,10 +106,10 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'title' => 'title',
         'link_url' => 'linkUrl',
         'tokens' => 'tokens',
+        'id' => 'id',
+        'title' => 'title',
         'actions' => 'actions'
     ];
 
@@ -119,10 +119,10 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle',
         'link_url' => 'setLinkUrl',
         'tokens' => 'setTokens',
+        'id' => 'setId',
+        'title' => 'setTitle',
         'actions' => 'setActions'
     ];
 
@@ -132,10 +132,10 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle',
         'link_url' => 'getLinkUrl',
         'tokens' => 'getTokens',
+        'id' => 'getId',
+        'title' => 'getTitle',
         'actions' => 'getActions'
     ];
 
@@ -196,10 +196,10 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['link_url'] = $data['link_url'] ?? null;
         $this->container['tokens'] = $data['tokens'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['actions'] = $data['actions'] ?? null;
     }
 
@@ -212,14 +212,14 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['tokens'] === null) {
+            $invalidProperties[] = "'tokens' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['tokens'] === null) {
-            $invalidProperties[] = "'tokens' can't be null";
         }
         if ($this->container['actions'] === null) {
             $invalidProperties[] = "'actions' can't be null";
@@ -238,54 +238,6 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
 
     /**
      * Gets link_url
@@ -331,6 +283,54 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTokens($tokens)
     {
         $this->container['tokens'] = $tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SettingsApi
+ * RecordingSettingsApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Crm\Extensions\Calling\HeaderSelector;
 use HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
 
 /**
- * SettingsApi Class Doc Comment
+ * RecordingSettingsApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Extensions\Calling
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SettingsApi
+class RecordingSettingsApi
 {
     /**
      * @var ClientInterface
@@ -116,277 +116,32 @@ class SettingsApi
     }
 
     /**
-     * Operation archive
+     * Operation getUrlFormat
      *
-     * Delete calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
+     * @param  int $app_id app_id (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function archive($app_id)
+    public function getUrlFormat($app_id)
     {
-        $this->archiveWithHttpInfo($app_id);
-    }
-
-    /**
-     * Operation archiveWithHttpInfo
-     *
-     * Delete calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function archiveWithHttpInfo($app_id)
-    {
-        $request = $this->archiveRequest($app_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation archiveAsync
-     *
-     * Delete calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function archiveAsync($app_id)
-    {
-        return $this->archiveAsyncWithHttpInfo($app_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation archiveAsyncWithHttpInfo
-     *
-     * Delete calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function archiveAsyncWithHttpInfo($app_id)
-    {
-        $returnType = '';
-        $request = $this->archiveRequest($app_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'archive'
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function archiveRequest($app_id)
-    {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive'
-            );
-        }
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation create
-     *
-     * Configure a calling extension
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
-     */
-    public function create($app_id, $settings_request)
-    {
-        list($response) = $this->createWithHttpInfo($app_id, $settings_request);
+        list($response) = $this->getUrlFormatWithHttpInfo($app_id);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation getUrlFormatWithHttpInfo
      *
-     * Configure a calling extension
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
+     * @param  int $app_id (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($app_id, $settings_request)
+    public function getUrlFormatWithHttpInfo($app_id)
     {
-        $request = $this->createRequest($app_id, $settings_request);
+        $request = $this->getUrlFormatRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -425,17 +180,17 @@ class SettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -456,7 +211,7 @@ class SettingsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -477,7 +232,7 @@ class SettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -496,19 +251,16 @@ class SettingsApi
     }
 
     /**
-     * Operation createAsync
+     * Operation getUrlFormatAsync
      *
-     * Configure a calling extension
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
+     * @param  int $app_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($app_id, $settings_request)
+    public function getUrlFormatAsync($app_id)
     {
-        return $this->createAsyncWithHttpInfo($app_id, $settings_request)
+        return $this->getUrlFormatAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -517,20 +269,17 @@ class SettingsApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation getUrlFormatAsyncWithHttpInfo
      *
-     * Configure a calling extension
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
+     * @param  int $app_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($app_id, $settings_request)
+    public function getUrlFormatAsyncWithHttpInfo($app_id)
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-        $request = $this->createRequest($app_id, $settings_request);
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
+        $request = $this->getUrlFormatRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -569,344 +318,23 @@ class SettingsApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'getUrlFormat'
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request Settings state to create with. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRequest($app_id, $settings_request)
-    {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create'
-            );
-        }
-        // verify the required parameter 'settings_request' is set
-        if ($settings_request === null || (is_array($settings_request) && count($settings_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $settings_request when calling create'
-            );
-        }
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($settings_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($settings_request));
-            } else {
-                $httpBody = $settings_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getById
-     *
-     * Get calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
-     */
-    public function getById($app_id)
-    {
-        list($response) = $this->getByIdWithHttpInfo($app_id);
-        return $response;
-    }
-
-    /**
-     * Operation getByIdWithHttpInfo
-     *
-     * Get calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getByIdWithHttpInfo($app_id)
-    {
-        $request = $this->getByIdRequest($app_id);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getByIdAsync
-     *
-     * Get calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsync($app_id)
-    {
-        return $this->getByIdAsyncWithHttpInfo($app_id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getByIdAsyncWithHttpInfo
-     *
-     * Get calling settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsyncWithHttpInfo($app_id)
-    {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-        $request = $this->getByIdRequest($app_id);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getById'
-     *
-     * @param  int $app_id The ID of the target app. (required)
+     * @param  int $app_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($app_id)
+    public function getUrlFormatRequest($app_id)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById'
+                'Missing the required parameter $app_id when calling getUrlFormat'
             );
         }
 
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/recording';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -988,38 +416,34 @@ class SettingsApi
     }
 
     /**
-     * Operation update
+     * Operation registerUrlFormat
      *
-     * Update settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
+     * @param  int $app_id app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request recording_settings_request (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function update($app_id, $settings_patch_request)
+    public function registerUrlFormat($app_id, $recording_settings_request)
     {
-        list($response) = $this->updateWithHttpInfo($app_id, $settings_patch_request);
+        list($response) = $this->registerUrlFormatWithHttpInfo($app_id, $recording_settings_request);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation registerUrlFormatWithHttpInfo
      *
-     * Update settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $settings_patch_request)
+    public function registerUrlFormatWithHttpInfo($app_id, $recording_settings_request)
     {
-        $request = $this->updateRequest($app_id, $settings_patch_request);
+        $request = $this->registerUrlFormatRequest($app_id, $recording_settings_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1058,17 +482,17 @@ class SettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1089,7 +513,7 @@ class SettingsApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1110,7 +534,7 @@ class SettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1129,19 +553,17 @@ class SettingsApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation registerUrlFormatAsync
      *
-     * Update settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $settings_patch_request)
+    public function registerUrlFormatAsync($app_id, $recording_settings_request)
     {
-        return $this->updateAsyncWithHttpInfo($app_id, $settings_patch_request)
+        return $this->registerUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1150,20 +572,18 @@ class SettingsApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation registerUrlFormatAsyncWithHttpInfo
      *
-     * Update settings
-     *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $settings_patch_request)
+    public function registerUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_request)
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-        $request = $this->updateRequest($app_id, $settings_patch_request);
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
+        $request = $this->registerUrlFormatRequest($app_id, $recording_settings_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1202,30 +622,30 @@ class SettingsApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'registerUrlFormat'
      *
-     * @param  int $app_id The ID of the target app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request Updated details for the settings. (required)
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($app_id, $settings_patch_request)
+    public function registerUrlFormatRequest($app_id, $recording_settings_request)
     {
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update'
+                'Missing the required parameter $app_id when calling registerUrlFormat'
             );
         }
-        // verify the required parameter 'settings_patch_request' is set
-        if ($settings_patch_request === null || (is_array($settings_patch_request) && count($settings_patch_request) === 0)) {
+        // verify the required parameter 'recording_settings_request' is set
+        if ($recording_settings_request === null || (is_array($recording_settings_request) && count($recording_settings_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $settings_patch_request when calling update'
+                'Missing the required parameter $recording_settings_request when calling registerUrlFormat'
             );
         }
 
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/recording';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1256,11 +676,328 @@ class SettingsApi
         }
 
         // for model (json/xml)
-        if (isset($settings_patch_request)) {
+        if (isset($recording_settings_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($settings_patch_request));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($recording_settings_request));
             } else {
-                $httpBody = $settings_patch_request;
+                $httpBody = $recording_settings_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateUrlFormat
+     *
+     * @param  int $app_id app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request recording_settings_patch_request (required)
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     */
+    public function updateUrlFormat($app_id, $recording_settings_patch_request)
+    {
+        list($response) = $this->updateUrlFormatWithHttpInfo($app_id, $recording_settings_patch_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateUrlFormatWithHttpInfo
+     *
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateUrlFormatWithHttpInfo($app_id, $recording_settings_patch_request)
+    {
+        $request = $this->updateUrlFormatRequest($app_id, $recording_settings_patch_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateUrlFormatAsync
+     *
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateUrlFormatAsync($app_id, $recording_settings_patch_request)
+    {
+        return $this->updateUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_patch_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateUrlFormatAsyncWithHttpInfo
+     *
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_patch_request)
+    {
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
+        $request = $this->updateUrlFormatRequest($app_id, $recording_settings_patch_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateUrlFormat'
+     *
+     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateUrlFormatRequest($app_id, $recording_settings_patch_request)
+    {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling updateUrlFormat'
+            );
+        }
+        // verify the required parameter 'recording_settings_patch_request' is set
+        if ($recording_settings_patch_request === null || (is_array($recording_settings_patch_request) && count($recording_settings_patch_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $recording_settings_patch_request when calling updateUrlFormat'
+            );
+        }
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/recording';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($recording_settings_patch_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($recording_settings_patch_request));
+            } else {
+                $httpBody = $recording_settings_patch_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

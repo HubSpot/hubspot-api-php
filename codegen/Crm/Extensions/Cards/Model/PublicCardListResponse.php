@@ -1,6 +1,6 @@
 <?php
 /**
- * CardResponse
+ * PublicCardListResponse
  *
  * PHP version 7.4
  *
@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardResponse Class Doc Comment
+ * PublicCardListResponse Class Doc Comment
  *
  * @category Class
- * @description Current state of Card Definition
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicCardListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardResponse';
+    protected static $openAPIModelName = 'PublicCardListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +57,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'title' => 'string',
-        'fetch' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody',
-        'display' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody',
-        'actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardActions'
+        'results' => '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse[]'
     ];
 
     /**
@@ -75,13 +68,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'title' => null,
-        'fetch' => null,
-        'display' => null,
-        'actions' => null
+        'results' => null
     ];
 
     /**
@@ -111,13 +98,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'title' => 'title',
-        'fetch' => 'fetch',
-        'display' => 'display',
-        'actions' => 'actions'
+        'results' => 'results'
     ];
 
     /**
@@ -126,13 +107,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'title' => 'setTitle',
-        'fetch' => 'setFetch',
-        'display' => 'setDisplay',
-        'actions' => 'setActions'
+        'results' => 'setResults'
     ];
 
     /**
@@ -141,13 +116,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'title' => 'getTitle',
-        'fetch' => 'getFetch',
-        'display' => 'getDisplay',
-        'actions' => 'getActions'
+        'results' => 'getResults'
     ];
 
     /**
@@ -207,13 +176,7 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['fetch'] = $data['fetch'] ?? null;
-        $this->container['display'] = $data['display'] ?? null;
-        $this->container['actions'] = $data['actions'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -225,20 +188,8 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['fetch'] === null) {
-            $invalidProperties[] = "'fetch' can't be null";
-        }
-        if ($this->container['display'] === null) {
-            $invalidProperties[] = "'display' can't be null";
-        }
-        if ($this->container['actions'] === null) {
-            $invalidProperties[] = "'actions' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -256,169 +207,25 @@ class CardResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse[]
      */
-    public function getId()
+    public function getResults()
     {
-        return $this->container['id'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets id
+     * Sets results
      *
-     * @param string $id Generated unique ID for card.
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse[] $results results
      *
      * @return self
      */
-    public function setId($id)
+    public function setResults($results)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at When this card was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at The last time this card was updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title Displayed title of this card.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets fetch
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody
-     */
-    public function getFetch()
-    {
-        return $this->container['fetch'];
-    }
-
-    /**
-     * Sets fetch
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody $fetch fetch
-     *
-     * @return self
-     */
-    public function setFetch($fetch)
-    {
-        $this->container['fetch'] = $fetch;
-
-        return $this;
-    }
-
-    /**
-     * Gets display
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody
-     */
-    public function getDisplay()
-    {
-        return $this->container['display'];
-    }
-
-    /**
-     * Sets display
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardDisplayBody $display display
-     *
-     * @return self
-     */
-    public function setDisplay($display)
-    {
-        $this->container['display'] = $display;
-
-        return $this;
-    }
-
-    /**
-     * Gets actions
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions
-     */
-    public function getActions()
-    {
-        return $this->container['actions'];
-    }
-
-    /**
-     * Sets actions
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardActions $actions actions
-     *
-     * @return self
-     */
-    public function setActions($actions)
-    {
-        $this->container['actions'] = $actions;
+        $this->container['results'] = $results;
 
         return $this;
     }

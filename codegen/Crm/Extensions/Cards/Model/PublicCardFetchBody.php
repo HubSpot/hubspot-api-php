@@ -1,6 +1,6 @@
 <?php
 /**
- * CardActions
+ * PublicCardFetchBody
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * CardActions Class Doc Comment
+ * PublicCardFetchBody Class Doc Comment
  *
  * @category Class
- * @description Configuration for custom user actions on cards.
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicCardFetchBody implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CardActions';
+    protected static $openAPIModelName = 'PublicCardFetchBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +57,8 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'base_urls' => 'string[]'
+        'object_types' => '\HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[]',
+        'target_url' => 'string'
     ];
 
     /**
@@ -69,7 +69,8 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'base_urls' => null
+        'object_types' => null,
+        'target_url' => null
     ];
 
     /**
@@ -99,7 +100,8 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'base_urls' => 'baseUrls'
+        'object_types' => 'objectTypes',
+        'target_url' => 'targetUrl'
     ];
 
     /**
@@ -108,7 +110,8 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'base_urls' => 'setBaseUrls'
+        'object_types' => 'setObjectTypes',
+        'target_url' => 'setTargetUrl'
     ];
 
     /**
@@ -117,7 +120,8 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'base_urls' => 'getBaseUrls'
+        'object_types' => 'getObjectTypes',
+        'target_url' => 'getTargetUrl'
     ];
 
     /**
@@ -177,7 +181,8 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['base_urls'] = $data['base_urls'] ?? null;
+        $this->container['object_types'] = $data['object_types'] ?? null;
+        $this->container['target_url'] = $data['target_url'] ?? null;
     }
 
     /**
@@ -189,8 +194,11 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['base_urls'] === null) {
-            $invalidProperties[] = "'base_urls' can't be null";
+        if ($this->container['object_types'] === null) {
+            $invalidProperties[] = "'object_types' can't be null";
+        }
+        if ($this->container['target_url'] === null) {
+            $invalidProperties[] = "'target_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -208,25 +216,49 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets base_urls
+     * Gets object_types
      *
-     * @return string[]
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[]
      */
-    public function getBaseUrls()
+    public function getObjectTypes()
     {
-        return $this->container['base_urls'];
+        return $this->container['object_types'];
     }
 
     /**
-     * Sets base_urls
+     * Sets object_types
      *
-     * @param string[] $base_urls A list of URL prefixes that will be accepted for card action URLs. If your data fetch response includes an action URL that doesn't begin with one of these values, it will result in an error and the card will not be displayed.
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody[] $object_types object_types
      *
      * @return self
      */
-    public function setBaseUrls($base_urls)
+    public function setObjectTypes($object_types)
     {
-        $this->container['base_urls'] = $base_urls;
+        $this->container['object_types'] = $object_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_url
+     *
+     * @return string
+     */
+    public function getTargetUrl()
+    {
+        return $this->container['target_url'];
+    }
+
+    /**
+     * Sets target_url
+     *
+     * @param string $target_url target_url
+     *
+     * @return self
+     */
+    public function setTargetUrl($target_url)
+    {
+        $this->container['target_url'] = $target_url;
 
         return $this;
     }

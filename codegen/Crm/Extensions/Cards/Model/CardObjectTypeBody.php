@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -169,6 +169,7 @@ class CardObjectTypeBody implements ModelInterface, ArrayAccess, \JsonSerializab
     public const NAME_DEALS = 'deals';
     public const NAME_COMPANIES = 'companies';
     public const NAME_TICKETS = 'tickets';
+    public const NAME_MARKETING_EVENTS = 'marketing_events';
 
     /**
      * Gets allowable values of the enum
@@ -182,6 +183,7 @@ class CardObjectTypeBody implements ModelInterface, ArrayAccess, \JsonSerializab
             self::NAME_DEALS,
             self::NAME_COMPANIES,
             self::NAME_TICKETS,
+            self::NAME_MARKETING_EVENTS,
         ];
     }
 

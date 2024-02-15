@@ -11,7 +11,7 @@
  */
 
 /**
- * Calling Extensions API
+ * Calling Extensions
  *
  * Provides a way for apps to add custom calling options to a contact record. This works in conjunction with the [Calling SDK](#), which is used to build your phone/calling UI. The endpoints here allow your service to appear as an option to HubSpot users when they access the *Call* action on a contact record. Once accessed, your custom phone/calling UI will be displayed in an iframe at the specified URL with the specified dimensions on that record.
  *
@@ -58,13 +58,13 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'created_at' => '\DateTime',
+        'supports_custom_objects' => 'bool',
+        'is_ready' => 'bool',
         'name' => 'string',
+        'width' => 'int',
         'url' => 'string',
         'height' => 'int',
-        'width' => 'int',
-        'is_ready' => 'bool',
-        'supports_custom_objects' => 'bool',
-        'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     ];
 
@@ -76,13 +76,13 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'created_at' => 'date-time',
+        'supports_custom_objects' => null,
+        'is_ready' => null,
         'name' => null,
+        'width' => 'int32',
         'url' => null,
         'height' => 'int32',
-        'width' => 'int32',
-        'is_ready' => null,
-        'supports_custom_objects' => null,
-        'created_at' => 'date-time',
         'updated_at' => 'date-time'
     ];
 
@@ -113,13 +113,13 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'created_at' => 'createdAt',
+        'supports_custom_objects' => 'supportsCustomObjects',
+        'is_ready' => 'isReady',
         'name' => 'name',
+        'width' => 'width',
         'url' => 'url',
         'height' => 'height',
-        'width' => 'width',
-        'is_ready' => 'isReady',
-        'supports_custom_objects' => 'supportsCustomObjects',
-        'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
 
@@ -129,13 +129,13 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'created_at' => 'setCreatedAt',
+        'supports_custom_objects' => 'setSupportsCustomObjects',
+        'is_ready' => 'setIsReady',
         'name' => 'setName',
+        'width' => 'setWidth',
         'url' => 'setUrl',
         'height' => 'setHeight',
-        'width' => 'setWidth',
-        'is_ready' => 'setIsReady',
-        'supports_custom_objects' => 'setSupportsCustomObjects',
-        'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -145,13 +145,13 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'created_at' => 'getCreatedAt',
+        'supports_custom_objects' => 'getSupportsCustomObjects',
+        'is_ready' => 'getIsReady',
         'name' => 'getName',
+        'width' => 'getWidth',
         'url' => 'getUrl',
         'height' => 'getHeight',
-        'width' => 'getWidth',
-        'is_ready' => 'getIsReady',
-        'supports_custom_objects' => 'getSupportsCustomObjects',
-        'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -212,13 +212,13 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['supports_custom_objects'] = $data['supports_custom_objects'] ?? null;
+        $this->container['is_ready'] = $data['is_ready'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['width'] = $data['width'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
         $this->container['height'] = $data['height'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
-        $this->container['is_ready'] = $data['is_ready'] ?? null;
-        $this->container['supports_custom_objects'] = $data['supports_custom_objects'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -231,26 +231,26 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['supports_custom_objects'] === null) {
+            $invalidProperties[] = "'supports_custom_objects' can't be null";
+        }
+        if ($this->container['is_ready'] === null) {
+            $invalidProperties[] = "'is_ready' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
         if ($this->container['height'] === null) {
             $invalidProperties[] = "'height' can't be null";
-        }
-        if ($this->container['width'] === null) {
-            $invalidProperties[] = "'width' can't be null";
-        }
-        if ($this->container['is_ready'] === null) {
-            $invalidProperties[] = "'is_ready' can't be null";
-        }
-        if ($this->container['supports_custom_objects'] === null) {
-            $invalidProperties[] = "'supports_custom_objects' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -269,6 +269,78 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at When this calling extension was created.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets supports_custom_objects
+     *
+     * @return bool
+     */
+    public function getSupportsCustomObjects()
+    {
+        return $this->container['supports_custom_objects'];
+    }
+
+    /**
+     * Sets supports_custom_objects
+     *
+     * @param bool $supports_custom_objects When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.
+     *
+     * @return self
+     */
+    public function setSupportsCustomObjects($supports_custom_objects)
+    {
+        $this->container['supports_custom_objects'] = $supports_custom_objects;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ready
+     *
+     * @return bool
+     */
+    public function getIsReady()
+    {
+        return $this->container['is_ready'];
+    }
+
+    /**
+     * Sets is_ready
+     *
+     * @param bool $is_ready When true, your service will appear as an option under the *Call* action in contact records of connected accounts.
+     *
+     * @return self
+     */
+    public function setIsReady($is_ready)
+    {
+        $this->container['is_ready'] = $is_ready;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -290,6 +362,30 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param int $width The target width of the iframe that will contain your phone/calling UI.
+     *
+     * @return self
+     */
+    public function setWidth($width)
+    {
+        $this->container['width'] = $width;
 
         return $this;
     }
@@ -338,102 +434,6 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeight($height)
     {
         $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return int
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param int $width The target width of the iframe that will contain your phone/calling UI.
-     *
-     * @return self
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_ready
-     *
-     * @return bool
-     */
-    public function getIsReady()
-    {
-        return $this->container['is_ready'];
-    }
-
-    /**
-     * Sets is_ready
-     *
-     * @param bool $is_ready When true, your service will appear as an option under the *Call* action in contact records of connected accounts.
-     *
-     * @return self
-     */
-    public function setIsReady($is_ready)
-    {
-        $this->container['is_ready'] = $is_ready;
-
-        return $this;
-    }
-
-    /**
-     * Gets supports_custom_objects
-     *
-     * @return bool
-     */
-    public function getSupportsCustomObjects()
-    {
-        return $this->container['supports_custom_objects'];
-    }
-
-    /**
-     * Sets supports_custom_objects
-     *
-     * @param bool $supports_custom_objects When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.
-     *
-     * @return self
-     */
-    public function setSupportsCustomObjects($supports_custom_objects)
-    {
-        $this->container['supports_custom_objects'] = $supports_custom_objects;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at When this calling extension was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }

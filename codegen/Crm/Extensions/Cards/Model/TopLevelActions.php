@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -57,9 +57,9 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'secondary' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[]',
         'settings' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IFrameActionBody',
-        'primary' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner',
-        'secondary' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[]'
+        'primary' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner'
     ];
 
     /**
@@ -70,9 +70,9 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'secondary' => null,
         'settings' => null,
-        'primary' => null,
-        'secondary' => null
+        'primary' => null
     ];
 
     /**
@@ -102,9 +102,9 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'secondary' => 'secondary',
         'settings' => 'settings',
-        'primary' => 'primary',
-        'secondary' => 'secondary'
+        'primary' => 'primary'
     ];
 
     /**
@@ -113,9 +113,9 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'secondary' => 'setSecondary',
         'settings' => 'setSettings',
-        'primary' => 'setPrimary',
-        'secondary' => 'setSecondary'
+        'primary' => 'setPrimary'
     ];
 
     /**
@@ -124,9 +124,9 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'secondary' => 'getSecondary',
         'settings' => 'getSettings',
-        'primary' => 'getPrimary',
-        'secondary' => 'getSecondary'
+        'primary' => 'getPrimary'
     ];
 
     /**
@@ -186,9 +186,9 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['secondary'] = $data['secondary'] ?? null;
         $this->container['settings'] = $data['settings'] ?? null;
         $this->container['primary'] = $data['primary'] ?? null;
-        $this->container['secondary'] = $data['secondary'] ?? null;
     }
 
     /**
@@ -217,6 +217,30 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets secondary
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[]
+     */
+    public function getSecondary()
+    {
+        return $this->container['secondary'];
+    }
+
+    /**
+     * Sets secondary
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[] $secondary secondary
+     *
+     * @return self
+     */
+    public function setSecondary($secondary)
+    {
+        $this->container['secondary'] = $secondary;
+
+        return $this;
+    }
 
     /**
      * Gets settings
@@ -262,30 +286,6 @@ class TopLevelActions implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrimary($primary)
     {
         $this->container['primary'] = $primary;
-
-        return $this;
-    }
-
-    /**
-     * Gets secondary
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[]
-     */
-    public function getSecondary()
-    {
-        return $this->container['secondary'];
-    }
-
-    /**
-     * Sets secondary
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResultActionsInner[] $secondary secondary
-     *
-     * @return self
-     */
-    public function setSecondary($secondary)
-    {
-        $this->container['secondary'] = $secondary;
 
         return $this;
     }

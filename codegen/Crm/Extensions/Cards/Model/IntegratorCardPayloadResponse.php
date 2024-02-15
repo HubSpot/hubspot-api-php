@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM cards
+ * Public App Crm Cards
  *
  * Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.
  *
@@ -58,12 +58,12 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total_count' => 'int',
-        'all_items_link_url' => 'string',
+        'response_version' => 'string',
         'card_label' => 'string',
+        'all_items_link_url' => 'string',
+        'total_count' => 'int',
         'top_level_actions' => '\HubSpot\Client\Crm\Extensions\Cards\Model\TopLevelActions',
-        'sections' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResult[]',
-        'response_version' => 'string'
+        'sections' => '\HubSpot\Client\Crm\Extensions\Cards\Model\IntegratorObjectResult[]'
     ];
 
     /**
@@ -74,12 +74,12 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'total_count' => 'int32',
-        'all_items_link_url' => null,
+        'response_version' => null,
         'card_label' => null,
+        'all_items_link_url' => null,
+        'total_count' => 'int32',
         'top_level_actions' => null,
-        'sections' => null,
-        'response_version' => null
+        'sections' => null
     ];
 
     /**
@@ -109,12 +109,12 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'total_count' => 'totalCount',
-        'all_items_link_url' => 'allItemsLinkUrl',
+        'response_version' => 'responseVersion',
         'card_label' => 'cardLabel',
+        'all_items_link_url' => 'allItemsLinkUrl',
+        'total_count' => 'totalCount',
         'top_level_actions' => 'topLevelActions',
-        'sections' => 'sections',
-        'response_version' => 'responseVersion'
+        'sections' => 'sections'
     ];
 
     /**
@@ -123,12 +123,12 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'total_count' => 'setTotalCount',
-        'all_items_link_url' => 'setAllItemsLinkUrl',
+        'response_version' => 'setResponseVersion',
         'card_label' => 'setCardLabel',
+        'all_items_link_url' => 'setAllItemsLinkUrl',
+        'total_count' => 'setTotalCount',
         'top_level_actions' => 'setTopLevelActions',
-        'sections' => 'setSections',
-        'response_version' => 'setResponseVersion'
+        'sections' => 'setSections'
     ];
 
     /**
@@ -137,12 +137,12 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'total_count' => 'getTotalCount',
-        'all_items_link_url' => 'getAllItemsLinkUrl',
+        'response_version' => 'getResponseVersion',
         'card_label' => 'getCardLabel',
+        'all_items_link_url' => 'getAllItemsLinkUrl',
+        'total_count' => 'getTotalCount',
         'top_level_actions' => 'getTopLevelActions',
-        'sections' => 'getSections',
-        'response_version' => 'getResponseVersion'
+        'sections' => 'getSections'
     ];
 
     /**
@@ -217,12 +217,12 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_count'] = $data['total_count'] ?? null;
-        $this->container['all_items_link_url'] = $data['all_items_link_url'] ?? null;
+        $this->container['response_version'] = $data['response_version'] ?? null;
         $this->container['card_label'] = $data['card_label'] ?? null;
+        $this->container['all_items_link_url'] = $data['all_items_link_url'] ?? null;
+        $this->container['total_count'] = $data['total_count'] ?? null;
         $this->container['top_level_actions'] = $data['top_level_actions'] ?? null;
         $this->container['sections'] = $data['sections'] ?? null;
-        $this->container['response_version'] = $data['response_version'] ?? null;
     }
 
     /**
@@ -234,9 +234,6 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['total_count'] === null) {
-            $invalidProperties[] = "'total_count' can't be null";
-        }
         $allowedValues = $this->getResponseVersionAllowableValues();
         if (!is_null($this->container['response_version']) && !in_array($this->container['response_version'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -246,6 +243,9 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
             );
         }
 
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -262,25 +262,59 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets total_count
+     * Gets response_version
      *
-     * @return int
+     * @return string|null
      */
-    public function getTotalCount()
+    public function getResponseVersion()
     {
-        return $this->container['total_count'];
+        return $this->container['response_version'];
     }
 
     /**
-     * Sets total_count
+     * Sets response_version
      *
-     * @param int $total_count The total number of card properties that will be sent in this response.
+     * @param string|null $response_version response_version
      *
      * @return self
      */
-    public function setTotalCount($total_count)
+    public function setResponseVersion($response_version)
     {
-        $this->container['total_count'] = $total_count;
+        $allowedValues = $this->getResponseVersionAllowableValues();
+        if (!is_null($response_version) && !in_array($response_version, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'response_version', must be one of '%s'",
+                    $response_version,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['response_version'] = $response_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_label
+     *
+     * @return string|null
+     */
+    public function getCardLabel()
+    {
+        return $this->container['card_label'];
+    }
+
+    /**
+     * Sets card_label
+     *
+     * @param string|null $card_label The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
+     *
+     * @return self
+     */
+    public function setCardLabel($card_label)
+    {
+        $this->container['card_label'] = $card_label;
 
         return $this;
     }
@@ -310,25 +344,25 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets card_label
+     * Gets total_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getCardLabel()
+    public function getTotalCount()
     {
-        return $this->container['card_label'];
+        return $this->container['total_count'];
     }
 
     /**
-     * Sets card_label
+     * Sets total_count
      *
-     * @param string|null $card_label The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
+     * @param int $total_count The total number of card properties that will be sent in this response.
      *
      * @return self
      */
-    public function setCardLabel($card_label)
+    public function setTotalCount($total_count)
     {
-        $this->container['card_label'] = $card_label;
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }
@@ -377,40 +411,6 @@ class IntegratorCardPayloadResponse implements ModelInterface, ArrayAccess, \Jso
     public function setSections($sections)
     {
         $this->container['sections'] = $sections;
-
-        return $this;
-    }
-
-    /**
-     * Gets response_version
-     *
-     * @return string|null
-     */
-    public function getResponseVersion()
-    {
-        return $this->container['response_version'];
-    }
-
-    /**
-     * Sets response_version
-     *
-     * @param string|null $response_version response_version
-     *
-     * @return self
-     */
-    public function setResponseVersion($response_version)
-    {
-        $allowedValues = $this->getResponseVersionAllowableValues();
-        if (!is_null($response_version) && !in_array($response_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'response_version', must be one of '%s'",
-                    $response_version,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['response_version'] = $response_version;
 
         return $this;
     }
