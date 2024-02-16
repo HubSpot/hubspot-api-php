@@ -10,7 +10,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -429,12 +429,11 @@ class EventsApi
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors|\HubSpot\Client\Crm\Timeline\Model\Error
+     * @return void
      */
     public function createBatch($batch_input_timeline_event)
     {
-        list($response) = $this->createBatchWithHttpInfo($batch_input_timeline_event);
-        return $response;
+        $this->createBatchWithHttpInfo($batch_input_timeline_event);
     }
 
     /**
@@ -446,7 +445,7 @@ class EventsApi
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBatchWithHttpInfo($batch_input_timeline_event)
     {
@@ -487,69 +486,7 @@ class EventsApi
                 );
             }
 
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 207:
-                    if ('\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponseWithErrors', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Timeline\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Timeline\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Timeline\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
@@ -614,27 +551,14 @@ class EventsApi
      */
     public function createBatchAsyncWithHttpInfo($batch_input_timeline_event)
     {
-        $returnType = '\HubSpot\Client\Crm\Timeline\Model\BatchResponseTimelineEventResponse';
+        $returnType = '';
         $request = $this->createBatchRequest($batch_input_timeline_event);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

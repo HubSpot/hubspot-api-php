@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -57,8 +57,8 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'string',
-        'label' => 'string'
+        'label' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null,
-        'label' => null
+        'label' => null,
+        'value' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'label' => 'label'
+        'label' => 'label',
+        'value' => 'value'
     ];
 
     /**
@@ -110,8 +110,8 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'label' => 'setLabel'
+        'label' => 'setLabel',
+        'value' => 'setValue'
     ];
 
     /**
@@ -120,8 +120,8 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'label' => 'getLabel'
+        'label' => 'getLabel',
+        'value' => 'getValue'
     ];
 
     /**
@@ -181,8 +181,8 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
-        }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
-
-        return $this;
-    }
 
     /**
      * Gets label
@@ -259,6 +235,30 @@ class TimelineEventTemplateTokenOption implements ModelInterface, ArrayAccess, \
     public function setLabel($label)
     {
         $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

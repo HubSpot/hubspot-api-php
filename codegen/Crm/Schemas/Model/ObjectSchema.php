@@ -58,20 +58,21 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'associations' => '\HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[]',
+        'secondary_display_properties' => 'string[]',
+        'object_type_id' => 'string',
+        'description' => 'string',
+        'fully_qualified_name' => 'string',
         'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
+        'archived' => 'bool',
+        'created_at' => '\DateTime',
         'required_properties' => 'string[]',
         'searchable_properties' => 'string[]',
         'primary_display_property' => 'string',
-        'secondary_display_properties' => 'string[]',
-        'archived' => 'bool',
+        'name' => 'string',
         'id' => 'string',
-        'fully_qualified_name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'object_type_id' => 'string',
         'properties' => '\HubSpot\Client\Crm\Schemas\Model\Property[]',
-        'associations' => '\HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[]',
-        'name' => 'string'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -82,20 +83,21 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'associations' => null,
+        'secondary_display_properties' => null,
+        'object_type_id' => null,
+        'description' => null,
+        'fully_qualified_name' => null,
         'labels' => null,
+        'archived' => null,
+        'created_at' => 'date-time',
         'required_properties' => null,
         'searchable_properties' => null,
         'primary_display_property' => null,
-        'secondary_display_properties' => null,
-        'archived' => null,
+        'name' => null,
         'id' => null,
-        'fully_qualified_name' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'object_type_id' => null,
         'properties' => null,
-        'associations' => null,
-        'name' => null
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -125,20 +127,21 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'associations' => 'associations',
+        'secondary_display_properties' => 'secondaryDisplayProperties',
+        'object_type_id' => 'objectTypeId',
+        'description' => 'description',
+        'fully_qualified_name' => 'fullyQualifiedName',
         'labels' => 'labels',
+        'archived' => 'archived',
+        'created_at' => 'createdAt',
         'required_properties' => 'requiredProperties',
         'searchable_properties' => 'searchableProperties',
         'primary_display_property' => 'primaryDisplayProperty',
-        'secondary_display_properties' => 'secondaryDisplayProperties',
-        'archived' => 'archived',
+        'name' => 'name',
         'id' => 'id',
-        'fully_qualified_name' => 'fullyQualifiedName',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'object_type_id' => 'objectTypeId',
         'properties' => 'properties',
-        'associations' => 'associations',
-        'name' => 'name'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -147,20 +150,21 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'associations' => 'setAssociations',
+        'secondary_display_properties' => 'setSecondaryDisplayProperties',
+        'object_type_id' => 'setObjectTypeId',
+        'description' => 'setDescription',
+        'fully_qualified_name' => 'setFullyQualifiedName',
         'labels' => 'setLabels',
+        'archived' => 'setArchived',
+        'created_at' => 'setCreatedAt',
         'required_properties' => 'setRequiredProperties',
         'searchable_properties' => 'setSearchableProperties',
         'primary_display_property' => 'setPrimaryDisplayProperty',
-        'secondary_display_properties' => 'setSecondaryDisplayProperties',
-        'archived' => 'setArchived',
+        'name' => 'setName',
         'id' => 'setId',
-        'fully_qualified_name' => 'setFullyQualifiedName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'object_type_id' => 'setObjectTypeId',
         'properties' => 'setProperties',
-        'associations' => 'setAssociations',
-        'name' => 'setName'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -169,20 +173,21 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'associations' => 'getAssociations',
+        'secondary_display_properties' => 'getSecondaryDisplayProperties',
+        'object_type_id' => 'getObjectTypeId',
+        'description' => 'getDescription',
+        'fully_qualified_name' => 'getFullyQualifiedName',
         'labels' => 'getLabels',
+        'archived' => 'getArchived',
+        'created_at' => 'getCreatedAt',
         'required_properties' => 'getRequiredProperties',
         'searchable_properties' => 'getSearchableProperties',
         'primary_display_property' => 'getPrimaryDisplayProperty',
-        'secondary_display_properties' => 'getSecondaryDisplayProperties',
-        'archived' => 'getArchived',
+        'name' => 'getName',
         'id' => 'getId',
-        'fully_qualified_name' => 'getFullyQualifiedName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'object_type_id' => 'getObjectTypeId',
         'properties' => 'getProperties',
-        'associations' => 'getAssociations',
-        'name' => 'getName'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -242,20 +247,21 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['associations'] = $data['associations'] ?? null;
+        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
+        $this->container['object_type_id'] = $data['object_type_id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['fully_qualified_name'] = $data['fully_qualified_name'] ?? null;
         $this->container['labels'] = $data['labels'] ?? null;
+        $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['required_properties'] = $data['required_properties'] ?? null;
         $this->container['searchable_properties'] = $data['searchable_properties'] ?? null;
         $this->container['primary_display_property'] = $data['primary_display_property'] ?? null;
-        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['fully_qualified_name'] = $data['fully_qualified_name'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['object_type_id'] = $data['object_type_id'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
-        $this->container['associations'] = $data['associations'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -267,38 +273,23 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['associations'] === null) {
+            $invalidProperties[] = "'associations' can't be null";
+        }
         if ($this->container['labels'] === null) {
             $invalidProperties[] = "'labels' can't be null";
         }
         if ($this->container['required_properties'] === null) {
             $invalidProperties[] = "'required_properties' can't be null";
         }
-        if ($this->container['searchable_properties'] === null) {
-            $invalidProperties[] = "'searchable_properties' can't be null";
-        }
-        if ($this->container['secondary_display_properties'] === null) {
-            $invalidProperties[] = "'secondary_display_properties' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['fully_qualified_name'] === null) {
-            $invalidProperties[] = "'fully_qualified_name' can't be null";
-        }
-        if ($this->container['object_type_id'] === null) {
-            $invalidProperties[] = "'object_type_id' can't be null";
-        }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['associations'] === null) {
-            $invalidProperties[] = "'associations' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -314,6 +305,126 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets associations
+     *
+     * @return \HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[]
+     */
+    public function getAssociations()
+    {
+        return $this->container['associations'];
+    }
+
+    /**
+     * Sets associations
+     *
+     * @param \HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[] $associations Associations defined for a given object type.
+     *
+     * @return self
+     */
+    public function setAssociations($associations)
+    {
+        $this->container['associations'] = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Gets secondary_display_properties
+     *
+     * @return string[]|null
+     */
+    public function getSecondaryDisplayProperties()
+    {
+        return $this->container['secondary_display_properties'];
+    }
+
+    /**
+     * Sets secondary_display_properties
+     *
+     * @param string[]|null $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
+     * @return self
+     */
+    public function setSecondaryDisplayProperties($secondary_display_properties)
+    {
+        $this->container['secondary_display_properties'] = $secondary_display_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type_id
+     *
+     * @return string|null
+     */
+    public function getObjectTypeId()
+    {
+        return $this->container['object_type_id'];
+    }
+
+    /**
+     * Sets object_type_id
+     *
+     * @param string|null $object_type_id object_type_id
+     *
+     * @return self
+     */
+    public function setObjectTypeId($object_type_id)
+    {
+        $this->container['object_type_id'] = $object_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets fully_qualified_name
+     *
+     * @return string|null
+     */
+    public function getFullyQualifiedName()
+    {
+        return $this->container['fully_qualified_name'];
+    }
+
+    /**
+     * Sets fully_qualified_name
+     *
+     * @param string|null $fully_qualified_name An assigned unique ID for the object, including portal ID and object name.
+     *
+     * @return self
+     */
+    public function setFullyQualifiedName($fully_qualified_name)
+    {
+        $this->container['fully_qualified_name'] = $fully_qualified_name;
+
+        return $this;
+    }
 
     /**
      * Gets labels
@@ -335,6 +446,54 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLabels($labels)
     {
         $this->container['labels'] = $labels;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived archived
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at When the object schema was created.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -366,7 +525,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets searchable_properties
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSearchableProperties()
     {
@@ -376,7 +535,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets searchable_properties
      *
-     * @param string[] $searchable_properties Names of properties that will be indexed for this object type in by HubSpot's product search.
+     * @param string[]|null $searchable_properties Names of properties that will be indexed for this object type in by HubSpot's product search.
      *
      * @return self
      */
@@ -412,49 +571,25 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets secondary_display_properties
+     * Gets name
      *
-     * @return string[]
+     * @return string
      */
-    public function getSecondaryDisplayProperties()
+    public function getName()
     {
-        return $this->container['secondary_display_properties'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets secondary_display_properties
+     * Sets name
      *
-     * @param string[] $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param string $name A unique name for the schema's object type.
      *
      * @return self
      */
-    public function setSecondaryDisplayProperties($secondary_display_properties)
+    public function setName($name)
     {
-        $this->container['secondary_display_properties'] = $secondary_display_properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -484,102 +619,6 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets fully_qualified_name
-     *
-     * @return string
-     */
-    public function getFullyQualifiedName()
-    {
-        return $this->container['fully_qualified_name'];
-    }
-
-    /**
-     * Sets fully_qualified_name
-     *
-     * @param string $fully_qualified_name An assigned unique ID for the object, including portal ID and object name.
-     *
-     * @return self
-     */
-    public function setFullyQualifiedName($fully_qualified_name)
-    {
-        $this->container['fully_qualified_name'] = $fully_qualified_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at When the object schema was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at When the object schema was last updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_type_id
-     *
-     * @return string
-     */
-    public function getObjectTypeId()
-    {
-        return $this->container['object_type_id'];
-    }
-
-    /**
-     * Sets object_type_id
-     *
-     * @param string $object_type_id object_type_id
-     *
-     * @return self
-     */
-    public function setObjectTypeId($object_type_id)
-    {
-        $this->container['object_type_id'] = $object_type_id;
-
-        return $this;
-    }
-
-    /**
      * Gets properties
      *
      * @return \HubSpot\Client\Crm\Schemas\Model\Property[]
@@ -604,49 +643,25 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets associations
+     * Gets updated_at
      *
-     * @return \HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[]
+     * @return \DateTime|null
      */
-    public function getAssociations()
+    public function getUpdatedAt()
     {
-        return $this->container['associations'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets associations
+     * Sets updated_at
      *
-     * @param \HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[] $associations Associations defined for a given object type.
+     * @param \DateTime|null $updated_at When the object schema was last updated.
      *
      * @return self
      */
-    public function setAssociations($associations)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['associations'] = $associations;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name A unique name for the schema's object type.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

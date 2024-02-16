@@ -58,8 +58,8 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'singular' => 'string',
-        'plural' => 'string'
+        'plural' => 'string',
+        'singular' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'singular' => null,
-        'plural' => null
+        'plural' => null,
+        'singular' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'singular' => 'singular',
-        'plural' => 'plural'
+        'plural' => 'plural',
+        'singular' => 'singular'
     ];
 
     /**
@@ -111,8 +111,8 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'singular' => 'setSingular',
-        'plural' => 'setPlural'
+        'plural' => 'setPlural',
+        'singular' => 'setSingular'
     ];
 
     /**
@@ -121,8 +121,8 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'singular' => 'getSingular',
-        'plural' => 'getPlural'
+        'plural' => 'getPlural',
+        'singular' => 'getSingular'
     ];
 
     /**
@@ -182,8 +182,8 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['singular'] = $data['singular'] ?? null;
         $this->container['plural'] = $data['plural'] ?? null;
+        $this->container['singular'] = $data['singular'] ?? null;
     }
 
     /**
@@ -211,30 +211,6 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets singular
-     *
-     * @return string|null
-     */
-    public function getSingular()
-    {
-        return $this->container['singular'];
-    }
-
-    /**
-     * Sets singular
-     *
-     * @param string|null $singular The word for one object. (There’s no way to change this later.)
-     *
-     * @return self
-     */
-    public function setSingular($singular)
-    {
-        $this->container['singular'] = $singular;
-
-        return $this;
-    }
-
-    /**
      * Gets plural
      *
      * @return string|null
@@ -254,6 +230,30 @@ class ObjectTypeDefinitionLabels implements ModelInterface, ArrayAccess, \JsonSe
     public function setPlural($plural)
     {
         $this->container['plural'] = $plural;
+
+        return $this;
+    }
+
+    /**
+     * Gets singular
+     *
+     * @return string|null
+     */
+    public function getSingular()
+    {
+        return $this->container['singular'];
+    }
+
+    /**
+     * Sets singular
+     *
+     * @param string|null $singular The word for one object. (There’s no way to change this later.)
+     *
+     * @return self
+     */
+    public function setSingular($singular)
+    {
+        $this->container['singular'] = $singular;
 
         return $this;
     }

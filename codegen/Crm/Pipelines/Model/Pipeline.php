@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -58,14 +58,14 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'display_order' => 'int',
-        'id' => 'string',
-        'stages' => '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage[]',
         'created_at' => '\DateTime',
         'archived_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'archived' => 'bool'
+        'archived' => 'bool',
+        'display_order' => 'int',
+        'stages' => '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage[]',
+        'label' => 'string',
+        'id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -76,14 +76,14 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'display_order' => 'int32',
-        'id' => null,
-        'stages' => null,
         'created_at' => 'date-time',
         'archived_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'archived' => null
+        'archived' => null,
+        'display_order' => 'int32',
+        'stages' => null,
+        'label' => null,
+        'id' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -113,14 +113,14 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'display_order' => 'displayOrder',
-        'id' => 'id',
-        'stages' => 'stages',
         'created_at' => 'createdAt',
         'archived_at' => 'archivedAt',
-        'updated_at' => 'updatedAt',
-        'archived' => 'archived'
+        'archived' => 'archived',
+        'display_order' => 'displayOrder',
+        'stages' => 'stages',
+        'label' => 'label',
+        'id' => 'id',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -129,14 +129,14 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'display_order' => 'setDisplayOrder',
-        'id' => 'setId',
-        'stages' => 'setStages',
         'created_at' => 'setCreatedAt',
         'archived_at' => 'setArchivedAt',
-        'updated_at' => 'setUpdatedAt',
-        'archived' => 'setArchived'
+        'archived' => 'setArchived',
+        'display_order' => 'setDisplayOrder',
+        'stages' => 'setStages',
+        'label' => 'setLabel',
+        'id' => 'setId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -145,14 +145,14 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'display_order' => 'getDisplayOrder',
-        'id' => 'getId',
-        'stages' => 'getStages',
         'created_at' => 'getCreatedAt',
         'archived_at' => 'getArchivedAt',
-        'updated_at' => 'getUpdatedAt',
-        'archived' => 'getArchived'
+        'archived' => 'getArchived',
+        'display_order' => 'getDisplayOrder',
+        'stages' => 'getStages',
+        'label' => 'getLabel',
+        'id' => 'getId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -212,14 +212,14 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['stages'] = $data['stages'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['stages'] = $data['stages'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -231,26 +231,26 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
         }
         if ($this->container['display_order'] === null) {
             $invalidProperties[] = "'display_order' can't be null";
         }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['stages'] === null) {
             $invalidProperties[] = "'stages' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
         }
         return $invalidProperties;
     }
@@ -266,102 +266,6 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label A unique label used to organize pipelines in HubSpot's UI
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_order
-     *
-     * @return int
-     */
-    public function getDisplayOrder()
-    {
-        return $this->container['display_order'];
-    }
-
-    /**
-     * Sets display_order
-     *
-     * @param int $display_order The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
-     *
-     * @return self
-     */
-    public function setDisplayOrder($display_order)
-    {
-        $this->container['display_order'] = $display_order;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id A unique identifier generated by HubSpot that can be used to retrieve and update the pipeline.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets stages
-     *
-     * @return \HubSpot\Client\Crm\Pipelines\Model\PipelineStage[]
-     */
-    public function getStages()
-    {
-        return $this->container['stages'];
-    }
-
-    /**
-     * Sets stages
-     *
-     * @param \HubSpot\Client\Crm\Pipelines\Model\PipelineStage[] $stages The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
-     *
-     * @return self
-     */
-    public function setStages($stages)
-    {
-        $this->container['stages'] = $stages;
-
-        return $this;
-    }
 
     /**
      * Gets created_at
@@ -412,30 +316,6 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at The date the pipeline was last updated.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
      * Gets archived
      *
      * @return bool
@@ -455,6 +335,126 @@ class Pipeline implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setArchived($archived)
     {
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_order
+     *
+     * @return int
+     */
+    public function getDisplayOrder()
+    {
+        return $this->container['display_order'];
+    }
+
+    /**
+     * Sets display_order
+     *
+     * @param int $display_order The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     *
+     * @return self
+     */
+    public function setDisplayOrder($display_order)
+    {
+        $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets stages
+     *
+     * @return \HubSpot\Client\Crm\Pipelines\Model\PipelineStage[]
+     */
+    public function getStages()
+    {
+        return $this->container['stages'];
+    }
+
+    /**
+     * Sets stages
+     *
+     * @param \HubSpot\Client\Crm\Pipelines\Model\PipelineStage[] $stages The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+     *
+     * @return self
+     */
+    public function setStages($stages)
+    {
+        $this->container['stages'] = $stages;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label A unique label used to organize pipelines in HubSpot's UI
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id A unique identifier generated by HubSpot that can be used to retrieve and update the pipeline.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at The date the pipeline was last updated.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

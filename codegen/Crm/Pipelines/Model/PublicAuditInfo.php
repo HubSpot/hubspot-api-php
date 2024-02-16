@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -57,13 +57,13 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'portal_id' => 'int',
         'identifier' => 'string',
-        'action' => 'string',
-        'timestamp' => '\DateTime',
-        'message' => 'string',
         'raw_object' => 'object',
-        'from_user_id' => 'int'
+        'from_user_id' => 'int',
+        'portal_id' => 'int',
+        'action' => 'string',
+        'message' => 'string',
+        'timestamp' => '\DateTime'
     ];
 
     /**
@@ -74,13 +74,13 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'portal_id' => 'int32',
         'identifier' => null,
-        'action' => null,
-        'timestamp' => 'date-time',
-        'message' => null,
         'raw_object' => null,
-        'from_user_id' => 'int32'
+        'from_user_id' => 'int32',
+        'portal_id' => 'int32',
+        'action' => null,
+        'message' => null,
+        'timestamp' => 'date-time'
     ];
 
     /**
@@ -110,13 +110,13 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'portal_id' => 'portalId',
         'identifier' => 'identifier',
-        'action' => 'action',
-        'timestamp' => 'timestamp',
-        'message' => 'message',
         'raw_object' => 'rawObject',
-        'from_user_id' => 'fromUserId'
+        'from_user_id' => 'fromUserId',
+        'portal_id' => 'portalId',
+        'action' => 'action',
+        'message' => 'message',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -125,13 +125,13 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'portal_id' => 'setPortalId',
         'identifier' => 'setIdentifier',
-        'action' => 'setAction',
-        'timestamp' => 'setTimestamp',
-        'message' => 'setMessage',
         'raw_object' => 'setRawObject',
-        'from_user_id' => 'setFromUserId'
+        'from_user_id' => 'setFromUserId',
+        'portal_id' => 'setPortalId',
+        'action' => 'setAction',
+        'message' => 'setMessage',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -140,13 +140,13 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'portal_id' => 'getPortalId',
         'identifier' => 'getIdentifier',
-        'action' => 'getAction',
-        'timestamp' => 'getTimestamp',
-        'message' => 'getMessage',
         'raw_object' => 'getRawObject',
-        'from_user_id' => 'getFromUserId'
+        'from_user_id' => 'getFromUserId',
+        'portal_id' => 'getPortalId',
+        'action' => 'getAction',
+        'message' => 'getMessage',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -206,13 +206,13 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['portal_id'] = $data['portal_id'] ?? null;
         $this->container['identifier'] = $data['identifier'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
         $this->container['raw_object'] = $data['raw_object'] ?? null;
         $this->container['from_user_id'] = $data['from_user_id'] ?? null;
+        $this->container['portal_id'] = $data['portal_id'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
     }
 
     /**
@@ -224,11 +224,11 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['portal_id'] === null) {
-            $invalidProperties[] = "'portal_id' can't be null";
-        }
         if ($this->container['identifier'] === null) {
             $invalidProperties[] = "'identifier' can't be null";
+        }
+        if ($this->container['portal_id'] === null) {
+            $invalidProperties[] = "'portal_id' can't be null";
         }
         if ($this->container['action'] === null) {
             $invalidProperties[] = "'action' can't be null";
@@ -247,30 +247,6 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets portal_id
-     *
-     * @return int
-     */
-    public function getPortalId()
-    {
-        return $this->container['portal_id'];
-    }
-
-    /**
-     * Sets portal_id
-     *
-     * @param int $portal_id portal_id
-     *
-     * @return self
-     */
-    public function setPortalId($portal_id)
-    {
-        $this->container['portal_id'] = $portal_id;
-
-        return $this;
-    }
 
     /**
      * Gets identifier
@@ -292,78 +268,6 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIdentifier($identifier)
     {
         $this->container['identifier'] = $identifier;
-
-        return $this;
-    }
-
-    /**
-     * Gets action
-     *
-     * @return string
-     */
-    public function getAction()
-    {
-        return $this->container['action'];
-    }
-
-    /**
-     * Sets action
-     *
-     * @param string $action action
-     *
-     * @return self
-     */
-    public function setAction($action)
-    {
-        $this->container['action'] = $action;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime|null $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
 
         return $this;
     }
@@ -412,6 +316,102 @@ class PublicAuditInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFromUserId($from_user_id)
     {
         $this->container['from_user_id'] = $from_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets portal_id
+     *
+     * @return int
+     */
+    public function getPortalId()
+    {
+        return $this->container['portal_id'];
+    }
+
+    /**
+     * Sets portal_id
+     *
+     * @param int $portal_id portal_id
+     *
+     * @return self
+     */
+    public function setPortalId($portal_id)
+    {
+        $this->container['portal_id'] = $portal_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string $action action
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return \DateTime|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param \DateTime|null $timestamp timestamp
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

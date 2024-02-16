@@ -58,11 +58,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'created_at' => '\DateTime',
         'from_object_type_id' => 'string',
-        'to_object_type_id' => 'string',
         'name' => 'string',
         'id' => 'string',
-        'created_at' => '\DateTime',
+        'to_object_type_id' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -74,11 +74,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'created_at' => 'date-time',
         'from_object_type_id' => null,
-        'to_object_type_id' => null,
         'name' => null,
         'id' => null,
-        'created_at' => 'date-time',
+        'to_object_type_id' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -109,11 +109,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'created_at' => 'createdAt',
         'from_object_type_id' => 'fromObjectTypeId',
-        'to_object_type_id' => 'toObjectTypeId',
         'name' => 'name',
         'id' => 'id',
-        'created_at' => 'createdAt',
+        'to_object_type_id' => 'toObjectTypeId',
         'updated_at' => 'updatedAt'
     ];
 
@@ -123,11 +123,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'created_at' => 'setCreatedAt',
         'from_object_type_id' => 'setFromObjectTypeId',
-        'to_object_type_id' => 'setToObjectTypeId',
         'name' => 'setName',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
+        'to_object_type_id' => 'setToObjectTypeId',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -137,11 +137,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'created_at' => 'getCreatedAt',
         'from_object_type_id' => 'getFromObjectTypeId',
-        'to_object_type_id' => 'getToObjectTypeId',
         'name' => 'getName',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
+        'to_object_type_id' => 'getToObjectTypeId',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -202,11 +202,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['from_object_type_id'] = $data['from_object_type_id'] ?? null;
-        $this->container['to_object_type_id'] = $data['to_object_type_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['to_object_type_id'] = $data['to_object_type_id'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -222,11 +222,11 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['from_object_type_id'] === null) {
             $invalidProperties[] = "'from_object_type_id' can't be null";
         }
-        if ($this->container['to_object_type_id'] === null) {
-            $invalidProperties[] = "'to_object_type_id' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['to_object_type_id'] === null) {
+            $invalidProperties[] = "'to_object_type_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -242,6 +242,30 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at When the association was defined.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
 
     /**
      * Gets from_object_type_id
@@ -263,30 +287,6 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFromObjectTypeId($from_object_type_id)
     {
         $this->container['from_object_type_id'] = $from_object_type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets to_object_type_id
-     *
-     * @return string
-     */
-    public function getToObjectTypeId()
-    {
-        return $this->container['to_object_type_id'];
-    }
-
-    /**
-     * Sets to_object_type_id
-     *
-     * @param string $to_object_type_id ID of the target object type ID to link to.
-     *
-     * @return self
-     */
-    public function setToObjectTypeId($to_object_type_id)
-    {
-        $this->container['to_object_type_id'] = $to_object_type_id;
 
         return $this;
     }
@@ -340,25 +340,25 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets created_at
+     * Gets to_object_type_id
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getCreatedAt()
+    public function getToObjectTypeId()
     {
-        return $this->container['created_at'];
+        return $this->container['to_object_type_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets to_object_type_id
      *
-     * @param \DateTime|null $created_at When the association was defined.
+     * @param string $to_object_type_id ID of the target object type ID to link to.
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setToObjectTypeId($to_object_type_id)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['to_object_type_id'] = $to_object_type_id;
 
         return $this;
     }

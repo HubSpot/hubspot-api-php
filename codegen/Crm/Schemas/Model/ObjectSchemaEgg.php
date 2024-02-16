@@ -58,14 +58,15 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
+        'secondary_display_properties' => 'string[]',
         'required_properties' => 'string[]',
         'searchable_properties' => 'string[]',
         'primary_display_property' => 'string',
-        'secondary_display_properties' => 'string[]',
-        'properties' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[]',
+        'name' => 'string',
+        'description' => 'string',
         'associated_objects' => 'string[]',
-        'name' => 'string'
+        'properties' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[]',
+        'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels'
     ];
 
     /**
@@ -76,14 +77,15 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'labels' => null,
+        'secondary_display_properties' => null,
         'required_properties' => null,
         'searchable_properties' => null,
         'primary_display_property' => null,
-        'secondary_display_properties' => null,
-        'properties' => null,
+        'name' => null,
+        'description' => null,
         'associated_objects' => null,
-        'name' => null
+        'properties' => null,
+        'labels' => null
     ];
 
     /**
@@ -113,14 +115,15 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'labels' => 'labels',
+        'secondary_display_properties' => 'secondaryDisplayProperties',
         'required_properties' => 'requiredProperties',
         'searchable_properties' => 'searchableProperties',
         'primary_display_property' => 'primaryDisplayProperty',
-        'secondary_display_properties' => 'secondaryDisplayProperties',
-        'properties' => 'properties',
+        'name' => 'name',
+        'description' => 'description',
         'associated_objects' => 'associatedObjects',
-        'name' => 'name'
+        'properties' => 'properties',
+        'labels' => 'labels'
     ];
 
     /**
@@ -129,14 +132,15 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'labels' => 'setLabels',
+        'secondary_display_properties' => 'setSecondaryDisplayProperties',
         'required_properties' => 'setRequiredProperties',
         'searchable_properties' => 'setSearchableProperties',
         'primary_display_property' => 'setPrimaryDisplayProperty',
-        'secondary_display_properties' => 'setSecondaryDisplayProperties',
-        'properties' => 'setProperties',
+        'name' => 'setName',
+        'description' => 'setDescription',
         'associated_objects' => 'setAssociatedObjects',
-        'name' => 'setName'
+        'properties' => 'setProperties',
+        'labels' => 'setLabels'
     ];
 
     /**
@@ -145,14 +149,15 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'labels' => 'getLabels',
+        'secondary_display_properties' => 'getSecondaryDisplayProperties',
         'required_properties' => 'getRequiredProperties',
         'searchable_properties' => 'getSearchableProperties',
         'primary_display_property' => 'getPrimaryDisplayProperty',
-        'secondary_display_properties' => 'getSecondaryDisplayProperties',
-        'properties' => 'getProperties',
+        'name' => 'getName',
+        'description' => 'getDescription',
         'associated_objects' => 'getAssociatedObjects',
-        'name' => 'getName'
+        'properties' => 'getProperties',
+        'labels' => 'getLabels'
     ];
 
     /**
@@ -212,14 +217,15 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['labels'] = $data['labels'] ?? null;
+        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
         $this->container['required_properties'] = $data['required_properties'] ?? null;
         $this->container['searchable_properties'] = $data['searchable_properties'] ?? null;
         $this->container['primary_display_property'] = $data['primary_display_property'] ?? null;
-        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
-        $this->container['associated_objects'] = $data['associated_objects'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['associated_objects'] = $data['associated_objects'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['labels'] = $data['labels'] ?? null;
     }
 
     /**
@@ -231,26 +237,20 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['labels'] === null) {
-            $invalidProperties[] = "'labels' can't be null";
-        }
         if ($this->container['required_properties'] === null) {
             $invalidProperties[] = "'required_properties' can't be null";
         }
-        if ($this->container['searchable_properties'] === null) {
-            $invalidProperties[] = "'searchable_properties' can't be null";
-        }
-        if ($this->container['secondary_display_properties'] === null) {
-            $invalidProperties[] = "'secondary_display_properties' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['associated_objects'] === null) {
             $invalidProperties[] = "'associated_objects' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
+        }
+        if ($this->container['labels'] === null) {
+            $invalidProperties[] = "'labels' can't be null";
         }
         return $invalidProperties;
     }
@@ -268,25 +268,25 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets labels
+     * Gets secondary_display_properties
      *
-     * @return \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels
+     * @return string[]|null
      */
-    public function getLabels()
+    public function getSecondaryDisplayProperties()
     {
-        return $this->container['labels'];
+        return $this->container['secondary_display_properties'];
     }
 
     /**
-     * Sets labels
+     * Sets secondary_display_properties
      *
-     * @param \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels $labels labels
+     * @param string[]|null $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @return self
      */
-    public function setLabels($labels)
+    public function setSecondaryDisplayProperties($secondary_display_properties)
     {
-        $this->container['labels'] = $labels;
+        $this->container['secondary_display_properties'] = $secondary_display_properties;
 
         return $this;
     }
@@ -318,7 +318,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets searchable_properties
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSearchableProperties()
     {
@@ -328,7 +328,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets searchable_properties
      *
-     * @param string[] $searchable_properties Names of properties that will be indexed for this object type in by HubSpot's product search.
+     * @param string[]|null $searchable_properties Names of properties that will be indexed for this object type in by HubSpot's product search.
      *
      * @return self
      */
@@ -364,49 +364,49 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets secondary_display_properties
+     * Gets name
      *
-     * @return string[]
+     * @return string
      */
-    public function getSecondaryDisplayProperties()
+    public function getName()
     {
-        return $this->container['secondary_display_properties'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets secondary_display_properties
+     * Sets name
      *
-     * @param string[] $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param string $name A unique name for this object. For internal use only.
      *
      * @return self
      */
-    public function setSecondaryDisplayProperties($secondary_display_properties)
+    public function setName($name)
     {
-        $this->container['secondary_display_properties'] = $secondary_display_properties;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets properties
+     * Gets description
      *
-     * @return \HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[]
+     * @return string|null
      */
-    public function getProperties()
+    public function getDescription()
     {
-        return $this->container['properties'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets properties
+     * Sets description
      *
-     * @param \HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[] $properties Properties defined for this object type.
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setProperties($properties)
+    public function setDescription($description)
     {
-        $this->container['properties'] = $properties;
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -436,25 +436,49 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets properties
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[]
      */
-    public function getName()
+    public function getProperties()
     {
-        return $this->container['name'];
+        return $this->container['properties'];
     }
 
     /**
-     * Sets name
+     * Sets properties
      *
-     * @param string $name A unique name for this object. For internal use only.
+     * @param \HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[] $properties Properties defined for this object type.
      *
      * @return self
      */
-    public function setName($name)
+    public function setProperties($properties)
     {
-        $this->container['name'] = $name;
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets labels
+     *
+     * @return \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels
+     */
+    public function getLabels()
+    {
+        return $this->container['labels'];
+    }
+
+    /**
+     * Sets labels
+     *
+     * @param \HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels $labels labels
+     *
+     * @return self
+     */
+    public function setLabels($labels)
+    {
+        $this->container['labels'] = $labels;
 
         return $this;
     }

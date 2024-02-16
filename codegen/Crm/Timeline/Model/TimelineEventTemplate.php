@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -58,13 +58,13 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'header_template' => 'string',
+        'created_at' => '\DateTime',
         'detail_template' => 'string',
+        'name' => 'string',
         'tokens' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken[]',
         'id' => 'string',
+        'header_template' => 'string',
         'object_type' => 'string',
-        'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     ];
 
@@ -76,13 +76,13 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'header_template' => null,
+        'created_at' => 'date-time',
         'detail_template' => null,
+        'name' => null,
         'tokens' => null,
         'id' => null,
+        'header_template' => null,
         'object_type' => null,
-        'created_at' => 'date-time',
         'updated_at' => 'date-time'
     ];
 
@@ -113,13 +113,13 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'header_template' => 'headerTemplate',
+        'created_at' => 'createdAt',
         'detail_template' => 'detailTemplate',
+        'name' => 'name',
         'tokens' => 'tokens',
         'id' => 'id',
+        'header_template' => 'headerTemplate',
         'object_type' => 'objectType',
-        'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
 
@@ -129,13 +129,13 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'header_template' => 'setHeaderTemplate',
+        'created_at' => 'setCreatedAt',
         'detail_template' => 'setDetailTemplate',
+        'name' => 'setName',
         'tokens' => 'setTokens',
         'id' => 'setId',
+        'header_template' => 'setHeaderTemplate',
         'object_type' => 'setObjectType',
-        'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -145,13 +145,13 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'header_template' => 'getHeaderTemplate',
+        'created_at' => 'getCreatedAt',
         'detail_template' => 'getDetailTemplate',
+        'name' => 'getName',
         'tokens' => 'getTokens',
         'id' => 'getId',
+        'header_template' => 'getHeaderTemplate',
         'object_type' => 'getObjectType',
-        'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -212,13 +212,13 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['header_template'] = $data['header_template'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['detail_template'] = $data['detail_template'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['tokens'] = $data['tokens'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['header_template'] = $data['header_template'] ?? null;
         $this->container['object_type'] = $data['object_type'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -259,49 +259,25 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets name
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getName()
+    public function getCreatedAt()
     {
-        return $this->container['name'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets name
+     * Sets created_at
      *
-     * @param string $name The template name.
+     * @param \DateTime|null $created_at The date and time that the Event Template was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
      *
      * @return self
      */
-    public function setName($name)
+    public function setCreatedAt($created_at)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets header_template
-     *
-     * @return string|null
-     */
-    public function getHeaderTemplate()
-    {
-        return $this->container['header_template'];
-    }
-
-    /**
-     * Sets header_template
-     *
-     * @param string|null $header_template This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.
-     *
-     * @return self
-     */
-    public function setHeaderTemplate($header_template)
-    {
-        $this->container['header_template'] = $header_template;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -326,6 +302,30 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDetailTemplate($detail_template)
     {
         $this->container['detail_template'] = $detail_template;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The template name.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -379,6 +379,30 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets header_template
+     *
+     * @return string|null
+     */
+    public function getHeaderTemplate()
+    {
+        return $this->container['header_template'];
+    }
+
+    /**
+     * Sets header_template
+     *
+     * @param string|null $header_template This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.
+     *
+     * @return self
+     */
+    public function setHeaderTemplate($header_template)
+    {
+        $this->container['header_template'] = $header_template;
+
+        return $this;
+    }
+
+    /**
      * Gets object_type
      *
      * @return string
@@ -398,30 +422,6 @@ class TimelineEventTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setObjectType($object_type)
     {
         $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at The date and time that the Event Template was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }

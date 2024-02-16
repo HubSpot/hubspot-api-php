@@ -58,15 +58,22 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'label' => 'string',
-        'group_name' => 'string',
-        'description' => 'string',
-        'options' => '\HubSpot\Client\Crm\Schemas\Model\OptionInput[]',
-        'display_order' => 'int',
-        'has_unique_value' => 'bool',
         'hidden' => 'bool',
+        'option_sort_strategy' => 'string',
+        'display_order' => 'int',
+        'description' => 'string',
+        'show_currency_symbol' => 'bool',
+        'label' => 'string',
         'type' => 'string',
+        'form_field' => 'bool',
+        'group_name' => 'string',
+        'referenced_object_type' => 'string',
+        'text_display_hint' => 'string',
+        'name' => 'string',
+        'options' => '\HubSpot\Client\Crm\Schemas\Model\OptionInput[]',
+        'searchable_in_global_search' => 'bool',
+        'number_display_hint' => 'string',
+        'has_unique_value' => 'bool',
         'field_type' => 'string'
     ];
 
@@ -78,15 +85,22 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'label' => null,
-        'group_name' => null,
-        'description' => null,
-        'options' => null,
-        'display_order' => 'int32',
-        'has_unique_value' => null,
         'hidden' => null,
+        'option_sort_strategy' => null,
+        'display_order' => 'int32',
+        'description' => null,
+        'show_currency_symbol' => null,
+        'label' => null,
         'type' => null,
+        'form_field' => null,
+        'group_name' => null,
+        'referenced_object_type' => null,
+        'text_display_hint' => null,
+        'name' => null,
+        'options' => null,
+        'searchable_in_global_search' => null,
+        'number_display_hint' => null,
+        'has_unique_value' => null,
         'field_type' => null
     ];
 
@@ -117,15 +131,22 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'label' => 'label',
-        'group_name' => 'groupName',
-        'description' => 'description',
-        'options' => 'options',
-        'display_order' => 'displayOrder',
-        'has_unique_value' => 'hasUniqueValue',
         'hidden' => 'hidden',
+        'option_sort_strategy' => 'optionSortStrategy',
+        'display_order' => 'displayOrder',
+        'description' => 'description',
+        'show_currency_symbol' => 'showCurrencySymbol',
+        'label' => 'label',
         'type' => 'type',
+        'form_field' => 'formField',
+        'group_name' => 'groupName',
+        'referenced_object_type' => 'referencedObjectType',
+        'text_display_hint' => 'textDisplayHint',
+        'name' => 'name',
+        'options' => 'options',
+        'searchable_in_global_search' => 'searchableInGlobalSearch',
+        'number_display_hint' => 'numberDisplayHint',
+        'has_unique_value' => 'hasUniqueValue',
         'field_type' => 'fieldType'
     ];
 
@@ -135,15 +156,22 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'label' => 'setLabel',
-        'group_name' => 'setGroupName',
-        'description' => 'setDescription',
-        'options' => 'setOptions',
-        'display_order' => 'setDisplayOrder',
-        'has_unique_value' => 'setHasUniqueValue',
         'hidden' => 'setHidden',
+        'option_sort_strategy' => 'setOptionSortStrategy',
+        'display_order' => 'setDisplayOrder',
+        'description' => 'setDescription',
+        'show_currency_symbol' => 'setShowCurrencySymbol',
+        'label' => 'setLabel',
         'type' => 'setType',
+        'form_field' => 'setFormField',
+        'group_name' => 'setGroupName',
+        'referenced_object_type' => 'setReferencedObjectType',
+        'text_display_hint' => 'setTextDisplayHint',
+        'name' => 'setName',
+        'options' => 'setOptions',
+        'searchable_in_global_search' => 'setSearchableInGlobalSearch',
+        'number_display_hint' => 'setNumberDisplayHint',
+        'has_unique_value' => 'setHasUniqueValue',
         'field_type' => 'setFieldType'
     ];
 
@@ -153,15 +181,22 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'label' => 'getLabel',
-        'group_name' => 'getGroupName',
-        'description' => 'getDescription',
-        'options' => 'getOptions',
-        'display_order' => 'getDisplayOrder',
-        'has_unique_value' => 'getHasUniqueValue',
         'hidden' => 'getHidden',
+        'option_sort_strategy' => 'getOptionSortStrategy',
+        'display_order' => 'getDisplayOrder',
+        'description' => 'getDescription',
+        'show_currency_symbol' => 'getShowCurrencySymbol',
+        'label' => 'getLabel',
         'type' => 'getType',
+        'form_field' => 'getFormField',
+        'group_name' => 'getGroupName',
+        'referenced_object_type' => 'getReferencedObjectType',
+        'text_display_hint' => 'getTextDisplayHint',
+        'name' => 'getName',
+        'options' => 'getOptions',
+        'searchable_in_global_search' => 'getSearchableInGlobalSearch',
+        'number_display_hint' => 'getNumberDisplayHint',
+        'has_unique_value' => 'getHasUniqueValue',
         'field_type' => 'getFieldType'
     ];
 
@@ -206,12 +241,41 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const OPTION_SORT_STRATEGY_DISPLAY_ORDER = 'DISPLAY_ORDER';
+    public const OPTION_SORT_STRATEGY_ALPHABETICAL = 'ALPHABETICAL';
     public const TYPE_STRING = 'string';
     public const TYPE_NUMBER = 'number';
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
     public const TYPE_ENUMERATION = 'enumeration';
     public const TYPE_BOOL = 'bool';
+    public const TEXT_DISPLAY_HINT_UNFORMATTED_SINGLE_LINE = 'unformatted_single_line';
+    public const TEXT_DISPLAY_HINT_MULTI_LINE = 'multi_line';
+    public const TEXT_DISPLAY_HINT_EMAIL = 'email';
+    public const TEXT_DISPLAY_HINT_PHONE_NUMBER = 'phone_number';
+    public const TEXT_DISPLAY_HINT_DOMAIN_NAME = 'domain_name';
+    public const TEXT_DISPLAY_HINT_IP_ADDRESS = 'ip_address';
+    public const TEXT_DISPLAY_HINT_PHYSICAL_ADDRESS = 'physical_address';
+    public const TEXT_DISPLAY_HINT_POSTAL_CODE = 'postal_code';
+    public const NUMBER_DISPLAY_HINT_UNFORMATTED = 'unformatted';
+    public const NUMBER_DISPLAY_HINT_FORMATTED = 'formatted';
+    public const NUMBER_DISPLAY_HINT_CURRENCY = 'currency';
+    public const NUMBER_DISPLAY_HINT_PERCENTAGE = 'percentage';
+    public const NUMBER_DISPLAY_HINT_DURATION = 'duration';
+    public const NUMBER_DISPLAY_HINT_PROBABILITY = 'probability';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOptionSortStrategyAllowableValues()
+    {
+        return [
+            self::OPTION_SORT_STRATEGY_DISPLAY_ORDER,
+            self::OPTION_SORT_STRATEGY_ALPHABETICAL,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -231,6 +295,42 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextDisplayHintAllowableValues()
+    {
+        return [
+            self::TEXT_DISPLAY_HINT_UNFORMATTED_SINGLE_LINE,
+            self::TEXT_DISPLAY_HINT_MULTI_LINE,
+            self::TEXT_DISPLAY_HINT_EMAIL,
+            self::TEXT_DISPLAY_HINT_PHONE_NUMBER,
+            self::TEXT_DISPLAY_HINT_DOMAIN_NAME,
+            self::TEXT_DISPLAY_HINT_IP_ADDRESS,
+            self::TEXT_DISPLAY_HINT_PHYSICAL_ADDRESS,
+            self::TEXT_DISPLAY_HINT_POSTAL_CODE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberDisplayHintAllowableValues()
+    {
+        return [
+            self::NUMBER_DISPLAY_HINT_UNFORMATTED,
+            self::NUMBER_DISPLAY_HINT_FORMATTED,
+            self::NUMBER_DISPLAY_HINT_CURRENCY,
+            self::NUMBER_DISPLAY_HINT_PERCENTAGE,
+            self::NUMBER_DISPLAY_HINT_DURATION,
+            self::NUMBER_DISPLAY_HINT_PROBABILITY,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -245,15 +345,22 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['group_name'] = $data['group_name'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
-        $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
         $this->container['hidden'] = $data['hidden'] ?? null;
+        $this->container['option_sort_strategy'] = $data['option_sort_strategy'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['show_currency_symbol'] = $data['show_currency_symbol'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['form_field'] = $data['form_field'] ?? null;
+        $this->container['group_name'] = $data['group_name'] ?? null;
+        $this->container['referenced_object_type'] = $data['referenced_object_type'] ?? null;
+        $this->container['text_display_hint'] = $data['text_display_hint'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
+        $this->container['searchable_in_global_search'] = $data['searchable_in_global_search'] ?? null;
+        $this->container['number_display_hint'] = $data['number_display_hint'] ?? null;
+        $this->container['has_unique_value'] = $data['has_unique_value'] ?? null;
         $this->container['field_type'] = $data['field_type'] ?? null;
     }
 
@@ -266,9 +373,15 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        $allowedValues = $this->getOptionSortStrategyAllowableValues();
+        if (!is_null($this->container['option_sort_strategy']) && !in_array($this->container['option_sort_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'option_sort_strategy', must be one of '%s'",
+                $this->container['option_sort_strategy'],
+                implode("', '", $allowedValues)
+            );
         }
+
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
         }
@@ -280,6 +393,27 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextDisplayHintAllowableValues();
+        if (!is_null($this->container['text_display_hint']) && !in_array($this->container['text_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'text_display_hint', must be one of '%s'",
+                $this->container['text_display_hint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!is_null($this->container['number_display_hint']) && !in_array($this->container['number_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                $this->container['number_display_hint'],
                 implode("', '", $allowedValues)
             );
         }
@@ -303,121 +437,59 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets name
+     * Gets hidden
      *
-     * @return string
+     * @return bool|null
      */
-    public function getName()
+    public function getHidden()
     {
-        return $this->container['name'];
+        return $this->container['hidden'];
     }
 
     /**
-     * Sets name
+     * Sets hidden
      *
-     * @param string $name The internal property name, which must be used when referencing the property from the API.
+     * @param bool|null $hidden hidden
      *
      * @return self
      */
-    public function setName($name)
+    public function setHidden($hidden)
     {
-        $this->container['name'] = $name;
+        $this->container['hidden'] = $hidden;
 
         return $this;
     }
 
     /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label A human-readable property label that will be shown in HubSpot.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets group_name
+     * Gets option_sort_strategy
      *
      * @return string|null
      */
-    public function getGroupName()
+    public function getOptionSortStrategy()
     {
-        return $this->container['group_name'];
+        return $this->container['option_sort_strategy'];
     }
 
     /**
-     * Sets group_name
+     * Sets option_sort_strategy
      *
-     * @param string|null $group_name The name of the group this property belongs to.
+     * @param string|null $option_sort_strategy Controls how the property options will be sorted in the HubSpot UI.
      *
      * @return self
      */
-    public function setGroupName($group_name)
+    public function setOptionSortStrategy($option_sort_strategy)
     {
-        $this->container['group_name'] = $group_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Schemas\Model\OptionInput[]|null
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Schemas\Model\OptionInput[]|null $options A list of available options for the property. This field is only required for enumerated properties.
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
+        $allowedValues = $this->getOptionSortStrategyAllowableValues();
+        if (!is_null($option_sort_strategy) && !in_array($option_sort_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'option_sort_strategy', must be one of '%s'",
+                    $option_sort_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['option_sort_strategy'] = $option_sort_strategy;
 
         return $this;
     }
@@ -447,49 +519,73 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets has_unique_value
+     * Gets description
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getHasUniqueValue()
+    public function getDescription()
     {
-        return $this->container['has_unique_value'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets has_unique_value
+     * Sets description
      *
-     * @param bool|null $has_unique_value Whether or not the property's value must be unique. Once set, this can't be changed.
+     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
      *
      * @return self
      */
-    public function setHasUniqueValue($has_unique_value)
+    public function setDescription($description)
     {
-        $this->container['has_unique_value'] = $has_unique_value;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets hidden
+     * Gets show_currency_symbol
      *
      * @return bool|null
      */
-    public function getHidden()
+    public function getShowCurrencySymbol()
     {
-        return $this->container['hidden'];
+        return $this->container['show_currency_symbol'];
     }
 
     /**
-     * Sets hidden
+     * Sets show_currency_symbol
      *
-     * @param bool|null $hidden hidden
+     * @param bool|null $show_currency_symbol Whether the property will display the currency symbol in the HubSpot UI.
      *
      * @return self
      */
-    public function setHidden($hidden)
+    public function setShowCurrencySymbol($show_currency_symbol)
     {
-        $this->container['hidden'] = $hidden;
+        $this->container['show_currency_symbol'] = $show_currency_symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label A human-readable property label that will be shown in HubSpot.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }
@@ -524,6 +620,242 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_field
+     *
+     * @return bool|null
+     */
+    public function getFormField()
+    {
+        return $this->container['form_field'];
+    }
+
+    /**
+     * Sets form_field
+     *
+     * @param bool|null $form_field Whether the property can be used in a HubSpot form.
+     *
+     * @return self
+     */
+    public function setFormField($form_field)
+    {
+        $this->container['form_field'] = $form_field;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_name
+     *
+     * @return string|null
+     */
+    public function getGroupName()
+    {
+        return $this->container['group_name'];
+    }
+
+    /**
+     * Sets group_name
+     *
+     * @param string|null $group_name The name of the group this property belongs to.
+     *
+     * @return self
+     */
+    public function setGroupName($group_name)
+    {
+        $this->container['group_name'] = $group_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets referenced_object_type
+     *
+     * @return string|null
+     */
+    public function getReferencedObjectType()
+    {
+        return $this->container['referenced_object_type'];
+    }
+
+    /**
+     * Sets referenced_object_type
+     *
+     * @param string|null $referenced_object_type Defines the options this property will return, e.g. OWNER would return name of users on the portal.
+     *
+     * @return self
+     */
+    public function setReferencedObjectType($referenced_object_type)
+    {
+        $this->container['referenced_object_type'] = $referenced_object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets text_display_hint
+     *
+     * @return string|null
+     */
+    public function getTextDisplayHint()
+    {
+        return $this->container['text_display_hint'];
+    }
+
+    /**
+     * Sets text_display_hint
+     *
+     * @param string|null $text_display_hint Controls how text properties are formatted in the HubSpot UI
+     *
+     * @return self
+     */
+    public function setTextDisplayHint($text_display_hint)
+    {
+        $allowedValues = $this->getTextDisplayHintAllowableValues();
+        if (!is_null($text_display_hint) && !in_array($text_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'text_display_hint', must be one of '%s'",
+                    $text_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['text_display_hint'] = $text_display_hint;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The internal property name, which must be used when referencing the property from the API.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Crm\Schemas\Model\OptionInput[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Crm\Schemas\Model\OptionInput[]|null $options A list of available options for the property. This field is only required for enumerated properties.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets searchable_in_global_search
+     *
+     * @return bool|null
+     */
+    public function getSearchableInGlobalSearch()
+    {
+        return $this->container['searchable_in_global_search'];
+    }
+
+    /**
+     * Sets searchable_in_global_search
+     *
+     * @param bool|null $searchable_in_global_search Allow users to search for information entered to this field (limited to 3 properties)
+     *
+     * @return self
+     */
+    public function setSearchableInGlobalSearch($searchable_in_global_search)
+    {
+        $this->container['searchable_in_global_search'] = $searchable_in_global_search;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_display_hint
+     *
+     * @return string|null
+     */
+    public function getNumberDisplayHint()
+    {
+        return $this->container['number_display_hint'];
+    }
+
+    /**
+     * Sets number_display_hint
+     *
+     * @param string|null $number_display_hint Controls how numeric properties are formatted in the HubSpot UI
+     *
+     * @return self
+     */
+    public function setNumberDisplayHint($number_display_hint)
+    {
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!is_null($number_display_hint) && !in_array($number_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                    $number_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_display_hint'] = $number_display_hint;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_unique_value
+     *
+     * @return bool|null
+     */
+    public function getHasUniqueValue()
+    {
+        return $this->container['has_unique_value'];
+    }
+
+    /**
+     * Sets has_unique_value
+     *
+     * @param bool|null $has_unique_value Whether or not the property's value must be unique. Once set, this can't be changed.
+     *
+     * @return self
+     */
+    public function setHasUniqueValue($has_unique_value)
+    {
+        $this->container['has_unique_value'] = $has_unique_value;
 
         return $this;
     }

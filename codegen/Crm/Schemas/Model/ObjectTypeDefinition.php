@@ -58,19 +58,20 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'secondary_display_properties' => 'string[]',
+        'object_type_id' => 'string',
+        'description' => 'string',
+        'fully_qualified_name' => 'string',
         'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
+        'archived' => 'bool',
+        'created_at' => '\DateTime',
         'required_properties' => 'string[]',
         'searchable_properties' => 'string[]',
+        'portal_id' => 'int',
         'primary_display_property' => 'string',
-        'secondary_display_properties' => 'string[]',
-        'archived' => 'bool',
-        'id' => 'string',
-        'fully_qualified_name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'object_type_id' => 'string',
         'name' => 'string',
-        'portal_id' => 'int'
+        'id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -81,19 +82,20 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'secondary_display_properties' => null,
+        'object_type_id' => null,
+        'description' => null,
+        'fully_qualified_name' => null,
         'labels' => null,
+        'archived' => null,
+        'created_at' => 'date-time',
         'required_properties' => null,
         'searchable_properties' => null,
+        'portal_id' => 'int32',
         'primary_display_property' => null,
-        'secondary_display_properties' => null,
-        'archived' => null,
-        'id' => null,
-        'fully_qualified_name' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'object_type_id' => null,
         'name' => null,
-        'portal_id' => 'int32'
+        'id' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -123,19 +125,20 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'secondary_display_properties' => 'secondaryDisplayProperties',
+        'object_type_id' => 'objectTypeId',
+        'description' => 'description',
+        'fully_qualified_name' => 'fullyQualifiedName',
         'labels' => 'labels',
+        'archived' => 'archived',
+        'created_at' => 'createdAt',
         'required_properties' => 'requiredProperties',
         'searchable_properties' => 'searchableProperties',
+        'portal_id' => 'portalId',
         'primary_display_property' => 'primaryDisplayProperty',
-        'secondary_display_properties' => 'secondaryDisplayProperties',
-        'archived' => 'archived',
-        'id' => 'id',
-        'fully_qualified_name' => 'fullyQualifiedName',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'object_type_id' => 'objectTypeId',
         'name' => 'name',
-        'portal_id' => 'portalId'
+        'id' => 'id',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -144,19 +147,20 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'secondary_display_properties' => 'setSecondaryDisplayProperties',
+        'object_type_id' => 'setObjectTypeId',
+        'description' => 'setDescription',
+        'fully_qualified_name' => 'setFullyQualifiedName',
         'labels' => 'setLabels',
+        'archived' => 'setArchived',
+        'created_at' => 'setCreatedAt',
         'required_properties' => 'setRequiredProperties',
         'searchable_properties' => 'setSearchableProperties',
+        'portal_id' => 'setPortalId',
         'primary_display_property' => 'setPrimaryDisplayProperty',
-        'secondary_display_properties' => 'setSecondaryDisplayProperties',
-        'archived' => 'setArchived',
-        'id' => 'setId',
-        'fully_qualified_name' => 'setFullyQualifiedName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'object_type_id' => 'setObjectTypeId',
         'name' => 'setName',
-        'portal_id' => 'setPortalId'
+        'id' => 'setId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -165,19 +169,20 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'secondary_display_properties' => 'getSecondaryDisplayProperties',
+        'object_type_id' => 'getObjectTypeId',
+        'description' => 'getDescription',
+        'fully_qualified_name' => 'getFullyQualifiedName',
         'labels' => 'getLabels',
+        'archived' => 'getArchived',
+        'created_at' => 'getCreatedAt',
         'required_properties' => 'getRequiredProperties',
         'searchable_properties' => 'getSearchableProperties',
+        'portal_id' => 'getPortalId',
         'primary_display_property' => 'getPrimaryDisplayProperty',
-        'secondary_display_properties' => 'getSecondaryDisplayProperties',
-        'archived' => 'getArchived',
-        'id' => 'getId',
-        'fully_qualified_name' => 'getFullyQualifiedName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'object_type_id' => 'getObjectTypeId',
         'name' => 'getName',
-        'portal_id' => 'getPortalId'
+        'id' => 'getId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -237,19 +242,20 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
+        $this->container['object_type_id'] = $data['object_type_id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['fully_qualified_name'] = $data['fully_qualified_name'] ?? null;
         $this->container['labels'] = $data['labels'] ?? null;
+        $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['required_properties'] = $data['required_properties'] ?? null;
         $this->container['searchable_properties'] = $data['searchable_properties'] ?? null;
-        $this->container['primary_display_property'] = $data['primary_display_property'] ?? null;
-        $this->container['secondary_display_properties'] = $data['secondary_display_properties'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['fully_qualified_name'] = $data['fully_qualified_name'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['object_type_id'] = $data['object_type_id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['portal_id'] = $data['portal_id'] ?? null;
+        $this->container['primary_display_property'] = $data['primary_display_property'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -267,26 +273,11 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['required_properties'] === null) {
             $invalidProperties[] = "'required_properties' can't be null";
         }
-        if ($this->container['searchable_properties'] === null) {
-            $invalidProperties[] = "'searchable_properties' can't be null";
-        }
-        if ($this->container['secondary_display_properties'] === null) {
-            $invalidProperties[] = "'secondary_display_properties' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['fully_qualified_name'] === null) {
-            $invalidProperties[] = "'fully_qualified_name' can't be null";
-        }
-        if ($this->container['object_type_id'] === null) {
-            $invalidProperties[] = "'object_type_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,6 +293,102 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets secondary_display_properties
+     *
+     * @return string[]|null
+     */
+    public function getSecondaryDisplayProperties()
+    {
+        return $this->container['secondary_display_properties'];
+    }
+
+    /**
+     * Sets secondary_display_properties
+     *
+     * @param string[]|null $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
+     * @return self
+     */
+    public function setSecondaryDisplayProperties($secondary_display_properties)
+    {
+        $this->container['secondary_display_properties'] = $secondary_display_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type_id
+     *
+     * @return string|null
+     */
+    public function getObjectTypeId()
+    {
+        return $this->container['object_type_id'];
+    }
+
+    /**
+     * Sets object_type_id
+     *
+     * @param string|null $object_type_id object_type_id
+     *
+     * @return self
+     */
+    public function setObjectTypeId($object_type_id)
+    {
+        $this->container['object_type_id'] = $object_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets fully_qualified_name
+     *
+     * @return string|null
+     */
+    public function getFullyQualifiedName()
+    {
+        return $this->container['fully_qualified_name'];
+    }
+
+    /**
+     * Sets fully_qualified_name
+     *
+     * @param string|null $fully_qualified_name fully_qualified_name
+     *
+     * @return self
+     */
+    public function setFullyQualifiedName($fully_qualified_name)
+    {
+        $this->container['fully_qualified_name'] = $fully_qualified_name;
+
+        return $this;
+    }
 
     /**
      * Gets labels
@@ -323,6 +410,54 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setLabels($labels)
     {
         $this->container['labels'] = $labels;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived archived
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at When the object type was created.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -354,7 +489,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets searchable_properties
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSearchableProperties()
     {
@@ -364,13 +499,37 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets searchable_properties
      *
-     * @param string[] $searchable_properties Names of properties that will be indexed for this object type in by HubSpot's product search.
+     * @param string[]|null $searchable_properties Names of properties that will be indexed for this object type in by HubSpot's product search.
      *
      * @return self
      */
     public function setSearchableProperties($searchable_properties)
     {
         $this->container['searchable_properties'] = $searchable_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets portal_id
+     *
+     * @return int|null
+     */
+    public function getPortalId()
+    {
+        return $this->container['portal_id'];
+    }
+
+    /**
+     * Sets portal_id
+     *
+     * @param int|null $portal_id The ID of the account that this object type is specific to.
+     *
+     * @return self
+     */
+    public function setPortalId($portal_id)
+    {
+        $this->container['portal_id'] = $portal_id;
 
         return $this;
     }
@@ -400,49 +559,25 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets secondary_display_properties
+     * Gets name
      *
-     * @return string[]
+     * @return string
      */
-    public function getSecondaryDisplayProperties()
+    public function getName()
     {
-        return $this->container['secondary_display_properties'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets secondary_display_properties
+     * Sets name
      *
-     * @param string[] $secondary_display_properties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param string $name A unique name for this object. For internal use only.
      *
      * @return self
      */
-    public function setSecondaryDisplayProperties($secondary_display_properties)
+    public function setName($name)
     {
-        $this->container['secondary_display_properties'] = $secondary_display_properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -472,54 +607,6 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets fully_qualified_name
-     *
-     * @return string
-     */
-    public function getFullyQualifiedName()
-    {
-        return $this->container['fully_qualified_name'];
-    }
-
-    /**
-     * Sets fully_qualified_name
-     *
-     * @param string $fully_qualified_name fully_qualified_name
-     *
-     * @return self
-     */
-    public function setFullyQualifiedName($fully_qualified_name)
-    {
-        $this->container['fully_qualified_name'] = $fully_qualified_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at When the object type was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets updated_at
      *
      * @return \DateTime|null
@@ -539,78 +626,6 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_type_id
-     *
-     * @return string
-     */
-    public function getObjectTypeId()
-    {
-        return $this->container['object_type_id'];
-    }
-
-    /**
-     * Sets object_type_id
-     *
-     * @param string $object_type_id object_type_id
-     *
-     * @return self
-     */
-    public function setObjectTypeId($object_type_id)
-    {
-        $this->container['object_type_id'] = $object_type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name A unique name for this object. For internal use only.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets portal_id
-     *
-     * @return int|null
-     */
-    public function getPortalId()
-    {
-        return $this->container['portal_id'];
-    }
-
-    /**
-     * Sets portal_id
-     *
-     * @param int|null $portal_id The ID of the account that this object type is specific to.
-     *
-     * @return self
-     */
-    public function setPortalId($portal_id)
-    {
-        $this->container['portal_id'] = $portal_id;
 
         return $this;
     }

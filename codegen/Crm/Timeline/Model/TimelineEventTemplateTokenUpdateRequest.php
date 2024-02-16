@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -58,9 +58,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
+        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]',
         'label' => 'string',
-        'object_property_name' => 'string',
-        'options' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]'
+        'object_property_name' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'options' => null,
         'label' => null,
-        'object_property_name' => null,
-        'options' => null
+        'object_property_name' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
+        'options' => 'options',
         'label' => 'label',
-        'object_property_name' => 'objectPropertyName',
-        'options' => 'options'
+        'object_property_name' => 'objectPropertyName'
     ];
 
     /**
@@ -114,9 +114,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
+        'options' => 'setOptions',
         'label' => 'setLabel',
-        'object_property_name' => 'setObjectPropertyName',
-        'options' => 'setOptions'
+        'object_property_name' => 'setObjectPropertyName'
     ];
 
     /**
@@ -125,9 +125,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
+        'options' => 'getOptions',
         'label' => 'getLabel',
-        'object_property_name' => 'getObjectPropertyName',
-        'options' => 'getOptions'
+        'object_property_name' => 'getObjectPropertyName'
     ];
 
     /**
@@ -187,9 +187,9 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['object_property_name'] = $data['object_property_name'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
     }
 
     /**
@@ -203,9 +203,6 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
 
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
         }
         return $invalidProperties;
     }
@@ -221,6 +218,30 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]|null $options If type is `enumeration`, we should have a list of options to choose from.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
 
     /**
      * Gets label
@@ -266,30 +287,6 @@ class TimelineEventTemplateTokenUpdateRequest implements ModelInterface, ArrayAc
     public function setObjectPropertyName($object_property_name)
     {
         $this->container['object_property_name'] = $object_property_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenOption[] $options If type is `enumeration`, we should have a list of options to choose from.
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
 
         return $this;
     }

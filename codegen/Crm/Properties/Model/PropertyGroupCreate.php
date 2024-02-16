@@ -58,8 +58,8 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'label' => 'string',
-        'display_order' => 'int'
+        'display_order' => 'int',
+        'label' => 'string'
     ];
 
     /**
@@ -71,8 +71,8 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'label' => null,
-        'display_order' => 'int32'
+        'display_order' => 'int32',
+        'label' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'label' => 'label',
-        'display_order' => 'displayOrder'
+        'display_order' => 'displayOrder',
+        'label' => 'label'
     ];
 
     /**
@@ -114,8 +114,8 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'name' => 'setName',
-        'label' => 'setLabel',
-        'display_order' => 'setDisplayOrder'
+        'display_order' => 'setDisplayOrder',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -125,8 +125,8 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'name' => 'getName',
-        'label' => 'getLabel',
-        'display_order' => 'getDisplayOrder'
+        'display_order' => 'getDisplayOrder',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -187,8 +187,8 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -246,30 +246,6 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label A human-readable label that will be shown in HubSpot.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
      * Gets display_order
      *
      * @return int|null
@@ -289,6 +265,30 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDisplayOrder($display_order)
     {
         $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label A human-readable label that will be shown in HubSpot.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

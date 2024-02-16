@@ -59,8 +59,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'from_object_type_id' => 'string',
-        'to_object_type_id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'to_object_type_id' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'from_object_type_id' => null,
-        'to_object_type_id' => null,
-        'name' => null
+        'name' => null,
+        'to_object_type_id' => null
     ];
 
     /**
@@ -104,8 +104,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'from_object_type_id' => 'fromObjectTypeId',
-        'to_object_type_id' => 'toObjectTypeId',
-        'name' => 'name'
+        'name' => 'name',
+        'to_object_type_id' => 'toObjectTypeId'
     ];
 
     /**
@@ -115,8 +115,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'from_object_type_id' => 'setFromObjectTypeId',
-        'to_object_type_id' => 'setToObjectTypeId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'to_object_type_id' => 'setToObjectTypeId'
     ];
 
     /**
@@ -126,8 +126,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'from_object_type_id' => 'getFromObjectTypeId',
-        'to_object_type_id' => 'getToObjectTypeId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'to_object_type_id' => 'getToObjectTypeId'
     ];
 
     /**
@@ -188,8 +188,8 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->container['from_object_type_id'] = $data['from_object_type_id'] ?? null;
-        $this->container['to_object_type_id'] = $data['to_object_type_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['to_object_type_id'] = $data['to_object_type_id'] ?? null;
     }
 
     /**
@@ -247,30 +247,6 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets to_object_type_id
-     *
-     * @return string
-     */
-    public function getToObjectTypeId()
-    {
-        return $this->container['to_object_type_id'];
-    }
-
-    /**
-     * Sets to_object_type_id
-     *
-     * @param string $to_object_type_id ID of the target object type ID to link to.
-     *
-     * @return self
-     */
-    public function setToObjectTypeId($to_object_type_id)
-    {
-        $this->container['to_object_type_id'] = $to_object_type_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -290,6 +266,30 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_object_type_id
+     *
+     * @return string
+     */
+    public function getToObjectTypeId()
+    {
+        return $this->container['to_object_type_id'];
+    }
+
+    /**
+     * Sets to_object_type_id
+     *
+     * @param string $to_object_type_id ID of the target object type ID to link to.
+     *
+     * @return self
+     */
+    public function setToObjectTypeId($to_object_type_id)
+    {
+        $this->container['to_object_type_id'] = $to_object_type_id;
 
         return $this;
     }

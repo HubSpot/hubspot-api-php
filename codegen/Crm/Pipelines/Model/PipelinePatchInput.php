@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -58,9 +58,9 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
+        'archived' => 'bool',
         'display_order' => 'int',
-        'archived' => 'bool'
+        'label' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
+        'archived' => null,
         'display_order' => 'int32',
-        'archived' => null
+        'label' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
+        'archived' => 'archived',
         'display_order' => 'displayOrder',
-        'archived' => 'archived'
+        'label' => 'label'
     ];
 
     /**
@@ -114,9 +114,9 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
+        'archived' => 'setArchived',
         'display_order' => 'setDisplayOrder',
-        'archived' => 'setArchived'
+        'label' => 'setLabel'
     ];
 
     /**
@@ -125,9 +125,9 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
+        'archived' => 'getArchived',
         'display_order' => 'getDisplayOrder',
-        'archived' => 'getArchived'
+        'label' => 'getLabel'
     ];
 
     /**
@@ -187,9 +187,9 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -217,25 +217,25 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets label
+     * Gets archived
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getLabel()
+    public function getArchived()
     {
-        return $this->container['label'];
+        return $this->container['archived'];
     }
 
     /**
-     * Sets label
+     * Sets archived
      *
-     * @param string|null $label A unique label used to organize pipelines in HubSpot's UI
+     * @param bool|null $archived Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
      *
      * @return self
      */
-    public function setLabel($label)
+    public function setArchived($archived)
     {
-        $this->container['label'] = $label;
+        $this->container['archived'] = $archived;
 
         return $this;
     }
@@ -265,25 +265,25 @@ class PipelinePatchInput implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets archived
+     * Gets label
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getArchived()
+    public function getLabel()
     {
-        return $this->container['archived'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets archived
+     * Sets label
      *
-     * @param bool|null $archived Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
+     * @param string|null $label A unique label used to organize pipelines in HubSpot's UI
      *
      * @return self
      */
-    public function setArchived($archived)
+    public function setLabel($label)
     {
-        $this->container['archived'] = $archived;
+        $this->container['label'] = $label;
 
         return $this;
     }

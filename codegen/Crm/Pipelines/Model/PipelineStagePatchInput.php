@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Pipelines
+ * Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -58,10 +58,10 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
         'archived' => 'bool',
+        'metadata' => 'array<string,string>',
         'display_order' => 'int',
-        'metadata' => 'array<string,string>'
+        'label' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
         'archived' => null,
+        'metadata' => null,
         'display_order' => 'int32',
-        'metadata' => null
+        'label' => null
     ];
 
     /**
@@ -105,10 +105,10 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
         'archived' => 'archived',
+        'metadata' => 'metadata',
         'display_order' => 'displayOrder',
-        'metadata' => 'metadata'
+        'label' => 'label'
     ];
 
     /**
@@ -117,10 +117,10 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
         'archived' => 'setArchived',
+        'metadata' => 'setMetadata',
         'display_order' => 'setDisplayOrder',
-        'metadata' => 'setMetadata'
+        'label' => 'setLabel'
     ];
 
     /**
@@ -129,10 +129,10 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
         'archived' => 'getArchived',
+        'metadata' => 'getMetadata',
         'display_order' => 'getDisplayOrder',
-        'metadata' => 'getMetadata'
+        'label' => 'getLabel'
     ];
 
     /**
@@ -192,10 +192,10 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
-        $this->container['display_order'] = $data['display_order'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
+        $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -226,30 +226,6 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
      * Gets archived
      *
      * @return bool|null
@@ -269,6 +245,30 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
     public function setArchived($archived)
     {
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string> $metadata A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
@@ -298,25 +298,25 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets metadata
+     * Gets label
      *
-     * @return array<string,string>
+     * @return string|null
      */
-    public function getMetadata()
+    public function getLabel()
     {
-        return $this->container['metadata'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets metadata
+     * Sets label
      *
-     * @param array<string,string> $metadata A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     * @param string|null $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setLabel($label)
     {
-        $this->container['metadata'] = $metadata;
+        $this->container['label'] = $label;
 
         return $this;
     }

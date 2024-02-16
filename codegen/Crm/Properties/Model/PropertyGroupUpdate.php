@@ -57,8 +57,8 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'display_order' => 'int'
+        'display_order' => 'int',
+        'label' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'display_order' => 'int32'
+        'display_order' => 'int32',
+        'label' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'display_order' => 'displayOrder'
+        'display_order' => 'displayOrder',
+        'label' => 'label'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'display_order' => 'setDisplayOrder'
+        'display_order' => 'setDisplayOrder',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'display_order' => 'getDisplayOrder'
+        'display_order' => 'getDisplayOrder',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['display_order'] = $data['display_order'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -210,30 +210,6 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label A human-readable label that will be shown in HubSpot.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
      * Gets display_order
      *
      * @return int|null
@@ -253,6 +229,30 @@ class PropertyGroupUpdate implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDisplayOrder($display_order)
     {
         $this->container['display_order'] = $display_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label A human-readable label that will be shown in HubSpot.
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

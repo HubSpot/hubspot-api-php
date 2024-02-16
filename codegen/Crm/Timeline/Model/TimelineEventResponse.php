@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -58,18 +58,18 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'event_template_id' => 'string',
-        'email' => 'string',
-        'object_id' => 'string',
-        'utk' => 'string',
-        'domain' => 'string',
-        'timestamp' => '\DateTime',
-        'tokens' => 'array<string,string>',
+        'created_at' => '\DateTime',
         'extra_data' => 'object',
         'timeline_i_frame' => '\HubSpot\Client\Crm\Timeline\Model\TimelineEventIFrame',
-        'object_type' => 'string',
-        'created_at' => '\DateTime'
+        'domain' => 'string',
+        'tokens' => 'array<string,string>',
+        'id' => 'string',
+        'utk' => 'string',
+        'email' => 'string',
+        'object_id' => 'string',
+        'timestamp' => '\DateTime',
+        'object_type' => 'string'
     ];
 
     /**
@@ -80,18 +80,18 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'event_template_id' => null,
-        'email' => null,
-        'object_id' => null,
-        'utk' => null,
-        'domain' => null,
-        'timestamp' => 'date-time',
-        'tokens' => null,
+        'created_at' => 'date-time',
         'extra_data' => null,
         'timeline_i_frame' => null,
-        'object_type' => null,
-        'created_at' => 'date-time'
+        'domain' => null,
+        'tokens' => null,
+        'id' => null,
+        'utk' => null,
+        'email' => null,
+        'object_id' => null,
+        'timestamp' => 'date-time',
+        'object_type' => null
     ];
 
     /**
@@ -121,18 +121,18 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'event_template_id' => 'eventTemplateId',
-        'email' => 'email',
-        'object_id' => 'objectId',
-        'utk' => 'utk',
-        'domain' => 'domain',
-        'timestamp' => 'timestamp',
-        'tokens' => 'tokens',
+        'created_at' => 'createdAt',
         'extra_data' => 'extraData',
         'timeline_i_frame' => 'timelineIFrame',
-        'object_type' => 'objectType',
-        'created_at' => 'createdAt'
+        'domain' => 'domain',
+        'tokens' => 'tokens',
+        'id' => 'id',
+        'utk' => 'utk',
+        'email' => 'email',
+        'object_id' => 'objectId',
+        'timestamp' => 'timestamp',
+        'object_type' => 'objectType'
     ];
 
     /**
@@ -141,18 +141,18 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'event_template_id' => 'setEventTemplateId',
-        'email' => 'setEmail',
-        'object_id' => 'setObjectId',
-        'utk' => 'setUtk',
-        'domain' => 'setDomain',
-        'timestamp' => 'setTimestamp',
-        'tokens' => 'setTokens',
+        'created_at' => 'setCreatedAt',
         'extra_data' => 'setExtraData',
         'timeline_i_frame' => 'setTimelineIFrame',
-        'object_type' => 'setObjectType',
-        'created_at' => 'setCreatedAt'
+        'domain' => 'setDomain',
+        'tokens' => 'setTokens',
+        'id' => 'setId',
+        'utk' => 'setUtk',
+        'email' => 'setEmail',
+        'object_id' => 'setObjectId',
+        'timestamp' => 'setTimestamp',
+        'object_type' => 'setObjectType'
     ];
 
     /**
@@ -161,18 +161,18 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'event_template_id' => 'getEventTemplateId',
-        'email' => 'getEmail',
-        'object_id' => 'getObjectId',
-        'utk' => 'getUtk',
-        'domain' => 'getDomain',
-        'timestamp' => 'getTimestamp',
-        'tokens' => 'getTokens',
+        'created_at' => 'getCreatedAt',
         'extra_data' => 'getExtraData',
         'timeline_i_frame' => 'getTimelineIFrame',
-        'object_type' => 'getObjectType',
-        'created_at' => 'getCreatedAt'
+        'domain' => 'getDomain',
+        'tokens' => 'getTokens',
+        'id' => 'getId',
+        'utk' => 'getUtk',
+        'email' => 'getEmail',
+        'object_id' => 'getObjectId',
+        'timestamp' => 'getTimestamp',
+        'object_type' => 'getObjectType'
     ];
 
     /**
@@ -232,18 +232,18 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['event_template_id'] = $data['event_template_id'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['object_id'] = $data['object_id'] ?? null;
-        $this->container['utk'] = $data['utk'] ?? null;
-        $this->container['domain'] = $data['domain'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
-        $this->container['tokens'] = $data['tokens'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['extra_data'] = $data['extra_data'] ?? null;
         $this->container['timeline_i_frame'] = $data['timeline_i_frame'] ?? null;
+        $this->container['domain'] = $data['domain'] ?? null;
+        $this->container['tokens'] = $data['tokens'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['utk'] = $data['utk'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['object_id'] = $data['object_id'] ?? null;
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
         $this->container['object_type'] = $data['object_type'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
     }
 
     /**
@@ -255,14 +255,14 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['event_template_id'] === null) {
             $invalidProperties[] = "'event_template_id' can't be null";
         }
         if ($this->container['tokens'] === null) {
             $invalidProperties[] = "'tokens' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['object_type'] === null) {
             $invalidProperties[] = "'object_type' can't be null";
@@ -281,30 +281,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Identifier for the event. This should be unique to the app and event template. If you use the same ID for different CRM objects, the last to be processed will win and the first will not have a record. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets event_template_id
@@ -331,145 +307,25 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email The email address used for contact-specific events. This can be used to identify existing contacts, create new ones, or change the email for an existing contact (if paired with the `objectId`).
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_id
-     *
-     * @return string|null
-     */
-    public function getObjectId()
-    {
-        return $this->container['object_id'];
-    }
-
-    /**
-     * Sets object_id
-     *
-     * @param string|null $object_id The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).
-     *
-     * @return self
-     */
-    public function setObjectId($object_id)
-    {
-        $this->container['object_id'] = $object_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets utk
-     *
-     * @return string|null
-     */
-    public function getUtk()
-    {
-        return $this->container['utk'];
-    }
-
-    /**
-     * Sets utk
-     *
-     * @param string|null $utk Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.
-     *
-     * @return self
-     */
-    public function setUtk($utk)
-    {
-        $this->container['utk'] = $utk;
-
-        return $this;
-    }
-
-    /**
-     * Gets domain
-     *
-     * @return string|null
-     */
-    public function getDomain()
-    {
-        return $this->container['domain'];
-    }
-
-    /**
-     * Sets domain
-     *
-     * @param string|null $domain The event domain (often paired with utk).
-     *
-     * @return self
-     */
-    public function setDomain($domain)
-    {
-        $this->container['domain'] = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
+     * Gets created_at
      *
      * @return \DateTime|null
      */
-    public function getTimestamp()
+    public function getCreatedAt()
     {
-        return $this->container['timestamp'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets timestamp
+     * Sets created_at
      *
-     * @param \DateTime|null $timestamp The time the event occurred. If not passed in, the curren time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.
+     * @param \DateTime|null $created_at created_at
      *
      * @return self
      */
-    public function setTimestamp($timestamp)
+    public function setCreatedAt($created_at)
     {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets tokens
-     *
-     * @return array<string,string>
-     */
-    public function getTokens()
-    {
-        return $this->container['tokens'];
-    }
-
-    /**
-     * Sets tokens
-     *
-     * @param array<string,string> $tokens A collection of token keys and values associated with the template tokens.
-     *
-     * @return self
-     */
-    public function setTokens($tokens)
-    {
-        $this->container['tokens'] = $tokens;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -523,6 +379,174 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets domain
+     *
+     * @return string|null
+     */
+    public function getDomain()
+    {
+        return $this->container['domain'];
+    }
+
+    /**
+     * Sets domain
+     *
+     * @param string|null $domain The event domain (often paired with utk).
+     *
+     * @return self
+     */
+    public function setDomain($domain)
+    {
+        $this->container['domain'] = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets tokens
+     *
+     * @return array<string,string>
+     */
+    public function getTokens()
+    {
+        return $this->container['tokens'];
+    }
+
+    /**
+     * Sets tokens
+     *
+     * @param array<string,string> $tokens A collection of token keys and values associated with the template tokens.
+     *
+     * @return self
+     */
+    public function setTokens($tokens)
+    {
+        $this->container['tokens'] = $tokens;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Identifier for the event. This should be unique to the app and event template. If you use the same ID for different CRM objects, the last to be processed will win and the first will not have a record. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets utk
+     *
+     * @return string|null
+     */
+    public function getUtk()
+    {
+        return $this->container['utk'];
+    }
+
+    /**
+     * Sets utk
+     *
+     * @param string|null $utk Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.
+     *
+     * @return self
+     */
+    public function setUtk($utk)
+    {
+        $this->container['utk'] = $utk;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string|null $email The email address used for contact-specific events. This can be used to identify existing contacts, create new ones, or change the email for an existing contact (if paired with the `objectId`).
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string|null
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string|null $object_id The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        $this->container['object_id'] = $object_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return \DateTime|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param \DateTime|null $timestamp The time the event occurred. If not passed in, the curren time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
      * Gets object_type
      *
      * @return string
@@ -542,30 +566,6 @@ class TimelineEventResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setObjectType($object_type)
     {
         $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }

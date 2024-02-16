@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Owners
+ * Crm Owners
  *
  * HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.
  *
@@ -57,15 +57,15 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'email' => 'string',
         'first_name' => 'string',
         'last_name' => 'string',
-        'user_id' => 'int',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'archived' => 'bool',
-        'teams' => '\HubSpot\Client\Crm\Owners\Model\PublicTeam[]'
+        'teams' => '\HubSpot\Client\Crm\Owners\Model\PublicTeam[]',
+        'id' => 'string',
+        'user_id' => 'int',
+        'email' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -76,15 +76,15 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'email' => null,
         'first_name' => null,
         'last_name' => null,
-        'user_id' => 'int32',
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
         'archived' => null,
-        'teams' => null
+        'teams' => null,
+        'id' => null,
+        'user_id' => 'int32',
+        'email' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -114,15 +114,15 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'email' => 'email',
         'first_name' => 'firstName',
         'last_name' => 'lastName',
-        'user_id' => 'userId',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
         'archived' => 'archived',
-        'teams' => 'teams'
+        'teams' => 'teams',
+        'id' => 'id',
+        'user_id' => 'userId',
+        'email' => 'email',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -131,15 +131,15 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'email' => 'setEmail',
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
-        'user_id' => 'setUserId',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
         'archived' => 'setArchived',
-        'teams' => 'setTeams'
+        'teams' => 'setTeams',
+        'id' => 'setId',
+        'user_id' => 'setUserId',
+        'email' => 'setEmail',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -148,15 +148,15 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'email' => 'getEmail',
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
-        'user_id' => 'getUserId',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
         'archived' => 'getArchived',
-        'teams' => 'getTeams'
+        'teams' => 'getTeams',
+        'id' => 'getId',
+        'user_id' => 'getUserId',
+        'email' => 'getEmail',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -216,15 +216,15 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
         $this->container['first_name'] = $data['first_name'] ?? null;
         $this->container['last_name'] = $data['last_name'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
         $this->container['teams'] = $data['teams'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -236,17 +236,17 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         if ($this->container['archived'] === null) {
             $invalidProperties[] = "'archived' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -262,54 +262,6 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email email
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        $this->container['email'] = $email;
-
-        return $this;
-    }
 
     /**
      * Gets first_name
@@ -360,30 +312,6 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets user_id
-     *
-     * @return int|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param int|null $user_id user_id
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets created_at
      *
      * @return \DateTime
@@ -403,30 +331,6 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -475,6 +379,102 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTeams($teams)
     {
         $this->container['teams'] = $teams;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     *
+     * @return int|null
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param int|null $user_id user_id
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string|null $email email
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

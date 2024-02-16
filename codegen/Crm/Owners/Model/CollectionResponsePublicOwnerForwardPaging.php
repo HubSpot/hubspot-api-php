@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Owners
+ * Crm Owners
  *
  * HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.
  *
@@ -57,8 +57,8 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Owners\Model\PublicOwner[]',
-        'paging' => '\HubSpot\Client\Crm\Owners\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Crm\Owners\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Crm\Owners\Model\PublicOwner[]'
     ];
 
     /**
@@ -69,8 +69,8 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -110,8 +110,8 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -120,8 +120,8 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -181,8 +181,8 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
 
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Owners\Model\PublicOwner[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Owners\Model\PublicOwner[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Owners\Model\ForwardPaging|null
@@ -256,6 +232,30 @@ class CollectionResponsePublicOwnerForwardPaging implements ModelInterface, Arra
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Owners\Model\PublicOwner[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Owners\Model\PublicOwner[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

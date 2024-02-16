@@ -57,10 +57,10 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'archivable' => 'bool',
-        'read_only_definition' => 'bool',
         'read_only_options' => 'bool',
-        'read_only_value' => 'bool'
+        'read_only_value' => 'bool',
+        'read_only_definition' => 'bool',
+        'archivable' => 'bool'
     ];
 
     /**
@@ -71,10 +71,10 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'archivable' => null,
-        'read_only_definition' => null,
         'read_only_options' => null,
-        'read_only_value' => null
+        'read_only_value' => null,
+        'read_only_definition' => null,
+        'archivable' => null
     ];
 
     /**
@@ -104,10 +104,10 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'archivable' => 'archivable',
-        'read_only_definition' => 'readOnlyDefinition',
         'read_only_options' => 'readOnlyOptions',
-        'read_only_value' => 'readOnlyValue'
+        'read_only_value' => 'readOnlyValue',
+        'read_only_definition' => 'readOnlyDefinition',
+        'archivable' => 'archivable'
     ];
 
     /**
@@ -116,10 +116,10 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'archivable' => 'setArchivable',
-        'read_only_definition' => 'setReadOnlyDefinition',
         'read_only_options' => 'setReadOnlyOptions',
-        'read_only_value' => 'setReadOnlyValue'
+        'read_only_value' => 'setReadOnlyValue',
+        'read_only_definition' => 'setReadOnlyDefinition',
+        'archivable' => 'setArchivable'
     ];
 
     /**
@@ -128,10 +128,10 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'archivable' => 'getArchivable',
-        'read_only_definition' => 'getReadOnlyDefinition',
         'read_only_options' => 'getReadOnlyOptions',
-        'read_only_value' => 'getReadOnlyValue'
+        'read_only_value' => 'getReadOnlyValue',
+        'read_only_definition' => 'getReadOnlyDefinition',
+        'archivable' => 'getArchivable'
     ];
 
     /**
@@ -191,10 +191,10 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['archivable'] = $data['archivable'] ?? null;
-        $this->container['read_only_definition'] = $data['read_only_definition'] ?? null;
         $this->container['read_only_options'] = $data['read_only_options'] ?? null;
         $this->container['read_only_value'] = $data['read_only_value'] ?? null;
+        $this->container['read_only_definition'] = $data['read_only_definition'] ?? null;
+        $this->container['archivable'] = $data['archivable'] ?? null;
     }
 
     /**
@@ -206,14 +206,14 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['archivable'] === null) {
-            $invalidProperties[] = "'archivable' can't be null";
+        if ($this->container['read_only_value'] === null) {
+            $invalidProperties[] = "'read_only_value' can't be null";
         }
         if ($this->container['read_only_definition'] === null) {
             $invalidProperties[] = "'read_only_definition' can't be null";
         }
-        if ($this->container['read_only_value'] === null) {
-            $invalidProperties[] = "'read_only_value' can't be null";
+        if ($this->container['archivable'] === null) {
+            $invalidProperties[] = "'archivable' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,54 +231,6 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets archivable
-     *
-     * @return bool
-     */
-    public function getArchivable()
-    {
-        return $this->container['archivable'];
-    }
-
-    /**
-     * Sets archivable
-     *
-     * @param bool $archivable archivable
-     *
-     * @return self
-     */
-    public function setArchivable($archivable)
-    {
-        $this->container['archivable'] = $archivable;
-
-        return $this;
-    }
-
-    /**
-     * Gets read_only_definition
-     *
-     * @return bool
-     */
-    public function getReadOnlyDefinition()
-    {
-        return $this->container['read_only_definition'];
-    }
-
-    /**
-     * Sets read_only_definition
-     *
-     * @param bool $read_only_definition read_only_definition
-     *
-     * @return self
-     */
-    public function setReadOnlyDefinition($read_only_definition)
-    {
-        $this->container['read_only_definition'] = $read_only_definition;
-
-        return $this;
-    }
-
-    /**
      * Gets read_only_options
      *
      * @return bool|null
@@ -291,7 +243,7 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets read_only_options
      *
-     * @param bool|null $read_only_options read_only_options
+     * @param bool|null $read_only_options 
      *
      * @return self
      */
@@ -315,13 +267,61 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets read_only_value
      *
-     * @param bool $read_only_value read_only_value
+     * @param bool $read_only_value 
      *
      * @return self
      */
     public function setReadOnlyValue($read_only_value)
     {
         $this->container['read_only_value'] = $read_only_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets read_only_definition
+     *
+     * @return bool
+     */
+    public function getReadOnlyDefinition()
+    {
+        return $this->container['read_only_definition'];
+    }
+
+    /**
+     * Sets read_only_definition
+     *
+     * @param bool $read_only_definition 
+     *
+     * @return self
+     */
+    public function setReadOnlyDefinition($read_only_definition)
+    {
+        $this->container['read_only_definition'] = $read_only_definition;
+
+        return $this;
+    }
+
+    /**
+     * Gets archivable
+     *
+     * @return bool
+     */
+    public function getArchivable()
+    {
+        return $this->container['archivable'];
+    }
+
+    /**
+     * Sets archivable
+     *
+     * @param bool $archivable 
+     *
+     * @return self
+     */
+    public function setArchivable($archivable)
+    {
+        $this->container['archivable'] = $archivable;
 
         return $this;
     }

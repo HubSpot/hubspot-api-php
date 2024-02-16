@@ -11,7 +11,7 @@
  */
 
 /**
- * Timeline events
+ * CRM Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -59,8 +59,8 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'link_label' => 'string',
         'header_label' => 'string',
-        'url' => 'string',
         'width' => 'int',
+        'url' => 'string',
         'height' => 'int'
     ];
 
@@ -74,8 +74,8 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'link_label' => null,
         'header_label' => null,
-        'url' => null,
         'width' => 'int32',
+        'url' => null,
         'height' => 'int32'
     ];
 
@@ -108,8 +108,8 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'link_label' => 'linkLabel',
         'header_label' => 'headerLabel',
-        'url' => 'url',
         'width' => 'width',
+        'url' => 'url',
         'height' => 'height'
     ];
 
@@ -121,8 +121,8 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'link_label' => 'setLinkLabel',
         'header_label' => 'setHeaderLabel',
-        'url' => 'setUrl',
         'width' => 'setWidth',
+        'url' => 'setUrl',
         'height' => 'setHeight'
     ];
 
@@ -134,8 +134,8 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'link_label' => 'getLinkLabel',
         'header_label' => 'getHeaderLabel',
-        'url' => 'getUrl',
         'width' => 'getWidth',
+        'url' => 'getUrl',
         'height' => 'getHeight'
     ];
 
@@ -198,8 +198,8 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->container['link_label'] = $data['link_label'] ?? null;
         $this->container['header_label'] = $data['header_label'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
         $this->container['width'] = $data['width'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
         $this->container['height'] = $data['height'] ?? null;
     }
 
@@ -218,11 +218,11 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['header_label'] === null) {
             $invalidProperties[] = "'header_label' can't be null";
         }
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
         if ($this->container['width'] === null) {
             $invalidProperties[] = "'width' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         if ($this->container['height'] === null) {
             $invalidProperties[] = "'height' can't be null";
@@ -291,30 +291,6 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url The URI of the iframe contents.
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
      * Gets width
      *
      * @return int
@@ -334,6 +310,30 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWidth($width)
     {
         $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url The URI of the iframe contents.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }
