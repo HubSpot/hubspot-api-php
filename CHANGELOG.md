@@ -94,7 +94,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`.
 - `crm()-timeline()->eventsApi()->createBatch(): BatchResponseTimelineEventResponse|BatchResponseTimelineEventResponseWithErrors|Error` => `crm()->timeline()->eventsApi()->createBatch():void`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Timeline\Model\StandardError:category`.
-
+- `events()->eventsApi()->getPage($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)` => `events()->eventsApi()->getPage($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)`.
+- Added `prev` param to `HubSpot\Client\Events\Model\Paging`.
+- `events()->send()->behavioralEventsTrackingApi()` => `events()->send()->customEventDataApi()`.
 
 ## Removed `hapikey` from
 
