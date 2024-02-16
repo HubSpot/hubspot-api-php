@@ -10,7 +10,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -604,7 +604,7 @@ class FoldersApi
      *
      * Check folder update status.
      *
-     * @param  string $task_id Task ID of folder update (required)
+     * @param  string $task_id TaskId of folder update (required)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -621,7 +621,7 @@ class FoldersApi
      *
      * Check folder update status.
      *
-     * @param  string $task_id Task ID of folder update (required)
+     * @param  string $task_id TaskId of folder update (required)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -743,7 +743,7 @@ class FoldersApi
      *
      * Check folder update status.
      *
-     * @param  string $task_id Task ID of folder update (required)
+     * @param  string $task_id TaskId of folder update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -763,7 +763,7 @@ class FoldersApi
      *
      * Check folder update status.
      *
-     * @param  string $task_id Task ID of folder update (required)
+     * @param  string $task_id TaskId of folder update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -812,7 +812,7 @@ class FoldersApi
     /**
      * Create request for operation 'checkUpdateStatus'
      *
-     * @param  string $task_id Task ID of folder update (required)
+     * @param  string $task_id TaskId of folder update (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1230,7 +1230,7 @@ class FoldersApi
      * @param  \DateTime $updated_at_gte updated_at_gte (optional)
      * @param  string $name Search for folders containing the specified name. (optional)
      * @param  string $path Search for folders by path. (optional)
-     * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
+     * @param  int $parent_folder_id Search for folders with the given parent folderId. (optional)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1261,7 +1261,7 @@ class FoldersApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for folders containing the specified name. (optional)
      * @param  string $path Search for folders by path. (optional)
-     * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
+     * @param  int $parent_folder_id Search for folders with the given parent folderId. (optional)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1397,7 +1397,7 @@ class FoldersApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for folders containing the specified name. (optional)
      * @param  string $path Search for folders by path. (optional)
-     * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
+     * @param  int $parent_folder_id Search for folders with the given parent folderId. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1431,7 +1431,7 @@ class FoldersApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for folders containing the specified name. (optional)
      * @param  string $path Search for folders by path. (optional)
-     * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
+     * @param  int $parent_folder_id Search for folders with the given parent folderId. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1494,7 +1494,7 @@ class FoldersApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for folders containing the specified name. (optional)
      * @param  string $path Search for folders by path. (optional)
-     * @param  int $parent_folder_id Search for folders with the given parent folder ID. (optional)
+     * @param  int $parent_folder_id Search for folders with the given parent folderId. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

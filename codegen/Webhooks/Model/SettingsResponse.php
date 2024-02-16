@@ -11,7 +11,7 @@
  */
 
 /**
- * Webhooks API
+ * Webhooks Webhooks
  *
  * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
  *
@@ -58,9 +58,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'target_url' => 'string',
-        'throttling' => '\HubSpot\Client\Webhooks\Model\ThrottlingSettings',
         'created_at' => '\DateTime',
+        'throttling' => '\HubSpot\Client\Webhooks\Model\ThrottlingSettings',
+        'target_url' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -72,9 +72,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'target_url' => null,
-        'throttling' => null,
         'created_at' => 'date-time',
+        'throttling' => null,
+        'target_url' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -105,9 +105,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'target_url' => 'targetUrl',
-        'throttling' => 'throttling',
         'created_at' => 'createdAt',
+        'throttling' => 'throttling',
+        'target_url' => 'targetUrl',
         'updated_at' => 'updatedAt'
     ];
 
@@ -117,9 +117,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'target_url' => 'setTargetUrl',
-        'throttling' => 'setThrottling',
         'created_at' => 'setCreatedAt',
+        'throttling' => 'setThrottling',
+        'target_url' => 'setTargetUrl',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -129,9 +129,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'target_url' => 'getTargetUrl',
-        'throttling' => 'getThrottling',
         'created_at' => 'getCreatedAt',
+        'throttling' => 'getThrottling',
+        'target_url' => 'getTargetUrl',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -192,9 +192,9 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['target_url'] = $data['target_url'] ?? null;
-        $this->container['throttling'] = $data['throttling'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['throttling'] = $data['throttling'] ?? null;
+        $this->container['target_url'] = $data['target_url'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -207,14 +207,14 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['target_url'] === null) {
-            $invalidProperties[] = "'target_url' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['throttling'] === null) {
             $invalidProperties[] = "'throttling' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['target_url'] === null) {
+            $invalidProperties[] = "'target_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,25 +232,25 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets target_url
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getTargetUrl()
+    public function getCreatedAt()
     {
-        return $this->container['target_url'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets target_url
+     * Sets created_at
      *
-     * @param string $target_url A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
+     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
      *
      * @return self
      */
-    public function setTargetUrl($target_url)
+    public function setCreatedAt($created_at)
     {
-        $this->container['target_url'] = $target_url;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -280,25 +280,25 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created_at
+     * Gets target_url
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt()
+    public function getTargetUrl()
     {
-        return $this->container['created_at'];
+        return $this->container['target_url'];
     }
 
     /**
-     * Sets created_at
+     * Sets target_url
      *
-     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     * @param string $target_url A publicly available URL for HubSpot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setTargetUrl($target_url)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['target_url'] = $target_url;
 
         return $this;
     }

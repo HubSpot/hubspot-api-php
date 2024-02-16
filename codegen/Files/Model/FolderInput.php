@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -58,9 +58,9 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'parent_folder_id' => 'string',
-        'parent_path' => 'string'
+        'parent_path' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'parent_folder_id' => null,
-        'parent_path' => null
+        'parent_path' => null,
+        'name' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'parent_folder_id' => 'parentFolderId',
-        'parent_path' => 'parentPath'
+        'parent_path' => 'parentPath',
+        'name' => 'name'
     ];
 
     /**
@@ -114,9 +114,9 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'parent_folder_id' => 'setParentFolderId',
-        'parent_path' => 'setParentPath'
+        'parent_path' => 'setParentPath',
+        'name' => 'setName'
     ];
 
     /**
@@ -125,9 +125,9 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'parent_folder_id' => 'getParentFolderId',
-        'parent_path' => 'getParentPath'
+        'parent_path' => 'getParentPath',
+        'name' => 'getName'
     ];
 
     /**
@@ -187,9 +187,9 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['parent_folder_id'] = $data['parent_folder_id'] ?? null;
         $this->container['parent_path'] = $data['parent_path'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -220,30 +220,6 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Desired name for the folder.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets parent_folder_id
      *
      * @return string|null
@@ -256,7 +232,7 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent_folder_id
      *
-     * @param string|null $parent_folder_id Folder ID of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     * @param string|null $parent_folder_id FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
      *
      * @return self
      */
@@ -287,6 +263,30 @@ class FolderInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentPath($parent_path)
     {
         $this->container['parent_path'] = $parent_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Desired name for the folder.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

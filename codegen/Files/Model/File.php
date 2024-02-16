@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -58,24 +58,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'created_at' => '\DateTime',
-        'archived_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'archived' => 'bool',
+        'extension' => 'string',
+        'access' => 'string',
         'parent_folder_id' => 'string',
-        'name' => 'string',
-        'path' => 'string',
-        'size' => 'int',
-        'height' => 'int',
-        'width' => 'int',
         'encoding' => 'string',
         'type' => 'string',
-        'extension' => 'string',
-        'default_hosting_url' => 'string',
-        'url' => 'string',
         'is_usable_in_content' => 'bool',
-        'access' => 'string'
+        'url' => 'string',
+        'expires_at' => 'int',
+        'created_at' => '\DateTime',
+        'archived_at' => '\DateTime',
+        'archived' => 'bool',
+        'path' => 'string',
+        'size' => 'int',
+        'name' => 'string',
+        'width' => 'int',
+        'id' => 'string',
+        'default_hosting_url' => 'string',
+        'updated_at' => '\DateTime',
+        'height' => 'int'
     ];
 
     /**
@@ -86,24 +87,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'created_at' => 'date-time',
-        'archived_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'archived' => null,
+        'extension' => null,
+        'access' => null,
         'parent_folder_id' => null,
-        'name' => null,
-        'path' => null,
-        'size' => 'int64',
-        'height' => 'int32',
-        'width' => 'int32',
         'encoding' => null,
         'type' => null,
-        'extension' => null,
-        'default_hosting_url' => null,
-        'url' => null,
         'is_usable_in_content' => null,
-        'access' => null
+        'url' => null,
+        'expires_at' => 'int64',
+        'created_at' => 'date-time',
+        'archived_at' => 'date-time',
+        'archived' => null,
+        'path' => null,
+        'size' => 'int64',
+        'name' => null,
+        'width' => 'int32',
+        'id' => null,
+        'default_hosting_url' => null,
+        'updated_at' => 'date-time',
+        'height' => 'int32'
     ];
 
     /**
@@ -133,24 +135,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'created_at' => 'createdAt',
-        'archived_at' => 'archivedAt',
-        'updated_at' => 'updatedAt',
-        'archived' => 'archived',
+        'extension' => 'extension',
+        'access' => 'access',
         'parent_folder_id' => 'parentFolderId',
-        'name' => 'name',
-        'path' => 'path',
-        'size' => 'size',
-        'height' => 'height',
-        'width' => 'width',
         'encoding' => 'encoding',
         'type' => 'type',
-        'extension' => 'extension',
-        'default_hosting_url' => 'defaultHostingUrl',
-        'url' => 'url',
         'is_usable_in_content' => 'isUsableInContent',
-        'access' => 'access'
+        'url' => 'url',
+        'expires_at' => 'expiresAt',
+        'created_at' => 'createdAt',
+        'archived_at' => 'archivedAt',
+        'archived' => 'archived',
+        'path' => 'path',
+        'size' => 'size',
+        'name' => 'name',
+        'width' => 'width',
+        'id' => 'id',
+        'default_hosting_url' => 'defaultHostingUrl',
+        'updated_at' => 'updatedAt',
+        'height' => 'height'
     ];
 
     /**
@@ -159,24 +162,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'archived_at' => 'setArchivedAt',
-        'updated_at' => 'setUpdatedAt',
-        'archived' => 'setArchived',
+        'extension' => 'setExtension',
+        'access' => 'setAccess',
         'parent_folder_id' => 'setParentFolderId',
-        'name' => 'setName',
-        'path' => 'setPath',
-        'size' => 'setSize',
-        'height' => 'setHeight',
-        'width' => 'setWidth',
         'encoding' => 'setEncoding',
         'type' => 'setType',
-        'extension' => 'setExtension',
-        'default_hosting_url' => 'setDefaultHostingUrl',
-        'url' => 'setUrl',
         'is_usable_in_content' => 'setIsUsableInContent',
-        'access' => 'setAccess'
+        'url' => 'setUrl',
+        'expires_at' => 'setExpiresAt',
+        'created_at' => 'setCreatedAt',
+        'archived_at' => 'setArchivedAt',
+        'archived' => 'setArchived',
+        'path' => 'setPath',
+        'size' => 'setSize',
+        'name' => 'setName',
+        'width' => 'setWidth',
+        'id' => 'setId',
+        'default_hosting_url' => 'setDefaultHostingUrl',
+        'updated_at' => 'setUpdatedAt',
+        'height' => 'setHeight'
     ];
 
     /**
@@ -185,24 +189,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'archived_at' => 'getArchivedAt',
-        'updated_at' => 'getUpdatedAt',
-        'archived' => 'getArchived',
+        'extension' => 'getExtension',
+        'access' => 'getAccess',
         'parent_folder_id' => 'getParentFolderId',
-        'name' => 'getName',
-        'path' => 'getPath',
-        'size' => 'getSize',
-        'height' => 'getHeight',
-        'width' => 'getWidth',
         'encoding' => 'getEncoding',
         'type' => 'getType',
-        'extension' => 'getExtension',
-        'default_hosting_url' => 'getDefaultHostingUrl',
-        'url' => 'getUrl',
         'is_usable_in_content' => 'getIsUsableInContent',
-        'access' => 'getAccess'
+        'url' => 'getUrl',
+        'expires_at' => 'getExpiresAt',
+        'created_at' => 'getCreatedAt',
+        'archived_at' => 'getArchivedAt',
+        'archived' => 'getArchived',
+        'path' => 'getPath',
+        'size' => 'getSize',
+        'name' => 'getName',
+        'width' => 'getWidth',
+        'id' => 'getId',
+        'default_hosting_url' => 'getDefaultHostingUrl',
+        'updated_at' => 'getUpdatedAt',
+        'height' => 'getHeight'
     ];
 
     /**
@@ -285,24 +290,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['extension'] = $data['extension'] ?? null;
+        $this->container['access'] = $data['access'] ?? null;
         $this->container['parent_folder_id'] = $data['parent_folder_id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
-        $this->container['size'] = $data['size'] ?? null;
-        $this->container['height'] = $data['height'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
         $this->container['encoding'] = $data['encoding'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['extension'] = $data['extension'] ?? null;
-        $this->container['default_hosting_url'] = $data['default_hosting_url'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
         $this->container['is_usable_in_content'] = $data['is_usable_in_content'] ?? null;
-        $this->container['access'] = $data['access'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['archived_at'] = $data['archived_at'] ?? null;
+        $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['path'] = $data['path'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['width'] = $data['width'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['default_hosting_url'] = $data['default_hosting_url'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['height'] = $data['height'] ?? null;
     }
 
     /**
@@ -314,18 +320,6 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         if ($this->container['access'] === null) {
             $invalidProperties[] = "'access' can't be null";
         }
@@ -338,6 +332,18 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -354,121 +360,59 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets extension
+     *
+     * @return string|null
+     */
+    public function getExtension()
+    {
+        return $this->container['extension'];
+    }
+
+    /**
+     * Sets extension
+     *
+     * @param string|null $extension Extension of the file. ex: .jpg, .png, .gif, .pdf, etc.
+     *
+     * @return self
+     */
+    public function setExtension($extension)
+    {
+        $this->container['extension'] = $extension;
+
+        return $this;
+    }
+
+    /**
+     * Gets access
      *
      * @return string
      */
-    public function getId()
+    public function getAccess()
     {
-        return $this->container['id'];
+        return $this->container['access'];
     }
 
     /**
-     * Sets id
+     * Sets access
      *
-     * @param string $id File ID.
+     * @param string $access File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
      *
      * @return self
      */
-    public function setId($id)
+    public function setAccess($access)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at Creation time of the file object.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return \DateTime|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param \DateTime|null $archived_at Deletion time of the file object.
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        $this->container['archived_at'] = $archived_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at Timestamp of the latest update to the file.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived If the file is deleted.
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        $this->container['archived'] = $archived;
+        $allowedValues = $this->getAccessAllowableValues();
+        if (!in_array($access, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'access', must be one of '%s'",
+                    $access,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['access'] = $access;
 
         return $this;
     }
@@ -486,133 +430,13 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent_folder_id
      *
-     * @param string|null $parent_folder_id Id of the folder the file is in.
+     * @param string|null $parent_folder_id ID of the folder the file is in.
      *
      * @return self
      */
     public function setParentFolderId($parent_folder_id)
     {
         $this->container['parent_folder_id'] = $parent_folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Name of the file.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
-     *
-     * @return string|null
-     */
-    public function getPath()
-    {
-        return $this->container['path'];
-    }
-
-    /**
-     * Sets path
-     *
-     * @param string|null $path Path of the file in the file manager.
-     *
-     * @return self
-     */
-    public function setPath($path)
-    {
-        $this->container['path'] = $path;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size Size in bytes of the file.
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return int|null
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param int|null $height For image and video files, the height of the content.
-     *
-     * @return self
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return int|null
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param int|null $width For image and video files, the width of the content.
-     *
-     * @return self
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
 
         return $this;
     }
@@ -666,49 +490,25 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets extension
+     * Gets is_usable_in_content
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getExtension()
+    public function getIsUsableInContent()
     {
-        return $this->container['extension'];
+        return $this->container['is_usable_in_content'];
     }
 
     /**
-     * Sets extension
+     * Sets is_usable_in_content
      *
-     * @param string|null $extension Extension of the file. For example png.
+     * @param bool|null $is_usable_in_content Previously \"archied\". Indicates if the file should be used when creating new content like web pages.
      *
      * @return self
      */
-    public function setExtension($extension)
+    public function setIsUsableInContent($is_usable_in_content)
     {
-        $this->container['extension'] = $extension;
-
-        return $this;
-    }
-
-    /**
-     * Gets default_hosting_url
-     *
-     * @return string|null
-     */
-    public function getDefaultHostingUrl()
-    {
-        return $this->container['default_hosting_url'];
-    }
-
-    /**
-     * Sets default_hosting_url
-     *
-     * @param string|null $default_hosting_url Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
-     *
-     * @return self
-     */
-    public function setDefaultHostingUrl($default_hosting_url)
-    {
-        $this->container['default_hosting_url'] = $default_hosting_url;
+        $this->container['is_usable_in_content'] = $is_usable_in_content;
 
         return $this;
     }
@@ -738,59 +538,289 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets is_usable_in_content
+     * Gets expires_at
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getIsUsableInContent()
+    public function getExpiresAt()
     {
-        return $this->container['is_usable_in_content'];
+        return $this->container['expires_at'];
     }
 
     /**
-     * Sets is_usable_in_content
+     * Sets expires_at
      *
-     * @param bool|null $is_usable_in_content Previously \"archied\". Indicates if the file should be used when creating new content like web pages.
+     * @param int|null $expires_at expires_at
      *
      * @return self
      */
-    public function setIsUsableInContent($is_usable_in_content)
+    public function setExpiresAt($expires_at)
     {
-        $this->container['is_usable_in_content'] = $is_usable_in_content;
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }
 
     /**
-     * Gets access
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getAccess()
+    public function getCreatedAt()
     {
-        return $this->container['access'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets access
+     * Sets created_at
      *
-     * @param string $access File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
+     * @param \DateTime $created_at Creation time of the file object.
      *
      * @return self
      */
-    public function setAccess($access)
+    public function setCreatedAt($created_at)
     {
-        $allowedValues = $this->getAccessAllowableValues();
-        if (!in_array($access, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'access', must be one of '%s'",
-                    $access,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['access'] = $access;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return \DateTime|null
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param \DateTime|null $archived_at Deletion time of the file object.
+     *
+     * @return self
+     */
+    public function setArchivedAt($archived_at)
+    {
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool $archived If the file is deleted.
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path Path of the file in the file manager.
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
+
+        return $this;
+    }
+
+    /**
+     * Gets size
+     *
+     * @return int|null
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param int|null $size Size of the file in bytes.
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the file.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return int|null
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param int|null $width For image and video files, the width of the content.
+     *
+     * @return self
+     */
+    public function setWidth($width)
+    {
+        $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id File ID.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_hosting_url
+     *
+     * @return string|null
+     */
+    public function getDefaultHostingUrl()
+    {
+        return $this->container['default_hosting_url'];
+    }
+
+    /**
+     * Sets default_hosting_url
+     *
+     * @param string|null $default_hosting_url Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
+     *
+     * @return self
+     */
+    public function setDefaultHostingUrl($default_hosting_url)
+    {
+        $this->container['default_hosting_url'] = $default_hosting_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at Timestamp of the latest update to the file.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets height
+     *
+     * @return int|null
+     */
+    public function getHeight()
+    {
+        return $this->container['height'];
+    }
+
+    /**
+     * Sets height
+     *
+     * @param int|null $height For image and video files, the height of the content.
+     *
+     * @return self
+     */
+    public function setHeight($height)
+    {
+        $this->container['height'] = $height;
 
         return $this;
     }

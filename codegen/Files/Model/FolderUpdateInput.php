@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -58,9 +58,9 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'parent_folder_id' => 'int',
         'name' => 'string',
-        'parent_folder_id' => 'int'
+        'id' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'parent_folder_id' => 'int64',
         'name' => null,
-        'parent_folder_id' => 'int64'
+        'id' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'parent_folder_id' => 'parentFolderId',
         'name' => 'name',
-        'parent_folder_id' => 'parentFolderId'
+        'id' => 'id'
     ];
 
     /**
@@ -114,9 +114,9 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'parent_folder_id' => 'setParentFolderId',
         'name' => 'setName',
-        'parent_folder_id' => 'setParentFolderId'
+        'id' => 'setId'
     ];
 
     /**
@@ -125,9 +125,9 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'parent_folder_id' => 'getParentFolderId',
         'name' => 'getName',
-        'parent_folder_id' => 'getParentFolderId'
+        'id' => 'getId'
     ];
 
     /**
@@ -187,9 +187,9 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['parent_folder_id'] = $data['parent_folder_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -220,25 +220,25 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets id
+     * Gets parent_folder_id
      *
-     * @return string
+     * @return int|null
      */
-    public function getId()
+    public function getParentFolderId()
     {
-        return $this->container['id'];
+        return $this->container['parent_folder_id'];
     }
 
     /**
-     * Sets id
+     * Sets parent_folder_id
      *
-     * @param string $id Id of the folder to change.
+     * @param int|null $parent_folder_id New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      *
      * @return self
      */
-    public function setId($id)
+    public function setParentFolderId($parent_folder_id)
     {
-        $this->container['id'] = $id;
+        $this->container['parent_folder_id'] = $parent_folder_id;
 
         return $this;
     }
@@ -268,25 +268,25 @@ class FolderUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets parent_folder_id
+     * Gets id
      *
-     * @return int|null
+     * @return string
      */
-    public function getParentFolderId()
+    public function getId()
     {
-        return $this->container['parent_folder_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets parent_folder_id
+     * Sets id
      *
-     * @param int|null $parent_folder_id New parent folder ID. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     * @param string $id ID of the folder to change.
      *
      * @return self
      */
-    public function setParentFolderId($parent_folder_id)
+    public function setId($id)
     {
-        $this->container['parent_folder_id'] = $parent_folder_id;
+        $this->container['id'] = $id;
 
         return $this;
     }

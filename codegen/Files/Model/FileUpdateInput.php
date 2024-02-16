@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -58,11 +58,12 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'access' => 'string',
         'parent_folder_id' => 'string',
+        'name' => 'string',
         'parent_folder_path' => 'string',
         'is_usable_in_content' => 'bool',
-        'access' => 'string'
+        'expires_at' => 'int'
     ];
 
     /**
@@ -73,11 +74,12 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'access' => null,
         'parent_folder_id' => null,
+        'name' => null,
         'parent_folder_path' => null,
         'is_usable_in_content' => null,
-        'access' => null
+        'expires_at' => 'int64'
     ];
 
     /**
@@ -107,11 +109,12 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'access' => 'access',
         'parent_folder_id' => 'parentFolderId',
+        'name' => 'name',
         'parent_folder_path' => 'parentFolderPath',
         'is_usable_in_content' => 'isUsableInContent',
-        'access' => 'access'
+        'expires_at' => 'expiresAt'
     ];
 
     /**
@@ -120,11 +123,12 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'access' => 'setAccess',
         'parent_folder_id' => 'setParentFolderId',
+        'name' => 'setName',
         'parent_folder_path' => 'setParentFolderPath',
         'is_usable_in_content' => 'setIsUsableInContent',
-        'access' => 'setAccess'
+        'expires_at' => 'setExpiresAt'
     ];
 
     /**
@@ -133,11 +137,12 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'access' => 'getAccess',
         'parent_folder_id' => 'getParentFolderId',
+        'name' => 'getName',
         'parent_folder_path' => 'getParentFolderPath',
         'is_usable_in_content' => 'getIsUsableInContent',
-        'access' => 'getAccess'
+        'expires_at' => 'getExpiresAt'
     ];
 
     /**
@@ -220,11 +225,12 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['access'] = $data['access'] ?? null;
         $this->container['parent_folder_id'] = $data['parent_folder_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['parent_folder_path'] = $data['parent_folder_path'] ?? null;
         $this->container['is_usable_in_content'] = $data['is_usable_in_content'] ?? null;
-        $this->container['access'] = $data['access'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
 
     /**
@@ -261,102 +267,6 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name New name for the file.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_folder_id
-     *
-     * @return string|null
-     */
-    public function getParentFolderId()
-    {
-        return $this->container['parent_folder_id'];
-    }
-
-    /**
-     * Sets parent_folder_id
-     *
-     * @param string|null $parent_folder_id Folder ID where the file should be moved to.  folderId and folderPath cannot be set at the same time.
-     *
-     * @return self
-     */
-    public function setParentFolderId($parent_folder_id)
-    {
-        $this->container['parent_folder_id'] = $parent_folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_folder_path
-     *
-     * @return string|null
-     */
-    public function getParentFolderPath()
-    {
-        return $this->container['parent_folder_path'];
-    }
-
-    /**
-     * Sets parent_folder_path
-     *
-     * @param string|null $parent_folder_path Folder path where the file should be moved to. folderId and folderPath cannot be set at the same time.
-     *
-     * @return self
-     */
-    public function setParentFolderPath($parent_folder_path)
-    {
-        $this->container['parent_folder_path'] = $parent_folder_path;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_usable_in_content
-     *
-     * @return bool|null
-     */
-    public function getIsUsableInContent()
-    {
-        return $this->container['is_usable_in_content'];
-    }
-
-    /**
-     * Sets is_usable_in_content
-     *
-     * @param bool|null $is_usable_in_content Mark weather the file should be used in new content or not.
-     *
-     * @return self
-     */
-    public function setIsUsableInContent($is_usable_in_content)
-    {
-        $this->container['is_usable_in_content'] = $is_usable_in_content;
-
-        return $this;
-    }
-
-    /**
      * Gets access
      *
      * @return string|null
@@ -386,6 +296,126 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['access'] = $access;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_folder_id
+     *
+     * @return string|null
+     */
+    public function getParentFolderId()
+    {
+        return $this->container['parent_folder_id'];
+    }
+
+    /**
+     * Sets parent_folder_id
+     *
+     * @param string|null $parent_folder_id FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+     *
+     * @return self
+     */
+    public function setParentFolderId($parent_folder_id)
+    {
+        $this->container['parent_folder_id'] = $parent_folder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name New name for the file.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_folder_path
+     *
+     * @return string|null
+     */
+    public function getParentFolderPath()
+    {
+        return $this->container['parent_folder_path'];
+    }
+
+    /**
+     * Sets parent_folder_path
+     *
+     * @param string|null $parent_folder_path Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+     *
+     * @return self
+     */
+    public function setParentFolderPath($parent_folder_path)
+    {
+        $this->container['parent_folder_path'] = $parent_folder_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_usable_in_content
+     *
+     * @return bool|null
+     */
+    public function getIsUsableInContent()
+    {
+        return $this->container['is_usable_in_content'];
+    }
+
+    /**
+     * Sets is_usable_in_content
+     *
+     * @param bool|null $is_usable_in_content Mark whether the file should be used in new content or not.
+     *
+     * @return self
+     */
+    public function setIsUsableInContent($is_usable_in_content)
+    {
+        $this->container['is_usable_in_content'] = $is_usable_in_content;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return int|null
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param int|null $expires_at expires_at
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }

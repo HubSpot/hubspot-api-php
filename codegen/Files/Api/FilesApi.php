@@ -10,7 +10,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -120,7 +120,7 @@ class FilesApi
      *
      * Delete file
      *
-     * @param  string $file_id File ID to delete (required)
+     * @param  string $file_id FileId to delete (required)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -136,7 +136,7 @@ class FilesApi
      *
      * Delete file
      *
-     * @param  string $file_id File ID to delete (required)
+     * @param  string $file_id FileId to delete (required)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -203,7 +203,7 @@ class FilesApi
      *
      * Delete file
      *
-     * @param  string $file_id File ID to delete (required)
+     * @param  string $file_id FileId to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -223,7 +223,7 @@ class FilesApi
      *
      * Delete file
      *
-     * @param  string $file_id File ID to delete (required)
+     * @param  string $file_id FileId to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -259,7 +259,7 @@ class FilesApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $file_id File ID to delete (required)
+     * @param  string $file_id FileId to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -925,7 +925,7 @@ class FilesApi
      * @param  \DateTime $updated_at_gte updated_at_gte (optional)
      * @param  string $name Search for files containing the given name. (optional)
      * @param  string $path Search files by path. (optional)
-     * @param  int $parent_folder_id Search files within given folder ID. (optional)
+     * @param  int $parent_folder_id Search files within given folderId. (optional)
      * @param  int $size Query by file size. (optional)
      * @param  int $height Search files by height of image or video. (optional)
      * @param  int $width Search files by width of image or video. (optional)
@@ -965,7 +965,7 @@ class FilesApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for files containing the given name. (optional)
      * @param  string $path Search files by path. (optional)
-     * @param  int $parent_folder_id Search files within given folder ID. (optional)
+     * @param  int $parent_folder_id Search files within given folderId. (optional)
      * @param  int $size Query by file size. (optional)
      * @param  int $height Search files by height of image or video. (optional)
      * @param  int $width Search files by width of image or video. (optional)
@@ -1110,7 +1110,7 @@ class FilesApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for files containing the given name. (optional)
      * @param  string $path Search files by path. (optional)
-     * @param  int $parent_folder_id Search files within given folder ID. (optional)
+     * @param  int $parent_folder_id Search files within given folderId. (optional)
      * @param  int $size Query by file size. (optional)
      * @param  int $height Search files by height of image or video. (optional)
      * @param  int $width Search files by width of image or video. (optional)
@@ -1153,7 +1153,7 @@ class FilesApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for files containing the given name. (optional)
      * @param  string $path Search files by path. (optional)
-     * @param  int $parent_folder_id Search files within given folder ID. (optional)
+     * @param  int $parent_folder_id Search files within given folderId. (optional)
      * @param  int $size Query by file size. (optional)
      * @param  int $height Search files by height of image or video. (optional)
      * @param  int $width Search files by width of image or video. (optional)
@@ -1225,7 +1225,7 @@ class FilesApi
      * @param  \DateTime $updated_at_gte (optional)
      * @param  string $name Search for files containing the given name. (optional)
      * @param  string $path Search files by path. (optional)
-     * @param  int $parent_folder_id Search files within given folder ID. (optional)
+     * @param  int $parent_folder_id Search files within given folderId. (optional)
      * @param  int $size Query by file size. (optional)
      * @param  int $height Search files by height of image or video. (optional)
      * @param  int $width Search files by width of image or video. (optional)
@@ -1535,7 +1535,7 @@ class FilesApi
      *
      * Get file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  string[] $properties properties (optional)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
@@ -1553,7 +1553,7 @@ class FilesApi
      *
      * Get file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  string[] $properties (optional)
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response
@@ -1676,7 +1676,7 @@ class FilesApi
      *
      * Get file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  string[] $properties (optional)
      *
      * @throws \InvalidArgumentException
@@ -1697,7 +1697,7 @@ class FilesApi
      *
      * Get file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  string[] $properties (optional)
      *
      * @throws \InvalidArgumentException
@@ -1747,7 +1747,7 @@ class FilesApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  string[] $properties (optional)
      *
      * @throws \InvalidArgumentException
@@ -1789,6 +1789,323 @@ class FilesApi
             $resourcePath = str_replace(
                 '{' . 'fileId' . '}',
                 ObjectSerializer::toPathValue($file_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMetadata
+     *
+     * @param  string $path path (required)
+     * @param  string[] $properties properties (optional)
+     *
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Files\Model\FileStat|\HubSpot\Client\Files\Model\Error
+     */
+    public function getMetadata($path, $properties = null)
+    {
+        list($response) = $this->getMetadataWithHttpInfo($path, $properties);
+        return $response;
+    }
+
+    /**
+     * Operation getMetadataWithHttpInfo
+     *
+     * @param  string $path (required)
+     * @param  string[] $properties (optional)
+     *
+     * @throws \HubSpot\Client\Files\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Files\Model\FileStat|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMetadataWithHttpInfo($path, $properties = null)
+    {
+        $request = $this->getMetadataRequest($path, $properties);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Files\Model\FileStat' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Files\Model\FileStat' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\FileStat', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Files\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Files\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Files\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Files\Model\FileStat';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Files\Model\FileStat',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Files\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMetadataAsync
+     *
+     * @param  string $path (required)
+     * @param  string[] $properties (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMetadataAsync($path, $properties = null)
+    {
+        return $this->getMetadataAsyncWithHttpInfo($path, $properties)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMetadataAsyncWithHttpInfo
+     *
+     * @param  string $path (required)
+     * @param  string[] $properties (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMetadataAsyncWithHttpInfo($path, $properties = null)
+    {
+        $returnType = '\HubSpot\Client\Files\Model\FileStat';
+        $request = $this->getMetadataRequest($path, $properties);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMetadata'
+     *
+     * @param  string $path (required)
+     * @param  string[] $properties (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMetadataRequest($path, $properties = null)
+    {
+        // verify the required parameter 'path' is set
+        if ($path === null || (is_array($path) && count($path) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $path when calling getMetadata'
+            );
+        }
+        if (!preg_match("/.+/", $path)) {
+            throw new \InvalidArgumentException("invalid value for \"path\" when calling FilesApi.getMetadata, must conform to the pattern /.+/.");
+        }
+
+
+        $resourcePath = '/files/v3/files/stat/{path}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($path !== null) {
+            $resourcePath = str_replace(
+                '{' . 'path' . '}',
+                ObjectSerializer::toPathValue($path),
                 $resourcePath
             );
         }
@@ -2518,7 +2835,7 @@ class FilesApi
      *
      * Replace file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  \SplFileObject $file File data that will replace existing file in the file manager. (optional)
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
@@ -2538,7 +2855,7 @@ class FilesApi
      *
      * Replace file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  \SplFileObject $file File data that will replace existing file in the file manager. (optional)
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
@@ -2663,7 +2980,7 @@ class FilesApi
      *
      * Replace file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  \SplFileObject $file File data that will replace existing file in the file manager. (optional)
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
@@ -2686,7 +3003,7 @@ class FilesApi
      *
      * Replace file.
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  \SplFileObject $file File data that will replace existing file in the file manager. (optional)
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
@@ -2738,7 +3055,7 @@ class FilesApi
     /**
      * Create request for operation 'replace'
      *
-     * @param  string $file_id Id of the desired file. (required)
+     * @param  string $file_id ID of the desired file. (required)
      * @param  \SplFileObject $file File data that will replace existing file in the file manager. (optional)
      * @param  string $charset_hunch Character set of given file data. (optional)
      * @param  string $options JSON String representing FileReplaceOptions (optional)
