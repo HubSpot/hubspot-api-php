@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorDetail
+ * PreviousPage
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Events\ObjectSerializer;
 
 /**
- * ErrorDetail Class Doc Comment
+ * PreviousPage Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
+class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorDetail';
+    protected static $openAPIModelName = 'PreviousPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'string',
-        'code' => 'string',
-        'in' => 'string',
-        'context' => 'array<string,string[]>',
-        'message' => 'string'
+        'before' => 'string',
+        'link' => 'string'
     ];
 
     /**
@@ -72,11 +69,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
-        'code' => null,
-        'in' => null,
-        'context' => null,
-        'message' => null
+        'before' => null,
+        'link' => null
     ];
 
     /**
@@ -106,11 +100,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
-        'code' => 'code',
-        'in' => 'in',
-        'context' => 'context',
-        'message' => 'message'
+        'before' => 'before',
+        'link' => 'link'
     ];
 
     /**
@@ -119,11 +110,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
-        'code' => 'setCode',
-        'in' => 'setIn',
-        'context' => 'setContext',
-        'message' => 'setMessage'
+        'before' => 'setBefore',
+        'link' => 'setLink'
     ];
 
     /**
@@ -132,11 +120,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
-        'code' => 'getCode',
-        'in' => 'getIn',
-        'context' => 'getContext',
-        'message' => 'getMessage'
+        'before' => 'getBefore',
+        'link' => 'getLink'
     ];
 
     /**
@@ -196,11 +181,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['sub_category'] = $data['sub_category'] ?? null;
-        $this->container['code'] = $data['code'] ?? null;
-        $this->container['in'] = $data['in'] ?? null;
-        $this->container['context'] = $data['context'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['before'] = $data['before'] ?? null;
+        $this->container['link'] = $data['link'] ?? null;
     }
 
     /**
@@ -212,8 +194,8 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['before'] === null) {
+            $invalidProperties[] = "'before' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,121 +213,49 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sub_category
-     *
-     * @return string|null
-     */
-    public function getSubCategory()
-    {
-        return $this->container['sub_category'];
-    }
-
-    /**
-     * Sets sub_category
-     *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
-     *
-     * @return self
-     */
-    public function setSubCategory($sub_category)
-    {
-        $this->container['sub_category'] = $sub_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code The status code associated with the error detail
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets in
-     *
-     * @return string|null
-     */
-    public function getIn()
-    {
-        return $this->container['in'];
-    }
-
-    /**
-     * Sets in
-     *
-     * @param string|null $in The name of the field or parameter in which the error was found.
-     *
-     * @return self
-     */
-    public function setIn($in)
-    {
-        $this->container['in'] = $in;
-
-        return $this;
-    }
-
-    /**
-     * Gets context
-     *
-     * @return array<string,string[]>|null
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param array<string,string[]>|null $context Context about the error condition
-     *
-     * @return self
-     */
-    public function setContext($context)
-    {
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets before
      *
      * @return string
      */
-    public function getMessage()
+    public function getBefore()
     {
-        return $this->container['message'];
+        return $this->container['before'];
     }
 
     /**
-     * Sets message
+     * Sets before
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param string $before before
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setBefore($before)
     {
-        $this->container['message'] = $message;
+        $this->container['before'] = $before;
+
+        return $this;
+    }
+
+    /**
+     * Gets link
+     *
+     * @return string|null
+     */
+    public function getLink()
+    {
+        return $this->container['link'];
+    }
+
+    /**
+     * Sets link
+     *
+     * @param string|null $link link
+     *
+     * @return self
+     */
+    public function setLink($link)
+    {
+        $this->container['link'] = $link;
 
         return $this;
     }

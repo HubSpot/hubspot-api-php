@@ -10,7 +10,7 @@
  */
 
 /**
- * HubSpot Events API
+ * Events
  *
  * API for accessing CRM object events.
  *
