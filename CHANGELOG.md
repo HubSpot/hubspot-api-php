@@ -97,6 +97,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `events()->eventsApi()->getPage($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)` => `events()->eventsApi()->getPage($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)`.
 - Added `prev` param to `HubSpot\Client\Events\Model\Paging`.
 - `events()->send()->behavioralEventsTrackingApi()` => `events()->send()->customEventDataApi()`.
+- Added method `getMetadata()` to `files()->filesApi()`.
+- Added `expires_at` param to `HubSpot\Client\Files\Model\File` and `HubSpot\Client\Files\Model\FileUpdateInput`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Files\Model\StandardError:category`.
 
 ## Removed `hapikey` from
 
