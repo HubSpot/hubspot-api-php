@@ -84,6 +84,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `NAME_MARKETING_EVENTS` const to `HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody`.
 - Added `audit_history` param to `HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse`.
 - Added `fetch_accounts_uri` param to `HubSpot\Client\Crm\Extensions\Videoconferencing\Model\ExternalSettings`.
+- Added `import_template` and `import_source` params to `HubSpot\Client\Crm\Imports\Model\PublicImportResponse`.
+- `crm()->lists()->listsApi()->delete()` => `crm()->lists()->listsApi()->remove()`.
+- `crm()->lists()->membershipsApi()->deleteAll()` => `crm()->lists()->listsApi()->removeAll()`.
+- Added param `$validate_deal_stage_usages_before_delete` to `crm()->pipelines()->pipelinesApi()->archive()`, `crm()->pipelines()->pipelinesApi()->replace()` and `crm()->pipelines()->pipelinesApi()->update()`.
+- Added `write_permissions` param to `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`.
+- Added `description` param to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`, `HubSpot\Client\Crm\Schemas\Model\ObjectSchemaEgg`, `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinition` and `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
+- Added `option_sort_strategy`, `show_currency_symbol`, `form_field`, `referenced_object_type`, `text_display_hint`, `searchable_in_global_search` and  `number_display_hint` params to `HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate`.
+- Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`.
+- `crm()-timeline()->eventsApi()->createBatch(): BatchResponseTimelineEventResponse|BatchResponseTimelineEventResponseWithErrors|Error` => `crm()->timeline()->eventsApi()->createBatch():void`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Timeline\Model\StandardError:category`.
 
 
 ## Removed `hapikey` from
