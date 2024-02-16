@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Events\Send;
 
-use HubSpot\Client\Events\Send\Api\BehavioralEventsTrackingApi;
+use HubSpot\Client\Events\Send\Api\CustomEventDataApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BehavioralEventsTrackingApi behavioralEventsTrackingApi()
+ * @method CustomEventDataApi customEventDataApi()
  */
 class Discovery extends DiscoveryBase {}
