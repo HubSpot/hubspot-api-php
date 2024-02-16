@@ -11,7 +11,7 @@
  */
 
 /**
- * HubSpot Events API
+ * Events
  *
  * API for accessing CRM object events.
  *
@@ -58,12 +58,12 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_type' => 'string',
-        'object_id' => 'string',
-        'event_type' => 'string',
         'occurred_at' => '\DateTime',
+        'event_type' => 'string',
         'id' => 'string',
-        'properties' => 'array<string,string>'
+        'object_id' => 'string',
+        'properties' => 'array<string,string>',
+        'object_type' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object_type' => null,
-        'object_id' => null,
-        'event_type' => null,
         'occurred_at' => 'date-time',
+        'event_type' => null,
         'id' => null,
-        'properties' => null
+        'object_id' => null,
+        'properties' => null,
+        'object_type' => null
     ];
 
     /**
@@ -109,12 +109,12 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_type' => 'objectType',
-        'object_id' => 'objectId',
-        'event_type' => 'eventType',
         'occurred_at' => 'occurredAt',
+        'event_type' => 'eventType',
         'id' => 'id',
-        'properties' => 'properties'
+        'object_id' => 'objectId',
+        'properties' => 'properties',
+        'object_type' => 'objectType'
     ];
 
     /**
@@ -123,12 +123,12 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'object_type' => 'setObjectType',
-        'object_id' => 'setObjectId',
-        'event_type' => 'setEventType',
         'occurred_at' => 'setOccurredAt',
+        'event_type' => 'setEventType',
         'id' => 'setId',
-        'properties' => 'setProperties'
+        'object_id' => 'setObjectId',
+        'properties' => 'setProperties',
+        'object_type' => 'setObjectType'
     ];
 
     /**
@@ -137,12 +137,12 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'object_type' => 'getObjectType',
-        'object_id' => 'getObjectId',
-        'event_type' => 'getEventType',
         'occurred_at' => 'getOccurredAt',
+        'event_type' => 'getEventType',
         'id' => 'getId',
-        'properties' => 'getProperties'
+        'object_id' => 'getObjectId',
+        'properties' => 'getProperties',
+        'object_type' => 'getObjectType'
     ];
 
     /**
@@ -202,12 +202,12 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['object_type'] = $data['object_type'] ?? null;
-        $this->container['object_id'] = $data['object_id'] ?? null;
-        $this->container['event_type'] = $data['event_type'] ?? null;
         $this->container['occurred_at'] = $data['occurred_at'] ?? null;
+        $this->container['event_type'] = $data['event_type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['object_id'] = $data['object_id'] ?? null;
         $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['object_type'] = $data['object_type'] ?? null;
     }
 
     /**
@@ -219,23 +219,20 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['object_type'] === null) {
-            $invalidProperties[] = "'object_type' can't be null";
-        }
-        if ($this->container['object_id'] === null) {
-            $invalidProperties[] = "'object_id' can't be null";
+        if ($this->container['occurred_at'] === null) {
+            $invalidProperties[] = "'occurred_at' can't be null";
         }
         if ($this->container['event_type'] === null) {
             $invalidProperties[] = "'event_type' can't be null";
         }
-        if ($this->container['occurred_at'] === null) {
-            $invalidProperties[] = "'occurred_at' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
+        if ($this->container['object_id'] === null) {
+            $invalidProperties[] = "'object_id' can't be null";
+        }
+        if ($this->container['object_type'] === null) {
+            $invalidProperties[] = "'object_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -253,49 +250,25 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets object_type
+     * Gets occurred_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getObjectType()
+    public function getOccurredAt()
     {
-        return $this->container['object_type'];
+        return $this->container['occurred_at'];
     }
 
     /**
-     * Sets object_type
+     * Sets occurred_at
      *
-     * @param string $object_type The objectType for the object which did the event.
+     * @param \DateTime $occurred_at An ISO 8601 timestamp when the event occurred.
      *
      * @return self
      */
-    public function setObjectType($object_type)
+    public function setOccurredAt($occurred_at)
     {
-        $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_id
-     *
-     * @return string
-     */
-    public function getObjectId()
-    {
-        return $this->container['object_id'];
-    }
-
-    /**
-     * Sets object_id
-     *
-     * @param string $object_id The objectId of the object which did the event.
-     *
-     * @return self
-     */
-    public function setObjectId($object_id)
-    {
-        $this->container['object_id'] = $object_id;
+        $this->container['occurred_at'] = $occurred_at;
 
         return $this;
     }
@@ -325,30 +298,6 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets occurred_at
-     *
-     * @return \DateTime
-     */
-    public function getOccurredAt()
-    {
-        return $this->container['occurred_at'];
-    }
-
-    /**
-     * Sets occurred_at
-     *
-     * @param \DateTime $occurred_at An ISO 8601 timestamp when the event occurred.
-     *
-     * @return self
-     */
-    public function setOccurredAt($occurred_at)
-    {
-        $this->container['occurred_at'] = $occurred_at;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string
@@ -373,9 +322,33 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets object_id
+     *
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string $object_id The objectId of the object which did the event.
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        $this->container['object_id'] = $object_id;
+
+        return $this;
+    }
+
+    /**
      * Gets properties
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
     public function getProperties()
     {
@@ -385,13 +358,37 @@ class ExternalUnifiedEvent implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets properties
      *
-     * @param array<string,string> $properties properties
+     * @param array<string,string>|null $properties properties
      *
      * @return self
      */
     public function setProperties($properties)
     {
         $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type
+     *
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->container['object_type'];
+    }
+
+    /**
+     * Sets object_type
+     *
+     * @param string $object_type The objectType for the object which did the event.
+     *
+     * @return self
+     */
+    public function setObjectType($object_type)
+    {
+        $this->container['object_type'] = $object_type;
 
         return $this;
     }

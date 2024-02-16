@@ -10,7 +10,7 @@
  */
 
 /**
- * HubSpot Events API
+ * Events
  *
  * API for accessing CRM object events.
  *
@@ -118,50 +118,56 @@ class EventsApi
     /**
      * Operation getPage
      *
-     * Returns a collection of events matching a query.
-     *
-     * @param  \DateTime $occurred_after The starting time as an ISO 8601 timestamp. (optional)
-     * @param  \DateTime $occurred_before The ending time as an ISO 8601 timestamp. (optional)
-     * @param  string $object_type The type of object being selected. Valid values are hubspot named object types (e.g. &#x60;contact&#x60;). (optional)
-     * @param  int $object_id The id of the selected object. If not present, then the &#x60;objectProperty&#x60; parameter is required. (optional)
-     * @param  string $event_type Limits the response to the specified event type.  For example &#x60;&amp;eventType&#x3D;e_visited_page&#x60; returns only &#x60;e_visited_page&#x60; events.  If not present all event types are returned. (optional)
-     * @param  string $after An additional parameter that may be used to get the next &#x60;limit&#x60; set of results. (optional)
+     * @param  string $object_type object_type (optional)
+     * @param  string $event_type event_type (optional)
+     * @param  \DateTime $occurred_after occurred_after (optional)
+     * @param  \DateTime $occurred_before occurred_before (optional)
+     * @param  int $object_id object_id (optional)
+     * @param  string $index_table_name index_table_name (optional)
+     * @param  string $index_specific_metadata index_specific_metadata (optional)
+     * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $before before (optional)
-     * @param  int $limit The maximum number of events to return, defaults to 20. (optional)
-     * @param  string[] $sort Selects the sort field and order. Defaults to ascending, prefix with &#x60;-&#x60; for descending order. &#x60;occurredAt&#x60; is the only field supported for sorting. (optional)
+     * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  string[] $sort sort (optional)
+     * @param  object $object_property_propname object_property_propname (optional)
+     * @param  object $property_propname property_propname (optional)
+     * @param  string[] $id id (optional)
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent|\HubSpot\Client\Events\Model\Error
      */
-    public function getPage($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)
+    public function getPage($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)
     {
-        list($response) = $this->getPageWithHttpInfo($occurred_after, $occurred_before, $object_type, $object_id, $event_type, $after, $before, $limit, $sort);
+        list($response) = $this->getPageWithHttpInfo($object_type, $event_type, $occurred_after, $occurred_before, $object_id, $index_table_name, $index_specific_metadata, $after, $before, $limit, $sort, $object_property_propname, $property_propname, $id);
         return $response;
     }
 
     /**
      * Operation getPageWithHttpInfo
      *
-     * Returns a collection of events matching a query.
-     *
-     * @param  \DateTime $occurred_after The starting time as an ISO 8601 timestamp. (optional)
-     * @param  \DateTime $occurred_before The ending time as an ISO 8601 timestamp. (optional)
-     * @param  string $object_type The type of object being selected. Valid values are hubspot named object types (e.g. &#x60;contact&#x60;). (optional)
-     * @param  int $object_id The id of the selected object. If not present, then the &#x60;objectProperty&#x60; parameter is required. (optional)
-     * @param  string $event_type Limits the response to the specified event type.  For example &#x60;&amp;eventType&#x3D;e_visited_page&#x60; returns only &#x60;e_visited_page&#x60; events.  If not present all event types are returned. (optional)
-     * @param  string $after An additional parameter that may be used to get the next &#x60;limit&#x60; set of results. (optional)
+     * @param  string $object_type (optional)
+     * @param  string $event_type (optional)
+     * @param  \DateTime $occurred_after (optional)
+     * @param  \DateTime $occurred_before (optional)
+     * @param  int $object_id (optional)
+     * @param  string $index_table_name (optional)
+     * @param  string $index_specific_metadata (optional)
+     * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $before (optional)
-     * @param  int $limit The maximum number of events to return, defaults to 20. (optional)
-     * @param  string[] $sort Selects the sort field and order. Defaults to ascending, prefix with &#x60;-&#x60; for descending order. &#x60;occurredAt&#x60; is the only field supported for sorting. (optional)
+     * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  string[] $sort (optional)
+     * @param  object $object_property_propname (optional)
+     * @param  object $property_propname (optional)
+     * @param  string[] $id (optional)
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent|\HubSpot\Client\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)
+    public function getPageWithHttpInfo($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)
     {
-        $request = $this->getPageRequest($occurred_after, $occurred_before, $object_type, $object_id, $event_type, $after, $before, $limit, $sort);
+        $request = $this->getPageRequest($object_type, $event_type, $occurred_after, $occurred_before, $object_id, $index_table_name, $index_specific_metadata, $after, $before, $limit, $sort, $object_property_propname, $property_propname, $id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -273,24 +279,27 @@ class EventsApi
     /**
      * Operation getPageAsync
      *
-     * Returns a collection of events matching a query.
-     *
-     * @param  \DateTime $occurred_after The starting time as an ISO 8601 timestamp. (optional)
-     * @param  \DateTime $occurred_before The ending time as an ISO 8601 timestamp. (optional)
-     * @param  string $object_type The type of object being selected. Valid values are hubspot named object types (e.g. &#x60;contact&#x60;). (optional)
-     * @param  int $object_id The id of the selected object. If not present, then the &#x60;objectProperty&#x60; parameter is required. (optional)
-     * @param  string $event_type Limits the response to the specified event type.  For example &#x60;&amp;eventType&#x3D;e_visited_page&#x60; returns only &#x60;e_visited_page&#x60; events.  If not present all event types are returned. (optional)
-     * @param  string $after An additional parameter that may be used to get the next &#x60;limit&#x60; set of results. (optional)
+     * @param  string $object_type (optional)
+     * @param  string $event_type (optional)
+     * @param  \DateTime $occurred_after (optional)
+     * @param  \DateTime $occurred_before (optional)
+     * @param  int $object_id (optional)
+     * @param  string $index_table_name (optional)
+     * @param  string $index_specific_metadata (optional)
+     * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $before (optional)
-     * @param  int $limit The maximum number of events to return, defaults to 20. (optional)
-     * @param  string[] $sort Selects the sort field and order. Defaults to ascending, prefix with &#x60;-&#x60; for descending order. &#x60;occurredAt&#x60; is the only field supported for sorting. (optional)
+     * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  string[] $sort (optional)
+     * @param  object $object_property_propname (optional)
+     * @param  object $property_propname (optional)
+     * @param  string[] $id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)
+    public function getPageAsync($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)
     {
-        return $this->getPageAsyncWithHttpInfo($occurred_after, $occurred_before, $object_type, $object_id, $event_type, $after, $before, $limit, $sort)
+        return $this->getPageAsyncWithHttpInfo($object_type, $event_type, $occurred_after, $occurred_before, $object_id, $index_table_name, $index_specific_metadata, $after, $before, $limit, $sort, $object_property_propname, $property_propname, $id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -301,25 +310,28 @@ class EventsApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * Returns a collection of events matching a query.
-     *
-     * @param  \DateTime $occurred_after The starting time as an ISO 8601 timestamp. (optional)
-     * @param  \DateTime $occurred_before The ending time as an ISO 8601 timestamp. (optional)
-     * @param  string $object_type The type of object being selected. Valid values are hubspot named object types (e.g. &#x60;contact&#x60;). (optional)
-     * @param  int $object_id The id of the selected object. If not present, then the &#x60;objectProperty&#x60; parameter is required. (optional)
-     * @param  string $event_type Limits the response to the specified event type.  For example &#x60;&amp;eventType&#x3D;e_visited_page&#x60; returns only &#x60;e_visited_page&#x60; events.  If not present all event types are returned. (optional)
-     * @param  string $after An additional parameter that may be used to get the next &#x60;limit&#x60; set of results. (optional)
+     * @param  string $object_type (optional)
+     * @param  string $event_type (optional)
+     * @param  \DateTime $occurred_after (optional)
+     * @param  \DateTime $occurred_before (optional)
+     * @param  int $object_id (optional)
+     * @param  string $index_table_name (optional)
+     * @param  string $index_specific_metadata (optional)
+     * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $before (optional)
-     * @param  int $limit The maximum number of events to return, defaults to 20. (optional)
-     * @param  string[] $sort Selects the sort field and order. Defaults to ascending, prefix with &#x60;-&#x60; for descending order. &#x60;occurredAt&#x60; is the only field supported for sorting. (optional)
+     * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  string[] $sort (optional)
+     * @param  object $object_property_propname (optional)
+     * @param  object $property_propname (optional)
+     * @param  string[] $id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)
+    public function getPageAsyncWithHttpInfo($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)
     {
         $returnType = '\HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent';
-        $request = $this->getPageRequest($occurred_after, $occurred_before, $object_type, $object_id, $event_type, $after, $before, $limit, $sort);
+        $request = $this->getPageRequest($object_type, $event_type, $occurred_after, $occurred_before, $object_id, $index_table_name, $index_specific_metadata, $after, $before, $limit, $sort, $object_property_propname, $property_propname, $id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -360,29 +372,52 @@ class EventsApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  \DateTime $occurred_after The starting time as an ISO 8601 timestamp. (optional)
-     * @param  \DateTime $occurred_before The ending time as an ISO 8601 timestamp. (optional)
-     * @param  string $object_type The type of object being selected. Valid values are hubspot named object types (e.g. &#x60;contact&#x60;). (optional)
-     * @param  int $object_id The id of the selected object. If not present, then the &#x60;objectProperty&#x60; parameter is required. (optional)
-     * @param  string $event_type Limits the response to the specified event type.  For example &#x60;&amp;eventType&#x3D;e_visited_page&#x60; returns only &#x60;e_visited_page&#x60; events.  If not present all event types are returned. (optional)
-     * @param  string $after An additional parameter that may be used to get the next &#x60;limit&#x60; set of results. (optional)
+     * @param  string $object_type (optional)
+     * @param  string $event_type (optional)
+     * @param  \DateTime $occurred_after (optional)
+     * @param  \DateTime $occurred_before (optional)
+     * @param  int $object_id (optional)
+     * @param  string $index_table_name (optional)
+     * @param  string $index_specific_metadata (optional)
+     * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $before (optional)
-     * @param  int $limit The maximum number of events to return, defaults to 20. (optional)
-     * @param  string[] $sort Selects the sort field and order. Defaults to ascending, prefix with &#x60;-&#x60; for descending order. &#x60;occurredAt&#x60; is the only field supported for sorting. (optional)
+     * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  string[] $sort (optional)
+     * @param  object $object_property_propname (optional)
+     * @param  object $property_propname (optional)
+     * @param  string[] $id (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)
+    public function getPageRequest($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)
     {
 
-        $resourcePath = '/events/v3/events';
+        $resourcePath = '/events/v3/events/';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_type,
+            'objectType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event_type,
+            'eventType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $occurred_after,
@@ -403,15 +438,6 @@ class EventsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_type,
-            'objectType', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $object_id,
             'objectId', // param base name
             'integer', // openApiType
@@ -421,8 +447,17 @@ class EventsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $event_type,
-            'eventType', // param base name
+            $index_table_name,
+            'indexTableName', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $index_specific_metadata,
+            'indexSpecificMetadata', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -459,6 +494,33 @@ class EventsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sort,
             'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_property_propname,
+            'objectProperty.{propname}', // param base name
+            'object', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property_propname,
+            'property.{propname}', // param base name
+            'object', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id,
+            'id', // param base name
             'array', // openApiType
             'form', // style
             true, // explode

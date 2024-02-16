@@ -1,6 +1,6 @@
 <?php
 /**
- * BehavioralEventsTrackingApi
+ * CustomEventDataApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Events\Send\HeaderSelector;
 use HubSpot\Client\Events\Send\ObjectSerializer;
 
 /**
- * BehavioralEventsTrackingApi Class Doc Comment
+ * CustomEventDataApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Events\Send
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class BehavioralEventsTrackingApi
+class CustomEventDataApi
 {
     /**
      * @var ClientInterface
@@ -118,7 +118,7 @@ class BehavioralEventsTrackingApi
     /**
      * Operation send
      *
-     * Sends Custom Behavioral Event
+     * Send custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request behavioral_event_http_completion_request (required)
      *
@@ -134,7 +134,7 @@ class BehavioralEventsTrackingApi
     /**
      * Operation sendWithHttpInfo
      *
-     * Sends Custom Behavioral Event
+     * Send custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request (required)
      *
@@ -201,7 +201,7 @@ class BehavioralEventsTrackingApi
     /**
      * Operation sendAsync
      *
-     * Sends Custom Behavioral Event
+     * Send custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request (required)
      *
@@ -221,7 +221,7 @@ class BehavioralEventsTrackingApi
     /**
      * Operation sendAsyncWithHttpInfo
      *
-     * Sends Custom Behavioral Event
+     * Send custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request (required)
      *
