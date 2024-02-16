@@ -1,6 +1,6 @@
 <?php
 /**
- * SettingsExternalApi
+ * BatchApi
  * PHP version 7.4
  *
  * @category Class
@@ -10,7 +10,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -40,14 +40,14 @@ use HubSpot\Client\Marketing\Events\HeaderSelector;
 use HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SettingsExternalApi Class Doc Comment
+ * BatchApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SettingsExternalApi
+class BatchApi
 {
     /**
      * @var ClientInterface
@@ -116,34 +116,36 @@ class SettingsExternalApi
     }
 
     /**
-     * Operation create
+     * Operation archiveBatch
      *
-     * @param  int $app_id app_id (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url event_detail_settings_url (required)
+     * Delete multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventExternalUniqueIdentifier $batch_input_marketing_event_external_unique_identifier The details of the marketing events to delete (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function create($app_id, $event_detail_settings_url)
+    public function archiveBatch($batch_input_marketing_event_external_unique_identifier)
     {
-        list($response) = $this->createWithHttpInfo($app_id, $event_detail_settings_url);
+        list($response) = $this->archiveBatchWithHttpInfo($batch_input_marketing_event_external_unique_identifier);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation archiveBatchWithHttpInfo
      *
-     * @param  int $app_id (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url (required)
+     * Delete multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventExternalUniqueIdentifier $batch_input_marketing_event_external_unique_identifier The details of the marketing events to delete (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($app_id, $event_detail_settings_url)
+    public function archiveBatchWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
     {
-        $request = $this->createRequest($app_id, $event_detail_settings_url);
+        $request = $this->archiveBatchRequest($batch_input_marketing_event_external_unique_identifier);
 
         try {
             $options = $this->createHttpClientOption();
@@ -181,21 +183,6 @@ class SettingsExternalApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
                 default:
                     if ('\HubSpot\Client\Marketing\Events\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -213,7 +200,7 @@ class SettingsExternalApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -231,14 +218,6 @@ class SettingsExternalApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -253,17 +232,18 @@ class SettingsExternalApi
     }
 
     /**
-     * Operation createAsync
+     * Operation archiveBatchAsync
      *
-     * @param  int $app_id (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url (required)
+     * Delete multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventExternalUniqueIdentifier $batch_input_marketing_event_external_unique_identifier The details of the marketing events to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($app_id, $event_detail_settings_url)
+    public function archiveBatchAsync($batch_input_marketing_event_external_unique_identifier)
     {
-        return $this->createAsyncWithHttpInfo($app_id, $event_detail_settings_url)
+        return $this->archiveBatchAsyncWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -272,18 +252,19 @@ class SettingsExternalApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation archiveBatchAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url (required)
+     * Delete multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventExternalUniqueIdentifier $batch_input_marketing_event_external_unique_identifier The details of the marketing events to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($app_id, $event_detail_settings_url)
+    public function archiveBatchAsyncWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
-        $request = $this->createRequest($app_id, $event_detail_settings_url);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
+        $request = $this->archiveBatchRequest($batch_input_marketing_event_external_unique_identifier);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -322,30 +303,23 @@ class SettingsExternalApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'archiveBatch'
      *
-     * @param  int $app_id (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventExternalUniqueIdentifier $batch_input_marketing_event_external_unique_identifier The details of the marketing events to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($app_id, $event_detail_settings_url)
+    public function archiveBatchRequest($batch_input_marketing_event_external_unique_identifier)
     {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+        // verify the required parameter 'batch_input_marketing_event_external_unique_identifier' is set
+        if ($batch_input_marketing_event_external_unique_identifier === null || (is_array($batch_input_marketing_event_external_unique_identifier) && count($batch_input_marketing_event_external_unique_identifier) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create'
-            );
-        }
-        // verify the required parameter 'event_detail_settings_url' is set
-        if ($event_detail_settings_url === null || (is_array($event_detail_settings_url) && count($event_detail_settings_url) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $event_detail_settings_url when calling create'
+                'Missing the required parameter $batch_input_marketing_event_external_unique_identifier when calling archiveBatch'
             );
         }
 
-        $resourcePath = '/marketing/v3/marketing-events/{appId}/settings';
+        $resourcePath = '/marketing/v3/marketing-events/events/delete';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -354,33 +328,25 @@ class SettingsExternalApi
 
 
 
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['*/*'],
                 ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($event_detail_settings_url)) {
+        if (isset($batch_input_marketing_event_external_unique_identifier)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($event_detail_settings_url));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_external_unique_identifier));
             } else {
-                $httpBody = $event_detail_settings_url;
+                $httpBody = $batch_input_marketing_event_external_unique_identifier;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -406,10 +372,9 @@ class SettingsExternalApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -433,32 +398,36 @@ class SettingsExternalApi
     }
 
     /**
-     * Operation getAll
+     * Operation doUpsert
      *
-     * @param  int $app_id app_id (required)
+     * Create or update multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventCreateRequestParams $batch_input_marketing_event_create_request_params The details of the marketing events to upsert (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function getAll($app_id)
+    public function doUpsert($batch_input_marketing_event_create_request_params)
     {
-        list($response) = $this->getAllWithHttpInfo($app_id);
+        list($response) = $this->doUpsertWithHttpInfo($batch_input_marketing_event_create_request_params);
         return $response;
     }
 
     /**
-     * Operation getAllWithHttpInfo
+     * Operation doUpsertWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Create or update multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventCreateRequestParams $batch_input_marketing_event_create_request_params The details of the marketing events to upsert (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($app_id)
+    public function doUpsertWithHttpInfo($batch_input_marketing_event_create_request_params)
     {
-        $request = $this->getAllRequest($app_id);
+        $request = $this->doUpsertRequest($batch_input_marketing_event_create_request_params);
 
         try {
             $options = $this->createHttpClientOption();
@@ -497,17 +466,17 @@ class SettingsExternalApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' !== 'string') {
+                        if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -528,7 +497,7 @@ class SettingsExternalApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -549,7 +518,7 @@ class SettingsExternalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings',
+                        '\HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -568,16 +537,18 @@ class SettingsExternalApi
     }
 
     /**
-     * Operation getAllAsync
+     * Operation doUpsertAsync
      *
-     * @param  int $app_id (required)
+     * Create or update multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventCreateRequestParams $batch_input_marketing_event_create_request_params The details of the marketing events to upsert (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($app_id)
+    public function doUpsertAsync($batch_input_marketing_event_create_request_params)
     {
-        return $this->getAllAsyncWithHttpInfo($app_id)
+        return $this->doUpsertAsyncWithHttpInfo($batch_input_marketing_event_create_request_params)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -586,17 +557,19 @@ class SettingsExternalApi
     }
 
     /**
-     * Operation getAllAsyncWithHttpInfo
+     * Operation doUpsertAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Create or update multiple marketing events
+     *
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventCreateRequestParams $batch_input_marketing_event_create_request_params The details of the marketing events to upsert (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($app_id)
+    public function doUpsertAsyncWithHttpInfo($batch_input_marketing_event_create_request_params)
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
-        $request = $this->getAllRequest($app_id);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseMarketingEventPublicDefaultResponse';
+        $request = $this->doUpsertRequest($batch_input_marketing_event_create_request_params);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -635,23 +608,23 @@ class SettingsExternalApi
     }
 
     /**
-     * Create request for operation 'getAll'
+     * Create request for operation 'doUpsert'
      *
-     * @param  int $app_id (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventCreateRequestParams $batch_input_marketing_event_create_request_params The details of the marketing events to upsert (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($app_id)
+    public function doUpsertRequest($batch_input_marketing_event_create_request_params)
     {
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+        // verify the required parameter 'batch_input_marketing_event_create_request_params' is set
+        if ($batch_input_marketing_event_create_request_params === null || (is_array($batch_input_marketing_event_create_request_params) && count($batch_input_marketing_event_create_request_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getAll'
+                'Missing the required parameter $batch_input_marketing_event_create_request_params when calling doUpsert'
             );
         }
 
-        $resourcePath = '/marketing/v3/marketing-events/{appId}/settings';
+        $resourcePath = '/marketing/v3/marketing-events/events/upsert';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -660,14 +633,6 @@ class SettingsExternalApi
 
 
 
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -677,12 +642,18 @@ class SettingsExternalApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', '*/*'],
-                []
+                ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($batch_input_marketing_event_create_request_params)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_create_request_params));
+            } else {
+                $httpBody = $batch_input_marketing_event_create_request_params;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -706,10 +677,9 @@ class SettingsExternalApi
             }
         }
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
         $defaultHeaders = [];
@@ -725,7 +695,7 @@ class SettingsExternalApi
 
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'GET',
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

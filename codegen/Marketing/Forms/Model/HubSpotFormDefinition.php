@@ -67,7 +67,7 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
         'field_groups' => '\HubSpot\Client\Marketing\Forms\Model\FieldGroup[]',
         'configuration' => '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration',
         'display_options' => '\HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions',
-        'legal_consent_options' => 'object'
+        'legal_consent_options' => 'OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess'
     ];
 
     /**
@@ -568,7 +568,7 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets legal_consent_options
      *
-     * @return object
+     * @return OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess
      */
     public function getLegalConsentOptions()
     {
@@ -578,7 +578,7 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets legal_consent_options
      *
-     * @param object $legal_consent_options legal_consent_options
+     * @param OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess $legal_consent_options legal_consent_options
      *
      * @return self
      */

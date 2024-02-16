@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -57,17 +57,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'event_name' => 'string',
-        'event_type' => 'string',
         'start_date_time' => '\DateTime',
-        'end_date_time' => '\DateTime',
-        'event_organizer' => 'string',
-        'event_description' => 'string',
-        'event_url' => 'string',
-        'event_cancelled' => 'bool',
         'custom_properties' => '\HubSpot\Client\Marketing\Events\Model\PropertyValue[]',
         'external_account_id' => 'string',
-        'external_event_id' => 'string'
+        'event_cancelled' => 'bool',
+        'event_organizer' => 'string',
+        'event_url' => 'string',
+        'external_event_id' => 'string',
+        'event_description' => 'string',
+        'event_name' => 'string',
+        'event_type' => 'string',
+        'end_date_time' => '\DateTime'
     ];
 
     /**
@@ -78,17 +78,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'event_name' => null,
-        'event_type' => null,
         'start_date_time' => 'date-time',
-        'end_date_time' => 'date-time',
-        'event_organizer' => null,
-        'event_description' => null,
-        'event_url' => null,
-        'event_cancelled' => null,
         'custom_properties' => null,
         'external_account_id' => null,
-        'external_event_id' => null
+        'event_cancelled' => null,
+        'event_organizer' => null,
+        'event_url' => null,
+        'external_event_id' => null,
+        'event_description' => null,
+        'event_name' => null,
+        'event_type' => null,
+        'end_date_time' => 'date-time'
     ];
 
     /**
@@ -118,17 +118,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'event_name' => 'eventName',
-        'event_type' => 'eventType',
         'start_date_time' => 'startDateTime',
-        'end_date_time' => 'endDateTime',
-        'event_organizer' => 'eventOrganizer',
-        'event_description' => 'eventDescription',
-        'event_url' => 'eventUrl',
-        'event_cancelled' => 'eventCancelled',
         'custom_properties' => 'customProperties',
         'external_account_id' => 'externalAccountId',
-        'external_event_id' => 'externalEventId'
+        'event_cancelled' => 'eventCancelled',
+        'event_organizer' => 'eventOrganizer',
+        'event_url' => 'eventUrl',
+        'external_event_id' => 'externalEventId',
+        'event_description' => 'eventDescription',
+        'event_name' => 'eventName',
+        'event_type' => 'eventType',
+        'end_date_time' => 'endDateTime'
     ];
 
     /**
@@ -137,17 +137,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'event_name' => 'setEventName',
-        'event_type' => 'setEventType',
         'start_date_time' => 'setStartDateTime',
-        'end_date_time' => 'setEndDateTime',
-        'event_organizer' => 'setEventOrganizer',
-        'event_description' => 'setEventDescription',
-        'event_url' => 'setEventUrl',
-        'event_cancelled' => 'setEventCancelled',
         'custom_properties' => 'setCustomProperties',
         'external_account_id' => 'setExternalAccountId',
-        'external_event_id' => 'setExternalEventId'
+        'event_cancelled' => 'setEventCancelled',
+        'event_organizer' => 'setEventOrganizer',
+        'event_url' => 'setEventUrl',
+        'external_event_id' => 'setExternalEventId',
+        'event_description' => 'setEventDescription',
+        'event_name' => 'setEventName',
+        'event_type' => 'setEventType',
+        'end_date_time' => 'setEndDateTime'
     ];
 
     /**
@@ -156,17 +156,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'event_name' => 'getEventName',
-        'event_type' => 'getEventType',
         'start_date_time' => 'getStartDateTime',
-        'end_date_time' => 'getEndDateTime',
-        'event_organizer' => 'getEventOrganizer',
-        'event_description' => 'getEventDescription',
-        'event_url' => 'getEventUrl',
-        'event_cancelled' => 'getEventCancelled',
         'custom_properties' => 'getCustomProperties',
         'external_account_id' => 'getExternalAccountId',
-        'external_event_id' => 'getExternalEventId'
+        'event_cancelled' => 'getEventCancelled',
+        'event_organizer' => 'getEventOrganizer',
+        'event_url' => 'getEventUrl',
+        'external_event_id' => 'getExternalEventId',
+        'event_description' => 'getEventDescription',
+        'event_name' => 'getEventName',
+        'event_type' => 'getEventType',
+        'end_date_time' => 'getEndDateTime'
     ];
 
     /**
@@ -226,17 +226,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['event_name'] = $data['event_name'] ?? null;
-        $this->container['event_type'] = $data['event_type'] ?? null;
         $this->container['start_date_time'] = $data['start_date_time'] ?? null;
-        $this->container['end_date_time'] = $data['end_date_time'] ?? null;
-        $this->container['event_organizer'] = $data['event_organizer'] ?? null;
-        $this->container['event_description'] = $data['event_description'] ?? null;
-        $this->container['event_url'] = $data['event_url'] ?? null;
-        $this->container['event_cancelled'] = $data['event_cancelled'] ?? null;
         $this->container['custom_properties'] = $data['custom_properties'] ?? null;
         $this->container['external_account_id'] = $data['external_account_id'] ?? null;
+        $this->container['event_cancelled'] = $data['event_cancelled'] ?? null;
+        $this->container['event_organizer'] = $data['event_organizer'] ?? null;
+        $this->container['event_url'] = $data['event_url'] ?? null;
         $this->container['external_event_id'] = $data['external_event_id'] ?? null;
+        $this->container['event_description'] = $data['event_description'] ?? null;
+        $this->container['event_name'] = $data['event_name'] ?? null;
+        $this->container['event_type'] = $data['event_type'] ?? null;
+        $this->container['end_date_time'] = $data['end_date_time'] ?? null;
     }
 
     /**
@@ -248,17 +248,17 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['event_name'] === null) {
-            $invalidProperties[] = "'event_name' can't be null";
+        if ($this->container['external_account_id'] === null) {
+            $invalidProperties[] = "'external_account_id' can't be null";
         }
         if ($this->container['event_organizer'] === null) {
             $invalidProperties[] = "'event_organizer' can't be null";
         }
-        if ($this->container['external_account_id'] === null) {
-            $invalidProperties[] = "'external_account_id' can't be null";
-        }
         if ($this->container['external_event_id'] === null) {
             $invalidProperties[] = "'external_event_id' can't be null";
+        }
+        if ($this->container['event_name'] === null) {
+            $invalidProperties[] = "'event_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -274,54 +274,6 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets event_name
-     *
-     * @return string
-     */
-    public function getEventName()
-    {
-        return $this->container['event_name'];
-    }
-
-    /**
-     * Sets event_name
-     *
-     * @param string $event_name The name of the marketing event.
-     *
-     * @return self
-     */
-    public function setEventName($event_name)
-    {
-        $this->container['event_name'] = $event_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_type
-     *
-     * @return string|null
-     */
-    public function getEventType()
-    {
-        return $this->container['event_type'];
-    }
-
-    /**
-     * Sets event_type
-     *
-     * @param string|null $event_type Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     *
-     * @return self
-     */
-    public function setEventType($event_type)
-    {
-        $this->container['event_type'] = $event_type;
-
-        return $this;
-    }
 
     /**
      * Gets start_date_time
@@ -343,126 +295,6 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
     public function setStartDateTime($start_date_time)
     {
         $this->container['start_date_time'] = $start_date_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date_time
-     *
-     * @return \DateTime|null
-     */
-    public function getEndDateTime()
-    {
-        return $this->container['end_date_time'];
-    }
-
-    /**
-     * Sets end_date_time
-     *
-     * @param \DateTime|null $end_date_time The end date and time of the marketing event.
-     *
-     * @return self
-     */
-    public function setEndDateTime($end_date_time)
-    {
-        $this->container['end_date_time'] = $end_date_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_organizer
-     *
-     * @return string
-     */
-    public function getEventOrganizer()
-    {
-        return $this->container['event_organizer'];
-    }
-
-    /**
-     * Sets event_organizer
-     *
-     * @param string $event_organizer The name of the organizer of the marketing event.
-     *
-     * @return self
-     */
-    public function setEventOrganizer($event_organizer)
-    {
-        $this->container['event_organizer'] = $event_organizer;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_description
-     *
-     * @return string|null
-     */
-    public function getEventDescription()
-    {
-        return $this->container['event_description'];
-    }
-
-    /**
-     * Sets event_description
-     *
-     * @param string|null $event_description The description of the marketing event.
-     *
-     * @return self
-     */
-    public function setEventDescription($event_description)
-    {
-        $this->container['event_description'] = $event_description;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_url
-     *
-     * @return string|null
-     */
-    public function getEventUrl()
-    {
-        return $this->container['event_url'];
-    }
-
-    /**
-     * Sets event_url
-     *
-     * @param string|null $event_url A URL in the external event application where the marketing event can be managed.
-     *
-     * @return self
-     */
-    public function setEventUrl($event_url)
-    {
-        $this->container['event_url'] = $event_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_cancelled
-     *
-     * @return bool|null
-     */
-    public function getEventCancelled()
-    {
-        return $this->container['event_cancelled'];
-    }
-
-    /**
-     * Sets event_cancelled
-     *
-     * @param bool|null $event_cancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
-     *
-     * @return self
-     */
-    public function setEventCancelled($event_cancelled)
-    {
-        $this->container['event_cancelled'] = $event_cancelled;
 
         return $this;
     }
@@ -516,6 +348,78 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets event_cancelled
+     *
+     * @return bool|null
+     */
+    public function getEventCancelled()
+    {
+        return $this->container['event_cancelled'];
+    }
+
+    /**
+     * Sets event_cancelled
+     *
+     * @param bool|null $event_cancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
+     *
+     * @return self
+     */
+    public function setEventCancelled($event_cancelled)
+    {
+        $this->container['event_cancelled'] = $event_cancelled;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_organizer
+     *
+     * @return string
+     */
+    public function getEventOrganizer()
+    {
+        return $this->container['event_organizer'];
+    }
+
+    /**
+     * Sets event_organizer
+     *
+     * @param string $event_organizer The name of the organizer of the marketing event.
+     *
+     * @return self
+     */
+    public function setEventOrganizer($event_organizer)
+    {
+        $this->container['event_organizer'] = $event_organizer;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_url
+     *
+     * @return string|null
+     */
+    public function getEventUrl()
+    {
+        return $this->container['event_url'];
+    }
+
+    /**
+     * Sets event_url
+     *
+     * @param string|null $event_url A URL in the external event application where the marketing event can be managed.
+     *
+     * @return self
+     */
+    public function setEventUrl($event_url)
+    {
+        $this->container['event_url'] = $event_url;
+
+        return $this;
+    }
+
+    /**
      * Gets external_event_id
      *
      * @return string
@@ -535,6 +439,102 @@ class MarketingEventCreateRequestParams implements ModelInterface, ArrayAccess, 
     public function setExternalEventId($external_event_id)
     {
         $this->container['external_event_id'] = $external_event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_description
+     *
+     * @return string|null
+     */
+    public function getEventDescription()
+    {
+        return $this->container['event_description'];
+    }
+
+    /**
+     * Sets event_description
+     *
+     * @param string|null $event_description The description of the marketing event.
+     *
+     * @return self
+     */
+    public function setEventDescription($event_description)
+    {
+        $this->container['event_description'] = $event_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_name
+     *
+     * @return string
+     */
+    public function getEventName()
+    {
+        return $this->container['event_name'];
+    }
+
+    /**
+     * Sets event_name
+     *
+     * @param string $event_name The name of the marketing event.
+     *
+     * @return self
+     */
+    public function setEventName($event_name)
+    {
+        $this->container['event_name'] = $event_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_type
+     *
+     * @return string|null
+     */
+    public function getEventType()
+    {
+        return $this->container['event_type'];
+    }
+
+    /**
+     * Sets event_type
+     *
+     * @param string|null $event_type Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
+     *
+     * @return self
+     */
+    public function setEventType($event_type)
+    {
+        $this->container['event_type'] = $event_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date_time
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDateTime()
+    {
+        return $this->container['end_date_time'];
+    }
+
+    /**
+     * Sets end_date_time
+     *
+     * @param \DateTime|null $end_date_time The end date and time of the marketing event.
+     *
+     * @return self
+     */
+    public function setEndDateTime($end_date_time)
+    {
+        $this->container['end_date_time'] = $end_date_time;
 
         return $this;
     }

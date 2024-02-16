@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -57,10 +57,10 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'interaction_date_time' => 'int',
+        'contact_properties' => 'array<string,string>',
         'properties' => 'array<string,string>',
         'email' => 'string',
-        'contact_properties' => 'array<string,string>'
+        'interaction_date_time' => 'int'
     ];
 
     /**
@@ -71,10 +71,10 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'interaction_date_time' => 'int64',
+        'contact_properties' => null,
         'properties' => null,
         'email' => null,
-        'contact_properties' => null
+        'interaction_date_time' => 'int64'
     ];
 
     /**
@@ -104,10 +104,10 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'interaction_date_time' => 'interactionDateTime',
+        'contact_properties' => 'contactProperties',
         'properties' => 'properties',
         'email' => 'email',
-        'contact_properties' => 'contactProperties'
+        'interaction_date_time' => 'interactionDateTime'
     ];
 
     /**
@@ -116,10 +116,10 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'interaction_date_time' => 'setInteractionDateTime',
+        'contact_properties' => 'setContactProperties',
         'properties' => 'setProperties',
         'email' => 'setEmail',
-        'contact_properties' => 'setContactProperties'
+        'interaction_date_time' => 'setInteractionDateTime'
     ];
 
     /**
@@ -128,10 +128,10 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'interaction_date_time' => 'getInteractionDateTime',
+        'contact_properties' => 'getContactProperties',
         'properties' => 'getProperties',
         'email' => 'getEmail',
-        'contact_properties' => 'getContactProperties'
+        'interaction_date_time' => 'getInteractionDateTime'
     ];
 
     /**
@@ -191,10 +191,10 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['interaction_date_time'] = $data['interaction_date_time'] ?? null;
+        $this->container['contact_properties'] = $data['contact_properties'] ?? null;
         $this->container['properties'] = $data['properties'] ?? null;
         $this->container['email'] = $data['email'] ?? null;
-        $this->container['contact_properties'] = $data['contact_properties'] ?? null;
+        $this->container['interaction_date_time'] = $data['interaction_date_time'] ?? null;
     }
 
     /**
@@ -206,11 +206,11 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['interaction_date_time'] === null) {
-            $invalidProperties[] = "'interaction_date_time' can't be null";
-        }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
+        }
+        if ($this->container['interaction_date_time'] === null) {
+            $invalidProperties[] = "'interaction_date_time' can't be null";
         }
         return $invalidProperties;
     }
@@ -228,25 +228,25 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets interaction_date_time
+     * Gets contact_properties
      *
-     * @return int
+     * @return array<string,string>|null
      */
-    public function getInteractionDateTime()
+    public function getContactProperties()
     {
-        return $this->container['interaction_date_time'];
+        return $this->container['contact_properties'];
     }
 
     /**
-     * Sets interaction_date_time
+     * Sets contact_properties
      *
-     * @param int $interaction_date_time The date and time at which the contact subscribed to the event.
+     * @param array<string,string>|null $contact_properties contact_properties
      *
      * @return self
      */
-    public function setInteractionDateTime($interaction_date_time)
+    public function setContactProperties($contact_properties)
     {
-        $this->container['interaction_date_time'] = $interaction_date_time;
+        $this->container['contact_properties'] = $contact_properties;
 
         return $this;
     }
@@ -288,7 +288,7 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets email
      *
-     * @param string $email The email address of the contact in HubSpot to associate with the event. Note that the contact must already exist in HubSpot; a contact will not be created.
+     * @param string $email The email address of the contact in HubSpot to associate with the event.
      *
      * @return self
      */
@@ -300,25 +300,25 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets contact_properties
+     * Gets interaction_date_time
      *
-     * @return array<string,string>|null
+     * @return int
      */
-    public function getContactProperties()
+    public function getInteractionDateTime()
     {
-        return $this->container['contact_properties'];
+        return $this->container['interaction_date_time'];
     }
 
     /**
-     * Sets contact_properties
+     * Sets interaction_date_time
      *
-     * @param array<string,string>|null $contact_properties contact_properties
+     * @param int $interaction_date_time The date and time at which the contact subscribed to the event.
      *
      * @return self
      */
-    public function setContactProperties($contact_properties)
+    public function setInteractionDateTime($interaction_date_time)
     {
-        $this->container['contact_properties'] = $contact_properties;
+        $this->container['interaction_date_time'] = $interaction_date_time;
 
         return $this;
     }

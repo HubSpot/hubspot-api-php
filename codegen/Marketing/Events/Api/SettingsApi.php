@@ -1,6 +1,6 @@
 <?php
 /**
- * AttendanceSubscriberStateChangesApi
+ * SettingsApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Marketing\Events\HeaderSelector;
 use HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * AttendanceSubscriberStateChangesApi Class Doc Comment
+ * SettingsApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class AttendanceSubscriberStateChangesApi
+class SettingsApi
 {
     /**
      * @var ClientInterface
@@ -118,40 +118,36 @@ class AttendanceSubscriberStateChangesApi
     /**
      * Operation create
      *
-     * Record
+     * Update the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to update the settings for. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url The new application settings (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function create($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null)
+    public function create($app_id, $event_detail_settings_url)
     {
-        list($response) = $this->createWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id);
+        list($response) = $this->createWithHttpInfo($app_id, $event_detail_settings_url);
         return $response;
     }
 
     /**
      * Operation createWithHttpInfo
      *
-     * Record
+     * Update the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to update the settings for. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url The new application settings (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null)
+    public function createWithHttpInfo($app_id, $event_detail_settings_url)
     {
-        $request = $this->createRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id);
+        $request = $this->createRequest($app_id, $event_detail_settings_url);
 
         try {
             $options = $this->createHttpClientOption();
@@ -190,17 +186,17 @@ class AttendanceSubscriberStateChangesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse' !== 'string') {
+                        if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -221,7 +217,7 @@ class AttendanceSubscriberStateChangesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -242,7 +238,7 @@ class AttendanceSubscriberStateChangesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse',
+                        '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,19 +259,17 @@ class AttendanceSubscriberStateChangesApi
     /**
      * Operation createAsync
      *
-     * Record
+     * Update the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to update the settings for. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url The new application settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null)
+    public function createAsync($app_id, $event_detail_settings_url)
     {
-        return $this->createAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id)
+        return $this->createAsyncWithHttpInfo($app_id, $event_detail_settings_url)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -286,20 +280,18 @@ class AttendanceSubscriberStateChangesApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Record
+     * Update the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to update the settings for. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url The new application settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null)
+    public function createAsyncWithHttpInfo($app_id, $event_detail_settings_url)
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse';
-        $request = $this->createRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
+        $request = $this->createRequest($app_id, $event_detail_settings_url);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -340,66 +332,41 @@ class AttendanceSubscriberStateChangesApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to update the settings for. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\EventDetailSettingsUrl $event_detail_settings_url The new application settings (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null)
+    public function createRequest($app_id, $event_detail_settings_url)
     {
-        // verify the required parameter 'external_event_id' is set
-        if ($external_event_id === null || (is_array($external_event_id) && count($external_event_id) === 0)) {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_event_id when calling create'
+                'Missing the required parameter $app_id when calling create'
             );
         }
-        // verify the required parameter 'subscriber_state' is set
-        if ($subscriber_state === null || (is_array($subscriber_state) && count($subscriber_state) === 0)) {
+        // verify the required parameter 'event_detail_settings_url' is set
+        if ($event_detail_settings_url === null || (is_array($event_detail_settings_url) && count($event_detail_settings_url) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscriber_state when calling create'
-            );
-        }
-        // verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if ($batch_input_marketing_event_subscriber === null || (is_array($batch_input_marketing_event_subscriber) && count($batch_input_marketing_event_subscriber) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_subscriber when calling create'
+                'Missing the required parameter $event_detail_settings_url when calling create'
             );
         }
 
-        $resourcePath = '/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/create';
+        $resourcePath = '/marketing/v3/marketing-events/{appId}/settings';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $external_account_id,
-            'externalAccountId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
         // path params
-        if ($external_event_id !== null) {
+        if ($app_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'externalEventId' . '}',
-                ObjectSerializer::toPathValue($external_event_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($subscriber_state !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriberState' . '}',
-                ObjectSerializer::toPathValue($subscriber_state),
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -417,11 +384,11 @@ class AttendanceSubscriberStateChangesApi
         }
 
         // for model (json/xml)
-        if (isset($batch_input_marketing_event_subscriber)) {
+        if (isset($event_detail_settings_url)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_subscriber));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($event_detail_settings_url));
             } else {
-                $httpBody = $batch_input_marketing_event_subscriber;
+                $httpBody = $event_detail_settings_url;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -447,9 +414,10 @@ class AttendanceSubscriberStateChangesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
         }
 
         $defaultHeaders = [];
@@ -473,42 +441,36 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation createByEmail
+     * Operation getAll
      *
-     * Record
+     * Retrieve the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to retrieve the settings for. (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function createByEmail($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null)
+    public function getAll($app_id)
     {
-        list($response) = $this->createByEmailWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id);
+        list($response) = $this->getAllWithHttpInfo($app_id);
         return $response;
     }
 
     /**
-     * Operation createByEmailWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
-     * Record
+     * Retrieve the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to retrieve the settings for. (required)
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\EventDetailSettings|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createByEmailWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null)
+    public function getAllWithHttpInfo($app_id)
     {
-        $request = $this->createByEmailRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id);
+        $request = $this->getAllRequest($app_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -547,17 +509,17 @@ class AttendanceSubscriberStateChangesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse' !== 'string') {
+                        if ('\HubSpot\Client\Marketing\Events\Model\EventDetailSettings' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -578,7 +540,7 @@ class AttendanceSubscriberStateChangesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -599,7 +561,7 @@ class AttendanceSubscriberStateChangesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse',
+                        '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -618,21 +580,18 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation createByEmailAsync
+     * Operation getAllAsync
      *
-     * Record
+     * Retrieve the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to retrieve the settings for. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createByEmailAsync($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null)
+    public function getAllAsync($app_id)
     {
-        return $this->createByEmailAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id)
+        return $this->getAllAsyncWithHttpInfo($app_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -641,22 +600,19 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation createByEmailAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
-     * Record
+     * Retrieve the application settings
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to retrieve the settings for. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createByEmailAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null)
+    public function getAllAsyncWithHttpInfo($app_id)
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse';
-        $request = $this->createByEmailRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\EventDetailSettings';
+        $request = $this->getAllRequest($app_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -695,68 +651,36 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Create request for operation 'createByEmail'
+     * Create request for operation 'getAll'
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
+     * @param  int $app_id The id of the application to retrieve the settings for. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createByEmailRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null)
+    public function getAllRequest($app_id)
     {
-        // verify the required parameter 'external_event_id' is set
-        if ($external_event_id === null || (is_array($external_event_id) && count($external_event_id) === 0)) {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_event_id when calling createByEmail'
-            );
-        }
-        // verify the required parameter 'subscriber_state' is set
-        if ($subscriber_state === null || (is_array($subscriber_state) && count($subscriber_state) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $subscriber_state when calling createByEmail'
-            );
-        }
-        // verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if ($batch_input_marketing_event_email_subscriber === null || (is_array($batch_input_marketing_event_email_subscriber) && count($batch_input_marketing_event_email_subscriber) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_email_subscriber when calling createByEmail'
+                'Missing the required parameter $app_id when calling getAll'
             );
         }
 
-        $resourcePath = '/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/email-create';
+        $resourcePath = '/marketing/v3/marketing-events/{appId}/settings';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $external_account_id,
-            'externalAccountId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
         // path params
-        if ($external_event_id !== null) {
+        if ($app_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'externalEventId' . '}',
-                ObjectSerializer::toPathValue($external_event_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($subscriber_state !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriberState' . '}',
-                ObjectSerializer::toPathValue($subscriber_state),
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -769,18 +693,12 @@ class AttendanceSubscriberStateChangesApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', '*/*'],
-                ['application/json']
+                []
             );
         }
 
         // for model (json/xml)
-        if (isset($batch_input_marketing_event_email_subscriber)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_email_subscriber));
-            } else {
-                $httpBody = $batch_input_marketing_event_email_subscriber;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -804,9 +722,10 @@ class AttendanceSubscriberStateChangesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
         }
 
         $defaultHeaders = [];
@@ -822,7 +741,7 @@ class AttendanceSubscriberStateChangesApi
 
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

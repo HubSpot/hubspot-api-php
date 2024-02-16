@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -219,7 +219,7 @@ class BatchInputMarketingEventCreateRequestParams implements ModelInterface, Arr
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventCreateRequestParams[] $inputs inputs
+     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventCreateRequestParams[] $inputs 
      *
      * @return self
      */
