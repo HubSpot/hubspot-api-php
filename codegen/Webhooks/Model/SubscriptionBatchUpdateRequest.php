@@ -11,7 +11,7 @@
  */
 
 /**
- * Webhooks API
+ * Webhooks Webhooks
  *
  * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
  *
@@ -57,8 +57,8 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'active' => 'bool'
+        'active' => 'bool',
+        'id' => 'int'
     ];
 
     /**
@@ -69,8 +69,8 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int32',
-        'active' => null
+        'active' => null,
+        'id' => 'int32'
     ];
 
     /**
@@ -100,8 +100,8 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'active' => 'active'
+        'active' => 'active',
+        'id' => 'id'
     ];
 
     /**
@@ -110,8 +110,8 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'active' => 'setActive'
+        'active' => 'setActive',
+        'id' => 'setId'
     ];
 
     /**
@@ -120,8 +120,8 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'active' => 'getActive'
+        'active' => 'getActive',
+        'id' => 'getId'
     ];
 
     /**
@@ -181,8 +181,8 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['active'] = $data['active'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets active
@@ -259,6 +235,30 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
     public function setActive($active)
     {
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

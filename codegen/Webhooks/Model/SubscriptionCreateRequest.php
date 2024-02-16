@@ -11,7 +11,7 @@
  */
 
 /**
- * Webhooks API
+ * Webhooks Webhooks
  *
  * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
  *
@@ -58,9 +58,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'event_type' => 'string',
         'property_name' => 'string',
-        'active' => 'bool'
+        'active' => 'bool',
+        'event_type' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'event_type' => null,
         'property_name' => null,
-        'active' => null
+        'active' => null,
+        'event_type' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'event_type' => 'eventType',
         'property_name' => 'propertyName',
-        'active' => 'active'
+        'active' => 'active',
+        'event_type' => 'eventType'
     ];
 
     /**
@@ -114,9 +114,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'event_type' => 'setEventType',
         'property_name' => 'setPropertyName',
-        'active' => 'setActive'
+        'active' => 'setActive',
+        'event_type' => 'setEventType'
     ];
 
     /**
@@ -125,9 +125,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'event_type' => 'getEventType',
         'property_name' => 'getPropertyName',
-        'active' => 'getActive'
+        'active' => 'getActive',
+        'event_type' => 'getEventType'
     ];
 
     /**
@@ -280,9 +280,9 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['event_type'] = $data['event_type'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;
         $this->container['active'] = $data['active'] ?? null;
+        $this->container['event_type'] = $data['event_type'] ?? null;
     }
 
     /**
@@ -320,40 +320,6 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets event_type
-     *
-     * @return string
-     */
-    public function getEventType()
-    {
-        return $this->container['event_type'];
-    }
-
-    /**
-     * Sets event_type
-     *
-     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
-     *
-     * @return self
-     */
-    public function setEventType($event_type)
-    {
-        $allowedValues = $this->getEventTypeAllowableValues();
-        if (!in_array($event_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event_type', must be one of '%s'",
-                    $event_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event_type'] = $event_type;
-
-        return $this;
-    }
 
     /**
      * Gets property_name
@@ -399,6 +365,40 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setActive($active)
     {
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_type
+     *
+     * @return string
+     */
+    public function getEventType()
+    {
+        return $this->container['event_type'];
+    }
+
+    /**
+     * Sets event_type
+     *
+     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
+     * @return self
+     */
+    public function setEventType($event_type)
+    {
+        $allowedValues = $this->getEventTypeAllowableValues();
+        if (!in_array($event_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'event_type', must be one of '%s'",
+                    $event_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['event_type'] = $event_type;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -58,8 +58,8 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'links' => 'array<string,string>'
+        'links' => 'array<string,string>',
+        'id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'links' => null
+        'links' => null,
+        'id' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'links' => 'links'
+        'links' => 'links',
+        'id' => 'id'
     ];
 
     /**
@@ -111,8 +111,8 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'links' => 'setLinks'
+        'links' => 'setLinks',
+        'id' => 'setId'
     ];
 
     /**
@@ -121,8 +121,8 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'links' => 'getLinks'
+        'links' => 'getLinks',
+        'id' => 'getId'
     ];
 
     /**
@@ -182,8 +182,8 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -195,6 +195,9 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['links'] === null) {
+            $invalidProperties[] = "'links' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -214,6 +217,30 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
+     * Gets links
+     *
+     * @return array<string,string>
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param array<string,string> $links Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string
@@ -226,37 +253,13 @@ class ImportFromUrlTaskLocator implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param string $id The ID of the task
+     * @param string $id ID of the task
      *
      * @return self
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return array<string,string>|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param array<string,string>|null $links Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        $this->container['links'] = $links;
 
         return $this;
     }

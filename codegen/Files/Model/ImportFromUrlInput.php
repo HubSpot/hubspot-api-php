@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -57,15 +57,15 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'access' => 'string',
-        'ttl' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'folder_id' => 'string',
         'folder_path' => 'string',
-        'duplicate_validation_strategy' => 'string',
+        'access' => 'string',
         'duplicate_validation_scope' => 'string',
-        'overwrite' => 'bool'
+        'name' => 'string',
+        'duplicate_validation_strategy' => 'string',
+        'ttl' => 'string',
+        'overwrite' => 'bool',
+        'url' => 'string',
+        'folder_id' => 'string'
     ];
 
     /**
@@ -76,15 +76,15 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'access' => null,
-        'ttl' => null,
-        'name' => null,
-        'url' => null,
-        'folder_id' => null,
         'folder_path' => null,
-        'duplicate_validation_strategy' => null,
+        'access' => null,
         'duplicate_validation_scope' => null,
-        'overwrite' => null
+        'name' => null,
+        'duplicate_validation_strategy' => null,
+        'ttl' => null,
+        'overwrite' => null,
+        'url' => null,
+        'folder_id' => null
     ];
 
     /**
@@ -114,15 +114,15 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'access' => 'access',
-        'ttl' => 'ttl',
-        'name' => 'name',
-        'url' => 'url',
-        'folder_id' => 'folderId',
         'folder_path' => 'folderPath',
-        'duplicate_validation_strategy' => 'duplicateValidationStrategy',
+        'access' => 'access',
         'duplicate_validation_scope' => 'duplicateValidationScope',
-        'overwrite' => 'overwrite'
+        'name' => 'name',
+        'duplicate_validation_strategy' => 'duplicateValidationStrategy',
+        'ttl' => 'ttl',
+        'overwrite' => 'overwrite',
+        'url' => 'url',
+        'folder_id' => 'folderId'
     ];
 
     /**
@@ -131,15 +131,15 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'access' => 'setAccess',
-        'ttl' => 'setTtl',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'folder_id' => 'setFolderId',
         'folder_path' => 'setFolderPath',
-        'duplicate_validation_strategy' => 'setDuplicateValidationStrategy',
+        'access' => 'setAccess',
         'duplicate_validation_scope' => 'setDuplicateValidationScope',
-        'overwrite' => 'setOverwrite'
+        'name' => 'setName',
+        'duplicate_validation_strategy' => 'setDuplicateValidationStrategy',
+        'ttl' => 'setTtl',
+        'overwrite' => 'setOverwrite',
+        'url' => 'setUrl',
+        'folder_id' => 'setFolderId'
     ];
 
     /**
@@ -148,15 +148,15 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'access' => 'getAccess',
-        'ttl' => 'getTtl',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'folder_id' => 'getFolderId',
         'folder_path' => 'getFolderPath',
-        'duplicate_validation_strategy' => 'getDuplicateValidationStrategy',
+        'access' => 'getAccess',
         'duplicate_validation_scope' => 'getDuplicateValidationScope',
-        'overwrite' => 'getOverwrite'
+        'name' => 'getName',
+        'duplicate_validation_strategy' => 'getDuplicateValidationStrategy',
+        'ttl' => 'getTtl',
+        'overwrite' => 'getOverwrite',
+        'url' => 'getUrl',
+        'folder_id' => 'getFolderId'
     ];
 
     /**
@@ -206,11 +206,11 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
     public const ACCESS_HIDDEN_NOT_INDEXABLE = 'HIDDEN_NOT_INDEXABLE';
     public const ACCESS_HIDDEN_PRIVATE = 'HIDDEN_PRIVATE';
     public const ACCESS__PRIVATE = 'PRIVATE';
+    public const DUPLICATE_VALIDATION_SCOPE_ENTIRE_PORTAL = 'ENTIRE_PORTAL';
+    public const DUPLICATE_VALIDATION_SCOPE_EXACT_FOLDER = 'EXACT_FOLDER';
     public const DUPLICATE_VALIDATION_STRATEGY_NONE = 'NONE';
     public const DUPLICATE_VALIDATION_STRATEGY_REJECT = 'REJECT';
     public const DUPLICATE_VALIDATION_STRATEGY_RETURN_EXISTING = 'RETURN_EXISTING';
-    public const DUPLICATE_VALIDATION_SCOPE_ENTIRE_PORTAL = 'ENTIRE_PORTAL';
-    public const DUPLICATE_VALIDATION_SCOPE_EXACT_FOLDER = 'EXACT_FOLDER';
 
     /**
      * Gets allowable values of the enum
@@ -234,12 +234,11 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public function getDuplicateValidationStrategyAllowableValues()
+    public function getDuplicateValidationScopeAllowableValues()
     {
         return [
-            self::DUPLICATE_VALIDATION_STRATEGY_NONE,
-            self::DUPLICATE_VALIDATION_STRATEGY_REJECT,
-            self::DUPLICATE_VALIDATION_STRATEGY_RETURN_EXISTING,
+            self::DUPLICATE_VALIDATION_SCOPE_ENTIRE_PORTAL,
+            self::DUPLICATE_VALIDATION_SCOPE_EXACT_FOLDER,
         ];
     }
 
@@ -248,11 +247,12 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public function getDuplicateValidationScopeAllowableValues()
+    public function getDuplicateValidationStrategyAllowableValues()
     {
         return [
-            self::DUPLICATE_VALIDATION_SCOPE_ENTIRE_PORTAL,
-            self::DUPLICATE_VALIDATION_SCOPE_EXACT_FOLDER,
+            self::DUPLICATE_VALIDATION_STRATEGY_NONE,
+            self::DUPLICATE_VALIDATION_STRATEGY_REJECT,
+            self::DUPLICATE_VALIDATION_STRATEGY_RETURN_EXISTING,
         ];
     }
 
@@ -271,15 +271,15 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
+        $this->container['folder_path'] = $data['folder_path'] ?? null;
         $this->container['access'] = $data['access'] ?? null;
-        $this->container['ttl'] = $data['ttl'] ?? null;
+        $this->container['duplicate_validation_scope'] = $data['duplicate_validation_scope'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['duplicate_validation_strategy'] = $data['duplicate_validation_strategy'] ?? null;
+        $this->container['ttl'] = $data['ttl'] ?? null;
+        $this->container['overwrite'] = $data['overwrite'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
         $this->container['folder_id'] = $data['folder_id'] ?? null;
-        $this->container['folder_path'] = $data['folder_path'] ?? null;
-        $this->container['duplicate_validation_strategy'] = $data['duplicate_validation_strategy'] ?? null;
-        $this->container['duplicate_validation_scope'] = $data['duplicate_validation_scope'] ?? null;
-        $this->container['overwrite'] = $data['overwrite'] ?? null;
     }
 
     /**
@@ -303,24 +303,6 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['duplicate_validation_strategy'] === null) {
-            $invalidProperties[] = "'duplicate_validation_strategy' can't be null";
-        }
-        $allowedValues = $this->getDuplicateValidationStrategyAllowableValues();
-        if (!is_null($this->container['duplicate_validation_strategy']) && !in_array($this->container['duplicate_validation_strategy'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'duplicate_validation_strategy', must be one of '%s'",
-                $this->container['duplicate_validation_strategy'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['duplicate_validation_scope'] === null) {
-            $invalidProperties[] = "'duplicate_validation_scope' can't be null";
-        }
         $allowedValues = $this->getDuplicateValidationScopeAllowableValues();
         if (!is_null($this->container['duplicate_validation_scope']) && !in_array($this->container['duplicate_validation_scope'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -330,8 +312,17 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        if ($this->container['overwrite'] === null) {
-            $invalidProperties[] = "'overwrite' can't be null";
+        $allowedValues = $this->getDuplicateValidationStrategyAllowableValues();
+        if (!is_null($this->container['duplicate_validation_strategy']) && !in_array($this->container['duplicate_validation_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'duplicate_validation_strategy', must be one of '%s'",
+                $this->container['duplicate_validation_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -347,6 +338,30 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets folder_path
+     *
+     * @return string|null
+     */
+    public function getFolderPath()
+    {
+        return $this->container['folder_path'];
+    }
+
+    /**
+     * Sets folder_path
+     *
+     * @param string|null $folder_path One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
+     *
+     * @return self
+     */
+    public function setFolderPath($folder_path)
+    {
+        $this->container['folder_path'] = $folder_path;
+
+        return $this;
+    }
 
     /**
      * Gets access
@@ -383,25 +398,35 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets ttl
+     * Gets duplicate_validation_scope
      *
      * @return string|null
      */
-    public function getTtl()
+    public function getDuplicateValidationScope()
     {
-        return $this->container['ttl'];
+        return $this->container['duplicate_validation_scope'];
     }
 
     /**
-     * Sets ttl
+     * Sets duplicate_validation_scope
      *
-     * @param string|null $ttl Time to live. If specified the file will be deleted after the given time frame.
+     * @param string|null $duplicate_validation_scope ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
      *
      * @return self
      */
-    public function setTtl($ttl)
+    public function setDuplicateValidationScope($duplicate_validation_scope)
     {
-        $this->container['ttl'] = $ttl;
+        $allowedValues = $this->getDuplicateValidationScopeAllowableValues();
+        if (!is_null($duplicate_validation_scope) && !in_array($duplicate_validation_scope, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'duplicate_validation_scope', must be one of '%s'",
+                    $duplicate_validation_scope,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['duplicate_validation_scope'] = $duplicate_validation_scope;
 
         return $this;
     }
@@ -426,6 +451,88 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets duplicate_validation_strategy
+     *
+     * @return string|null
+     */
+    public function getDuplicateValidationStrategy()
+    {
+        return $this->container['duplicate_validation_strategy'];
+    }
+
+    /**
+     * Sets duplicate_validation_strategy
+     *
+     * @param string|null $duplicate_validation_strategy NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+     *
+     * @return self
+     */
+    public function setDuplicateValidationStrategy($duplicate_validation_strategy)
+    {
+        $allowedValues = $this->getDuplicateValidationStrategyAllowableValues();
+        if (!is_null($duplicate_validation_strategy) && !in_array($duplicate_validation_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'duplicate_validation_strategy', must be one of '%s'",
+                    $duplicate_validation_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['duplicate_validation_strategy'] = $duplicate_validation_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets ttl
+     *
+     * @return string|null
+     */
+    public function getTtl()
+    {
+        return $this->container['ttl'];
+    }
+
+    /**
+     * Sets ttl
+     *
+     * @param string|null $ttl Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely
+     *
+     * @return self
+     */
+    public function setTtl($ttl)
+    {
+        $this->container['ttl'] = $ttl;
+
+        return $this;
+    }
+
+    /**
+     * Gets overwrite
+     *
+     * @return bool|null
+     */
+    public function getOverwrite()
+    {
+        return $this->container['overwrite'];
+    }
+
+    /**
+     * Sets overwrite
+     *
+     * @param bool|null $overwrite If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension
+     *
+     * @return self
+     */
+    public function setOverwrite($overwrite)
+    {
+        $this->container['overwrite'] = $overwrite;
 
         return $this;
     }
@@ -467,129 +574,13 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets folder_id
      *
-     * @param string|null $folder_id One of folderId or folderPath is required. Destination folder ID for the uploaded file.
+     * @param string|null $folder_id One of folderId or folderPath is required. Destination folderId for the uploaded file.
      *
      * @return self
      */
     public function setFolderId($folder_id)
     {
         $this->container['folder_id'] = $folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets folder_path
-     *
-     * @return string|null
-     */
-    public function getFolderPath()
-    {
-        return $this->container['folder_path'];
-    }
-
-    /**
-     * Sets folder_path
-     *
-     * @param string|null $folder_path One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
-     *
-     * @return self
-     */
-    public function setFolderPath($folder_path)
-    {
-        $this->container['folder_path'] = $folder_path;
-
-        return $this;
-    }
-
-    /**
-     * Gets duplicate_validation_strategy
-     *
-     * @return string
-     */
-    public function getDuplicateValidationStrategy()
-    {
-        return $this->container['duplicate_validation_strategy'];
-    }
-
-    /**
-     * Sets duplicate_validation_strategy
-     *
-     * @param string $duplicate_validation_strategy NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
-     *
-     * @return self
-     */
-    public function setDuplicateValidationStrategy($duplicate_validation_strategy)
-    {
-        $allowedValues = $this->getDuplicateValidationStrategyAllowableValues();
-        if (!in_array($duplicate_validation_strategy, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'duplicate_validation_strategy', must be one of '%s'",
-                    $duplicate_validation_strategy,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['duplicate_validation_strategy'] = $duplicate_validation_strategy;
-
-        return $this;
-    }
-
-    /**
-     * Gets duplicate_validation_scope
-     *
-     * @return string
-     */
-    public function getDuplicateValidationScope()
-    {
-        return $this->container['duplicate_validation_scope'];
-    }
-
-    /**
-     * Sets duplicate_validation_scope
-     *
-     * @param string $duplicate_validation_scope ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
-     *
-     * @return self
-     */
-    public function setDuplicateValidationScope($duplicate_validation_scope)
-    {
-        $allowedValues = $this->getDuplicateValidationScopeAllowableValues();
-        if (!in_array($duplicate_validation_scope, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'duplicate_validation_scope', must be one of '%s'",
-                    $duplicate_validation_scope,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['duplicate_validation_scope'] = $duplicate_validation_scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets overwrite
-     *
-     * @return bool
-     */
-    public function getOverwrite()
-    {
-        return $this->container['overwrite'];
-    }
-
-    /**
-     * Sets overwrite
-     *
-     * @param bool $overwrite If true, it will overwrite existing files if a file with the same name exists in the given folder.
-     *
-     * @return self
-     */
-    public function setOverwrite($overwrite)
-    {
-        $this->container['overwrite'] = $overwrite;
 
         return $this;
     }

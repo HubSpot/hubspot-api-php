@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -57,14 +57,14 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'created_at' => '\DateTime',
         'archived_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'archived' => 'bool',
+        'path' => 'string',
         'parent_folder_id' => 'string',
         'name' => 'string',
-        'path' => 'string'
+        'id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -75,14 +75,14 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'created_at' => 'date-time',
         'archived_at' => 'date-time',
-        'updated_at' => 'date-time',
         'archived' => null,
+        'path' => null,
         'parent_folder_id' => null,
         'name' => null,
-        'path' => null
+        'id' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -112,14 +112,14 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'created_at' => 'createdAt',
         'archived_at' => 'archivedAt',
-        'updated_at' => 'updatedAt',
         'archived' => 'archived',
+        'path' => 'path',
         'parent_folder_id' => 'parentFolderId',
         'name' => 'name',
-        'path' => 'path'
+        'id' => 'id',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -128,14 +128,14 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'archived_at' => 'setArchivedAt',
-        'updated_at' => 'setUpdatedAt',
         'archived' => 'setArchived',
+        'path' => 'setPath',
         'parent_folder_id' => 'setParentFolderId',
         'name' => 'setName',
-        'path' => 'setPath'
+        'id' => 'setId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -144,14 +144,14 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'archived_at' => 'getArchivedAt',
-        'updated_at' => 'getUpdatedAt',
         'archived' => 'getArchived',
+        'path' => 'getPath',
         'parent_folder_id' => 'getParentFolderId',
         'name' => 'getName',
-        'path' => 'getPath'
+        'id' => 'getId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -211,14 +211,14 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
+        $this->container['path'] = $data['path'] ?? null;
         $this->container['parent_folder_id'] = $data['parent_folder_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -230,17 +230,17 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         if ($this->container['archived'] === null) {
             $invalidProperties[] = "'archived' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -256,30 +256,6 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Id of the folder.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets created_at
@@ -330,30 +306,6 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at Timestamp of the latest update to the folder.
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
      * Gets archived
      *
      * @return bool
@@ -366,13 +318,37 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets archived
      *
-     * @param bool $archived Marks weather the folder is deleted or not.
+     * @param bool $archived Marks whether the folder is deleted or not.
      *
      * @return self
      */
     public function setArchived($archived)
     {
         $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string|null
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string|null $path Path of the folder in the file manager.
+     *
+     * @return self
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }
@@ -390,7 +366,7 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent_folder_id
      *
-     * @param string|null $parent_folder_id Id of the parent folder.
+     * @param string|null $parent_folder_id ID of the parent folder.
      *
      * @return self
      */
@@ -426,25 +402,49 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets path
+     * Gets id
      *
-     * @return string|null
+     * @return string
      */
-    public function getPath()
+    public function getId()
     {
-        return $this->container['path'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets path
+     * Sets id
      *
-     * @param string|null $path Path of the folder in the file manager.
+     * @param string $id ID of the folder.
      *
      * @return self
      */
-    public function setPath($path)
+    public function setId($id)
     {
-        $this->container['path'] = $path;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at Timestamp of the latest update to the folder.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Webhooks API
+ * Webhooks Webhooks
  *
  * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
  *
@@ -58,11 +58,11 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'event_type' => 'string',
+        'created_at' => '\DateTime',
         'property_name' => 'string',
         'active' => 'bool',
+        'event_type' => 'string',
         'id' => 'string',
-        'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     ];
 
@@ -74,11 +74,11 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'event_type' => null,
+        'created_at' => 'date-time',
         'property_name' => null,
         'active' => null,
+        'event_type' => null,
         'id' => null,
-        'created_at' => 'date-time',
         'updated_at' => 'date-time'
     ];
 
@@ -109,11 +109,11 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'event_type' => 'eventType',
+        'created_at' => 'createdAt',
         'property_name' => 'propertyName',
         'active' => 'active',
+        'event_type' => 'eventType',
         'id' => 'id',
-        'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
 
@@ -123,11 +123,11 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'event_type' => 'setEventType',
+        'created_at' => 'setCreatedAt',
         'property_name' => 'setPropertyName',
         'active' => 'setActive',
+        'event_type' => 'setEventType',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -137,11 +137,11 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'event_type' => 'getEventType',
+        'created_at' => 'getCreatedAt',
         'property_name' => 'getPropertyName',
         'active' => 'getActive',
+        'event_type' => 'getEventType',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -295,11 +295,11 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['event_type'] = $data['event_type'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;
         $this->container['active'] = $data['active'] ?? null;
+        $this->container['event_type'] = $data['event_type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
@@ -312,6 +312,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
         if ($this->container['event_type'] === null) {
             $invalidProperties[] = "'event_type' can't be null";
         }
@@ -324,14 +330,8 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
 
-        if ($this->container['active'] === null) {
-            $invalidProperties[] = "'active' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -349,35 +349,25 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets event_type
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getEventType()
+    public function getCreatedAt()
     {
-        return $this->container['event_type'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets event_type
+     * Sets created_at
      *
-     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
      *
      * @return self
      */
-    public function setEventType($event_type)
+    public function setCreatedAt($created_at)
     {
-        $allowedValues = $this->getEventTypeAllowableValues();
-        if (!in_array($event_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event_type', must be one of '%s'",
-                    $event_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event_type'] = $event_type;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -431,6 +421,40 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets event_type
+     *
+     * @return string
+     */
+    public function getEventType()
+    {
+        return $this->container['event_type'];
+    }
+
+    /**
+     * Sets event_type
+     *
+     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
+     * @return self
+     */
+    public function setEventType($event_type)
+    {
+        $allowedValues = $this->getEventTypeAllowableValues();
+        if (!in_array($event_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'event_type', must be one of '%s'",
+                    $event_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['event_type'] = $event_type;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string
@@ -450,30 +474,6 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }

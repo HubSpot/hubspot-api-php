@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -57,15 +57,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
         'result' => '\HubSpot\Client\Files\Model\File',
+        'completed_at' => '\DateTime',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Files\Model\StandardError[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
         'links' => 'array<string,string>',
-        'task_id' => 'string'
+        'errors' => '\HubSpot\Client\Files\Model\StandardError[]',
+        'task_id' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -76,15 +76,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
         'result' => null,
+        'completed_at' => 'date-time',
         'num_errors' => 'int32',
-        'errors' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time',
         'links' => null,
-        'task_id' => null
+        'errors' => null,
+        'task_id' => null,
+        'status' => null
     ];
 
     /**
@@ -114,15 +114,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
         'result' => 'result',
+        'completed_at' => 'completedAt',
         'num_errors' => 'numErrors',
-        'errors' => 'errors',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
         'links' => 'links',
-        'task_id' => 'taskId'
+        'errors' => 'errors',
+        'task_id' => 'taskId',
+        'status' => 'status'
     ];
 
     /**
@@ -131,15 +131,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
         'result' => 'setResult',
+        'completed_at' => 'setCompletedAt',
         'num_errors' => 'setNumErrors',
-        'errors' => 'setErrors',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
         'links' => 'setLinks',
-        'task_id' => 'setTaskId'
+        'errors' => 'setErrors',
+        'task_id' => 'setTaskId',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -148,15 +148,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
         'result' => 'getResult',
+        'completed_at' => 'getCompletedAt',
         'num_errors' => 'getNumErrors',
-        'errors' => 'getErrors',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
         'links' => 'getLinks',
-        'task_id' => 'getTaskId'
+        'errors' => 'getErrors',
+        'task_id' => 'getTaskId',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -235,15 +235,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['result'] = $data['result'] ?? null;
+        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['num_errors'] = $data['num_errors'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['requested_at'] = $data['requested_at'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['task_id'] = $data['task_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -255,6 +255,15 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['task_id'] === null) {
+            $invalidProperties[] = "'task_id' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -267,15 +276,6 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
-        }
-        if ($this->container['task_id'] === null) {
-            $invalidProperties[] = "'task_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -290,40 +290,6 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status Current status of the task.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
 
     /**
      * Gets result
@@ -350,6 +316,30 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets completed_at
+     *
+     * @return \DateTime
+     */
+    public function getCompletedAt()
+    {
+        return $this->container['completed_at'];
+    }
+
+    /**
+     * Sets completed_at
+     *
+     * @param \DateTime $completed_at Time of completion of task.
+     *
+     * @return self
+     */
+    public function setCompletedAt($completed_at)
+    {
+        $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
      * Gets num_errors
      *
      * @return int|null
@@ -369,30 +359,6 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setNumErrors($num_errors)
     {
         $this->container['num_errors'] = $num_errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Files\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Files\Model\StandardError[]|null $errors Descriptive error messages.
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -446,30 +412,6 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets completed_at
-     *
-     * @return \DateTime
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime $completed_at Time of completion of task.
-     *
-     * @return self
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
-
-        return $this;
-    }
-
-    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -494,6 +436,30 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Files\Model\StandardError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Files\Model\StandardError[]|null $errors Descriptive error messages.
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
      * Gets task_id
      *
      * @return string
@@ -506,13 +472,47 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets task_id
      *
-     * @param string $task_id If of the requested task.
+     * @param string $task_id ID of the requested task.
      *
      * @return self
      */
     public function setTaskId($task_id)
     {
         $this->container['task_id'] = $task_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status Current status of the task.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

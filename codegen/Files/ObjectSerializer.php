@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *

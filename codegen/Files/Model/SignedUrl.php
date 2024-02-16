@@ -11,7 +11,7 @@
  */
 
 /**
- * Files
+ * Files Files
  *
  * Upload and manage files.
  *
@@ -35,6 +35,7 @@ use \HubSpot\Client\Files\ObjectSerializer;
  * SignedUrl Class Doc Comment
  *
  * @category Class
+ * @description Signed Url object with optional ancillary metadata of requested file
  * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -57,14 +58,14 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'extension' => 'string',
+        'size' => 'int',
+        'name' => 'string',
+        'width' => 'int',
+        'type' => 'string',
         'expires_at' => '\DateTime',
         'url' => 'string',
-        'name' => 'string',
-        'extension' => 'string',
-        'type' => 'string',
-        'size' => 'int',
-        'height' => 'int',
-        'width' => 'int'
+        'height' => 'int'
     ];
 
     /**
@@ -75,14 +76,14 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'extension' => null,
+        'size' => 'int32',
+        'name' => null,
+        'width' => 'int32',
+        'type' => null,
         'expires_at' => 'date-time',
         'url' => null,
-        'name' => null,
-        'extension' => null,
-        'type' => null,
-        'size' => 'int32',
-        'height' => 'int32',
-        'width' => 'int32'
+        'height' => 'int32'
     ];
 
     /**
@@ -112,14 +113,14 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'extension' => 'extension',
+        'size' => 'size',
+        'name' => 'name',
+        'width' => 'width',
+        'type' => 'type',
         'expires_at' => 'expiresAt',
         'url' => 'url',
-        'name' => 'name',
-        'extension' => 'extension',
-        'type' => 'type',
-        'size' => 'size',
-        'height' => 'height',
-        'width' => 'width'
+        'height' => 'height'
     ];
 
     /**
@@ -128,14 +129,14 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'extension' => 'setExtension',
+        'size' => 'setSize',
+        'name' => 'setName',
+        'width' => 'setWidth',
+        'type' => 'setType',
         'expires_at' => 'setExpiresAt',
         'url' => 'setUrl',
-        'name' => 'setName',
-        'extension' => 'setExtension',
-        'type' => 'setType',
-        'size' => 'setSize',
-        'height' => 'setHeight',
-        'width' => 'setWidth'
+        'height' => 'setHeight'
     ];
 
     /**
@@ -144,14 +145,14 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'extension' => 'getExtension',
+        'size' => 'getSize',
+        'name' => 'getName',
+        'width' => 'getWidth',
+        'type' => 'getType',
         'expires_at' => 'getExpiresAt',
         'url' => 'getUrl',
-        'name' => 'getName',
-        'extension' => 'getExtension',
-        'type' => 'getType',
-        'size' => 'getSize',
-        'height' => 'getHeight',
-        'width' => 'getWidth'
+        'height' => 'getHeight'
     ];
 
     /**
@@ -211,14 +212,14 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['extension'] = $data['extension'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['width'] = $data['width'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['expires_at'] = $data['expires_at'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['extension'] = $data['extension'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['size'] = $data['size'] ?? null;
         $this->container['height'] = $data['height'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
     }
 
     /**
@@ -230,23 +231,23 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['extension'] === null) {
+            $invalidProperties[] = "'extension' can't be null";
+        }
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['extension'] === null) {
-            $invalidProperties[] = "'extension' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -262,6 +263,126 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->container['extension'];
+    }
+
+    /**
+     * Sets extension
+     *
+     * @param string $extension Extension of the requested file.
+     *
+     * @return self
+     */
+    public function setExtension($extension)
+    {
+        $this->container['extension'] = $extension;
+
+        return $this;
+    }
+
+    /**
+     * Gets size
+     *
+     * @return int
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param int $size Size in bytes of the requested file.
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the requested file.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return int|null
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param int|null $width For image and video files. The width of the file.
+     *
+     * @return self
+     */
+    public function setWidth($width)
+    {
+        $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets expires_at
@@ -312,102 +433,6 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the requested file.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets extension
-     *
-     * @return string
-     */
-    public function getExtension()
-    {
-        return $this->container['extension'];
-    }
-
-    /**
-     * Sets extension
-     *
-     * @param string $extension Extension of the requested file.
-     *
-     * @return self
-     */
-    public function setExtension($extension)
-    {
-        $this->container['extension'] = $extension;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int $size Size in bytes of the requested file.
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
      * Gets height
      *
      * @return int|null
@@ -427,30 +452,6 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeight($height)
     {
         $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return int|null
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param int|null $width For image and video files. The width of the file.
-     *
-     * @return self
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
 
         return $this;
     }

@@ -11,7 +11,7 @@
  */
 
 /**
- * Webhooks API
+ * Webhooks Webhooks
  *
  * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
  *
@@ -58,8 +58,8 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'target_url' => 'string',
-        'throttling' => '\HubSpot\Client\Webhooks\Model\ThrottlingSettings'
+        'throttling' => '\HubSpot\Client\Webhooks\Model\ThrottlingSettings',
+        'target_url' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'target_url' => null,
-        'throttling' => null
+        'throttling' => null,
+        'target_url' => null
     ];
 
     /**
@@ -101,8 +101,8 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'target_url' => 'targetUrl',
-        'throttling' => 'throttling'
+        'throttling' => 'throttling',
+        'target_url' => 'targetUrl'
     ];
 
     /**
@@ -111,8 +111,8 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'target_url' => 'setTargetUrl',
-        'throttling' => 'setThrottling'
+        'throttling' => 'setThrottling',
+        'target_url' => 'setTargetUrl'
     ];
 
     /**
@@ -121,8 +121,8 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'target_url' => 'getTargetUrl',
-        'throttling' => 'getThrottling'
+        'throttling' => 'getThrottling',
+        'target_url' => 'getTargetUrl'
     ];
 
     /**
@@ -182,8 +182,8 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['target_url'] = $data['target_url'] ?? null;
         $this->container['throttling'] = $data['throttling'] ?? null;
+        $this->container['target_url'] = $data['target_url'] ?? null;
     }
 
     /**
@@ -195,11 +195,11 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['target_url'] === null) {
-            $invalidProperties[] = "'target_url' can't be null";
-        }
         if ($this->container['throttling'] === null) {
             $invalidProperties[] = "'throttling' can't be null";
+        }
+        if ($this->container['target_url'] === null) {
+            $invalidProperties[] = "'target_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,30 +215,6 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets target_url
-     *
-     * @return string
-     */
-    public function getTargetUrl()
-    {
-        return $this->container['target_url'];
-    }
-
-    /**
-     * Sets target_url
-     *
-     * @param string $target_url A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
-     *
-     * @return self
-     */
-    public function setTargetUrl($target_url)
-    {
-        $this->container['target_url'] = $target_url;
-
-        return $this;
-    }
 
     /**
      * Gets throttling
@@ -260,6 +236,30 @@ class SettingsChangeRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setThrottling($throttling)
     {
         $this->container['throttling'] = $throttling;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_url
+     *
+     * @return string
+     */
+    public function getTargetUrl()
+    {
+        return $this->container['target_url'];
+    }
+
+    /**
+     * Sets target_url
+     *
+     * @param string $target_url A publicly available URL for HubSpot to call where event payloads will be delivered.
+     *
+     * @return self
+     */
+    public function setTargetUrl($target_url)
+    {
+        $this->container['target_url'] = $target_url;
 
         return $this;
     }

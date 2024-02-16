@@ -11,7 +11,7 @@
  */
 
 /**
- * Webhooks API
+ * Webhooks Webhooks
  *
  * Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.
  *
@@ -58,8 +58,8 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'max_concurrent_requests' => 'int',
-        'period' => 'string'
+        'period' => 'string',
+        'max_concurrent_requests' => 'int'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'max_concurrent_requests' => 'int32',
-        'period' => null
+        'period' => null,
+        'max_concurrent_requests' => 'int32'
     ];
 
     /**
@@ -101,8 +101,8 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'max_concurrent_requests' => 'maxConcurrentRequests',
-        'period' => 'period'
+        'period' => 'period',
+        'max_concurrent_requests' => 'maxConcurrentRequests'
     ];
 
     /**
@@ -111,8 +111,8 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'max_concurrent_requests' => 'setMaxConcurrentRequests',
-        'period' => 'setPeriod'
+        'period' => 'setPeriod',
+        'max_concurrent_requests' => 'setMaxConcurrentRequests'
     ];
 
     /**
@@ -121,8 +121,8 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'max_concurrent_requests' => 'getMaxConcurrentRequests',
-        'period' => 'getPeriod'
+        'period' => 'getPeriod',
+        'max_concurrent_requests' => 'getMaxConcurrentRequests'
     ];
 
     /**
@@ -197,8 +197,8 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['max_concurrent_requests'] = $data['max_concurrent_requests'] ?? null;
         $this->container['period'] = $data['period'] ?? null;
+        $this->container['max_concurrent_requests'] = $data['max_concurrent_requests'] ?? null;
     }
 
     /**
@@ -210,9 +210,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['max_concurrent_requests'] === null) {
-            $invalidProperties[] = "'max_concurrent_requests' can't be null";
-        }
         if ($this->container['period'] === null) {
             $invalidProperties[] = "'period' can't be null";
         }
@@ -225,6 +222,9 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
+        if ($this->container['max_concurrent_requests'] === null) {
+            $invalidProperties[] = "'max_concurrent_requests' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -239,30 +239,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets max_concurrent_requests
-     *
-     * @return int
-     */
-    public function getMaxConcurrentRequests()
-    {
-        return $this->container['max_concurrent_requests'];
-    }
-
-    /**
-     * Sets max_concurrent_requests
-     *
-     * @param int $max_concurrent_requests The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.
-     *
-     * @return self
-     */
-    public function setMaxConcurrentRequests($max_concurrent_requests)
-    {
-        $this->container['max_concurrent_requests'] = $max_concurrent_requests;
-
-        return $this;
-    }
 
     /**
      * Gets period
@@ -294,6 +270,30 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_concurrent_requests
+     *
+     * @return int
+     */
+    public function getMaxConcurrentRequests()
+    {
+        return $this->container['max_concurrent_requests'];
+    }
+
+    /**
+     * Sets max_concurrent_requests
+     *
+     * @param int $max_concurrent_requests The maximum number of concurrent HTTP requests HubSpot will attempt to make to your app.
+     *
+     * @return self
+     */
+    public function setMaxConcurrentRequests($max_concurrent_requests)
+    {
+        $this->container['max_concurrent_requests'] = $max_concurrent_requests;
 
         return $this;
     }
