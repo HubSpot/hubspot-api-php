@@ -116,7 +116,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatch
+     * Operation archive
      *
      * Delete multiple marketing events
      *
@@ -126,14 +126,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function archiveBatch($batch_input_marketing_event_external_unique_identifier)
+    public function archive($batch_input_marketing_event_external_unique_identifier)
     {
-        list($response) = $this->archiveBatchWithHttpInfo($batch_input_marketing_event_external_unique_identifier);
+        list($response) = $this->archiveWithHttpInfo($batch_input_marketing_event_external_unique_identifier);
         return $response;
     }
 
     /**
-     * Operation archiveBatchWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Delete multiple marketing events
      *
@@ -143,9 +143,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveBatchWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
+    public function archiveWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
     {
-        $request = $this->archiveBatchRequest($batch_input_marketing_event_external_unique_identifier);
+        $request = $this->archiveRequest($batch_input_marketing_event_external_unique_identifier);
 
         try {
             $options = $this->createHttpClientOption();
@@ -232,7 +232,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatchAsync
+     * Operation archiveAsync
      *
      * Delete multiple marketing events
      *
@@ -241,9 +241,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveBatchAsync($batch_input_marketing_event_external_unique_identifier)
+    public function archiveAsync($batch_input_marketing_event_external_unique_identifier)
     {
-        return $this->archiveBatchAsyncWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
+        return $this->archiveAsyncWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -252,7 +252,7 @@ class BatchApi
     }
 
     /**
-     * Operation archiveBatchAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Delete multiple marketing events
      *
@@ -261,10 +261,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveBatchAsyncWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
+    public function archiveAsyncWithHttpInfo($batch_input_marketing_event_external_unique_identifier)
     {
         $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
-        $request = $this->archiveBatchRequest($batch_input_marketing_event_external_unique_identifier);
+        $request = $this->archiveRequest($batch_input_marketing_event_external_unique_identifier);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -303,19 +303,19 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'archiveBatch'
+     * Create request for operation 'archive'
      *
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventExternalUniqueIdentifier $batch_input_marketing_event_external_unique_identifier The details of the marketing events to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveBatchRequest($batch_input_marketing_event_external_unique_identifier)
+    public function archiveRequest($batch_input_marketing_event_external_unique_identifier)
     {
         // verify the required parameter 'batch_input_marketing_event_external_unique_identifier' is set
         if ($batch_input_marketing_event_external_unique_identifier === null || (is_array($batch_input_marketing_event_external_unique_identifier) && count($batch_input_marketing_event_external_unique_identifier) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_external_unique_identifier when calling archiveBatch'
+                'Missing the required parameter $batch_input_marketing_event_external_unique_identifier when calling archive'
             );
         }
 
