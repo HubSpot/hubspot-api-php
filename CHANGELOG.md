@@ -100,6 +100,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added method `getMetadata()` to `files()->filesApi()`.
 - Added `expires_at` param to `HubSpot\Client\Files\Model\File` and `HubSpot\Client\Files\Model\FileUpdateInput`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Files\Model\StandardError:category`.
+- Added `marketing()->events()->basicApi()` API.
+- Added `marketing()->events()->batchApi()` API.
+- Moved method `archive` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `create` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `doCancel` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `getById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi`.
+- Moved method `replace` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `update` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved and rename method `archiveBatch => archive` from `marketing()->events()->marketingEventsExternalApi()->archiveBatch()` to `marketing()->events()->batchApi()->archive()`.
+- Moved method `doUpsert` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->batchApi()`.
+- Moved method `doEmailUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->subscriberStateChanges()`.
+- Moved method `doUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events.subscriberStateChanges`.
+- Renamed `marketing()->events()->settingsExternalApi()` => `marketing()->events()->settingsApi()`.
+- Added `is_large_value` param to `HubSpot\Client\Marketing\Events\Model\PropertyValue`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Marketing\Events\Model\StandardError:category`.
+- Added `lifecycle_stages` param to `HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration`.
 
 ## Removed `hapikey` from
 
