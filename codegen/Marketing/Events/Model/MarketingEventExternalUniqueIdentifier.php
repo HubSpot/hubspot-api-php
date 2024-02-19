@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -57,9 +57,9 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'app_id' => 'int',
         'external_account_id' => 'string',
-        'external_event_id' => 'string'
+        'external_event_id' => 'string',
+        'app_id' => 'int'
     ];
 
     /**
@@ -70,9 +70,9 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'app_id' => 'int32',
         'external_account_id' => null,
-        'external_event_id' => null
+        'external_event_id' => null,
+        'app_id' => 'int32'
     ];
 
     /**
@@ -102,9 +102,9 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'app_id' => 'appId',
         'external_account_id' => 'externalAccountId',
-        'external_event_id' => 'externalEventId'
+        'external_event_id' => 'externalEventId',
+        'app_id' => 'appId'
     ];
 
     /**
@@ -113,9 +113,9 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'app_id' => 'setAppId',
         'external_account_id' => 'setExternalAccountId',
-        'external_event_id' => 'setExternalEventId'
+        'external_event_id' => 'setExternalEventId',
+        'app_id' => 'setAppId'
     ];
 
     /**
@@ -124,9 +124,9 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'app_id' => 'getAppId',
         'external_account_id' => 'getExternalAccountId',
-        'external_event_id' => 'getExternalEventId'
+        'external_event_id' => 'getExternalEventId',
+        'app_id' => 'getAppId'
     ];
 
     /**
@@ -186,9 +186,9 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['app_id'] = $data['app_id'] ?? null;
         $this->container['external_account_id'] = $data['external_account_id'] ?? null;
         $this->container['external_event_id'] = $data['external_event_id'] ?? null;
+        $this->container['app_id'] = $data['app_id'] ?? null;
     }
 
     /**
@@ -200,14 +200,14 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['app_id'] === null) {
-            $invalidProperties[] = "'app_id' can't be null";
-        }
         if ($this->container['external_account_id'] === null) {
             $invalidProperties[] = "'external_account_id' can't be null";
         }
         if ($this->container['external_event_id'] === null) {
             $invalidProperties[] = "'external_event_id' can't be null";
+        }
+        if ($this->container['app_id'] === null) {
+            $invalidProperties[] = "'app_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,30 +223,6 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets app_id
-     *
-     * @return int
-     */
-    public function getAppId()
-    {
-        return $this->container['app_id'];
-    }
-
-    /**
-     * Sets app_id
-     *
-     * @param int $app_id The id of the application that created the marketing event in HubSpot.
-     *
-     * @return self
-     */
-    public function setAppId($app_id)
-    {
-        $this->container['app_id'] = $app_id;
-
-        return $this;
-    }
 
     /**
      * Gets external_account_id
@@ -292,6 +268,30 @@ class MarketingEventExternalUniqueIdentifier implements ModelInterface, ArrayAcc
     public function setExternalEventId($external_event_id)
     {
         $this->container['external_event_id'] = $external_event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_id
+     *
+     * @return int
+     */
+    public function getAppId()
+    {
+        return $this->container['app_id'];
+    }
+
+    /**
+     * Sets app_id
+     *
+     * @param int $app_id The id of the application that created the marketing event in HubSpot.
+     *
+     * @return self
+     */
+    public function setAppId($app_id)
+    {
+        $this->container['app_id'] = $app_id;
 
         return $this;
     }

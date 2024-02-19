@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -57,14 +57,14 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'results' => '\HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse[]',
+        'completed_at' => '\DateTime',
         'num_errors' => 'int',
-        'errors' => '\HubSpot\Client\Marketing\Events\Model\StandardError[]',
         'requested_at' => '\DateTime',
         'started_at' => '\DateTime',
-        'completed_at' => '\DateTime',
-        'links' => 'array<string,string>'
+        'links' => 'array<string,string>',
+        'results' => '\HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse[]',
+        'errors' => '\HubSpot\Client\Marketing\Events\Model\StandardError[]',
+        'status' => 'string'
     ];
 
     /**
@@ -75,14 +75,14 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'results' => null,
+        'completed_at' => 'date-time',
         'num_errors' => 'int32',
-        'errors' => null,
         'requested_at' => 'date-time',
         'started_at' => 'date-time',
-        'completed_at' => 'date-time',
-        'links' => null
+        'links' => null,
+        'results' => null,
+        'errors' => null,
+        'status' => null
     ];
 
     /**
@@ -112,14 +112,14 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'results' => 'results',
+        'completed_at' => 'completedAt',
         'num_errors' => 'numErrors',
-        'errors' => 'errors',
         'requested_at' => 'requestedAt',
         'started_at' => 'startedAt',
-        'completed_at' => 'completedAt',
-        'links' => 'links'
+        'links' => 'links',
+        'results' => 'results',
+        'errors' => 'errors',
+        'status' => 'status'
     ];
 
     /**
@@ -128,14 +128,14 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'results' => 'setResults',
+        'completed_at' => 'setCompletedAt',
         'num_errors' => 'setNumErrors',
-        'errors' => 'setErrors',
         'requested_at' => 'setRequestedAt',
         'started_at' => 'setStartedAt',
-        'completed_at' => 'setCompletedAt',
-        'links' => 'setLinks'
+        'links' => 'setLinks',
+        'results' => 'setResults',
+        'errors' => 'setErrors',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -144,14 +144,14 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'results' => 'getResults',
+        'completed_at' => 'getCompletedAt',
         'num_errors' => 'getNumErrors',
-        'errors' => 'getErrors',
         'requested_at' => 'getRequestedAt',
         'started_at' => 'getStartedAt',
-        'completed_at' => 'getCompletedAt',
-        'links' => 'getLinks'
+        'links' => 'getLinks',
+        'results' => 'getResults',
+        'errors' => 'getErrors',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -230,14 +230,14 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
+        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['num_errors'] = $data['num_errors'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
         $this->container['requested_at'] = $data['requested_at'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['links'] = $data['links'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -249,6 +249,15 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
     {
         $invalidProperties = [];
 
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -261,15 +270,6 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
             );
         }
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -286,59 +286,25 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
 
 
     /**
-     * Gets status
+     * Gets completed_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getStatus()
+    public function getCompletedAt()
     {
-        return $this->container['status'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets status
+     * Sets completed_at
      *
-     * @param string $status status
+     * @param \DateTime $completed_at 
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCompletedAt($completed_at)
     {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
@@ -356,37 +322,13 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
     /**
      * Sets num_errors
      *
-     * @param int|null $num_errors num_errors
+     * @param int|null $num_errors 
      *
      * @return self
      */
     public function setNumErrors($num_errors)
     {
         $this->container['num_errors'] = $num_errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Marketing\Events\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Marketing\Events\Model\StandardError[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -404,7 +346,7 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at requested_at
+     * @param \DateTime|null $requested_at 
      *
      * @return self
      */
@@ -428,37 +370,13 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at started_at
+     * @param \DateTime $started_at 
      *
      * @return self
      */
     public function setStartedAt($started_at)
     {
         $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets completed_at
-     *
-     * @return \DateTime
-     */
-    public function getCompletedAt()
-    {
-        return $this->container['completed_at'];
-    }
-
-    /**
-     * Sets completed_at
-     *
-     * @param \DateTime $completed_at completed_at
-     *
-     * @return self
-     */
-    public function setCompletedAt($completed_at)
-    {
-        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
@@ -476,13 +394,95 @@ class BatchResponseMarketingEventPublicDefaultResponse implements ModelInterface
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links links
+     * @param array<string,string>|null $links 
      *
      * @return self
      */
     public function setLinks($links)
     {
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse[] $results 
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\StandardError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\StandardError[]|null $errors 
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status 
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

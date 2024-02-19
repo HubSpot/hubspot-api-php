@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -57,20 +57,21 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'value' => 'string',
-        'timestamp' => 'int',
         'source_id' => 'string',
+        'selected_by_user' => 'bool',
         'source_label' => 'string',
         'source' => 'string',
-        'selected_by_user' => 'bool',
-        'selected_by_user_timestamp' => 'int',
-        'source_vid' => 'int[]',
-        'source_metadata' => 'string',
-        'request_id' => 'string',
         'updated_by_user_id' => 'int',
         'persistence_timestamp' => 'int',
-        'use_timestamp_as_persistence_timestamp' => 'bool'
+        'source_metadata' => 'string',
+        'source_vid' => 'int[]',
+        'request_id' => 'string',
+        'name' => 'string',
+        'use_timestamp_as_persistence_timestamp' => 'bool',
+        'value' => 'string',
+        'selected_by_user_timestamp' => 'int',
+        'timestamp' => 'int',
+        'is_large_value' => 'bool'
     ];
 
     /**
@@ -81,20 +82,21 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'value' => null,
-        'timestamp' => 'int64',
         'source_id' => null,
+        'selected_by_user' => null,
         'source_label' => null,
         'source' => null,
-        'selected_by_user' => null,
-        'selected_by_user_timestamp' => 'int64',
-        'source_vid' => 'int64',
-        'source_metadata' => null,
-        'request_id' => null,
         'updated_by_user_id' => 'int32',
         'persistence_timestamp' => 'int64',
-        'use_timestamp_as_persistence_timestamp' => null
+        'source_metadata' => null,
+        'source_vid' => 'int64',
+        'request_id' => null,
+        'name' => null,
+        'use_timestamp_as_persistence_timestamp' => null,
+        'value' => null,
+        'selected_by_user_timestamp' => 'int64',
+        'timestamp' => 'int64',
+        'is_large_value' => null
     ];
 
     /**
@@ -124,20 +126,21 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'value' => 'value',
-        'timestamp' => 'timestamp',
         'source_id' => 'sourceId',
+        'selected_by_user' => 'selectedByUser',
         'source_label' => 'sourceLabel',
         'source' => 'source',
-        'selected_by_user' => 'selectedByUser',
-        'selected_by_user_timestamp' => 'selectedByUserTimestamp',
-        'source_vid' => 'sourceVid',
-        'source_metadata' => 'sourceMetadata',
-        'request_id' => 'requestId',
         'updated_by_user_id' => 'updatedByUserId',
         'persistence_timestamp' => 'persistenceTimestamp',
-        'use_timestamp_as_persistence_timestamp' => 'useTimestampAsPersistenceTimestamp'
+        'source_metadata' => 'sourceMetadata',
+        'source_vid' => 'sourceVid',
+        'request_id' => 'requestId',
+        'name' => 'name',
+        'use_timestamp_as_persistence_timestamp' => 'useTimestampAsPersistenceTimestamp',
+        'value' => 'value',
+        'selected_by_user_timestamp' => 'selectedByUserTimestamp',
+        'timestamp' => 'timestamp',
+        'is_large_value' => 'isLargeValue'
     ];
 
     /**
@@ -146,20 +149,21 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'value' => 'setValue',
-        'timestamp' => 'setTimestamp',
         'source_id' => 'setSourceId',
+        'selected_by_user' => 'setSelectedByUser',
         'source_label' => 'setSourceLabel',
         'source' => 'setSource',
-        'selected_by_user' => 'setSelectedByUser',
-        'selected_by_user_timestamp' => 'setSelectedByUserTimestamp',
-        'source_vid' => 'setSourceVid',
-        'source_metadata' => 'setSourceMetadata',
-        'request_id' => 'setRequestId',
         'updated_by_user_id' => 'setUpdatedByUserId',
         'persistence_timestamp' => 'setPersistenceTimestamp',
-        'use_timestamp_as_persistence_timestamp' => 'setUseTimestampAsPersistenceTimestamp'
+        'source_metadata' => 'setSourceMetadata',
+        'source_vid' => 'setSourceVid',
+        'request_id' => 'setRequestId',
+        'name' => 'setName',
+        'use_timestamp_as_persistence_timestamp' => 'setUseTimestampAsPersistenceTimestamp',
+        'value' => 'setValue',
+        'selected_by_user_timestamp' => 'setSelectedByUserTimestamp',
+        'timestamp' => 'setTimestamp',
+        'is_large_value' => 'setIsLargeValue'
     ];
 
     /**
@@ -168,20 +172,21 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'value' => 'getValue',
-        'timestamp' => 'getTimestamp',
         'source_id' => 'getSourceId',
+        'selected_by_user' => 'getSelectedByUser',
         'source_label' => 'getSourceLabel',
         'source' => 'getSource',
-        'selected_by_user' => 'getSelectedByUser',
-        'selected_by_user_timestamp' => 'getSelectedByUserTimestamp',
-        'source_vid' => 'getSourceVid',
-        'source_metadata' => 'getSourceMetadata',
-        'request_id' => 'getRequestId',
         'updated_by_user_id' => 'getUpdatedByUserId',
         'persistence_timestamp' => 'getPersistenceTimestamp',
-        'use_timestamp_as_persistence_timestamp' => 'getUseTimestampAsPersistenceTimestamp'
+        'source_metadata' => 'getSourceMetadata',
+        'source_vid' => 'getSourceVid',
+        'request_id' => 'getRequestId',
+        'name' => 'getName',
+        'use_timestamp_as_persistence_timestamp' => 'getUseTimestampAsPersistenceTimestamp',
+        'value' => 'getValue',
+        'selected_by_user_timestamp' => 'getSelectedByUserTimestamp',
+        'timestamp' => 'getTimestamp',
+        'is_large_value' => 'getIsLargeValue'
     ];
 
     /**
@@ -410,20 +415,21 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
         $this->container['source_id'] = $data['source_id'] ?? null;
+        $this->container['selected_by_user'] = $data['selected_by_user'] ?? null;
         $this->container['source_label'] = $data['source_label'] ?? null;
         $this->container['source'] = $data['source'] ?? null;
-        $this->container['selected_by_user'] = $data['selected_by_user'] ?? null;
-        $this->container['selected_by_user_timestamp'] = $data['selected_by_user_timestamp'] ?? null;
-        $this->container['source_vid'] = $data['source_vid'] ?? null;
-        $this->container['source_metadata'] = $data['source_metadata'] ?? null;
-        $this->container['request_id'] = $data['request_id'] ?? null;
         $this->container['updated_by_user_id'] = $data['updated_by_user_id'] ?? null;
         $this->container['persistence_timestamp'] = $data['persistence_timestamp'] ?? null;
+        $this->container['source_metadata'] = $data['source_metadata'] ?? null;
+        $this->container['source_vid'] = $data['source_vid'] ?? null;
+        $this->container['request_id'] = $data['request_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['use_timestamp_as_persistence_timestamp'] = $data['use_timestamp_as_persistence_timestamp'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
+        $this->container['selected_by_user_timestamp'] = $data['selected_by_user_timestamp'] ?? null;
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
+        $this->container['is_large_value'] = $data['is_large_value'] ?? null;
     }
 
     /**
@@ -435,17 +441,11 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
         if ($this->container['source_id'] === null) {
             $invalidProperties[] = "'source_id' can't be null";
+        }
+        if ($this->container['selected_by_user'] === null) {
+            $invalidProperties[] = "'selected_by_user' can't be null";
         }
         if ($this->container['source_label'] === null) {
             $invalidProperties[] = "'source_label' can't be null";
@@ -462,20 +462,26 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['selected_by_user'] === null) {
-            $invalidProperties[] = "'selected_by_user' can't be null";
-        }
-        if ($this->container['selected_by_user_timestamp'] === null) {
-            $invalidProperties[] = "'selected_by_user_timestamp' can't be null";
+        if ($this->container['source_metadata'] === null) {
+            $invalidProperties[] = "'source_metadata' can't be null";
         }
         if ($this->container['source_vid'] === null) {
             $invalidProperties[] = "'source_vid' can't be null";
         }
-        if ($this->container['source_metadata'] === null) {
-            $invalidProperties[] = "'source_metadata' can't be null";
-        }
         if ($this->container['request_id'] === null) {
             $invalidProperties[] = "'request_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if ($this->container['selected_by_user_timestamp'] === null) {
+            $invalidProperties[] = "'selected_by_user_timestamp' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -493,78 +499,6 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return int
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param int $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
      * Gets source_id
      *
      * @return string
@@ -577,13 +511,37 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source_id
      *
-     * @param string $source_id source_id
+     * @param string $source_id 
      *
      * @return self
      */
     public function setSourceId($source_id)
     {
         $this->container['source_id'] = $source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets selected_by_user
+     *
+     * @return bool
+     */
+    public function getSelectedByUser()
+    {
+        return $this->container['selected_by_user'];
+    }
+
+    /**
+     * Sets selected_by_user
+     *
+     * @param bool $selected_by_user 
+     *
+     * @return self
+     */
+    public function setSelectedByUser($selected_by_user)
+    {
+        $this->container['selected_by_user'] = $selected_by_user;
 
         return $this;
     }
@@ -601,7 +559,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source_label
      *
-     * @param string $source_label source_label
+     * @param string $source_label 
      *
      * @return self
      */
@@ -625,7 +583,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source
      *
-     * @param string $source source
+     * @param string $source 
      *
      * @return self
      */
@@ -642,126 +600,6 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets selected_by_user
-     *
-     * @return bool
-     */
-    public function getSelectedByUser()
-    {
-        return $this->container['selected_by_user'];
-    }
-
-    /**
-     * Sets selected_by_user
-     *
-     * @param bool $selected_by_user selected_by_user
-     *
-     * @return self
-     */
-    public function setSelectedByUser($selected_by_user)
-    {
-        $this->container['selected_by_user'] = $selected_by_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets selected_by_user_timestamp
-     *
-     * @return int
-     */
-    public function getSelectedByUserTimestamp()
-    {
-        return $this->container['selected_by_user_timestamp'];
-    }
-
-    /**
-     * Sets selected_by_user_timestamp
-     *
-     * @param int $selected_by_user_timestamp selected_by_user_timestamp
-     *
-     * @return self
-     */
-    public function setSelectedByUserTimestamp($selected_by_user_timestamp)
-    {
-        $this->container['selected_by_user_timestamp'] = $selected_by_user_timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets source_vid
-     *
-     * @return int[]
-     */
-    public function getSourceVid()
-    {
-        return $this->container['source_vid'];
-    }
-
-    /**
-     * Sets source_vid
-     *
-     * @param int[] $source_vid source_vid
-     *
-     * @return self
-     */
-    public function setSourceVid($source_vid)
-    {
-        $this->container['source_vid'] = $source_vid;
-
-        return $this;
-    }
-
-    /**
-     * Gets source_metadata
-     *
-     * @return string
-     */
-    public function getSourceMetadata()
-    {
-        return $this->container['source_metadata'];
-    }
-
-    /**
-     * Sets source_metadata
-     *
-     * @param string $source_metadata Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`
-     *
-     * @return self
-     */
-    public function setSourceMetadata($source_metadata)
-    {
-        $this->container['source_metadata'] = $source_metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_id
-     *
-     * @return string
-     */
-    public function getRequestId()
-    {
-        return $this->container['request_id'];
-    }
-
-    /**
-     * Sets request_id
-     *
-     * @param string $request_id request_id
-     *
-     * @return self
-     */
-    public function setRequestId($request_id)
-    {
-        $this->container['request_id'] = $request_id;
 
         return $this;
     }
@@ -815,6 +653,102 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets source_metadata
+     *
+     * @return string
+     */
+    public function getSourceMetadata()
+    {
+        return $this->container['source_metadata'];
+    }
+
+    /**
+     * Sets source_metadata
+     *
+     * @param string $source_metadata Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`
+     *
+     * @return self
+     */
+    public function setSourceMetadata($source_metadata)
+    {
+        $this->container['source_metadata'] = $source_metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_vid
+     *
+     * @return int[]
+     */
+    public function getSourceVid()
+    {
+        return $this->container['source_vid'];
+    }
+
+    /**
+     * Sets source_vid
+     *
+     * @param int[] $source_vid 
+     *
+     * @return self
+     */
+    public function setSourceVid($source_vid)
+    {
+        $this->container['source_vid'] = $source_vid;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string $request_id 
+     *
+     * @return self
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name 
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets use_timestamp_as_persistence_timestamp
      *
      * @return bool|null
@@ -834,6 +768,102 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUseTimestampAsPersistenceTimestamp($use_timestamp_as_persistence_timestamp)
     {
         $this->container['use_timestamp_as_persistence_timestamp'] = $use_timestamp_as_persistence_timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value 
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets selected_by_user_timestamp
+     *
+     * @return int
+     */
+    public function getSelectedByUserTimestamp()
+    {
+        return $this->container['selected_by_user_timestamp'];
+    }
+
+    /**
+     * Sets selected_by_user_timestamp
+     *
+     * @param int $selected_by_user_timestamp 
+     *
+     * @return self
+     */
+    public function setSelectedByUserTimestamp($selected_by_user_timestamp)
+    {
+        $this->container['selected_by_user_timestamp'] = $selected_by_user_timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int $timestamp 
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_large_value
+     *
+     * @return bool|null
+     */
+    public function getIsLargeValue()
+    {
+        return $this->container['is_large_value'];
+    }
+
+    /**
+     * Sets is_large_value
+     *
+     * @param bool|null $is_large_value is_large_value
+     *
+     * @return self
+     */
+    public function setIsLargeValue($is_large_value)
+    {
+        $this->container['is_large_value'] = $is_large_value;
 
         return $this;
     }

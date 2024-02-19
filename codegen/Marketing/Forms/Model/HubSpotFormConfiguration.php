@@ -60,6 +60,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
         'create_new_contact_for_new_email' => 'bool',
         'editable' => 'bool',
         'allow_link_to_reset_known_values' => 'bool',
+        'lifecycle_stages' => '\HubSpot\Client\Marketing\Forms\Model\LifecycleStage[]',
         'post_submit_action' => '\HubSpot\Client\Marketing\Forms\Model\FormPostSubmitAction',
         'language' => 'string',
         'pre_populate_known_values' => 'bool',
@@ -81,6 +82,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
         'create_new_contact_for_new_email' => null,
         'editable' => null,
         'allow_link_to_reset_known_values' => null,
+        'lifecycle_stages' => null,
         'post_submit_action' => null,
         'language' => null,
         'pre_populate_known_values' => null,
@@ -121,6 +123,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
         'create_new_contact_for_new_email' => 'createNewContactForNewEmail',
         'editable' => 'editable',
         'allow_link_to_reset_known_values' => 'allowLinkToResetKnownValues',
+        'lifecycle_stages' => 'lifecycleStages',
         'post_submit_action' => 'postSubmitAction',
         'language' => 'language',
         'pre_populate_known_values' => 'prePopulateKnownValues',
@@ -140,6 +143,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
         'create_new_contact_for_new_email' => 'setCreateNewContactForNewEmail',
         'editable' => 'setEditable',
         'allow_link_to_reset_known_values' => 'setAllowLinkToResetKnownValues',
+        'lifecycle_stages' => 'setLifecycleStages',
         'post_submit_action' => 'setPostSubmitAction',
         'language' => 'setLanguage',
         'pre_populate_known_values' => 'setPrePopulateKnownValues',
@@ -159,6 +163,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
         'create_new_contact_for_new_email' => 'getCreateNewContactForNewEmail',
         'editable' => 'getEditable',
         'allow_link_to_reset_known_values' => 'getAllowLinkToResetKnownValues',
+        'lifecycle_stages' => 'getLifecycleStages',
         'post_submit_action' => 'getPostSubmitAction',
         'language' => 'getLanguage',
         'pre_populate_known_values' => 'getPrePopulateKnownValues',
@@ -324,6 +329,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['create_new_contact_for_new_email'] = $data['create_new_contact_for_new_email'] ?? null;
         $this->container['editable'] = $data['editable'] ?? null;
         $this->container['allow_link_to_reset_known_values'] = $data['allow_link_to_reset_known_values'] ?? null;
+        $this->container['lifecycle_stages'] = $data['lifecycle_stages'] ?? null;
         $this->container['post_submit_action'] = $data['post_submit_action'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['pre_populate_known_values'] = $data['pre_populate_known_values'] ?? null;
@@ -468,6 +474,30 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAllowLinkToResetKnownValues($allow_link_to_reset_known_values)
     {
         $this->container['allow_link_to_reset_known_values'] = $allow_link_to_reset_known_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets lifecycle_stages
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\LifecycleStage[]|null
+     */
+    public function getLifecycleStages()
+    {
+        return $this->container['lifecycle_stages'];
+    }
+
+    /**
+     * Sets lifecycle_stages
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\LifecycleStage[]|null $lifecycle_stages lifecycle_stages
+     *
+     * @return self
+     */
+    public function setLifecycleStages($lifecycle_stages)
+    {
+        $this->container['lifecycle_stages'] = $lifecycle_stages;
 
         return $this;
     }

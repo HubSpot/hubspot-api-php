@@ -66,7 +66,7 @@ class FormDefinitionCreateRequestBase implements ModelInterface, ArrayAccess, \J
         'field_groups' => '\HubSpot\Client\Marketing\Forms\Model\FieldGroup[]',
         'configuration' => '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration',
         'display_options' => '\HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions',
-        'legal_consent_options' => 'object'
+        'legal_consent_options' => 'OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess'
     ];
 
     /**
@@ -535,7 +535,7 @@ class FormDefinitionCreateRequestBase implements ModelInterface, ArrayAccess, \J
     /**
      * Gets legal_consent_options
      *
-     * @return object
+     * @return OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess
      */
     public function getLegalConsentOptions()
     {
@@ -545,7 +545,7 @@ class FormDefinitionCreateRequestBase implements ModelInterface, ArrayAccess, \J
     /**
      * Sets legal_consent_options
      *
-     * @param object $legal_consent_options legal_consent_options
+     * @param OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess $legal_consent_options legal_consent_options
      *
      * @return self
      */

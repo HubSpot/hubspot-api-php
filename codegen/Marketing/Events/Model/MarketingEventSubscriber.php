@@ -11,7 +11,7 @@
  */
 
 /**
- * Marketing Events Extension
+ * Marketing Events
  *
  * These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.
  *
@@ -57,9 +57,9 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'interaction_date_time' => 'int',
+        'vid' => 'int',
         'properties' => 'array<string,string>',
-        'vid' => 'int'
+        'interaction_date_time' => 'int'
     ];
 
     /**
@@ -70,9 +70,9 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'interaction_date_time' => 'int64',
+        'vid' => 'int32',
         'properties' => null,
-        'vid' => 'int32'
+        'interaction_date_time' => 'int64'
     ];
 
     /**
@@ -102,9 +102,9 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'interaction_date_time' => 'interactionDateTime',
+        'vid' => 'vid',
         'properties' => 'properties',
-        'vid' => 'vid'
+        'interaction_date_time' => 'interactionDateTime'
     ];
 
     /**
@@ -113,9 +113,9 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'interaction_date_time' => 'setInteractionDateTime',
+        'vid' => 'setVid',
         'properties' => 'setProperties',
-        'vid' => 'setVid'
+        'interaction_date_time' => 'setInteractionDateTime'
     ];
 
     /**
@@ -124,9 +124,9 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'interaction_date_time' => 'getInteractionDateTime',
+        'vid' => 'getVid',
         'properties' => 'getProperties',
-        'vid' => 'getVid'
+        'interaction_date_time' => 'getInteractionDateTime'
     ];
 
     /**
@@ -186,9 +186,9 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['interaction_date_time'] = $data['interaction_date_time'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
         $this->container['vid'] = $data['vid'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['interaction_date_time'] = $data['interaction_date_time'] ?? null;
     }
 
     /**
@@ -219,25 +219,25 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets interaction_date_time
+     * Gets vid
      *
-     * @return int
+     * @return int|null
      */
-    public function getInteractionDateTime()
+    public function getVid()
     {
-        return $this->container['interaction_date_time'];
+        return $this->container['vid'];
     }
 
     /**
-     * Sets interaction_date_time
+     * Sets vid
      *
-     * @param int $interaction_date_time The date and time at which the contact subscribed to the event.
+     * @param int|null $vid vid
      *
      * @return self
      */
-    public function setInteractionDateTime($interaction_date_time)
+    public function setVid($vid)
     {
-        $this->container['interaction_date_time'] = $interaction_date_time;
+        $this->container['vid'] = $vid;
 
         return $this;
     }
@@ -267,25 +267,25 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets vid
+     * Gets interaction_date_time
      *
-     * @return int|null
+     * @return int
      */
-    public function getVid()
+    public function getInteractionDateTime()
     {
-        return $this->container['vid'];
+        return $this->container['interaction_date_time'];
     }
 
     /**
-     * Sets vid
+     * Sets interaction_date_time
      *
-     * @param int|null $vid vid
+     * @param int $interaction_date_time The date and time at which the contact subscribed to the event.
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setInteractionDateTime($interaction_date_time)
     {
-        $this->container['vid'] = $vid;
+        $this->container['interaction_date_time'] = $interaction_date_time;
 
         return $this;
     }
