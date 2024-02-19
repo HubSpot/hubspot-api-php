@@ -11,7 +11,7 @@
  */
 
 /**
- * Users
+ * Settings User Provisioning
  *
  * Add, manage, and remove users from your account
  *
@@ -58,9 +58,9 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
         'user_ids' => 'string[]',
+        'name' => 'string',
+        'id' => 'string',
         'secondary_user_ids' => 'string[]'
     ];
 
@@ -72,9 +72,9 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
         'user_ids' => null,
+        'name' => null,
+        'id' => null,
         'secondary_user_ids' => null
     ];
 
@@ -105,9 +105,9 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
         'user_ids' => 'userIds',
+        'name' => 'name',
+        'id' => 'id',
         'secondary_user_ids' => 'secondaryUserIds'
     ];
 
@@ -117,9 +117,9 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
         'user_ids' => 'setUserIds',
+        'name' => 'setName',
+        'id' => 'setId',
         'secondary_user_ids' => 'setSecondaryUserIds'
     ];
 
@@ -129,9 +129,9 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
         'user_ids' => 'getUserIds',
+        'name' => 'getName',
+        'id' => 'getId',
         'secondary_user_ids' => 'getSecondaryUserIds'
     ];
 
@@ -192,9 +192,9 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['user_ids'] = $data['user_ids'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['secondary_user_ids'] = $data['secondary_user_ids'] ?? null;
     }
 
@@ -207,14 +207,14 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['user_ids'] === null) {
+            $invalidProperties[] = "'user_ids' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['user_ids'] === null) {
-            $invalidProperties[] = "'user_ids' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['secondary_user_ids'] === null) {
             $invalidProperties[] = "'secondary_user_ids' can't be null";
@@ -235,25 +235,25 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets user_ids
      *
-     * @return string
+     * @return string[]
      */
-    public function getId()
+    public function getUserIds()
     {
-        return $this->container['id'];
+        return $this->container['user_ids'];
     }
 
     /**
-     * Sets id
+     * Sets user_ids
      *
-     * @param string $id The team's unique ID
+     * @param string[] $user_ids Primary members of this team
      *
      * @return self
      */
-    public function setId($id)
+    public function setUserIds($user_ids)
     {
-        $this->container['id'] = $id;
+        $this->container['user_ids'] = $user_ids;
 
         return $this;
     }
@@ -283,25 +283,25 @@ class PublicTeam implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets user_ids
+     * Gets id
      *
-     * @return string[]
+     * @return string
      */
-    public function getUserIds()
+    public function getId()
     {
-        return $this->container['user_ids'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets user_ids
+     * Sets id
      *
-     * @param string[] $user_ids Primary members of this team
+     * @param string $id The team's unique ID
      *
      * @return self
      */
-    public function setUserIds($user_ids)
+    public function setId($id)
     {
-        $this->container['user_ids'] = $user_ids;
+        $this->container['id'] = $id;
 
         return $this;
     }
