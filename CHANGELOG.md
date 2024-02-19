@@ -116,6 +116,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `is_large_value` param to `HubSpot\Client\Marketing\Events\Model\PropertyValue`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Marketing\Events\Model\StandardError:category`.
 - Added `lifecycle_stages` param to `HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration`.
+- Added `role_ids`, `send_welcome_email` and `super_admin` params to `HubSpot\Client\Settings\Users\Model\PublicUser`.
 
 ## Removed `hapikey` from
 
