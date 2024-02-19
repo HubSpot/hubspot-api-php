@@ -11,7 +11,7 @@
  */
 
 /**
- * Users
+ * Settings User Provisioning
  *
  * Add, manage, and remove users from your account
  *
@@ -58,11 +58,11 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'email' => 'string',
-        'role_id' => 'string',
         'primary_team_id' => 'string',
+        'send_welcome_email' => 'bool',
+        'role_id' => 'string',
         'secondary_team_ids' => 'string[]',
-        'send_welcome_email' => 'bool'
+        'email' => 'string'
     ];
 
     /**
@@ -73,11 +73,11 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'email' => null,
-        'role_id' => null,
         'primary_team_id' => null,
+        'send_welcome_email' => null,
+        'role_id' => null,
         'secondary_team_ids' => null,
-        'send_welcome_email' => null
+        'email' => null
     ];
 
     /**
@@ -107,11 +107,11 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'email' => 'email',
-        'role_id' => 'roleId',
         'primary_team_id' => 'primaryTeamId',
+        'send_welcome_email' => 'sendWelcomeEmail',
+        'role_id' => 'roleId',
         'secondary_team_ids' => 'secondaryTeamIds',
-        'send_welcome_email' => 'sendWelcomeEmail'
+        'email' => 'email'
     ];
 
     /**
@@ -120,11 +120,11 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'email' => 'setEmail',
-        'role_id' => 'setRoleId',
         'primary_team_id' => 'setPrimaryTeamId',
+        'send_welcome_email' => 'setSendWelcomeEmail',
+        'role_id' => 'setRoleId',
         'secondary_team_ids' => 'setSecondaryTeamIds',
-        'send_welcome_email' => 'setSendWelcomeEmail'
+        'email' => 'setEmail'
     ];
 
     /**
@@ -133,11 +133,11 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'email' => 'getEmail',
-        'role_id' => 'getRoleId',
         'primary_team_id' => 'getPrimaryTeamId',
+        'send_welcome_email' => 'getSendWelcomeEmail',
+        'role_id' => 'getRoleId',
         'secondary_team_ids' => 'getSecondaryTeamIds',
-        'send_welcome_email' => 'getSendWelcomeEmail'
+        'email' => 'getEmail'
     ];
 
     /**
@@ -197,11 +197,11 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['role_id'] = $data['role_id'] ?? null;
         $this->container['primary_team_id'] = $data['primary_team_id'] ?? null;
-        $this->container['secondary_team_ids'] = $data['secondary_team_ids'] ?? null;
         $this->container['send_welcome_email'] = $data['send_welcome_email'] ?? null;
+        $this->container['role_id'] = $data['role_id'] ?? null;
+        $this->container['secondary_team_ids'] = $data['secondary_team_ids'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
     }
 
     /**
@@ -215,9 +215,6 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
-        }
-        if ($this->container['send_welcome_email'] === null) {
-            $invalidProperties[] = "'send_welcome_email' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,25 +232,49 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets email
+     * Gets primary_team_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail()
+    public function getPrimaryTeamId()
     {
-        return $this->container['email'];
+        return $this->container['primary_team_id'];
     }
 
     /**
-     * Sets email
+     * Sets primary_team_id
      *
-     * @param string $email The created user's email
+     * @param string|null $primary_team_id The user's primary team
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setPrimaryTeamId($primary_team_id)
     {
-        $this->container['email'] = $email;
+        $this->container['primary_team_id'] = $primary_team_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_welcome_email
+     *
+     * @return bool|null
+     */
+    public function getSendWelcomeEmail()
+    {
+        return $this->container['send_welcome_email'];
+    }
+
+    /**
+     * Sets send_welcome_email
+     *
+     * @param bool|null $send_welcome_email Whether to send a welcome email
+     *
+     * @return self
+     */
+    public function setSendWelcomeEmail($send_welcome_email)
+    {
+        $this->container['send_welcome_email'] = $send_welcome_email;
 
         return $this;
     }
@@ -283,30 +304,6 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets primary_team_id
-     *
-     * @return string|null
-     */
-    public function getPrimaryTeamId()
-    {
-        return $this->container['primary_team_id'];
-    }
-
-    /**
-     * Sets primary_team_id
-     *
-     * @param string|null $primary_team_id The user's primary team
-     *
-     * @return self
-     */
-    public function setPrimaryTeamId($primary_team_id)
-    {
-        $this->container['primary_team_id'] = $primary_team_id;
-
-        return $this;
-    }
-
-    /**
      * Gets secondary_team_ids
      *
      * @return string[]|null
@@ -331,25 +328,25 @@ class UserProvisionRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets send_welcome_email
+     * Gets email
      *
-     * @return bool
+     * @return string
      */
-    public function getSendWelcomeEmail()
+    public function getEmail()
     {
-        return $this->container['send_welcome_email'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets send_welcome_email
+     * Sets email
      *
-     * @param bool $send_welcome_email Whether to send a welcome email
+     * @param string $email The created user's email
      *
      * @return self
      */
-    public function setSendWelcomeEmail($send_welcome_email)
+    public function setEmail($email)
     {
-        $this->container['send_welcome_email'] = $send_welcome_email;
+        $this->container['email'] = $email;
 
         return $this;
     }

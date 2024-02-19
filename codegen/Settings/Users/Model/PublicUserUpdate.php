@@ -11,7 +11,7 @@
  */
 
 /**
- * Users
+ * Settings User Provisioning
  *
  * Add, manage, and remove users from your account
  *
@@ -58,8 +58,8 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'role_id' => 'string',
         'primary_team_id' => 'string',
+        'role_id' => 'string',
         'secondary_team_ids' => 'string[]'
     ];
 
@@ -71,8 +71,8 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'role_id' => null,
         'primary_team_id' => null,
+        'role_id' => null,
         'secondary_team_ids' => null
     ];
 
@@ -103,8 +103,8 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'role_id' => 'roleId',
         'primary_team_id' => 'primaryTeamId',
+        'role_id' => 'roleId',
         'secondary_team_ids' => 'secondaryTeamIds'
     ];
 
@@ -114,8 +114,8 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'role_id' => 'setRoleId',
         'primary_team_id' => 'setPrimaryTeamId',
+        'role_id' => 'setRoleId',
         'secondary_team_ids' => 'setSecondaryTeamIds'
     ];
 
@@ -125,8 +125,8 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'role_id' => 'getRoleId',
         'primary_team_id' => 'getPrimaryTeamId',
+        'role_id' => 'getRoleId',
         'secondary_team_ids' => 'getSecondaryTeamIds'
     ];
 
@@ -187,8 +187,8 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['role_id'] = $data['role_id'] ?? null;
         $this->container['primary_team_id'] = $data['primary_team_id'] ?? null;
+        $this->container['role_id'] = $data['role_id'] ?? null;
         $this->container['secondary_team_ids'] = $data['secondary_team_ids'] ?? null;
     }
 
@@ -217,30 +217,6 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets role_id
-     *
-     * @return string|null
-     */
-    public function getRoleId()
-    {
-        return $this->container['role_id'];
-    }
-
-    /**
-     * Sets role_id
-     *
-     * @param string|null $role_id The user's role
-     *
-     * @return self
-     */
-    public function setRoleId($role_id)
-    {
-        $this->container['role_id'] = $role_id;
-
-        return $this;
-    }
-
-    /**
      * Gets primary_team_id
      *
      * @return string|null
@@ -260,6 +236,30 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrimaryTeamId($primary_team_id)
     {
         $this->container['primary_team_id'] = $primary_team_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets role_id
+     *
+     * @return string|null
+     */
+    public function getRoleId()
+    {
+        return $this->container['role_id'];
+    }
+
+    /**
+     * Sets role_id
+     *
+     * @param string|null $role_id The user's role
+     *
+     * @return self
+     */
+    public function setRoleId($role_id)
+    {
+        $this->container['role_id'] = $role_id;
 
         return $this;
     }

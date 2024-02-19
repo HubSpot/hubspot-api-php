@@ -11,7 +11,7 @@
  */
 
 /**
- * Users
+ * Settings User Provisioning
  *
  * Add, manage, and remove users from your account
  *
@@ -58,9 +58,9 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'requires_billing_write' => 'bool',
         'name' => 'string',
-        'requires_billing_write' => 'bool'
+        'id' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'requires_billing_write' => null,
         'name' => null,
-        'requires_billing_write' => null
+        'id' => null
     ];
 
     /**
@@ -103,9 +103,9 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'requires_billing_write' => 'requiresBillingWrite',
         'name' => 'name',
-        'requires_billing_write' => 'requiresBillingWrite'
+        'id' => 'id'
     ];
 
     /**
@@ -114,9 +114,9 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'requires_billing_write' => 'setRequiresBillingWrite',
         'name' => 'setName',
-        'requires_billing_write' => 'setRequiresBillingWrite'
+        'id' => 'setId'
     ];
 
     /**
@@ -125,9 +125,9 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'requires_billing_write' => 'getRequiresBillingWrite',
         'name' => 'getName',
-        'requires_billing_write' => 'getRequiresBillingWrite'
+        'id' => 'getId'
     ];
 
     /**
@@ -187,9 +187,9 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['requires_billing_write'] = $data['requires_billing_write'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -201,14 +201,14 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['requires_billing_write'] === null) {
+            $invalidProperties[] = "'requires_billing_write' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['requires_billing_write'] === null) {
-            $invalidProperties[] = "'requires_billing_write' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,25 +226,25 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets id
+     * Gets requires_billing_write
      *
-     * @return string
+     * @return bool
      */
-    public function getId()
+    public function getRequiresBillingWrite()
     {
-        return $this->container['id'];
+        return $this->container['requires_billing_write'];
     }
 
     /**
-     * Sets id
+     * Sets requires_billing_write
      *
-     * @param string $id The role's unique ID
+     * @param bool $requires_billing_write Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users
      *
      * @return self
      */
-    public function setId($id)
+    public function setRequiresBillingWrite($requires_billing_write)
     {
-        $this->container['id'] = $id;
+        $this->container['requires_billing_write'] = $requires_billing_write;
 
         return $this;
     }
@@ -274,25 +274,25 @@ class PublicPermissionSet implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets requires_billing_write
+     * Gets id
      *
-     * @return bool
+     * @return string
      */
-    public function getRequiresBillingWrite()
+    public function getId()
     {
-        return $this->container['requires_billing_write'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets requires_billing_write
+     * Sets id
      *
-     * @param bool $requires_billing_write Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users
+     * @param string $id The role's unique ID
      *
      * @return self
      */
-    public function setRequiresBillingWrite($requires_billing_write)
+    public function setId($id)
     {
-        $this->container['requires_billing_write'] = $requires_billing_write;
+        $this->container['id'] = $id;
 
         return $this;
     }
