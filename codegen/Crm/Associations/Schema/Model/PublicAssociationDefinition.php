@@ -11,7 +11,7 @@
  */
 
 /**
- * Associations
+ * CRM Associations Schema
  *
  * Associations define the relationships between objects in HubSpot. These endpoints allow you to create, read, and remove associations.
  *
@@ -57,8 +57,8 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null
+        'name' => null,
+        'id' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name'
+        'name' => 'name',
+        'id' => 'id'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'id' => 'setId'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'id' => 'getId'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -259,6 +235,30 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
