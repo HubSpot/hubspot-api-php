@@ -57,10 +57,10 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'properties' => 'string[]',
         'properties_with_history' => 'string[]',
         'id_property' => 'string',
-        'inputs' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[]'
+        'inputs' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[]',
+        'properties' => 'string[]'
     ];
 
     /**
@@ -71,10 +71,10 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'properties' => null,
         'properties_with_history' => null,
         'id_property' => null,
-        'inputs' => null
+        'inputs' => null,
+        'properties' => null
     ];
 
     /**
@@ -104,10 +104,10 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'properties' => 'properties',
         'properties_with_history' => 'propertiesWithHistory',
         'id_property' => 'idProperty',
-        'inputs' => 'inputs'
+        'inputs' => 'inputs',
+        'properties' => 'properties'
     ];
 
     /**
@@ -116,10 +116,10 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'properties' => 'setProperties',
         'properties_with_history' => 'setPropertiesWithHistory',
         'id_property' => 'setIdProperty',
-        'inputs' => 'setInputs'
+        'inputs' => 'setInputs',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -128,10 +128,10 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'properties' => 'getProperties',
         'properties_with_history' => 'getPropertiesWithHistory',
         'id_property' => 'getIdProperty',
-        'inputs' => 'getInputs'
+        'inputs' => 'getInputs',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -191,10 +191,10 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['properties'] = $data['properties'] ?? null;
         $this->container['properties_with_history'] = $data['properties_with_history'] ?? null;
         $this->container['id_property'] = $data['id_property'] ?? null;
         $this->container['inputs'] = $data['inputs'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
     }
 
     /**
@@ -206,14 +206,14 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
         if ($this->container['properties_with_history'] === null) {
             $invalidProperties[] = "'properties_with_history' can't be null";
         }
         if ($this->container['inputs'] === null) {
             $invalidProperties[] = "'inputs' can't be null";
+        }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -229,30 +229,6 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets properties
-     *
-     * @return string[]
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param string[] $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
 
     /**
      * Gets properties_with_history
@@ -322,6 +298,30 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     public function setInputs($inputs)
     {
         $this->container['inputs'] = $inputs;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return string[]
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param string[] $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
 
         return $this;
     }

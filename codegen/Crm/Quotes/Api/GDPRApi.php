@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicObjectApi
+ * GDPRApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Crm\Quotes\HeaderSelector;
 use HubSpot\Client\Crm\Quotes\ObjectSerializer;
 
 /**
- * PublicObjectApi Class Doc Comment
+ * GDPRApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Quotes
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PublicObjectApi
+class GDPRApi
 {
     /**
      * @var ClientInterface
@@ -116,36 +116,35 @@ class PublicObjectApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesMerge
+     * Operation postCrmV3ObjectsQuotesGdprDelete
      *
-     * Merge two quotes with same type
+     * GDPR DELETE
      *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicMergeInput $public_merge_input public_merge_input (required)
+     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicGdprDeleteInput $public_gdpr_delete_input public_gdpr_delete_input (required)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error
+     * @return void
      */
-    public function postCrmV3ObjectsQuotesMerge($public_merge_input)
+    public function postCrmV3ObjectsQuotesGdprDelete($public_gdpr_delete_input)
     {
-        list($response) = $this->postCrmV3ObjectsQuotesMergeWithHttpInfo($public_merge_input);
-        return $response;
+        $this->postCrmV3ObjectsQuotesGdprDeleteWithHttpInfo($public_gdpr_delete_input);
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesMergeWithHttpInfo
+     * Operation postCrmV3ObjectsQuotesGdprDeleteWithHttpInfo
      *
-     * Merge two quotes with same type
+     * GDPR DELETE
      *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicMergeInput $public_merge_input (required)
+     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
      *
      * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesMergeWithHttpInfo($public_merge_input)
+    public function postCrmV3ObjectsQuotesGdprDeleteWithHttpInfo($public_gdpr_delete_input)
     {
-        $request = $this->postCrmV3ObjectsQuotesMergeRequest($public_merge_input);
+        $request = $this->postCrmV3ObjectsQuotesGdprDeleteRequest($public_gdpr_delete_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -182,65 +181,10 @@ class PublicObjectApi
                 );
             }
 
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Quotes\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -255,18 +199,18 @@ class PublicObjectApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesMergeAsync
+     * Operation postCrmV3ObjectsQuotesGdprDeleteAsync
      *
-     * Merge two quotes with same type
+     * GDPR DELETE
      *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicMergeInput $public_merge_input (required)
+     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesMergeAsync($public_merge_input)
+    public function postCrmV3ObjectsQuotesGdprDeleteAsync($public_gdpr_delete_input)
     {
-        return $this->postCrmV3ObjectsQuotesMergeAsyncWithHttpInfo($public_merge_input)
+        return $this->postCrmV3ObjectsQuotesGdprDeleteAsyncWithHttpInfo($public_gdpr_delete_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -275,38 +219,25 @@ class PublicObjectApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesMergeAsyncWithHttpInfo
+     * Operation postCrmV3ObjectsQuotesGdprDeleteAsyncWithHttpInfo
      *
-     * Merge two quotes with same type
+     * GDPR DELETE
      *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicMergeInput $public_merge_input (required)
+     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesMergeAsyncWithHttpInfo($public_merge_input)
+    public function postCrmV3ObjectsQuotesGdprDeleteAsyncWithHttpInfo($public_gdpr_delete_input)
     {
-        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
-        $request = $this->postCrmV3ObjectsQuotesMergeRequest($public_merge_input);
+        $returnType = '';
+        $request = $this->postCrmV3ObjectsQuotesGdprDeleteRequest($public_gdpr_delete_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -326,23 +257,23 @@ class PublicObjectApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesMerge'
+     * Create request for operation 'postCrmV3ObjectsQuotesGdprDelete'
      *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicMergeInput $public_merge_input (required)
+     * @param  \HubSpot\Client\Crm\Quotes\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesMergeRequest($public_merge_input)
+    public function postCrmV3ObjectsQuotesGdprDeleteRequest($public_gdpr_delete_input)
     {
-        // verify the required parameter 'public_merge_input' is set
-        if ($public_merge_input === null || (is_array($public_merge_input) && count($public_merge_input) === 0)) {
+        // verify the required parameter 'public_gdpr_delete_input' is set
+        if ($public_gdpr_delete_input === null || (is_array($public_gdpr_delete_input) && count($public_gdpr_delete_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_merge_input when calling postCrmV3ObjectsQuotesMerge'
+                'Missing the required parameter $public_gdpr_delete_input when calling postCrmV3ObjectsQuotesGdprDelete'
             );
         }
 
-        $resourcePath = '/crm/v3/objects/quotes/merge';
+        $resourcePath = '/crm/v3/objects/quotes/gdpr-delete';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -355,21 +286,21 @@ class PublicObjectApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
+                ['*/*']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
+                ['*/*'],
                 ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($public_merge_input)) {
+        if (isset($public_gdpr_delete_input)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($public_merge_input));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($public_gdpr_delete_input));
             } else {
-                $httpBody = $public_merge_input;
+                $httpBody = $public_gdpr_delete_input;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

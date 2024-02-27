@@ -116,7 +116,7 @@ class BasicApi
     }
 
     /**
-     * Operation archive
+     * Operation deleteCrmV3ObjectsQuotesQuoteId
      *
      * Archive
      *
@@ -126,13 +126,13 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($quote_id)
+    public function deleteCrmV3ObjectsQuotesQuoteId($quote_id)
     {
-        $this->archiveWithHttpInfo($quote_id);
+        $this->deleteCrmV3ObjectsQuotesQuoteIdWithHttpInfo($quote_id);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation deleteCrmV3ObjectsQuotesQuoteIdWithHttpInfo
      *
      * Archive
      *
@@ -142,9 +142,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($quote_id)
+    public function deleteCrmV3ObjectsQuotesQuoteIdWithHttpInfo($quote_id)
     {
-        $request = $this->archiveRequest($quote_id);
+        $request = $this->deleteCrmV3ObjectsQuotesQuoteIdRequest($quote_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -199,7 +199,7 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation deleteCrmV3ObjectsQuotesQuoteIdAsync
      *
      * Archive
      *
@@ -208,9 +208,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($quote_id)
+    public function deleteCrmV3ObjectsQuotesQuoteIdAsync($quote_id)
     {
-        return $this->archiveAsyncWithHttpInfo($quote_id)
+        return $this->deleteCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo($quote_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -219,7 +219,7 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation deleteCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo
      *
      * Archive
      *
@@ -228,10 +228,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($quote_id)
+    public function deleteCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo($quote_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($quote_id);
+        $request = $this->deleteCrmV3ObjectsQuotesQuoteIdRequest($quote_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -257,19 +257,19 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'deleteCrmV3ObjectsQuotesQuoteId'
      *
      * @param  string $quote_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($quote_id)
+    public function deleteCrmV3ObjectsQuotesQuoteIdRequest($quote_id)
     {
         // verify the required parameter 'quote_id' is set
         if ($quote_id === null || (is_array($quote_id) && count($quote_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $quote_id when calling archive'
+                'Missing the required parameter $quote_id when calling deleteCrmV3ObjectsQuotesQuoteId'
             );
         }
 
@@ -354,689 +354,7 @@ class BasicApi
     }
 
     /**
-     * Operation create
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create simple_public_object_input_for_create (required)
-     *
-     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error
-     */
-    public function create($simple_public_object_input_for_create)
-    {
-        list($response) = $this->createWithHttpInfo($simple_public_object_input_for_create);
-        return $response;
-    }
-
-    /**
-     * Operation createWithHttpInfo
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
-     *
-     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createWithHttpInfo($simple_public_object_input_for_create)
-    {
-        $request = $this->createRequest($simple_public_object_input_for_create);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Quotes\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsync
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsync($simple_public_object_input_for_create)
-    {
-        return $this->createAsyncWithHttpInfo($simple_public_object_input_for_create)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncWithHttpInfo
-     *
-     * Create
-     *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncWithHttpInfo($simple_public_object_input_for_create)
-    {
-        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
-        $request = $this->createRequest($simple_public_object_input_for_create);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'create'
-     *
-     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRequest($simple_public_object_input_for_create)
-    {
-        // verify the required parameter 'simple_public_object_input_for_create' is set
-        if ($simple_public_object_input_for_create === null || (is_array($simple_public_object_input_for_create) && count($simple_public_object_input_for_create) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $simple_public_object_input_for_create when calling create'
-            );
-        }
-
-        $resourcePath = '/crm/v3/objects/quotes';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($simple_public_object_input_for_create)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($simple_public_object_input_for_create));
-            } else {
-                $httpBody = $simple_public_object_input_for_create;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getById
-     *
-     * Read
-     *
-     * @param  string $quote_id quote_id (required)
-     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
-     *
-     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Quotes\Model\Error
-     */
-    public function getById($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
-    {
-        list($response) = $this->getByIdWithHttpInfo($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property);
-        return $response;
-    }
-
-    /**
-     * Operation getByIdWithHttpInfo
-     *
-     * Read
-     *
-     * @param  string $quote_id (required)
-     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
-     *
-     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getByIdWithHttpInfo($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
-    {
-        $request = $this->getByIdRequest($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Quotes\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Quotes\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Quotes\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getByIdAsync
-     *
-     * Read
-     *
-     * @param  string $quote_id (required)
-     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsync($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
-    {
-        return $this->getByIdAsyncWithHttpInfo($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getByIdAsyncWithHttpInfo
-     *
-     * Read
-     *
-     * @param  string $quote_id (required)
-     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsyncWithHttpInfo($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
-    {
-        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations';
-        $request = $this->getByIdRequest($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getById'
-     *
-     * @param  string $quote_id (required)
-     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getByIdRequest($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
-    {
-        // verify the required parameter 'quote_id' is set
-        if ($quote_id === null || (is_array($quote_id) && count($quote_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $quote_id when calling getById'
-            );
-        }
-
-        $resourcePath = '/crm/v3/objects/quotes/{quoteId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties_with_history,
-            'propertiesWithHistory', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $associations,
-            'associations', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_property,
-            'idProperty', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($quote_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'quoteId' . '}',
-                ObjectSerializer::toPathValue($quote_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', '*/*']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', '*/*'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getPage
+     * Operation getCrmV3ObjectsQuotes
      *
      * List
      *
@@ -1051,14 +369,14 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function getPage($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
+    public function getCrmV3ObjectsQuotes($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
     {
-        list($response) = $this->getPageWithHttpInfo($limit, $after, $properties, $properties_with_history, $associations, $archived);
+        list($response) = $this->getCrmV3ObjectsQuotesWithHttpInfo($limit, $after, $properties, $properties_with_history, $associations, $archived);
         return $response;
     }
 
     /**
-     * Operation getPageWithHttpInfo
+     * Operation getCrmV3ObjectsQuotesWithHttpInfo
      *
      * List
      *
@@ -1073,9 +391,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
+    public function getCrmV3ObjectsQuotesWithHttpInfo($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
     {
-        $request = $this->getPageRequest($limit, $after, $properties, $properties_with_history, $associations, $archived);
+        $request = $this->getCrmV3ObjectsQuotesRequest($limit, $after, $properties, $properties_with_history, $associations, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1185,7 +503,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPageAsync
+     * Operation getCrmV3ObjectsQuotesAsync
      *
      * List
      *
@@ -1199,9 +517,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
+    public function getCrmV3ObjectsQuotesAsync($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
     {
-        return $this->getPageAsyncWithHttpInfo($limit, $after, $properties, $properties_with_history, $associations, $archived)
+        return $this->getCrmV3ObjectsQuotesAsyncWithHttpInfo($limit, $after, $properties, $properties_with_history, $associations, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1210,7 +528,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPageAsyncWithHttpInfo
+     * Operation getCrmV3ObjectsQuotesAsyncWithHttpInfo
      *
      * List
      *
@@ -1224,10 +542,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
+    public function getCrmV3ObjectsQuotesAsyncWithHttpInfo($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
-        $request = $this->getPageRequest($limit, $after, $properties, $properties_with_history, $associations, $archived);
+        $request = $this->getCrmV3ObjectsQuotesRequest($limit, $after, $properties, $properties_with_history, $associations, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1266,7 +584,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getPage'
+     * Create request for operation 'getCrmV3ObjectsQuotes'
      *
      * @param  int $limit The maximum number of results to display per page. (optional, default to 10)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
@@ -1278,7 +596,7 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
+    public function getCrmV3ObjectsQuotesRequest($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
     {
 
         $resourcePath = '/crm/v3/objects/quotes';
@@ -1408,7 +726,384 @@ class BasicApi
     }
 
     /**
-     * Operation update
+     * Operation getCrmV3ObjectsQuotesQuoteId
+     *
+     * Read
+     *
+     * @param  string $quote_id quote_id (required)
+     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     *
+     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Quotes\Model\Error
+     */
+    public function getCrmV3ObjectsQuotesQuoteId($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    {
+        list($response) = $this->getCrmV3ObjectsQuotesQuoteIdWithHttpInfo($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property);
+        return $response;
+    }
+
+    /**
+     * Operation getCrmV3ObjectsQuotesQuoteIdWithHttpInfo
+     *
+     * Read
+     *
+     * @param  string $quote_id (required)
+     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     *
+     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCrmV3ObjectsQuotesQuoteIdWithHttpInfo($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    {
+        $request = $this->getCrmV3ObjectsQuotesQuoteIdRequest($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Quotes\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Quotes\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Quotes\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCrmV3ObjectsQuotesQuoteIdAsync
+     *
+     * Read
+     *
+     * @param  string $quote_id (required)
+     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCrmV3ObjectsQuotesQuoteIdAsync($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    {
+        return $this->getCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo
+     *
+     * Read
+     *
+     * @param  string $quote_id (required)
+     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    {
+        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations';
+        $request = $this->getCrmV3ObjectsQuotesQuoteIdRequest($quote_id, $properties, $properties_with_history, $associations, $archived, $id_property);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCrmV3ObjectsQuotesQuoteId'
+     *
+     * @param  string $quote_id (required)
+     * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCrmV3ObjectsQuotesQuoteIdRequest($quote_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    {
+        // verify the required parameter 'quote_id' is set
+        if ($quote_id === null || (is_array($quote_id) && count($quote_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $quote_id when calling getCrmV3ObjectsQuotesQuoteId'
+            );
+        }
+
+        $resourcePath = '/crm/v3/objects/quotes/{quoteId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties_with_history,
+            'propertiesWithHistory', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $associations,
+            'associations', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id_property,
+            'idProperty', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($quote_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'quoteId' . '}',
+                ObjectSerializer::toPathValue($quote_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation patchCrmV3ObjectsQuotesQuoteId
      *
      * Update
      *
@@ -1420,14 +1115,14 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function update($quote_id, $simple_public_object_input, $id_property = null)
+    public function patchCrmV3ObjectsQuotesQuoteId($quote_id, $simple_public_object_input, $id_property = null)
     {
-        list($response) = $this->updateWithHttpInfo($quote_id, $simple_public_object_input, $id_property);
+        list($response) = $this->patchCrmV3ObjectsQuotesQuoteIdWithHttpInfo($quote_id, $simple_public_object_input, $id_property);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation patchCrmV3ObjectsQuotesQuoteIdWithHttpInfo
      *
      * Update
      *
@@ -1439,9 +1134,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($quote_id, $simple_public_object_input, $id_property = null)
+    public function patchCrmV3ObjectsQuotesQuoteIdWithHttpInfo($quote_id, $simple_public_object_input, $id_property = null)
     {
-        $request = $this->updateRequest($quote_id, $simple_public_object_input, $id_property);
+        $request = $this->patchCrmV3ObjectsQuotesQuoteIdRequest($quote_id, $simple_public_object_input, $id_property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1551,7 +1246,7 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation patchCrmV3ObjectsQuotesQuoteIdAsync
      *
      * Update
      *
@@ -1562,9 +1257,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($quote_id, $simple_public_object_input, $id_property = null)
+    public function patchCrmV3ObjectsQuotesQuoteIdAsync($quote_id, $simple_public_object_input, $id_property = null)
     {
-        return $this->updateAsyncWithHttpInfo($quote_id, $simple_public_object_input, $id_property)
+        return $this->patchCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo($quote_id, $simple_public_object_input, $id_property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1573,7 +1268,7 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation patchCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo
      *
      * Update
      *
@@ -1584,10 +1279,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($quote_id, $simple_public_object_input, $id_property = null)
+    public function patchCrmV3ObjectsQuotesQuoteIdAsyncWithHttpInfo($quote_id, $simple_public_object_input, $id_property = null)
     {
         $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
-        $request = $this->updateRequest($quote_id, $simple_public_object_input, $id_property);
+        $request = $this->patchCrmV3ObjectsQuotesQuoteIdRequest($quote_id, $simple_public_object_input, $id_property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1626,7 +1321,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'patchCrmV3ObjectsQuotesQuoteId'
      *
      * @param  string $quote_id (required)
      * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInput $simple_public_object_input (required)
@@ -1635,18 +1330,18 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($quote_id, $simple_public_object_input, $id_property = null)
+    public function patchCrmV3ObjectsQuotesQuoteIdRequest($quote_id, $simple_public_object_input, $id_property = null)
     {
         // verify the required parameter 'quote_id' is set
         if ($quote_id === null || (is_array($quote_id) && count($quote_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $quote_id when calling update'
+                'Missing the required parameter $quote_id when calling patchCrmV3ObjectsQuotesQuoteId'
             );
         }
         // verify the required parameter 'simple_public_object_input' is set
         if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $simple_public_object_input when calling update'
+                'Missing the required parameter $simple_public_object_input when calling patchCrmV3ObjectsQuotesQuoteId'
             );
         }
 
@@ -1739,6 +1434,311 @@ class BasicApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postCrmV3ObjectsQuotes
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create simple_public_object_input_for_create (required)
+     *
+     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error
+     */
+    public function postCrmV3ObjectsQuotes($simple_public_object_input_for_create)
+    {
+        list($response) = $this->postCrmV3ObjectsQuotesWithHttpInfo($simple_public_object_input_for_create);
+        return $response;
+    }
+
+    /**
+     * Operation postCrmV3ObjectsQuotesWithHttpInfo
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
+     *
+     * @throws \HubSpot\Client\Crm\Quotes\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postCrmV3ObjectsQuotesWithHttpInfo($simple_public_object_input_for_create)
+    {
+        $request = $this->postCrmV3ObjectsQuotesRequest($simple_public_object_input_for_create);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Quotes\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Quotes\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Quotes\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Quotes\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postCrmV3ObjectsQuotesAsync
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postCrmV3ObjectsQuotesAsync($simple_public_object_input_for_create)
+    {
+        return $this->postCrmV3ObjectsQuotesAsyncWithHttpInfo($simple_public_object_input_for_create)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postCrmV3ObjectsQuotesAsyncWithHttpInfo
+     *
+     * Create
+     *
+     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postCrmV3ObjectsQuotesAsyncWithHttpInfo($simple_public_object_input_for_create)
+    {
+        $returnType = '\HubSpot\Client\Crm\Quotes\Model\SimplePublicObject';
+        $request = $this->postCrmV3ObjectsQuotesRequest($simple_public_object_input_for_create);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postCrmV3ObjectsQuotes'
+     *
+     * @param  \HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate $simple_public_object_input_for_create (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postCrmV3ObjectsQuotesRequest($simple_public_object_input_for_create)
+    {
+        // verify the required parameter 'simple_public_object_input_for_create' is set
+        if ($simple_public_object_input_for_create === null || (is_array($simple_public_object_input_for_create) && count($simple_public_object_input_for_create) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $simple_public_object_input_for_create when calling postCrmV3ObjectsQuotes'
+            );
+        }
+
+        $resourcePath = '/crm/v3/objects/quotes';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', '*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', '*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($simple_public_object_input_for_create)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($simple_public_object_input_for_create));
+            } else {
+                $httpBody = $simple_public_object_input_for_create;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -57,8 +57,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'properties' => 'array<string,string>',
-        'associations' => '\HubSpot\Client\Crm\Products\Model\PublicAssociationsForObject[]'
+        'associations' => '\HubSpot\Client\Crm\Products\Model\PublicAssociationsForObject[]',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -69,8 +69,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'properties' => null,
-        'associations' => null
+        'associations' => null,
+        'properties' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'properties' => 'properties',
-        'associations' => 'associations'
+        'associations' => 'associations',
+        'properties' => 'properties'
     ];
 
     /**
@@ -110,8 +110,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'properties' => 'setProperties',
-        'associations' => 'setAssociations'
+        'associations' => 'setAssociations',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -120,8 +120,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'properties' => 'getProperties',
-        'associations' => 'getAssociations'
+        'associations' => 'getAssociations',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -181,8 +181,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['properties'] = $data['properties'] ?? null;
         $this->container['associations'] = $data['associations'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
     }
 
     /**
@@ -194,12 +194,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['associations'] === null) {
-            $invalidProperties[] = "'associations' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -216,33 +210,9 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets properties
-     *
-     * @return array<string,string>
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string> $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
      * Gets associations
      *
-     * @return \HubSpot\Client\Crm\Products\Model\PublicAssociationsForObject[]
+     * @return \HubSpot\Client\Crm\Products\Model\PublicAssociationsForObject[]|null
      */
     public function getAssociations()
     {
@@ -252,13 +222,37 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     /**
      * Sets associations
      *
-     * @param \HubSpot\Client\Crm\Products\Model\PublicAssociationsForObject[] $associations associations
+     * @param \HubSpot\Client\Crm\Products\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
     public function setAssociations($associations)
     {
         $this->container['associations'] = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>|null
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string>|null $properties 
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
 
         return $this;
     }
