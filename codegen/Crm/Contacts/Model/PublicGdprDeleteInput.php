@@ -57,8 +57,8 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_id' => 'string',
-        'id_property' => 'string'
+        'id_property' => 'string',
+        'object_id' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object_id' => null,
-        'id_property' => null
+        'id_property' => null,
+        'object_id' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_id' => 'objectId',
-        'id_property' => 'idProperty'
+        'id_property' => 'idProperty',
+        'object_id' => 'objectId'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'object_id' => 'setObjectId',
-        'id_property' => 'setIdProperty'
+        'id_property' => 'setIdProperty',
+        'object_id' => 'setObjectId'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'object_id' => 'getObjectId',
-        'id_property' => 'getIdProperty'
+        'id_property' => 'getIdProperty',
+        'object_id' => 'getObjectId'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['object_id'] = $data['object_id'] ?? null;
         $this->container['id_property'] = $data['id_property'] ?? null;
+        $this->container['object_id'] = $data['object_id'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets object_id
-     *
-     * @return string
-     */
-    public function getObjectId()
-    {
-        return $this->container['object_id'];
-    }
-
-    /**
-     * Sets object_id
-     *
-     * @param string $object_id object_id
-     *
-     * @return self
-     */
-    public function setObjectId($object_id)
-    {
-        $this->container['object_id'] = $object_id;
-
-        return $this;
-    }
-
-    /**
      * Gets id_property
      *
      * @return string|null
@@ -256,6 +232,30 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setIdProperty($id_property)
     {
         $this->container['id_property'] = $id_property;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string $object_id object_id
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        $this->container['object_id'] = $object_id;
 
         return $this;
     }
