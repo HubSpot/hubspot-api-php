@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectBatchInput
+ * PublicGdprDeleteInput
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Deals\ObjectSerializer;
 
 /**
- * SimplePublicObjectBatchInput Class Doc Comment
+ * PublicGdprDeleteInput Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Deals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Deals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectBatchInput';
+    protected static $openAPIModelName = 'PublicGdprDeleteInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'id_property' => 'string',
-        'id' => 'string',
-        'properties' => 'array<string,string>'
+        'object_id' => 'string'
     ];
 
     /**
@@ -71,8 +70,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'id_property' => null,
-        'id' => null,
-        'properties' => null
+        'object_id' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'id_property' => 'idProperty',
-        'id' => 'id',
-        'properties' => 'properties'
+        'object_id' => 'objectId'
     ];
 
     /**
@@ -114,8 +111,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'id_property' => 'setIdProperty',
-        'id' => 'setId',
-        'properties' => 'setProperties'
+        'object_id' => 'setObjectId'
     ];
 
     /**
@@ -125,8 +121,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'id_property' => 'getIdProperty',
-        'id' => 'getId',
-        'properties' => 'getProperties'
+        'object_id' => 'getObjectId'
     ];
 
     /**
@@ -187,8 +182,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->container['id_property'] = $data['id_property'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['object_id'] = $data['object_id'] ?? null;
     }
 
     /**
@@ -200,11 +194,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
+        if ($this->container['object_id'] === null) {
+            $invalidProperties[] = "'object_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -246,49 +237,25 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets id
+     * Gets object_id
      *
      * @return string
      */
-    public function getId()
+    public function getObjectId()
     {
-        return $this->container['id'];
+        return $this->container['object_id'];
     }
 
     /**
-     * Sets id
+     * Sets object_id
      *
-     * @param string $id id
+     * @param string $object_id object_id
      *
      * @return self
      */
-    public function setId($id)
+    public function setObjectId($object_id)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string> $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        $this->container['properties'] = $properties;
+        $this->container['object_id'] = $object_id;
 
         return $this;
     }

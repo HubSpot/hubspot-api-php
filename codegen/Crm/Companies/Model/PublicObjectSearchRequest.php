@@ -57,12 +57,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'filter_groups' => '\HubSpot\Client\Crm\Companies\Model\FilterGroup[]',
-        'sorts' => 'string[]',
         'query' => 'string',
-        'properties' => 'string[]',
         'limit' => 'int',
-        'after' => 'int'
+        'after' => 'string',
+        'sorts' => 'string[]',
+        'properties' => 'string[]',
+        'filter_groups' => '\HubSpot\Client\Crm\Companies\Model\FilterGroup[]'
     ];
 
     /**
@@ -73,12 +73,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'filter_groups' => null,
-        'sorts' => null,
         'query' => null,
-        'properties' => null,
         'limit' => 'int32',
-        'after' => 'int32'
+        'after' => null,
+        'sorts' => null,
+        'properties' => null,
+        'filter_groups' => null
     ];
 
     /**
@@ -108,12 +108,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'filter_groups' => 'filterGroups',
-        'sorts' => 'sorts',
         'query' => 'query',
-        'properties' => 'properties',
         'limit' => 'limit',
-        'after' => 'after'
+        'after' => 'after',
+        'sorts' => 'sorts',
+        'properties' => 'properties',
+        'filter_groups' => 'filterGroups'
     ];
 
     /**
@@ -122,12 +122,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'filter_groups' => 'setFilterGroups',
-        'sorts' => 'setSorts',
         'query' => 'setQuery',
-        'properties' => 'setProperties',
         'limit' => 'setLimit',
-        'after' => 'setAfter'
+        'after' => 'setAfter',
+        'sorts' => 'setSorts',
+        'properties' => 'setProperties',
+        'filter_groups' => 'setFilterGroups'
     ];
 
     /**
@@ -136,12 +136,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'filter_groups' => 'getFilterGroups',
-        'sorts' => 'getSorts',
         'query' => 'getQuery',
-        'properties' => 'getProperties',
         'limit' => 'getLimit',
-        'after' => 'getAfter'
+        'after' => 'getAfter',
+        'sorts' => 'getSorts',
+        'properties' => 'getProperties',
+        'filter_groups' => 'getFilterGroups'
     ];
 
     /**
@@ -201,12 +201,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['filter_groups'] = $data['filter_groups'] ?? null;
-        $this->container['sorts'] = $data['sorts'] ?? null;
         $this->container['query'] = $data['query'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
         $this->container['limit'] = $data['limit'] ?? null;
         $this->container['after'] = $data['after'] ?? null;
+        $this->container['sorts'] = $data['sorts'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['filter_groups'] = $data['filter_groups'] ?? null;
     }
 
     /**
@@ -218,8 +218,11 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['filter_groups'] === null) {
-            $invalidProperties[] = "'filter_groups' can't be null";
+        if ($this->container['limit'] === null) {
+            $invalidProperties[] = "'limit' can't be null";
+        }
+        if ($this->container['after'] === null) {
+            $invalidProperties[] = "'after' can't be null";
         }
         if ($this->container['sorts'] === null) {
             $invalidProperties[] = "'sorts' can't be null";
@@ -227,11 +230,8 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
         }
-        if ($this->container['limit'] === null) {
-            $invalidProperties[] = "'limit' can't be null";
-        }
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
+        if ($this->container['filter_groups'] === null) {
+            $invalidProperties[] = "'filter_groups' can't be null";
         }
         return $invalidProperties;
     }
@@ -247,54 +247,6 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets filter_groups
-     *
-     * @return \HubSpot\Client\Crm\Companies\Model\FilterGroup[]
-     */
-    public function getFilterGroups()
-    {
-        return $this->container['filter_groups'];
-    }
-
-    /**
-     * Sets filter_groups
-     *
-     * @param \HubSpot\Client\Crm\Companies\Model\FilterGroup[] $filter_groups filter_groups
-     *
-     * @return self
-     */
-    public function setFilterGroups($filter_groups)
-    {
-        $this->container['filter_groups'] = $filter_groups;
-
-        return $this;
-    }
-
-    /**
-     * Gets sorts
-     *
-     * @return string[]
-     */
-    public function getSorts()
-    {
-        return $this->container['sorts'];
-    }
-
-    /**
-     * Sets sorts
-     *
-     * @param string[] $sorts sorts
-     *
-     * @return self
-     */
-    public function setSorts($sorts)
-    {
-        $this->container['sorts'] = $sorts;
-
-        return $this;
-    }
 
     /**
      * Gets query
@@ -316,30 +268,6 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setQuery($query)
     {
         $this->container['query'] = $query;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return string[]
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param string[] $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        $this->container['properties'] = $properties;
 
         return $this;
     }
@@ -371,7 +299,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets after
      *
-     * @return int
+     * @return string
      */
     public function getAfter()
     {
@@ -381,13 +309,85 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets after
      *
-     * @param int $after after
+     * @param string $after after
      *
      * @return self
      */
     public function setAfter($after)
     {
         $this->container['after'] = $after;
+
+        return $this;
+    }
+
+    /**
+     * Gets sorts
+     *
+     * @return string[]
+     */
+    public function getSorts()
+    {
+        return $this->container['sorts'];
+    }
+
+    /**
+     * Sets sorts
+     *
+     * @param string[] $sorts sorts
+     *
+     * @return self
+     */
+    public function setSorts($sorts)
+    {
+        $this->container['sorts'] = $sorts;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return string[]
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param string[] $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets filter_groups
+     *
+     * @return \HubSpot\Client\Crm\Companies\Model\FilterGroup[]
+     */
+    public function getFilterGroups()
+    {
+        return $this->container['filter_groups'];
+    }
+
+    /**
+     * Sets filter_groups
+     *
+     * @param \HubSpot\Client\Crm\Companies\Model\FilterGroup[] $filter_groups filter_groups
+     *
+     * @return self
+     */
+    public function setFilterGroups($filter_groups)
+    {
+        $this->container['filter_groups'] = $filter_groups;
 
         return $this;
     }
