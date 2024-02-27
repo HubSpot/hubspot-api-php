@@ -116,7 +116,7 @@ class SearchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesSearch
+     * Operation doSearch
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      *
@@ -124,14 +124,14 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Quotes\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function postCrmV3ObjectsQuotesSearch($public_object_search_request)
+    public function doSearch($public_object_search_request)
     {
-        list($response) = $this->postCrmV3ObjectsQuotesSearchWithHttpInfo($public_object_search_request);
+        list($response) = $this->doSearchWithHttpInfo($public_object_search_request);
         return $response;
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesSearchWithHttpInfo
+     * Operation doSearchWithHttpInfo
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
@@ -139,9 +139,9 @@ class SearchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Quotes\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesSearchWithHttpInfo($public_object_search_request)
+    public function doSearchWithHttpInfo($public_object_search_request)
     {
-        $request = $this->postCrmV3ObjectsQuotesSearchRequest($public_object_search_request);
+        $request = $this->doSearchRequest($public_object_search_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -251,16 +251,16 @@ class SearchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesSearchAsync
+     * Operation doSearchAsync
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesSearchAsync($public_object_search_request)
+    public function doSearchAsync($public_object_search_request)
     {
-        return $this->postCrmV3ObjectsQuotesSearchAsyncWithHttpInfo($public_object_search_request)
+        return $this->doSearchAsyncWithHttpInfo($public_object_search_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -269,17 +269,17 @@ class SearchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesSearchAsyncWithHttpInfo
+     * Operation doSearchAsyncWithHttpInfo
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesSearchAsyncWithHttpInfo($public_object_search_request)
+    public function doSearchAsyncWithHttpInfo($public_object_search_request)
     {
         $returnType = '\HubSpot\Client\Crm\Quotes\Model\CollectionResponseWithTotalSimplePublicObjectForwardPaging';
-        $request = $this->postCrmV3ObjectsQuotesSearchRequest($public_object_search_request);
+        $request = $this->doSearchRequest($public_object_search_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -318,19 +318,19 @@ class SearchApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesSearch'
+     * Create request for operation 'doSearch'
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\PublicObjectSearchRequest $public_object_search_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesSearchRequest($public_object_search_request)
+    public function doSearchRequest($public_object_search_request)
     {
         // verify the required parameter 'public_object_search_request' is set
         if ($public_object_search_request === null || (is_array($public_object_search_request) && count($public_object_search_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_object_search_request when calling postCrmV3ObjectsQuotesSearch'
+                'Missing the required parameter $public_object_search_request when calling doSearch'
             );
         }
 

@@ -116,7 +116,7 @@ class GDPRApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesGdprDelete
+     * Operation purge
      *
      * GDPR DELETE
      *
@@ -126,13 +126,13 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function postCrmV3ObjectsQuotesGdprDelete($public_gdpr_delete_input)
+    public function purge($public_gdpr_delete_input)
     {
-        $this->postCrmV3ObjectsQuotesGdprDeleteWithHttpInfo($public_gdpr_delete_input);
+        $this->purgeWithHttpInfo($public_gdpr_delete_input);
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesGdprDeleteWithHttpInfo
+     * Operation purgeWithHttpInfo
      *
      * GDPR DELETE
      *
@@ -142,9 +142,9 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesGdprDeleteWithHttpInfo($public_gdpr_delete_input)
+    public function purgeWithHttpInfo($public_gdpr_delete_input)
     {
-        $request = $this->postCrmV3ObjectsQuotesGdprDeleteRequest($public_gdpr_delete_input);
+        $request = $this->purgeRequest($public_gdpr_delete_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -199,7 +199,7 @@ class GDPRApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesGdprDeleteAsync
+     * Operation purgeAsync
      *
      * GDPR DELETE
      *
@@ -208,9 +208,9 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesGdprDeleteAsync($public_gdpr_delete_input)
+    public function purgeAsync($public_gdpr_delete_input)
     {
-        return $this->postCrmV3ObjectsQuotesGdprDeleteAsyncWithHttpInfo($public_gdpr_delete_input)
+        return $this->purgeAsyncWithHttpInfo($public_gdpr_delete_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -219,7 +219,7 @@ class GDPRApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesGdprDeleteAsyncWithHttpInfo
+     * Operation purgeAsyncWithHttpInfo
      *
      * GDPR DELETE
      *
@@ -228,10 +228,10 @@ class GDPRApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesGdprDeleteAsyncWithHttpInfo($public_gdpr_delete_input)
+    public function purgeAsyncWithHttpInfo($public_gdpr_delete_input)
     {
         $returnType = '';
-        $request = $this->postCrmV3ObjectsQuotesGdprDeleteRequest($public_gdpr_delete_input);
+        $request = $this->purgeRequest($public_gdpr_delete_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -257,19 +257,19 @@ class GDPRApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesGdprDelete'
+     * Create request for operation 'purge'
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesGdprDeleteRequest($public_gdpr_delete_input)
+    public function purgeRequest($public_gdpr_delete_input)
     {
         // verify the required parameter 'public_gdpr_delete_input' is set
         if ($public_gdpr_delete_input === null || (is_array($public_gdpr_delete_input) && count($public_gdpr_delete_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_gdpr_delete_input when calling postCrmV3ObjectsQuotesGdprDelete'
+                'Missing the required parameter $public_gdpr_delete_input when calling purge'
             );
         }
 

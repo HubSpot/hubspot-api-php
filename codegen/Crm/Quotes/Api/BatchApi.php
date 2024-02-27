@@ -116,7 +116,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchArchive
+     * Operation archive
      *
      * Archive a batch of quotes by ID
      *
@@ -126,13 +126,13 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function postCrmV3ObjectsQuotesBatchArchive($batch_input_simple_public_object_id)
+    public function archive($batch_input_simple_public_object_id)
     {
-        $this->postCrmV3ObjectsQuotesBatchArchiveWithHttpInfo($batch_input_simple_public_object_id);
+        $this->archiveWithHttpInfo($batch_input_simple_public_object_id);
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchArchiveWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Archive a batch of quotes by ID
      *
@@ -142,9 +142,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesBatchArchiveWithHttpInfo($batch_input_simple_public_object_id)
+    public function archiveWithHttpInfo($batch_input_simple_public_object_id)
     {
-        $request = $this->postCrmV3ObjectsQuotesBatchArchiveRequest($batch_input_simple_public_object_id);
+        $request = $this->archiveRequest($batch_input_simple_public_object_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -199,7 +199,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchArchiveAsync
+     * Operation archiveAsync
      *
      * Archive a batch of quotes by ID
      *
@@ -208,9 +208,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchArchiveAsync($batch_input_simple_public_object_id)
+    public function archiveAsync($batch_input_simple_public_object_id)
     {
-        return $this->postCrmV3ObjectsQuotesBatchArchiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
+        return $this->archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -219,7 +219,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchArchiveAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Archive a batch of quotes by ID
      *
@@ -228,10 +228,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchArchiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
+    public function archiveAsyncWithHttpInfo($batch_input_simple_public_object_id)
     {
         $returnType = '';
-        $request = $this->postCrmV3ObjectsQuotesBatchArchiveRequest($batch_input_simple_public_object_id);
+        $request = $this->archiveRequest($batch_input_simple_public_object_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -257,19 +257,19 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesBatchArchive'
+     * Create request for operation 'archive'
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesBatchArchiveRequest($batch_input_simple_public_object_id)
+    public function archiveRequest($batch_input_simple_public_object_id)
     {
         // verify the required parameter 'batch_input_simple_public_object_id' is set
         if ($batch_input_simple_public_object_id === null || (is_array($batch_input_simple_public_object_id) && count($batch_input_simple_public_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_id when calling postCrmV3ObjectsQuotesBatchArchive'
+                'Missing the required parameter $batch_input_simple_public_object_id when calling archive'
             );
         }
 
@@ -352,7 +352,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchCreate
+     * Operation create
      *
      * Create a batch of quotes
      *
@@ -362,14 +362,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function postCrmV3ObjectsQuotesBatchCreate($batch_input_simple_public_object_input_for_create)
+    public function create($batch_input_simple_public_object_input_for_create)
     {
-        list($response) = $this->postCrmV3ObjectsQuotesBatchCreateWithHttpInfo($batch_input_simple_public_object_input_for_create);
+        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input_for_create);
         return $response;
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchCreateWithHttpInfo
+     * Operation createWithHttpInfo
      *
      * Create a batch of quotes
      *
@@ -379,9 +379,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesBatchCreateWithHttpInfo($batch_input_simple_public_object_input_for_create)
+    public function createWithHttpInfo($batch_input_simple_public_object_input_for_create)
     {
-        $request = $this->postCrmV3ObjectsQuotesBatchCreateRequest($batch_input_simple_public_object_input_for_create);
+        $request = $this->createRequest($batch_input_simple_public_object_input_for_create);
 
         try {
             $options = $this->createHttpClientOption();
@@ -514,7 +514,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchCreateAsync
+     * Operation createAsync
      *
      * Create a batch of quotes
      *
@@ -523,9 +523,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchCreateAsync($batch_input_simple_public_object_input_for_create)
+    public function createAsync($batch_input_simple_public_object_input_for_create)
     {
-        return $this->postCrmV3ObjectsQuotesBatchCreateAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create)
+        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -534,7 +534,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchCreateAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
      * Create a batch of quotes
      *
@@ -543,10 +543,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchCreateAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create)
+    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create)
     {
         $returnType = '\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject';
-        $request = $this->postCrmV3ObjectsQuotesBatchCreateRequest($batch_input_simple_public_object_input_for_create);
+        $request = $this->createRequest($batch_input_simple_public_object_input_for_create);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -585,19 +585,19 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesBatchCreate'
+     * Create request for operation 'create'
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesBatchCreateRequest($batch_input_simple_public_object_input_for_create)
+    public function createRequest($batch_input_simple_public_object_input_for_create)
     {
         // verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
         if ($batch_input_simple_public_object_input_for_create === null || (is_array($batch_input_simple_public_object_input_for_create) && count($batch_input_simple_public_object_input_for_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_input_for_create when calling postCrmV3ObjectsQuotesBatchCreate'
+                'Missing the required parameter $batch_input_simple_public_object_input_for_create when calling create'
             );
         }
 
@@ -680,7 +680,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchRead
+     * Operation read
      *
      * Read a batch of quotes by internal ID, or unique property values
      *
@@ -691,14 +691,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function postCrmV3ObjectsQuotesBatchRead($batch_read_input_simple_public_object_id, $archived = false)
+    public function read($batch_read_input_simple_public_object_id, $archived = false)
     {
-        list($response) = $this->postCrmV3ObjectsQuotesBatchReadWithHttpInfo($batch_read_input_simple_public_object_id, $archived);
+        list($response) = $this->readWithHttpInfo($batch_read_input_simple_public_object_id, $archived);
         return $response;
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchReadWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * Read a batch of quotes by internal ID, or unique property values
      *
@@ -709,9 +709,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesBatchReadWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
+    public function readWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
     {
-        $request = $this->postCrmV3ObjectsQuotesBatchReadRequest($batch_read_input_simple_public_object_id, $archived);
+        $request = $this->readRequest($batch_read_input_simple_public_object_id, $archived);
 
         try {
             $options = $this->createHttpClientOption();
@@ -844,7 +844,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchReadAsync
+     * Operation readAsync
      *
      * Read a batch of quotes by internal ID, or unique property values
      *
@@ -854,9 +854,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchReadAsync($batch_read_input_simple_public_object_id, $archived = false)
+    public function readAsync($batch_read_input_simple_public_object_id, $archived = false)
     {
-        return $this->postCrmV3ObjectsQuotesBatchReadAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived)
+        return $this->readAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -865,7 +865,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchReadAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * Read a batch of quotes by internal ID, or unique property values
      *
@@ -875,10 +875,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchReadAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
+    public function readAsyncWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false)
     {
         $returnType = '\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject';
-        $request = $this->postCrmV3ObjectsQuotesBatchReadRequest($batch_read_input_simple_public_object_id, $archived);
+        $request = $this->readRequest($batch_read_input_simple_public_object_id, $archived);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -917,7 +917,7 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesBatchRead'
+     * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -925,12 +925,12 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesBatchReadRequest($batch_read_input_simple_public_object_id, $archived = false)
+    public function readRequest($batch_read_input_simple_public_object_id, $archived = false)
     {
         // verify the required parameter 'batch_read_input_simple_public_object_id' is set
         if ($batch_read_input_simple_public_object_id === null || (is_array($batch_read_input_simple_public_object_id) && count($batch_read_input_simple_public_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_read_input_simple_public_object_id when calling postCrmV3ObjectsQuotesBatchRead'
+                'Missing the required parameter $batch_read_input_simple_public_object_id when calling read'
             );
         }
 
@@ -1022,7 +1022,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchUpdate
+     * Operation update
      *
      * Update a batch of quotes
      *
@@ -1032,14 +1032,14 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Quotes\Model\Error
      */
-    public function postCrmV3ObjectsQuotesBatchUpdate($batch_input_simple_public_object_batch_input)
+    public function update($batch_input_simple_public_object_batch_input)
     {
-        list($response) = $this->postCrmV3ObjectsQuotesBatchUpdateWithHttpInfo($batch_input_simple_public_object_batch_input);
+        list($response) = $this->updateWithHttpInfo($batch_input_simple_public_object_batch_input);
         return $response;
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchUpdateWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update a batch of quotes
      *
@@ -1049,9 +1049,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Quotes\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsQuotesBatchUpdateWithHttpInfo($batch_input_simple_public_object_batch_input)
+    public function updateWithHttpInfo($batch_input_simple_public_object_batch_input)
     {
-        $request = $this->postCrmV3ObjectsQuotesBatchUpdateRequest($batch_input_simple_public_object_batch_input);
+        $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1184,7 +1184,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchUpdateAsync
+     * Operation updateAsync
      *
      * Update a batch of quotes
      *
@@ -1193,9 +1193,9 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchUpdateAsync($batch_input_simple_public_object_batch_input)
+    public function updateAsync($batch_input_simple_public_object_batch_input)
     {
-        return $this->postCrmV3ObjectsQuotesBatchUpdateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
+        return $this->updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1204,7 +1204,7 @@ class BatchApi
     }
 
     /**
-     * Operation postCrmV3ObjectsQuotesBatchUpdateAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update a batch of quotes
      *
@@ -1213,10 +1213,10 @@ class BatchApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsQuotesBatchUpdateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
+    public function updateAsyncWithHttpInfo($batch_input_simple_public_object_batch_input)
     {
         $returnType = '\HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject';
-        $request = $this->postCrmV3ObjectsQuotesBatchUpdateRequest($batch_input_simple_public_object_batch_input);
+        $request = $this->updateRequest($batch_input_simple_public_object_batch_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1255,19 +1255,19 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsQuotesBatchUpdate'
+     * Create request for operation 'update'
      *
      * @param  \HubSpot\Client\Crm\Quotes\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsQuotesBatchUpdateRequest($batch_input_simple_public_object_batch_input)
+    public function updateRequest($batch_input_simple_public_object_batch_input)
     {
         // verify the required parameter 'batch_input_simple_public_object_batch_input' is set
         if ($batch_input_simple_public_object_batch_input === null || (is_array($batch_input_simple_public_object_batch_input) && count($batch_input_simple_public_object_batch_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_batch_input when calling postCrmV3ObjectsQuotesBatchUpdate'
+                'Missing the required parameter $batch_input_simple_public_object_batch_input when calling update'
             );
         }
 
