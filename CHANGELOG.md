@@ -74,6 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\StandardError:category`.
 - `crm()->associations()->v4()->schema()->definitionsApi()->delete()` => `crm()->associations()->v4()->schema()->definitionsApi()->archive()`.
 - Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\Model\StandardError:category`.
 - Added `crm()->extensions()->calling()->recordingSettingsApi()` API.
 - `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
 - `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
