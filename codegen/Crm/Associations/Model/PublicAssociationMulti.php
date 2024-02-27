@@ -11,7 +11,7 @@
  */
 
 /**
- * Associations
+ * CRM Associations
  *
  * Associations define the relationships between objects in HubSpot. These endpoints allow you to create, read, and remove associations.
  *
@@ -58,8 +58,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'from' => '\HubSpot\Client\Crm\Associations\Model\PublicObjectId',
-        'to' => '\HubSpot\Client\Crm\Associations\Model\AssociatedId[]',
-        'paging' => '\HubSpot\Client\Crm\Associations\Model\Paging'
+        'paging' => '\HubSpot\Client\Crm\Associations\Model\Paging',
+        'to' => '\HubSpot\Client\Crm\Associations\Model\AssociatedId[]'
     ];
 
     /**
@@ -71,8 +71,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'from' => null,
-        'to' => null,
-        'paging' => null
+        'paging' => null,
+        'to' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'from' => 'from',
-        'to' => 'to',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'to' => 'to'
     ];
 
     /**
@@ -114,8 +114,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'from' => 'setFrom',
-        'to' => 'setTo',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'to' => 'setTo'
     ];
 
     /**
@@ -125,8 +125,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'from' => 'getFrom',
-        'to' => 'getTo',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'to' => 'getTo'
     ];
 
     /**
@@ -187,8 +187,8 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['from'] = $data['from'] ?? null;
-        $this->container['to'] = $data['to'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['to'] = $data['to'] ?? null;
     }
 
     /**
@@ -246,30 +246,6 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets to
-     *
-     * @return \HubSpot\Client\Crm\Associations\Model\AssociatedId[]
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param \HubSpot\Client\Crm\Associations\Model\AssociatedId[] $to The IDs of objects that are associated with the object identified by the ID in 'from'.
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Associations\Model\Paging|null
@@ -289,6 +265,30 @@ class PublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return \HubSpot\Client\Crm\Associations\Model\AssociatedId[]
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param \HubSpot\Client\Crm\Associations\Model\AssociatedId[] $to The IDs of objects that are associated with the object identified by the ID in 'from'.
+     *
+     * @return self
+     */
+    public function setTo($to)
+    {
+        $this->container['to'] = $to;
 
         return $this;
     }
