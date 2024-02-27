@@ -57,13 +57,13 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
+        'created_at' => '\DateTime',
+        'archived' => 'bool',
+        'archived_at' => '\DateTime',
+        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>',
         'id' => 'string',
         'properties' => 'array<string,string>',
-        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'archived' => 'bool',
-        'archived_at' => '\DateTime'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -74,13 +74,13 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'created_at' => 'date-time',
+        'archived' => null,
+        'archived_at' => 'date-time',
+        'properties_with_history' => null,
         'id' => null,
         'properties' => null,
-        'properties_with_history' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'archived' => null,
-        'archived_at' => 'date-time'
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -110,13 +110,13 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
+        'created_at' => 'createdAt',
+        'archived' => 'archived',
+        'archived_at' => 'archivedAt',
+        'properties_with_history' => 'propertiesWithHistory',
         'id' => 'id',
         'properties' => 'properties',
-        'properties_with_history' => 'propertiesWithHistory',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'archived' => 'archived',
-        'archived_at' => 'archivedAt'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -125,13 +125,13 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
+        'created_at' => 'setCreatedAt',
+        'archived' => 'setArchived',
+        'archived_at' => 'setArchivedAt',
+        'properties_with_history' => 'setPropertiesWithHistory',
         'id' => 'setId',
         'properties' => 'setProperties',
-        'properties_with_history' => 'setPropertiesWithHistory',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'archived' => 'setArchived',
-        'archived_at' => 'setArchivedAt'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -140,13 +140,13 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
+        'created_at' => 'getCreatedAt',
+        'archived' => 'getArchived',
+        'archived_at' => 'getArchivedAt',
+        'properties_with_history' => 'getPropertiesWithHistory',
         'id' => 'getId',
         'properties' => 'getProperties',
-        'properties_with_history' => 'getPropertiesWithHistory',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'archived' => 'getArchived',
-        'archived_at' => 'getArchivedAt'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -206,13 +206,13 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
-        $this->container['properties_with_history'] = $data['properties_with_history'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
         $this->container['archived_at'] = $data['archived_at'] ?? null;
+        $this->container['properties_with_history'] = $data['properties_with_history'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -224,14 +224,11 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -250,78 +247,6 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string> $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties_with_history
-     *
-     * @return array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>|null
-     */
-    public function getPropertiesWithHistory()
-    {
-        return $this->container['properties_with_history'];
-    }
-
-    /**
-     * Sets properties_with_history
-     *
-     * @param array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
-     *
-     * @return self
-     */
-    public function setPropertiesWithHistory($properties_with_history)
-    {
-        $this->container['properties_with_history'] = $properties_with_history;
-
-        return $this;
-    }
 
     /**
      * Gets created_at
@@ -343,30 +268,6 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -415,6 +316,102 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setArchivedAt($archived_at)
     {
         $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties_with_history
+     *
+     * @return array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>|null
+     */
+    public function getPropertiesWithHistory()
+    {
+        return $this->container['properties_with_history'];
+    }
+
+    /**
+     * Sets properties_with_history
+     *
+     * @param array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
+     *
+     * @return self
+     */
+    public function setPropertiesWithHistory($properties_with_history)
+    {
+        $this->container['properties_with_history'] = $properties_with_history;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>|null
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string>|null $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

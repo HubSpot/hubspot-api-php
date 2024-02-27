@@ -188,9 +188,6 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -209,7 +206,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets properties
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
     public function getProperties()
     {
@@ -219,7 +216,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets properties
      *
-     * @param array<string,string> $properties properties
+     * @param array<string,string>|null $properties properties
      *
      * @return self
      */

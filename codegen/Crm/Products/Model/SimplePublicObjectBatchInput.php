@@ -57,8 +57,9 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'properties' => 'array<string,string>',
-        'id' => 'string'
+        'id_property' => 'string',
+        'id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -69,8 +70,9 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'properties' => null,
-        'id' => null
+        'id_property' => null,
+        'id' => null,
+        'properties' => null
     ];
 
     /**
@@ -100,8 +102,9 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'properties' => 'properties',
-        'id' => 'id'
+        'id_property' => 'idProperty',
+        'id' => 'id',
+        'properties' => 'properties'
     ];
 
     /**
@@ -110,8 +113,9 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'properties' => 'setProperties',
-        'id' => 'setId'
+        'id_property' => 'setIdProperty',
+        'id' => 'setId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -120,8 +124,9 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'properties' => 'getProperties',
-        'id' => 'getId'
+        'id_property' => 'getIdProperty',
+        'id' => 'getId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -181,8 +186,9 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['id_property'] = $data['id_property'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
     }
 
     /**
@@ -194,12 +200,6 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -216,25 +216,25 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets properties
+     * Gets id_property
      *
-     * @return array<string,string>
+     * @return string|null
      */
-    public function getProperties()
+    public function getIdProperty()
     {
-        return $this->container['properties'];
+        return $this->container['id_property'];
     }
 
     /**
-     * Sets properties
+     * Sets id_property
      *
-     * @param array<string,string> $properties properties
+     * @param string|null $id_property id_property
      *
      * @return self
      */
-    public function setProperties($properties)
+    public function setIdProperty($id_property)
     {
-        $this->container['properties'] = $properties;
+        $this->container['id_property'] = $id_property;
 
         return $this;
     }
@@ -242,7 +242,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -252,13 +252,37 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string|null $id id
      *
      * @return self
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>|null
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string>|null $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
 
         return $this;
     }
