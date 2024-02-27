@@ -75,7 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `crm()->associations()->v4()->schema()->definitionsApi()->delete()` => `crm()->associations()->v4()->schema()->definitionsApi()->archive()`.
 - Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\Model\StandardError:category`.
-- Added `crm()->extensions()->calling()->recordingSettingsApi()` API.
+- Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
+- Added param `id_property` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectBatchInput` and `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectBatchInput`.
 - `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
 - `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
 - `crm()->extensions()->cards()->cardsApi()->getAll(): CardListResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getAll(): PublicCardListResponse|Error`.
@@ -106,13 +107,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved method `archive` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
 - Moved method `create` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
 - Moved method `doCancel` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
-- Moved method `getById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi`.
+- Moved method `getById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
 - Moved method `replace` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
 - Moved method `update` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
 - Moved and rename method `archiveBatch => archive` from `marketing()->events()->marketingEventsExternalApi()->archiveBatch()` to `marketing()->events()->batchApi()->archive()`.
 - Moved method `doUpsert` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->batchApi()`.
 - Moved method `doEmailUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->subscriberStateChanges()`.
-- Moved method `doUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events.subscriberStateChanges`.
+- Moved method `doUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->subscriberStateChanges`.
 - Renamed `marketing()->events()->settingsExternalApi()` => `marketing()->events()->settingsApi()`.
 - Added `is_large_value` param to `HubSpot\Client\Marketing\Events\Model\PropertyValue`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Marketing\Events\Model\StandardError:category`.
@@ -123,6 +124,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Removed `hapikey` from
 
 - `crm()->extensions()->videoconferencing()` API client.
+
+## Added
+
+- `crm()->companies()->gdprApi()` API client.
+- `crm()->deals()->gdprApi()` API client.
+- `crm()->extensions()->calling()->recordingSettingsApi()` API client.
+- `crm()->line_items()->gdprApi()` API client.
+- `crm()->objects()->calls()->gdprApi()` API client.
+- `crm()->objects()->communications()->gdprApi()` API client.
+- `crm()->objects()->emails()->gdprApi()` API client.
+- `crm()->objects()->feedbackSubmissions()->gdprApi()` API client.
+- `crm()->objects()->meetings()->gdprApi()` API client.
+- `crm()->objects()->notes()->gdprApi()` API client.
+- `crm()->objects()->postalMail.gdprApi()` API client.
+- `crm()->objects()->tasks()->gdprApi()` API client.
+- `crm()->products()->gdprApi()` API client.
+- `crm()->quotes()->gdprApi()` API client.
+- `crm()->tickets()->gdprApi()` API client.
 
 ## [10.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0) - 2023-12-13
 
