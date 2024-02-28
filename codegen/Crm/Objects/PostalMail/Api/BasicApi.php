@@ -120,15 +120,15 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $postal_mail postal_mail (required)
+     * @param  string $postal_mail_id postal_mail_id (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($postal_mail)
+    public function archive($postal_mail_id)
     {
-        $this->archiveWithHttpInfo($postal_mail);
+        $this->archiveWithHttpInfo($postal_mail_id);
     }
 
     /**
@@ -136,15 +136,15 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($postal_mail)
+    public function archiveWithHttpInfo($postal_mail_id)
     {
-        $request = $this->archiveRequest($postal_mail);
+        $request = $this->archiveRequest($postal_mail_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -203,14 +203,14 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($postal_mail)
+    public function archiveAsync($postal_mail_id)
     {
-        return $this->archiveAsyncWithHttpInfo($postal_mail)
+        return $this->archiveAsyncWithHttpInfo($postal_mail_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -223,15 +223,15 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($postal_mail)
+    public function archiveAsyncWithHttpInfo($postal_mail_id)
     {
         $returnType = '';
-        $request = $this->archiveRequest($postal_mail);
+        $request = $this->archiveRequest($postal_mail_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -259,21 +259,21 @@ class BasicApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($postal_mail)
+    public function archiveRequest($postal_mail_id)
     {
-        // verify the required parameter 'postal_mail' is set
-        if ($postal_mail === null || (is_array($postal_mail) && count($postal_mail) === 0)) {
+        // verify the required parameter 'postal_mail_id' is set
+        if ($postal_mail_id === null || (is_array($postal_mail_id) && count($postal_mail_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $postal_mail when calling archive'
+                'Missing the required parameter $postal_mail_id when calling archive'
             );
         }
 
-        $resourcePath = '/crm/v3/objects/postal_mail/{postalMail}';
+        $resourcePath = '/crm/v3/objects/postal_mail/{postalMailId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -283,10 +283,10 @@ class BasicApi
 
 
         // path params
-        if ($postal_mail !== null) {
+        if ($postal_mail_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'postalMail' . '}',
-                ObjectSerializer::toPathValue($postal_mail),
+                '{' . 'postalMailId' . '}',
+                ObjectSerializer::toPathValue($postal_mail_id),
                 $resourcePath
             );
         }
@@ -663,7 +663,7 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $postal_mail postal_mail (required)
+     * @param  string $postal_mail_id postal_mail_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
@@ -674,9 +674,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
      */
-    public function getById($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    public function getById($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
     {
-        list($response) = $this->getByIdWithHttpInfo($postal_mail, $properties, $properties_with_history, $associations, $archived, $id_property);
+        list($response) = $this->getByIdWithHttpInfo($postal_mail_id, $properties, $properties_with_history, $associations, $archived, $id_property);
         return $response;
     }
 
@@ -685,7 +685,7 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
@@ -696,9 +696,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    public function getByIdWithHttpInfo($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
     {
-        $request = $this->getByIdRequest($postal_mail, $properties, $properties_with_history, $associations, $archived, $id_property);
+        $request = $this->getByIdRequest($postal_mail_id, $properties, $properties_with_history, $associations, $archived, $id_property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -812,7 +812,7 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
@@ -822,9 +822,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    public function getByIdAsync($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
     {
-        return $this->getByIdAsyncWithHttpInfo($postal_mail, $properties, $properties_with_history, $associations, $archived, $id_property)
+        return $this->getByIdAsyncWithHttpInfo($postal_mail_id, $properties, $properties_with_history, $associations, $archived, $id_property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -837,7 +837,7 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
@@ -847,10 +847,10 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    public function getByIdAsyncWithHttpInfo($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations';
-        $request = $this->getByIdRequest($postal_mail, $properties, $properties_with_history, $associations, $archived, $id_property);
+        $request = $this->getByIdRequest($postal_mail_id, $properties, $properties_with_history, $associations, $archived, $id_property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -891,7 +891,7 @@ class BasicApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  string[] $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
@@ -901,16 +901,16 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
+    public function getByIdRequest($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)
     {
-        // verify the required parameter 'postal_mail' is set
-        if ($postal_mail === null || (is_array($postal_mail) && count($postal_mail) === 0)) {
+        // verify the required parameter 'postal_mail_id' is set
+        if ($postal_mail_id === null || (is_array($postal_mail_id) && count($postal_mail_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $postal_mail when calling getById'
+                'Missing the required parameter $postal_mail_id when calling getById'
             );
         }
 
-        $resourcePath = '/crm/v3/objects/postal_mail/{postalMail}';
+        $resourcePath = '/crm/v3/objects/postal_mail/{postalMailId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -965,10 +965,10 @@ class BasicApi
 
 
         // path params
-        if ($postal_mail !== null) {
+        if ($postal_mail_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'postalMail' . '}',
-                ObjectSerializer::toPathValue($postal_mail),
+                '{' . 'postalMailId' . '}',
+                ObjectSerializer::toPathValue($postal_mail_id),
                 $resourcePath
             );
         }
@@ -1412,7 +1412,7 @@ class BasicApi
      *
      * Update
      *
-     * @param  string $postal_mail postal_mail (required)
+     * @param  string $postal_mail_id postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
@@ -1420,9 +1420,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
      */
-    public function update($postal_mail, $simple_public_object_input, $id_property = null)
+    public function update($postal_mail_id, $simple_public_object_input, $id_property = null)
     {
-        list($response) = $this->updateWithHttpInfo($postal_mail, $simple_public_object_input, $id_property);
+        list($response) = $this->updateWithHttpInfo($postal_mail_id, $simple_public_object_input, $id_property);
         return $response;
     }
 
@@ -1431,7 +1431,7 @@ class BasicApi
      *
      * Update
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
@@ -1439,9 +1439,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($postal_mail, $simple_public_object_input, $id_property = null)
+    public function updateWithHttpInfo($postal_mail_id, $simple_public_object_input, $id_property = null)
     {
-        $request = $this->updateRequest($postal_mail, $simple_public_object_input, $id_property);
+        $request = $this->updateRequest($postal_mail_id, $simple_public_object_input, $id_property);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1555,16 +1555,16 @@ class BasicApi
      *
      * Update
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($postal_mail, $simple_public_object_input, $id_property = null)
+    public function updateAsync($postal_mail_id, $simple_public_object_input, $id_property = null)
     {
-        return $this->updateAsyncWithHttpInfo($postal_mail, $simple_public_object_input, $id_property)
+        return $this->updateAsyncWithHttpInfo($postal_mail_id, $simple_public_object_input, $id_property)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1577,17 +1577,17 @@ class BasicApi
      *
      * Update
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($postal_mail, $simple_public_object_input, $id_property = null)
+    public function updateAsyncWithHttpInfo($postal_mail_id, $simple_public_object_input, $id_property = null)
     {
         $returnType = '\HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject';
-        $request = $this->updateRequest($postal_mail, $simple_public_object_input, $id_property);
+        $request = $this->updateRequest($postal_mail_id, $simple_public_object_input, $id_property);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1628,19 +1628,19 @@ class BasicApi
     /**
      * Create request for operation 'update'
      *
-     * @param  string $postal_mail (required)
+     * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
      * @param  string $id_property The name of a property whose values are unique for this object type (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($postal_mail, $simple_public_object_input, $id_property = null)
+    public function updateRequest($postal_mail_id, $simple_public_object_input, $id_property = null)
     {
-        // verify the required parameter 'postal_mail' is set
-        if ($postal_mail === null || (is_array($postal_mail) && count($postal_mail) === 0)) {
+        // verify the required parameter 'postal_mail_id' is set
+        if ($postal_mail_id === null || (is_array($postal_mail_id) && count($postal_mail_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $postal_mail when calling update'
+                'Missing the required parameter $postal_mail_id when calling update'
             );
         }
         // verify the required parameter 'simple_public_object_input' is set
@@ -1650,7 +1650,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/postal_mail/{postalMail}';
+        $resourcePath = '/crm/v3/objects/postal_mail/{postalMailId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1669,10 +1669,10 @@ class BasicApi
 
 
         // path params
-        if ($postal_mail !== null) {
+        if ($postal_mail_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'postalMail' . '}',
-                ObjectSerializer::toPathValue($postal_mail),
+                '{' . 'postalMailId' . '}',
+                ObjectSerializer::toPathValue($postal_mail_id),
                 $resourcePath
             );
         }

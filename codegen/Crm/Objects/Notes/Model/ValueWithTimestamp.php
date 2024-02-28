@@ -57,12 +57,12 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'string',
-        'timestamp' => '\DateTime',
-        'source_type' => 'string',
         'source_id' => 'string',
+        'source_type' => 'string',
         'source_label' => 'string',
-        'updated_by_user_id' => 'int'
+        'updated_by_user_id' => 'int',
+        'value' => 'string',
+        'timestamp' => '\DateTime'
     ];
 
     /**
@@ -73,12 +73,12 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null,
-        'timestamp' => 'date-time',
-        'source_type' => null,
         'source_id' => null,
+        'source_type' => null,
         'source_label' => null,
-        'updated_by_user_id' => 'int32'
+        'updated_by_user_id' => 'int32',
+        'value' => null,
+        'timestamp' => 'date-time'
     ];
 
     /**
@@ -108,12 +108,12 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'timestamp' => 'timestamp',
-        'source_type' => 'sourceType',
         'source_id' => 'sourceId',
+        'source_type' => 'sourceType',
         'source_label' => 'sourceLabel',
-        'updated_by_user_id' => 'updatedByUserId'
+        'updated_by_user_id' => 'updatedByUserId',
+        'value' => 'value',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -122,12 +122,12 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'timestamp' => 'setTimestamp',
-        'source_type' => 'setSourceType',
         'source_id' => 'setSourceId',
+        'source_type' => 'setSourceType',
         'source_label' => 'setSourceLabel',
-        'updated_by_user_id' => 'setUpdatedByUserId'
+        'updated_by_user_id' => 'setUpdatedByUserId',
+        'value' => 'setValue',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -136,12 +136,12 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'timestamp' => 'getTimestamp',
-        'source_type' => 'getSourceType',
         'source_id' => 'getSourceId',
+        'source_type' => 'getSourceType',
         'source_label' => 'getSourceLabel',
-        'updated_by_user_id' => 'getUpdatedByUserId'
+        'updated_by_user_id' => 'getUpdatedByUserId',
+        'value' => 'getValue',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -201,12 +201,12 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['timestamp'] = $data['timestamp'] ?? null;
-        $this->container['source_type'] = $data['source_type'] ?? null;
         $this->container['source_id'] = $data['source_id'] ?? null;
+        $this->container['source_type'] = $data['source_type'] ?? null;
         $this->container['source_label'] = $data['source_label'] ?? null;
         $this->container['updated_by_user_id'] = $data['updated_by_user_id'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
     }
 
     /**
@@ -218,14 +218,14 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['source_type'] === null) {
+            $invalidProperties[] = "'source_type' can't be null";
+        }
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
         if ($this->container['timestamp'] === null) {
             $invalidProperties[] = "'timestamp' can't be null";
-        }
-        if ($this->container['source_type'] === null) {
-            $invalidProperties[] = "'source_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -243,49 +243,25 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets value
+     * Gets source_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getValue()
+    public function getSourceId()
     {
-        return $this->container['value'];
+        return $this->container['source_id'];
     }
 
     /**
-     * Sets value
+     * Sets source_id
      *
-     * @param string $value value
+     * @param string|null $source_id source_id
      *
      * @return self
      */
-    public function setValue($value)
+    public function setSourceId($source_id)
     {
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['source_id'] = $source_id;
 
         return $this;
     }
@@ -310,30 +286,6 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setSourceType($source_type)
     {
         $this->container['source_type'] = $source_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets source_id
-     *
-     * @return string|null
-     */
-    public function getSourceId()
-    {
-        return $this->container['source_id'];
-    }
-
-    /**
-     * Sets source_id
-     *
-     * @param string|null $source_id source_id
-     *
-     * @return self
-     */
-    public function setSourceId($source_id)
-    {
-        $this->container['source_id'] = $source_id;
 
         return $this;
     }
@@ -382,6 +334,54 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUpdatedByUserId($updated_by_user_id)
     {
         $this->container['updated_by_user_id'] = $updated_by_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param \DateTime $timestamp timestamp
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }
