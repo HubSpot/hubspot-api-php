@@ -273,7 +273,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/{communicationId}';
+        $resourcePath = '/crm/v3/objects/communications/{communicationId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -580,7 +580,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications';
+        $resourcePath = '/crm/v3/objects/communications';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -910,7 +910,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/{communicationId}';
+        $resourcePath = '/crm/v3/objects/communications/{communicationId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1281,7 +1281,7 @@ class BasicApi
     public function getPageRequest($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false)
     {
 
-        $resourcePath = '/crm/v3/objects/Communications';
+        $resourcePath = '/crm/v3/objects/communications';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1650,7 +1650,7 @@ class BasicApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/{communicationId}';
+        $resourcePath = '/crm/v3/objects/communications/{communicationId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

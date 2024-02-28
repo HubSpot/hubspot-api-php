@@ -118,7 +118,7 @@ class BatchApi
     /**
      * Operation archive
      *
-     * Archive a batch of Communications by ID
+     * Archive a batch of communications by ID
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
      *
@@ -134,7 +134,7 @@ class BatchApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Archive a batch of Communications by ID
+     * Archive a batch of communications by ID
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
@@ -201,7 +201,7 @@ class BatchApi
     /**
      * Operation archiveAsync
      *
-     * Archive a batch of Communications by ID
+     * Archive a batch of communications by ID
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
@@ -221,7 +221,7 @@ class BatchApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Archive a batch of Communications by ID
+     * Archive a batch of communications by ID
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      *
@@ -273,7 +273,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/batch/archive';
+        $resourcePath = '/crm/v3/objects/communications/batch/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -354,7 +354,7 @@ class BatchApi
     /**
      * Operation create
      *
-     * Create a batch of Communications
+     * Create a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create batch_input_simple_public_object_input_for_create (required)
      *
@@ -371,7 +371,7 @@ class BatchApi
     /**
      * Operation createWithHttpInfo
      *
-     * Create a batch of Communications
+     * Create a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
@@ -516,7 +516,7 @@ class BatchApi
     /**
      * Operation createAsync
      *
-     * Create a batch of Communications
+     * Create a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
@@ -536,7 +536,7 @@ class BatchApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Create a batch of Communications
+     * Create a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
      *
@@ -601,7 +601,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/batch/create';
+        $resourcePath = '/crm/v3/objects/communications/batch/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -682,7 +682,7 @@ class BatchApi
     /**
      * Operation read
      *
-     * Read a batch of Communications by internal ID, or unique property values
+     * Read a batch of communications by internal ID, or unique property values
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -700,7 +700,7 @@ class BatchApi
     /**
      * Operation readWithHttpInfo
      *
-     * Read a batch of Communications by internal ID, or unique property values
+     * Read a batch of communications by internal ID, or unique property values
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -846,7 +846,7 @@ class BatchApi
     /**
      * Operation readAsync
      *
-     * Read a batch of Communications by internal ID, or unique property values
+     * Read a batch of communications by internal ID, or unique property values
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -867,7 +867,7 @@ class BatchApi
     /**
      * Operation readAsyncWithHttpInfo
      *
-     * Read a batch of Communications by internal ID, or unique property values
+     * Read a batch of communications by internal ID, or unique property values
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -934,7 +934,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/batch/read';
+        $resourcePath = '/crm/v3/objects/communications/batch/read';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1024,7 +1024,7 @@ class BatchApi
     /**
      * Operation update
      *
-     * Update a batch of Communications
+     * Update a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (required)
      *
@@ -1041,7 +1041,7 @@ class BatchApi
     /**
      * Operation updateWithHttpInfo
      *
-     * Update a batch of Communications
+     * Update a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
@@ -1186,7 +1186,7 @@ class BatchApi
     /**
      * Operation updateAsync
      *
-     * Update a batch of Communications
+     * Update a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
@@ -1206,7 +1206,7 @@ class BatchApi
     /**
      * Operation updateAsyncWithHttpInfo
      *
-     * Update a batch of Communications
+     * Update a batch of communications
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      *
@@ -1271,7 +1271,7 @@ class BatchApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/batch/update';
+        $resourcePath = '/crm/v3/objects/communications/batch/update';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
