@@ -90,6 +90,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
 - Added param `id_property` to `SimplePublicObjectBatchInput` in all CRM clients.
 - Removed `crm()->objects()->associationsApi()`.
+- `crm()->objects()->postalMail()->basicApi()->archive($postal_mail)` => `crm()->objects()->postalMail()->basicApi()->archive($postal_mail_id)`.
+- `crm()->objects()->postalMail()->basicApi()->getById($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)` => `crm()->objects()->postalMail()->basicApi()->getById($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)`.
+- `crm()->objects()->postalMail()->basicApi()->update($postal_mail, $simple_public_object_input, $id_property = null)` => `crm()->objects()->postalMail()->basicApi()->update($postal_mail_id, $simple_public_object_input, $id_property = null)`.
 - Added param `$validate_deal_stage_usages_before_delete` to `crm()->pipelines()->pipelinesApi()->archive()`, `crm()->pipelines()->pipelinesApi()->replace()` and `crm()->pipelines()->pipelinesApi()->update()`.
 - Added `write_permissions` param to `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`.
 - Added `description` param to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`, `HubSpot\Client\Crm\Schemas\Model\ObjectSchemaEgg`, `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinition` and `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
