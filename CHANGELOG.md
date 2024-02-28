@@ -75,8 +75,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `crm()->associations()->v4()->schema()->definitionsApi()->delete()` => `crm()->associations()->v4()->schema()->definitionsApi()->archive()`.
 - Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\Model\StandardError:category`.
-- Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
-- Added param `id_property` to `SimplePublicObjectBatchInput` in all CRM clients.
 - `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
 - `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
 - `crm()->extensions()->cards()->cardsApi()->getAll(): CardListResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getAll(): PublicCardListResponse|Error`.
@@ -89,6 +87,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `import_template` and `import_source` params to `HubSpot\Client\Crm\Imports\Model\PublicImportResponse`.
 - `crm()->lists()->listsApi()->delete()` => `crm()->lists()->listsApi()->remove()`.
 - `crm()->lists()->membershipsApi()->deleteAll()` => `crm()->lists()->listsApi()->removeAll()`.
+- Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
+- Added param `id_property` to `SimplePublicObjectBatchInput` in all CRM clients.
+- Removed `crm()->objects()->associationsApi()`.
 - Added param `$validate_deal_stage_usages_before_delete` to `crm()->pipelines()->pipelinesApi()->archive()`, `crm()->pipelines()->pipelinesApi()->replace()` and `crm()->pipelines()->pipelinesApi()->update()`.
 - Added `write_permissions` param to `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`.
 - Added `description` param to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`, `HubSpot\Client\Crm\Schemas\Model\ObjectSchemaEgg`, `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinition` and `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
