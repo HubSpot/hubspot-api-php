@@ -57,8 +57,8 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations[]',
-        'paging' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations[]'
     ];
 
     /**
@@ -69,8 +69,8 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -110,8 +110,8 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -120,8 +120,8 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -181,8 +181,8 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
 
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\ForwardPaging|null
@@ -256,6 +232,30 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

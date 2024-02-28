@@ -57,14 +57,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'properties' => 'array<string,string>',
-        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Notes\Model\ValueWithTimestamp[]>',
+        'associations' => 'array<string,\HubSpot\Client\Crm\Objects\Notes\Model\CollectionResponseAssociatedId>',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'archived' => 'bool',
         'archived_at' => '\DateTime',
-        'associations' => 'array<string,\HubSpot\Client\Crm\Objects\Notes\Model\CollectionResponseAssociatedId>'
+        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Notes\Model\ValueWithTimestamp[]>',
+        'id' => 'string',
+        'properties' => 'array<string,string>',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -75,14 +75,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'properties' => null,
-        'properties_with_history' => null,
+        'associations' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
         'archived' => null,
         'archived_at' => 'date-time',
-        'associations' => null
+        'properties_with_history' => null,
+        'id' => null,
+        'properties' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -112,14 +112,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'properties' => 'properties',
-        'properties_with_history' => 'propertiesWithHistory',
+        'associations' => 'associations',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
         'archived' => 'archived',
         'archived_at' => 'archivedAt',
-        'associations' => 'associations'
+        'properties_with_history' => 'propertiesWithHistory',
+        'id' => 'id',
+        'properties' => 'properties',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -128,14 +128,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'properties' => 'setProperties',
-        'properties_with_history' => 'setPropertiesWithHistory',
+        'associations' => 'setAssociations',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
         'archived' => 'setArchived',
         'archived_at' => 'setArchivedAt',
-        'associations' => 'setAssociations'
+        'properties_with_history' => 'setPropertiesWithHistory',
+        'id' => 'setId',
+        'properties' => 'setProperties',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -144,14 +144,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'properties' => 'getProperties',
-        'properties_with_history' => 'getPropertiesWithHistory',
+        'associations' => 'getAssociations',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
         'archived' => 'getArchived',
         'archived_at' => 'getArchivedAt',
-        'associations' => 'getAssociations'
+        'properties_with_history' => 'getPropertiesWithHistory',
+        'id' => 'getId',
+        'properties' => 'getProperties',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -211,14 +211,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['properties'] = $data['properties'] ?? null;
-        $this->container['properties_with_history'] = $data['properties_with_history'] ?? null;
+        $this->container['associations'] = $data['associations'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;
         $this->container['archived_at'] = $data['archived_at'] ?? null;
-        $this->container['associations'] = $data['associations'] ?? null;
+        $this->container['properties_with_history'] = $data['properties_with_history'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -230,14 +230,14 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -258,73 +258,25 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets id
+     * Gets associations
      *
-     * @return string
+     * @return array<string,\HubSpot\Client\Crm\Objects\Notes\Model\CollectionResponseAssociatedId>|null
      */
-    public function getId()
+    public function getAssociations()
     {
-        return $this->container['id'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets id
+     * Sets associations
      *
-     * @param string $id id
+     * @param array<string,\HubSpot\Client\Crm\Objects\Notes\Model\CollectionResponseAssociatedId>|null $associations associations
      *
      * @return self
      */
-    public function setId($id)
+    public function setAssociations($associations)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string> $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties_with_history
-     *
-     * @return array<string,\HubSpot\Client\Crm\Objects\Notes\Model\ValueWithTimestamp[]>|null
-     */
-    public function getPropertiesWithHistory()
-    {
-        return $this->container['properties_with_history'];
-    }
-
-    /**
-     * Sets properties_with_history
-     *
-     * @param array<string,\HubSpot\Client\Crm\Objects\Notes\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
-     *
-     * @return self
-     */
-    public function setPropertiesWithHistory($properties_with_history)
-    {
-        $this->container['properties_with_history'] = $properties_with_history;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
@@ -349,30 +301,6 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -426,25 +354,97 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets associations
+     * Gets properties_with_history
      *
-     * @return array<string,\HubSpot\Client\Crm\Objects\Notes\Model\CollectionResponseAssociatedId>|null
+     * @return array<string,\HubSpot\Client\Crm\Objects\Notes\Model\ValueWithTimestamp[]>|null
      */
-    public function getAssociations()
+    public function getPropertiesWithHistory()
     {
-        return $this->container['associations'];
+        return $this->container['properties_with_history'];
     }
 
     /**
-     * Sets associations
+     * Sets properties_with_history
      *
-     * @param array<string,\HubSpot\Client\Crm\Objects\Notes\Model\CollectionResponseAssociatedId>|null $associations associations
+     * @param array<string,\HubSpot\Client\Crm\Objects\Notes\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
      *
      * @return self
      */
-    public function setAssociations($associations)
+    public function setPropertiesWithHistory($properties_with_history)
     {
-        $this->container['associations'] = $associations;
+        $this->container['properties_with_history'] = $properties_with_history;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

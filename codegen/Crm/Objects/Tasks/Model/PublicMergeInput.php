@@ -57,8 +57,8 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'primary_object_id' => 'string',
-        'object_id_to_merge' => 'string'
+        'object_id_to_merge' => 'string',
+        'primary_object_id' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'primary_object_id' => null,
-        'object_id_to_merge' => null
+        'object_id_to_merge' => null,
+        'primary_object_id' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'primary_object_id' => 'primaryObjectId',
-        'object_id_to_merge' => 'objectIdToMerge'
+        'object_id_to_merge' => 'objectIdToMerge',
+        'primary_object_id' => 'primaryObjectId'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'primary_object_id' => 'setPrimaryObjectId',
-        'object_id_to_merge' => 'setObjectIdToMerge'
+        'object_id_to_merge' => 'setObjectIdToMerge',
+        'primary_object_id' => 'setPrimaryObjectId'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'primary_object_id' => 'getPrimaryObjectId',
-        'object_id_to_merge' => 'getObjectIdToMerge'
+        'object_id_to_merge' => 'getObjectIdToMerge',
+        'primary_object_id' => 'getPrimaryObjectId'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['primary_object_id'] = $data['primary_object_id'] ?? null;
         $this->container['object_id_to_merge'] = $data['object_id_to_merge'] ?? null;
+        $this->container['primary_object_id'] = $data['primary_object_id'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['primary_object_id'] === null) {
-            $invalidProperties[] = "'primary_object_id' can't be null";
-        }
         if ($this->container['object_id_to_merge'] === null) {
             $invalidProperties[] = "'object_id_to_merge' can't be null";
+        }
+        if ($this->container['primary_object_id'] === null) {
+            $invalidProperties[] = "'primary_object_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets primary_object_id
-     *
-     * @return string
-     */
-    public function getPrimaryObjectId()
-    {
-        return $this->container['primary_object_id'];
-    }
-
-    /**
-     * Sets primary_object_id
-     *
-     * @param string $primary_object_id primary_object_id
-     *
-     * @return self
-     */
-    public function setPrimaryObjectId($primary_object_id)
-    {
-        $this->container['primary_object_id'] = $primary_object_id;
-
-        return $this;
-    }
 
     /**
      * Gets object_id_to_merge
@@ -259,6 +235,30 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setObjectIdToMerge($object_id_to_merge)
     {
         $this->container['object_id_to_merge'] = $object_id_to_merge;
+
+        return $this;
+    }
+
+    /**
+     * Gets primary_object_id
+     *
+     * @return string
+     */
+    public function getPrimaryObjectId()
+    {
+        return $this->container['primary_object_id'];
+    }
+
+    /**
+     * Sets primary_object_id
+     *
+     * @param string $primary_object_id primary_object_id
+     *
+     * @return self
+     */
+    public function setPrimaryObjectId($primary_object_id)
+    {
+        $this->container['primary_object_id'] = $primary_object_id;
 
         return $this;
     }

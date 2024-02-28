@@ -57,8 +57,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'to' => '\HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectId',
-        'types' => '\HubSpot\Client\Crm\Objects\Meetings\Model\AssociationSpec[]'
+        'types' => '\HubSpot\Client\Crm\Objects\Meetings\Model\AssociationSpec[]',
+        'to' => '\HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectId'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'to' => null,
-        'types' => null
+        'types' => null,
+        'to' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'to' => 'to',
-        'types' => 'types'
+        'types' => 'types',
+        'to' => 'to'
     ];
 
     /**
@@ -110,8 +110,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'to' => 'setTo',
-        'types' => 'setTypes'
+        'types' => 'setTypes',
+        'to' => 'setTo'
     ];
 
     /**
@@ -120,8 +120,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'to' => 'getTo',
-        'types' => 'getTypes'
+        'types' => 'getTypes',
+        'to' => 'getTo'
     ];
 
     /**
@@ -181,8 +181,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['to'] = $data['to'] ?? null;
         $this->container['types'] = $data['types'] ?? null;
+        $this->container['to'] = $data['to'] ?? null;
     }
 
     /**
@@ -194,11 +194,11 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
-        }
         if ($this->container['types'] === null) {
             $invalidProperties[] = "'types' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,30 +214,6 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets to
-     *
-     * @return \HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectId
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param \HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectId $to to
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
-
-        return $this;
-    }
 
     /**
      * Gets types
@@ -259,6 +235,30 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     public function setTypes($types)
     {
         $this->container['types'] = $types;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return \HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectId
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param \HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectId $to to
+     *
+     * @return self
+     */
+    public function setTo($to)
+    {
+        $this->container['to'] = $to;
 
         return $this;
     }

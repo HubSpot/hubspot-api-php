@@ -57,8 +57,8 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Crm\Objects\Emails\Model\AssociatedId[]',
-        'paging' => '\HubSpot\Client\Crm\Objects\Emails\Model\Paging'
+        'paging' => '\HubSpot\Client\Crm\Objects\Emails\Model\Paging',
+        'results' => '\HubSpot\Client\Crm\Objects\Emails\Model\AssociatedId[]'
     ];
 
     /**
@@ -69,8 +69,8 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -100,8 +100,8 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -110,8 +110,8 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -120,8 +120,8 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -181,8 +181,8 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Objects\Emails\Model\AssociatedId[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Objects\Emails\Model\AssociatedId[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Objects\Emails\Model\Paging|null
@@ -256,6 +232,30 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Objects\Emails\Model\AssociatedId[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Objects\Emails\Model\AssociatedId[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

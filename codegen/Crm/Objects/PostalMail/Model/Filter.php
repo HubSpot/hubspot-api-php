@@ -57,10 +57,10 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'string',
         'high_value' => 'string',
-        'values' => 'string[]',
         'property_name' => 'string',
+        'values' => 'string[]',
+        'value' => 'string',
         'operator' => 'string'
     ];
 
@@ -72,10 +72,10 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null,
         'high_value' => null,
-        'values' => null,
         'property_name' => null,
+        'values' => null,
+        'value' => null,
         'operator' => null
     ];
 
@@ -106,10 +106,10 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
         'high_value' => 'highValue',
-        'values' => 'values',
         'property_name' => 'propertyName',
+        'values' => 'values',
+        'value' => 'value',
         'operator' => 'operator'
     ];
 
@@ -119,10 +119,10 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
         'high_value' => 'setHighValue',
-        'values' => 'setValues',
         'property_name' => 'setPropertyName',
+        'values' => 'setValues',
+        'value' => 'setValue',
         'operator' => 'setOperator'
     ];
 
@@ -132,10 +132,10 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
         'high_value' => 'getHighValue',
-        'values' => 'getValues',
         'property_name' => 'getPropertyName',
+        'values' => 'getValues',
+        'value' => 'getValue',
         'operator' => 'getOperator'
     ];
 
@@ -233,10 +233,10 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
         $this->container['high_value'] = $data['high_value'] ?? null;
-        $this->container['values'] = $data['values'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
         $this->container['operator'] = $data['operator'] ?? null;
     }
 
@@ -280,30 +280,6 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets value
-     *
-     * @return string|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string|null $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
      * Gets high_value
      *
      * @return string|null
@@ -323,6 +299,30 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHighValue($high_value)
     {
         $this->container['high_value'] = $high_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets property_name
+     *
+     * @return string
+     */
+    public function getPropertyName()
+    {
+        return $this->container['property_name'];
+    }
+
+    /**
+     * Sets property_name
+     *
+     * @param string $property_name property_name
+     *
+     * @return self
+     */
+    public function setPropertyName($property_name)
+    {
+        $this->container['property_name'] = $property_name;
 
         return $this;
     }
@@ -352,25 +352,25 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets property_name
+     * Gets value
      *
-     * @return string
+     * @return string|null
      */
-    public function getPropertyName()
+    public function getValue()
     {
-        return $this->container['property_name'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets property_name
+     * Sets value
      *
-     * @param string $property_name property_name
+     * @param string|null $value value
      *
      * @return self
      */
-    public function setPropertyName($property_name)
+    public function setValue($value)
     {
-        $this->container['property_name'] = $property_name;
+        $this->container['value'] = $value;
 
         return $this;
     }
