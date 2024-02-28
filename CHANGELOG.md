@@ -76,7 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\Model\StandardError:category`.
 - Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
-- Added param `id_property` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectBatchInput` and `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectBatchInput`.
+- Added param `id_property` to `SimplePublicObjectBatchInput` in all CRM clients.
 - `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
 - `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
 - `crm()->extensions()->cards()->cardsApi()->getAll(): CardListResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getAll(): PublicCardListResponse|Error`.
