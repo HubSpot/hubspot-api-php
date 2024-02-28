@@ -116,7 +116,7 @@ class PublicObjectApi
     }
 
     /**
-     * Operation postCrmV3ObjectsProductsMerge
+     * Operation merge
      *
      * Merge two products with same type
      *
@@ -126,14 +126,14 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Products\Model\SimplePublicObject|\HubSpot\Client\Crm\Products\Model\Error
      */
-    public function postCrmV3ObjectsProductsMerge($public_merge_input)
+    public function merge($public_merge_input)
     {
-        list($response) = $this->postCrmV3ObjectsProductsMergeWithHttpInfo($public_merge_input);
+        list($response) = $this->mergeWithHttpInfo($public_merge_input);
         return $response;
     }
 
     /**
-     * Operation postCrmV3ObjectsProductsMergeWithHttpInfo
+     * Operation mergeWithHttpInfo
      *
      * Merge two products with same type
      *
@@ -143,9 +143,9 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Products\Model\SimplePublicObject|\HubSpot\Client\Crm\Products\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCrmV3ObjectsProductsMergeWithHttpInfo($public_merge_input)
+    public function mergeWithHttpInfo($public_merge_input)
     {
-        $request = $this->postCrmV3ObjectsProductsMergeRequest($public_merge_input);
+        $request = $this->mergeRequest($public_merge_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,7 +255,7 @@ class PublicObjectApi
     }
 
     /**
-     * Operation postCrmV3ObjectsProductsMergeAsync
+     * Operation mergeAsync
      *
      * Merge two products with same type
      *
@@ -264,9 +264,9 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsProductsMergeAsync($public_merge_input)
+    public function mergeAsync($public_merge_input)
     {
-        return $this->postCrmV3ObjectsProductsMergeAsyncWithHttpInfo($public_merge_input)
+        return $this->mergeAsyncWithHttpInfo($public_merge_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -275,7 +275,7 @@ class PublicObjectApi
     }
 
     /**
-     * Operation postCrmV3ObjectsProductsMergeAsyncWithHttpInfo
+     * Operation mergeAsyncWithHttpInfo
      *
      * Merge two products with same type
      *
@@ -284,10 +284,10 @@ class PublicObjectApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCrmV3ObjectsProductsMergeAsyncWithHttpInfo($public_merge_input)
+    public function mergeAsyncWithHttpInfo($public_merge_input)
     {
         $returnType = '\HubSpot\Client\Crm\Products\Model\SimplePublicObject';
-        $request = $this->postCrmV3ObjectsProductsMergeRequest($public_merge_input);
+        $request = $this->mergeRequest($public_merge_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,19 +326,19 @@ class PublicObjectApi
     }
 
     /**
-     * Create request for operation 'postCrmV3ObjectsProductsMerge'
+     * Create request for operation 'merge'
      *
      * @param  \HubSpot\Client\Crm\Products\Model\PublicMergeInput $public_merge_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCrmV3ObjectsProductsMergeRequest($public_merge_input)
+    public function mergeRequest($public_merge_input)
     {
         // verify the required parameter 'public_merge_input' is set
         if ($public_merge_input === null || (is_array($public_merge_input) && count($public_merge_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_merge_input when calling postCrmV3ObjectsProductsMerge'
+                'Missing the required parameter $public_merge_input when calling merge'
             );
         }
 
