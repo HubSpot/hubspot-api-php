@@ -58,8 +58,8 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'results' => '\HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject[]',
-        'paging' => '\HubSpot\Client\Crm\Objects\Communications\Model\ForwardPaging'
+        'paging' => '\HubSpot\Client\Crm\Objects\Communications\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject[]'
     ];
 
     /**
@@ -71,8 +71,8 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
       */
     protected static $openAPIFormats = [
         'total' => 'int32',
-        'results' => null,
-        'paging' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
      */
     protected static $attributeMap = [
         'total' => 'total',
-        'results' => 'results',
-        'paging' => 'paging'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -114,8 +114,8 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
      */
     protected static $setters = [
         'total' => 'setTotal',
-        'results' => 'setResults',
-        'paging' => 'setPaging'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -125,8 +125,8 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
      */
     protected static $getters = [
         'total' => 'getTotal',
-        'results' => 'getResults',
-        'paging' => 'getPaging'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -187,8 +187,8 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
     public function __construct(array $data = null)
     {
         $this->container['total'] = $data['total'] ?? null;
-        $this->container['results'] = $data['results'] ?? null;
         $this->container['paging'] = $data['paging'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -246,30 +246,6 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
     }
 
     /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
      * Gets paging
      *
      * @return \HubSpot\Client\Crm\Objects\Communications\Model\ForwardPaging|null
@@ -289,6 +265,30 @@ class CollectionResponseWithTotalSimplePublicObjectForwardPaging implements Mode
     public function setPaging($paging)
     {
         $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

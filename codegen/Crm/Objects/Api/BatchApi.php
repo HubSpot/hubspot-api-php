@@ -1081,7 +1081,7 @@ class BatchApi
     /**
      * Operation update
      *
-     * Update a batch of objects
+     * Update a batch of objects by internal ID, or unique property values
      *
      * @param  string $object_type object_type (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (required)
@@ -1099,7 +1099,7 @@ class BatchApi
     /**
      * Operation updateWithHttpInfo
      *
-     * Update a batch of objects
+     * Update a batch of objects by internal ID, or unique property values
      *
      * @param  string $object_type (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
@@ -1245,7 +1245,7 @@ class BatchApi
     /**
      * Operation updateAsync
      *
-     * Update a batch of objects
+     * Update a batch of objects by internal ID, or unique property values
      *
      * @param  string $object_type (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
@@ -1266,7 +1266,7 @@ class BatchApi
     /**
      * Operation updateAsyncWithHttpInfo
      *
-     * Update a batch of objects
+     * Update a batch of objects by internal ID, or unique property values
      *
      * @param  string $object_type (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)

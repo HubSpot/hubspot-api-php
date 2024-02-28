@@ -118,7 +118,7 @@ class PublicObjectApi
     /**
      * Operation merge
      *
-     * Merge two Communications with same type
+     * Merge two communications with same type
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\PublicMergeInput $public_merge_input public_merge_input (required)
      *
@@ -135,7 +135,7 @@ class PublicObjectApi
     /**
      * Operation mergeWithHttpInfo
      *
-     * Merge two Communications with same type
+     * Merge two communications with same type
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\PublicMergeInput $public_merge_input (required)
      *
@@ -257,7 +257,7 @@ class PublicObjectApi
     /**
      * Operation mergeAsync
      *
-     * Merge two Communications with same type
+     * Merge two communications with same type
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\PublicMergeInput $public_merge_input (required)
      *
@@ -277,7 +277,7 @@ class PublicObjectApi
     /**
      * Operation mergeAsyncWithHttpInfo
      *
-     * Merge two Communications with same type
+     * Merge two communications with same type
      *
      * @param  \HubSpot\Client\Crm\Objects\Communications\Model\PublicMergeInput $public_merge_input (required)
      *
@@ -342,7 +342,7 @@ class PublicObjectApi
             );
         }
 
-        $resourcePath = '/crm/v3/objects/Communications/merge';
+        $resourcePath = '/crm/v3/objects/communications/merge';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
