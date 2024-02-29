@@ -26,4 +26,3 @@ class Discovery extends DiscoveryBase
         return new GDPRApi($this->client, $config);
     }
 }
-
