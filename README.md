@@ -15,7 +15,7 @@ composer require hubspot/api-client
 
 The current package requirements are:
 
-PHP >= 7.3
+PHP >= 7.4
 
 ### Sample apps
 
@@ -67,7 +67,7 @@ $handlerStack->push(
         \HubSpot\Delay::getConstantDelayFunction()
     )
 );
-        
+
 $handlerStack->push(
     \HubSpot\RetryMiddlewareFactory::createInternalErrorsMiddleware(
         \HubSpot\Delay::getExponentialDelayFunction(2)
