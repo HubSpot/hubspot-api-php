@@ -9,6 +9,7 @@ use HubSpot\Client\Cms\SourceCode\Api\MetadataApi;
 use HubSpot\Client\Cms\SourceCode\Api\SourceCodeExtractApi;
 use HubSpot\Client\Cms\SourceCode\Api\ValidationApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Cms\SourceCode\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -20,7 +21,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Cms\SourceCode\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

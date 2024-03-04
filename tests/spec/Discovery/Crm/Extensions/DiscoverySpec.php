@@ -4,6 +4,7 @@ namespace spec\HubSpot\Discovery\Crm\Extensions;
 
 use GuzzleHttp\Client;
 use HubSpot\Config;
+use HubSpot\Discovery\Crm\Extensions\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -15,7 +16,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Crm\Extensions\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

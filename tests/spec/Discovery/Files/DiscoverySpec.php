@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Files\Api\FilesApi;
 use HubSpot\Client\Files\Api\FoldersApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Files\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -17,7 +18,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Files\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

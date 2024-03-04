@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Webhooks\Api\SettingsApi;
 use HubSpot\Client\Webhooks\Api\SubscriptionsApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Webhooks\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -17,7 +18,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Webhooks\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

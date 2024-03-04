@@ -7,6 +7,7 @@ use HubSpot\Client\Settings\Users\Api\RolesApi;
 use HubSpot\Client\Settings\Users\Api\TeamsApi;
 use HubSpot\Client\Settings\Users\Api\UsersApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Settings\Users\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -18,7 +19,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Settings\Users\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

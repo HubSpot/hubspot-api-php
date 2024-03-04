@@ -5,6 +5,7 @@ namespace spec\HubSpot\Discovery\Conversations\VisitorIdentification;
 use GuzzleHttp\Client;
 use HubSpot\Client\Conversations\VisitorIdentification\Api\GenerateApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Conversations\VisitorIdentification\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -16,7 +17,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Conversations\VisitorIdentification\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

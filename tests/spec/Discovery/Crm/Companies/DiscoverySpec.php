@@ -9,6 +9,7 @@ use HubSpot\Client\Crm\Companies\Api\GDPRApi;
 use HubSpot\Client\Crm\Companies\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Companies\Api\SearchApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Crm\Companies\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -20,7 +21,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Crm\Companies\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()
