@@ -7,6 +7,147 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.3.0...HEAD)
 
+## [11.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0) - 2024-02-22
+
+## Updated
+
+- `automation()->actions()->definitionsApi()->create($app_id, ExtensionActionDefinition $extension_action_definition_input => PublicActionDefinition $extension_action_definition_input): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
+- `automation()->actions()->definitionsApi()->getById(): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
+- `automation()->actions()->definitionsApi()->getPage(): CollectionResponseExtensionActionDefinitionForwardPaging|Error => CollectionResponsePublicActionDefinitionForwardPaging|Error`.
+- `automation()->actions()->definitionsApi()->update($definition_id, $app_id, ExtensionActionDefinitionPatch $extension_action_definition_patch => PublicActionDefinition $public_action_definition_patch): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
+- `automation()->actions()->functionsApi()->createOrReplace(): ActionFunctionIdentifier|Error => PublicActionFunctionIdentifier|Error`.
+- `automation()->actions()->functionsApi()->createOrReplaceByFunctionType(): ActionFunctionIdentifier|Error => PublicActionFunctionIdentifier|Error`.
+- `automation()->actions()->functionsApi()->getByFunctionType(): ActionFunction|Error => PublicActionFunction|Error`.
+- `automation()->actions()->functionsApi()->getById(): ActionFunction|Error => PublicActionFunction|Error`.
+- `automation()->actions()->functionsApi()->getPage(): CollectionResponseActionFunctionIdentifierNoPaging|Error => CollectionResponsePublicActionFunctionIdentifierNoPaging|Error`.
+- `automation()->actions()->revisionsApi()->getById(): ActionRevision|Error => PublicActionRevision|Error`.
+- `automation()->actions()->revisionsApi()->getPage(): CollectionResponseActionRevisionForwardPaging|Error => CollectionResponsePublicActionRevisionForwardPaging|Error`.
+- Added new params to `HubSpot\Client\Automation\Actions\Model\FieldTypeDefinition`:
+
+```php
+  'help_text' => 'string',
+  'name' => 'string',
+  'description' => 'string',
+  'external_options_reference_type' => 'string',
+  'label' => 'string',
+  'type' => 'string',
+  'field_type' => 'string',
+  'options_url' => 'string',
+  'external_options' => 'bool'
+```
+
+- Added new param `'automation_field_type' => 'string'` to `HubSpot\Client\Automation\Actions\Model\InputFieldDefinition`.
+- `cms()->auditLogs()->auditLogsApi()->getPage($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)` => `cms()->auditLogs()->auditLogsApi()->getPage($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)`.
+- Removed params `scope_to_scope_group_pks`, `trial_scopes` and `trial_scope_to_scope_group_pks` from `HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse`.
+- Added new param `prev` to `HubSpot\Client\Cms\AuditLogs\Model\Paging`.
+- `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->authors()->blogAuthorsApi()->getById()` and `cms()->blogs()->authors()->blogAuthorsApi()->getPage()`.
+- `cms()->blogs()->authors()->blogAuthorsApi()->updateLangs():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Authors\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Authors\Model\StandardError:category`.
+- `cms()->blogs()->blogPosts()->blogPostsApi()->attachToLangGroup():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->blogPosts()->blogPostsApi()->detachFromLangGroup():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->blogPosts()->blogPostsApi()->getById()` and `cms()->blogs()->blogPosts()->blogPostsApi()->getPage()`.
+- `cms()->blogs()->blogPosts()->blogPostsApi()->updateLangs():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
+- Remove background position's consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\BlogPosts\Model\StandardError:category`.
+- `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():void`.
+- `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():void`.
+- Added param `property` to `cms()->blogs()->tags()->blogTagsApi()->getById()` and `cms()->blogs()->tags()->blogTagsApi()->getPage()`.
+- `cms()->blogs()->tags()->blogTagsApi()->updateLangs():Error` => `cms()->blogs()->tags()->blogTagsApi()->updateLangs():void`.
+- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Tags\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Tags\Model\UpdateLanguagesRequestVNext`.
+- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Tags\Model\StandardError:category`.
+- Changed type from `int` to `string` in `HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3BatchUpdateRequest:id`.
+- `cms()->sourceCode()->contentApi()->get()` => `cms()->sourceCode()->contentApi()->download()`.
+- `cms()->sourceCode()->contentApi()->replace()` => `cms()->sourceCode()->contentApi()->createOrUpdate()`.
+- Added param `properties` to `cms()->sourceCode()->metadataApi()->get()`.
+- Added param `hash` to `HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata`.
+- Changed type of `$object_id` and `$to_object_id` params from `int` to `string` in `crm()->associations()->v4()->basicApi()->archive()`.
+- Changed type of `$object_id` and `$to_object_id` params from `int` to `string` in `crm()->associations()->v4()->basicApi()->create()`.
+- Changed type of `$from_object_id` and `$to_object_id` params from `int` to `string` in `crm()->associations()->v4()->basicApi()->createDefault()`.
+- Changed type of `$object_id` param from `int` to `string` in `crm()->associations()->v4()->basicApi()->getPage()`.
+- Changed type from `StandardError1[]` to `StandardError[]` in `HubSpot\Client\Crm\Associations\v4\Model\BatchResponsePublicDefaultAssociation:errors`.
+- Changed type of `to_object_id` and `from_object_id` params from `int` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\LabelsBetweenObjectPair`.
+- Changed type from `int` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\MultiAssociatedObjectWithLabel:to_object_id`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\StandardError:category`.
+- `crm()->associations()->v4()->schema()->definitionsApi()->delete()` => `crm()->associations()->v4()->schema()->definitionsApi()->archive()`.
+- Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\Model\StandardError:category`.
+- `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
+- `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
+- `crm()->extensions()->cards()->cardsApi()->getAll(): CardListResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getAll(): PublicCardListResponse|Error`.
+- `crm()->extensions()->cards()->cardsApi()->getById($app_id, $card_id): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getById($card_id, $app_id): PublicCardResponse|Error`.
+- `crm()->extensions()->cards()->cardsApi()->update($app_id, $card_id, $card_patch_request): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->update($card_id, $app_id, $card_patch_request): PublicCardResponse|Error`.
+- Added `serverless_function` and `card_type` params to `HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody` and `HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch`.
+- Added `NAME_MARKETING_EVENTS` const to `HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody`.
+- Added `audit_history` param to `HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse`.
+- Added `fetch_accounts_uri` param to `HubSpot\Client\Crm\Extensions\Videoconferencing\Model\ExternalSettings`.
+- Added `import_template` and `import_source` params to `HubSpot\Client\Crm\Imports\Model\PublicImportResponse`.
+- `crm()->lists()->listsApi()->delete()` => `crm()->lists()->listsApi()->remove()`.
+- `crm()->lists()->membershipsApi()->deleteAll()` => `crm()->lists()->listsApi()->removeAll()`.
+- Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
+- Added param `id_property` to `SimplePublicObjectBatchInput` in all CRM clients.
+- Removed `crm()->objects()->associationsApi()`.
+- `crm()->objects()->postalMail()->basicApi()->archive($postal_mail)` => `crm()->objects()->postalMail()->basicApi()->archive($postal_mail_id)`.
+- `crm()->objects()->postalMail()->basicApi()->getById($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)` => `crm()->objects()->postalMail()->basicApi()->getById($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)`.
+- `crm()->objects()->postalMail()->basicApi()->update($postal_mail, $simple_public_object_input, $id_property = null)` => `crm()->objects()->postalMail()->basicApi()->update($postal_mail_id, $simple_public_object_input, $id_property = null)`.
+- Added param `$validate_deal_stage_usages_before_delete` to `crm()->pipelines()->pipelinesApi()->archive()`, `crm()->pipelines()->pipelinesApi()->replace()` and `crm()->pipelines()->pipelinesApi()->update()`.
+- Added `write_permissions` param to `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`.
+- Added `description` param to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`, `HubSpot\Client\Crm\Schemas\Model\ObjectSchemaEgg`, `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinition` and `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
+- Added `option_sort_strategy`, `show_currency_symbol`, `form_field`, `referenced_object_type`, `text_display_hint`, `searchable_in_global_search` and  `number_display_hint` params to `HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate`.
+- Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`.
+- `crm()-timeline()->eventsApi()->createBatch(): BatchResponseTimelineEventResponse|BatchResponseTimelineEventResponseWithErrors|Error` => `crm()->timeline()->eventsApi()->createBatch():void`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Timeline\Model\StandardError:category`.
+- `events()->eventsApi()->getPage($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)` => `events()->eventsApi()->getPage($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)`.
+- Added `prev` param to `HubSpot\Client\Events\Model\Paging`.
+- `events()->send()->behavioralEventsTrackingApi()` => `events()->send()->customEventDataApi()`.
+- Added method `getMetadata()` to `files()->filesApi()`.
+- Added `expires_at` param to `HubSpot\Client\Files\Model\File` and `HubSpot\Client\Files\Model\FileUpdateInput`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Files\Model\StandardError:category`.
+- Added `marketing()->events()->basicApi()` API.
+- Added `marketing()->events()->batchApi()` API.
+- Moved method `archive` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `create` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `doCancel` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `getById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `replace` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved method `update` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->basicApi()`.
+- Moved and rename method `archiveBatch => archive` from `marketing()->events()->marketingEventsExternalApi()->archiveBatch()` to `marketing()->events()->batchApi()->archive()`.
+- Moved method `doUpsert` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->batchApi()`.
+- Moved method `doEmailUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->subscriberStateChanges()`.
+- Moved method `doUpsertById` from `marketing()->events()->marketingEventsExternalApi()` to `marketing()->events()->subscriberStateChanges`.
+- Renamed `marketing()->events()->settingsExternalApi()` => `marketing()->events()->settingsApi()`.
+- Added `is_large_value` param to `HubSpot\Client\Marketing\Events\Model\PropertyValue`.
+- Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Marketing\Events\Model\StandardError:category`.
+- Changed type from `object` to `HubSpotFormDefinitionAllOfLegalConsentOptions` in `HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPagingResultsInner:legal_consent_options`, `HubSpot\Client\Marketing\Forms\Model\FormDefinitionBase:legal_consent_options`, `HubSpot\Client\Marketing\Forms\Model\FormDefinitionCreateRequestBase:legal_consent_options`, `HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition:legal_consent_options` and `HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest:legal_consent_options`.
+- Added `lifecycle_stages` param to `HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration`.
+- Added `role_ids`, `send_welcome_email` and `super_admin` params to `HubSpot\Client\Settings\Users\Model\PublicUser`.
+- Update Php version >=7.4.
+
+## Removed `hapikey` from
+
+- `crm()->extensions()->videoconferencing()` API client.
+
+## Added
+
+- `crm()->companies()->gdprApi()` API client.
+- `crm()->deals()->gdprApi()` API client.
+- `crm()->extensions()->calling()->recordingSettingsApi()` API client.
+- `crm()->line_items()->gdprApi()` API client.
+- `crm()->objects()->calls()->gdprApi()` API client.
+- `crm()->objects()->communications()->gdprApi()` API client.
+- `crm()->objects()->emails()->gdprApi()` API client.
+- `crm()->objects()->feedbackSubmissions()->gdprApi()` API client.
+- `crm()->objects()->meetings()->gdprApi()` API client.
+- `crm()->objects()->notes()->gdprApi()` API client.
+- `crm()->objects()->postalMail.gdprApi()` API client.
+- `crm()->objects()->tasks()->gdprApi()` API client.
+- `crm()->products()->gdprApi()` API client.
+- `crm()->quotes()->gdprApi()` API client.
+- `crm()->tickets()->gdprApi()` API client.
+
 ## [10.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0) - 2023-12-13
 
 ## Updated
@@ -59,24 +200,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Cnange type from `object` to `string` in `HubSpot\Client\Cms\Hubdb\Model\StandardError::category`.
 - Cnange type from `\HubSpot\Client\Crm\Associations\V4\Model\StandardError[]` to `\HubSpot\Client\Crm\Associations\V4\Model\StandardError1[]` in `\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseSimplePublicObjectWithErrors::errors`.
-- Cnange type from `\HubSpot\Client\Crm\Companies\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Companies\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Contacts\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Contacts\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Deals\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Deals\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\LineItems\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\LineItems\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Calls\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Calls\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Communications\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Communications\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Emails\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Emails\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Meetings\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Meetings\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Notes\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Notes\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\PostalMail\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\PostalMail\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Objects\Tasks\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Objects\Tasks\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Products\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Products\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Properties\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Properties\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Quotes\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Quotes\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Crm\Tickets\Model\ErrorCategory` to `string` in`HubSpot\Client\Crm\Tickets\Model\StandardError::category`.
-- Cnange type from `\HubSpot\Client\Webhooks\Model\ErrorCategory` to `string` in`HubSpot\Client\Webhooks\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Companies\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Companies\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Contacts\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Contacts\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Deals\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Deals\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\LineItems\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\LineItems\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Calls\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Calls\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Communications\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Communications\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Emails\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Emails\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Meetings\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Meetings\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Notes\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Notes\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\PostalMail\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\PostalMail\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Objects\Tasks\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Objects\Tasks\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Products\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Products\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Properties\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Properties\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Quotes\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Quotes\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Crm\Tickets\Model\ErrorCategory` to `string` in `HubSpot\Client\Crm\Tickets\Model\StandardError::category`.
+- Cnange type from `\HubSpot\Client\Webhooks\Model\ErrorCategory` to `string` in `HubSpot\Client\Webhooks\Model\StandardError::category`.
 
 ## [10.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/10.0.1) - 2023-07-27
 

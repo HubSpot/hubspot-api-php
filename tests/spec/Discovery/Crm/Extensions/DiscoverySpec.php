@@ -20,7 +20,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->accounting()->shouldHaveType(\HubSpot\Discovery\Crm\Extensions\Accounting\Discovery::class);
         $this->calling()->shouldHaveType(\HubSpot\Discovery\Crm\Extensions\Calling\Discovery::class);
         $this->cards()->shouldHaveType(\HubSpot\Discovery\Crm\Extensions\Cards\Discovery::class);
         $this->videoconferencing()->shouldHaveType(\HubSpot\Discovery\Crm\Extensions\Videoconferencing\Discovery::class);
