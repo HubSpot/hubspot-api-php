@@ -5,6 +5,7 @@ namespace spec\HubSpot\Discovery\Cms\UrlRedirects;
 use GuzzleHttp\Client;
 use HubSpot\Client\Cms\UrlRedirects\Api\RedirectsApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Cms\UrlRedirects\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -16,7 +17,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Cms\UrlRedirects\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

@@ -7,6 +7,7 @@ use HubSpot\Client\Crm\Timeline\Api\EventsApi;
 use HubSpot\Client\Crm\Timeline\Api\TemplatesApi;
 use HubSpot\Client\Crm\Timeline\Api\TokensApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Crm\Timeline\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -18,7 +19,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Crm\Timeline\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

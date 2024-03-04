@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Imports\Api\CoreApi;
 use HubSpot\Client\Crm\Imports\Api\PublicImportsApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Crm\Imports\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -17,7 +18,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Crm\Imports\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

@@ -7,6 +7,7 @@ use HubSpot\Client\Auth\OAuth\Api\AccessTokensApi;
 use HubSpot\Client\Auth\OAuth\Api\RefreshTokensApi;
 use HubSpot\Client\Auth\OAuth\Api\TokensApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Auth\OAuth\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -18,7 +19,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Auth\OAuth\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()

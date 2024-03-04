@@ -19,10 +19,10 @@ use HubSpot\Discovery\Crm\ObjectDiscovery;
  */
 class Discovery extends ObjectDiscovery
 {
-  public function gdprApi()
-  {
-      $config = $this->config->convertToClientConfig(Configuration::class);
+    public function gdprApi()
+    {
+        $config = $this->config->convertToClientConfig(Configuration::class);
 
-      return new GDPRApi($this->client, $config);
-  }
+        return new GDPRApi($this->client, $config);
+    }
 }

@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Cms\Pages\Api\LandingPagesApi;
 use HubSpot\Client\Cms\Pages\Api\SitePagesApi;
 use HubSpot\Config;
+use HubSpot\Discovery\Cms\Pages\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -17,7 +18,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\HubSpot\Discovery\Cms\Pages\Discovery::class);
+        $this->shouldHaveType(Discovery::class);
     }
 
     public function it_creates_clients()
