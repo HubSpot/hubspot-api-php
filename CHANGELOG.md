@@ -11,17 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Updated
 
-- `automation()->actions()->definitionsApi()->create($app_id, ExtensionActionDefinition $extension_action_definition_input => PublicActionDefinition $extension_action_definition_input): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
-- `automation()->actions()->definitionsApi()->getById(): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
-- `automation()->actions()->definitionsApi()->getPage(): CollectionResponseExtensionActionDefinitionForwardPaging|Error => CollectionResponsePublicActionDefinitionForwardPaging|Error`.
-- `automation()->actions()->definitionsApi()->update($definition_id, $app_id, ExtensionActionDefinitionPatch $extension_action_definition_patch => PublicActionDefinition $public_action_definition_patch): ExtensionActionDefinition|Error => PublicActionDefinition|Error`.
-- `automation()->actions()->functionsApi()->createOrReplace(): ActionFunctionIdentifier|Error => PublicActionFunctionIdentifier|Error`.
-- `automation()->actions()->functionsApi()->createOrReplaceByFunctionType(): ActionFunctionIdentifier|Error => PublicActionFunctionIdentifier|Error`.
-- `automation()->actions()->functionsApi()->getByFunctionType(): ActionFunction|Error => PublicActionFunction|Error`.
-- `automation()->actions()->functionsApi()->getById(): ActionFunction|Error => PublicActionFunction|Error`.
-- `automation()->actions()->functionsApi()->getPage(): CollectionResponseActionFunctionIdentifierNoPaging|Error => CollectionResponsePublicActionFunctionIdentifierNoPaging|Error`.
-- `automation()->actions()->revisionsApi()->getById(): ActionRevision|Error => PublicActionRevision|Error`.
-- `automation()->actions()->revisionsApi()->getPage(): CollectionResponseActionRevisionForwardPaging|Error => CollectionResponsePublicActionRevisionForwardPaging|Error`.
+- Changed type of `$extension_action_definition_input` input param from `ExtensionActionDefinition` to `PublicActionDefinition` in `automation()->actions()->definitionsApi()->create()`.
+- Renamed and changed type the third input param of `automation()->actions()->definitionsApi()->update()` from `ExtensionActionDefinitionPatch $extension_action_definition_patch` to `PublicActionDefinition $public_action_definition_patch`.
+- Changed the return type from `ExtensionActionDefinition|Error` to `PublicActionDefinition|Error` of `create()`, `getById()` and `update()` methods of `automation()->actions()->definitionsApi()`.
+- Changed the return type from `CollectionResponseExtensionActionDefinitionForwardPaging|Error` to `CollectionResponsePublicActionDefinitionForwardPaging|Error` of `getPage()` method of `automation()->actions()->definitionsApi()`.
+- Changed the return type from `ActionFunctionIdentifier|Error` to `PublicActionFunctionIdentifier|Error` of `createOrReplaceByFunctionType()` and `createOrReplace()` methods of `automation()->actions()->functionsApi()`.
+- Changed the return type from `ActionFunction|Error` to `PublicActionFunction|Error` of `getByFunctionType()` and `getById()` methods of `automation()->actions()->functionsApi()`.
+- Changed the return type from `CollectionResponseActionFunctionIdentifierNoPaging|Error` to `CollectionResponsePublicActionFunctionIdentifierNoPaging|Error` of `getPage()` method of `automation()->actions()->functionsApi()`.
+- Changed the return type from `ActionRevision|Error` to `PublicActionRevision|Error` of `getById()` method of `automation()->actions()->revisionsApi()`.
+- Changed the return type from `CollectionResponseActionRevisionForwardPaging|Error` to `CollectionResponsePublicActionRevisionForwardPaging|Error` of `getPage()` method of `automation()->actions()->revisionsApi()`.
 - Added new params to `HubSpot\Client\Automation\Actions\Model\FieldTypeDefinition`:
 
 ```php
@@ -36,32 +34,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   'external_options' => 'bool'
 ```
 
-- Added new param `'automation_field_type' => 'string'` to `HubSpot\Client\Automation\Actions\Model\InputFieldDefinition`.
-- `cms()->auditLogs()->auditLogsApi()->getPage($object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null)` => `cms()->auditLogs()->auditLogsApi()->getPage($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null)`.
+- Added `automation_field_type` param to `HubSpot\Client\Automation\Actions\Model\InputFieldDefinition`.
+- Changed the order of input params from `$object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null` to `$user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null` in `cms()->auditLogs()->auditLogsApi()->getPage()`.
 - Removed params `scope_to_scope_group_pks`, `trial_scopes` and `trial_scope_to_scope_group_pks` from `HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse`.
-- Added new param `prev` to `HubSpot\Client\Cms\AuditLogs\Model\Paging`.
-- `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->attachToLangGroup():void`.
-- `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->detachFromLangGroup():void`.
-- Added param `property` to `cms()->blogs()->authors()->blogAuthorsApi()->getById()` and `cms()->blogs()->authors()->blogAuthorsApi()->getPage()`.
-- `cms()->blogs()->authors()->blogAuthorsApi()->updateLangs():Error` => `cms()->blogs()->authors()->blogAuthorsApi()->updateLangs():void`.
-- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Authors\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
-- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Authors\Model\StandardError:category`.
-- `cms()->blogs()->blogPosts()->blogPostsApi()->attachToLangGroup():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->attachToLangGroup():void`.
-- `cms()->blogs()->blogPosts()->blogPostsApi()->detachFromLangGroup():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->detachFromLangGroup():void`.
-- Added param `property` to `cms()->blogs()->blogPosts()->blogPostsApi()->getById()` and `cms()->blogs()->blogPosts()->blogPostsApi()->getPage()`.
-- `cms()->blogs()->blogPosts()->blogPostsApi()->updateLangs():Error` => `cms()->blogs()->blogPosts()->blogPostsApi()->updateLangs():void`.
-- Remove laguages consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Authors\Model\UpdateLanguagesRequestVNext`.
-- Remove background position's consts from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage`.
-- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\BlogPosts\Model\StandardError:category`.
-- `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->attachToLangGroup():void`.
-- `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():Error` => `cms()->blogs()->tags()->blogTagsApi()->detachFromLangGroup():void`.
-- Added param `property` to `cms()->blogs()->tags()->blogTagsApi()->getById()` and `cms()->blogs()->tags()->blogTagsApi()->getPage()`.
-- `cms()->blogs()->tags()->blogTagsApi()->updateLangs():Error` => `cms()->blogs()->tags()->blogTagsApi()->updateLangs():void`.
-- Remove laguages consts from `HubSpot\Client\Cms\Blogs\Tags\Model\AttachToLangPrimaryRequestVNext` and `HubSpot\Client\Cms\Blogs\Tags\Model\UpdateLanguagesRequestVNext`.
-- Changed type from `object` to `string` in `HubSpot\Client\Cms\Blogs\Tags\Model\StandardError:category`.
+- Added `prev` param to `HubSpot\Client\Cms\AuditLogs\Model\Paging`.
+- Added `property` param to `getById()` and `getPage()` methods of `cms()->blogs()->authors()->blogAuthorsApi()`, `cms()->blogs()->blogPosts()->blogPostsApi()` and `cms()->blogs()->tags()->blogTagsApi()`.
+- Change return type from `Error` to `void` of `attachToLangGroup()`, `detachFromLangGroup()` and `updateLangs()` methods of `cms()->blogs()->authors()->blogAuthorsApi()`, `cms()->blogs()->blogPosts()->blogPostsApi()` and `cms()->blogs()->tags()->blogTagsApi()`.
+- Removed languages constants from `AttachToLangPrimaryRequestVNext` and `UpdateLanguagesRequestVNext` objects for all CMS blogs clients.
+- Changed type from `object` to `string` in `StandardError:category` for all CMS blogs clients.
+- Removed background position's constants from `HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage`.
 - Changed type from `int` to `string` in `HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3BatchUpdateRequest:id`.
-- `cms()->sourceCode()->contentApi()->get()` => `cms()->sourceCode()->contentApi()->download()`.
-- `cms()->sourceCode()->contentApi()->replace()` => `cms()->sourceCode()->contentApi()->createOrUpdate()`.
+- Renamed method `get()` to `download()` of `cms()->sourceCode()->contentApi()`.
+- Renamed method `replace()` to `createOrUpdate()` of `cms()->sourceCode()->contentApi()`.
 - Added param `properties` to `cms()->sourceCode()->metadataApi()->get()`.
 - Added param `hash` to `HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata`.
 - Changed type of `$object_id` and `$to_object_id` params from `int` to `string` in `crm()->associations()->v4()->basicApi()->archive()`.
@@ -72,37 +56,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed type of `to_object_id` and `from_object_id` params from `int` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\LabelsBetweenObjectPair`.
 - Changed type from `int` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\MultiAssociatedObjectWithLabel:to_object_id`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\v4\Model\StandardError:category`.
-- `crm()->associations()->v4()->schema()->definitionsApi()->delete()` => `crm()->associations()->v4()->schema()->definitionsApi()->archive()`.
+- Renamed method `delete()` to `archive()` of `crm()->associations()->v4()->schema()->definitionsApi()`.
 - Added param `inverseLabel` to `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionCreateRequest` and `HubSpot\Client\Crm\Associations\v4\Model\PublicAssociationDefinitionUpdateRequest`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Associations\Model\StandardError:category`.
-- `crm()->extensions()->cards()->cardsApi()->archive($app_id, $card_id)` => `crm()->extensions()->cards()->cardsApi()->archive($card_id, $app_id)`.
-- `crm()->extensions()->cards()->cardsApi()->create(): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->create(): PublicCardResponse|Error`.
-- `crm()->extensions()->cards()->cardsApi()->getAll(): CardListResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getAll(): PublicCardListResponse|Error`.
-- `crm()->extensions()->cards()->cardsApi()->getById($app_id, $card_id): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->getById($card_id, $app_id): PublicCardResponse|Error`.
-- `crm()->extensions()->cards()->cardsApi()->update($app_id, $card_id, $card_patch_request): CardResponse|Error` => `crm()->extensions()->cards()->cardsApi()->update($card_id, $app_id, $card_patch_request): PublicCardResponse|Error`.
+- Changed the order of input params from `$app_id, $card_id` to `$card_id, $app_id` in `crm()->extensions()->cards()->cardsApi()->archive()`.
+- Changed the return type from `CardResponse|Error` to `PublicCardResponse|Error` of `create()`, `getById()` and `update()` methods of `crm()->extensions()->cards()->cardsApi()`.
+- Changed the return type from `CardListResponse|Error` to `PublicCardListResponse|Error` of `getAll()` method of `crm()->extensions()->cards()->cardsApi()`.
+- Changed the order of input params from `$app_id, $card_id` to `$card_id, $app_id` in `crm()->extensions()->cards()->cardsApi()->getById()`.
+- Changed the order of input params from `$app_id, $card_id, $card_patch_request` to `$card_id, $app_id, $card_patch_request` in `crm()->extensions()->cards()->cardsApi()->update()`.
 - Added `serverless_function` and `card_type` params to `HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBody` and `HubSpot\Client\Crm\Extensions\Cards\Model\CardFetchBodyPatch`.
 - Added `NAME_MARKETING_EVENTS` const to `HubSpot\Client\Crm\Extensions\Cards\Model\CardObjectTypeBody`.
 - Added `audit_history` param to `HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse`.
 - Added `fetch_accounts_uri` param to `HubSpot\Client\Crm\Extensions\Videoconferencing\Model\ExternalSettings`.
 - Added `import_template` and `import_source` params to `HubSpot\Client\Crm\Imports\Model\PublicImportResponse`.
-- `crm()->lists()->listsApi()->delete()` => `crm()->lists()->listsApi()->remove()`.
-- `crm()->lists()->membershipsApi()->deleteAll()` => `crm()->lists()->listsApi()->removeAll()`.
+- Renamed method `delete()` to `remove()` of `crm()->lists()->listsApi()`.
+- Renamed method `deleteAll()` to `removeAll()` of `crm()->lists()->listsApi()`.
 - Changed type from `int` to `string` in `PublicObjectSearchRequest:after` in all CRM clients.
 - Added param `id_property` to `SimplePublicObjectBatchInput` in all CRM clients.
 - Removed `crm()->objects()->associationsApi()`.
-- `crm()->objects()->postalMail()->basicApi()->archive($postal_mail)` => `crm()->objects()->postalMail()->basicApi()->archive($postal_mail_id)`.
-- `crm()->objects()->postalMail()->basicApi()->getById($postal_mail, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)` => `crm()->objects()->postalMail()->basicApi()->getById($postal_mail_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null)`.
-- `crm()->objects()->postalMail()->basicApi()->update($postal_mail, $simple_public_object_input, $id_property = null)` => `crm()->objects()->postalMail()->basicApi()->update($postal_mail_id, $simple_public_object_input, $id_property = null)`.
+- Renamed param from `$postal_mail` to `$postal_mail_id` in `archive()`, `getById()` and `update()` of `crm()->objects()->postalMail()->basicApi()`.
 - Added param `$validate_deal_stage_usages_before_delete` to `crm()->pipelines()->pipelinesApi()->archive()`, `crm()->pipelines()->pipelinesApi()->replace()` and `crm()->pipelines()->pipelinesApi()->update()`.
 - Added `write_permissions` param to `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`.
 - Added `description` param to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`, `HubSpot\Client\Crm\Schemas\Model\ObjectSchemaEgg`, `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinition` and `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
 - Added `option_sort_strategy`, `show_currency_symbol`, `form_field`, `referenced_object_type`, `text_display_hint`, `searchable_in_global_search` and  `number_display_hint` params to `HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate`.
-- Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`.
-- `crm()-timeline()->eventsApi()->createBatch(): BatchResponseTimelineEventResponse|BatchResponseTimelineEventResponseWithErrors|Error` => `crm()->timeline()->eventsApi()->createBatch():void`.
+- Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`. 
+- Changed the return type from `BatchResponseTimelineEventResponse|BatchResponseTimelineEventResponseWithErrors|Error` to `void` of `createBatch()` method of `crm()-timeline()->eventsApi()`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Timeline\Model\StandardError:category`.
-- `events()->eventsApi()->getPage($occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null)` => `events()->eventsApi()->getPage($object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null)`.
+- Changed input params from `$occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null` to `$object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null` in `events()->eventsApi()->getPage()`.
 - Added `prev` param to `HubSpot\Client\Events\Model\Paging`.
-- `events()->send()->behavioralEventsTrackingApi()` => `events()->send()->customEventDataApi()`.
+- Rename `behavioralEventsTrackingApi` API to `customEventDataApi` in `events()->send()` API client.
 - Added method `getMetadata()` to `files()->filesApi()`.
 - Added `expires_at` param to `HubSpot\Client\Files\Model\File` and `HubSpot\Client\Files\Model\FileUpdateInput`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Files\Model\StandardError:category`.
