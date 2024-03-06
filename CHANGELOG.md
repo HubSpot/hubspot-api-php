@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/10.3.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/11.0.0...HEAD)
 
-## [11.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0) - 2024-02-22
+## [11.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0) - 2024-03-06
 
-### Major change for SDK.
+### Major change for SDK
 
 - ***Update Php version >=7.4***
 
-### Automation Action client.
+### Automation Action client
 
 - Changed type of `$extension_action_definition_input` input param from `ExtensionActionDefinition` to `PublicActionDefinition` in `automation()->actions()->definitionsApi()->create()`.
 - Renamed and changed type the third input param of `automation()->actions()->definitionsApi()->update()` from `ExtensionActionDefinitionPatch $extension_action_definition_patch` to `PublicActionDefinition $public_action_definition_patch`.
@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   'external_options' => 'bool'
 ```
 
-### CMS clients.
+### CMS clients
 
 - Changed the order of input params from `$object_id = null, $user_id = null, $after = null, $before = null, $sort = null, $event_type = null, $limit = null, $object_type = null` to `$user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null` in `cms()->auditLogs()->auditLogsApi()->getPage()`.
 - Removed params `scope_to_scope_group_pks`, `trial_scopes` and `trial_scope_to_scope_group_pks` from `HubSpot\Client\Auth\OAuth\Model\AccessTokenInfoResponse`.
@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added param `properties` to `cms()->sourceCode()->metadataApi()->get()`.
 - Added param `hash` to `HubSpot\Client\Cms\SourceCode\Model\AssetFileMetadata`.
 
-### CRM Associations and Objects clients.
+### CRM Associations and Objects clients
 
 > [!NOTE]
 > Please note that CRM Objects includes: companies, contacts, deals, line items, all CRM objects `crm->objects()`, products, quotes and tickets
@@ -76,7 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed `crm()->objects()->associationsApi()`.
 - Renamed param from `$postal_mail` to `$postal_mail_id` in `archive()`, `getById()` and `update()` of `crm()->objects()->postalMail()->basicApi()`.
 
-### Added APIs to CRM Objects clients.
+### Added APIs to CRM Objects clients
 
 - `crm()->companies()->gdprApi()` API.
 - `crm()->deals()->gdprApi()` API.
@@ -93,7 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `crm()->quotes()->gdprApi()` API.
 - `crm()->tickets()->gdprApi()` API.
 
-### The other CRM clients.
+### The other CRM clients
 
 - Changed the order of input params from `$app_id, $card_id` to `$card_id, $app_id` in `crm()->extensions()->cards()->cardsApi()->archive()`.
 - Changed the return type from `CardResponse|Error` to `PublicCardResponse|Error` of `create()`, `getById()` and `update()` methods of `crm()->extensions()->cards()->cardsApi()`.
@@ -111,13 +111,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `write_permissions` param to `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`.
 - Added `description` param to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`, `HubSpot\Client\Crm\Schemas\Model\ObjectSchemaEgg`, `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinition` and `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
 - Added `option_sort_strategy`, `show_currency_symbol`, `form_field`, `referenced_object_type`, `text_display_hint`, `searchable_in_global_search` and  `number_display_hint` params to `HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate`.
-- Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`. 
+- Added `calculation_formula` param to `HubSpot\Client\Crm\Schemas\Model\Property`.
 - Changed the return type from `BatchResponseTimelineEventResponse|BatchResponseTimelineEventResponseWithErrors|Error` to `void` of `createBatch()` method of `crm()-timeline()->eventsApi()`.
 - Changed type from `ErrorCategory` to `string` in `HubSpot\Client\Crm\Timeline\Model\StandardError:category`.
 - Removed `hapikey` from `crm()->extensions()->videoconferencing()` API client.
 - Added `crm()->extensions()->calling()->recordingSettingsApi()` API.
 
-### Marketing clients.
+### Marketing clients
 
 - Added `marketing()->events()->basicApi()` API.
 - Added `marketing()->events()->batchApi()` API.
@@ -137,7 +137,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed type from `object` to `HubSpotFormDefinitionAllOfLegalConsentOptions` in `HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPagingResultsInner:legal_consent_options`, `HubSpot\Client\Marketing\Forms\Model\FormDefinitionBase:legal_consent_options`, `HubSpot\Client\Marketing\Forms\Model\FormDefinitionCreateRequestBase:legal_consent_options`, `HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition:legal_consent_options` and `HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest:legal_consent_options`.
 - Added `lifecycle_stages` param to `HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration`.
 
-### Events, Files and Settings clients.
+### Events, Files and Settings clients
 
 - Changed input params from `$occurred_after = null, $occurred_before = null, $object_type = null, $object_id = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null` to `$object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null` in `events()->eventsApi()->getPage()`.
 - Added `prev` param to `HubSpot\Client\Events\Model\Paging`.
