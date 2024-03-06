@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [11.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0) - 2024-02-22
 
-### Change for whole SDK.
+### Major change for SDK.
 
 - ***Update Php version >=7.4***
 
