@@ -85,6 +85,12 @@ $hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
 $response = $hubspot->crm()->contacts()->basicApi()->getPage();
 ```
 
+#### Get contact by email
+
+```php
+$contact = $hubSpot->crm()->contacts()->basicApi()->getById('example@example.com', null, null, null, false, 'email');
+```
+
 #### Search for a contact
 
 ```php
