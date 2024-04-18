@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicRollingPropertyUpdatedOperation
+ * JoinTimeAndRecordId
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Lists\ObjectSerializer;
 
 /**
- * PublicRollingPropertyUpdatedOperation Class Doc Comment
+ * JoinTimeAndRecordId Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Lists
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAccess, \JsonSerializable
+class JoinTimeAndRecordId implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicRollingPropertyUpdatedOperation';
+    protected static $openAPIModelName = 'JoinTimeAndRecordId';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'include_objects_with_no_value_set' => 'bool',
-        'operation_type' => 'string',
-        'number_of_days' => 'int',
-        'operator' => 'string'
+        'record_id' => 'string',
+        'membership_timestamp' => '\DateTime'
     ];
 
     /**
@@ -71,10 +69,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'include_objects_with_no_value_set' => null,
-        'operation_type' => null,
-        'number_of_days' => 'int32',
-        'operator' => null
+        'record_id' => null,
+        'membership_timestamp' => 'date-time'
     ];
 
     /**
@@ -83,10 +79,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'include_objects_with_no_value_set' => false,
-        'operation_type' => false,
-        'number_of_days' => false,
-        'operator' => false
+        'record_id' => false,
+        'membership_timestamp' => false
     ];
 
     /**
@@ -175,10 +169,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'include_objects_with_no_value_set' => 'includeObjectsWithNoValueSet',
-        'operation_type' => 'operationType',
-        'number_of_days' => 'numberOfDays',
-        'operator' => 'operator'
+        'record_id' => 'recordId',
+        'membership_timestamp' => 'membershipTimestamp'
     ];
 
     /**
@@ -187,10 +179,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'include_objects_with_no_value_set' => 'setIncludeObjectsWithNoValueSet',
-        'operation_type' => 'setOperationType',
-        'number_of_days' => 'setNumberOfDays',
-        'operator' => 'setOperator'
+        'record_id' => 'setRecordId',
+        'membership_timestamp' => 'setMembershipTimestamp'
     ];
 
     /**
@@ -199,10 +189,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'include_objects_with_no_value_set' => 'getIncludeObjectsWithNoValueSet',
-        'operation_type' => 'getOperationType',
-        'number_of_days' => 'getNumberOfDays',
-        'operator' => 'getOperator'
+        'record_id' => 'getRecordId',
+        'membership_timestamp' => 'getMembershipTimestamp'
     ];
 
     /**
@@ -246,19 +234,6 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    public const OPERATION_TYPE_ROLLING_PROPERTY_UPDATED = 'ROLLING_PROPERTY_UPDATED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOperationTypeAllowableValues()
-    {
-        return [
-            self::OPERATION_TYPE_ROLLING_PROPERTY_UPDATED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -275,10 +250,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('include_objects_with_no_value_set', $data ?? [], null);
-        $this->setIfExists('operation_type', $data ?? [], 'ROLLING_PROPERTY_UPDATED');
-        $this->setIfExists('number_of_days', $data ?? [], null);
-        $this->setIfExists('operator', $data ?? [], null);
+        $this->setIfExists('record_id', $data ?? [], null);
+        $this->setIfExists('membership_timestamp', $data ?? [], null);
     }
 
     /**
@@ -308,26 +281,11 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['include_objects_with_no_value_set'] === null) {
-            $invalidProperties[] = "'include_objects_with_no_value_set' can't be null";
+        if ($this->container['record_id'] === null) {
+            $invalidProperties[] = "'record_id' can't be null";
         }
-        if ($this->container['operation_type'] === null) {
-            $invalidProperties[] = "'operation_type' can't be null";
-        }
-        $allowedValues = $this->getOperationTypeAllowableValues();
-        if (!is_null($this->container['operation_type']) && !in_array($this->container['operation_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'operation_type', must be one of '%s'",
-                $this->container['operation_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['number_of_days'] === null) {
-            $invalidProperties[] = "'number_of_days' can't be null";
-        }
-        if ($this->container['operator'] === null) {
-            $invalidProperties[] = "'operator' can't be null";
+        if ($this->container['membership_timestamp'] === null) {
+            $invalidProperties[] = "'membership_timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -345,119 +303,55 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets include_objects_with_no_value_set
-     *
-     * @return bool
-     */
-    public function getIncludeObjectsWithNoValueSet()
-    {
-        return $this->container['include_objects_with_no_value_set'];
-    }
-
-    /**
-     * Sets include_objects_with_no_value_set
-     *
-     * @param bool $include_objects_with_no_value_set include_objects_with_no_value_set
-     *
-     * @return self
-     */
-    public function setIncludeObjectsWithNoValueSet($include_objects_with_no_value_set)
-    {
-        if (is_null($include_objects_with_no_value_set)) {
-            throw new \InvalidArgumentException('non-nullable include_objects_with_no_value_set cannot be null');
-        }
-        $this->container['include_objects_with_no_value_set'] = $include_objects_with_no_value_set;
-
-        return $this;
-    }
-
-    /**
-     * Gets operation_type
+     * Gets record_id
      *
      * @return string
      */
-    public function getOperationType()
+    public function getRecordId()
     {
-        return $this->container['operation_type'];
+        return $this->container['record_id'];
     }
 
     /**
-     * Sets operation_type
+     * Sets record_id
      *
-     * @param string $operation_type operation_type
+     * @param string $record_id record_id
      *
      * @return self
      */
-    public function setOperationType($operation_type)
+    public function setRecordId($record_id)
     {
-        if (is_null($operation_type)) {
-            throw new \InvalidArgumentException('non-nullable operation_type cannot be null');
+        if (is_null($record_id)) {
+            throw new \InvalidArgumentException('non-nullable record_id cannot be null');
         }
-        $allowedValues = $this->getOperationTypeAllowableValues();
-        if (!in_array($operation_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'operation_type', must be one of '%s'",
-                    $operation_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['operation_type'] = $operation_type;
+        $this->container['record_id'] = $record_id;
 
         return $this;
     }
 
     /**
-     * Gets number_of_days
+     * Gets membership_timestamp
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getNumberOfDays()
+    public function getMembershipTimestamp()
     {
-        return $this->container['number_of_days'];
+        return $this->container['membership_timestamp'];
     }
 
     /**
-     * Sets number_of_days
+     * Sets membership_timestamp
      *
-     * @param int $number_of_days number_of_days
+     * @param \DateTime $membership_timestamp membership_timestamp
      *
      * @return self
      */
-    public function setNumberOfDays($number_of_days)
+    public function setMembershipTimestamp($membership_timestamp)
     {
-        if (is_null($number_of_days)) {
-            throw new \InvalidArgumentException('non-nullable number_of_days cannot be null');
+        if (is_null($membership_timestamp)) {
+            throw new \InvalidArgumentException('non-nullable membership_timestamp cannot be null');
         }
-        $this->container['number_of_days'] = $number_of_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets operator
-     *
-     * @return string
-     */
-    public function getOperator()
-    {
-        return $this->container['operator'];
-    }
-
-    /**
-     * Sets operator
-     *
-     * @param string $operator operator
-     *
-     * @return self
-     */
-    public function setOperator($operator)
-    {
-        if (is_null($operator)) {
-            throw new \InvalidArgumentException('non-nullable operator cannot be null');
-        }
-        $this->container['operator'] = $operator;
+        $this->container['membership_timestamp'] = $membership_timestamp;
 
         return $this;
     }

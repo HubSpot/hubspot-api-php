@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicRollingPropertyUpdatedOperation
+ * ApiCollectionResponseRecordListMembershipNoPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Lists\ObjectSerializer;
 
 /**
- * PublicRollingPropertyUpdatedOperation Class Doc Comment
+ * ApiCollectionResponseRecordListMembershipNoPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Lists
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiCollectionResponseRecordListMembershipNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicRollingPropertyUpdatedOperation';
+    protected static $openAPIModelName = 'ApiCollectionResponseRecordListMembershipNoPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'include_objects_with_no_value_set' => 'bool',
-        'operation_type' => 'string',
-        'number_of_days' => 'int',
-        'operator' => 'string'
+        'total' => 'int',
+        'results' => '\HubSpot\Client\Crm\Lists\Model\RecordListMembership[]'
     ];
 
     /**
@@ -71,10 +69,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'include_objects_with_no_value_set' => null,
-        'operation_type' => null,
-        'number_of_days' => 'int32',
-        'operator' => null
+        'total' => 'int64',
+        'results' => null
     ];
 
     /**
@@ -83,10 +79,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'include_objects_with_no_value_set' => false,
-        'operation_type' => false,
-        'number_of_days' => false,
-        'operator' => false
+        'total' => false,
+        'results' => false
     ];
 
     /**
@@ -175,10 +169,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'include_objects_with_no_value_set' => 'includeObjectsWithNoValueSet',
-        'operation_type' => 'operationType',
-        'number_of_days' => 'numberOfDays',
-        'operator' => 'operator'
+        'total' => 'total',
+        'results' => 'results'
     ];
 
     /**
@@ -187,10 +179,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'include_objects_with_no_value_set' => 'setIncludeObjectsWithNoValueSet',
-        'operation_type' => 'setOperationType',
-        'number_of_days' => 'setNumberOfDays',
-        'operator' => 'setOperator'
+        'total' => 'setTotal',
+        'results' => 'setResults'
     ];
 
     /**
@@ -199,10 +189,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'include_objects_with_no_value_set' => 'getIncludeObjectsWithNoValueSet',
-        'operation_type' => 'getOperationType',
-        'number_of_days' => 'getNumberOfDays',
-        'operator' => 'getOperator'
+        'total' => 'getTotal',
+        'results' => 'getResults'
     ];
 
     /**
@@ -246,19 +234,6 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    public const OPERATION_TYPE_ROLLING_PROPERTY_UPDATED = 'ROLLING_PROPERTY_UPDATED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOperationTypeAllowableValues()
-    {
-        return [
-            self::OPERATION_TYPE_ROLLING_PROPERTY_UPDATED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -275,10 +250,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('include_objects_with_no_value_set', $data ?? [], null);
-        $this->setIfExists('operation_type', $data ?? [], 'ROLLING_PROPERTY_UPDATED');
-        $this->setIfExists('number_of_days', $data ?? [], null);
-        $this->setIfExists('operator', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -308,26 +281,8 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['include_objects_with_no_value_set'] === null) {
-            $invalidProperties[] = "'include_objects_with_no_value_set' can't be null";
-        }
-        if ($this->container['operation_type'] === null) {
-            $invalidProperties[] = "'operation_type' can't be null";
-        }
-        $allowedValues = $this->getOperationTypeAllowableValues();
-        if (!is_null($this->container['operation_type']) && !in_array($this->container['operation_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'operation_type', must be one of '%s'",
-                $this->container['operation_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['number_of_days'] === null) {
-            $invalidProperties[] = "'number_of_days' can't be null";
-        }
-        if ($this->container['operator'] === null) {
-            $invalidProperties[] = "'operator' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -345,119 +300,55 @@ class PublicRollingPropertyUpdatedOperation implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets include_objects_with_no_value_set
+     * Gets total
      *
-     * @return bool
+     * @return int|null
      */
-    public function getIncludeObjectsWithNoValueSet()
+    public function getTotal()
     {
-        return $this->container['include_objects_with_no_value_set'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets include_objects_with_no_value_set
+     * Sets total
      *
-     * @param bool $include_objects_with_no_value_set include_objects_with_no_value_set
+     * @param int|null $total total
      *
      * @return self
      */
-    public function setIncludeObjectsWithNoValueSet($include_objects_with_no_value_set)
+    public function setTotal($total)
     {
-        if (is_null($include_objects_with_no_value_set)) {
-            throw new \InvalidArgumentException('non-nullable include_objects_with_no_value_set cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['include_objects_with_no_value_set'] = $include_objects_with_no_value_set;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets operation_type
+     * Gets results
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Lists\Model\RecordListMembership[]
      */
-    public function getOperationType()
+    public function getResults()
     {
-        return $this->container['operation_type'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets operation_type
+     * Sets results
      *
-     * @param string $operation_type operation_type
+     * @param \HubSpot\Client\Crm\Lists\Model\RecordListMembership[] $results results
      *
      * @return self
      */
-    public function setOperationType($operation_type)
+    public function setResults($results)
     {
-        if (is_null($operation_type)) {
-            throw new \InvalidArgumentException('non-nullable operation_type cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $allowedValues = $this->getOperationTypeAllowableValues();
-        if (!in_array($operation_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'operation_type', must be one of '%s'",
-                    $operation_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['operation_type'] = $operation_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_days
-     *
-     * @return int
-     */
-    public function getNumberOfDays()
-    {
-        return $this->container['number_of_days'];
-    }
-
-    /**
-     * Sets number_of_days
-     *
-     * @param int $number_of_days number_of_days
-     *
-     * @return self
-     */
-    public function setNumberOfDays($number_of_days)
-    {
-        if (is_null($number_of_days)) {
-            throw new \InvalidArgumentException('non-nullable number_of_days cannot be null');
-        }
-        $this->container['number_of_days'] = $number_of_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets operator
-     *
-     * @return string
-     */
-    public function getOperator()
-    {
-        return $this->container['operator'];
-    }
-
-    /**
-     * Sets operator
-     *
-     * @param string $operator operator
-     *
-     * @return self
-     */
-    public function setOperator($operator)
-    {
-        if (is_null($operator)) {
-            throw new \InvalidArgumentException('non-nullable operator cannot be null');
-        }
-        $this->container['operator'] = $operator;
+        $this->container['results'] = $results;
 
         return $this;
     }
