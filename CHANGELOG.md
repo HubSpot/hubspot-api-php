@@ -5,7 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/11.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/11.1.0...HEAD)
+
+## [11.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.1.0) - 2024-04-18
+
+### CRM Lists Beta
+
+- Cnanged type of `list_id`, `app_id`, `email_id` and `business_unit_id` from `int` to `string`  in whole client.
+- Added method `getLists()` to `crm()->lists()->membershipsApi()`.
+- Changed the return type from `CollectionResponseLong|Error` to `ApiCollectionResponseJoinTimeAndRecordId|Error` of `getPage()` method of `crm()->lists()->membershipsApi()`.
+- Changed type from `int` to `string` in `HubSpot\Client\Crm\Lists\Model\PublicObjectList:updated_by_id` and `HubSpot\Client\Crm\Lists\Model\PublicObjectList:created_by_id`.
 
 ## [11.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0) - 2024-03-06
 
@@ -735,7 +744,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/8.2.1...HEAD
+[unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/11.1.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -788,3 +797,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [10.1.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.1.2
 [10.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.2.0
 [10.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0
+[11.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0
+[11.1.0]:https://github.com/HubSpot/hubspot-api-php/releases/tag/11.1.0
