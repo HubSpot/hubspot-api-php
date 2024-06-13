@@ -26,7 +26,7 @@ Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-
 ### To instantiate API Client using access token use Factory
 
 ```php
-$hubspot = \HubSpot\Factory::createWithAccessToken('access-token');
+$hubspot = \HubSpot\Factory::createWithAccessToken('your-access-token');
 ```
 
 You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain [OAuth2](https://developers.hubspot.com/docs/api/working-with-oauth) access token.
@@ -34,7 +34,7 @@ You'll need to create a [private app](https://developers.hubspot.com/docs/api/pr
 #### To instantiate API Client using developer apikey use Factory
 
 ```php
-$hubspot = \HubSpot\Factory::createWithDeveloperApiKey('developer-apikey');
+$hubspot = \HubSpot\Factory::createWithDeveloperApiKey('your-developer-apikey');
 ```
 
 #### also you can pass custom client to Factory
@@ -42,7 +42,7 @@ $hubspot = \HubSpot\Factory::createWithDeveloperApiKey('developer-apikey');
 ```php
 $client = new \GuzzleHttp\Client([...]);
 
-$hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
+$hubspot = \HubSpot\Factory::createWithAccessToken('your-access-token', $client);
 ```
 
 #### To change the base path
@@ -76,7 +76,7 @@ $handlerStack->push(
 
 $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
 
-$hubspot = \HubSpot\Factory::createWithAccessToken('access-token', $client);
+$hubspot = \HubSpot\Factory::createWithAccessToken('your-access-token', $client);
 ```
 
 #### Get contacts page
