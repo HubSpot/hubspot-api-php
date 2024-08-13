@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/11.1.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/11.2.0...HEAD)
+
+## [11.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.2.0) - 2024-08-13
+
+- Added `crm()->objects()->leads()` api client.
 
 ## [11.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.1.0) - 2024-04-18
 
@@ -798,4 +802,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [10.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.2.0
 [10.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/10.3.0
 [11.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.0.0
-[11.1.0]:https://github.com/HubSpot/hubspot-api-php/releases/tag/11.1.0
+[11.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.1.0
+[11.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.2.0
