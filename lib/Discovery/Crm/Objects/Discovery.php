@@ -19,6 +19,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Emails\Discovery              emails()
  * @method FeedbackSubmissions\Discovery feedbackSubmissions()
  * @method Goals\Discovery               goals()
+ * @method Leads\Discovery               leads()
  * @method Meetings\Discovery            meetings()
  * @method Notes\Discovery               notes()
  * @method PostalMail\Discovery          postalMail()
