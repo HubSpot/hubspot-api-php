@@ -88,4 +88,11 @@ class AssociationTypes
     public const DEAL_TO_POSTAL_MAIL = 458;
     public const POSTAL_MAIL_TO_COMPANY = 459;
     public const COMPANY_TO_POSTAL_MAIL = 460;
+    public const LEAD_TO_PRIMARY_CONTACT = 578;
+    public const LEAD_TO_CALL = 596;
+    public const LEAD_TO_EMAIL = 598;
+    public const LEAD_TO_MEETING = 600;
+    public const LEAD_TO_COMMUNICATION = 602;
+    public const LEAD_TO_CONTACT = 608;
+    public const LEAD_TO_TASK = 646;
 }
