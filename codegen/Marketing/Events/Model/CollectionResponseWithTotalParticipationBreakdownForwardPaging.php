@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * CollectionResponseWithTotalParticipationBreakdownForwardPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * CollectionResponseWithTotalParticipationBreakdownForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponseWithTotalParticipationBreakdownForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'CollectionResponseWithTotalParticipationBreakdownForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'total' => 'int',
+        'paging' => '\HubSpot\Client\Marketing\Events\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Marketing\Events\Model\ParticipationBreakdown[]'
     ];
 
     /**
@@ -69,8 +70,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'total' => 'int32',
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -79,8 +81,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'total' => false,
+        'paging' => false,
+        'results' => false
     ];
 
     /**
@@ -169,8 +172,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'total' => 'total',
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -179,8 +183,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'total' => 'setTotal',
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -189,8 +194,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'total' => 'getTotal',
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -250,8 +256,9 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('paging', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -281,11 +288,11 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +310,82 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets total
      *
      * @return int
      */
-    public function getVid()
+    public function getTotal()
     {
-        return $this->container['vid'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets vid
+     * Sets total
      *
-     * @param int $vid vid
+     * @param int $total total
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setTotal($total)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets paging
      *
-     * @return string
+     * @return \HubSpot\Client\Marketing\Events\Model\ForwardPaging|null
      */
-    public function getEmail()
+    public function getPaging()
     {
-        return $this->container['email'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets email
+     * Sets paging
      *
-     * @param string $email email
+     * @param \HubSpot\Client\Marketing\Events\Model\ForwardPaging|null $paging paging
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setPaging($paging)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($paging)) {
+            throw new \InvalidArgumentException('non-nullable paging cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\ParticipationBreakdown[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\ParticipationBreakdown[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
 
         return $this;
     }

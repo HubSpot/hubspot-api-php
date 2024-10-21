@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * ParticipationAssociations
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * ParticipationAssociations Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ParticipationAssociations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'ParticipationAssociations';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'marketing_event' => '\HubSpot\Client\Marketing\Events\Model\MarketingEventAssociation',
+        'contact' => '\HubSpot\Client\Marketing\Events\Model\ContactAssociation'
     ];
 
     /**
@@ -69,8 +69,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'marketing_event' => null,
+        'contact' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'marketing_event' => false,
+        'contact' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'marketing_event' => 'marketingEvent',
+        'contact' => 'contact'
     ];
 
     /**
@@ -179,8 +179,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'marketing_event' => 'setMarketingEvent',
+        'contact' => 'setContact'
     ];
 
     /**
@@ -189,8 +189,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'marketing_event' => 'getMarketingEvent',
+        'contact' => 'getContact'
     ];
 
     /**
@@ -250,8 +250,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('marketing_event', $data ?? [], null);
+        $this->setIfExists('contact', $data ?? [], null);
     }
 
     /**
@@ -281,11 +281,11 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['marketing_event'] === null) {
+            $invalidProperties[] = "'marketing_event' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['contact'] === null) {
+            $invalidProperties[] = "'contact' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +303,55 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets marketing_event
      *
-     * @return int
+     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventAssociation
      */
-    public function getVid()
+    public function getMarketingEvent()
     {
-        return $this->container['vid'];
+        return $this->container['marketing_event'];
     }
 
     /**
-     * Sets vid
+     * Sets marketing_event
      *
-     * @param int $vid vid
+     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventAssociation $marketing_event marketing_event
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setMarketingEvent($marketing_event)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($marketing_event)) {
+            throw new \InvalidArgumentException('non-nullable marketing_event cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['marketing_event'] = $marketing_event;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets contact
      *
-     * @return string
+     * @return \HubSpot\Client\Marketing\Events\Model\ContactAssociation
      */
-    public function getEmail()
+    public function getContact()
     {
-        return $this->container['email'];
+        return $this->container['contact'];
     }
 
     /**
-     * Sets email
+     * Sets contact
      *
-     * @param string $email email
+     * @param \HubSpot\Client\Marketing\Events\Model\ContactAssociation $contact contact
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setContact($contact)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($contact)) {
+            throw new \InvalidArgumentException('non-nullable contact cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['contact'] = $contact;
 
         return $this;
     }

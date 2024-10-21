@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * ForwardPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * ForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'ForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'next' => '\HubSpot\Client\Marketing\Events\Model\NextPage'
     ];
 
     /**
@@ -69,8 +68,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'next' => null
     ];
 
     /**
@@ -79,8 +77,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'next' => false
     ];
 
     /**
@@ -169,8 +166,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'next' => 'next'
     ];
 
     /**
@@ -179,8 +175,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'next' => 'setNext'
     ];
 
     /**
@@ -189,8 +184,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'next' => 'getNext'
     ];
 
     /**
@@ -250,8 +244,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -281,12 +274,6 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
-        }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -303,55 +290,28 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets next
      *
-     * @return int
+     * @return \HubSpot\Client\Marketing\Events\Model\NextPage|null
      */
-    public function getVid()
+    public function getNext()
     {
-        return $this->container['vid'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets vid
+     * Sets next
      *
-     * @param int $vid vid
+     * @param \HubSpot\Client\Marketing\Events\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setNext($next)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['vid'] = $vid;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string $email email
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
-        }
-        $this->container['email'] = $email;
+        $this->container['next'] = $next;
 
         return $this;
     }
