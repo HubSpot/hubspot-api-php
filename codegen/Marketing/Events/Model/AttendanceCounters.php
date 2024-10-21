@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * AttendanceCounters
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * AttendanceCounters Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttendanceCounters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'AttendanceCounters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'attended' => 'int',
+        'registered' => 'int',
+        'cancelled' => 'int',
+        'no_shows' => 'int'
     ];
 
     /**
@@ -69,8 +71,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'attended' => 'int32',
+        'registered' => 'int32',
+        'cancelled' => 'int32',
+        'no_shows' => 'int32'
     ];
 
     /**
@@ -79,8 +83,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'attended' => false,
+        'registered' => false,
+        'cancelled' => false,
+        'no_shows' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'attended' => 'attended',
+        'registered' => 'registered',
+        'cancelled' => 'cancelled',
+        'no_shows' => 'noShows'
     ];
 
     /**
@@ -179,8 +187,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'attended' => 'setAttended',
+        'registered' => 'setRegistered',
+        'cancelled' => 'setCancelled',
+        'no_shows' => 'setNoShows'
     ];
 
     /**
@@ -189,8 +199,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'attended' => 'getAttended',
+        'registered' => 'getRegistered',
+        'cancelled' => 'getCancelled',
+        'no_shows' => 'getNoShows'
     ];
 
     /**
@@ -250,8 +262,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('attended', $data ?? [], null);
+        $this->setIfExists('registered', $data ?? [], null);
+        $this->setIfExists('cancelled', $data ?? [], null);
+        $this->setIfExists('no_shows', $data ?? [], null);
     }
 
     /**
@@ -281,11 +295,17 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['attended'] === null) {
+            $invalidProperties[] = "'attended' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['registered'] === null) {
+            $invalidProperties[] = "'registered' can't be null";
+        }
+        if ($this->container['cancelled'] === null) {
+            $invalidProperties[] = "'cancelled' can't be null";
+        }
+        if ($this->container['no_shows'] === null) {
+            $invalidProperties[] = "'no_shows' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +323,109 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets attended
      *
      * @return int
      */
-    public function getVid()
+    public function getAttended()
     {
-        return $this->container['vid'];
+        return $this->container['attended'];
     }
 
     /**
-     * Sets vid
+     * Sets attended
      *
-     * @param int $vid vid
+     * @param int $attended attended
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setAttended($attended)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($attended)) {
+            throw new \InvalidArgumentException('non-nullable attended cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['attended'] = $attended;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets registered
      *
-     * @return string
+     * @return int
      */
-    public function getEmail()
+    public function getRegistered()
     {
-        return $this->container['email'];
+        return $this->container['registered'];
     }
 
     /**
-     * Sets email
+     * Sets registered
      *
-     * @param string $email email
+     * @param int $registered registered
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setRegistered($registered)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($registered)) {
+            throw new \InvalidArgumentException('non-nullable registered cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['registered'] = $registered;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancelled
+     *
+     * @return int
+     */
+    public function getCancelled()
+    {
+        return $this->container['cancelled'];
+    }
+
+    /**
+     * Sets cancelled
+     *
+     * @param int $cancelled cancelled
+     *
+     * @return self
+     */
+    public function setCancelled($cancelled)
+    {
+        if (is_null($cancelled)) {
+            throw new \InvalidArgumentException('non-nullable cancelled cannot be null');
+        }
+        $this->container['cancelled'] = $cancelled;
+
+        return $this;
+    }
+
+    /**
+     * Gets no_shows
+     *
+     * @return int
+     */
+    public function getNoShows()
+    {
+        return $this->container['no_shows'];
+    }
+
+    /**
+     * Sets no_shows
+     *
+     * @param int $no_shows no_shows
+     *
+     * @return self
+     */
+    public function setNoShows($no_shows)
+    {
+        if (is_null($no_shows)) {
+            throw new \InvalidArgumentException('non-nullable no_shows cannot be null');
+        }
+        $this->container['no_shows'] = $no_shows;
 
         return $this;
     }

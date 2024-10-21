@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * ContactAssociation
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * ContactAssociation Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ContactAssociation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'ContactAssociation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'firstname' => 'string',
+        'contact_id' => 'string',
+        'email' => 'string',
+        'lastname' => 'string'
     ];
 
     /**
@@ -69,8 +71,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'firstname' => null,
+        'contact_id' => null,
+        'email' => null,
+        'lastname' => null
     ];
 
     /**
@@ -79,8 +83,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'firstname' => false,
+        'contact_id' => false,
+        'email' => false,
+        'lastname' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'firstname' => 'firstname',
+        'contact_id' => 'contactId',
+        'email' => 'email',
+        'lastname' => 'lastname'
     ];
 
     /**
@@ -179,8 +187,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'firstname' => 'setFirstname',
+        'contact_id' => 'setContactId',
+        'email' => 'setEmail',
+        'lastname' => 'setLastname'
     ];
 
     /**
@@ -189,8 +199,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'firstname' => 'getFirstname',
+        'contact_id' => 'getContactId',
+        'email' => 'getEmail',
+        'lastname' => 'getLastname'
     ];
 
     /**
@@ -250,8 +262,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
+        $this->setIfExists('firstname', $data ?? [], null);
+        $this->setIfExists('contact_id', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('lastname', $data ?? [], null);
     }
 
     /**
@@ -281,8 +295,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['contact_id'] === null) {
+            $invalidProperties[] = "'contact_id' can't be null";
         }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
@@ -303,28 +317,55 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets firstname
      *
-     * @return int
+     * @return string|null
      */
-    public function getVid()
+    public function getFirstname()
     {
-        return $this->container['vid'];
+        return $this->container['firstname'];
     }
 
     /**
-     * Sets vid
+     * Sets firstname
      *
-     * @param int $vid vid
+     * @param string|null $firstname firstname
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setFirstname($firstname)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($firstname)) {
+            throw new \InvalidArgumentException('non-nullable firstname cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['firstname'] = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_id
+     *
+     * @return string
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string $contact_id contact_id
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
 
         return $this;
     }
@@ -352,6 +393,33 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
         $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets lastname
+     *
+     * @return string|null
+     */
+    public function getLastname()
+    {
+        return $this->container['lastname'];
+    }
+
+    /**
+     * Sets lastname
+     *
+     * @param string|null $lastname lastname
+     *
+     * @return self
+     */
+    public function setLastname($lastname)
+    {
+        if (is_null($lastname)) {
+            throw new \InvalidArgumentException('non-nullable lastname cannot be null');
+        }
+        $this->container['lastname'] = $lastname;
 
         return $this;
     }

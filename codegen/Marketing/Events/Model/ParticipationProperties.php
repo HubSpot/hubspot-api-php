@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * ParticipationProperties
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * ParticipationProperties Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ParticipationProperties implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'ParticipationProperties';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'occurred_at' => 'int',
+        'attendance_percentage' => 'string',
+        'attendance_state' => 'string',
+        'attendance_duration_seconds' => 'int'
     ];
 
     /**
@@ -69,8 +71,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'occurred_at' => 'int64',
+        'attendance_percentage' => null,
+        'attendance_state' => null,
+        'attendance_duration_seconds' => 'int32'
     ];
 
     /**
@@ -79,8 +83,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'occurred_at' => false,
+        'attendance_percentage' => false,
+        'attendance_state' => false,
+        'attendance_duration_seconds' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'occurred_at' => 'occurredAt',
+        'attendance_percentage' => 'attendancePercentage',
+        'attendance_state' => 'attendanceState',
+        'attendance_duration_seconds' => 'attendanceDurationSeconds'
     ];
 
     /**
@@ -179,8 +187,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'occurred_at' => 'setOccurredAt',
+        'attendance_percentage' => 'setAttendancePercentage',
+        'attendance_state' => 'setAttendanceState',
+        'attendance_duration_seconds' => 'setAttendanceDurationSeconds'
     ];
 
     /**
@@ -189,8 +199,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'occurred_at' => 'getOccurredAt',
+        'attendance_percentage' => 'getAttendancePercentage',
+        'attendance_state' => 'getAttendanceState',
+        'attendance_duration_seconds' => 'getAttendanceDurationSeconds'
     ];
 
     /**
@@ -234,6 +246,27 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const ATTENDANCE_STATE_REGISTERED = 'REGISTERED';
+    public const ATTENDANCE_STATE_ATTENDED = 'ATTENDED';
+    public const ATTENDANCE_STATE_CANCELLED = 'CANCELLED';
+    public const ATTENDANCE_STATE__EMPTY = 'EMPTY';
+    public const ATTENDANCE_STATE_NO_SHOW = 'NO_SHOW';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAttendanceStateAllowableValues()
+    {
+        return [
+            self::ATTENDANCE_STATE_REGISTERED,
+            self::ATTENDANCE_STATE_ATTENDED,
+            self::ATTENDANCE_STATE_CANCELLED,
+            self::ATTENDANCE_STATE__EMPTY,
+            self::ATTENDANCE_STATE_NO_SHOW,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -250,8 +283,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('occurred_at', $data ?? [], null);
+        $this->setIfExists('attendance_percentage', $data ?? [], null);
+        $this->setIfExists('attendance_state', $data ?? [], null);
+        $this->setIfExists('attendance_duration_seconds', $data ?? [], null);
     }
 
     /**
@@ -281,12 +316,21 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['occurred_at'] === null) {
+            $invalidProperties[] = "'occurred_at' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['attendance_state'] === null) {
+            $invalidProperties[] = "'attendance_state' can't be null";
         }
+        $allowedValues = $this->getAttendanceStateAllowableValues();
+        if (!is_null($this->container['attendance_state']) && !in_array($this->container['attendance_state'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'attendance_state', must be one of '%s'",
+                $this->container['attendance_state'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -303,55 +347,119 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets occurred_at
      *
      * @return int
      */
-    public function getVid()
+    public function getOccurredAt()
     {
-        return $this->container['vid'];
+        return $this->container['occurred_at'];
     }
 
     /**
-     * Sets vid
+     * Sets occurred_at
      *
-     * @param int $vid vid
+     * @param int $occurred_at occurred_at
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setOccurredAt($occurred_at)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($occurred_at)) {
+            throw new \InvalidArgumentException('non-nullable occurred_at cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['occurred_at'] = $occurred_at;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets attendance_percentage
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmail()
+    public function getAttendancePercentage()
     {
-        return $this->container['email'];
+        return $this->container['attendance_percentage'];
     }
 
     /**
-     * Sets email
+     * Sets attendance_percentage
      *
-     * @param string $email email
+     * @param string|null $attendance_percentage attendance_percentage
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setAttendancePercentage($attendance_percentage)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($attendance_percentage)) {
+            throw new \InvalidArgumentException('non-nullable attendance_percentage cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['attendance_percentage'] = $attendance_percentage;
+
+        return $this;
+    }
+
+    /**
+     * Gets attendance_state
+     *
+     * @return string
+     */
+    public function getAttendanceState()
+    {
+        return $this->container['attendance_state'];
+    }
+
+    /**
+     * Sets attendance_state
+     *
+     * @param string $attendance_state attendance_state
+     *
+     * @return self
+     */
+    public function setAttendanceState($attendance_state)
+    {
+        if (is_null($attendance_state)) {
+            throw new \InvalidArgumentException('non-nullable attendance_state cannot be null');
+        }
+        $allowedValues = $this->getAttendanceStateAllowableValues();
+        if (!in_array($attendance_state, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'attendance_state', must be one of '%s'",
+                    $attendance_state,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['attendance_state'] = $attendance_state;
+
+        return $this;
+    }
+
+    /**
+     * Gets attendance_duration_seconds
+     *
+     * @return int|null
+     */
+    public function getAttendanceDurationSeconds()
+    {
+        return $this->container['attendance_duration_seconds'];
+    }
+
+    /**
+     * Sets attendance_duration_seconds
+     *
+     * @param int|null $attendance_duration_seconds attendance_duration_seconds
+     *
+     * @return self
+     */
+    public function setAttendanceDurationSeconds($attendance_duration_seconds)
+    {
+        if (is_null($attendance_duration_seconds)) {
+            throw new \InvalidArgumentException('non-nullable attendance_duration_seconds cannot be null');
+        }
+        $this->container['attendance_duration_seconds'] = $attendance_duration_seconds;
 
         return $this;
     }

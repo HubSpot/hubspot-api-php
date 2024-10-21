@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * NextPage
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * NextPage Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'NextPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'link' => 'string',
+        'after' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'link' => null,
+        'after' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'link' => false,
+        'after' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'link' => 'link',
+        'after' => 'after'
     ];
 
     /**
@@ -179,8 +179,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'link' => 'setLink',
+        'after' => 'setAfter'
     ];
 
     /**
@@ -189,8 +189,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'link' => 'getLink',
+        'after' => 'getAfter'
     ];
 
     /**
@@ -250,8 +250,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('link', $data ?? [], null);
+        $this->setIfExists('after', $data ?? [], null);
     }
 
     /**
@@ -281,11 +281,8 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
-        }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['after'] === null) {
+            $invalidProperties[] = "'after' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +300,55 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets link
      *
-     * @return int
+     * @return string|null
      */
-    public function getVid()
+    public function getLink()
     {
-        return $this->container['vid'];
+        return $this->container['link'];
     }
 
     /**
-     * Sets vid
+     * Sets link
      *
-     * @param int $vid vid
+     * @param string|null $link link
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setLink($link)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($link)) {
+            throw new \InvalidArgumentException('non-nullable link cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['link'] = $link;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets after
      *
      * @return string
      */
-    public function getEmail()
+    public function getAfter()
     {
-        return $this->container['email'];
+        return $this->container['after'];
     }
 
     /**
-     * Sets email
+     * Sets after
      *
-     * @param string $email email
+     * @param string $after after
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setAfter($after)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($after)) {
+            throw new \InvalidArgumentException('non-nullable after cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['after'] = $after;
 
         return $this;
     }

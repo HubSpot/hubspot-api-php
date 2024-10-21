@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * MarketingEventAssociation
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * MarketingEventAssociation Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketingEventAssociation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'MarketingEventAssociation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'external_account_id' => 'string',
+        'marketing_event_id' => 'string',
+        'external_event_id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -69,8 +71,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'external_account_id' => null,
+        'marketing_event_id' => null,
+        'external_event_id' => null,
+        'name' => null
     ];
 
     /**
@@ -79,8 +83,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'external_account_id' => false,
+        'marketing_event_id' => false,
+        'external_event_id' => false,
+        'name' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'external_account_id' => 'externalAccountId',
+        'marketing_event_id' => 'marketingEventId',
+        'external_event_id' => 'externalEventId',
+        'name' => 'name'
     ];
 
     /**
@@ -179,8 +187,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'external_account_id' => 'setExternalAccountId',
+        'marketing_event_id' => 'setMarketingEventId',
+        'external_event_id' => 'setExternalEventId',
+        'name' => 'setName'
     ];
 
     /**
@@ -189,8 +199,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'external_account_id' => 'getExternalAccountId',
+        'marketing_event_id' => 'getMarketingEventId',
+        'external_event_id' => 'getExternalEventId',
+        'name' => 'getName'
     ];
 
     /**
@@ -250,8 +262,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('external_account_id', $data ?? [], null);
+        $this->setIfExists('marketing_event_id', $data ?? [], null);
+        $this->setIfExists('external_event_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -281,11 +295,11 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['marketing_event_id'] === null) {
+            $invalidProperties[] = "'marketing_event_id' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +317,109 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets external_account_id
      *
-     * @return int
+     * @return string|null
      */
-    public function getVid()
+    public function getExternalAccountId()
     {
-        return $this->container['vid'];
+        return $this->container['external_account_id'];
     }
 
     /**
-     * Sets vid
+     * Sets external_account_id
      *
-     * @param int $vid vid
+     * @param string|null $external_account_id external_account_id
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setExternalAccountId($external_account_id)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($external_account_id)) {
+            throw new \InvalidArgumentException('non-nullable external_account_id cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['external_account_id'] = $external_account_id;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets marketing_event_id
      *
      * @return string
      */
-    public function getEmail()
+    public function getMarketingEventId()
     {
-        return $this->container['email'];
+        return $this->container['marketing_event_id'];
     }
 
     /**
-     * Sets email
+     * Sets marketing_event_id
      *
-     * @param string $email email
+     * @param string $marketing_event_id marketing_event_id
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setMarketingEventId($marketing_event_id)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($marketing_event_id)) {
+            throw new \InvalidArgumentException('non-nullable marketing_event_id cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['marketing_event_id'] = $marketing_event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_event_id
+     *
+     * @return string|null
+     */
+    public function getExternalEventId()
+    {
+        return $this->container['external_event_id'];
+    }
+
+    /**
+     * Sets external_event_id
+     *
+     * @param string|null $external_event_id external_event_id
+     *
+     * @return self
+     */
+    public function setExternalEventId($external_event_id)
+    {
+        if (is_null($external_event_id)) {
+            throw new \InvalidArgumentException('non-nullable external_event_id cannot be null');
+        }
+        $this->container['external_event_id'] = $external_event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

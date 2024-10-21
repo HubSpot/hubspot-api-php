@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberEmailResponse
+ * ParticipationBreakdown
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberEmailResponse Class Doc Comment
+ * ParticipationBreakdown Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ParticipationBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SubscriberEmailResponse';
+    protected static $openAPIModelName = 'ParticipationBreakdown';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'email' => 'string'
+        'associations' => '\HubSpot\Client\Marketing\Events\Model\ParticipationAssociations',
+        'created_at' => '\DateTime',
+        'id' => 'string',
+        'properties' => '\HubSpot\Client\Marketing\Events\Model\ParticipationProperties'
     ];
 
     /**
@@ -69,8 +71,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'email' => null
+        'associations' => null,
+        'created_at' => 'date-time',
+        'id' => null,
+        'properties' => null
     ];
 
     /**
@@ -79,8 +83,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'email' => false
+        'associations' => false,
+        'created_at' => false,
+        'id' => false,
+        'properties' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'email' => 'email'
+        'associations' => 'associations',
+        'created_at' => 'createdAt',
+        'id' => 'id',
+        'properties' => 'properties'
     ];
 
     /**
@@ -179,8 +187,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'email' => 'setEmail'
+        'associations' => 'setAssociations',
+        'created_at' => 'setCreatedAt',
+        'id' => 'setId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -189,8 +199,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'email' => 'getEmail'
+        'associations' => 'getAssociations',
+        'created_at' => 'getCreatedAt',
+        'id' => 'getId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -250,8 +262,10 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -281,11 +295,17 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['vid'] === null) {
-            $invalidProperties[] = "'vid' can't be null";
+        if ($this->container['associations'] === null) {
+            $invalidProperties[] = "'associations' can't be null";
         }
-        if ($this->container['email'] === null) {
-            $invalidProperties[] = "'email' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +323,109 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets vid
+     * Gets associations
      *
-     * @return int
+     * @return \HubSpot\Client\Marketing\Events\Model\ParticipationAssociations
      */
-    public function getVid()
+    public function getAssociations()
     {
-        return $this->container['vid'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets vid
+     * Sets associations
      *
-     * @param int $vid vid
+     * @param \HubSpot\Client\Marketing\Events\Model\ParticipationAssociations $associations associations
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setAssociations($associations)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getEmail()
+    public function getCreatedAt()
     {
-        return $this->container['email'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets email
+     * Sets created_at
      *
-     * @param string $email email
+     * @param \DateTime $created_at created_at
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\ParticipationProperties
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\ParticipationProperties $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }
