@@ -48,7 +48,7 @@ $hubspot = \HubSpot\Factory::createWithAccessToken('your-access-token', $client)
 #### To change the base path
 
 ```php
-$config = new \GuzzleHttp\Config();
+$config = new \GuzzleHttp\Client();
 $config->setBasePath('*');
 $config->setAccessToken('*');
 $config->setDeveloperApiKey('*');
