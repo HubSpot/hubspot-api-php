@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicObjectSearchRequest
+ * BatchInputSimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Deals\ObjectSerializer;
 
 /**
- * PublicObjectSearchRequest Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Deals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Deals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicObjectSearchRequest';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'query' => 'string',
-        'limit' => 'int',
-        'after' => 'string',
-        'sorts' => 'string[]',
-        'properties' => 'string[]',
-        'filter_groups' => '\HubSpot\Client\Crm\Deals\Model\FilterGroup[]'
+        'inputs' => '\HubSpot\Client\Crm\Deals\Model\SimplePublicObjectBatchInputUpsert[]'
     ];
 
     /**
@@ -73,12 +68,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'query' => null,
-        'limit' => 'int32',
-        'after' => null,
-        'sorts' => null,
-        'properties' => null,
-        'filter_groups' => null
+        'inputs' => null
     ];
 
     /**
@@ -87,12 +77,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'query' => false,
-        'limit' => false,
-        'after' => false,
-        'sorts' => false,
-        'properties' => false,
-        'filter_groups' => false
+        'inputs' => false
     ];
 
     /**
@@ -181,12 +166,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'query' => 'query',
-        'limit' => 'limit',
-        'after' => 'after',
-        'sorts' => 'sorts',
-        'properties' => 'properties',
-        'filter_groups' => 'filterGroups'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -195,12 +175,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'query' => 'setQuery',
-        'limit' => 'setLimit',
-        'after' => 'setAfter',
-        'sorts' => 'setSorts',
-        'properties' => 'setProperties',
-        'filter_groups' => 'setFilterGroups'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -209,12 +184,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'query' => 'getQuery',
-        'limit' => 'getLimit',
-        'after' => 'getAfter',
-        'sorts' => 'getSorts',
-        'properties' => 'getProperties',
-        'filter_groups' => 'getFilterGroups'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -274,12 +244,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('query', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
-        $this->setIfExists('after', $data ?? [], null);
-        $this->setIfExists('sorts', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('filter_groups', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -309,6 +274,9 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -325,163 +293,28 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets query
+     * Gets inputs
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectBatchInputUpsert[]
      */
-    public function getQuery()
+    public function getInputs()
     {
-        return $this->container['query'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets query
+     * Sets inputs
      *
-     * @param string|null $query query
+     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectBatchInputUpsert[] $inputs inputs
      *
      * @return self
      */
-    public function setQuery($query)
+    public function setInputs($inputs)
     {
-        if (is_null($query)) {
-            throw new \InvalidArgumentException('non-nullable query cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['query'] = $query;
-
-        return $this;
-    }
-
-    /**
-     * Gets limit
-     *
-     * @return int|null
-     */
-    public function getLimit()
-    {
-        return $this->container['limit'];
-    }
-
-    /**
-     * Sets limit
-     *
-     * @param int|null $limit limit
-     *
-     * @return self
-     */
-    public function setLimit($limit)
-    {
-        if (is_null($limit)) {
-            throw new \InvalidArgumentException('non-nullable limit cannot be null');
-        }
-        $this->container['limit'] = $limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets after
-     *
-     * @return string|null
-     */
-    public function getAfter()
-    {
-        return $this->container['after'];
-    }
-
-    /**
-     * Sets after
-     *
-     * @param string|null $after after
-     *
-     * @return self
-     */
-    public function setAfter($after)
-    {
-        if (is_null($after)) {
-            throw new \InvalidArgumentException('non-nullable after cannot be null');
-        }
-        $this->container['after'] = $after;
-
-        return $this;
-    }
-
-    /**
-     * Gets sorts
-     *
-     * @return string[]|null
-     */
-    public function getSorts()
-    {
-        return $this->container['sorts'];
-    }
-
-    /**
-     * Sets sorts
-     *
-     * @param string[]|null $sorts sorts
-     *
-     * @return self
-     */
-    public function setSorts($sorts)
-    {
-        if (is_null($sorts)) {
-            throw new \InvalidArgumentException('non-nullable sorts cannot be null');
-        }
-        $this->container['sorts'] = $sorts;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return string[]|null
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param string[]|null $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
-        }
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets filter_groups
-     *
-     * @return \HubSpot\Client\Crm\Deals\Model\FilterGroup[]|null
-     */
-    public function getFilterGroups()
-    {
-        return $this->container['filter_groups'];
-    }
-
-    /**
-     * Sets filter_groups
-     *
-     * @param \HubSpot\Client\Crm\Deals\Model\FilterGroup[]|null $filter_groups filter_groups
-     *
-     * @return self
-     */
-    public function setFilterGroups($filter_groups)
-    {
-        if (is_null($filter_groups)) {
-            throw new \InvalidArgumentException('non-nullable filter_groups cannot be null');
-        }
-        $this->container['filter_groups'] = $filter_groups;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }
