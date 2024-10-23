@@ -57,12 +57,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
+        'property_names_included' => 'string[]',
         'confirmation' => '\HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody',
-        'http_method' => 'string',
-        'url' => 'string',
         'label' => 'string',
-        'property_names_included' => 'string[]'
+        'type' => 'string',
+        'http_method' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -73,12 +73,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
+        'property_names_included' => null,
         'confirmation' => null,
-        'http_method' => null,
-        'url' => null,
         'label' => null,
-        'property_names_included' => null
+        'type' => null,
+        'http_method' => null,
+        'url' => null
     ];
 
     /**
@@ -87,12 +87,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
+        'property_names_included' => false,
         'confirmation' => false,
-        'http_method' => false,
-        'url' => false,
         'label' => false,
-        'property_names_included' => false
+        'type' => false,
+        'http_method' => false,
+        'url' => false
     ];
 
     /**
@@ -181,12 +181,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
+        'property_names_included' => 'propertyNamesIncluded',
         'confirmation' => 'confirmation',
-        'http_method' => 'httpMethod',
-        'url' => 'url',
         'label' => 'label',
-        'property_names_included' => 'propertyNamesIncluded'
+        'type' => 'type',
+        'http_method' => 'httpMethod',
+        'url' => 'url'
     ];
 
     /**
@@ -195,12 +195,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
+        'property_names_included' => 'setPropertyNamesIncluded',
         'confirmation' => 'setConfirmation',
-        'http_method' => 'setHttpMethod',
-        'url' => 'setUrl',
         'label' => 'setLabel',
-        'property_names_included' => 'setPropertyNamesIncluded'
+        'type' => 'setType',
+        'http_method' => 'setHttpMethod',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -209,12 +209,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
+        'property_names_included' => 'getPropertyNamesIncluded',
         'confirmation' => 'getConfirmation',
-        'http_method' => 'getHttpMethod',
-        'url' => 'getUrl',
         'label' => 'getLabel',
-        'property_names_included' => 'getPropertyNamesIncluded'
+        'type' => 'getType',
+        'http_method' => 'getHttpMethod',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -316,12 +316,12 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'ACTION_HOOK');
+        $this->setIfExists('property_names_included', $data ?? [], null);
         $this->setIfExists('confirmation', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], 'ACTION_HOOK');
         $this->setIfExists('http_method', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('property_names_included', $data ?? [], null);
     }
 
     /**
@@ -351,6 +351,9 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['property_names_included'] === null) {
+            $invalidProperties[] = "'property_names_included' can't be null";
+        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -378,9 +381,6 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['property_names_included'] === null) {
-            $invalidProperties[] = "'property_names_included' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -395,6 +395,87 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets property_names_included
+     *
+     * @return string[]
+     */
+    public function getPropertyNamesIncluded()
+    {
+        return $this->container['property_names_included'];
+    }
+
+    /**
+     * Sets property_names_included
+     *
+     * @param string[] $property_names_included property_names_included
+     *
+     * @return self
+     */
+    public function setPropertyNamesIncluded($property_names_included)
+    {
+        if (is_null($property_names_included)) {
+            throw new \InvalidArgumentException('non-nullable property_names_included cannot be null');
+        }
+        $this->container['property_names_included'] = $property_names_included;
+
+        return $this;
+    }
+
+    /**
+     * Gets confirmation
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null
+     */
+    public function getConfirmation()
+    {
+        return $this->container['confirmation'];
+    }
+
+    /**
+     * Sets confirmation
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null $confirmation confirmation
+     *
+     * @return self
+     */
+    public function setConfirmation($confirmation)
+    {
+        if (is_null($confirmation)) {
+            throw new \InvalidArgumentException('non-nullable confirmation cannot be null');
+        }
+        $this->container['confirmation'] = $confirmation;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        }
+        $this->container['label'] = $label;
+
+        return $this;
+    }
 
     /**
      * Gets type
@@ -429,33 +510,6 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets confirmation
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null
-     */
-    public function getConfirmation()
-    {
-        return $this->container['confirmation'];
-    }
-
-    /**
-     * Sets confirmation
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null $confirmation confirmation
-     *
-     * @return self
-     */
-    public function setConfirmation($confirmation)
-    {
-        if (is_null($confirmation)) {
-            throw new \InvalidArgumentException('non-nullable confirmation cannot be null');
-        }
-        $this->container['confirmation'] = $confirmation;
 
         return $this;
     }
@@ -520,60 +574,6 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
-        }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets property_names_included
-     *
-     * @return string[]
-     */
-    public function getPropertyNamesIncluded()
-    {
-        return $this->container['property_names_included'];
-    }
-
-    /**
-     * Sets property_names_included
-     *
-     * @param string[] $property_names_included property_names_included
-     *
-     * @return self
-     */
-    public function setPropertyNamesIncluded($property_names_included)
-    {
-        if (is_null($property_names_included)) {
-            throw new \InvalidArgumentException('non-nullable property_names_included cannot be null');
-        }
-        $this->container['property_names_included'] = $property_names_included;
 
         return $this;
     }
