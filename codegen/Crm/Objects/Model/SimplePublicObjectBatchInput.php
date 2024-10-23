@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Objects
+ * Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -58,6 +58,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'id_property' => 'string',
+        'object_write_trace_id' => 'string',
         'id' => 'string',
         'properties' => 'array<string,string>'
     ];
@@ -71,6 +72,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'id_property' => null,
+        'object_write_trace_id' => null,
         'id' => null,
         'properties' => null
     ];
@@ -82,6 +84,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'id_property' => false,
+        'object_write_trace_id' => false,
         'id' => false,
         'properties' => false
     ];
@@ -173,6 +176,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'id_property' => 'idProperty',
+        'object_write_trace_id' => 'objectWriteTraceId',
         'id' => 'id',
         'properties' => 'properties'
     ];
@@ -184,6 +188,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'id_property' => 'setIdProperty',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'id' => 'setId',
         'properties' => 'setProperties'
     ];
@@ -195,6 +200,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'id_property' => 'getIdProperty',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'id' => 'getId',
         'properties' => 'getProperties'
     ];
@@ -257,6 +263,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->setIfExists('id_property', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
@@ -322,7 +329,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id_property
      *
-     * @param string|null $id_property The name of the unique property
+     * @param string|null $id_property The name of a property whose values are unique for this object
      *
      * @return self
      */
@@ -332,6 +339,33 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable id_property cannot be null');
         }
         $this->container['id_property'] = $id_property;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }
