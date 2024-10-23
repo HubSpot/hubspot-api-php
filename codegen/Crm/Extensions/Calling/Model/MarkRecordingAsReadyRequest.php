@@ -1,6 +1,6 @@
 <?php
 /**
- * RecordingSettingsPatchRequest
+ * MarkRecordingAsReadyRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
 
 /**
- * RecordingSettingsPatchRequest Class Doc Comment
+ * MarkRecordingAsReadyRequest Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Extensions\Calling
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RecordingSettingsPatchRequest';
+    protected static $openAPIModelName = 'MarkRecordingAsReadyRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url_to_retrieve_authed_recording' => 'string'
+        'engagement_id' => 'int'
     ];
 
     /**
@@ -68,7 +68,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url_to_retrieve_authed_recording' => null
+        'engagement_id' => 'int64'
     ];
 
     /**
@@ -77,7 +77,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url_to_retrieve_authed_recording' => false
+        'engagement_id' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'url_to_retrieve_authed_recording' => 'urlToRetrieveAuthedRecording'
+        'engagement_id' => 'engagementId'
     ];
 
     /**
@@ -175,7 +175,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'url_to_retrieve_authed_recording' => 'setUrlToRetrieveAuthedRecording'
+        'engagement_id' => 'setEngagementId'
     ];
 
     /**
@@ -184,7 +184,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'url_to_retrieve_authed_recording' => 'getUrlToRetrieveAuthedRecording'
+        'engagement_id' => 'getEngagementId'
     ];
 
     /**
@@ -244,7 +244,7 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('url_to_retrieve_authed_recording', $data ?? [], null);
+        $this->setIfExists('engagement_id', $data ?? [], null);
     }
 
     /**
@@ -274,6 +274,9 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if ($this->container['engagement_id'] === null) {
+            $invalidProperties[] = "'engagement_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -290,28 +293,28 @@ class RecordingSettingsPatchRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets url_to_retrieve_authed_recording
+     * Gets engagement_id
      *
-     * @return string|null
+     * @return int
      */
-    public function getUrlToRetrieveAuthedRecording()
+    public function getEngagementId()
     {
-        return $this->container['url_to_retrieve_authed_recording'];
+        return $this->container['engagement_id'];
     }
 
     /**
-     * Sets url_to_retrieve_authed_recording
+     * Sets engagement_id
      *
-     * @param string|null $url_to_retrieve_authed_recording url_to_retrieve_authed_recording
+     * @param int $engagement_id engagement_id
      *
      * @return self
      */
-    public function setUrlToRetrieveAuthedRecording($url_to_retrieve_authed_recording)
+    public function setEngagementId($engagement_id)
     {
-        if (is_null($url_to_retrieve_authed_recording)) {
-            throw new \InvalidArgumentException('non-nullable url_to_retrieve_authed_recording cannot be null');
+        if (is_null($engagement_id)) {
+            throw new \InvalidArgumentException('non-nullable engagement_id cannot be null');
         }
-        $this->container['url_to_retrieve_authed_recording'] = $url_to_retrieve_authed_recording;
+        $this->container['engagement_id'] = $engagement_id;
 
         return $this;
     }
