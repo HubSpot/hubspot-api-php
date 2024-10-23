@@ -57,7 +57,7 @@ class PublicAdsTimeFilter implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'filter_type' => 'string'
     ];
 
@@ -327,7 +327,7 @@ class PublicAdsTimeFilter implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy
      */
     public function getPruningRefineBy()
     {
@@ -337,7 +337,7 @@ class PublicAdsTimeFilter implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

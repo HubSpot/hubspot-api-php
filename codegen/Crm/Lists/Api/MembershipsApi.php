@@ -86,6 +86,9 @@ class MembershipsApi
         'getPage' => [
             'application/json',
         ],
+        'getPageOrderedByAddedToListDate' => [
+            'application/json',
+        ],
         'remove' => [
             'application/json',
         ],
@@ -1786,6 +1789,397 @@ class MembershipsApi
 
 
         $resourcePath = '/crm/v3/lists/{listId}/memberships';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $before,
+            'before', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPageOrderedByAddedToListDate
+     *
+     * Fetch List Memberships Ordered by Added to List Date
+     *
+     * @param  string $list_id The **ILS ID** of the list. (required)
+     * @param  string $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
+     * @param  string $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
+     * @param  int $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function getPageOrderedByAddedToListDate($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
+    {
+        list($response) = $this->getPageOrderedByAddedToListDateWithHttpInfo($list_id, $after, $before, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPageOrderedByAddedToListDateWithHttpInfo
+     *
+     * Fetch List Memberships Ordered by Added to List Date
+     *
+     * @param  string $list_id The **ILS ID** of the list. (required)
+     * @param  string $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
+     * @param  string $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
+     * @param  int $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPageOrderedByAddedToListDateWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
+    {
+        $request = $this->getPageOrderedByAddedToListDateRequest($list_id, $after, $before, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Lists\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Lists\Model\Error' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Lists\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPageOrderedByAddedToListDateAsync
+     *
+     * Fetch List Memberships Ordered by Added to List Date
+     *
+     * @param  string $list_id The **ILS ID** of the list. (required)
+     * @param  string $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
+     * @param  string $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
+     * @param  int $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPageOrderedByAddedToListDateAsync($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
+    {
+        return $this->getPageOrderedByAddedToListDateAsyncWithHttpInfo($list_id, $after, $before, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPageOrderedByAddedToListDateAsyncWithHttpInfo
+     *
+     * Fetch List Memberships Ordered by Added to List Date
+     *
+     * @param  string $list_id The **ILS ID** of the list. (required)
+     * @param  string $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
+     * @param  string $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
+     * @param  int $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPageOrderedByAddedToListDateAsyncWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId';
+        $request = $this->getPageOrderedByAddedToListDateRequest($list_id, $after, $before, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPageOrderedByAddedToListDate'
+     *
+     * @param  string $list_id The **ILS ID** of the list. (required)
+     * @param  string $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
+     * @param  string $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
+     * @param  int $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPageOrderedByAddedToListDateRequest($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling getPageOrderedByAddedToListDate'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships/join-order';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

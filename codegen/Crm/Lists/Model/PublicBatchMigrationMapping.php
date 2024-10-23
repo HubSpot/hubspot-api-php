@@ -1,6 +1,6 @@
 <?php
 /**
- * ListCreateRequest
+ * PublicBatchMigrationMapping
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Lists\ObjectSerializer;
 
 /**
- * ListCreateRequest Class Doc Comment
+ * PublicBatchMigrationMapping Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Lists
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicBatchMigrationMapping implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ListCreateRequest';
+    protected static $openAPIModelName = 'PublicBatchMigrationMapping';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_type_id' => 'string',
-        'processing_type' => 'string',
-        'custom_properties' => 'array<string,string>',
-        'list_folder_id' => 'int',
-        'name' => 'string',
-        'filter_branch' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner'
+        'legacy_list_ids_to_ids_mapping' => '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping[]',
+        'missing_legacy_list_ids' => 'string[]'
     ];
 
     /**
@@ -73,12 +69,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object_type_id' => null,
-        'processing_type' => null,
-        'custom_properties' => null,
-        'list_folder_id' => 'int32',
-        'name' => null,
-        'filter_branch' => null
+        'legacy_list_ids_to_ids_mapping' => null,
+        'missing_legacy_list_ids' => null
     ];
 
     /**
@@ -87,12 +79,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object_type_id' => false,
-        'processing_type' => false,
-        'custom_properties' => false,
-        'list_folder_id' => false,
-        'name' => false,
-        'filter_branch' => false
+        'legacy_list_ids_to_ids_mapping' => false,
+        'missing_legacy_list_ids' => false
     ];
 
     /**
@@ -181,12 +169,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_type_id' => 'objectTypeId',
-        'processing_type' => 'processingType',
-        'custom_properties' => 'customProperties',
-        'list_folder_id' => 'listFolderId',
-        'name' => 'name',
-        'filter_branch' => 'filterBranch'
+        'legacy_list_ids_to_ids_mapping' => 'legacyListIdsToIdsMapping',
+        'missing_legacy_list_ids' => 'missingLegacyListIds'
     ];
 
     /**
@@ -195,12 +179,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'object_type_id' => 'setObjectTypeId',
-        'processing_type' => 'setProcessingType',
-        'custom_properties' => 'setCustomProperties',
-        'list_folder_id' => 'setListFolderId',
-        'name' => 'setName',
-        'filter_branch' => 'setFilterBranch'
+        'legacy_list_ids_to_ids_mapping' => 'setLegacyListIdsToIdsMapping',
+        'missing_legacy_list_ids' => 'setMissingLegacyListIds'
     ];
 
     /**
@@ -209,12 +189,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'object_type_id' => 'getObjectTypeId',
-        'processing_type' => 'getProcessingType',
-        'custom_properties' => 'getCustomProperties',
-        'list_folder_id' => 'getListFolderId',
-        'name' => 'getName',
-        'filter_branch' => 'getFilterBranch'
+        'legacy_list_ids_to_ids_mapping' => 'getLegacyListIdsToIdsMapping',
+        'missing_legacy_list_ids' => 'getMissingLegacyListIds'
     ];
 
     /**
@@ -274,12 +250,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object_type_id', $data ?? [], null);
-        $this->setIfExists('processing_type', $data ?? [], null);
-        $this->setIfExists('custom_properties', $data ?? [], null);
-        $this->setIfExists('list_folder_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('filter_branch', $data ?? [], null);
+        $this->setIfExists('legacy_list_ids_to_ids_mapping', $data ?? [], null);
+        $this->setIfExists('missing_legacy_list_ids', $data ?? [], null);
     }
 
     /**
@@ -309,14 +281,11 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['object_type_id'] === null) {
-            $invalidProperties[] = "'object_type_id' can't be null";
+        if ($this->container['legacy_list_ids_to_ids_mapping'] === null) {
+            $invalidProperties[] = "'legacy_list_ids_to_ids_mapping' can't be null";
         }
-        if ($this->container['processing_type'] === null) {
-            $invalidProperties[] = "'processing_type' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['missing_legacy_list_ids'] === null) {
+            $invalidProperties[] = "'missing_legacy_list_ids' can't be null";
         }
         return $invalidProperties;
     }
@@ -334,163 +303,55 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets object_type_id
+     * Gets legacy_list_ids_to_ids_mapping
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping[]
      */
-    public function getObjectTypeId()
+    public function getLegacyListIdsToIdsMapping()
     {
-        return $this->container['object_type_id'];
+        return $this->container['legacy_list_ids_to_ids_mapping'];
     }
 
     /**
-     * Sets object_type_id
+     * Sets legacy_list_ids_to_ids_mapping
      *
-     * @param string $object_type_id The object type ID of the type of objects that the list will store.
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping[] $legacy_list_ids_to_ids_mapping legacy_list_ids_to_ids_mapping
      *
      * @return self
      */
-    public function setObjectTypeId($object_type_id)
+    public function setLegacyListIdsToIdsMapping($legacy_list_ids_to_ids_mapping)
     {
-        if (is_null($object_type_id)) {
-            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        if (is_null($legacy_list_ids_to_ids_mapping)) {
+            throw new \InvalidArgumentException('non-nullable legacy_list_ids_to_ids_mapping cannot be null');
         }
-        $this->container['object_type_id'] = $object_type_id;
+        $this->container['legacy_list_ids_to_ids_mapping'] = $legacy_list_ids_to_ids_mapping;
 
         return $this;
     }
 
     /**
-     * Gets processing_type
+     * Gets missing_legacy_list_ids
      *
-     * @return string
+     * @return string[]
      */
-    public function getProcessingType()
+    public function getMissingLegacyListIds()
     {
-        return $this->container['processing_type'];
+        return $this->container['missing_legacy_list_ids'];
     }
 
     /**
-     * Sets processing_type
+     * Sets missing_legacy_list_ids
      *
-     * @param string $processing_type The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
+     * @param string[] $missing_legacy_list_ids A list of legacy list ids that were passed in but not found. It will be empty if no id's are missing
      *
      * @return self
      */
-    public function setProcessingType($processing_type)
+    public function setMissingLegacyListIds($missing_legacy_list_ids)
     {
-        if (is_null($processing_type)) {
-            throw new \InvalidArgumentException('non-nullable processing_type cannot be null');
+        if (is_null($missing_legacy_list_ids)) {
+            throw new \InvalidArgumentException('non-nullable missing_legacy_list_ids cannot be null');
         }
-        $this->container['processing_type'] = $processing_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_properties
-     *
-     * @return array<string,string>|null
-     */
-    public function getCustomProperties()
-    {
-        return $this->container['custom_properties'];
-    }
-
-    /**
-     * Sets custom_properties
-     *
-     * @param array<string,string>|null $custom_properties The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
-     *
-     * @return self
-     */
-    public function setCustomProperties($custom_properties)
-    {
-        if (is_null($custom_properties)) {
-            throw new \InvalidArgumentException('non-nullable custom_properties cannot be null');
-        }
-        $this->container['custom_properties'] = $custom_properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets list_folder_id
-     *
-     * @return int|null
-     */
-    public function getListFolderId()
-    {
-        return $this->container['list_folder_id'];
-    }
-
-    /**
-     * Sets list_folder_id
-     *
-     * @param int|null $list_folder_id The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
-     *
-     * @return self
-     */
-    public function setListFolderId($list_folder_id)
-    {
-        if (is_null($list_folder_id)) {
-            throw new \InvalidArgumentException('non-nullable list_folder_id cannot be null');
-        }
-        $this->container['list_folder_id'] = $list_folder_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name of the list, which must be globally unique across all public lists in the portal.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets filter_branch
-     *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner|null
-     */
-    public function getFilterBranch()
-    {
-        return $this->container['filter_branch'];
-    }
-
-    /**
-     * Sets filter_branch
-     *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner|null $filter_branch filter_branch
-     *
-     * @return self
-     */
-    public function setFilterBranch($filter_branch)
-    {
-        if (is_null($filter_branch)) {
-            throw new \InvalidArgumentException('non-nullable filter_branch cannot be null');
-        }
-        $this->container['filter_branch'] = $filter_branch;
+        $this->container['missing_legacy_list_ids'] = $missing_legacy_list_ids;
 
         return $this;
     }

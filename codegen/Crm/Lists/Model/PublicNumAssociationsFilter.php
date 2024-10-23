@@ -57,7 +57,7 @@ class PublicNumAssociationsFilter implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'association_type_id' => 'int',
         'association_category' => 'string',
         'filter_type' => 'string'
@@ -347,7 +347,7 @@ class PublicNumAssociationsFilter implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy
      */
     public function getCoalescingRefineBy()
     {
@@ -357,7 +357,7 @@ class PublicNumAssociationsFilter implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */

@@ -316,18 +316,6 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['list_ids'] === null) {
-            $invalidProperties[] = "'list_ids' can't be null";
-        }
-        if ($this->container['offset'] === null) {
-            $invalidProperties[] = "'offset' can't be null";
-        }
-        if ($this->container['processing_types'] === null) {
-            $invalidProperties[] = "'processing_types' can't be null";
-        }
-        if ($this->container['additional_properties'] === null) {
-            $invalidProperties[] = "'additional_properties' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -346,7 +334,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets list_ids
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getListIds()
     {
@@ -356,7 +344,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets list_ids
      *
-     * @param string[] $list_ids list_ids
+     * @param string[]|null $list_ids The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.  If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
      *
      * @return self
      */
@@ -373,7 +361,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets offset
      *
-     * @return int
+     * @return int|null
      */
     public function getOffset()
     {
@@ -383,7 +371,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets offset
      *
-     * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+     * @param int|null $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      *
      * @return self
      */
@@ -454,7 +442,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets processing_types
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getProcessingTypes()
     {
@@ -464,7 +452,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets processing_types
      *
-     * @param string[] $processing_types processing_types
+     * @param string[]|null $processing_types The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.  If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.  Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
      *
      * @return self
      */
@@ -481,7 +469,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets additional_properties
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getAdditionalProperties()
     {
@@ -491,7 +479,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets additional_properties
      *
-     * @param string[] $additional_properties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.  By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
+     * @param string[]|null $additional_properties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.  By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
      *
      * @return self
      */
