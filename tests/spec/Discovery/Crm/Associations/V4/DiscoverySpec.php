@@ -5,6 +5,7 @@ namespace spec\HubSpot\Discovery\Crm\Associations\V4;
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Associations\V4\Api\BasicApi;
 use HubSpot\Client\Crm\Associations\V4\Api\BatchApi;
+use HubSpot\Client\Crm\Associations\V4\Api\ReportApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Associations\V4\Discovery;
 use HubSpot\Discovery\Crm\Associations\V4\Schema\Discovery as SchemaDiscovery;
@@ -26,6 +27,7 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
+        $this->reportApi()->shouldHaveType(ReportApi::class);
         $this->schema()->shouldHaveType(SchemaDiscovery::class);
     }
 }
