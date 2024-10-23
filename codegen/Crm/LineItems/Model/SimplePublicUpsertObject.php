@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectBatchInput
+ * SimplePublicUpsertObject
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
- * SimplePublicObjectBatchInput Class Doc Comment
+ * SimplePublicUpsertObject Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\LineItems
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectBatchInput';
+    protected static $openAPIModelName = 'SimplePublicUpsertObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id_property' => 'string',
-        'object_write_trace_id' => 'string',
+        'created_at' => '\DateTime',
+        'archived' => 'bool',
+        'archived_at' => '\DateTime',
+        'new' => 'bool',
+        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>',
         'id' => 'string',
-        'properties' => 'array<string,string>'
+        'properties' => 'array<string,string>',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -71,10 +75,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id_property' => null,
-        'object_write_trace_id' => null,
+        'created_at' => 'date-time',
+        'archived' => null,
+        'archived_at' => 'date-time',
+        'new' => null,
+        'properties_with_history' => null,
         'id' => null,
-        'properties' => null
+        'properties' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -83,10 +91,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id_property' => false,
-        'object_write_trace_id' => false,
+        'created_at' => false,
+        'archived' => false,
+        'archived_at' => false,
+        'new' => false,
+        'properties_with_history' => false,
         'id' => false,
-        'properties' => false
+        'properties' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -175,10 +187,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'id_property' => 'idProperty',
-        'object_write_trace_id' => 'objectWriteTraceId',
+        'created_at' => 'createdAt',
+        'archived' => 'archived',
+        'archived_at' => 'archivedAt',
+        'new' => 'new',
+        'properties_with_history' => 'propertiesWithHistory',
         'id' => 'id',
-        'properties' => 'properties'
+        'properties' => 'properties',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -187,10 +203,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'id_property' => 'setIdProperty',
-        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'created_at' => 'setCreatedAt',
+        'archived' => 'setArchived',
+        'archived_at' => 'setArchivedAt',
+        'new' => 'setNew',
+        'properties_with_history' => 'setPropertiesWithHistory',
         'id' => 'setId',
-        'properties' => 'setProperties'
+        'properties' => 'setProperties',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -199,10 +219,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'id_property' => 'getIdProperty',
-        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'created_at' => 'getCreatedAt',
+        'archived' => 'getArchived',
+        'archived_at' => 'getArchivedAt',
+        'new' => 'getNew',
+        'properties_with_history' => 'getPropertiesWithHistory',
         'id' => 'getId',
-        'properties' => 'getProperties'
+        'properties' => 'getProperties',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -262,10 +286,14 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id_property', $data ?? [], null);
-        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('archived_at', $data ?? [], null);
+        $this->setIfExists('new', $data ?? [], null);
+        $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -295,11 +323,20 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['new'] === null) {
+            $invalidProperties[] = "'new' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -317,55 +354,136 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets id_property
+     * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime
      */
-    public function getIdProperty()
+    public function getCreatedAt()
     {
-        return $this->container['id_property'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets id_property
+     * Sets created_at
      *
-     * @param string|null $id_property id_property
+     * @param \DateTime $created_at created_at
      *
      * @return self
      */
-    public function setIdProperty($id_property)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($id_property)) {
-            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['id_property'] = $id_property;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets object_write_trace_id
+     * Gets archived
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getObjectWriteTraceId()
+    public function getArchived()
     {
-        return $this->container['object_write_trace_id'];
+        return $this->container['archived'];
     }
 
     /**
-     * Sets object_write_trace_id
+     * Sets archived
      *
-     * @param string|null $object_write_trace_id object_write_trace_id
+     * @param bool|null $archived archived
      *
      * @return self
      */
-    public function setObjectWriteTraceId($object_write_trace_id)
+    public function setArchived($archived)
     {
-        if (is_null($object_write_trace_id)) {
-            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
         }
-        $this->container['object_write_trace_id'] = $object_write_trace_id;
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return \DateTime|null
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param \DateTime|null $archived_at archived_at
+     *
+     * @return self
+     */
+    public function setArchivedAt($archived_at)
+    {
+        if (is_null($archived_at)) {
+            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
+        }
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets new
+     *
+     * @return bool
+     */
+    public function getNew()
+    {
+        return $this->container['new'];
+    }
+
+    /**
+     * Sets new
+     *
+     * @param bool $new new
+     *
+     * @return self
+     */
+    public function setNew($new)
+    {
+        if (is_null($new)) {
+            throw new \InvalidArgumentException('non-nullable new cannot be null');
+        }
+        $this->container['new'] = $new;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties_with_history
+     *
+     * @return array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>|null
+     */
+    public function getPropertiesWithHistory()
+    {
+        return $this->container['properties_with_history'];
+    }
+
+    /**
+     * Sets properties_with_history
+     *
+     * @param array<string,\HubSpot\Client\Crm\LineItems\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
+     *
+     * @return self
+     */
+    public function setPropertiesWithHistory($properties_with_history)
+    {
+        if (is_null($properties_with_history)) {
+            throw new \InvalidArgumentException('non-nullable properties_with_history cannot be null');
+        }
+        $this->container['properties_with_history'] = $properties_with_history;
 
         return $this;
     }
@@ -420,6 +538,33 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
         $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
