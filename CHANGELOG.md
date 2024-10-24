@@ -5,7 +5,70 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/11.3.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/12.0.0...HEAD)
+
+## [12.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.0.0) - 2024-10-24
+
+### CRM
+
+- Added `crm()->associassociations()->v4()->reportApi()`.
+- Added method `markAsReady` to `crm()->extensions()->calling()->recordingSettingsApi()`.
+- Added parameter `supportsInboundCalling` to `HubSpot\Client\Crm\Extensions\SettingsPatchRequest`, `HubSpot\Client\Crm\Extensions\SettingsRequest` and `HubSpot\Client\Crm\Extensions\SettingsResponse`.
+- Added method `upsert` to `crm()->companies()->batchApi()`, `crm()->contacts()->batchApi()`, `crm()->deals()->batchApi()`, `crm()->lineItems()->batchApi()`, `crm()->objects()->batchApi()`, `crm()->objects()->calls()->batchApi()`, `crm()->objects()->communications()->batchApi()`, `crm()->objects()->emails()->batchApi()`, `crm()->objects()->meetings()->batchApi()`, `crm()->objects()->notes()->batchApi()`, `crm()->objects()->postalMail()->batchApi()`, `crm()->objects()->tasks()->batchApi()`, `crm()->objects()->taxes()->batchApi()`, `crm()->products()->batchApi()`, `crm()->quotes()->batchApi()` and `crm()->tickets()->batchApi()`.
+- Removed `crm()->companies()->GDPRApi()`, `crm()->deals()->GDPRApi()`, `crm()->lineItems()->GDPRApi()`, `crm()->objects()->GDPRApi()`, `crm()->objects()->calls()->GDPRApi()`, `crm()->objects()->communications()->GDPRApi()`, `crm()->objects()->emails()->GDPRApi()`, `crm()->objects()->feedbackSubmissions()->GDPRApi()`, `crm()->objects()->goals()->GDPRApi()`, `crm()->objects()->meetings()->GDPRApi()`, `crm()->objects()->notes()->GDPRApi()`, `crm()->objects()->postalMail()->GDPRApi()`, `crm()->objects()->tasks()->GDPRApi()`, `crm()->objects()->taxes()->GDPRApi()`, `crm()->products()->GDPRApi()`, `crm()->quotes()->GDPRApi()`, `crm()->tickets()->GDPRApi()`.
+- Renamed `publicObjectApi` to `mergeApi` in `crm()->companies()`, `crm()->contacts()`, `crm()->deals()` and `crm()->tickets()`.
+- Removed `crm()->lineItems()->publicObjectApi()`, `crm()->objects()->publicObjectApi()`, `crm()->objects()->calls()->publicObjectApi()`, `crm()->objects()->communications()->publicObjectApi()`, `crm()->objects()->emails()->publicObjectApi()`, `crm()->objects()->feedbackSubmissions()->publicObjectApi()`, `crm()->objects()->goals()->publicObjectApi()`, `crm()->objects()->meetings()->publicObjectApi()`, `crm()->objects()->notes()->publicObjectApi()`, `crm()->objects()->postalMail()->publicObjectApi()`, `crm()->objects()->tasks()->publicObjectApi()`, `crm()->objects()->taxes()->publicObjectApi()`, `crm()->products()->publicObjectApi()` and `crm()->quotes()->publicObjectApi()`.
+- Made `associationCategory` and `associationTypeId` parameters nullable in `HubSpot\Client\Crm\Companies\Model\AssociationSpec`, `HubSpot\Client\Crm\Contacts\Model\AssociationSpec`, `HubSpot\Client\Crm\Deals\Model\AssociationSpec`, `HubSpot\Client\Crm\Tickets\Model\AssociationSpec`.
+- Made `types` and `to` parameters nullable in `HubSpot\Client\Crm\Companies\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Tickets\Model\PublicAssociationsForObject`.
+- Made `id` parameter nullable in `HubSpot\Client\Crm\Companies\Model\PublicObjectId`, `HubSpot\Client\Crm\Contacts\Model\PublicObjectId`, `HubSpot\Client\Crm\Deals\Model\PublicObjectId` and `HubSpot\Client\Crm\Tickets\Model\PublicObjectId`.
+- Made `limit`, `after`, `sorts`, `properties` and `filterGroups` parameters nullable in `HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Deals\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Calls\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Communications\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Emails\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Leads\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Meetings\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Notes\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\PostalMail\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Tasks\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Objects\Taxes\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Products\Model\PublicObjectSearchRequest`, `HubSpot\Client\Crm\Quotes\Model\PublicObjectSearchRequest` and `HubSpot\Client\Crm\Tickets\Model\PublicObjectSearchRequest`.
+- Made `properties` parameter required in `HubSpot\Client\Crm\LineItems\Model\SimplePublicObject`.
+- Added parameter `objectWriteTraceId` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectInputForCreate`,`HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectBatchInputUpsert`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Products\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Products\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectBatchInput`, `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInput` and `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate`.
+- Made `associations` parameter nullable in `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInputForCreate` and  `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate`.
+- Removed `archive`, `create` and `update` methods from `crm()->objects()->feedbackSubmissions()->basicApi()`, `crm()->objects()->feedbackSubmissions()->batchApi()`, `crm()->objects()->goals()->basicApi()` and `crm()->objects()->goals()->batchApi()`.
+- Changed response object type `HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject|HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors|HubSpot\Client\Crm\Objects\Leads\Model\Error` to `HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject|HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors|HubSpot\Client\Crm\Objects\Leads\Model\Error` of `crm()->objects()->leads()->rowsApi()->upsert()`.
+- Added parameters `user_id_including_inactive` and `type` to `HubSpot\Client\Crm\Owners\Model\PublicOwner`.
+- Made `metadata` parameter nullable in `HubSpot\Client\Crm\Pipelines\Model\PipelineStage`, `HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput` and `HubSpot\Client\Crm\Pipelines\Model\PipelineStagePatchInput`.
+- Removed `crm()->schemas()->publicObjectSchemasApi()`.
+- Added parameters `created_by_user_id` and `updated_by_user_id` to `HubSpot\Client\Crm\Schemas\Model\ObjectSchema`.
+- Added parameter `clear_description` to `HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionPatch`.
+
+## CRM Lists
+
+- Added `crm()->lists()->foldersApi()`.
+- Added `crm()->lists()->mappingApi()`.
+- Added `crm()->lists()->membershipsApi()->getPageOrderedByAddedToListDate()`.
+- Added parameter `custom_properties` to `HubSpot\Client\Crm\Lists\Model\ListCreateRequest`.
+- Made `list_ids`, `offset`, `processing_types` and `additional_properties` parameters nullable in `HubSpot\Client\Crm\Lists\Model\ListSearchRequest`.
+- Changed `pruning_refine_by` type from `HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy` to `HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy` in `HubSpot\Client\Crm\Lists\Model\PublicAdsTimeFilter` and `HubSpot\Client\Crm\Lists\Model\PublicEmailEventFilter`.
+- Changed `coalescing_refine_by` type from `HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy` to `HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy` in `HubSpot\Client\Crm\Lists\Model\PublicAssociationInListFilter`, `HubSpot\Client\Crm\Lists\Model\PublicNumAssociationsFilter` and `HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationInListFilter`.
+- Changed `pruning_refine_by` and `coalescing_refine_by` type from `HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy` to `HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy` in `HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilter`, `HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilter`, `HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilter`, `HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionOnPageFilter`,  `HubSpot\Client\Crm\Lists\Model\PublicPageViewAnalyticsFilter`, `HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner` and `HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilter`.
+- Changed `operation` type from `HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation` to `HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison` in `HubSpot\Client\Crm\Lists\Model\PublicEventFilterMetadata`, `HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner` and `HubSpot\Client\Crm\Lists\Model\PublicPropertyFilter`.
+- Changed `updated_by_id` and `created_by_id` type from `number` to `string` in `HubSpot\Client\Crm\Lists\Model\PublicObjectListSearchResult`.
+- Added parameter `coalescing_refine_by` to `HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner` and `HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranch`.
+- Changed `value_comparison` type from `HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation` to `HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison` in `HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilter`.
+
+### Marketing clients
+
+- Renamed method `create` to `recordByContactIds` in `marketing()->events()->attendanceSubscriberStateChangesApi()`.
+- Renamed method `createByEmail` to `recordByContactEmails` in `marketing()->events()->attendanceSubscriberStateChangesApi()`.
+- Renamed method `archiveBatch` to `batchArchive` and moved from`marketing()->events()->batchApi` to `marketing()->events()->basicApi()`.
+- Renamed method `doUpsert` to `batchUpsert` and moved from`marketing()->events()->batchApi` to `marketing()->events()->basicApi()`.
+- Renamed method `doCancel` to `cancel` in `marketing()->events()->basicApi()`.
+- Renamed method `getById` to `getDetails` in `marketing()->events()->basicApi()`.
+- Renamed method `replace` to `upsert` in `marketing()->events()->basicApi()`.
+ListAssociationsApi
+- Renamed method `create` to `update` in `marketing()->events()->settingsApi()`.
+- Renamed method `doEmailUpsertById` to `upsertByContactEmail` in `marketing()->events()->subscriberStateChangesApi()`.
+- Renamed method `doUpsertById` to `upsertByContactId` in `marketing()->events()->subscriberStateChangesApi()`.
+- Added new method `complete` to `marketing()->events()->basicApi()`.
+- Moved method `doSearch` from `marketing()->events()->searchApi` to `marketing()->events()->basicApi()`.
+- Added `marketing()->events()->participantStateApi()`.
+- Added `marketing()->events()->listAssociationsApi()`.
+- Removed `marketing()->events()->batchApi()`, `marketing()->events()->marketingEventsExternalApi()` and `marketing()->events()->searchApi()`.
+- Added parameter `eventCompleted` to `HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse`, `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse`, `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicReadResponse` and `HubSpot\Client\Marketing\Events\Model\MarketingEventUpdateRequestParams`.
+- Added parameters `dataSensitivity`, `unit` and `isEncrypted` to `marketing/events/models/PropertyValue`.
+- Renamed `marketing()->transactional()->publicSmtpTokensApi()` to `marketing()->transactional()->publicSMTPTokensApi()`.
 
 ## [11.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.3.0) - 2024-08-15
 
@@ -97,14 +160,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `crm()->companies()->gdprApi()` API.
 - `crm()->deals()->gdprApi()` API.
-- `crm()->line_items()->gdprApi()` API.
+- `crm()->lineItems()->gdprApi()` API.
 - `crm()->objects()->calls()->gdprApi()` API.
 - `crm()->objects()->communications()->gdprApi()` API.
 - `crm()->objects()->emails()->gdprApi()` API.
 - `crm()->objects()->feedbackSubmissions()->gdprApi()` API.
 - `crm()->objects()->meetings()->gdprApi()` API.
 - `crm()->objects()->notes()->gdprApi()` API.
-- `crm()->objects()->postalMail.gdprApi()` API.
+- `crm()->objects()->postalMail()->GDPRApi()` API.
 - `crm()->objects()->tasks()->gdprApi()` API.
 - `crm()->products()->gdprApi()` API.
 - `crm()->quotes()->gdprApi()` API.
@@ -284,7 +347,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed `crm()->companies()->associationsApi`.
 - Removed `crm()->contacts()->associationsApi`.
 - Removed `crm()->deals()->associationsApi`.
-- Removed `crm()->line_items()->associationsApi`.
+- Removed `crm()->lineItems()->associationsApi`.
 - Removed `crm()->objects()->calls()->associationsApi`.
 - Removed `crm()->objects()->emails()->associationsApi`.
 - Removed `crm()->objects()->feedbackSubmissions()->associationsApi`.
@@ -301,8 +364,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `crm()->contacts()->batchApi()->create(BatchInputSimplePublicObjectInput => BatchInputSimplePublicObjectInputForCreate)`
 - `crm()->deals()->basicApi()->create(SimplePublicObjectInput => SimplePublicObjectInputForCreate)`
 - `crm()->deals()->batchApi()->create(BatchInputSimplePublicObjectInput => BatchInputSimplePublicObjectInputForCreate)`
-- `crm()->line_items()->basicApi()->create(SimplePublicObjectInput => SimplePublicObjectInputForCreate)`
-- `crm()->line_items()->batchApi()->create(BatchInputSimplePublicObjectInput => BatchInputSimplePublicObjectInputForCreate)`
+- `crm()->lineItems()->basicApi()->create(SimplePublicObjectInput => SimplePublicObjectInputForCreate)`
+- `crm()->lineItems()->batchApi()->create(BatchInputSimplePublicObjectInput => BatchInputSimplePublicObjectInputForCreate)`
 - `crm()->objects()->basicApi()->create(SimplePublicObjectInput => SimplePublicObjectInputForCreate)`
 - `crm()->objects()->batchApi()->create(BatchInputSimplePublicObjectInput => BatchInputSimplePublicObjectInputForCreate)`
 - `crm()->objects()->calls()->basicApi()->create(SimplePublicObjectInput => SimplePublicObjectInputForCreate)`
@@ -455,18 +518,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `crm()->companies()->publicObjectApi`
-- `crm()->contacts()->publicObjectApi`
-- `crm()->deals()->publicObjectApi`
-- `crm()->lineItems()->publicObjectApi`
-- `crm()->objects()->calls()->publicObjectApi`
-- `crm()->objects()->publicObjectApi`
-- `crm()->objects()->emails()->publicObjectApi`
-- `crm()->objects()->meetings()->publicObjectApi`
-- `crm()->objects()->notes()->publicObjectApi`
-- `crm()->objects()->tasks()->publicObjectApi`
-- `crm()->products()->publicObjectApi`
-- `crm()->tickets()->publicObjectApi`
+- `crm()->companies()->publicObjectApi()`
+- `crm()->contacts()->publicObjectApi()`
+- `crm()->deals()->publicObjectApi()`
+- `crm()->lineItems()->publicObjectApi()`
+- `crm()->objects()->calls()->publicObjectApi()`
+- `crm()->objects()->publicObjectApi()`
+- `crm()->objects()->emails()->publicObjectApi()`
+- `crm()->objects()->meetings()->publicObjectApi()`
+- `crm()->objects()->notes()->publicObjectApi()`
+- `crm()->objects()->tasks()->publicObjectApi()`
+- `crm()->products()->publicObjectApi()`
+- `crm()->tickets()->publicObjectApi()`
 - add field "values" to all CRM objects `Filter`
 
 ## [8.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/8.0.0) - 2022-04-08
@@ -752,7 +815,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/11.3.0...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/12.0.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -809,3 +872,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [11.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.1.0
 [11.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.2.0
 [11.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.3.0
+[12.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.0.0
