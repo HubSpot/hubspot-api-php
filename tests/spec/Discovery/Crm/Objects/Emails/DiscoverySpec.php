@@ -5,8 +5,6 @@ namespace spec\HubSpot\Discovery\Crm\Objects\Emails;
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Objects\Emails\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Emails\Api\BatchApi;
-use HubSpot\Client\Crm\Objects\Emails\Api\GDPRApi;
-use HubSpot\Client\Crm\Objects\Emails\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Objects\Emails\Api\SearchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Objects\Emails\Discovery;
@@ -28,8 +26,6 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
-        $this->gdprApi()->shouldHaveType(GDPRApi::class);
-        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }
 }
