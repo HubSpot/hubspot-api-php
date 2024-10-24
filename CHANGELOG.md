@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [12.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.0.0) - 2024-10-24
 
+### CMS
+
+- Added laguage consts to `HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext`.
+- Added parameter `campaign_name` to `HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentLanguageVariation`.
+- Added parameter `breakpointStyles` to `HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles`.
+- Added parameter `name` to `cms()->hubdb()->rowsApi()->cloneDraftTableRow()`.
+- Added parameter `archived` to `cms()->hubdb()->rowsApi()->getDraftTableRowById()` and `cms()->hubdb()->rowsApi()->getTableRow()`.
+- Added parameters `offset` and `archived` to `cms()->hubdb()->rowsApi()->getTableRows()` and `cms()->hubdb()->rowsApi()->readDraftTableRows()`.
+- Changed the response object type from  `HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableRowV3ForwardPaging|HubSpot\Client\Cms\Hubdb\Model\Error` to `HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|HubSpot\Client\Cms\Hubdb\Model\Error` for `cms()->hubdb()->rowsApi()->getTableRows()` and `cms()->hubdb()->rowsApi()->readDraftTableRows()`.
+- Changed parameter `batch_input_string: HubSpot\Client\Cms\Hubdb\Model\BatchInputString` to `batch_input_hub_db_table_row_batch_clone_request: HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowBatchCloneRequest` in `cms()->hubdb()->rowsBatchApi()->cloneDraftTableRows()`.
+- Added parameter `content_type` before `archived` parameter to `cms()->hubdb()->tablesApi()->getAllDraftTables()` and `cms()->hubdb()->tablesApi()->getAllTables()`.
+- Changed parameters from `string $table_id_or_name, bool $include_foreign_ids = null, boolean $archived = null` to `string $table_id_or_name, bool $is_get_localized_schema = null, bool $archived = null, bool $include_foreign_ids = null` of `cms()->hubdb()->tablesApi()->getDraftTableDetailsById()` and `cms()->hubdb()->tablesApi()->updateDraftTable()`.
+- Added parameters `created_by_user_id`, `updated_by`, `updated_by_user_id`, `created_at`, `created_by` and `updated_at` to `HubSpot\Client\Cms\Hubdb\Model\Column` and `HubSpot\Client\Cms\Hubdb\Model\Option`.
+- Added the parameter `is_hubspot_defined` to `HubSpot\Client\Cms\Hubdb\Model\HubDbTableCloneRequest`.
+- Removed `cms()->source_code()->extractApi()->extractByPath()` method.
+- Added `doAsync()` and `getAsyncStatus()` methods to `cms()->source_code()->extractApi()`.
+- Removed `cms()->source_code()->sourceCodeExtractApi`.
+
 ### CRM
 
 - Added `crm()->associassociations()->v4()->reportApi()`.
