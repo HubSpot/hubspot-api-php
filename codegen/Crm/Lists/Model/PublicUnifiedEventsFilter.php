@@ -57,10 +57,10 @@ class PublicUnifiedEventsFilter implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'event_type_id' => 'string',
         'filter_lines' => '\HubSpot\Client\Crm\Lists\Model\PublicEventFilterMetadata[]',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'filter_type' => 'string'
     ];
 
@@ -348,7 +348,7 @@ class PublicUnifiedEventsFilter implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getCoalescingRefineBy()
     {
@@ -358,7 +358,7 @@ class PublicUnifiedEventsFilter implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class PublicUnifiedEventsFilter implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -439,7 +439,7 @@ class PublicUnifiedEventsFilter implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

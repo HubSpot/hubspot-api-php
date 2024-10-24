@@ -57,7 +57,7 @@ class PublicSurveyMonkeyValueFilter implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value_comparison' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation',
+        'value_comparison' => '\HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison',
         'survey_id' => 'string',
         'survey_question' => 'string',
         'filter_type' => 'string',
@@ -371,7 +371,7 @@ class PublicSurveyMonkeyValueFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets value_comparison
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison
      */
     public function getValueComparison()
     {
@@ -381,7 +381,7 @@ class PublicSurveyMonkeyValueFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets value_comparison
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation $value_comparison value_comparison
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison $value_comparison value_comparison
      *
      * @return self
      */

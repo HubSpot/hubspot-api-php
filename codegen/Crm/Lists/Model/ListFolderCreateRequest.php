@@ -1,6 +1,6 @@
 <?php
 /**
- * ListCreateRequest
+ * ListFolderCreateRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Lists\ObjectSerializer;
 
 /**
- * ListCreateRequest Class Doc Comment
+ * ListFolderCreateRequest Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Lists
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListFolderCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ListCreateRequest';
+    protected static $openAPIModelName = 'ListFolderCreateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_type_id' => 'string',
-        'processing_type' => 'string',
-        'custom_properties' => 'array<string,string>',
-        'list_folder_id' => 'int',
-        'name' => 'string',
-        'filter_branch' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner'
+        'parent_folder_id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -73,12 +69,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object_type_id' => null,
-        'processing_type' => null,
-        'custom_properties' => null,
-        'list_folder_id' => 'int32',
-        'name' => null,
-        'filter_branch' => null
+        'parent_folder_id' => null,
+        'name' => null
     ];
 
     /**
@@ -87,12 +79,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object_type_id' => false,
-        'processing_type' => false,
-        'custom_properties' => false,
-        'list_folder_id' => false,
-        'name' => false,
-        'filter_branch' => false
+        'parent_folder_id' => false,
+        'name' => false
     ];
 
     /**
@@ -181,12 +169,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_type_id' => 'objectTypeId',
-        'processing_type' => 'processingType',
-        'custom_properties' => 'customProperties',
-        'list_folder_id' => 'listFolderId',
-        'name' => 'name',
-        'filter_branch' => 'filterBranch'
+        'parent_folder_id' => 'parentFolderId',
+        'name' => 'name'
     ];
 
     /**
@@ -195,12 +179,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'object_type_id' => 'setObjectTypeId',
-        'processing_type' => 'setProcessingType',
-        'custom_properties' => 'setCustomProperties',
-        'list_folder_id' => 'setListFolderId',
-        'name' => 'setName',
-        'filter_branch' => 'setFilterBranch'
+        'parent_folder_id' => 'setParentFolderId',
+        'name' => 'setName'
     ];
 
     /**
@@ -209,12 +189,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'object_type_id' => 'getObjectTypeId',
-        'processing_type' => 'getProcessingType',
-        'custom_properties' => 'getCustomProperties',
-        'list_folder_id' => 'getListFolderId',
-        'name' => 'getName',
-        'filter_branch' => 'getFilterBranch'
+        'parent_folder_id' => 'getParentFolderId',
+        'name' => 'getName'
     ];
 
     /**
@@ -274,12 +250,8 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object_type_id', $data ?? [], null);
-        $this->setIfExists('processing_type', $data ?? [], null);
-        $this->setIfExists('custom_properties', $data ?? [], null);
-        $this->setIfExists('list_folder_id', $data ?? [], null);
+        $this->setIfExists('parent_folder_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('filter_branch', $data ?? [], null);
     }
 
     /**
@@ -309,12 +281,6 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['object_type_id'] === null) {
-            $invalidProperties[] = "'object_type_id' can't be null";
-        }
-        if ($this->container['processing_type'] === null) {
-            $invalidProperties[] = "'processing_type' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -334,109 +300,28 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets object_type_id
+     * Gets parent_folder_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getObjectTypeId()
+    public function getParentFolderId()
     {
-        return $this->container['object_type_id'];
+        return $this->container['parent_folder_id'];
     }
 
     /**
-     * Sets object_type_id
+     * Sets parent_folder_id
      *
-     * @param string $object_type_id The object type ID of the type of objects that the list will store.
+     * @param string|null $parent_folder_id The folder this should be created in, if not specified will be created in the root folder 0.
      *
      * @return self
      */
-    public function setObjectTypeId($object_type_id)
+    public function setParentFolderId($parent_folder_id)
     {
-        if (is_null($object_type_id)) {
-            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        if (is_null($parent_folder_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_folder_id cannot be null');
         }
-        $this->container['object_type_id'] = $object_type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets processing_type
-     *
-     * @return string
-     */
-    public function getProcessingType()
-    {
-        return $this->container['processing_type'];
-    }
-
-    /**
-     * Sets processing_type
-     *
-     * @param string $processing_type The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
-     *
-     * @return self
-     */
-    public function setProcessingType($processing_type)
-    {
-        if (is_null($processing_type)) {
-            throw new \InvalidArgumentException('non-nullable processing_type cannot be null');
-        }
-        $this->container['processing_type'] = $processing_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_properties
-     *
-     * @return array<string,string>|null
-     */
-    public function getCustomProperties()
-    {
-        return $this->container['custom_properties'];
-    }
-
-    /**
-     * Sets custom_properties
-     *
-     * @param array<string,string>|null $custom_properties The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
-     *
-     * @return self
-     */
-    public function setCustomProperties($custom_properties)
-    {
-        if (is_null($custom_properties)) {
-            throw new \InvalidArgumentException('non-nullable custom_properties cannot be null');
-        }
-        $this->container['custom_properties'] = $custom_properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets list_folder_id
-     *
-     * @return int|null
-     */
-    public function getListFolderId()
-    {
-        return $this->container['list_folder_id'];
-    }
-
-    /**
-     * Sets list_folder_id
-     *
-     * @param int|null $list_folder_id The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
-     *
-     * @return self
-     */
-    public function setListFolderId($list_folder_id)
-    {
-        if (is_null($list_folder_id)) {
-            throw new \InvalidArgumentException('non-nullable list_folder_id cannot be null');
-        }
-        $this->container['list_folder_id'] = $list_folder_id;
+        $this->container['parent_folder_id'] = $parent_folder_id;
 
         return $this;
     }
@@ -454,7 +339,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets name
      *
-     * @param string $name The name of the list, which must be globally unique across all public lists in the portal.
+     * @param string $name The name of the folder to be created.
      *
      * @return self
      */
@@ -464,33 +349,6 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets filter_branch
-     *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner|null
-     */
-    public function getFilterBranch()
-    {
-        return $this->container['filter_branch'];
-    }
-
-    /**
-     * Sets filter_branch
-     *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner|null $filter_branch filter_branch
-     *
-     * @return self
-     */
-    public function setFilterBranch($filter_branch)
-    {
-        if (is_null($filter_branch)) {
-            throw new \InvalidArgumentException('non-nullable filter_branch cannot be null');
-        }
-        $this->container['filter_branch'] = $filter_branch;
 
         return $this;
     }

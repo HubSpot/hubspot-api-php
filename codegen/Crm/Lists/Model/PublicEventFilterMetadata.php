@@ -58,7 +58,7 @@ class PublicEventFilterMetadata implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'property' => 'string',
-        'operation' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation'
+        'operation' => '\HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison'
     ];
 
     /**
@@ -332,7 +332,7 @@ class PublicEventFilterMetadata implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets operation
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison
      */
     public function getOperation()
     {
@@ -342,7 +342,7 @@ class PublicEventFilterMetadata implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets operation
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation $operation operation
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison $operation operation
      *
      * @return self
      */

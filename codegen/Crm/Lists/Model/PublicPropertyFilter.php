@@ -59,7 +59,7 @@ class PublicPropertyFilter implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'property' => 'string',
         'filter_type' => 'string',
-        'operation' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation'
+        'operation' => '\HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison'
     ];
 
     /**
@@ -401,7 +401,7 @@ class PublicPropertyFilter implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets operation
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison
      */
     public function getOperation()
     {
@@ -411,7 +411,7 @@ class PublicPropertyFilter implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets operation
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation $operation operation
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison $operation operation
      *
      * @return self
      */

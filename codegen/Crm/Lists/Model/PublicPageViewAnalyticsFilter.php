@@ -57,9 +57,9 @@ class PublicPageViewAnalyticsFilter implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'enable_tracking' => 'bool',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'page_url' => 'string',
         'filter_type' => 'string',
         'operator' => 'string'
@@ -358,7 +358,7 @@ class PublicPageViewAnalyticsFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getCoalescingRefineBy()
     {
@@ -368,7 +368,7 @@ class PublicPageViewAnalyticsFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class PublicPageViewAnalyticsFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -422,7 +422,7 @@ class PublicPageViewAnalyticsFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

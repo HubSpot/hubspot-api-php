@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicEventAnalyticsFilterCoalescingRefineBy
+ * PublicFormSubmissionFilterCoalescingRefineBy
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Lists\ObjectSerializer;
 
 /**
- * PublicEventAnalyticsFilterCoalescingRefineBy Class Doc Comment
+ * PublicFormSubmissionFilterCoalescingRefineBy Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Lists
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicEventAnalyticsFilterCoalescingRefineBy implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicFormSubmissionFilterCoalescingRefineBy implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicEventAnalyticsFilterCoalescingRefineBy implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicEventAnalyticsFilter_coalescingRefineBy';
+    protected static $openAPIModelName = 'PublicFormSubmissionFilter_coalescingRefineBy';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

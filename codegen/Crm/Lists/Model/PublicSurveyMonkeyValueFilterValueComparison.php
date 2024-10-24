@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicPropertyFilterOperation
+ * PublicSurveyMonkeyValueFilterValueComparison
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Lists\ObjectSerializer;
 
 /**
- * PublicPropertyFilterOperation Class Doc Comment
+ * PublicSurveyMonkeyValueFilterValueComparison Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Lists
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicPropertyFilterOperation implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicPropertyFilterOperation implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicPropertyFilter_operation';
+    protected static $openAPIModelName = 'PublicSurveyMonkeyValueFilter_valueComparison';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

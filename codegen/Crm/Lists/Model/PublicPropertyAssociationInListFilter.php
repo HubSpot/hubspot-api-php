@@ -58,7 +58,7 @@ class PublicPropertyAssociationInListFilter implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'list_id' => 'string',
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'property_with_object_id' => 'string',
         'filter_type' => 'string',
         'to_object_type_id' => 'string',
@@ -391,7 +391,7 @@ class PublicPropertyAssociationInListFilter implements ModelInterface, ArrayAcce
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy
      */
     public function getCoalescingRefineBy()
     {
@@ -401,7 +401,7 @@ class PublicPropertyAssociationInListFilter implements ModelInterface, ArrayAcce
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */

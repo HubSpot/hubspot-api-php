@@ -59,7 +59,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'processing_type' => 'string',
         'object_type_id' => 'string',
-        'updated_by_id' => 'int',
+        'updated_by_id' => 'string',
         'filters_updated_at' => '\DateTime',
         'list_id' => 'string',
         'created_at' => '\DateTime',
@@ -68,7 +68,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
         'list_version' => 'int',
         'name' => 'string',
         'additional_properties' => 'array<string,string>',
-        'created_by_id' => 'int',
+        'created_by_id' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -82,7 +82,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'processing_type' => null,
         'object_type_id' => null,
-        'updated_by_id' => 'int32',
+        'updated_by_id' => null,
         'filters_updated_at' => 'date-time',
         'list_id' => null,
         'created_at' => 'date-time',
@@ -91,7 +91,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
         'list_version' => 'int32',
         'name' => null,
         'additional_properties' => null,
-        'created_by_id' => 'int32',
+        'created_by_id' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -451,7 +451,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets updated_by_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getUpdatedById()
     {
@@ -461,7 +461,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets updated_by_id
      *
-     * @param int|null $updated_by_id The ID of the user that last updated the list.
+     * @param string|null $updated_by_id The ID of the user that last updated the list.
      *
      * @return self
      */
@@ -694,7 +694,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets created_by_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCreatedById()
     {
@@ -704,7 +704,7 @@ class PublicObjectListSearchResult implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets created_by_id
      *
-     * @param int|null $created_by_id The ID of the user that created the list.
+     * @param string|null $created_by_id The ID of the user that created the list.
      *
      * @return self
      */

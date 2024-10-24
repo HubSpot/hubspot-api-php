@@ -59,16 +59,16 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     protected static $openAPITypes = [
         'property' => 'string',
         'filter_type' => 'string',
-        'operation' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation',
+        'operation' => '\HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison',
         'list_id' => 'string',
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'to_object_type' => 'string',
         'association_type_id' => 'int',
         'association_category' => 'string',
         'to_object_type_id' => 'string',
         'operator' => 'string',
         'enable_tracking' => 'bool',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'page_url' => 'string',
         'cta_name' => 'string',
         'event_id' => 'string',
@@ -84,7 +84,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
         'business_unit_id' => 'string',
         'campaign_id' => 'string',
         'survey_id' => 'string',
-        'value_comparison' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation',
+        'value_comparison' => '\HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison',
         'survey_question' => 'string',
         'survey_answer_row_id' => 'string',
         'survey_answer_col_id' => 'string',
@@ -492,7 +492,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
         return self::$openAPIModelName;
     }
 
-    public const FILTER_TYPE_UNIFIED_EVENTS_IN_LIST = 'UNIFIED_EVENTS_IN_LIST';
+    public const FILTER_TYPE_CONSTANT = 'CONSTANT';
 
     /**
      * Gets allowable values of the enum
@@ -502,7 +502,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     public function getFilterTypeAllowableValues()
     {
         return [
-            self::FILTER_TYPE_UNIFIED_EVENTS_IN_LIST,
+            self::FILTER_TYPE_CONSTANT,
         ];
     }
 
@@ -522,7 +522,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     public function __construct(array $data = null)
     {
         $this->setIfExists('property', $data ?? [], null);
-        $this->setIfExists('filter_type', $data ?? [], 'UNIFIED_EVENTS_IN_LIST');
+        $this->setIfExists('filter_type', $data ?? [], 'CONSTANT');
         $this->setIfExists('operation', $data ?? [], null);
         $this->setIfExists('list_id', $data ?? [], null);
         $this->setIfExists('coalescing_refine_by', $data ?? [], null);
@@ -788,7 +788,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Gets operation
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison
      */
     public function getOperation()
     {
@@ -798,7 +798,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Sets operation
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation $operation operation
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison $operation operation
      *
      * @return self
      */
@@ -842,7 +842,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy
      */
     public function getCoalescingRefineBy()
     {
@@ -852,7 +852,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -1031,7 +1031,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy
      */
     public function getPruningRefineBy()
     {
@@ -1041,7 +1041,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy $pruning_refine_by pruning_refine_by
      *
      * @return self
      */
@@ -1463,7 +1463,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Gets value_comparison
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison
      */
     public function getValueComparison()
     {
@@ -1473,7 +1473,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner implements ModelInterfac
     /**
      * Sets value_comparison
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyFilterOperation $value_comparison value_comparison
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicSurveyMonkeyValueFilterValueComparison $value_comparison value_comparison
      *
      * @return self
      */
