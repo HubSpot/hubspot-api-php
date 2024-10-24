@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\HubSpot\Discovery\Auth\OAuth;
+namespace spec\HubSpot\Discovery\Oauth;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Auth\OAuth\Api\AccessTokensApi;
-use HubSpot\Client\Auth\OAuth\Api\RefreshTokensApi;
-use HubSpot\Client\Auth\OAuth\Api\TokensApi;
+use HubSpot\Client\Oauth\Api\AccessTokensApi;
+use HubSpot\Client\Oauth\Api\RefreshTokensApi;
+use HubSpot\Client\Oauth\Api\TokensApi;
 use HubSpot\Config;
-use HubSpot\Discovery\Auth\OAuth\Discovery;
+use HubSpot\Discovery\Oauth\Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
