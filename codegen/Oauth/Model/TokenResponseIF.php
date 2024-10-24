@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,16 +26,16 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Model;
+namespace HubSpot\Client\Oauth\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Auth\OAuth\ObjectSerializer;
+use \HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
  * TokenResponseIF Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

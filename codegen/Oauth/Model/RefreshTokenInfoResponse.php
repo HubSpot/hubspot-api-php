@@ -1,11 +1,11 @@
 <?php
 /**
- * AccessTokenInfoResponse
+ * RefreshTokenInfoResponse
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,21 +26,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Model;
+namespace HubSpot\Client\Oauth\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Auth\OAuth\ObjectSerializer;
+use \HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
- * AccessTokenInfoResponse Class Doc Comment
+ * RefreshTokenInfoResponse Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AccessTokenInfoResponse';
+    protected static $openAPIModelName = 'RefreshTokenInfoResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,8 +63,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'token_type' => 'string',
         'user' => 'string',
         'hub_domain' => 'string',
-        'app_id' => 'int',
-        'expires_in' => 'int',
+        'client_id' => 'string',
         'token' => 'string'
     ];
 
@@ -82,8 +81,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'token_type' => null,
         'user' => null,
         'hub_domain' => null,
-        'app_id' => 'int32',
-        'expires_in' => 'int32',
+        'client_id' => null,
         'token' => null
     ];
 
@@ -99,8 +97,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'token_type' => false,
         'user' => false,
         'hub_domain' => false,
-        'app_id' => false,
-        'expires_in' => false,
+        'client_id' => false,
         'token' => false
     ];
 
@@ -196,8 +193,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'token_type' => 'token_type',
         'user' => 'user',
         'hub_domain' => 'hub_domain',
-        'app_id' => 'app_id',
-        'expires_in' => 'expires_in',
+        'client_id' => 'client_id',
         'token' => 'token'
     ];
 
@@ -213,8 +209,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'token_type' => 'setTokenType',
         'user' => 'setUser',
         'hub_domain' => 'setHubDomain',
-        'app_id' => 'setAppId',
-        'expires_in' => 'setExpiresIn',
+        'client_id' => 'setClientId',
         'token' => 'setToken'
     ];
 
@@ -230,8 +225,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'token_type' => 'getTokenType',
         'user' => 'getUser',
         'hub_domain' => 'getHubDomain',
-        'app_id' => 'getAppId',
-        'expires_in' => 'getExpiresIn',
+        'client_id' => 'getClientId',
         'token' => 'getToken'
     ];
 
@@ -298,8 +292,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('token_type', $data ?? [], null);
         $this->setIfExists('user', $data ?? [], null);
         $this->setIfExists('hub_domain', $data ?? [], null);
-        $this->setIfExists('app_id', $data ?? [], null);
-        $this->setIfExists('expires_in', $data ?? [], null);
+        $this->setIfExists('client_id', $data ?? [], null);
         $this->setIfExists('token', $data ?? [], null);
     }
 
@@ -342,11 +335,8 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['token_type'] === null) {
             $invalidProperties[] = "'token_type' can't be null";
         }
-        if ($this->container['app_id'] === null) {
-            $invalidProperties[] = "'app_id' can't be null";
-        }
-        if ($this->container['expires_in'] === null) {
-            $invalidProperties[] = "'expires_in' can't be null";
+        if ($this->container['client_id'] === null) {
+            $invalidProperties[] = "'client_id' can't be null";
         }
         if ($this->container['token'] === null) {
             $invalidProperties[] = "'token' can't be null";
@@ -529,55 +519,28 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets app_id
+     * Gets client_id
      *
-     * @return int
+     * @return string
      */
-    public function getAppId()
+    public function getClientId()
     {
-        return $this->container['app_id'];
+        return $this->container['client_id'];
     }
 
     /**
-     * Sets app_id
+     * Sets client_id
      *
-     * @param int $app_id 
+     * @param string $client_id 
      *
      * @return self
      */
-    public function setAppId($app_id)
+    public function setClientId($client_id)
     {
-        if (is_null($app_id)) {
-            throw new \InvalidArgumentException('non-nullable app_id cannot be null');
+        if (is_null($client_id)) {
+            throw new \InvalidArgumentException('non-nullable client_id cannot be null');
         }
-        $this->container['app_id'] = $app_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_in
-     *
-     * @return int
-     */
-    public function getExpiresIn()
-    {
-        return $this->container['expires_in'];
-    }
-
-    /**
-     * Sets expires_in
-     *
-     * @param int $expires_in 
-     *
-     * @return self
-     */
-    public function setExpiresIn($expires_in)
-    {
-        if (is_null($expires_in)) {
-            throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
-        }
-        $this->container['expires_in'] = $expires_in;
+        $this->container['client_id'] = $client_id;
 
         return $this;
     }
