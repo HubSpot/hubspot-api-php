@@ -68,10 +68,6 @@ ListAssociationsApi
 - Removed `marketing()->events()->batchApi()`, `marketing()->events()->marketingEventsExternalApi()` and `marketing()->events()->searchApi()`.
 - Added parameter `eventCompleted` to `HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse`, `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse`, `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicReadResponse` and `HubSpot\Client\Marketing\Events\Model\MarketingEventUpdateRequestParams`.
 - Added parameters `dataSensitivity`, `unit` and `isEncrypted` to `marketing/events/models/PropertyValue`.
-
-- Changed `legalConsentOptions` type from `any` to `HubSpotFormDefinitionAllOfLegalConsentOptions` in `marketing/forms/models/CollectionResponseFormDefinitionBaseForwardPagingResultsInner`, `marketing/forms/models/FormDefinitionBase`, `marketing/forms/models/FormDefinitionCreateRequestBase` and `marketing/forms/models/HubSpotFormDefinition`.
-- Changed `legalConsentOptions` type from `any` to `HubSpotFormDefinitionCreateRequestAllOfLegalConsentOptions` in `marketing/forms/models/HubSpotFormDefinitionCreateRequest`.
-- Changed `legalConsentOptions` type from `HubSpotFormDefinitionPatchRequestLegalConsentOptions` to `HubSpotFormDefinitionCreateRequestAllOfLegalConsentOptions` in `marketing/forms/models/HubSpotFormDefinitionPatchRequest`.
 - Renamed `marketing()->transactional()->publicSmtpTokensApi()` to `marketing()->transactional()->publicSMTPTokensApi()`.
 
 ## [11.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.3.0) - 2024-08-15
