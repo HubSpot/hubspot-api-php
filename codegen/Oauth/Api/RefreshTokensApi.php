@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Api;
+namespace HubSpot\Client\Oauth\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Auth\OAuth\ApiException;
-use HubSpot\Client\Auth\OAuth\Configuration;
-use HubSpot\Client\Auth\OAuth\HeaderSelector;
-use HubSpot\Client\Auth\OAuth\ObjectSerializer;
+use HubSpot\Client\Oauth\ApiException;
+use HubSpot\Client\Oauth\Configuration;
+use HubSpot\Client\Oauth\HeaderSelector;
+use HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
  * RefreshTokensApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,7 +131,7 @@ class RefreshTokensApi
      * @param  string $token token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -146,7 +146,7 @@ class RefreshTokensApi
      * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -196,7 +196,7 @@ class RefreshTokensApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Auth\OAuth\Model\Error',
+                        '\HubSpot\Client\Oauth\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -360,9 +360,9 @@ class RefreshTokensApi
      * @param  string $token token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error
+     * @return \HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Oauth\Model\Error
      */
     public function get($token, string $contentType = self::contentTypes['get'][0])
     {
@@ -376,9 +376,9 @@ class RefreshTokensApi
      * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse|\HubSpot\Client\Oauth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWithHttpInfo($token, string $contentType = self::contentTypes['get'][0])
     {
@@ -421,11 +421,11 @@ class RefreshTokensApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse' !== 'string') {
+                        if ('\HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -443,16 +443,16 @@ class RefreshTokensApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Auth\OAuth\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Oauth\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Auth\OAuth\Model\Error' !== 'string') {
+                        if ('\HubSpot\Client\Oauth\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -470,13 +470,13 @@ class RefreshTokensApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Auth\OAuth\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Oauth\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse';
+            $returnType = '\HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -509,7 +509,7 @@ class RefreshTokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse',
+                        '\HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -517,7 +517,7 @@ class RefreshTokensApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Auth\OAuth\Model\Error',
+                        '\HubSpot\Client\Oauth\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -557,7 +557,7 @@ class RefreshTokensApi
      */
     public function getAsyncWithHttpInfo($token, string $contentType = self::contentTypes['get'][0])
     {
-        $returnType = '\HubSpot\Client\Auth\OAuth\Model\RefreshTokenInfoResponse';
+        $returnType = '\HubSpot\Client\Oauth\Model\RefreshTokenInfoResponse';
         $request = $this->getRequest($token, $contentType);
 
         return $this->client

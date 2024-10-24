@@ -1,11 +1,11 @@
 <?php
 /**
- * RefreshTokenInfoResponse
+ * Error
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,21 +26,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Model;
+namespace HubSpot\Client\Oauth\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Auth\OAuth\ObjectSerializer;
+use \HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
- * RefreshTokenInfoResponse Class Doc Comment
+ * Error Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RefreshTokenInfoResponse';
+    protected static $openAPIModelName = 'Error';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'hub_id' => 'int',
-        'user_id' => 'int',
-        'scopes' => 'string[]',
-        'token_type' => 'string',
-        'user' => 'string',
-        'hub_domain' => 'string',
-        'client_id' => 'string',
-        'token' => 'string'
+        'sub_category' => 'string',
+        'context' => 'array<string,string[]>',
+        'correlation_id' => 'string',
+        'links' => 'array<string,string>',
+        'message' => 'string',
+        'category' => 'string',
+        'errors' => '\HubSpot\Client\Oauth\Model\ErrorDetail[]'
     ];
 
     /**
@@ -75,14 +74,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'hub_id' => 'int32',
-        'user_id' => 'int32',
-        'scopes' => null,
-        'token_type' => null,
-        'user' => null,
-        'hub_domain' => null,
-        'client_id' => null,
-        'token' => null
+        'sub_category' => null,
+        'context' => null,
+        'correlation_id' => 'uuid',
+        'links' => null,
+        'message' => null,
+        'category' => null,
+        'errors' => null
     ];
 
     /**
@@ -91,14 +89,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'hub_id' => false,
-        'user_id' => false,
-        'scopes' => false,
-        'token_type' => false,
-        'user' => false,
-        'hub_domain' => false,
-        'client_id' => false,
-        'token' => false
+        'sub_category' => false,
+        'context' => false,
+        'correlation_id' => false,
+        'links' => false,
+        'message' => false,
+        'category' => false,
+        'errors' => false
     ];
 
     /**
@@ -187,14 +184,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'hub_id' => 'hub_id',
-        'user_id' => 'user_id',
-        'scopes' => 'scopes',
-        'token_type' => 'token_type',
-        'user' => 'user',
-        'hub_domain' => 'hub_domain',
-        'client_id' => 'client_id',
-        'token' => 'token'
+        'sub_category' => 'subCategory',
+        'context' => 'context',
+        'correlation_id' => 'correlationId',
+        'links' => 'links',
+        'message' => 'message',
+        'category' => 'category',
+        'errors' => 'errors'
     ];
 
     /**
@@ -203,14 +199,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'hub_id' => 'setHubId',
-        'user_id' => 'setUserId',
-        'scopes' => 'setScopes',
-        'token_type' => 'setTokenType',
-        'user' => 'setUser',
-        'hub_domain' => 'setHubDomain',
-        'client_id' => 'setClientId',
-        'token' => 'setToken'
+        'sub_category' => 'setSubCategory',
+        'context' => 'setContext',
+        'correlation_id' => 'setCorrelationId',
+        'links' => 'setLinks',
+        'message' => 'setMessage',
+        'category' => 'setCategory',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -219,14 +214,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'hub_id' => 'getHubId',
-        'user_id' => 'getUserId',
-        'scopes' => 'getScopes',
-        'token_type' => 'getTokenType',
-        'user' => 'getUser',
-        'hub_domain' => 'getHubDomain',
-        'client_id' => 'getClientId',
-        'token' => 'getToken'
+        'sub_category' => 'getSubCategory',
+        'context' => 'getContext',
+        'correlation_id' => 'getCorrelationId',
+        'links' => 'getLinks',
+        'message' => 'getMessage',
+        'category' => 'getCategory',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -286,14 +280,13 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('hub_id', $data ?? [], null);
-        $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('scopes', $data ?? [], null);
-        $this->setIfExists('token_type', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
-        $this->setIfExists('hub_domain', $data ?? [], null);
-        $this->setIfExists('client_id', $data ?? [], null);
-        $this->setIfExists('token', $data ?? [], null);
+        $this->setIfExists('sub_category', $data ?? [], null);
+        $this->setIfExists('context', $data ?? [], null);
+        $this->setIfExists('correlation_id', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -323,23 +316,14 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['hub_id'] === null) {
-            $invalidProperties[] = "'hub_id' can't be null";
+        if ($this->container['correlation_id'] === null) {
+            $invalidProperties[] = "'correlation_id' can't be null";
         }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['scopes'] === null) {
-            $invalidProperties[] = "'scopes' can't be null";
-        }
-        if ($this->container['token_type'] === null) {
-            $invalidProperties[] = "'token_type' can't be null";
-        }
-        if ($this->container['client_id'] === null) {
-            $invalidProperties[] = "'client_id' can't be null";
-        }
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
         return $invalidProperties;
     }
@@ -357,217 +341,190 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets hub_id
-     *
-     * @return int
-     */
-    public function getHubId()
-    {
-        return $this->container['hub_id'];
-    }
-
-    /**
-     * Sets hub_id
-     *
-     * @param int $hub_id 
-     *
-     * @return self
-     */
-    public function setHubId($hub_id)
-    {
-        if (is_null($hub_id)) {
-            throw new \InvalidArgumentException('non-nullable hub_id cannot be null');
-        }
-        $this->container['hub_id'] = $hub_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param int $user_id 
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
-        }
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets scopes
-     *
-     * @return string[]
-     */
-    public function getScopes()
-    {
-        return $this->container['scopes'];
-    }
-
-    /**
-     * Sets scopes
-     *
-     * @param string[] $scopes 
-     *
-     * @return self
-     */
-    public function setScopes($scopes)
-    {
-        if (is_null($scopes)) {
-            throw new \InvalidArgumentException('non-nullable scopes cannot be null');
-        }
-        $this->container['scopes'] = $scopes;
-
-        return $this;
-    }
-
-    /**
-     * Gets token_type
-     *
-     * @return string
-     */
-    public function getTokenType()
-    {
-        return $this->container['token_type'];
-    }
-
-    /**
-     * Sets token_type
-     *
-     * @param string $token_type 
-     *
-     * @return self
-     */
-    public function setTokenType($token_type)
-    {
-        if (is_null($token_type)) {
-            throw new \InvalidArgumentException('non-nullable token_type cannot be null');
-        }
-        $this->container['token_type'] = $token_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
+     * Gets sub_category
      *
      * @return string|null
      */
-    public function getUser()
+    public function getSubCategory()
     {
-        return $this->container['user'];
+        return $this->container['sub_category'];
     }
 
     /**
-     * Sets user
+     * Sets sub_category
      *
-     * @param string|null $user 
+     * @param string|null $sub_category A specific category that contains more specific detail about the error
      *
      * @return self
      */
-    public function setUser($user)
+    public function setSubCategory($sub_category)
     {
-        if (is_null($user)) {
-            throw new \InvalidArgumentException('non-nullable user cannot be null');
+        if (is_null($sub_category)) {
+            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
         }
-        $this->container['user'] = $user;
+        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }
 
     /**
-     * Gets hub_domain
+     * Gets context
      *
-     * @return string|null
+     * @return array<string,string[]>|null
      */
-    public function getHubDomain()
+    public function getContext()
     {
-        return $this->container['hub_domain'];
+        return $this->container['context'];
     }
 
     /**
-     * Sets hub_domain
+     * Sets context
      *
-     * @param string|null $hub_domain 
+     * @param array<string,string[]>|null $context Context about the error condition
      *
      * @return self
      */
-    public function setHubDomain($hub_domain)
+    public function setContext($context)
     {
-        if (is_null($hub_domain)) {
-            throw new \InvalidArgumentException('non-nullable hub_domain cannot be null');
+        if (is_null($context)) {
+            throw new \InvalidArgumentException('non-nullable context cannot be null');
         }
-        $this->container['hub_domain'] = $hub_domain;
+        $this->container['context'] = $context;
 
         return $this;
     }
 
     /**
-     * Gets client_id
+     * Gets correlation_id
      *
      * @return string
      */
-    public function getClientId()
+    public function getCorrelationId()
     {
-        return $this->container['client_id'];
+        return $this->container['correlation_id'];
     }
 
     /**
-     * Sets client_id
+     * Sets correlation_id
      *
-     * @param string $client_id 
+     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
      *
      * @return self
      */
-    public function setClientId($client_id)
+    public function setCorrelationId($correlation_id)
     {
-        if (is_null($client_id)) {
-            throw new \InvalidArgumentException('non-nullable client_id cannot be null');
+        if (is_null($correlation_id)) {
+            throw new \InvalidArgumentException('non-nullable correlation_id cannot be null');
         }
-        $this->container['client_id'] = $client_id;
+        $this->container['correlation_id'] = $correlation_id;
 
         return $this;
     }
 
     /**
-     * Gets token
+     * Gets links
      *
-     * @return string
+     * @return array<string,string>|null
      */
-    public function getToken()
+    public function getLinks()
     {
-        return $this->container['token'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets token
+     * Sets links
      *
-     * @param string $token 
+     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
      *
      * @return self
      */
-    public function setToken($token)
+    public function setLinks($links)
     {
-        if (is_null($token)) {
-            throw new \InvalidArgumentException('non-nullable token cannot be null');
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
-        $this->container['token'] = $token;
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param string $category The error category
+     *
+     * @return self
+     */
+    public function setCategory($category)
+    {
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
+        }
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Oauth\Model\ErrorDetail[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Oauth\Model\ErrorDetail[]|null $errors further information about the error
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

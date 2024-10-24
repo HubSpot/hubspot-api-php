@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth\Model
+ * @package  HubSpot\Client\Oauth\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,12 +26,12 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Model;
+namespace HubSpot\Client\Oauth\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package HubSpot\Client\Auth\OAuth\Model
+ * @package HubSpot\Client\Oauth\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

@@ -1,10 +1,10 @@
 <?php
 /**
- * TokensApi
+ * AccessTokensApi
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Api;
+namespace HubSpot\Client\Oauth\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,20 +34,20 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use HubSpot\Client\Auth\OAuth\ApiException;
-use HubSpot\Client\Auth\OAuth\Configuration;
-use HubSpot\Client\Auth\OAuth\HeaderSelector;
-use HubSpot\Client\Auth\OAuth\ObjectSerializer;
+use HubSpot\Client\Oauth\ApiException;
+use HubSpot\Client\Oauth\Configuration;
+use HubSpot\Client\Oauth\HeaderSelector;
+use HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
- * TokensApi Class Doc Comment
+ * AccessTokensApi Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TokensApi
+class AccessTokensApi
 {
     /**
      * @var ClientInterface
@@ -71,8 +71,8 @@ class TokensApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'create' => [
-            'application/x-www-form-urlencoded',
+        'get' => [
+            'application/json',
         ],
     ];
 
@@ -123,44 +123,34 @@ class TokensApi
     }
 
     /**
-     * Operation create
+     * Operation get
      *
-     * @param  string $grant_type grant_type (optional)
-     * @param  string $code code (optional)
-     * @param  string $redirect_uri redirect_uri (optional)
-     * @param  string $client_id client_id (optional)
-     * @param  string $client_secret client_secret (optional)
-     * @param  string $refresh_token refresh_token (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $token token (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Auth\OAuth\Model\TokenResponseIF|\HubSpot\Client\Auth\OAuth\Model\Error
+     * @return \HubSpot\Client\Oauth\Model\AccessTokenInfoResponse|\HubSpot\Client\Oauth\Model\Error
      */
-    public function create($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function get($token, string $contentType = self::contentTypes['get'][0])
     {
-        list($response) = $this->createWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType);
+        list($response) = $this->getWithHttpInfo($token, $contentType);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation getWithHttpInfo
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $token (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
-     * @throws \HubSpot\Client\Auth\OAuth\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Auth\OAuth\Model\TokenResponseIF|\HubSpot\Client\Auth\OAuth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Oauth\Model\AccessTokenInfoResponse|\HubSpot\Client\Oauth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function getWithHttpInfo($token, string $contentType = self::contentTypes['get'][0])
     {
-        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType);
+        $request = $this->getRequest($token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -199,11 +189,11 @@ class TokensApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Oauth\Model\AccessTokenInfoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF' !== 'string') {
+                        if ('\HubSpot\Client\Oauth\Model\AccessTokenInfoResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -221,16 +211,16 @@ class TokensApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Oauth\Model\AccessTokenInfoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('\HubSpot\Client\Auth\OAuth\Model\Error' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Oauth\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Auth\OAuth\Model\Error' !== 'string') {
+                        if ('\HubSpot\Client\Oauth\Model\Error' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -248,13 +238,13 @@ class TokensApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Auth\OAuth\Model\Error', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Oauth\Model\Error', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF';
+            $returnType = '\HubSpot\Client\Oauth\Model\AccessTokenInfoResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -287,7 +277,7 @@ class TokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF',
+                        '\HubSpot\Client\Oauth\Model\AccessTokenInfoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -295,7 +285,7 @@ class TokensApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Auth\OAuth\Model\Error',
+                        '\HubSpot\Client\Oauth\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -306,22 +296,17 @@ class TokensApi
     }
 
     /**
-     * Operation createAsync
+     * Operation getAsync
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $token (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function getAsync($token, string $contentType = self::contentTypes['get'][0])
     {
-        return $this->createAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType)
+        return $this->getAsyncWithHttpInfo($token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -330,23 +315,18 @@ class TokensApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation getAsyncWithHttpInfo
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $token (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function getAsyncWithHttpInfo($token, string $contentType = self::contentTypes['get'][0])
     {
-        $returnType = '\HubSpot\Client\Auth\OAuth\Model\TokenResponseIF';
-        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType);
+        $returnType = '\HubSpot\Client\Oauth\Model\AccessTokenInfoResponse';
+        $request = $this->getRequest($token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -385,30 +365,26 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'get'
      *
-     * @param  string $grant_type (optional)
-     * @param  string $code (optional)
-     * @param  string $redirect_uri (optional)
-     * @param  string $client_id (optional)
-     * @param  string $client_secret (optional)
-     * @param  string $refresh_token (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $token (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function getRequest($token, string $contentType = self::contentTypes['get'][0])
     {
 
+        // verify the required parameter 'token' is set
+        if ($token === null || (is_array($token) && count($token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $token when calling get'
+            );
+        }
 
 
-
-
-
-
-
-        $resourcePath = '/oauth/v1/token';
+        $resourcePath = '/oauth/v1/access-tokens/{token}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -417,31 +393,15 @@ class TokensApi
 
 
 
+        // path params
+        if ($token !== null) {
+            $resourcePath = str_replace(
+                '{' . 'token' . '}',
+                ObjectSerializer::toPathValue($token),
+                $resourcePath
+            );
+        }
 
-        // form params
-        if ($grant_type !== null) {
-            $formParams['grant_type'] = ObjectSerializer::toFormValue($grant_type);
-        }
-        // form params
-        if ($code !== null) {
-            $formParams['code'] = ObjectSerializer::toFormValue($code);
-        }
-        // form params
-        if ($redirect_uri !== null) {
-            $formParams['redirect_uri'] = ObjectSerializer::toFormValue($redirect_uri);
-        }
-        // form params
-        if ($client_id !== null) {
-            $formParams['client_id'] = ObjectSerializer::toFormValue($client_id);
-        }
-        // form params
-        if ($client_secret !== null) {
-            $formParams['client_secret'] = ObjectSerializer::toFormValue($client_secret);
-        }
-        // form params
-        if ($refresh_token !== null) {
-            $formParams['refresh_token'] = ObjectSerializer::toFormValue($refresh_token);
-        }
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', '*/*', ],
@@ -489,7 +449,7 @@ class TokensApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
