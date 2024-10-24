@@ -309,21 +309,6 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['limit'] === null) {
-            $invalidProperties[] = "'limit' can't be null";
-        }
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
-        }
-        if ($this->container['sorts'] === null) {
-            $invalidProperties[] = "'sorts' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['filter_groups'] === null) {
-            $invalidProperties[] = "'filter_groups' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -369,7 +354,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets limit
      *
-     * @return int
+     * @return int|null
      */
     public function getLimit()
     {
@@ -379,7 +364,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets limit
      *
-     * @param int $limit limit
+     * @param int|null $limit limit
      *
      * @return self
      */
@@ -396,7 +381,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets after
      *
-     * @return string
+     * @return string|null
      */
     public function getAfter()
     {
@@ -406,7 +391,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets after
      *
-     * @param string $after after
+     * @param string|null $after after
      *
      * @return self
      */
@@ -423,7 +408,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets sorts
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSorts()
     {
@@ -433,7 +418,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets sorts
      *
-     * @param string[] $sorts sorts
+     * @param string[]|null $sorts sorts
      *
      * @return self
      */
@@ -450,7 +435,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets properties
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getProperties()
     {
@@ -460,7 +445,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets properties
      *
-     * @param string[] $properties properties
+     * @param string[]|null $properties properties
      *
      * @return self
      */
@@ -477,7 +462,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets filter_groups
      *
-     * @return \HubSpot\Client\Crm\Products\Model\FilterGroup[]
+     * @return \HubSpot\Client\Crm\Products\Model\FilterGroup[]|null
      */
     public function getFilterGroups()
     {
@@ -487,7 +472,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets filter_groups
      *
-     * @param \HubSpot\Client\Crm\Products\Model\FilterGroup[] $filter_groups filter_groups
+     * @param \HubSpot\Client\Crm\Products\Model\FilterGroup[]|null $filter_groups filter_groups
      *
      * @return self
      */

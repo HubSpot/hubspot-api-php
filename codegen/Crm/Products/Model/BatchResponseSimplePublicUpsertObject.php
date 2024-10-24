@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchReadInputSimplePublicObjectId
+ * BatchResponseSimplePublicUpsertObject
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Products\ObjectSerializer;
 
 /**
- * BatchReadInputSimplePublicObjectId Class Doc Comment
+ * BatchResponseSimplePublicUpsertObject Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Products
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Products\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchReadInputSimplePublicObjectId';
+    protected static $openAPIModelName = 'BatchResponseSimplePublicUpsertObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'properties_with_history' => 'string[]',
-        'id_property' => 'string',
-        'inputs' => '\HubSpot\Client\Crm\Products\Model\SimplePublicObjectId[]',
-        'properties' => 'string[]'
+        'completed_at' => '\DateTime',
+        'requested_at' => '\DateTime',
+        'started_at' => '\DateTime',
+        'links' => 'array<string,string>',
+        'results' => '\HubSpot\Client\Crm\Products\Model\SimplePublicUpsertObject[]',
+        'status' => 'string'
     ];
 
     /**
@@ -71,10 +73,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'properties_with_history' => null,
-        'id_property' => null,
-        'inputs' => null,
-        'properties' => null
+        'completed_at' => 'date-time',
+        'requested_at' => 'date-time',
+        'started_at' => 'date-time',
+        'links' => null,
+        'results' => null,
+        'status' => null
     ];
 
     /**
@@ -83,10 +87,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'properties_with_history' => false,
-        'id_property' => false,
-        'inputs' => false,
-        'properties' => false
+        'completed_at' => false,
+        'requested_at' => false,
+        'started_at' => false,
+        'links' => false,
+        'results' => false,
+        'status' => false
     ];
 
     /**
@@ -175,10 +181,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'properties_with_history' => 'propertiesWithHistory',
-        'id_property' => 'idProperty',
-        'inputs' => 'inputs',
-        'properties' => 'properties'
+        'completed_at' => 'completedAt',
+        'requested_at' => 'requestedAt',
+        'started_at' => 'startedAt',
+        'links' => 'links',
+        'results' => 'results',
+        'status' => 'status'
     ];
 
     /**
@@ -187,10 +195,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'properties_with_history' => 'setPropertiesWithHistory',
-        'id_property' => 'setIdProperty',
-        'inputs' => 'setInputs',
-        'properties' => 'setProperties'
+        'completed_at' => 'setCompletedAt',
+        'requested_at' => 'setRequestedAt',
+        'started_at' => 'setStartedAt',
+        'links' => 'setLinks',
+        'results' => 'setResults',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -199,10 +209,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'properties_with_history' => 'getPropertiesWithHistory',
-        'id_property' => 'getIdProperty',
-        'inputs' => 'getInputs',
-        'properties' => 'getProperties'
+        'completed_at' => 'getCompletedAt',
+        'requested_at' => 'getRequestedAt',
+        'started_at' => 'getStartedAt',
+        'links' => 'getLinks',
+        'results' => 'getResults',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -246,6 +258,25 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_COMPLETE = 'COMPLETE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
+            self::STATUS_CANCELED,
+            self::STATUS_COMPLETE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -262,10 +293,12 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('properties_with_history', $data ?? [], null);
-        $this->setIfExists('id_property', $data ?? [], null);
-        $this->setIfExists('inputs', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -295,15 +328,27 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['properties_with_history'] === null) {
-            $invalidProperties[] = "'properties_with_history' can't be null";
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
         }
-        if ($this->container['inputs'] === null) {
-            $invalidProperties[] = "'inputs' can't be null";
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
         }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -320,109 +365,173 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets properties_with_history
+     * Gets completed_at
      *
-     * @return string[]
+     * @return \DateTime
      */
-    public function getPropertiesWithHistory()
+    public function getCompletedAt()
     {
-        return $this->container['properties_with_history'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets properties_with_history
+     * Sets completed_at
      *
-     * @param string[] $properties_with_history properties_with_history
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
-    public function setPropertiesWithHistory($properties_with_history)
+    public function setCompletedAt($completed_at)
     {
-        if (is_null($properties_with_history)) {
-            throw new \InvalidArgumentException('non-nullable properties_with_history cannot be null');
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
-        $this->container['properties_with_history'] = $properties_with_history;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
 
     /**
-     * Gets id_property
+     * Gets requested_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getIdProperty()
+    public function getRequestedAt()
     {
-        return $this->container['id_property'];
+        return $this->container['requested_at'];
     }
 
     /**
-     * Sets id_property
+     * Sets requested_at
      *
-     * @param string|null $id_property The name of a property whose values are unique for this object.
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return self
      */
-    public function setIdProperty($id_property)
+    public function setRequestedAt($requested_at)
     {
-        if (is_null($id_property)) {
-            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
         }
-        $this->container['id_property'] = $id_property;
+        $this->container['requested_at'] = $requested_at;
 
         return $this;
     }
 
     /**
-     * Gets inputs
+     * Gets started_at
      *
-     * @return \HubSpot\Client\Crm\Products\Model\SimplePublicObjectId[]
+     * @return \DateTime
      */
-    public function getInputs()
+    public function getStartedAt()
     {
-        return $this->container['inputs'];
+        return $this->container['started_at'];
     }
 
     /**
-     * Sets inputs
+     * Sets started_at
      *
-     * @param \HubSpot\Client\Crm\Products\Model\SimplePublicObjectId[] $inputs inputs
+     * @param \DateTime $started_at started_at
      *
      * @return self
      */
-    public function setInputs($inputs)
+    public function setStartedAt($started_at)
     {
-        if (is_null($inputs)) {
-            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
         }
-        $this->container['inputs'] = $inputs;
+        $this->container['started_at'] = $started_at;
 
         return $this;
     }
 
     /**
-     * Gets properties
+     * Gets links
      *
-     * @return string[]
+     * @return array<string,string>|null
      */
-    public function getProperties()
+    public function getLinks()
     {
-        return $this->container['properties'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets properties
+     * Sets links
      *
-     * @param string[] $properties properties
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
-    public function setProperties($properties)
+    public function setLinks($links)
     {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
-        $this->container['properties'] = $properties;
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Products\Model\SimplePublicUpsertObject[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Products\Model\SimplePublicUpsertObject[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

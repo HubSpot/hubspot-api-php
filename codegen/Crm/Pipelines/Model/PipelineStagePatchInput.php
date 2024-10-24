@@ -11,7 +11,7 @@
  */
 
 /**
- * Pipelines
+ * CRM Pipelines
  *
  * Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.
  *
@@ -296,9 +296,6 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['metadata'] === null) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -344,7 +341,7 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
     public function getMetadata()
     {
@@ -354,7 +351,7 @@ class PipelineStagePatchInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets metadata
      *
-     * @param array<string,string> $metadata A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     * @param array<string,string>|null $metadata A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
      * @return self
      */
