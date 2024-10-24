@@ -1,6 +1,6 @@
 <?php
 /**
- * ColumnRequest
+ * PreviousPage
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * ColumnRequest Class Doc Comment
+ * PreviousPage Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Cms\Hubdb
@@ -40,7 +40,7 @@ use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ColumnRequest';
+    protected static $openAPIModelName = 'PreviousPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'foreign_table_id' => 'int',
-        'name' => 'string',
-        'options' => '\HubSpot\Client\Cms\Hubdb\Model\Option[]',
-        'id' => 'int',
-        'label' => 'string',
-        'type' => 'string',
-        'foreign_column_id' => 'int'
+        'before' => 'string',
+        'link' => 'string'
     ];
 
     /**
@@ -74,13 +69,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'foreign_table_id' => 'int64',
-        'name' => null,
-        'options' => null,
-        'id' => 'int32',
-        'label' => null,
-        'type' => null,
-        'foreign_column_id' => 'int32'
+        'before' => null,
+        'link' => null
     ];
 
     /**
@@ -89,13 +79,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'foreign_table_id' => false,
-        'name' => false,
-        'options' => false,
-        'id' => false,
-        'label' => false,
-        'type' => false,
-        'foreign_column_id' => false
+        'before' => false,
+        'link' => false
     ];
 
     /**
@@ -184,13 +169,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'foreign_table_id' => 'foreignTableId',
-        'name' => 'name',
-        'options' => 'options',
-        'id' => 'id',
-        'label' => 'label',
-        'type' => 'type',
-        'foreign_column_id' => 'foreignColumnId'
+        'before' => 'before',
+        'link' => 'link'
     ];
 
     /**
@@ -199,13 +179,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'foreign_table_id' => 'setForeignTableId',
-        'name' => 'setName',
-        'options' => 'setOptions',
-        'id' => 'setId',
-        'label' => 'setLabel',
-        'type' => 'setType',
-        'foreign_column_id' => 'setForeignColumnId'
+        'before' => 'setBefore',
+        'link' => 'setLink'
     ];
 
     /**
@@ -214,13 +189,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'foreign_table_id' => 'getForeignTableId',
-        'name' => 'getName',
-        'options' => 'getOptions',
-        'id' => 'getId',
-        'label' => 'getLabel',
-        'type' => 'getType',
-        'foreign_column_id' => 'getForeignColumnId'
+        'before' => 'getBefore',
+        'link' => 'getLink'
     ];
 
     /**
@@ -264,57 +234,6 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_NULL = 'NULL';
-    public const TYPE_TEXT = 'TEXT';
-    public const TYPE_NUMBER = 'NUMBER';
-    public const TYPE_URL = 'URL';
-    public const TYPE_IMAGE = 'IMAGE';
-    public const TYPE_SELECT = 'SELECT';
-    public const TYPE_MULTISELECT = 'MULTISELECT';
-    public const TYPE_BOOLEAN = 'BOOLEAN';
-    public const TYPE_LOCATION = 'LOCATION';
-    public const TYPE_DATE = 'DATE';
-    public const TYPE_DATETIME = 'DATETIME';
-    public const TYPE_CURRENCY = 'CURRENCY';
-    public const TYPE_RICHTEXT = 'RICHTEXT';
-    public const TYPE_FOREIGN_ID = 'FOREIGN_ID';
-    public const TYPE_VIDEO = 'VIDEO';
-    public const TYPE_CTA = 'CTA';
-    public const TYPE_FILE = 'FILE';
-    public const TYPE_JSON = 'JSON';
-    public const TYPE_COMPOSITE = 'COMPOSITE';
-    public const TYPE_CODE = 'CODE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_NULL,
-            self::TYPE_TEXT,
-            self::TYPE_NUMBER,
-            self::TYPE_URL,
-            self::TYPE_IMAGE,
-            self::TYPE_SELECT,
-            self::TYPE_MULTISELECT,
-            self::TYPE_BOOLEAN,
-            self::TYPE_LOCATION,
-            self::TYPE_DATE,
-            self::TYPE_DATETIME,
-            self::TYPE_CURRENCY,
-            self::TYPE_RICHTEXT,
-            self::TYPE_FOREIGN_ID,
-            self::TYPE_VIDEO,
-            self::TYPE_CTA,
-            self::TYPE_FILE,
-            self::TYPE_JSON,
-            self::TYPE_COMPOSITE,
-            self::TYPE_CODE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -331,13 +250,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('foreign_table_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('options', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('foreign_column_id', $data ?? [], null);
+        $this->setIfExists('before', $data ?? [], null);
+        $this->setIfExists('link', $data ?? [], null);
     }
 
     /**
@@ -367,30 +281,9 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['before'] === null) {
+            $invalidProperties[] = "'before' can't be null";
         }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -407,200 +300,55 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets foreign_table_id
-     *
-     * @return int|null
-     */
-    public function getForeignTableId()
-    {
-        return $this->container['foreign_table_id'];
-    }
-
-    /**
-     * Sets foreign_table_id
-     *
-     * @param int|null $foreign_table_id The id of another table to which the column refers/points to.
-     *
-     * @return self
-     */
-    public function setForeignTableId($foreign_table_id)
-    {
-        if (is_null($foreign_table_id)) {
-            throw new \InvalidArgumentException('non-nullable foreign_table_id cannot be null');
-        }
-        $this->container['foreign_table_id'] = $foreign_table_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets before
      *
      * @return string
      */
-    public function getName()
+    public function getBefore()
     {
-        return $this->container['name'];
+        return $this->container['before'];
     }
 
     /**
-     * Sets name
+     * Sets before
      *
-     * @param string $name Name of the column
+     * @param string $before before
      *
      * @return self
      */
-    public function setName($name)
+    public function setBefore($before)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($before)) {
+            throw new \InvalidArgumentException('non-nullable before cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['before'] = $before;
 
         return $this;
     }
 
     /**
-     * Gets options
+     * Gets link
      *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\Option[]
+     * @return string|null
      */
-    public function getOptions()
+    public function getLink()
     {
-        return $this->container['options'];
+        return $this->container['link'];
     }
 
     /**
-     * Sets options
+     * Sets link
      *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\Option[] $options Options to choose for select and multi-select columns
+     * @param string|null $link link
      *
      * @return self
      */
-    public function setOptions($options)
+    public function setLink($link)
     {
-        if (is_null($options)) {
-            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        if (is_null($link)) {
+            throw new \InvalidArgumentException('non-nullable link cannot be null');
         }
-        $this->container['options'] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id Column Id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label Label of the column
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
-        }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Type of the column
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets foreign_column_id
-     *
-     * @return int|null
-     */
-    public function getForeignColumnId()
-    {
-        return $this->container['foreign_column_id'];
-    }
-
-    /**
-     * Sets foreign_column_id
-     *
-     * @param int|null $foreign_column_id The id of the column from another table to which the column refers/points to.
-     *
-     * @return self
-     */
-    public function setForeignColumnId($foreign_column_id)
-    {
-        if (is_null($foreign_column_id)) {
-            throw new \InvalidArgumentException('non-nullable foreign_column_id cannot be null');
-        }
-        $this->container['foreign_column_id'] = $foreign_column_id;
+        $this->container['link'] = $link;
 
         return $this;
     }
