@@ -61,6 +61,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         'secondary_display_properties' => 'string[]',
         'required_properties' => 'string[]',
         'searchable_properties' => 'string[]',
+        'clear_description' => 'bool',
         'primary_display_property' => 'string',
         'description' => 'string',
         'restorable' => 'bool',
@@ -78,6 +79,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         'secondary_display_properties' => null,
         'required_properties' => null,
         'searchable_properties' => null,
+        'clear_description' => null,
         'primary_display_property' => null,
         'description' => null,
         'restorable' => null,
@@ -93,6 +95,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         'secondary_display_properties' => false,
         'required_properties' => false,
         'searchable_properties' => false,
+        'clear_description' => false,
         'primary_display_property' => false,
         'description' => false,
         'restorable' => false,
@@ -188,6 +191,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         'secondary_display_properties' => 'secondaryDisplayProperties',
         'required_properties' => 'requiredProperties',
         'searchable_properties' => 'searchableProperties',
+        'clear_description' => 'clearDescription',
         'primary_display_property' => 'primaryDisplayProperty',
         'description' => 'description',
         'restorable' => 'restorable',
@@ -203,6 +207,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         'secondary_display_properties' => 'setSecondaryDisplayProperties',
         'required_properties' => 'setRequiredProperties',
         'searchable_properties' => 'setSearchableProperties',
+        'clear_description' => 'setClearDescription',
         'primary_display_property' => 'setPrimaryDisplayProperty',
         'description' => 'setDescription',
         'restorable' => 'setRestorable',
@@ -218,6 +223,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         'secondary_display_properties' => 'getSecondaryDisplayProperties',
         'required_properties' => 'getRequiredProperties',
         'searchable_properties' => 'getSearchableProperties',
+        'clear_description' => 'getClearDescription',
         'primary_display_property' => 'getPrimaryDisplayProperty',
         'description' => 'getDescription',
         'restorable' => 'getRestorable',
@@ -284,6 +290,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('secondary_display_properties', $data ?? [], null);
         $this->setIfExists('required_properties', $data ?? [], null);
         $this->setIfExists('searchable_properties', $data ?? [], null);
+        $this->setIfExists('clear_description', $data ?? [], null);
         $this->setIfExists('primary_display_property', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('restorable', $data ?? [], null);
@@ -409,6 +416,33 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable searchable_properties cannot be null');
         }
         $this->container['searchable_properties'] = $searchable_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets clear_description
+     *
+     * @return bool|null
+     */
+    public function getClearDescription()
+    {
+        return $this->container['clear_description'];
+    }
+
+    /**
+     * Sets clear_description
+     *
+     * @param bool|null $clear_description clear_description
+     *
+     * @return self
+     */
+    public function setClearDescription($clear_description)
+    {
+        if (is_null($clear_description)) {
+            throw new \InvalidArgumentException('non-nullable clear_description cannot be null');
+        }
+        $this->container['clear_description'] = $clear_description;
 
         return $this;
     }
