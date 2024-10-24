@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectInputForCreate
+ * BatchInputSimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Taxes\ObjectSerializer;
 
 /**
- * SimplePublicObjectInputForCreate Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Taxes
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Taxes\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectInputForCreate';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'associations' => '\HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]',
-        'object_write_trace_id' => 'string',
-        'properties' => 'array<string,string>'
+        'inputs' => '\HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectBatchInputUpsert[]'
     ];
 
     /**
@@ -70,9 +68,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'associations' => null,
-        'object_write_trace_id' => null,
-        'properties' => null
+        'inputs' => null
     ];
 
     /**
@@ -81,9 +77,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'associations' => false,
-        'object_write_trace_id' => false,
-        'properties' => false
+        'inputs' => false
     ];
 
     /**
@@ -172,9 +166,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'associations' => 'associations',
-        'object_write_trace_id' => 'objectWriteTraceId',
-        'properties' => 'properties'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -183,9 +175,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'associations' => 'setAssociations',
-        'object_write_trace_id' => 'setObjectWriteTraceId',
-        'properties' => 'setProperties'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -194,9 +184,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'associations' => 'getAssociations',
-        'object_write_trace_id' => 'getObjectWriteTraceId',
-        'properties' => 'getProperties'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -256,9 +244,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('associations', $data ?? [], null);
-        $this->setIfExists('object_write_trace_id', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -288,11 +274,8 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['associations'] === null) {
-            $invalidProperties[] = "'associations' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -310,82 +293,28 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets associations
+     * Gets inputs
      *
-     * @return \HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]
+     * @return \HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectBatchInputUpsert[]
      */
-    public function getAssociations()
+    public function getInputs()
     {
-        return $this->container['associations'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets associations
+     * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[] $associations associations
+     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectBatchInputUpsert[] $inputs inputs
      *
      * @return self
      */
-    public function setAssociations($associations)
+    public function setInputs($inputs)
     {
-        if (is_null($associations)) {
-            throw new \InvalidArgumentException('non-nullable associations cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['associations'] = $associations;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_write_trace_id
-     *
-     * @return string|null
-     */
-    public function getObjectWriteTraceId()
-    {
-        return $this->container['object_write_trace_id'];
-    }
-
-    /**
-     * Sets object_write_trace_id
-     *
-     * @param string|null $object_write_trace_id object_write_trace_id
-     *
-     * @return self
-     */
-    public function setObjectWriteTraceId($object_write_trace_id)
-    {
-        if (is_null($object_write_trace_id)) {
-            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
-        }
-        $this->container['object_write_trace_id'] = $object_write_trace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string> $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
-        }
-        $this->container['properties'] = $properties;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }
