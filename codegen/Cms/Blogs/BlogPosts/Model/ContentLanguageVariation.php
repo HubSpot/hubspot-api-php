@@ -69,6 +69,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'string',
         'id' => 'int',
         'state' => 'string',
+        'campaign_name' => 'string',
         'updated' => '\DateTime',
         'slug' => 'string'
     ];
@@ -93,6 +94,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => null,
         'id' => 'int64',
         'state' => null,
+        'campaign_name' => null,
         'updated' => 'date-time',
         'slug' => null
     ];
@@ -115,6 +117,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => false,
         'id' => false,
         'state' => false,
+        'campaign_name' => false,
         'updated' => false,
         'slug' => false
     ];
@@ -217,6 +220,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'campaign',
         'id' => 'id',
         'state' => 'state',
+        'campaign_name' => 'campaignName',
         'updated' => 'updated',
         'slug' => 'slug'
     ];
@@ -239,6 +243,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'setCampaign',
         'id' => 'setId',
         'state' => 'setState',
+        'campaign_name' => 'setCampaignName',
         'updated' => 'setUpdated',
         'slug' => 'setSlug'
     ];
@@ -261,6 +266,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'campaign' => 'getCampaign',
         'id' => 'getId',
         'state' => 'getState',
+        'campaign_name' => 'getCampaignName',
         'updated' => 'getUpdated',
         'slug' => 'getSlug'
     ];
@@ -334,6 +340,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('campaign', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('campaign_name', $data ?? [], null);
         $this->setIfExists('updated', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
     }
@@ -397,6 +404,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
+        }
+        if ($this->container['campaign_name'] === null) {
+            $invalidProperties[] = "'campaign_name' can't be null";
         }
         if ($this->container['updated'] === null) {
             $invalidProperties[] = "'updated' can't be null";
@@ -739,6 +749,33 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_name
+     *
+     * @return string
+     */
+    public function getCampaignName()
+    {
+        return $this->container['campaign_name'];
+    }
+
+    /**
+     * Sets campaign_name
+     *
+     * @param string $campaign_name campaign_name
+     *
+     * @return self
+     */
+    public function setCampaignName($campaign_name)
+    {
+        if (is_null($campaign_name)) {
+            throw new \InvalidArgumentException('non-nullable campaign_name cannot be null');
+        }
+        $this->container['campaign_name'] = $campaign_name;
 
         return $this;
     }

@@ -61,6 +61,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         'flexbox_positioning' => 'string',
         'background_image' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BackgroundImage',
         'force_full_width_section' => 'bool',
+        'breakpoint_styles' => 'array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BreakpointStyles>',
         'vertical_alignment' => 'string',
         'max_width_section_centering' => 'int',
         'background_gradient' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Gradient'
@@ -78,6 +79,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         'flexbox_positioning' => null,
         'background_image' => null,
         'force_full_width_section' => null,
+        'breakpoint_styles' => null,
         'vertical_alignment' => null,
         'max_width_section_centering' => 'int32',
         'background_gradient' => null
@@ -93,6 +95,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         'flexbox_positioning' => false,
         'background_image' => false,
         'force_full_width_section' => false,
+        'breakpoint_styles' => false,
         'vertical_alignment' => false,
         'max_width_section_centering' => false,
         'background_gradient' => false
@@ -188,6 +191,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         'flexbox_positioning' => 'flexboxPositioning',
         'background_image' => 'backgroundImage',
         'force_full_width_section' => 'forceFullWidthSection',
+        'breakpoint_styles' => 'breakpointStyles',
         'vertical_alignment' => 'verticalAlignment',
         'max_width_section_centering' => 'maxWidthSectionCentering',
         'background_gradient' => 'backgroundGradient'
@@ -203,6 +207,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         'flexbox_positioning' => 'setFlexboxPositioning',
         'background_image' => 'setBackgroundImage',
         'force_full_width_section' => 'setForceFullWidthSection',
+        'breakpoint_styles' => 'setBreakpointStyles',
         'vertical_alignment' => 'setVerticalAlignment',
         'max_width_section_centering' => 'setMaxWidthSectionCentering',
         'background_gradient' => 'setBackgroundGradient'
@@ -218,6 +223,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         'flexbox_positioning' => 'getFlexboxPositioning',
         'background_image' => 'getBackgroundImage',
         'force_full_width_section' => 'getForceFullWidthSection',
+        'breakpoint_styles' => 'getBreakpointStyles',
         'vertical_alignment' => 'getVerticalAlignment',
         'max_width_section_centering' => 'getMaxWidthSectionCentering',
         'background_gradient' => 'getBackgroundGradient'
@@ -284,6 +290,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('flexbox_positioning', $data ?? [], null);
         $this->setIfExists('background_image', $data ?? [], null);
         $this->setIfExists('force_full_width_section', $data ?? [], null);
+        $this->setIfExists('breakpoint_styles', $data ?? [], null);
         $this->setIfExists('vertical_alignment', $data ?? [], null);
         $this->setIfExists('max_width_section_centering', $data ?? [], null);
         $this->setIfExists('background_gradient', $data ?? [], null);
@@ -456,6 +463,33 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable force_full_width_section cannot be null');
         }
         $this->container['force_full_width_section'] = $force_full_width_section;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakpoint_styles
+     *
+     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BreakpointStyles>|null
+     */
+    public function getBreakpointStyles()
+    {
+        return $this->container['breakpoint_styles'];
+    }
+
+    /**
+     * Sets breakpoint_styles
+     *
+     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BreakpointStyles>|null $breakpoint_styles breakpoint_styles
+     *
+     * @return self
+     */
+    public function setBreakpointStyles($breakpoint_styles)
+    {
+        if (is_null($breakpoint_styles)) {
+            throw new \InvalidArgumentException('non-nullable breakpoint_styles cannot be null');
+        }
+        $this->container['breakpoint_styles'] = $breakpoint_styles;
 
         return $this;
     }
