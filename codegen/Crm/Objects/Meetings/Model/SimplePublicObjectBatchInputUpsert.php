@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicObjectSearchRequest
+ * SimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Meetings\ObjectSerializer;
 
 /**
- * PublicObjectSearchRequest Class Doc Comment
+ * SimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Meetings
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Meetings\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicObjectSearchRequest';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'query' => 'string',
-        'limit' => 'int',
-        'after' => 'string',
-        'sorts' => 'string[]',
-        'properties' => 'string[]',
-        'filter_groups' => '\HubSpot\Client\Crm\Objects\Meetings\Model\FilterGroup[]'
+        'id_property' => 'string',
+        'object_write_trace_id' => 'string',
+        'id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -73,12 +71,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'query' => null,
-        'limit' => 'int32',
-        'after' => null,
-        'sorts' => null,
-        'properties' => null,
-        'filter_groups' => null
+        'id_property' => null,
+        'object_write_trace_id' => null,
+        'id' => null,
+        'properties' => null
     ];
 
     /**
@@ -87,12 +83,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'query' => false,
-        'limit' => false,
-        'after' => false,
-        'sorts' => false,
-        'properties' => false,
-        'filter_groups' => false
+        'id_property' => false,
+        'object_write_trace_id' => false,
+        'id' => false,
+        'properties' => false
     ];
 
     /**
@@ -181,12 +175,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'query' => 'query',
-        'limit' => 'limit',
-        'after' => 'after',
-        'sorts' => 'sorts',
-        'properties' => 'properties',
-        'filter_groups' => 'filterGroups'
+        'id_property' => 'idProperty',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'id' => 'id',
+        'properties' => 'properties'
     ];
 
     /**
@@ -195,12 +187,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'query' => 'setQuery',
-        'limit' => 'setLimit',
-        'after' => 'setAfter',
-        'sorts' => 'setSorts',
-        'properties' => 'setProperties',
-        'filter_groups' => 'setFilterGroups'
+        'id_property' => 'setIdProperty',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'id' => 'setId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -209,12 +199,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'query' => 'getQuery',
-        'limit' => 'getLimit',
-        'after' => 'getAfter',
-        'sorts' => 'getSorts',
-        'properties' => 'getProperties',
-        'filter_groups' => 'getFilterGroups'
+        'id_property' => 'getIdProperty',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'id' => 'getId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -274,12 +262,10 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('query', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
-        $this->setIfExists('after', $data ?? [], null);
-        $this->setIfExists('sorts', $data ?? [], null);
+        $this->setIfExists('id_property', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('filter_groups', $data ?? [], null);
     }
 
     /**
@@ -309,6 +295,12 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -325,109 +317,82 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets query
+     * Gets id_property
      *
      * @return string|null
      */
-    public function getQuery()
+    public function getIdProperty()
     {
-        return $this->container['query'];
+        return $this->container['id_property'];
     }
 
     /**
-     * Sets query
+     * Sets id_property
      *
-     * @param string|null $query query
+     * @param string|null $id_property id_property
      *
      * @return self
      */
-    public function setQuery($query)
+    public function setIdProperty($id_property)
     {
-        if (is_null($query)) {
-            throw new \InvalidArgumentException('non-nullable query cannot be null');
+        if (is_null($id_property)) {
+            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
         }
-        $this->container['query'] = $query;
+        $this->container['id_property'] = $id_property;
 
         return $this;
     }
 
     /**
-     * Gets limit
-     *
-     * @return int|null
-     */
-    public function getLimit()
-    {
-        return $this->container['limit'];
-    }
-
-    /**
-     * Sets limit
-     *
-     * @param int|null $limit limit
-     *
-     * @return self
-     */
-    public function setLimit($limit)
-    {
-        if (is_null($limit)) {
-            throw new \InvalidArgumentException('non-nullable limit cannot be null');
-        }
-        $this->container['limit'] = $limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets after
+     * Gets object_write_trace_id
      *
      * @return string|null
      */
-    public function getAfter()
+    public function getObjectWriteTraceId()
     {
-        return $this->container['after'];
+        return $this->container['object_write_trace_id'];
     }
 
     /**
-     * Sets after
+     * Sets object_write_trace_id
      *
-     * @param string|null $after after
+     * @param string|null $object_write_trace_id object_write_trace_id
      *
      * @return self
      */
-    public function setAfter($after)
+    public function setObjectWriteTraceId($object_write_trace_id)
     {
-        if (is_null($after)) {
-            throw new \InvalidArgumentException('non-nullable after cannot be null');
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
-        $this->container['after'] = $after;
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }
 
     /**
-     * Gets sorts
+     * Gets id
      *
-     * @return string[]|null
+     * @return string
      */
-    public function getSorts()
+    public function getId()
     {
-        return $this->container['sorts'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets sorts
+     * Sets id
      *
-     * @param string[]|null $sorts sorts
+     * @param string $id id
      *
      * @return self
      */
-    public function setSorts($sorts)
+    public function setId($id)
     {
-        if (is_null($sorts)) {
-            throw new \InvalidArgumentException('non-nullable sorts cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['sorts'] = $sorts;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -435,7 +400,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets properties
      *
-     * @return string[]|null
+     * @return array<string,string>
      */
     public function getProperties()
     {
@@ -445,7 +410,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets properties
      *
-     * @param string[]|null $properties properties
+     * @param array<string,string> $properties properties
      *
      * @return self
      */
@@ -455,33 +420,6 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
         $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets filter_groups
-     *
-     * @return \HubSpot\Client\Crm\Objects\Meetings\Model\FilterGroup[]|null
-     */
-    public function getFilterGroups()
-    {
-        return $this->container['filter_groups'];
-    }
-
-    /**
-     * Sets filter_groups
-     *
-     * @param \HubSpot\Client\Crm\Objects\Meetings\Model\FilterGroup[]|null $filter_groups filter_groups
-     *
-     * @return self
-     */
-    public function setFilterGroups($filter_groups)
-    {
-        if (is_null($filter_groups)) {
-            throw new \InvalidArgumentException('non-nullable filter_groups cannot be null');
-        }
-        $this->container['filter_groups'] = $filter_groups;
 
         return $this;
     }

@@ -1539,7 +1539,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Leads\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Leads\Model\Error
      */
     public function upsert($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1557,7 +1557,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Leads\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Leads\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function upsertWithHttpInfo($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1600,11 +1600,11 @@ class BatchApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1622,16 +1622,16 @@ class BatchApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 207:
-                    if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1649,7 +1649,7 @@ class BatchApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1682,7 +1682,7 @@ class BatchApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject';
+            $returnType = '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1715,7 +1715,7 @@ class BatchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject',
+                        '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1723,7 +1723,7 @@ class BatchApi
                 case 207:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObjectWithErrors',
+                        '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1775,7 +1775,7 @@ class BatchApi
      */
     public function upsertAsyncWithHttpInfo($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject';
+        $returnType = '\HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicUpsertObject';
         $request = $this->upsertRequest($batch_input_simple_public_object_batch_input_upsert, $contentType);
 
         return $this->client
