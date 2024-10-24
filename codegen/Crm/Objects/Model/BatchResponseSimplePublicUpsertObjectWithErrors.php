@@ -1,6 +1,6 @@
 <?php
 /**
- * StandardError
+ * BatchResponseSimplePublicUpsertObjectWithErrors
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * StandardError Class Doc Comment
+ * BatchResponseSimplePublicUpsertObjectWithErrors Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'StandardError';
+    protected static $openAPIModelName = 'BatchResponseSimplePublicUpsertObjectWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,13 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'object',
-        'context' => 'array<string,string[]>',
+        'completed_at' => '\DateTime',
+        'num_errors' => 'int',
+        'requested_at' => '\DateTime',
+        'started_at' => '\DateTime',
         'links' => 'array<string,string>',
-        'id' => 'string',
-        'category' => 'string',
-        'message' => 'string',
-        'errors' => '\HubSpot\Client\Crm\Objects\Model\ErrorDetail[]',
+        'results' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject[]',
+        'errors' => '\HubSpot\Client\Crm\Objects\Model\StandardError[]',
         'status' => 'string'
     ];
 
@@ -75,12 +75,12 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
-        'context' => null,
+        'completed_at' => 'date-time',
+        'num_errors' => 'int32',
+        'requested_at' => 'date-time',
+        'started_at' => 'date-time',
         'links' => null,
-        'id' => null,
-        'category' => null,
-        'message' => null,
+        'results' => null,
         'errors' => null,
         'status' => null
     ];
@@ -91,12 +91,12 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sub_category' => false,
-        'context' => false,
+        'completed_at' => false,
+        'num_errors' => false,
+        'requested_at' => false,
+        'started_at' => false,
         'links' => false,
-        'id' => false,
-        'category' => false,
-        'message' => false,
+        'results' => false,
         'errors' => false,
         'status' => false
     ];
@@ -187,12 +187,12 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
-        'context' => 'context',
+        'completed_at' => 'completedAt',
+        'num_errors' => 'numErrors',
+        'requested_at' => 'requestedAt',
+        'started_at' => 'startedAt',
         'links' => 'links',
-        'id' => 'id',
-        'category' => 'category',
-        'message' => 'message',
+        'results' => 'results',
         'errors' => 'errors',
         'status' => 'status'
     ];
@@ -203,12 +203,12 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
-        'context' => 'setContext',
+        'completed_at' => 'setCompletedAt',
+        'num_errors' => 'setNumErrors',
+        'requested_at' => 'setRequestedAt',
+        'started_at' => 'setStartedAt',
         'links' => 'setLinks',
-        'id' => 'setId',
-        'category' => 'setCategory',
-        'message' => 'setMessage',
+        'results' => 'setResults',
         'errors' => 'setErrors',
         'status' => 'setStatus'
     ];
@@ -219,12 +219,12 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
-        'context' => 'getContext',
+        'completed_at' => 'getCompletedAt',
+        'num_errors' => 'getNumErrors',
+        'requested_at' => 'getRequestedAt',
+        'started_at' => 'getStartedAt',
         'links' => 'getLinks',
-        'id' => 'getId',
-        'category' => 'getCategory',
-        'message' => 'getMessage',
+        'results' => 'getResults',
         'errors' => 'getErrors',
         'status' => 'getStatus'
     ];
@@ -270,6 +270,25 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_COMPLETE = 'COMPLETE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
+            self::STATUS_CANCELED,
+            self::STATUS_COMPLETE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -286,12 +305,12 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sub_category', $data ?? [], null);
-        $this->setIfExists('context', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
@@ -323,24 +342,27 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
         }
-        if ($this->container['links'] === null) {
-            $invalidProperties[] = "'links' can't be null";
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -357,55 +379,109 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sub_category
+     * Gets completed_at
      *
-     * @return object|null
+     * @return \DateTime
      */
-    public function getSubCategory()
+    public function getCompletedAt()
     {
-        return $this->container['sub_category'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets sub_category
+     * Sets completed_at
      *
-     * @param object|null $sub_category sub_category
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setCompletedAt($completed_at)
     {
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
-        $this->container['sub_category'] = $sub_category;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
 
     /**
-     * Gets context
+     * Gets num_errors
      *
-     * @return array<string,string[]>
+     * @return int|null
      */
-    public function getContext()
+    public function getNumErrors()
     {
-        return $this->container['context'];
+        return $this->container['num_errors'];
     }
 
     /**
-     * Sets context
+     * Sets num_errors
      *
-     * @param array<string,string[]> $context context
+     * @param int|null $num_errors num_errors
      *
      * @return self
      */
-    public function setContext($context)
+    public function setNumErrors($num_errors)
     {
-        if (is_null($context)) {
-            throw new \InvalidArgumentException('non-nullable context cannot be null');
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
         }
-        $this->container['context'] = $context;
+        $this->container['num_errors'] = $num_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAt()
+    {
+        return $this->container['requested_at'];
+    }
+
+    /**
+     * Sets requested_at
+     *
+     * @param \DateTime|null $requested_at requested_at
+     *
+     * @return self
+     */
+    public function setRequestedAt($requested_at)
+    {
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        }
+        $this->container['requested_at'] = $requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime $started_at started_at
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
 
         return $this;
     }
@@ -413,7 +489,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets links
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
     public function getLinks()
     {
@@ -423,7 +499,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets links
      *
-     * @param array<string,string> $links links
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
@@ -438,82 +514,28 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets id
+     * Gets results
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject[]
      */
-    public function getId()
+    public function getResults()
     {
-        return $this->container['id'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets id
+     * Sets results
      *
-     * @param string|null $id id
+     * @param \HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject[] $results results
      *
      * @return self
      */
-    public function setId($id)
+    public function setResults($results)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string $category category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
+        $this->container['results'] = $results;
 
         return $this;
     }
@@ -521,7 +543,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets errors
      *
-     * @return \HubSpot\Client\Crm\Objects\Model\ErrorDetail[]
+     * @return \HubSpot\Client\Crm\Objects\Model\StandardError[]|null
      */
     public function getErrors()
     {
@@ -531,7 +553,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Objects\Model\ErrorDetail[] $errors errors
+     * @param \HubSpot\Client\Crm\Objects\Model\StandardError[]|null $errors errors
      *
      * @return self
      */
@@ -566,6 +588,16 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['status'] = $status;
 

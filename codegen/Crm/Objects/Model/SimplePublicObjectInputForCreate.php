@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Objects
+ * Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -58,6 +58,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'associations' => '\HubSpot\Client\Crm\Objects\Model\PublicAssociationsForObject[]',
+        'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>'
     ];
 
@@ -70,6 +71,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'associations' => null,
+        'object_write_trace_id' => null,
         'properties' => null
     ];
 
@@ -80,6 +82,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'associations' => false,
+        'object_write_trace_id' => false,
         'properties' => false
     ];
 
@@ -170,6 +173,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'associations' => 'associations',
+        'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties'
     ];
 
@@ -180,6 +184,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'associations' => 'setAssociations',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties'
     ];
 
@@ -190,6 +195,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'associations' => 'getAssociations',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties'
     ];
 
@@ -251,6 +257,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
 
@@ -325,6 +332,33 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
         $this->container['associations'] = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }

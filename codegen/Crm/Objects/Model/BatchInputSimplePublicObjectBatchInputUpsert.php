@@ -1,6 +1,6 @@
 <?php
 /**
- * StandardError
+ * BatchInputSimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * StandardError Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'StandardError';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'object',
-        'context' => 'array<string,string[]>',
-        'links' => 'array<string,string>',
-        'id' => 'string',
-        'category' => 'string',
-        'message' => 'string',
-        'errors' => '\HubSpot\Client\Crm\Objects\Model\ErrorDetail[]',
-        'status' => 'string'
+        'inputs' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicObjectBatchInputUpsert[]'
     ];
 
     /**
@@ -75,14 +68,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
-        'context' => null,
-        'links' => null,
-        'id' => null,
-        'category' => null,
-        'message' => null,
-        'errors' => null,
-        'status' => null
+        'inputs' => null
     ];
 
     /**
@@ -91,14 +77,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sub_category' => false,
-        'context' => false,
-        'links' => false,
-        'id' => false,
-        'category' => false,
-        'message' => false,
-        'errors' => false,
-        'status' => false
+        'inputs' => false
     ];
 
     /**
@@ -187,14 +166,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
-        'context' => 'context',
-        'links' => 'links',
-        'id' => 'id',
-        'category' => 'category',
-        'message' => 'message',
-        'errors' => 'errors',
-        'status' => 'status'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -203,14 +175,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
-        'context' => 'setContext',
-        'links' => 'setLinks',
-        'id' => 'setId',
-        'category' => 'setCategory',
-        'message' => 'setMessage',
-        'errors' => 'setErrors',
-        'status' => 'setStatus'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -219,14 +184,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
-        'context' => 'getContext',
-        'links' => 'getLinks',
-        'id' => 'getId',
-        'category' => 'getCategory',
-        'message' => 'getMessage',
-        'errors' => 'getErrors',
-        'status' => 'getStatus'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -286,14 +244,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sub_category', $data ?? [], null);
-        $this->setIfExists('context', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -323,23 +274,8 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['context'] === null) {
-            $invalidProperties[] = "'context' can't be null";
-        }
-        if ($this->container['links'] === null) {
-            $invalidProperties[] = "'links' can't be null";
-        }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -357,217 +293,28 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sub_category
+     * Gets inputs
      *
-     * @return object|null
+     * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectBatchInputUpsert[]
      */
-    public function getSubCategory()
+    public function getInputs()
     {
-        return $this->container['sub_category'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets sub_category
+     * Sets inputs
      *
-     * @param object|null $sub_category sub_category
+     * @param \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectBatchInputUpsert[] $inputs inputs
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setInputs($inputs)
     {
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['sub_category'] = $sub_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets context
-     *
-     * @return array<string,string[]>
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param array<string,string[]> $context context
-     *
-     * @return self
-     */
-    public function setContext($context)
-    {
-        if (is_null($context)) {
-            throw new \InvalidArgumentException('non-nullable context cannot be null');
-        }
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return array<string,string>
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param array<string,string> $links links
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
-        }
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string $category category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Crm\Objects\Model\ErrorDetail[]
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Crm\Objects\Model\ErrorDetail[] $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }
