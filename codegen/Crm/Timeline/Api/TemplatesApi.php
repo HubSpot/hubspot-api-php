@@ -10,7 +10,7 @@
  */
 
 /**
- * CRM Timeline
+ * Timeline
  *
  * This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.
  *
@@ -311,7 +311,7 @@ class TemplatesApi
         }
 
 
-        $resourcePath = '/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}';
+        $resourcePath = '/integrators/timeline/v3/{appId}/event-templates/{eventTemplateId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -678,7 +678,7 @@ class TemplatesApi
         }
 
 
-        $resourcePath = '/crm/v3/timeline/{appId}/event-templates';
+        $resourcePath = '/integrators/timeline/v3/{appId}/event-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1032,7 +1032,7 @@ class TemplatesApi
         }
 
 
-        $resourcePath = '/crm/v3/timeline/{appId}/event-templates';
+        $resourcePath = '/integrators/timeline/v3/{appId}/event-templates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1391,7 +1391,7 @@ class TemplatesApi
         }
 
 
-        $resourcePath = '/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}';
+        $resourcePath = '/integrators/timeline/v3/{appId}/event-templates/{eventTemplateId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1770,7 +1770,7 @@ class TemplatesApi
         }
 
 
-        $resourcePath = '/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}';
+        $resourcePath = '/integrators/timeline/v3/{appId}/event-templates/{eventTemplateId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

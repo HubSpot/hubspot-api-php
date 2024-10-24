@@ -311,7 +311,7 @@ class CoreApi
 
 
 
-        $resourcePath = '/crm/v3/schemas/{objectType}';
+        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -573,7 +573,7 @@ class CoreApi
         }
 
 
-        $resourcePath = '/crm/v3/schemas/{objectType}/associations/{associationIdentifier}';
+        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -927,7 +927,7 @@ class CoreApi
         }
 
 
-        $resourcePath = '/crm/v3/schemas';
+        $resourcePath = '/crm-object-schemas/v3/schemas';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1284,7 +1284,7 @@ class CoreApi
         }
 
 
-        $resourcePath = '/crm/v3/schemas/{objectType}/associations';
+        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}/associations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1631,7 +1631,7 @@ class CoreApi
 
 
 
-        $resourcePath = '/crm/v3/schemas';
+        $resourcePath = '/crm-object-schemas/v3/schemas';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1978,7 +1978,7 @@ class CoreApi
         }
 
 
-        $resourcePath = '/crm/v3/schemas/{objectType}';
+        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2336,7 +2336,7 @@ class CoreApi
         }
 
 
-        $resourcePath = '/crm/v3/schemas/{objectType}';
+        $resourcePath = '/crm-object-schemas/v3/schemas/{objectType}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

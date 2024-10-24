@@ -377,7 +377,7 @@ class AssociationDefinitionEgg implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets to_object_type_id
      *
-     * @param string $to_object_type_id ID of the target object type ID to link to.
+     * @param string $to_object_type_id ID of the target object type to link to.
      *
      * @return self
      */
