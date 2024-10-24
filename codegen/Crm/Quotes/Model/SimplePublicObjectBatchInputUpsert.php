@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicMergeInput
+ * SimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Quotes\ObjectSerializer;
 
 /**
- * PublicMergeInput Class Doc Comment
+ * SimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Quotes
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Quotes\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicMergeInput';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object_id_to_merge' => 'string',
-        'primary_object_id' => 'string'
+        'id_property' => 'string',
+        'object_write_trace_id' => 'string',
+        'id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -69,8 +71,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object_id_to_merge' => null,
-        'primary_object_id' => null
+        'id_property' => null,
+        'object_write_trace_id' => null,
+        'id' => null,
+        'properties' => null
     ];
 
     /**
@@ -79,8 +83,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object_id_to_merge' => false,
-        'primary_object_id' => false
+        'id_property' => false,
+        'object_write_trace_id' => false,
+        'id' => false,
+        'properties' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'object_id_to_merge' => 'objectIdToMerge',
-        'primary_object_id' => 'primaryObjectId'
+        'id_property' => 'idProperty',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'id' => 'id',
+        'properties' => 'properties'
     ];
 
     /**
@@ -179,8 +187,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'object_id_to_merge' => 'setObjectIdToMerge',
-        'primary_object_id' => 'setPrimaryObjectId'
+        'id_property' => 'setIdProperty',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'id' => 'setId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -189,8 +199,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'object_id_to_merge' => 'getObjectIdToMerge',
-        'primary_object_id' => 'getPrimaryObjectId'
+        'id_property' => 'getIdProperty',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'id' => 'getId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -250,8 +262,10 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object_id_to_merge', $data ?? [], null);
-        $this->setIfExists('primary_object_id', $data ?? [], null);
+        $this->setIfExists('id_property', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -281,11 +295,11 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['object_id_to_merge'] === null) {
-            $invalidProperties[] = "'object_id_to_merge' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['primary_object_id'] === null) {
-            $invalidProperties[] = "'primary_object_id' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +317,109 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets object_id_to_merge
+     * Gets id_property
      *
-     * @return string
+     * @return string|null
      */
-    public function getObjectIdToMerge()
+    public function getIdProperty()
     {
-        return $this->container['object_id_to_merge'];
+        return $this->container['id_property'];
     }
 
     /**
-     * Sets object_id_to_merge
+     * Sets id_property
      *
-     * @param string $object_id_to_merge object_id_to_merge
+     * @param string|null $id_property id_property
      *
      * @return self
      */
-    public function setObjectIdToMerge($object_id_to_merge)
+    public function setIdProperty($id_property)
     {
-        if (is_null($object_id_to_merge)) {
-            throw new \InvalidArgumentException('non-nullable object_id_to_merge cannot be null');
+        if (is_null($id_property)) {
+            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
         }
-        $this->container['object_id_to_merge'] = $object_id_to_merge;
+        $this->container['id_property'] = $id_property;
 
         return $this;
     }
 
     /**
-     * Gets primary_object_id
+     * Gets object_write_trace_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getPrimaryObjectId()
+    public function getObjectWriteTraceId()
     {
-        return $this->container['primary_object_id'];
+        return $this->container['object_write_trace_id'];
     }
 
     /**
-     * Sets primary_object_id
+     * Sets object_write_trace_id
      *
-     * @param string $primary_object_id primary_object_id
+     * @param string|null $object_write_trace_id object_write_trace_id
      *
      * @return self
      */
-    public function setPrimaryObjectId($primary_object_id)
+    public function setObjectWriteTraceId($object_write_trace_id)
     {
-        if (is_null($primary_object_id)) {
-            throw new \InvalidArgumentException('non-nullable primary_object_id cannot be null');
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
-        $this->container['primary_object_id'] = $primary_object_id;
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }

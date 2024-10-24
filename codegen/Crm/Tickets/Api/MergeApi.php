@@ -1,6 +1,6 @@
 <?php
 /**
- * GDPRApi
+ * MergeApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Crm\Tickets\HeaderSelector;
 use HubSpot\Client\Crm\Tickets\ObjectSerializer;
 
 /**
- * GDPRApi Class Doc Comment
+ * MergeApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Tickets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class GDPRApi
+class MergeApi
 {
     /**
      * @var ClientInterface
@@ -71,7 +71,7 @@ class GDPRApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'purge' => [
+        'merge' => [
             'application/json',
         ],
     ];
@@ -123,37 +123,38 @@ class GDPRApi
     }
 
     /**
-     * Operation purge
+     * Operation merge
      *
-     * GDPR DELETE
+     * Merge two tickets with same type
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicGdprDeleteInput $public_gdpr_delete_input public_gdpr_delete_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purge'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicMergeInput $public_merge_input public_merge_input (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['merge'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Crm\Tickets\Model\SimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error
      */
-    public function purge($public_gdpr_delete_input, string $contentType = self::contentTypes['purge'][0])
+    public function merge($public_merge_input, string $contentType = self::contentTypes['merge'][0])
     {
-        $this->purgeWithHttpInfo($public_gdpr_delete_input, $contentType);
+        list($response) = $this->mergeWithHttpInfo($public_merge_input, $contentType);
+        return $response;
     }
 
     /**
-     * Operation purgeWithHttpInfo
+     * Operation mergeWithHttpInfo
      *
-     * GDPR DELETE
+     * Merge two tickets with same type
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purge'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicMergeInput $public_merge_input (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['merge'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Tickets\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Tickets\Model\SimplePublicObject|\HubSpot\Client\Crm\Tickets\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function purgeWithHttpInfo($public_gdpr_delete_input, string $contentType = self::contentTypes['purge'][0])
+    public function mergeWithHttpInfo($public_merge_input, string $contentType = self::contentTypes['merge'][0])
     {
-        $request = $this->purgeRequest($public_gdpr_delete_input, $contentType);
+        $request = $this->mergeRequest($public_merge_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -190,10 +191,101 @@ class GDPRApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Tickets\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Tickets\Model\Error' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Tickets\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -208,19 +300,19 @@ class GDPRApi
     }
 
     /**
-     * Operation purgeAsync
+     * Operation mergeAsync
      *
-     * GDPR DELETE
+     * Merge two tickets with same type
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purge'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicMergeInput $public_merge_input (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['merge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purgeAsync($public_gdpr_delete_input, string $contentType = self::contentTypes['purge'][0])
+    public function mergeAsync($public_merge_input, string $contentType = self::contentTypes['merge'][0])
     {
-        return $this->purgeAsyncWithHttpInfo($public_gdpr_delete_input, $contentType)
+        return $this->mergeAsyncWithHttpInfo($public_merge_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -229,26 +321,39 @@ class GDPRApi
     }
 
     /**
-     * Operation purgeAsyncWithHttpInfo
+     * Operation mergeAsyncWithHttpInfo
      *
-     * GDPR DELETE
+     * Merge two tickets with same type
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purge'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicMergeInput $public_merge_input (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['merge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purgeAsyncWithHttpInfo($public_gdpr_delete_input, string $contentType = self::contentTypes['purge'][0])
+    public function mergeAsyncWithHttpInfo($public_merge_input, string $contentType = self::contentTypes['merge'][0])
     {
-        $returnType = '';
-        $request = $this->purgeRequest($public_gdpr_delete_input, $contentType);
+        $returnType = '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObject';
+        $request = $this->mergeRequest($public_merge_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -268,26 +373,26 @@ class GDPRApi
     }
 
     /**
-     * Create request for operation 'purge'
+     * Create request for operation 'merge'
      *
-     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicGdprDeleteInput $public_gdpr_delete_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purge'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Tickets\Model\PublicMergeInput $public_merge_input (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['merge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function purgeRequest($public_gdpr_delete_input, string $contentType = self::contentTypes['purge'][0])
+    public function mergeRequest($public_merge_input, string $contentType = self::contentTypes['merge'][0])
     {
 
-        // verify the required parameter 'public_gdpr_delete_input' is set
-        if ($public_gdpr_delete_input === null || (is_array($public_gdpr_delete_input) && count($public_gdpr_delete_input) === 0)) {
+        // verify the required parameter 'public_merge_input' is set
+        if ($public_merge_input === null || (is_array($public_merge_input) && count($public_merge_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_gdpr_delete_input when calling purge'
+                'Missing the required parameter $public_merge_input when calling merge'
             );
         }
 
 
-        $resourcePath = '/crm/v3/objects/tickets/gdpr-delete';
+        $resourcePath = '/crm/v3/objects/tickets/merge';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -299,18 +404,18 @@ class GDPRApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
+            ['application/json', '*/*', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($public_gdpr_delete_input)) {
+        if (isset($public_merge_input)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($public_gdpr_delete_input));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($public_merge_input));
             } else {
-                $httpBody = $public_gdpr_delete_input;
+                $httpBody = $public_merge_input;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicGdprDeleteInput
+ * SimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
 
 /**
- * PublicGdprDeleteInput Class Doc Comment
+ * SimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Tickets
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicGdprDeleteInput';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'id_property' => 'string',
-        'object_id' => 'string'
+        'object_write_trace_id' => 'string',
+        'id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -70,7 +72,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'id_property' => null,
-        'object_id' => null
+        'object_write_trace_id' => null,
+        'id' => null,
+        'properties' => null
     ];
 
     /**
@@ -80,7 +84,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'id_property' => false,
-        'object_id' => false
+        'object_write_trace_id' => false,
+        'id' => false,
+        'properties' => false
     ];
 
     /**
@@ -170,7 +176,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'id_property' => 'idProperty',
-        'object_id' => 'objectId'
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'id' => 'id',
+        'properties' => 'properties'
     ];
 
     /**
@@ -180,7 +188,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'id_property' => 'setIdProperty',
-        'object_id' => 'setObjectId'
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'id' => 'setId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -190,7 +200,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'id_property' => 'getIdProperty',
-        'object_id' => 'getObjectId'
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'id' => 'getId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -251,7 +263,9 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->setIfExists('id_property', $data ?? [], null);
-        $this->setIfExists('object_id', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -281,8 +295,11 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['object_id'] === null) {
-            $invalidProperties[] = "'object_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -327,28 +344,82 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets object_id
+     * Gets object_write_trace_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getObjectId()
+    public function getObjectWriteTraceId()
     {
-        return $this->container['object_id'];
+        return $this->container['object_write_trace_id'];
     }
 
     /**
-     * Sets object_id
+     * Sets object_write_trace_id
      *
-     * @param string $object_id object_id
+     * @param string|null $object_write_trace_id object_write_trace_id
      *
      * @return self
      */
-    public function setObjectId($object_id)
+    public function setObjectWriteTraceId($object_write_trace_id)
     {
-        if (is_null($object_id)) {
-            throw new \InvalidArgumentException('non-nullable object_id cannot be null');
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
-        $this->container['object_id'] = $object_id;
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }
