@@ -57,6 +57,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>'
     ];
 
@@ -68,6 +69,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'object_write_trace_id' => null,
         'properties' => null
     ];
 
@@ -77,6 +79,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'object_write_trace_id' => false,
         'properties' => false
     ];
 
@@ -166,6 +169,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties'
     ];
 
@@ -175,6 +179,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties'
     ];
 
@@ -184,6 +189,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties'
     ];
 
@@ -244,6 +250,7 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
 
@@ -291,6 +298,33 @@ class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
 
     /**
      * Gets properties
