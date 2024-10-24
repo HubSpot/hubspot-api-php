@@ -1,6 +1,6 @@
 <?php
 /**
- * Error
+ * BoundedPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * BoundedPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Cms\Hubdb
@@ -40,7 +40,7 @@ use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class BoundedPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'BoundedPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'string',
-        'context' => 'array<string,string[]>',
-        'correlation_id' => 'string',
-        'links' => 'array<string,string>',
-        'message' => 'string',
-        'category' => 'string',
-        'errors' => '\HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]'
+        'next' => '\HubSpot\Client\Cms\Hubdb\Model\BoundedNextPage'
     ];
 
     /**
@@ -74,13 +68,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
-        'context' => null,
-        'correlation_id' => 'uuid',
-        'links' => null,
-        'message' => null,
-        'category' => null,
-        'errors' => null
+        'next' => null
     ];
 
     /**
@@ -89,13 +77,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sub_category' => false,
-        'context' => false,
-        'correlation_id' => false,
-        'links' => false,
-        'message' => false,
-        'category' => false,
-        'errors' => false
+        'next' => false
     ];
 
     /**
@@ -184,13 +166,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
-        'context' => 'context',
-        'correlation_id' => 'correlationId',
-        'links' => 'links',
-        'message' => 'message',
-        'category' => 'category',
-        'errors' => 'errors'
+        'next' => 'next'
     ];
 
     /**
@@ -199,13 +175,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
-        'context' => 'setContext',
-        'correlation_id' => 'setCorrelationId',
-        'links' => 'setLinks',
-        'message' => 'setMessage',
-        'category' => 'setCategory',
-        'errors' => 'setErrors'
+        'next' => 'setNext'
     ];
 
     /**
@@ -214,13 +184,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
-        'context' => 'getContext',
-        'correlation_id' => 'getCorrelationId',
-        'links' => 'getLinks',
-        'message' => 'getMessage',
-        'category' => 'getCategory',
-        'errors' => 'getErrors'
+        'next' => 'getNext'
     ];
 
     /**
@@ -280,13 +244,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sub_category', $data ?? [], null);
-        $this->setIfExists('context', $data ?? [], null);
-        $this->setIfExists('correlation_id', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -316,15 +274,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['correlation_id'] === null) {
-            $invalidProperties[] = "'correlation_id' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -341,190 +290,28 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sub_category
+     * Gets next
      *
-     * @return string|null
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BoundedNextPage|null
      */
-    public function getSubCategory()
+    public function getNext()
     {
-        return $this->container['sub_category'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets sub_category
+     * Sets next
      *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     * @param \HubSpot\Client\Cms\Hubdb\Model\BoundedNextPage|null $next next
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setNext($next)
     {
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['sub_category'] = $sub_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets context
-     *
-     * @return array<string,string[]>|null
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param array<string,string[]>|null $context Context about the error condition
-     *
-     * @return self
-     */
-    public function setContext($context)
-    {
-        if (is_null($context)) {
-            throw new \InvalidArgumentException('non-nullable context cannot be null');
-        }
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets correlation_id
-     *
-     * @return string
-     */
-    public function getCorrelationId()
-    {
-        return $this->container['correlation_id'];
-    }
-
-    /**
-     * Sets correlation_id
-     *
-     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
-     *
-     * @return self
-     */
-    public function setCorrelationId($correlation_id)
-    {
-        if (is_null($correlation_id)) {
-            throw new \InvalidArgumentException('non-nullable correlation_id cannot be null');
-        }
-        $this->container['correlation_id'] = $correlation_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return array<string,string>|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
-        }
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string $category The error category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\ErrorDetail[]|null $errors further information about the error
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
+        $this->container['next'] = $next;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ColumnRequest
+ * RandomAccessCollectionResponseWithTotalHubDbTableRowV3
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
 
 /**
- * ColumnRequest Class Doc Comment
+ * RandomAccessCollectionResponseWithTotalHubDbTableRowV3 Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Cms\Hubdb
@@ -40,7 +40,7 @@ use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class RandomAccessCollectionResponseWithTotalHubDbTableRowV3 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ColumnRequest';
+    protected static $openAPIModelName = 'RandomAccessCollectionResponseWithTotalHubDbTableRowV3';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'foreign_table_id' => 'int',
-        'name' => 'string',
-        'options' => '\HubSpot\Client\Cms\Hubdb\Model\Option[]',
-        'id' => 'int',
-        'label' => 'string',
+        'total' => 'int',
+        'paging' => '\HubSpot\Client\Cms\Hubdb\Model\BoundedPaging',
         'type' => 'string',
-        'foreign_column_id' => 'int'
+        'results' => '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]'
     ];
 
     /**
@@ -74,13 +71,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'foreign_table_id' => 'int64',
-        'name' => null,
-        'options' => null,
-        'id' => 'int32',
-        'label' => null,
+        'total' => 'int32',
+        'paging' => null,
         'type' => null,
-        'foreign_column_id' => 'int32'
+        'results' => null
     ];
 
     /**
@@ -89,13 +83,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'foreign_table_id' => false,
-        'name' => false,
-        'options' => false,
-        'id' => false,
-        'label' => false,
+        'total' => false,
+        'paging' => false,
         'type' => false,
-        'foreign_column_id' => false
+        'results' => false
     ];
 
     /**
@@ -184,13 +175,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'foreign_table_id' => 'foreignTableId',
-        'name' => 'name',
-        'options' => 'options',
-        'id' => 'id',
-        'label' => 'label',
+        'total' => 'total',
+        'paging' => 'paging',
         'type' => 'type',
-        'foreign_column_id' => 'foreignColumnId'
+        'results' => 'results'
     ];
 
     /**
@@ -199,13 +187,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'foreign_table_id' => 'setForeignTableId',
-        'name' => 'setName',
-        'options' => 'setOptions',
-        'id' => 'setId',
-        'label' => 'setLabel',
+        'total' => 'setTotal',
+        'paging' => 'setPaging',
         'type' => 'setType',
-        'foreign_column_id' => 'setForeignColumnId'
+        'results' => 'setResults'
     ];
 
     /**
@@ -214,13 +199,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'foreign_table_id' => 'getForeignTableId',
-        'name' => 'getName',
-        'options' => 'getOptions',
-        'id' => 'getId',
-        'label' => 'getLabel',
+        'total' => 'getTotal',
+        'paging' => 'getPaging',
         'type' => 'getType',
-        'foreign_column_id' => 'getForeignColumnId'
+        'results' => 'getResults'
     ];
 
     /**
@@ -264,26 +246,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_NULL = 'NULL';
-    public const TYPE_TEXT = 'TEXT';
-    public const TYPE_NUMBER = 'NUMBER';
-    public const TYPE_URL = 'URL';
-    public const TYPE_IMAGE = 'IMAGE';
-    public const TYPE_SELECT = 'SELECT';
-    public const TYPE_MULTISELECT = 'MULTISELECT';
-    public const TYPE_BOOLEAN = 'BOOLEAN';
-    public const TYPE_LOCATION = 'LOCATION';
-    public const TYPE_DATE = 'DATE';
-    public const TYPE_DATETIME = 'DATETIME';
-    public const TYPE_CURRENCY = 'CURRENCY';
-    public const TYPE_RICHTEXT = 'RICHTEXT';
-    public const TYPE_FOREIGN_ID = 'FOREIGN_ID';
-    public const TYPE_VIDEO = 'VIDEO';
-    public const TYPE_CTA = 'CTA';
-    public const TYPE_FILE = 'FILE';
-    public const TYPE_JSON = 'JSON';
-    public const TYPE_COMPOSITE = 'COMPOSITE';
-    public const TYPE_CODE = 'CODE';
+    public const TYPE_RANDOM_ACCESS = 'RANDOM_ACCESS';
 
     /**
      * Gets allowable values of the enum
@@ -293,26 +256,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_NULL,
-            self::TYPE_TEXT,
-            self::TYPE_NUMBER,
-            self::TYPE_URL,
-            self::TYPE_IMAGE,
-            self::TYPE_SELECT,
-            self::TYPE_MULTISELECT,
-            self::TYPE_BOOLEAN,
-            self::TYPE_LOCATION,
-            self::TYPE_DATE,
-            self::TYPE_DATETIME,
-            self::TYPE_CURRENCY,
-            self::TYPE_RICHTEXT,
-            self::TYPE_FOREIGN_ID,
-            self::TYPE_VIDEO,
-            self::TYPE_CTA,
-            self::TYPE_FILE,
-            self::TYPE_JSON,
-            self::TYPE_COMPOSITE,
-            self::TYPE_CODE,
+            self::TYPE_RANDOM_ACCESS,
         ];
     }
 
@@ -331,13 +275,10 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('foreign_table_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('options', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('foreign_column_id', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('paging', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], 'RANDOM_ACCESS');
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -367,17 +308,8 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['options'] === null) {
-            $invalidProperties[] = "'options' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
@@ -391,6 +323,9 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -407,136 +342,55 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets foreign_table_id
-     *
-     * @return int|null
-     */
-    public function getForeignTableId()
-    {
-        return $this->container['foreign_table_id'];
-    }
-
-    /**
-     * Sets foreign_table_id
-     *
-     * @param int|null $foreign_table_id The id of another table to which the column refers/points to.
-     *
-     * @return self
-     */
-    public function setForeignTableId($foreign_table_id)
-    {
-        if (is_null($foreign_table_id)) {
-            throw new \InvalidArgumentException('non-nullable foreign_table_id cannot be null');
-        }
-        $this->container['foreign_table_id'] = $foreign_table_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the column
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \HubSpot\Client\Cms\Hubdb\Model\Option[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \HubSpot\Client\Cms\Hubdb\Model\Option[] $options Options to choose for select and multi-select columns
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        if (is_null($options)) {
-            throw new \InvalidArgumentException('non-nullable options cannot be null');
-        }
-        $this->container['options'] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
+     * Gets total
      *
      * @return int
      */
-    public function getId()
+    public function getTotal()
     {
-        return $this->container['id'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets id
+     * Sets total
      *
-     * @param int $id Column Id
+     * @param int $total total
      *
      * @return self
      */
-    public function setId($id)
+    public function setTotal($total)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets label
+     * Gets paging
      *
-     * @return string
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BoundedPaging|null
      */
-    public function getLabel()
+    public function getPaging()
     {
-        return $this->container['label'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets label
+     * Sets paging
      *
-     * @param string $label Label of the column
+     * @param \HubSpot\Client\Cms\Hubdb\Model\BoundedPaging|null $paging paging
      *
      * @return self
      */
-    public function setLabel($label)
+    public function setPaging($paging)
     {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        if (is_null($paging)) {
+            throw new \InvalidArgumentException('non-nullable paging cannot be null');
         }
-        $this->container['label'] = $label;
+        $this->container['paging'] = $paging;
 
         return $this;
     }
@@ -554,7 +408,7 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type Type of the column
+     * @param string $type type
      *
      * @return self
      */
@@ -579,28 +433,28 @@ class ColumnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets foreign_column_id
+     * Gets results
      *
-     * @return int|null
+     * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[]
      */
-    public function getForeignColumnId()
+    public function getResults()
     {
-        return $this->container['foreign_column_id'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets foreign_column_id
+     * Sets results
      *
-     * @param int|null $foreign_column_id The id of the column from another table to which the column refers/points to.
+     * @param \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3[] $results results
      *
      * @return self
      */
-    public function setForeignColumnId($foreign_column_id)
+    public function setResults($results)
     {
-        if (is_null($foreign_column_id)) {
-            throw new \InvalidArgumentException('non-nullable foreign_column_id cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['foreign_column_id'] = $foreign_column_id;
+        $this->container['results'] = $results;
 
         return $this;
     }
