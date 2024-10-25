@@ -58,7 +58,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'period' => 'string',
         'max_concurrent_requests' => 'int'
     ];
 
@@ -70,7 +69,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'period' => null,
         'max_concurrent_requests' => 'int32'
     ];
 
@@ -80,7 +78,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'period' => false,
         'max_concurrent_requests' => false
     ];
 
@@ -170,7 +167,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'period' => 'period',
         'max_concurrent_requests' => 'maxConcurrentRequests'
     ];
 
@@ -180,7 +176,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'period' => 'setPeriod',
         'max_concurrent_requests' => 'setMaxConcurrentRequests'
     ];
 
@@ -190,7 +185,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'period' => 'getPeriod',
         'max_concurrent_requests' => 'getMaxConcurrentRequests'
     ];
 
@@ -235,21 +229,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
-    public const PERIOD_SECONDLY = 'SECONDLY';
-    public const PERIOD_ROLLING_MINUTE = 'ROLLING_MINUTE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPeriodAllowableValues()
-    {
-        return [
-            self::PERIOD_SECONDLY,
-            self::PERIOD_ROLLING_MINUTE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -266,7 +245,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('period', $data ?? [], null);
         $this->setIfExists('max_concurrent_requests', $data ?? [], null);
     }
 
@@ -297,18 +275,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['period'] === null) {
-            $invalidProperties[] = "'period' can't be null";
-        }
-        $allowedValues = $this->getPeriodAllowableValues();
-        if (!is_null($this->container['period']) && !in_array($this->container['period'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'period', must be one of '%s'",
-                $this->container['period'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['max_concurrent_requests'] === null) {
             $invalidProperties[] = "'max_concurrent_requests' can't be null";
         }
@@ -326,43 +292,6 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets period
-     *
-     * @return string
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param string $period Time scale for this setting. Can be either `SECONDLY` (per second) or `ROLLING_MINUTE` (per minute).
-     *
-     * @return self
-     */
-    public function setPeriod($period)
-    {
-        if (is_null($period)) {
-            throw new \InvalidArgumentException('non-nullable period cannot be null');
-        }
-        $allowedValues = $this->getPeriodAllowableValues();
-        if (!in_array($period, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'period', must be one of '%s'",
-                    $period,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['period'] = $period;
-
-        return $this;
-    }
 
     /**
      * Gets max_concurrent_requests

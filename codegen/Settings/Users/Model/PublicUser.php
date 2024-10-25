@@ -11,7 +11,7 @@
  */
 
 /**
- * Settings User Provisioning
+ * User Provisioning
  *
  * Add, manage, and remove users from your account
  *
@@ -58,6 +58,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'first_name' => 'string',
+        'last_name' => 'string',
         'primary_team_id' => 'string',
         'role_ids' => 'string[]',
         'send_welcome_email' => 'bool',
@@ -76,6 +78,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'first_name' => null,
+        'last_name' => null,
         'primary_team_id' => null,
         'role_ids' => null,
         'send_welcome_email' => null,
@@ -92,6 +96,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'first_name' => false,
+        'last_name' => false,
         'primary_team_id' => false,
         'role_ids' => false,
         'send_welcome_email' => false,
@@ -188,6 +194,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'first_name' => 'firstName',
+        'last_name' => 'lastName',
         'primary_team_id' => 'primaryTeamId',
         'role_ids' => 'roleIds',
         'send_welcome_email' => 'sendWelcomeEmail',
@@ -204,6 +212,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'first_name' => 'setFirstName',
+        'last_name' => 'setLastName',
         'primary_team_id' => 'setPrimaryTeamId',
         'role_ids' => 'setRoleIds',
         'send_welcome_email' => 'setSendWelcomeEmail',
@@ -220,6 +230,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'first_name' => 'getFirstName',
+        'last_name' => 'getLastName',
         'primary_team_id' => 'getPrimaryTeamId',
         'role_ids' => 'getRoleIds',
         'send_welcome_email' => 'getSendWelcomeEmail',
@@ -287,6 +299,8 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('first_name', $data ?? [], null);
+        $this->setIfExists('last_name', $data ?? [], null);
         $this->setIfExists('primary_team_id', $data ?? [], null);
         $this->setIfExists('role_ids', $data ?? [], null);
         $this->setIfExists('send_welcome_email', $data ?? [], null);
@@ -344,6 +358,60 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets first_name
+     *
+     * @return string|null
+     */
+    public function getFirstName()
+    {
+        return $this->container['first_name'];
+    }
+
+    /**
+     * Sets first_name
+     *
+     * @param string|null $first_name first_name
+     *
+     * @return self
+     */
+    public function setFirstName($first_name)
+    {
+        if (is_null($first_name)) {
+            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
+        }
+        $this->container['first_name'] = $first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_name
+     *
+     * @return string|null
+     */
+    public function getLastName()
+    {
+        return $this->container['last_name'];
+    }
+
+    /**
+     * Sets last_name
+     *
+     * @param string|null $last_name last_name
+     *
+     * @return self
+     */
+    public function setLastName($last_name)
+    {
+        if (is_null($last_name)) {
+            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
+        }
+        $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
 
     /**
      * Gets primary_team_id
