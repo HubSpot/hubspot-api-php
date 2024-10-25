@@ -88,6 +88,19 @@ ListAssociationsApi
 - Added parameters `dataSensitivity`, `unit` and `isEncrypted` to `marketing/events/models/PropertyValue`.
 - Renamed `marketing()->transactional()->publicSmtpTokensApi()` to `marketing()->transactional()->publicSMTPTokensApi()`.
 
+## Events
+
+- Added new method `getTypes` to `events()->eventsApi()`.
+- Changed parameters order from `$object_type = null, $event_type = null, $occurred_after = null, $occurred_before = null, $object_id = null, $index_table_name = null, $index_specific_metadata = null, $after = null, $before = null, $limit = null, $sort = null, $object_property_propname = null, $property_propname = null, $id = null` to `$object_type = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null, $occurred_after = null, $occurred_before = null, $object_id = null, $object_property_propname = null, $property_propname = null, $id = null` in `events()->eventsApi()->getPage()`.
+
+## OAuth, Settings Users and Webhooks
+
+- Moved `auth()->oauth()` to `oauth()`.
+- Added parameter `business_unit_id` to `HubSpot\Client\CommunicationPreferences\Model\SubscriptionDefinition`.
+- Added nullable parameters `first_name` and `last_name` to `HubSpot\Client\Settings\Users\Model\PublicUser`, `HubSpot\Client\Settings\Users\Model\PublicUserUpdate` and `HubSpot\Client\Settings\Users\Model\UserProvisionRequest`.
+- Added parameter `object_type_id` to `HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest` and `HubSpot\Client\Webhooks\Model\SubscriptionResponse`.
+- Removed parameter `period` from `HubSpot\Client\Webhooks\Model\ThrottlingSettings`.
+
 ## [11.3.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/11.3.0) - 2024-08-15
 
 - Added lead's association types to `Enums\AssociationTypes` Enum.
