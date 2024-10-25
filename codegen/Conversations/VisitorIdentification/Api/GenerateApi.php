@@ -392,7 +392,7 @@ class GenerateApi
         }
 
 
-        $resourcePath = '/conversations/v3/visitor-identification/tokens/create';
+        $resourcePath = '/visitor-identification/v3/tokens/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
