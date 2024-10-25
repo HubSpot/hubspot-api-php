@@ -1,11 +1,11 @@
 <?php
 /**
- * ErrorDetail
+ * AccessTokenInfoResponse
  *
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,21 +26,21 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Auth\OAuth\Model;
+namespace HubSpot\Client\Oauth\Model;
 
 use \ArrayAccess;
-use \HubSpot\Client\Auth\OAuth\ObjectSerializer;
+use \HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
- * ErrorDetail Class Doc Comment
+ * AccessTokenInfoResponse Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Auth\OAuth
+ * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
+class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorDetail';
+    protected static $openAPIModelName = 'AccessTokenInfoResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sub_category' => 'string',
-        'code' => 'string',
-        'in' => 'string',
-        'context' => 'array<string,string[]>',
-        'message' => 'string'
+        'hub_id' => 'int',
+        'user_id' => 'int',
+        'scopes' => 'string[]',
+        'token_type' => 'string',
+        'user' => 'string',
+        'hub_domain' => 'string',
+        'app_id' => 'int',
+        'expires_in' => 'int',
+        'token' => 'string'
     ];
 
     /**
@@ -72,11 +76,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sub_category' => null,
-        'code' => null,
-        'in' => null,
-        'context' => null,
-        'message' => null
+        'hub_id' => 'int32',
+        'user_id' => 'int32',
+        'scopes' => null,
+        'token_type' => null,
+        'user' => null,
+        'hub_domain' => null,
+        'app_id' => 'int32',
+        'expires_in' => 'int32',
+        'token' => null
     ];
 
     /**
@@ -85,11 +93,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sub_category' => false,
-        'code' => false,
-        'in' => false,
-        'context' => false,
-        'message' => false
+        'hub_id' => false,
+        'user_id' => false,
+        'scopes' => false,
+        'token_type' => false,
+        'user' => false,
+        'hub_domain' => false,
+        'app_id' => false,
+        'expires_in' => false,
+        'token' => false
     ];
 
     /**
@@ -178,11 +190,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sub_category' => 'subCategory',
-        'code' => 'code',
-        'in' => 'in',
-        'context' => 'context',
-        'message' => 'message'
+        'hub_id' => 'hub_id',
+        'user_id' => 'user_id',
+        'scopes' => 'scopes',
+        'token_type' => 'token_type',
+        'user' => 'user',
+        'hub_domain' => 'hub_domain',
+        'app_id' => 'app_id',
+        'expires_in' => 'expires_in',
+        'token' => 'token'
     ];
 
     /**
@@ -191,11 +207,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sub_category' => 'setSubCategory',
-        'code' => 'setCode',
-        'in' => 'setIn',
-        'context' => 'setContext',
-        'message' => 'setMessage'
+        'hub_id' => 'setHubId',
+        'user_id' => 'setUserId',
+        'scopes' => 'setScopes',
+        'token_type' => 'setTokenType',
+        'user' => 'setUser',
+        'hub_domain' => 'setHubDomain',
+        'app_id' => 'setAppId',
+        'expires_in' => 'setExpiresIn',
+        'token' => 'setToken'
     ];
 
     /**
@@ -204,11 +224,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sub_category' => 'getSubCategory',
-        'code' => 'getCode',
-        'in' => 'getIn',
-        'context' => 'getContext',
-        'message' => 'getMessage'
+        'hub_id' => 'getHubId',
+        'user_id' => 'getUserId',
+        'scopes' => 'getScopes',
+        'token_type' => 'getTokenType',
+        'user' => 'getUser',
+        'hub_domain' => 'getHubDomain',
+        'app_id' => 'getAppId',
+        'expires_in' => 'getExpiresIn',
+        'token' => 'getToken'
     ];
 
     /**
@@ -268,11 +292,15 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sub_category', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('in', $data ?? [], null);
-        $this->setIfExists('context', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('hub_id', $data ?? [], null);
+        $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('scopes', $data ?? [], null);
+        $this->setIfExists('token_type', $data ?? [], null);
+        $this->setIfExists('user', $data ?? [], null);
+        $this->setIfExists('hub_domain', $data ?? [], null);
+        $this->setIfExists('app_id', $data ?? [], null);
+        $this->setIfExists('expires_in', $data ?? [], null);
+        $this->setIfExists('token', $data ?? [], null);
     }
 
     /**
@@ -302,8 +330,26 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['hub_id'] === null) {
+            $invalidProperties[] = "'hub_id' can't be null";
+        }
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['scopes'] === null) {
+            $invalidProperties[] = "'scopes' can't be null";
+        }
+        if ($this->container['token_type'] === null) {
+            $invalidProperties[] = "'token_type' can't be null";
+        }
+        if ($this->container['app_id'] === null) {
+            $invalidProperties[] = "'app_id' can't be null";
+        }
+        if ($this->container['expires_in'] === null) {
+            $invalidProperties[] = "'expires_in' can't be null";
+        }
+        if ($this->container['token'] === null) {
+            $invalidProperties[] = "'token' can't be null";
         }
         return $invalidProperties;
     }
@@ -321,136 +367,244 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sub_category
+     * Gets hub_id
      *
-     * @return string|null
+     * @return int
      */
-    public function getSubCategory()
+    public function getHubId()
     {
-        return $this->container['sub_category'];
+        return $this->container['hub_id'];
     }
 
     /**
-     * Sets sub_category
+     * Sets hub_id
      *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     * @param int $hub_id 
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setHubId($hub_id)
     {
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
+        if (is_null($hub_id)) {
+            throw new \InvalidArgumentException('non-nullable hub_id cannot be null');
         }
-        $this->container['sub_category'] = $sub_category;
+        $this->container['hub_id'] = $hub_id;
 
         return $this;
     }
 
     /**
-     * Gets code
+     * Gets user_id
      *
-     * @return string|null
+     * @return int
      */
-    public function getCode()
+    public function getUserId()
     {
-        return $this->container['code'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets code
+     * Sets user_id
      *
-     * @param string|null $code The status code associated with the error detail
+     * @param int $user_id 
      *
      * @return self
      */
-    public function setCode($code)
+    public function setUserId($user_id)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($user_id)) {
+            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }
 
     /**
-     * Gets in
+     * Gets scopes
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getIn()
+    public function getScopes()
     {
-        return $this->container['in'];
+        return $this->container['scopes'];
     }
 
     /**
-     * Sets in
+     * Sets scopes
      *
-     * @param string|null $in The name of the field or parameter in which the error was found.
+     * @param string[] $scopes 
      *
      * @return self
      */
-    public function setIn($in)
+    public function setScopes($scopes)
     {
-        if (is_null($in)) {
-            throw new \InvalidArgumentException('non-nullable in cannot be null');
+        if (is_null($scopes)) {
+            throw new \InvalidArgumentException('non-nullable scopes cannot be null');
         }
-        $this->container['in'] = $in;
+        $this->container['scopes'] = $scopes;
 
         return $this;
     }
 
     /**
-     * Gets context
-     *
-     * @return array<string,string[]>|null
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param array<string,string[]>|null $context Context about the error condition
-     *
-     * @return self
-     */
-    public function setContext($context)
-    {
-        if (is_null($context)) {
-            throw new \InvalidArgumentException('non-nullable context cannot be null');
-        }
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
+     * Gets token_type
      *
      * @return string
      */
-    public function getMessage()
+    public function getTokenType()
     {
-        return $this->container['message'];
+        return $this->container['token_type'];
     }
 
     /**
-     * Sets message
+     * Sets token_type
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param string $token_type 
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setTokenType($token_type)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($token_type)) {
+            throw new \InvalidArgumentException('non-nullable token_type cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['token_type'] = $token_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets user
+     *
+     * @return string|null
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     *
+     * @param string|null $user 
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        if (is_null($user)) {
+            throw new \InvalidArgumentException('non-nullable user cannot be null');
+        }
+        $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets hub_domain
+     *
+     * @return string|null
+     */
+    public function getHubDomain()
+    {
+        return $this->container['hub_domain'];
+    }
+
+    /**
+     * Sets hub_domain
+     *
+     * @param string|null $hub_domain 
+     *
+     * @return self
+     */
+    public function setHubDomain($hub_domain)
+    {
+        if (is_null($hub_domain)) {
+            throw new \InvalidArgumentException('non-nullable hub_domain cannot be null');
+        }
+        $this->container['hub_domain'] = $hub_domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_id
+     *
+     * @return int
+     */
+    public function getAppId()
+    {
+        return $this->container['app_id'];
+    }
+
+    /**
+     * Sets app_id
+     *
+     * @param int $app_id 
+     *
+     * @return self
+     */
+    public function setAppId($app_id)
+    {
+        if (is_null($app_id)) {
+            throw new \InvalidArgumentException('non-nullable app_id cannot be null');
+        }
+        $this->container['app_id'] = $app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_in
+     *
+     * @return int
+     */
+    public function getExpiresIn()
+    {
+        return $this->container['expires_in'];
+    }
+
+    /**
+     * Sets expires_in
+     *
+     * @param int $expires_in 
+     *
+     * @return self
+     */
+    public function setExpiresIn($expires_in)
+    {
+        if (is_null($expires_in)) {
+            throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
+        }
+        $this->container['expires_in'] = $expires_in;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string $token 
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        if (is_null($token)) {
+            throw new \InvalidArgumentException('non-nullable token cannot be null');
+        }
+        $this->container['token'] = $token;
 
         return $this;
     }

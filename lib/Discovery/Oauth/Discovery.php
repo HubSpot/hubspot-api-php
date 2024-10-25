@@ -1,10 +1,10 @@
 <?php
 
-namespace HubSpot\Discovery\Auth\OAuth;
+namespace HubSpot\Discovery\Oauth;
 
-use HubSpot\Client\Auth\OAuth\Api\AccessTokensApi;
-use HubSpot\Client\Auth\OAuth\Api\RefreshTokensApi;
-use HubSpot\Client\Auth\OAuth\Api\TokensApi;
+use HubSpot\Client\Oauth\Api\AccessTokensApi;
+use HubSpot\Client\Oauth\Api\RefreshTokensApi;
+use HubSpot\Client\Oauth\Api\TokensApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
