@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use HubSpot\Client\Cms\SourceCode\Api\ContentApi;
 use HubSpot\Client\Cms\SourceCode\Api\ExtractApi;
 use HubSpot\Client\Cms\SourceCode\Api\MetadataApi;
-use HubSpot\Client\Cms\SourceCode\Api\SourceCodeExtractApi;
 use HubSpot\Client\Cms\SourceCode\Api\ValidationApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Cms\SourceCode\Discovery;
@@ -29,7 +28,6 @@ class DiscoverySpec extends ObjectBehavior
         $this->contentApi()->shouldHaveType(ContentApi::class);
         $this->extractApi()->shouldHaveType(ExtractApi::class);
         $this->metadataApi()->shouldHaveType(MetadataApi::class);
-        $this->sourceCodeExtractApi()->shouldHaveType(SourceCodeExtractApi::class);
         $this->validationApi()->shouldHaveType(ValidationApi::class);
     }
 }
