@@ -58,6 +58,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
+        'object_type_id' => 'string',
         'property_name' => 'string',
         'active' => 'bool',
         'event_type' => 'string'
@@ -71,6 +72,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'object_type_id' => null,
         'property_name' => null,
         'active' => null,
         'event_type' => null
@@ -82,6 +84,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'object_type_id' => false,
         'property_name' => false,
         'active' => false,
         'event_type' => false
@@ -173,6 +176,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'object_type_id' => 'objectTypeId',
         'property_name' => 'propertyName',
         'active' => 'active',
         'event_type' => 'eventType'
@@ -184,6 +188,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'object_type_id' => 'setObjectTypeId',
         'property_name' => 'setPropertyName',
         'active' => 'setActive',
         'event_type' => 'setEventType'
@@ -195,6 +200,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'object_type_id' => 'getObjectTypeId',
         'property_name' => 'getPropertyName',
         'active' => 'getActive',
         'event_type' => 'getEventType'
@@ -282,6 +288,12 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const EVENT_TYPE_DEAL_ASSOCIATION_CHANGE = 'deal.associationChange';
     public const EVENT_TYPE_TICKET_ASSOCIATION_CHANGE = 'ticket.associationChange';
     public const EVENT_TYPE_LINE_ITEM_ASSOCIATION_CHANGE = 'line_item.associationChange';
+    public const EVENT_TYPE_OBJECT_PROPERTY_CHANGE = 'object.propertyChange';
+    public const EVENT_TYPE_OBJECT_CREATION = 'object.creation';
+    public const EVENT_TYPE_OBJECT_DELETION = 'object.deletion';
+    public const EVENT_TYPE_OBJECT_MERGE = 'object.merge';
+    public const EVENT_TYPE_OBJECT_RESTORE = 'object.restore';
+    public const EVENT_TYPE_OBJECT_ASSOCIATION_CHANGE = 'object.associationChange';
 
     /**
      * Gets allowable values of the enum
@@ -332,6 +344,12 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
             self::EVENT_TYPE_DEAL_ASSOCIATION_CHANGE,
             self::EVENT_TYPE_TICKET_ASSOCIATION_CHANGE,
             self::EVENT_TYPE_LINE_ITEM_ASSOCIATION_CHANGE,
+            self::EVENT_TYPE_OBJECT_PROPERTY_CHANGE,
+            self::EVENT_TYPE_OBJECT_CREATION,
+            self::EVENT_TYPE_OBJECT_DELETION,
+            self::EVENT_TYPE_OBJECT_MERGE,
+            self::EVENT_TYPE_OBJECT_RESTORE,
+            self::EVENT_TYPE_OBJECT_ASSOCIATION_CHANGE,
         ];
     }
 
@@ -350,6 +368,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('property_name', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('event_type', $data ?? [], null);
@@ -408,6 +427,33 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets object_type_id
+     *
+     * @return string|null
+     */
+    public function getObjectTypeId()
+    {
+        return $this->container['object_type_id'];
+    }
+
+    /**
+     * Sets object_type_id
+     *
+     * @param string|null $object_type_id object_type_id
+     *
+     * @return self
+     */
+    public function setObjectTypeId($object_type_id)
+    {
+        if (is_null($object_type_id)) {
+            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        }
+        $this->container['object_type_id'] = $object_type_id;
+
+        return $this;
+    }
 
     /**
      * Gets property_name

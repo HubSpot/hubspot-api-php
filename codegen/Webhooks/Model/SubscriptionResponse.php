@@ -59,6 +59,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'created_at' => '\DateTime',
+        'object_type_id' => 'string',
         'property_name' => 'string',
         'active' => 'bool',
         'event_type' => 'string',
@@ -75,6 +76,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'created_at' => 'date-time',
+        'object_type_id' => null,
         'property_name' => null,
         'active' => null,
         'event_type' => null,
@@ -89,6 +91,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'created_at' => false,
+        'object_type_id' => false,
         'property_name' => false,
         'active' => false,
         'event_type' => false,
@@ -183,6 +186,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'created_at' => 'createdAt',
+        'object_type_id' => 'objectTypeId',
         'property_name' => 'propertyName',
         'active' => 'active',
         'event_type' => 'eventType',
@@ -197,6 +201,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'created_at' => 'setCreatedAt',
+        'object_type_id' => 'setObjectTypeId',
         'property_name' => 'setPropertyName',
         'active' => 'setActive',
         'event_type' => 'setEventType',
@@ -211,6 +216,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'created_at' => 'getCreatedAt',
+        'object_type_id' => 'getObjectTypeId',
         'property_name' => 'getPropertyName',
         'active' => 'getActive',
         'event_type' => 'getEventType',
@@ -300,6 +306,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public const EVENT_TYPE_DEAL_ASSOCIATION_CHANGE = 'deal.associationChange';
     public const EVENT_TYPE_TICKET_ASSOCIATION_CHANGE = 'ticket.associationChange';
     public const EVENT_TYPE_LINE_ITEM_ASSOCIATION_CHANGE = 'line_item.associationChange';
+    public const EVENT_TYPE_OBJECT_PROPERTY_CHANGE = 'object.propertyChange';
+    public const EVENT_TYPE_OBJECT_CREATION = 'object.creation';
+    public const EVENT_TYPE_OBJECT_DELETION = 'object.deletion';
+    public const EVENT_TYPE_OBJECT_MERGE = 'object.merge';
+    public const EVENT_TYPE_OBJECT_RESTORE = 'object.restore';
+    public const EVENT_TYPE_OBJECT_ASSOCIATION_CHANGE = 'object.associationChange';
 
     /**
      * Gets allowable values of the enum
@@ -350,6 +362,12 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             self::EVENT_TYPE_DEAL_ASSOCIATION_CHANGE,
             self::EVENT_TYPE_TICKET_ASSOCIATION_CHANGE,
             self::EVENT_TYPE_LINE_ITEM_ASSOCIATION_CHANGE,
+            self::EVENT_TYPE_OBJECT_PROPERTY_CHANGE,
+            self::EVENT_TYPE_OBJECT_CREATION,
+            self::EVENT_TYPE_OBJECT_DELETION,
+            self::EVENT_TYPE_OBJECT_MERGE,
+            self::EVENT_TYPE_OBJECT_RESTORE,
+            self::EVENT_TYPE_OBJECT_ASSOCIATION_CHANGE,
         ];
     }
 
@@ -369,6 +387,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('property_name', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('event_type', $data ?? [], null);
@@ -462,6 +481,33 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type_id
+     *
+     * @return string|null
+     */
+    public function getObjectTypeId()
+    {
+        return $this->container['object_type_id'];
+    }
+
+    /**
+     * Sets object_type_id
+     *
+     * @param string|null $object_type_id object_type_id
+     *
+     * @return self
+     */
+    public function setObjectTypeId($object_type_id)
+    {
+        if (is_null($object_type_id)) {
+            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        }
+        $this->container['object_type_id'] = $object_type_id;
 
         return $this;
     }
