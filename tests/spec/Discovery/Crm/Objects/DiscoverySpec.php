@@ -5,8 +5,6 @@ namespace spec\HubSpot\Discovery\Crm\Objects;
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Objects\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Api\BatchApi;
-use HubSpot\Client\Crm\Objects\Api\GDPRApi;
-use HubSpot\Client\Crm\Objects\Api\PublicObjectApi;
 use HubSpot\Client\Crm\Objects\Api\SearchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Objects\Calls\Discovery as CallsDiscovery;
@@ -41,7 +39,6 @@ class DiscoverySpec extends ObjectBehavior
         $this->batchApi()->shouldHaveType(BatchApi::class);
         $this->calls()->shouldHaveType(CallsDiscovery::class);
         $this->communications()->shouldHaveType(CommunicationsDiscovery::class);
-        $this->gdprApi()->shouldHaveType(GDPRApi::class);
         $this->emails()->shouldHaveType(EmailsDiscovery::class);
         $this->feedbackSubmissions()->shouldHaveType(FeedbackSubmissionsDiscovery::class);
         $this->goals()->shouldHaveType(GoalsDiscovery::class);
@@ -49,7 +46,6 @@ class DiscoverySpec extends ObjectBehavior
         $this->meetings()->shouldHaveType(MeetingsDiscovery::class);
         $this->notes()->shouldHaveType(NotesDiscovery::class);
         $this->postalMail()->shouldHaveType(PostalMailDiscovery::class);
-        $this->publicObjectApi()->shouldHaveType(PublicObjectApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
         $this->tasks()->shouldHaveType(TasksDiscovery::class);
         $this->taxes()->shouldHaveType(TaxesDiscovery::class);

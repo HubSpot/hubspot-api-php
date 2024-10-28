@@ -359,7 +359,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     /**
      * Sets id_property
      *
-     * @param string|null $id_property id_property
+     * @param string|null $id_property The name of a property whose values are unique for this object.
      *
      * @return self
      */

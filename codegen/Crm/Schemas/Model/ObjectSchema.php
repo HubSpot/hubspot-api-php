@@ -60,8 +60,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'associations' => '\HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[]',
         'secondary_display_properties' => 'string[]',
+        'created_by_user_id' => 'int',
         'object_type_id' => 'string',
         'description' => 'string',
+        'updated_by_user_id' => 'int',
         'fully_qualified_name' => 'string',
         'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
         'archived' => 'bool',
@@ -85,8 +87,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'associations' => null,
         'secondary_display_properties' => null,
+        'created_by_user_id' => 'int32',
         'object_type_id' => null,
         'description' => null,
+        'updated_by_user_id' => 'int32',
         'fully_qualified_name' => null,
         'labels' => null,
         'archived' => null,
@@ -108,8 +112,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'associations' => false,
         'secondary_display_properties' => false,
+        'created_by_user_id' => false,
         'object_type_id' => false,
         'description' => false,
+        'updated_by_user_id' => false,
         'fully_qualified_name' => false,
         'labels' => false,
         'archived' => false,
@@ -211,8 +217,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'associations' => 'associations',
         'secondary_display_properties' => 'secondaryDisplayProperties',
+        'created_by_user_id' => 'createdByUserId',
         'object_type_id' => 'objectTypeId',
         'description' => 'description',
+        'updated_by_user_id' => 'updatedByUserId',
         'fully_qualified_name' => 'fullyQualifiedName',
         'labels' => 'labels',
         'archived' => 'archived',
@@ -234,8 +242,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'associations' => 'setAssociations',
         'secondary_display_properties' => 'setSecondaryDisplayProperties',
+        'created_by_user_id' => 'setCreatedByUserId',
         'object_type_id' => 'setObjectTypeId',
         'description' => 'setDescription',
+        'updated_by_user_id' => 'setUpdatedByUserId',
         'fully_qualified_name' => 'setFullyQualifiedName',
         'labels' => 'setLabels',
         'archived' => 'setArchived',
@@ -257,8 +267,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'associations' => 'getAssociations',
         'secondary_display_properties' => 'getSecondaryDisplayProperties',
+        'created_by_user_id' => 'getCreatedByUserId',
         'object_type_id' => 'getObjectTypeId',
         'description' => 'getDescription',
+        'updated_by_user_id' => 'getUpdatedByUserId',
         'fully_qualified_name' => 'getFullyQualifiedName',
         'labels' => 'getLabels',
         'archived' => 'getArchived',
@@ -331,8 +343,10 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('associations', $data ?? [], null);
         $this->setIfExists('secondary_display_properties', $data ?? [], null);
+        $this->setIfExists('created_by_user_id', $data ?? [], null);
         $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('updated_by_user_id', $data ?? [], null);
         $this->setIfExists('fully_qualified_name', $data ?? [], null);
         $this->setIfExists('labels', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
@@ -461,6 +475,33 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets created_by_user_id
+     *
+     * @return int|null
+     */
+    public function getCreatedByUserId()
+    {
+        return $this->container['created_by_user_id'];
+    }
+
+    /**
+     * Sets created_by_user_id
+     *
+     * @param int|null $created_by_user_id created_by_user_id
+     *
+     * @return self
+     */
+    public function setCreatedByUserId($created_by_user_id)
+    {
+        if (is_null($created_by_user_id)) {
+            throw new \InvalidArgumentException('non-nullable created_by_user_id cannot be null');
+        }
+        $this->container['created_by_user_id'] = $created_by_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets object_type_id
      *
      * @return string|null
@@ -510,6 +551,33 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_by_user_id
+     *
+     * @return int|null
+     */
+    public function getUpdatedByUserId()
+    {
+        return $this->container['updated_by_user_id'];
+    }
+
+    /**
+     * Sets updated_by_user_id
+     *
+     * @param int|null $updated_by_user_id updated_by_user_id
+     *
+     * @return self
+     */
+    public function setUpdatedByUserId($updated_by_user_id)
+    {
+        if (is_null($updated_by_user_id)) {
+            throw new \InvalidArgumentException('non-nullable updated_by_user_id cannot be null');
+        }
+        $this->container['updated_by_user_id'] = $updated_by_user_id;
 
         return $this;
     }

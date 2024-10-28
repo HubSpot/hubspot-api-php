@@ -59,6 +59,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'object_type_id' => 'string',
         'processing_type' => 'string',
+        'custom_properties' => 'array<string,string>',
         'list_folder_id' => 'int',
         'name' => 'string',
         'filter_branch' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner'
@@ -74,6 +75,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPIFormats = [
         'object_type_id' => null,
         'processing_type' => null,
+        'custom_properties' => null,
         'list_folder_id' => 'int32',
         'name' => null,
         'filter_branch' => null
@@ -87,6 +89,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'object_type_id' => false,
         'processing_type' => false,
+        'custom_properties' => false,
         'list_folder_id' => false,
         'name' => false,
         'filter_branch' => false
@@ -180,6 +183,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $attributeMap = [
         'object_type_id' => 'objectTypeId',
         'processing_type' => 'processingType',
+        'custom_properties' => 'customProperties',
         'list_folder_id' => 'listFolderId',
         'name' => 'name',
         'filter_branch' => 'filterBranch'
@@ -193,6 +197,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $setters = [
         'object_type_id' => 'setObjectTypeId',
         'processing_type' => 'setProcessingType',
+        'custom_properties' => 'setCustomProperties',
         'list_folder_id' => 'setListFolderId',
         'name' => 'setName',
         'filter_branch' => 'setFilterBranch'
@@ -206,6 +211,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $getters = [
         'object_type_id' => 'getObjectTypeId',
         'processing_type' => 'getProcessingType',
+        'custom_properties' => 'getCustomProperties',
         'list_folder_id' => 'getListFolderId',
         'name' => 'getName',
         'filter_branch' => 'getFilterBranch'
@@ -270,6 +276,7 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('processing_type', $data ?? [], null);
+        $this->setIfExists('custom_properties', $data ?? [], null);
         $this->setIfExists('list_folder_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('filter_branch', $data ?? [], null);
@@ -376,6 +383,33 @@ class ListCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable processing_type cannot be null');
         }
         $this->container['processing_type'] = $processing_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_properties
+     *
+     * @return array<string,string>|null
+     */
+    public function getCustomProperties()
+    {
+        return $this->container['custom_properties'];
+    }
+
+    /**
+     * Sets custom_properties
+     *
+     * @param array<string,string>|null $custom_properties The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
+     *
+     * @return self
+     */
+    public function setCustomProperties($custom_properties)
+    {
+        if (is_null($custom_properties)) {
+            throw new \InvalidArgumentException('non-nullable custom_properties cannot be null');
+        }
+        $this->container['custom_properties'] = $custom_properties;
 
         return $this;
     }

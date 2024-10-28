@@ -11,7 +11,7 @@
  */
 
 /**
- * Settings User Provisioning
+ * User Provisioning
  *
  * Add, manage, and remove users from your account
  *

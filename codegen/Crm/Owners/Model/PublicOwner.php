@@ -11,7 +11,7 @@
  */
 
 /**
- * Crm Owners
+ * CRM Crm Owners
  *
  * HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.
  *
@@ -63,6 +63,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => 'bool',
         'teams' => '\HubSpot\Client\Crm\Owners\Model\PublicTeam[]',
         'id' => 'string',
+        'user_id_including_inactive' => 'int',
+        'type' => 'string',
         'user_id' => 'int',
         'email' => 'string',
         'updated_at' => '\DateTime'
@@ -82,6 +84,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => null,
         'teams' => null,
         'id' => null,
+        'user_id_including_inactive' => 'int32',
+        'type' => null,
         'user_id' => 'int32',
         'email' => null,
         'updated_at' => 'date-time'
@@ -99,6 +103,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => false,
         'teams' => false,
         'id' => false,
+        'user_id_including_inactive' => false,
+        'type' => false,
         'user_id' => false,
         'email' => false,
         'updated_at' => false
@@ -196,6 +202,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => 'archived',
         'teams' => 'teams',
         'id' => 'id',
+        'user_id_including_inactive' => 'userIdIncludingInactive',
+        'type' => 'type',
         'user_id' => 'userId',
         'email' => 'email',
         'updated_at' => 'updatedAt'
@@ -213,6 +221,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => 'setArchived',
         'teams' => 'setTeams',
         'id' => 'setId',
+        'user_id_including_inactive' => 'setUserIdIncludingInactive',
+        'type' => 'setType',
         'user_id' => 'setUserId',
         'email' => 'setEmail',
         'updated_at' => 'setUpdatedAt'
@@ -230,6 +240,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         'archived' => 'getArchived',
         'teams' => 'getTeams',
         'id' => 'getId',
+        'user_id_including_inactive' => 'getUserIdIncludingInactive',
+        'type' => 'getType',
         'user_id' => 'getUserId',
         'email' => 'getEmail',
         'updated_at' => 'getUpdatedAt'
@@ -276,6 +288,21 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_PERSON = 'PERSON';
+    public const TYPE_QUEUE = 'QUEUE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_PERSON,
+            self::TYPE_QUEUE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -298,6 +325,8 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('archived', $data ?? [], null);
         $this->setIfExists('teams', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('user_id_including_inactive', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -339,6 +368,18 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
@@ -515,6 +556,70 @@ class PublicOwner implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id_including_inactive
+     *
+     * @return int|null
+     */
+    public function getUserIdIncludingInactive()
+    {
+        return $this->container['user_id_including_inactive'];
+    }
+
+    /**
+     * Sets user_id_including_inactive
+     *
+     * @param int|null $user_id_including_inactive user_id_including_inactive
+     *
+     * @return self
+     */
+    public function setUserIdIncludingInactive($user_id_including_inactive)
+    {
+        if (is_null($user_id_including_inactive)) {
+            throw new \InvalidArgumentException('non-nullable user_id_including_inactive cannot be null');
+        }
+        $this->container['user_id_including_inactive'] = $user_id_including_inactive;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

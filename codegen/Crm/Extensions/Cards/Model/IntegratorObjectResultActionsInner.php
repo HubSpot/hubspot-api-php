@@ -57,12 +57,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
+        'property_names_included' => 'string[]',
         'confirmation' => '\HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody',
+        'label' => 'string',
+        'type' => 'string',
         'http_method' => 'string',
         'url' => 'string',
-        'label' => 'string',
-        'property_names_included' => 'string[]',
         'width' => 'int',
         'height' => 'int'
     ];
@@ -75,12 +75,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
+        'property_names_included' => null,
         'confirmation' => null,
+        'label' => null,
+        'type' => null,
         'http_method' => null,
         'url' => null,
-        'label' => null,
-        'property_names_included' => null,
         'width' => 'int32',
         'height' => 'int32'
     ];
@@ -91,12 +91,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
+        'property_names_included' => false,
         'confirmation' => false,
+        'label' => false,
+        'type' => false,
         'http_method' => false,
         'url' => false,
-        'label' => false,
-        'property_names_included' => false,
         'width' => false,
         'height' => false
     ];
@@ -187,12 +187,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
+        'property_names_included' => 'propertyNamesIncluded',
         'confirmation' => 'confirmation',
+        'label' => 'label',
+        'type' => 'type',
         'http_method' => 'httpMethod',
         'url' => 'url',
-        'label' => 'label',
-        'property_names_included' => 'propertyNamesIncluded',
         'width' => 'width',
         'height' => 'height'
     ];
@@ -203,12 +203,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
+        'property_names_included' => 'setPropertyNamesIncluded',
         'confirmation' => 'setConfirmation',
+        'label' => 'setLabel',
+        'type' => 'setType',
         'http_method' => 'setHttpMethod',
         'url' => 'setUrl',
-        'label' => 'setLabel',
-        'property_names_included' => 'setPropertyNamesIncluded',
         'width' => 'setWidth',
         'height' => 'setHeight'
     ];
@@ -219,12 +219,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
+        'property_names_included' => 'getPropertyNamesIncluded',
         'confirmation' => 'getConfirmation',
+        'label' => 'getLabel',
+        'type' => 'getType',
         'http_method' => 'getHttpMethod',
         'url' => 'getUrl',
-        'label' => 'getLabel',
-        'property_names_included' => 'getPropertyNamesIncluded',
         'width' => 'getWidth',
         'height' => 'getHeight'
     ];
@@ -330,12 +330,12 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'ACTION_HOOK');
+        $this->setIfExists('property_names_included', $data ?? [], null);
         $this->setIfExists('confirmation', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], 'ACTION_HOOK');
         $this->setIfExists('http_method', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('property_names_included', $data ?? [], null);
         $this->setIfExists('width', $data ?? [], null);
         $this->setIfExists('height', $data ?? [], null);
     }
@@ -367,6 +367,9 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['property_names_included'] === null) {
+            $invalidProperties[] = "'property_names_included' can't be null";
+        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -394,9 +397,6 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['property_names_included'] === null) {
-            $invalidProperties[] = "'property_names_included' can't be null";
-        }
         if ($this->container['width'] === null) {
             $invalidProperties[] = "'width' can't be null";
         }
@@ -417,6 +417,87 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets property_names_included
+     *
+     * @return string[]
+     */
+    public function getPropertyNamesIncluded()
+    {
+        return $this->container['property_names_included'];
+    }
+
+    /**
+     * Sets property_names_included
+     *
+     * @param string[] $property_names_included property_names_included
+     *
+     * @return self
+     */
+    public function setPropertyNamesIncluded($property_names_included)
+    {
+        if (is_null($property_names_included)) {
+            throw new \InvalidArgumentException('non-nullable property_names_included cannot be null');
+        }
+        $this->container['property_names_included'] = $property_names_included;
+
+        return $this;
+    }
+
+    /**
+     * Gets confirmation
+     *
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null
+     */
+    public function getConfirmation()
+    {
+        return $this->container['confirmation'];
+    }
+
+    /**
+     * Sets confirmation
+     *
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null $confirmation confirmation
+     *
+     * @return self
+     */
+    public function setConfirmation($confirmation)
+    {
+        if (is_null($confirmation)) {
+            throw new \InvalidArgumentException('non-nullable confirmation cannot be null');
+        }
+        $this->container['confirmation'] = $confirmation;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        }
+        $this->container['label'] = $label;
+
+        return $this;
+    }
 
     /**
      * Gets type
@@ -451,33 +532,6 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets confirmation
-     *
-     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null
-     */
-    public function getConfirmation()
-    {
-        return $this->container['confirmation'];
-    }
-
-    /**
-     * Sets confirmation
-     *
-     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null $confirmation confirmation
-     *
-     * @return self
-     */
-    public function setConfirmation($confirmation)
-    {
-        if (is_null($confirmation)) {
-            throw new \InvalidArgumentException('non-nullable confirmation cannot be null');
-        }
-        $this->container['confirmation'] = $confirmation;
 
         return $this;
     }
@@ -542,60 +596,6 @@ class IntegratorObjectResultActionsInner implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
-        }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets property_names_included
-     *
-     * @return string[]
-     */
-    public function getPropertyNamesIncluded()
-    {
-        return $this->container['property_names_included'];
-    }
-
-    /**
-     * Sets property_names_included
-     *
-     * @param string[] $property_names_included property_names_included
-     *
-     * @return self
-     */
-    public function setPropertyNamesIncluded($property_names_included)
-    {
-        if (is_null($property_names_included)) {
-            throw new \InvalidArgumentException('non-nullable property_names_included cannot be null');
-        }
-        $this->container['property_names_included'] = $property_names_included;
 
         return $this;
     }

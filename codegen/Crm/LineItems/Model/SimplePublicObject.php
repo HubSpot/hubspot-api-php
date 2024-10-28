@@ -322,6 +322,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
+        }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
@@ -478,7 +481,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets properties
      *
-     * @return array<string,string>|null
+     * @return array<string,string>
      */
     public function getProperties()
     {
@@ -488,7 +491,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets properties
      *
-     * @param array<string,string>|null $properties properties
+     * @param array<string,string> $properties properties
      *
      * @return self
      */

@@ -109,8 +109,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'rss_summary' => 'string',
         'page_expiry_enabled' => 'bool',
         'url' => 'string',
-        'public_access_rules' => 'object[]',
         'enable_google_amp_output_override' => 'bool',
+        'public_access_rules' => 'object[]',
         'archived_at' => 'int',
         'post_body' => 'string',
         'theme_settings_values' => 'array<string,object>',
@@ -180,8 +180,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'rss_summary' => null,
         'page_expiry_enabled' => null,
         'url' => null,
-        'public_access_rules' => null,
         'enable_google_amp_output_override' => null,
+        'public_access_rules' => null,
         'archived_at' => 'int64',
         'post_body' => null,
         'theme_settings_values' => null,
@@ -249,8 +249,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'rss_summary' => false,
         'page_expiry_enabled' => false,
         'url' => false,
-        'public_access_rules' => false,
         'enable_google_amp_output_override' => false,
+        'public_access_rules' => false,
         'archived_at' => false,
         'post_body' => false,
         'theme_settings_values' => false,
@@ -398,8 +398,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'rss_summary' => 'rssSummary',
         'page_expiry_enabled' => 'pageExpiryEnabled',
         'url' => 'url',
-        'public_access_rules' => 'publicAccessRules',
         'enable_google_amp_output_override' => 'enableGoogleAmpOutputOverride',
+        'public_access_rules' => 'publicAccessRules',
         'archived_at' => 'archivedAt',
         'post_body' => 'postBody',
         'theme_settings_values' => 'themeSettingsValues',
@@ -467,8 +467,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'rss_summary' => 'setRssSummary',
         'page_expiry_enabled' => 'setPageExpiryEnabled',
         'url' => 'setUrl',
-        'public_access_rules' => 'setPublicAccessRules',
         'enable_google_amp_output_override' => 'setEnableGoogleAmpOutputOverride',
+        'public_access_rules' => 'setPublicAccessRules',
         'archived_at' => 'setArchivedAt',
         'post_body' => 'setPostBody',
         'theme_settings_values' => 'setThemeSettingsValues',
@@ -536,8 +536,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'rss_summary' => 'getRssSummary',
         'page_expiry_enabled' => 'getPageExpiryEnabled',
         'url' => 'getUrl',
-        'public_access_rules' => 'getPublicAccessRules',
         'enable_google_amp_output_override' => 'getEnableGoogleAmpOutputOverride',
+        'public_access_rules' => 'getPublicAccessRules',
         'archived_at' => 'getArchivedAt',
         'post_body' => 'getPostBody',
         'theme_settings_values' => 'getThemeSettingsValues',
@@ -746,7 +746,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_DG = 'en-dg';
     public const LANGUAGE_EN_DK = 'en-dk';
     public const LANGUAGE_EN_DM = 'en-dm';
+    public const LANGUAGE_EN_EE = 'en-ee';
     public const LANGUAGE_EN_ER = 'en-er';
+    public const LANGUAGE_EN_FR = 'en-fr';
     public const LANGUAGE_EN_FI = 'en-fi';
     public const LANGUAGE_EN_FJ = 'en-fj';
     public const LANGUAGE_EN_FK = 'en-fk';
@@ -1356,6 +1358,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CONTENT_TYPE_CATEGORY__10 = '10';
     public const CONTENT_TYPE_CATEGORY__11 = '11';
     public const CONTENT_TYPE_CATEGORY__12 = '12';
+    public const CONTENT_TYPE_CATEGORY__13 = '13';
+    public const CONTENT_TYPE_CATEGORY__14 = '14';
+    public const CONTENT_TYPE_CATEGORY__15 = '15';
     public const AB_STATUS_MASTER = 'master';
     public const AB_STATUS_VARIANT = 'variant';
     public const AB_STATUS_LOSER_VARIANT = 'loser_variant';
@@ -1561,7 +1566,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_DG,
             self::LANGUAGE_EN_DK,
             self::LANGUAGE_EN_DM,
+            self::LANGUAGE_EN_EE,
             self::LANGUAGE_EN_ER,
+            self::LANGUAGE_EN_FR,
             self::LANGUAGE_EN_FI,
             self::LANGUAGE_EN_FJ,
             self::LANGUAGE_EN_FK,
@@ -2182,6 +2189,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CONTENT_TYPE_CATEGORY__10,
             self::CONTENT_TYPE_CATEGORY__11,
             self::CONTENT_TYPE_CATEGORY__12,
+            self::CONTENT_TYPE_CATEGORY__13,
+            self::CONTENT_TYPE_CATEGORY__14,
+            self::CONTENT_TYPE_CATEGORY__15,
         ];
     }
 
@@ -2312,8 +2322,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('rss_summary', $data ?? [], null);
         $this->setIfExists('page_expiry_enabled', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('public_access_rules', $data ?? [], null);
         $this->setIfExists('enable_google_amp_output_override', $data ?? [], null);
+        $this->setIfExists('public_access_rules', $data ?? [], null);
         $this->setIfExists('archived_at', $data ?? [], null);
         $this->setIfExists('post_body', $data ?? [], null);
         $this->setIfExists('theme_settings_values', $data ?? [], null);
@@ -2535,11 +2545,11 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['public_access_rules'] === null) {
-            $invalidProperties[] = "'public_access_rules' can't be null";
-        }
         if ($this->container['enable_google_amp_output_override'] === null) {
             $invalidProperties[] = "'enable_google_amp_output_override' can't be null";
+        }
+        if ($this->container['public_access_rules'] === null) {
+            $invalidProperties[] = "'public_access_rules' can't be null";
         }
         if ($this->container['archived_at'] === null) {
             $invalidProperties[] = "'archived_at' can't be null";
@@ -4001,33 +4011,6 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets public_access_rules
-     *
-     * @return object[]
-     */
-    public function getPublicAccessRules()
-    {
-        return $this->container['public_access_rules'];
-    }
-
-    /**
-     * Sets public_access_rules
-     *
-     * @param object[] $public_access_rules Rules for require member registration to access private content.
-     *
-     * @return self
-     */
-    public function setPublicAccessRules($public_access_rules)
-    {
-        if (is_null($public_access_rules)) {
-            throw new \InvalidArgumentException('non-nullable public_access_rules cannot be null');
-        }
-        $this->container['public_access_rules'] = $public_access_rules;
-
-        return $this;
-    }
-
-    /**
      * Gets enable_google_amp_output_override
      *
      * @return bool
@@ -4050,6 +4033,33 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable enable_google_amp_output_override cannot be null');
         }
         $this->container['enable_google_amp_output_override'] = $enable_google_amp_output_override;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_access_rules
+     *
+     * @return object[]
+     */
+    public function getPublicAccessRules()
+    {
+        return $this->container['public_access_rules'];
+    }
+
+    /**
+     * Sets public_access_rules
+     *
+     * @param object[] $public_access_rules Rules for require member registration to access private content.
+     *
+     * @return self
+     */
+    public function setPublicAccessRules($public_access_rules)
+    {
+        if (is_null($public_access_rules)) {
+            throw new \InvalidArgumentException('non-nullable public_access_rules cannot be null');
+        }
+        $this->container['public_access_rules'] = $public_access_rules;
 
         return $this;
     }
@@ -4239,7 +4249,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category_id
      *
-     * @param int $category_id ID of the type of object this is. Should always .
+     * @param int $category_id ID of the type of object this is.
      *
      * @return self
      */

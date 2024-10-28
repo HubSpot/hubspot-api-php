@@ -59,7 +59,7 @@ class PublicEmailEventFilter implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'click_url' => 'string',
         'level' => 'string',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'app_id' => 'string',
         'email_id' => 'string',
         'filter_type' => 'string',
@@ -471,7 +471,7 @@ class PublicEmailEventFilter implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -481,7 +481,7 @@ class PublicEmailEventFilter implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

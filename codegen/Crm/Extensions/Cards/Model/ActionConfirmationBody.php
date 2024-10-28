@@ -57,9 +57,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'prompt' => 'string',
         'confirm_button_label' => 'string',
-        'cancel_button_label' => 'string'
+        'cancel_button_label' => 'string',
+        'prompt' => 'string'
     ];
 
     /**
@@ -70,9 +70,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'prompt' => null,
         'confirm_button_label' => null,
-        'cancel_button_label' => null
+        'cancel_button_label' => null,
+        'prompt' => null
     ];
 
     /**
@@ -81,9 +81,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'prompt' => false,
         'confirm_button_label' => false,
-        'cancel_button_label' => false
+        'cancel_button_label' => false,
+        'prompt' => false
     ];
 
     /**
@@ -172,9 +172,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'prompt' => 'prompt',
         'confirm_button_label' => 'confirmButtonLabel',
-        'cancel_button_label' => 'cancelButtonLabel'
+        'cancel_button_label' => 'cancelButtonLabel',
+        'prompt' => 'prompt'
     ];
 
     /**
@@ -183,9 +183,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'prompt' => 'setPrompt',
         'confirm_button_label' => 'setConfirmButtonLabel',
-        'cancel_button_label' => 'setCancelButtonLabel'
+        'cancel_button_label' => 'setCancelButtonLabel',
+        'prompt' => 'setPrompt'
     ];
 
     /**
@@ -194,9 +194,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'prompt' => 'getPrompt',
         'confirm_button_label' => 'getConfirmButtonLabel',
-        'cancel_button_label' => 'getCancelButtonLabel'
+        'cancel_button_label' => 'getCancelButtonLabel',
+        'prompt' => 'getPrompt'
     ];
 
     /**
@@ -256,9 +256,9 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('prompt', $data ?? [], null);
         $this->setIfExists('confirm_button_label', $data ?? [], null);
         $this->setIfExists('cancel_button_label', $data ?? [], null);
+        $this->setIfExists('prompt', $data ?? [], null);
     }
 
     /**
@@ -288,14 +288,14 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['prompt'] === null) {
-            $invalidProperties[] = "'prompt' can't be null";
-        }
         if ($this->container['confirm_button_label'] === null) {
             $invalidProperties[] = "'confirm_button_label' can't be null";
         }
         if ($this->container['cancel_button_label'] === null) {
             $invalidProperties[] = "'cancel_button_label' can't be null";
+        }
+        if ($this->container['prompt'] === null) {
+            $invalidProperties[] = "'prompt' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,33 +311,6 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets prompt
-     *
-     * @return string
-     */
-    public function getPrompt()
-    {
-        return $this->container['prompt'];
-    }
-
-    /**
-     * Sets prompt
-     *
-     * @param string $prompt prompt
-     *
-     * @return self
-     */
-    public function setPrompt($prompt)
-    {
-        if (is_null($prompt)) {
-            throw new \InvalidArgumentException('non-nullable prompt cannot be null');
-        }
-        $this->container['prompt'] = $prompt;
-
-        return $this;
-    }
 
     /**
      * Gets confirm_button_label
@@ -389,6 +362,33 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable cancel_button_label cannot be null');
         }
         $this->container['cancel_button_label'] = $cancel_button_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets prompt
+     *
+     * @return string
+     */
+    public function getPrompt()
+    {
+        return $this->container['prompt'];
+    }
+
+    /**
+     * Sets prompt
+     *
+     * @param string $prompt prompt
+     *
+     * @return self
+     */
+    public function setPrompt($prompt)
+    {
+        if (is_null($prompt)) {
+            throw new \InvalidArgumentException('non-nullable prompt cannot be null');
+        }
+        $this->container['prompt'] = $prompt;
 
         return $this;
     }

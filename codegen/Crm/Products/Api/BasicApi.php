@@ -730,7 +730,7 @@ class BasicApi
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Products\ApiException on non-2xx response or if the response body is not in the expected format
@@ -753,7 +753,7 @@ class BasicApi
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Products\ApiException on non-2xx response or if the response body is not in the expected format
@@ -917,7 +917,7 @@ class BasicApi
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -943,7 +943,7 @@ class BasicApi
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -998,7 +998,7 @@ class BasicApi
      * @param  string[] $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[] $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1564,7 +1564,7 @@ class BasicApi
      *
      * @param  string $product_id product_id (required)
      * @param  \HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Products\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1584,7 +1584,7 @@ class BasicApi
      *
      * @param  string $product_id (required)
      * @param  \HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Products\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1745,7 +1745,7 @@ class BasicApi
      *
      * @param  string $product_id (required)
      * @param  \HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1768,7 +1768,7 @@ class BasicApi
      *
      * @param  string $product_id (required)
      * @param  \HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1820,7 +1820,7 @@ class BasicApi
      *
      * @param  string $product_id (required)
      * @param  \HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $id_property The name of a property whose values are unique for this object. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -58,6 +58,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'id_property' => 'string',
+        'object_write_trace_id' => 'string',
         'id' => 'string',
         'properties' => 'array<string,string>'
     ];
@@ -71,6 +72,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'id_property' => null,
+        'object_write_trace_id' => null,
         'id' => null,
         'properties' => null
     ];
@@ -82,6 +84,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'id_property' => false,
+        'object_write_trace_id' => false,
         'id' => false,
         'properties' => false
     ];
@@ -173,6 +176,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'id_property' => 'idProperty',
+        'object_write_trace_id' => 'objectWriteTraceId',
         'id' => 'id',
         'properties' => 'properties'
     ];
@@ -184,6 +188,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'id_property' => 'setIdProperty',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'id' => 'setId',
         'properties' => 'setProperties'
     ];
@@ -195,6 +200,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'id_property' => 'getIdProperty',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'id' => 'getId',
         'properties' => 'getProperties'
     ];
@@ -257,6 +263,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->setIfExists('id_property', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
@@ -322,7 +329,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id_property
      *
-     * @param string|null $id_property The name of a property whose values are unique for this object
+     * @param string|null $id_property id_property
      *
      * @return self
      */
@@ -332,6 +339,33 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable id_property cannot be null');
         }
         $this->container['id_property'] = $id_property;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }
@@ -349,7 +383,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string $id The id to be updated. This can be the object id, or the unique property value of the idProperty property
+     * @param string $id id
      *
      * @return self
      */

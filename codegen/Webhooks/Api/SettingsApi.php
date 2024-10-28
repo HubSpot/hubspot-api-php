@@ -131,7 +131,9 @@ class SettingsApi
     /**
      * Operation clear
      *
-     * @param  int $app_id app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clear'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -146,7 +148,9 @@ class SettingsApi
     /**
      * Operation clearWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clear'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -212,7 +216,9 @@ class SettingsApi
     /**
      * Operation clearAsync
      *
-     * @param  int $app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -231,7 +237,9 @@ class SettingsApi
     /**
      * Operation clearAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -268,7 +276,7 @@ class SettingsApi
     /**
      * Create request for operation 'clear'
      *
-     * @param  int $app_id (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -365,7 +373,9 @@ class SettingsApi
     /**
      * Operation configure
      *
-     * @param  int $app_id app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request settings_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configure'] to see the possible values for this operation
      *
@@ -382,7 +392,9 @@ class SettingsApi
     /**
      * Operation configureWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configure'] to see the possible values for this operation
      *
@@ -540,7 +552,9 @@ class SettingsApi
     /**
      * Operation configureAsync
      *
-     * @param  int $app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configure'] to see the possible values for this operation
      *
@@ -560,7 +574,9 @@ class SettingsApi
     /**
      * Operation configureAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Delete webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configure'] to see the possible values for this operation
      *
@@ -611,7 +627,7 @@ class SettingsApi
     /**
      * Create request for operation 'configure'
      *
-     * @param  int $app_id (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SettingsChangeRequest $settings_change_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configure'] to see the possible values for this operation
      *
@@ -723,7 +739,9 @@ class SettingsApi
     /**
      * Operation getAll
      *
-     * @param  int $app_id app_id (required)
+     * Read webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -739,7 +757,9 @@ class SettingsApi
     /**
      * Operation getAllWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Read webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -896,7 +916,9 @@ class SettingsApi
     /**
      * Operation getAllAsync
      *
-     * @param  int $app_id (required)
+     * Read webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -915,7 +937,9 @@ class SettingsApi
     /**
      * Operation getAllAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Read webhook settings
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -965,7 +989,7 @@ class SettingsApi
     /**
      * Create request for operation 'getAll'
      *
-     * @param  int $app_id (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

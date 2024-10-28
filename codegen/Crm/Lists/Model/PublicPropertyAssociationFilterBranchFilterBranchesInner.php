@@ -62,6 +62,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         'filter_branch_operator' => 'string',
         'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]',
         'event_type_id' => 'string',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'operator' => 'string',
         'object_type_id' => 'string',
         'property_with_object_id' => 'string',
@@ -82,6 +83,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         'filter_branch_operator' => null,
         'filters' => null,
         'event_type_id' => null,
+        'coalescing_refine_by' => null,
         'operator' => null,
         'object_type_id' => null,
         'property_with_object_id' => null,
@@ -100,6 +102,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         'filter_branch_operator' => false,
         'filters' => false,
         'event_type_id' => false,
+        'coalescing_refine_by' => false,
         'operator' => false,
         'object_type_id' => false,
         'property_with_object_id' => false,
@@ -198,6 +201,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         'filter_branch_operator' => 'filterBranchOperator',
         'filters' => 'filters',
         'event_type_id' => 'eventTypeId',
+        'coalescing_refine_by' => 'coalescingRefineBy',
         'operator' => 'operator',
         'object_type_id' => 'objectTypeId',
         'property_with_object_id' => 'propertyWithObjectId',
@@ -216,6 +220,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         'filter_branch_operator' => 'setFilterBranchOperator',
         'filters' => 'setFilters',
         'event_type_id' => 'setEventTypeId',
+        'coalescing_refine_by' => 'setCoalescingRefineBy',
         'operator' => 'setOperator',
         'object_type_id' => 'setObjectTypeId',
         'property_with_object_id' => 'setPropertyWithObjectId',
@@ -234,6 +239,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         'filter_branch_operator' => 'getFilterBranchOperator',
         'filters' => 'getFilters',
         'event_type_id' => 'getEventTypeId',
+        'coalescing_refine_by' => 'getCoalescingRefineBy',
         'operator' => 'getOperator',
         'object_type_id' => 'getObjectTypeId',
         'property_with_object_id' => 'getPropertyWithObjectId',
@@ -316,6 +322,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
         $this->setIfExists('filter_branch_operator', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
         $this->setIfExists('event_type_id', $data ?? [], null);
+        $this->setIfExists('coalescing_refine_by', $data ?? [], null);
         $this->setIfExists('operator', $data ?? [], null);
         $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('property_with_object_id', $data ?? [], null);
@@ -545,6 +552,33 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner implements ModelI
             throw new \InvalidArgumentException('non-nullable event_type_id cannot be null');
         }
         $this->container['event_type_id'] = $event_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets coalescing_refine_by
+     *
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
+     */
+    public function getCoalescingRefineBy()
+    {
+        return $this->container['coalescing_refine_by'];
+    }
+
+    /**
+     * Sets coalescing_refine_by
+     *
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     *
+     * @return self
+     */
+    public function setCoalescingRefineBy($coalescing_refine_by)
+    {
+        if (is_null($coalescing_refine_by)) {
+            throw new \InvalidArgumentException('non-nullable coalescing_refine_by cannot be null');
+        }
+        $this->container['coalescing_refine_by'] = $coalescing_refine_by;
 
         return $this;
     }

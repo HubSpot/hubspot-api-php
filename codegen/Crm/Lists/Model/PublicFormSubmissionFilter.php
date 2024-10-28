@@ -58,8 +58,8 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'form_id' => 'string',
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
         'filter_type' => 'string',
         'operator' => 'string'
     ];
@@ -399,7 +399,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getCoalescingRefineBy()
     {
@@ -409,7 +409,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -436,7 +436,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicEventAnalyticsFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

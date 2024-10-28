@@ -140,8 +140,10 @@ class SubscriptionsApi
     /**
      * Operation archive
      *
-     * @param  int $subscription_id subscription_id (required)
-     * @param  int $app_id app_id (required)
+     * Delete event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -156,8 +158,10 @@ class SubscriptionsApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Delete event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -223,8 +227,10 @@ class SubscriptionsApi
     /**
      * Operation archiveAsync
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Delete event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -243,8 +249,10 @@ class SubscriptionsApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Delete event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -281,8 +289,8 @@ class SubscriptionsApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -394,7 +402,9 @@ class SubscriptionsApi
     /**
      * Operation create
      *
-     * @param  int $app_id app_id (required)
+     * Create an event subscription
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request subscription_create_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -411,7 +421,9 @@ class SubscriptionsApi
     /**
      * Operation createWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Create an event subscription
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -569,7 +581,9 @@ class SubscriptionsApi
     /**
      * Operation createAsync
      *
-     * @param  int $app_id (required)
+     * Create an event subscription
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -589,7 +603,9 @@ class SubscriptionsApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Create an event subscription
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -640,7 +656,7 @@ class SubscriptionsApi
     /**
      * Create request for operation 'create'
      *
-     * @param  int $app_id (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest $subscription_create_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -752,7 +768,9 @@ class SubscriptionsApi
     /**
      * Operation getAll
      *
-     * @param  int $app_id app_id (required)
+     * Read event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -768,7 +786,9 @@ class SubscriptionsApi
     /**
      * Operation getAllWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Read event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -925,7 +945,9 @@ class SubscriptionsApi
     /**
      * Operation getAllAsync
      *
-     * @param  int $app_id (required)
+     * Read event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -944,7 +966,9 @@ class SubscriptionsApi
     /**
      * Operation getAllAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Read event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -994,7 +1018,7 @@ class SubscriptionsApi
     /**
      * Create request for operation 'getAll'
      *
-     * @param  int $app_id (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1091,8 +1115,10 @@ class SubscriptionsApi
     /**
      * Operation getById
      *
-     * @param  int $subscription_id subscription_id (required)
-     * @param  int $app_id app_id (required)
+     * Read an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1108,8 +1134,10 @@ class SubscriptionsApi
     /**
      * Operation getByIdWithHttpInfo
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Read an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1266,8 +1294,10 @@ class SubscriptionsApi
     /**
      * Operation getByIdAsync
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Read an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1286,8 +1316,10 @@ class SubscriptionsApi
     /**
      * Operation getByIdAsyncWithHttpInfo
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Read an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1337,8 +1369,8 @@ class SubscriptionsApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1450,8 +1482,10 @@ class SubscriptionsApi
     /**
      * Operation update
      *
-     * @param  int $subscription_id subscription_id (required)
-     * @param  int $app_id app_id (required)
+     * Update an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request subscription_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1468,8 +1502,10 @@ class SubscriptionsApi
     /**
      * Operation updateWithHttpInfo
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Update an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1627,8 +1663,10 @@ class SubscriptionsApi
     /**
      * Operation updateAsync
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Update an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1648,8 +1686,10 @@ class SubscriptionsApi
     /**
      * Operation updateAsyncWithHttpInfo
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * Update an event subscription
+     *
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1700,8 +1740,8 @@ class SubscriptionsApi
     /**
      * Create request for operation 'update'
      *
-     * @param  int $subscription_id (required)
-     * @param  int $app_id (required)
+     * @param  int $subscription_id The ID of the event subscription. (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1828,7 +1868,9 @@ class SubscriptionsApi
     /**
      * Operation updateBatch
      *
-     * @param  int $app_id app_id (required)
+     * Batch create event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request batch_input_subscription_batch_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
      *
@@ -1845,7 +1887,9 @@ class SubscriptionsApi
     /**
      * Operation updateBatchWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Batch create event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
      *
@@ -2038,7 +2082,9 @@ class SubscriptionsApi
     /**
      * Operation updateBatchAsync
      *
-     * @param  int $app_id (required)
+     * Batch create event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
      *
@@ -2058,7 +2104,9 @@ class SubscriptionsApi
     /**
      * Operation updateBatchAsyncWithHttpInfo
      *
-     * @param  int $app_id (required)
+     * Batch create event subscriptions
+     *
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
      *
@@ -2109,7 +2157,7 @@ class SubscriptionsApi
     /**
      * Create request for operation 'updateBatch'
      *
-     * @param  int $app_id (required)
+     * @param  int $app_id The ID of the app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\BatchInputSubscriptionBatchUpdateRequest $batch_input_subscription_batch_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
      *
