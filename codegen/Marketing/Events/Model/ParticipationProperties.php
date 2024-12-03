@@ -278,10 +278,10 @@ class ParticipationProperties implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('occurred_at', $data ?? [], null);
         $this->setIfExists('attendance_percentage', $data ?? [], null);

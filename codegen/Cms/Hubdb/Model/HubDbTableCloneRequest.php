@@ -257,10 +257,10 @@ class HubDbTableCloneRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('new_name', $data ?? [], null);
         $this->setIfExists('is_hubspot_defined', $data ?? [], null);

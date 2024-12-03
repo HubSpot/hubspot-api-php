@@ -275,10 +275,10 @@ class SettingsPatchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('supports_custom_objects', $data ?? [], null);
         $this->setIfExists('is_ready', $data ?? [], null);

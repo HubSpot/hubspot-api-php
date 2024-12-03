@@ -257,10 +257,10 @@ class RecordListMembership implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('list_id', $data ?? [], null);
         $this->setIfExists('list_version', $data ?? [], null);

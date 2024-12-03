@@ -278,10 +278,10 @@ class InputFieldDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('is_required', $data ?? [], null);
         $this->setIfExists('automation_field_type', $data ?? [], null);
