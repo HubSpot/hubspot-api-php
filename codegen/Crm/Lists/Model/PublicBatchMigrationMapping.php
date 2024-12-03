@@ -245,10 +245,10 @@ class PublicBatchMigrationMapping implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Constructor
      *
-     * @param mixed[] $data Associated array of property values
+     * @param mixed[]|null $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('legacy_list_ids_to_ids_mapping', $data ?? [], null);
         $this->setIfExists('missing_legacy_list_ids', $data ?? [], null);
