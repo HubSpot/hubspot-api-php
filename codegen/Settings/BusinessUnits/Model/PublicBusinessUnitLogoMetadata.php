@@ -255,7 +255,7 @@ class PublicBusinessUnitLogoMetadata implements ModelInterface, ArrayAccess, \Js
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('logo_alt_text', $data ?? [], null);
         $this->setIfExists('resized_url', $data ?? [], null);

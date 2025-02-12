@@ -326,7 +326,7 @@ class HubSpotFormDefinitionCreateRequestAllOfLegalConsentOptions implements Mode
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], 'none');
         $this->setIfExists('subscription_type_ids', $data ?? [], null);

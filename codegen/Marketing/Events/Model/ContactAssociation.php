@@ -260,7 +260,7 @@ class ContactAssociation implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('firstname', $data ?? [], null);
         $this->setIfExists('contact_id', $data ?? [], null);

@@ -254,7 +254,7 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('inverse_label', $data ?? [], null);
         $this->setIfExists('association_type_id', $data ?? [], null);

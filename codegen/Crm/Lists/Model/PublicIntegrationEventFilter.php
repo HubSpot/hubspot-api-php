@@ -267,7 +267,7 @@ class PublicIntegrationEventFilter implements ModelInterface, ArrayAccess, \Json
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('event_type_id', $data ?? [], null);
         $this->setIfExists('filter_lines', $data ?? [], null);

@@ -1798,7 +1798,7 @@ class Tag implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);

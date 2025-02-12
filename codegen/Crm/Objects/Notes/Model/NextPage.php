@@ -248,7 +248,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('link', $data ?? [], null);
         $this->setIfExists('after', $data ?? [], null);

@@ -260,7 +260,7 @@ class MarketingEventAssociation implements ModelInterface, ArrayAccess, \JsonSer
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('external_account_id', $data ?? [], null);
         $this->setIfExists('marketing_event_id', $data ?? [], null);

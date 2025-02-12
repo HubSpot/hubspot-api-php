@@ -249,7 +249,7 @@ class AbTestCreateRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('variation_name', $data ?? [], null);
         $this->setIfExists('content_id', $data ?? [], null);

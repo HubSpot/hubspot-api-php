@@ -266,7 +266,7 @@ class HubDbTableRowV3Request implements ModelInterface, ArrayAccess, \JsonSerial
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('path', $data ?? [], null);
         $this->setIfExists('child_table_id', $data ?? [], null);

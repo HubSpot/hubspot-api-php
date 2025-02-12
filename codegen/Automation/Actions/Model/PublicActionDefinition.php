@@ -314,7 +314,7 @@ class PublicActionDefinition implements ModelInterface, ArrayAccess, \JsonSerial
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('functions', $data ?? [], null);
         $this->setIfExists('action_url', $data ?? [], null);

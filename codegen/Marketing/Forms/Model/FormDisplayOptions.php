@@ -290,7 +290,7 @@ class FormDisplayOptions implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('render_raw_html', $data ?? [], null);
         $this->setIfExists('css_class', $data ?? [], null);

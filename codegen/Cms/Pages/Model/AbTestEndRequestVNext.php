@@ -249,7 +249,7 @@ class AbTestEndRequestVNext implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('winner_id', $data ?? [], null);
         $this->setIfExists('ab_test_id', $data ?? [], null);

@@ -248,7 +248,7 @@ class MarketingEventCompleteRequestParams implements ModelInterface, ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('start_date_time', $data ?? [], null);
         $this->setIfExists('end_date_time', $data ?? [], null);

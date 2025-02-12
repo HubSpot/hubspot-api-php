@@ -320,7 +320,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('archived_in_dashboard', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
