@@ -6,9 +6,11 @@ use HubSpot\Discovery\DiscoveryBase;
 
 /**
  * @method Associations\Discovery associations()
+ * @method Commerce\Discovery     commerce()
  * @method Companies\Discovery    companies()
  * @method Contacts\Discovery     contacts()
  * @method Deals\Discovery        deals()
+ * @method Exports\Discovery      exports()
  * @method Extensions\Discovery   extensions()
  * @method Imports\Discovery      imports()
  * @method LineItems\Discovery    lineItems()

@@ -12,6 +12,7 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method BatchApi                      batchApi()
  * @method Calls\Discovery               calls()
  * @method Communications\Discovery      communications()
+ * @method DealSplits\Discovery          dealSplits()
  * @method Emails\Discovery              emails()
  * @method FeedbackSubmissions\Discovery feedbackSubmissions()
  * @method Goals\Discovery               goals()
