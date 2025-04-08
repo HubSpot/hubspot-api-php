@@ -4,8 +4,8 @@ namespace spec\HubSpot\Discovery\Crm\Objects;
 
 use GuzzleHttp\Client;
 use HubSpot\Config;
-use HubSpot\Discovery\Crm\Commerce\Invoices\Discovery as InvoicesDiscovery;
 use HubSpot\Discovery\Crm\Commerce\Discovery;
+use HubSpot\Discovery\Crm\Commerce\Invoices\Discovery as InvoicesDiscovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
