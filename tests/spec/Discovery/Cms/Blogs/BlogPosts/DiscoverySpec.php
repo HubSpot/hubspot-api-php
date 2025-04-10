@@ -3,7 +3,9 @@
 namespace spec\HubSpot\Discovery\Cms\Blogs\BlogPosts;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\Blogs\BlogPosts\Api\BlogPostsApi;
+use HubSpot\Client\Cms\Blogs\BlogPosts\Api\BasicApi;
+use HubSpot\Client\Cms\Blogs\BlogPosts\Api\BatchApi;
+use HubSpot\Client\Cms\Blogs\BlogPosts\Api\MultiLanguageApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Cms\Blogs\BlogPosts\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +24,8 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->blogPostsApi()->shouldHaveType(BlogPostsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->batchApi()->shouldHaveType(BatchApi::class);
+        $this->multiLanguageApi()->shouldHaveType(MultiLanguageApi::class);
     }
 }
