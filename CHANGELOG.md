@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/12.1.0...HEAD)
 
+## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0-beta) - 2024-04-17
+
+### CMS Blog posts
+
+- Moved methods `archive`, `callClone`, `create`, `getById`, `pushLive`, `resetDraft`, `schedule`, `update` and `updateDraft` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->basicApi()`.
+- Moved and renamed methods `archiveBatch` => `archive`, `createBatch` => `create`, `readBatch` => `read` and `updateBatch` => `update` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->batchApi()`.
+- Moved methods `attachToLangGroup`, `createLangVariation`, `detachFromLangGroup`, `setLangPrimary` and `updateLangs` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->multiLanguageApi()`.
+
 ## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2024-04-08
 
 ## Updated
