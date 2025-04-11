@@ -3,7 +3,8 @@
 namespace spec\HubSpot\Discovery\Events\Send;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Events\Send\Api\CustomEventDataApi;
+use HubSpot\Client\Events\Send\Api\BasicApi;
+use HubSpot\Client\Events\Send\Api\BatchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Events\Send\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +23,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->customEventDataApi()->shouldHaveType(CustomEventDataApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->batchApi()->shouldHaveType(BatchApi::class);
     }
 }
