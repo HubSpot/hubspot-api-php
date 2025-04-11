@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomEventDataApi
+ * BasicApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Events\Send\HeaderSelector;
 use HubSpot\Client\Events\Send\ObjectSerializer;
 
 /**
- * CustomEventDataApi Class Doc Comment
+ * BasicApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Events\Send
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CustomEventDataApi
+class BasicApi
 {
     /**
      * @var ClientInterface
@@ -125,7 +125,7 @@ class CustomEventDataApi
     /**
      * Operation send
      *
-     * Send custom event completion
+     * Send a custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request behavioral_event_http_completion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['send'] to see the possible values for this operation
@@ -142,7 +142,7 @@ class CustomEventDataApi
     /**
      * Operation sendWithHttpInfo
      *
-     * Send custom event completion
+     * Send a custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['send'] to see the possible values for this operation
@@ -210,7 +210,7 @@ class CustomEventDataApi
     /**
      * Operation sendAsync
      *
-     * Send custom event completion
+     * Send a custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['send'] to see the possible values for this operation
@@ -231,7 +231,7 @@ class CustomEventDataApi
     /**
      * Operation sendAsyncWithHttpInfo
      *
-     * Send custom event completion
+     * Send a custom event completion
      *
      * @param  \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest $behavioral_event_http_completion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['send'] to see the possible values for this operation

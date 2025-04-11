@@ -1,6 +1,6 @@
 <?php
 /**
- * BehavioralEventHttpCompletionRequest
+ * BatchedBehavioralEventHttpCompletionRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Events\Send\ObjectSerializer;
 
 /**
- * BehavioralEventHttpCompletionRequest Class Doc Comment
+ * BatchedBehavioralEventHttpCompletionRequest Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Events\Send
@@ -40,7 +40,7 @@ use \HubSpot\Client\Events\Send\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchedBehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BehavioralEventHttpCompletionRequest';
+    protected static $openAPIModelName = 'BatchedBehavioralEventHttpCompletionRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'occurred_at' => '\DateTime',
-        'event_name' => 'string',
-        'utk' => 'string',
-        'uuid' => 'string',
-        'email' => 'string',
-        'properties' => 'array<string,string>',
-        'object_id' => 'string'
+        'inputs' => '\HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest[]'
     ];
 
     /**
@@ -74,13 +68,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'occurred_at' => 'date-time',
-        'event_name' => null,
-        'utk' => null,
-        'uuid' => null,
-        'email' => null,
-        'properties' => null,
-        'object_id' => null
+        'inputs' => null
     ];
 
     /**
@@ -89,13 +77,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'occurred_at' => false,
-        'event_name' => false,
-        'utk' => false,
-        'uuid' => false,
-        'email' => false,
-        'properties' => false,
-        'object_id' => false
+        'inputs' => false
     ];
 
     /**
@@ -184,13 +166,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'occurred_at' => 'occurredAt',
-        'event_name' => 'eventName',
-        'utk' => 'utk',
-        'uuid' => 'uuid',
-        'email' => 'email',
-        'properties' => 'properties',
-        'object_id' => 'objectId'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -199,13 +175,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'occurred_at' => 'setOccurredAt',
-        'event_name' => 'setEventName',
-        'utk' => 'setUtk',
-        'uuid' => 'setUuid',
-        'email' => 'setEmail',
-        'properties' => 'setProperties',
-        'object_id' => 'setObjectId'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -214,13 +184,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'occurred_at' => 'getOccurredAt',
-        'event_name' => 'getEventName',
-        'utk' => 'getUtk',
-        'uuid' => 'getUuid',
-        'email' => 'getEmail',
-        'properties' => 'getProperties',
-        'object_id' => 'getObjectId'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -280,13 +244,7 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('occurred_at', $data ?? [], null);
-        $this->setIfExists('event_name', $data ?? [], null);
-        $this->setIfExists('utk', $data ?? [], null);
-        $this->setIfExists('uuid', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('object_id', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -316,8 +274,8 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['event_name'] === null) {
-            $invalidProperties[] = "'event_name' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -335,190 +293,28 @@ class BehavioralEventHttpCompletionRequest implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets occurred_at
+     * Gets inputs
      *
-     * @return \DateTime|null
+     * @return \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest[]
      */
-    public function getOccurredAt()
+    public function getInputs()
     {
-        return $this->container['occurred_at'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets occurred_at
+     * Sets inputs
      *
-     * @param \DateTime|null $occurred_at The time when this event occurred. If this isn't set, the current time will be used.
+     * @param \HubSpot\Client\Events\Send\Model\BehavioralEventHttpCompletionRequest[] $inputs inputs
      *
      * @return self
      */
-    public function setOccurredAt($occurred_at)
+    public function setInputs($inputs)
     {
-        if (is_null($occurred_at)) {
-            throw new \InvalidArgumentException('non-nullable occurred_at cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['occurred_at'] = $occurred_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_name
-     *
-     * @return string
-     */
-    public function getEventName()
-    {
-        return $this->container['event_name'];
-    }
-
-    /**
-     * Sets event_name
-     *
-     * @param string $event_name The internal name of the event (`pe<portalID>_eventName`). Can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
-     *
-     * @return self
-     */
-    public function setEventName($event_name)
-    {
-        if (is_null($event_name)) {
-            throw new \InvalidArgumentException('non-nullable event_name cannot be null');
-        }
-        $this->container['event_name'] = $event_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets utk
-     *
-     * @return string|null
-     */
-    public function getUtk()
-    {
-        return $this->container['utk'];
-    }
-
-    /**
-     * Sets utk
-     *
-     * @param string|null $utk The visitor's usertoken. Used for associating the event data with a CRM record.
-     *
-     * @return self
-     */
-    public function setUtk($utk)
-    {
-        if (is_null($utk)) {
-            throw new \InvalidArgumentException('non-nullable utk cannot be null');
-        }
-        $this->container['utk'] = $utk;
-
-        return $this;
-    }
-
-    /**
-     * Gets uuid
-     *
-     * @return string|null
-     */
-    public function getUuid()
-    {
-        return $this->container['uuid'];
-    }
-
-    /**
-     * Sets uuid
-     *
-     * @param string|null $uuid Include a universally unique identifier to assign a unique ID to the event completion. Can be useful for matching data between HubSpot and other external systems.
-     *
-     * @return self
-     */
-    public function setUuid($uuid)
-    {
-        if (is_null($uuid)) {
-            throw new \InvalidArgumentException('non-nullable uuid cannot be null');
-        }
-        $this->container['uuid'] = $uuid;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email The visitor's email address. Used for associating the event data with a CRM record.
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
-        }
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>|null
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string>|null $properties The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
-        }
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_id
-     *
-     * @return string|null
-     */
-    public function getObjectId()
-    {
-        return $this->container['object_id'];
-    }
-
-    /**
-     * Sets object_id
-     *
-     * @param string|null $object_id The ID of the object that completed the event (e.g., contact ID or visitor ID).
-     *
-     * @return self
-     */
-    public function setObjectId($object_id)
-    {
-        if (is_null($object_id)) {
-            throw new \InvalidArgumentException('non-nullable object_id cannot be null');
-        }
-        $this->container['object_id'] = $object_id;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }
