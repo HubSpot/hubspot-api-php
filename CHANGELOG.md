@@ -9,11 +9,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0-beta) - 2024-04-17
 
-### CMS Blog posts
+### CMS
 
 - Moved methods `archive`, `callClone`, `create`, `getById`, `pushLive`, `resetDraft`, `schedule`, `update` and `updateDraft` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->basicApi()`.
 - Moved and renamed methods `archiveBatch` => `archive`, `createBatch` => `create`, `readBatch` => `read` and `updateBatch` => `update` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->batchApi()`.
 - Moved methods `attachToLangGroup`, `createLangVariation`, `detachFromLangGroup`, `setLangPrimary` and `updateLangs` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->multiLanguageApi()`.
+
+### Events
+
+- Renamed `events()->send()->customEventDataApi()` to `events()->send()->basicApi()`.
+- Added `events()->send()->batchApi()` API.
+
+### Marketing
+
+- Renamed `marketing()->events()->attendanceSubscriberStateChangesApi()` to `marketing()->events()->addEventAttendeesApi()`.
+- Added new methods `recordByContactId()` and `recordByEmail()` to `marketing()->events()->addEventAttendeesApi()`.
+- Added `marketing()->events()->batchApi()` API.
+- Moved and renamed methods `batchArchive` => `archive` and `batchUpsert` => `create` from `marketing()->events()->basicApi()` to `marketing()->events()->batchApi()`.
+- Added new methods `archiveByObjectId()`, `getAll()`, `getByObjectId()` and `updateByObjectId()` to `marketing()->events()->basicApi()`.
+- Moved methods `cancel` and `complete` from `marketing()->events()->basicApi()` to `marketing()->events()->changePropertyApi()`.
+- Added `marketing()->events()->identifiersApi()` API.
+- Moved method `doSearch()` from `marketing()->events()->basicApi()` to `marketing()->events()->identifiersApi()`.
+- Renamed `marketing()->events()->participantStateApi()` to `marketing()->events()->retrieveParticipantStateApi()`.
+- Changed the response object type from `\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging|\HubSpot\Client\Marketing\Events\Model\Error` to `\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging|\HubSpot\Client\Marketing\Events\Model\Error` for `marketing()->events()->identifiersApi()->doSearch()`.
+- Added new property `object_id` to `HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse`, `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse` and `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicReadResponse`.
+
+### Files
+
+- Changed options order and added new options from `files()->filesApi()->doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_id = null, $size = null, $height = null, $width = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null)` to `files()->filesApi()->doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null)`.
+
+
 
 ## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2024-04-08
 
