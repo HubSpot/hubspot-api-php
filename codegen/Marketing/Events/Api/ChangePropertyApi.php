@@ -1,6 +1,6 @@
 <?php
 /**
- * AttendanceSubscriberStateChangesApi
+ * ChangePropertyApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Marketing\Events\HeaderSelector;
 use HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * AttendanceSubscriberStateChangesApi Class Doc Comment
+ * ChangePropertyApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class AttendanceSubscriberStateChangesApi
+class ChangePropertyApi
 {
     /**
      * @var ClientInterface
@@ -71,10 +71,10 @@ class AttendanceSubscriberStateChangesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'recordByContactEmails' => [
+        'cancel' => [
             'application/json',
         ],
-        'recordByContactIds' => [
+        'complete' => [
             'application/json',
         ],
     ];
@@ -126,44 +126,40 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation recordByContactEmails
+     * Operation cancel
      *
-     * Record a subscriber state by contact email
+     * Mark a marketing event as cancelled
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber batch_input_marketing_event_email_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactEmails'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function recordByContactEmails($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactEmails'][0])
+    public function cancel($external_event_id, $external_account_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        list($response) = $this->recordByContactEmailsWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id, $contentType);
+        list($response) = $this->cancelWithHttpInfo($external_event_id, $external_account_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation recordByContactEmailsWithHttpInfo
+     * Operation cancelWithHttpInfo
      *
-     * Record a subscriber state by contact email
+     * Mark a marketing event as cancelled
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactEmails'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function recordByContactEmailsWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactEmails'][0])
+    public function cancelWithHttpInfo($external_event_id, $external_account_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        $request = $this->recordByContactEmailsRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id, $contentType);
+        $request = $this->cancelRequest($external_event_id, $external_account_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -202,11 +198,11 @@ class AttendanceSubscriberStateChangesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse' !== 'string') {
+                        if ('\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -224,7 +220,7 @@ class AttendanceSubscriberStateChangesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -257,7 +253,7 @@ class AttendanceSubscriberStateChangesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -290,7 +286,7 @@ class AttendanceSubscriberStateChangesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse',
+                        '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,22 +305,20 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation recordByContactEmailsAsync
+     * Operation cancelAsync
      *
-     * Record a subscriber state by contact email
+     * Mark a marketing event as cancelled
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactEmails'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordByContactEmailsAsync($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactEmails'][0])
+    public function cancelAsync($external_event_id, $external_account_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        return $this->recordByContactEmailsAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id, $contentType)
+        return $this->cancelAsyncWithHttpInfo($external_event_id, $external_account_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -333,23 +327,21 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation recordByContactEmailsAsyncWithHttpInfo
+     * Operation cancelAsyncWithHttpInfo
      *
-     * Record a subscriber state by contact email
+     * Mark a marketing event as cancelled
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactEmails'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordByContactEmailsAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactEmails'][0])
+    public function cancelAsyncWithHttpInfo($external_event_id, $external_account_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberEmailResponse';
-        $request = $this->recordByContactEmailsRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse';
+        $request = $this->cancelRequest($external_event_id, $external_account_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -388,44 +380,34 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Create request for operation 'recordByContactEmails'
+     * Create request for operation 'cancel'
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactEmails'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function recordByContactEmailsRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_email_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactEmails'][0])
+    public function cancelRequest($external_event_id, $external_account_id, string $contentType = self::contentTypes['cancel'][0])
     {
 
         // verify the required parameter 'external_event_id' is set
         if ($external_event_id === null || (is_array($external_event_id) && count($external_event_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_event_id when calling recordByContactEmails'
+                'Missing the required parameter $external_event_id when calling cancel'
             );
         }
 
-        // verify the required parameter 'subscriber_state' is set
-        if ($subscriber_state === null || (is_array($subscriber_state) && count($subscriber_state) === 0)) {
+        // verify the required parameter 'external_account_id' is set
+        if ($external_account_id === null || (is_array($external_account_id) && count($external_account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscriber_state when calling recordByContactEmails'
-            );
-        }
-
-        // verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if ($batch_input_marketing_event_email_subscriber === null || (is_array($batch_input_marketing_event_email_subscriber) && count($batch_input_marketing_event_email_subscriber) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_email_subscriber when calling recordByContactEmails'
+                'Missing the required parameter $external_account_id when calling cancel'
             );
         }
 
 
-
-        $resourcePath = '/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/email-create';
+        $resourcePath = '/marketing/v3/marketing-events/events/{externalEventId}/cancel';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -439,7 +421,7 @@ class AttendanceSubscriberStateChangesApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 
@@ -448,14 +430,6 @@ class AttendanceSubscriberStateChangesApi
             $resourcePath = str_replace(
                 '{' . 'externalEventId' . '}',
                 ObjectSerializer::toPathValue($external_event_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($subscriber_state !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriberState' . '}',
-                ObjectSerializer::toPathValue($subscriber_state),
                 $resourcePath
             );
         }
@@ -468,14 +442,7 @@ class AttendanceSubscriberStateChangesApi
         );
 
         // for model (json/xml)
-        if (isset($batch_input_marketing_event_email_subscriber)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_email_subscriber));
-            } else {
-                $httpBody = $batch_input_marketing_event_email_subscriber;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -526,44 +493,42 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation recordByContactIds
+     * Operation complete
      *
-     * Record a subscriber state by contact ids
+     * Mark a marketing event as completed
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber batch_input_marketing_event_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactIds'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventCompleteRequestParams $marketing_event_complete_request_params marketing_event_complete_request_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['complete'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function recordByContactIds($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactIds'][0])
+    public function complete($external_event_id, $external_account_id, $marketing_event_complete_request_params, string $contentType = self::contentTypes['complete'][0])
     {
-        list($response) = $this->recordByContactIdsWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id, $contentType);
+        list($response) = $this->completeWithHttpInfo($external_event_id, $external_account_id, $marketing_event_complete_request_params, $contentType);
         return $response;
     }
 
     /**
-     * Operation recordByContactIdsWithHttpInfo
+     * Operation completeWithHttpInfo
      *
-     * Record a subscriber state by contact ids
+     * Mark a marketing event as completed
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactIds'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventCompleteRequestParams $marketing_event_complete_request_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['complete'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function recordByContactIdsWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactIds'][0])
+    public function completeWithHttpInfo($external_event_id, $external_account_id, $marketing_event_complete_request_params, string $contentType = self::contentTypes['complete'][0])
     {
-        $request = $this->recordByContactIdsRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id, $contentType);
+        $request = $this->completeRequest($external_event_id, $external_account_id, $marketing_event_complete_request_params, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -602,11 +567,11 @@ class AttendanceSubscriberStateChangesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse' !== 'string') {
+                        if ('\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -624,7 +589,7 @@ class AttendanceSubscriberStateChangesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -657,7 +622,7 @@ class AttendanceSubscriberStateChangesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -690,7 +655,7 @@ class AttendanceSubscriberStateChangesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse',
+                        '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -709,22 +674,21 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation recordByContactIdsAsync
+     * Operation completeAsync
      *
-     * Record a subscriber state by contact ids
+     * Mark a marketing event as completed
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactIds'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventCompleteRequestParams $marketing_event_complete_request_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['complete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordByContactIdsAsync($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactIds'][0])
+    public function completeAsync($external_event_id, $external_account_id, $marketing_event_complete_request_params, string $contentType = self::contentTypes['complete'][0])
     {
-        return $this->recordByContactIdsAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id, $contentType)
+        return $this->completeAsyncWithHttpInfo($external_event_id, $external_account_id, $marketing_event_complete_request_params, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -733,23 +697,22 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Operation recordByContactIdsAsyncWithHttpInfo
+     * Operation completeAsyncWithHttpInfo
      *
-     * Record a subscriber state by contact ids
+     * Mark a marketing event as completed
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactIds'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventCompleteRequestParams $marketing_event_complete_request_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['complete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordByContactIdsAsyncWithHttpInfo($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactIds'][0])
+    public function completeAsyncWithHttpInfo($external_event_id, $external_account_id, $marketing_event_complete_request_params, string $contentType = self::contentTypes['complete'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\BatchResponseSubscriberVidResponse';
-        $request = $this->recordByContactIdsRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse';
+        $request = $this->completeRequest($external_event_id, $external_account_id, $marketing_event_complete_request_params, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -788,44 +751,42 @@ class AttendanceSubscriberStateChangesApi
     }
 
     /**
-     * Create request for operation 'recordByContactIds'
+     * Create request for operation 'complete'
      *
-     * @param  string $external_event_id The id of the marketing event (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $external_account_id The account id associated with the marketing event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactIds'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventCompleteRequestParams $marketing_event_complete_request_params (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['complete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function recordByContactIdsRequest($external_event_id, $subscriber_state, $batch_input_marketing_event_subscriber, $external_account_id = null, string $contentType = self::contentTypes['recordByContactIds'][0])
+    public function completeRequest($external_event_id, $external_account_id, $marketing_event_complete_request_params, string $contentType = self::contentTypes['complete'][0])
     {
 
         // verify the required parameter 'external_event_id' is set
         if ($external_event_id === null || (is_array($external_event_id) && count($external_event_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_event_id when calling recordByContactIds'
+                'Missing the required parameter $external_event_id when calling complete'
             );
         }
 
-        // verify the required parameter 'subscriber_state' is set
-        if ($subscriber_state === null || (is_array($subscriber_state) && count($subscriber_state) === 0)) {
+        // verify the required parameter 'external_account_id' is set
+        if ($external_account_id === null || (is_array($external_account_id) && count($external_account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscriber_state when calling recordByContactIds'
+                'Missing the required parameter $external_account_id when calling complete'
             );
         }
 
-        // verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if ($batch_input_marketing_event_subscriber === null || (is_array($batch_input_marketing_event_subscriber) && count($batch_input_marketing_event_subscriber) === 0)) {
+        // verify the required parameter 'marketing_event_complete_request_params' is set
+        if ($marketing_event_complete_request_params === null || (is_array($marketing_event_complete_request_params) && count($marketing_event_complete_request_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_subscriber when calling recordByContactIds'
+                'Missing the required parameter $marketing_event_complete_request_params when calling complete'
             );
         }
 
 
-
-        $resourcePath = '/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/create';
+        $resourcePath = '/marketing/v3/marketing-events/events/{externalEventId}/complete';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -839,7 +800,7 @@ class AttendanceSubscriberStateChangesApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 
@@ -848,14 +809,6 @@ class AttendanceSubscriberStateChangesApi
             $resourcePath = str_replace(
                 '{' . 'externalEventId' . '}',
                 ObjectSerializer::toPathValue($external_event_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($subscriber_state !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriberState' . '}',
-                ObjectSerializer::toPathValue($subscriber_state),
                 $resourcePath
             );
         }
@@ -868,12 +821,12 @@ class AttendanceSubscriberStateChangesApi
         );
 
         // for model (json/xml)
-        if (isset($batch_input_marketing_event_subscriber)) {
+        if (isset($marketing_event_complete_request_params)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_subscriber));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($marketing_event_complete_request_params));
             } else {
-                $httpBody = $batch_input_marketing_event_subscriber;
+                $httpBody = $marketing_event_complete_request_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

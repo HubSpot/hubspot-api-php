@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketingEventSubscriber
+ * SearchPublicResponseWrapper
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * MarketingEventSubscriber Class Doc Comment
+ * SearchPublicResponseWrapper Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
+class SearchPublicResponseWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketingEventSubscriber';
+    protected static $openAPIModelName = 'SearchPublicResponseWrapper';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'properties' => 'array<string,string>',
-        'interaction_date_time' => 'int'
+        'external_account_id' => 'string',
+        'external_event_id' => 'string',
+        'app_id' => 'int',
+        'object_id' => 'string'
     ];
 
     /**
@@ -70,9 +71,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'properties' => null,
-        'interaction_date_time' => 'int64'
+        'external_account_id' => null,
+        'external_event_id' => null,
+        'app_id' => 'int32',
+        'object_id' => null
     ];
 
     /**
@@ -81,9 +83,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'properties' => false,
-        'interaction_date_time' => false
+        'external_account_id' => false,
+        'external_event_id' => false,
+        'app_id' => false,
+        'object_id' => false
     ];
 
     /**
@@ -172,9 +175,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'properties' => 'properties',
-        'interaction_date_time' => 'interactionDateTime'
+        'external_account_id' => 'externalAccountId',
+        'external_event_id' => 'externalEventId',
+        'app_id' => 'appId',
+        'object_id' => 'objectId'
     ];
 
     /**
@@ -183,9 +187,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'properties' => 'setProperties',
-        'interaction_date_time' => 'setInteractionDateTime'
+        'external_account_id' => 'setExternalAccountId',
+        'external_event_id' => 'setExternalEventId',
+        'app_id' => 'setAppId',
+        'object_id' => 'setObjectId'
     ];
 
     /**
@@ -194,9 +199,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'properties' => 'getProperties',
-        'interaction_date_time' => 'getInteractionDateTime'
+        'external_account_id' => 'getExternalAccountId',
+        'external_event_id' => 'getExternalEventId',
+        'app_id' => 'getAppId',
+        'object_id' => 'getObjectId'
     ];
 
     /**
@@ -256,9 +262,10 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('interaction_date_time', $data ?? [], null);
+        $this->setIfExists('external_account_id', $data ?? [], null);
+        $this->setIfExists('external_event_id', $data ?? [], null);
+        $this->setIfExists('app_id', $data ?? [], null);
+        $this->setIfExists('object_id', $data ?? [], null);
     }
 
     /**
@@ -288,8 +295,17 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['interaction_date_time'] === null) {
-            $invalidProperties[] = "'interaction_date_time' can't be null";
+        if ($this->container['external_account_id'] === null) {
+            $invalidProperties[] = "'external_account_id' can't be null";
+        }
+        if ($this->container['external_event_id'] === null) {
+            $invalidProperties[] = "'external_event_id' can't be null";
+        }
+        if ($this->container['app_id'] === null) {
+            $invalidProperties[] = "'app_id' can't be null";
+        }
+        if ($this->container['object_id'] === null) {
+            $invalidProperties[] = "'object_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -307,82 +323,109 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets vid
+     * Gets external_account_id
      *
-     * @return int|null
+     * @return string
      */
-    public function getVid()
+    public function getExternalAccountId()
     {
-        return $this->container['vid'];
+        return $this->container['external_account_id'];
     }
 
     /**
-     * Sets vid
+     * Sets external_account_id
      *
-     * @param int|null $vid vid
+     * @param string $external_account_id external_account_id
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setExternalAccountId($external_account_id)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($external_account_id)) {
+            throw new \InvalidArgumentException('non-nullable external_account_id cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['external_account_id'] = $external_account_id;
 
         return $this;
     }
 
     /**
-     * Gets properties
+     * Gets external_event_id
      *
-     * @return array<string,string>|null
+     * @return string
      */
-    public function getProperties()
+    public function getExternalEventId()
     {
-        return $this->container['properties'];
+        return $this->container['external_event_id'];
     }
 
     /**
-     * Sets properties
+     * Sets external_event_id
      *
-     * @param array<string,string>|null $properties properties
+     * @param string $external_event_id external_event_id
      *
      * @return self
      */
-    public function setProperties($properties)
+    public function setExternalEventId($external_event_id)
     {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        if (is_null($external_event_id)) {
+            throw new \InvalidArgumentException('non-nullable external_event_id cannot be null');
         }
-        $this->container['properties'] = $properties;
+        $this->container['external_event_id'] = $external_event_id;
 
         return $this;
     }
 
     /**
-     * Gets interaction_date_time
+     * Gets app_id
      *
      * @return int
      */
-    public function getInteractionDateTime()
+    public function getAppId()
     {
-        return $this->container['interaction_date_time'];
+        return $this->container['app_id'];
     }
 
     /**
-     * Sets interaction_date_time
+     * Sets app_id
      *
-     * @param int $interaction_date_time Timestamp in milliseconds at which the contact subscribed to the event.
+     * @param int $app_id app_id
      *
      * @return self
      */
-    public function setInteractionDateTime($interaction_date_time)
+    public function setAppId($app_id)
     {
-        if (is_null($interaction_date_time)) {
-            throw new \InvalidArgumentException('non-nullable interaction_date_time cannot be null');
+        if (is_null($app_id)) {
+            throw new \InvalidArgumentException('non-nullable app_id cannot be null');
         }
-        $this->container['interaction_date_time'] = $interaction_date_time;
+        $this->container['app_id'] = $app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string $object_id object_id
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        if (is_null($object_id)) {
+            throw new \InvalidArgumentException('non-nullable object_id cannot be null');
+        }
+        $this->container['object_id'] = $object_id;
 
         return $this;
     }

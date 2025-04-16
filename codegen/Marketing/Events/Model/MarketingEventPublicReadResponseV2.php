@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketingEventPublicDefaultResponse
+ * MarketingEventPublicReadResponseV2
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * MarketingEventPublicDefaultResponse Class Doc Comment
+ * MarketingEventPublicReadResponseV2 Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketingEventPublicReadResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketingEventPublicDefaultResponse';
+    protected static $openAPIModelName = 'MarketingEventPublicReadResponseV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,18 +57,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'registrants' => 'int',
         'event_organizer' => 'string',
         'event_url' => 'string',
+        'attendees' => 'int',
+        'app_info' => '\HubSpot\Client\Marketing\Events\Model\AppInfo',
         'event_type' => 'string',
         'event_completed' => 'bool',
         'end_date_time' => '\DateTime',
+        'no_shows' => 'int',
+        'cancellations' => 'int',
         'created_at' => '\DateTime',
         'start_date_time' => '\DateTime',
-        'custom_properties' => '\HubSpot\Client\Marketing\Events\Model\PropertyValue[]',
+        'custom_properties' => '\HubSpot\Client\Marketing\Events\Model\CrmPropertyWrapper[]',
         'event_cancelled' => 'bool',
+        'external_event_id' => 'string',
+        'event_status' => 'string',
         'event_description' => 'string',
         'event_name' => 'string',
-        'id' => 'string',
         'object_id' => 'string',
         'updated_at' => '\DateTime'
     ];
@@ -81,18 +87,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'registrants' => 'int32',
         'event_organizer' => null,
         'event_url' => null,
+        'attendees' => 'int32',
+        'app_info' => null,
         'event_type' => null,
         'event_completed' => null,
         'end_date_time' => 'date-time',
+        'no_shows' => 'int32',
+        'cancellations' => 'int32',
         'created_at' => 'date-time',
         'start_date_time' => 'date-time',
         'custom_properties' => null,
         'event_cancelled' => null,
+        'external_event_id' => null,
+        'event_status' => null,
         'event_description' => null,
         'event_name' => null,
-        'id' => null,
         'object_id' => null,
         'updated_at' => 'date-time'
     ];
@@ -103,18 +115,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'registrants' => false,
         'event_organizer' => false,
         'event_url' => false,
+        'attendees' => false,
+        'app_info' => false,
         'event_type' => false,
         'event_completed' => false,
         'end_date_time' => false,
+        'no_shows' => false,
+        'cancellations' => false,
         'created_at' => false,
         'start_date_time' => false,
         'custom_properties' => false,
         'event_cancelled' => false,
+        'external_event_id' => false,
+        'event_status' => false,
         'event_description' => false,
         'event_name' => false,
-        'id' => false,
         'object_id' => false,
         'updated_at' => false
     ];
@@ -205,18 +223,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'registrants' => 'registrants',
         'event_organizer' => 'eventOrganizer',
         'event_url' => 'eventUrl',
+        'attendees' => 'attendees',
+        'app_info' => 'appInfo',
         'event_type' => 'eventType',
         'event_completed' => 'eventCompleted',
         'end_date_time' => 'endDateTime',
+        'no_shows' => 'noShows',
+        'cancellations' => 'cancellations',
         'created_at' => 'createdAt',
         'start_date_time' => 'startDateTime',
         'custom_properties' => 'customProperties',
         'event_cancelled' => 'eventCancelled',
+        'external_event_id' => 'externalEventId',
+        'event_status' => 'eventStatus',
         'event_description' => 'eventDescription',
         'event_name' => 'eventName',
-        'id' => 'id',
         'object_id' => 'objectId',
         'updated_at' => 'updatedAt'
     ];
@@ -227,18 +251,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'registrants' => 'setRegistrants',
         'event_organizer' => 'setEventOrganizer',
         'event_url' => 'setEventUrl',
+        'attendees' => 'setAttendees',
+        'app_info' => 'setAppInfo',
         'event_type' => 'setEventType',
         'event_completed' => 'setEventCompleted',
         'end_date_time' => 'setEndDateTime',
+        'no_shows' => 'setNoShows',
+        'cancellations' => 'setCancellations',
         'created_at' => 'setCreatedAt',
         'start_date_time' => 'setStartDateTime',
         'custom_properties' => 'setCustomProperties',
         'event_cancelled' => 'setEventCancelled',
+        'external_event_id' => 'setExternalEventId',
+        'event_status' => 'setEventStatus',
         'event_description' => 'setEventDescription',
         'event_name' => 'setEventName',
-        'id' => 'setId',
         'object_id' => 'setObjectId',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -249,18 +279,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'registrants' => 'getRegistrants',
         'event_organizer' => 'getEventOrganizer',
         'event_url' => 'getEventUrl',
+        'attendees' => 'getAttendees',
+        'app_info' => 'getAppInfo',
         'event_type' => 'getEventType',
         'event_completed' => 'getEventCompleted',
         'end_date_time' => 'getEndDateTime',
+        'no_shows' => 'getNoShows',
+        'cancellations' => 'getCancellations',
         'created_at' => 'getCreatedAt',
         'start_date_time' => 'getStartDateTime',
         'custom_properties' => 'getCustomProperties',
         'event_cancelled' => 'getEventCancelled',
+        'external_event_id' => 'getExternalEventId',
+        'event_status' => 'getEventStatus',
         'event_description' => 'getEventDescription',
         'event_name' => 'getEventName',
-        'id' => 'getId',
         'object_id' => 'getObjectId',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -322,18 +358,24 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('registrants', $data ?? [], null);
         $this->setIfExists('event_organizer', $data ?? [], null);
         $this->setIfExists('event_url', $data ?? [], null);
+        $this->setIfExists('attendees', $data ?? [], null);
+        $this->setIfExists('app_info', $data ?? [], null);
         $this->setIfExists('event_type', $data ?? [], null);
         $this->setIfExists('event_completed', $data ?? [], null);
         $this->setIfExists('end_date_time', $data ?? [], null);
+        $this->setIfExists('no_shows', $data ?? [], null);
+        $this->setIfExists('cancellations', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('start_date_time', $data ?? [], null);
         $this->setIfExists('custom_properties', $data ?? [], null);
         $this->setIfExists('event_cancelled', $data ?? [], null);
+        $this->setIfExists('external_event_id', $data ?? [], null);
+        $this->setIfExists('event_status', $data ?? [], null);
         $this->setIfExists('event_description', $data ?? [], null);
         $this->setIfExists('event_name', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('object_id', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -365,17 +407,17 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['event_organizer'] === null) {
-            $invalidProperties[] = "'event_organizer' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['custom_properties'] === null) {
+            $invalidProperties[] = "'custom_properties' can't be null";
         }
         if ($this->container['event_name'] === null) {
             $invalidProperties[] = "'event_name' can't be null";
         }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['object_id'] === null) {
+            $invalidProperties[] = "'object_id' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -396,9 +438,36 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets registrants
+     *
+     * @return int|null
+     */
+    public function getRegistrants()
+    {
+        return $this->container['registrants'];
+    }
+
+    /**
+     * Sets registrants
+     *
+     * @param int|null $registrants registrants
+     *
+     * @return self
+     */
+    public function setRegistrants($registrants)
+    {
+        if (is_null($registrants)) {
+            throw new \InvalidArgumentException('non-nullable registrants cannot be null');
+        }
+        $this->container['registrants'] = $registrants;
+
+        return $this;
+    }
+
+    /**
      * Gets event_organizer
      *
-     * @return string
+     * @return string|null
      */
     public function getEventOrganizer()
     {
@@ -408,7 +477,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets event_organizer
      *
-     * @param string $event_organizer The name of the organizer of the marketing event.
+     * @param string|null $event_organizer event_organizer
      *
      * @return self
      */
@@ -435,7 +504,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets event_url
      *
-     * @param string|null $event_url A URL in the external event application where the marketing event can be managed.
+     * @param string|null $event_url event_url
      *
      * @return self
      */
@@ -445,6 +514,60 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable event_url cannot be null');
         }
         $this->container['event_url'] = $event_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets attendees
+     *
+     * @return int|null
+     */
+    public function getAttendees()
+    {
+        return $this->container['attendees'];
+    }
+
+    /**
+     * Sets attendees
+     *
+     * @param int|null $attendees attendees
+     *
+     * @return self
+     */
+    public function setAttendees($attendees)
+    {
+        if (is_null($attendees)) {
+            throw new \InvalidArgumentException('non-nullable attendees cannot be null');
+        }
+        $this->container['attendees'] = $attendees;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_info
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\AppInfo|null
+     */
+    public function getAppInfo()
+    {
+        return $this->container['app_info'];
+    }
+
+    /**
+     * Sets app_info
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\AppInfo|null $app_info app_info
+     *
+     * @return self
+     */
+    public function setAppInfo($app_info)
+    {
+        if (is_null($app_info)) {
+            throw new \InvalidArgumentException('non-nullable app_info cannot be null');
+        }
+        $this->container['app_info'] = $app_info;
 
         return $this;
     }
@@ -462,7 +585,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets event_type
      *
-     * @param string|null $event_type The type of the marketing event.
+     * @param string|null $event_type event_type
      *
      * @return self
      */
@@ -516,7 +639,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets end_date_time
      *
-     * @param \DateTime|null $end_date_time The end date and time of the marketing event.
+     * @param \DateTime|null $end_date_time end_date_time
      *
      * @return self
      */
@@ -526,6 +649,60 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable end_date_time cannot be null');
         }
         $this->container['end_date_time'] = $end_date_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets no_shows
+     *
+     * @return int|null
+     */
+    public function getNoShows()
+    {
+        return $this->container['no_shows'];
+    }
+
+    /**
+     * Sets no_shows
+     *
+     * @param int|null $no_shows no_shows
+     *
+     * @return self
+     */
+    public function setNoShows($no_shows)
+    {
+        if (is_null($no_shows)) {
+            throw new \InvalidArgumentException('non-nullable no_shows cannot be null');
+        }
+        $this->container['no_shows'] = $no_shows;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancellations
+     *
+     * @return int|null
+     */
+    public function getCancellations()
+    {
+        return $this->container['cancellations'];
+    }
+
+    /**
+     * Sets cancellations
+     *
+     * @param int|null $cancellations cancellations
+     *
+     * @return self
+     */
+    public function setCancellations($cancellations)
+    {
+        if (is_null($cancellations)) {
+            throw new \InvalidArgumentException('non-nullable cancellations cannot be null');
+        }
+        $this->container['cancellations'] = $cancellations;
 
         return $this;
     }
@@ -543,7 +720,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param \DateTime $created_at 
+     * @param \DateTime $created_at created_at
      *
      * @return self
      */
@@ -570,7 +747,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets start_date_time
      *
-     * @param \DateTime|null $start_date_time The start date and time of the marketing event.
+     * @param \DateTime|null $start_date_time start_date_time
      *
      * @return self
      */
@@ -587,7 +764,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Gets custom_properties
      *
-     * @return \HubSpot\Client\Marketing\Events\Model\PropertyValue[]|null
+     * @return \HubSpot\Client\Marketing\Events\Model\CrmPropertyWrapper[]
      */
     public function getCustomProperties()
     {
@@ -597,7 +774,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets custom_properties
      *
-     * @param \HubSpot\Client\Marketing\Events\Model\PropertyValue[]|null $custom_properties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set. In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+     * @param \HubSpot\Client\Marketing\Events\Model\CrmPropertyWrapper[] $custom_properties custom_properties
      *
      * @return self
      */
@@ -624,7 +801,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets event_cancelled
      *
-     * @param bool|null $event_cancelled Indicates if the marketing event has been cancelled.
+     * @param bool|null $event_cancelled event_cancelled
      *
      * @return self
      */
@@ -634,6 +811,60 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable event_cancelled cannot be null');
         }
         $this->container['event_cancelled'] = $event_cancelled;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_event_id
+     *
+     * @return string|null
+     */
+    public function getExternalEventId()
+    {
+        return $this->container['external_event_id'];
+    }
+
+    /**
+     * Sets external_event_id
+     *
+     * @param string|null $external_event_id external_event_id
+     *
+     * @return self
+     */
+    public function setExternalEventId($external_event_id)
+    {
+        if (is_null($external_event_id)) {
+            throw new \InvalidArgumentException('non-nullable external_event_id cannot be null');
+        }
+        $this->container['external_event_id'] = $external_event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_status
+     *
+     * @return string|null
+     */
+    public function getEventStatus()
+    {
+        return $this->container['event_status'];
+    }
+
+    /**
+     * Sets event_status
+     *
+     * @param string|null $event_status event_status
+     *
+     * @return self
+     */
+    public function setEventStatus($event_status)
+    {
+        if (is_null($event_status)) {
+            throw new \InvalidArgumentException('non-nullable event_status cannot be null');
+        }
+        $this->container['event_status'] = $event_status;
 
         return $this;
     }
@@ -651,7 +882,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets event_description
      *
-     * @param string|null $event_description The description of the marketing event.
+     * @param string|null $event_description event_description
      *
      * @return self
      */
@@ -678,7 +909,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets event_name
      *
-     * @param string $event_name The name of the marketing event.
+     * @param string $event_name event_name
      *
      * @return self
      */
@@ -693,36 +924,9 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id 
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets object_id
      *
-     * @return string|null
+     * @return string
      */
     public function getObjectId()
     {
@@ -732,7 +936,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets object_id
      *
-     * @param string|null $object_id object_id
+     * @param string $object_id object_id
      *
      * @return self
      */
@@ -759,7 +963,7 @@ class MarketingEventPublicDefaultResponse implements ModelInterface, ArrayAccess
     /**
      * Sets updated_at
      *
-     * @param \DateTime $updated_at 
+     * @param \DateTime $updated_at updated_at
      *
      * @return self
      */

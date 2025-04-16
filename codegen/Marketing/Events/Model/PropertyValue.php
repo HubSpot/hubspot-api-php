@@ -421,6 +421,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_MICROAPPS = 'MICROAPPS';
     public const SOURCE_INTENT = 'INTENT';
     public const SOURCE_PROSPECTING_AGENT = 'PROSPECTING_AGENT';
+    public const SOURCE_CENTRAL_EXCHANGE_RATES = 'CENTRAL_EXCHANGE_RATES';
     public const DATA_SENSITIVITY_NONE = 'none';
     public const DATA_SENSITIVITY_STANDARD = 'standard';
     public const DATA_SENSITIVITY_HIGH = 'high';
@@ -524,6 +525,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_MICROAPPS,
             self::SOURCE_INTENT,
             self::SOURCE_PROSPECTING_AGENT,
+            self::SOURCE_CENTRAL_EXCHANGE_RATES,
         ];
     }
 
