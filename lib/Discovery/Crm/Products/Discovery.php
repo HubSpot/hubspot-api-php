@@ -8,8 +8,8 @@ use HubSpot\Client\Crm\Products\Api\SearchApi;
 use HubSpot\Discovery\Crm\ObjectDiscovery;
 
 /**
- * @method BasicApi     basicApi()
- * @method BatchApi     batchApi()
- * @method SearchApi    searchApi()
+ * @method BasicApi  basicApi()
+ * @method BatchApi  batchApi()
+ * @method SearchApi searchApi()
  */
 class Discovery extends ObjectDiscovery {}
