@@ -410,7 +410,7 @@ class MarketingEventEmailSubscriber implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets interaction_date_time
      *
-     * @param int $interaction_date_time The date and time at which the contact subscribed to the event.
+     * @param int $interaction_date_time Timestamp in milliseconds at which the contact subscribed to the event.
      *
      * @return self
      */

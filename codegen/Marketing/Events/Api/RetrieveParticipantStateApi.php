@@ -1,6 +1,6 @@
 <?php
 /**
- * ParticipantStateApi
+ * RetrieveParticipantStateApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Marketing\Events\HeaderSelector;
 use HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * ParticipantStateApi Class Doc Comment
+ * RetrieveParticipantStateApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ParticipantStateApi
+class RetrieveParticipantStateApi
 {
     /**
      * @var ClientInterface

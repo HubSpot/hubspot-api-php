@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketingEventSubscriber
+ * CollectionResponseSearchPublicResponseWrapperNoPaging
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * MarketingEventSubscriber Class Doc Comment
+ * CollectionResponseSearchPublicResponseWrapperNoPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponseSearchPublicResponseWrapperNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketingEventSubscriber';
+    protected static $openAPIModelName = 'CollectionResponseSearchPublicResponseWrapperNoPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'properties' => 'array<string,string>',
-        'interaction_date_time' => 'int'
+        'results' => '\HubSpot\Client\Marketing\Events\Model\SearchPublicResponseWrapper[]'
     ];
 
     /**
@@ -70,9 +68,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'properties' => null,
-        'interaction_date_time' => 'int64'
+        'results' => null
     ];
 
     /**
@@ -81,9 +77,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'properties' => false,
-        'interaction_date_time' => false
+        'results' => false
     ];
 
     /**
@@ -172,9 +166,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'properties' => 'properties',
-        'interaction_date_time' => 'interactionDateTime'
+        'results' => 'results'
     ];
 
     /**
@@ -183,9 +175,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'properties' => 'setProperties',
-        'interaction_date_time' => 'setInteractionDateTime'
+        'results' => 'setResults'
     ];
 
     /**
@@ -194,9 +184,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'properties' => 'getProperties',
-        'interaction_date_time' => 'getInteractionDateTime'
+        'results' => 'getResults'
     ];
 
     /**
@@ -256,9 +244,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('interaction_date_time', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -288,8 +274,8 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['interaction_date_time'] === null) {
-            $invalidProperties[] = "'interaction_date_time' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -307,82 +293,28 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets vid
+     * Gets results
      *
-     * @return int|null
+     * @return \HubSpot\Client\Marketing\Events\Model\SearchPublicResponseWrapper[]
      */
-    public function getVid()
+    public function getResults()
     {
-        return $this->container['vid'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets vid
+     * Sets results
      *
-     * @param int|null $vid vid
+     * @param \HubSpot\Client\Marketing\Events\Model\SearchPublicResponseWrapper[] $results results
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setResults($results)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['vid'] = $vid;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>|null
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string>|null $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
-        }
-        $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets interaction_date_time
-     *
-     * @return int
-     */
-    public function getInteractionDateTime()
-    {
-        return $this->container['interaction_date_time'];
-    }
-
-    /**
-     * Sets interaction_date_time
-     *
-     * @param int $interaction_date_time Timestamp in milliseconds at which the contact subscribed to the event.
-     *
-     * @return self
-     */
-    public function setInteractionDateTime($interaction_date_time)
-    {
-        if (is_null($interaction_date_time)) {
-            throw new \InvalidArgumentException('non-nullable interaction_date_time cannot be null');
-        }
-        $this->container['interaction_date_time'] = $interaction_date_time;
+        $this->container['results'] = $results;
 
         return $this;
     }

@@ -1226,7 +1226,7 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1245,7 +1245,7 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1405,7 +1405,7 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1427,7 +1427,7 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1478,7 +1478,7 @@ class ListAssociationsApi
     /**
      * Create request for operation 'getAllByExternalAccountAndEventIds'
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *

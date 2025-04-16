@@ -1,6 +1,6 @@
 <?php
 /**
- * SubscriberStateChangesApi
+ * IdentifiersApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Marketing\Events\HeaderSelector;
 use HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * SubscriberStateChangesApi Class Doc Comment
+ * IdentifiersApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SubscriberStateChangesApi
+class IdentifiersApi
 {
     /**
      * @var ClientInterface
@@ -71,10 +71,10 @@ class SubscriberStateChangesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'upsertByContactEmail' => [
+        'doSearch' => [
             'application/json',
         ],
-        'upsertByContactId' => [
+        'searchPortalEvents' => [
             'application/json',
         ],
     ];
@@ -126,44 +126,38 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Operation upsertByContactEmail
+     * Operation doSearch
      *
-     * Record a subscriber state by contact email
+     * Find App-Specific Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber batch_input_marketing_event_email_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactEmail'] to see the possible values for this operation
+     * @param  string $q The id of the marketing event in the external event application (externalEventId) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function upsertByContactEmail($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, string $contentType = self::contentTypes['upsertByContactEmail'][0])
+    public function doSearch($q, string $contentType = self::contentTypes['doSearch'][0])
     {
-        list($response) = $this->upsertByContactEmailWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, $contentType);
+        list($response) = $this->doSearchWithHttpInfo($q, $contentType);
         return $response;
     }
 
     /**
-     * Operation upsertByContactEmailWithHttpInfo
+     * Operation doSearchWithHttpInfo
      *
-     * Record a subscriber state by contact email
+     * Find App-Specific Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactEmail'] to see the possible values for this operation
+     * @param  string $q The id of the marketing event in the external event application (externalEventId) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function upsertByContactEmailWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, string $contentType = self::contentTypes['upsertByContactEmail'][0])
+    public function doSearchWithHttpInfo($q, string $contentType = self::contentTypes['doSearch'][0])
     {
-        $request = $this->upsertByContactEmailRequest($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, $contentType);
+        $request = $this->doSearchRequest($q, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -201,6 +195,33 @@ class SubscriberStateChangesApi
             }
 
             switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 default:
                     if ('\HubSpot\Client\Marketing\Events\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -230,7 +251,7 @@ class SubscriberStateChangesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -260,6 +281,14 @@ class SubscriberStateChangesApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -274,22 +303,19 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Operation upsertByContactEmailAsync
+     * Operation doSearchAsync
      *
-     * Record a subscriber state by contact email
+     * Find App-Specific Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactEmail'] to see the possible values for this operation
+     * @param  string $q The id of the marketing event in the external event application (externalEventId) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function upsertByContactEmailAsync($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, string $contentType = self::contentTypes['upsertByContactEmail'][0])
+    public function doSearchAsync($q, string $contentType = self::contentTypes['doSearch'][0])
     {
-        return $this->upsertByContactEmailAsyncWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, $contentType)
+        return $this->doSearchAsyncWithHttpInfo($q, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -298,23 +324,20 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Operation upsertByContactEmailAsyncWithHttpInfo
+     * Operation doSearchAsyncWithHttpInfo
      *
-     * Record a subscriber state by contact email
+     * Find App-Specific Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactEmail'] to see the possible values for this operation
+     * @param  string $q The id of the marketing event in the external event application (externalEventId) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function upsertByContactEmailAsyncWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, string $contentType = self::contentTypes['upsertByContactEmail'][0])
+    public function doSearchAsyncWithHttpInfo($q, string $contentType = self::contentTypes['doSearch'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
-        $request = $this->upsertByContactEmailRequest($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging';
+        $request = $this->doSearchRequest($q, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -353,50 +376,26 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Create request for operation 'upsertByContactEmail'
+     * Create request for operation 'doSearch'
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactEmail'] to see the possible values for this operation
+     * @param  string $q The id of the marketing event in the external event application (externalEventId) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function upsertByContactEmailRequest($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_email_subscriber, string $contentType = self::contentTypes['upsertByContactEmail'][0])
+    public function doSearchRequest($q, string $contentType = self::contentTypes['doSearch'][0])
     {
 
-        // verify the required parameter 'external_event_id' is set
-        if ($external_event_id === null || (is_array($external_event_id) && count($external_event_id) === 0)) {
+        // verify the required parameter 'q' is set
+        if ($q === null || (is_array($q) && count($q) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_event_id when calling upsertByContactEmail'
-            );
-        }
-
-        // verify the required parameter 'subscriber_state' is set
-        if ($subscriber_state === null || (is_array($subscriber_state) && count($subscriber_state) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $subscriber_state when calling upsertByContactEmail'
-            );
-        }
-
-        // verify the required parameter 'external_account_id' is set
-        if ($external_account_id === null || (is_array($external_account_id) && count($external_account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $external_account_id when calling upsertByContactEmail'
-            );
-        }
-
-        // verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if ($batch_input_marketing_event_email_subscriber === null || (is_array($batch_input_marketing_event_email_subscriber) && count($batch_input_marketing_event_email_subscriber) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_email_subscriber when calling upsertByContactEmail'
+                'Missing the required parameter $q when calling doSearch'
             );
         }
 
 
-        $resourcePath = '/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/email-upsert';
+        $resourcePath = '/marketing/v3/marketing-events/events/search';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -405,8 +404,8 @@ class SubscriberStateChangesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $external_account_id,
-            'externalAccountId', // param base name
+            $q,
+            'q', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -414,39 +413,16 @@ class SubscriberStateChangesApi
         ) ?? []);
 
 
-        // path params
-        if ($external_event_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'externalEventId' . '}',
-                ObjectSerializer::toPathValue($external_event_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($subscriber_state !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriberState' . '}',
-                ObjectSerializer::toPathValue($subscriber_state),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
+            ['application/json', '*/*', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($batch_input_marketing_event_email_subscriber)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_email_subscriber));
-            } else {
-                $httpBody = $batch_input_marketing_event_email_subscriber;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -489,7 +465,7 @@ class SubscriberStateChangesApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -497,44 +473,38 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Operation upsertByContactId
+     * Operation searchPortalEvents
      *
-     * Record a subscriber state by contact ID
+     * Find Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber batch_input_marketing_event_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactId'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPortalEvents'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function upsertByContactId($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, string $contentType = self::contentTypes['upsertByContactId'][0])
+    public function searchPortalEvents($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
-        list($response) = $this->upsertByContactIdWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, $contentType);
+        list($response) = $this->searchPortalEventsWithHttpInfo($external_event_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation upsertByContactIdWithHttpInfo
+     * Operation searchPortalEventsWithHttpInfo
      *
-     * Record a subscriber state by contact ID
+     * Find Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactId'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPortalEvents'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function upsertByContactIdWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, string $contentType = self::contentTypes['upsertByContactId'][0])
+    public function searchPortalEventsWithHttpInfo($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
-        $request = $this->upsertByContactIdRequest($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, $contentType);
+        $request = $this->searchPortalEventsRequest($external_event_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -572,6 +542,33 @@ class SubscriberStateChangesApi
             }
 
             switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 default:
                     if ('\HubSpot\Client\Marketing\Events\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -601,7 +598,7 @@ class SubscriberStateChangesApi
                     ];
             }
 
-            $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
+            $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -631,6 +628,14 @@ class SubscriberStateChangesApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -645,22 +650,19 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Operation upsertByContactIdAsync
+     * Operation searchPortalEventsAsync
      *
-     * Record a subscriber state by contact ID
+     * Find Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactId'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPortalEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function upsertByContactIdAsync($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, string $contentType = self::contentTypes['upsertByContactId'][0])
+    public function searchPortalEventsAsync($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
-        return $this->upsertByContactIdAsyncWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, $contentType)
+        return $this->searchPortalEventsAsyncWithHttpInfo($external_event_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -669,23 +671,20 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Operation upsertByContactIdAsyncWithHttpInfo
+     * Operation searchPortalEventsAsyncWithHttpInfo
      *
-     * Record a subscriber state by contact ID
+     * Find Marketing Events by External Event Id
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactId'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPortalEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function upsertByContactIdAsyncWithHttpInfo($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, string $contentType = self::contentTypes['upsertByContactId'][0])
+    public function searchPortalEventsAsyncWithHttpInfo($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\Error';
-        $request = $this->upsertByContactIdRequest($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging';
+        $request = $this->searchPortalEventsRequest($external_event_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -724,65 +723,32 @@ class SubscriberStateChangesApi
     }
 
     /**
-     * Create request for operation 'upsertByContactId'
+     * Create request for operation 'searchPortalEvents'
      *
-     * @param  string $external_event_id The id of the marketing event in the external event application (required)
-     * @param  string $subscriber_state The new subscriber state for the HubSpot contacts and the specified marketing event. For example: &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39;. (required)
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
-     * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertByContactId'] to see the possible values for this operation
+     * @param  string $external_event_id The id of the marketing event in the external event application. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPortalEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function upsertByContactIdRequest($external_event_id, $subscriber_state, $external_account_id, $batch_input_marketing_event_subscriber, string $contentType = self::contentTypes['upsertByContactId'][0])
+    public function searchPortalEventsRequest($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
 
         // verify the required parameter 'external_event_id' is set
         if ($external_event_id === null || (is_array($external_event_id) && count($external_event_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_event_id when calling upsertByContactId'
-            );
-        }
-
-        // verify the required parameter 'subscriber_state' is set
-        if ($subscriber_state === null || (is_array($subscriber_state) && count($subscriber_state) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $subscriber_state when calling upsertByContactId'
-            );
-        }
-
-        // verify the required parameter 'external_account_id' is set
-        if ($external_account_id === null || (is_array($external_account_id) && count($external_account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $external_account_id when calling upsertByContactId'
-            );
-        }
-
-        // verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if ($batch_input_marketing_event_subscriber === null || (is_array($batch_input_marketing_event_subscriber) && count($batch_input_marketing_event_subscriber) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_marketing_event_subscriber when calling upsertByContactId'
+                'Missing the required parameter $external_event_id when calling searchPortalEvents'
             );
         }
 
 
-        $resourcePath = '/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/upsert';
+        $resourcePath = '/marketing/v3/marketing-events/{externalEventId}/identifiers';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $external_account_id,
-            'externalAccountId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            true // required
-        ) ?? []);
 
 
         // path params
@@ -793,31 +759,16 @@ class SubscriberStateChangesApi
                 $resourcePath
             );
         }
-        // path params
-        if ($subscriber_state !== null) {
-            $resourcePath = str_replace(
-                '{' . 'subscriberState' . '}',
-                ObjectSerializer::toPathValue($subscriber_state),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
+            ['application/json', '*/*', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($batch_input_marketing_event_subscriber)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_marketing_event_subscriber));
-            } else {
-                $httpBody = $batch_input_marketing_event_subscriber;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -860,7 +811,7 @@ class SubscriberStateChangesApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

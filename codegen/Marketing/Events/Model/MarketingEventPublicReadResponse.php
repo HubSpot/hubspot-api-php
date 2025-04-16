@@ -74,6 +74,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         'event_description' => 'string',
         'event_name' => 'string',
         'id' => 'string',
+        'object_id' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -102,6 +103,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         'event_description' => null,
         'event_name' => null,
         'id' => null,
+        'object_id' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -128,6 +130,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         'event_description' => false,
         'event_name' => false,
         'id' => false,
+        'object_id' => false,
         'updated_at' => false
     ];
 
@@ -234,6 +237,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         'event_description' => 'eventDescription',
         'event_name' => 'eventName',
         'id' => 'id',
+        'object_id' => 'objectId',
         'updated_at' => 'updatedAt'
     ];
 
@@ -260,6 +264,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         'event_description' => 'setEventDescription',
         'event_name' => 'setEventName',
         'id' => 'setId',
+        'object_id' => 'setObjectId',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -286,6 +291,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         'event_description' => 'getEventDescription',
         'event_name' => 'getEventName',
         'id' => 'getId',
+        'object_id' => 'getObjectId',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -363,6 +369,7 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
         $this->setIfExists('event_description', $data ?? [], null);
         $this->setIfExists('event_name', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object_id', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -893,6 +900,33 @@ class MarketingEventPublicReadResponse implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string|null
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string|null $object_id object_id
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        if (is_null($object_id)) {
+            throw new \InvalidArgumentException('non-nullable object_id cannot be null');
+        }
+        $this->container['object_id'] = $object_id;
 
         return $this;
     }

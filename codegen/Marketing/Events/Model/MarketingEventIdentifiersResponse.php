@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging
+ * MarketingEventIdentifiersResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging Class Doc Comment
+ * MarketingEventIdentifiersResponse Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketingEventIdentifiersResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging';
+    protected static $openAPIModelName = 'MarketingEventIdentifiersResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\HubSpot\Client\Marketing\Events\Model\MarketingEventExternalUniqueIdentifier[]'
+        'external_account_id' => 'string',
+        'external_event_id' => 'string',
+        'app_info' => '\HubSpot\Client\Marketing\Events\Model\AppInfo',
+        'object_id' => 'string',
+        'marketing_event_name' => 'string'
     ];
 
     /**
@@ -68,7 +72,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null
+        'external_account_id' => null,
+        'external_event_id' => null,
+        'app_info' => null,
+        'object_id' => null,
+        'marketing_event_name' => null
     ];
 
     /**
@@ -77,7 +85,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'results' => false
+        'external_account_id' => false,
+        'external_event_id' => false,
+        'app_info' => false,
+        'object_id' => false,
+        'marketing_event_name' => false
     ];
 
     /**
@@ -166,7 +178,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results'
+        'external_account_id' => 'externalAccountId',
+        'external_event_id' => 'externalEventId',
+        'app_info' => 'appInfo',
+        'object_id' => 'objectId',
+        'marketing_event_name' => 'marketingEventName'
     ];
 
     /**
@@ -175,7 +191,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults'
+        'external_account_id' => 'setExternalAccountId',
+        'external_event_id' => 'setExternalEventId',
+        'app_info' => 'setAppInfo',
+        'object_id' => 'setObjectId',
+        'marketing_event_name' => 'setMarketingEventName'
     ];
 
     /**
@@ -184,7 +204,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults'
+        'external_account_id' => 'getExternalAccountId',
+        'external_event_id' => 'getExternalEventId',
+        'app_info' => 'getAppInfo',
+        'object_id' => 'getObjectId',
+        'marketing_event_name' => 'getMarketingEventName'
     ];
 
     /**
@@ -244,7 +268,11 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('external_account_id', $data ?? [], null);
+        $this->setIfExists('external_event_id', $data ?? [], null);
+        $this->setIfExists('app_info', $data ?? [], null);
+        $this->setIfExists('object_id', $data ?? [], null);
+        $this->setIfExists('marketing_event_name', $data ?? [], null);
     }
 
     /**
@@ -274,8 +302,14 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
+        if ($this->container['external_event_id'] === null) {
+            $invalidProperties[] = "'external_event_id' can't be null";
+        }
+        if ($this->container['object_id'] === null) {
+            $invalidProperties[] = "'object_id' can't be null";
+        }
+        if ($this->container['marketing_event_name'] === null) {
+            $invalidProperties[] = "'marketing_event_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +327,136 @@ class CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging implement
 
 
     /**
-     * Gets results
+     * Gets external_account_id
      *
-     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventExternalUniqueIdentifier[]
+     * @return string|null
      */
-    public function getResults()
+    public function getExternalAccountId()
     {
-        return $this->container['results'];
+        return $this->container['external_account_id'];
     }
 
     /**
-     * Sets results
+     * Sets external_account_id
      *
-     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventExternalUniqueIdentifier[] $results results
+     * @param string|null $external_account_id external_account_id
      *
      * @return self
      */
-    public function setResults($results)
+    public function setExternalAccountId($external_account_id)
     {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        if (is_null($external_account_id)) {
+            throw new \InvalidArgumentException('non-nullable external_account_id cannot be null');
         }
-        $this->container['results'] = $results;
+        $this->container['external_account_id'] = $external_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_event_id
+     *
+     * @return string
+     */
+    public function getExternalEventId()
+    {
+        return $this->container['external_event_id'];
+    }
+
+    /**
+     * Sets external_event_id
+     *
+     * @param string $external_event_id external_event_id
+     *
+     * @return self
+     */
+    public function setExternalEventId($external_event_id)
+    {
+        if (is_null($external_event_id)) {
+            throw new \InvalidArgumentException('non-nullable external_event_id cannot be null');
+        }
+        $this->container['external_event_id'] = $external_event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_info
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\AppInfo|null
+     */
+    public function getAppInfo()
+    {
+        return $this->container['app_info'];
+    }
+
+    /**
+     * Sets app_info
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\AppInfo|null $app_info app_info
+     *
+     * @return self
+     */
+    public function setAppInfo($app_info)
+    {
+        if (is_null($app_info)) {
+            throw new \InvalidArgumentException('non-nullable app_info cannot be null');
+        }
+        $this->container['app_info'] = $app_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string $object_id object_id
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        if (is_null($object_id)) {
+            throw new \InvalidArgumentException('non-nullable object_id cannot be null');
+        }
+        $this->container['object_id'] = $object_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets marketing_event_name
+     *
+     * @return string
+     */
+    public function getMarketingEventName()
+    {
+        return $this->container['marketing_event_name'];
+    }
+
+    /**
+     * Sets marketing_event_name
+     *
+     * @param string $marketing_event_name marketing_event_name
+     *
+     * @return self
+     */
+    public function setMarketingEventName($marketing_event_name)
+    {
+        if (is_null($marketing_event_name)) {
+            throw new \InvalidArgumentException('non-nullable marketing_event_name cannot be null');
+        }
+        $this->container['marketing_event_name'] = $marketing_event_name;
 
         return $this;
     }

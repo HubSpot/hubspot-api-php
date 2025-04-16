@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketingEventSubscriber
+ * BatchResponseMarketingEventPublicDefaultResponseV2WithErrors
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Events\ObjectSerializer;
 
 /**
- * MarketingEventSubscriber Class Doc Comment
+ * BatchResponseMarketingEventPublicDefaultResponseV2WithErrors Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Events
@@ -40,7 +40,7 @@ use \HubSpot\Client\Marketing\Events\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketingEventSubscriber';
+    protected static $openAPIModelName = 'BatchResponseMarketingEventPublicDefaultResponseV2WithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vid' => 'int',
-        'properties' => 'array<string,string>',
-        'interaction_date_time' => 'int'
+        'completed_at' => '\DateTime',
+        'num_errors' => 'int',
+        'requested_at' => '\DateTime',
+        'started_at' => '\DateTime',
+        'links' => 'array<string,string>',
+        'results' => '\HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponseV2[]',
+        'errors' => '\HubSpot\Client\Marketing\Events\Model\StandardError[]',
+        'status' => 'string'
     ];
 
     /**
@@ -70,9 +75,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32',
-        'properties' => null,
-        'interaction_date_time' => 'int64'
+        'completed_at' => 'date-time',
+        'num_errors' => 'int32',
+        'requested_at' => 'date-time',
+        'started_at' => 'date-time',
+        'links' => null,
+        'results' => null,
+        'errors' => null,
+        'status' => null
     ];
 
     /**
@@ -81,9 +91,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vid' => false,
-        'properties' => false,
-        'interaction_date_time' => false
+        'completed_at' => false,
+        'num_errors' => false,
+        'requested_at' => false,
+        'started_at' => false,
+        'links' => false,
+        'results' => false,
+        'errors' => false,
+        'status' => false
     ];
 
     /**
@@ -172,9 +187,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'vid' => 'vid',
-        'properties' => 'properties',
-        'interaction_date_time' => 'interactionDateTime'
+        'completed_at' => 'completedAt',
+        'num_errors' => 'numErrors',
+        'requested_at' => 'requestedAt',
+        'started_at' => 'startedAt',
+        'links' => 'links',
+        'results' => 'results',
+        'errors' => 'errors',
+        'status' => 'status'
     ];
 
     /**
@@ -183,9 +203,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'vid' => 'setVid',
-        'properties' => 'setProperties',
-        'interaction_date_time' => 'setInteractionDateTime'
+        'completed_at' => 'setCompletedAt',
+        'num_errors' => 'setNumErrors',
+        'requested_at' => 'setRequestedAt',
+        'started_at' => 'setStartedAt',
+        'links' => 'setLinks',
+        'results' => 'setResults',
+        'errors' => 'setErrors',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -194,9 +219,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'vid' => 'getVid',
-        'properties' => 'getProperties',
-        'interaction_date_time' => 'getInteractionDateTime'
+        'completed_at' => 'getCompletedAt',
+        'num_errors' => 'getNumErrors',
+        'requested_at' => 'getRequestedAt',
+        'started_at' => 'getStartedAt',
+        'links' => 'getLinks',
+        'results' => 'getResults',
+        'errors' => 'getErrors',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -240,6 +270,25 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_COMPLETE = 'COMPLETE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
+            self::STATUS_CANCELED,
+            self::STATUS_COMPLETE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -256,9 +305,14 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vid', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('interaction_date_time', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -288,9 +342,27 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['interaction_date_time'] === null) {
-            $invalidProperties[] = "'interaction_date_time' can't be null";
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
         }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -307,82 +379,227 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets vid
+     * Gets completed_at
+     *
+     * @return \DateTime
+     */
+    public function getCompletedAt()
+    {
+        return $this->container['completed_at'];
+    }
+
+    /**
+     * Sets completed_at
+     *
+     * @param \DateTime $completed_at completed_at
+     *
+     * @return self
+     */
+    public function setCompletedAt($completed_at)
+    {
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
+        }
+        $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_errors
      *
      * @return int|null
      */
-    public function getVid()
+    public function getNumErrors()
     {
-        return $this->container['vid'];
+        return $this->container['num_errors'];
     }
 
     /**
-     * Sets vid
+     * Sets num_errors
      *
-     * @param int|null $vid vid
+     * @param int|null $num_errors num_errors
      *
      * @return self
      */
-    public function setVid($vid)
+    public function setNumErrors($num_errors)
     {
-        if (is_null($vid)) {
-            throw new \InvalidArgumentException('non-nullable vid cannot be null');
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
         }
-        $this->container['vid'] = $vid;
+        $this->container['num_errors'] = $num_errors;
 
         return $this;
     }
 
     /**
-     * Gets properties
+     * Gets requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAt()
+    {
+        return $this->container['requested_at'];
+    }
+
+    /**
+     * Sets requested_at
+     *
+     * @param \DateTime|null $requested_at requested_at
+     *
+     * @return self
+     */
+    public function setRequestedAt($requested_at)
+    {
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        }
+        $this->container['requested_at'] = $requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime $started_at started_at
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
      *
      * @return array<string,string>|null
      */
-    public function getProperties()
+    public function getLinks()
     {
-        return $this->container['properties'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets properties
+     * Sets links
      *
-     * @param array<string,string>|null $properties properties
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
-    public function setProperties($properties)
+    public function setLinks($links)
     {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
-        $this->container['properties'] = $properties;
+        $this->container['links'] = $links;
 
         return $this;
     }
 
     /**
-     * Gets interaction_date_time
+     * Gets results
      *
-     * @return int
+     * @return \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponseV2[]
      */
-    public function getInteractionDateTime()
+    public function getResults()
     {
-        return $this->container['interaction_date_time'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets interaction_date_time
+     * Sets results
      *
-     * @param int $interaction_date_time Timestamp in milliseconds at which the contact subscribed to the event.
+     * @param \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponseV2[] $results results
      *
      * @return self
      */
-    public function setInteractionDateTime($interaction_date_time)
+    public function setResults($results)
     {
-        if (is_null($interaction_date_time)) {
-            throw new \InvalidArgumentException('non-nullable interaction_date_time cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['interaction_date_time'] = $interaction_date_time;
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\StandardError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\StandardError[]|null $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

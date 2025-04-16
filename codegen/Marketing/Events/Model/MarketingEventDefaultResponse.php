@@ -66,7 +66,8 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         'event_name' => 'string',
         'event_type' => 'string',
         'event_completed' => 'bool',
-        'end_date_time' => '\DateTime'
+        'end_date_time' => '\DateTime',
+        'object_id' => 'string'
     ];
 
     /**
@@ -86,7 +87,8 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         'event_name' => null,
         'event_type' => null,
         'event_completed' => null,
-        'end_date_time' => 'date-time'
+        'end_date_time' => 'date-time',
+        'object_id' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         'event_name' => false,
         'event_type' => false,
         'event_completed' => false,
-        'end_date_time' => false
+        'end_date_time' => false,
+        'object_id' => false
     ];
 
     /**
@@ -202,7 +205,8 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         'event_name' => 'eventName',
         'event_type' => 'eventType',
         'event_completed' => 'eventCompleted',
-        'end_date_time' => 'endDateTime'
+        'end_date_time' => 'endDateTime',
+        'object_id' => 'objectId'
     ];
 
     /**
@@ -220,7 +224,8 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         'event_name' => 'setEventName',
         'event_type' => 'setEventType',
         'event_completed' => 'setEventCompleted',
-        'end_date_time' => 'setEndDateTime'
+        'end_date_time' => 'setEndDateTime',
+        'object_id' => 'setObjectId'
     ];
 
     /**
@@ -238,7 +243,8 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         'event_name' => 'getEventName',
         'event_type' => 'getEventType',
         'event_completed' => 'getEventCompleted',
-        'end_date_time' => 'getEndDateTime'
+        'end_date_time' => 'getEndDateTime',
+        'object_id' => 'getObjectId'
     ];
 
     /**
@@ -308,6 +314,7 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('event_type', $data ?? [], null);
         $this->setIfExists('event_completed', $data ?? [], null);
         $this->setIfExists('end_date_time', $data ?? [], null);
+        $this->setIfExists('object_id', $data ?? [], null);
     }
 
     /**
@@ -624,6 +631,33 @@ class MarketingEventDefaultResponse implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable end_date_time cannot be null');
         }
         $this->container['end_date_time'] = $end_date_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_id
+     *
+     * @return string|null
+     */
+    public function getObjectId()
+    {
+        return $this->container['object_id'];
+    }
+
+    /**
+     * Sets object_id
+     *
+     * @param string|null $object_id object_id
+     *
+     * @return self
+     */
+    public function setObjectId($object_id)
+    {
+        if (is_null($object_id)) {
+            throw new \InvalidArgumentException('non-nullable object_id cannot be null');
+        }
+        $this->container['object_id'] = $object_id;
 
         return $this;
     }
