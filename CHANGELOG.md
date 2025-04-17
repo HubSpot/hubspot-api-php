@@ -15,6 +15,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved and renamed methods `archiveBatch` => `archive`, `createBatch` => `create`, `readBatch` => `read` and `updateBatch` => `update` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->batchApi()`.
 - Moved methods `attachToLangGroup`, `createLangVariation`, `detachFromLangGroup`, `setLangPrimary` and `updateLangs` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->multiLanguageApi()`.
 
+### CRM Associations
+
+- Added `crm()->associations()->v4()->schema()->definitionConfigurationsApi()` API.
+- Renamed method `crm()->associations()->v4()->schema()->definitionsApi()->archive()` to `crm()->associations()->v4()->schema()->definitionsApi()->remove()`.
+
+### CRM
+
+- Moved method `merge()` from `crm()->companies()->mergeApi()` to `crm()->companies()->basicApi()`.
+- Removed `crm()->companies()->mergeApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->companies()->batchApi()->create()`.
+- Made `association_category` and `association_type_id` properties required in `HubSpot\Client\Crm\Companies\Model\AssociationSpec`, `HubSpot\Client\Crm\Contacts\Model\AssociationSpec`, `HubSpot\Client\Crm\Deals\Model\AssociationSpec`
+- Made `types` and `to` properties required in `HubSpot\Client\Crm\Companies\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject`.
+- Made `id` property required in `HubSpot\Client\Crm\Companies\Model\PublicObjectId`, `HubSpot\Client\Crm\Contacts\Model\PublicObjectId`, `HubSpot\Client\Crm\Deals\Model\PublicObjectId`
+- Added property `object_write_trace_id` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObject`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Companies\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObject`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicUpsertObject`,`HubSpot\Client\Crm\Deals\Model\SimplePublicObject`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject`,
+- Removed property `object_write_trace_id` from `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInputForCreate`.
+- Moved method `merge()` from `crm()->contacts()->mergeApi()` to `crm()->contacts()->basicApi()`.
+- Removed `crm()->contacts()->mergeApi()` API.
+- Moved method `purge()` from `crm()->contacts()->GDPRApi()` to `crm()->contacts()->basicApi()`.
+- Removed `crm()->contacts()->GDPRApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->contacts()->batchApi()->create()`.
+- Moved method `merge()` from `crm()->deals()->mergeApi()` to `crm()->deals()->basicApi()`.
+- Removed `crm()->deals()->mergeApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->deals()->batchApi()->create()`.
+
 ### Events
 
 - Renamed `events()->send()->customEventDataApi()` to `events()->send()->basicApi()`.
