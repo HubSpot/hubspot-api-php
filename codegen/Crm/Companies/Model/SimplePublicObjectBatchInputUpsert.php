@@ -329,7 +329,7 @@ class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess,
     /**
      * Sets id_property
      *
-     * @param string|null $id_property id_property
+     * @param string|null $id_property The name of a property whose values are unique for this object
      *
      * @return self
      */
@@ -356,7 +356,7 @@ class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess,
     /**
      * Sets object_write_trace_id
      *
-     * @param string|null $object_write_trace_id object_write_trace_id
+     * @param string|null $object_write_trace_id In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).
      *
      * @return self
      */
@@ -383,7 +383,7 @@ class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id The ID of the company to update.
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess,
     /**
      * Sets properties
      *
-     * @param array<string,string> $properties properties
+     * @param array<string,string> $properties The company property values to set.
      *
      * @return self
      */

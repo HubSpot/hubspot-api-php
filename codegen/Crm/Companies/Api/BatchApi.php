@@ -137,7 +137,7 @@ class BatchApi
     /**
      * Operation archive
      *
-     * Archive a batch of companies by ID
+     * Archive a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -154,7 +154,7 @@ class BatchApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Archive a batch of companies by ID
+     * Archive a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -222,7 +222,7 @@ class BatchApi
     /**
      * Operation archiveAsync
      *
-     * Archive a batch of companies by ID
+     * Archive a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -243,7 +243,7 @@ class BatchApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Archive a batch of companies by ID
+     * Archive a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -379,16 +379,16 @@ class BatchApi
      *
      * Create a batch of companies
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error
      */
-    public function create($batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function create($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
-        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_input_for_create, $contentType);
+        list($response) = $this->createWithHttpInfo($batch_input_simple_public_object_batch_input_for_create, $contentType);
         return $response;
     }
 
@@ -397,16 +397,16 @@ class BatchApi
      *
      * Create a batch of companies
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createWithHttpInfo($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->createRequest($batch_input_simple_public_object_input_for_create, $contentType);
+        $request = $this->createRequest($batch_input_simple_public_object_batch_input_for_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -591,15 +591,15 @@ class BatchApi
      *
      * Create a batch of companies
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createAsync($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create, $contentType)
+        return $this->createAsyncWithHttpInfo($batch_input_simple_public_object_batch_input_for_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -612,16 +612,16 @@ class BatchApi
      *
      * Create a batch of companies
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createAsyncWithHttpInfo($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject';
-        $request = $this->createRequest($batch_input_simple_public_object_input_for_create, $contentType);
+        $request = $this->createRequest($batch_input_simple_public_object_batch_input_for_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -662,19 +662,19 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createRequest($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
 
-        // verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
-        if ($batch_input_simple_public_object_input_for_create === null || (is_array($batch_input_simple_public_object_input_for_create) && count($batch_input_simple_public_object_input_for_create) === 0)) {
+        // verify the required parameter 'batch_input_simple_public_object_batch_input_for_create' is set
+        if ($batch_input_simple_public_object_batch_input_for_create === null || (is_array($batch_input_simple_public_object_batch_input_for_create) && count($batch_input_simple_public_object_batch_input_for_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_input_for_create when calling create'
+                'Missing the required parameter $batch_input_simple_public_object_batch_input_for_create when calling create'
             );
         }
 
@@ -697,12 +697,12 @@ class BatchApi
         );
 
         // for model (json/xml)
-        if (isset($batch_input_simple_public_object_input_for_create)) {
+        if (isset($batch_input_simple_public_object_batch_input_for_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_input_for_create));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input_for_create));
             } else {
-                $httpBody = $batch_input_simple_public_object_input_for_create;
+                $httpBody = $batch_input_simple_public_object_batch_input_for_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -757,7 +757,7 @@ class BatchApi
     /**
      * Operation read
      *
-     * Read a batch of companies by internal ID, or unique property values
+     * Retrieve a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -776,7 +776,7 @@ class BatchApi
     /**
      * Operation readWithHttpInfo
      *
-     * Read a batch of companies by internal ID, or unique property values
+     * Retrieve a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -971,7 +971,7 @@ class BatchApi
     /**
      * Operation readAsync
      *
-     * Read a batch of companies by internal ID, or unique property values
+     * Retrieve a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -993,7 +993,7 @@ class BatchApi
     /**
      * Operation readAsyncWithHttpInfo
      *
-     * Read a batch of companies by internal ID, or unique property values
+     * Retrieve a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool $archived Whether to return only results that have been archived. (optional, default to false)
@@ -1152,7 +1152,7 @@ class BatchApi
     /**
      * Operation update
      *
-     * Update a batch of companies by internal ID, or unique property values
+     * Update a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
@@ -1170,7 +1170,7 @@ class BatchApi
     /**
      * Operation updateWithHttpInfo
      *
-     * Update a batch of companies by internal ID, or unique property values
+     * Update a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
@@ -1364,7 +1364,7 @@ class BatchApi
     /**
      * Operation updateAsync
      *
-     * Update a batch of companies by internal ID, or unique property values
+     * Update a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
@@ -1385,7 +1385,7 @@ class BatchApi
     /**
      * Operation updateAsyncWithHttpInfo
      *
-     * Update a batch of companies by internal ID, or unique property values
+     * Update a batch of companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation

@@ -329,7 +329,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id_property
      *
-     * @param string|null $id_property id_property
+     * @param string|null $id_property The name of a unique property, when identifying records by property.
      *
      * @return self
      */
@@ -383,7 +383,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id The ID of the contact to update. This can be the object ID, or the unique property value of the `idProperty` property.
      *
      * @return self
      */

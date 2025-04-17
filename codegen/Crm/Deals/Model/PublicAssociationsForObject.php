@@ -281,6 +281,12 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['types'] === null) {
+            $invalidProperties[] = "'types' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets types
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\AssociationSpec[]|null
+     * @return \HubSpot\Client\Crm\Deals\Model\AssociationSpec[]
      */
     public function getTypes()
     {
@@ -309,7 +315,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets types
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\AssociationSpec[]|null $types types
+     * @param \HubSpot\Client\Crm\Deals\Model\AssociationSpec[] $types types
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets to
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\PublicObjectId|null
+     * @return \HubSpot\Client\Crm\Deals\Model\PublicObjectId
      */
     public function getTo()
     {
@@ -336,7 +342,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets to
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\PublicObjectId|null $to to
+     * @param \HubSpot\Client\Crm\Deals\Model\PublicObjectId $to to
      *
      * @return self
      */

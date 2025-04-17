@@ -298,6 +298,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['association_category'] === null) {
+            $invalidProperties[] = "'association_category' can't be null";
+        }
         $allowedValues = $this->getAssociationCategoryAllowableValues();
         if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -307,6 +310,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['association_type_id'] === null) {
+            $invalidProperties[] = "'association_type_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -325,7 +331,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets association_category
      *
-     * @return string|null
+     * @return string
      */
     public function getAssociationCategory()
     {
@@ -335,7 +341,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets association_category
      *
-     * @param string|null $association_category association_category
+     * @param string $association_category association_category
      *
      * @return self
      */
@@ -362,7 +368,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets association_type_id
      *
-     * @return int|null
+     * @return int
      */
     public function getAssociationTypeId()
     {
@@ -372,7 +378,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets association_type_id
      *
-     * @param int|null $association_type_id association_type_id
+     * @param int $association_type_id association_type_id
      *
      * @return self
      */

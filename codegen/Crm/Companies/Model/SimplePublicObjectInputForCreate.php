@@ -58,7 +58,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'associations' => '\HubSpot\Client\Crm\Companies\Model\PublicAssociationsForObject[]',
-        'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>'
     ];
 
@@ -71,7 +70,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'associations' => null,
-        'object_write_trace_id' => null,
         'properties' => null
     ];
 
@@ -82,7 +80,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'associations' => false,
-        'object_write_trace_id' => false,
         'properties' => false
     ];
 
@@ -173,7 +170,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'associations' => 'associations',
-        'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties'
     ];
 
@@ -184,7 +180,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'associations' => 'setAssociations',
-        'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties'
     ];
 
@@ -195,7 +190,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'associations' => 'getAssociations',
-        'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties'
     ];
 
@@ -257,7 +251,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->setIfExists('associations', $data ?? [], null);
-        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
 
@@ -334,33 +327,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets object_write_trace_id
-     *
-     * @return string|null
-     */
-    public function getObjectWriteTraceId()
-    {
-        return $this->container['object_write_trace_id'];
-    }
-
-    /**
-     * Sets object_write_trace_id
-     *
-     * @param string|null $object_write_trace_id object_write_trace_id
-     *
-     * @return self
-     */
-    public function setObjectWriteTraceId($object_write_trace_id)
-    {
-        if (is_null($object_write_trace_id)) {
-            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
-        }
-        $this->container['object_write_trace_id'] = $object_write_trace_id;
-
-        return $this;
-    }
-
-    /**
      * Gets properties
      *
      * @return array<string,string>
@@ -373,7 +339,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     /**
      * Sets properties
      *
-     * @param array<string,string> $properties properties
+     * @param array<string,string> $properties The company property values to set.
      *
      * @return self
      */

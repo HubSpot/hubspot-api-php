@@ -315,7 +315,7 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object_id_to_merge
      *
-     * @param string $object_id_to_merge object_id_to_merge
+     * @param string $object_id_to_merge The ID of the company to merge into the primary.
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets primary_object_id
      *
-     * @param string $primary_object_id primary_object_id
+     * @param string $primary_object_id The ID of the primary company, which the other will merge into.
      *
      * @return self
      */

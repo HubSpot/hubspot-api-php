@@ -125,6 +125,8 @@ class SearchApi
     /**
      * Operation doSearch
      *
+     * Search for companies
+     *
      * @param  \HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
@@ -140,6 +142,8 @@ class SearchApi
 
     /**
      * Operation doSearchWithHttpInfo
+     *
+     * Search for companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -298,6 +302,8 @@ class SearchApi
     /**
      * Operation doSearchAsync
      *
+     * Search for companies
+     *
      * @param  \HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
@@ -316,6 +322,8 @@ class SearchApi
 
     /**
      * Operation doSearchAsyncWithHttpInfo
+     *
+     * Search for companies
      *
      * @param  \HubSpot\Client\Crm\Companies\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
