@@ -5,7 +5,6 @@ namespace spec\HubSpot\Discovery\Crm\Companies;
 use GuzzleHttp\Client;
 use HubSpot\Client\Crm\Companies\Api\BasicApi;
 use HubSpot\Client\Crm\Companies\Api\BatchApi;
-use HubSpot\Client\Crm\Companies\Api\MergeApi;
 use HubSpot\Client\Crm\Companies\Api\SearchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Companies\Discovery;
@@ -27,7 +26,6 @@ class DiscoverySpec extends ObjectBehavior
     {
         $this->basicApi()->shouldHaveType(BasicApi::class);
         $this->batchApi()->shouldHaveType(BatchApi::class);
-        $this->mergeApi()->shouldHaveType(MergeApi::class);
         $this->searchApi()->shouldHaveType(SearchApi::class);
     }
 }
