@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicAssociationsForObject
+ * SimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Deals\ObjectSerializer;
 
 /**
- * PublicAssociationsForObject Class Doc Comment
+ * SimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Deals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Deals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicAssociationsForObject';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'types' => '\HubSpot\Client\Crm\Deals\Model\AssociationSpec[]',
-        'to' => '\HubSpot\Client\Crm\Deals\Model\PublicObjectId'
+        'associations' => '\HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject[]',
+        'object_write_trace_id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -69,8 +70,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'types' => null,
-        'to' => null
+        'associations' => null,
+        'object_write_trace_id' => null,
+        'properties' => null
     ];
 
     /**
@@ -79,8 +81,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'types' => false,
-        'to' => false
+        'associations' => false,
+        'object_write_trace_id' => false,
+        'properties' => false
     ];
 
     /**
@@ -169,8 +172,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'types' => 'types',
-        'to' => 'to'
+        'associations' => 'associations',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'properties' => 'properties'
     ];
 
     /**
@@ -179,8 +183,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'types' => 'setTypes',
-        'to' => 'setTo'
+        'associations' => 'setAssociations',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -189,8 +194,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'types' => 'getTypes',
-        'to' => 'getTo'
+        'associations' => 'getAssociations',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -250,8 +256,9 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('types', $data ?? [], null);
-        $this->setIfExists('to', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -281,11 +288,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['types'] === null) {
-            $invalidProperties[] = "'types' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +307,82 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets types
+     * Gets associations
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\AssociationSpec[]
+     * @return \HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject[]|null
      */
-    public function getTypes()
+    public function getAssociations()
     {
-        return $this->container['types'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets types
+     * Sets associations
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\AssociationSpec[] $types types
+     * @param \HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
-    public function setTypes($types)
+    public function setAssociations($associations)
     {
-        if (is_null($types)) {
-            throw new \InvalidArgumentException('non-nullable types cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['types'] = $types;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
 
     /**
-     * Gets to
+     * Gets object_write_trace_id
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\PublicObjectId
+     * @return string|null
      */
-    public function getTo()
+    public function getObjectWriteTraceId()
     {
-        return $this->container['to'];
+        return $this->container['object_write_trace_id'];
     }
 
     /**
-     * Sets to
+     * Sets object_write_trace_id
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\PublicObjectId $to to
+     * @param string|null $object_write_trace_id object_write_trace_id
      *
      * @return self
      */
-    public function setTo($to)
+    public function setObjectWriteTraceId($object_write_trace_id)
     {
-        if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
-        $this->container['to'] = $to;
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }
