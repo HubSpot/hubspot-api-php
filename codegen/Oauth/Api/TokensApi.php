@@ -125,6 +125,8 @@ class TokensApi
     /**
      * Operation create
      *
+     * Refresh an access token
+     *
      * @param  string $grant_type grant_type (optional)
      * @param  string $code code (optional)
      * @param  string $redirect_uri redirect_uri (optional)
@@ -145,6 +147,8 @@ class TokensApi
 
     /**
      * Operation createWithHttpInfo
+     *
+     * Refresh an access token
      *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)
@@ -308,6 +312,8 @@ class TokensApi
     /**
      * Operation createAsync
      *
+     * Refresh an access token
+     *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)
      * @param  string $redirect_uri (optional)
@@ -331,6 +337,8 @@ class TokensApi
 
     /**
      * Operation createAsyncWithHttpInfo
+     *
+     * Refresh an access token
      *
      * @param  string $grant_type (optional)
      * @param  string $code (optional)

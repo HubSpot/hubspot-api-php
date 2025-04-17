@@ -125,7 +125,9 @@ class AccessTokensApi
     /**
      * Operation get
      *
-     * @param  string $token token (required)
+     * Retrieve OAuth token metadata
+     *
+     * @param  string $token The access token that you want to retrieve information about. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
@@ -141,7 +143,9 @@ class AccessTokensApi
     /**
      * Operation getWithHttpInfo
      *
-     * @param  string $token (required)
+     * Retrieve OAuth token metadata
+     *
+     * @param  string $token The access token that you want to retrieve information about. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
@@ -298,7 +302,9 @@ class AccessTokensApi
     /**
      * Operation getAsync
      *
-     * @param  string $token (required)
+     * Retrieve OAuth token metadata
+     *
+     * @param  string $token The access token that you want to retrieve information about. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -317,7 +323,9 @@ class AccessTokensApi
     /**
      * Operation getAsyncWithHttpInfo
      *
-     * @param  string $token (required)
+     * Retrieve OAuth token metadata
+     *
+     * @param  string $token The access token that you want to retrieve information about. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -367,7 +375,7 @@ class AccessTokensApi
     /**
      * Create request for operation 'get'
      *
-     * @param  string $token (required)
+     * @param  string $token The access token that you want to retrieve information about. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
