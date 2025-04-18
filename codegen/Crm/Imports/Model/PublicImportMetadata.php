@@ -35,7 +35,6 @@ use \HubSpot\Client\Crm\Imports\ObjectSerializer;
  * PublicImportMetadata Class Doc Comment
  *
  * @category Class
- * @description An object detailing a summary of the import record outputs
  * @package  HubSpot\Client\Crm\Imports
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

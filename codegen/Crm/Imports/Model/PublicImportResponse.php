@@ -35,7 +35,6 @@ use \HubSpot\Client\Crm\Imports\ObjectSerializer;
  * PublicImportResponse Class Doc Comment
  *
  * @category Class
- * @description A current summary of the import, whether complete or not.
  * @package  HubSpot\Client\Crm\Imports
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -67,6 +66,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'string',
         'id' => 'string',
         'opt_out_import' => 'bool',
+        'mapped_object_type_ids' => 'string[]',
         'updated_at' => '\DateTime'
     ];
 
@@ -87,6 +87,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => null,
         'id' => null,
         'opt_out_import' => null,
+        'mapped_object_type_ids' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -105,6 +106,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => false,
         'id' => false,
         'opt_out_import' => false,
+        'mapped_object_type_ids' => false,
         'updated_at' => false
     ];
 
@@ -203,6 +205,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'state',
         'id' => 'id',
         'opt_out_import' => 'optOutImport',
+        'mapped_object_type_ids' => 'mappedObjectTypeIds',
         'updated_at' => 'updatedAt'
     ];
 
@@ -221,6 +224,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'setState',
         'id' => 'setId',
         'opt_out_import' => 'setOptOutImport',
+        'mapped_object_type_ids' => 'setMappedObjectTypeIds',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -239,6 +243,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'getState',
         'id' => 'getId',
         'opt_out_import' => 'getOptOutImport',
+        'mapped_object_type_ids' => 'getMappedObjectTypeIds',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -356,6 +361,7 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('opt_out_import', $data ?? [], null);
+        $this->setIfExists('mapped_object_type_ids', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -418,6 +424,9 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         }
         if ($this->container['opt_out_import'] === null) {
             $invalidProperties[] = "'opt_out_import' can't be null";
+        }
+        if ($this->container['mapped_object_type_ids'] === null) {
+            $invalidProperties[] = "'mapped_object_type_ids' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -696,6 +705,33 @@ class PublicImportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable opt_out_import cannot be null');
         }
         $this->container['opt_out_import'] = $opt_out_import;
+
+        return $this;
+    }
+
+    /**
+     * Gets mapped_object_type_ids
+     *
+     * @return string[]
+     */
+    public function getMappedObjectTypeIds()
+    {
+        return $this->container['mapped_object_type_ids'];
+    }
+
+    /**
+     * Sets mapped_object_type_ids
+     *
+     * @param string[] $mapped_object_type_ids mapped_object_type_ids
+     *
+     * @return self
+     */
+    public function setMappedObjectTypeIds($mapped_object_type_ids)
+    {
+        if (is_null($mapped_object_type_ids)) {
+            throw new \InvalidArgumentException('non-nullable mapped_object_type_ids cannot be null');
+        }
+        $this->container['mapped_object_type_ids'] = $mapped_object_type_ids;
 
         return $this;
     }

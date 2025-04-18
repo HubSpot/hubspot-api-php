@@ -128,15 +128,17 @@ class PublicImportsApi
      * @param  int $import_id import_id (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  bool $include_error_message Set to True to receive a message explaining the error. (optional)
+     * @param  bool $include_row_data Set to True to receive the data values for the errored row. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportErrorForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error
      */
-    public function getErrors($import_id, $after = null, $limit = null, string $contentType = self::contentTypes['getErrors'][0])
+    public function getErrors($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
-        list($response) = $this->getErrorsWithHttpInfo($import_id, $after, $limit, $contentType);
+        list($response) = $this->getErrorsWithHttpInfo($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType);
         return $response;
     }
 
@@ -146,15 +148,17 @@ class PublicImportsApi
      * @param  int $import_id (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  bool $include_error_message Set to True to receive a message explaining the error. (optional)
+     * @param  bool $include_row_data Set to True to receive the data values for the errored row. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportErrorForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getErrorsWithHttpInfo($import_id, $after = null, $limit = null, string $contentType = self::contentTypes['getErrors'][0])
+    public function getErrorsWithHttpInfo($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
-        $request = $this->getErrorsRequest($import_id, $after, $limit, $contentType);
+        $request = $this->getErrorsRequest($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -305,14 +309,16 @@ class PublicImportsApi
      * @param  int $import_id (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  bool $include_error_message Set to True to receive a message explaining the error. (optional)
+     * @param  bool $include_row_data Set to True to receive the data values for the errored row. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getErrorsAsync($import_id, $after = null, $limit = null, string $contentType = self::contentTypes['getErrors'][0])
+    public function getErrorsAsync($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
-        return $this->getErrorsAsyncWithHttpInfo($import_id, $after, $limit, $contentType)
+        return $this->getErrorsAsyncWithHttpInfo($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -326,15 +332,17 @@ class PublicImportsApi
      * @param  int $import_id (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  bool $include_error_message Set to True to receive a message explaining the error. (optional)
+     * @param  bool $include_row_data Set to True to receive the data values for the errored row. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getErrorsAsyncWithHttpInfo($import_id, $after = null, $limit = null, string $contentType = self::contentTypes['getErrors'][0])
+    public function getErrorsAsyncWithHttpInfo($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportErrorForwardPaging';
-        $request = $this->getErrorsRequest($import_id, $after, $limit, $contentType);
+        $request = $this->getErrorsRequest($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -378,12 +386,14 @@ class PublicImportsApi
      * @param  int $import_id (required)
      * @param  string $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int $limit The maximum number of results to display per page. (optional)
+     * @param  bool $include_error_message Set to True to receive a message explaining the error. (optional)
+     * @param  bool $include_row_data Set to True to receive the data values for the errored row. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getErrorsRequest($import_id, $after = null, $limit = null, string $contentType = self::contentTypes['getErrors'][0])
+    public function getErrorsRequest($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
 
         // verify the required parameter 'import_id' is set
@@ -392,6 +402,8 @@ class PublicImportsApi
                 'Missing the required parameter $import_id when calling getErrors'
             );
         }
+
+
 
 
 
@@ -417,6 +429,24 @@ class PublicImportsApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_error_message,
+            'includeErrorMessage', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_row_data,
+            'includeRowData', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -58,6 +58,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'row_data' => 'string[]',
+        'contains_encrypted_properties' => 'bool',
         'line_number' => 'int',
         'page_name' => 'string',
         'file_id' => 'int'
@@ -72,6 +73,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'row_data' => null,
+        'contains_encrypted_properties' => null,
         'line_number' => 'int32',
         'page_name' => null,
         'file_id' => 'int32'
@@ -84,6 +86,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'row_data' => false,
+        'contains_encrypted_properties' => false,
         'line_number' => false,
         'page_name' => false,
         'file_id' => false
@@ -176,6 +179,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'row_data' => 'rowData',
+        'contains_encrypted_properties' => 'containsEncryptedProperties',
         'line_number' => 'lineNumber',
         'page_name' => 'pageName',
         'file_id' => 'fileId'
@@ -188,6 +192,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'row_data' => 'setRowData',
+        'contains_encrypted_properties' => 'setContainsEncryptedProperties',
         'line_number' => 'setLineNumber',
         'page_name' => 'setPageName',
         'file_id' => 'setFileId'
@@ -200,6 +205,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'row_data' => 'getRowData',
+        'contains_encrypted_properties' => 'getContainsEncryptedProperties',
         'line_number' => 'getLineNumber',
         'page_name' => 'getPageName',
         'file_id' => 'getFileId'
@@ -263,6 +269,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('row_data', $data ?? [], null);
+        $this->setIfExists('contains_encrypted_properties', $data ?? [], null);
         $this->setIfExists('line_number', $data ?? [], null);
         $this->setIfExists('page_name', $data ?? [], null);
         $this->setIfExists('file_id', $data ?? [], null);
@@ -297,6 +304,9 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['row_data'] === null) {
             $invalidProperties[] = "'row_data' can't be null";
+        }
+        if ($this->container['contains_encrypted_properties'] === null) {
+            $invalidProperties[] = "'contains_encrypted_properties' can't be null";
         }
         if ($this->container['line_number'] === null) {
             $invalidProperties[] = "'line_number' can't be null";
@@ -342,6 +352,33 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable row_data cannot be null');
         }
         $this->container['row_data'] = $row_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_encrypted_properties
+     *
+     * @return bool
+     */
+    public function getContainsEncryptedProperties()
+    {
+        return $this->container['contains_encrypted_properties'];
+    }
+
+    /**
+     * Sets contains_encrypted_properties
+     *
+     * @param bool $contains_encrypted_properties contains_encrypted_properties
+     *
+     * @return self
+     */
+    public function setContainsEncryptedProperties($contains_encrypted_properties)
+    {
+        if (is_null($contains_encrypted_properties)) {
+            throw new \InvalidArgumentException('non-nullable contains_encrypted_properties cannot be null');
+        }
+        $this->container['contains_encrypted_properties'] = $contains_encrypted_properties;
 
         return $this;
     }

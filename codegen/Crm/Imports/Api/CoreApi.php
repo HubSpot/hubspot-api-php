@@ -482,8 +482,8 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  \SplFileObject $files A list of files containing the data to import (optional)
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
+     * @param  \SplFileObject $files files (optional)
+     * @param  string $import_request import_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
@@ -501,8 +501,8 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  \SplFileObject $files A list of files containing the data to import (optional)
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
+     * @param  \SplFileObject $files (optional)
+     * @param  string $import_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
@@ -661,8 +661,8 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  \SplFileObject $files A list of files containing the data to import (optional)
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
+     * @param  \SplFileObject $files (optional)
+     * @param  string $import_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -683,8 +683,8 @@ class CoreApi
      *
      * Start a new import
      *
-     * @param  \SplFileObject $files A list of files containing the data to import (optional)
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
+     * @param  \SplFileObject $files (optional)
+     * @param  string $import_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -734,8 +734,8 @@ class CoreApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \SplFileObject $files A list of files containing the data to import (optional)
-     * @param  string $import_request JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format. (optional)
+     * @param  \SplFileObject $files (optional)
+     * @param  string $import_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

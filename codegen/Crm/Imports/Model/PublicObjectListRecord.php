@@ -35,7 +35,6 @@ use \HubSpot\Client\Crm\Imports\ObjectSerializer;
  * PublicObjectListRecord Class Doc Comment
  *
  * @category Class
- * @description A summary detailing which list contains the imported objects.
  * @package  HubSpot\Client\Crm\Imports
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
