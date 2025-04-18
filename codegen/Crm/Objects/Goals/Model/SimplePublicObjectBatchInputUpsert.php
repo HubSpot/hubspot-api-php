@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * SimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * SimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'id_property' => 'string',
+        'object_write_trace_id' => 'string',
+        'id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -68,7 +71,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'id_property' => null,
+        'object_write_trace_id' => null,
+        'id' => null,
+        'properties' => null
     ];
 
     /**
@@ -77,7 +83,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'id_property' => false,
+        'object_write_trace_id' => false,
+        'id' => false,
+        'properties' => false
     ];
 
     /**
@@ -166,7 +175,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'id_property' => 'idProperty',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'id' => 'id',
+        'properties' => 'properties'
     ];
 
     /**
@@ -175,7 +187,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'id_property' => 'setIdProperty',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'id' => 'setId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -184,7 +199,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'id_property' => 'getIdProperty',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'id' => 'getId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -244,7 +262,10 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id_property', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -277,6 +298,9 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -291,6 +315,60 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id_property
+     *
+     * @return string|null
+     */
+    public function getIdProperty()
+    {
+        return $this->container['id_property'];
+    }
+
+    /**
+     * Sets id_property
+     *
+     * @param string|null $id_property The name of a property whose values are unique for this object
+     *
+     * @return self
+     */
+    public function setIdProperty($id_property)
+    {
+        if (is_null($id_property)) {
+            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
+        }
+        $this->container['id_property'] = $id_property;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -315,6 +393,33 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * SimplePublicObjectInput
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * SimplePublicObjectInput Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectInput implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'SimplePublicObjectInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -68,7 +68,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'properties' => null
     ];
 
     /**
@@ -77,7 +77,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'properties' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'properties' => 'properties'
     ];
 
     /**
@@ -175,7 +175,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -184,7 +184,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -244,7 +244,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -274,8 +274,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +293,28 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets id
+     * Gets properties
      *
-     * @return string
+     * @return array<string,string>
      */
-    public function getId()
+    public function getProperties()
     {
-        return $this->container['id'];
+        return $this->container['properties'];
     }
 
     /**
-     * Sets id
+     * Sets properties
      *
-     * @param string $id id
+     * @param array<string,string> $properties properties
      *
      * @return self
      */
-    public function setId($id)
+    public function setProperties($properties)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['properties'] = $properties;
 
         return $this;
     }

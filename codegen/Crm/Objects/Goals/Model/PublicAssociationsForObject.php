@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * PublicAssociationsForObject
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * PublicAssociationsForObject Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'PublicAssociationsForObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'types' => '\HubSpot\Client\Crm\Objects\Goals\Model\AssociationSpec[]',
+        'to' => '\HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectId'
     ];
 
     /**
@@ -68,7 +69,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'types' => null,
+        'to' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'types' => false,
+        'to' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'types' => 'types',
+        'to' => 'to'
     ];
 
     /**
@@ -175,7 +179,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'types' => 'setTypes',
+        'to' => 'setTo'
     ];
 
     /**
@@ -184,7 +189,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'types' => 'getTypes',
+        'to' => 'getTo'
     ];
 
     /**
@@ -244,7 +250,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('types', $data ?? [], null);
+        $this->setIfExists('to', $data ?? [], null);
     }
 
     /**
@@ -274,8 +281,11 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['types'] === null) {
+            $invalidProperties[] = "'types' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +303,55 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets id
+     * Gets types
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Objects\Goals\Model\AssociationSpec[]
      */
-    public function getId()
+    public function getTypes()
     {
-        return $this->container['id'];
+        return $this->container['types'];
     }
 
     /**
-     * Sets id
+     * Sets types
      *
-     * @param string $id id
+     * @param \HubSpot\Client\Crm\Objects\Goals\Model\AssociationSpec[] $types types
      *
      * @return self
      */
-    public function setId($id)
+    public function setTypes($types)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($types)) {
+            throw new \InvalidArgumentException('non-nullable types cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['types'] = $types;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return \HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectId
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param \HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectId $to to
+     *
+     * @return self
+     */
+    public function setTo($to)
+    {
+        if (is_null($to)) {
+            throw new \InvalidArgumentException('non-nullable to cannot be null');
+        }
+        $this->container['to'] = $to;
 
         return $this;
     }

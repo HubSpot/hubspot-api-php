@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * BatchInputSimplePublicObjectBatchInputUpsert
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'inputs' => '\HubSpot\Client\Crm\Objects\Goals\Model\SimplePublicObjectBatchInputUpsert[]'
     ];
 
     /**
@@ -68,7 +68,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'inputs' => null
     ];
 
     /**
@@ -77,7 +77,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'inputs' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -175,7 +175,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -184,7 +184,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -244,7 +244,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -274,8 +274,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +293,28 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets id
+     * Gets inputs
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Objects\Goals\Model\SimplePublicObjectBatchInputUpsert[]
      */
-    public function getId()
+    public function getInputs()
     {
-        return $this->container['id'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets id
+     * Sets inputs
      *
-     * @param string $id id
+     * @param \HubSpot\Client\Crm\Objects\Goals\Model\SimplePublicObjectBatchInputUpsert[] $inputs inputs
      *
      * @return self
      */
-    public function setId($id)
+    public function setInputs($inputs)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }

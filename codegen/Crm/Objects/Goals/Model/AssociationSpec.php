@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * AssociationSpec
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * AssociationSpec Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'AssociationSpec';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'association_category' => 'string',
+        'association_type_id' => 'int'
     ];
 
     /**
@@ -68,7 +69,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'association_category' => null,
+        'association_type_id' => 'int32'
     ];
 
     /**
@@ -77,7 +79,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'association_category' => false,
+        'association_type_id' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'association_category' => 'associationCategory',
+        'association_type_id' => 'associationTypeId'
     ];
 
     /**
@@ -175,7 +179,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'association_category' => 'setAssociationCategory',
+        'association_type_id' => 'setAssociationTypeId'
     ];
 
     /**
@@ -184,7 +189,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'association_category' => 'getAssociationCategory',
+        'association_type_id' => 'getAssociationTypeId'
     ];
 
     /**
@@ -228,6 +234,23 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
+    public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
+    public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAssociationCategoryAllowableValues()
+    {
+        return [
+            self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
+            self::ASSOCIATION_CATEGORY_USER_DEFINED,
+            self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -244,7 +267,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('association_category', $data ?? [], null);
+        $this->setIfExists('association_type_id', $data ?? [], null);
     }
 
     /**
@@ -274,8 +298,20 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['association_category'] === null) {
+            $invalidProperties[] = "'association_category' can't be null";
+        }
+        $allowedValues = $this->getAssociationCategoryAllowableValues();
+        if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'association_category', must be one of '%s'",
+                $this->container['association_category'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['association_type_id'] === null) {
+            $invalidProperties[] = "'association_type_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +329,65 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets id
+     * Gets association_category
      *
      * @return string
      */
-    public function getId()
+    public function getAssociationCategory()
     {
-        return $this->container['id'];
+        return $this->container['association_category'];
     }
 
     /**
-     * Sets id
+     * Sets association_category
      *
-     * @param string $id id
+     * @param string $association_category association_category
      *
      * @return self
      */
-    public function setId($id)
+    public function setAssociationCategory($association_category)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($association_category)) {
+            throw new \InvalidArgumentException('non-nullable association_category cannot be null');
         }
-        $this->container['id'] = $id;
+        $allowedValues = $this->getAssociationCategoryAllowableValues();
+        if (!in_array($association_category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'association_category', must be one of '%s'",
+                    $association_category,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['association_category'] = $association_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets association_type_id
+     *
+     * @return int
+     */
+    public function getAssociationTypeId()
+    {
+        return $this->container['association_type_id'];
+    }
+
+    /**
+     * Sets association_type_id
+     *
+     * @param int $association_type_id association_type_id
+     *
+     * @return self
+     */
+    public function setAssociationTypeId($association_type_id)
+    {
+        if (is_null($association_type_id)) {
+            throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
+        }
+        $this->container['association_type_id'] = $association_type_id;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * SimplePublicObjectInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * SimplePublicObjectInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'SimplePublicObjectInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'associations' => '\HubSpot\Client\Crm\Objects\Goals\Model\PublicAssociationsForObject[]',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -68,7 +69,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'associations' => null,
+        'properties' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'associations' => false,
+        'properties' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'associations' => 'associations',
+        'properties' => 'properties'
     ];
 
     /**
@@ -175,7 +179,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'associations' => 'setAssociations',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -184,7 +189,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'associations' => 'getAssociations',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -244,7 +250,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -274,8 +281,8 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +300,55 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets id
+     * Gets associations
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Objects\Goals\Model\PublicAssociationsForObject[]|null
      */
-    public function getId()
+    public function getAssociations()
     {
-        return $this->container['id'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets id
+     * Sets associations
      *
-     * @param string $id id
+     * @param \HubSpot\Client\Crm\Objects\Goals\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
-    public function setId($id)
+    public function setAssociations($associations)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['associations'] = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }

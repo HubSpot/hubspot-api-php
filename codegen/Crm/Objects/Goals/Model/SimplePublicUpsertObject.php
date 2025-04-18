@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectId
+ * SimplePublicUpsertObject
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
 
 /**
- * SimplePublicObjectId Class Doc Comment
+ * SimplePublicUpsertObject Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Goals
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Goals\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectId';
+    protected static $openAPIModelName = 'SimplePublicUpsertObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'created_at' => '\DateTime',
+        'archived' => 'bool',
+        'archived_at' => '\DateTime',
+        'new' => 'bool',
+        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Goals\Model\ValueWithTimestamp[]>',
+        'id' => 'string',
+        'object_write_trace_id' => 'string',
+        'properties' => 'array<string,string>',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -68,7 +76,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'created_at' => 'date-time',
+        'archived' => null,
+        'archived_at' => 'date-time',
+        'new' => null,
+        'properties_with_history' => null,
+        'id' => null,
+        'object_write_trace_id' => null,
+        'properties' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -77,7 +93,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false
+        'created_at' => false,
+        'archived' => false,
+        'archived_at' => false,
+        'new' => false,
+        'properties_with_history' => false,
+        'id' => false,
+        'object_write_trace_id' => false,
+        'properties' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -166,7 +190,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'created_at' => 'createdAt',
+        'archived' => 'archived',
+        'archived_at' => 'archivedAt',
+        'new' => 'new',
+        'properties_with_history' => 'propertiesWithHistory',
+        'id' => 'id',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'properties' => 'properties',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -175,7 +207,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'created_at' => 'setCreatedAt',
+        'archived' => 'setArchived',
+        'archived_at' => 'setArchivedAt',
+        'new' => 'setNew',
+        'properties_with_history' => 'setPropertiesWithHistory',
+        'id' => 'setId',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'properties' => 'setProperties',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -184,7 +224,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'created_at' => 'getCreatedAt',
+        'archived' => 'getArchived',
+        'archived_at' => 'getArchivedAt',
+        'new' => 'getNew',
+        'properties_with_history' => 'getPropertiesWithHistory',
+        'id' => 'getId',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'properties' => 'getProperties',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -244,7 +292,15 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('archived_at', $data ?? [], null);
+        $this->setIfExists('new', $data ?? [], null);
+        $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -274,8 +330,20 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['new'] === null) {
+            $invalidProperties[] = "'new' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -291,6 +359,141 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived archived
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        }
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return \DateTime|null
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param \DateTime|null $archived_at archived_at
+     *
+     * @return self
+     */
+    public function setArchivedAt($archived_at)
+    {
+        if (is_null($archived_at)) {
+            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
+        }
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets new
+     *
+     * @return bool
+     */
+    public function getNew()
+    {
+        return $this->container['new'];
+    }
+
+    /**
+     * Sets new
+     *
+     * @param bool $new new
+     *
+     * @return self
+     */
+    public function setNew($new)
+    {
+        if (is_null($new)) {
+            throw new \InvalidArgumentException('non-nullable new cannot be null');
+        }
+        $this->container['new'] = $new;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties_with_history
+     *
+     * @return array<string,\HubSpot\Client\Crm\Objects\Goals\Model\ValueWithTimestamp[]>|null
+     */
+    public function getPropertiesWithHistory()
+    {
+        return $this->container['properties_with_history'];
+    }
+
+    /**
+     * Sets properties_with_history
+     *
+     * @param array<string,\HubSpot\Client\Crm\Objects\Goals\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
+     *
+     * @return self
+     */
+    public function setPropertiesWithHistory($properties_with_history)
+    {
+        if (is_null($properties_with_history)) {
+            throw new \InvalidArgumentException('non-nullable properties_with_history cannot be null');
+        }
+        $this->container['properties_with_history'] = $properties_with_history;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -315,6 +518,87 @@ class SimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
