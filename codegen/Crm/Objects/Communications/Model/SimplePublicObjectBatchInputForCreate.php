@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObject
+ * SimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Communications\ObjectSerializer;
 
 /**
- * SimplePublicObject Class Doc Comment
+ * SimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Communications
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Communications\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObject';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_at' => '\DateTime',
-        'archived' => 'bool',
-        'archived_at' => '\DateTime',
-        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Communications\Model\ValueWithTimestamp[]>',
-        'id' => 'string',
+        'associations' => '\HubSpot\Client\Crm\Objects\Communications\Model\PublicAssociationsForObject[]',
         'object_write_trace_id' => 'string',
-        'properties' => 'array<string,string>',
-        'updated_at' => '\DateTime'
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -75,14 +70,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'created_at' => 'date-time',
-        'archived' => null,
-        'archived_at' => 'date-time',
-        'properties_with_history' => null,
-        'id' => null,
+        'associations' => null,
         'object_write_trace_id' => null,
-        'properties' => null,
-        'updated_at' => 'date-time'
+        'properties' => null
     ];
 
     /**
@@ -91,14 +81,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'created_at' => false,
-        'archived' => false,
-        'archived_at' => false,
-        'properties_with_history' => false,
-        'id' => false,
+        'associations' => false,
         'object_write_trace_id' => false,
-        'properties' => false,
-        'updated_at' => false
+        'properties' => false
     ];
 
     /**
@@ -187,14 +172,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'createdAt',
-        'archived' => 'archived',
-        'archived_at' => 'archivedAt',
-        'properties_with_history' => 'propertiesWithHistory',
-        'id' => 'id',
+        'associations' => 'associations',
         'object_write_trace_id' => 'objectWriteTraceId',
-        'properties' => 'properties',
-        'updated_at' => 'updatedAt'
+        'properties' => 'properties'
     ];
 
     /**
@@ -203,14 +183,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'archived' => 'setArchived',
-        'archived_at' => 'setArchivedAt',
-        'properties_with_history' => 'setPropertiesWithHistory',
-        'id' => 'setId',
+        'associations' => 'setAssociations',
         'object_write_trace_id' => 'setObjectWriteTraceId',
-        'properties' => 'setProperties',
-        'updated_at' => 'setUpdatedAt'
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -219,14 +194,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'archived' => 'getArchived',
-        'archived_at' => 'getArchivedAt',
-        'properties_with_history' => 'getPropertiesWithHistory',
-        'id' => 'getId',
+        'associations' => 'getAssociations',
         'object_write_trace_id' => 'getObjectWriteTraceId',
-        'properties' => 'getProperties',
-        'updated_at' => 'getUpdatedAt'
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -286,14 +256,9 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('archived_at', $data ?? [], null);
-        $this->setIfExists('properties_with_history', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
         $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -323,17 +288,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -351,136 +307,28 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets created_at
+     * Gets associations
      *
-     * @return \DateTime
+     * @return \HubSpot\Client\Crm\Objects\Communications\Model\PublicAssociationsForObject[]|null
      */
-    public function getCreatedAt()
+    public function getAssociations()
     {
-        return $this->container['created_at'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets created_at
+     * Sets associations
      *
-     * @param \DateTime $created_at created_at
+     * @param \HubSpot\Client\Crm\Objects\Communications\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setAssociations($associations)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool|null
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool|null $archived archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        if (is_null($archived)) {
-            throw new \InvalidArgumentException('non-nullable archived cannot be null');
-        }
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return \DateTime|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param \DateTime|null $archived_at archived_at
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        if (is_null($archived_at)) {
-            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
-        }
-        $this->container['archived_at'] = $archived_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties_with_history
-     *
-     * @return array<string,\HubSpot\Client\Crm\Objects\Communications\Model\ValueWithTimestamp[]>|null
-     */
-    public function getPropertiesWithHistory()
-    {
-        return $this->container['properties_with_history'];
-    }
-
-    /**
-     * Sets properties_with_history
-     *
-     * @param array<string,\HubSpot\Client\Crm\Objects\Communications\Model\ValueWithTimestamp[]>|null $properties_with_history properties_with_history
-     *
-     * @return self
-     */
-    public function setPropertiesWithHistory($properties_with_history)
-    {
-        if (is_null($properties_with_history)) {
-            throw new \InvalidArgumentException('non-nullable properties_with_history cannot be null');
-        }
-        $this->container['properties_with_history'] = $properties_with_history;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
@@ -535,33 +383,6 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
         $this->container['properties'] = $properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
