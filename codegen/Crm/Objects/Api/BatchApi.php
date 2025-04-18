@@ -10,7 +10,7 @@
  */
 
 /**
- * Objects
+ * CRM Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -400,16 +400,16 @@ class BatchApi
      * Create a batch of objects
      *
      * @param  string $object_type object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
      */
-    public function create($object_type, $batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function create($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
-        list($response) = $this->createWithHttpInfo($object_type, $batch_input_simple_public_object_input_for_create, $contentType);
+        list($response) = $this->createWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_for_create, $contentType);
         return $response;
     }
 
@@ -419,16 +419,16 @@ class BatchApi
      * Create a batch of objects
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($object_type, $batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->createRequest($object_type, $batch_input_simple_public_object_input_for_create, $contentType);
+        $request = $this->createRequest($object_type, $batch_input_simple_public_object_batch_input_for_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -614,15 +614,15 @@ class BatchApi
      * Create a batch of objects
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($object_type, $batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createAsync($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->createAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_input_for_create, $contentType)
+        return $this->createAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_for_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -636,16 +636,16 @@ class BatchApi
      * Create a batch of objects
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject';
-        $request = $this->createRequest($object_type, $batch_input_simple_public_object_input_for_create, $contentType);
+        $request = $this->createRequest($object_type, $batch_input_simple_public_object_batch_input_for_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -687,13 +687,13 @@ class BatchApi
      * Create request for operation 'create'
      *
      * @param  string $object_type (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectInputForCreate $batch_input_simple_public_object_input_for_create (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($object_type, $batch_input_simple_public_object_input_for_create, string $contentType = self::contentTypes['create'][0])
+    public function createRequest($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
 
         // verify the required parameter 'object_type' is set
@@ -703,10 +703,10 @@ class BatchApi
             );
         }
 
-        // verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
-        if ($batch_input_simple_public_object_input_for_create === null || (is_array($batch_input_simple_public_object_input_for_create) && count($batch_input_simple_public_object_input_for_create) === 0)) {
+        // verify the required parameter 'batch_input_simple_public_object_batch_input_for_create' is set
+        if ($batch_input_simple_public_object_batch_input_for_create === null || (is_array($batch_input_simple_public_object_batch_input_for_create) && count($batch_input_simple_public_object_batch_input_for_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_input_for_create when calling create'
+                'Missing the required parameter $batch_input_simple_public_object_batch_input_for_create when calling create'
             );
         }
 
@@ -737,12 +737,12 @@ class BatchApi
         );
 
         // for model (json/xml)
-        if (isset($batch_input_simple_public_object_input_for_create)) {
+        if (isset($batch_input_simple_public_object_batch_input_for_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_input_for_create));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input_for_create));
             } else {
-                $httpBody = $batch_input_simple_public_object_input_for_create;
+                $httpBody = $batch_input_simple_public_object_batch_input_for_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

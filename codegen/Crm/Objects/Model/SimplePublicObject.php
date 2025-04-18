@@ -11,7 +11,7 @@
  */
 
 /**
- * Objects
+ * CRM Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -62,6 +62,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => '\DateTime',
         'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Model\ValueWithTimestamp[]>',
         'id' => 'string',
+        'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>',
         'updated_at' => '\DateTime'
     ];
@@ -79,6 +80,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'date-time',
         'properties_with_history' => null,
         'id' => null,
+        'object_write_trace_id' => null,
         'properties' => null,
         'updated_at' => 'date-time'
     ];
@@ -94,6 +96,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => false,
         'properties_with_history' => false,
         'id' => false,
+        'object_write_trace_id' => false,
         'properties' => false,
         'updated_at' => false
     ];
@@ -189,6 +192,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'archivedAt',
         'properties_with_history' => 'propertiesWithHistory',
         'id' => 'id',
+        'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties',
         'updated_at' => 'updatedAt'
     ];
@@ -204,6 +208,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'setArchivedAt',
         'properties_with_history' => 'setPropertiesWithHistory',
         'id' => 'setId',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -219,6 +224,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'getArchivedAt',
         'properties_with_history' => 'getPropertiesWithHistory',
         'id' => 'getId',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -285,6 +291,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('archived_at', $data ?? [], null);
         $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -474,6 +481,33 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }
