@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectBatchInput
+ * SimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * SimplePublicObjectBatchInput Class Doc Comment
+ * SimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectBatchInput';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id_property' => 'string',
+        'associations' => '\HubSpot\Client\Crm\Objects\Model\PublicAssociationsForObject[]',
         'object_write_trace_id' => 'string',
-        'id' => 'string',
         'properties' => 'array<string,string>'
     ];
 
@@ -71,9 +70,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id_property' => null,
+        'associations' => null,
         'object_write_trace_id' => null,
-        'id' => null,
         'properties' => null
     ];
 
@@ -83,9 +81,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id_property' => false,
+        'associations' => false,
         'object_write_trace_id' => false,
-        'id' => false,
         'properties' => false
     ];
 
@@ -175,9 +172,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'id_property' => 'idProperty',
+        'associations' => 'associations',
         'object_write_trace_id' => 'objectWriteTraceId',
-        'id' => 'id',
         'properties' => 'properties'
     ];
 
@@ -187,9 +183,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'id_property' => 'setIdProperty',
+        'associations' => 'setAssociations',
         'object_write_trace_id' => 'setObjectWriteTraceId',
-        'id' => 'setId',
         'properties' => 'setProperties'
     ];
 
@@ -199,9 +194,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'id_property' => 'getIdProperty',
+        'associations' => 'getAssociations',
         'object_write_trace_id' => 'getObjectWriteTraceId',
-        'id' => 'getId',
         'properties' => 'getProperties'
     ];
 
@@ -262,9 +256,8 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id_property', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
         $this->setIfExists('object_write_trace_id', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
 
@@ -295,9 +288,6 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['properties'] === null) {
             $invalidProperties[] = "'properties' can't be null";
         }
@@ -317,28 +307,28 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets id_property
+     * Gets associations
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Objects\Model\PublicAssociationsForObject[]|null
      */
-    public function getIdProperty()
+    public function getAssociations()
     {
-        return $this->container['id_property'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets id_property
+     * Sets associations
      *
-     * @param string|null $id_property The name of a property whose values are unique for this object
+     * @param \HubSpot\Client\Crm\Objects\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
-    public function setIdProperty($id_property)
+    public function setAssociations($associations)
     {
-        if (is_null($id_property)) {
-            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['id_property'] = $id_property;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
@@ -366,33 +356,6 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
         $this->container['object_write_trace_id'] = $object_write_trace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The id to be updated. This can be the object id, or the unique property value of the idProperty property
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
 
         return $this;
     }
