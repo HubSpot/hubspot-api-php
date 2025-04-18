@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchReadInputSimplePublicObjectId
+ * BatchInputSimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Calls\ObjectSerializer;
 
 /**
- * BatchReadInputSimplePublicObjectId Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Calls
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Calls\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchReadInputSimplePublicObjectId';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'properties_with_history' => 'string[]',
-        'id_property' => 'string',
-        'inputs' => '\HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectId[]',
-        'properties' => 'string[]'
+        'inputs' => '\HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectBatchInputForCreate[]'
     ];
 
     /**
@@ -71,10 +68,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'properties_with_history' => null,
-        'id_property' => null,
-        'inputs' => null,
-        'properties' => null
+        'inputs' => null
     ];
 
     /**
@@ -83,10 +77,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'properties_with_history' => false,
-        'id_property' => false,
-        'inputs' => false,
-        'properties' => false
+        'inputs' => false
     ];
 
     /**
@@ -175,10 +166,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'properties_with_history' => 'propertiesWithHistory',
-        'id_property' => 'idProperty',
-        'inputs' => 'inputs',
-        'properties' => 'properties'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -187,10 +175,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'properties_with_history' => 'setPropertiesWithHistory',
-        'id_property' => 'setIdProperty',
-        'inputs' => 'setInputs',
-        'properties' => 'setProperties'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -199,10 +184,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'properties_with_history' => 'getPropertiesWithHistory',
-        'id_property' => 'getIdProperty',
-        'inputs' => 'getInputs',
-        'properties' => 'getProperties'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -262,10 +244,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('properties_with_history', $data ?? [], null);
-        $this->setIfExists('id_property', $data ?? [], null);
         $this->setIfExists('inputs', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -295,14 +274,8 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['properties_with_history'] === null) {
-            $invalidProperties[] = "'properties_with_history' can't be null";
-        }
         if ($this->container['inputs'] === null) {
             $invalidProperties[] = "'inputs' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -320,63 +293,9 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets properties_with_history
-     *
-     * @return string[]
-     */
-    public function getPropertiesWithHistory()
-    {
-        return $this->container['properties_with_history'];
-    }
-
-    /**
-     * Sets properties_with_history
-     *
-     * @param string[] $properties_with_history properties_with_history
-     *
-     * @return self
-     */
-    public function setPropertiesWithHistory($properties_with_history)
-    {
-        if (is_null($properties_with_history)) {
-            throw new \InvalidArgumentException('non-nullable properties_with_history cannot be null');
-        }
-        $this->container['properties_with_history'] = $properties_with_history;
-
-        return $this;
-    }
-
-    /**
-     * Gets id_property
-     *
-     * @return string|null
-     */
-    public function getIdProperty()
-    {
-        return $this->container['id_property'];
-    }
-
-    /**
-     * Sets id_property
-     *
-     * @param string|null $id_property When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
-     *
-     * @return self
-     */
-    public function setIdProperty($id_property)
-    {
-        if (is_null($id_property)) {
-            throw new \InvalidArgumentException('non-nullable id_property cannot be null');
-        }
-        $this->container['id_property'] = $id_property;
-
-        return $this;
-    }
-
-    /**
      * Gets inputs
      *
-     * @return \HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectId[]
+     * @return \HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectBatchInputForCreate[]
      */
     public function getInputs()
     {
@@ -386,7 +305,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectId[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectBatchInputForCreate[] $inputs inputs
      *
      * @return self
      */
@@ -396,33 +315,6 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
         $this->container['inputs'] = $inputs;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return string[]
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param string[] $properties properties
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
-        }
-        $this->container['properties'] = $properties;
 
         return $this;
     }
