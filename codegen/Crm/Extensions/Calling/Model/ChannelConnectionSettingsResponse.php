@@ -1,6 +1,6 @@
 <?php
 /**
- * MarkRecordingAsReadyRequest
+ * ChannelConnectionSettingsResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
 
 /**
- * MarkRecordingAsReadyRequest Class Doc Comment
+ * ChannelConnectionSettingsResponse Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Extensions\Calling
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChannelConnectionSettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarkRecordingAsReadyRequest';
+    protected static $openAPIModelName = 'ChannelConnectionSettingsResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'engagement_id' => 'int'
+        'created_at' => '\DateTime',
+        'is_ready' => 'bool',
+        'url' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -68,7 +71,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'engagement_id' => 'int64'
+        'created_at' => 'date-time',
+        'is_ready' => null,
+        'url' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -77,7 +83,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'engagement_id' => false
+        'created_at' => false,
+        'is_ready' => false,
+        'url' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -166,7 +175,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'engagement_id' => 'engagementId'
+        'created_at' => 'createdAt',
+        'is_ready' => 'isReady',
+        'url' => 'url',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -175,7 +187,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'engagement_id' => 'setEngagementId'
+        'created_at' => 'setCreatedAt',
+        'is_ready' => 'setIsReady',
+        'url' => 'setUrl',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -184,7 +199,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'engagement_id' => 'getEngagementId'
+        'created_at' => 'getCreatedAt',
+        'is_ready' => 'getIsReady',
+        'url' => 'getUrl',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -244,7 +262,10 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('engagement_id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('is_ready', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -274,8 +295,17 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['engagement_id'] === null) {
-            $invalidProperties[] = "'engagement_id' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['is_ready'] === null) {
+            $invalidProperties[] = "'is_ready' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +323,109 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets engagement_id
+     * Gets created_at
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getEngagementId()
+    public function getCreatedAt()
     {
-        return $this->container['engagement_id'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets engagement_id
+     * Sets created_at
      *
-     * @param int $engagement_id engagement_id
+     * @param \DateTime $created_at The timestamp this setting was created
      *
      * @return self
      */
-    public function setEngagementId($engagement_id)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($engagement_id)) {
-            throw new \InvalidArgumentException('non-nullable engagement_id cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['engagement_id'] = $engagement_id;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ready
+     *
+     * @return bool
+     */
+    public function getIsReady()
+    {
+        return $this->container['is_ready'];
+    }
+
+    /**
+     * Sets is_ready
+     *
+     * @param bool $is_ready If true, this app will be considered to support channel connection
+     *
+     * @return self
+     */
+    public function setIsReady($is_ready)
+    {
+        if (is_null($is_ready)) {
+            throw new \InvalidArgumentException('non-nullable is_ready cannot be null');
+        }
+        $this->container['is_ready'] = $is_ready;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url The URL to fetch phone numbers available for channel connection
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at The timestamp this setting was last updated
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

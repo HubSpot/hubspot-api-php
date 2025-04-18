@@ -1,6 +1,6 @@
 <?php
 /**
- * MarkRecordingAsReadyRequest
+ * ChannelConnectionSettingsRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
 
 /**
- * MarkRecordingAsReadyRequest Class Doc Comment
+ * ChannelConnectionSettingsRequest Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Extensions\Calling
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChannelConnectionSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarkRecordingAsReadyRequest';
+    protected static $openAPIModelName = 'ChannelConnectionSettingsRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'engagement_id' => 'int'
+        'is_ready' => 'bool',
+        'url' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'engagement_id' => 'int64'
+        'is_ready' => null,
+        'url' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'engagement_id' => false
+        'is_ready' => false,
+        'url' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'engagement_id' => 'engagementId'
+        'is_ready' => 'isReady',
+        'url' => 'url'
     ];
 
     /**
@@ -175,7 +179,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'engagement_id' => 'setEngagementId'
+        'is_ready' => 'setIsReady',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -184,7 +189,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'engagement_id' => 'getEngagementId'
+        'is_ready' => 'getIsReady',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -244,7 +250,8 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('engagement_id', $data ?? [], null);
+        $this->setIfExists('is_ready', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -274,8 +281,11 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['engagement_id'] === null) {
-            $invalidProperties[] = "'engagement_id' can't be null";
+        if ($this->container['is_ready'] === null) {
+            $invalidProperties[] = "'is_ready' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +303,55 @@ class MarkRecordingAsReadyRequest implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets engagement_id
+     * Gets is_ready
      *
-     * @return int
+     * @return bool
      */
-    public function getEngagementId()
+    public function getIsReady()
     {
-        return $this->container['engagement_id'];
+        return $this->container['is_ready'];
     }
 
     /**
-     * Sets engagement_id
+     * Sets is_ready
      *
-     * @param int $engagement_id engagement_id
+     * @param bool $is_ready If true, this app will be considered to support channel connection
      *
      * @return self
      */
-    public function setEngagementId($engagement_id)
+    public function setIsReady($is_ready)
     {
-        if (is_null($engagement_id)) {
-            throw new \InvalidArgumentException('non-nullable engagement_id cannot be null');
+        if (is_null($is_ready)) {
+            throw new \InvalidArgumentException('non-nullable is_ready cannot be null');
         }
-        $this->container['engagement_id'] = $engagement_id;
+        $this->container['is_ready'] = $is_ready;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url The URL to fetch phone numbers available for channel connection
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
 
         return $this;
     }
