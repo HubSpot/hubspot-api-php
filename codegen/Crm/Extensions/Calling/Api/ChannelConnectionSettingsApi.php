@@ -1,6 +1,6 @@
 <?php
 /**
- * RecordingSettingsApi
+ * ChannelConnectionSettingsApi
  * PHP version 7.4
  *
  * @category Class
@@ -40,14 +40,14 @@ use HubSpot\Client\Crm\Extensions\Calling\HeaderSelector;
 use HubSpot\Client\Crm\Extensions\Calling\ObjectSerializer;
 
 /**
- * RecordingSettingsApi Class Doc Comment
+ * ChannelConnectionSettingsApi Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Extensions\Calling
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class RecordingSettingsApi
+class ChannelConnectionSettingsApi
 {
     /**
      * @var ClientInterface
@@ -71,16 +71,16 @@ class RecordingSettingsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'getUrlFormat' => [
+        'archive' => [
             'application/json',
         ],
-        'markAsReady' => [
+        'create' => [
             'application/json',
         ],
-        'registerUrlFormat' => [
+        'getById' => [
             'application/json',
         ],
-        'updateUrlFormat' => [
+        'update' => [
             'application/json',
         ],
     ];
@@ -132,38 +132,270 @@ class RecordingSettingsApi
     }
 
     /**
-     * Operation getUrlFormat
+     * Operation archive
      *
-     * Retrieve recording settings
+     * Delete channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUrlFormat'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     * @return void
      */
-    public function getUrlFormat($app_id, string $contentType = self::contentTypes['getUrlFormat'][0])
+    public function archive($app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        list($response) = $this->getUrlFormatWithHttpInfo($app_id, $contentType);
+        $this->archiveWithHttpInfo($app_id, $contentType);
+    }
+
+    /**
+     * Operation archiveWithHttpInfo
+     *
+     * Delete channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function archiveWithHttpInfo($app_id, string $contentType = self::contentTypes['archive'][0])
+    {
+        $request = $this->archiveRequest($app_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation archiveAsync
+     *
+     * Delete channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsync($app_id, string $contentType = self::contentTypes['archive'][0])
+    {
+        return $this->archiveAsyncWithHttpInfo($app_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation archiveAsyncWithHttpInfo
+     *
+     * Delete channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['archive'][0])
+    {
+        $returnType = '';
+        $request = $this->archiveRequest($app_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'archive'
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function archiveRequest($app_id, string $contentType = self::contentTypes['archive'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling archive'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * Configure channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request channel_connection_settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     */
+    public function create($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create'][0])
+    {
+        list($response) = $this->createWithHttpInfo($app_id, $channel_connection_settings_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation getUrlFormatWithHttpInfo
+     * Operation createWithHttpInfo
      *
-     * Retrieve recording settings
+     * Configure channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUrlFormatWithHttpInfo($app_id, string $contentType = self::contentTypes['getUrlFormat'][0])
+    public function createWithHttpInfo($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->getUrlFormatRequest($app_id, $contentType);
+        $request = $this->createRequest($app_id, $channel_connection_settings_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -190,11 +422,11 @@ class RecordingSettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -212,7 +444,7 @@ class RecordingSettingsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -258,7 +490,7 @@ class RecordingSettingsApi
                 );
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -291,7 +523,7 @@ class RecordingSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse',
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -310,19 +542,20 @@ class RecordingSettingsApi
     }
 
     /**
-     * Operation getUrlFormatAsync
+     * Operation createAsync
      *
-     * Retrieve recording settings
+     * Configure channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUrlFormatAsync($app_id, string $contentType = self::contentTypes['getUrlFormat'][0])
+    public function createAsync($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->getUrlFormatAsyncWithHttpInfo($app_id, $contentType)
+        return $this->createAsyncWithHttpInfo($app_id, $channel_connection_settings_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -331,20 +564,21 @@ class RecordingSettingsApi
     }
 
     /**
-     * Operation getUrlFormatAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
-     * Retrieve recording settings
+     * Configure channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUrlFormatAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getUrlFormat'][0])
+    public function createAsyncWithHttpInfo($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-        $request = $this->getUrlFormatRequest($app_id, $contentType);
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
+        $request = $this->createRequest($app_id, $channel_connection_settings_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -383,26 +617,389 @@ class RecordingSettingsApi
     }
 
     /**
-     * Create request for operation 'getUrlFormat'
+     * Create request for operation 'create'
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUrlFormatRequest($app_id, string $contentType = self::contentTypes['getUrlFormat'][0])
+    public function createRequest($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getUrlFormat'
+                'Missing the required parameter $app_id when calling create'
+            );
+        }
+
+        // verify the required parameter 'channel_connection_settings_request' is set
+        if ($channel_connection_settings_request === null || (is_array($channel_connection_settings_request) && count($channel_connection_settings_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_connection_settings_request when calling create'
             );
         }
 
 
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/recording';
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($channel_connection_settings_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($channel_connection_settings_request));
+            } else {
+                $httpBody = $channel_connection_settings_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getById
+     *
+     * Retrieve channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     */
+    public function getById($app_id, string $contentType = self::contentTypes['getById'][0])
+    {
+        list($response) = $this->getByIdWithHttpInfo($app_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getByIdWithHttpInfo
+     *
+     * Retrieve channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getByIdWithHttpInfo($app_id, string $contentType = self::contentTypes['getById'][0])
+    {
+        $request = $this->getByIdRequest($app_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getByIdAsync
+     *
+     * Retrieve channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getByIdAsync($app_id, string $contentType = self::contentTypes['getById'][0])
+    {
+        return $this->getByIdAsyncWithHttpInfo($app_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getByIdAsyncWithHttpInfo
+     *
+     * Retrieve channel connection settings
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getByIdAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getById'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
+        $request = $this->getByIdRequest($app_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getById'
+     *
+     * @param  int $app_id The ID of the app. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getByIdRequest($app_id, string $contentType = self::contentTypes['getById'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getById'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -480,268 +1077,40 @@ class RecordingSettingsApi
     }
 
     /**
-     * Operation markAsReady
+     * Operation update
      *
-     * Mark recording as ready for transcription
-     *
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\MarkRecordingAsReadyRequest $mark_recording_as_ready_request mark_recording_as_ready_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['markAsReady'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function markAsReady($mark_recording_as_ready_request, string $contentType = self::contentTypes['markAsReady'][0])
-    {
-        $this->markAsReadyWithHttpInfo($mark_recording_as_ready_request, $contentType);
-    }
-
-    /**
-     * Operation markAsReadyWithHttpInfo
-     *
-     * Mark recording as ready for transcription
-     *
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\MarkRecordingAsReadyRequest $mark_recording_as_ready_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['markAsReady'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function markAsReadyWithHttpInfo($mark_recording_as_ready_request, string $contentType = self::contentTypes['markAsReady'][0])
-    {
-        $request = $this->markAsReadyRequest($mark_recording_as_ready_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation markAsReadyAsync
-     *
-     * Mark recording as ready for transcription
-     *
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\MarkRecordingAsReadyRequest $mark_recording_as_ready_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['markAsReady'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function markAsReadyAsync($mark_recording_as_ready_request, string $contentType = self::contentTypes['markAsReady'][0])
-    {
-        return $this->markAsReadyAsyncWithHttpInfo($mark_recording_as_ready_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation markAsReadyAsyncWithHttpInfo
-     *
-     * Mark recording as ready for transcription
-     *
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\MarkRecordingAsReadyRequest $mark_recording_as_ready_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['markAsReady'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function markAsReadyAsyncWithHttpInfo($mark_recording_as_ready_request, string $contentType = self::contentTypes['markAsReady'][0])
-    {
-        $returnType = '';
-        $request = $this->markAsReadyRequest($mark_recording_as_ready_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'markAsReady'
-     *
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\MarkRecordingAsReadyRequest $mark_recording_as_ready_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['markAsReady'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function markAsReadyRequest($mark_recording_as_ready_request, string $contentType = self::contentTypes['markAsReady'][0])
-    {
-
-        // verify the required parameter 'mark_recording_as_ready_request' is set
-        if ($mark_recording_as_ready_request === null || (is_array($mark_recording_as_ready_request) && count($mark_recording_as_ready_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $mark_recording_as_ready_request when calling markAsReady'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/extensions/calling/recordings/ready';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($mark_recording_as_ready_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mark_recording_as_ready_request));
-            } else {
-                $httpBody = $mark_recording_as_ready_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation registerUrlFormat
-     *
-     * Enable the app for call recording
+     * Update channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request channel_connection_settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function registerUrlFormat($app_id, $recording_settings_request, string $contentType = self::contentTypes['registerUrlFormat'][0])
+    public function update($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        list($response) = $this->registerUrlFormatWithHttpInfo($app_id, $recording_settings_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($app_id, $channel_connection_settings_patch_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation registerUrlFormatWithHttpInfo
+     * Operation updateWithHttpInfo
      *
-     * Enable the app for call recording
+     * Update channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerUrlFormatWithHttpInfo($app_id, $recording_settings_request, string $contentType = self::contentTypes['registerUrlFormat'][0])
+    public function updateWithHttpInfo($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        $request = $this->registerUrlFormatRequest($app_id, $recording_settings_request, $contentType);
+        $request = $this->updateRequest($app_id, $channel_connection_settings_patch_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -768,11 +1137,11 @@ class RecordingSettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' === '\SplFileObject') {
+                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' !== 'string') {
+                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -790,7 +1159,7 @@ class RecordingSettingsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse', []),
+                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -836,7 +1205,7 @@ class RecordingSettingsApi
                 );
             }
 
-            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
+            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -869,7 +1238,7 @@ class RecordingSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse',
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -888,20 +1257,20 @@ class RecordingSettingsApi
     }
 
     /**
-     * Operation registerUrlFormatAsync
+     * Operation updateAsync
      *
-     * Enable the app for call recording
+     * Update channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerUrlFormatAsync($app_id, $recording_settings_request, string $contentType = self::contentTypes['registerUrlFormat'][0])
+    public function updateAsync($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        return $this->registerUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($app_id, $channel_connection_settings_patch_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -910,21 +1279,21 @@ class RecordingSettingsApi
     }
 
     /**
-     * Operation registerUrlFormatAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
-     * Enable the app for call recording
+     * Update channel connection settings
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_request, string $contentType = self::contentTypes['registerUrlFormat'][0])
+    public function updateAsyncWithHttpInfo($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-        $request = $this->registerUrlFormatRequest($app_id, $recording_settings_request, $contentType);
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
+        $request = $this->updateRequest($app_id, $channel_connection_settings_patch_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -963,34 +1332,34 @@ class RecordingSettingsApi
     }
 
     /**
-     * Create request for operation 'registerUrlFormat'
+     * Create request for operation 'update'
      *
      * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerUrlFormat'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function registerUrlFormatRequest($app_id, $recording_settings_request, string $contentType = self::contentTypes['registerUrlFormat'][0])
+    public function updateRequest($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling registerUrlFormat'
+                'Missing the required parameter $app_id when calling update'
             );
         }
 
-        // verify the required parameter 'recording_settings_request' is set
-        if ($recording_settings_request === null || (is_array($recording_settings_request) && count($recording_settings_request) === 0)) {
+        // verify the required parameter 'channel_connection_settings_patch_request' is set
+        if ($channel_connection_settings_patch_request === null || (is_array($channel_connection_settings_patch_request) && count($channel_connection_settings_patch_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $recording_settings_request when calling registerUrlFormat'
+                'Missing the required parameter $channel_connection_settings_patch_request when calling update'
             );
         }
 
 
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/recording';
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1016,379 +1385,12 @@ class RecordingSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($recording_settings_request)) {
+        if (isset($channel_connection_settings_patch_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($recording_settings_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($channel_connection_settings_patch_request));
             } else {
-                $httpBody = $recording_settings_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updateUrlFormat
-     *
-     * Update recording settings
-     *
-     * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUrlFormat'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
-     */
-    public function updateUrlFormat($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateUrlFormat'][0])
-    {
-        list($response) = $this->updateUrlFormatWithHttpInfo($app_id, $recording_settings_patch_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation updateUrlFormatWithHttpInfo
-     *
-     * Update recording settings
-     *
-     * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUrlFormat'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updateUrlFormatWithHttpInfo($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateUrlFormat'][0])
-    {
-        $request = $this->updateUrlFormatRequest($app_id, $recording_settings_patch_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\HubSpot\Client\Crm\Extensions\Calling\Model\Error' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\HubSpot\Client\Crm\Extensions\Calling\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateUrlFormatAsync
-     *
-     * Update recording settings
-     *
-     * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUrlFormat'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateUrlFormatAsync($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateUrlFormat'][0])
-    {
-        return $this->updateUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_patch_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateUrlFormatAsyncWithHttpInfo
-     *
-     * Update recording settings
-     *
-     * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUrlFormat'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateUrlFormatAsyncWithHttpInfo($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateUrlFormat'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-        $request = $this->updateUrlFormatRequest($app_id, $recording_settings_patch_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updateUrlFormat'
-     *
-     * @param  int $app_id The ID of the app. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUrlFormat'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function updateUrlFormatRequest($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateUrlFormat'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling updateUrlFormat'
-            );
-        }
-
-        // verify the required parameter 'recording_settings_patch_request' is set
-        if ($recording_settings_patch_request === null || (is_array($recording_settings_patch_request) && count($recording_settings_patch_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $recording_settings_patch_request when calling updateUrlFormat'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/recording';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($recording_settings_patch_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($recording_settings_patch_request));
-            } else {
-                $httpBody = $recording_settings_patch_request;
+                $httpBody = $channel_connection_settings_patch_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
