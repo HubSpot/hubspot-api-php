@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicAssociationsForObject
+ * BatchInputSimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
 
 /**
- * PublicAssociationsForObject Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\LineItems
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\LineItems\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicAssociationsForObject';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'types' => '\HubSpot\Client\Crm\LineItems\Model\AssociationSpec[]',
-        'to' => '\HubSpot\Client\Crm\LineItems\Model\PublicObjectId'
+        'inputs' => '\HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectBatchInputForCreate[]'
     ];
 
     /**
@@ -69,8 +68,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'types' => null,
-        'to' => null
+        'inputs' => null
     ];
 
     /**
@@ -79,8 +77,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'types' => false,
-        'to' => false
+        'inputs' => false
     ];
 
     /**
@@ -169,8 +166,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'types' => 'types',
-        'to' => 'to'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -179,8 +175,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'types' => 'setTypes',
-        'to' => 'setTo'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -189,8 +184,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'types' => 'getTypes',
-        'to' => 'getTo'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -250,8 +244,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('types', $data ?? [], null);
-        $this->setIfExists('to', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -281,11 +274,8 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['types'] === null) {
-            $invalidProperties[] = "'types' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +293,28 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets types
+     * Gets inputs
      *
-     * @return \HubSpot\Client\Crm\LineItems\Model\AssociationSpec[]
+     * @return \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectBatchInputForCreate[]
      */
-    public function getTypes()
+    public function getInputs()
     {
-        return $this->container['types'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets types
+     * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\AssociationSpec[] $types types
+     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectBatchInputForCreate[] $inputs inputs
      *
      * @return self
      */
-    public function setTypes($types)
+    public function setInputs($inputs)
     {
-        if (is_null($types)) {
-            throw new \InvalidArgumentException('non-nullable types cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['types'] = $types;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return \HubSpot\Client\Crm\LineItems\Model\PublicObjectId
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param \HubSpot\Client\Crm\LineItems\Model\PublicObjectId $to to
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
-        }
-        $this->container['to'] = $to;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }
