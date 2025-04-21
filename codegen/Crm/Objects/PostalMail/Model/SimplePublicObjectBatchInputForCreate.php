@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchResponseSimplePublicUpsertObjectWithErrors
+ * SimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\PostalMail\ObjectSerializer;
 
 /**
- * BatchResponseSimplePublicUpsertObjectWithErrors Class Doc Comment
+ * SimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\PostalMail
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\PostalMail\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponseSimplePublicUpsertObjectWithErrors';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,14 +57,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'completed_at' => '\DateTime',
-        'num_errors' => 'int',
-        'requested_at' => '\DateTime',
-        'started_at' => '\DateTime',
-        'links' => 'array<string,string>',
-        'results' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicUpsertObject[]',
-        'errors' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\StandardError[]',
-        'status' => 'string'
+        'associations' => '\HubSpot\Client\Crm\Objects\PostalMail\Model\PublicAssociationsForObject[]',
+        'object_write_trace_id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -75,14 +70,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'completed_at' => 'date-time',
-        'num_errors' => 'int32',
-        'requested_at' => 'date-time',
-        'started_at' => 'date-time',
-        'links' => null,
-        'results' => null,
-        'errors' => null,
-        'status' => null
+        'associations' => null,
+        'object_write_trace_id' => null,
+        'properties' => null
     ];
 
     /**
@@ -91,14 +81,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'completed_at' => false,
-        'num_errors' => false,
-        'requested_at' => false,
-        'started_at' => false,
-        'links' => false,
-        'results' => false,
-        'errors' => false,
-        'status' => false
+        'associations' => false,
+        'object_write_trace_id' => false,
+        'properties' => false
     ];
 
     /**
@@ -187,14 +172,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
      * @var string[]
      */
     protected static $attributeMap = [
-        'completed_at' => 'completedAt',
-        'num_errors' => 'numErrors',
-        'requested_at' => 'requestedAt',
-        'started_at' => 'startedAt',
-        'links' => 'links',
-        'results' => 'results',
-        'errors' => 'errors',
-        'status' => 'status'
+        'associations' => 'associations',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'properties' => 'properties'
     ];
 
     /**
@@ -203,14 +183,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
      * @var string[]
      */
     protected static $setters = [
-        'completed_at' => 'setCompletedAt',
-        'num_errors' => 'setNumErrors',
-        'requested_at' => 'setRequestedAt',
-        'started_at' => 'setStartedAt',
-        'links' => 'setLinks',
-        'results' => 'setResults',
-        'errors' => 'setErrors',
-        'status' => 'setStatus'
+        'associations' => 'setAssociations',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -219,14 +194,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
      * @var string[]
      */
     protected static $getters = [
-        'completed_at' => 'getCompletedAt',
-        'num_errors' => 'getNumErrors',
-        'requested_at' => 'getRequestedAt',
-        'started_at' => 'getStartedAt',
-        'links' => 'getLinks',
-        'results' => 'getResults',
-        'errors' => 'getErrors',
-        'status' => 'getStatus'
+        'associations' => 'getAssociations',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -270,25 +240,6 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PENDING = 'PENDING';
-    public const STATUS_PROCESSING = 'PROCESSING';
-    public const STATUS_CANCELED = 'CANCELED';
-    public const STATUS_COMPLETE = 'COMPLETE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PENDING,
-            self::STATUS_PROCESSING,
-            self::STATUS_CANCELED,
-            self::STATUS_COMPLETE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -305,14 +256,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('completed_at', $data ?? [], null);
-        $this->setIfExists('num_errors', $data ?? [], null);
-        $this->setIfExists('requested_at', $data ?? [], null);
-        $this->setIfExists('started_at', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -342,27 +288,9 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
     {
         $invalidProperties = [];
 
-        if ($this->container['completed_at'] === null) {
-            $invalidProperties[] = "'completed_at' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -379,227 +307,82 @@ class BatchResponseSimplePublicUpsertObjectWithErrors implements ModelInterface,
 
 
     /**
-     * Gets completed_at
+     * Gets associations
      *
-     * @return \DateTime
+     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\PublicAssociationsForObject[]|null
      */
-    public function getCompletedAt()
+    public function getAssociations()
     {
-        return $this->container['completed_at'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets completed_at
+     * Sets associations
      *
-     * @param \DateTime $completed_at completed_at
+     * @param \HubSpot\Client\Crm\Objects\PostalMail\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
-    public function setCompletedAt($completed_at)
+    public function setAssociations($associations)
     {
-        if (is_null($completed_at)) {
-            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['completed_at'] = $completed_at;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
 
     /**
-     * Gets num_errors
+     * Gets object_write_trace_id
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getNumErrors()
+    public function getObjectWriteTraceId()
     {
-        return $this->container['num_errors'];
+        return $this->container['object_write_trace_id'];
     }
 
     /**
-     * Sets num_errors
+     * Sets object_write_trace_id
      *
-     * @param int|null $num_errors num_errors
+     * @param string|null $object_write_trace_id object_write_trace_id
      *
      * @return self
      */
-    public function setNumErrors($num_errors)
+    public function setObjectWriteTraceId($object_write_trace_id)
     {
-        if (is_null($num_errors)) {
-            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
-        $this->container['num_errors'] = $num_errors;
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }
 
     /**
-     * Gets requested_at
+     * Gets properties
      *
-     * @return \DateTime|null
+     * @return array<string,string>
      */
-    public function getRequestedAt()
+    public function getProperties()
     {
-        return $this->container['requested_at'];
+        return $this->container['properties'];
     }
 
     /**
-     * Sets requested_at
+     * Sets properties
      *
-     * @param \DateTime|null $requested_at requested_at
+     * @param array<string,string> $properties properties
      *
      * @return self
      */
-    public function setRequestedAt($requested_at)
+    public function setProperties($properties)
     {
-        if (is_null($requested_at)) {
-            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
-        $this->container['requested_at'] = $requested_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets started_at
-     *
-     * @return \DateTime
-     */
-    public function getStartedAt()
-    {
-        return $this->container['started_at'];
-    }
-
-    /**
-     * Sets started_at
-     *
-     * @param \DateTime $started_at started_at
-     *
-     * @return self
-     */
-    public function setStartedAt($started_at)
-    {
-        if (is_null($started_at)) {
-            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
-        }
-        $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return array<string,string>|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param array<string,string>|null $links links
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
-        }
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicUpsertObject[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicUpsertObject[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Crm\Objects\PostalMail\Model\StandardError[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['properties'] = $properties;
 
         return $this;
     }
