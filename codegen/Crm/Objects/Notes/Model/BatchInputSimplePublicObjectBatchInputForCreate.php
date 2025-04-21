@@ -1,6 +1,6 @@
 <?php
 /**
- * FilterGroup
+ * BatchInputSimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Notes\ObjectSerializer;
 
 /**
- * FilterGroup Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Notes
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Notes\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FilterGroup';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'filters' => '\HubSpot\Client\Crm\Objects\Notes\Model\Filter[]'
+        'inputs' => '\HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectBatchInputForCreate[]'
     ];
 
     /**
@@ -68,7 +68,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'filters' => null
+        'inputs' => null
     ];
 
     /**
@@ -77,7 +77,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'filters' => false
+        'inputs' => false
     ];
 
     /**
@@ -166,7 +166,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'filters' => 'filters'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -175,7 +175,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'filters' => 'setFilters'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -184,7 +184,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'filters' => 'getFilters'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -244,7 +244,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('filters', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -274,8 +274,8 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['filters'] === null) {
-            $invalidProperties[] = "'filters' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +293,28 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets filters
+     * Gets inputs
      *
-     * @return \HubSpot\Client\Crm\Objects\Notes\Model\Filter[]
+     * @return \HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectBatchInputForCreate[]
      */
-    public function getFilters()
+    public function getInputs()
     {
-        return $this->container['filters'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets filters
+     * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Objects\Notes\Model\Filter[] $filters filters
+     * @param \HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectBatchInputForCreate[] $inputs inputs
      *
      * @return self
      */
-    public function setFilters($filters)
+    public function setInputs($inputs)
     {
-        if (is_null($filters)) {
-            throw new \InvalidArgumentException('non-nullable filters cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $this->container['filters'] = $filters;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }
