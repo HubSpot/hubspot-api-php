@@ -1,6 +1,6 @@
 <?php
 /**
- * AssociatedId
+ * SimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Taxes\ObjectSerializer;
 
 /**
- * AssociatedId Class Doc Comment
+ * SimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Taxes
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Taxes\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssociatedId';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'type' => 'string'
+        'associations' => '\HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]',
+        'object_write_trace_id' => 'string',
+        'properties' => 'array<string,string>'
     ];
 
     /**
@@ -69,8 +70,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'type' => null
+        'associations' => null,
+        'object_write_trace_id' => null,
+        'properties' => null
     ];
 
     /**
@@ -79,8 +81,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'type' => false
+        'associations' => false,
+        'object_write_trace_id' => false,
+        'properties' => false
     ];
 
     /**
@@ -169,8 +172,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type'
+        'associations' => 'associations',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'properties' => 'properties'
     ];
 
     /**
@@ -179,8 +183,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType'
+        'associations' => 'setAssociations',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -189,8 +194,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType'
+        'associations' => 'getAssociations',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -250,8 +256,9 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -281,11 +288,8 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,55 +307,82 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets associations
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]|null
      */
-    public function getId()
+    public function getAssociations()
     {
-        return $this->container['id'];
+        return $this->container['associations'];
     }
 
     /**
-     * Sets id
+     * Sets associations
      *
-     * @param string $id id
+     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]|null $associations associations
      *
      * @return self
      */
-    public function setId($id)
+    public function setAssociations($associations)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($associations)) {
+            throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['associations'] = $associations;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets object_write_trace_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getObjectWriteTraceId()
     {
-        return $this->container['type'];
+        return $this->container['object_write_trace_id'];
     }
 
     /**
-     * Sets type
+     * Sets object_write_trace_id
      *
-     * @param string $type type
+     * @param string|null $object_write_trace_id object_write_trace_id
      *
      * @return self
      */
-    public function setType($type)
+    public function setObjectWriteTraceId($object_write_trace_id)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties properties
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
 
         return $this;
     }
