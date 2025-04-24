@@ -1,6 +1,6 @@
 <?php
 /**
- * PreviousPage
+ * FolderUpdateInputWithId
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Files\ObjectSerializer;
 
 /**
- * PreviousPage Class Doc Comment
+ * FolderUpdateInputWithId Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Files
@@ -40,7 +40,7 @@ use \HubSpot\Client\Files\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
+class FolderUpdateInputWithId implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PreviousPage';
+    protected static $openAPIModelName = 'FolderUpdateInputWithId';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'before' => 'string',
-        'link' => 'string'
+        'parent_folder_id' => 'int',
+        'name' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -69,8 +70,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'before' => null,
-        'link' => null
+        'parent_folder_id' => 'int64',
+        'name' => null,
+        'id' => null
     ];
 
     /**
@@ -79,8 +81,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'before' => false,
-        'link' => false
+        'parent_folder_id' => false,
+        'name' => false,
+        'id' => false
     ];
 
     /**
@@ -169,8 +172,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'before' => 'before',
-        'link' => 'link'
+        'parent_folder_id' => 'parentFolderId',
+        'name' => 'name',
+        'id' => 'id'
     ];
 
     /**
@@ -179,8 +183,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'before' => 'setBefore',
-        'link' => 'setLink'
+        'parent_folder_id' => 'setParentFolderId',
+        'name' => 'setName',
+        'id' => 'setId'
     ];
 
     /**
@@ -189,8 +194,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'before' => 'getBefore',
-        'link' => 'getLink'
+        'parent_folder_id' => 'getParentFolderId',
+        'name' => 'getName',
+        'id' => 'getId'
     ];
 
     /**
@@ -250,8 +256,9 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('before', $data ?? [], null);
-        $this->setIfExists('link', $data ?? [], null);
+        $this->setIfExists('parent_folder_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -281,8 +288,8 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['before'] === null) {
-            $invalidProperties[] = "'before' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -300,55 +307,82 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets before
+     * Gets parent_folder_id
      *
-     * @return string
+     * @return int|null
      */
-    public function getBefore()
+    public function getParentFolderId()
     {
-        return $this->container['before'];
+        return $this->container['parent_folder_id'];
     }
 
     /**
-     * Sets before
+     * Sets parent_folder_id
      *
-     * @param string $before before
+     * @param int|null $parent_folder_id parent_folder_id
      *
      * @return self
      */
-    public function setBefore($before)
+    public function setParentFolderId($parent_folder_id)
     {
-        if (is_null($before)) {
-            throw new \InvalidArgumentException('non-nullable before cannot be null');
+        if (is_null($parent_folder_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_folder_id cannot be null');
         }
-        $this->container['before'] = $before;
+        $this->container['parent_folder_id'] = $parent_folder_id;
 
         return $this;
     }
 
     /**
-     * Gets link
+     * Gets name
      *
      * @return string|null
      */
-    public function getLink()
+    public function getName()
     {
-        return $this->container['link'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets link
+     * Sets name
      *
-     * @param string|null $link link
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setLink($link)
+    public function setName($name)
     {
-        if (is_null($link)) {
-            throw new \InvalidArgumentException('non-nullable link cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['link'] = $link;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }
