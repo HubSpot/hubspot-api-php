@@ -5,15 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/12.1.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/12.2.0...HEAD)
 
-## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0-beta) - 2024-04-17
+## [13.0.0-beta](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0-beta) - 2024-04-28
 
 ### CMS
 
 - Moved methods `archive`, `callClone`, `create`, `getById`, `pushLive`, `resetDraft`, `schedule`, `update` and `updateDraft` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->basicApi()`.
 - Moved and renamed methods `archiveBatch` => `archive`, `createBatch` => `create`, `readBatch` => `read` and `updateBatch` => `update` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->batchApi()`.
 - Moved methods `attachToLangGroup`, `createLangVariation`, `detachFromLangGroup`, `setLangPrimary` and `updateLangs` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->multiLanguageApi()`.
+- Removed `cms()->perfomance()` API client.
 
 ### CRM
 
@@ -73,7 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed `events()->send()->customEventDataApi()` to `events()->send()->basicApi()`.
 - Added `events()->send()->batchApi()` API.
 
-### Marketing
+### Marketing Events
 
 - Renamed `marketing()->events()->attendanceSubscriberStateChangesApi()` to `marketing()->events()->addEventAttendeesApi()`.
 - Added new methods `recordByContactId()` and `recordByEmail()` to `marketing()->events()->addEventAttendeesApi()`.
@@ -89,9 +90,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Files
 
-- Changed options order and added new options from `files()->filesApi()->doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $id = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_id = null, $size = null, $height = null, $width = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null)` to `files()->filesApi()->doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null)`.
+- Changed incomining parameters list in `files()->filesApi()->doSearch()`.
+- Renamed method `archiveGDPR()` to `delete()` in `files.filesApi`.
+- Renamed method `updateProperties()` to `updatePropertiesRecursively()` in `files.foldersApi`.
+- Added new method `updateProperties()` to `files.foldersApi`.
+- Changed incomining parameters list in `files()->foldersApi()->doSearch()`.
+- Added properties `source_group` and `file_md5` to `HubSpot\Client\Files\Model\File`.
+- Added property `clear_expires` to `HubSpot\Client\Files\Model\FileUpdateInput`.
+- Changed property type from `expires_at:int` to `expires_at:\DateTime` in `HubSpot\Client\Files\Model\FileUpdateInput`.
+- Added property `expires_at` to `HubSpot\Client\Files\Model\ImportFromUrlInput`.
+- Removed property `id` from `HubSpot\Client\Files\Model\FolderUpdateInput`.
 
+## [12.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.2.0) - 2025-04-28
 
+## Updated
+
+- Marked `cms()->performance()` API client as deprecated.
 
 ## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2024-04-08
 
@@ -941,7 +955,7 @@ ListAssociationsApi
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/12.1.0...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/12.2.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1000,3 +1014,5 @@ ListAssociationsApi
 [11.3.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/11.3.0
 [12.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.0.0
 [12.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0
+[12.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.2.0
+[13.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0-beta
