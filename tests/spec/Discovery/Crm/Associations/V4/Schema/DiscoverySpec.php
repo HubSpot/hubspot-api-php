@@ -3,8 +3,8 @@
 namespace spec\HubSpot\Discovery\Crm\Associations\V4\Schema;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Associations\V4\Schema\Api\DefinitionsApi;
 use HubSpot\Client\Crm\Associations\V4\Schema\Api\DefinitionConfigurationsApi;
+use HubSpot\Client\Crm\Associations\V4\Schema\Api\DefinitionsApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Associations\V4\Schema\Discovery;
 use PhpSpec\ObjectBehavior;
