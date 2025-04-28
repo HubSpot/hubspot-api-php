@@ -7,6 +7,7 @@ use HubSpot\Discovery\DiscoveryBase;
 
 /**
  * @deprecated
+ *
  * @method PublicPerformanceApi publicPerformanceApi()
  */
 class Discovery extends DiscoveryBase {}

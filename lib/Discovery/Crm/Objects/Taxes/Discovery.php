@@ -8,8 +8,8 @@ use HubSpot\Client\Crm\Objects\Taxes\Api\SearchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BasicApi        basicApi()
- * @method BatchApi        batchApi()
- * @method SearchApi       searchApi()
+ * @method BasicApi  basicApi()
+ * @method BatchApi  batchApi()
+ * @method SearchApi searchApi()
  */
 class Discovery extends DiscoveryBase {}

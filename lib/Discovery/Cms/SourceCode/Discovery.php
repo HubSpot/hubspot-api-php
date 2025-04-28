@@ -9,9 +9,9 @@ use HubSpot\Client\Cms\SourceCode\Api\ValidationApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method ContentApi     contentApi()
- * @method ExtractApi     extractApi()
- * @method MetadataApi    metadataApi()
- * @method ValidationApi  validationApi()
+ * @method ContentApi    contentApi()
+ * @method ExtractApi    extractApi()
+ * @method MetadataApi   metadataApi()
+ * @method ValidationApi validationApi()
  */
 class Discovery extends DiscoveryBase {}
