@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectInputForCreate
+ * SimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
 
 /**
- * SimplePublicObjectInputForCreate Class Doc Comment
+ * SimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Tickets
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectInputForCreate';
+    protected static $openAPIModelName = 'SimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,6 +58,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'associations' => '\HubSpot\Client\Crm\Tickets\Model\PublicAssociationsForObject[]',
+        'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>'
     ];
 
@@ -70,6 +71,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'associations' => null,
+        'object_write_trace_id' => null,
         'properties' => null
     ];
 
@@ -80,6 +82,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'associations' => false,
+        'object_write_trace_id' => false,
         'properties' => false
     ];
 
@@ -170,6 +173,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'associations' => 'associations',
+        'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties'
     ];
 
@@ -180,6 +184,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'associations' => 'setAssociations',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties'
     ];
 
@@ -190,6 +195,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'associations' => 'getAssociations',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties'
     ];
 
@@ -251,6 +257,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->setIfExists('associations', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
     }
 
@@ -322,6 +329,33 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable associations cannot be null');
         }
         $this->container['associations'] = $associations;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }

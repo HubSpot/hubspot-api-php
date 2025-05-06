@@ -62,6 +62,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => '\DateTime',
         'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Tickets\Model\ValueWithTimestamp[]>',
         'id' => 'string',
+        'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>',
         'updated_at' => '\DateTime'
     ];
@@ -79,6 +80,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'date-time',
         'properties_with_history' => null,
         'id' => null,
+        'object_write_trace_id' => null,
         'properties' => null,
         'updated_at' => 'date-time'
     ];
@@ -94,6 +96,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => false,
         'properties_with_history' => false,
         'id' => false,
+        'object_write_trace_id' => false,
         'properties' => false,
         'updated_at' => false
     ];
@@ -189,6 +192,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'archivedAt',
         'properties_with_history' => 'propertiesWithHistory',
         'id' => 'id',
+        'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties',
         'updated_at' => 'updatedAt'
     ];
@@ -204,6 +208,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'setArchivedAt',
         'properties_with_history' => 'setPropertiesWithHistory',
         'id' => 'setId',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -219,6 +224,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'archived_at' => 'getArchivedAt',
         'properties_with_history' => 'getPropertiesWithHistory',
         'id' => 'getId',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -285,6 +291,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('archived_at', $data ?? [], null);
         $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -474,6 +481,33 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id object_write_trace_id
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
 
         return $this;
     }

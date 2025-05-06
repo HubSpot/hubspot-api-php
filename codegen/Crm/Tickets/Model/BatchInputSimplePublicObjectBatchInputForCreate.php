@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchInputSimplePublicObjectInputForCreate
+ * BatchInputSimplePublicObjectBatchInputForCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
 
 /**
- * BatchInputSimplePublicObjectInputForCreate Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Tickets
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Tickets\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchInputSimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchInputSimplePublicObjectInputForCreate implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchInputSimplePublicObjectInputForCreate';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputForCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class BatchInputSimplePublicObjectInputForCreate implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate[]'
+        'inputs' => '\HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectBatchInputForCreate[]'
     ];
 
     /**
@@ -295,7 +295,7 @@ class BatchInputSimplePublicObjectInputForCreate implements ModelInterface, Arra
     /**
      * Gets inputs
      *
-     * @return \HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate[]
+     * @return \HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectBatchInputForCreate[]
      */
     public function getInputs()
     {
@@ -305,7 +305,7 @@ class BatchInputSimplePublicObjectInputForCreate implements ModelInterface, Arra
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectBatchInputForCreate[] $inputs inputs
      *
      * @return self
      */
