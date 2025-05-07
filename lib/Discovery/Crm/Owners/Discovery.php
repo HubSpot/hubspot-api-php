@@ -10,13 +10,12 @@ use HubSpot\Discovery\DiscoveryBase;
  */
 class Discovery extends DiscoveryBase
 {
-    public function getAll(): array
+    public function getAll(?string $email = null, ?string $after = null, bool $archived = false): array
     {
         $owners = [];
-        $after = null;
 
         do {
-            $page = $this->OwnersApi()->getPage(null, $after, 100);
+            $page = $this->OwnersApi()->getPage($email, $after, 100, $archived);
 
             $owners = array_merge($owners, $page->getResults());
 
