@@ -11,7 +11,7 @@ class RetryMiddlewareFactory
     public const DEFAULT_MAX_RETRIES = 5;
     public const INTERNAL_ERROR_RANGES = [
         ['from' => 500, 'to' => 503],
-        ['from' => 520, 'to' => 599]
+        ['from' => 520, 'to' => 599],
     ];
 
     public static function createInternalErrorsMiddleware(
@@ -53,7 +53,8 @@ class RetryMiddlewareFactory
     }
 
     /**
-     * Create middleware by http code ranges
+     * Create middleware by http code ranges.
+     *
      * @param array $ranges [['from' => int, 'to' => int]]
      */
     public static function createMiddlewareByHttpCodeRanges(
@@ -68,7 +69,8 @@ class RetryMiddlewareFactory
     }
 
     /**
-     * Get retry function by code ranges
+     * Get retry function by code ranges.
+     *
      * @param array $ranges [['from' => int, 'to' => int]]
      */
     public static function getRetryFunctionByRanges(
