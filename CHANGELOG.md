@@ -5,7 +5,122 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/12.2.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD)
+
+## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0) - 2025-05-12
+
+### CRM Tickets
+
+- Moved method `merge()` from `crm()->tickets()->mergeApi()` to `crm()->tickets()->basicApi()`.
+- Removed `crm()->tickets()->mergeApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->tickets()->batchApi()->create()`.
+- Made `association_category` and `association_type_id` properties required in `HubSpot\Client\Crm\Tickets\Model\AssociationSpec`.
+- Made `types` and `to` properties required in `HubSpot\Client\Crm\Tickets\Model\PublicAssociationsForObject`.
+- Made `id` property required in `HubSpot\Client\Crm\Tickets\Model\PublicObjectId`.
+- Added property `object_write_trace_id` to `HubSpot\Client\Crm\Tickets\Model\SimplePublicObject`, `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectWithAssociations` and `HubSpot\Client\Crm\Tickets\Model\SimplePublicUpsertObject`.
+- Removed property `object_write_trace_id` from `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInput` and `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate`.
+- Added `email`, `after` and `archived` optrions to `crm()->owners()->getAll()`.
+
+### Updates
+
+- Added `createMiddlewareByHttpCodeRanges` and `getRetryFunctionByRanges` methods to `RetryMiddlewareFactory`.
+- `504` http code was removed from `RetryMiddlewareFactory::createInternalErrorsMiddleware()`.
+- `520-599` http codes range is added to `RetryMiddlewareFactory::createInternalErrorsMiddleware()`.
+-
+
+## [13.0.0beta.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1) - 2025-04-28
+
+### CMS
+
+- Moved methods `archive`, `callClone`, `create`, `getById`, `pushLive`, `resetDraft`, `schedule`, `update` and `updateDraft` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->basicApi()`.
+- Moved and renamed methods `archiveBatch` => `archive`, `createBatch` => `create`, `readBatch` => `read` and `updateBatch` => `update` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->batchApi()`.
+- Moved methods `attachToLangGroup`, `createLangVariation`, `detachFromLangGroup`, `setLangPrimary` and `updateLangs` from `cms()->blogs()->blogPostsApi()` to `cms()->blogs()->multiLanguageApi()`.
+- Removed `cms()->perfomance()` API client.
+
+### CRM
+
+- Added `crm()->associations()->v4()->schema()->definitionConfigurationsApi()` API.
+- Renamed method `crm()->associations()->v4()->schema()->definitionsApi()->archive()` to `crm()->associations()->v4()->schema()->definitionsApi()->remove()`.
+- Added `crm()->extensions()->calling()->channelConnectionSettingsApi()` API.
+- Added properties `uses_remote` and `uses_calling_window` to `HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest`, `HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest` and `HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse`.
+- Added options `include_error_message` and `include_row_data` to `crm()->imports()->publicImportsApi()->getErrors()`.
+- Added property `contains_encrypted_properties` to `HubSpot\Client\Crm\Imports\Model\ImportRowCore`.
+- Added properties `invalid_property_value`, `error_message` and `invalid_value_to_display` to `HubSpot\Client\Crm\Imports\Model\PublicImportError`.
+- Added property `mapped_object_type_ids` to `HubSpot\Client\Crm\Imports\Model\PublicImportResponse`.
+
+### CRM objects
+
+- Moved method `merge()` from `crm()->companies()->mergeApi()` to `crm()->companies()->basicApi()`.
+- Removed `crm()->companies()->mergeApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->companies()->batchApi()->create()`.
+- Made `association_category` and `association_type_id` properties required in `HubSpot\Client\Crm\Companies\Model\AssociationSpec`, `HubSpot\Client\Crm\Contacts\Model\AssociationSpec`, `HubSpot\Client\Crm\Deals\Model\AssociationSpec`.
+- Made `types` and `to` properties required in `HubSpot\Client\Crm\Companies\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject`.
+- Made `id` property required in `HubSpot\Client\Crm\Companies\Model\PublicObjectId`, `HubSpot\Client\Crm\Contacts\Model\PublicObjectId`, `HubSpot\Client\Crm\Deals\Model\PublicObjectId`.
+- Added property `object_write_trace_id` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObject`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Companies\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObject`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicUpsertObject`,`HubSpot\Client\Crm\Deals\Model\SimplePublicObject`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObject`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObject`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations`,
+`HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Objects\Goals\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Goals\Model\SimplePublicObjectWithAssociations`,
+`HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicUpsertObject`,
+`HubSpot\Client\Crm\Products\Model\SimplePublicObject`, `HubSpot\Client\Crm\Products\Model\SimplePublicObjectWithAssociations` and `HubSpot\Client\Crm\Products\Model\SimplePublicUpsertObject`.
+- Removed property `object_write_trace_id` from `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Meetings\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectInput`, `HubSpot\Client\Crm\Objects\Taxes\Model\SimplePublicObjectInputForCreate`, `HubSpot\Client\Crm\Products\Model\SimplePublicObjectInput` and `HubSpot\Client\Crm\Products\Model\SimplePublicObjectInputForCreate`.
+- Moved method `merge()` from `crm()->contacts()->mergeApi()` to `crm()->contacts()->basicApi()`.
+- Removed `crm()->contacts()->mergeApi()` API.
+- Moved method `purge()` from `crm()->contacts()->GDPRApi()` to `crm()->contacts()->basicApi()`.
+- Removed `crm()->contacts()->GDPRApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Contacts\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->contacts()->batchApi()->create()`.
+- Moved method `merge()` from `crm()->deals()->mergeApi()` to `crm()->deals()->basicApi()`.
+- Removed `crm()->deals()->mergeApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Deals\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->deals()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\LineItems\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->lineItems()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Quotes\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Quotes\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->quotes()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Calls\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Calls\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->calls()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Emails\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Emails\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->emails()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Leads\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Leads\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->leads()->batchApi()->create()`.
+- Added methods `archive()`, `create()` and `update()` to `crm()->objects()->goals()->basicApi()`.
+- Added methods `archive()`, `create()`, `upsert()` and `update()` to `crm()->objects()->goals()->batchApi()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Meetings\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Meetings\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->meetings()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Notes\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->notes()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->postalMail()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Tasks\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Tasks\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->tasks()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Objects\Taxes\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Objects\Taxes\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->objects()->taxes()->batchApi()->create()`.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Products\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Products\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->products()->batchApi()->create()`.
+
+### Events
+
+- Renamed `events()->send()->customEventDataApi()` to `events()->send()->basicApi()`.
+- Added `events()->send()->batchApi()` API.
+
+### Marketing Events
+
+- Renamed `marketing()->events()->attendanceSubscriberStateChangesApi()` to `marketing()->events()->addEventAttendeesApi()`.
+- Added new methods `recordByContactId()` and `recordByEmail()` to `marketing()->events()->addEventAttendeesApi()`.
+- Added `marketing()->events()->batchApi()` API.
+- Moved and renamed methods `batchArchive` => `archive` and `batchUpsert` => `create` from `marketing()->events()->basicApi()` to `marketing()->events()->batchApi()`.
+- Added new methods `archiveByObjectId()`, `getAll()`, `getByObjectId()` and `updateByObjectId()` to `marketing()->events()->basicApi()`.
+- Moved methods `cancel` and `complete` from `marketing()->events()->basicApi()` to `marketing()->events()->changePropertyApi()`.
+- Added `marketing()->events()->identifiersApi()` API.
+- Moved method `doSearch()` from `marketing()->events()->basicApi()` to `marketing()->events()->identifiersApi()`.
+- Renamed `marketing()->events()->participantStateApi()` to `marketing()->events()->retrieveParticipantStateApi()`.
+- Changed the response object type from `\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging|\HubSpot\Client\Marketing\Events\Model\Error` to `\HubSpot\Client\Marketing\Events\Model\CollectionResponseSearchPublicResponseWrapperNoPaging|\HubSpot\Client\Marketing\Events\Model\Error` for `marketing()->events()->identifiersApi()->doSearch()`.
+- Added new property `object_id` to `HubSpot\Client\Marketing\Events\Model\MarketingEventDefaultResponse`, `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicDefaultResponse` and `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicReadResponse`.
+
+### Files
+
+- Changed incomining parameters list in `files()->filesApi()->doSearch()`.
+- Renamed method `archiveGDPR()` to `delete()` in `files.filesApi`.
+- Renamed method `updateProperties()` to `updatePropertiesRecursively()` in `files.foldersApi`.
+- Added new method `updateProperties()` to `files.foldersApi`.
+- Changed incomining parameters list in `files()->foldersApi()->doSearch()`.
+- Added properties `source_group` and `file_md5` to `HubSpot\Client\Files\Model\File`.
+- Added property `clear_expires` to `HubSpot\Client\Files\Model\FileUpdateInput`.
+- Changed property type from `expires_at:int` to `expires_at:\DateTime` in `HubSpot\Client\Files\Model\FileUpdateInput`.
+- Added property `expires_at` to `HubSpot\Client\Files\Model\ImportFromUrlInput`.
+- Removed property `id` from `HubSpot\Client\Files\Model\FolderUpdateInput`.
 
 ## [12.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.2.0) - 2025-04-28
 
@@ -90,7 +205,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed method `doCancel` to `cancel` in `marketing()->events()->basicApi()`.
 - Renamed method `getById` to `getDetails` in `marketing()->events()->basicApi()`.
 - Renamed method `replace` to `upsert` in `marketing()->events()->basicApi()`.
-ListAssociationsApi
+- Added `marketing()->events()->listAssociationsApi()` API.
 - Renamed method `create` to `update` in `marketing()->events()->settingsApi()`.
 - Renamed method `doEmailUpsertById` to `upsertByContactEmail` in `marketing()->events()->subscriberStateChangesApi()`.
 - Renamed method `doUpsertById` to `upsertByContactId` in `marketing()->events()->subscriberStateChangesApi()`.
@@ -861,7 +976,7 @@ ListAssociationsApi
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/12.2.0...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -921,3 +1036,5 @@ ListAssociationsApi
 [12.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.0.0
 [12.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0
 [12.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.2.0
+[13.0.0beta.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1
+[13.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0

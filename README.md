@@ -196,6 +196,11 @@ $response = $hubspot->apiRequest([
 ]);
 ```
 
+## Reserved words
+
+The SDK has reserved words(e.g. `clone`). [Full list of reserved words.](https://openapi-generator.tech/docs/generators/php#reserved-words)
+When you face with a reserved word you have to add `_` before the word(e.g. `_clone`).
+
 ## Contributing
 
 ### Run spec tests

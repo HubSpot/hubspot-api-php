@@ -10,7 +10,6 @@ use HubSpot\Discovery\DiscoveryBase;
  * @method Domains\Discovery      domains()
  * @method Hubdb\Discovery        hubdb()
  * @method Pages\Discovery        pages()
- * @method Performance\Discovery  performance()
  * @method SiteSearch\Discovery   siteSearch()
  * @method SourceCode\Discovery   sourceCode()
  * @method UrlRedirects\Discovery urlRedirects()
