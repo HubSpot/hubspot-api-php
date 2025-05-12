@@ -5,9 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/12.2.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD)
 
-## [13.0.0beta.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1) - 2024-04-28
+## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0) - 2025-05-12
+
+### CRM Tickets
+
+- Moved method `merge()` from `crm()->tickets()->mergeApi()` to `crm()->tickets()->basicApi()`.
+- Removed `crm()->tickets()->mergeApi()` API.
+- Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Tickets\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->tickets()->batchApi()->create()`.
+- Made `association_category` and `association_type_id` properties required in `HubSpot\Client\Crm\Tickets\Model\AssociationSpec`.
+- Made `types` and `to` properties required in `HubSpot\Client\Crm\Tickets\Model\PublicAssociationsForObject`.
+- Made `id` property required in `HubSpot\Client\Crm\Tickets\Model\PublicObjectId`.
+- Added property `object_write_trace_id` to `HubSpot\Client\Crm\Tickets\Model\SimplePublicObject`, `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectWithAssociations` and `HubSpot\Client\Crm\Tickets\Model\SimplePublicUpsertObject`.
+- Removed property `object_write_trace_id` from `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInput` and `HubSpot\Client\Crm\Tickets\Model\SimplePublicObjectInputForCreate`.
+- Added `email`, `after` and `archived` optrions to `crm()->owners()->getAll()`.
+
+### Updates
+
+- Added `createMiddlewareByHttpCodeRanges` and `getRetryFunctionByRanges` methods to `RetryMiddlewareFactory`.
+- `504` http code was removed from `RetryMiddlewareFactory::createInternalErrorsMiddleware()`.
+- `520-599` http codes range is added to `RetryMiddlewareFactory::createInternalErrorsMiddleware()`.
+-
+
+## [13.0.0beta.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1) - 2025-04-28
 
 ### CMS
 
@@ -32,9 +53,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moved method `merge()` from `crm()->companies()->mergeApi()` to `crm()->companies()->basicApi()`.
 - Removed `crm()->companies()->mergeApi()` API.
 - Changed option type `batch_input_simple_public_object_input_for_create: HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectInputForCreate` to `batch_input_simple_public_object_batch_input_for_create: HubSpot\Client\Crm\Companies\Model\BatchInputSimplePublicObjectBatchInputForCreate` in `crm()->companies()->batchApi()->create()`.
-- Made `association_category` and `association_type_id` properties required in `HubSpot\Client\Crm\Companies\Model\AssociationSpec`, `HubSpot\Client\Crm\Contacts\Model\AssociationSpec`, `HubSpot\Client\Crm\Deals\Model\AssociationSpec`
+- Made `association_category` and `association_type_id` properties required in `HubSpot\Client\Crm\Companies\Model\AssociationSpec`, `HubSpot\Client\Crm\Contacts\Model\AssociationSpec`, `HubSpot\Client\Crm\Deals\Model\AssociationSpec`.
 - Made `types` and `to` properties required in `HubSpot\Client\Crm\Companies\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject`, `HubSpot\Client\Crm\Deals\Model\PublicAssociationsForObject`.
-- Made `id` property required in `HubSpot\Client\Crm\Companies\Model\PublicObjectId`, `HubSpot\Client\Crm\Contacts\Model\PublicObjectId`, `HubSpot\Client\Crm\Deals\Model\PublicObjectId`
+- Made `id` property required in `HubSpot\Client\Crm\Companies\Model\PublicObjectId`, `HubSpot\Client\Crm\Contacts\Model\PublicObjectId`, `HubSpot\Client\Crm\Deals\Model\PublicObjectId`.
 - Added property `object_write_trace_id` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObject`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Companies\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObject`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Contacts\Model\SimplePublicUpsertObject`,`HubSpot\Client\Crm\Deals\Model\SimplePublicObject`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObject`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObject`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Quotes\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Calls\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Communications\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicUpsertObject`,
 `HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\SimplePublicObjectWithAssociations`,
 `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectWithAssociations`, `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicUpsertObject`,
@@ -107,7 +128,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Marked `cms()->performance()` API client as deprecated.
 
-## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2024-04-08
+## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2025-04-08
 
 ## Updated
 
@@ -184,7 +205,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed method `doCancel` to `cancel` in `marketing()->events()->basicApi()`.
 - Renamed method `getById` to `getDetails` in `marketing()->events()->basicApi()`.
 - Renamed method `replace` to `upsert` in `marketing()->events()->basicApi()`.
-ListAssociationsApi
+- Added `marketing()->events()->listAssociationsApi()` API.
 - Renamed method `create` to `update` in `marketing()->events()->settingsApi()`.
 - Renamed method `doEmailUpsertById` to `upsertByContactEmail` in `marketing()->events()->subscriberStateChangesApi()`.
 - Renamed method `doUpsertById` to `upsertByContactId` in `marketing()->events()->subscriberStateChangesApi()`.
@@ -955,7 +976,7 @@ ListAssociationsApi
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/12.2.0...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1016,3 +1037,4 @@ ListAssociationsApi
 [12.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0
 [12.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.2.0
 [13.0.0beta.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1
+[13.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0
