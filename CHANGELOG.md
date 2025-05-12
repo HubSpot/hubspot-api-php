@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD)
 
-## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0) - 2024-05-12
+## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0) - 2025-05-12
 
 ### CRM Tickets
 
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `520-599` http codes range is added to `RetryMiddlewareFactory::createInternalErrorsMiddleware()`.
 -
 
-## [13.0.0beta.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1) - 2024-04-28
+## [13.0.0beta.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1) - 2025-04-28
 
 ### CMS
 
@@ -128,7 +128,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Marked `cms()->performance()` API client as deprecated.
 
-## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2024-04-08
+## [12.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/12.1.0) - 2025-04-08
 
 ## Updated
 
