@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.0.1...HEAD)
+
+## [13.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.1) - 2025-05-13
+
+### Updates
+
+- Fixed `RetryMiddlewareFactory`.
 
 ## [13.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0) - 2025-05-12
 
@@ -976,7 +982,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.0.0...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.0.1...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1038,3 +1044,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [12.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/12.2.0
 [13.0.0beta.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1
 [13.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0
+[13.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.1
