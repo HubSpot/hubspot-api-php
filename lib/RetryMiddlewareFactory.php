@@ -16,7 +16,7 @@ class RetryMiddlewareFactory
 
     public static function createInternalErrorsMiddleware(
         ?callable $delayFunction = null,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ) {
         return static::createMiddlewareByHttpCodeRanges(
             static::INTERNAL_ERROR_RANGES,
@@ -27,7 +27,7 @@ class RetryMiddlewareFactory
 
     public static function createRateLimitMiddleware(
         ?callable $delayFunction = null,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ) {
         return static::createMiddlewareByHttpCodes([429], $delayFunction, $maxRetries);
     }
@@ -35,7 +35,7 @@ class RetryMiddlewareFactory
     public static function createMiddlewareByHttpCodes(
         array $codes,
         ?callable $delayFunction,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ): callable {
         return Middleware::retry(
             static::getRetryFunction($codes, $maxRetries),
@@ -47,7 +47,7 @@ class RetryMiddlewareFactory
         int $from,
         int $to,
         ?callable $delayFunction,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ): callable {
         return static::createMiddlewareByHttpCodeRanges([[$from, $to]], $delayFunction, $maxRetries);
     }
@@ -60,7 +60,7 @@ class RetryMiddlewareFactory
     public static function createMiddlewareByHttpCodeRanges(
         array $ranges,
         ?callable $delayFunction,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ): callable {
         return Middleware::retry(
             static::getRetryFunctionByRanges($ranges, $maxRetries),
@@ -106,14 +106,14 @@ class RetryMiddlewareFactory
     public static function getRetryFunctionByRange(
         int $from,
         int $to,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ): callable {
         return static::getRetryFunctionByRanges([['from' => $from, 'to' => $to]], $maxRetries);
     }
 
     public static function getRetryFunction(
         array $codes,
-        int $maxRetries = static::DEFAULT_MAX_RETRIES
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ): callable {
         return function (
             $retries,
