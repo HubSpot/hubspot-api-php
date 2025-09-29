@@ -20,6 +20,7 @@ class AssociationTypes
     public const PRIMARY_TICKET_TO_COMPANY = 26;
     public const DEAL_TO_TICKET = 27;
     public const TICKET_TO_DEAL = 28;
+    public const TICKET_TO_THREAD = 32;
     public const DEAL_TO_QUOTE = 63;
     public const QUOTE_TO_DEAL = 64;
     public const QUOTE_TO_LINE_ITEM = 67;
@@ -29,6 +30,7 @@ class AssociationTypes
     public const QUOTE_TO_COMPANY = 71;
     public const COMPANY_TO_QUOTE = 72;
     public const CONTACT_TO_COMMUNICATION = 82;
+    public const TICKET_TO_COMMUNICATION = 84;
     public const DEAL_TO_COMMUNICATION = 86;
     public const COMPANY_TO_COMMUNICATION = 88;
     public const CONTACT_TO_FEEDBACK_SUBMISSION = 97;
@@ -81,6 +83,7 @@ class AssociationTypes
     public const NOTE_TO_TICKET = 228;
     public const TICKET_TO_TASK = 229;
     public const TASK_TO_TICKET = 230;
+    public const TICKET_TO_CONVERSATION = 278;
     public const CONTACT_TO_COMPANY = 279;
     public const COMPANY_TO_CONTACT = 280;
     public const CONTACT_TO_SUBSCRIPTION = 296;
@@ -99,6 +102,7 @@ class AssociationTypes
     public const CONTACT_TO_CONTACT = 449;
     public const COMPANY_TO_COMPANY = 450;
     public const DEAL_TO_DEAL = 451;
+    public const TICKET_TO_TICKET = 452;
     public const POSTAL_MAIL_TO_CONTACT = 453;
     public const CONTACT_TO_POSTAL_MAIL = 454;
     public const POSTAL_MAIL_TO_TICKET = 455;
@@ -113,6 +117,7 @@ class AssociationTypes
     public const CONTACT_TO_ORDER = 508;
     public const COMPANY_TO_ORDER = 510;
     public const DEAL_TO_ORDER = 511;
+    public const TICKET_TO_ORDER = 526;
     public const LEAD_TO_PRIMARY_CONTACT = 578;
     public const CONTACT_TO_CART = 587;
     public const LEAD_TO_CALL = 596;
@@ -123,6 +128,7 @@ class AssociationTypes
     public const LEAD_TO_TASK = 646;
     public const COMPANY_TO_SERVICE = 793;
     public const DEAL_TO_SERVICE = 795;
+    public const TICKET_TO_SERVICE = 797;
     public const CONTACT_TO_SERVICE = 799;
     public const CONTACT_TO_COURSE = 861;
     public const DEAL_TO_COURSE = 863;
@@ -133,6 +139,10 @@ class AssociationTypes
     public const COMPANY_TO_APPOINTMENT = 909;
     public const COMPANY_TO_FEEDBACK_SUBMISSION = 929;
     public const COMPANY_TO_COURSE = 939;
+    public const TICKET_TO_COURSE = 941;
+    public const TICKET_TO_LISTING = 943;
     public const DEAL_TO_APPOINTMENT = 945;
+    public const TICKET_TO_APPOINTMENT = 947;
     public const DEAL_TO_FEEDBACK_SUBMISSION = 985;
+    public const TICKET_TO_SUBSCRIPTION = 1122;
 }
