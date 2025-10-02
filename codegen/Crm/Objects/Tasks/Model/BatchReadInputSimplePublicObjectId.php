@@ -189,7 +189,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['properties'] = $data['properties'] ?? null;
         $this->container['properties_with_history'] = $data['properties_with_history'] ?? null;

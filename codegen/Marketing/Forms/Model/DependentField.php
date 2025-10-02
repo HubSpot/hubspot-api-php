@@ -180,7 +180,7 @@ class DependentField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['dependent_condition'] = $data['dependent_condition'] ?? null;
         $this->container['dependent_field'] = $data['dependent_field'] ?? null;

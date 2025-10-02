@@ -179,7 +179,7 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['horizontal_side'] = $data['horizontal_side'] ?? null;
         $this->container['vertical_side'] = $data['vertical_side'] ?? null;
@@ -228,7 +228,7 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets horizontal_side
      *
-     * @param string $horizontal_side 
+     * @param string $horizontal_side
      *
      * @return self
      */
@@ -252,7 +252,7 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vertical_side
      *
-     * @param string $vertical_side 
+     * @param string $vertical_side
      *
      * @return self
      */

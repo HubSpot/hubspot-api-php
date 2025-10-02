@@ -197,7 +197,7 @@ class PublicSurveyMonkeyFilter implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_type'] = $data['filter_type'] ?? 'SURVEY_MONKEY';
         $this->container['survey_id'] = $data['survey_id'] ?? null;

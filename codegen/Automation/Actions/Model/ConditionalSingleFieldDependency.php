@@ -202,7 +202,7 @@ class ConditionalSingleFieldDependency implements ModelInterface, ArrayAccess, \
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['dependency_type'] = $data['dependency_type'] ?? 'CONDITIONAL_SINGLE_FIELD';
         $this->container['dependent_field_names'] = $data['dependent_field_names'] ?? null;

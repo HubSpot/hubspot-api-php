@@ -195,7 +195,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['country'] = $data['country'] ?? null;
         $this->container['country_sub_division_code'] = $data['country_sub_division_code'] ?? null;

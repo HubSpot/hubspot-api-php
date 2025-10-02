@@ -201,7 +201,7 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type_id'] = $data['type_id'] ?? null;
         $this->container['label'] = $data['label'] ?? null;

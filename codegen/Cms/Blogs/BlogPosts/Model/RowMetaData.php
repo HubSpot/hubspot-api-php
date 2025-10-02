@@ -179,7 +179,7 @@ class RowMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['styles'] = $data['styles'] ?? null;
         $this->container['css_class'] = $data['css_class'] ?? null;

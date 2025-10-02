@@ -219,7 +219,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['precedence'] = $data['precedence'] ?? null;
         $this->container['is_only_after_not_found'] = $data['is_only_after_not_found'] ?? null;

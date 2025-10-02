@@ -248,7 +248,7 @@ class DependentFieldFilter implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['operator'] = $data['operator'] ?? null;
         $this->container['value'] = $data['value'] ?? null;

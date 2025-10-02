@@ -179,7 +179,7 @@ class PublicGdprDeleteInput implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['id_property'] = $data['id_property'] ?? null;
         $this->container['object_id'] = $data['object_id'] ?? null;

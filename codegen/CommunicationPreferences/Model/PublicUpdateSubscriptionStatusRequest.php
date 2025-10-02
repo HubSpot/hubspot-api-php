@@ -215,7 +215,7 @@ class PublicUpdateSubscriptionStatusRequest implements ModelInterface, ArrayAcce
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['email_address'] = $data['email_address'] ?? null;
         $this->container['subscription_id'] = $data['subscription_id'] ?? null;

@@ -245,7 +245,7 @@ class AccountingAppUrls implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['get_invoice_url'] = $data['get_invoice_url'] ?? null;
         $this->container['search_customer_url'] = $data['search_customer_url'] ?? null;

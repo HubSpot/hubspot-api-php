@@ -180,7 +180,7 @@ class MembershipChangeRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['record_ids_to_remove'] = $data['record_ids_to_remove'] ?? null;
         $this->container['record_ids_to_add'] = $data['record_ids_to_add'] ?? null;
@@ -229,7 +229,7 @@ class MembershipChangeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets record_ids_to_remove
      *
-     * @param int[] $record_ids_to_remove 
+     * @param int[] $record_ids_to_remove
      *
      * @return self
      */
@@ -253,7 +253,7 @@ class MembershipChangeRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets record_ids_to_add
      *
-     * @param int[] $record_ids_to_add 
+     * @param int[] $record_ids_to_add
      *
      * @return self
      */

@@ -197,7 +197,7 @@ class ActionFunctionIdentifier implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['function_type'] = $data['function_type'] ?? null;
         $this->container['id'] = $data['id'] ?? null;

@@ -190,7 +190,7 @@ class ExternalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['create_meeting_url'] = $data['create_meeting_url'] ?? null;
         $this->container['update_meeting_url'] = $data['update_meeting_url'] ?? null;

@@ -212,7 +212,7 @@ class PublicCommunicationSubscriptionFilter implements ModelInterface, ArrayAcce
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_type'] = $data['filter_type'] ?? 'COMMUNICATION_SUBSCRIPTION';
         $this->container['subscription_ids'] = $data['subscription_ids'] ?? null;

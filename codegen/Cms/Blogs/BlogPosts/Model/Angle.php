@@ -198,7 +198,7 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['value'] = $data['value'] ?? null;
         $this->container['units'] = $data['units'] ?? null;

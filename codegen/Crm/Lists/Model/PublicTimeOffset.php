@@ -184,7 +184,7 @@ class PublicTimeOffset implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['offset_direction'] = $data['offset_direction'] ?? null;
         $this->container['time_unit'] = $data['time_unit'] ?? null;

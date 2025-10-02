@@ -180,7 +180,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['before'] = $data['before'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
@@ -226,7 +226,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets before
      *
-     * @param string $before 
+     * @param string $before
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link 
+     * @param string|null $link
      *
      * @return self
      */

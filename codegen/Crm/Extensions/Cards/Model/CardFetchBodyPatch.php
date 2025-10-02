@@ -180,7 +180,7 @@ class CardFetchBodyPatch implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['target_url'] = $data['target_url'] ?? null;
         $this->container['object_types'] = $data['object_types'] ?? null;

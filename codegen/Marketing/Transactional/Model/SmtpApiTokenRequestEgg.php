@@ -180,7 +180,7 @@ class SmtpApiTokenRequestEgg implements ModelInterface, ArrayAccess, \JsonSerial
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['create_contact'] = $data['create_contact'] ?? null;
         $this->container['campaign_name'] = $data['campaign_name'] ?? null;

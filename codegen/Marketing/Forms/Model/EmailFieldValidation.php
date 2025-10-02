@@ -180,7 +180,7 @@ class EmailFieldValidation implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['blocked_email_domains'] = $data['blocked_email_domains'] ?? null;
         $this->container['use_default_block_list'] = $data['use_default_block_list'] ?? null;

@@ -180,7 +180,7 @@ class AbTestCreateRequestVNext implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['variation_name'] = $data['variation_name'] ?? null;
         $this->container['content_id'] = $data['content_id'] ?? null;

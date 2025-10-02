@@ -278,7 +278,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['event_type'] = $data['event_type'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;

@@ -185,7 +185,7 @@ class AccountingAppSettings implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['app_id'] = $data['app_id'] ?? null;
         $this->container['urls'] = $data['urls'] ?? null;

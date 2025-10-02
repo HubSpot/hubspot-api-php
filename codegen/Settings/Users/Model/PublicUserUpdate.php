@@ -185,7 +185,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['role_id'] = $data['role_id'] ?? null;
         $this->container['primary_team_id'] = $data['primary_team_id'] ?? null;

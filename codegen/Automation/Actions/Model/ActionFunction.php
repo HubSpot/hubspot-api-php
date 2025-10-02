@@ -202,7 +202,7 @@ class ActionFunction implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['function_source'] = $data['function_source'] ?? null;
         $this->container['function_type'] = $data['function_type'] ?? null;

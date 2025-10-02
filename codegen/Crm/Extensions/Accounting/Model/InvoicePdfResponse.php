@@ -195,7 +195,7 @@ class InvoicePdfResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['at_result'] = $data['at_result'] ?? null;
         $this->container['invoice'] = $data['invoice'] ?? null;

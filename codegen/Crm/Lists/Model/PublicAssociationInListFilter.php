@@ -222,7 +222,7 @@ class PublicAssociationInListFilter implements ModelInterface, ArrayAccess, \Jso
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_type'] = $data['filter_type'] ?? 'ASSOCIATION';
         $this->container['coalescing_refine_by'] = $data['coalescing_refine_by'] ?? null;

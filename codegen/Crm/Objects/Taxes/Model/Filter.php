@@ -231,7 +231,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['high_value'] = $data['high_value'] ?? null;
         $this->container['property_name'] = $data['property_name'] ?? null;

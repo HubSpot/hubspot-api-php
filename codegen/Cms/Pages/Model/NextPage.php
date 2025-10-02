@@ -180,7 +180,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['link'] = $data['link'] ?? null;
         $this->container['after'] = $data['after'] ?? null;
@@ -226,7 +226,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link 
+     * @param string|null $link
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets after
      *
-     * @param string $after 
+     * @param string $after
      *
      * @return self
      */

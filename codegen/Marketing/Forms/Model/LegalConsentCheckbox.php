@@ -184,7 +184,7 @@ class LegalConsentCheckbox implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['required'] = $data['required'] ?? null;
         $this->container['subscription_type_id'] = $data['subscription_type_id'] ?? null;

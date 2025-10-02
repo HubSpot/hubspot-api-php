@@ -247,7 +247,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['label_text_size'] = $data['label_text_size'] ?? null;
         $this->container['legal_consent_text_color'] = $data['legal_consent_text_color'] ?? null;
@@ -345,7 +345,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label_text_size
      *
-     * @param string $label_text_size 
+     * @param string $label_text_size
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets legal_consent_text_color
      *
-     * @param string $legal_consent_text_color 
+     * @param string $legal_consent_text_color
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets font_family
      *
-     * @param string $font_family 
+     * @param string $font_family
      *
      * @return self
      */
@@ -417,7 +417,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets legal_consent_text_size
      *
-     * @param string $legal_consent_text_size 
+     * @param string $legal_consent_text_size
      *
      * @return self
      */
@@ -441,7 +441,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets background_width
      *
-     * @param string $background_width 
+     * @param string $background_width
      *
      * @return self
      */
@@ -465,7 +465,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets help_text_size
      *
-     * @param string $help_text_size 
+     * @param string $help_text_size
      *
      * @return self
      */
@@ -489,7 +489,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets submit_font_color
      *
-     * @param string $submit_font_color 
+     * @param string $submit_font_color
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label_text_color
      *
-     * @param string $label_text_color 
+     * @param string $label_text_color
      *
      * @return self
      */
@@ -537,7 +537,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets submit_alignment
      *
-     * @param string $submit_alignment 
+     * @param string $submit_alignment
      *
      * @return self
      */
@@ -571,7 +571,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets submit_size
      *
-     * @param string $submit_size 
+     * @param string $submit_size
      *
      * @return self
      */
@@ -595,7 +595,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets help_text_color
      *
-     * @param string $help_text_color 
+     * @param string $help_text_color
      *
      * @return self
      */
@@ -619,7 +619,7 @@ class FormStyle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets submit_color
      *
-     * @param string $submit_color 
+     * @param string $submit_color
      *
      * @return self
      */

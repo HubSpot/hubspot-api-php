@@ -199,7 +199,7 @@ class HubSpotFormDefinitionPatchRequest implements ModelInterface, ArrayAccess, 
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['field_groups'] = $data['field_groups'] ?? null;
         $this->container['archived'] = $data['archived'] ?? null;

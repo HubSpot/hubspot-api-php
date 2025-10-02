@@ -180,7 +180,7 @@ class UnitPrice implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['amount'] = $data['amount'] ?? null;
         $this->container['tax_included'] = $data['tax_included'] ?? null;

@@ -192,7 +192,7 @@ class PublicSetOccurrencesRefineBy implements ModelInterface, ArrayAccess, \Json
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type'] = $data['type'] ?? 'SET_OCCURRENCES';
         $this->container['set_type'] = $data['set_type'] ?? null;

@@ -234,7 +234,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['css_style'] = $data['css_style'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
@@ -327,7 +327,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets css_style
      *
-     * @param string $css_style 
+     * @param string $css_style
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string $label 
+     * @param string $label
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type 
+     * @param string $type
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets params
      *
-     * @param array<string,object> $params 
+     * @param array<string,object> $params
      *
      * @return self
      */
@@ -423,7 +423,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows
      *
-     * @param array<string,\HubSpot\Client\Cms\Pages\Model\LayoutSection>[] $rows 
+     * @param array<string,\HubSpot\Client\Cms\Pages\Model\LayoutSection>[] $rows
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets row_meta_data
      *
-     * @param \HubSpot\Client\Cms\Pages\Model\RowMetaData[] $row_meta_data 
+     * @param \HubSpot\Client\Cms\Pages\Model\RowMetaData[] $row_meta_data
      *
      * @return self
      */
@@ -471,7 +471,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cells
      *
-     * @param \HubSpot\Client\Cms\Pages\Model\LayoutSection[] $cells 
+     * @param \HubSpot\Client\Cms\Pages\Model\LayoutSection[] $cells
      *
      * @return self
      */
@@ -495,7 +495,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets css_class
      *
-     * @param string $css_class 
+     * @param string $css_class
      *
      * @return self
      */
@@ -519,7 +519,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets w
      *
-     * @param int $w 
+     * @param int $w
      *
      * @return self
      */
@@ -543,7 +543,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets css_id
      *
-     * @param string $css_id 
+     * @param string $css_id
      *
      * @return self
      */
@@ -567,7 +567,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x
      *
-     * @param int $x 
+     * @param int $x
      *
      * @return self
      */
@@ -591,7 +591,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name 
+     * @param string $name
      *
      * @return self
      */

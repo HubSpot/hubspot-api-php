@@ -180,7 +180,7 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['callback_id'] = $data['callback_id'] ?? null;
         $this->container['output_fields'] = $data['output_fields'] ?? null;

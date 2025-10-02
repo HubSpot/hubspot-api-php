@@ -202,7 +202,7 @@ class PublicOrFilterBranch implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_branch_type'] = $data['filter_branch_type'] ?? 'OR';
         $this->container['filter_branches'] = $data['filter_branches'] ?? null;

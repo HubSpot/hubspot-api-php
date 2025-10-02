@@ -179,7 +179,7 @@ class PublicMergeInput implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['object_id_to_merge'] = $data['object_id_to_merge'] ?? null;
         $this->container['primary_object_id'] = $data['primary_object_id'] ?? null;

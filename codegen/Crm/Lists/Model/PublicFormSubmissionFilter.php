@@ -222,7 +222,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_type'] = $data['filter_type'] ?? 'FORM_SUBMISSION';
         $this->container['form_id'] = $data['form_id'] ?? null;

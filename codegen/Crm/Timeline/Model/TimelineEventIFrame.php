@@ -194,7 +194,7 @@ class TimelineEventIFrame implements ModelInterface, ArrayAccess, \JsonSerializa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['link_label'] = $data['link_label'] ?? null;
         $this->container['header_label'] = $data['header_label'] ?? null;

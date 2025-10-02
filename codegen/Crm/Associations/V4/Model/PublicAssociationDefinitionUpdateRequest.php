@@ -179,7 +179,7 @@ class PublicAssociationDefinitionUpdateRequest implements ModelInterface, ArrayA
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['association_type_id'] = $data['association_type_id'] ?? null;
         $this->container['label'] = $data['label'] ?? null;

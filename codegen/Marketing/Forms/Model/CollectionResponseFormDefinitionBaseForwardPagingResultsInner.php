@@ -237,7 +237,7 @@ class CollectionResponseFormDefinitionBaseForwardPagingResultsInner implements M
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['form_type'] = $data['form_type'] ?? 'hubspot';
         $this->container['id'] = $data['id'] ?? null;

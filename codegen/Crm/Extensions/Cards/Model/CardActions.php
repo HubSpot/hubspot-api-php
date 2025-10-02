@@ -175,7 +175,7 @@ class CardActions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['base_urls'] = $data['base_urls'] ?? null;
     }

@@ -222,7 +222,7 @@ class FieldGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['group_type'] = $data['group_type'] ?? null;
         $this->container['rich_text_type'] = $data['rich_text_type'] ?? null;
@@ -294,7 +294,7 @@ class FieldGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group_type
      *
-     * @param string $group_type 
+     * @param string $group_type
      *
      * @return self
      */

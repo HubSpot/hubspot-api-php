@@ -185,7 +185,7 @@ class MembershipsUpdateResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['record_ids_removed'] = $data['record_ids_removed'] ?? null;
         $this->container['records_ids_added'] = $data['records_ids_added'] ?? null;

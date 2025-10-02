@@ -277,7 +277,7 @@ class InvoiceReadResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['external_invoice_number'] = $data['external_invoice_number'] ?? null;
         $this->container['total_amount_billed'] = $data['total_amount_billed'] ?? null;

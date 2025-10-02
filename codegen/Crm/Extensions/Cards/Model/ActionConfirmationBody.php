@@ -184,7 +184,7 @@ class ActionConfirmationBody implements ModelInterface, ArrayAccess, \JsonSerial
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['prompt'] = $data['prompt'] ?? null;
         $this->container['confirm_button_label'] = $data['confirm_button_label'] ?? null;

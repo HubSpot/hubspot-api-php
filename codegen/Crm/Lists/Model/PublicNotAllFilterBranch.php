@@ -202,7 +202,7 @@ class PublicNotAllFilterBranch implements ModelInterface, ArrayAccess, \JsonSeri
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_branch_type'] = $data['filter_branch_type'] ?? 'NOT_ALL';
         $this->container['filter_branch_operator'] = $data['filter_branch_operator'] ?? null;

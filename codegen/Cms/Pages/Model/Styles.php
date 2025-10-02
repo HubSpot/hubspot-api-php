@@ -204,7 +204,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['background_color'] = $data['background_color'] ?? null;
         $this->container['flexbox_positioning'] = $data['flexbox_positioning'] ?? null;
@@ -297,7 +297,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets flexbox_positioning
      *
-     * @param string $flexbox_positioning 
+     * @param string $flexbox_positioning
      *
      * @return self
      */
@@ -345,7 +345,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets force_full_width_section
      *
-     * @param bool $force_full_width_section 
+     * @param bool $force_full_width_section
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vertical_alignment
      *
-     * @param string $vertical_alignment 
+     * @param string $vertical_alignment
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets max_width_section_centering
      *
-     * @param int $max_width_section_centering 
+     * @param int $max_width_section_centering
      *
      * @return self
      */

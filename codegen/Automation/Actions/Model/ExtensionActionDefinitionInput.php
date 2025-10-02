@@ -215,7 +215,7 @@ class ExtensionActionDefinitionInput implements ModelInterface, ArrayAccess, \Js
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['functions'] = $data['functions'] ?? null;
         $this->container['action_url'] = $data['action_url'] ?? null;

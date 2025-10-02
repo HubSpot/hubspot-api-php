@@ -2111,7 +2111,7 @@ class Page implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['publish_date'] = $data['publish_date'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
@@ -3260,7 +3260,7 @@ class Page implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets layout_sections
      *
-     * @param array<string,\HubSpot\Client\Cms\Pages\Model\LayoutSection> $layout_sections 
+     * @param array<string,\HubSpot\Client\Cms\Pages\Model\LayoutSection> $layout_sections
      *
      * @return self
      */
@@ -3654,7 +3654,7 @@ class Page implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets theme_settings_values
      *
-     * @param array<string,object> $theme_settings_values 
+     * @param array<string,object> $theme_settings_values
      *
      * @return self
      */

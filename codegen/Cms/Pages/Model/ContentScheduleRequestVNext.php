@@ -180,7 +180,7 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['publish_date'] = $data['publish_date'] ?? null;
         $this->container['id'] = $data['id'] ?? null;

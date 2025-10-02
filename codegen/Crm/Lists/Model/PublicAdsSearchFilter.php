@@ -212,7 +212,7 @@ class PublicAdsSearchFilter implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['filter_type'] = $data['filter_type'] ?? 'ADS_SEARCH';
         $this->container['entity_type'] = $data['entity_type'] ?? null;

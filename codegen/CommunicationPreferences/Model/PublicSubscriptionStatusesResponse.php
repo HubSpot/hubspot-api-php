@@ -180,7 +180,7 @@ class PublicSubscriptionStatusesResponse implements ModelInterface, ArrayAccess,
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['recipient'] = $data['recipient'] ?? null;
         $this->container['subscription_statuses'] = $data['subscription_statuses'] ?? null;

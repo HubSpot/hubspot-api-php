@@ -184,7 +184,7 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['image_url'] = $data['image_url'] ?? null;
         $this->container['background_size'] = $data['background_size'] ?? null;
@@ -237,7 +237,7 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_url
      *
-     * @param string $image_url 
+     * @param string $image_url
      *
      * @return self
      */
@@ -261,7 +261,7 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets background_size
      *
-     * @param string $background_size 
+     * @param string $background_size
      *
      * @return self
      */
@@ -285,7 +285,7 @@ class BackgroundImage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets background_position
      *
-     * @param string $background_position 
+     * @param string $background_position
      *
      * @return self
      */

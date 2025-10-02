@@ -202,7 +202,7 @@ class InputFieldDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['type_definition'] = $data['type_definition'] ?? null;
         $this->container['supported_value_types'] = $data['supported_value_types'] ?? null;

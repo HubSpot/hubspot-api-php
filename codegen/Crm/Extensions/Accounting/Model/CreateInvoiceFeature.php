@@ -180,7 +180,7 @@ class CreateInvoiceFeature implements ModelInterface, ArrayAccess, \JsonSerializ
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['enabled'] = $data['enabled'] ?? null;
         $this->container['sub_features'] = $data['sub_features'] ?? null;

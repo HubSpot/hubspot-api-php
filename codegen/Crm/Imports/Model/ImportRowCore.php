@@ -189,7 +189,7 @@ class ImportRowCore implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['line_number'] = $data['line_number'] ?? null;
         $this->container['row_data'] = $data['row_data'] ?? null;
