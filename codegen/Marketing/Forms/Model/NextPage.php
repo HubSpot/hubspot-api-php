@@ -225,7 +225,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link
+     * @param string|null $link 
      *
      * @return self
      */
@@ -249,7 +249,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets after
      *
-     * @param string $after
+     * @param string $after 
      *
      * @return self
      */

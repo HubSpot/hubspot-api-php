@@ -87,9 +87,9 @@ class SignatureTest extends TestCase
     public static function generateHubspotSignatureV3(
         string $secret,
         string $requestBody,
-        string $httpUri = null,
+        ?string $httpUri = null,
         string $httpMethod = 'POST',
-        int $timestamp = null
+        ?int $timestamp = null
     ): string {
         $sourceString = $httpMethod.$httpUri.$requestBody.$timestamp;
 

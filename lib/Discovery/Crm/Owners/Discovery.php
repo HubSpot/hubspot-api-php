@@ -13,7 +13,7 @@ class Discovery extends DiscoveryBase
     public function getAll(): array
     {
         $owners = [];
-       ? $after = null;
+        $after = null;
 
         do {
             $page = $this->OwnersApi()->getPage(null, $after, 100);

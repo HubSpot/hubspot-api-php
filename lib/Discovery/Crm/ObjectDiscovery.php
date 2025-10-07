@@ -9,7 +9,7 @@ class ObjectDiscovery extends DiscoveryBase
     public function getAll($properties = null, $properties_with_history = null, $associations = null, $archived = false): array
     {
         $objects = [];
-       ? $after = null;
+        $after = null;
 
         do {
             $page = $this->basicApi()
