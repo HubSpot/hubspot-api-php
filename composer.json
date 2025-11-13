@@ -1,6 +1,6 @@
 {
     "name": "hubspot/api-client",
-    "version": "13.0.1",
+    "version": "13.1.0",
     "description": "Hubspot API client",
     "keywords": [
         "hubspot",
@@ -32,8 +32,8 @@
     },
     "autoload": {
         "psr-4": {
-            "HubSpot\\Client\\" : "codegen/",
-            "HubSpot\\" : "lib/",
+            "HubSpot\\Client\\": "codegen/",
+            "HubSpot\\": "lib/",
             "Hubspot\\Tests\\": "tests/"
         }
     }
