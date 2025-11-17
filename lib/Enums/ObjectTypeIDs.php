@@ -23,8 +23,8 @@ class ObjectTypeIDs
     public const NOTES = '0-46';
     public const ORDERS = '0-123';
     public const PAYMENTS = '0-101';
-    public const POSTAL_MAIL = '0-116	';
-    public const PRODUCTS = '0 ';
+    public const POSTAL_MAIL = '0-116';
+    public const PRODUCTS = '0-7';
     public const QUOTES = '0-14';
     public const SERVICES = '0-162';
     public const SUBSCRIPTIONS = '0-69';
