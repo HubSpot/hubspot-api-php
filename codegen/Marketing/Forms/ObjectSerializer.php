@@ -421,9 +421,14 @@ class ObjectSerializer
                 throw new \InvalidArgumentException("Invalid array '$class'");
             }
 
-            $subClass = substr($class, 0, -2);
+            $originalSubclass = $subClass = substr($class, 0, -2);
             $values = [];
             foreach ($data as $key => $value) {
+                if ($originalSubclass === '\HubSpot\Client\Marketing\Forms\Model\DependentFieldDependentField' && isset($value->fieldType)) {
+                    $parts = explode('_', $value->fieldType);
+                    $parts = array_map('ucfirst', $parts);
+                    $subClass = '\HubSpot\Client\Marketing\Forms\Model\\' . implode('', $parts) . 'Field';
+                }
                 $values[] = self::deserialize($value, $subClass, null);
             }
             return $values;
