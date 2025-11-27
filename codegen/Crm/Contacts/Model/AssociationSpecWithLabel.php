@@ -1,6 +1,6 @@
 <?php
 /**
- * AssociationSpec
+ * AssociationSpecWithLabel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Contacts\ObjectSerializer;
 
 /**
- * AssociationSpec Class Doc Comment
+ * AssociationSpecWithLabel Class Doc Comment
  *
  * @category Class
- * @description Defines the type, direction, and details of the relationship between two CRM objects.
  * @package  HubSpot\Client\Crm\Contacts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssociationSpec';
+    protected static $openAPIModelName = 'AssociationSpecWithLabel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'association_category' => 'string',
-        'association_type_id' => 'int'
+        'category' => 'string',
+        'label' => 'string',
+        'type_id' => 'int'
     ];
 
     /**
@@ -70,8 +70,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'association_category' => null,
-        'association_type_id' => 'int32'
+        'category' => null,
+        'label' => null,
+        'type_id' => 'int32'
     ];
 
     /**
@@ -80,8 +81,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'association_category' => false,
-        'association_type_id' => false
+        'category' => false,
+        'label' => false,
+        'type_id' => false
     ];
 
     /**
@@ -170,8 +172,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'association_category' => 'associationCategory',
-        'association_type_id' => 'associationTypeId'
+        'category' => 'category',
+        'label' => 'label',
+        'type_id' => 'typeId'
     ];
 
     /**
@@ -180,8 +183,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'association_category' => 'setAssociationCategory',
-        'association_type_id' => 'setAssociationTypeId'
+        'category' => 'setCategory',
+        'label' => 'setLabel',
+        'type_id' => 'setTypeId'
     ];
 
     /**
@@ -190,8 +194,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'association_category' => 'getAssociationCategory',
-        'association_type_id' => 'getAssociationTypeId'
+        'category' => 'getCategory',
+        'label' => 'getLabel',
+        'type_id' => 'getTypeId'
     ];
 
     /**
@@ -235,23 +240,23 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
-    public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
-    public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
-    public const ASSOCIATION_CATEGORY_WORK = 'WORK';
+    public const CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
+    public const CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
+    public const CATEGORY_USER_DEFINED = 'USER_DEFINED';
+    public const CATEGORY_WORK = 'WORK';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getAssociationCategoryAllowableValues()
+    public function getCategoryAllowableValues()
     {
         return [
-            self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
-            self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
-            self::ASSOCIATION_CATEGORY_USER_DEFINED,
-            self::ASSOCIATION_CATEGORY_WORK,
+            self::CATEGORY_HUBSPOT_DEFINED,
+            self::CATEGORY_INTEGRATOR_DEFINED,
+            self::CATEGORY_USER_DEFINED,
+            self::CATEGORY_WORK,
         ];
     }
 
@@ -270,8 +275,9 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('association_category', $data ?? [], null);
-        $this->setIfExists('association_type_id', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('type_id', $data ?? [], null);
     }
 
     /**
@@ -301,20 +307,20 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['association_category'] === null) {
-            $invalidProperties[] = "'association_category' can't be null";
+        if ($this->container['category'] === null) {
+            $invalidProperties[] = "'category' can't be null";
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'association_category', must be one of '%s'",
-                $this->container['association_category'],
+                "invalid value '%s' for 'category', must be one of '%s'",
+                $this->container['category'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['association_type_id'] === null) {
-            $invalidProperties[] = "'association_type_id' can't be null";
+        if ($this->container['type_id'] === null) {
+            $invalidProperties[] = "'type_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -332,65 +338,92 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets association_category
+     * Gets category
      *
      * @return string
      */
-    public function getAssociationCategory()
+    public function getCategory()
     {
-        return $this->container['association_category'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets association_category
+     * Sets category
      *
-     * @param string $association_category The category of the association, such as \"HUBSPOT_DEFINED\".
+     * @param string $category category
      *
      * @return self
      */
-    public function setAssociationCategory($association_category)
+    public function setCategory($category)
     {
-        if (is_null($association_category)) {
-            throw new \InvalidArgumentException('non-nullable association_category cannot be null');
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!in_array($association_category, $allowedValues, true)) {
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!in_array($category, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'association_category', must be one of '%s'",
-                    $association_category,
+                    "Invalid value '%s' for 'category', must be one of '%s'",
+                    $category,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['association_category'] = $association_category;
+        $this->container['category'] = $category;
 
         return $this;
     }
 
     /**
-     * Gets association_type_id
+     * Gets label
      *
-     * @return int
+     * @return string|null
      */
-    public function getAssociationTypeId()
+    public function getLabel()
     {
-        return $this->container['association_type_id'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets association_type_id
+     * Sets label
      *
-     * @param int $association_type_id The ID representing the specific type of association.
+     * @param string|null $label label
      *
      * @return self
      */
-    public function setAssociationTypeId($association_type_id)
+    public function setLabel($label)
     {
-        if (is_null($association_type_id)) {
-            throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['association_type_id'] = $association_type_id;
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets type_id
+     *
+     * @return int
+     */
+    public function getTypeId()
+    {
+        return $this->container['type_id'];
+    }
+
+    /**
+     * Sets type_id
+     *
+     * @param int $type_id type_id
+     *
+     * @return self
+     */
+    public function setTypeId($type_id)
+    {
+        if (is_null($type_id)) {
+            throw new \InvalidArgumentException('non-nullable type_id cannot be null');
+        }
+        $this->container['type_id'] = $type_id;
 
         return $this;
     }

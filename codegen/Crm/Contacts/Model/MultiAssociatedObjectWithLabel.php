@@ -1,6 +1,6 @@
 <?php
 /**
- * AssociationSpec
+ * MultiAssociatedObjectWithLabel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Contacts\ObjectSerializer;
 
 /**
- * AssociationSpec Class Doc Comment
+ * MultiAssociatedObjectWithLabel Class Doc Comment
  *
  * @category Class
- * @description Defines the type, direction, and details of the relationship between two CRM objects.
  * @package  HubSpot\Client\Crm\Contacts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssociationSpec';
+    protected static $openAPIModelName = 'MultiAssociatedObjectWithLabel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'association_category' => 'string',
-        'association_type_id' => 'int'
+        'association_types' => '\HubSpot\Client\Crm\Contacts\Model\AssociationSpecWithLabel[]',
+        'to_object_id' => 'string'
     ];
 
     /**
@@ -70,8 +69,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'association_category' => null,
-        'association_type_id' => 'int32'
+        'association_types' => null,
+        'to_object_id' => null
     ];
 
     /**
@@ -80,8 +79,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'association_category' => false,
-        'association_type_id' => false
+        'association_types' => false,
+        'to_object_id' => false
     ];
 
     /**
@@ -170,8 +169,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'association_category' => 'associationCategory',
-        'association_type_id' => 'associationTypeId'
+        'association_types' => 'associationTypes',
+        'to_object_id' => 'toObjectId'
     ];
 
     /**
@@ -180,8 +179,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'association_category' => 'setAssociationCategory',
-        'association_type_id' => 'setAssociationTypeId'
+        'association_types' => 'setAssociationTypes',
+        'to_object_id' => 'setToObjectId'
     ];
 
     /**
@@ -190,8 +189,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'association_category' => 'getAssociationCategory',
-        'association_type_id' => 'getAssociationTypeId'
+        'association_types' => 'getAssociationTypes',
+        'to_object_id' => 'getToObjectId'
     ];
 
     /**
@@ -235,25 +234,6 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
-    public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
-    public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
-    public const ASSOCIATION_CATEGORY_WORK = 'WORK';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAssociationCategoryAllowableValues()
-    {
-        return [
-            self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
-            self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
-            self::ASSOCIATION_CATEGORY_USER_DEFINED,
-            self::ASSOCIATION_CATEGORY_WORK,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -270,8 +250,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('association_category', $data ?? [], null);
-        $this->setIfExists('association_type_id', $data ?? [], null);
+        $this->setIfExists('association_types', $data ?? [], null);
+        $this->setIfExists('to_object_id', $data ?? [], null);
     }
 
     /**
@@ -301,20 +281,11 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['association_category'] === null) {
-            $invalidProperties[] = "'association_category' can't be null";
+        if ($this->container['association_types'] === null) {
+            $invalidProperties[] = "'association_types' can't be null";
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'association_category', must be one of '%s'",
-                $this->container['association_category'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['association_type_id'] === null) {
-            $invalidProperties[] = "'association_type_id' can't be null";
+        if ($this->container['to_object_id'] === null) {
+            $invalidProperties[] = "'to_object_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -332,65 +303,55 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets association_category
+     * Gets association_types
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Contacts\Model\AssociationSpecWithLabel[]
      */
-    public function getAssociationCategory()
+    public function getAssociationTypes()
     {
-        return $this->container['association_category'];
+        return $this->container['association_types'];
     }
 
     /**
-     * Sets association_category
+     * Sets association_types
      *
-     * @param string $association_category The category of the association, such as \"HUBSPOT_DEFINED\".
+     * @param \HubSpot\Client\Crm\Contacts\Model\AssociationSpecWithLabel[] $association_types association_types
      *
      * @return self
      */
-    public function setAssociationCategory($association_category)
+    public function setAssociationTypes($association_types)
     {
-        if (is_null($association_category)) {
-            throw new \InvalidArgumentException('non-nullable association_category cannot be null');
+        if (is_null($association_types)) {
+            throw new \InvalidArgumentException('non-nullable association_types cannot be null');
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!in_array($association_category, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'association_category', must be one of '%s'",
-                    $association_category,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['association_category'] = $association_category;
+        $this->container['association_types'] = $association_types;
 
         return $this;
     }
 
     /**
-     * Gets association_type_id
+     * Gets to_object_id
      *
-     * @return int
+     * @return string
      */
-    public function getAssociationTypeId()
+    public function getToObjectId()
     {
-        return $this->container['association_type_id'];
+        return $this->container['to_object_id'];
     }
 
     /**
-     * Sets association_type_id
+     * Sets to_object_id
      *
-     * @param int $association_type_id The ID representing the specific type of association.
+     * @param string $to_object_id to_object_id
      *
      * @return self
      */
-    public function setAssociationTypeId($association_type_id)
+    public function setToObjectId($to_object_id)
     {
-        if (is_null($association_type_id)) {
-            throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
+        if (is_null($to_object_id)) {
+            throw new \InvalidArgumentException('non-nullable to_object_id cannot be null');
         }
-        $this->container['association_type_id'] = $association_type_id;
+        $this->container['to_object_id'] = $to_object_id;
 
         return $this;
     }
