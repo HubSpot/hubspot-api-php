@@ -58,8 +58,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'angle' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Angle',
-        'side_or_corner' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner',
-        'colors' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ColorStop[]'
+        'colors' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\ColorStop[]',
+        'side_or_corner' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner'
     ];
 
     /**
@@ -71,8 +71,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'angle' => null,
-        'side_or_corner' => null,
-        'colors' => null
+        'colors' => null,
+        'side_or_corner' => null
     ];
 
     /**
@@ -82,8 +82,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'angle' => false,
-        'side_or_corner' => false,
-        'colors' => false
+        'colors' => false,
+        'side_or_corner' => false
     ];
 
     /**
@@ -173,8 +173,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'angle' => 'angle',
-        'side_or_corner' => 'sideOrCorner',
-        'colors' => 'colors'
+        'colors' => 'colors',
+        'side_or_corner' => 'sideOrCorner'
     ];
 
     /**
@@ -184,8 +184,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'angle' => 'setAngle',
-        'side_or_corner' => 'setSideOrCorner',
-        'colors' => 'setColors'
+        'colors' => 'setColors',
+        'side_or_corner' => 'setSideOrCorner'
     ];
 
     /**
@@ -195,8 +195,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'angle' => 'getAngle',
-        'side_or_corner' => 'getSideOrCorner',
-        'colors' => 'getColors'
+        'colors' => 'getColors',
+        'side_or_corner' => 'getSideOrCorner'
     ];
 
     /**
@@ -257,8 +257,8 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('angle', $data ?? [], null);
-        $this->setIfExists('side_or_corner', $data ?? [], null);
         $this->setIfExists('colors', $data ?? [], null);
+        $this->setIfExists('side_or_corner', $data ?? [], null);
     }
 
     /**
@@ -291,11 +291,11 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['angle'] === null) {
             $invalidProperties[] = "'angle' can't be null";
         }
-        if ($this->container['side_or_corner'] === null) {
-            $invalidProperties[] = "'side_or_corner' can't be null";
-        }
         if ($this->container['colors'] === null) {
             $invalidProperties[] = "'colors' can't be null";
+        }
+        if ($this->container['side_or_corner'] === null) {
+            $invalidProperties[] = "'side_or_corner' can't be null";
         }
         return $invalidProperties;
     }
@@ -340,33 +340,6 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets side_or_corner
-     *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner
-     */
-    public function getSideOrCorner()
-    {
-        return $this->container['side_or_corner'];
-    }
-
-    /**
-     * Sets side_or_corner
-     *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner $side_or_corner side_or_corner
-     *
-     * @return self
-     */
-    public function setSideOrCorner($side_or_corner)
-    {
-        if (is_null($side_or_corner)) {
-            throw new \InvalidArgumentException('non-nullable side_or_corner cannot be null');
-        }
-        $this->container['side_or_corner'] = $side_or_corner;
-
-        return $this;
-    }
-
-    /**
      * Gets colors
      *
      * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ColorStop[]
@@ -389,6 +362,33 @@ class Gradient implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable colors cannot be null');
         }
         $this->container['colors'] = $colors;
+
+        return $this;
+    }
+
+    /**
+     * Gets side_or_corner
+     *
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner
+     */
+    public function getSideOrCorner()
+    {
+        return $this->container['side_or_corner'];
+    }
+
+    /**
+     * Sets side_or_corner
+     *
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SideOrCorner $side_or_corner side_or_corner
+     *
+     * @return self
+     */
+    public function setSideOrCorner($side_or_corner)
+    {
+        if (is_null($side_or_corner)) {
+            throw new \InvalidArgumentException('non-nullable side_or_corner cannot be null');
+        }
+        $this->container['side_or_corner'] = $side_or_corner;
 
         return $this;
     }

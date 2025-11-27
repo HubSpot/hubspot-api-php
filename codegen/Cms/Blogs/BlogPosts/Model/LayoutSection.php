@@ -57,19 +57,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'css_style' => 'string',
-        'label' => 'string',
-        'type' => 'string',
-        'params' => 'array<string,object>',
-        'rows' => 'array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>[]',
-        'row_meta_data' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[]',
         'cells' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection[]',
         'css_class' => 'string',
-        'w' => 'int',
         'css_id' => 'string',
-        'x' => 'int',
+        'css_style' => 'string',
+        'label' => 'string',
         'name' => 'string',
-        'styles' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles'
+        'params' => 'array<string,object>',
+        'row_meta_data' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[]',
+        'rows' => 'array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>[]',
+        'styles' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles',
+        'type' => 'string',
+        'w' => 'int',
+        'x' => 'int'
     ];
 
     /**
@@ -80,19 +80,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'css_style' => null,
-        'label' => null,
-        'type' => null,
-        'params' => null,
-        'rows' => null,
-        'row_meta_data' => null,
         'cells' => null,
         'css_class' => null,
-        'w' => 'int32',
         'css_id' => null,
-        'x' => 'int32',
+        'css_style' => null,
+        'label' => null,
         'name' => null,
-        'styles' => null
+        'params' => null,
+        'row_meta_data' => null,
+        'rows' => null,
+        'styles' => null,
+        'type' => null,
+        'w' => 'int32',
+        'x' => 'int32'
     ];
 
     /**
@@ -101,19 +101,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'css_style' => false,
-        'label' => false,
-        'type' => false,
-        'params' => false,
-        'rows' => false,
-        'row_meta_data' => false,
         'cells' => false,
         'css_class' => false,
-        'w' => false,
         'css_id' => false,
-        'x' => false,
+        'css_style' => false,
+        'label' => false,
         'name' => false,
-        'styles' => false
+        'params' => false,
+        'row_meta_data' => false,
+        'rows' => false,
+        'styles' => false,
+        'type' => false,
+        'w' => false,
+        'x' => false
     ];
 
     /**
@@ -202,19 +202,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'css_style' => 'cssStyle',
-        'label' => 'label',
-        'type' => 'type',
-        'params' => 'params',
-        'rows' => 'rows',
-        'row_meta_data' => 'rowMetaData',
         'cells' => 'cells',
         'css_class' => 'cssClass',
-        'w' => 'w',
         'css_id' => 'cssId',
-        'x' => 'x',
+        'css_style' => 'cssStyle',
+        'label' => 'label',
         'name' => 'name',
-        'styles' => 'styles'
+        'params' => 'params',
+        'row_meta_data' => 'rowMetaData',
+        'rows' => 'rows',
+        'styles' => 'styles',
+        'type' => 'type',
+        'w' => 'w',
+        'x' => 'x'
     ];
 
     /**
@@ -223,19 +223,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'css_style' => 'setCssStyle',
-        'label' => 'setLabel',
-        'type' => 'setType',
-        'params' => 'setParams',
-        'rows' => 'setRows',
-        'row_meta_data' => 'setRowMetaData',
         'cells' => 'setCells',
         'css_class' => 'setCssClass',
-        'w' => 'setW',
         'css_id' => 'setCssId',
-        'x' => 'setX',
+        'css_style' => 'setCssStyle',
+        'label' => 'setLabel',
         'name' => 'setName',
-        'styles' => 'setStyles'
+        'params' => 'setParams',
+        'row_meta_data' => 'setRowMetaData',
+        'rows' => 'setRows',
+        'styles' => 'setStyles',
+        'type' => 'setType',
+        'w' => 'setW',
+        'x' => 'setX'
     ];
 
     /**
@@ -244,19 +244,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'css_style' => 'getCssStyle',
-        'label' => 'getLabel',
-        'type' => 'getType',
-        'params' => 'getParams',
-        'rows' => 'getRows',
-        'row_meta_data' => 'getRowMetaData',
         'cells' => 'getCells',
         'css_class' => 'getCssClass',
-        'w' => 'getW',
         'css_id' => 'getCssId',
-        'x' => 'getX',
+        'css_style' => 'getCssStyle',
+        'label' => 'getLabel',
         'name' => 'getName',
-        'styles' => 'getStyles'
+        'params' => 'getParams',
+        'row_meta_data' => 'getRowMetaData',
+        'rows' => 'getRows',
+        'styles' => 'getStyles',
+        'type' => 'getType',
+        'w' => 'getW',
+        'x' => 'getX'
     ];
 
     /**
@@ -316,19 +316,19 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('css_style', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('params', $data ?? [], null);
-        $this->setIfExists('rows', $data ?? [], null);
-        $this->setIfExists('row_meta_data', $data ?? [], null);
         $this->setIfExists('cells', $data ?? [], null);
         $this->setIfExists('css_class', $data ?? [], null);
-        $this->setIfExists('w', $data ?? [], null);
         $this->setIfExists('css_id', $data ?? [], null);
-        $this->setIfExists('x', $data ?? [], null);
+        $this->setIfExists('css_style', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('params', $data ?? [], null);
+        $this->setIfExists('row_meta_data', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
         $this->setIfExists('styles', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('w', $data ?? [], null);
+        $this->setIfExists('x', $data ?? [], null);
     }
 
     /**
@@ -358,44 +358,44 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['css_style'] === null) {
-            $invalidProperties[] = "'css_style' can't be null";
-        }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['params'] === null) {
-            $invalidProperties[] = "'params' can't be null";
-        }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
-        if ($this->container['row_meta_data'] === null) {
-            $invalidProperties[] = "'row_meta_data' can't be null";
-        }
         if ($this->container['cells'] === null) {
             $invalidProperties[] = "'cells' can't be null";
         }
         if ($this->container['css_class'] === null) {
             $invalidProperties[] = "'css_class' can't be null";
         }
-        if ($this->container['w'] === null) {
-            $invalidProperties[] = "'w' can't be null";
-        }
         if ($this->container['css_id'] === null) {
             $invalidProperties[] = "'css_id' can't be null";
         }
-        if ($this->container['x'] === null) {
-            $invalidProperties[] = "'x' can't be null";
+        if ($this->container['css_style'] === null) {
+            $invalidProperties[] = "'css_style' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['params'] === null) {
+            $invalidProperties[] = "'params' can't be null";
+        }
+        if ($this->container['row_meta_data'] === null) {
+            $invalidProperties[] = "'row_meta_data' can't be null";
+        }
+        if ($this->container['rows'] === null) {
+            $invalidProperties[] = "'rows' can't be null";
+        }
         if ($this->container['styles'] === null) {
             $invalidProperties[] = "'styles' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['w'] === null) {
+            $invalidProperties[] = "'w' can't be null";
+        }
+        if ($this->container['x'] === null) {
+            $invalidProperties[] = "'x' can't be null";
         }
         return $invalidProperties;
     }
@@ -411,168 +411,6 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets css_style
-     *
-     * @return string
-     */
-    public function getCssStyle()
-    {
-        return $this->container['css_style'];
-    }
-
-    /**
-     * Sets css_style
-     *
-     * @param string $css_style css_style
-     *
-     * @return self
-     */
-    public function setCssStyle($css_style)
-    {
-        if (is_null($css_style)) {
-            throw new \InvalidArgumentException('non-nullable css_style cannot be null');
-        }
-        $this->container['css_style'] = $css_style;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
-        }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets params
-     *
-     * @return array<string,object>
-     */
-    public function getParams()
-    {
-        return $this->container['params'];
-    }
-
-    /**
-     * Sets params
-     *
-     * @param array<string,object> $params null
-     *
-     * @return self
-     */
-    public function setParams($params)
-    {
-        if (is_null($params)) {
-            throw new \InvalidArgumentException('non-nullable params cannot be null');
-        }
-        $this->container['params'] = $params;
-
-        return $this;
-    }
-
-    /**
-     * Gets rows
-     *
-     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>[]
-     */
-    public function getRows()
-    {
-        return $this->container['rows'];
-    }
-
-    /**
-     * Sets rows
-     *
-     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>[] $rows rows
-     *
-     * @return self
-     */
-    public function setRows($rows)
-    {
-        if (is_null($rows)) {
-            throw new \InvalidArgumentException('non-nullable rows cannot be null');
-        }
-        $this->container['rows'] = $rows;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_meta_data
-     *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[]
-     */
-    public function getRowMetaData()
-    {
-        return $this->container['row_meta_data'];
-    }
-
-    /**
-     * Sets row_meta_data
-     *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[] $row_meta_data row_meta_data
-     *
-     * @return self
-     */
-    public function setRowMetaData($row_meta_data)
-    {
-        if (is_null($row_meta_data)) {
-            throw new \InvalidArgumentException('non-nullable row_meta_data cannot be null');
-        }
-        $this->container['row_meta_data'] = $row_meta_data;
-
-        return $this;
-    }
 
     /**
      * Gets cells
@@ -629,33 +467,6 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets w
-     *
-     * @return int
-     */
-    public function getW()
-    {
-        return $this->container['w'];
-    }
-
-    /**
-     * Sets w
-     *
-     * @param int $w w
-     *
-     * @return self
-     */
-    public function setW($w)
-    {
-        if (is_null($w)) {
-            throw new \InvalidArgumentException('non-nullable w cannot be null');
-        }
-        $this->container['w'] = $w;
-
-        return $this;
-    }
-
-    /**
      * Gets css_id
      *
      * @return string
@@ -683,28 +494,55 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets x
+     * Gets css_style
      *
-     * @return int
+     * @return string
      */
-    public function getX()
+    public function getCssStyle()
     {
-        return $this->container['x'];
+        return $this->container['css_style'];
     }
 
     /**
-     * Sets x
+     * Sets css_style
      *
-     * @param int $x x
+     * @param string $css_style css_style
      *
      * @return self
      */
-    public function setX($x)
+    public function setCssStyle($css_style)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($css_style)) {
+            throw new \InvalidArgumentException('non-nullable css_style cannot be null');
         }
-        $this->container['x'] = $x;
+        $this->container['css_style'] = $css_style;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        }
+        $this->container['label'] = $label;
 
         return $this;
     }
@@ -737,6 +575,87 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets params
+     *
+     * @return array<string,object>
+     */
+    public function getParams()
+    {
+        return $this->container['params'];
+    }
+
+    /**
+     * Sets params
+     *
+     * @param array<string,object> $params null
+     *
+     * @return self
+     */
+    public function setParams($params)
+    {
+        if (is_null($params)) {
+            throw new \InvalidArgumentException('non-nullable params cannot be null');
+        }
+        $this->container['params'] = $params;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_meta_data
+     *
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[]
+     */
+    public function getRowMetaData()
+    {
+        return $this->container['row_meta_data'];
+    }
+
+    /**
+     * Sets row_meta_data
+     *
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\RowMetaData[] $row_meta_data row_meta_data
+     *
+     * @return self
+     */
+    public function setRowMetaData($row_meta_data)
+    {
+        if (is_null($row_meta_data)) {
+            throw new \InvalidArgumentException('non-nullable row_meta_data cannot be null');
+        }
+        $this->container['row_meta_data'] = $row_meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets rows
+     *
+     * @return array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>[]
+     */
+    public function getRows()
+    {
+        return $this->container['rows'];
+    }
+
+    /**
+     * Sets rows
+     *
+     * @param array<string,\HubSpot\Client\Cms\Blogs\BlogPosts\Model\LayoutSection>[] $rows rows
+     *
+     * @return self
+     */
+    public function setRows($rows)
+    {
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
+        }
+        $this->container['rows'] = $rows;
+
+        return $this;
+    }
+
+    /**
      * Gets styles
      *
      * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Styles
@@ -759,6 +678,87 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable styles cannot be null');
         }
         $this->container['styles'] = $styles;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets w
+     *
+     * @return int
+     */
+    public function getW()
+    {
+        return $this->container['w'];
+    }
+
+    /**
+     * Sets w
+     *
+     * @param int $w w
+     *
+     * @return self
+     */
+    public function setW($w)
+    {
+        if (is_null($w)) {
+            throw new \InvalidArgumentException('non-nullable w cannot be null');
+        }
+        $this->container['w'] = $w;
+
+        return $this;
+    }
+
+    /**
+     * Gets x
+     *
+     * @return int
+     */
+    public function getX()
+    {
+        return $this->container['x'];
+    }
+
+    /**
+     * Sets x
+     *
+     * @param int $x x
+     *
+     * @return self
+     */
+    public function setX($x)
+    {
+        if (is_null($x)) {
+            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        }
+        $this->container['x'] = $x;
 
         return $this;
     }

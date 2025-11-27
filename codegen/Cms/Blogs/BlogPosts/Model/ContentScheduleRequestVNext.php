@@ -58,8 +58,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'publish_date' => '\DateTime',
-        'id' => 'string'
+        'id' => 'string',
+        'publish_date' => '\DateTime'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'publish_date' => 'date-time',
-        'id' => null
+        'id' => null,
+        'publish_date' => 'date-time'
     ];
 
     /**
@@ -80,8 +80,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'publish_date' => false,
-        'id' => false
+        'id' => false,
+        'publish_date' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'publish_date' => 'publishDate',
-        'id' => 'id'
+        'id' => 'id',
+        'publish_date' => 'publishDate'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'publish_date' => 'setPublishDate',
-        'id' => 'setId'
+        'id' => 'setId',
+        'publish_date' => 'setPublishDate'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'publish_date' => 'getPublishDate',
-        'id' => 'getId'
+        'id' => 'getId',
+        'publish_date' => 'getPublishDate'
     ];
 
     /**
@@ -251,8 +251,8 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('publish_date', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('publish_date', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['publish_date'] === null) {
-            $invalidProperties[] = "'publish_date' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['publish_date'] === null) {
+            $invalidProperties[] = "'publish_date' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets publish_date
-     *
-     * @return \DateTime
-     */
-    public function getPublishDate()
-    {
-        return $this->container['publish_date'];
-    }
-
-    /**
-     * Sets publish_date
-     *
-     * @param \DateTime $publish_date The date the object should transition from scheduled to published.
-     *
-     * @return self
-     */
-    public function setPublishDate($publish_date)
-    {
-        if (is_null($publish_date)) {
-            throw new \InvalidArgumentException('non-nullable publish_date cannot be null');
-        }
-        $this->container['publish_date'] = $publish_date;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -353,6 +326,33 @@ class ContentScheduleRequestVNext implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets publish_date
+     *
+     * @return \DateTime
+     */
+    public function getPublishDate()
+    {
+        return $this->container['publish_date'];
+    }
+
+    /**
+     * Sets publish_date
+     *
+     * @param \DateTime $publish_date The date the object should transition from scheduled to published.
+     *
+     * @return self
+     */
+    public function setPublishDate($publish_date)
+    {
+        if (is_null($publish_date)) {
+            throw new \InvalidArgumentException('non-nullable publish_date cannot be null');
+        }
+        $this->container['publish_date'] = $publish_date;
 
         return $this;
     }

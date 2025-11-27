@@ -58,9 +58,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total' => 'int',
         'paging' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Paging',
-        'results' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost[]'
+        'results' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost[]',
+        'total' => 'int'
     ];
 
     /**
@@ -71,9 +71,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'total' => 'int32',
         'paging' => null,
-        'results' => null
+        'results' => null,
+        'total' => 'int32'
     ];
 
     /**
@@ -82,9 +82,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total' => false,
         'paging' => false,
-        'results' => false
+        'results' => false,
+        'total' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'total' => 'total',
         'paging' => 'paging',
-        'results' => 'results'
+        'results' => 'results',
+        'total' => 'total'
     ];
 
     /**
@@ -184,9 +184,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'total' => 'setTotal',
         'paging' => 'setPaging',
-        'results' => 'setResults'
+        'results' => 'setResults',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -195,9 +195,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'total' => 'getTotal',
         'paging' => 'getPaging',
-        'results' => 'getResults'
+        'results' => 'getResults',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -257,9 +257,9 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('paging', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
     }
 
     /**
@@ -289,11 +289,11 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['total'] === null) {
-            $invalidProperties[] = "'total' can't be null";
-        }
         if ($this->container['results'] === null) {
             $invalidProperties[] = "'results' can't be null";
+        }
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
         }
         return $invalidProperties;
     }
@@ -309,33 +309,6 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets total
-     *
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param int $total Total number of blog post versions.
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            throw new \InvalidArgumentException('non-nullable total cannot be null');
-        }
-        $this->container['total'] = $total;
-
-        return $this;
-    }
 
     /**
      * Gets paging
@@ -387,6 +360,33 @@ class CollectionResponseWithTotalVersionBlogPost implements ModelInterface, Arra
             throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
         $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int $total Total number of blog post versions.
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
+        }
+        $this->container['total'] = $total;
 
         return $this;
     }

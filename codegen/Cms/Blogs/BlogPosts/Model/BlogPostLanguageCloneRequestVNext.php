@@ -58,8 +58,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'language' => 'string',
-        'id' => 'string'
+        'id' => 'string',
+        'language' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'language' => null,
-        'id' => null
+        'id' => null,
+        'language' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'language' => false,
-        'id' => false
+        'id' => false,
+        'language' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'language' => 'language',
-        'id' => 'id'
+        'id' => 'id',
+        'language' => 'language'
     ];
 
     /**
@@ -180,8 +180,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'language' => 'setLanguage',
-        'id' => 'setId'
+        'id' => 'setId',
+        'language' => 'setLanguage'
     ];
 
     /**
@@ -190,8 +190,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'language' => 'getLanguage',
-        'id' => 'getId'
+        'id' => 'getId',
+        'language' => 'getLanguage'
     ];
 
     /**
@@ -251,8 +251,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], null);
     }
 
     /**
@@ -301,33 +301,6 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets language
-     *
-     * @return string|null
-     */
-    public function getLanguage()
-    {
-        return $this->container['language'];
-    }
-
-    /**
-     * Sets language
-     *
-     * @param string|null $language Target language of new variant.
-     *
-     * @return self
-     */
-    public function setLanguage($language)
-    {
-        if (is_null($language)) {
-            throw new \InvalidArgumentException('non-nullable language cannot be null');
-        }
-        $this->container['language'] = $language;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string
@@ -350,6 +323,33 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string|null
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string|null $language Target language of new variant.
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        }
+        $this->container['language'] = $language;
 
         return $this;
     }

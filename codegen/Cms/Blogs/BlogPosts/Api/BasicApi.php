@@ -1829,26 +1829,26 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
      * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property property (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPostForwardPaging|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
      */
-    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType);
+        list($response) = $this->getPageWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
         return $response;
     }
 
@@ -1857,26 +1857,26 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
      * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPostForwardPaging|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType);
+        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2027,25 +2027,25 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
      * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType)
+        return $this->getPageAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2058,26 +2058,26 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
      * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPostForwardPaging';
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType);
+        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2118,23 +2118,23 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
      * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -2158,9 +2158,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
+            $after,
+            'after', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2169,6 +2178,15 @@ class BasicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $created_after,
             'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2185,26 +2203,17 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
+            $property,
+            'property', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2221,8 +2230,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $updated_after,
+            'updatedAfter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2230,26 +2239,17 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
+            $updated_before,
+            'updatedBefore', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

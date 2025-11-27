@@ -57,9 +57,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'padding' => 'object',
+        'hidden' => 'bool',
         'margin' => 'object',
-        'hidden' => 'bool'
+        'padding' => 'object'
     ];
 
     /**
@@ -70,9 +70,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'padding' => null,
+        'hidden' => null,
         'margin' => null,
-        'hidden' => null
+        'padding' => null
     ];
 
     /**
@@ -81,9 +81,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'padding' => false,
+        'hidden' => false,
         'margin' => false,
-        'hidden' => false
+        'padding' => false
     ];
 
     /**
@@ -172,9 +172,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'padding' => 'padding',
+        'hidden' => 'hidden',
         'margin' => 'margin',
-        'hidden' => 'hidden'
+        'padding' => 'padding'
     ];
 
     /**
@@ -183,9 +183,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'padding' => 'setPadding',
+        'hidden' => 'setHidden',
         'margin' => 'setMargin',
-        'hidden' => 'setHidden'
+        'padding' => 'setPadding'
     ];
 
     /**
@@ -194,9 +194,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'padding' => 'getPadding',
+        'hidden' => 'getHidden',
         'margin' => 'getMargin',
-        'hidden' => 'getHidden'
+        'padding' => 'getPadding'
     ];
 
     /**
@@ -256,9 +256,9 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('padding', $data ?? [], null);
-        $this->setIfExists('margin', $data ?? [], null);
         $this->setIfExists('hidden', $data ?? [], null);
+        $this->setIfExists('margin', $data ?? [], null);
+        $this->setIfExists('padding', $data ?? [], null);
     }
 
     /**
@@ -288,14 +288,14 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['padding'] === null) {
-            $invalidProperties[] = "'padding' can't be null";
+        if ($this->container['hidden'] === null) {
+            $invalidProperties[] = "'hidden' can't be null";
         }
         if ($this->container['margin'] === null) {
             $invalidProperties[] = "'margin' can't be null";
         }
-        if ($this->container['hidden'] === null) {
-            $invalidProperties[] = "'hidden' can't be null";
+        if ($this->container['padding'] === null) {
+            $invalidProperties[] = "'padding' can't be null";
         }
         return $invalidProperties;
     }
@@ -313,28 +313,28 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets padding
+     * Gets hidden
      *
-     * @return object
+     * @return bool
      */
-    public function getPadding()
+    public function getHidden()
     {
-        return $this->container['padding'];
+        return $this->container['hidden'];
     }
 
     /**
-     * Sets padding
+     * Sets hidden
      *
-     * @param object $padding padding
+     * @param bool $hidden hidden
      *
      * @return self
      */
-    public function setPadding($padding)
+    public function setHidden($hidden)
     {
-        if (is_null($padding)) {
-            throw new \InvalidArgumentException('non-nullable padding cannot be null');
+        if (is_null($hidden)) {
+            throw new \InvalidArgumentException('non-nullable hidden cannot be null');
         }
-        $this->container['padding'] = $padding;
+        $this->container['hidden'] = $hidden;
 
         return $this;
     }
@@ -367,28 +367,28 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets hidden
+     * Gets padding
      *
-     * @return bool
+     * @return object
      */
-    public function getHidden()
+    public function getPadding()
     {
-        return $this->container['hidden'];
+        return $this->container['padding'];
     }
 
     /**
-     * Sets hidden
+     * Sets padding
      *
-     * @param bool $hidden hidden
+     * @param object $padding padding
      *
      * @return self
      */
-    public function setHidden($hidden)
+    public function setPadding($padding)
     {
-        if (is_null($hidden)) {
-            throw new \InvalidArgumentException('non-nullable hidden cannot be null');
+        if (is_null($padding)) {
+            throw new \InvalidArgumentException('non-nullable padding cannot be null');
         }
-        $this->container['hidden'] = $hidden;
+        $this->container['padding'] = $padding;
 
         return $this;
     }

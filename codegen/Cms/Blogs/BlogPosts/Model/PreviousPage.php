@@ -313,7 +313,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets before
      *
-     * @param string $before 
+     * @param string $before A paging cursor token for retrieving previous pages.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class PreviousPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link 
+     * @param string|null $link A URL that can be used to retrieve the previous pages' results.
      *
      * @return self
      */

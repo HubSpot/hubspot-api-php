@@ -59,9 +59,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'user' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser',
         'object' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'user' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser'
     ];
 
     /**
@@ -73,9 +73,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'user' => null,
         'object' => null,
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'user' => null
     ];
 
     /**
@@ -85,9 +85,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'user' => false,
         'object' => false,
-        'updated_at' => false
+        'updated_at' => false,
+        'user' => false
     ];
 
     /**
@@ -177,9 +177,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'user' => 'user',
         'object' => 'object',
-        'updated_at' => 'updatedAt'
+        'updated_at' => 'updatedAt',
+        'user' => 'user'
     ];
 
     /**
@@ -189,9 +189,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'user' => 'setUser',
         'object' => 'setObject',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'user' => 'setUser'
     ];
 
     /**
@@ -201,9 +201,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'user' => 'getUser',
         'object' => 'getObject',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'user' => 'getUser'
     ];
 
     /**
@@ -264,9 +264,9 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('user', $data ?? [], null);
     }
 
     /**
@@ -299,14 +299,14 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['user'] === null) {
-            $invalidProperties[] = "'user' can't be null";
-        }
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['user'] === null) {
+            $invalidProperties[] = "'user' can't be null";
         }
         return $invalidProperties;
     }
@@ -346,33 +346,6 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser $user user
-     *
-     * @return self
-     */
-    public function setUser($user)
-    {
-        if (is_null($user)) {
-            throw new \InvalidArgumentException('non-nullable user cannot be null');
-        }
-        $this->container['user'] = $user;
 
         return $this;
     }
@@ -427,6 +400,33 @@ class VersionBlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets user
+     *
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     *
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionUser $user user
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        if (is_null($user)) {
+            throw new \InvalidArgumentException('non-nullable user cannot be null');
+        }
+        $this->container['user'] = $user;
 
         return $this;
     }
