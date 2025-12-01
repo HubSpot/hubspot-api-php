@@ -305,7 +305,7 @@ class PublicDealSplitsBatchCreateRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsCreateRequest[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsCreateRequest[] $inputs An array of deal split inputs
      *
      * @return self
      */

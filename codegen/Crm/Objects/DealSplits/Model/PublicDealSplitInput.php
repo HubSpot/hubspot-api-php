@@ -57,8 +57,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'percentage' => 'float',
-        'owner_id' => 'int'
+        'owner_id' => 'int',
+        'percentage' => 'float'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'percentage' => null,
-        'owner_id' => 'int32'
+        'owner_id' => 'int32',
+        'percentage' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'percentage' => false,
-        'owner_id' => false
+        'owner_id' => false,
+        'percentage' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'percentage' => 'percentage',
-        'owner_id' => 'ownerId'
+        'owner_id' => 'ownerId',
+        'percentage' => 'percentage'
     ];
 
     /**
@@ -179,8 +179,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'percentage' => 'setPercentage',
-        'owner_id' => 'setOwnerId'
+        'owner_id' => 'setOwnerId',
+        'percentage' => 'setPercentage'
     ];
 
     /**
@@ -189,8 +189,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'percentage' => 'getPercentage',
-        'owner_id' => 'getOwnerId'
+        'owner_id' => 'getOwnerId',
+        'percentage' => 'getPercentage'
     ];
 
     /**
@@ -250,8 +250,8 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('percentage', $data ?? [], null);
         $this->setIfExists('owner_id', $data ?? [], null);
+        $this->setIfExists('percentage', $data ?? [], null);
     }
 
     /**
@@ -281,11 +281,11 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['percentage'] === null) {
-            $invalidProperties[] = "'percentage' can't be null";
-        }
         if ($this->container['owner_id'] === null) {
             $invalidProperties[] = "'owner_id' can't be null";
+        }
+        if ($this->container['percentage'] === null) {
+            $invalidProperties[] = "'percentage' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,33 +303,6 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets percentage
-     *
-     * @return float
-     */
-    public function getPercentage()
-    {
-        return $this->container['percentage'];
-    }
-
-    /**
-     * Sets percentage
-     *
-     * @param float $percentage percentage
-     *
-     * @return self
-     */
-    public function setPercentage($percentage)
-    {
-        if (is_null($percentage)) {
-            throw new \InvalidArgumentException('non-nullable percentage cannot be null');
-        }
-        $this->container['percentage'] = $percentage;
-
-        return $this;
-    }
-
-    /**
      * Gets owner_id
      *
      * @return int
@@ -342,7 +315,7 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets owner_id
      *
-     * @param int $owner_id owner_id
+     * @param int $owner_id The unique identifier of the owner receiving the deal split.
      *
      * @return self
      */
@@ -352,6 +325,33 @@ class PublicDealSplitInput implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable owner_id cannot be null');
         }
         $this->container['owner_id'] = $owner_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets percentage
+     *
+     * @return float
+     */
+    public function getPercentage()
+    {
+        return $this->container['percentage'];
+    }
+
+    /**
+     * Sets percentage
+     *
+     * @param float $percentage The portion of the deal assigned to the owner, expressed as a percentage. The total percentage for all splits in a deal must sum up to 1.0 (100%) and can have up to 8 decimal places.
+     *
+     * @return self
+     */
+    public function setPercentage($percentage)
+    {
+        if (is_null($percentage)) {
+            throw new \InvalidArgumentException('non-nullable percentage cannot be null');
+        }
+        $this->container['percentage'] = $percentage;
 
         return $this;
     }

@@ -58,10 +58,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'completed_at' => '\DateTime',
-        'requested_at' => '\DateTime',
-        'started_at' => '\DateTime',
         'links' => 'array<string,string>',
+        'requested_at' => '\DateTime',
         'results' => '\HubSpot\Client\Crm\Objects\DealSplits\Model\DealToDealSplits[]',
+        'started_at' => '\DateTime',
         'status' => 'string'
     ];
 
@@ -74,10 +74,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'completed_at' => 'date-time',
-        'requested_at' => 'date-time',
-        'started_at' => 'date-time',
         'links' => null,
+        'requested_at' => 'date-time',
         'results' => null,
+        'started_at' => 'date-time',
         'status' => null
     ];
 
@@ -88,10 +88,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'completed_at' => false,
-        'requested_at' => false,
-        'started_at' => false,
         'links' => false,
+        'requested_at' => false,
         'results' => false,
+        'started_at' => false,
         'status' => false
     ];
 
@@ -182,10 +182,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'completed_at' => 'completedAt',
-        'requested_at' => 'requestedAt',
-        'started_at' => 'startedAt',
         'links' => 'links',
+        'requested_at' => 'requestedAt',
         'results' => 'results',
+        'started_at' => 'startedAt',
         'status' => 'status'
     ];
 
@@ -196,10 +196,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'completed_at' => 'setCompletedAt',
-        'requested_at' => 'setRequestedAt',
-        'started_at' => 'setStartedAt',
         'links' => 'setLinks',
+        'requested_at' => 'setRequestedAt',
         'results' => 'setResults',
+        'started_at' => 'setStartedAt',
         'status' => 'setStatus'
     ];
 
@@ -210,10 +210,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'completed_at' => 'getCompletedAt',
-        'requested_at' => 'getRequestedAt',
-        'started_at' => 'getStartedAt',
         'links' => 'getLinks',
+        'requested_at' => 'getRequestedAt',
         'results' => 'getResults',
+        'started_at' => 'getStartedAt',
         'status' => 'getStatus'
     ];
 
@@ -258,10 +258,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PENDING = 'PENDING';
-    public const STATUS_PROCESSING = 'PROCESSING';
     public const STATUS_CANCELED = 'CANCELED';
     public const STATUS_COMPLETE = 'COMPLETE';
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
 
     /**
      * Gets allowable values of the enum
@@ -271,10 +271,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_PENDING,
-            self::STATUS_PROCESSING,
             self::STATUS_CANCELED,
             self::STATUS_COMPLETE,
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
         ];
     }
 
@@ -294,10 +294,10 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('completed_at', $data ?? [], null);
-        $this->setIfExists('requested_at', $data ?? [], null);
-        $this->setIfExists('started_at', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -331,11 +331,11 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['completed_at'] === null) {
             $invalidProperties[] = "'completed_at' can't be null";
         }
-        if ($this->container['started_at'] === null) {
-            $invalidProperties[] = "'started_at' can't be null";
-        }
         if ($this->container['results'] === null) {
             $invalidProperties[] = "'results' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -377,7 +377,7 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at completed_at
+     * @param \DateTime $completed_at The timestamp indicating when the batch operation was completed, in date-time format.
      *
      * @return self
      */
@@ -387,60 +387,6 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
         $this->container['completed_at'] = $completed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets requested_at
-     *
-     * @return \DateTime|null
-     */
-    public function getRequestedAt()
-    {
-        return $this->container['requested_at'];
-    }
-
-    /**
-     * Sets requested_at
-     *
-     * @param \DateTime|null $requested_at requested_at
-     *
-     * @return self
-     */
-    public function setRequestedAt($requested_at)
-    {
-        if (is_null($requested_at)) {
-            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
-        }
-        $this->container['requested_at'] = $requested_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets started_at
-     *
-     * @return \DateTime
-     */
-    public function getStartedAt()
-    {
-        return $this->container['started_at'];
-    }
-
-    /**
-     * Sets started_at
-     *
-     * @param \DateTime $started_at started_at
-     *
-     * @return self
-     */
-    public function setStartedAt($started_at)
-    {
-        if (is_null($started_at)) {
-            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
-        }
-        $this->container['started_at'] = $started_at;
 
         return $this;
     }
@@ -458,7 +404,7 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links links
+     * @param array<string,string>|null $links A map of link names to associated URIs for additional resources or documentation.
      *
      * @return self
      */
@@ -468,6 +414,33 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAt()
+    {
+        return $this->container['requested_at'];
+    }
+
+    /**
+     * Sets requested_at
+     *
+     * @param \DateTime|null $requested_at The timestamp indicating when the batch operation was requested, in date-time format.
+     *
+     * @return self
+     */
+    public function setRequestedAt($requested_at)
+    {
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        }
+        $this->container['requested_at'] = $requested_at;
 
         return $this;
     }
@@ -485,7 +458,7 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\DealToDealSplits[] $results results
+     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\DealToDealSplits[] $results An array of deal-to-deal split objects representing the results of the batch operation.
      *
      * @return self
      */
@@ -495,6 +468,33 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
         $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime $started_at The timestamp indicating when the batch operation started, in date-time format.
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
 
         return $this;
     }
@@ -512,7 +512,7 @@ class BatchResponseDealToDealSplits implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets status
      *
-     * @param string $status status
+     * @param string $status The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
      *
      * @return self
      */

@@ -305,7 +305,7 @@ class BatchInputPublicObjectId implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicObjectId[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicObjectId[] $inputs An array of deal split inputs
      *
      * @return self
      */

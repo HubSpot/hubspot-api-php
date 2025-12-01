@@ -305,7 +305,7 @@ class PublicObjectId implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id The unique identifier for the public object.
      *
      * @return self
      */

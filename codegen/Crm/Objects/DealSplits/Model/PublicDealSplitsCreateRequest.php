@@ -57,8 +57,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'splits' => '\HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitInput[]',
-        'id' => 'int'
+        'id' => 'int',
+        'splits' => '\HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitInput[]'
     ];
 
     /**
@@ -69,8 +69,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'splits' => null,
-        'id' => 'int32'
+        'id' => 'int32',
+        'splits' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'splits' => false,
-        'id' => false
+        'id' => false,
+        'splits' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'splits' => 'splits',
-        'id' => 'id'
+        'id' => 'id',
+        'splits' => 'splits'
     ];
 
     /**
@@ -179,8 +179,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'splits' => 'setSplits',
-        'id' => 'setId'
+        'id' => 'setId',
+        'splits' => 'setSplits'
     ];
 
     /**
@@ -189,8 +189,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'splits' => 'getSplits',
-        'id' => 'getId'
+        'id' => 'getId',
+        'splits' => 'getSplits'
     ];
 
     /**
@@ -250,8 +250,8 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('splits', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('splits', $data ?? [], null);
     }
 
     /**
@@ -281,11 +281,11 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['splits'] === null) {
-            $invalidProperties[] = "'splits' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['splits'] === null) {
+            $invalidProperties[] = "'splits' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,33 +303,6 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets splits
-     *
-     * @return \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitInput[]
-     */
-    public function getSplits()
-    {
-        return $this->container['splits'];
-    }
-
-    /**
-     * Sets splits
-     *
-     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitInput[] $splits splits
-     *
-     * @return self
-     */
-    public function setSplits($splits)
-    {
-        if (is_null($splits)) {
-            throw new \InvalidArgumentException('non-nullable splits cannot be null');
-        }
-        $this->container['splits'] = $splits;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -342,7 +315,7 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets id
      *
-     * @param int $id id
+     * @param int $id The unique identifier for the deal.
      *
      * @return self
      */
@@ -352,6 +325,33 @@ class PublicDealSplitsCreateRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets splits
+     *
+     * @return \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitInput[]
+     */
+    public function getSplits()
+    {
+        return $this->container['splits'];
+    }
+
+    /**
+     * Sets splits
+     *
+     * @param \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitInput[] $splits An array of deal split inputs, each containing an owner ID and a percentage of the deal split.
+     *
+     * @return self
+     */
+    public function setSplits($splits)
+    {
+        if (is_null($splits)) {
+            throw new \InvalidArgumentException('non-nullable splits cannot be null');
+        }
+        $this->container['splits'] = $splits;
 
         return $this;
     }
