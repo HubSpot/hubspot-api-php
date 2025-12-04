@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicCrmSearchRequest
+ * FilterGroup
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Exports\ObjectSerializer;
 
 /**
- * PublicCrmSearchRequest Class Doc Comment
+ * FilterGroup Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Exports
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Exports\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicCrmSearchRequest';
+    protected static $openAPIModelName = 'FilterGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'filter_groups' => '\HubSpot\Client\Crm\Exports\Model\FilterGroup[]',
-        'filters' => '\HubSpot\Client\Crm\Exports\Model\Filter[]',
-        'query' => 'string',
-        'sorts' => 'string[]'
+        'filters' => '\HubSpot\Client\Crm\Exports\Model\Filter[]'
     ];
 
     /**
@@ -71,10 +68,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'filter_groups' => null,
-        'filters' => null,
-        'query' => null,
-        'sorts' => null
+        'filters' => null
     ];
 
     /**
@@ -83,10 +77,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'filter_groups' => false,
-        'filters' => false,
-        'query' => false,
-        'sorts' => false
+        'filters' => false
     ];
 
     /**
@@ -175,10 +166,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'filter_groups' => 'filterGroups',
-        'filters' => 'filters',
-        'query' => 'query',
-        'sorts' => 'sorts'
+        'filters' => 'filters'
     ];
 
     /**
@@ -187,10 +175,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'filter_groups' => 'setFilterGroups',
-        'filters' => 'setFilters',
-        'query' => 'setQuery',
-        'sorts' => 'setSorts'
+        'filters' => 'setFilters'
     ];
 
     /**
@@ -199,10 +184,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'filter_groups' => 'getFilterGroups',
-        'filters' => 'getFilters',
-        'query' => 'getQuery',
-        'sorts' => 'getSorts'
+        'filters' => 'getFilters'
     ];
 
     /**
@@ -262,10 +244,7 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('filter_groups', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
-        $this->setIfExists('query', $data ?? [], null);
-        $this->setIfExists('sorts', $data ?? [], null);
     }
 
     /**
@@ -295,14 +274,8 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['filter_groups'] === null) {
-            $invalidProperties[] = "'filter_groups' can't be null";
-        }
         if ($this->container['filters'] === null) {
             $invalidProperties[] = "'filters' can't be null";
-        }
-        if ($this->container['sorts'] === null) {
-            $invalidProperties[] = "'sorts' can't be null";
         }
         return $invalidProperties;
     }
@@ -318,33 +291,6 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets filter_groups
-     *
-     * @return \HubSpot\Client\Crm\Exports\Model\FilterGroup[]
-     */
-    public function getFilterGroups()
-    {
-        return $this->container['filter_groups'];
-    }
-
-    /**
-     * Sets filter_groups
-     *
-     * @param \HubSpot\Client\Crm\Exports\Model\FilterGroup[] $filter_groups filter_groups
-     *
-     * @return self
-     */
-    public function setFilterGroups($filter_groups)
-    {
-        if (is_null($filter_groups)) {
-            throw new \InvalidArgumentException('non-nullable filter_groups cannot be null');
-        }
-        $this->container['filter_groups'] = $filter_groups;
-
-        return $this;
-    }
 
     /**
      * Gets filters
@@ -369,60 +315,6 @@ class PublicCrmSearchRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable filters cannot be null');
         }
         $this->container['filters'] = $filters;
-
-        return $this;
-    }
-
-    /**
-     * Gets query
-     *
-     * @return string|null
-     */
-    public function getQuery()
-    {
-        return $this->container['query'];
-    }
-
-    /**
-     * Sets query
-     *
-     * @param string|null $query The search query string, to filter CRM records.
-     *
-     * @return self
-     */
-    public function setQuery($query)
-    {
-        if (is_null($query)) {
-            throw new \InvalidArgumentException('non-nullable query cannot be null');
-        }
-        $this->container['query'] = $query;
-
-        return $this;
-    }
-
-    /**
-     * Gets sorts
-     *
-     * @return string[]
-     */
-    public function getSorts()
-    {
-        return $this->container['sorts'];
-    }
-
-    /**
-     * Sets sorts
-     *
-     * @param string[] $sorts Defines the order in which the CRM records should be returned.
-     *
-     * @return self
-     */
-    public function setSorts($sorts)
-    {
-        if (is_null($sorts)) {
-            throw new \InvalidArgumentException('non-nullable sorts cannot be null');
-        }
-        $this->container['sorts'] = $sorts;
 
         return $this;
     }
