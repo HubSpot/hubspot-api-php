@@ -5,7 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.0.1...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/13.2.0...HEAD)
+
+## [13.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.2.0) - 2025-12-17
+
+### Updates
+
+- Updated `ObjectType` enum.
+
+## [13.1.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.1.1) - 2025-11-17
+
+### Fixes
+
+- Fixed typing in `ObjectTypeIDs` enum.
+
+## [13.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.1.0) - 2025-11-13
+
+### Updates
+
+- Added `ObjectTypeIDs` enum.
+- Updated `AssociationTypes` enum.
+- Updated `crm()->obects()` API client.
 
 ## [13.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.1) - 2025-05-13
 
@@ -982,7 +1002,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.0.1...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.2.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1045,3 +1065,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [13.0.0beta.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0beta.1
 [13.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.0
 [13.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.0.1
+[13.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.1.0
+[13.1.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.1.1
+[13.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.2.0
