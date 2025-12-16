@@ -144,7 +144,7 @@ $hubspot->crm()->contacts()->basicApi()->archive($contactId);
 #### Get custom objects page
 
 ```php
-$hubspot->crm()->objects()->basicApi()->getPage(HubSpot\Crm\ObjectType::CONTACTS)
+$hubspot->crm()->objects()->basicApi()->getPage($objectType)
 ```
 
 #### File uploading
