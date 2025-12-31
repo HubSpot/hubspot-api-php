@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchInputPublicAssociationSpec
+ * CollectionResponseAssociationSpecWithLabel
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\Schema\ObjectSerializer;
 
 /**
- * BatchInputPublicAssociationSpec Class Doc Comment
+ * CollectionResponseAssociationSpecWithLabel Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations\V4\Schema
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\V4\Schema\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponseAssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchInputPublicAssociationSpec';
+    protected static $openAPIModelName = 'CollectionResponseAssociationSpecWithLabel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Associations\V4\Schema\Model\PublicAssociationSpec[]'
+        'paging' => '\HubSpot\Client\Crm\Associations\V4\Schema\Model\Paging',
+        'results' => '\HubSpot\Client\Crm\Associations\V4\Schema\Model\AssociationSpecWithLabel[]'
     ];
 
     /**
@@ -68,7 +69,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'inputs' => null
+        'paging' => null,
+        'results' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inputs' => false
+        'paging' => false,
+        'results' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'inputs' => 'inputs'
+        'paging' => 'paging',
+        'results' => 'results'
     ];
 
     /**
@@ -175,7 +179,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'inputs' => 'setInputs'
+        'paging' => 'setPaging',
+        'results' => 'setResults'
     ];
 
     /**
@@ -184,7 +189,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'inputs' => 'getInputs'
+        'paging' => 'getPaging',
+        'results' => 'getResults'
     ];
 
     /**
@@ -244,7 +250,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('inputs', $data ?? [], null);
+        $this->setIfExists('paging', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -274,8 +281,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['inputs'] === null) {
-            $invalidProperties[] = "'inputs' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +300,55 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets inputs
+     * Gets paging
      *
-     * @return \HubSpot\Client\Crm\Associations\V4\Schema\Model\PublicAssociationSpec[]
+     * @return \HubSpot\Client\Crm\Associations\V4\Schema\Model\Paging|null
      */
-    public function getInputs()
+    public function getPaging()
     {
-        return $this->container['inputs'];
+        return $this->container['paging'];
     }
 
     /**
-     * Sets inputs
+     * Sets paging
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Schema\Model\PublicAssociationSpec[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Associations\V4\Schema\Model\Paging|null $paging paging
      *
      * @return self
      */
-    public function setInputs($inputs)
+    public function setPaging($paging)
     {
-        if (is_null($inputs)) {
-            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
+        if (is_null($paging)) {
+            throw new \InvalidArgumentException('non-nullable paging cannot be null');
         }
-        $this->container['inputs'] = $inputs;
+        $this->container['paging'] = $paging;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Schema\Model\AssociationSpecWithLabel[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Schema\Model\AssociationSpecWithLabel[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
 
         return $this;
     }

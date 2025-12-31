@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchInputPublicAssociationSpec
+ * Paging
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\Schema\ObjectSerializer;
 
 /**
- * BatchInputPublicAssociationSpec Class Doc Comment
+ * Paging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations\V4\Schema
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\V4\Schema\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class Paging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchInputPublicAssociationSpec';
+    protected static $openAPIModelName = 'Paging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inputs' => '\HubSpot\Client\Crm\Associations\V4\Schema\Model\PublicAssociationSpec[]'
+        'next' => '\HubSpot\Client\Crm\Associations\V4\Schema\Model\NextPage',
+        'prev' => '\HubSpot\Client\Crm\Associations\V4\Schema\Model\PreviousPage'
     ];
 
     /**
@@ -68,7 +69,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'inputs' => null
+        'next' => null,
+        'prev' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inputs' => false
+        'next' => false,
+        'prev' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'inputs' => 'inputs'
+        'next' => 'next',
+        'prev' => 'prev'
     ];
 
     /**
@@ -175,7 +179,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'inputs' => 'setInputs'
+        'next' => 'setNext',
+        'prev' => 'setPrev'
     ];
 
     /**
@@ -184,7 +189,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'inputs' => 'getInputs'
+        'next' => 'getNext',
+        'prev' => 'getPrev'
     ];
 
     /**
@@ -244,7 +250,8 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('inputs', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
+        $this->setIfExists('prev', $data ?? [], null);
     }
 
     /**
@@ -274,9 +281,6 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['inputs'] === null) {
-            $invalidProperties[] = "'inputs' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -293,28 +297,55 @@ class BatchInputPublicAssociationSpec implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets inputs
+     * Gets next
      *
-     * @return \HubSpot\Client\Crm\Associations\V4\Schema\Model\PublicAssociationSpec[]
+     * @return \HubSpot\Client\Crm\Associations\V4\Schema\Model\NextPage|null
      */
-    public function getInputs()
+    public function getNext()
     {
-        return $this->container['inputs'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets inputs
+     * Sets next
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Schema\Model\PublicAssociationSpec[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Associations\V4\Schema\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setInputs($inputs)
+    public function setNext($next)
     {
-        if (is_null($inputs)) {
-            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['inputs'] = $inputs;
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets prev
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Schema\Model\PreviousPage|null
+     */
+    public function getPrev()
+    {
+        return $this->container['prev'];
+    }
+
+    /**
+     * Sets prev
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Schema\Model\PreviousPage|null $prev prev
+     *
+     * @return self
+     */
+    public function setPrev($prev)
+    {
+        if (is_null($prev)) {
+            throw new \InvalidArgumentException('non-nullable prev cannot be null');
+        }
+        $this->container['prev'] = $prev;
 
         return $this;
     }
