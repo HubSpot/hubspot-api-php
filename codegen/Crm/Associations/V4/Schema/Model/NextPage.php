@@ -1,6 +1,6 @@
 <?php
 /**
- * PublicAssociationDefinitionUserConfiguration
+ * NextPage
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\Schema\ObjectSerializer;
 
 /**
- * PublicAssociationDefinitionUserConfiguration Class Doc Comment
+ * NextPage Class Doc Comment
  *
  * @category Class
+ * @description Specifies the paging information needed to retrieve the next set of results in a paginated API response
  * @package  HubSpot\Client\Crm\Associations\V4\Schema
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PublicAssociationDefinitionUserConfiguration implements ModelInterface, ArrayAccess, \JsonSerializable
+class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PublicAssociationDefinitionUserConfiguration';
+    protected static $openAPIModelName = 'NextPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'category' => 'string',
-        'label' => 'string',
-        'type_id' => 'int',
-        'user_enforced_max_to_object_ids' => 'int'
+        'after' => 'string',
+        'link' => 'string'
     ];
 
     /**
@@ -71,10 +70,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'category' => null,
-        'label' => null,
-        'type_id' => 'int32',
-        'user_enforced_max_to_object_ids' => 'int32'
+        'after' => null,
+        'link' => null
     ];
 
     /**
@@ -83,10 +80,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'category' => false,
-        'label' => false,
-        'type_id' => false,
-        'user_enforced_max_to_object_ids' => false
+        'after' => false,
+        'link' => false
     ];
 
     /**
@@ -175,10 +170,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'category' => 'category',
-        'label' => 'label',
-        'type_id' => 'typeId',
-        'user_enforced_max_to_object_ids' => 'userEnforcedMaxToObjectIds'
+        'after' => 'after',
+        'link' => 'link'
     ];
 
     /**
@@ -187,10 +180,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'category' => 'setCategory',
-        'label' => 'setLabel',
-        'type_id' => 'setTypeId',
-        'user_enforced_max_to_object_ids' => 'setUserEnforcedMaxToObjectIds'
+        'after' => 'setAfter',
+        'link' => 'setLink'
     ];
 
     /**
@@ -199,10 +190,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'category' => 'getCategory',
-        'label' => 'getLabel',
-        'type_id' => 'getTypeId',
-        'user_enforced_max_to_object_ids' => 'getUserEnforcedMaxToObjectIds'
+        'after' => 'getAfter',
+        'link' => 'getLink'
     ];
 
     /**
@@ -246,23 +235,6 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
         return self::$openAPIModelName;
     }
 
-    public const CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
-    public const CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
-    public const CATEGORY_USER_DEFINED = 'USER_DEFINED';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCategoryAllowableValues()
-    {
-        return [
-            self::CATEGORY_HUBSPOT_DEFINED,
-            self::CATEGORY_INTEGRATOR_DEFINED,
-            self::CATEGORY_USER_DEFINED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -279,10 +251,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('type_id', $data ?? [], null);
-        $this->setIfExists('user_enforced_max_to_object_ids', $data ?? [], null);
+        $this->setIfExists('after', $data ?? [], null);
+        $this->setIfExists('link', $data ?? [], null);
     }
 
     /**
@@ -312,20 +282,8 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
-        $allowedValues = $this->getCategoryAllowableValues();
-        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'category', must be one of '%s'",
-                $this->container['category'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['type_id'] === null) {
-            $invalidProperties[] = "'type_id' can't be null";
+        if ($this->container['after'] === null) {
+            $invalidProperties[] = "'after' can't be null";
         }
         return $invalidProperties;
     }
@@ -343,119 +301,55 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
 
 
     /**
-     * Gets category
+     * Gets after
      *
      * @return string
      */
-    public function getCategory()
+    public function getAfter()
     {
-        return $this->container['category'];
+        return $this->container['after'];
     }
 
     /**
-     * Sets category
+     * Sets after
      *
-     * @param string $category category
+     * @param string $after A paging cursor token for retrieving subsequent pages.
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setAfter($after)
     {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
+        if (is_null($after)) {
+            throw new \InvalidArgumentException('non-nullable after cannot be null');
         }
-        $allowedValues = $this->getCategoryAllowableValues();
-        if (!in_array($category, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'category', must be one of '%s'",
-                    $category,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['category'] = $category;
+        $this->container['after'] = $after;
 
         return $this;
     }
 
     /**
-     * Gets label
+     * Gets link
      *
      * @return string|null
      */
-    public function getLabel()
+    public function getLink()
     {
-        return $this->container['label'];
+        return $this->container['link'];
     }
 
     /**
-     * Sets label
+     * Sets link
      *
-     * @param string|null $label label
+     * @param string|null $link A URL that can be used to retrieve the next page results.
      *
      * @return self
      */
-    public function setLabel($label)
+    public function setLink($link)
     {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        if (is_null($link)) {
+            throw new \InvalidArgumentException('non-nullable link cannot be null');
         }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets type_id
-     *
-     * @return int
-     */
-    public function getTypeId()
-    {
-        return $this->container['type_id'];
-    }
-
-    /**
-     * Sets type_id
-     *
-     * @param int $type_id type_id
-     *
-     * @return self
-     */
-    public function setTypeId($type_id)
-    {
-        if (is_null($type_id)) {
-            throw new \InvalidArgumentException('non-nullable type_id cannot be null');
-        }
-        $this->container['type_id'] = $type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_enforced_max_to_object_ids
-     *
-     * @return int|null
-     */
-    public function getUserEnforcedMaxToObjectIds()
-    {
-        return $this->container['user_enforced_max_to_object_ids'];
-    }
-
-    /**
-     * Sets user_enforced_max_to_object_ids
-     *
-     * @param int|null $user_enforced_max_to_object_ids user_enforced_max_to_object_ids
-     *
-     * @return self
-     */
-    public function setUserEnforcedMaxToObjectIds($user_enforced_max_to_object_ids)
-    {
-        if (is_null($user_enforced_max_to_object_ids)) {
-            throw new \InvalidArgumentException('non-nullable user_enforced_max_to_object_ids cannot be null');
-        }
-        $this->container['user_enforced_max_to_object_ids'] = $user_enforced_max_to_object_ids;
+        $this->container['link'] = $link;
 
         return $this;
     }
