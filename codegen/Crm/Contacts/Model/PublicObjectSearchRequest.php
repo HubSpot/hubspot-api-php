@@ -310,21 +310,6 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['after'] === null) {
-            $invalidProperties[] = "'after' can't be null";
-        }
-        if ($this->container['filter_groups'] === null) {
-            $invalidProperties[] = "'filter_groups' can't be null";
-        }
-        if ($this->container['limit'] === null) {
-            $invalidProperties[] = "'limit' can't be null";
-        }
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
-        if ($this->container['sorts'] === null) {
-            $invalidProperties[] = "'sorts' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -343,7 +328,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets after
      *
-     * @return string
+     * @return string|null
      */
     public function getAfter()
     {
@@ -353,7 +338,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets after
      *
-     * @param string $after A paging cursor token for retrieving subsequent pages.
+     * @param string|null $after A paging cursor token for retrieving subsequent pages.
      *
      * @return self
      */
@@ -370,7 +355,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets filter_groups
      *
-     * @return \HubSpot\Client\Crm\Contacts\Model\FilterGroup[]
+     * @return \HubSpot\Client\Crm\Contacts\Model\FilterGroup[]|null
      */
     public function getFilterGroups()
     {
@@ -380,7 +365,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets filter_groups
      *
-     * @param \HubSpot\Client\Crm\Contacts\Model\FilterGroup[] $filter_groups Up to 6 groups of filters defining additional query criteria.
+     * @param \HubSpot\Client\Crm\Contacts\Model\FilterGroup[]|null $filter_groups Up to 6 groups of filters defining additional query criteria.
      *
      * @return self
      */
@@ -397,7 +382,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets limit
      *
-     * @return int
+     * @return int|null
      */
     public function getLimit()
     {
@@ -407,7 +392,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets limit
      *
-     * @param int $limit The maximum results to return, up to 200 objects.
+     * @param int|null $limit The maximum results to return, up to 200 objects.
      *
      * @return self
      */
@@ -424,7 +409,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets properties
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getProperties()
     {
@@ -434,7 +419,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets properties
      *
-     * @param string[] $properties A list of property names to include in the response.
+     * @param string[]|null $properties A list of property names to include in the response.
      *
      * @return self
      */
@@ -478,7 +463,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets sorts
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSorts()
     {
@@ -488,7 +473,7 @@ class PublicObjectSearchRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets sorts
      *
-     * @param string[] $sorts Specifies sorting order based on object properties.
+     * @param string[]|null $sorts Specifies sorting order based on object properties.
      *
      * @return self
      */
