@@ -1,6 +1,6 @@
 <?php
 /**
- * SimplePublicObjectInputForCreate
+ * ForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Contacts\ObjectSerializer;
 
 /**
- * SimplePublicObjectInputForCreate Class Doc Comment
+ * ForwardPaging Class Doc Comment
  *
  * @category Class
- * @description Is the input object used to create a new CRM object, containing the properties to be set and optional associations to link the new record with other CRM objects.
  * @package  HubSpot\Client\Crm\Contacts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SimplePublicObjectInputForCreate';
+    protected static $openAPIModelName = 'ForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'associations' => '\HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject[]',
-        'properties' => 'array<string,string>'
+        'next' => '\HubSpot\Client\Crm\Contacts\Model\NextPage'
     ];
 
     /**
@@ -70,8 +68,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'associations' => null,
-        'properties' => null
+        'next' => null
     ];
 
     /**
@@ -80,8 +77,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'associations' => false,
-        'properties' => false
+        'next' => false
     ];
 
     /**
@@ -170,8 +166,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'associations' => 'associations',
-        'properties' => 'properties'
+        'next' => 'next'
     ];
 
     /**
@@ -180,8 +175,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'associations' => 'setAssociations',
-        'properties' => 'setProperties'
+        'next' => 'setNext'
     ];
 
     /**
@@ -190,8 +184,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'associations' => 'getAssociations',
-        'properties' => 'getProperties'
+        'next' => 'getNext'
     ];
 
     /**
@@ -251,8 +244,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('associations', $data ?? [], null);
-        $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -282,9 +274,6 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['properties'] === null) {
-            $invalidProperties[] = "'properties' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,55 +290,28 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets associations
+     * Gets next
      *
-     * @return \HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject[]|null
+     * @return \HubSpot\Client\Crm\Contacts\Model\NextPage|null
      */
-    public function getAssociations()
+    public function getNext()
     {
-        return $this->container['associations'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets associations
+     * Sets next
      *
-     * @param \HubSpot\Client\Crm\Contacts\Model\PublicAssociationsForObject[]|null $associations associations
+     * @param \HubSpot\Client\Crm\Contacts\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setAssociations($associations)
+    public function setNext($next)
     {
-        if (is_null($associations)) {
-            throw new \InvalidArgumentException('non-nullable associations cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['associations'] = $associations;
-
-        return $this;
-    }
-
-    /**
-     * Gets properties
-     *
-     * @return array<string,string>
-     */
-    public function getProperties()
-    {
-        return $this->container['properties'];
-    }
-
-    /**
-     * Sets properties
-     *
-     * @param array<string,string> $properties Key-value pairs for setting properties for the new object.
-     *
-     * @return self
-     */
-    public function setProperties($properties)
-    {
-        if (is_null($properties)) {
-            throw new \InvalidArgumentException('non-nullable properties cannot be null');
-        }
-        $this->container['properties'] = $properties;
+        $this->container['next'] = $next;
 
         return $this;
     }
