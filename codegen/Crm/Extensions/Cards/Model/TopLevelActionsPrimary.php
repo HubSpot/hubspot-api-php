@@ -1,6 +1,6 @@
 <?php
 /**
- * ObjectToken
+ * TopLevelActionsPrimary
  *
  * PHP version 8.1
  *
@@ -32,24 +32,25 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Extensions\Cards\ObjectSerializer;
 
 /**
- * ObjectToken Class Doc Comment
+ * TopLevelActionsPrimary Class Doc Comment
  *
  * @category Class
+ * @description Defines the primary action for a card, which can be either an action hook or an iframe.
  * @package  HubSpot\Client\Crm\Extensions\Cards
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
+class TopLevelActionsPrimary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ObjectToken';
+    protected static $openAPIModelName = 'TopLevelActions_primary';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,14 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data_type' => 'string',
+        'confirmation' => '\HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody',
+        'http_method' => 'string',
         'label' => 'string',
-        'name' => 'string',
-        'value' => 'string'
+        'property_names_included' => 'string[]',
+        'type' => 'string',
+        'url' => 'string',
+        'height' => 'int',
+        'width' => 'int'
     ];
 
     /**
@@ -71,10 +76,14 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data_type' => null,
+        'confirmation' => null,
+        'http_method' => null,
         'label' => null,
-        'name' => null,
-        'value' => null
+        'property_names_included' => null,
+        'type' => null,
+        'url' => null,
+        'height' => 'int32',
+        'width' => 'int32'
     ];
 
     /**
@@ -83,10 +92,14 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data_type' => false,
+        'confirmation' => false,
+        'http_method' => false,
         'label' => false,
-        'name' => false,
-        'value' => false
+        'property_names_included' => false,
+        'type' => false,
+        'url' => false,
+        'height' => false,
+        'width' => false
     ];
 
     /**
@@ -175,10 +188,14 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'data_type' => 'dataType',
+        'confirmation' => 'confirmation',
+        'http_method' => 'httpMethod',
         'label' => 'label',
-        'name' => 'name',
-        'value' => 'value'
+        'property_names_included' => 'propertyNamesIncluded',
+        'type' => 'type',
+        'url' => 'url',
+        'height' => 'height',
+        'width' => 'width'
     ];
 
     /**
@@ -187,10 +204,14 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'data_type' => 'setDataType',
+        'confirmation' => 'setConfirmation',
+        'http_method' => 'setHttpMethod',
         'label' => 'setLabel',
-        'name' => 'setName',
-        'value' => 'setValue'
+        'property_names_included' => 'setPropertyNamesIncluded',
+        'type' => 'setType',
+        'url' => 'setUrl',
+        'height' => 'setHeight',
+        'width' => 'setWidth'
     ];
 
     /**
@@ -199,10 +220,14 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'data_type' => 'getDataType',
+        'confirmation' => 'getConfirmation',
+        'http_method' => 'getHttpMethod',
         'label' => 'getLabel',
-        'name' => 'getName',
-        'value' => 'getValue'
+        'property_names_included' => 'getPropertyNamesIncluded',
+        'type' => 'getType',
+        'url' => 'getUrl',
+        'height' => 'getHeight',
+        'width' => 'getWidth'
     ];
 
     /**
@@ -246,33 +271,48 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const DATA_TYPE_BOOLEAN = 'BOOLEAN';
-    public const DATA_TYPE_CURRENCY = 'CURRENCY';
-    public const DATA_TYPE_DATE = 'DATE';
-    public const DATA_TYPE_DATETIME = 'DATETIME';
-    public const DATA_TYPE_EMAIL = 'EMAIL';
-    public const DATA_TYPE_LINK = 'LINK';
-    public const DATA_TYPE_NUMERIC = 'NUMERIC';
-    public const DATA_TYPE_STATUS = 'STATUS';
-    public const DATA_TYPE_STRING = 'STRING';
+    public const HTTP_METHOD_CONNECT = 'CONNECT';
+    public const HTTP_METHOD_DELETE = 'DELETE';
+    public const HTTP_METHOD_GET = 'GET';
+    public const HTTP_METHOD_HEAD = 'HEAD';
+    public const HTTP_METHOD_OPTIONS = 'OPTIONS';
+    public const HTTP_METHOD_PATCH = 'PATCH';
+    public const HTTP_METHOD_POST = 'POST';
+    public const HTTP_METHOD_PUT = 'PUT';
+    public const HTTP_METHOD_TRACE = 'TRACE';
+    public const TYPE_ACTION_HOOK = 'ACTION_HOOK';
+    public const TYPE_IFRAME = 'IFRAME';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getDataTypeAllowableValues()
+    public function getHttpMethodAllowableValues()
     {
         return [
-            self::DATA_TYPE_BOOLEAN,
-            self::DATA_TYPE_CURRENCY,
-            self::DATA_TYPE_DATE,
-            self::DATA_TYPE_DATETIME,
-            self::DATA_TYPE_EMAIL,
-            self::DATA_TYPE_LINK,
-            self::DATA_TYPE_NUMERIC,
-            self::DATA_TYPE_STATUS,
-            self::DATA_TYPE_STRING,
+            self::HTTP_METHOD_CONNECT,
+            self::HTTP_METHOD_DELETE,
+            self::HTTP_METHOD_GET,
+            self::HTTP_METHOD_HEAD,
+            self::HTTP_METHOD_OPTIONS,
+            self::HTTP_METHOD_PATCH,
+            self::HTTP_METHOD_POST,
+            self::HTTP_METHOD_PUT,
+            self::HTTP_METHOD_TRACE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_ACTION_HOOK,
+            self::TYPE_IFRAME,
         ];
     }
 
@@ -291,10 +331,17 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data_type', $data ?? [], null);
+        $this->setIfExists('confirmation', $data ?? [], null);
+        $this->setIfExists('http_method', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('property_names_included', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], 'ACTION_HOOK');
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
+        $this->setIfExists('width', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
@@ -324,17 +371,41 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!is_null($this->container['data_type']) && !in_array($this->container['data_type'], $allowedValues, true)) {
+        if ($this->container['http_method'] === null) {
+            $invalidProperties[] = "'http_method' can't be null";
+        }
+        $allowedValues = $this->getHttpMethodAllowableValues();
+        if (!is_null($this->container['http_method']) && !in_array($this->container['http_method'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'data_type', must be one of '%s'",
-                $this->container['data_type'],
+                "invalid value '%s' for 'http_method', must be one of '%s'",
+                $this->container['http_method'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
+        if ($this->container['property_names_included'] === null) {
+            $invalidProperties[] = "'property_names_included' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
         }
         return $invalidProperties;
     }
@@ -352,38 +423,65 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets data_type
+     * Gets confirmation
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null
      */
-    public function getDataType()
+    public function getConfirmation()
     {
-        return $this->container['data_type'];
+        return $this->container['confirmation'];
     }
 
     /**
-     * Sets data_type
+     * Sets confirmation
      *
-     * @param string|null $data_type The type of the property. Can be one of CURRENCY, DATE, DATETIME, EMAIL, LINK, NUMERIC, STATUS
+     * @param \HubSpot\Client\Crm\Extensions\Cards\Model\ActionConfirmationBody|null $confirmation confirmation
      *
      * @return self
      */
-    public function setDataType($data_type)
+    public function setConfirmation($confirmation)
     {
-        if (is_null($data_type)) {
-            throw new \InvalidArgumentException('non-nullable data_type cannot be null');
+        if (is_null($confirmation)) {
+            throw new \InvalidArgumentException('non-nullable confirmation cannot be null');
         }
-        $allowedValues = $this->getDataTypeAllowableValues();
-        if (!in_array($data_type, $allowedValues, true)) {
+        $this->container['confirmation'] = $confirmation;
+
+        return $this;
+    }
+
+    /**
+     * Gets http_method
+     *
+     * @return string
+     */
+    public function getHttpMethod()
+    {
+        return $this->container['http_method'];
+    }
+
+    /**
+     * Sets http_method
+     *
+     * @param string $http_method The HTTP method to be used when making the call, which can be set to GET, POST, PUT, DELETE, or PATCH. If using GET or DELETE
+     *
+     * @return self
+     */
+    public function setHttpMethod($http_method)
+    {
+        if (is_null($http_method)) {
+            throw new \InvalidArgumentException('non-nullable http_method cannot be null');
+        }
+        $allowedValues = $this->getHttpMethodAllowableValues();
+        if (!in_array($http_method, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'data_type', must be one of '%s'",
-                    $data_type,
+                    "Invalid value '%s' for 'http_method', must be one of '%s'",
+                    $http_method,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['data_type'] = $data_type;
+        $this->container['http_method'] = $http_method;
 
         return $this;
     }
@@ -401,7 +499,7 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string|null $label The label of the property as it will be displayed to users
+     * @param string|null $label The label for the button that opens the iframen as it will be displayed to users.
      *
      * @return self
      */
@@ -416,55 +514,146 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets property_names_included
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getName()
+    public function getPropertyNamesIncluded()
     {
-        return $this->container['name'];
+        return $this->container['property_names_included'];
     }
 
     /**
-     * Sets name
+     * Sets property_names_included
      *
-     * @param string|null $name The name of the property
+     * @param string[] $property_names_included A list of property names that will be included on the url of the iframe.
      *
      * @return self
      */
-    public function setName($name)
+    public function setPropertyNamesIncluded($property_names_included)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($property_names_included)) {
+            throw new \InvalidArgumentException('non-nullable property_names_included cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['property_names_included'] = $property_names_included;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets type
      *
      * @return string
      */
-    public function getValue()
+    public function getType()
     {
-        return $this->container['value'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets value
+     * Sets type
      *
-     * @param string $value The value of the property
+     * @param string $type Specifies the type of action, which is 'ACTION_HOOK' for action hooks.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setType($type)
     {
-        if (is_null($value)) {
-            throw new \InvalidArgumentException('non-nullable value cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['value'] = $value;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url The URL endpoint that will be loaded in the iframe when triggered.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets height
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->container['height'];
+    }
+
+    /**
+     * Sets height
+     *
+     * @param int $height The height of the iframe in pixels.
+     *
+     * @return self
+     */
+    public function setHeight($height)
+    {
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
+        }
+        $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /**
+     * Gets width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     *
+     * @param int $width The width of the iframe in pixels.
+     *
+     * @return self
+     */
+    public function setWidth($width)
+    {
+        if (is_null($width)) {
+            throw new \InvalidArgumentException('non-nullable width cannot be null');
+        }
+        $this->container['width'] = $width;
 
         return $this;
     }
