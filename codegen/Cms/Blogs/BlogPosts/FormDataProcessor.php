@@ -4,13 +4,13 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Blogs\Authors
+ * @package  HubSpot\Client\Cms\Blogs\BlogPosts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
 
 /**
- * Authors
+ * Posts
  *
  * Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags
  *
@@ -25,20 +25,20 @@
  * Do not edit the class manually.
  */
 
-namespace HubSpot\Client\Cms\Blogs\Authors;
+namespace HubSpot\Client\Cms\Blogs\BlogPosts;
 
 use ArrayAccess;
 use DateTime;
 use GuzzleHttp\Psr7\Utils;
 use Psr\Http\Message\StreamInterface;
 use SplFileObject;
-use HubSpot\Client\Cms\Blogs\Authors\Model\ModelInterface;
+use HubSpot\Client\Cms\Blogs\BlogPosts\Model\ModelInterface;
 
 /**
  * FormDataProcessor Class Doc Comment
  *
  * @category Class
- * @package  HubSpot\Client\Cms\Blogs\Authors
+ * @package  HubSpot\Client\Cms\Blogs\BlogPosts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
