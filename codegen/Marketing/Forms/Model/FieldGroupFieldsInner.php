@@ -1,6 +1,6 @@
 <?php
 /**
- * DatepickerField
+ * FieldGroupFieldsInner
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Forms\ObjectSerializer;
 
 /**
- * DatepickerField Class Doc Comment
+ * FieldGroupFieldsInner Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Marketing\Forms
@@ -40,16 +40,16 @@ use \HubSpot\Client\Marketing\Forms\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
+class FieldGroupFieldsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'field_type';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DatepickerField';
+    protected static $openAPIModelName = 'FieldGroup_fields_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -66,7 +66,12 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'object_type_id' => 'string',
         'placeholder' => 'string',
-        'required' => 'bool'
+        'required' => 'bool',
+        'validation' => '\HubSpot\Client\Marketing\Forms\Model\NumberFieldValidation',
+        'use_country_code_select' => 'bool',
+        'default_values' => 'string[]',
+        'options' => '\HubSpot\Client\Marketing\Forms\Model\EnumeratedFieldOption[]',
+        'allow_multiple_files' => 'bool'
     ];
 
     /**
@@ -86,7 +91,12 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'object_type_id' => null,
         'placeholder' => null,
-        'required' => null
+        'required' => null,
+        'validation' => null,
+        'use_country_code_select' => null,
+        'default_values' => null,
+        'options' => null,
+        'allow_multiple_files' => null
     ];
 
     /**
@@ -104,7 +114,12 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'object_type_id' => false,
         'placeholder' => false,
-        'required' => false
+        'required' => false,
+        'validation' => false,
+        'use_country_code_select' => false,
+        'default_values' => false,
+        'options' => false,
+        'allow_multiple_files' => false
     ];
 
     /**
@@ -202,7 +217,12 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'object_type_id' => 'objectTypeId',
         'placeholder' => 'placeholder',
-        'required' => 'required'
+        'required' => 'required',
+        'validation' => 'validation',
+        'use_country_code_select' => 'useCountryCodeSelect',
+        'default_values' => 'defaultValues',
+        'options' => 'options',
+        'allow_multiple_files' => 'allowMultipleFiles'
     ];
 
     /**
@@ -220,7 +240,12 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'object_type_id' => 'setObjectTypeId',
         'placeholder' => 'setPlaceholder',
-        'required' => 'setRequired'
+        'required' => 'setRequired',
+        'validation' => 'setValidation',
+        'use_country_code_select' => 'setUseCountryCodeSelect',
+        'default_values' => 'setDefaultValues',
+        'options' => 'setOptions',
+        'allow_multiple_files' => 'setAllowMultipleFiles'
     ];
 
     /**
@@ -238,7 +263,12 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'object_type_id' => 'getObjectTypeId',
         'placeholder' => 'getPlaceholder',
-        'required' => 'getRequired'
+        'required' => 'getRequired',
+        'validation' => 'getValidation',
+        'use_country_code_select' => 'getUseCountryCodeSelect',
+        'default_values' => 'getDefaultValues',
+        'options' => 'getOptions',
+        'allow_multiple_files' => 'getAllowMultipleFiles'
     ];
 
     /**
@@ -282,7 +312,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const FIELD_TYPE_DATEPICKER = 'datepicker';
+    public const FIELD_TYPE_PAYMENT_LINK_RADIO = 'payment_link_radio';
 
     /**
      * Gets allowable values of the enum
@@ -292,7 +322,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getFieldTypeAllowableValues()
     {
         return [
-            self::FIELD_TYPE_DATEPICKER,
+            self::FIELD_TYPE_PAYMENT_LINK_RADIO,
         ];
     }
 
@@ -314,13 +344,21 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('default_value', $data ?? [], null);
         $this->setIfExists('dependent_fields', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('field_type', $data ?? [], 'datepicker');
+        $this->setIfExists('field_type', $data ?? [], 'payment_link_radio');
         $this->setIfExists('hidden', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('placeholder', $data ?? [], null);
         $this->setIfExists('required', $data ?? [], null);
+        $this->setIfExists('validation', $data ?? [], null);
+        $this->setIfExists('use_country_code_select', $data ?? [], null);
+        $this->setIfExists('default_values', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
+        $this->setIfExists('allow_multiple_files', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['field_type'] = static::$openAPIModelName;
     }
 
     /**
@@ -380,6 +418,21 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['required'] === null) {
             $invalidProperties[] = "'required' can't be null";
         }
+        if ($this->container['validation'] === null) {
+            $invalidProperties[] = "'validation' can't be null";
+        }
+        if ($this->container['use_country_code_select'] === null) {
+            $invalidProperties[] = "'use_country_code_select' can't be null";
+        }
+        if ($this->container['default_values'] === null) {
+            $invalidProperties[] = "'default_values' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
+        }
+        if ($this->container['allow_multiple_files'] === null) {
+            $invalidProperties[] = "'allow_multiple_files' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -435,7 +488,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dependent_fields
      *
-     * @param \HubSpot\Client\Marketing\Forms\Model\DependentField[] $dependent_fields A list of other fields to make visible based on the value filled in for this field.
+     * @param \HubSpot\Client\Marketing\Forms\Model\DependentField[] $dependent_fields dependent_fields
      *
      * @return self
      */
@@ -462,7 +515,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Additional text helping the customer to complete the field.
+     * @param string|null $description Additional descriptive text about the field.
      *
      * @return self
      */
@@ -489,7 +542,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets field_type
      *
-     * @param string $field_type Determines how the field will be displayed and validated.
+     * @param string $field_type The field type identifier.
      *
      * @return self
      */
@@ -526,7 +579,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hidden
      *
-     * @param bool $hidden Whether a field should be hidden or not. Hidden fields won't appear on the form, but can be used to pass a value to a property without requiring the customer to fill it in.
+     * @param bool $hidden Whether the field is a hidden field.
      *
      * @return self
      */
@@ -553,7 +606,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string $label The main label for the form field.
+     * @param string $label The visible label displayed with the field to describe its purpose to form users.
      *
      * @return self
      */
@@ -580,7 +633,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The identifier of the field. In combination with the object type ID, it must be unique.
+     * @param string $name The internal API name used to identify this field in API requests and responses.
      *
      * @return self
      */
@@ -607,7 +660,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object_type_id
      *
-     * @param string $object_type_id A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
+     * @param string $object_type_id The CRM object type this field is associated with (e.g., contacts, deals).
      *
      * @return self
      */
@@ -661,7 +714,7 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets required
      *
-     * @param bool $required Whether a value for this field is required when submitting the form.
+     * @param bool $required Whether users must select an option before submitting the form.
      *
      * @return self
      */
@@ -671,6 +724,141 @@ class DatepickerField implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable required cannot be null');
         }
         $this->container['required'] = $required;
+
+        return $this;
+    }
+
+    /**
+     * Gets validation
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\NumberFieldValidation
+     */
+    public function getValidation()
+    {
+        return $this->container['validation'];
+    }
+
+    /**
+     * Sets validation
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\NumberFieldValidation $validation validation
+     *
+     * @return self
+     */
+    public function setValidation($validation)
+    {
+        if (is_null($validation)) {
+            throw new \InvalidArgumentException('non-nullable validation cannot be null');
+        }
+        $this->container['validation'] = $validation;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_country_code_select
+     *
+     * @return bool
+     */
+    public function getUseCountryCodeSelect()
+    {
+        return $this->container['use_country_code_select'];
+    }
+
+    /**
+     * Sets use_country_code_select
+     *
+     * @param bool $use_country_code_select Whether to display a country code drop down next to the phone field.
+     *
+     * @return self
+     */
+    public function setUseCountryCodeSelect($use_country_code_select)
+    {
+        if (is_null($use_country_code_select)) {
+            throw new \InvalidArgumentException('non-nullable use_country_code_select cannot be null');
+        }
+        $this->container['use_country_code_select'] = $use_country_code_select;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_values
+     *
+     * @return string[]
+     */
+    public function getDefaultValues()
+    {
+        return $this->container['default_values'];
+    }
+
+    /**
+     * Sets default_values
+     *
+     * @param string[] $default_values default_values
+     *
+     * @return self
+     */
+    public function setDefaultValues($default_values)
+    {
+        if (is_null($default_values)) {
+            throw new \InvalidArgumentException('non-nullable default_values cannot be null');
+        }
+        $this->container['default_values'] = $default_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\EnumeratedFieldOption[]
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\EnumeratedFieldOption[] $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        }
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_multiple_files
+     *
+     * @return bool
+     */
+    public function getAllowMultipleFiles()
+    {
+        return $this->container['allow_multiple_files'];
+    }
+
+    /**
+     * Sets allow_multiple_files
+     *
+     * @param bool $allow_multiple_files Whether to allow the upload of multiple files.
+     *
+     * @return self
+     */
+    public function setAllowMultipleFiles($allow_multiple_files)
+    {
+        if (is_null($allow_multiple_files)) {
+            throw new \InvalidArgumentException('non-nullable allow_multiple_files cannot be null');
+        }
+        $this->container['allow_multiple_files'] = $allow_multiple_files;
 
         return $this;
     }
