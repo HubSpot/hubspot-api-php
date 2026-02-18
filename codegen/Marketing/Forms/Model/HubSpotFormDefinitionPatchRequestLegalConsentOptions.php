@@ -1,6 +1,6 @@
 <?php
 /**
- * LegalConsentOptionsLegitimateInterest
+ * HubSpotFormDefinitionPatchRequestLegalConsentOptions
  *
  * PHP version 8.1
  *
@@ -32,24 +32,25 @@ use \ArrayAccess;
 use \HubSpot\Client\Marketing\Forms\ObjectSerializer;
 
 /**
- * LegalConsentOptionsLegitimateInterest Class Doc Comment
+ * HubSpotFormDefinitionPatchRequestLegalConsentOptions Class Doc Comment
  *
  * @category Class
+ * @description Configuration for legal consent and data processing compliance options. Supports types: none, legitimate_interest, explicit_consent_to_process, implicit_consent_to_process.
  * @package  HubSpot\Client\Marketing\Forms
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAccess, \JsonSerializable
+class HubSpotFormDefinitionPatchRequestLegalConsentOptions implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LegalConsentOptionsLegitimateInterest';
+    protected static $openAPIModelName = 'HubSpotFormDefinitionPatchRequest_legalConsentOptions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,15 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
+        'type' => 'string',
         'lawful_basis' => 'string',
         'privacy_text' => 'string',
         'subscription_type_ids' => 'int[]',
-        'type' => 'string'
+        'communication_consent_text' => 'string',
+        'communications_checkboxes' => '\HubSpot\Client\Marketing\Forms\Model\LegalConsentCheckbox[]',
+        'consent_to_process_checkbox_label' => 'string',
+        'consent_to_process_footer_text' => 'string',
+        'consent_to_process_text' => 'string'
     ];
 
     /**
@@ -71,10 +77,15 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'type' => null,
         'lawful_basis' => null,
         'privacy_text' => null,
         'subscription_type_ids' => 'int64',
-        'type' => null
+        'communication_consent_text' => null,
+        'communications_checkboxes' => null,
+        'consent_to_process_checkbox_label' => null,
+        'consent_to_process_footer_text' => null,
+        'consent_to_process_text' => null
     ];
 
     /**
@@ -83,10 +94,15 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'type' => false,
         'lawful_basis' => false,
         'privacy_text' => false,
         'subscription_type_ids' => false,
-        'type' => false
+        'communication_consent_text' => false,
+        'communications_checkboxes' => false,
+        'consent_to_process_checkbox_label' => false,
+        'consent_to_process_footer_text' => false,
+        'consent_to_process_text' => false
     ];
 
     /**
@@ -175,10 +191,15 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
         'lawful_basis' => 'lawfulBasis',
         'privacy_text' => 'privacyText',
         'subscription_type_ids' => 'subscriptionTypeIds',
-        'type' => 'type'
+        'communication_consent_text' => 'communicationConsentText',
+        'communications_checkboxes' => 'communicationsCheckboxes',
+        'consent_to_process_checkbox_label' => 'consentToProcessCheckboxLabel',
+        'consent_to_process_footer_text' => 'consentToProcessFooterText',
+        'consent_to_process_text' => 'consentToProcessText'
     ];
 
     /**
@@ -187,10 +208,15 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
         'lawful_basis' => 'setLawfulBasis',
         'privacy_text' => 'setPrivacyText',
         'subscription_type_ids' => 'setSubscriptionTypeIds',
-        'type' => 'setType'
+        'communication_consent_text' => 'setCommunicationConsentText',
+        'communications_checkboxes' => 'setCommunicationsCheckboxes',
+        'consent_to_process_checkbox_label' => 'setConsentToProcessCheckboxLabel',
+        'consent_to_process_footer_text' => 'setConsentToProcessFooterText',
+        'consent_to_process_text' => 'setConsentToProcessText'
     ];
 
     /**
@@ -199,10 +225,15 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
         'lawful_basis' => 'getLawfulBasis',
         'privacy_text' => 'getPrivacyText',
         'subscription_type_ids' => 'getSubscriptionTypeIds',
-        'type' => 'getType'
+        'communication_consent_text' => 'getCommunicationConsentText',
+        'communications_checkboxes' => 'getCommunicationsCheckboxes',
+        'consent_to_process_checkbox_label' => 'getConsentToProcessCheckboxLabel',
+        'consent_to_process_footer_text' => 'getConsentToProcessFooterText',
+        'consent_to_process_text' => 'getConsentToProcessText'
     ];
 
     /**
@@ -246,10 +277,28 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
+    public const TYPE_NONE = 'none';
+    public const TYPE_LEGITIMATE_INTEREST = 'legitimate_interest';
+    public const TYPE_EXPLICIT_CONSENT_TO_PROCESS = 'explicit_consent_to_process';
+    public const TYPE_IMPLICIT_CONSENT_TO_PROCESS = 'implicit_consent_to_process';
     public const LAWFUL_BASIS_CLIENT = 'client';
     public const LAWFUL_BASIS_LEAD = 'lead';
     public const LAWFUL_BASIS_OTHER = 'other';
-    public const TYPE_LEGITIMATE_INTEREST = 'legitimate_interest';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_NONE,
+            self::TYPE_LEGITIMATE_INTEREST,
+            self::TYPE_EXPLICIT_CONSENT_TO_PROCESS,
+            self::TYPE_IMPLICIT_CONSENT_TO_PROCESS,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -262,18 +311,6 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
             self::LAWFUL_BASIS_CLIENT,
             self::LAWFUL_BASIS_LEAD,
             self::LAWFUL_BASIS_OTHER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_LEGITIMATE_INTEREST,
         ];
     }
 
@@ -292,10 +329,18 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('type', $data ?? [], 'none');
         $this->setIfExists('lawful_basis', $data ?? [], null);
         $this->setIfExists('privacy_text', $data ?? [], null);
         $this->setIfExists('subscription_type_ids', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], 'legitimate_interest');
+        $this->setIfExists('communication_consent_text', $data ?? [], null);
+        $this->setIfExists('communications_checkboxes', $data ?? [], null);
+        $this->setIfExists('consent_to_process_checkbox_label', $data ?? [], null);
+        $this->setIfExists('consent_to_process_footer_text', $data ?? [], null);
+        $this->setIfExists('consent_to_process_text', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**
@@ -325,6 +370,18 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['lawful_basis'] === null) {
             $invalidProperties[] = "'lawful_basis' can't be null";
         }
@@ -343,18 +400,9 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
         if ($this->container['subscription_type_ids'] === null) {
             $invalidProperties[] = "'subscription_type_ids' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['communications_checkboxes'] === null) {
+            $invalidProperties[] = "'communications_checkboxes' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -369,6 +417,43 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type The legal consent type. Set to \"none\" to indicate no legal consent configuration is required for this form.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
 
     /**
      * Gets lawful_basis
@@ -462,38 +547,136 @@ class LegalConsentOptionsLegitimateInterest implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets type
+     * Gets communication_consent_text
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getCommunicationConsentText()
     {
-        return $this->container['type'];
+        return $this->container['communication_consent_text'];
     }
 
     /**
-     * Sets type
+     * Sets communication_consent_text
      *
-     * @param string $type The legal consent type.
+     * @param string|null $communication_consent_text Text explaining communication consent preferences.
      *
      * @return self
      */
-    public function setType($type)
+    public function setCommunicationConsentText($communication_consent_text)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($communication_consent_text)) {
+            throw new \InvalidArgumentException('non-nullable communication_consent_text cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['communication_consent_text'] = $communication_consent_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets communications_checkboxes
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\LegalConsentCheckbox[]
+     */
+    public function getCommunicationsCheckboxes()
+    {
+        return $this->container['communications_checkboxes'];
+    }
+
+    /**
+     * Sets communications_checkboxes
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\LegalConsentCheckbox[] $communications_checkboxes communications_checkboxes
+     *
+     * @return self
+     */
+    public function setCommunicationsCheckboxes($communications_checkboxes)
+    {
+        if (is_null($communications_checkboxes)) {
+            throw new \InvalidArgumentException('non-nullable communications_checkboxes cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['communications_checkboxes'] = $communications_checkboxes;
+
+        return $this;
+    }
+
+    /**
+     * Gets consent_to_process_checkbox_label
+     *
+     * @return string|null
+     */
+    public function getConsentToProcessCheckboxLabel()
+    {
+        return $this->container['consent_to_process_checkbox_label'];
+    }
+
+    /**
+     * Sets consent_to_process_checkbox_label
+     *
+     * @param string|null $consent_to_process_checkbox_label Label text for the consent to process checkbox.
+     *
+     * @return self
+     */
+    public function setConsentToProcessCheckboxLabel($consent_to_process_checkbox_label)
+    {
+        if (is_null($consent_to_process_checkbox_label)) {
+            throw new \InvalidArgumentException('non-nullable consent_to_process_checkbox_label cannot be null');
+        }
+        $this->container['consent_to_process_checkbox_label'] = $consent_to_process_checkbox_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets consent_to_process_footer_text
+     *
+     * @return string|null
+     */
+    public function getConsentToProcessFooterText()
+    {
+        return $this->container['consent_to_process_footer_text'];
+    }
+
+    /**
+     * Sets consent_to_process_footer_text
+     *
+     * @param string|null $consent_to_process_footer_text Footer text for the consent to process section.
+     *
+     * @return self
+     */
+    public function setConsentToProcessFooterText($consent_to_process_footer_text)
+    {
+        if (is_null($consent_to_process_footer_text)) {
+            throw new \InvalidArgumentException('non-nullable consent_to_process_footer_text cannot be null');
+        }
+        $this->container['consent_to_process_footer_text'] = $consent_to_process_footer_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets consent_to_process_text
+     *
+     * @return string|null
+     */
+    public function getConsentToProcessText()
+    {
+        return $this->container['consent_to_process_text'];
+    }
+
+    /**
+     * Sets consent_to_process_text
+     *
+     * @param string|null $consent_to_process_text Text explaining the consent to process personal data.
+     *
+     * @return self
+     */
+    public function setConsentToProcessText($consent_to_process_text)
+    {
+        if (is_null($consent_to_process_text)) {
+            throw new \InvalidArgumentException('non-nullable consent_to_process_text cannot be null');
+        }
+        $this->container['consent_to_process_text'] = $consent_to_process_text;
 
         return $this;
     }
