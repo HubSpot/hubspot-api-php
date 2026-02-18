@@ -3,8 +3,8 @@
 namespace spec\HubSpot\Discovery\Marketing\Transactional;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Marketing\Transactional\Api\PublicSMTPTokensApi;
-use HubSpot\Client\Marketing\Transactional\Api\SingleSendApi;
+use HubSpot\Client\Marketing\Transactional\Api\SendTransactionalEmailApi;
+use HubSpot\Client\Marketing\Transactional\Api\SMTPTokensApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Marketing\Transactional\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -23,7 +23,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->publicSMTPTokensApi()->shouldHaveType(PublicSMTPTokensApi::class);
-        $this->singleSendApi()->shouldHaveType(SingleSendApi::class);
+        $this->sendTransactionalEmailApi()->shouldHaveType(SendTransactionalEmailApi::class);
+        $this->smtpTokensApi()->shouldHaveType(SMTPTokensApi::class);
     }
 }
