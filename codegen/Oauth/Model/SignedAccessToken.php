@@ -1,6 +1,6 @@
 <?php
 /**
- * AccessTokenInfoResponse
+ * SignedAccessToken
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Oauth\ObjectSerializer;
 
 /**
- * AccessTokenInfoResponse Class Doc Comment
+ * SignedAccessToken Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Oauth
@@ -40,7 +40,7 @@ use \HubSpot\Client\Oauth\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AccessTokenInfoResponse';
+    protected static $openAPIModelName = 'SignedAccessToken';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,19 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'app_id' => 'int',
-        'expires_in' => 'int',
-        'hub_domain' => 'string',
+        'expires_at' => 'int',
         'hub_id' => 'int',
+        'hublet' => 'string',
+        'installing_user_id' => 'int',
         'is_private_distribution' => 'bool',
-        'scopes' => 'string[]',
-        'signed_access_token' => '\HubSpot\Client\Oauth\Model\SignedAccessToken',
-        'token' => 'string',
-        'token_type' => 'string',
-        'user' => 'string',
+        'is_service_account' => 'bool',
+        'is_user_level' => 'bool',
+        'new_signature' => 'string',
+        'scope_to_scope_group_pks' => 'string',
+        'scopes' => 'string',
+        'signature' => 'string',
+        'trial_scope_to_scope_group_pks' => 'string',
+        'trial_scopes' => 'string',
         'user_id' => 'int'
     ];
 
@@ -79,15 +83,19 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'app_id' => 'int32',
-        'expires_in' => 'int32',
-        'hub_domain' => null,
+        'expires_at' => 'int64',
         'hub_id' => 'int32',
+        'hublet' => null,
+        'installing_user_id' => 'int32',
         'is_private_distribution' => null,
+        'is_service_account' => null,
+        'is_user_level' => null,
+        'new_signature' => null,
+        'scope_to_scope_group_pks' => null,
         'scopes' => null,
-        'signed_access_token' => null,
-        'token' => null,
-        'token_type' => null,
-        'user' => null,
+        'signature' => null,
+        'trial_scope_to_scope_group_pks' => null,
+        'trial_scopes' => null,
         'user_id' => 'int32'
     ];
 
@@ -98,15 +106,19 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'app_id' => false,
-        'expires_in' => false,
-        'hub_domain' => false,
+        'expires_at' => false,
         'hub_id' => false,
+        'hublet' => false,
+        'installing_user_id' => false,
         'is_private_distribution' => false,
+        'is_service_account' => false,
+        'is_user_level' => false,
+        'new_signature' => false,
+        'scope_to_scope_group_pks' => false,
         'scopes' => false,
-        'signed_access_token' => false,
-        'token' => false,
-        'token_type' => false,
-        'user' => false,
+        'signature' => false,
+        'trial_scope_to_scope_group_pks' => false,
+        'trial_scopes' => false,
         'user_id' => false
     ];
 
@@ -196,17 +208,21 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'app_id' => 'app_id',
-        'expires_in' => 'expires_in',
-        'hub_domain' => 'hub_domain',
-        'hub_id' => 'hub_id',
-        'is_private_distribution' => 'is_private_distribution',
+        'app_id' => 'appId',
+        'expires_at' => 'expiresAt',
+        'hub_id' => 'hubId',
+        'hublet' => 'hublet',
+        'installing_user_id' => 'installingUserId',
+        'is_private_distribution' => 'isPrivateDistribution',
+        'is_service_account' => 'isServiceAccount',
+        'is_user_level' => 'isUserLevel',
+        'new_signature' => 'newSignature',
+        'scope_to_scope_group_pks' => 'scopeToScopeGroupPks',
         'scopes' => 'scopes',
-        'signed_access_token' => 'signed_access_token',
-        'token' => 'token',
-        'token_type' => 'token_type',
-        'user' => 'user',
-        'user_id' => 'user_id'
+        'signature' => 'signature',
+        'trial_scope_to_scope_group_pks' => 'trialScopeToScopeGroupPks',
+        'trial_scopes' => 'trialScopes',
+        'user_id' => 'userId'
     ];
 
     /**
@@ -216,15 +232,19 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'app_id' => 'setAppId',
-        'expires_in' => 'setExpiresIn',
-        'hub_domain' => 'setHubDomain',
+        'expires_at' => 'setExpiresAt',
         'hub_id' => 'setHubId',
+        'hublet' => 'setHublet',
+        'installing_user_id' => 'setInstallingUserId',
         'is_private_distribution' => 'setIsPrivateDistribution',
+        'is_service_account' => 'setIsServiceAccount',
+        'is_user_level' => 'setIsUserLevel',
+        'new_signature' => 'setNewSignature',
+        'scope_to_scope_group_pks' => 'setScopeToScopeGroupPks',
         'scopes' => 'setScopes',
-        'signed_access_token' => 'setSignedAccessToken',
-        'token' => 'setToken',
-        'token_type' => 'setTokenType',
-        'user' => 'setUser',
+        'signature' => 'setSignature',
+        'trial_scope_to_scope_group_pks' => 'setTrialScopeToScopeGroupPks',
+        'trial_scopes' => 'setTrialScopes',
         'user_id' => 'setUserId'
     ];
 
@@ -235,15 +255,19 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'app_id' => 'getAppId',
-        'expires_in' => 'getExpiresIn',
-        'hub_domain' => 'getHubDomain',
+        'expires_at' => 'getExpiresAt',
         'hub_id' => 'getHubId',
+        'hublet' => 'getHublet',
+        'installing_user_id' => 'getInstallingUserId',
         'is_private_distribution' => 'getIsPrivateDistribution',
+        'is_service_account' => 'getIsServiceAccount',
+        'is_user_level' => 'getIsUserLevel',
+        'new_signature' => 'getNewSignature',
+        'scope_to_scope_group_pks' => 'getScopeToScopeGroupPks',
         'scopes' => 'getScopes',
-        'signed_access_token' => 'getSignedAccessToken',
-        'token' => 'getToken',
-        'token_type' => 'getTokenType',
-        'user' => 'getUser',
+        'signature' => 'getSignature',
+        'trial_scope_to_scope_group_pks' => 'getTrialScopeToScopeGroupPks',
+        'trial_scopes' => 'getTrialScopes',
         'user_id' => 'getUserId'
     ];
 
@@ -305,15 +329,19 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(?array $data = null)
     {
         $this->setIfExists('app_id', $data ?? [], null);
-        $this->setIfExists('expires_in', $data ?? [], null);
-        $this->setIfExists('hub_domain', $data ?? [], null);
+        $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('hub_id', $data ?? [], null);
+        $this->setIfExists('hublet', $data ?? [], null);
+        $this->setIfExists('installing_user_id', $data ?? [], null);
         $this->setIfExists('is_private_distribution', $data ?? [], null);
+        $this->setIfExists('is_service_account', $data ?? [], null);
+        $this->setIfExists('is_user_level', $data ?? [], null);
+        $this->setIfExists('new_signature', $data ?? [], null);
+        $this->setIfExists('scope_to_scope_group_pks', $data ?? [], null);
         $this->setIfExists('scopes', $data ?? [], null);
-        $this->setIfExists('signed_access_token', $data ?? [], null);
-        $this->setIfExists('token', $data ?? [], null);
-        $this->setIfExists('token_type', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
+        $this->setIfExists('signature', $data ?? [], null);
+        $this->setIfExists('trial_scope_to_scope_group_pks', $data ?? [], null);
+        $this->setIfExists('trial_scopes', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
     }
 
@@ -347,20 +375,44 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['app_id'] === null) {
             $invalidProperties[] = "'app_id' can't be null";
         }
-        if ($this->container['expires_in'] === null) {
-            $invalidProperties[] = "'expires_in' can't be null";
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
         }
         if ($this->container['hub_id'] === null) {
             $invalidProperties[] = "'hub_id' can't be null";
         }
+        if ($this->container['hublet'] === null) {
+            $invalidProperties[] = "'hublet' can't be null";
+        }
+        if ($this->container['installing_user_id'] === null) {
+            $invalidProperties[] = "'installing_user_id' can't be null";
+        }
+        if ($this->container['is_private_distribution'] === null) {
+            $invalidProperties[] = "'is_private_distribution' can't be null";
+        }
+        if ($this->container['is_service_account'] === null) {
+            $invalidProperties[] = "'is_service_account' can't be null";
+        }
+        if ($this->container['is_user_level'] === null) {
+            $invalidProperties[] = "'is_user_level' can't be null";
+        }
+        if ($this->container['new_signature'] === null) {
+            $invalidProperties[] = "'new_signature' can't be null";
+        }
+        if ($this->container['scope_to_scope_group_pks'] === null) {
+            $invalidProperties[] = "'scope_to_scope_group_pks' can't be null";
+        }
         if ($this->container['scopes'] === null) {
             $invalidProperties[] = "'scopes' can't be null";
         }
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['signature'] === null) {
+            $invalidProperties[] = "'signature' can't be null";
         }
-        if ($this->container['token_type'] === null) {
-            $invalidProperties[] = "'token_type' can't be null";
+        if ($this->container['trial_scope_to_scope_group_pks'] === null) {
+            $invalidProperties[] = "'trial_scope_to_scope_group_pks' can't be null";
+        }
+        if ($this->container['trial_scopes'] === null) {
+            $invalidProperties[] = "'trial_scopes' can't be null";
         }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
@@ -408,55 +460,28 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets expires_in
+     * Gets expires_at
      *
      * @return int
      */
-    public function getExpiresIn()
+    public function getExpiresAt()
     {
-        return $this->container['expires_in'];
+        return $this->container['expires_at'];
     }
 
     /**
-     * Sets expires_in
+     * Sets expires_at
      *
-     * @param int $expires_in The time in seconds until the access token expires.
+     * @param int $expires_at The timestamp indicating when the access token will expire.
      *
      * @return self
      */
-    public function setExpiresIn($expires_in)
+    public function setExpiresAt($expires_at)
     {
-        if (is_null($expires_in)) {
-            throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
+        if (is_null($expires_at)) {
+            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
-        $this->container['expires_in'] = $expires_in;
-
-        return $this;
-    }
-
-    /**
-     * Gets hub_domain
-     *
-     * @return string|null
-     */
-    public function getHubDomain()
-    {
-        return $this->container['hub_domain'];
-    }
-
-    /**
-     * Sets hub_domain
-     *
-     * @param string|null $hub_domain The domain of the HubSpot account associated with the access token.
-     *
-     * @return self
-     */
-    public function setHubDomain($hub_domain)
-    {
-        if (is_null($hub_domain)) {
-            throw new \InvalidArgumentException('non-nullable hub_domain cannot be null');
-        }
-        $this->container['hub_domain'] = $hub_domain;
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }
@@ -489,9 +514,63 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets hublet
+     *
+     * @return string
+     */
+    public function getHublet()
+    {
+        return $this->container['hublet'];
+    }
+
+    /**
+     * Sets hublet
+     *
+     * @param string $hublet The specific regional data center where the account is hosted.
+     *
+     * @return self
+     */
+    public function setHublet($hublet)
+    {
+        if (is_null($hublet)) {
+            throw new \InvalidArgumentException('non-nullable hublet cannot be null');
+        }
+        $this->container['hublet'] = $hublet;
+
+        return $this;
+    }
+
+    /**
+     * Gets installing_user_id
+     *
+     * @return int
+     */
+    public function getInstallingUserId()
+    {
+        return $this->container['installing_user_id'];
+    }
+
+    /**
+     * Sets installing_user_id
+     *
+     * @param int $installing_user_id The ID of the user who installed the application.
+     *
+     * @return self
+     */
+    public function setInstallingUserId($installing_user_id)
+    {
+        if (is_null($installing_user_id)) {
+            throw new \InvalidArgumentException('non-nullable installing_user_id cannot be null');
+        }
+        $this->container['installing_user_id'] = $installing_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets is_private_distribution
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsPrivateDistribution()
     {
@@ -501,7 +580,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets is_private_distribution
      *
-     * @param bool|null $is_private_distribution Indicates whether the token is for a privately distributed application. If false, it is marketplace distributed.
+     * @param bool $is_private_distribution Indicates whether the token is for a privately distributed application. If false, it is marketplace distributed.
      *
      * @return self
      */
@@ -516,9 +595,117 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets is_service_account
+     *
+     * @return bool
+     */
+    public function getIsServiceAccount()
+    {
+        return $this->container['is_service_account'];
+    }
+
+    /**
+     * Sets is_service_account
+     *
+     * @param bool $is_service_account Indicates whether the access token is associated with a service account. Meaning it is decoupled from the user who installed it.
+     *
+     * @return self
+     */
+    public function setIsServiceAccount($is_service_account)
+    {
+        if (is_null($is_service_account)) {
+            throw new \InvalidArgumentException('non-nullable is_service_account cannot be null');
+        }
+        $this->container['is_service_account'] = $is_service_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_user_level
+     *
+     * @return bool
+     */
+    public function getIsUserLevel()
+    {
+        return $this->container['is_user_level'];
+    }
+
+    /**
+     * Sets is_user_level
+     *
+     * @param bool $is_user_level Indicates whether the access token is issued at the user level. Meaning the app is configured to allow multiple installs of the same app on a hub.
+     *
+     * @return self
+     */
+    public function setIsUserLevel($is_user_level)
+    {
+        if (is_null($is_user_level)) {
+            throw new \InvalidArgumentException('non-nullable is_user_level cannot be null');
+        }
+        $this->container['is_user_level'] = $is_user_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_signature
+     *
+     * @return string
+     */
+    public function getNewSignature()
+    {
+        return $this->container['new_signature'];
+    }
+
+    /**
+     * Sets new_signature
+     *
+     * @param string $new_signature The updated cryptographic signature for the access token.
+     *
+     * @return self
+     */
+    public function setNewSignature($new_signature)
+    {
+        if (is_null($new_signature)) {
+            throw new \InvalidArgumentException('non-nullable new_signature cannot be null');
+        }
+        $this->container['new_signature'] = $new_signature;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope_to_scope_group_pks
+     *
+     * @return string
+     */
+    public function getScopeToScopeGroupPks()
+    {
+        return $this->container['scope_to_scope_group_pks'];
+    }
+
+    /**
+     * Sets scope_to_scope_group_pks
+     *
+     * @param string $scope_to_scope_group_pks A mapping of scopes to their corresponding scope group primary keys.
+     *
+     * @return self
+     */
+    public function setScopeToScopeGroupPks($scope_to_scope_group_pks)
+    {
+        if (is_null($scope_to_scope_group_pks)) {
+            throw new \InvalidArgumentException('non-nullable scope_to_scope_group_pks cannot be null');
+        }
+        $this->container['scope_to_scope_group_pks'] = $scope_to_scope_group_pks;
+
+        return $this;
+    }
+
+    /**
      * Gets scopes
      *
-     * @return string[]
+     * @return string
      */
     public function getScopes()
     {
@@ -528,7 +715,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets scopes
      *
-     * @param string[] $scopes scopes
+     * @param string $scopes The permissions granted to the access token.
      *
      * @return self
      */
@@ -543,109 +730,82 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets signed_access_token
-     *
-     * @return \HubSpot\Client\Oauth\Model\SignedAccessToken|null
-     */
-    public function getSignedAccessToken()
-    {
-        return $this->container['signed_access_token'];
-    }
-
-    /**
-     * Sets signed_access_token
-     *
-     * @param \HubSpot\Client\Oauth\Model\SignedAccessToken|null $signed_access_token signed_access_token
-     *
-     * @return self
-     */
-    public function setSignedAccessToken($signed_access_token)
-    {
-        if (is_null($signed_access_token)) {
-            throw new \InvalidArgumentException('non-nullable signed_access_token cannot be null');
-        }
-        $this->container['signed_access_token'] = $signed_access_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets token
+     * Gets signature
      *
      * @return string
      */
-    public function getToken()
+    public function getSignature()
     {
-        return $this->container['token'];
+        return $this->container['signature'];
     }
 
     /**
-     * Sets token
+     * Sets signature
      *
-     * @param string $token The access token string used to make API calls.
+     * @param string $signature The cryptographic signature used to verify the integrity of the access token.
      *
      * @return self
      */
-    public function setToken($token)
+    public function setSignature($signature)
     {
-        if (is_null($token)) {
-            throw new \InvalidArgumentException('non-nullable token cannot be null');
+        if (is_null($signature)) {
+            throw new \InvalidArgumentException('non-nullable signature cannot be null');
         }
-        $this->container['token'] = $token;
+        $this->container['signature'] = $signature;
 
         return $this;
     }
 
     /**
-     * Gets token_type
+     * Gets trial_scope_to_scope_group_pks
      *
      * @return string
      */
-    public function getTokenType()
+    public function getTrialScopeToScopeGroupPks()
     {
-        return $this->container['token_type'];
+        return $this->container['trial_scope_to_scope_group_pks'];
     }
 
     /**
-     * Sets token_type
+     * Sets trial_scope_to_scope_group_pks
      *
-     * @param string $token_type The type of token, typically indicating the authentication scheme. Typically `bearer`.
+     * @param string $trial_scope_to_scope_group_pks A mapping of trial scopes to their corresponding scope group primary keys.
      *
      * @return self
      */
-    public function setTokenType($token_type)
+    public function setTrialScopeToScopeGroupPks($trial_scope_to_scope_group_pks)
     {
-        if (is_null($token_type)) {
-            throw new \InvalidArgumentException('non-nullable token_type cannot be null');
+        if (is_null($trial_scope_to_scope_group_pks)) {
+            throw new \InvalidArgumentException('non-nullable trial_scope_to_scope_group_pks cannot be null');
         }
-        $this->container['token_type'] = $token_type;
+        $this->container['trial_scope_to_scope_group_pks'] = $trial_scope_to_scope_group_pks;
 
         return $this;
     }
 
     /**
-     * Gets user
+     * Gets trial_scopes
      *
-     * @return string|null
+     * @return string
      */
-    public function getUser()
+    public function getTrialScopes()
     {
-        return $this->container['user'];
+        return $this->container['trial_scopes'];
     }
 
     /**
-     * Sets user
+     * Sets trial_scopes
      *
-     * @param string|null $user The email address of the hubspot user for whom the access token was created.
+     * @param string $trial_scopes The trial scopes included in the access token.
      *
      * @return self
      */
-    public function setUser($user)
+    public function setTrialScopes($trial_scopes)
     {
-        if (is_null($user)) {
-            throw new \InvalidArgumentException('non-nullable user cannot be null');
+        if (is_null($trial_scopes)) {
+            throw new \InvalidArgumentException('non-nullable trial_scopes cannot be null');
         }
-        $this->container['user'] = $user;
+        $this->container['trial_scopes'] = $trial_scopes;
 
         return $this;
     }
@@ -663,7 +823,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets user_id
      *
-     * @param int $user_id The ID of the hubspot user for whom the access token was created.
+     * @param int $user_id The ID of the hubspot user associated with the access token.
      *
      * @return self
      */
