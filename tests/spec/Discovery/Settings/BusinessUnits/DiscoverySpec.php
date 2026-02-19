@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Settings\BusinessUnits;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Settings\BusinessUnits\Api\BusinessUnitApi;
+use HubSpot\Client\Settings\BusinessUnits\Api\BusinessUnitsApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Settings\BusinessUnits\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +22,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->businessUnitApi()->shouldHaveType(BusinessUnitApi::class);
+        $this->businessUnitsApi()->shouldHaveType(BusinessUnitsApi::class);
     }
 }
