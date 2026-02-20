@@ -14,14 +14,14 @@ use HubSpot\Client\Marketing\Events\Api\SubscriberStateChangesApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BasicApi                   basicApi()
- * @method BatchApi                   batchApi()
- * @method EventAttendeesApi          eventAttendeesApi()
- * @method EventStatusApi             eventStatusApi()
- * @method IdentifiersApi             identifiersApi()
- * @method ListAssociationsApi        listAssociationsApi()
- * @method ParticipantStateApi        participantStateApi()
- * @method SettingsApi                settingsApi()
- * @method SubscriberStateChangesApi  subscriberStateChangesApi()
+ * @method BasicApi                  basicApi()
+ * @method BatchApi                  batchApi()
+ * @method EventAttendeesApi         eventAttendeesApi()
+ * @method EventStatusApi            eventStatusApi()
+ * @method IdentifiersApi            identifiersApi()
+ * @method ListAssociationsApi       listAssociationsApi()
+ * @method ParticipantStateApi       participantStateApi()
+ * @method SettingsApi               settingsApi()
+ * @method SubscriberStateChangesApi subscriberStateChangesApi()
  */
 class Discovery extends DiscoveryBase {}

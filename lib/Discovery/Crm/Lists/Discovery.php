@@ -7,21 +7,22 @@ use HubSpot\Client\Crm\Lists\Api\JoinOrderApi;
 use HubSpot\Client\Crm\Lists\Api\ListManagementApi;
 use HubSpot\Client\Crm\Lists\Api\ListsApi;
 use HubSpot\Client\Crm\Lists\Api\MembershipsApi;
-use HubSpot\Discovery\Crm\Lists\Configuration;
+use HubSpot\Client\Crm\Lists\Configuration;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method IDMappingApi       idMappingApi()
- * @method JoinOrderApi       joinOrderApi()
- * @method ListManagementApi  listManagementApi()
- * @method ListsApi           listsApi()
- * @method MembershipsApi     membershipsApi()
+ * @method IDMappingApi      idMappingApi()
+ * @method JoinOrderApi      joinOrderApi()
+ * @method ListManagementApi listManagementApi()
+ * @method ListsApi          listsApi()
+ * @method MembershipsApi    membershipsApi()
  */
-class Discovery extends DiscoveryBase {
-  public function idMappingApi()
-  {
-    $config = $this->config->convertToClientConfig(Configuration::class);
+class Discovery extends DiscoveryBase
+{
+    public function idMappingApi()
+    {
+        $config = $this->config->convertToClientConfig(Configuration::class);
 
-    return new IDMappingApi($this->client, $config);
-  }
+        return new IDMappingApi($this->client, $config);
+    }
 }
