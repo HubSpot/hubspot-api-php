@@ -1,6 +1,6 @@
 <?php
 /**
- * AssociationSpec
+ * BatchInputSimplePublicObjectBatchInputUpsert
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Leads\ObjectSerializer;
 
 /**
- * AssociationSpec Class Doc Comment
+ * BatchInputSimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
- * @description Defines the type, direction, and details of the relationship between two CRM objects.
  * @package  HubSpot\Client\Crm\Objects\Leads
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchInputSimplePublicObjectBatchInputUpsert implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssociationSpec';
+    protected static $openAPIModelName = 'BatchInputSimplePublicObjectBatchInputUpsert';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'association_category' => 'string',
-        'association_type_id' => 'int'
+        'inputs' => '\HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectBatchInputUpsert[]'
     ];
 
     /**
@@ -70,8 +68,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'association_category' => null,
-        'association_type_id' => 'int32'
+        'inputs' => null
     ];
 
     /**
@@ -80,8 +77,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'association_category' => false,
-        'association_type_id' => false
+        'inputs' => false
     ];
 
     /**
@@ -170,8 +166,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'association_category' => 'associationCategory',
-        'association_type_id' => 'associationTypeId'
+        'inputs' => 'inputs'
     ];
 
     /**
@@ -180,8 +175,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'association_category' => 'setAssociationCategory',
-        'association_type_id' => 'setAssociationTypeId'
+        'inputs' => 'setInputs'
     ];
 
     /**
@@ -190,8 +184,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'association_category' => 'getAssociationCategory',
-        'association_type_id' => 'getAssociationTypeId'
+        'inputs' => 'getInputs'
     ];
 
     /**
@@ -235,25 +228,6 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
-    public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
-    public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
-    public const ASSOCIATION_CATEGORY_WORK = 'WORK';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAssociationCategoryAllowableValues()
-    {
-        return [
-            self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
-            self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
-            self::ASSOCIATION_CATEGORY_USER_DEFINED,
-            self::ASSOCIATION_CATEGORY_WORK,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -270,8 +244,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('association_category', $data ?? [], null);
-        $this->setIfExists('association_type_id', $data ?? [], null);
+        $this->setIfExists('inputs', $data ?? [], null);
     }
 
     /**
@@ -301,20 +274,8 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['association_category'] === null) {
-            $invalidProperties[] = "'association_category' can't be null";
-        }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'association_category', must be one of '%s'",
-                $this->container['association_category'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['association_type_id'] === null) {
-            $invalidProperties[] = "'association_type_id' can't be null";
+        if ($this->container['inputs'] === null) {
+            $invalidProperties[] = "'inputs' can't be null";
         }
         return $invalidProperties;
     }
@@ -332,65 +293,28 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets association_category
+     * Gets inputs
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectBatchInputUpsert[]
      */
-    public function getAssociationCategory()
+    public function getInputs()
     {
-        return $this->container['association_category'];
+        return $this->container['inputs'];
     }
 
     /**
-     * Sets association_category
+     * Sets inputs
      *
-     * @param string $association_category The category of the association, such as \"HUBSPOT_DEFINED\".
+     * @param \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectBatchInputUpsert[] $inputs inputs
      *
      * @return self
      */
-    public function setAssociationCategory($association_category)
+    public function setInputs($inputs)
     {
-        if (is_null($association_category)) {
-            throw new \InvalidArgumentException('non-nullable association_category cannot be null');
+        if (is_null($inputs)) {
+            throw new \InvalidArgumentException('non-nullable inputs cannot be null');
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!in_array($association_category, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'association_category', must be one of '%s'",
-                    $association_category,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['association_category'] = $association_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets association_type_id
-     *
-     * @return int
-     */
-    public function getAssociationTypeId()
-    {
-        return $this->container['association_type_id'];
-    }
-
-    /**
-     * Sets association_type_id
-     *
-     * @param int $association_type_id The ID representing the specific type of association.
-     *
-     * @return self
-     */
-    public function setAssociationTypeId($association_type_id)
-    {
-        if (is_null($association_type_id)) {
-            throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
-        }
-        $this->container['association_type_id'] = $association_type_id;
+        $this->container['inputs'] = $inputs;
 
         return $this;
     }

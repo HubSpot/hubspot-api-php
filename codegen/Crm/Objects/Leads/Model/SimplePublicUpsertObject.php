@@ -1,6 +1,6 @@
 <?php
 /**
- * AssociationSpec
+ * SimplePublicUpsertObject
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Leads\ObjectSerializer;
 
 /**
- * AssociationSpec Class Doc Comment
+ * SimplePublicUpsertObject Class Doc Comment
  *
  * @category Class
- * @description Defines the type, direction, and details of the relationship between two CRM objects.
+ * @description Represents a CRM object that has either been created or updated (upserted)
  * @package  HubSpot\Client\Crm\Objects\Leads
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssociationSpec';
+    protected static $openAPIModelName = 'SimplePublicUpsertObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'association_category' => 'string',
-        'association_type_id' => 'int'
+        'archived' => 'bool',
+        'archived_at' => '\DateTime',
+        'created_at' => '\DateTime',
+        'id' => 'string',
+        'new' => 'bool',
+        'object_write_trace_id' => 'string',
+        'properties' => 'array<string,string>',
+        'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Leads\Model\ValueWithTimestamp[]>',
+        'updated_at' => '\DateTime',
+        'url' => 'string'
     ];
 
     /**
@@ -70,8 +78,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'association_category' => null,
-        'association_type_id' => 'int32'
+        'archived' => null,
+        'archived_at' => 'date-time',
+        'created_at' => 'date-time',
+        'id' => null,
+        'new' => null,
+        'object_write_trace_id' => null,
+        'properties' => null,
+        'properties_with_history' => null,
+        'updated_at' => 'date-time',
+        'url' => null
     ];
 
     /**
@@ -80,8 +96,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'association_category' => false,
-        'association_type_id' => false
+        'archived' => false,
+        'archived_at' => false,
+        'created_at' => false,
+        'id' => false,
+        'new' => false,
+        'object_write_trace_id' => false,
+        'properties' => false,
+        'properties_with_history' => false,
+        'updated_at' => false,
+        'url' => false
     ];
 
     /**
@@ -170,8 +194,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'association_category' => 'associationCategory',
-        'association_type_id' => 'associationTypeId'
+        'archived' => 'archived',
+        'archived_at' => 'archivedAt',
+        'created_at' => 'createdAt',
+        'id' => 'id',
+        'new' => 'new',
+        'object_write_trace_id' => 'objectWriteTraceId',
+        'properties' => 'properties',
+        'properties_with_history' => 'propertiesWithHistory',
+        'updated_at' => 'updatedAt',
+        'url' => 'url'
     ];
 
     /**
@@ -180,8 +212,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'association_category' => 'setAssociationCategory',
-        'association_type_id' => 'setAssociationTypeId'
+        'archived' => 'setArchived',
+        'archived_at' => 'setArchivedAt',
+        'created_at' => 'setCreatedAt',
+        'id' => 'setId',
+        'new' => 'setNew',
+        'object_write_trace_id' => 'setObjectWriteTraceId',
+        'properties' => 'setProperties',
+        'properties_with_history' => 'setPropertiesWithHistory',
+        'updated_at' => 'setUpdatedAt',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -190,8 +230,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'association_category' => 'getAssociationCategory',
-        'association_type_id' => 'getAssociationTypeId'
+        'archived' => 'getArchived',
+        'archived_at' => 'getArchivedAt',
+        'created_at' => 'getCreatedAt',
+        'id' => 'getId',
+        'new' => 'getNew',
+        'object_write_trace_id' => 'getObjectWriteTraceId',
+        'properties' => 'getProperties',
+        'properties_with_history' => 'getPropertiesWithHistory',
+        'updated_at' => 'getUpdatedAt',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -235,25 +283,6 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
-    public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
-    public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
-    public const ASSOCIATION_CATEGORY_WORK = 'WORK';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAssociationCategoryAllowableValues()
-    {
-        return [
-            self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
-            self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
-            self::ASSOCIATION_CATEGORY_USER_DEFINED,
-            self::ASSOCIATION_CATEGORY_WORK,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -270,8 +299,16 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('association_category', $data ?? [], null);
-        $this->setIfExists('association_type_id', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
+        $this->setIfExists('archived_at', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('new', $data ?? [], null);
+        $this->setIfExists('object_write_trace_id', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('properties_with_history', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -301,20 +338,23 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['association_category'] === null) {
-            $invalidProperties[] = "'association_category' can't be null";
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'association_category', must be one of '%s'",
-                $this->container['association_category'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-
-        if ($this->container['association_type_id'] === null) {
-            $invalidProperties[] = "'association_type_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['new'] === null) {
+            $invalidProperties[] = "'new' can't be null";
+        }
+        if ($this->container['properties'] === null) {
+            $invalidProperties[] = "'properties' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -332,65 +372,271 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets association_category
+     * Gets archived
      *
-     * @return string
+     * @return bool
      */
-    public function getAssociationCategory()
+    public function getArchived()
     {
-        return $this->container['association_category'];
+        return $this->container['archived'];
     }
 
     /**
-     * Sets association_category
+     * Sets archived
      *
-     * @param string $association_category The category of the association, such as \"HUBSPOT_DEFINED\".
+     * @param bool $archived Whether the object is archived.
      *
      * @return self
      */
-    public function setAssociationCategory($association_category)
+    public function setArchived($archived)
     {
-        if (is_null($association_category)) {
-            throw new \InvalidArgumentException('non-nullable association_category cannot be null');
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!in_array($association_category, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'association_category', must be one of '%s'",
-                    $association_category,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['association_category'] = $association_category;
+        $this->container['archived'] = $archived;
 
         return $this;
     }
 
     /**
-     * Gets association_type_id
+     * Gets archived_at
      *
-     * @return int
+     * @return \DateTime|null
      */
-    public function getAssociationTypeId()
+    public function getArchivedAt()
     {
-        return $this->container['association_type_id'];
+        return $this->container['archived_at'];
     }
 
     /**
-     * Sets association_type_id
+     * Sets archived_at
      *
-     * @param int $association_type_id The ID representing the specific type of association.
+     * @param \DateTime|null $archived_at The timestamp when the object was archived, in ISO 8601 format.
      *
      * @return self
      */
-    public function setAssociationTypeId($association_type_id)
+    public function setArchivedAt($archived_at)
     {
-        if (is_null($association_type_id)) {
-            throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
+        if (is_null($archived_at)) {
+            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
         }
-        $this->container['association_type_id'] = $association_type_id;
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at The timestamp when the object was created, in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The unique ID of the object.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets new
+     *
+     * @return bool
+     */
+    public function getNew()
+    {
+        return $this->container['new'];
+    }
+
+    /**
+     * Sets new
+     *
+     * @param bool $new Whether the property is new.
+     *
+     * @return self
+     */
+    public function setNew($new)
+    {
+        if (is_null($new)) {
+            throw new \InvalidArgumentException('non-nullable new cannot be null');
+        }
+        $this->container['new'] = $new;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_write_trace_id
+     *
+     * @return string|null
+     */
+    public function getObjectWriteTraceId()
+    {
+        return $this->container['object_write_trace_id'];
+    }
+
+    /**
+     * Sets object_write_trace_id
+     *
+     * @param string|null $object_write_trace_id An identifier used for tracing the write request for the object.
+     *
+     * @return self
+     */
+    public function setObjectWriteTraceId($object_write_trace_id)
+    {
+        if (is_null($object_write_trace_id)) {
+            throw new \InvalidArgumentException('non-nullable object_write_trace_id cannot be null');
+        }
+        $this->container['object_write_trace_id'] = $object_write_trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties
+     *
+     * @return array<string,string>
+     */
+    public function getProperties()
+    {
+        return $this->container['properties'];
+    }
+
+    /**
+     * Sets properties
+     *
+     * @param array<string,string> $properties Key value pairs representing the properties of the object.
+     *
+     * @return self
+     */
+    public function setProperties($properties)
+    {
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
+        }
+        $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets properties_with_history
+     *
+     * @return array<string,\HubSpot\Client\Crm\Objects\Leads\Model\ValueWithTimestamp[]>|null
+     */
+    public function getPropertiesWithHistory()
+    {
+        return $this->container['properties_with_history'];
+    }
+
+    /**
+     * Sets properties_with_history
+     *
+     * @param array<string,\HubSpot\Client\Crm\Objects\Leads\Model\ValueWithTimestamp[]>|null $properties_with_history Key-value pairs representing the properties of the object along with their history.
+     *
+     * @return self
+     */
+    public function setPropertiesWithHistory($properties_with_history)
+    {
+        if (is_null($properties_with_history)) {
+            throw new \InvalidArgumentException('non-nullable properties_with_history cannot be null');
+        }
+        $this->container['properties_with_history'] = $properties_with_history;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at The timestamp when the object was last updated, in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url The URL associated with the object.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
 
         return $this;
     }
