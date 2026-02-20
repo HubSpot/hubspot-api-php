@@ -6,7 +6,6 @@ on:
       - "master"
     paths:
       - '**.php'
-  pull_request:
 
 jobs:
   php-cs-fixer:
