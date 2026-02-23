@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.0...HEAD)
 
-## [14.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.0) - 2026-02-12
+## [14.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.0) - 2026-02-23
 
 ### CMS Source Code and HubDB
 
@@ -35,29 +35,111 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed method `crm()->extensions()->calling()->settingsApi()->archive()` to `crm()->extensions()->calling()->settingsApi()->remove()`.
 - Renamed method `crm()->extensions()->calling()->settingsApi()->getById()` to `crm()->extensions()->calling()->settingsApi()->get()`.
 - Renamed `crm()->lists()->mappingApi()` to `crm()->lists()->idMappingApi()`.
-- Deleted `crm()->lists()->foldersApi()` and move all methods into `crm()->lists()->listManagementApi()`.
+- Removed `crm()->lists()->foldersApi()` and moved all methods into `crm()->lists()->listManagementApi()`.
 - Moved `getPageOrderedByAddedToListDate()` method to `crm()->lists()->joinOrderApi()`.
 - Added `getConversionDetails()`, `scheduleOrUpdateConversion()` and `cancelConversion()` methods to `crm()->lists()->listManagementApi()`.
 - Added `list_permissions` and `membership_settings` properties to `HubSpot\Client\Crm\Lists\Model\ListCreateRequest` and `HubSpot\Client\Crm\Lists\Model\PublicObjectList`.
 - Added `is_public_list` property to `HubSpot\Client\Crm\Lists\Model\RecordListMembership`.
 - Changed property type from `filter_branch:PublicPropertyAssociationFilterBranchFilterBranchesInner` to `filter_branch:ListFilterUpdateRequestFilterBranch` in `HubSpot\Client\Crm\Lists\Model\ListFilterUpdateRequest` and `HubSpot\Client\Crm\Lists\Model\PublicObjectList`.
 - Updated the return type of the response object in `crm()->properties()->batchApi()->create()`, `crm()->properties()->batchApi()->read()` by removing `BatchResponsePropertyWithErrors` from the possible return types.
-- Added `locale` option to `crm()->properties()->batchApi()->read()`.
+- Added `locale` option to `crm()->properties()->batchApi()->read()`, `crm()->properties()->groupsApi()->getAll()`, `crm()->properties()->groupsApi()->getByName()`.
+- Added `data_sensitivity` and `locale` options to `crm()->properties()->coreApi()->getAll()` and `crm()->properties()->coreApi()->getByName()`.
+- Added `data_sensitivity` property to `HubSpot\Client\Crm\Properties\Model\BatchReadInputPropertyName`, `HubSpot\Client\Crm\Properties\Model\Property`, `HubSpot\Client\Crm\Properties\Model\PropertyCreate`.
+- Added properties `errors` and `num_errors` to `HubSpot\Client\Crm\Properties\Model\BatchResponseProperty`.
 
 ### CRM Objects
 
-- Updated the return type of the response object in `crm()->deals()->basicApi()->getPage()`, `crm()->lineItems()->basicApi()->getPage()`, `crm()->quotes()->basicApi()->getPage()`, `crm()->tickets()->basicApi()->getPage()`, `crm()->commerce()->invoices()->basicApi()->getPage()`, `crm()->objects()->calls()->basicApi()->getPage()`, `crm()->objects()->communications()->basicApi()->getPage()`, `crm()->objects()->emails()->basicApi()->getPage()`, `crm()->objects()->feedbackSubmissions()->basicApi()->getPage()`, `crm()->objects()->goals()->basicApi()->getPage()`, `crm()->objects()->leads()->basicApi()->getPage()`, `crm()->objects()->meetings()->basicApi()->getPage()`, `crm()->objects()->notes()->basicApi()->getPage()`, `crm()->objects()->postalMail()->basicApi()->getPage()`, `crm()->objects()->tasks()->basicApi()->getPage()`, `crm()->objects()->taxes()->basicApi()->getPage()`, `crm()->objects()->basicApi()->getPage()` to return `CollectionResponseSimplePublicObjectWithAssociations | Error` instead of `CollectionResponseSimplePublicObjectWithAssociationsForwardPaging | Error`.
-- Updated the return type of the response object in `crm()->companies()->batchApi()->create()`, `crm()->companies()->batchApi()->read()`, `crm()->companies()->batchApi()->update()`, `crm()->deals()->batchApi()->create()`, `crm()->deals()->batchApi()->read()`, `crm()->deals()->batchApi()->update()`, `crm()->lineItems()->batchApi()->create()`, `crm()->lineItems()->batchApi()->read()`, `crm()->lineItems()->batchApi()->update()` , `crm()->quotes()->batchApi()->create()`, `crm()->quotes()->batchApi()->read()`, `crm()->quotes()->batchApi()->update()` , `crm()->tickets()->batchApi()->create()`, `crm()->tickets()->batchApi()->read()`, `crm()->tickets()->batchApi()->update()`, `crm()->commerce()->invoices()->batchApi()->create()`, `crm()->commerce()->invoices()->batchApi()->read()`, `crm()->commerce()->invoices()->batchApi()->update()`, `crm()->objects()->calls()->batchApi()->create()`, `crm()->objects()->calls()->batchApi()->read()`, `crm()->objects()->calls()->batchApi()->update()`, `crm()->objects()->communications()->batchApi()->create()`, `crm()->objects()->communications()->batchApi()->read()`, `crm()->objects()->communications()->batchApi()->update()`, `crm()->objects()->emails()->batchApi()->create()`, `crm()->objects()->emails()->batchApi()->read()`, `crm()->objects()->emails()->batchApi()->update()`, `crm()->objects()->feedbackSubmissions()->batchApi()->read()`, `crm()->objects()->goals()->batchApi()->create()`, `crm()->objects()->goals()->batchApi()->read()`, `crm()->objects()->goals()->batchApi()->update()`, `crm()->objects()->leads()->batchApi()->create()`, `crm()->objects()->leads()->batchApi()->read()`, `crm()->objects()->leads()->batchApi()->update()`, `crm()->objects()->meetings()->batchApi()->create()`, `crm()->objects()->meetings()->batchApi()->read()`, `crm()->objects()->meetings()->batchApi()->update()`, `crm()->objects()->notes()->batchApi()->create()`, `crm()->objects()->notes()->batchApi()->read()`, `crm()->objects()->notes()->batchApi()->update()`, `crm()->objects()->postalMail()->batchApi()->create()`, `crm()->objects()->postalMail()->batchApi()->read()`, `crm()->objects()->postalMail()->batchApi()->update()`, `crm()->objects()->tasks()->batchApi()->create()`, `crm()->objects()->tasks()->batchApi()->read()`, `crm()->objects()->tasks()->batchApi()->update()`, `crm()->objects()->taxes()->batchApi()->create()`, `crm()->objects()->taxes()->batchApi()->read()`, `crm()->objects()->taxes()->batchApi()->update()`, `crm()->objects()->batchApi()->create()`, `crm()->objects()->batchApi()->read()`, `crm()->objects()->batchApi()->update()` by removing `BatchResponseSimplePublicObjectWithErrors` from the possible return types.
-- Updated the return type of the response object in `crm()->companies()->batchApi()->upsert()`, `crm()->deals()->batchApi()->upsert()`, `crm()->lineItems()->batchApi()->upsert()`, `crm()->quotes()->batchApi()->upsert()`, `crm()->tickets()->batchApi()->upsert()`, `crm()->commerce()->invoices()->batchApi()->upsert()`, `crm()->objects()->calls()->batchApi()->upsert()`, `crm()->objects()->communications()->batchApi()->upsert()`, `crm()->objects()->emails()->batchApi()->upsert()`, `crm()->objects()->goals()->batchApi()->upsert()` , `crm()->objects()->meetings()->batchApi()->upsert()` , `crm()->objects()->notes()->batchApi()->upsert()` , `crm()->objects()->postalMail()->batchApi()->upsert()`, `crm()->objects()->tasks()->batchApi()->upsert()`, `crm()->objects()->taxes()->batchApi()->upsert()`, `crm()->objects()->batchApi()->upsert()` by removing `BatchResponseSimplePublicUpsertObjectWithErrors` from the possible return types.
-- Updated the return type of the response object in `crm()->companies()->searchApi()->doSearch()`, `crm()->deals()->searchApi()->doSearch()`, `crm()->lineItems()->searchApi()->doSearch()`, `crm()->quotes()->searchApi()->doSearch()`, `crm()->tickets()->searchApi()->doSearch()`, `crm()->commerce()->invoices()->searchApi()->doSearch()`, `crm()->objects()->calls()->searchApi()->doSearch()`, `crm()->objects()->communications()->searchApi()->doSearch()`, `crm()->objects()->emails()->searchApi()->doSearch()`, `crm()->objects()->feedbackSubmissions()->searchApi()->doSearch()`, `crm()->objects()->goals()->searchApi()->doSearch()`, `crm()->objects()->leads()->searchApi()->doSearch()`, `crm()->objects()->meetings()->searchApi()->doSearch()`, `crm()->objects()->notes()->searchApi()->doSearch()`, `crm()->objects()->postalMail()->searchApi()->doSearch()`, `crm()->objects()->tasks()->searchApi()->doSearch()`, `crm()->objects()->taxes()->searchApi()->doSearch()`, `crm()->objects()->searchApi()->doSearch()` to return `CollectionResponseWithTotalSimplePublicObject | Error` instead of `CollectionResponseWithTotalSimplePublicObjectForwardPaging | Error`.
-- Added properties `errors` and `num_errors` to `HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Commerce\Invoices\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Commerce\Invoices\Model\BatchResponseSimplePublicUpsertObject`,`HubSpot\Client\Crm\Objects\Calls\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Calls\Model\BatchResponseSimplePublicUpsertObject`,`HubSpot\Client\Crm\Objects\Communications\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Communications\Model\BatchResponseSimplePublicUpsertObject`,`HubSpot\Client\Crm\Objects\Emails\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Emails\Model\BatchResponseSimplePublicUpsertObject`,`HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject`,`HubSpot\Client\Crm\Objects\Goals\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Goals\Model\BatchResponseSimplePublicUpsertObject`,`HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Meetings\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Meetings\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Tasks\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Tasks\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Taxes\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Taxes\Model\BatchResponseSimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject`, `HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject`.
-- Added property `url` to `HubSpot\Client\Crm\Companies\Model\SimplePublicObject`, `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectWithAssociations`,
-`HubSpot\Client\Crm\Companies\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations`,
-`HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations`,
-`HubSpot\Client\Crm\LineItems\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectWithAssociations`,
-`HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations`,
-`HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicUpsertObject`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObject`, `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations`,
-`HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject`.
+- Updated the return type of `basicApi()->getPage()` in
+  `crm()->deals()`, `crm()->lineItems()`, `crm()->quotes()`, `crm()->tickets()`,
+  `crm()->commerce()->invoices()`, `crm()->objects()->calls()`,
+  `crm()->objects()->communications()`, `crm()->objects()->emails()`,
+  `crm()->objects()->feedbackSubmissions()`, `crm()->objects()->goals()`,
+  `crm()->objects()->meetings()`, `crm()->objects()->notes()`,
+  `crm()->objects()->postalMail()`, `crm()->objects()->tasks()`,
+  `crm()->objects()->taxes()` and `crm()->objects()`
+  to return `CollectionResponseSimplePublicObjectWithAssociations | Error` instead of
+  `CollectionResponseSimplePublicObjectWithAssociationsForwardPaging | Error`.
+- Updated the return type of `batchApi()->create()`, `batchApi()->read()` and `batchApi()->update()` in
+  `crm()->companies()`, `crm()->deals()`, `crm()->lineItems()`, `crm()->quotes()`,
+  `crm()->tickets()`, `crm()->commerce()->invoices()`, `crm()->objects()->calls()`,
+  `crm()->objects()->communications()`, `crm()->objects()->emails()`,
+  `crm()->objects()->feedbackSubmissions()` (read only), `crm()->objects()->goals()`,
+  `crm()->objects()->leads()`, `crm()->objects()->meetings()`, `crm()->objects()->notes()`,
+  `crm()->objects()->postalMail()`, `crm()->objects()->tasks()`,
+  `crm()->objects()->taxes()` and `crm()->objects()`
+  by removing `BatchResponseSimplePublicObjectWithErrors` from the possible return types.
+- Updated the return type of `batchApi()->upsert()` in
+  `crm()->companies()`, `crm()->deals()`, `crm()->lineItems()`, `crm()->quotes()`,
+  `crm()->tickets()`, `crm()->commerce()->invoices()`, `crm()->objects()->calls()`,
+  `crm()->objects()->communications()`, `crm()->objects()->emails()`,
+  `crm()->objects()->goals()`, `crm()->objects()->leads()`, `crm()->objects()->meetings()`,
+  `crm()->objects()->notes()`, `crm()->objects()->postalMail()`, `crm()->objects()->tasks()`,
+  `crm()->objects()->taxes()` and `crm()->objects()`
+  by removing `BatchResponseSimplePublicUpsertObjectWithErrors` from the possible return types.
+- Updated the return type of `searchApi()->doSearch()` in
+  `crm()->companies()`, `crm()->deals()`, `crm()->lineItems()`, `crm()->quotes()`,
+  `crm()->tickets()`, `crm()->commerce()->invoices()`, `crm()->objects()->calls()`,
+  `crm()->objects()->communications()`, `crm()->objects()->emails()`,
+  `crm()->objects()->feedbackSubmissions()`, `crm()->objects()->goals()`,
+  `crm()->objects()->leads()`, `crm()->objects()->meetings()`, `crm()->objects()->notes()`,
+  `crm()->objects()->postalMail()`, `crm()->objects()->tasks()`,
+  `crm()->objects()->taxes()` and `crm()->objects()`
+  to return `CollectionResponseWithTotalSimplePublicObject | Error` instead of
+  `CollectionResponseWithTotalSimplePublicObjectForwardPaging | Error`.
+- Added properties `errors` and `num_errors` to
+  `HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Deals\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\LineItems\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Quotes\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Tickets\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Commerce\Invoices\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Commerce\Invoices\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Calls\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Calls\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Communications\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Communications\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Emails\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Emails\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Goals\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Goals\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Leads\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Meetings\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Meetings\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Notes\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Tasks\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Tasks\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Taxes\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Taxes\Model\BatchResponseSimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject`.
+- Added property `url` to
+  `HubSpot\Client\Crm\Companies\Model\SimplePublicObject`,
+  `HubSpot\Client\Crm\Companies\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\Companies\Model\SimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\LineItems\Model\SimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicUpsertObject`,
+  `HubSpot\Client\Crm\Objects\Model\SimplePublicObject`,
+  `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations`,
+  `HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject`.
 - Removed `crm()->objects()->leads()->batchApi()->upsert()` method.
 
 ### CRM Associations V3
@@ -85,6 +167,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 to
 `$association_type_id, $from_object_type, $to_object_type`.
 - Added properties `errors` and `num_errors` to `HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair`, `HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel`, `HubSpot\Client\Crm\Associations\V4\Schema\Model\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult` and `HubSpot\Client\Crm\Associations\V4\Schema\Model\BatchResponsePublicAssociationDefinitionUserConfiguration`.
+
+### Marketing
+
+- Renamed `marketing()->emails()->marketingEmailsApi()` to `marketing()->emails()->emailsApi()`.
+- Changed parameter name and type from `ContentCloneRequestVNext $content_clone_request_v_next` to `EmailCloneRequestVNext $email_clone_request_v_next` in `marketing()->emails()->emailsApi()->callClone()`.
+- Added `archived`, `included_properties`, `include_stats`, `marketing_campaign_names`, `variant_stats` and `workflow_names` parameters to `marketing()->emails()->emailsApi()->getAbTestVariation()`.
+- Added `campaign`, `published_after`, `published_at`, `published_before` and `variant_stats` parameters to `marketing()->emails()->emailsApi()->getPage()`.
+- Added `variant_stats` optional parameter to `marketing()->emails()->emailsApi()->getById()`.
+- Added `folder_id_v2` property to `HubSpot\Client\Marketing\Emails\Model\EmailCreateRequest` and `HubSpot\Marketing\Emails\Model\EmailUpdateRequest`.
+- Added `all_email_campaign_ids`, `campaign_utm`, `cloned_from`, `email_campaign_group_id`, `email_template_mode`, `folder_id_v2`, `is_ab`, `preview_key`, `primary_email_campaign_id`, `published_by_email`, `published_by_name`, `teams_with_access`, `unpublished_at` and `users_with_access` properties to `HubSpot\Client\Marketing\Emails\Model\PublicEmail`.
+- Added `is_ab_variation` property to `HubSpot\Client\Marketing\Emails\Model\PublicEmailTestingDetails`.
+- Renamed `marketing()->events()->addEventAttendeesApi()` to `marketing()->events()->eventAttendeesApi()`.
+- Renamed `marketing()->events()->changePropertyApi()` to `marketing()->events()->eventStatusApi()`.
+- Renamed `marketing()->events()->retrieveParticipantStateApi()` to `marketing()->events()->participantStateApi()`.
+- Added `event_status_v2` property to `HubSpot\Client\Marketing\Events\Model\MarketingEventPublicReadResponseV2`.
+- Added `source_upstream_deployable` property to `HubSpot\Client\Marketing\Events\Model\PropertyValue`.
+- Added `embed_type` property to `HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration`.
+- Changed property type from `fields:DependentFieldDependentField[]` to `fields:FieldGroupFieldsInner[]` in `HubSpot\Client\Marketing\Forms\Model\FieldGroup`.
+- Changed property type from `legal_consent_options:HubSpotFormDefinitionCreateRequestAllOfLegalConsentOptions` to `legal_consent_options:HubSpotFormDefinitionPatchRequestLegalConsentOptions` in `HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionPatchRequest`.
+- Renamed `marketing()->transactional()->publicSMTPTokensApi()` to `marketing()->transactional()->smtpTokensApi()`.
+- Renamed `marketing()->transactional()->singleSendApi()` to `marketing()->transactional()->sendTransactionalEmailApi()`.
+- Added `message` property to `HubSpot\Client\Marketing\Transactional\Model\EmailSendStatusView`.
+
+### CommunicationPreferences, Files, OAuth, Settings and Webhooks
+
+- Renamed `communicationPreferences()->definitionApi()` to `communicationPreferences()->definitionsApi()` API client.
+- Changed parameters order from `$file_id, $file = null, $charset_hunch = null, $options = null` to `$file_id, $charset_hunch = null, $file = null, $options = null` in `files()->filesApi()->replace()`.
+- Changed parameters order from `$file = null, $folder_id = null, $folder_path = null, $file_name = null, $charset_hunch = null, $options = null` to `$charset_hunch = null, $file = null, $file_name = null, $folder_id = null, $folder_path = null, $options = null` in `files()->filesApi()->upload()`.
+- Added `is_private_distribution` and `signed_access_token` properties to `HubSpot\Client\Oauth\Model\AccessTokenInfoResponse`.
+- Removed `refresh_token` property from `HubSpot\Client\Oauth\Model\TokenResponseIF`.
+- Added `hub_id`, `scopes` and `user_id` properties to `HubSpot\Client\Oauth\Model\TokenResponseIF`.
+- Renamed `settings()->businessUnits()->businessUnitApi()` to `settings()->businessUnits()->businessUnitsApi()`.
+- Renamed `settings()->users()->usersApi()->replace()` to `settings()->users()->usersApi()->update()`.
+- Added `event_type_name` property to `HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest` and `HubSpot\Client\Webhooks\Model\SubscriptionResponse`.
 
 ## [13.2.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/13.2.0) - 2025-12-17
 
