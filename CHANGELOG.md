@@ -140,7 +140,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `HubSpot\Client\Crm\Objects\Model\SimplePublicObject`,
   `HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations`,
   `HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject`.
-- Removed `crm()->objects()->leads()->batchApi()->upsert()` method.
 
 ### CRM Associations V3
 
