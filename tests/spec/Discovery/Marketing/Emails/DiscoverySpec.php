@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Marketing\Emails;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Marketing\Emails\Api\MarketingEmailsApi;
+use HubSpot\Client\Marketing\Emails\Api\EmailsApi;
 use HubSpot\Client\Marketing\Emails\Api\StatisticsApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Marketing\Emails\Discovery;
@@ -23,7 +23,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->marketingEmailsApi()->shouldHaveType(MarketingEmailsApi::class);
+        $this->emailsApi()->shouldHaveType(EmailsApi::class);
         $this->statisticsApi()->shouldHaveType(StatisticsApi::class);
     }
 }

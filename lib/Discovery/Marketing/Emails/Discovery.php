@@ -2,12 +2,12 @@
 
 namespace HubSpot\Discovery\Marketing\Emails;
 
-use HubSpot\Client\Marketing\Emails\Api\MarketingEmailsApi;
+use HubSpot\Client\Marketing\Emails\Api\EmailsApi;
 use HubSpot\Client\Marketing\Emails\Api\StatisticsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method MarketingEmailsApi marketingEmailsApi()
- * @method StatisticsApi      statisticsApi()
+ * @method EmailsApi     emailsApi()
+ * @method StatisticsApi statisticsApi()
  */
 class Discovery extends DiscoveryBase {}
