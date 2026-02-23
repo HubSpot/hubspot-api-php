@@ -1,6 +1,6 @@
 <?php
 /**
- * AssociationSpec
+ * BatchResponseSimplePublicUpsertObject
  *
  * PHP version 8.1
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Leads\ObjectSerializer;
 
 /**
- * AssociationSpec Class Doc Comment
+ * BatchResponseSimplePublicUpsertObject Class Doc Comment
  *
  * @category Class
- * @description Defines the type, direction, and details of the relationship between two CRM objects.
+ * @description Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
  * @package  HubSpot\Client\Crm\Objects\Leads
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AssociationSpec';
+    protected static $openAPIModelName = 'BatchResponseSimplePublicUpsertObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'association_category' => 'string',
-        'association_type_id' => 'int'
+        'completed_at' => '\DateTime',
+        'errors' => '\HubSpot\Client\Crm\Objects\Leads\Model\StandardError[]',
+        'links' => 'array<string,string>',
+        'num_errors' => 'int',
+        'requested_at' => '\DateTime',
+        'results' => '\HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicUpsertObject[]',
+        'started_at' => '\DateTime',
+        'status' => 'string'
     ];
 
     /**
@@ -70,8 +76,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'association_category' => null,
-        'association_type_id' => 'int32'
+        'completed_at' => 'date-time',
+        'errors' => null,
+        'links' => null,
+        'num_errors' => 'int32',
+        'requested_at' => 'date-time',
+        'results' => null,
+        'started_at' => 'date-time',
+        'status' => null
     ];
 
     /**
@@ -80,8 +92,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'association_category' => false,
-        'association_type_id' => false
+        'completed_at' => false,
+        'errors' => false,
+        'links' => false,
+        'num_errors' => false,
+        'requested_at' => false,
+        'results' => false,
+        'started_at' => false,
+        'status' => false
     ];
 
     /**
@@ -170,8 +188,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'association_category' => 'associationCategory',
-        'association_type_id' => 'associationTypeId'
+        'completed_at' => 'completedAt',
+        'errors' => 'errors',
+        'links' => 'links',
+        'num_errors' => 'numErrors',
+        'requested_at' => 'requestedAt',
+        'results' => 'results',
+        'started_at' => 'startedAt',
+        'status' => 'status'
     ];
 
     /**
@@ -180,8 +204,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'association_category' => 'setAssociationCategory',
-        'association_type_id' => 'setAssociationTypeId'
+        'completed_at' => 'setCompletedAt',
+        'errors' => 'setErrors',
+        'links' => 'setLinks',
+        'num_errors' => 'setNumErrors',
+        'requested_at' => 'setRequestedAt',
+        'results' => 'setResults',
+        'started_at' => 'setStartedAt',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -190,8 +220,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'association_category' => 'getAssociationCategory',
-        'association_type_id' => 'getAssociationTypeId'
+        'completed_at' => 'getCompletedAt',
+        'errors' => 'getErrors',
+        'links' => 'getLinks',
+        'num_errors' => 'getNumErrors',
+        'requested_at' => 'getRequestedAt',
+        'results' => 'getResults',
+        'started_at' => 'getStartedAt',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -235,23 +271,23 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
-    public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
-    public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
-    public const ASSOCIATION_CATEGORY_WORK = 'WORK';
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_COMPLETE = 'COMPLETE';
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getAssociationCategoryAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
-            self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
-            self::ASSOCIATION_CATEGORY_USER_DEFINED,
-            self::ASSOCIATION_CATEGORY_WORK,
+            self::STATUS_CANCELED,
+            self::STATUS_COMPLETE,
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
         ];
     }
 
@@ -270,8 +306,14 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('association_category', $data ?? [], null);
-        $this->setIfExists('association_type_id', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -301,21 +343,27 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['association_category'] === null) {
-            $invalidProperties[] = "'association_category' can't be null";
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!is_null($this->container['association_category']) && !in_array($this->container['association_category'], $allowedValues, true)) {
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'association_category', must be one of '%s'",
-                $this->container['association_category'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['association_type_id'] === null) {
-            $invalidProperties[] = "'association_type_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -332,65 +380,227 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets association_category
+     * Gets completed_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getAssociationCategory()
+    public function getCompletedAt()
     {
-        return $this->container['association_category'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets association_category
+     * Sets completed_at
      *
-     * @param string $association_category The category of the association, such as \"HUBSPOT_DEFINED\".
+     * @param \DateTime $completed_at The timestamp when the batch process was completed, in ISO 8601 format.
      *
      * @return self
      */
-    public function setAssociationCategory($association_category)
+    public function setCompletedAt($completed_at)
     {
-        if (is_null($association_category)) {
-            throw new \InvalidArgumentException('non-nullable association_category cannot be null');
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
-        $allowedValues = $this->getAssociationCategoryAllowableValues();
-        if (!in_array($association_category, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'association_category', must be one of '%s'",
-                    $association_category,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['association_category'] = $association_category;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
 
     /**
-     * Gets association_type_id
+     * Gets errors
      *
-     * @return int
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\StandardError[]|null
      */
-    public function getAssociationTypeId()
+    public function getErrors()
     {
-        return $this->container['association_type_id'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets association_type_id
+     * Sets errors
      *
-     * @param int $association_type_id The ID representing the specific type of association.
+     * @param \HubSpot\Client\Crm\Objects\Leads\Model\StandardError[]|null $errors errors
      *
      * @return self
      */
-    public function setAssociationTypeId($association_type_id)
+    public function setErrors($errors)
     {
-        if (is_null($association_type_id)) {
-            throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['association_type_id'] = $association_type_id;
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return array<string,string>|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param array<string,string>|null $links An object containing relevant links related to the batch request.
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        }
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_errors
+     *
+     * @return int|null
+     */
+    public function getNumErrors()
+    {
+        return $this->container['num_errors'];
+    }
+
+    /**
+     * Sets num_errors
+     *
+     * @param int|null $num_errors The total number of errors that occurred during the operation.
+     *
+     * @return self
+     */
+    public function setNumErrors($num_errors)
+    {
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
+        }
+        $this->container['num_errors'] = $num_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAt()
+    {
+        return $this->container['requested_at'];
+    }
+
+    /**
+     * Sets requested_at
+     *
+     * @param \DateTime|null $requested_at The timestamp when the batch process was initiated, in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setRequestedAt($requested_at)
+    {
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        }
+        $this->container['requested_at'] = $requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicUpsertObject[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicUpsertObject[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime $started_at The timestamp when the batch process began execution, in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status The status of the batch processing request. Can be: \"PENDING\", \"PROCESSING\", \"CANCELED\", or \"COMPLETE\".
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

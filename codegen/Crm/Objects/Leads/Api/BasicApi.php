@@ -428,7 +428,7 @@ class BasicApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObject',
                         $request,
@@ -464,7 +464,7 @@ class BasicApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObject',
@@ -665,7 +665,7 @@ class BasicApi
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
@@ -688,7 +688,7 @@ class BasicApi
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
@@ -792,7 +792,7 @@ class BasicApi
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -818,7 +818,7 @@ class BasicApi
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -873,7 +873,7 @@ class BasicApi
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1027,14 +1027,14 @@ class BasicApi
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of leads that can be read by a single request. (optional)
+     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\Leads\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Objects\Leads\Model\Error
      */
     public function getPage($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
@@ -1050,14 +1050,14 @@ class BasicApi
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of leads that can be read by a single request. (optional)
+     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\Leads\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Objects\Leads\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPageWithHttpInfo($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
@@ -1089,7 +1089,7 @@ class BasicApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociations',
+                        '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging',
                         $request,
                         $response,
                     );
@@ -1117,7 +1117,7 @@ class BasicApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociations',
+                '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging',
                 $request,
                 $response,
             );
@@ -1126,7 +1126,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociations',
+                        '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1154,7 +1154,7 @@ class BasicApi
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of leads that can be read by a single request. (optional)
+     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
@@ -1180,7 +1180,7 @@ class BasicApi
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of leads that can be read by a single request. (optional)
+     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
@@ -1190,7 +1190,7 @@ class BasicApi
      */
     public function getPageAsyncWithHttpInfo($limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociations';
+        $returnType = '\HubSpot\Client\Crm\Objects\Leads\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
         $request = $this->getPageRequest($limit, $after, $properties, $properties_with_history, $associations, $archived, $contentType);
 
         return $this->client
@@ -1235,7 +1235,7 @@ class BasicApi
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
-     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of leads that can be read by a single request. (optional)
+     * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
      * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
@@ -1382,7 +1382,7 @@ class BasicApi
      *
      * @param  string $leads_id leads_id (required)
      * @param  \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1402,7 +1402,7 @@ class BasicApi
      *
      * @param  string $leads_id (required)
      * @param  \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\Leads\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1503,7 +1503,7 @@ class BasicApi
      *
      * @param  string $leads_id (required)
      * @param  \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1526,7 +1526,7 @@ class BasicApi
      *
      * @param  string $leads_id (required)
      * @param  \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1578,7 +1578,7 @@ class BasicApi
      *
      * @param  string $leads_id (required)
      * @param  \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectInput $simple_public_object_input (required)
-     * @param  string|null $id_property The name of a property whose values are unique for this object (optional)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

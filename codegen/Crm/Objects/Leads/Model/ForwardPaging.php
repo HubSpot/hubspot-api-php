@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseSimplePublicObjectWithAssociations
+ * ForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\Leads\ObjectSerializer;
 
 /**
- * CollectionResponseSimplePublicObjectWithAssociations Class Doc Comment
+ * ForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects\Leads
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\Leads\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponseSimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess, \JsonSerializable
+class ForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseSimplePublicObjectWithAssociations';
+    protected static $openAPIModelName = 'ForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
       * @var string[]
       */
     protected static $openAPITypes = [
-        'paging' => '\HubSpot\Client\Crm\Objects\Leads\Model\Paging',
-        'results' => '\HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectWithAssociations[]'
+        'next' => '\HubSpot\Client\Crm\Objects\Leads\Model\NextPage'
     ];
 
     /**
@@ -69,8 +68,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'paging' => null,
-        'results' => null
+        'next' => null
     ];
 
     /**
@@ -79,8 +77,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'paging' => false,
-        'results' => false
+        'next' => false
     ];
 
     /**
@@ -169,8 +166,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
      * @var string[]
      */
     protected static $attributeMap = [
-        'paging' => 'paging',
-        'results' => 'results'
+        'next' => 'next'
     ];
 
     /**
@@ -179,8 +175,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
      * @var string[]
      */
     protected static $setters = [
-        'paging' => 'setPaging',
-        'results' => 'setResults'
+        'next' => 'setNext'
     ];
 
     /**
@@ -189,8 +184,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
      * @var string[]
      */
     protected static $getters = [
-        'paging' => 'getPaging',
-        'results' => 'getResults'
+        'next' => 'getNext'
     ];
 
     /**
@@ -250,8 +244,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('paging', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -281,9 +274,6 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -300,55 +290,28 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
 
 
     /**
-     * Gets paging
+     * Gets next
      *
-     * @return \HubSpot\Client\Crm\Objects\Leads\Model\Paging|null
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\NextPage|null
      */
-    public function getPaging()
+    public function getNext()
     {
-        return $this->container['paging'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets paging
+     * Sets next
      *
-     * @param \HubSpot\Client\Crm\Objects\Leads\Model\Paging|null $paging paging
+     * @param \HubSpot\Client\Crm\Objects\Leads\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setPaging($paging)
+    public function setNext($next)
     {
-        if (is_null($paging)) {
-            throw new \InvalidArgumentException('non-nullable paging cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['paging'] = $paging;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectWithAssociations[]
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \HubSpot\Client\Crm\Objects\Leads\Model\SimplePublicObjectWithAssociations[] $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
+        $this->container['next'] = $next;
 
         return $this;
     }
