@@ -205,7 +205,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -292,7 +292,7 @@ class BasicApi
         if (!preg_match("/.+/", $postal_mail_id)) {
             throw new \InvalidArgumentException("invalid value for \"postal_mail_id\" when calling BasicApi.archive, must conform to the pattern /.+/.");
         }
-        
+
 
         $resourcePath = '/crm/v3/objects/postal_mail/{postalMailId}';
         $formParams = [];
@@ -428,7 +428,7 @@ class BasicApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObject',
                         $request,
@@ -442,7 +442,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -481,7 +481,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -658,7 +658,7 @@ class BasicApi
     /**
      * Operation getById
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id postal_mail_id (required)
      * @param  string[]|null $properties properties (optional)
@@ -681,7 +681,7 @@ class BasicApi
     /**
      * Operation getByIdWithHttpInfo
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id (required)
      * @param  string[]|null $properties (optional)
@@ -737,7 +737,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -776,7 +776,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -785,7 +785,7 @@ class BasicApi
     /**
      * Operation getByIdAsync
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id (required)
      * @param  string[]|null $properties (optional)
@@ -811,7 +811,7 @@ class BasicApi
     /**
      * Operation getByIdAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id (required)
      * @param  string[]|null $properties (optional)
@@ -891,7 +891,7 @@ class BasicApi
         if (!preg_match("/.+/", $postal_mail_id)) {
             throw new \InvalidArgumentException("invalid value for \"postal_mail_id\" when calling BasicApi.getById, must conform to the pattern /.+/.");
         }
-        
+
 
 
 
@@ -1022,7 +1022,7 @@ class BasicApi
     /**
      * Operation getPage
      *
-     * 
+     *
      *
      * @param  int|null $limit limit (optional, default to 10)
      * @param  string|null $after after (optional)
@@ -1045,7 +1045,7 @@ class BasicApi
     /**
      * Operation getPageWithHttpInfo
      *
-     * 
+     *
      *
      * @param  int|null $limit (optional, default to 10)
      * @param  string|null $after (optional)
@@ -1101,7 +1101,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1140,7 +1140,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1149,7 +1149,7 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
-     * 
+     *
      *
      * @param  int|null $limit (optional, default to 10)
      * @param  string|null $after (optional)
@@ -1175,7 +1175,7 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  int|null $limit (optional, default to 10)
      * @param  string|null $after (optional)
@@ -1378,7 +1378,7 @@ class BasicApi
     /**
      * Operation update
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input simple_public_object_input (required)
@@ -1398,7 +1398,7 @@ class BasicApi
     /**
      * Operation updateWithHttpInfo
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
@@ -1451,7 +1451,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1490,7 +1490,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1499,7 +1499,7 @@ class BasicApi
     /**
      * Operation updateAsync
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
@@ -1522,7 +1522,7 @@ class BasicApi
     /**
      * Operation updateAsyncWithHttpInfo
      *
-     * 
+     *
      *
      * @param  string $postal_mail_id (required)
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\SimplePublicObjectInput $simple_public_object_input (required)
@@ -1596,7 +1596,7 @@ class BasicApi
         if (!preg_match("/.+/", $postal_mail_id)) {
             throw new \InvalidArgumentException("invalid value for \"postal_mail_id\" when calling BasicApi.update, must conform to the pattern /.+/.");
         }
-        
+
         // verify the required parameter 'simple_public_object_input' is set
         if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
             throw new \InvalidArgumentException(
