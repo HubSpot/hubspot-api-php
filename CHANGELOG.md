@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.1...HEAD)
+
+## [14.0.1](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.1) - 2026-02-25
+
+### CRM Objects
+
+- Updated all create methods of CRM objects to return status code `201`.
 
 ## [14.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.0) - 2026-02-23
 
@@ -1262,3 +1268,5 @@ to
 [13.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.1.0
 [13.1.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.1.1
 [13.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/13.2.0
+[14.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.0
+[14.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.1
