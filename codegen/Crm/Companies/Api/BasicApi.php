@@ -208,7 +208,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -295,7 +295,7 @@ class BasicApi
         if (!preg_match("/.+/", $company_id)) {
             throw new \InvalidArgumentException("invalid value for \"company_id\" when calling BasicApi.archive, must conform to the pattern /.+/.");
         }
-        
+
 
         $resourcePath = '/crm/v3/objects/companies/{companyId}';
         $formParams = [];
@@ -431,7 +431,7 @@ class BasicApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Companies\Model\SimplePublicObject',
                         $request,
@@ -444,8 +444,6 @@ class BasicApi
                         $response,
                     );
             }
-
-            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -484,7 +482,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -740,7 +738,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -779,7 +777,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -894,7 +892,7 @@ class BasicApi
         if (!preg_match("/.+/", $company_id)) {
             throw new \InvalidArgumentException("invalid value for \"company_id\" when calling BasicApi.getById, must conform to the pattern /.+/.");
         }
-        
+
 
 
 
@@ -1104,7 +1102,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1143,7 +1141,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1450,7 +1448,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1489,7 +1487,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1739,7 +1737,7 @@ class BasicApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1778,7 +1776,7 @@ class BasicApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1884,7 +1882,7 @@ class BasicApi
         if (!preg_match("/.+/", $company_id)) {
             throw new \InvalidArgumentException("invalid value for \"company_id\" when calling BasicApi.update, must conform to the pattern /.+/.");
         }
-        
+
         // verify the required parameter 'simple_public_object_input' is set
         if ($simple_public_object_input === null || (is_array($simple_public_object_input) && count($simple_public_object_input) === 0)) {
             throw new \InvalidArgumentException(
