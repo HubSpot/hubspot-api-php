@@ -238,6 +238,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ASSOCIATION_CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
     public const ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
     public const ASSOCIATION_CATEGORY_USER_DEFINED = 'USER_DEFINED';
+    public const ASSOCIATION_CATEGORY_WORK = 'WORK';
 
     /**
      * Gets allowable values of the enum
@@ -250,6 +251,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ASSOCIATION_CATEGORY_HUBSPOT_DEFINED,
             self::ASSOCIATION_CATEGORY_INTEGRATOR_DEFINED,
             self::ASSOCIATION_CATEGORY_USER_DEFINED,
+            self::ASSOCIATION_CATEGORY_WORK,
         ];
     }
 

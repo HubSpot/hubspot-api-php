@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseWithTotalSimplePublicObject
+ * CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Deals\ObjectSerializer;
 
 /**
- * CollectionResponseWithTotalSimplePublicObject Class Doc Comment
+ * CollectionResponseSimplePublicObjectWithAssociationsForwardPaging Class Doc Comment
  *
  * @category Class
- * @description Represents a list of simple objects returned from an API request, along with the total count of objects available.
  * @package  HubSpot\Client\Crm\Deals
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseWithTotalSimplePublicObject';
+    protected static $openAPIModelName = 'CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,8 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'paging' => '\HubSpot\Client\Crm\Deals\Model\Paging',
-        'results' => '\HubSpot\Client\Crm\Deals\Model\SimplePublicObject[]',
-        'total' => 'int'
+        'paging' => '\HubSpot\Client\Crm\Deals\Model\ForwardPaging',
+        'results' => '\HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations[]'
     ];
 
     /**
@@ -72,8 +70,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
       */
     protected static $openAPIFormats = [
         'paging' => null,
-        'results' => null,
-        'total' => 'int32'
+        'results' => null
     ];
 
     /**
@@ -83,8 +80,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
       */
     protected static array $openAPINullables = [
         'paging' => false,
-        'results' => false,
-        'total' => false
+        'results' => false
     ];
 
     /**
@@ -174,8 +170,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
      */
     protected static $attributeMap = [
         'paging' => 'paging',
-        'results' => 'results',
-        'total' => 'total'
+        'results' => 'results'
     ];
 
     /**
@@ -185,8 +180,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
      */
     protected static $setters = [
         'paging' => 'setPaging',
-        'results' => 'setResults',
-        'total' => 'setTotal'
+        'results' => 'setResults'
     ];
 
     /**
@@ -196,8 +190,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
      */
     protected static $getters = [
         'paging' => 'getPaging',
-        'results' => 'getResults',
-        'total' => 'getTotal'
+        'results' => 'getResults'
     ];
 
     /**
@@ -259,7 +252,6 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     {
         $this->setIfExists('paging', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
     }
 
     /**
@@ -292,9 +284,6 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
         if ($this->container['results'] === null) {
             $invalidProperties[] = "'results' can't be null";
         }
-        if ($this->container['total'] === null) {
-            $invalidProperties[] = "'total' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -313,7 +302,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Gets paging
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\Paging|null
+     * @return \HubSpot\Client\Crm\Deals\Model\ForwardPaging|null
      */
     public function getPaging()
     {
@@ -323,7 +312,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Sets paging
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\Paging|null $paging paging
+     * @param \HubSpot\Client\Crm\Deals\Model\ForwardPaging|null $paging paging
      *
      * @return self
      */
@@ -340,7 +329,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\Deals\Model\SimplePublicObject[]
+     * @return \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations[]
      */
     public function getResults()
     {
@@ -350,7 +339,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectWithAssociations[] $results results
      *
      * @return self
      */
@@ -360,33 +349,6 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
             throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
         $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param int $total The number of available results
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            throw new \InvalidArgumentException('non-nullable total cannot be null');
-        }
-        $this->container['total'] = $total;
 
         return $this;
     }

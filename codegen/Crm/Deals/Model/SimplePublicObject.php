@@ -65,7 +65,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>',
         'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Deals\Model\ValueWithTimestamp[]>',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'url' => 'string'
     ];
 
     /**
@@ -83,7 +84,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'object_write_trace_id' => null,
         'properties' => null,
         'properties_with_history' => null,
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'url' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'object_write_trace_id' => false,
         'properties' => false,
         'properties_with_history' => false,
-        'updated_at' => false
+        'updated_at' => false,
+        'url' => false
     ];
 
     /**
@@ -195,7 +198,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties',
         'properties_with_history' => 'propertiesWithHistory',
-        'updated_at' => 'updatedAt'
+        'updated_at' => 'updatedAt',
+        'url' => 'url'
     ];
 
     /**
@@ -211,7 +215,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties',
         'properties_with_history' => 'setPropertiesWithHistory',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -227,7 +232,8 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties',
         'properties_with_history' => 'getPropertiesWithHistory',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -295,6 +301,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('properties', $data ?? [], null);
         $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -566,6 +573,33 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url The URL associated with the object.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
 
         return $this;
     }
