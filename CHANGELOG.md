@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.2...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.3...HEAD)
+
+## [14.0.3](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.3) - 2026-03-05
+
+### CRM Association V4
+
+- Updated `crm()->associations()->v4()->basicApi()->create()` method to return status code `201`.
+- Updated the return type of the response object in `crm()->associations()->v4()->basicApi()->create()` to return `LabelsBetweenObjectPair | Error` instead of `CreatedResponseLabelsBetweenObjectPair | Error`.
+- Updated the return type of the response object in `crm()->associations()->v4()->basicApi()->getPage()` to return `CollectionResponseMultiAssociatedObjectWithLabelForwardPaging | Error` instead of `CollectionResponseMultiAssociatedObjectWithLabel | Error`.
 
 ## [14.0.2](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.2) - 2026-02-27
 
@@ -1208,7 +1216,7 @@ to
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/13.2.0...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.3...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1277,3 +1285,4 @@ to
 [14.0.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.0
 [14.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.1
 [14.0.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.2
+[14.0.3]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.3
