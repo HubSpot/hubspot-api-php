@@ -142,8 +142,8 @@ class BatchApi
      *
      * Delete
      *
-     * @param  string $from_object_type Specifies the type of the source object in the batch association deletion. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the batch association deletion. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiArchive $batch_input_public_association_multi_archive batch_input_public_association_multi_archive (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -162,8 +162,8 @@ class BatchApi
      *
      * Delete
      *
-     * @param  string $from_object_type Specifies the type of the source object in the batch association deletion. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the batch association deletion. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiArchive $batch_input_public_association_multi_archive (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -263,8 +263,8 @@ class BatchApi
      *
      * Delete
      *
-     * @param  string $from_object_type Specifies the type of the source object in the batch association deletion. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the batch association deletion. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiArchive $batch_input_public_association_multi_archive (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -286,8 +286,8 @@ class BatchApi
      *
      * Delete
      *
-     * @param  string $from_object_type Specifies the type of the source object in the batch association deletion. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the batch association deletion. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiArchive $batch_input_public_association_multi_archive (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -338,8 +338,8 @@ class BatchApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $from_object_type Specifies the type of the source object in the batch association deletion. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the batch association deletion. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiArchive $batch_input_public_association_multi_archive (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -467,8 +467,8 @@ class BatchApi
      *
      * Delete Specific Labels
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLabels'] to see the possible values for this operation
      *
@@ -487,8 +487,8 @@ class BatchApi
      *
      * Delete Specific Labels
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLabels'] to see the possible values for this operation
      *
@@ -588,8 +588,8 @@ class BatchApi
      *
      * Delete Specific Labels
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLabels'] to see the possible values for this operation
      *
@@ -611,8 +611,8 @@ class BatchApi
      *
      * Delete Specific Labels
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLabels'] to see the possible values for this operation
      *
@@ -663,8 +663,8 @@ class BatchApi
     /**
      * Create request for operation 'archiveLabels'
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLabels'] to see the possible values for this operation
      *
@@ -792,8 +792,8 @@ class BatchApi
      *
      * Create
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -812,8 +812,8 @@ class BatchApi
      *
      * Create
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -913,8 +913,8 @@ class BatchApi
      *
      * Create
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -936,8 +936,8 @@ class BatchApi
      *
      * Create
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -988,8 +988,8 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicAssociationMultiPost $batch_input_public_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -1117,8 +1117,8 @@ class BatchApi
      *
      * Create Default Associations
      *
-     * @param  string $from_object_type Specifies the type of the source object in the association. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post batch_input_public_default_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
@@ -1137,8 +1137,8 @@ class BatchApi
      *
      * Create Default Associations
      *
-     * @param  string $from_object_type Specifies the type of the source object in the association. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
@@ -1238,8 +1238,8 @@ class BatchApi
      *
      * Create Default Associations
      *
-     * @param  string $from_object_type Specifies the type of the source object in the association. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
@@ -1261,8 +1261,8 @@ class BatchApi
      *
      * Create Default Associations
      *
-     * @param  string $from_object_type Specifies the type of the source object in the association. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
@@ -1313,8 +1313,8 @@ class BatchApi
     /**
      * Create request for operation 'createDefault'
      *
-     * @param  string $from_object_type Specifies the type of the source object in the association. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicDefaultAssociationMultiPost $batch_input_public_default_association_multi_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
@@ -1442,8 +1442,8 @@ class BatchApi
      *
      * Read
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicFetchAssociationsBatchRequest $batch_input_public_fetch_associations_batch_request batch_input_public_fetch_associations_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
@@ -1462,8 +1462,8 @@ class BatchApi
      *
      * Read
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicFetchAssociationsBatchRequest $batch_input_public_fetch_associations_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
@@ -1563,8 +1563,8 @@ class BatchApi
      *
      * Read
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicFetchAssociationsBatchRequest $batch_input_public_fetch_associations_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
@@ -1586,8 +1586,8 @@ class BatchApi
      *
      * Read
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicFetchAssociationsBatchRequest $batch_input_public_fetch_associations_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
@@ -1638,8 +1638,8 @@ class BatchApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string $from_object_type The type of the from Object (required)
-     * @param  string $to_object_type The type of the to Object (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\BatchInputPublicFetchAssociationsBatchRequest $batch_input_public_fetch_associations_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *

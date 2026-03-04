@@ -1,6 +1,6 @@
 <?php
 /**
- * CreatedResponseLabelsBetweenObjectPair
+ * ForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
 
 /**
- * CreatedResponseLabelsBetweenObjectPair Class Doc Comment
+ * ForwardPaging Class Doc Comment
  *
  * @category Class
- * @description Contains the details of the labels that were created to define associations between a specific pair of objects.
  * @package  HubSpot\Client\Crm\Associations\V4
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSerializable
+class ForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreatedResponseLabelsBetweenObjectPair';
+    protected static $openAPIModelName = 'ForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_resource_id' => 'string',
-        'entity' => '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair',
-        'location' => 'string'
+        'next' => '\HubSpot\Client\Crm\Associations\V4\Model\NextPage'
     ];
 
     /**
@@ -71,9 +68,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'created_resource_id' => null,
-        'entity' => null,
-        'location' => null
+        'next' => null
     ];
 
     /**
@@ -82,9 +77,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'created_resource_id' => false,
-        'entity' => false,
-        'location' => false
+        'next' => false
     ];
 
     /**
@@ -173,9 +166,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_resource_id' => 'createdResourceId',
-        'entity' => 'entity',
-        'location' => 'location'
+        'next' => 'next'
     ];
 
     /**
@@ -184,9 +175,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'created_resource_id' => 'setCreatedResourceId',
-        'entity' => 'setEntity',
-        'location' => 'setLocation'
+        'next' => 'setNext'
     ];
 
     /**
@@ -195,9 +184,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'created_resource_id' => 'getCreatedResourceId',
-        'entity' => 'getEntity',
-        'location' => 'getLocation'
+        'next' => 'getNext'
     ];
 
     /**
@@ -257,9 +244,7 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('created_resource_id', $data ?? [], null);
-        $this->setIfExists('entity', $data ?? [], null);
-        $this->setIfExists('location', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -289,12 +274,6 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['created_resource_id'] === null) {
-            $invalidProperties[] = "'created_resource_id' can't be null";
-        }
-        if ($this->container['entity'] === null) {
-            $invalidProperties[] = "'entity' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -311,82 +290,28 @@ class CreatedResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets created_resource_id
+     * Gets next
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\NextPage|null
      */
-    public function getCreatedResourceId()
+    public function getNext()
     {
-        return $this->container['created_resource_id'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets created_resource_id
+     * Sets next
      *
-     * @param string $created_resource_id The unique identifier of the newly created resource.
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setCreatedResourceId($created_resource_id)
+    public function setNext($next)
     {
-        if (is_null($created_resource_id)) {
-            throw new \InvalidArgumentException('non-nullable created_resource_id cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['created_resource_id'] = $created_resource_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets entity
-     *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair
-     */
-    public function getEntity()
-    {
-        return $this->container['entity'];
-    }
-
-    /**
-     * Sets entity
-     *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair $entity entity
-     *
-     * @return self
-     */
-    public function setEntity($entity)
-    {
-        if (is_null($entity)) {
-            throw new \InvalidArgumentException('non-nullable entity cannot be null');
-        }
-        $this->container['entity'] = $entity;
-
-        return $this;
-    }
-
-    /**
-     * Gets location
-     *
-     * @return string|null
-     */
-    public function getLocation()
-    {
-        return $this->container['location'];
-    }
-
-    /**
-     * Sets location
-     *
-     * @param string|null $location The URL location of the newly created resource.
-     *
-     * @return self
-     */
-    public function setLocation($location)
-    {
-        if (is_null($location)) {
-            throw new \InvalidArgumentException('non-nullable location cannot be null');
-        }
-        $this->container['location'] = $location;
+        $this->container['next'] = $next;
 
         return $this;
     }
