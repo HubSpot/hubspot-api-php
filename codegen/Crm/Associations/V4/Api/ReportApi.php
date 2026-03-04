@@ -130,7 +130,7 @@ class ReportApi
      *
      * Report
      *
-     * @param  int $user_id The user for the report (required)
+     * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
@@ -148,7 +148,7 @@ class ReportApi
      *
      * Report
      *
-     * @param  int $user_id The user for the report (required)
+     * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
@@ -247,7 +247,7 @@ class ReportApi
      *
      * Report
      *
-     * @param  int $user_id The user for the report (required)
+     * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -268,7 +268,7 @@ class ReportApi
      *
      * Report
      *
-     * @param  int $user_id The user for the report (required)
+     * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -318,7 +318,7 @@ class ReportApi
     /**
      * Create request for operation 'request'
      *
-     * @param  int $user_id The user for the report (required)
+     * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

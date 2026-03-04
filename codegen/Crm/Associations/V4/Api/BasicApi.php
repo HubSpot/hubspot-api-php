@@ -139,10 +139,10 @@ class BasicApi
      *
      * Delete
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be deleted. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be deleted. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be deleted. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be deleted. (required)
+     * @param  string $object_type object_type (required)
+     * @param  string $object_id object_id (required)
+     * @param  string $to_object_type to_object_type (required)
+     * @param  string $to_object_id to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
@@ -159,10 +159,10 @@ class BasicApi
      *
      * Delete
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be deleted. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be deleted. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be deleted. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be deleted. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
@@ -219,10 +219,10 @@ class BasicApi
      *
      * Delete
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be deleted. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be deleted. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be deleted. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be deleted. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -243,10 +243,10 @@ class BasicApi
      *
      * Delete
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be deleted. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be deleted. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be deleted. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be deleted. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -283,10 +283,10 @@ class BasicApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be deleted. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be deleted. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be deleted. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be deleted. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -429,16 +429,16 @@ class BasicApi
      *
      * Create
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be created. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be created. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be created. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be created. (required)
+     * @param  string $object_type object_type (required)
+     * @param  string $object_id object_id (required)
+     * @param  string $to_object_type to_object_type (required)
+     * @param  string $to_object_id to_object_id (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec association_spec (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\CreatedResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
     public function create($object_type, $object_id, $to_object_type, $to_object_id, $association_spec, string $contentType = self::contentTypes['create'][0])
     {
@@ -451,16 +451,16 @@ class BasicApi
      *
      * Create
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be created. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be created. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be created. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be created. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\CreatedResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec, string $contentType = self::contentTypes['create'][0])
     {
@@ -490,9 +490,9 @@ class BasicApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Associations\V4\Model\CreatedResponseLabelsBetweenObjectPair',
+                        '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair',
                         $request,
                         $response,
                     );
@@ -520,16 +520,16 @@ class BasicApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Associations\V4\Model\CreatedResponseLabelsBetweenObjectPair',
+                '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\CreatedResponseLabelsBetweenObjectPair',
+                        '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -554,10 +554,10 @@ class BasicApi
      *
      * Create
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be created. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be created. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be created. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be created. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -579,10 +579,10 @@ class BasicApi
      *
      * Create
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be created. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be created. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be created. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be created. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -591,7 +591,7 @@ class BasicApi
      */
     public function createAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $to_object_id, $association_spec, string $contentType = self::contentTypes['create'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\CreatedResponseLabelsBetweenObjectPair';
+        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair';
         $request = $this->createRequest($object_type, $object_id, $to_object_type, $to_object_id, $association_spec, $contentType);
 
         return $this->client
@@ -633,10 +633,10 @@ class BasicApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $object_type Specifies the type of the source object in the association to be created. (required)
-     * @param  string $object_id The unique identifier for the source object in the association to be created. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association to be created. (required)
-     * @param  string $to_object_id The unique identifier for the target object in the association to be created. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpec[] $association_spec (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -794,10 +794,10 @@ class BasicApi
      *
      * Create Default
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $from_object_id The ID of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
-     * @param  string $to_object_id The ID of the target object in the association. (required)
+     * @param  string $from_object_type from_object_type (required)
+     * @param  string $from_object_id from_object_id (required)
+     * @param  string $to_object_type to_object_type (required)
+     * @param  string $to_object_id to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
@@ -815,10 +815,10 @@ class BasicApi
      *
      * Create Default
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $from_object_id The ID of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
-     * @param  string $to_object_id The ID of the target object in the association. (required)
+     * @param  string $from_object_type (required)
+     * @param  string $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
@@ -917,10 +917,10 @@ class BasicApi
      *
      * Create Default
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $from_object_id The ID of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
-     * @param  string $to_object_id The ID of the target object in the association. (required)
+     * @param  string $from_object_type (required)
+     * @param  string $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -941,10 +941,10 @@ class BasicApi
      *
      * Create Default
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $from_object_id The ID of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
-     * @param  string $to_object_id The ID of the target object in the association. (required)
+     * @param  string $from_object_type (required)
+     * @param  string $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -994,10 +994,10 @@ class BasicApi
     /**
      * Create request for operation 'createDefault'
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $from_object_id The ID of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
-     * @param  string $to_object_id The ID of the target object in the association. (required)
+     * @param  string $from_object_type (required)
+     * @param  string $from_object_id (required)
+     * @param  string $to_object_type (required)
+     * @param  string $to_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDefault'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1140,16 +1140,16 @@ class BasicApi
      *
      * List
      *
-     * @param  string $object_type Specifies the type of the source object in the association. (required)
-     * @param  string $object_id The unique identifier for the source object whose associations are being retrieved. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $object_type object_type (required)
+     * @param  string $object_id object_id (required)
+     * @param  string $to_object_type to_object_type (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
     public function getPage($object_type, $object_id, $to_object_type, $after = null, $limit = 500, string $contentType = self::contentTypes['getPage'][0])
     {
@@ -1162,16 +1162,16 @@ class BasicApi
      *
      * List
      *
-     * @param  string $object_type Specifies the type of the source object in the association. (required)
-     * @param  string $object_id The unique identifier for the source object whose associations are being retrieved. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPageWithHttpInfo($object_type, $object_id, $to_object_type, $after = null, $limit = 500, string $contentType = self::contentTypes['getPage'][0])
     {
@@ -1203,7 +1203,7 @@ class BasicApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabel',
+                        '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging',
                         $request,
                         $response,
                     );
@@ -1231,7 +1231,7 @@ class BasicApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabel',
+                '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging',
                 $request,
                 $response,
             );
@@ -1240,7 +1240,7 @@ class BasicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabel',
+                        '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1265,9 +1265,9 @@ class BasicApi
      *
      * List
      *
-     * @param  string $object_type Specifies the type of the source object in the association. (required)
-     * @param  string $object_id The unique identifier for the source object whose associations are being retrieved. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
@@ -1290,9 +1290,9 @@ class BasicApi
      *
      * List
      *
-     * @param  string $object_type Specifies the type of the source object in the association. (required)
-     * @param  string $object_id The unique identifier for the source object whose associations are being retrieved. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
@@ -1302,7 +1302,7 @@ class BasicApi
      */
     public function getPageAsyncWithHttpInfo($object_type, $object_id, $to_object_type, $after = null, $limit = 500, string $contentType = self::contentTypes['getPage'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabel';
+        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
         $request = $this->getPageRequest($object_type, $object_id, $to_object_type, $after, $limit, $contentType);
 
         return $this->client
@@ -1344,9 +1344,9 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string $object_type Specifies the type of the source object in the association. (required)
-     * @param  string $object_id The unique identifier for the source object whose associations are being retrieved. (required)
-     * @param  string $to_object_type Specifies the type of the target object in the association. (required)
+     * @param  string $object_type (required)
+     * @param  string $object_id (required)
+     * @param  string $to_object_type (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation

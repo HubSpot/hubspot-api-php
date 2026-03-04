@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseMultiAssociatedObjectWithLabel
+ * CollectionResponseMultiAssociatedObjectWithLabelForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
 
 /**
- * CollectionResponseMultiAssociatedObjectWithLabel Class Doc Comment
+ * CollectionResponseMultiAssociatedObjectWithLabelForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations\V4
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponseMultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponseMultiAssociatedObjectWithLabel implements ModelInterface
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseMultiAssociatedObjectWithLabel';
+    protected static $openAPIModelName = 'CollectionResponseMultiAssociatedObjectWithLabelForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class CollectionResponseMultiAssociatedObjectWithLabel implements ModelInterface
       * @var string[]
       */
     protected static $openAPITypes = [
-        'paging' => '\HubSpot\Client\Crm\Associations\V4\Model\Paging',
+        'paging' => '\HubSpot\Client\Crm\Associations\V4\Model\ForwardPaging',
         'results' => '\HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[]'
     ];
 
@@ -302,7 +302,7 @@ class CollectionResponseMultiAssociatedObjectWithLabel implements ModelInterface
     /**
      * Gets paging
      *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\Paging|null
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\ForwardPaging|null
      */
     public function getPaging()
     {
@@ -312,7 +312,7 @@ class CollectionResponseMultiAssociatedObjectWithLabel implements ModelInterface
     /**
      * Sets paging
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\Paging|null $paging paging
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\ForwardPaging|null $paging paging
      *
      * @return self
      */
