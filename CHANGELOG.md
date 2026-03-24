@@ -1220,7 +1220,7 @@ to
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.3...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.4...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1290,3 +1290,4 @@ to
 [14.0.1]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.1
 [14.0.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.2
 [14.0.3]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.3
+[14.0.4]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.4
