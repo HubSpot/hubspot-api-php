@@ -223,7 +223,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -310,7 +310,7 @@ class FilesApi
         if (!preg_match("/\\d+/", $file_id)) {
             throw new \InvalidArgumentException("invalid value for \"file_id\" when calling FilesApi.archive, must conform to the pattern /\\d+/.");
         }
-        
+
 
         $resourcePath = '/files/v3/files/{fileId}';
         $formParams = [];
@@ -460,7 +460,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -499,7 +499,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -742,7 +742,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -829,7 +829,7 @@ class FilesApi
         if (!preg_match("/\\d+/", $file_id)) {
             throw new \InvalidArgumentException("invalid value for \"file_id\" when calling FilesApi.delete, must conform to the pattern /\\d+/.");
         }
-        
+
 
         $resourcePath = '/files/v3/files/{fileId}/gdpr-delete';
         $formParams = [];
@@ -1049,7 +1049,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1088,7 +1088,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1787,7 +1787,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1826,7 +1826,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1929,7 +1929,7 @@ class FilesApi
         if (!preg_match("/\\d+/", $file_id)) {
             throw new \InvalidArgumentException("invalid value for \"file_id\" when calling FilesApi.getById, must conform to the pattern /\\d+/.");
         }
-        
+
 
 
         $resourcePath = '/files/v3/files/{fileId}';
@@ -2091,7 +2091,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -2130,7 +2130,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -2233,7 +2233,7 @@ class FilesApi
         if (!preg_match("/.+/", $path)) {
             throw new \InvalidArgumentException("invalid value for \"path\" when calling FilesApi.getMetadata, must conform to the pattern /.+/.");
         }
-        
+
 
 
         $resourcePath = '/files/v3/files/stat/{path}';
@@ -2399,7 +2399,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -2438,7 +2438,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -2547,7 +2547,7 @@ class FilesApi
         if (!preg_match("/\\d+/", $file_id)) {
             throw new \InvalidArgumentException("invalid value for \"file_id\" when calling FilesApi.getSignedUrl, must conform to the pattern /\\d+/.");
         }
-        
+
 
 
 
@@ -2727,7 +2727,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -2766,7 +2766,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -3018,7 +3018,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -3057,7 +3057,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -3166,7 +3166,7 @@ class FilesApi
         if (!preg_match("/\\d+/", $file_id)) {
             throw new \InvalidArgumentException("invalid value for \"file_id\" when calling FilesApi.replace, must conform to the pattern /\\d+/.");
         }
-        
+
 
 
 
@@ -3193,7 +3193,7 @@ class FilesApi
         $formDataProcessor = new FormDataProcessor();
 
         $formData = $formDataProcessor->prepare([
-            'charset_hunch' => $charset_hunch,
+            'charsetHunch' => $charset_hunch,
             'file' => $file,
             'options' => $options,
         ]);
@@ -3333,7 +3333,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -3372,7 +3372,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -3475,7 +3475,7 @@ class FilesApi
         if (!preg_match("/\\d+/", $file_id)) {
             throw new \InvalidArgumentException("invalid value for \"file_id\" when calling FilesApi.updateProperties, must conform to the pattern /\\d+/.");
         }
-        
+
         // verify the required parameter 'file_update_input' is set
         if ($file_update_input === null || (is_array($file_update_input) && count($file_update_input) === 0)) {
             throw new \InvalidArgumentException(
@@ -3649,7 +3649,7 @@ class FilesApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -3688,7 +3688,7 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -3815,11 +3815,11 @@ class FilesApi
         $formDataProcessor = new FormDataProcessor();
 
         $formData = $formDataProcessor->prepare([
-            'charset_hunch' => $charset_hunch,
+            'charsetHunch' => $charset_hunch,
             'file' => $file,
-            'file_name' => $file_name,
-            'folder_id' => $folder_id,
-            'folder_path' => $folder_path,
+            'fileName' => $file_name,
+            'folderId' => $folder_id,
+            'folderPath' => $folder_path,
             'options' => $options,
         ]);
 
