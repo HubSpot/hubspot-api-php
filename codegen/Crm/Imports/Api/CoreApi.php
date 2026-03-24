@@ -206,7 +206,7 @@ class CoreApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -245,7 +245,7 @@ class CoreApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -494,7 +494,7 @@ class CoreApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -533,7 +533,7 @@ class CoreApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -645,7 +645,7 @@ class CoreApi
 
         $formData = $formDataProcessor->prepare([
             'files' => $files,
-            'import_request' => $import_request,
+            'importRequest' => $import_request,
         ]);
 
         $formParams = $formDataProcessor->flatten($formData);
@@ -781,7 +781,7 @@ class CoreApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -820,7 +820,7 @@ class CoreApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1071,7 +1071,7 @@ class CoreApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1110,7 +1110,7 @@ class CoreApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
