@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchResponseVoid
+ * BatchResponseLabelsBetweenObjectPairWithErrors
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
 
 /**
- * BatchResponseVoid Class Doc Comment
+ * BatchResponseLabelsBetweenObjectPairWithErrors Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations\V4
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponseLabelsBetweenObjectPairWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponseVoid';
+    protected static $openAPIModelName = 'BatchResponseLabelsBetweenObjectPairWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,7 +62,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
         'links' => 'array<string,string>',
         'num_errors' => 'int',
         'requested_at' => '\DateTime',
-        'results' => 'mixed[]',
+        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair[]',
         'started_at' => '\DateTime',
         'status' => 'string'
     ];
@@ -391,7 +391,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at Time operation completed
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links An object containing relevant links related to the batch request.
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets num_errors
      *
-     * @param int|null $num_errors The number of errors encountered during the batch processing.
+     * @param int|null $num_errors num_errors
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The timestamp when the batch request was initially made, in ISO 8601 format.
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return self
      */
@@ -516,7 +516,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets results
      *
-     * @return mixed[]
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair[]
      */
     public function getResults()
     {
@@ -526,7 +526,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets results
      *
-     * @param mixed[] $results results
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair[] $results results
      *
      * @return self
      */
@@ -553,7 +553,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The timestamp when the batch processing began, in ISO 8601 format.
+     * @param \DateTime $started_at started_at
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class BatchResponseVoid implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets status
      *
-     * @param string $status The status of the batch processing request: \"PENDING\", \"PROCESSING\", \"CANCELED\", or \"COMPLETE\".
+     * @param string $status status
      *
      * @return self
      */

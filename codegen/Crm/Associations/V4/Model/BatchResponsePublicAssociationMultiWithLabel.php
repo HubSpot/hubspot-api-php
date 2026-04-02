@@ -58,9 +58,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
       */
     protected static $openAPITypes = [
         'completed_at' => '\DateTime',
-        'errors' => '\HubSpot\Client\Crm\Associations\V4\Model\StandardError[]',
         'links' => 'array<string,string>',
-        'num_errors' => 'int',
         'requested_at' => '\DateTime',
         'results' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicAssociationMultiWithLabel[]',
         'started_at' => '\DateTime',
@@ -76,9 +74,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
       */
     protected static $openAPIFormats = [
         'completed_at' => 'date-time',
-        'errors' => null,
         'links' => null,
-        'num_errors' => 'int32',
         'requested_at' => 'date-time',
         'results' => null,
         'started_at' => 'date-time',
@@ -92,9 +88,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
       */
     protected static array $openAPINullables = [
         'completed_at' => false,
-        'errors' => false,
         'links' => false,
-        'num_errors' => false,
         'requested_at' => false,
         'results' => false,
         'started_at' => false,
@@ -188,9 +182,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
      */
     protected static $attributeMap = [
         'completed_at' => 'completedAt',
-        'errors' => 'errors',
         'links' => 'links',
-        'num_errors' => 'numErrors',
         'requested_at' => 'requestedAt',
         'results' => 'results',
         'started_at' => 'startedAt',
@@ -204,9 +196,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
      */
     protected static $setters = [
         'completed_at' => 'setCompletedAt',
-        'errors' => 'setErrors',
         'links' => 'setLinks',
-        'num_errors' => 'setNumErrors',
         'requested_at' => 'setRequestedAt',
         'results' => 'setResults',
         'started_at' => 'setStartedAt',
@@ -220,9 +210,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
      */
     protected static $getters = [
         'completed_at' => 'getCompletedAt',
-        'errors' => 'getErrors',
         'links' => 'getLinks',
-        'num_errors' => 'getNumErrors',
         'requested_at' => 'getRequestedAt',
         'results' => 'getResults',
         'started_at' => 'getStartedAt',
@@ -306,9 +294,7 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
     public function __construct(?array $data = null)
     {
         $this->setIfExists('completed_at', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('num_errors', $data ?? [], null);
         $this->setIfExists('requested_at', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('started_at', $data ?? [], null);
@@ -406,33 +392,6 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
     }
 
     /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\StandardError[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -455,33 +414,6 @@ class BatchResponsePublicAssociationMultiWithLabel implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
         $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets num_errors
-     *
-     * @return int|null
-     */
-    public function getNumErrors()
-    {
-        return $this->container['num_errors'];
-    }
-
-    /**
-     * Sets num_errors
-     *
-     * @param int|null $num_errors The number of errors encountered during the batch processing.
-     *
-     * @return self
-     */
-    public function setNumErrors($num_errors)
-    {
-        if (is_null($num_errors)) {
-            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
-        }
-        $this->container['num_errors'] = $num_errors;
 
         return $this;
     }
