@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.4...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.5...HEAD)
+
+## [14.0.5](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.5) - 2026-04-02
+
+### CRM Associations V4
+
+- Updated the return type of the response object in `crm()->associations()->v4()->batchApi()->archive()` and `archiveLabels()` to `void` instead of `BatchResponseVoid|Error`. The `BatchResponseVoid` model has been removed.
+- `crm()->associations()->v4()->batchApi()->create()` now handles HTTP 207 (partial success) responses, returning new `BatchResponseLabelsBetweenObjectPairWithErrors` model.
+- `crm()->associations()->v4()->batchApi()->getPage()` now handles HTTP 207 (partial success) responses, returning new `BatchResponsePublicAssociationMultiWithLabelWithErrors` model.
+- `HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair` model no longer includes `errors` and `numErrors` fields — those are available on the new `HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors` model.
+- Added new models: `HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors`, `HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors`.
 
 ## [14.0.4](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.4) - 2026-03-24
 
@@ -1220,7 +1230,7 @@ to
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.4...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.5...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1291,3 +1301,4 @@ to
 [14.0.2]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.2
 [14.0.3]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.3
 [14.0.4]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.4
+[14.0.5]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.5
