@@ -137,7 +137,7 @@ class BasicApi
     /**
      * Operation archive
      *
-     * Delete
+     * Delete associations between two records
      *
      * @param  string $object_type object_type (required)
      * @param  string $object_id object_id (required)
@@ -157,7 +157,7 @@ class BasicApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Delete
+     * Delete associations between two records
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -217,7 +217,7 @@ class BasicApi
     /**
      * Operation archiveAsync
      *
-     * Delete
+     * Delete associations between two records
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -241,7 +241,7 @@ class BasicApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Delete
+     * Delete associations between two records
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -427,7 +427,7 @@ class BasicApi
     /**
      * Operation create
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $object_type object_type (required)
      * @param  string $object_id object_id (required)
@@ -449,7 +449,7 @@ class BasicApi
     /**
      * Operation createWithHttpInfo
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -552,7 +552,7 @@ class BasicApi
     /**
      * Operation createAsync
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -577,7 +577,7 @@ class BasicApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -792,7 +792,7 @@ class BasicApi
     /**
      * Operation createDefault
      *
-     * Create Default
+     * Associate records (default)
      *
      * @param  string $from_object_type from_object_type (required)
      * @param  string $from_object_id from_object_id (required)
@@ -813,7 +813,7 @@ class BasicApi
     /**
      * Operation createDefaultWithHttpInfo
      *
-     * Create Default
+     * Associate records (default)
      *
      * @param  string $from_object_type (required)
      * @param  string $from_object_id (required)
@@ -915,7 +915,7 @@ class BasicApi
     /**
      * Operation createDefaultAsync
      *
-     * Create Default
+     * Associate records (default)
      *
      * @param  string $from_object_type (required)
      * @param  string $from_object_id (required)
@@ -939,7 +939,7 @@ class BasicApi
     /**
      * Operation createDefaultAsyncWithHttpInfo
      *
-     * Create Default
+     * Associate records (default)
      *
      * @param  string $from_object_type (required)
      * @param  string $from_object_id (required)
@@ -1138,7 +1138,7 @@ class BasicApi
     /**
      * Operation getPage
      *
-     * List
+     * Retrieve all associations by object type
      *
      * @param  string $object_type object_type (required)
      * @param  string $object_id object_id (required)
@@ -1160,7 +1160,7 @@ class BasicApi
     /**
      * Operation getPageWithHttpInfo
      *
-     * List
+     * Retrieve all associations by object type
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -1263,7 +1263,7 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
-     * List
+     * Retrieve all associations by object type
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)
@@ -1288,7 +1288,7 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * List
+     * Retrieve all associations by object type
      *
      * @param  string $object_type (required)
      * @param  string $object_id (required)

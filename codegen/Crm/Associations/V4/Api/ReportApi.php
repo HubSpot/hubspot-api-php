@@ -128,7 +128,7 @@ class ReportApi
     /**
      * Operation request
      *
-     * Report
+     * Report high usage
      *
      * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
@@ -146,7 +146,7 @@ class ReportApi
     /**
      * Operation requestWithHttpInfo
      *
-     * Report
+     * Report high usage
      *
      * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
@@ -245,7 +245,7 @@ class ReportApi
     /**
      * Operation requestAsync
      *
-     * Report
+     * Report high usage
      *
      * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation
@@ -266,7 +266,7 @@ class ReportApi
     /**
      * Operation requestAsyncWithHttpInfo
      *
-     * Report
+     * Report high usage
      *
      * @param  int $user_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['request'] to see the possible values for this operation

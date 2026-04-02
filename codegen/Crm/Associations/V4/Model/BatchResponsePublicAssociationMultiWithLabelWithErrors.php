@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchResponseLabelsBetweenObjectPair
+ * BatchResponsePublicAssociationMultiWithLabelWithErrors
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
 
 /**
- * BatchResponseLabelsBetweenObjectPair Class Doc Comment
+ * BatchResponsePublicAssociationMultiWithLabelWithErrors Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations\V4
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponsePublicAssociationMultiWithLabelWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponseLabelsBetweenObjectPair';
+    protected static $openAPIModelName = 'BatchResponsePublicAssociationMultiWithLabelWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,11 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'completed_at' => '\DateTime',
+        'errors' => '\HubSpot\Client\Crm\Associations\V4\Model\StandardError[]',
         'links' => 'array<string,string>',
+        'num_errors' => 'int',
         'requested_at' => '\DateTime',
-        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair[]',
+        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicAssociationMultiWithLabel[]',
         'started_at' => '\DateTime',
         'status' => 'string'
     ];
@@ -74,7 +76,9 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
       */
     protected static $openAPIFormats = [
         'completed_at' => 'date-time',
+        'errors' => null,
         'links' => null,
+        'num_errors' => 'int32',
         'requested_at' => 'date-time',
         'results' => null,
         'started_at' => 'date-time',
@@ -88,7 +92,9 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
       */
     protected static array $openAPINullables = [
         'completed_at' => false,
+        'errors' => false,
         'links' => false,
+        'num_errors' => false,
         'requested_at' => false,
         'results' => false,
         'started_at' => false,
@@ -182,7 +188,9 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
      */
     protected static $attributeMap = [
         'completed_at' => 'completedAt',
+        'errors' => 'errors',
         'links' => 'links',
+        'num_errors' => 'numErrors',
         'requested_at' => 'requestedAt',
         'results' => 'results',
         'started_at' => 'startedAt',
@@ -196,7 +204,9 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
      */
     protected static $setters = [
         'completed_at' => 'setCompletedAt',
+        'errors' => 'setErrors',
         'links' => 'setLinks',
+        'num_errors' => 'setNumErrors',
         'requested_at' => 'setRequestedAt',
         'results' => 'setResults',
         'started_at' => 'setStartedAt',
@@ -210,7 +220,9 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
      */
     protected static $getters = [
         'completed_at' => 'getCompletedAt',
+        'errors' => 'getErrors',
         'links' => 'getLinks',
+        'num_errors' => 'getNumErrors',
         'requested_at' => 'getRequestedAt',
         'results' => 'getResults',
         'started_at' => 'getStartedAt',
@@ -294,7 +306,9 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     public function __construct(?array $data = null)
     {
         $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
         $this->setIfExists('requested_at', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('started_at', $data ?? [], null);
@@ -377,7 +391,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at The timestamp when the batch processing was completed, in ISO 8601 format.
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
@@ -387,6 +401,33 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
         $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\StandardError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\StandardError[]|null $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -404,7 +445,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links An object containing relevant links related to the batch request.
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
@@ -414,6 +455,33 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_errors
+     *
+     * @return int|null
+     */
+    public function getNumErrors()
+    {
+        return $this->container['num_errors'];
+    }
+
+    /**
+     * Sets num_errors
+     *
+     * @param int|null $num_errors num_errors
+     *
+     * @return self
+     */
+    public function setNumErrors($num_errors)
+    {
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
+        }
+        $this->container['num_errors'] = $num_errors;
 
         return $this;
     }
@@ -431,7 +499,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The timestamp when the batch request was initially made, in ISO 8601 format.
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return self
      */
@@ -448,7 +516,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair[]
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\PublicAssociationMultiWithLabel[]
      */
     public function getResults()
     {
@@ -458,7 +526,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\LabelsBetweenObjectPair[] $results results
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\PublicAssociationMultiWithLabel[] $results results
      *
      * @return self
      */
@@ -485,7 +553,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The timestamp when the batch processing began, in ISO 8601 format.
+     * @param \DateTime $started_at started_at
      *
      * @return self
      */
@@ -512,7 +580,7 @@ class BatchResponseLabelsBetweenObjectPair implements ModelInterface, ArrayAcces
     /**
      * Sets status
      *
-     * @param string $status The status of the batch processing request: \"PENDING\", \"PROCESSING\", \"CANCELLED\", or \"COMPLETE\".
+     * @param string $status status
      *
      * @return self
      */

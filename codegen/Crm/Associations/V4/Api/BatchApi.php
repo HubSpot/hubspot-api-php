@@ -140,7 +140,7 @@ class BatchApi
     /**
      * Operation archive
      *
-     * Delete
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -149,18 +149,17 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return void
      */
     public function archive($from_object_type, $to_object_type, $batch_input_public_association_multi_archive, string $contentType = self::contentTypes['archive'][0])
     {
-        list($response) = $this->archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive, $contentType);
-        return $response;
+        $this->archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive, $contentType);
     }
 
     /**
      * Operation archiveWithHttpInfo
      *
-     * Delete
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -169,7 +168,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function archiveWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive, string $contentType = self::contentTypes['archive'][0])
     {
@@ -198,51 +197,9 @@ class BatchApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Associations\V4\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -261,7 +218,7 @@ class BatchApi
     /**
      * Operation archiveAsync
      *
-     * Delete
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -284,7 +241,7 @@ class BatchApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Delete
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -296,27 +253,14 @@ class BatchApi
      */
     public function archiveAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_archive, string $contentType = self::contentTypes['archive'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid';
+        $returnType = '';
         $request = $this->archiveRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_archive, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -399,7 +343,7 @@ class BatchApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
+            ['*/*', ],
             $contentType,
             $multipart
         );
@@ -465,7 +409,7 @@ class BatchApi
     /**
      * Operation archiveLabels
      *
-     * Delete Specific Labels
+     * Delete specific labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -474,18 +418,17 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return void
      */
     public function archiveLabels($from_object_type, $to_object_type, $batch_input_public_association_multi_post, string $contentType = self::contentTypes['archiveLabels'][0])
     {
-        list($response) = $this->archiveLabelsWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post, $contentType);
-        return $response;
+        $this->archiveLabelsWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post, $contentType);
     }
 
     /**
      * Operation archiveLabelsWithHttpInfo
      *
-     * Delete Specific Labels
+     * Delete specific labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -494,7 +437,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function archiveLabelsWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post, string $contentType = self::contentTypes['archiveLabels'][0])
     {
@@ -523,51 +466,9 @@ class BatchApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Associations\V4\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -586,7 +487,7 @@ class BatchApi
     /**
      * Operation archiveLabelsAsync
      *
-     * Delete Specific Labels
+     * Delete specific labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -609,7 +510,7 @@ class BatchApi
     /**
      * Operation archiveLabelsAsyncWithHttpInfo
      *
-     * Delete Specific Labels
+     * Delete specific labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -621,27 +522,14 @@ class BatchApi
      */
     public function archiveLabelsAsyncWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post, string $contentType = self::contentTypes['archiveLabels'][0])
     {
-        $returnType = '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseVoid';
+        $returnType = '';
         $request = $this->archiveLabelsRequest($from_object_type, $to_object_type, $batch_input_public_association_multi_post, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -724,7 +612,7 @@ class BatchApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
+            ['*/*', ],
             $contentType,
             $multipart
         );
@@ -790,7 +678,7 @@ class BatchApi
     /**
      * Operation create
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -799,7 +687,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
     public function create($from_object_type, $to_object_type, $batch_input_public_association_multi_post, string $contentType = self::contentTypes['create'][0])
     {
@@ -810,7 +698,7 @@ class BatchApi
     /**
      * Operation createWithHttpInfo
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -819,7 +707,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association_multi_post, string $contentType = self::contentTypes['create'][0])
     {
@@ -849,9 +737,15 @@ class BatchApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors',
                         $request,
                         $response,
                     );
@@ -885,10 +779,18 @@ class BatchApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPair',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponseLabelsBetweenObjectPairWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -911,7 +813,7 @@ class BatchApi
     /**
      * Operation createAsync
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -934,7 +836,7 @@ class BatchApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Create
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1115,7 +1017,7 @@ class BatchApi
     /**
      * Operation createDefault
      *
-     * Create Default Associations
+     * Associate records (default)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1135,7 +1037,7 @@ class BatchApi
     /**
      * Operation createDefaultWithHttpInfo
      *
-     * Create Default Associations
+     * Associate records (default)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1236,7 +1138,7 @@ class BatchApi
     /**
      * Operation createDefaultAsync
      *
-     * Create Default Associations
+     * Associate records (default)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1259,7 +1161,7 @@ class BatchApi
     /**
      * Operation createDefaultAsyncWithHttpInfo
      *
-     * Create Default Associations
+     * Associate records (default)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1440,7 +1342,7 @@ class BatchApi
     /**
      * Operation getPage
      *
-     * Read
+     * Retrieve associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1449,7 +1351,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error
      */
     public function getPage($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request, string $contentType = self::contentTypes['getPage'][0])
     {
@@ -1460,7 +1362,7 @@ class BatchApi
     /**
      * Operation getPageWithHttpInfo
      *
-     * Read
+     * Retrieve associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1469,7 +1371,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Associations\V4\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel|\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors|\HubSpot\Client\Crm\Associations\V4\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPageWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_fetch_associations_batch_request, string $contentType = self::contentTypes['getPage'][0])
     {
@@ -1502,6 +1404,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabel',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors',
                         $request,
                         $response,
                     );
@@ -1543,6 +1451,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\V4\Model\BatchResponsePublicAssociationMultiWithLabelWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1561,7 +1477,7 @@ class BatchApi
     /**
      * Operation getPageAsync
      *
-     * Read
+     * Retrieve associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1584,7 +1500,7 @@ class BatchApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * Read
+     * Retrieve associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
