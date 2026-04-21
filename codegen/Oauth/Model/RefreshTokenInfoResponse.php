@@ -450,7 +450,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets scopes
      *
-     * @param string[] $scopes scopes
+     * @param string[] $scopes An array of strings detailing the scopes
      *
      * @return self
      */

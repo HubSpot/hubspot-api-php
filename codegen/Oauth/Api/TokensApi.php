@@ -136,15 +136,17 @@ class TokensApi
      * @param  string|null $client_id client_id (optional)
      * @param  string|null $client_secret client_secret (optional)
      * @param  string|null $refresh_token refresh_token (optional)
+     * @param  string|null $code_verifier code_verifier (optional)
+     * @param  string|null $scope scope (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Oauth\Model\TokenResponseIF|\HubSpot\Client\Oauth\Model\Error
      */
-    public function create($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function create($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
-        list($response) = $this->createWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType);
+        list($response) = $this->createWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $code_verifier, $scope, $contentType);
         return $response;
     }
 
@@ -159,15 +161,17 @@ class TokensApi
      * @param  string|null $client_id (optional)
      * @param  string|null $client_secret (optional)
      * @param  string|null $refresh_token (optional)
+     * @param  string|null $code_verifier (optional)
+     * @param  string|null $scope (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Oauth\Model\TokenResponseIF|\HubSpot\Client\Oauth\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function createWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType);
+        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $code_verifier, $scope, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,7 +211,7 @@ class TokensApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -246,7 +250,7 @@ class TokensApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -263,14 +267,16 @@ class TokensApi
      * @param  string|null $client_id (optional)
      * @param  string|null $client_secret (optional)
      * @param  string|null $refresh_token (optional)
+     * @param  string|null $code_verifier (optional)
+     * @param  string|null $scope (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function createAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->createAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType)
+        return $this->createAsyncWithHttpInfo($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $code_verifier, $scope, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -289,15 +295,17 @@ class TokensApi
      * @param  string|null $client_id (optional)
      * @param  string|null $client_secret (optional)
      * @param  string|null $refresh_token (optional)
+     * @param  string|null $code_verifier (optional)
+     * @param  string|null $scope (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function createAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
         $returnType = '\HubSpot\Client\Oauth\Model\TokenResponseIF';
-        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $contentType);
+        $request = $this->createRequest($grant_type, $code, $redirect_uri, $client_id, $client_secret, $refresh_token, $code_verifier, $scope, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -344,13 +352,17 @@ class TokensApi
      * @param  string|null $client_id (optional)
      * @param  string|null $client_secret (optional)
      * @param  string|null $refresh_token (optional)
+     * @param  string|null $code_verifier (optional)
+     * @param  string|null $scope (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, string $contentType = self::contentTypes['create'][0])
+    public function createRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
+
+
 
 
 
@@ -379,6 +391,8 @@ class TokensApi
             'client_id' => $client_id,
             'client_secret' => $client_secret,
             'refresh_token' => $refresh_token,
+            'code_verifier' => $code_verifier,
+            'scope' => $scope,
         ]);
 
         $formParams = $formDataProcessor->flatten($formData);
