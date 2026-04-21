@@ -59,9 +59,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'completed_at' => '\DateTime',
-        'errors' => '\HubSpot\Client\Crm\Objects\Model\StandardError[]',
         'links' => 'array<string,string>',
-        'num_errors' => 'int',
         'requested_at' => '\DateTime',
         'results' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicUpsertObject[]',
         'started_at' => '\DateTime',
@@ -77,9 +75,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'completed_at' => 'date-time',
-        'errors' => null,
         'links' => null,
-        'num_errors' => 'int32',
         'requested_at' => 'date-time',
         'results' => null,
         'started_at' => 'date-time',
@@ -93,9 +89,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
       */
     protected static array $openAPINullables = [
         'completed_at' => false,
-        'errors' => false,
         'links' => false,
-        'num_errors' => false,
         'requested_at' => false,
         'results' => false,
         'started_at' => false,
@@ -189,9 +183,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'completed_at' => 'completedAt',
-        'errors' => 'errors',
         'links' => 'links',
-        'num_errors' => 'numErrors',
         'requested_at' => 'requestedAt',
         'results' => 'results',
         'started_at' => 'startedAt',
@@ -205,9 +197,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'completed_at' => 'setCompletedAt',
-        'errors' => 'setErrors',
         'links' => 'setLinks',
-        'num_errors' => 'setNumErrors',
         'requested_at' => 'setRequestedAt',
         'results' => 'setResults',
         'started_at' => 'setStartedAt',
@@ -221,9 +211,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'completed_at' => 'getCompletedAt',
-        'errors' => 'getErrors',
         'links' => 'getLinks',
-        'num_errors' => 'getNumErrors',
         'requested_at' => 'getRequestedAt',
         'results' => 'getResults',
         'started_at' => 'getStartedAt',
@@ -307,9 +295,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
     public function __construct(?array $data = null)
     {
         $this->setIfExists('completed_at', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('num_errors', $data ?? [], null);
         $this->setIfExists('requested_at', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('started_at', $data ?? [], null);
@@ -407,33 +393,6 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Crm\Objects\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Crm\Objects\Model\StandardError[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
      * Gets links
      *
      * @return array<string,string>|null
@@ -456,33 +415,6 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
         $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets num_errors
-     *
-     * @return int|null
-     */
-    public function getNumErrors()
-    {
-        return $this->container['num_errors'];
-    }
-
-    /**
-     * Sets num_errors
-     *
-     * @param int|null $num_errors The total number of errors that occurred during the operation.
-     *
-     * @return self
-     */
-    public function setNumErrors($num_errors)
-    {
-        if (is_null($num_errors)) {
-            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
-        }
-        $this->container['num_errors'] = $num_errors;
 
         return $this;
     }

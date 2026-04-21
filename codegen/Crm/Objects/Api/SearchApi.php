@@ -128,7 +128,7 @@ class SearchApi
     /**
      * Operation doSearch
      *
-     * @param  string $object_type object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
@@ -145,7 +145,7 @@ class SearchApi
     /**
      * Operation doSearchWithHttpInfo
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
@@ -243,7 +243,7 @@ class SearchApi
     /**
      * Operation doSearchAsync
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
@@ -263,7 +263,7 @@ class SearchApi
     /**
      * Operation doSearchAsyncWithHttpInfo
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
@@ -314,7 +314,7 @@ class SearchApi
     /**
      * Create request for operation 'doSearch'
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *

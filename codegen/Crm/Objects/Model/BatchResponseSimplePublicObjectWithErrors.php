@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorDetail
+ * BatchResponseSimplePublicObjectWithErrors
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * ErrorDetail Class Doc Comment
+ * BatchResponseSimplePublicObjectWithErrors Class Doc Comment
  *
  * @category Class
+ * @description Represents the result of a batch operation on CRM objects, including the processing status, batch results, timestamps, and a list of any errors encountered during the operation.
  * @package  HubSpot\Client\Crm\Objects
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponseSimplePublicObjectWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorDetail';
+    protected static $openAPIModelName = 'BatchResponseSimplePublicObjectWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'context' => 'array<string,string[]>',
-        'in' => 'string',
-        'message' => 'string',
-        'sub_category' => 'string'
+        'completed_at' => '\DateTime',
+        'errors' => '\HubSpot\Client\Crm\Objects\Model\StandardError[]',
+        'links' => 'array<string,string>',
+        'num_errors' => 'int',
+        'requested_at' => '\DateTime',
+        'results' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicObject[]',
+        'started_at' => '\DateTime',
+        'status' => 'string'
     ];
 
     /**
@@ -72,11 +76,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'context' => null,
-        'in' => null,
-        'message' => null,
-        'sub_category' => null
+        'completed_at' => 'date-time',
+        'errors' => null,
+        'links' => null,
+        'num_errors' => 'int32',
+        'requested_at' => 'date-time',
+        'results' => null,
+        'started_at' => 'date-time',
+        'status' => null
     ];
 
     /**
@@ -85,11 +92,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'context' => false,
-        'in' => false,
-        'message' => false,
-        'sub_category' => false
+        'completed_at' => false,
+        'errors' => false,
+        'links' => false,
+        'num_errors' => false,
+        'requested_at' => false,
+        'results' => false,
+        'started_at' => false,
+        'status' => false
     ];
 
     /**
@@ -178,11 +188,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'context' => 'context',
-        'in' => 'in',
-        'message' => 'message',
-        'sub_category' => 'subCategory'
+        'completed_at' => 'completedAt',
+        'errors' => 'errors',
+        'links' => 'links',
+        'num_errors' => 'numErrors',
+        'requested_at' => 'requestedAt',
+        'results' => 'results',
+        'started_at' => 'startedAt',
+        'status' => 'status'
     ];
 
     /**
@@ -191,11 +204,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'context' => 'setContext',
-        'in' => 'setIn',
-        'message' => 'setMessage',
-        'sub_category' => 'setSubCategory'
+        'completed_at' => 'setCompletedAt',
+        'errors' => 'setErrors',
+        'links' => 'setLinks',
+        'num_errors' => 'setNumErrors',
+        'requested_at' => 'setRequestedAt',
+        'results' => 'setResults',
+        'started_at' => 'setStartedAt',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -204,11 +220,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'context' => 'getContext',
-        'in' => 'getIn',
-        'message' => 'getMessage',
-        'sub_category' => 'getSubCategory'
+        'completed_at' => 'getCompletedAt',
+        'errors' => 'getErrors',
+        'links' => 'getLinks',
+        'num_errors' => 'getNumErrors',
+        'requested_at' => 'getRequestedAt',
+        'results' => 'getResults',
+        'started_at' => 'getStartedAt',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -252,6 +271,25 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_COMPLETE = 'COMPLETE';
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_CANCELED,
+            self::STATUS_COMPLETE,
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -268,11 +306,14 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('context', $data ?? [], null);
-        $this->setIfExists('in', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('sub_category', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -302,9 +343,27 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
         }
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -321,136 +380,227 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets completed_at
      *
-     * @return string|null
+     * @return \DateTime
      */
-    public function getCode()
+    public function getCompletedAt()
     {
-        return $this->container['code'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets code
+     * Sets completed_at
      *
-     * @param string|null $code The status code associated with the error detail
+     * @param \DateTime $completed_at The timestamp when the batch process was completed, in ISO 8601 format.
      *
      * @return self
      */
-    public function setCode($code)
+    public function setCompletedAt($completed_at)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
 
     /**
-     * Gets context
+     * Gets errors
      *
-     * @return array<string,string[]>|null
+     * @return \HubSpot\Client\Crm\Objects\Model\StandardError[]|null
      */
-    public function getContext()
+    public function getErrors()
     {
-        return $this->container['context'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets context
+     * Sets errors
      *
-     * @param array<string,string[]>|null $context Context about the error condition
+     * @param \HubSpot\Client\Crm\Objects\Model\StandardError[]|null $errors errors
      *
      * @return self
      */
-    public function setContext($context)
+    public function setErrors($errors)
     {
-        if (is_null($context)) {
-            throw new \InvalidArgumentException('non-nullable context cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['context'] = $context;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets in
+     * Gets links
      *
-     * @return string|null
+     * @return array<string,string>|null
      */
-    public function getIn()
+    public function getLinks()
     {
-        return $this->container['in'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets in
+     * Sets links
      *
-     * @param string|null $in The name of the field or parameter in which the error was found.
+     * @param array<string,string>|null $links An object containing relevant links related to the batch request.
      *
      * @return self
      */
-    public function setIn($in)
+    public function setLinks($links)
     {
-        if (is_null($in)) {
-            throw new \InvalidArgumentException('non-nullable in cannot be null');
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
-        $this->container['in'] = $in;
+        $this->container['links'] = $links;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets num_errors
+     *
+     * @return int|null
+     */
+    public function getNumErrors()
+    {
+        return $this->container['num_errors'];
+    }
+
+    /**
+     * Sets num_errors
+     *
+     * @param int|null $num_errors The number of errors encountered during the batch process.
+     *
+     * @return self
+     */
+    public function setNumErrors($num_errors)
+    {
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
+        }
+        $this->container['num_errors'] = $num_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAt()
+    {
+        return $this->container['requested_at'];
+    }
+
+    /**
+     * Sets requested_at
+     *
+     * @param \DateTime|null $requested_at The timestamp when the batch process was initiated, in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setRequestedAt($requested_at)
+    {
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        }
+        $this->container['requested_at'] = $requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicObject[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Objects\Model\SimplePublicObject[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime $started_at The timestamp when the batch process began execution, in ISO 8601 format.
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
      *
      * @return string
      */
-    public function getMessage()
+    public function getStatus()
     {
-        return $this->container['message'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets message
+     * Sets status
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param string $status The status of the batch processing request - \"PENDING\", \"PROCESSING\", \"CANCELLED\", or \"COMPLETE\"
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setStatus($status)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_category
-     *
-     * @return string|null
-     */
-    public function getSubCategory()
-    {
-        return $this->container['sub_category'];
-    }
-
-    /**
-     * Sets sub_category
-     *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
-     *
-     * @return self
-     */
-    public function setSubCategory($sub_category)
-    {
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['sub_category'] = $sub_category;
+        $this->container['status'] = $status;
 
         return $this;
     }
