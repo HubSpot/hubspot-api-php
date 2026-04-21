@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [14.0.6](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.6) - 2026-04-22
 
+### OAuth
+
+- Added `code_verifier` and `scope` as optional parameters to `oauth()->tokensApi()->create()`.
+- Added `refresh_token` field to `HubSpot\Client\Oauth\Model\TokenResponseIF`.
+- Fixed JSON attribute mappings in `HubSpot\Client\Oauth\Model\TokenResponseIF` to use snake_case keys (`access_token`, `expires_in`, `hub_id`, `token_type`) matching the actual API response.
+
 ### CRM Objects
 
 - `crm()->objects()->basicApi()->create()` now returns HTTP 201 instead of 200.
