@@ -5,7 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.5...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.6...HEAD)
+
+## [14.0.6](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.6) - 2026-04-22
+
+### CRM Objects
+
+- `crm()->objects()->basicApi()->create()` now returns HTTP 201 instead of 200.
+- `crm()->objects()->basicApi()->getPage()` return type changed from `CollectionResponseSimplePublicObjectWithAssociations` to `CollectionResponseSimplePublicObjectWithAssociationsForwardPaging`.
+- `crm()->objects()->batchApi()->create()` now returns HTTP 201 instead of 200, and handles HTTP 207 (partial success) responses with new `BatchResponseSimplePublicObjectWithErrors` model.
+- `crm()->objects()->batchApi()->read()` and `update()` now handle HTTP 207 (partial success) responses, returning `BatchResponseSimplePublicObjectWithErrors`.
+- `crm()->objects()->batchApi()->upsert()` now handles HTTP 207 (partial success) responses, returning `BatchResponseSimplePublicUpsertObjectWithErrors`.
+- `HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject` no longer includes `errors` and `numErrors` fields — those are available on the new `BatchResponseSimplePublicObjectWithErrors` model.
+- `HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject` no longer includes `errors` and `numErrors` fields — those are available on the new `BatchResponseSimplePublicUpsertObjectWithErrors` model.
+- Renamed model `CollectionResponseSimplePublicObjectWithAssociations` to `CollectionResponseSimplePublicObjectWithAssociationsForwardPaging`.
+- Added new models: `BatchResponseSimplePublicObjectWithErrors`, `BatchResponseSimplePublicUpsertObjectWithErrors`, `ForwardPaging`.
 
 ## [14.0.5](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.5) - 2026-04-02
 
@@ -1230,7 +1244,7 @@ to
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.5...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.6...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1302,3 +1316,4 @@ to
 [14.0.3]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.3
 [14.0.4]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.4
 [14.0.5]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.5
+[14.0.6]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.6
