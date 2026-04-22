@@ -312,6 +312,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
     public const LANGUAGE_DE = 'de';
     public const LANGUAGE_EL = 'el';
     public const LANGUAGE_EN = 'en';
+    public const LANGUAGE_EN_GB = 'en-gb';
     public const LANGUAGE_ES = 'es';
     public const LANGUAGE_ES_MX = 'es-mx';
     public const LANGUAGE_FI = 'fi';
@@ -376,6 +377,7 @@ class HubSpotFormConfiguration implements ModelInterface, ArrayAccess, \JsonSeri
             self::LANGUAGE_DE,
             self::LANGUAGE_EL,
             self::LANGUAGE_EN,
+            self::LANGUAGE_EN_GB,
             self::LANGUAGE_ES,
             self::LANGUAGE_ES_MX,
             self::LANGUAGE_FI,
