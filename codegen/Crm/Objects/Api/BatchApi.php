@@ -142,7 +142,7 @@ class BatchApi
      *
      * Archive a batch of objects by ID
      *
-     * @param  string $object_type object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -160,7 +160,7 @@ class BatchApi
      *
      * Archive a batch of objects by ID
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -218,7 +218,7 @@ class BatchApi
      *
      * Archive a batch of objects by ID
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -240,7 +240,7 @@ class BatchApi
      *
      * Archive a batch of objects by ID
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -278,7 +278,7 @@ class BatchApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -391,13 +391,13 @@ class BatchApi
      *
      * Create a batch of objects
      *
-     * @param  string $object_type object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
      */
     public function create($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -410,13 +410,13 @@ class BatchApi
      *
      * Create a batch of objects
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -446,9 +446,15 @@ class BatchApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors',
                         $request,
                         $response,
                     );
@@ -482,10 +488,18 @@ class BatchApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -510,7 +524,7 @@ class BatchApi
      *
      * Create a batch of objects
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -532,7 +546,7 @@ class BatchApi
      *
      * Create a batch of objects
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -583,7 +597,7 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -696,14 +710,14 @@ class BatchApi
      *
      * Read a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
      */
     public function read($object_type, $batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -716,14 +730,14 @@ class BatchApi
      *
      * Read a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($object_type, $batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -756,6 +770,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors',
                         $request,
                         $response,
                     );
@@ -797,6 +817,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -817,7 +845,7 @@ class BatchApi
      *
      * Read a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
@@ -840,7 +868,7 @@ class BatchApi
      *
      * Read a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
@@ -892,7 +920,7 @@ class BatchApi
     /**
      * Create request for operation 'read'
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
@@ -1016,13 +1044,13 @@ class BatchApi
      *
      * Update a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
      */
     public function update($object_type, $batch_input_simple_public_object_batch_input, string $contentType = self::contentTypes['update'][0])
     {
@@ -1035,13 +1063,13 @@ class BatchApi
      *
      * Update a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input, string $contentType = self::contentTypes['update'][0])
     {
@@ -1074,6 +1102,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObject',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors',
                         $request,
                         $response,
                     );
@@ -1115,6 +1149,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1135,7 +1177,7 @@ class BatchApi
      *
      * Update a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1157,7 +1199,7 @@ class BatchApi
      *
      * Update a batch of objects by internal ID, or unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1208,7 +1250,7 @@ class BatchApi
     /**
      * Create request for operation 'update'
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1321,13 +1363,13 @@ class BatchApi
      *
      * Create or update a batch of objects by unique property values
      *
-     * @param  string $object_type object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
      */
     public function upsert($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1340,13 +1382,13 @@ class BatchApi
      *
      * Create or update a batch of objects by unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function upsertWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1379,6 +1421,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
                         $request,
                         $response,
                     );
@@ -1420,6 +1468,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1440,7 +1496,7 @@ class BatchApi
      *
      * Create or update a batch of objects by unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
@@ -1462,7 +1518,7 @@ class BatchApi
      *
      * Create or update a batch of objects by unique property values
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
@@ -1513,7 +1569,7 @@ class BatchApi
     /**
      * Create request for operation 'upsert'
      *
-     * @param  string $object_type (required)
+     * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *

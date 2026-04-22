@@ -1,6 +1,6 @@
 <?php
 /**
- * CollectionResponseSimplePublicObjectWithAssociations
+ * CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * CollectionResponseSimplePublicObjectWithAssociations Class Doc Comment
+ * CollectionResponseSimplePublicObjectWithAssociationsForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionResponseSimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess, \JsonSerializable
+class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CollectionResponseSimplePublicObjectWithAssociations';
+    protected static $openAPIModelName = 'CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
       * @var string[]
       */
     protected static $openAPITypes = [
-        'paging' => '\HubSpot\Client\Crm\Objects\Model\Paging',
+        'paging' => '\HubSpot\Client\Crm\Objects\Model\ForwardPaging',
         'results' => '\HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations[]'
     ];
 
@@ -302,7 +302,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
     /**
      * Gets paging
      *
-     * @return \HubSpot\Client\Crm\Objects\Model\Paging|null
+     * @return \HubSpot\Client\Crm\Objects\Model\ForwardPaging|null
      */
     public function getPaging()
     {
@@ -312,7 +312,7 @@ class CollectionResponseSimplePublicObjectWithAssociations implements ModelInter
     /**
      * Sets paging
      *
-     * @param \HubSpot\Client\Crm\Objects\Model\Paging|null $paging paging
+     * @param \HubSpot\Client\Crm\Objects\Model\ForwardPaging|null $paging paging
      *
      * @return self
      */

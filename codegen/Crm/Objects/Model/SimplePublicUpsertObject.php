@@ -338,9 +338,6 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
@@ -374,7 +371,7 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets archived
      *
-     * @return bool
+     * @return bool|null
      */
     public function getArchived()
     {
@@ -384,7 +381,7 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets archived
      *
-     * @param bool $archived Whether the object is archived.
+     * @param bool|null $archived Whether the object is archived.
      *
      * @return self
      */

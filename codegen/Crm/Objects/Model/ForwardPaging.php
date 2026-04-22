@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorDetail
+ * ForwardPaging
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Objects\ObjectSerializer;
 
 /**
- * ErrorDetail Class Doc Comment
+ * ForwardPaging Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Objects
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Objects\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
+class ForwardPaging implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorDetail';
+    protected static $openAPIModelName = 'ForwardPaging';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'context' => 'array<string,string[]>',
-        'in' => 'string',
-        'message' => 'string',
-        'sub_category' => 'string'
+        'next' => '\HubSpot\Client\Crm\Objects\Model\NextPage'
     ];
 
     /**
@@ -72,11 +68,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'context' => null,
-        'in' => null,
-        'message' => null,
-        'sub_category' => null
+        'next' => null
     ];
 
     /**
@@ -85,11 +77,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-        'context' => false,
-        'in' => false,
-        'message' => false,
-        'sub_category' => false
+        'next' => false
     ];
 
     /**
@@ -178,11 +166,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'context' => 'context',
-        'in' => 'in',
-        'message' => 'message',
-        'sub_category' => 'subCategory'
+        'next' => 'next'
     ];
 
     /**
@@ -191,11 +175,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'context' => 'setContext',
-        'in' => 'setIn',
-        'message' => 'setMessage',
-        'sub_category' => 'setSubCategory'
+        'next' => 'setNext'
     ];
 
     /**
@@ -204,11 +184,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'context' => 'getContext',
-        'in' => 'getIn',
-        'message' => 'getMessage',
-        'sub_category' => 'getSubCategory'
+        'next' => 'getNext'
     ];
 
     /**
@@ -268,11 +244,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('context', $data ?? [], null);
-        $this->setIfExists('in', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('sub_category', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -302,9 +274,6 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -321,136 +290,28 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets next
      *
-     * @return string|null
+     * @return \HubSpot\Client\Crm\Objects\Model\NextPage|null
      */
-    public function getCode()
+    public function getNext()
     {
-        return $this->container['code'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets code
+     * Sets next
      *
-     * @param string|null $code The status code associated with the error detail
+     * @param \HubSpot\Client\Crm\Objects\Model\NextPage|null $next next
      *
      * @return self
      */
-    public function setCode($code)
+    public function setNext($next)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        if (is_null($next)) {
+            throw new \InvalidArgumentException('non-nullable next cannot be null');
         }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets context
-     *
-     * @return array<string,string[]>|null
-     */
-    public function getContext()
-    {
-        return $this->container['context'];
-    }
-
-    /**
-     * Sets context
-     *
-     * @param array<string,string[]>|null $context Context about the error condition
-     *
-     * @return self
-     */
-    public function setContext($context)
-    {
-        if (is_null($context)) {
-            throw new \InvalidArgumentException('non-nullable context cannot be null');
-        }
-        $this->container['context'] = $context;
-
-        return $this;
-    }
-
-    /**
-     * Gets in
-     *
-     * @return string|null
-     */
-    public function getIn()
-    {
-        return $this->container['in'];
-    }
-
-    /**
-     * Sets in
-     *
-     * @param string|null $in The name of the field or parameter in which the error was found.
-     *
-     * @return self
-     */
-    public function setIn($in)
-    {
-        if (is_null($in)) {
-            throw new \InvalidArgumentException('non-nullable in cannot be null');
-        }
-        $this->container['in'] = $in;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_category
-     *
-     * @return string|null
-     */
-    public function getSubCategory()
-    {
-        return $this->container['sub_category'];
-    }
-
-    /**
-     * Sets sub_category
-     *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
-     *
-     * @return self
-     */
-    public function setSubCategory($sub_category)
-    {
-        if (is_null($sub_category)) {
-            throw new \InvalidArgumentException('non-nullable sub_category cannot be null');
-        }
-        $this->container['sub_category'] = $sub_category;
+        $this->container['next'] = $next;
 
         return $this;
     }
