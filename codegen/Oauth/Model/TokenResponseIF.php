@@ -58,6 +58,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'access_token' => 'string',
+        'refresh_token' => 'string',
         'expires_in' => 'int',
         'hub_id' => 'int',
         'id_token' => 'string',
@@ -75,6 +76,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'access_token' => null,
+        'refresh_token' => null,
         'expires_in' => 'int64',
         'hub_id' => 'int32',
         'id_token' => null,
@@ -90,6 +92,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'access_token' => false,
+        'refresh_token' => false,
         'expires_in' => false,
         'hub_id' => false,
         'id_token' => false,
@@ -184,12 +187,13 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'access_token' => 'accessToken',
-        'expires_in' => 'expiresIn',
-        'hub_id' => 'hubId',
+        'access_token' => 'access_token',
+        'refresh_token' => 'refresh_token',
+        'expires_in' => 'expires_in',
+        'hub_id' => 'hub_id',
         'id_token' => 'idToken',
         'scopes' => 'scopes',
-        'token_type' => 'tokenType',
+        'token_type' => 'token_type',
         'user_id' => 'userId'
     ];
 
@@ -200,6 +204,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'access_token' => 'setAccessToken',
+        'refresh_token' => 'setRefreshToken',
         'expires_in' => 'setExpiresIn',
         'hub_id' => 'setHubId',
         'id_token' => 'setIdToken',
@@ -215,6 +220,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'access_token' => 'getAccessToken',
+        'refresh_token' => 'getRefreshToken',
         'expires_in' => 'getExpiresIn',
         'hub_id' => 'getHubId',
         'id_token' => 'getIdToken',
@@ -281,6 +287,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('access_token', $data ?? [], null);
+        $this->setIfExists('refresh_token', $data ?? [], null);
         $this->setIfExists('expires_in', $data ?? [], null);
         $this->setIfExists('hub_id', $data ?? [], null);
         $this->setIfExists('id_token', $data ?? [], null);
@@ -354,6 +361,33 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable access_token cannot be null');
         }
         $this->container['access_token'] = $access_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets refresh_token
+     *
+     * @return string|null
+     */
+    public function getRefreshToken()
+    {
+        return $this->container['refresh_token'];
+    }
+
+    /**
+     * Sets refresh_token
+     *
+     * @param string|null $refresh_token refresh_token
+     *
+     * @return self
+     */
+    public function setRefreshToken($refresh_token)
+    {
+        if (is_null($refresh_token)) {
+            throw new \InvalidArgumentException('non-nullable refresh_token cannot be null');
+        }
+        $this->container['refresh_token'] = $refresh_token;
 
         return $this;
     }
@@ -452,7 +486,7 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets scopes
      *
-     * @param string[]|null $scopes scopes
+     * @param string[]|null $scopes An array of strings indicating the scopes
      *
      * @return self
      */

@@ -528,7 +528,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets scopes
      *
-     * @param string[] $scopes scopes
+     * @param string[] $scopes An array of strings indicating the scopes
      *
      * @return self
      */
