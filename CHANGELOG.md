@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.6...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.7...HEAD)
+
+## [14.0.7](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.7) - 2026-04-23
+
+### CRM Associations V3
+
+- `crm()->associations()->batchApi()->create()` now returns HTTP 201 instead of 200, and handles HTTP 207 (partial success) responses with new `BatchResponsePublicAssociationWithErrors` model.
+- `crm()->associations()->batchApi()->read()` now handles HTTP 207 (partial success) responses, returning `BatchResponsePublicAssociationMultiWithErrors`.
+- `HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation` no longer includes `errors` and `numErrors` fields — those are available on the new `BatchResponsePublicAssociationWithErrors` model.
+- `HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti` no longer includes `errors` and `numErrors` fields — those are available on the new `BatchResponsePublicAssociationMultiWithErrors` model.
+- Added new models: `BatchResponsePublicAssociationWithErrors`, `BatchResponsePublicAssociationMultiWithErrors`.
+
+### CRM Properties
+
+- `crm()->properties()->batchApi()->create()` now returns HTTP 201 instead of 200, and handles HTTP 207 (partial success) responses with new `BatchResponsePropertyWithErrors` model.
+- `crm()->properties()->batchApi()->read()` now handles HTTP 207 (partial success) responses, returning `BatchResponsePropertyWithErrors`.
+- `HubSpot\Client\Crm\Properties\Model\BatchResponseProperty` no longer includes `errors` and `numErrors` fields — those are available on the new `BatchResponsePropertyWithErrors` model.
+- Added new fields `currencyPropertyName`, `numberDisplayHint`, and `showCurrencySymbol` to `Property`, `PropertyCreate`, and `PropertyUpdate` models.
+- Added new model: `BatchResponsePropertyWithErrors`.
 
 ## [14.0.6](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.6) - 2026-04-22
 
@@ -1250,7 +1268,7 @@ to
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.6...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.7...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1323,3 +1341,4 @@ to
 [14.0.4]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.4
 [14.0.5]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.5
 [14.0.6]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.6
+[14.0.7]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.7
