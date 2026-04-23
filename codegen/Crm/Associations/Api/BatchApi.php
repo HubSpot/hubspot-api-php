@@ -134,10 +134,10 @@ class BatchApi
     /**
      * Operation archive
      *
-     * Archive multiple associations between specified object types in a batch operation.
+     * Archive associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -153,10 +153,10 @@ class BatchApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Archive multiple associations between specified object types in a batch operation.
+     * Archive associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -212,10 +212,10 @@ class BatchApi
     /**
      * Operation archiveAsync
      *
-     * Archive multiple associations between specified object types in a batch operation.
+     * Archive associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -235,10 +235,10 @@ class BatchApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Archive multiple associations between specified object types in a batch operation.
+     * Archive associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -276,8 +276,8 @@ class BatchApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -403,16 +403,16 @@ class BatchApi
     /**
      * Operation create
      *
-     * Create multiple associations between specified object types in a batch operation.
+     * Create associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors|\HubSpot\Client\Crm\Associations\Model\Error
      */
     public function create($from_object_type, $to_object_type, $batch_input_public_association, string $contentType = self::contentTypes['create'][0])
     {
@@ -423,16 +423,16 @@ class BatchApi
     /**
      * Operation createWithHttpInfo
      *
-     * Create multiple associations between specified object types in a batch operation.
+     * Create associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_association, string $contentType = self::contentTypes['create'][0])
     {
@@ -462,9 +462,15 @@ class BatchApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors',
                         $request,
                         $response,
                     );
@@ -498,10 +504,18 @@ class BatchApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,10 +538,10 @@ class BatchApi
     /**
      * Operation createAsync
      *
-     * Create multiple associations between specified object types in a batch operation.
+     * Create associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -547,10 +561,10 @@ class BatchApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Create multiple associations between specified object types in a batch operation.
+     * Create associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -601,8 +615,8 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicAssociation $batch_input_public_association (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
@@ -728,16 +742,16 @@ class BatchApi
     /**
      * Operation read
      *
-     * Retrieve multiple associations between specified object types in a batch operation.
+     * Retrieve associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id batch_input_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\Error
+     * @return \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors|\HubSpot\Client\Crm\Associations\Model\Error
      */
     public function read($from_object_type, $to_object_type, $batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
@@ -748,16 +762,16 @@ class BatchApi
     /**
      * Operation readWithHttpInfo
      *
-     * Retrieve multiple associations between specified object types in a batch operation.
+     * Retrieve associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Associations\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti|\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors|\HubSpot\Client\Crm\Associations\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($from_object_type, $to_object_type, $batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
@@ -790,6 +804,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMulti',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors',
                         $request,
                         $response,
                     );
@@ -831,6 +851,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Associations\Model\BatchResponsePublicAssociationMultiWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -849,10 +877,10 @@ class BatchApi
     /**
      * Operation readAsync
      *
-     * Retrieve multiple associations between specified object types in a batch operation.
+     * Retrieve associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -872,10 +900,10 @@ class BatchApi
     /**
      * Operation readAsyncWithHttpInfo
      *
-     * Retrieve multiple associations between specified object types in a batch operation.
+     * Retrieve associations
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -926,8 +954,8 @@ class BatchApi
     /**
      * Create request for operation 'read'
      *
-     * @param  string $from_object_type The type of the source object in the association. (required)
-     * @param  string $to_object_type The type of the target object in the association. (required)
+     * @param  string $from_object_type  (required)
+     * @param  string $to_object_type  (required)
      * @param  \HubSpot\Client\Crm\Associations\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
