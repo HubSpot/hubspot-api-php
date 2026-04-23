@@ -332,7 +332,7 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets archivable
      *
-     * @param bool $archivable archivable
+     * @param bool $archivable Specifies whether the property can be archived.
      *
      * @return self
      */
@@ -359,7 +359,7 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets read_only_definition
      *
-     * @param bool $read_only_definition read_only_definition
+     * @param bool $read_only_definition Indicates whether the property's definition is read-only and cannot be modified.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets read_only_options
      *
-     * @param bool|null $read_only_options read_only_options
+     * @param bool|null $read_only_options Indicates whether the property's options are read-only and cannot be modified.
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class PropertyModificationMetadata implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets read_only_value
      *
-     * @param bool $read_only_value read_only_value
+     * @param bool $read_only_value Indicates whether the property's value is read-only and cannot be modified.
      *
      * @return self
      */

@@ -58,9 +58,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'completed_at' => '\DateTime',
-        'errors' => '\HubSpot\Client\Crm\Properties\Model\StandardError[]',
         'links' => 'array<string,string>',
-        'num_errors' => 'int',
         'requested_at' => '\DateTime',
         'results' => '\HubSpot\Client\Crm\Properties\Model\Property[]',
         'started_at' => '\DateTime',
@@ -76,9 +74,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'completed_at' => 'date-time',
-        'errors' => null,
         'links' => null,
-        'num_errors' => 'int32',
         'requested_at' => 'date-time',
         'results' => null,
         'started_at' => 'date-time',
@@ -92,9 +88,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'completed_at' => false,
-        'errors' => false,
         'links' => false,
-        'num_errors' => false,
         'requested_at' => false,
         'results' => false,
         'started_at' => false,
@@ -188,9 +182,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'completed_at' => 'completedAt',
-        'errors' => 'errors',
         'links' => 'links',
-        'num_errors' => 'numErrors',
         'requested_at' => 'requestedAt',
         'results' => 'results',
         'started_at' => 'startedAt',
@@ -204,9 +196,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'completed_at' => 'setCompletedAt',
-        'errors' => 'setErrors',
         'links' => 'setLinks',
-        'num_errors' => 'setNumErrors',
         'requested_at' => 'setRequestedAt',
         'results' => 'setResults',
         'started_at' => 'setStartedAt',
@@ -220,9 +210,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'completed_at' => 'getCompletedAt',
-        'errors' => 'getErrors',
         'links' => 'getLinks',
-        'num_errors' => 'getNumErrors',
         'requested_at' => 'getRequestedAt',
         'results' => 'getResults',
         'started_at' => 'getStartedAt',
@@ -306,9 +294,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('completed_at', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('num_errors', $data ?? [], null);
         $this->setIfExists('requested_at', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('started_at', $data ?? [], null);
@@ -391,7 +377,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at completed_at
+     * @param \DateTime $completed_at The timestamp indicating when the batch operation was completed.
      *
      * @return self
      */
@@ -401,33 +387,6 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
         $this->container['completed_at'] = $completed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \HubSpot\Client\Crm\Properties\Model\StandardError[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \HubSpot\Client\Crm\Properties\Model\StandardError[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -445,7 +404,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links links
+     * @param array<string,string>|null $links A collection of URLs linking to documentation or resources related to the batch operation.
      *
      * @return self
      */
@@ -455,33 +414,6 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
         $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets num_errors
-     *
-     * @return int|null
-     */
-    public function getNumErrors()
-    {
-        return $this->container['num_errors'];
-    }
-
-    /**
-     * Sets num_errors
-     *
-     * @param int|null $num_errors num_errors
-     *
-     * @return self
-     */
-    public function setNumErrors($num_errors)
-    {
-        if (is_null($num_errors)) {
-            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
-        }
-        $this->container['num_errors'] = $num_errors;
 
         return $this;
     }
@@ -499,7 +431,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at requested_at
+     * @param \DateTime|null $requested_at The timestamp indicating when the batch operation was requested.
      *
      * @return self
      */
@@ -553,7 +485,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at started_at
+     * @param \DateTime $started_at The timestamp indicating when the batch operation began processing.
      *
      * @return self
      */
@@ -580,7 +512,7 @@ class BatchResponseProperty implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param string $status status
+     * @param string $status The current status of the batch operation, with possible values being CANCELED, COMPLETE, PENDING, or PROCESSING.
      *
      * @return self
      */

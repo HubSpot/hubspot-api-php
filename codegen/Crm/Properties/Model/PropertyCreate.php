@@ -58,6 +58,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'calculation_formula' => 'string',
+        'currency_property_name' => 'string',
         'data_sensitivity' => 'string',
         'description' => 'string',
         'display_order' => 'int',
@@ -69,8 +70,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'hidden' => 'bool',
         'label' => 'string',
         'name' => 'string',
+        'number_display_hint' => 'string',
         'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
         'referenced_object_type' => 'string',
+        'show_currency_symbol' => 'bool',
         'type' => 'string'
     ];
 
@@ -83,6 +86,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'calculation_formula' => null,
+        'currency_property_name' => null,
         'data_sensitivity' => null,
         'description' => null,
         'display_order' => 'int32',
@@ -94,8 +98,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'hidden' => null,
         'label' => null,
         'name' => null,
+        'number_display_hint' => null,
         'options' => null,
         'referenced_object_type' => null,
+        'show_currency_symbol' => null,
         'type' => null
     ];
 
@@ -106,6 +112,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'calculation_formula' => false,
+        'currency_property_name' => false,
         'data_sensitivity' => false,
         'description' => false,
         'display_order' => false,
@@ -117,8 +124,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'hidden' => false,
         'label' => false,
         'name' => false,
+        'number_display_hint' => false,
         'options' => false,
         'referenced_object_type' => false,
+        'show_currency_symbol' => false,
         'type' => false
     ];
 
@@ -209,6 +218,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'calculation_formula' => 'calculationFormula',
+        'currency_property_name' => 'currencyPropertyName',
         'data_sensitivity' => 'dataSensitivity',
         'description' => 'description',
         'display_order' => 'displayOrder',
@@ -220,8 +230,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'hidden' => 'hidden',
         'label' => 'label',
         'name' => 'name',
+        'number_display_hint' => 'numberDisplayHint',
         'options' => 'options',
         'referenced_object_type' => 'referencedObjectType',
+        'show_currency_symbol' => 'showCurrencySymbol',
         'type' => 'type'
     ];
 
@@ -232,6 +244,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'calculation_formula' => 'setCalculationFormula',
+        'currency_property_name' => 'setCurrencyPropertyName',
         'data_sensitivity' => 'setDataSensitivity',
         'description' => 'setDescription',
         'display_order' => 'setDisplayOrder',
@@ -243,8 +256,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'hidden' => 'setHidden',
         'label' => 'setLabel',
         'name' => 'setName',
+        'number_display_hint' => 'setNumberDisplayHint',
         'options' => 'setOptions',
         'referenced_object_type' => 'setReferencedObjectType',
+        'show_currency_symbol' => 'setShowCurrencySymbol',
         'type' => 'setType'
     ];
 
@@ -255,6 +270,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'calculation_formula' => 'getCalculationFormula',
+        'currency_property_name' => 'getCurrencyPropertyName',
         'data_sensitivity' => 'getDataSensitivity',
         'description' => 'getDescription',
         'display_order' => 'getDisplayOrder',
@@ -266,8 +282,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'hidden' => 'getHidden',
         'label' => 'getLabel',
         'name' => 'getName',
+        'number_display_hint' => 'getNumberDisplayHint',
         'options' => 'getOptions',
         'referenced_object_type' => 'getReferencedObjectType',
+        'show_currency_symbol' => 'getShowCurrencySymbol',
         'type' => 'getType'
     ];
 
@@ -327,6 +345,12 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FIELD_TYPE_SELECT = 'select';
     public const FIELD_TYPE_TEXT = 'text';
     public const FIELD_TYPE_TEXTAREA = 'textarea';
+    public const NUMBER_DISPLAY_HINT_CURRENCY = 'currency';
+    public const NUMBER_DISPLAY_HINT_DURATION = 'duration';
+    public const NUMBER_DISPLAY_HINT_FORMATTED = 'formatted';
+    public const NUMBER_DISPLAY_HINT_PERCENTAGE = 'percentage';
+    public const NUMBER_DISPLAY_HINT_PROBABILITY = 'probability';
+    public const NUMBER_DISPLAY_HINT_UNFORMATTED = 'unformatted';
     public const TYPE_BOOL = 'bool';
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
@@ -377,6 +401,23 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
+    public function getNumberDisplayHintAllowableValues()
+    {
+        return [
+            self::NUMBER_DISPLAY_HINT_CURRENCY,
+            self::NUMBER_DISPLAY_HINT_DURATION,
+            self::NUMBER_DISPLAY_HINT_FORMATTED,
+            self::NUMBER_DISPLAY_HINT_PERCENTAGE,
+            self::NUMBER_DISPLAY_HINT_PROBABILITY,
+            self::NUMBER_DISPLAY_HINT_UNFORMATTED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getTypeAllowableValues()
     {
         return [
@@ -406,6 +447,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('calculation_formula', $data ?? [], null);
+        $this->setIfExists('currency_property_name', $data ?? [], null);
         $this->setIfExists('data_sensitivity', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('display_order', $data ?? [], null);
@@ -417,8 +459,10 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('hidden', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('number_display_hint', $data ?? [], null);
         $this->setIfExists('options', $data ?? [], null);
         $this->setIfExists('referenced_object_type', $data ?? [], null);
+        $this->setIfExists('show_currency_symbol', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -479,6 +523,15 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!is_null($this->container['number_display_hint']) && !in_array($this->container['number_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                $this->container['number_display_hint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -534,6 +587,33 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets currency_property_name
+     *
+     * @return string|null
+     */
+    public function getCurrencyPropertyName()
+    {
+        return $this->container['currency_property_name'];
+    }
+
+    /**
+     * Sets currency_property_name
+     *
+     * @param string|null $currency_property_name currency_property_name
+     *
+     * @return self
+     */
+    public function setCurrencyPropertyName($currency_property_name)
+    {
+        if (is_null($currency_property_name)) {
+            throw new \InvalidArgumentException('non-nullable currency_property_name cannot be null');
+        }
+        $this->container['currency_property_name'] = $currency_property_name;
+
+        return $this;
+    }
+
+    /**
      * Gets data_sensitivity
      *
      * @return string|null
@@ -546,7 +626,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data_sensitivity
      *
-     * @param string|null $data_sensitivity data_sensitivity
+     * @param string|null $data_sensitivity Indicates the sensitivity level of the property, with options: highly_sensitive, non_sensitive, or sensitive.
      *
      * @return self
      */
@@ -610,7 +690,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets display_order
      *
-     * @param int|null $display_order Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param int|null $display_order Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
      *
      * @return self
      */
@@ -809,7 +889,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string $label A human-readable label that will be shown in HubSpot.
+     * @param string $label A human-readable property label that will be shown in HubSpot.
      *
      * @return self
      */
@@ -836,7 +916,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The name of the property to read or modify.
+     * @param string $name The internal property name, which must be used when referencing the property via the API.
      *
      * @return self
      */
@@ -846,6 +926,43 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_display_hint
+     *
+     * @return string|null
+     */
+    public function getNumberDisplayHint()
+    {
+        return $this->container['number_display_hint'];
+    }
+
+    /**
+     * Sets number_display_hint
+     *
+     * @param string|null $number_display_hint number_display_hint
+     *
+     * @return self
+     */
+    public function setNumberDisplayHint($number_display_hint)
+    {
+        if (is_null($number_display_hint)) {
+            throw new \InvalidArgumentException('non-nullable number_display_hint cannot be null');
+        }
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!in_array($number_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                    $number_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_display_hint'] = $number_display_hint;
 
         return $this;
     }
@@ -900,6 +1017,33 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable referenced_object_type cannot be null');
         }
         $this->container['referenced_object_type'] = $referenced_object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_currency_symbol
+     *
+     * @return bool|null
+     */
+    public function getShowCurrencySymbol()
+    {
+        return $this->container['show_currency_symbol'];
+    }
+
+    /**
+     * Sets show_currency_symbol
+     *
+     * @param bool|null $show_currency_symbol show_currency_symbol
+     *
+     * @return self
+     */
+    public function setShowCurrencySymbol($show_currency_symbol)
+    {
+        if (is_null($show_currency_symbol)) {
+            throw new \InvalidArgumentException('non-nullable show_currency_symbol cannot be null');
+        }
+        $this->container['show_currency_symbol'] = $show_currency_symbol;
 
         return $this;
     }

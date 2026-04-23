@@ -1,6 +1,6 @@
 <?php
 /**
- * PropertyGroup
+ * BatchResponsePropertyWithErrors
  *
  * PHP version 8.1
  *
@@ -32,16 +32,15 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Properties\ObjectSerializer;
 
 /**
- * PropertyGroup Class Doc Comment
+ * BatchResponsePropertyWithErrors Class Doc Comment
  *
  * @category Class
- * @description An ID for a group of properties
  * @package  HubSpot\Client\Crm\Properties
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponsePropertyWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PropertyGroup';
+    protected static $openAPIModelName = 'BatchResponsePropertyWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +57,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'archived' => 'bool',
-        'display_order' => 'int',
-        'label' => 'string',
-        'name' => 'string'
+        'completed_at' => '\DateTime',
+        'errors' => '\HubSpot\Client\Crm\Properties\Model\StandardError[]',
+        'links' => 'array<string,string>',
+        'num_errors' => 'int',
+        'requested_at' => '\DateTime',
+        'results' => '\HubSpot\Client\Crm\Properties\Model\Property[]',
+        'started_at' => '\DateTime',
+        'status' => 'string'
     ];
 
     /**
@@ -72,10 +75,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'archived' => null,
-        'display_order' => 'int32',
-        'label' => null,
-        'name' => null
+        'completed_at' => 'date-time',
+        'errors' => null,
+        'links' => null,
+        'num_errors' => 'int32',
+        'requested_at' => 'date-time',
+        'results' => null,
+        'started_at' => 'date-time',
+        'status' => null
     ];
 
     /**
@@ -84,10 +91,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'archived' => false,
-        'display_order' => false,
-        'label' => false,
-        'name' => false
+        'completed_at' => false,
+        'errors' => false,
+        'links' => false,
+        'num_errors' => false,
+        'requested_at' => false,
+        'results' => false,
+        'started_at' => false,
+        'status' => false
     ];
 
     /**
@@ -176,10 +187,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'archived' => 'archived',
-        'display_order' => 'displayOrder',
-        'label' => 'label',
-        'name' => 'name'
+        'completed_at' => 'completedAt',
+        'errors' => 'errors',
+        'links' => 'links',
+        'num_errors' => 'numErrors',
+        'requested_at' => 'requestedAt',
+        'results' => 'results',
+        'started_at' => 'startedAt',
+        'status' => 'status'
     ];
 
     /**
@@ -188,10 +203,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'archived' => 'setArchived',
-        'display_order' => 'setDisplayOrder',
-        'label' => 'setLabel',
-        'name' => 'setName'
+        'completed_at' => 'setCompletedAt',
+        'errors' => 'setErrors',
+        'links' => 'setLinks',
+        'num_errors' => 'setNumErrors',
+        'requested_at' => 'setRequestedAt',
+        'results' => 'setResults',
+        'started_at' => 'setStartedAt',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -200,10 +219,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'archived' => 'getArchived',
-        'display_order' => 'getDisplayOrder',
-        'label' => 'getLabel',
-        'name' => 'getName'
+        'completed_at' => 'getCompletedAt',
+        'errors' => 'getErrors',
+        'links' => 'getLinks',
+        'num_errors' => 'getNumErrors',
+        'requested_at' => 'getRequestedAt',
+        'results' => 'getResults',
+        'started_at' => 'getStartedAt',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -247,6 +270,25 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const STATUS_CANCELED = 'CANCELED';
+    public const STATUS_COMPLETE = 'COMPLETE';
+    public const STATUS_PENDING = 'PENDING';
+    public const STATUS_PROCESSING = 'PROCESSING';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_CANCELED,
+            self::STATUS_COMPLETE,
+            self::STATUS_PENDING,
+            self::STATUS_PROCESSING,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +305,14 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('display_order', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
+        $this->setIfExists('requested_at', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -296,18 +342,27 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
+        if ($this->container['completed_at'] === null) {
+            $invalidProperties[] = "'completed_at' can't be null";
         }
-        if ($this->container['display_order'] === null) {
-            $invalidProperties[] = "'display_order' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
+        if ($this->container['started_at'] === null) {
+            $invalidProperties[] = "'started_at' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -324,109 +379,227 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets archived
+     * Gets completed_at
      *
-     * @return bool
+     * @return \DateTime
      */
-    public function getArchived()
+    public function getCompletedAt()
     {
-        return $this->container['archived'];
+        return $this->container['completed_at'];
     }
 
     /**
-     * Sets archived
+     * Sets completed_at
      *
-     * @param bool $archived Indicates whether the property group is archived.
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
-    public function setArchived($archived)
+    public function setCompletedAt($completed_at)
     {
-        if (is_null($archived)) {
-            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
-        $this->container['archived'] = $archived;
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }
 
     /**
-     * Gets display_order
+     * Gets errors
      *
-     * @return int
+     * @return \HubSpot\Client\Crm\Properties\Model\StandardError[]|null
      */
-    public function getDisplayOrder()
+    public function getErrors()
     {
-        return $this->container['display_order'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets display_order
+     * Sets errors
      *
-     * @param int $display_order Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param \HubSpot\Client\Crm\Properties\Model\StandardError[]|null $errors errors
      *
      * @return self
      */
-    public function setDisplayOrder($display_order)
+    public function setErrors($errors)
     {
-        if (is_null($display_order)) {
-            throw new \InvalidArgumentException('non-nullable display_order cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['display_order'] = $display_order;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets label
+     * Gets links
+     *
+     * @return array<string,string>|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param array<string,string>|null $links links
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        }
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_errors
+     *
+     * @return int|null
+     */
+    public function getNumErrors()
+    {
+        return $this->container['num_errors'];
+    }
+
+    /**
+     * Sets num_errors
+     *
+     * @param int|null $num_errors num_errors
+     *
+     * @return self
+     */
+    public function setNumErrors($num_errors)
+    {
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
+        }
+        $this->container['num_errors'] = $num_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRequestedAt()
+    {
+        return $this->container['requested_at'];
+    }
+
+    /**
+     * Sets requested_at
+     *
+     * @param \DateTime|null $requested_at requested_at
+     *
+     * @return self
+     */
+    public function setRequestedAt($requested_at)
+    {
+        if (is_null($requested_at)) {
+            throw new \InvalidArgumentException('non-nullable requested_at cannot be null');
+        }
+        $this->container['requested_at'] = $requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \HubSpot\Client\Crm\Properties\Model\Property[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \HubSpot\Client\Crm\Properties\Model\Property[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime $started_at started_at
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
      *
      * @return string
      */
-    public function getLabel()
+    public function getStatus()
     {
-        return $this->container['label'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets label
+     * Sets status
      *
-     * @param string $label A human-readable label that will be shown in HubSpot.
+     * @param string $status status
      *
      * @return self
      */
-    public function setLabel($label)
+    public function setStatus($status)
     {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The internal property group name, which must be used when referencing the property group via the API.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['name'] = $name;
+        $this->container['status'] = $status;
 
         return $this;
     }

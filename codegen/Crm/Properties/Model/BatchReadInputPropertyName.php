@@ -351,7 +351,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets archived
      *
-     * @param bool $archived archived
+     * @param bool $archived Specifies whether the property is archived.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class BatchReadInputPropertyName implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data_sensitivity
      *
-     * @param string $data_sensitivity data_sensitivity
+     * @param string $data_sensitivity Indicates the sensitivity level of the data, such as 'non_sensitive', 'sensitive', or 'highly_sensitive'.
      *
      * @return self
      */

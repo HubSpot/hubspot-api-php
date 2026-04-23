@@ -58,6 +58,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'calculation_formula' => 'string',
+        'currency_property_name' => 'string',
         'description' => 'string',
         'display_order' => 'int',
         'field_type' => 'string',
@@ -65,7 +66,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_name' => 'string',
         'hidden' => 'bool',
         'label' => 'string',
+        'number_display_hint' => 'string',
         'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
+        'show_currency_symbol' => 'bool',
         'type' => 'string'
     ];
 
@@ -78,6 +81,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'calculation_formula' => null,
+        'currency_property_name' => null,
         'description' => null,
         'display_order' => 'int32',
         'field_type' => null,
@@ -85,7 +89,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_name' => null,
         'hidden' => null,
         'label' => null,
+        'number_display_hint' => null,
         'options' => null,
+        'show_currency_symbol' => null,
         'type' => null
     ];
 
@@ -96,6 +102,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'calculation_formula' => false,
+        'currency_property_name' => false,
         'description' => false,
         'display_order' => false,
         'field_type' => false,
@@ -103,7 +110,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_name' => false,
         'hidden' => false,
         'label' => false,
+        'number_display_hint' => false,
         'options' => false,
+        'show_currency_symbol' => false,
         'type' => false
     ];
 
@@ -194,6 +203,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'calculation_formula' => 'calculationFormula',
+        'currency_property_name' => 'currencyPropertyName',
         'description' => 'description',
         'display_order' => 'displayOrder',
         'field_type' => 'fieldType',
@@ -201,7 +211,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_name' => 'groupName',
         'hidden' => 'hidden',
         'label' => 'label',
+        'number_display_hint' => 'numberDisplayHint',
         'options' => 'options',
+        'show_currency_symbol' => 'showCurrencySymbol',
         'type' => 'type'
     ];
 
@@ -212,6 +224,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'calculation_formula' => 'setCalculationFormula',
+        'currency_property_name' => 'setCurrencyPropertyName',
         'description' => 'setDescription',
         'display_order' => 'setDisplayOrder',
         'field_type' => 'setFieldType',
@@ -219,7 +232,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_name' => 'setGroupName',
         'hidden' => 'setHidden',
         'label' => 'setLabel',
+        'number_display_hint' => 'setNumberDisplayHint',
         'options' => 'setOptions',
+        'show_currency_symbol' => 'setShowCurrencySymbol',
         'type' => 'setType'
     ];
 
@@ -230,6 +245,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'calculation_formula' => 'getCalculationFormula',
+        'currency_property_name' => 'getCurrencyPropertyName',
         'description' => 'getDescription',
         'display_order' => 'getDisplayOrder',
         'field_type' => 'getFieldType',
@@ -237,7 +253,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_name' => 'getGroupName',
         'hidden' => 'getHidden',
         'label' => 'getLabel',
+        'number_display_hint' => 'getNumberDisplayHint',
         'options' => 'getOptions',
+        'show_currency_symbol' => 'getShowCurrencySymbol',
         'type' => 'getType'
     ];
 
@@ -294,6 +312,12 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const FIELD_TYPE_SELECT = 'select';
     public const FIELD_TYPE_TEXT = 'text';
     public const FIELD_TYPE_TEXTAREA = 'textarea';
+    public const NUMBER_DISPLAY_HINT_CURRENCY = 'currency';
+    public const NUMBER_DISPLAY_HINT_DURATION = 'duration';
+    public const NUMBER_DISPLAY_HINT_FORMATTED = 'formatted';
+    public const NUMBER_DISPLAY_HINT_PERCENTAGE = 'percentage';
+    public const NUMBER_DISPLAY_HINT_PROBABILITY = 'probability';
+    public const NUMBER_DISPLAY_HINT_UNFORMATTED = 'unformatted';
     public const TYPE_BOOL = 'bool';
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
@@ -322,6 +346,23 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::FIELD_TYPE_SELECT,
             self::FIELD_TYPE_TEXT,
             self::FIELD_TYPE_TEXTAREA,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberDisplayHintAllowableValues()
+    {
+        return [
+            self::NUMBER_DISPLAY_HINT_CURRENCY,
+            self::NUMBER_DISPLAY_HINT_DURATION,
+            self::NUMBER_DISPLAY_HINT_FORMATTED,
+            self::NUMBER_DISPLAY_HINT_PERCENTAGE,
+            self::NUMBER_DISPLAY_HINT_PROBABILITY,
+            self::NUMBER_DISPLAY_HINT_UNFORMATTED,
         ];
     }
 
@@ -359,6 +400,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('calculation_formula', $data ?? [], null);
+        $this->setIfExists('currency_property_name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('display_order', $data ?? [], null);
         $this->setIfExists('field_type', $data ?? [], null);
@@ -366,7 +408,9 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('group_name', $data ?? [], null);
         $this->setIfExists('hidden', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('number_display_hint', $data ?? [], null);
         $this->setIfExists('options', $data ?? [], null);
+        $this->setIfExists('show_currency_symbol', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -402,6 +446,15 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'field_type', must be one of '%s'",
                 $this->container['field_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!is_null($this->container['number_display_hint']) && !in_array($this->container['number_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                $this->container['number_display_hint'],
                 implode("', '", $allowedValues)
             );
         }
@@ -458,6 +511,33 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets currency_property_name
+     *
+     * @return string|null
+     */
+    public function getCurrencyPropertyName()
+    {
+        return $this->container['currency_property_name'];
+    }
+
+    /**
+     * Sets currency_property_name
+     *
+     * @param string|null $currency_property_name currency_property_name
+     *
+     * @return self
+     */
+    public function setCurrencyPropertyName($currency_property_name)
+    {
+        if (is_null($currency_property_name)) {
+            throw new \InvalidArgumentException('non-nullable currency_property_name cannot be null');
+        }
+        $this->container['currency_property_name'] = $currency_property_name;
+
+        return $this;
+    }
+
+    /**
      * Gets description
      *
      * @return string|null
@@ -497,7 +577,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets display_order
      *
-     * @param int|null $display_order Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param int|null $display_order Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
      *
      * @return self
      */
@@ -642,7 +722,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string|null $label A human-readable label that will be shown in HubSpot.
+     * @param string|null $label A human-readable property label that will be shown in HubSpot.
      *
      * @return self
      */
@@ -652,6 +732,43 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
         $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_display_hint
+     *
+     * @return string|null
+     */
+    public function getNumberDisplayHint()
+    {
+        return $this->container['number_display_hint'];
+    }
+
+    /**
+     * Sets number_display_hint
+     *
+     * @param string|null $number_display_hint number_display_hint
+     *
+     * @return self
+     */
+    public function setNumberDisplayHint($number_display_hint)
+    {
+        if (is_null($number_display_hint)) {
+            throw new \InvalidArgumentException('non-nullable number_display_hint cannot be null');
+        }
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!in_array($number_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                    $number_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_display_hint'] = $number_display_hint;
 
         return $this;
     }
@@ -669,7 +786,7 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets options
      *
-     * @param \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null $options A list of valid options for the property. This field is required for enumerated properties.
+     * @param \HubSpot\Client\Crm\Properties\Model\OptionInput[]|null $options A list of valid options for the property.
      *
      * @return self
      */
@@ -679,6 +796,33 @@ class PropertyUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable options cannot be null');
         }
         $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_currency_symbol
+     *
+     * @return bool|null
+     */
+    public function getShowCurrencySymbol()
+    {
+        return $this->container['show_currency_symbol'];
+    }
+
+    /**
+     * Sets show_currency_symbol
+     *
+     * @param bool|null $show_currency_symbol show_currency_symbol
+     *
+     * @return self
+     */
+    public function setShowCurrencySymbol($show_currency_symbol)
+    {
+        if (is_null($show_currency_symbol)) {
+            throw new \InvalidArgumentException('non-nullable show_currency_symbol cannot be null');
+        }
+        $this->container['show_currency_symbol'] = $show_currency_symbol;
 
         return $this;
     }

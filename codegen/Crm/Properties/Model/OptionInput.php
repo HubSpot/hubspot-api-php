@@ -339,7 +339,7 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description A description of the property that will be shown as help text in HubSpot.
+     * @param string|null $description A description of the option.
      *
      * @return self
      */
@@ -366,7 +366,7 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets display_order
      *
-     * @param int|null $display_order Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param int|null $display_order Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hidden
      *
-     * @param bool $hidden If true, the property won't be visible and can't be used in HubSpot.
+     * @param bool $hidden Hidden options won't be shown in HubSpot.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class OptionInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string $label A human-readable label that will be shown in HubSpot.
+     * @param string $label A human-readable option label that will be shown in HubSpot.
      *
      * @return self
      */
