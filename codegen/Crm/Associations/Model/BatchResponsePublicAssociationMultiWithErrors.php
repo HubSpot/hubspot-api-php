@@ -1,6 +1,6 @@
 <?php
 /**
- * BatchResponsePublicAssociationMulti
+ * BatchResponsePublicAssociationMultiWithErrors
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HubSpot\Client\Crm\Associations\ObjectSerializer;
 
 /**
- * BatchResponsePublicAssociationMulti Class Doc Comment
+ * BatchResponsePublicAssociationMultiWithErrors Class Doc Comment
  *
  * @category Class
  * @package  HubSpot\Client\Crm\Associations
@@ -40,7 +40,7 @@ use \HubSpot\Client\Crm\Associations\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchResponsePublicAssociationMultiWithErrors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BatchResponsePublicAssociationMulti';
+    protected static $openAPIModelName = 'BatchResponsePublicAssociationMultiWithErrors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'completed_at' => '\DateTime',
+        'errors' => '\HubSpot\Client\Crm\Associations\Model\StandardError[]',
         'links' => 'array<string,string>',
+        'num_errors' => 'int',
         'requested_at' => '\DateTime',
         'results' => '\HubSpot\Client\Crm\Associations\Model\PublicAssociationMulti[]',
         'started_at' => '\DateTime',
@@ -74,7 +76,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'completed_at' => 'date-time',
+        'errors' => null,
         'links' => null,
+        'num_errors' => 'int32',
         'requested_at' => 'date-time',
         'results' => null,
         'started_at' => 'date-time',
@@ -88,7 +92,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'completed_at' => false,
+        'errors' => false,
         'links' => false,
+        'num_errors' => false,
         'requested_at' => false,
         'results' => false,
         'started_at' => false,
@@ -182,7 +188,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'completed_at' => 'completedAt',
+        'errors' => 'errors',
         'links' => 'links',
+        'num_errors' => 'numErrors',
         'requested_at' => 'requestedAt',
         'results' => 'results',
         'started_at' => 'startedAt',
@@ -196,7 +204,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'completed_at' => 'setCompletedAt',
+        'errors' => 'setErrors',
         'links' => 'setLinks',
+        'num_errors' => 'setNumErrors',
         'requested_at' => 'setRequestedAt',
         'results' => 'setResults',
         'started_at' => 'setStartedAt',
@@ -210,7 +220,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'completed_at' => 'getCompletedAt',
+        'errors' => 'getErrors',
         'links' => 'getLinks',
+        'num_errors' => 'getNumErrors',
         'requested_at' => 'getRequestedAt',
         'results' => 'getResults',
         'started_at' => 'getStartedAt',
@@ -294,7 +306,9 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('completed_at', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('num_errors', $data ?? [], null);
         $this->setIfExists('requested_at', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('started_at', $data ?? [], null);
@@ -377,7 +391,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at The date and time when the batch operation was completed.
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
@@ -387,6 +401,33 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
         }
         $this->container['completed_at'] = $completed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \HubSpot\Client\Crm\Associations\Model\StandardError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \HubSpot\Client\Crm\Associations\Model\StandardError[]|null $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -404,7 +445,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links URLs linking to resources or documentation associated with the batch operation.
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
@@ -414,6 +455,33 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
         $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_errors
+     *
+     * @return int|null
+     */
+    public function getNumErrors()
+    {
+        return $this->container['num_errors'];
+    }
+
+    /**
+     * Sets num_errors
+     *
+     * @param int|null $num_errors num_errors
+     *
+     * @return self
+     */
+    public function setNumErrors($num_errors)
+    {
+        if (is_null($num_errors)) {
+            throw new \InvalidArgumentException('non-nullable num_errors cannot be null');
+        }
+        $this->container['num_errors'] = $num_errors;
 
         return $this;
     }
@@ -431,7 +499,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The date and time when the batch request was made.
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return self
      */
@@ -485,7 +553,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The date and time when the batch operation started.
+     * @param \DateTime $started_at started_at
      *
      * @return self
      */
@@ -512,7 +580,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status The current status of the batch operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+     * @param string $status status
      *
      * @return self
      */
