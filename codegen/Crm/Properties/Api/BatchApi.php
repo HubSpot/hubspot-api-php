@@ -391,7 +391,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
+     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error
      */
     public function create($object_type, $batch_input_property_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -410,7 +410,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($object_type, $batch_input_property_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -440,9 +440,15 @@ class BatchApi
 
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors',
                         $request,
                         $response,
                     );
@@ -476,10 +482,18 @@ class BatchApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -697,7 +711,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error
+     * @return \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error
      */
     public function read($object_type, $batch_read_input_property_name, $locale = null, string $contentType = self::contentTypes['read'][0])
     {
@@ -717,7 +731,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Properties\Model\BatchResponseProperty|\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($object_type, $batch_read_input_property_name, $locale = null, string $contentType = self::contentTypes['read'][0])
     {
@@ -750,6 +764,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors',
                         $request,
                         $response,
                     );
@@ -787,6 +807,14 @@ class BatchApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Properties\Model\BatchResponseProperty',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Properties\Model\BatchResponsePropertyWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

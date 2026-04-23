@@ -376,7 +376,7 @@ class PropertyGroupCreate implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string $name The name of the property to read or modify.
+     * @param string $name The internal property group name, which must be used when referencing the property group via the API.
      *
      * @return self
      */
