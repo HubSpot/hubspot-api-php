@@ -74,6 +74,12 @@ $handlerStack->push(
     )
 );
 
+$handlerStack->push(
+    \HubSpot\RetryMiddlewareFactory::createConnectionErrorsMiddleware(
+        \HubSpot\Delay::getExponentialDelayFunction(2)
+    )
+);
+
 $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
 
 $hubspot = \HubSpot\Factory::createWithAccessToken('your-access-token', $client);
