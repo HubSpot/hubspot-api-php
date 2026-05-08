@@ -2,7 +2,7 @@
 
 namespace HubSpot;
 
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -153,13 +153,13 @@ class RetryMiddlewareFactory
             $retries,
             Request $request,
             ?Response $response = null,
-            ?RequestException $exception = null
+            $exception = null
         ) use ($maxRetries, $curlErrorCodes) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (!$exception instanceof RequestException) {
+            if (!$exception instanceof ConnectException) {
                 return false;
             }
 
