@@ -17,7 +17,7 @@ class RetryMiddlewareFactoryTest extends TestCase
     /** @test */
     public function itRetriesRetriableConnectionErrorsByErrno(): void
     {
-        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(3);
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 56: OpenSSL SSL_read unexpected eof while reading',
@@ -32,7 +32,7 @@ class RetryMiddlewareFactoryTest extends TestCase
     /** @test */
     public function itRetriesRetriableConnectionErrorsByMessageWhenErrnoMissing(): void
     {
-        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(3);
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 55: Send failure: Broken pipe',
@@ -45,7 +45,7 @@ class RetryMiddlewareFactoryTest extends TestCase
     /** @test */
     public function itDoesNotRetryNonRetriableConnectionErrors(): void
     {
-        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(3);
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 60: SSL certificate problem',
@@ -60,7 +60,7 @@ class RetryMiddlewareFactoryTest extends TestCase
     /** @test */
     public function itStopsRetryingWhenMaxRetriesReached(): void
     {
-        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(1);
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 1);
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 56: OpenSSL SSL_read unexpected eof while reading',
