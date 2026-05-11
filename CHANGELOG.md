@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.0.7...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.1.0...HEAD)
+
+## [14.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.1.0) - 2026-05-12
+
+### Retry Middleware
+
+- Added `RetryMiddlewareFactory::createConnectionErrorsMiddleware()` — retries requests that fail with transient cURL errors (52, 55, 56) by default.
+- Added `RetryMiddlewareFactory::getRetryFunctionByConnectionErrors()` — low-level retry decider for connection errors, configurable via `$curlErrorCodes` and `$maxRetries`.
+- `Delay::getExponentialDelayFunction()` is deprecated — pass `null` as the delay function instead to use Guzzle's built-in exponential backoff.
 
 ## [14.0.7](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.7) - 2026-04-23
 
@@ -1268,7 +1276,7 @@ to
   25. getSubscriptions => getAll (webhooks()->subscriptionsApi())
   26. updateSubscription => update (webhooks()->subscriptionsApi())
 
-[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.0.7...HEAD
+[Unreleased]: https://github.com/HubSpot/hubspot-api-php/compare/14.1.0...HEAD
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-php/releases/tag/v1.0.0-beta
 [1.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/1.2.0
@@ -1342,3 +1350,4 @@ to
 [14.0.5]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.5
 [14.0.6]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.6
 [14.0.7]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.0.7
+[14.1.0]: https://github.com/HubSpot/hubspot-api-php/releases/tag/14.1.0
