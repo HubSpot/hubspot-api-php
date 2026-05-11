@@ -174,7 +174,7 @@ class RetryMiddlewareFactory
                 return true;
             }
 
-            if (preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches) === 1) {
+            if (1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
                 return in_array((int) $matches[1], $curlErrorCodes, true);
             }
 
