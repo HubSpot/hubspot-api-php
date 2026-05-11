@@ -56,28 +56,36 @@ $config->setDeveloperApiKey('*');
 $hubspot = \HubSpot\Factory::create(null, $config);
 ```
 
-#### API Client comes with Middleware for implementation of Rate and Concurrent Limiting
+#### Retry Middleware
 
-It provides an ability to turn on retry for failed requests with statuses 429 or 500. Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
+The API client provides retry middleware for three failure scenarios: rate limiting (429), internal server errors (500–503, 520–599), and connection errors. All middleware retry up to `RetryMiddlewareFactory::DEFAULT_MAX_RETRIES` (5) times by default.
+
+If no delay function is provided, Guzzle applies its built-in exponential backoff. Available delay helpers:
+
+- `Delay::getConstantDelayFunction(int $secondsDelay = 10)` — fixed delay between retries
+- `Delay::getLinearDelayFunction()` — delay grows linearly with retry count
+
+Please note that Apps using OAuth are only subject to a limit of 100 requests every 10 seconds.
 
 ```php
 $handlerStack = \GuzzleHttp\HandlerStack::create();
+
+// Retry on 429 with a constant 10-second delay
 $handlerStack->push(
     \HubSpot\RetryMiddlewareFactory::createRateLimitMiddleware(
         \HubSpot\Delay::getConstantDelayFunction()
     )
 );
 
+// Retry on 5xx errors (exponential backoff by default)
 $handlerStack->push(
-    \HubSpot\RetryMiddlewareFactory::createInternalErrorsMiddleware(
-        \HubSpot\Delay::getExponentialDelayFunction(2)
-    )
+    \HubSpot\RetryMiddlewareFactory::createInternalErrorsMiddleware()
 );
 
+// Retry on connection errors for cURL codes 52, 55, 56 (exponential backoff by default)
+// Pass an empty array to retry all ConnectExceptions regardless of cURL error code
 $handlerStack->push(
-    \HubSpot\RetryMiddlewareFactory::createConnectionErrorsMiddleware(
-        \HubSpot\Delay::getExponentialDelayFunction(2)
-    )
+    \HubSpot\RetryMiddlewareFactory::createConnectionErrorsMiddleware()
 );
 
 $client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
