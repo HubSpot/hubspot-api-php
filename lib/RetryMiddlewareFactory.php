@@ -2,6 +2,7 @@
 
 namespace HubSpot;
 
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -9,10 +10,22 @@ use GuzzleHttp\Psr7\Response;
 class RetryMiddlewareFactory
 {
     public const DEFAULT_MAX_RETRIES = 5;
+    public const TRANSIENT_CURL_ERROR_CODES = [52, 55, 56];
     public const INTERNAL_ERROR_RANGES = [
         ['from' => 500, 'to' => 503],
         ['from' => 520, 'to' => 599],
     ];
+
+    public static function createConnectionErrorsMiddleware(
+        ?callable $delayFunction = null,
+        int $maxRetries = self::DEFAULT_MAX_RETRIES,
+        array $curlErrorCodes = self::TRANSIENT_CURL_ERROR_CODES
+    ): callable {
+        return Middleware::retry(
+            static::getRetryFunctionByConnectionErrors($maxRetries, $curlErrorCodes),
+            $delayFunction
+        );
+    }
 
     public static function createInternalErrorsMiddleware(
         ?callable $delayFunction = null,
@@ -126,6 +139,39 @@ class RetryMiddlewareFactory
 
             if (($response instanceof Response) && in_array($response->getStatusCode(), $codes)) {
                 return true;
+            }
+
+            return false;
+        };
+    }
+
+    public static function getRetryFunctionByConnectionErrors(
+        int $maxRetries = self::DEFAULT_MAX_RETRIES,
+        array $curlErrorCodes = self::TRANSIENT_CURL_ERROR_CODES
+    ): callable {
+        return function (
+            $retries,
+            Request $request,
+            ?Response $response = null,
+            $exception = null
+        ) use ($maxRetries, $curlErrorCodes) {
+            if ($retries >= $maxRetries) {
+                return false;
+            }
+
+            if (!$exception instanceof ConnectException) {
+                return false;
+            }
+
+            $handlerContext = $exception->getHandlerContext();
+            $errno = $handlerContext['errno'] ?? null;
+
+            if (is_numeric($errno) && in_array((int) $errno, $curlErrorCodes, true)) {
+                return true;
+            }
+
+            if (preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches) === 1) {
+                return in_array((int) $matches[1], $curlErrorCodes, true);
             }
 
             return false;
