@@ -22,7 +22,7 @@ class RetryMiddlewareFactory
         array $curlErrorCodes = self::TRANSIENT_CURL_ERROR_CODES
     ): callable {
         return Middleware::retry(
-            static::getRetryFunctionByConnectionErrors($maxRetries, $curlErrorCodes),
+            static::getRetryFunctionByConnectionErrors($curlErrorCodes, $maxRetries),
             $delayFunction
         );
     }
@@ -146,8 +146,8 @@ class RetryMiddlewareFactory
     }
 
     public static function getRetryFunctionByConnectionErrors(
-        int $maxRetries = self::DEFAULT_MAX_RETRIES,
-        array $curlErrorCodes = self::TRANSIENT_CURL_ERROR_CODES
+        array $curlErrorCodes = self::TRANSIENT_CURL_ERROR_CODES,
+        int $maxRetries = self::DEFAULT_MAX_RETRIES
     ): callable {
         return function (
             $retries,
@@ -163,6 +163,10 @@ class RetryMiddlewareFactory
                 return false;
             }
 
+            if (empty($curlErrorCodes)) {
+                return true;
+            }
+
             $handlerContext = $exception->getHandlerContext();
             $errno = $handlerContext['errno'] ?? null;
 
@@ -170,7 +174,7 @@ class RetryMiddlewareFactory
                 return true;
             }
 
-            if (preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches) === 1) {
+            if (1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
                 return in_array((int) $matches[1], $curlErrorCodes, true);
             }
 
