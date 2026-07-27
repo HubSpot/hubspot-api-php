@@ -3,6 +3,7 @@
 namespace Hubspot\Tests\Unit;
 
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use HubSpot\RetryMiddlewareFactory;
 use PHPUnit\Framework\TestCase;
@@ -15,22 +16,20 @@ use PHPUnit\Framework\TestCase;
 class RetryMiddlewareFactoryTest extends TestCase
 {
     /** @test */
-    public function itRetriesRetriableConnectionErrorsByErrno(): void
+    public function itRetriesRetriableConnectionErrorsByMessage(): void
     {
         $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 56: OpenSSL SSL_read unexpected eof while reading',
-            $request,
-            null,
-            ['errno' => 56]
+            $request
         );
 
         $this->assertTrue($retry(0, $request, null, $exception));
     }
 
     /** @test */
-    public function itRetriesRetriableConnectionErrorsByMessageWhenErrnoMissing(): void
+    public function itRetriesRetriableSendErrors(): void
     {
         $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
@@ -49,10 +48,38 @@ class RetryMiddlewareFactoryTest extends TestCase
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 60: SSL certificate problem',
-            $request,
-            null,
-            ['errno' => 60]
+            $request
         );
+
+        $this->assertFalse($retry(0, $request, null, $exception));
+    }
+
+    /** @test */
+    public function itDoesNotRetryConnectionErrorsWithoutACurlErrno(): void
+    {
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
+        $request = new Request('GET', 'https://api.hubapi.com/test');
+        $exception = new ConnectException('Connection failed', $request);
+
+        $this->assertFalse($retry(0, $request, null, $exception));
+    }
+
+    /** @test */
+    public function itRetriesAnyConnectionErrorWhenNoCurlErrorCodesAreGiven(): void
+    {
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([], 3);
+        $request = new Request('GET', 'https://api.hubapi.com/test');
+        $exception = new ConnectException('Connection failed', $request);
+
+        $this->assertTrue($retry(0, $request, null, $exception));
+    }
+
+    /** @test */
+    public function itDoesNotRetryExceptionsThatAreNotNetworkFailures(): void
+    {
+        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
+        $request = new Request('GET', 'https://api.hubapi.com/test');
+        $exception = new RequestException('cURL error 56: something else', $request);
 
         $this->assertFalse($retry(0, $request, null, $exception));
     }
@@ -64,9 +91,7 @@ class RetryMiddlewareFactoryTest extends TestCase
         $request = new Request('GET', 'https://api.hubapi.com/test');
         $exception = new ConnectException(
             'cURL error 56: OpenSSL SSL_read unexpected eof while reading',
-            $request,
-            null,
-            ['errno' => 56]
+            $request
         );
 
         $this->assertFalse($retry(1, $request, null, $exception));

@@ -17,6 +17,8 @@ The current package requirements are:
 
 PHP >= 8.1
 
+Guzzle 7 and Guzzle 8 are both supported (`guzzlehttp/guzzle: ^7.3 || ^8.0`).
+
 ### Sample apps
 
 Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-list)

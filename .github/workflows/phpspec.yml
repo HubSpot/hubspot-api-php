@@ -6,11 +6,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        guzzle: ['^7.3', '^8.0']
+
+    name: "phpspec (guzzle ${{ matrix.guzzle }})"
+
+    env:
+      GUZZLE_CONSTRAINT: ${{ matrix.guzzle }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-      - run: composer install
+      - run: composer require "guzzlehttp/guzzle:$GUZZLE_CONSTRAINT" --no-update --no-interaction
+      - run: composer update --no-interaction --no-progress
       - run: vendor/bin/phpspec run

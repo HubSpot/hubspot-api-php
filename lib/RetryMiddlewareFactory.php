@@ -2,10 +2,10 @@
 
 namespace HubSpot;
 
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
+use Psr\Http\Client\NetworkExceptionInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class RetryMiddlewareFactory
 {
@@ -92,14 +92,14 @@ class RetryMiddlewareFactory
     ): callable {
         return function (
             $retries,
-            Request $request,
-            ?Response $response = null
+            RequestInterface $request,
+            ?ResponseInterface $response = null
         ) use ($ranges, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (!$response instanceof Response) {
+            if (!$response instanceof ResponseInterface) {
                 return false;
             }
 
@@ -130,14 +130,14 @@ class RetryMiddlewareFactory
     ): callable {
         return function (
             $retries,
-            Request $request,
-            ?Response $response = null
+            RequestInterface $request,
+            ?ResponseInterface $response = null
         ) use ($codes, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (($response instanceof Response) && in_array($response->getStatusCode(), $codes)) {
+            if (($response instanceof ResponseInterface) && in_array($response->getStatusCode(), $codes)) {
                 return true;
             }
 
@@ -151,15 +151,18 @@ class RetryMiddlewareFactory
     ): callable {
         return function (
             $retries,
-            Request $request,
-            ?Response $response = null,
+            RequestInterface $request,
+            ?ResponseInterface $response = null,
             $exception = null
         ) use ($maxRetries, $curlErrorCodes) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (!$exception instanceof ConnectException) {
+            // Guzzle 7 reports connection failures as ConnectException, Guzzle 8
+            // splits them across ConnectException and NetworkException. Both
+            // implement PSR-18's NetworkExceptionInterface.
+            if (!$exception instanceof NetworkExceptionInterface) {
                 return false;
             }
 
@@ -167,13 +170,8 @@ class RetryMiddlewareFactory
                 return true;
             }
 
-            $handlerContext = $exception->getHandlerContext();
-            $errno = $handlerContext['errno'] ?? null;
-
-            if (is_numeric($errno) && in_array((int) $errno, $curlErrorCodes, true)) {
-                return true;
-            }
-
+            // RequestException::getHandlerContext() was removed in Guzzle 8, so the
+            // cURL errno is read from the exception message in both major versions.
             if (1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
                 return in_array((int) $matches[1], $curlErrorCodes, true);
             }

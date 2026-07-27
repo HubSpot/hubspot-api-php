@@ -93,6 +93,17 @@ class RequestTest extends TestCase
         ], $request->getOptionsForSending());
     }
 
+    /** @test */
+    public function itNormalizesTheRequestMethodCasing(): void
+    {
+        $request = new Request(new Config(), [
+            'path' => '/crm/v3/objects/contacts',
+            'method' => 'post',
+        ]);
+
+        $this->assertSame('POST', $request->getMethod());
+    }
+
     protected function getHeaders(Config $config, bool $defaultJson = true): array
     {
         $headers = [
