@@ -385,7 +385,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
         return self::$openAPIModelName;
     }
 
-    public const OPERATION_TYPE_COMPARATIVE_STRING = 'COMPARATIVE_STRING';
+    public const OPERATION_TYPE_COMPARATIVE_NUMBER = 'COMPARATIVE_NUMBER';
     public const FISCAL_YEAR_START_APRIL = 'APRIL';
     public const FISCAL_YEAR_START_AUGUST = 'AUGUST';
     public const FISCAL_YEAR_START_DECEMBER = 'DECEMBER';
@@ -407,7 +407,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     public function getOperationTypeAllowableValues()
     {
         return [
-            self::OPERATION_TYPE_COMPARATIVE_STRING,
+            self::OPERATION_TYPE_COMPARATIVE_NUMBER,
         ];
     }
 
@@ -450,7 +450,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     public function __construct(?array $data = null)
     {
         $this->setIfExists('include_objects_with_no_value_set', $data ?? [], null);
-        $this->setIfExists('operation_type', $data ?? [], 'COMPARATIVE_STRING');
+        $this->setIfExists('operation_type', $data ?? [], 'COMPARATIVE_NUMBER');
         $this->setIfExists('operator', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('requires_time_zone_conversion', $data ?? [], null);
