@@ -139,7 +139,7 @@ class BatchApi
      *
      * Delete a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string batch_input_string (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -156,7 +156,7 @@ class BatchApi
      *
      * Delete a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -213,7 +213,7 @@ class BatchApi
      *
      * Delete a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -234,7 +234,7 @@ class BatchApi
      *
      * Delete a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -271,7 +271,7 @@ class BatchApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -368,7 +368,7 @@ class BatchApi
      *
      * Create a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post The JSON array of new Blog Posts to create. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post batch_input_blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -386,7 +386,7 @@ class BatchApi
      *
      * Create a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post The JSON array of new Blog Posts to create. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -499,7 +499,7 @@ class BatchApi
      *
      * Create a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post The JSON array of new Blog Posts to create. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -520,7 +520,7 @@ class BatchApi
      *
      * Create a batch of blog posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post The JSON array of new Blog Posts to create. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -570,7 +570,7 @@ class BatchApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post The JSON array of new Blog Posts to create. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputBlogPost $batch_input_blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -667,7 +667,7 @@ class BatchApi
      *
      * Retrieve a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted blog posts Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -686,7 +686,7 @@ class BatchApi
      *
      * Retrieve a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted blog posts Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -800,7 +800,7 @@ class BatchApi
      *
      * Retrieve a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted blog posts Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -822,7 +822,7 @@ class BatchApi
      *
      * Retrieve a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted blog posts Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -873,7 +873,7 @@ class BatchApi
     /**
      * Create request for operation 'read'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string The JSON array of Blog Post ids. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted blog posts Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
@@ -981,7 +981,7 @@ class BatchApi
      *
      * Update a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Posts. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node batch_input_json_node (required)
      * @param  bool|null $archived Specifies whether to update deleted Blog Posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1000,7 +1000,7 @@ class BatchApi
      *
      * Update a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Posts. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node (required)
      * @param  bool|null $archived Specifies whether to update deleted Blog Posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1114,7 +1114,7 @@ class BatchApi
      *
      * Update a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Posts. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node (required)
      * @param  bool|null $archived Specifies whether to update deleted Blog Posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1136,7 +1136,7 @@ class BatchApi
      *
      * Update a batch of Blog Posts
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Posts. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node (required)
      * @param  bool|null $archived Specifies whether to update deleted Blog Posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1187,7 +1187,7 @@ class BatchApi
     /**
      * Create request for operation 'update'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node A JSON array of the JSON representations of the updated Blog Posts. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BatchInputJsonNode $batch_input_json_node (required)
      * @param  bool|null $archived Specifies whether to update deleted Blog Posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *

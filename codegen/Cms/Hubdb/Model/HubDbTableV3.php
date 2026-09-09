@@ -89,7 +89,7 @@ class HubDbTableV3 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'allow_child_tables' => null,
         'allow_public_api_access' => null,
-        'column_count' => 'int32',
+        'column_count' => 'int64',
         'columns' => null,
         'created_at' => 'date-time',
         'created_by' => null,

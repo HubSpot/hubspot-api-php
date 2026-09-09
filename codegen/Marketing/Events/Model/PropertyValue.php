@@ -61,6 +61,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_sensitivity' => 'string',
         'is_encrypted' => 'bool',
         'is_large_value' => 'bool',
+        'masked_substrings' => '\HubSpot\Client\Marketing\Events\Model\MaskedSubstrings',
         'name' => 'string',
         'persistence_timestamp' => 'int',
         'request_id' => 'string',
@@ -90,6 +91,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_sensitivity' => null,
         'is_encrypted' => null,
         'is_large_value' => null,
+        'masked_substrings' => null,
         'name' => null,
         'persistence_timestamp' => 'int64',
         'request_id' => null,
@@ -117,6 +119,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_sensitivity' => false,
         'is_encrypted' => false,
         'is_large_value' => false,
+        'masked_substrings' => false,
         'name' => false,
         'persistence_timestamp' => false,
         'request_id' => false,
@@ -224,6 +227,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_sensitivity' => 'dataSensitivity',
         'is_encrypted' => 'isEncrypted',
         'is_large_value' => 'isLargeValue',
+        'masked_substrings' => 'maskedSubstrings',
         'name' => 'name',
         'persistence_timestamp' => 'persistenceTimestamp',
         'request_id' => 'requestId',
@@ -251,6 +255,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_sensitivity' => 'setDataSensitivity',
         'is_encrypted' => 'setIsEncrypted',
         'is_large_value' => 'setIsLargeValue',
+        'masked_substrings' => 'setMaskedSubstrings',
         'name' => 'setName',
         'persistence_timestamp' => 'setPersistenceTimestamp',
         'request_id' => 'setRequestId',
@@ -278,6 +283,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_sensitivity' => 'getDataSensitivity',
         'is_encrypted' => 'getIsEncrypted',
         'is_large_value' => 'getIsLargeValue',
+        'masked_substrings' => 'getMaskedSubstrings',
         'name' => 'getName',
         'persistence_timestamp' => 'getPersistenceTimestamp',
         'request_id' => 'getRequestId',
@@ -343,6 +349,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_ACADEMY = 'ACADEMY';
     public const SOURCE_ACCEPTANCE_TEST = 'ACCEPTANCE_TEST';
     public const SOURCE_ACTIVITY_AUTO_ASSOCIATE = 'ACTIVITY_AUTO_ASSOCIATE';
+    public const SOURCE_ACTIVITY_LOG_REVERT = 'ACTIVITY_LOG_REVERT';
     public const SOURCE_ADS = 'ADS';
     public const SOURCE_AI_GROUP = 'AI_GROUP';
     public const SOURCE_ANALYTICS = 'ANALYTICS';
@@ -362,6 +369,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_BIDEN = 'BIDEN';
     public const SOURCE_BILLING = 'BILLING';
     public const SOURCE_BOT = 'BOT';
+    public const SOURCE_BREEZE_AGENT = 'BREEZE_AGENT';
     public const SOURCE_CALCULATED = 'CALCULATED';
     public const SOURCE_CENTRAL_EXCHANGE_RATES = 'CENTRAL_EXCHANGE_RATES';
     public const SOURCE_CHATSPOT = 'CHATSPOT';
@@ -370,6 +378,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_COMPANIES = 'COMPANIES';
     public const SOURCE_COMPANY_FAMILIES = 'COMPANY_FAMILIES';
     public const SOURCE_COMPANY_INSIGHTS = 'COMPANY_INSIGHTS';
+    public const SOURCE_CONNECTED_ACCOUNT = 'CONNECTED_ACCOUNT';
     public const SOURCE_CONTACTS = 'CONTACTS';
     public const SOURCE_CONTACTS_WEB = 'CONTACTS_WEB';
     public const SOURCE_CONTENT_MEMBERSHIP = 'CONTENT_MEMBERSHIP';
@@ -379,11 +388,14 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_CRM_UI = 'CRM_UI';
     public const SOURCE_CRM_UI_BULK_ACTION = 'CRM_UI_BULK_ACTION';
     public const SOURCE_CUSTOMER_AGENT = 'CUSTOMER_AGENT';
+    public const SOURCE_CUSTOMER_PORTAL = 'CUSTOMER_PORTAL';
     public const SOURCE_DATA_ENRICHMENT = 'DATA_ENRICHMENT';
+    public const SOURCE_DATA_QUALITY = 'DATA_QUALITY';
     public const SOURCE_DATASET = 'DATASET';
     public const SOURCE_DEALS = 'DEALS';
     public const SOURCE__DEFAULT = 'DEFAULT';
     public const SOURCE_DELETE_OBJECTS = 'DELETE_OBJECTS';
+    public const SOURCE_DI_WRITE_TO_CRM = 'DI_WRITE_TO_CRM';
     public const SOURCE_EMAIL = 'EMAIL';
     public const SOURCE_EMAIL_INBOX_IMPORT = 'EMAIL_INBOX_IMPORT';
     public const SOURCE_EMAIL_INTEGRATION = 'EMAIL_INTEGRATION';
@@ -409,6 +421,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_LEGAL_BASIS_REMEDIATION = 'LEGAL_BASIS_REMEDIATION';
     public const SOURCE_MARKET_SOURCING = 'MARKET_SOURCING';
     public const SOURCE_MARKETPLACE = 'MARKETPLACE';
+    public const SOURCE_MARKETS = 'MARKETS';
     public const SOURCE_MEETINGS = 'MEETINGS';
     public const SOURCE_MERGE_COMPANIES = 'MERGE_COMPANIES';
     public const SOURCE_MERGE_CONTACTS = 'MERGE_CONTACTS';
@@ -433,6 +446,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
     public const SOURCE_QUOTES = 'QUOTES';
     public const SOURCE_RECYCLING_BIN = 'RECYCLING_BIN';
     public const SOURCE_RESTORE_OBJECTS = 'RESTORE_OBJECTS';
+    public const SOURCE_REVENUE_PLATFORM = 'REVENUE_PLATFORM';
     public const SOURCE_SALES = 'SALES';
     public const SOURCE_SALES_MESSAGES = 'SALES_MESSAGES';
     public const SOURCE_SALESFORCE = 'SALESFORCE';
@@ -477,6 +491,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_ACADEMY,
             self::SOURCE_ACCEPTANCE_TEST,
             self::SOURCE_ACTIVITY_AUTO_ASSOCIATE,
+            self::SOURCE_ACTIVITY_LOG_REVERT,
             self::SOURCE_ADS,
             self::SOURCE_AI_GROUP,
             self::SOURCE_ANALYTICS,
@@ -496,6 +511,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_BIDEN,
             self::SOURCE_BILLING,
             self::SOURCE_BOT,
+            self::SOURCE_BREEZE_AGENT,
             self::SOURCE_CALCULATED,
             self::SOURCE_CENTRAL_EXCHANGE_RATES,
             self::SOURCE_CHATSPOT,
@@ -504,6 +520,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_COMPANIES,
             self::SOURCE_COMPANY_FAMILIES,
             self::SOURCE_COMPANY_INSIGHTS,
+            self::SOURCE_CONNECTED_ACCOUNT,
             self::SOURCE_CONTACTS,
             self::SOURCE_CONTACTS_WEB,
             self::SOURCE_CONTENT_MEMBERSHIP,
@@ -513,11 +530,14 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_CRM_UI,
             self::SOURCE_CRM_UI_BULK_ACTION,
             self::SOURCE_CUSTOMER_AGENT,
+            self::SOURCE_CUSTOMER_PORTAL,
             self::SOURCE_DATA_ENRICHMENT,
+            self::SOURCE_DATA_QUALITY,
             self::SOURCE_DATASET,
             self::SOURCE_DEALS,
             self::SOURCE__DEFAULT,
             self::SOURCE_DELETE_OBJECTS,
+            self::SOURCE_DI_WRITE_TO_CRM,
             self::SOURCE_EMAIL,
             self::SOURCE_EMAIL_INBOX_IMPORT,
             self::SOURCE_EMAIL_INTEGRATION,
@@ -543,6 +563,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_LEGAL_BASIS_REMEDIATION,
             self::SOURCE_MARKET_SOURCING,
             self::SOURCE_MARKETPLACE,
+            self::SOURCE_MARKETS,
             self::SOURCE_MEETINGS,
             self::SOURCE_MERGE_COMPANIES,
             self::SOURCE_MERGE_CONTACTS,
@@ -567,6 +588,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SOURCE_QUOTES,
             self::SOURCE_RECYCLING_BIN,
             self::SOURCE_RESTORE_OBJECTS,
+            self::SOURCE_REVENUE_PLATFORM,
             self::SOURCE_SALES,
             self::SOURCE_SALES_MESSAGES,
             self::SOURCE_SALESFORCE,
@@ -606,6 +628,7 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('data_sensitivity', $data ?? [], null);
         $this->setIfExists('is_encrypted', $data ?? [], null);
         $this->setIfExists('is_large_value', $data ?? [], null);
+        $this->setIfExists('masked_substrings', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('persistence_timestamp', $data ?? [], null);
         $this->setIfExists('request_id', $data ?? [], null);
@@ -668,6 +691,9 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['is_large_value'] === null) {
             $invalidProperties[] = "'is_large_value' can't be null";
+        }
+        if ($this->container['masked_substrings'] === null) {
+            $invalidProperties[] = "'masked_substrings' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
@@ -828,6 +854,33 @@ class PropertyValue implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_large_value cannot be null');
         }
         $this->container['is_large_value'] = $is_large_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets masked_substrings
+     *
+     * @return \HubSpot\Client\Marketing\Events\Model\MaskedSubstrings
+     */
+    public function getMaskedSubstrings()
+    {
+        return $this->container['masked_substrings'];
+    }
+
+    /**
+     * Sets masked_substrings
+     *
+     * @param \HubSpot\Client\Marketing\Events\Model\MaskedSubstrings $masked_substrings masked_substrings
+     *
+     * @return self
+     */
+    public function setMaskedSubstrings($masked_substrings)
+    {
+        if (is_null($masked_substrings)) {
+            throw new \InvalidArgumentException('non-nullable masked_substrings cannot be null');
+        }
+        $this->container['masked_substrings'] = $masked_substrings;
 
         return $this;
     }

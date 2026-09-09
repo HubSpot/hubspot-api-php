@@ -333,7 +333,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     * @param \DateTime $created_at When this subscription was created, formatted as a date-time string.
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target_url
      *
-     * @param string $target_url A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
+     * @param string $target_url A publicly available URL for HubSpot to call where event payloads will be delivered.
      *
      * @return self
      */
@@ -414,7 +414,7 @@ class SettingsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     * @param \DateTime|null $updated_at When this subscription was last updated, formatted as a date-time string.
      *
      * @return self
      */

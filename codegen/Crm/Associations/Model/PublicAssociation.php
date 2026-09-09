@@ -379,7 +379,7 @@ class PublicAssociation implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets type
      *
-     * @param string $type The type of association between the 'from' and 'to' objects.
+     * @param string $type type
      *
      * @return self
      */

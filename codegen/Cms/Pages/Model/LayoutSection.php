@@ -560,7 +560,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The name assigned to the layout section.
+     * @param string $name The internal name of the page.
      *
      * @return self
      */

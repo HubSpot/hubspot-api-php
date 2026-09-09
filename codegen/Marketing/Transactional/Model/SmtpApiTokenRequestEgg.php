@@ -35,7 +35,6 @@ use \HubSpot\Client\Marketing\Transactional\ObjectSerializer;
  * SmtpApiTokenRequestEgg Class Doc Comment
  *
  * @category Class
- * @description A request object to create a SMTP API token
  * @package  HubSpot\Client\Marketing\Transactional
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

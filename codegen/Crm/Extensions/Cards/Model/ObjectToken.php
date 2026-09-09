@@ -364,7 +364,7 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data_type
      *
-     * @param string|null $data_type The type of the property. Can be one of CURRENCY, DATE, DATETIME, EMAIL, LINK, NUMERIC, STATUS
+     * @param string|null $data_type Type of data represented by this property.
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string|null $label The label of the property as it will be displayed to users
+     * @param string|null $label The label for this property as you'd like it displayed to users.
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class ObjectToken implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The name of the property
+     * @param string|null $name An internal identifier for this property. This value must be unique TODO.
      *
      * @return self
      */

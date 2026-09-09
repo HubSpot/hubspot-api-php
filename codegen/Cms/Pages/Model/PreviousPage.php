@@ -35,7 +35,7 @@ use \HubSpot\Client\Cms\Pages\ObjectSerializer;
  * PreviousPage Class Doc Comment
  *
  * @category Class
- * @description Model definition for a previous page
+ * @description specifies the paging information needed to retrieve the previous set of results in a paginated API response
  * @package  HubSpot\Client\Cms\Pages
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

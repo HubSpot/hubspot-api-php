@@ -303,7 +303,7 @@ class SubscriptionPatchRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets active
      *
-     * @param bool|null $active Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * @param bool|null $active A boolean indicating whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
      *
      * @return self
      */

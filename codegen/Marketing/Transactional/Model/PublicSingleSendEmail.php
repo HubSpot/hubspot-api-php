@@ -35,7 +35,6 @@ use \HubSpot\Client\Marketing\Transactional\ObjectSerializer;
  * PublicSingleSendEmail Class Doc Comment
  *
  * @category Class
- * @description A JSON object containing anything you want to override.
  * @package  HubSpot\Client\Marketing\Transactional
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

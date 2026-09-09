@@ -306,7 +306,7 @@ class SubscriptionListResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Webhooks\Model\SubscriptionResponse[] $results List of event subscriptions for your app
+     * @param \HubSpot\Client\Webhooks\Model\SubscriptionResponse[] $results An array containing all active and paused event subscriptions configured for the app. Each item in the array is a SubscriptionResponse object.
      *
      * @return self
      */

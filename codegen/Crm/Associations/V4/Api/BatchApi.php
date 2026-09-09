@@ -409,7 +409,7 @@ class BatchApi
     /**
      * Operation archiveLabels
      *
-     * Delete specific labels
+     * Delete Specific Labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -428,7 +428,7 @@ class BatchApi
     /**
      * Operation archiveLabelsWithHttpInfo
      *
-     * Delete specific labels
+     * Delete Specific Labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -487,7 +487,7 @@ class BatchApi
     /**
      * Operation archiveLabelsAsync
      *
-     * Delete specific labels
+     * Delete Specific Labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -510,7 +510,7 @@ class BatchApi
     /**
      * Operation archiveLabelsAsyncWithHttpInfo
      *
-     * Delete specific labels
+     * Delete Specific Labels
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1017,7 +1017,7 @@ class BatchApi
     /**
      * Operation createDefault
      *
-     * Associate records (default)
+     * Create Default Associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1037,7 +1037,7 @@ class BatchApi
     /**
      * Operation createDefaultWithHttpInfo
      *
-     * Associate records (default)
+     * Create Default Associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1138,7 +1138,7 @@ class BatchApi
     /**
      * Operation createDefaultAsync
      *
-     * Associate records (default)
+     * Create Default Associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -1161,7 +1161,7 @@ class BatchApi
     /**
      * Operation createDefaultAsyncWithHttpInfo
      *
-     * Associate records (default)
+     * Create Default Associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)

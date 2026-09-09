@@ -235,6 +235,1799 @@ class UpdateLanguagesRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const LANGUAGES_AA = 'aa';
+    public const LANGUAGES_AB = 'ab';
+    public const LANGUAGES_AE = 'ae';
+    public const LANGUAGES_AF = 'af';
+    public const LANGUAGES_AF_NA = 'af-na';
+    public const LANGUAGES_AF_ZA = 'af-za';
+    public const LANGUAGES_AGQ = 'agq';
+    public const LANGUAGES_AGQ_CM = 'agq-cm';
+    public const LANGUAGES_AK = 'ak';
+    public const LANGUAGES_AK_GH = 'ak-gh';
+    public const LANGUAGES_AM = 'am';
+    public const LANGUAGES_AM_ET = 'am-et';
+    public const LANGUAGES_AN = 'an';
+    public const LANGUAGES_ANN = 'ann';
+    public const LANGUAGES_ANN_NG = 'ann-ng';
+    public const LANGUAGES_AR = 'ar';
+    public const LANGUAGES_AR_001 = 'ar-001';
+    public const LANGUAGES_AR_AE = 'ar-ae';
+    public const LANGUAGES_AR_BH = 'ar-bh';
+    public const LANGUAGES_AR_DJ = 'ar-dj';
+    public const LANGUAGES_AR_DZ = 'ar-dz';
+    public const LANGUAGES_AR_EG = 'ar-eg';
+    public const LANGUAGES_AR_EH = 'ar-eh';
+    public const LANGUAGES_AR_ER = 'ar-er';
+    public const LANGUAGES_AR_IL = 'ar-il';
+    public const LANGUAGES_AR_IQ = 'ar-iq';
+    public const LANGUAGES_AR_JO = 'ar-jo';
+    public const LANGUAGES_AR_KM = 'ar-km';
+    public const LANGUAGES_AR_KW = 'ar-kw';
+    public const LANGUAGES_AR_LB = 'ar-lb';
+    public const LANGUAGES_AR_LY = 'ar-ly';
+    public const LANGUAGES_AR_MA = 'ar-ma';
+    public const LANGUAGES_AR_MR = 'ar-mr';
+    public const LANGUAGES_AR_OM = 'ar-om';
+    public const LANGUAGES_AR_PS = 'ar-ps';
+    public const LANGUAGES_AR_QA = 'ar-qa';
+    public const LANGUAGES_AR_SA = 'ar-sa';
+    public const LANGUAGES_AR_SD = 'ar-sd';
+    public const LANGUAGES_AR_SO = 'ar-so';
+    public const LANGUAGES_AR_SS = 'ar-ss';
+    public const LANGUAGES_AR_SY = 'ar-sy';
+    public const LANGUAGES_AR_TD = 'ar-td';
+    public const LANGUAGES_AR_TN = 'ar-tn';
+    public const LANGUAGES_AR_YE = 'ar-ye';
+    public const LANGUAGES__AS = 'as';
+    public const LANGUAGES_ASA = 'asa';
+    public const LANGUAGES_ASA_TZ = 'asa-tz';
+    public const LANGUAGES_AST = 'ast';
+    public const LANGUAGES_AST_ES = 'ast-es';
+    public const LANGUAGES_AS_IN = 'as-in';
+    public const LANGUAGES_AV = 'av';
+    public const LANGUAGES_AY = 'ay';
+    public const LANGUAGES_AZ = 'az';
+    public const LANGUAGES_AZ_AZ = 'az-az';
+    public const LANGUAGES_BA = 'ba';
+    public const LANGUAGES_BAL = 'bal';
+    public const LANGUAGES_BAL_PK = 'bal-pk';
+    public const LANGUAGES_BAS = 'bas';
+    public const LANGUAGES_BAS_CM = 'bas-cm';
+    public const LANGUAGES_BE = 'be';
+    public const LANGUAGES_BEM = 'bem';
+    public const LANGUAGES_BEM_ZM = 'bem-zm';
+    public const LANGUAGES_BEZ = 'bez';
+    public const LANGUAGES_BEZ_TZ = 'bez-tz';
+    public const LANGUAGES_BE_BY = 'be-by';
+    public const LANGUAGES_BG = 'bg';
+    public const LANGUAGES_BGC = 'bgc';
+    public const LANGUAGES_BGC_IN = 'bgc-in';
+    public const LANGUAGES_BG_BG = 'bg-bg';
+    public const LANGUAGES_BI = 'bi';
+    public const LANGUAGES_BHO = 'bho';
+    public const LANGUAGES_BHO_IN = 'bho-in';
+    public const LANGUAGES_BLO = 'blo';
+    public const LANGUAGES_BLO_BJ = 'blo-bj';
+    public const LANGUAGES_BM = 'bm';
+    public const LANGUAGES_BM_ML = 'bm-ml';
+    public const LANGUAGES_BN = 'bn';
+    public const LANGUAGES_BN_BD = 'bn-bd';
+    public const LANGUAGES_BN_IN = 'bn-in';
+    public const LANGUAGES_BO = 'bo';
+    public const LANGUAGES_BO_CN = 'bo-cn';
+    public const LANGUAGES_BO_IN = 'bo-in';
+    public const LANGUAGES_BR = 'br';
+    public const LANGUAGES_BRX = 'brx';
+    public const LANGUAGES_BRX_IN = 'brx-in';
+    public const LANGUAGES_BR_FR = 'br-fr';
+    public const LANGUAGES_BS = 'bs';
+    public const LANGUAGES_BS_BA = 'bs-ba';
+    public const LANGUAGES_CA = 'ca';
+    public const LANGUAGES_CA_AD = 'ca-ad';
+    public const LANGUAGES_CA_ES = 'ca-es';
+    public const LANGUAGES_CA_FR = 'ca-fr';
+    public const LANGUAGES_CA_IT = 'ca-it';
+    public const LANGUAGES_CCP = 'ccp';
+    public const LANGUAGES_CCP_BD = 'ccp-bd';
+    public const LANGUAGES_CCP_IN = 'ccp-in';
+    public const LANGUAGES_CE = 'ce';
+    public const LANGUAGES_CEB = 'ceb';
+    public const LANGUAGES_CEB_PH = 'ceb-ph';
+    public const LANGUAGES_CE_RU = 'ce-ru';
+    public const LANGUAGES_CH = 'ch';
+    public const LANGUAGES_CGG = 'cgg';
+    public const LANGUAGES_CGG_UG = 'cgg-ug';
+    public const LANGUAGES_CHR = 'chr';
+    public const LANGUAGES_CHR_US = 'chr-us';
+    public const LANGUAGES_CKB = 'ckb';
+    public const LANGUAGES_CKB_IQ = 'ckb-iq';
+    public const LANGUAGES_CKB_IR = 'ckb-ir';
+    public const LANGUAGES_CO = 'co';
+    public const LANGUAGES_CR = 'cr';
+    public const LANGUAGES_CS = 'cs';
+    public const LANGUAGES_CS_CZ = 'cs-cz';
+    public const LANGUAGES_CSW = 'csw';
+    public const LANGUAGES_CSW_CA = 'csw-ca';
+    public const LANGUAGES_CU = 'cu';
+    public const LANGUAGES_CU_RU = 'cu-ru';
+    public const LANGUAGES_CV = 'cv';
+    public const LANGUAGES_CV_RU = 'cv-ru';
+    public const LANGUAGES_CY = 'cy';
+    public const LANGUAGES_CY_GB = 'cy-gb';
+    public const LANGUAGES_DA = 'da';
+    public const LANGUAGES_DAV = 'dav';
+    public const LANGUAGES_DAV_KE = 'dav-ke';
+    public const LANGUAGES_DA_DK = 'da-dk';
+    public const LANGUAGES_DA_GL = 'da-gl';
+    public const LANGUAGES_DE = 'de';
+    public const LANGUAGES_DE_AT = 'de-at';
+    public const LANGUAGES_DE_BE = 'de-be';
+    public const LANGUAGES_DE_CH = 'de-ch';
+    public const LANGUAGES_DE_DE = 'de-de';
+    public const LANGUAGES_DE_GR = 'de-gr';
+    public const LANGUAGES_DE_IT = 'de-it';
+    public const LANGUAGES_DE_LI = 'de-li';
+    public const LANGUAGES_DE_LU = 'de-lu';
+    public const LANGUAGES_DJE = 'dje';
+    public const LANGUAGES_DJE_NE = 'dje-ne';
+    public const LANGUAGES_DOI = 'doi';
+    public const LANGUAGES_DOI_IN = 'doi-in';
+    public const LANGUAGES_DSB = 'dsb';
+    public const LANGUAGES_DSB_DE = 'dsb-de';
+    public const LANGUAGES_DUA = 'dua';
+    public const LANGUAGES_DUA_CM = 'dua-cm';
+    public const LANGUAGES_DYO = 'dyo';
+    public const LANGUAGES_DYO_SN = 'dyo-sn';
+    public const LANGUAGES_DV = 'dv';
+    public const LANGUAGES_DZ = 'dz';
+    public const LANGUAGES_DZ_BT = 'dz-bt';
+    public const LANGUAGES_EBU = 'ebu';
+    public const LANGUAGES_EBU_KE = 'ebu-ke';
+    public const LANGUAGES_EE = 'ee';
+    public const LANGUAGES_EE_GH = 'ee-gh';
+    public const LANGUAGES_EE_TG = 'ee-tg';
+    public const LANGUAGES_EL = 'el';
+    public const LANGUAGES_EL_CY = 'el-cy';
+    public const LANGUAGES_EL_GR = 'el-gr';
+    public const LANGUAGES_EN = 'en';
+    public const LANGUAGES_EN_001 = 'en-001';
+    public const LANGUAGES_EN_150 = 'en-150';
+    public const LANGUAGES_EN_AE = 'en-ae';
+    public const LANGUAGES_EN_AG = 'en-ag';
+    public const LANGUAGES_EN_AI = 'en-ai';
+    public const LANGUAGES_EN_AS = 'en-as';
+    public const LANGUAGES_EN_AT = 'en-at';
+    public const LANGUAGES_EN_AU = 'en-au';
+    public const LANGUAGES_EN_BB = 'en-bb';
+    public const LANGUAGES_EN_BE = 'en-be';
+    public const LANGUAGES_EN_BI = 'en-bi';
+    public const LANGUAGES_EN_BM = 'en-bm';
+    public const LANGUAGES_EN_BS = 'en-bs';
+    public const LANGUAGES_EN_BW = 'en-bw';
+    public const LANGUAGES_EN_BZ = 'en-bz';
+    public const LANGUAGES_EN_CA = 'en-ca';
+    public const LANGUAGES_EN_CC = 'en-cc';
+    public const LANGUAGES_EN_CH = 'en-ch';
+    public const LANGUAGES_EN_CK = 'en-ck';
+    public const LANGUAGES_EN_CM = 'en-cm';
+    public const LANGUAGES_EN_CN = 'en-cn';
+    public const LANGUAGES_EN_CX = 'en-cx';
+    public const LANGUAGES_EN_CY = 'en-cy';
+    public const LANGUAGES_EN_CZ = 'en-cz';
+    public const LANGUAGES_EN_DE = 'en-de';
+    public const LANGUAGES_EN_DG = 'en-dg';
+    public const LANGUAGES_EN_DK = 'en-dk';
+    public const LANGUAGES_EN_DM = 'en-dm';
+    public const LANGUAGES_EN_EE = 'en-ee';
+    public const LANGUAGES_EN_EG = 'en-eg';
+    public const LANGUAGES_EN_ER = 'en-er';
+    public const LANGUAGES_EN_ES = 'en-es';
+    public const LANGUAGES_EN_FI = 'en-fi';
+    public const LANGUAGES_EN_FJ = 'en-fj';
+    public const LANGUAGES_EN_FK = 'en-fk';
+    public const LANGUAGES_EN_FM = 'en-fm';
+    public const LANGUAGES_EN_FR = 'en-fr';
+    public const LANGUAGES_EN_GB = 'en-gb';
+    public const LANGUAGES_EN_GD = 'en-gd';
+    public const LANGUAGES_EN_GG = 'en-gg';
+    public const LANGUAGES_EN_GH = 'en-gh';
+    public const LANGUAGES_EN_GI = 'en-gi';
+    public const LANGUAGES_EN_GM = 'en-gm';
+    public const LANGUAGES_EN_GS = 'en-gs';
+    public const LANGUAGES_EN_GU = 'en-gu';
+    public const LANGUAGES_EN_GY = 'en-gy';
+    public const LANGUAGES_EN_HK = 'en-hk';
+    public const LANGUAGES_EN_HU = 'en-hu';
+    public const LANGUAGES_EN_ID = 'en-id';
+    public const LANGUAGES_EN_IE = 'en-ie';
+    public const LANGUAGES_EN_IL = 'en-il';
+    public const LANGUAGES_EN_IM = 'en-im';
+    public const LANGUAGES_EN_IN = 'en-in';
+    public const LANGUAGES_EN_IO = 'en-io';
+    public const LANGUAGES_EN_IT = 'en-it';
+    public const LANGUAGES_EN_JE = 'en-je';
+    public const LANGUAGES_EN_JM = 'en-jm';
+    public const LANGUAGES_EN_KE = 'en-ke';
+    public const LANGUAGES_EN_KI = 'en-ki';
+    public const LANGUAGES_EN_KN = 'en-kn';
+    public const LANGUAGES_EN_KY = 'en-ky';
+    public const LANGUAGES_EN_LC = 'en-lc';
+    public const LANGUAGES_EN_LR = 'en-lr';
+    public const LANGUAGES_EN_LS = 'en-ls';
+    public const LANGUAGES_EN_LU = 'en-lu';
+    public const LANGUAGES_EN_MG = 'en-mg';
+    public const LANGUAGES_EN_MH = 'en-mh';
+    public const LANGUAGES_EN_MO = 'en-mo';
+    public const LANGUAGES_EN_MP = 'en-mp';
+    public const LANGUAGES_EN_MS = 'en-ms';
+    public const LANGUAGES_EN_MT = 'en-mt';
+    public const LANGUAGES_EN_MU = 'en-mu';
+    public const LANGUAGES_EN_MV = 'en-mv';
+    public const LANGUAGES_EN_MW = 'en-mw';
+    public const LANGUAGES_EN_MX = 'en-mx';
+    public const LANGUAGES_EN_MY = 'en-my';
+    public const LANGUAGES_EN_NA = 'en-na';
+    public const LANGUAGES_EN_NF = 'en-nf';
+    public const LANGUAGES_EN_NG = 'en-ng';
+    public const LANGUAGES_EN_NL = 'en-nl';
+    public const LANGUAGES_EN_NO = 'en-no';
+    public const LANGUAGES_EN_NR = 'en-nr';
+    public const LANGUAGES_EN_NU = 'en-nu';
+    public const LANGUAGES_EN_NZ = 'en-nz';
+    public const LANGUAGES_EN_PG = 'en-pg';
+    public const LANGUAGES_EN_PH = 'en-ph';
+    public const LANGUAGES_EN_PK = 'en-pk';
+    public const LANGUAGES_EN_PL = 'en-pl';
+    public const LANGUAGES_EN_PN = 'en-pn';
+    public const LANGUAGES_EN_PR = 'en-pr';
+    public const LANGUAGES_EN_PT = 'en-pt';
+    public const LANGUAGES_EN_PW = 'en-pw';
+    public const LANGUAGES_EN_RO = 'en-ro';
+    public const LANGUAGES_EN_RW = 'en-rw';
+    public const LANGUAGES_EN_SB = 'en-sb';
+    public const LANGUAGES_EN_SC = 'en-sc';
+    public const LANGUAGES_EN_SD = 'en-sd';
+    public const LANGUAGES_EN_SE = 'en-se';
+    public const LANGUAGES_EN_SG = 'en-sg';
+    public const LANGUAGES_EN_SH = 'en-sh';
+    public const LANGUAGES_EN_SI = 'en-si';
+    public const LANGUAGES_EN_SK = 'en-sk';
+    public const LANGUAGES_EN_SL = 'en-sl';
+    public const LANGUAGES_EN_SS = 'en-ss';
+    public const LANGUAGES_EN_SX = 'en-sx';
+    public const LANGUAGES_EN_SZ = 'en-sz';
+    public const LANGUAGES_EN_TC = 'en-tc';
+    public const LANGUAGES_EN_TH = 'en-th';
+    public const LANGUAGES_EN_TK = 'en-tk';
+    public const LANGUAGES_EN_TN = 'en-tn';
+    public const LANGUAGES_EN_TO = 'en-to';
+    public const LANGUAGES_EN_TT = 'en-tt';
+    public const LANGUAGES_EN_TV = 'en-tv';
+    public const LANGUAGES_EN_TZ = 'en-tz';
+    public const LANGUAGES_EN_UG = 'en-ug';
+    public const LANGUAGES_EN_UM = 'en-um';
+    public const LANGUAGES_EN_US = 'en-us';
+    public const LANGUAGES_EN_VC = 'en-vc';
+    public const LANGUAGES_EN_VG = 'en-vg';
+    public const LANGUAGES_EN_VI = 'en-vi';
+    public const LANGUAGES_EN_VN = 'en-vn';
+    public const LANGUAGES_EN_VU = 'en-vu';
+    public const LANGUAGES_EN_WS = 'en-ws';
+    public const LANGUAGES_EN_ZA = 'en-za';
+    public const LANGUAGES_EN_ZM = 'en-zm';
+    public const LANGUAGES_EN_ZW = 'en-zw';
+    public const LANGUAGES_EO = 'eo';
+    public const LANGUAGES_EO_001 = 'eo-001';
+    public const LANGUAGES_ES = 'es';
+    public const LANGUAGES_ES_419 = 'es-419';
+    public const LANGUAGES_ES_AR = 'es-ar';
+    public const LANGUAGES_ES_BO = 'es-bo';
+    public const LANGUAGES_ES_BR = 'es-br';
+    public const LANGUAGES_ES_BZ = 'es-bz';
+    public const LANGUAGES_ES_CL = 'es-cl';
+    public const LANGUAGES_ES_CO = 'es-co';
+    public const LANGUAGES_ES_CR = 'es-cr';
+    public const LANGUAGES_ES_CU = 'es-cu';
+    public const LANGUAGES_ES_DO = 'es-do';
+    public const LANGUAGES_ES_EA = 'es-ea';
+    public const LANGUAGES_ES_EC = 'es-ec';
+    public const LANGUAGES_ES_ES = 'es-es';
+    public const LANGUAGES_ES_GQ = 'es-gq';
+    public const LANGUAGES_ES_GT = 'es-gt';
+    public const LANGUAGES_ES_HN = 'es-hn';
+    public const LANGUAGES_ES_IC = 'es-ic';
+    public const LANGUAGES_ES_MX = 'es-mx';
+    public const LANGUAGES_ES_NI = 'es-ni';
+    public const LANGUAGES_ES_PA = 'es-pa';
+    public const LANGUAGES_ES_PE = 'es-pe';
+    public const LANGUAGES_ES_PH = 'es-ph';
+    public const LANGUAGES_ES_PR = 'es-pr';
+    public const LANGUAGES_ES_PY = 'es-py';
+    public const LANGUAGES_ES_SV = 'es-sv';
+    public const LANGUAGES_ES_US = 'es-us';
+    public const LANGUAGES_ES_UY = 'es-uy';
+    public const LANGUAGES_ES_VE = 'es-ve';
+    public const LANGUAGES_ET = 'et';
+    public const LANGUAGES_ET_EE = 'et-ee';
+    public const LANGUAGES_EU = 'eu';
+    public const LANGUAGES_EU_ES = 'eu-es';
+    public const LANGUAGES_EWO = 'ewo';
+    public const LANGUAGES_EWO_CM = 'ewo-cm';
+    public const LANGUAGES_FA = 'fa';
+    public const LANGUAGES_FA_AF = 'fa-af';
+    public const LANGUAGES_FA_IR = 'fa-ir';
+    public const LANGUAGES_FF = 'ff';
+    public const LANGUAGES_FF_BF = 'ff-bf';
+    public const LANGUAGES_FF_CM = 'ff-cm';
+    public const LANGUAGES_FF_GH = 'ff-gh';
+    public const LANGUAGES_FF_GM = 'ff-gm';
+    public const LANGUAGES_FF_GN = 'ff-gn';
+    public const LANGUAGES_FF_GW = 'ff-gw';
+    public const LANGUAGES_FF_LR = 'ff-lr';
+    public const LANGUAGES_FF_MR = 'ff-mr';
+    public const LANGUAGES_FF_NE = 'ff-ne';
+    public const LANGUAGES_FF_NG = 'ff-ng';
+    public const LANGUAGES_FF_SL = 'ff-sl';
+    public const LANGUAGES_FF_SN = 'ff-sn';
+    public const LANGUAGES_FI = 'fi';
+    public const LANGUAGES_FIL = 'fil';
+    public const LANGUAGES_FIL_PH = 'fil-ph';
+    public const LANGUAGES_FI_FI = 'fi-fi';
+    public const LANGUAGES_FJ = 'fj';
+    public const LANGUAGES_FO = 'fo';
+    public const LANGUAGES_FO_DK = 'fo-dk';
+    public const LANGUAGES_FO_FO = 'fo-fo';
+    public const LANGUAGES_FR = 'fr';
+    public const LANGUAGES_FRR = 'frr';
+    public const LANGUAGES_FRR_DE = 'frr-de';
+    public const LANGUAGES_FR_BE = 'fr-be';
+    public const LANGUAGES_FR_BF = 'fr-bf';
+    public const LANGUAGES_FR_BI = 'fr-bi';
+    public const LANGUAGES_FR_BJ = 'fr-bj';
+    public const LANGUAGES_FR_BL = 'fr-bl';
+    public const LANGUAGES_FR_CA = 'fr-ca';
+    public const LANGUAGES_FR_CD = 'fr-cd';
+    public const LANGUAGES_FR_CF = 'fr-cf';
+    public const LANGUAGES_FR_CG = 'fr-cg';
+    public const LANGUAGES_FR_CH = 'fr-ch';
+    public const LANGUAGES_FR_CI = 'fr-ci';
+    public const LANGUAGES_FR_CM = 'fr-cm';
+    public const LANGUAGES_FR_DJ = 'fr-dj';
+    public const LANGUAGES_FR_DZ = 'fr-dz';
+    public const LANGUAGES_FR_FR = 'fr-fr';
+    public const LANGUAGES_FR_GA = 'fr-ga';
+    public const LANGUAGES_FR_GF = 'fr-gf';
+    public const LANGUAGES_FR_GN = 'fr-gn';
+    public const LANGUAGES_FR_GP = 'fr-gp';
+    public const LANGUAGES_FR_GQ = 'fr-gq';
+    public const LANGUAGES_FR_HT = 'fr-ht';
+    public const LANGUAGES_FR_KM = 'fr-km';
+    public const LANGUAGES_FR_LU = 'fr-lu';
+    public const LANGUAGES_FR_MA = 'fr-ma';
+    public const LANGUAGES_FR_MC = 'fr-mc';
+    public const LANGUAGES_FR_MF = 'fr-mf';
+    public const LANGUAGES_FR_MG = 'fr-mg';
+    public const LANGUAGES_FR_ML = 'fr-ml';
+    public const LANGUAGES_FR_MQ = 'fr-mq';
+    public const LANGUAGES_FR_MR = 'fr-mr';
+    public const LANGUAGES_FR_MU = 'fr-mu';
+    public const LANGUAGES_FR_NC = 'fr-nc';
+    public const LANGUAGES_FR_NE = 'fr-ne';
+    public const LANGUAGES_FR_PF = 'fr-pf';
+    public const LANGUAGES_FR_PM = 'fr-pm';
+    public const LANGUAGES_FR_RE = 'fr-re';
+    public const LANGUAGES_FR_RW = 'fr-rw';
+    public const LANGUAGES_FR_SC = 'fr-sc';
+    public const LANGUAGES_FR_SN = 'fr-sn';
+    public const LANGUAGES_FR_SY = 'fr-sy';
+    public const LANGUAGES_FR_TD = 'fr-td';
+    public const LANGUAGES_FR_TG = 'fr-tg';
+    public const LANGUAGES_FR_TN = 'fr-tn';
+    public const LANGUAGES_FR_VU = 'fr-vu';
+    public const LANGUAGES_FR_WF = 'fr-wf';
+    public const LANGUAGES_FR_YT = 'fr-yt';
+    public const LANGUAGES_FUR = 'fur';
+    public const LANGUAGES_FUR_IT = 'fur-it';
+    public const LANGUAGES_FY = 'fy';
+    public const LANGUAGES_FY_NL = 'fy-nl';
+    public const LANGUAGES_GA = 'ga';
+    public const LANGUAGES_GA_GB = 'ga-gb';
+    public const LANGUAGES_GA_IE = 'ga-ie';
+    public const LANGUAGES_GAA = 'gaa';
+    public const LANGUAGES_GAA_GH = 'gaa-gh';
+    public const LANGUAGES_GD = 'gd';
+    public const LANGUAGES_GD_GB = 'gd-gb';
+    public const LANGUAGES_GL = 'gl';
+    public const LANGUAGES_GL_ES = 'gl-es';
+    public const LANGUAGES_GN = 'gn';
+    public const LANGUAGES_GSW = 'gsw';
+    public const LANGUAGES_GSW_CH = 'gsw-ch';
+    public const LANGUAGES_GSW_FR = 'gsw-fr';
+    public const LANGUAGES_GSW_LI = 'gsw-li';
+    public const LANGUAGES_GU = 'gu';
+    public const LANGUAGES_GUZ = 'guz';
+    public const LANGUAGES_GUZ_KE = 'guz-ke';
+    public const LANGUAGES_GU_IN = 'gu-in';
+    public const LANGUAGES_GV = 'gv';
+    public const LANGUAGES_GV_IM = 'gv-im';
+    public const LANGUAGES_HA = 'ha';
+    public const LANGUAGES_HAW = 'haw';
+    public const LANGUAGES_HAW_US = 'haw-us';
+    public const LANGUAGES_HA_GH = 'ha-gh';
+    public const LANGUAGES_HA_NE = 'ha-ne';
+    public const LANGUAGES_HA_NG = 'ha-ng';
+    public const LANGUAGES_HE = 'he';
+    public const LANGUAGES_HE_IL = 'he-il';
+    public const LANGUAGES_HI = 'hi';
+    public const LANGUAGES_HI_IN = 'hi-in';
+    public const LANGUAGES_HMN = 'hmn';
+    public const LANGUAGES_HO = 'ho';
+    public const LANGUAGES_HR = 'hr';
+    public const LANGUAGES_HR_BA = 'hr-ba';
+    public const LANGUAGES_HR_HR = 'hr-hr';
+    public const LANGUAGES_HT = 'ht';
+    public const LANGUAGES_HT_HT = 'ht-ht';
+    public const LANGUAGES_HSB = 'hsb';
+    public const LANGUAGES_HSB_DE = 'hsb-de';
+    public const LANGUAGES_HU = 'hu';
+    public const LANGUAGES_HU_HU = 'hu-hu';
+    public const LANGUAGES_HY = 'hy';
+    public const LANGUAGES_HY_AM = 'hy-am';
+    public const LANGUAGES_HZ = 'hz';
+    public const LANGUAGES_IA = 'ia';
+    public const LANGUAGES_IA_001 = 'ia-001';
+    public const LANGUAGES_ID = 'id';
+    public const LANGUAGES_IE = 'ie';
+    public const LANGUAGES_IE_EE = 'ie-ee';
+    public const LANGUAGES_IG = 'ig';
+    public const LANGUAGES_IG_NG = 'ig-ng';
+    public const LANGUAGES_II = 'ii';
+    public const LANGUAGES_II_CN = 'ii-cn';
+    public const LANGUAGES_IK = 'ik';
+    public const LANGUAGES_IO = 'io';
+    public const LANGUAGES_ID_ID = 'id-id';
+    public const LANGUAGES_IS = 'is';
+    public const LANGUAGES_IS_IS = 'is-is';
+    public const LANGUAGES_IT = 'it';
+    public const LANGUAGES_IT_CH = 'it-ch';
+    public const LANGUAGES_IT_IT = 'it-it';
+    public const LANGUAGES_IT_SM = 'it-sm';
+    public const LANGUAGES_IT_VA = 'it-va';
+    public const LANGUAGES_IU = 'iu';
+    public const LANGUAGES_JA = 'ja';
+    public const LANGUAGES_JA_JP = 'ja-jp';
+    public const LANGUAGES_JGO = 'jgo';
+    public const LANGUAGES_JGO_CM = 'jgo-cm';
+    public const LANGUAGES_YI = 'yi';
+    public const LANGUAGES_YI_001 = 'yi-001';
+    public const LANGUAGES_JMC = 'jmc';
+    public const LANGUAGES_JMC_TZ = 'jmc-tz';
+    public const LANGUAGES_JV = 'jv';
+    public const LANGUAGES_JV_ID = 'jv-id';
+    public const LANGUAGES_KA = 'ka';
+    public const LANGUAGES_KAB = 'kab';
+    public const LANGUAGES_KAB_DZ = 'kab-dz';
+    public const LANGUAGES_KAM = 'kam';
+    public const LANGUAGES_KAM_KE = 'kam-ke';
+    public const LANGUAGES_KAR = 'kar';
+    public const LANGUAGES_KA_GE = 'ka-ge';
+    public const LANGUAGES_KDE = 'kde';
+    public const LANGUAGES_KDE_TZ = 'kde-tz';
+    public const LANGUAGES_KEA = 'kea';
+    public const LANGUAGES_KEA_CV = 'kea-cv';
+    public const LANGUAGES_KGP = 'kgp';
+    public const LANGUAGES_KGP_BR = 'kgp-br';
+    public const LANGUAGES_KG = 'kg';
+    public const LANGUAGES_KH = 'kh';
+    public const LANGUAGES_KHQ = 'khq';
+    public const LANGUAGES_KHQ_ML = 'khq-ml';
+    public const LANGUAGES_KI = 'ki';
+    public const LANGUAGES_KI_KE = 'ki-ke';
+    public const LANGUAGES_KJ = 'kj';
+    public const LANGUAGES_KK = 'kk';
+    public const LANGUAGES_KKJ = 'kkj';
+    public const LANGUAGES_KKJ_CM = 'kkj-cm';
+    public const LANGUAGES_KK_KZ = 'kk-kz';
+    public const LANGUAGES_KL = 'kl';
+    public const LANGUAGES_KLN = 'kln';
+    public const LANGUAGES_KLN_KE = 'kln-ke';
+    public const LANGUAGES_KL_GL = 'kl-gl';
+    public const LANGUAGES_KM = 'km';
+    public const LANGUAGES_KM_KH = 'km-kh';
+    public const LANGUAGES_KN = 'kn';
+    public const LANGUAGES_KN_IN = 'kn-in';
+    public const LANGUAGES_KO = 'ko';
+    public const LANGUAGES_KO_CN = 'ko-cn';
+    public const LANGUAGES_KOK = 'kok';
+    public const LANGUAGES_KOK_IN = 'kok-in';
+    public const LANGUAGES_KO_KP = 'ko-kp';
+    public const LANGUAGES_KO_KR = 'ko-kr';
+    public const LANGUAGES_KR = 'kr';
+    public const LANGUAGES_KS = 'ks';
+    public const LANGUAGES_KSB = 'ksb';
+    public const LANGUAGES_KSB_TZ = 'ksb-tz';
+    public const LANGUAGES_KSF = 'ksf';
+    public const LANGUAGES_KSF_CM = 'ksf-cm';
+    public const LANGUAGES_KSH = 'ksh';
+    public const LANGUAGES_KSH_DE = 'ksh-de';
+    public const LANGUAGES_KS_IN = 'ks-in';
+    public const LANGUAGES_KU = 'ku';
+    public const LANGUAGES_KU_TR = 'ku-tr';
+    public const LANGUAGES_KV = 'kv';
+    public const LANGUAGES_KW = 'kw';
+    public const LANGUAGES_KW_GB = 'kw-gb';
+    public const LANGUAGES_KXV = 'kxv';
+    public const LANGUAGES_KXV_IN = 'kxv-in';
+    public const LANGUAGES_KY = 'ky';
+    public const LANGUAGES_KY_KG = 'ky-kg';
+    public const LANGUAGES_LAG = 'lag';
+    public const LANGUAGES_LAG_TZ = 'lag-tz';
+    public const LANGUAGES_LA = 'la';
+    public const LANGUAGES_LB = 'lb';
+    public const LANGUAGES_LB_LU = 'lb-lu';
+    public const LANGUAGES_LG = 'lg';
+    public const LANGUAGES_LG_UG = 'lg-ug';
+    public const LANGUAGES_LKT = 'lkt';
+    public const LANGUAGES_LKT_US = 'lkt-us';
+    public const LANGUAGES_LI = 'li';
+    public const LANGUAGES_LIJ = 'lij';
+    public const LANGUAGES_LIJ_IT = 'lij-it';
+    public const LANGUAGES_LMO = 'lmo';
+    public const LANGUAGES_LMO_IT = 'lmo-it';
+    public const LANGUAGES_LN = 'ln';
+    public const LANGUAGES_LN_AO = 'ln-ao';
+    public const LANGUAGES_LN_CD = 'ln-cd';
+    public const LANGUAGES_LN_CF = 'ln-cf';
+    public const LANGUAGES_LN_CG = 'ln-cg';
+    public const LANGUAGES_LO = 'lo';
+    public const LANGUAGES_LO_LA = 'lo-la';
+    public const LANGUAGES_LRC = 'lrc';
+    public const LANGUAGES_LRC_IQ = 'lrc-iq';
+    public const LANGUAGES_LRC_IR = 'lrc-ir';
+    public const LANGUAGES_LT = 'lt';
+    public const LANGUAGES_LT_LT = 'lt-lt';
+    public const LANGUAGES_LU = 'lu';
+    public const LANGUAGES_LUO = 'luo';
+    public const LANGUAGES_LUO_KE = 'luo-ke';
+    public const LANGUAGES_LUY = 'luy';
+    public const LANGUAGES_LUY_KE = 'luy-ke';
+    public const LANGUAGES_LU_CD = 'lu-cd';
+    public const LANGUAGES_LV = 'lv';
+    public const LANGUAGES_LV_LV = 'lv-lv';
+    public const LANGUAGES_MAI = 'mai';
+    public const LANGUAGES_MAI_IN = 'mai-in';
+    public const LANGUAGES_MAS = 'mas';
+    public const LANGUAGES_MAS_KE = 'mas-ke';
+    public const LANGUAGES_MAS_TZ = 'mas-tz';
+    public const LANGUAGES_MDF = 'mdf';
+    public const LANGUAGES_MDF_RU = 'mdf-ru';
+    public const LANGUAGES_MER = 'mer';
+    public const LANGUAGES_MER_KE = 'mer-ke';
+    public const LANGUAGES_MFE = 'mfe';
+    public const LANGUAGES_MFE_MU = 'mfe-mu';
+    public const LANGUAGES_MG = 'mg';
+    public const LANGUAGES_MGH = 'mgh';
+    public const LANGUAGES_MGH_MZ = 'mgh-mz';
+    public const LANGUAGES_MGO = 'mgo';
+    public const LANGUAGES_MGO_CM = 'mgo-cm';
+    public const LANGUAGES_MG_MG = 'mg-mg';
+    public const LANGUAGES_MH = 'mh';
+    public const LANGUAGES_MI = 'mi';
+    public const LANGUAGES_MI_NZ = 'mi-nz';
+    public const LANGUAGES_MK = 'mk';
+    public const LANGUAGES_MK_MK = 'mk-mk';
+    public const LANGUAGES_ML = 'ml';
+    public const LANGUAGES_ML_IN = 'ml-in';
+    public const LANGUAGES_MN = 'mn';
+    public const LANGUAGES_MNI = 'mni';
+    public const LANGUAGES_MNI_IN = 'mni-in';
+    public const LANGUAGES_MN_MN = 'mn-mn';
+    public const LANGUAGES_MR = 'mr';
+    public const LANGUAGES_MR_IN = 'mr-in';
+    public const LANGUAGES_MS = 'ms';
+    public const LANGUAGES_MS_BN = 'ms-bn';
+    public const LANGUAGES_MS_ID = 'ms-id';
+    public const LANGUAGES_MS_MY = 'ms-my';
+    public const LANGUAGES_MS_SG = 'ms-sg';
+    public const LANGUAGES_MT = 'mt';
+    public const LANGUAGES_MT_MT = 'mt-mt';
+    public const LANGUAGES_MUA = 'mua';
+    public const LANGUAGES_MUA_CM = 'mua-cm';
+    public const LANGUAGES_MY = 'my';
+    public const LANGUAGES_MY_MM = 'my-mm';
+    public const LANGUAGES_MZN = 'mzn';
+    public const LANGUAGES_MZN_IR = 'mzn-ir';
+    public const LANGUAGES_NAQ = 'naq';
+    public const LANGUAGES_NAQ_NA = 'naq-na';
+    public const LANGUAGES_NA = 'na';
+    public const LANGUAGES_NB = 'nb';
+    public const LANGUAGES_NB_NO = 'nb-no';
+    public const LANGUAGES_NB_SJ = 'nb-sj';
+    public const LANGUAGES_ND = 'nd';
+    public const LANGUAGES_NDS = 'nds';
+    public const LANGUAGES_NDS_DE = 'nds-de';
+    public const LANGUAGES_NDS_NL = 'nds-nl';
+    public const LANGUAGES_ND_ZW = 'nd-zw';
+    public const LANGUAGES_NE = 'ne';
+    public const LANGUAGES_NE_IN = 'ne-in';
+    public const LANGUAGES_NE_NP = 'ne-np';
+    public const LANGUAGES_NG = 'ng';
+    public const LANGUAGES_NL = 'nl';
+    public const LANGUAGES_NL_AW = 'nl-aw';
+    public const LANGUAGES_NL_BE = 'nl-be';
+    public const LANGUAGES_NL_BQ = 'nl-bq';
+    public const LANGUAGES_NL_CH = 'nl-ch';
+    public const LANGUAGES_NL_CW = 'nl-cw';
+    public const LANGUAGES_NL_LU = 'nl-lu';
+    public const LANGUAGES_NL_NL = 'nl-nl';
+    public const LANGUAGES_NL_SR = 'nl-sr';
+    public const LANGUAGES_NL_SX = 'nl-sx';
+    public const LANGUAGES_NMG = 'nmg';
+    public const LANGUAGES_NMG_CM = 'nmg-cm';
+    public const LANGUAGES_NN = 'nn';
+    public const LANGUAGES_NNH = 'nnh';
+    public const LANGUAGES_NNH_CM = 'nnh-cm';
+    public const LANGUAGES_NN_NO = 'nn-no';
+    public const LANGUAGES_NQO = 'nqo';
+    public const LANGUAGES_NQO_GN = 'nqo-gn';
+    public const LANGUAGES_NR = 'nr';
+    public const LANGUAGES_NSO = 'nso';
+    public const LANGUAGES_NSO_ZA = 'nso-za';
+    public const LANGUAGES_NV = 'nv';
+    public const LANGUAGES_NY = 'ny';
+    public const LANGUAGES_NO = 'no';
+    public const LANGUAGES_NO_NO = 'no-no';
+    public const LANGUAGES_NUS = 'nus';
+    public const LANGUAGES_NUS_SS = 'nus-ss';
+    public const LANGUAGES_NYN = 'nyn';
+    public const LANGUAGES_NYN_UG = 'nyn-ug';
+    public const LANGUAGES_OC = 'oc';
+    public const LANGUAGES_OC_ES = 'oc-es';
+    public const LANGUAGES_OC_FR = 'oc-fr';
+    public const LANGUAGES_OJ = 'oj';
+    public const LANGUAGES_OM = 'om';
+    public const LANGUAGES_OM_ET = 'om-et';
+    public const LANGUAGES_OM_KE = 'om-ke';
+    public const LANGUAGES__OR = 'or';
+    public const LANGUAGES_OR_IN = 'or-in';
+    public const LANGUAGES_OS = 'os';
+    public const LANGUAGES_OS_GE = 'os-ge';
+    public const LANGUAGES_OS_RU = 'os-ru';
+    public const LANGUAGES_PA = 'pa';
+    public const LANGUAGES_PA_IN = 'pa-in';
+    public const LANGUAGES_PA_PK = 'pa-pk';
+    public const LANGUAGES_PCM = 'pcm';
+    public const LANGUAGES_PCM_NG = 'pcm-ng';
+    public const LANGUAGES_PIS = 'pis';
+    public const LANGUAGES_PIS_SB = 'pis-sb';
+    public const LANGUAGES_PI = 'pi';
+    public const LANGUAGES_PL = 'pl';
+    public const LANGUAGES_PL_PL = 'pl-pl';
+    public const LANGUAGES_PRG = 'prg';
+    public const LANGUAGES_PRG_001 = 'prg-001';
+    public const LANGUAGES_PS = 'ps';
+    public const LANGUAGES_PS_AF = 'ps-af';
+    public const LANGUAGES_PS_PK = 'ps-pk';
+    public const LANGUAGES_PT = 'pt';
+    public const LANGUAGES_PT_AO = 'pt-ao';
+    public const LANGUAGES_PT_BR = 'pt-br';
+    public const LANGUAGES_PT_CH = 'pt-ch';
+    public const LANGUAGES_PT_CV = 'pt-cv';
+    public const LANGUAGES_PT_GQ = 'pt-gq';
+    public const LANGUAGES_PT_GW = 'pt-gw';
+    public const LANGUAGES_PT_LU = 'pt-lu';
+    public const LANGUAGES_PT_MO = 'pt-mo';
+    public const LANGUAGES_PT_MZ = 'pt-mz';
+    public const LANGUAGES_PT_PT = 'pt-pt';
+    public const LANGUAGES_PT_ST = 'pt-st';
+    public const LANGUAGES_PT_TL = 'pt-tl';
+    public const LANGUAGES_QU = 'qu';
+    public const LANGUAGES_QU_BO = 'qu-bo';
+    public const LANGUAGES_QU_EC = 'qu-ec';
+    public const LANGUAGES_QU_PE = 'qu-pe';
+    public const LANGUAGES_RAJ = 'raj';
+    public const LANGUAGES_RAJ_IN = 'raj-in';
+    public const LANGUAGES_RM = 'rm';
+    public const LANGUAGES_RM_CH = 'rm-ch';
+    public const LANGUAGES_RN = 'rn';
+    public const LANGUAGES_RN_BI = 'rn-bi';
+    public const LANGUAGES_RO = 'ro';
+    public const LANGUAGES_ROF = 'rof';
+    public const LANGUAGES_ROF_TZ = 'rof-tz';
+    public const LANGUAGES_RO_MD = 'ro-md';
+    public const LANGUAGES_RO_RO = 'ro-ro';
+    public const LANGUAGES_RU = 'ru';
+    public const LANGUAGES_RU_BY = 'ru-by';
+    public const LANGUAGES_RU_KG = 'ru-kg';
+    public const LANGUAGES_RU_KZ = 'ru-kz';
+    public const LANGUAGES_RU_MD = 'ru-md';
+    public const LANGUAGES_RU_RU = 'ru-ru';
+    public const LANGUAGES_RU_UA = 'ru-ua';
+    public const LANGUAGES_RW = 'rw';
+    public const LANGUAGES_RWK = 'rwk';
+    public const LANGUAGES_RWK_TZ = 'rwk-tz';
+    public const LANGUAGES_RW_RW = 'rw-rw';
+    public const LANGUAGES_SA = 'sa';
+    public const LANGUAGES_SAH = 'sah';
+    public const LANGUAGES_SAH_RU = 'sah-ru';
+    public const LANGUAGES_SAQ = 'saq';
+    public const LANGUAGES_SAQ_KE = 'saq-ke';
+    public const LANGUAGES_SAT = 'sat';
+    public const LANGUAGES_SAT_IN = 'sat-in';
+    public const LANGUAGES_SA_IN = 'sa-in';
+    public const LANGUAGES_SBP = 'sbp';
+    public const LANGUAGES_SBP_TZ = 'sbp-tz';
+    public const LANGUAGES_SC = 'sc';
+    public const LANGUAGES_SC_IT = 'sc-it';
+    public const LANGUAGES_SD = 'sd';
+    public const LANGUAGES_SD_IN = 'sd-in';
+    public const LANGUAGES_SD_PK = 'sd-pk';
+    public const LANGUAGES_SE = 'se';
+    public const LANGUAGES_SEH = 'seh';
+    public const LANGUAGES_SEH_MZ = 'seh-mz';
+    public const LANGUAGES_SES = 'ses';
+    public const LANGUAGES_SES_ML = 'ses-ml';
+    public const LANGUAGES_SE_FI = 'se-fi';
+    public const LANGUAGES_SE_NO = 'se-no';
+    public const LANGUAGES_SE_SE = 'se-se';
+    public const LANGUAGES_SG = 'sg';
+    public const LANGUAGES_SG_CF = 'sg-cf';
+    public const LANGUAGES_SHI = 'shi';
+    public const LANGUAGES_SHI_MA = 'shi-ma';
+    public const LANGUAGES_SI = 'si';
+    public const LANGUAGES_SI_LK = 'si-lk';
+    public const LANGUAGES_SK = 'sk';
+    public const LANGUAGES_SK_SK = 'sk-sk';
+    public const LANGUAGES_SL = 'sl';
+    public const LANGUAGES_SL_SI = 'sl-si';
+    public const LANGUAGES_SM = 'sm';
+    public const LANGUAGES_SMN = 'smn';
+    public const LANGUAGES_SMN_FI = 'smn-fi';
+    public const LANGUAGES_SMS = 'sms';
+    public const LANGUAGES_SMS_FI = 'sms-fi';
+    public const LANGUAGES_SN = 'sn';
+    public const LANGUAGES_SN_ZW = 'sn-zw';
+    public const LANGUAGES_SO = 'so';
+    public const LANGUAGES_SO_DJ = 'so-dj';
+    public const LANGUAGES_SO_ET = 'so-et';
+    public const LANGUAGES_SO_KE = 'so-ke';
+    public const LANGUAGES_SO_SO = 'so-so';
+    public const LANGUAGES_SQ = 'sq';
+    public const LANGUAGES_SQ_AL = 'sq-al';
+    public const LANGUAGES_SQ_MK = 'sq-mk';
+    public const LANGUAGES_SQ_XK = 'sq-xk';
+    public const LANGUAGES_SR = 'sr';
+    public const LANGUAGES_SR_BA = 'sr-ba';
+    public const LANGUAGES_SR_CS = 'sr-cs';
+    public const LANGUAGES_SR_ME = 'sr-me';
+    public const LANGUAGES_SR_RS = 'sr-rs';
+    public const LANGUAGES_SR_XK = 'sr-xk';
+    public const LANGUAGES_SS = 'ss';
+    public const LANGUAGES_ST = 'st';
+    public const LANGUAGES_ST_LS = 'st-ls';
+    public const LANGUAGES_ST_ZA = 'st-za';
+    public const LANGUAGES_SU = 'su';
+    public const LANGUAGES_SU_ID = 'su-id';
+    public const LANGUAGES_SV = 'sv';
+    public const LANGUAGES_SV_AX = 'sv-ax';
+    public const LANGUAGES_SV_FI = 'sv-fi';
+    public const LANGUAGES_SV_SE = 'sv-se';
+    public const LANGUAGES_SW = 'sw';
+    public const LANGUAGES_SW_CD = 'sw-cd';
+    public const LANGUAGES_SW_KE = 'sw-ke';
+    public const LANGUAGES_SW_TZ = 'sw-tz';
+    public const LANGUAGES_SW_UG = 'sw-ug';
+    public const LANGUAGES_SY = 'sy';
+    public const LANGUAGES_SYR = 'syr';
+    public const LANGUAGES_SYR_IQ = 'syr-iq';
+    public const LANGUAGES_SYR_SY = 'syr-sy';
+    public const LANGUAGES_SZL = 'szl';
+    public const LANGUAGES_SZL_PL = 'szl-pl';
+    public const LANGUAGES_TA = 'ta';
+    public const LANGUAGES_TA_IN = 'ta-in';
+    public const LANGUAGES_TA_LK = 'ta-lk';
+    public const LANGUAGES_TA_MY = 'ta-my';
+    public const LANGUAGES_TA_SG = 'ta-sg';
+    public const LANGUAGES_TE = 'te';
+    public const LANGUAGES_TEO = 'teo';
+    public const LANGUAGES_TEO_KE = 'teo-ke';
+    public const LANGUAGES_TEO_UG = 'teo-ug';
+    public const LANGUAGES_TE_IN = 'te-in';
+    public const LANGUAGES_TG = 'tg';
+    public const LANGUAGES_TG_TJ = 'tg-tj';
+    public const LANGUAGES_TH = 'th';
+    public const LANGUAGES_TH_TH = 'th-th';
+    public const LANGUAGES_TI = 'ti';
+    public const LANGUAGES_TI_ER = 'ti-er';
+    public const LANGUAGES_TI_ET = 'ti-et';
+    public const LANGUAGES_TK = 'tk';
+    public const LANGUAGES_TK_TM = 'tk-tm';
+    public const LANGUAGES_TL = 'tl';
+    public const LANGUAGES_TN = 'tn';
+    public const LANGUAGES_TN_BW = 'tn-bw';
+    public const LANGUAGES_TN_ZA = 'tn-za';
+    public const LANGUAGES_TO = 'to';
+    public const LANGUAGES_TOK = 'tok';
+    public const LANGUAGES_TOK_001 = 'tok-001';
+    public const LANGUAGES_TO_TO = 'to-to';
+    public const LANGUAGES_TS = 'ts';
+    public const LANGUAGES_TR = 'tr';
+    public const LANGUAGES_TR_CY = 'tr-cy';
+    public const LANGUAGES_TR_TR = 'tr-tr';
+    public const LANGUAGES_TT = 'tt';
+    public const LANGUAGES_TT_RU = 'tt-ru';
+    public const LANGUAGES_TW = 'tw';
+    public const LANGUAGES_TY = 'ty';
+    public const LANGUAGES_TWQ = 'twq';
+    public const LANGUAGES_TWQ_NE = 'twq-ne';
+    public const LANGUAGES_TZM = 'tzm';
+    public const LANGUAGES_TZM_MA = 'tzm-ma';
+    public const LANGUAGES_UG = 'ug';
+    public const LANGUAGES_UG_CN = 'ug-cn';
+    public const LANGUAGES_UK = 'uk';
+    public const LANGUAGES_UK_UA = 'uk-ua';
+    public const LANGUAGES_UR = 'ur';
+    public const LANGUAGES_UR_IN = 'ur-in';
+    public const LANGUAGES_UR_PK = 'ur-pk';
+    public const LANGUAGES_UZ = 'uz';
+    public const LANGUAGES_UZ_AF = 'uz-af';
+    public const LANGUAGES_UZ_UZ = 'uz-uz';
+    public const LANGUAGES_VAI = 'vai';
+    public const LANGUAGES_VAI_LR = 'vai-lr';
+    public const LANGUAGES_VE = 've';
+    public const LANGUAGES_VEC = 'vec';
+    public const LANGUAGES_VEC_IT = 'vec-it';
+    public const LANGUAGES_VI = 'vi';
+    public const LANGUAGES_VI_VN = 'vi-vn';
+    public const LANGUAGES_VMW = 'vmw';
+    public const LANGUAGES_VMW_MZ = 'vmw-mz';
+    public const LANGUAGES_VO = 'vo';
+    public const LANGUAGES_VO_001 = 'vo-001';
+    public const LANGUAGES_VUN = 'vun';
+    public const LANGUAGES_VUN_TZ = 'vun-tz';
+    public const LANGUAGES_WA = 'wa';
+    public const LANGUAGES_WAE = 'wae';
+    public const LANGUAGES_WAE_CH = 'wae-ch';
+    public const LANGUAGES_WO = 'wo';
+    public const LANGUAGES_WO_SN = 'wo-sn';
+    public const LANGUAGES_XH = 'xh';
+    public const LANGUAGES_XH_ZA = 'xh-za';
+    public const LANGUAGES_XNR = 'xnr';
+    public const LANGUAGES_XNR_IN = 'xnr-in';
+    public const LANGUAGES_XOG = 'xog';
+    public const LANGUAGES_XOG_UG = 'xog-ug';
+    public const LANGUAGES_YAV = 'yav';
+    public const LANGUAGES_YAV_CM = 'yav-cm';
+    public const LANGUAGES_YI_UA = 'yi-ua';
+    public const LANGUAGES_YO = 'yo';
+    public const LANGUAGES_YO_BJ = 'yo-bj';
+    public const LANGUAGES_YO_NG = 'yo-ng';
+    public const LANGUAGES_YRL = 'yrl';
+    public const LANGUAGES_YRL_BR = 'yrl-br';
+    public const LANGUAGES_YRL_CO = 'yrl-co';
+    public const LANGUAGES_YRL_VE = 'yrl-ve';
+    public const LANGUAGES_YUE = 'yue';
+    public const LANGUAGES_YUE_CN = 'yue-cn';
+    public const LANGUAGES_YUE_HK = 'yue-hk';
+    public const LANGUAGES_YUE_MO = 'yue-mo';
+    public const LANGUAGES_ZGH = 'zgh';
+    public const LANGUAGES_ZGH_MA = 'zgh-ma';
+    public const LANGUAGES_ZA = 'za';
+    public const LANGUAGES_ZA_CN = 'za-cn';
+    public const LANGUAGES_ZH = 'zh';
+    public const LANGUAGES_ZH_CN = 'zh-cn';
+    public const LANGUAGES_ZH_HANS = 'zh-hans';
+    public const LANGUAGES_ZH_HANT = 'zh-hant';
+    public const LANGUAGES_ZH_HK = 'zh-hk';
+    public const LANGUAGES_ZH_MO = 'zh-mo';
+    public const LANGUAGES_ZH_MY = 'zh-my';
+    public const LANGUAGES_ZH_SG = 'zh-sg';
+    public const LANGUAGES_ZH_TW = 'zh-tw';
+    public const LANGUAGES_ZU = 'zu';
+    public const LANGUAGES_ZU_ZA = 'zu-za';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLanguagesAllowableValues()
+    {
+        return [
+            self::LANGUAGES_AA,
+            self::LANGUAGES_AB,
+            self::LANGUAGES_AE,
+            self::LANGUAGES_AF,
+            self::LANGUAGES_AF_NA,
+            self::LANGUAGES_AF_ZA,
+            self::LANGUAGES_AGQ,
+            self::LANGUAGES_AGQ_CM,
+            self::LANGUAGES_AK,
+            self::LANGUAGES_AK_GH,
+            self::LANGUAGES_AM,
+            self::LANGUAGES_AM_ET,
+            self::LANGUAGES_AN,
+            self::LANGUAGES_ANN,
+            self::LANGUAGES_ANN_NG,
+            self::LANGUAGES_AR,
+            self::LANGUAGES_AR_001,
+            self::LANGUAGES_AR_AE,
+            self::LANGUAGES_AR_BH,
+            self::LANGUAGES_AR_DJ,
+            self::LANGUAGES_AR_DZ,
+            self::LANGUAGES_AR_EG,
+            self::LANGUAGES_AR_EH,
+            self::LANGUAGES_AR_ER,
+            self::LANGUAGES_AR_IL,
+            self::LANGUAGES_AR_IQ,
+            self::LANGUAGES_AR_JO,
+            self::LANGUAGES_AR_KM,
+            self::LANGUAGES_AR_KW,
+            self::LANGUAGES_AR_LB,
+            self::LANGUAGES_AR_LY,
+            self::LANGUAGES_AR_MA,
+            self::LANGUAGES_AR_MR,
+            self::LANGUAGES_AR_OM,
+            self::LANGUAGES_AR_PS,
+            self::LANGUAGES_AR_QA,
+            self::LANGUAGES_AR_SA,
+            self::LANGUAGES_AR_SD,
+            self::LANGUAGES_AR_SO,
+            self::LANGUAGES_AR_SS,
+            self::LANGUAGES_AR_SY,
+            self::LANGUAGES_AR_TD,
+            self::LANGUAGES_AR_TN,
+            self::LANGUAGES_AR_YE,
+            self::LANGUAGES__AS,
+            self::LANGUAGES_ASA,
+            self::LANGUAGES_ASA_TZ,
+            self::LANGUAGES_AST,
+            self::LANGUAGES_AST_ES,
+            self::LANGUAGES_AS_IN,
+            self::LANGUAGES_AV,
+            self::LANGUAGES_AY,
+            self::LANGUAGES_AZ,
+            self::LANGUAGES_AZ_AZ,
+            self::LANGUAGES_BA,
+            self::LANGUAGES_BAL,
+            self::LANGUAGES_BAL_PK,
+            self::LANGUAGES_BAS,
+            self::LANGUAGES_BAS_CM,
+            self::LANGUAGES_BE,
+            self::LANGUAGES_BEM,
+            self::LANGUAGES_BEM_ZM,
+            self::LANGUAGES_BEZ,
+            self::LANGUAGES_BEZ_TZ,
+            self::LANGUAGES_BE_BY,
+            self::LANGUAGES_BG,
+            self::LANGUAGES_BGC,
+            self::LANGUAGES_BGC_IN,
+            self::LANGUAGES_BG_BG,
+            self::LANGUAGES_BI,
+            self::LANGUAGES_BHO,
+            self::LANGUAGES_BHO_IN,
+            self::LANGUAGES_BLO,
+            self::LANGUAGES_BLO_BJ,
+            self::LANGUAGES_BM,
+            self::LANGUAGES_BM_ML,
+            self::LANGUAGES_BN,
+            self::LANGUAGES_BN_BD,
+            self::LANGUAGES_BN_IN,
+            self::LANGUAGES_BO,
+            self::LANGUAGES_BO_CN,
+            self::LANGUAGES_BO_IN,
+            self::LANGUAGES_BR,
+            self::LANGUAGES_BRX,
+            self::LANGUAGES_BRX_IN,
+            self::LANGUAGES_BR_FR,
+            self::LANGUAGES_BS,
+            self::LANGUAGES_BS_BA,
+            self::LANGUAGES_CA,
+            self::LANGUAGES_CA_AD,
+            self::LANGUAGES_CA_ES,
+            self::LANGUAGES_CA_FR,
+            self::LANGUAGES_CA_IT,
+            self::LANGUAGES_CCP,
+            self::LANGUAGES_CCP_BD,
+            self::LANGUAGES_CCP_IN,
+            self::LANGUAGES_CE,
+            self::LANGUAGES_CEB,
+            self::LANGUAGES_CEB_PH,
+            self::LANGUAGES_CE_RU,
+            self::LANGUAGES_CH,
+            self::LANGUAGES_CGG,
+            self::LANGUAGES_CGG_UG,
+            self::LANGUAGES_CHR,
+            self::LANGUAGES_CHR_US,
+            self::LANGUAGES_CKB,
+            self::LANGUAGES_CKB_IQ,
+            self::LANGUAGES_CKB_IR,
+            self::LANGUAGES_CO,
+            self::LANGUAGES_CR,
+            self::LANGUAGES_CS,
+            self::LANGUAGES_CS_CZ,
+            self::LANGUAGES_CSW,
+            self::LANGUAGES_CSW_CA,
+            self::LANGUAGES_CU,
+            self::LANGUAGES_CU_RU,
+            self::LANGUAGES_CV,
+            self::LANGUAGES_CV_RU,
+            self::LANGUAGES_CY,
+            self::LANGUAGES_CY_GB,
+            self::LANGUAGES_DA,
+            self::LANGUAGES_DAV,
+            self::LANGUAGES_DAV_KE,
+            self::LANGUAGES_DA_DK,
+            self::LANGUAGES_DA_GL,
+            self::LANGUAGES_DE,
+            self::LANGUAGES_DE_AT,
+            self::LANGUAGES_DE_BE,
+            self::LANGUAGES_DE_CH,
+            self::LANGUAGES_DE_DE,
+            self::LANGUAGES_DE_GR,
+            self::LANGUAGES_DE_IT,
+            self::LANGUAGES_DE_LI,
+            self::LANGUAGES_DE_LU,
+            self::LANGUAGES_DJE,
+            self::LANGUAGES_DJE_NE,
+            self::LANGUAGES_DOI,
+            self::LANGUAGES_DOI_IN,
+            self::LANGUAGES_DSB,
+            self::LANGUAGES_DSB_DE,
+            self::LANGUAGES_DUA,
+            self::LANGUAGES_DUA_CM,
+            self::LANGUAGES_DYO,
+            self::LANGUAGES_DYO_SN,
+            self::LANGUAGES_DV,
+            self::LANGUAGES_DZ,
+            self::LANGUAGES_DZ_BT,
+            self::LANGUAGES_EBU,
+            self::LANGUAGES_EBU_KE,
+            self::LANGUAGES_EE,
+            self::LANGUAGES_EE_GH,
+            self::LANGUAGES_EE_TG,
+            self::LANGUAGES_EL,
+            self::LANGUAGES_EL_CY,
+            self::LANGUAGES_EL_GR,
+            self::LANGUAGES_EN,
+            self::LANGUAGES_EN_001,
+            self::LANGUAGES_EN_150,
+            self::LANGUAGES_EN_AE,
+            self::LANGUAGES_EN_AG,
+            self::LANGUAGES_EN_AI,
+            self::LANGUAGES_EN_AS,
+            self::LANGUAGES_EN_AT,
+            self::LANGUAGES_EN_AU,
+            self::LANGUAGES_EN_BB,
+            self::LANGUAGES_EN_BE,
+            self::LANGUAGES_EN_BI,
+            self::LANGUAGES_EN_BM,
+            self::LANGUAGES_EN_BS,
+            self::LANGUAGES_EN_BW,
+            self::LANGUAGES_EN_BZ,
+            self::LANGUAGES_EN_CA,
+            self::LANGUAGES_EN_CC,
+            self::LANGUAGES_EN_CH,
+            self::LANGUAGES_EN_CK,
+            self::LANGUAGES_EN_CM,
+            self::LANGUAGES_EN_CN,
+            self::LANGUAGES_EN_CX,
+            self::LANGUAGES_EN_CY,
+            self::LANGUAGES_EN_CZ,
+            self::LANGUAGES_EN_DE,
+            self::LANGUAGES_EN_DG,
+            self::LANGUAGES_EN_DK,
+            self::LANGUAGES_EN_DM,
+            self::LANGUAGES_EN_EE,
+            self::LANGUAGES_EN_EG,
+            self::LANGUAGES_EN_ER,
+            self::LANGUAGES_EN_ES,
+            self::LANGUAGES_EN_FI,
+            self::LANGUAGES_EN_FJ,
+            self::LANGUAGES_EN_FK,
+            self::LANGUAGES_EN_FM,
+            self::LANGUAGES_EN_FR,
+            self::LANGUAGES_EN_GB,
+            self::LANGUAGES_EN_GD,
+            self::LANGUAGES_EN_GG,
+            self::LANGUAGES_EN_GH,
+            self::LANGUAGES_EN_GI,
+            self::LANGUAGES_EN_GM,
+            self::LANGUAGES_EN_GS,
+            self::LANGUAGES_EN_GU,
+            self::LANGUAGES_EN_GY,
+            self::LANGUAGES_EN_HK,
+            self::LANGUAGES_EN_HU,
+            self::LANGUAGES_EN_ID,
+            self::LANGUAGES_EN_IE,
+            self::LANGUAGES_EN_IL,
+            self::LANGUAGES_EN_IM,
+            self::LANGUAGES_EN_IN,
+            self::LANGUAGES_EN_IO,
+            self::LANGUAGES_EN_IT,
+            self::LANGUAGES_EN_JE,
+            self::LANGUAGES_EN_JM,
+            self::LANGUAGES_EN_KE,
+            self::LANGUAGES_EN_KI,
+            self::LANGUAGES_EN_KN,
+            self::LANGUAGES_EN_KY,
+            self::LANGUAGES_EN_LC,
+            self::LANGUAGES_EN_LR,
+            self::LANGUAGES_EN_LS,
+            self::LANGUAGES_EN_LU,
+            self::LANGUAGES_EN_MG,
+            self::LANGUAGES_EN_MH,
+            self::LANGUAGES_EN_MO,
+            self::LANGUAGES_EN_MP,
+            self::LANGUAGES_EN_MS,
+            self::LANGUAGES_EN_MT,
+            self::LANGUAGES_EN_MU,
+            self::LANGUAGES_EN_MV,
+            self::LANGUAGES_EN_MW,
+            self::LANGUAGES_EN_MX,
+            self::LANGUAGES_EN_MY,
+            self::LANGUAGES_EN_NA,
+            self::LANGUAGES_EN_NF,
+            self::LANGUAGES_EN_NG,
+            self::LANGUAGES_EN_NL,
+            self::LANGUAGES_EN_NO,
+            self::LANGUAGES_EN_NR,
+            self::LANGUAGES_EN_NU,
+            self::LANGUAGES_EN_NZ,
+            self::LANGUAGES_EN_PG,
+            self::LANGUAGES_EN_PH,
+            self::LANGUAGES_EN_PK,
+            self::LANGUAGES_EN_PL,
+            self::LANGUAGES_EN_PN,
+            self::LANGUAGES_EN_PR,
+            self::LANGUAGES_EN_PT,
+            self::LANGUAGES_EN_PW,
+            self::LANGUAGES_EN_RO,
+            self::LANGUAGES_EN_RW,
+            self::LANGUAGES_EN_SB,
+            self::LANGUAGES_EN_SC,
+            self::LANGUAGES_EN_SD,
+            self::LANGUAGES_EN_SE,
+            self::LANGUAGES_EN_SG,
+            self::LANGUAGES_EN_SH,
+            self::LANGUAGES_EN_SI,
+            self::LANGUAGES_EN_SK,
+            self::LANGUAGES_EN_SL,
+            self::LANGUAGES_EN_SS,
+            self::LANGUAGES_EN_SX,
+            self::LANGUAGES_EN_SZ,
+            self::LANGUAGES_EN_TC,
+            self::LANGUAGES_EN_TH,
+            self::LANGUAGES_EN_TK,
+            self::LANGUAGES_EN_TN,
+            self::LANGUAGES_EN_TO,
+            self::LANGUAGES_EN_TT,
+            self::LANGUAGES_EN_TV,
+            self::LANGUAGES_EN_TZ,
+            self::LANGUAGES_EN_UG,
+            self::LANGUAGES_EN_UM,
+            self::LANGUAGES_EN_US,
+            self::LANGUAGES_EN_VC,
+            self::LANGUAGES_EN_VG,
+            self::LANGUAGES_EN_VI,
+            self::LANGUAGES_EN_VN,
+            self::LANGUAGES_EN_VU,
+            self::LANGUAGES_EN_WS,
+            self::LANGUAGES_EN_ZA,
+            self::LANGUAGES_EN_ZM,
+            self::LANGUAGES_EN_ZW,
+            self::LANGUAGES_EO,
+            self::LANGUAGES_EO_001,
+            self::LANGUAGES_ES,
+            self::LANGUAGES_ES_419,
+            self::LANGUAGES_ES_AR,
+            self::LANGUAGES_ES_BO,
+            self::LANGUAGES_ES_BR,
+            self::LANGUAGES_ES_BZ,
+            self::LANGUAGES_ES_CL,
+            self::LANGUAGES_ES_CO,
+            self::LANGUAGES_ES_CR,
+            self::LANGUAGES_ES_CU,
+            self::LANGUAGES_ES_DO,
+            self::LANGUAGES_ES_EA,
+            self::LANGUAGES_ES_EC,
+            self::LANGUAGES_ES_ES,
+            self::LANGUAGES_ES_GQ,
+            self::LANGUAGES_ES_GT,
+            self::LANGUAGES_ES_HN,
+            self::LANGUAGES_ES_IC,
+            self::LANGUAGES_ES_MX,
+            self::LANGUAGES_ES_NI,
+            self::LANGUAGES_ES_PA,
+            self::LANGUAGES_ES_PE,
+            self::LANGUAGES_ES_PH,
+            self::LANGUAGES_ES_PR,
+            self::LANGUAGES_ES_PY,
+            self::LANGUAGES_ES_SV,
+            self::LANGUAGES_ES_US,
+            self::LANGUAGES_ES_UY,
+            self::LANGUAGES_ES_VE,
+            self::LANGUAGES_ET,
+            self::LANGUAGES_ET_EE,
+            self::LANGUAGES_EU,
+            self::LANGUAGES_EU_ES,
+            self::LANGUAGES_EWO,
+            self::LANGUAGES_EWO_CM,
+            self::LANGUAGES_FA,
+            self::LANGUAGES_FA_AF,
+            self::LANGUAGES_FA_IR,
+            self::LANGUAGES_FF,
+            self::LANGUAGES_FF_BF,
+            self::LANGUAGES_FF_CM,
+            self::LANGUAGES_FF_GH,
+            self::LANGUAGES_FF_GM,
+            self::LANGUAGES_FF_GN,
+            self::LANGUAGES_FF_GW,
+            self::LANGUAGES_FF_LR,
+            self::LANGUAGES_FF_MR,
+            self::LANGUAGES_FF_NE,
+            self::LANGUAGES_FF_NG,
+            self::LANGUAGES_FF_SL,
+            self::LANGUAGES_FF_SN,
+            self::LANGUAGES_FI,
+            self::LANGUAGES_FIL,
+            self::LANGUAGES_FIL_PH,
+            self::LANGUAGES_FI_FI,
+            self::LANGUAGES_FJ,
+            self::LANGUAGES_FO,
+            self::LANGUAGES_FO_DK,
+            self::LANGUAGES_FO_FO,
+            self::LANGUAGES_FR,
+            self::LANGUAGES_FRR,
+            self::LANGUAGES_FRR_DE,
+            self::LANGUAGES_FR_BE,
+            self::LANGUAGES_FR_BF,
+            self::LANGUAGES_FR_BI,
+            self::LANGUAGES_FR_BJ,
+            self::LANGUAGES_FR_BL,
+            self::LANGUAGES_FR_CA,
+            self::LANGUAGES_FR_CD,
+            self::LANGUAGES_FR_CF,
+            self::LANGUAGES_FR_CG,
+            self::LANGUAGES_FR_CH,
+            self::LANGUAGES_FR_CI,
+            self::LANGUAGES_FR_CM,
+            self::LANGUAGES_FR_DJ,
+            self::LANGUAGES_FR_DZ,
+            self::LANGUAGES_FR_FR,
+            self::LANGUAGES_FR_GA,
+            self::LANGUAGES_FR_GF,
+            self::LANGUAGES_FR_GN,
+            self::LANGUAGES_FR_GP,
+            self::LANGUAGES_FR_GQ,
+            self::LANGUAGES_FR_HT,
+            self::LANGUAGES_FR_KM,
+            self::LANGUAGES_FR_LU,
+            self::LANGUAGES_FR_MA,
+            self::LANGUAGES_FR_MC,
+            self::LANGUAGES_FR_MF,
+            self::LANGUAGES_FR_MG,
+            self::LANGUAGES_FR_ML,
+            self::LANGUAGES_FR_MQ,
+            self::LANGUAGES_FR_MR,
+            self::LANGUAGES_FR_MU,
+            self::LANGUAGES_FR_NC,
+            self::LANGUAGES_FR_NE,
+            self::LANGUAGES_FR_PF,
+            self::LANGUAGES_FR_PM,
+            self::LANGUAGES_FR_RE,
+            self::LANGUAGES_FR_RW,
+            self::LANGUAGES_FR_SC,
+            self::LANGUAGES_FR_SN,
+            self::LANGUAGES_FR_SY,
+            self::LANGUAGES_FR_TD,
+            self::LANGUAGES_FR_TG,
+            self::LANGUAGES_FR_TN,
+            self::LANGUAGES_FR_VU,
+            self::LANGUAGES_FR_WF,
+            self::LANGUAGES_FR_YT,
+            self::LANGUAGES_FUR,
+            self::LANGUAGES_FUR_IT,
+            self::LANGUAGES_FY,
+            self::LANGUAGES_FY_NL,
+            self::LANGUAGES_GA,
+            self::LANGUAGES_GA_GB,
+            self::LANGUAGES_GA_IE,
+            self::LANGUAGES_GAA,
+            self::LANGUAGES_GAA_GH,
+            self::LANGUAGES_GD,
+            self::LANGUAGES_GD_GB,
+            self::LANGUAGES_GL,
+            self::LANGUAGES_GL_ES,
+            self::LANGUAGES_GN,
+            self::LANGUAGES_GSW,
+            self::LANGUAGES_GSW_CH,
+            self::LANGUAGES_GSW_FR,
+            self::LANGUAGES_GSW_LI,
+            self::LANGUAGES_GU,
+            self::LANGUAGES_GUZ,
+            self::LANGUAGES_GUZ_KE,
+            self::LANGUAGES_GU_IN,
+            self::LANGUAGES_GV,
+            self::LANGUAGES_GV_IM,
+            self::LANGUAGES_HA,
+            self::LANGUAGES_HAW,
+            self::LANGUAGES_HAW_US,
+            self::LANGUAGES_HA_GH,
+            self::LANGUAGES_HA_NE,
+            self::LANGUAGES_HA_NG,
+            self::LANGUAGES_HE,
+            self::LANGUAGES_HE_IL,
+            self::LANGUAGES_HI,
+            self::LANGUAGES_HI_IN,
+            self::LANGUAGES_HMN,
+            self::LANGUAGES_HO,
+            self::LANGUAGES_HR,
+            self::LANGUAGES_HR_BA,
+            self::LANGUAGES_HR_HR,
+            self::LANGUAGES_HT,
+            self::LANGUAGES_HT_HT,
+            self::LANGUAGES_HSB,
+            self::LANGUAGES_HSB_DE,
+            self::LANGUAGES_HU,
+            self::LANGUAGES_HU_HU,
+            self::LANGUAGES_HY,
+            self::LANGUAGES_HY_AM,
+            self::LANGUAGES_HZ,
+            self::LANGUAGES_IA,
+            self::LANGUAGES_IA_001,
+            self::LANGUAGES_ID,
+            self::LANGUAGES_IE,
+            self::LANGUAGES_IE_EE,
+            self::LANGUAGES_IG,
+            self::LANGUAGES_IG_NG,
+            self::LANGUAGES_II,
+            self::LANGUAGES_II_CN,
+            self::LANGUAGES_IK,
+            self::LANGUAGES_IO,
+            self::LANGUAGES_ID_ID,
+            self::LANGUAGES_IS,
+            self::LANGUAGES_IS_IS,
+            self::LANGUAGES_IT,
+            self::LANGUAGES_IT_CH,
+            self::LANGUAGES_IT_IT,
+            self::LANGUAGES_IT_SM,
+            self::LANGUAGES_IT_VA,
+            self::LANGUAGES_IU,
+            self::LANGUAGES_JA,
+            self::LANGUAGES_JA_JP,
+            self::LANGUAGES_JGO,
+            self::LANGUAGES_JGO_CM,
+            self::LANGUAGES_YI,
+            self::LANGUAGES_YI_001,
+            self::LANGUAGES_JMC,
+            self::LANGUAGES_JMC_TZ,
+            self::LANGUAGES_JV,
+            self::LANGUAGES_JV_ID,
+            self::LANGUAGES_KA,
+            self::LANGUAGES_KAB,
+            self::LANGUAGES_KAB_DZ,
+            self::LANGUAGES_KAM,
+            self::LANGUAGES_KAM_KE,
+            self::LANGUAGES_KAR,
+            self::LANGUAGES_KA_GE,
+            self::LANGUAGES_KDE,
+            self::LANGUAGES_KDE_TZ,
+            self::LANGUAGES_KEA,
+            self::LANGUAGES_KEA_CV,
+            self::LANGUAGES_KGP,
+            self::LANGUAGES_KGP_BR,
+            self::LANGUAGES_KG,
+            self::LANGUAGES_KH,
+            self::LANGUAGES_KHQ,
+            self::LANGUAGES_KHQ_ML,
+            self::LANGUAGES_KI,
+            self::LANGUAGES_KI_KE,
+            self::LANGUAGES_KJ,
+            self::LANGUAGES_KK,
+            self::LANGUAGES_KKJ,
+            self::LANGUAGES_KKJ_CM,
+            self::LANGUAGES_KK_KZ,
+            self::LANGUAGES_KL,
+            self::LANGUAGES_KLN,
+            self::LANGUAGES_KLN_KE,
+            self::LANGUAGES_KL_GL,
+            self::LANGUAGES_KM,
+            self::LANGUAGES_KM_KH,
+            self::LANGUAGES_KN,
+            self::LANGUAGES_KN_IN,
+            self::LANGUAGES_KO,
+            self::LANGUAGES_KO_CN,
+            self::LANGUAGES_KOK,
+            self::LANGUAGES_KOK_IN,
+            self::LANGUAGES_KO_KP,
+            self::LANGUAGES_KO_KR,
+            self::LANGUAGES_KR,
+            self::LANGUAGES_KS,
+            self::LANGUAGES_KSB,
+            self::LANGUAGES_KSB_TZ,
+            self::LANGUAGES_KSF,
+            self::LANGUAGES_KSF_CM,
+            self::LANGUAGES_KSH,
+            self::LANGUAGES_KSH_DE,
+            self::LANGUAGES_KS_IN,
+            self::LANGUAGES_KU,
+            self::LANGUAGES_KU_TR,
+            self::LANGUAGES_KV,
+            self::LANGUAGES_KW,
+            self::LANGUAGES_KW_GB,
+            self::LANGUAGES_KXV,
+            self::LANGUAGES_KXV_IN,
+            self::LANGUAGES_KY,
+            self::LANGUAGES_KY_KG,
+            self::LANGUAGES_LAG,
+            self::LANGUAGES_LAG_TZ,
+            self::LANGUAGES_LA,
+            self::LANGUAGES_LB,
+            self::LANGUAGES_LB_LU,
+            self::LANGUAGES_LG,
+            self::LANGUAGES_LG_UG,
+            self::LANGUAGES_LKT,
+            self::LANGUAGES_LKT_US,
+            self::LANGUAGES_LI,
+            self::LANGUAGES_LIJ,
+            self::LANGUAGES_LIJ_IT,
+            self::LANGUAGES_LMO,
+            self::LANGUAGES_LMO_IT,
+            self::LANGUAGES_LN,
+            self::LANGUAGES_LN_AO,
+            self::LANGUAGES_LN_CD,
+            self::LANGUAGES_LN_CF,
+            self::LANGUAGES_LN_CG,
+            self::LANGUAGES_LO,
+            self::LANGUAGES_LO_LA,
+            self::LANGUAGES_LRC,
+            self::LANGUAGES_LRC_IQ,
+            self::LANGUAGES_LRC_IR,
+            self::LANGUAGES_LT,
+            self::LANGUAGES_LT_LT,
+            self::LANGUAGES_LU,
+            self::LANGUAGES_LUO,
+            self::LANGUAGES_LUO_KE,
+            self::LANGUAGES_LUY,
+            self::LANGUAGES_LUY_KE,
+            self::LANGUAGES_LU_CD,
+            self::LANGUAGES_LV,
+            self::LANGUAGES_LV_LV,
+            self::LANGUAGES_MAI,
+            self::LANGUAGES_MAI_IN,
+            self::LANGUAGES_MAS,
+            self::LANGUAGES_MAS_KE,
+            self::LANGUAGES_MAS_TZ,
+            self::LANGUAGES_MDF,
+            self::LANGUAGES_MDF_RU,
+            self::LANGUAGES_MER,
+            self::LANGUAGES_MER_KE,
+            self::LANGUAGES_MFE,
+            self::LANGUAGES_MFE_MU,
+            self::LANGUAGES_MG,
+            self::LANGUAGES_MGH,
+            self::LANGUAGES_MGH_MZ,
+            self::LANGUAGES_MGO,
+            self::LANGUAGES_MGO_CM,
+            self::LANGUAGES_MG_MG,
+            self::LANGUAGES_MH,
+            self::LANGUAGES_MI,
+            self::LANGUAGES_MI_NZ,
+            self::LANGUAGES_MK,
+            self::LANGUAGES_MK_MK,
+            self::LANGUAGES_ML,
+            self::LANGUAGES_ML_IN,
+            self::LANGUAGES_MN,
+            self::LANGUAGES_MNI,
+            self::LANGUAGES_MNI_IN,
+            self::LANGUAGES_MN_MN,
+            self::LANGUAGES_MR,
+            self::LANGUAGES_MR_IN,
+            self::LANGUAGES_MS,
+            self::LANGUAGES_MS_BN,
+            self::LANGUAGES_MS_ID,
+            self::LANGUAGES_MS_MY,
+            self::LANGUAGES_MS_SG,
+            self::LANGUAGES_MT,
+            self::LANGUAGES_MT_MT,
+            self::LANGUAGES_MUA,
+            self::LANGUAGES_MUA_CM,
+            self::LANGUAGES_MY,
+            self::LANGUAGES_MY_MM,
+            self::LANGUAGES_MZN,
+            self::LANGUAGES_MZN_IR,
+            self::LANGUAGES_NAQ,
+            self::LANGUAGES_NAQ_NA,
+            self::LANGUAGES_NA,
+            self::LANGUAGES_NB,
+            self::LANGUAGES_NB_NO,
+            self::LANGUAGES_NB_SJ,
+            self::LANGUAGES_ND,
+            self::LANGUAGES_NDS,
+            self::LANGUAGES_NDS_DE,
+            self::LANGUAGES_NDS_NL,
+            self::LANGUAGES_ND_ZW,
+            self::LANGUAGES_NE,
+            self::LANGUAGES_NE_IN,
+            self::LANGUAGES_NE_NP,
+            self::LANGUAGES_NG,
+            self::LANGUAGES_NL,
+            self::LANGUAGES_NL_AW,
+            self::LANGUAGES_NL_BE,
+            self::LANGUAGES_NL_BQ,
+            self::LANGUAGES_NL_CH,
+            self::LANGUAGES_NL_CW,
+            self::LANGUAGES_NL_LU,
+            self::LANGUAGES_NL_NL,
+            self::LANGUAGES_NL_SR,
+            self::LANGUAGES_NL_SX,
+            self::LANGUAGES_NMG,
+            self::LANGUAGES_NMG_CM,
+            self::LANGUAGES_NN,
+            self::LANGUAGES_NNH,
+            self::LANGUAGES_NNH_CM,
+            self::LANGUAGES_NN_NO,
+            self::LANGUAGES_NQO,
+            self::LANGUAGES_NQO_GN,
+            self::LANGUAGES_NR,
+            self::LANGUAGES_NSO,
+            self::LANGUAGES_NSO_ZA,
+            self::LANGUAGES_NV,
+            self::LANGUAGES_NY,
+            self::LANGUAGES_NO,
+            self::LANGUAGES_NO_NO,
+            self::LANGUAGES_NUS,
+            self::LANGUAGES_NUS_SS,
+            self::LANGUAGES_NYN,
+            self::LANGUAGES_NYN_UG,
+            self::LANGUAGES_OC,
+            self::LANGUAGES_OC_ES,
+            self::LANGUAGES_OC_FR,
+            self::LANGUAGES_OJ,
+            self::LANGUAGES_OM,
+            self::LANGUAGES_OM_ET,
+            self::LANGUAGES_OM_KE,
+            self::LANGUAGES__OR,
+            self::LANGUAGES_OR_IN,
+            self::LANGUAGES_OS,
+            self::LANGUAGES_OS_GE,
+            self::LANGUAGES_OS_RU,
+            self::LANGUAGES_PA,
+            self::LANGUAGES_PA_IN,
+            self::LANGUAGES_PA_PK,
+            self::LANGUAGES_PCM,
+            self::LANGUAGES_PCM_NG,
+            self::LANGUAGES_PIS,
+            self::LANGUAGES_PIS_SB,
+            self::LANGUAGES_PI,
+            self::LANGUAGES_PL,
+            self::LANGUAGES_PL_PL,
+            self::LANGUAGES_PRG,
+            self::LANGUAGES_PRG_001,
+            self::LANGUAGES_PS,
+            self::LANGUAGES_PS_AF,
+            self::LANGUAGES_PS_PK,
+            self::LANGUAGES_PT,
+            self::LANGUAGES_PT_AO,
+            self::LANGUAGES_PT_BR,
+            self::LANGUAGES_PT_CH,
+            self::LANGUAGES_PT_CV,
+            self::LANGUAGES_PT_GQ,
+            self::LANGUAGES_PT_GW,
+            self::LANGUAGES_PT_LU,
+            self::LANGUAGES_PT_MO,
+            self::LANGUAGES_PT_MZ,
+            self::LANGUAGES_PT_PT,
+            self::LANGUAGES_PT_ST,
+            self::LANGUAGES_PT_TL,
+            self::LANGUAGES_QU,
+            self::LANGUAGES_QU_BO,
+            self::LANGUAGES_QU_EC,
+            self::LANGUAGES_QU_PE,
+            self::LANGUAGES_RAJ,
+            self::LANGUAGES_RAJ_IN,
+            self::LANGUAGES_RM,
+            self::LANGUAGES_RM_CH,
+            self::LANGUAGES_RN,
+            self::LANGUAGES_RN_BI,
+            self::LANGUAGES_RO,
+            self::LANGUAGES_ROF,
+            self::LANGUAGES_ROF_TZ,
+            self::LANGUAGES_RO_MD,
+            self::LANGUAGES_RO_RO,
+            self::LANGUAGES_RU,
+            self::LANGUAGES_RU_BY,
+            self::LANGUAGES_RU_KG,
+            self::LANGUAGES_RU_KZ,
+            self::LANGUAGES_RU_MD,
+            self::LANGUAGES_RU_RU,
+            self::LANGUAGES_RU_UA,
+            self::LANGUAGES_RW,
+            self::LANGUAGES_RWK,
+            self::LANGUAGES_RWK_TZ,
+            self::LANGUAGES_RW_RW,
+            self::LANGUAGES_SA,
+            self::LANGUAGES_SAH,
+            self::LANGUAGES_SAH_RU,
+            self::LANGUAGES_SAQ,
+            self::LANGUAGES_SAQ_KE,
+            self::LANGUAGES_SAT,
+            self::LANGUAGES_SAT_IN,
+            self::LANGUAGES_SA_IN,
+            self::LANGUAGES_SBP,
+            self::LANGUAGES_SBP_TZ,
+            self::LANGUAGES_SC,
+            self::LANGUAGES_SC_IT,
+            self::LANGUAGES_SD,
+            self::LANGUAGES_SD_IN,
+            self::LANGUAGES_SD_PK,
+            self::LANGUAGES_SE,
+            self::LANGUAGES_SEH,
+            self::LANGUAGES_SEH_MZ,
+            self::LANGUAGES_SES,
+            self::LANGUAGES_SES_ML,
+            self::LANGUAGES_SE_FI,
+            self::LANGUAGES_SE_NO,
+            self::LANGUAGES_SE_SE,
+            self::LANGUAGES_SG,
+            self::LANGUAGES_SG_CF,
+            self::LANGUAGES_SHI,
+            self::LANGUAGES_SHI_MA,
+            self::LANGUAGES_SI,
+            self::LANGUAGES_SI_LK,
+            self::LANGUAGES_SK,
+            self::LANGUAGES_SK_SK,
+            self::LANGUAGES_SL,
+            self::LANGUAGES_SL_SI,
+            self::LANGUAGES_SM,
+            self::LANGUAGES_SMN,
+            self::LANGUAGES_SMN_FI,
+            self::LANGUAGES_SMS,
+            self::LANGUAGES_SMS_FI,
+            self::LANGUAGES_SN,
+            self::LANGUAGES_SN_ZW,
+            self::LANGUAGES_SO,
+            self::LANGUAGES_SO_DJ,
+            self::LANGUAGES_SO_ET,
+            self::LANGUAGES_SO_KE,
+            self::LANGUAGES_SO_SO,
+            self::LANGUAGES_SQ,
+            self::LANGUAGES_SQ_AL,
+            self::LANGUAGES_SQ_MK,
+            self::LANGUAGES_SQ_XK,
+            self::LANGUAGES_SR,
+            self::LANGUAGES_SR_BA,
+            self::LANGUAGES_SR_CS,
+            self::LANGUAGES_SR_ME,
+            self::LANGUAGES_SR_RS,
+            self::LANGUAGES_SR_XK,
+            self::LANGUAGES_SS,
+            self::LANGUAGES_ST,
+            self::LANGUAGES_ST_LS,
+            self::LANGUAGES_ST_ZA,
+            self::LANGUAGES_SU,
+            self::LANGUAGES_SU_ID,
+            self::LANGUAGES_SV,
+            self::LANGUAGES_SV_AX,
+            self::LANGUAGES_SV_FI,
+            self::LANGUAGES_SV_SE,
+            self::LANGUAGES_SW,
+            self::LANGUAGES_SW_CD,
+            self::LANGUAGES_SW_KE,
+            self::LANGUAGES_SW_TZ,
+            self::LANGUAGES_SW_UG,
+            self::LANGUAGES_SY,
+            self::LANGUAGES_SYR,
+            self::LANGUAGES_SYR_IQ,
+            self::LANGUAGES_SYR_SY,
+            self::LANGUAGES_SZL,
+            self::LANGUAGES_SZL_PL,
+            self::LANGUAGES_TA,
+            self::LANGUAGES_TA_IN,
+            self::LANGUAGES_TA_LK,
+            self::LANGUAGES_TA_MY,
+            self::LANGUAGES_TA_SG,
+            self::LANGUAGES_TE,
+            self::LANGUAGES_TEO,
+            self::LANGUAGES_TEO_KE,
+            self::LANGUAGES_TEO_UG,
+            self::LANGUAGES_TE_IN,
+            self::LANGUAGES_TG,
+            self::LANGUAGES_TG_TJ,
+            self::LANGUAGES_TH,
+            self::LANGUAGES_TH_TH,
+            self::LANGUAGES_TI,
+            self::LANGUAGES_TI_ER,
+            self::LANGUAGES_TI_ET,
+            self::LANGUAGES_TK,
+            self::LANGUAGES_TK_TM,
+            self::LANGUAGES_TL,
+            self::LANGUAGES_TN,
+            self::LANGUAGES_TN_BW,
+            self::LANGUAGES_TN_ZA,
+            self::LANGUAGES_TO,
+            self::LANGUAGES_TOK,
+            self::LANGUAGES_TOK_001,
+            self::LANGUAGES_TO_TO,
+            self::LANGUAGES_TS,
+            self::LANGUAGES_TR,
+            self::LANGUAGES_TR_CY,
+            self::LANGUAGES_TR_TR,
+            self::LANGUAGES_TT,
+            self::LANGUAGES_TT_RU,
+            self::LANGUAGES_TW,
+            self::LANGUAGES_TY,
+            self::LANGUAGES_TWQ,
+            self::LANGUAGES_TWQ_NE,
+            self::LANGUAGES_TZM,
+            self::LANGUAGES_TZM_MA,
+            self::LANGUAGES_UG,
+            self::LANGUAGES_UG_CN,
+            self::LANGUAGES_UK,
+            self::LANGUAGES_UK_UA,
+            self::LANGUAGES_UR,
+            self::LANGUAGES_UR_IN,
+            self::LANGUAGES_UR_PK,
+            self::LANGUAGES_UZ,
+            self::LANGUAGES_UZ_AF,
+            self::LANGUAGES_UZ_UZ,
+            self::LANGUAGES_VAI,
+            self::LANGUAGES_VAI_LR,
+            self::LANGUAGES_VE,
+            self::LANGUAGES_VEC,
+            self::LANGUAGES_VEC_IT,
+            self::LANGUAGES_VI,
+            self::LANGUAGES_VI_VN,
+            self::LANGUAGES_VMW,
+            self::LANGUAGES_VMW_MZ,
+            self::LANGUAGES_VO,
+            self::LANGUAGES_VO_001,
+            self::LANGUAGES_VUN,
+            self::LANGUAGES_VUN_TZ,
+            self::LANGUAGES_WA,
+            self::LANGUAGES_WAE,
+            self::LANGUAGES_WAE_CH,
+            self::LANGUAGES_WO,
+            self::LANGUAGES_WO_SN,
+            self::LANGUAGES_XH,
+            self::LANGUAGES_XH_ZA,
+            self::LANGUAGES_XNR,
+            self::LANGUAGES_XNR_IN,
+            self::LANGUAGES_XOG,
+            self::LANGUAGES_XOG_UG,
+            self::LANGUAGES_YAV,
+            self::LANGUAGES_YAV_CM,
+            self::LANGUAGES_YI_UA,
+            self::LANGUAGES_YO,
+            self::LANGUAGES_YO_BJ,
+            self::LANGUAGES_YO_NG,
+            self::LANGUAGES_YRL,
+            self::LANGUAGES_YRL_BR,
+            self::LANGUAGES_YRL_CO,
+            self::LANGUAGES_YRL_VE,
+            self::LANGUAGES_YUE,
+            self::LANGUAGES_YUE_CN,
+            self::LANGUAGES_YUE_HK,
+            self::LANGUAGES_YUE_MO,
+            self::LANGUAGES_ZGH,
+            self::LANGUAGES_ZGH_MA,
+            self::LANGUAGES_ZA,
+            self::LANGUAGES_ZA_CN,
+            self::LANGUAGES_ZH,
+            self::LANGUAGES_ZH_CN,
+            self::LANGUAGES_ZH_HANS,
+            self::LANGUAGES_ZH_HANT,
+            self::LANGUAGES_ZH_HK,
+            self::LANGUAGES_ZH_MO,
+            self::LANGUAGES_ZH_MY,
+            self::LANGUAGES_ZH_SG,
+            self::LANGUAGES_ZH_TW,
+            self::LANGUAGES_ZU,
+            self::LANGUAGES_ZU_ZA,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -324,6 +2117,15 @@ class UpdateLanguagesRequestVNext implements ModelInterface, ArrayAccess, \JsonS
     {
         if (is_null($languages)) {
             throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        }
+        $allowedValues = $this->getLanguagesAllowableValues();
+        if (array_diff($languages, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'languages', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['languages'] = $languages;
 

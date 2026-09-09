@@ -100,9 +100,9 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
         'operator' => null,
         'value' => null,
         'requires_time_zone_conversion' => null,
-        'timestamp' => 'int32',
-        'lower_bound' => 'int32',
-        'upper_bound' => 'int32',
+        'timestamp' => 'int64',
+        'lower_bound' => 'int64',
+        'upper_bound' => 'int64',
         'comparison_property_name' => null,
         'default_comparison_value' => null,
         'number_of_days' => 'int32',
@@ -385,6 +385,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
         return self::$openAPIModelName;
     }
 
+    public const OPERATION_TYPE_COMPARATIVE_STRING = 'COMPARATIVE_STRING';
     public const FISCAL_YEAR_START_APRIL = 'APRIL';
     public const FISCAL_YEAR_START_AUGUST = 'AUGUST';
     public const FISCAL_YEAR_START_DECEMBER = 'DECEMBER';
@@ -397,6 +398,18 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     public const FISCAL_YEAR_START_NOVEMBER = 'NOVEMBER';
     public const FISCAL_YEAR_START_OCTOBER = 'OCTOBER';
     public const FISCAL_YEAR_START_SEPTEMBER = 'SEPTEMBER';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOperationTypeAllowableValues()
+    {
+        return [
+            self::OPERATION_TYPE_COMPARATIVE_STRING,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -437,7 +450,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     public function __construct(?array $data = null)
     {
         $this->setIfExists('include_objects_with_no_value_set', $data ?? [], null);
-        $this->setIfExists('operation_type', $data ?? [], null);
+        $this->setIfExists('operation_type', $data ?? [], 'COMPARATIVE_STRING');
         $this->setIfExists('operator', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('requires_time_zone_conversion', $data ?? [], null);
@@ -501,6 +514,15 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
         if ($this->container['operation_type'] === null) {
             $invalidProperties[] = "'operation_type' can't be null";
         }
+        $allowedValues = $this->getOperationTypeAllowableValues();
+        if (!is_null($this->container['operation_type']) && !in_array($this->container['operation_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'operation_type', must be one of '%s'",
+                $this->container['operation_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['operator'] === null) {
             $invalidProperties[] = "'operator' can't be null";
         }
@@ -589,7 +611,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     /**
      * Sets include_objects_with_no_value_set
      *
-     * @param bool $include_objects_with_no_value_set Indicates whether objects with no value set for the property should be included in the operation.
+     * @param bool $include_objects_with_no_value_set include_objects_with_no_value_set
      *
      * @return self
      */
@@ -616,7 +638,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     /**
      * Sets operation_type
      *
-     * @param string $operation_type Specifies the type of operation (TIME_RANGED).
+     * @param string $operation_type operation_type
      *
      * @return self
      */
@@ -624,6 +646,16 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     {
         if (is_null($operation_type)) {
             throw new \InvalidArgumentException('non-nullable operation_type cannot be null');
+        }
+        $allowedValues = $this->getOperationTypeAllowableValues();
+        if (!in_array($operation_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'operation_type', must be one of '%s'",
+                    $operation_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['operation_type'] = $operation_type;
 
@@ -643,7 +675,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     /**
      * Sets operator
      *
-     * @param string $operator Defines the operation to be applied within the time range (IS_BETWEEN, IS_NOT_BETWEEN).
+     * @param string $operator operator
      *
      * @return self
      */
@@ -805,7 +837,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     /**
      * Sets comparison_property_name
      *
-     * @param string $comparison_property_name The name of the property to compare against in the operation.
+     * @param string $comparison_property_name comparison_property_name
      *
      * @return self
      */
@@ -832,7 +864,7 @@ class PublicSurveyMonkeyValueFilterValueComparison implements ModelInterface, Ar
     /**
      * Sets default_comparison_value
      *
-     * @param string|null $default_comparison_value The default value used for comparison if the actual comparison property value is not set.
+     * @param string|null $default_comparison_value default_comparison_value
      *
      * @return self
      */

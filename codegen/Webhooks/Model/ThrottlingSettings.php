@@ -306,7 +306,7 @@ class ThrottlingSettings implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets max_concurrent_requests
      *
-     * @param int $max_concurrent_requests The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.
+     * @param int $max_concurrent_requests The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`. This is an integer value.
      *
      * @return self
      */

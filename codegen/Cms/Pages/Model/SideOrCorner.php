@@ -234,6 +234,40 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const HORIZONTAL_SIDE_CENTER = 'CENTER';
+    public const HORIZONTAL_SIDE_LEFT = 'LEFT';
+    public const HORIZONTAL_SIDE_RIGHT = 'RIGHT';
+    public const VERTICAL_SIDE_BOTTOM = 'BOTTOM';
+    public const VERTICAL_SIDE_MIDDLE = 'MIDDLE';
+    public const VERTICAL_SIDE_TOP = 'TOP';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getHorizontalSideAllowableValues()
+    {
+        return [
+            self::HORIZONTAL_SIDE_CENTER,
+            self::HORIZONTAL_SIDE_LEFT,
+            self::HORIZONTAL_SIDE_RIGHT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVerticalSideAllowableValues()
+    {
+        return [
+            self::VERTICAL_SIDE_BOTTOM,
+            self::VERTICAL_SIDE_MIDDLE,
+            self::VERTICAL_SIDE_TOP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -284,9 +318,27 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['horizontal_side'] === null) {
             $invalidProperties[] = "'horizontal_side' can't be null";
         }
+        $allowedValues = $this->getHorizontalSideAllowableValues();
+        if (!is_null($this->container['horizontal_side']) && !in_array($this->container['horizontal_side'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'horizontal_side', must be one of '%s'",
+                $this->container['horizontal_side'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['vertical_side'] === null) {
             $invalidProperties[] = "'vertical_side' can't be null";
         }
+        $allowedValues = $this->getVerticalSideAllowableValues();
+        if (!is_null($this->container['vertical_side']) && !in_array($this->container['vertical_side'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'vertical_side', must be one of '%s'",
+                $this->container['vertical_side'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -324,6 +376,16 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($horizontal_side)) {
             throw new \InvalidArgumentException('non-nullable horizontal_side cannot be null');
         }
+        $allowedValues = $this->getHorizontalSideAllowableValues();
+        if (!in_array($horizontal_side, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'horizontal_side', must be one of '%s'",
+                    $horizontal_side,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['horizontal_side'] = $horizontal_side;
 
         return $this;
@@ -350,6 +412,16 @@ class SideOrCorner implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($vertical_side)) {
             throw new \InvalidArgumentException('non-nullable vertical_side cannot be null');
+        }
+        $allowedValues = $this->getVerticalSideAllowableValues();
+        if (!in_array($vertical_side, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'vertical_side', must be one of '%s'",
+                    $vertical_side,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['vertical_side'] = $vertical_side;
 

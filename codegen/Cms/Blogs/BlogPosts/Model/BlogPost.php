@@ -105,6 +105,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_access_rules_enabled' => 'bool',
         'publish_date' => '\DateTime',
         'publish_immediately' => 'bool',
+        'published_at' => '\DateTime',
         'rss_body' => 'string',
         'rss_summary' => 'string',
         'slug' => 'string',
@@ -176,6 +177,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_access_rules_enabled' => null,
         'publish_date' => 'date-time',
         'publish_immediately' => null,
+        'published_at' => 'date-time',
         'rss_body' => null,
         'rss_summary' => null,
         'slug' => null,
@@ -245,6 +247,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_access_rules_enabled' => false,
         'publish_date' => false,
         'publish_immediately' => false,
+        'published_at' => false,
         'rss_body' => false,
         'rss_summary' => false,
         'slug' => false,
@@ -394,6 +397,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_access_rules_enabled' => 'publicAccessRulesEnabled',
         'publish_date' => 'publishDate',
         'publish_immediately' => 'publishImmediately',
+        'published_at' => 'publishedAt',
         'rss_body' => 'rssBody',
         'rss_summary' => 'rssSummary',
         'slug' => 'slug',
@@ -463,6 +467,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_access_rules_enabled' => 'setPublicAccessRulesEnabled',
         'publish_date' => 'setPublishDate',
         'publish_immediately' => 'setPublishImmediately',
+        'published_at' => 'setPublishedAt',
         'rss_body' => 'setRssBody',
         'rss_summary' => 'setRssSummary',
         'slug' => 'setSlug',
@@ -532,6 +537,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_access_rules_enabled' => 'getPublicAccessRulesEnabled',
         'publish_date' => 'getPublishDate',
         'publish_immediately' => 'getPublishImmediately',
+        'published_at' => 'getPublishedAt',
         'rss_body' => 'getRssBody',
         'rss_summary' => 'getRssSummary',
         'slug' => 'getSlug',
@@ -605,7 +611,14 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CONTENT_TYPE_CATEGORY__13 = '13';
     public const CONTENT_TYPE_CATEGORY__14 = '14';
     public const CONTENT_TYPE_CATEGORY__15 = '15';
+    public const CONTENT_TYPE_CATEGORY__16 = '16';
+    public const CONTENT_TYPE_CATEGORY__17 = '17';
+    public const CONTENT_TYPE_CATEGORY__18 = '18';
+    public const CONTENT_TYPE_CATEGORY__19 = '19';
     public const CONTENT_TYPE_CATEGORY__2 = '2';
+    public const CONTENT_TYPE_CATEGORY__20 = '20';
+    public const CONTENT_TYPE_CATEGORY__21 = '21';
+    public const CONTENT_TYPE_CATEGORY__22 = '22';
     public const CONTENT_TYPE_CATEGORY__3 = '3';
     public const CONTENT_TYPE_CATEGORY__4 = '4';
     public const CONTENT_TYPE_CATEGORY__5 = '5';
@@ -613,6 +626,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CONTENT_TYPE_CATEGORY__7 = '7';
     public const CONTENT_TYPE_CATEGORY__8 = '8';
     public const CONTENT_TYPE_CATEGORY__9 = '9';
+    public const CURRENT_STATE_AGENT_GENERATED = 'AGENT_GENERATED';
     public const CURRENT_STATE_AUTOMATED = 'AUTOMATED';
     public const CURRENT_STATE_AUTOMATED_AB = 'AUTOMATED_AB';
     public const CURRENT_STATE_AUTOMATED_AB_VARIANT = 'AUTOMATED_AB_VARIANT';
@@ -644,6 +658,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENT_STATE_SCHEDULED = 'SCHEDULED';
     public const CURRENT_STATE_SCHEDULED_AB = 'SCHEDULED_AB';
     public const CURRENT_STATE_SCHEDULED_OR_PUBLISHED = 'SCHEDULED_OR_PUBLISHED';
+    public const LANGUAGE_AA = 'aa';
+    public const LANGUAGE_AB = 'ab';
+    public const LANGUAGE_AE = 'ae';
     public const LANGUAGE_AF = 'af';
     public const LANGUAGE_AF_NA = 'af-na';
     public const LANGUAGE_AF_ZA = 'af-za';
@@ -653,6 +670,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_AK_GH = 'ak-gh';
     public const LANGUAGE_AM = 'am';
     public const LANGUAGE_AM_ET = 'am-et';
+    public const LANGUAGE_AN = 'an';
+    public const LANGUAGE_ANN = 'ann';
+    public const LANGUAGE_ANN_NG = 'ann-ng';
     public const LANGUAGE_AR = 'ar';
     public const LANGUAGE_AR_001 = 'ar-001';
     public const LANGUAGE_AR_AE = 'ar-ae';
@@ -688,8 +708,13 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_ASA_TZ = 'asa-tz';
     public const LANGUAGE_AST = 'ast';
     public const LANGUAGE_AST_ES = 'ast-es';
+    public const LANGUAGE_AV = 'av';
+    public const LANGUAGE_AY = 'ay';
     public const LANGUAGE_AZ = 'az';
     public const LANGUAGE_AZ_AZ = 'az-az';
+    public const LANGUAGE_BA = 'ba';
+    public const LANGUAGE_BAL = 'bal';
+    public const LANGUAGE_BAL_PK = 'bal-pk';
     public const LANGUAGE_BAS = 'bas';
     public const LANGUAGE_BAS_CM = 'bas-cm';
     public const LANGUAGE_BE = 'be';
@@ -700,6 +725,13 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_BEZ_TZ = 'bez-tz';
     public const LANGUAGE_BG = 'bg';
     public const LANGUAGE_BG_BG = 'bg-bg';
+    public const LANGUAGE_BGC = 'bgc';
+    public const LANGUAGE_BGC_IN = 'bgc-in';
+    public const LANGUAGE_BHO = 'bho';
+    public const LANGUAGE_BHO_IN = 'bho-in';
+    public const LANGUAGE_BI = 'bi';
+    public const LANGUAGE_BLO = 'blo';
+    public const LANGUAGE_BLO_BJ = 'blo-bj';
     public const LANGUAGE_BM = 'bm';
     public const LANGUAGE_BM_ML = 'bm-ml';
     public const LANGUAGE_BN = 'bn';
@@ -728,15 +760,22 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_CEB_PH = 'ceb-ph';
     public const LANGUAGE_CGG = 'cgg';
     public const LANGUAGE_CGG_UG = 'cgg-ug';
+    public const LANGUAGE_CH = 'ch';
     public const LANGUAGE_CHR = 'chr';
     public const LANGUAGE_CHR_US = 'chr-us';
     public const LANGUAGE_CKB = 'ckb';
     public const LANGUAGE_CKB_IQ = 'ckb-iq';
     public const LANGUAGE_CKB_IR = 'ckb-ir';
+    public const LANGUAGE_CO = 'co';
+    public const LANGUAGE_CR = 'cr';
     public const LANGUAGE_CS = 'cs';
     public const LANGUAGE_CS_CZ = 'cs-cz';
+    public const LANGUAGE_CSW = 'csw';
+    public const LANGUAGE_CSW_CA = 'csw-ca';
     public const LANGUAGE_CU = 'cu';
     public const LANGUAGE_CU_RU = 'cu-ru';
+    public const LANGUAGE_CV = 'cv';
+    public const LANGUAGE_CV_RU = 'cv-ru';
     public const LANGUAGE_CY = 'cy';
     public const LANGUAGE_CY_GB = 'cy-gb';
     public const LANGUAGE_DA = 'da';
@@ -761,6 +800,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_DSB_DE = 'dsb-de';
     public const LANGUAGE_DUA = 'dua';
     public const LANGUAGE_DUA_CM = 'dua-cm';
+    public const LANGUAGE_DV = 'dv';
     public const LANGUAGE_DYO = 'dyo';
     public const LANGUAGE_DYO_SN = 'dyo-sn';
     public const LANGUAGE_DZ = 'dz';
@@ -797,12 +837,15 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_CN = 'en-cn';
     public const LANGUAGE_EN_CX = 'en-cx';
     public const LANGUAGE_EN_CY = 'en-cy';
+    public const LANGUAGE_EN_CZ = 'en-cz';
     public const LANGUAGE_EN_DE = 'en-de';
     public const LANGUAGE_EN_DG = 'en-dg';
     public const LANGUAGE_EN_DK = 'en-dk';
     public const LANGUAGE_EN_DM = 'en-dm';
     public const LANGUAGE_EN_EE = 'en-ee';
+    public const LANGUAGE_EN_EG = 'en-eg';
     public const LANGUAGE_EN_ER = 'en-er';
+    public const LANGUAGE_EN_ES = 'en-es';
     public const LANGUAGE_EN_FI = 'en-fi';
     public const LANGUAGE_EN_FJ = 'en-fj';
     public const LANGUAGE_EN_FK = 'en-fk';
@@ -814,14 +857,18 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_GH = 'en-gh';
     public const LANGUAGE_EN_GI = 'en-gi';
     public const LANGUAGE_EN_GM = 'en-gm';
+    public const LANGUAGE_EN_GS = 'en-gs';
     public const LANGUAGE_EN_GU = 'en-gu';
     public const LANGUAGE_EN_GY = 'en-gy';
     public const LANGUAGE_EN_HK = 'en-hk';
+    public const LANGUAGE_EN_HU = 'en-hu';
+    public const LANGUAGE_EN_ID = 'en-id';
     public const LANGUAGE_EN_IE = 'en-ie';
     public const LANGUAGE_EN_IL = 'en-il';
     public const LANGUAGE_EN_IM = 'en-im';
     public const LANGUAGE_EN_IN = 'en-in';
     public const LANGUAGE_EN_IO = 'en-io';
+    public const LANGUAGE_EN_IT = 'en-it';
     public const LANGUAGE_EN_JE = 'en-je';
     public const LANGUAGE_EN_JM = 'en-jm';
     public const LANGUAGE_EN_KE = 'en-ke';
@@ -839,6 +886,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_MS = 'en-ms';
     public const LANGUAGE_EN_MT = 'en-mt';
     public const LANGUAGE_EN_MU = 'en-mu';
+    public const LANGUAGE_EN_MV = 'en-mv';
     public const LANGUAGE_EN_MW = 'en-mw';
     public const LANGUAGE_EN_MX = 'en-mx';
     public const LANGUAGE_EN_MY = 'en-my';
@@ -846,15 +894,19 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_NF = 'en-nf';
     public const LANGUAGE_EN_NG = 'en-ng';
     public const LANGUAGE_EN_NL = 'en-nl';
+    public const LANGUAGE_EN_NO = 'en-no';
     public const LANGUAGE_EN_NR = 'en-nr';
     public const LANGUAGE_EN_NU = 'en-nu';
     public const LANGUAGE_EN_NZ = 'en-nz';
     public const LANGUAGE_EN_PG = 'en-pg';
     public const LANGUAGE_EN_PH = 'en-ph';
     public const LANGUAGE_EN_PK = 'en-pk';
+    public const LANGUAGE_EN_PL = 'en-pl';
     public const LANGUAGE_EN_PN = 'en-pn';
     public const LANGUAGE_EN_PR = 'en-pr';
+    public const LANGUAGE_EN_PT = 'en-pt';
     public const LANGUAGE_EN_PW = 'en-pw';
+    public const LANGUAGE_EN_RO = 'en-ro';
     public const LANGUAGE_EN_RW = 'en-rw';
     public const LANGUAGE_EN_SB = 'en-sb';
     public const LANGUAGE_EN_SC = 'en-sc';
@@ -863,12 +915,15 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_SG = 'en-sg';
     public const LANGUAGE_EN_SH = 'en-sh';
     public const LANGUAGE_EN_SI = 'en-si';
+    public const LANGUAGE_EN_SK = 'en-sk';
     public const LANGUAGE_EN_SL = 'en-sl';
     public const LANGUAGE_EN_SS = 'en-ss';
     public const LANGUAGE_EN_SX = 'en-sx';
     public const LANGUAGE_EN_SZ = 'en-sz';
     public const LANGUAGE_EN_TC = 'en-tc';
+    public const LANGUAGE_EN_TH = 'en-th';
     public const LANGUAGE_EN_TK = 'en-tk';
+    public const LANGUAGE_EN_TN = 'en-tn';
     public const LANGUAGE_EN_TO = 'en-to';
     public const LANGUAGE_EN_TT = 'en-tt';
     public const LANGUAGE_EN_TV = 'en-tv';
@@ -879,6 +934,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_EN_VC = 'en-vc';
     public const LANGUAGE_EN_VG = 'en-vg';
     public const LANGUAGE_EN_VI = 'en-vi';
+    public const LANGUAGE_EN_VN = 'en-vn';
     public const LANGUAGE_EN_VU = 'en-vu';
     public const LANGUAGE_EN_WS = 'en-ws';
     public const LANGUAGE_EN_ZA = 'en-za';
@@ -941,6 +997,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FI_FI = 'fi-fi';
     public const LANGUAGE_FIL = 'fil';
     public const LANGUAGE_FIL_PH = 'fil-ph';
+    public const LANGUAGE_FJ = 'fj';
     public const LANGUAGE_FO = 'fo';
     public const LANGUAGE_FO_DK = 'fo-dk';
     public const LANGUAGE_FO_FO = 'fo-fo';
@@ -991,6 +1048,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_FR_VU = 'fr-vu';
     public const LANGUAGE_FR_WF = 'fr-wf';
     public const LANGUAGE_FR_YT = 'fr-yt';
+    public const LANGUAGE_FRR = 'frr';
+    public const LANGUAGE_FRR_DE = 'frr-de';
     public const LANGUAGE_FUR = 'fur';
     public const LANGUAGE_FUR_IT = 'fur-it';
     public const LANGUAGE_FY = 'fy';
@@ -998,10 +1057,13 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_GA = 'ga';
     public const LANGUAGE_GA_GB = 'ga-gb';
     public const LANGUAGE_GA_IE = 'ga-ie';
+    public const LANGUAGE_GAA = 'gaa';
+    public const LANGUAGE_GAA_GH = 'gaa-gh';
     public const LANGUAGE_GD = 'gd';
     public const LANGUAGE_GD_GB = 'gd-gb';
     public const LANGUAGE_GL = 'gl';
     public const LANGUAGE_GL_ES = 'gl-es';
+    public const LANGUAGE_GN = 'gn';
     public const LANGUAGE_GSW = 'gsw';
     public const LANGUAGE_GSW_CH = 'gsw-ch';
     public const LANGUAGE_GSW_FR = 'gsw-fr';
@@ -1022,23 +1084,32 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_HE_IL = 'he-il';
     public const LANGUAGE_HI = 'hi';
     public const LANGUAGE_HI_IN = 'hi-in';
+    public const LANGUAGE_HMN = 'hmn';
+    public const LANGUAGE_HO = 'ho';
     public const LANGUAGE_HR = 'hr';
     public const LANGUAGE_HR_BA = 'hr-ba';
     public const LANGUAGE_HR_HR = 'hr-hr';
     public const LANGUAGE_HSB = 'hsb';
     public const LANGUAGE_HSB_DE = 'hsb-de';
+    public const LANGUAGE_HT = 'ht';
+    public const LANGUAGE_HT_HT = 'ht-ht';
     public const LANGUAGE_HU = 'hu';
     public const LANGUAGE_HU_HU = 'hu-hu';
     public const LANGUAGE_HY = 'hy';
     public const LANGUAGE_HY_AM = 'hy-am';
+    public const LANGUAGE_HZ = 'hz';
     public const LANGUAGE_IA = 'ia';
     public const LANGUAGE_IA_001 = 'ia-001';
     public const LANGUAGE_ID = 'id';
     public const LANGUAGE_ID_ID = 'id-id';
+    public const LANGUAGE_IE = 'ie';
+    public const LANGUAGE_IE_EE = 'ie-ee';
     public const LANGUAGE_IG = 'ig';
     public const LANGUAGE_IG_NG = 'ig-ng';
     public const LANGUAGE_II = 'ii';
     public const LANGUAGE_II_CN = 'ii-cn';
+    public const LANGUAGE_IK = 'ik';
+    public const LANGUAGE_IO = 'io';
     public const LANGUAGE_IS = 'is';
     public const LANGUAGE_IS_IS = 'is-is';
     public const LANGUAGE_IT = 'it';
@@ -1046,6 +1117,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_IT_IT = 'it-it';
     public const LANGUAGE_IT_SM = 'it-sm';
     public const LANGUAGE_IT_VA = 'it-va';
+    public const LANGUAGE_IU = 'iu';
     public const LANGUAGE_JA = 'ja';
     public const LANGUAGE_JA_JP = 'ja-jp';
     public const LANGUAGE_JGO = 'jgo';
@@ -1060,14 +1132,20 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_KAB_DZ = 'kab-dz';
     public const LANGUAGE_KAM = 'kam';
     public const LANGUAGE_KAM_KE = 'kam-ke';
+    public const LANGUAGE_KAR = 'kar';
     public const LANGUAGE_KDE = 'kde';
     public const LANGUAGE_KDE_TZ = 'kde-tz';
     public const LANGUAGE_KEA = 'kea';
     public const LANGUAGE_KEA_CV = 'kea-cv';
+    public const LANGUAGE_KG = 'kg';
+    public const LANGUAGE_KGP = 'kgp';
+    public const LANGUAGE_KGP_BR = 'kgp-br';
+    public const LANGUAGE_KH = 'kh';
     public const LANGUAGE_KHQ = 'khq';
     public const LANGUAGE_KHQ_ML = 'khq-ml';
     public const LANGUAGE_KI = 'ki';
     public const LANGUAGE_KI_KE = 'ki-ke';
+    public const LANGUAGE_KJ = 'kj';
     public const LANGUAGE_KK = 'kk';
     public const LANGUAGE_KK_KZ = 'kk-kz';
     public const LANGUAGE_KKJ = 'kkj';
@@ -1081,10 +1159,12 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_KN = 'kn';
     public const LANGUAGE_KN_IN = 'kn-in';
     public const LANGUAGE_KO = 'ko';
+    public const LANGUAGE_KO_CN = 'ko-cn';
     public const LANGUAGE_KO_KP = 'ko-kp';
     public const LANGUAGE_KO_KR = 'ko-kr';
     public const LANGUAGE_KOK = 'kok';
     public const LANGUAGE_KOK_IN = 'kok-in';
+    public const LANGUAGE_KR = 'kr';
     public const LANGUAGE_KS = 'ks';
     public const LANGUAGE_KS_IN = 'ks-in';
     public const LANGUAGE_KSB = 'ksb';
@@ -1095,18 +1175,27 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_KSH_DE = 'ksh-de';
     public const LANGUAGE_KU = 'ku';
     public const LANGUAGE_KU_TR = 'ku-tr';
+    public const LANGUAGE_KV = 'kv';
     public const LANGUAGE_KW = 'kw';
     public const LANGUAGE_KW_GB = 'kw-gb';
+    public const LANGUAGE_KXV = 'kxv';
+    public const LANGUAGE_KXV_IN = 'kxv-in';
     public const LANGUAGE_KY = 'ky';
     public const LANGUAGE_KY_KG = 'ky-kg';
+    public const LANGUAGE_LA = 'la';
     public const LANGUAGE_LAG = 'lag';
     public const LANGUAGE_LAG_TZ = 'lag-tz';
     public const LANGUAGE_LB = 'lb';
     public const LANGUAGE_LB_LU = 'lb-lu';
     public const LANGUAGE_LG = 'lg';
     public const LANGUAGE_LG_UG = 'lg-ug';
+    public const LANGUAGE_LI = 'li';
+    public const LANGUAGE_LIJ = 'lij';
+    public const LANGUAGE_LIJ_IT = 'lij-it';
     public const LANGUAGE_LKT = 'lkt';
     public const LANGUAGE_LKT_US = 'lkt-us';
+    public const LANGUAGE_LMO = 'lmo';
+    public const LANGUAGE_LMO_IT = 'lmo-it';
     public const LANGUAGE_LN = 'ln';
     public const LANGUAGE_LN_AO = 'ln-ao';
     public const LANGUAGE_LN_CD = 'ln-cd';
@@ -1132,6 +1221,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_MAS = 'mas';
     public const LANGUAGE_MAS_KE = 'mas-ke';
     public const LANGUAGE_MAS_TZ = 'mas-tz';
+    public const LANGUAGE_MDF = 'mdf';
+    public const LANGUAGE_MDF_RU = 'mdf-ru';
     public const LANGUAGE_MER = 'mer';
     public const LANGUAGE_MER_KE = 'mer-ke';
     public const LANGUAGE_MFE = 'mfe';
@@ -1142,6 +1233,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_MGH_MZ = 'mgh-mz';
     public const LANGUAGE_MGO = 'mgo';
     public const LANGUAGE_MGO_CM = 'mgo-cm';
+    public const LANGUAGE_MH = 'mh';
     public const LANGUAGE_MI = 'mi';
     public const LANGUAGE_MI_NZ = 'mi-nz';
     public const LANGUAGE_MK = 'mk';
@@ -1167,6 +1259,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_MY_MM = 'my-mm';
     public const LANGUAGE_MZN = 'mzn';
     public const LANGUAGE_MZN_IR = 'mzn-ir';
+    public const LANGUAGE_NA = 'na';
     public const LANGUAGE_NAQ = 'naq';
     public const LANGUAGE_NAQ_NA = 'naq-na';
     public const LANGUAGE_NB = 'nb';
@@ -1180,6 +1273,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_NE = 'ne';
     public const LANGUAGE_NE_IN = 'ne-in';
     public const LANGUAGE_NE_NP = 'ne-np';
+    public const LANGUAGE_NG = 'ng';
     public const LANGUAGE_NL = 'nl';
     public const LANGUAGE_NL_AW = 'nl-aw';
     public const LANGUAGE_NL_BE = 'nl-be';
@@ -1198,10 +1292,21 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_NNH_CM = 'nnh-cm';
     public const LANGUAGE_NO = 'no';
     public const LANGUAGE_NO_NO = 'no-no';
+    public const LANGUAGE_NQO = 'nqo';
+    public const LANGUAGE_NQO_GN = 'nqo-gn';
+    public const LANGUAGE_NR = 'nr';
+    public const LANGUAGE_NSO = 'nso';
+    public const LANGUAGE_NSO_ZA = 'nso-za';
     public const LANGUAGE_NUS = 'nus';
     public const LANGUAGE_NUS_SS = 'nus-ss';
+    public const LANGUAGE_NV = 'nv';
+    public const LANGUAGE_NY = 'ny';
     public const LANGUAGE_NYN = 'nyn';
     public const LANGUAGE_NYN_UG = 'nyn-ug';
+    public const LANGUAGE_OC = 'oc';
+    public const LANGUAGE_OC_ES = 'oc-es';
+    public const LANGUAGE_OC_FR = 'oc-fr';
+    public const LANGUAGE_OJ = 'oj';
     public const LANGUAGE_OM = 'om';
     public const LANGUAGE_OM_ET = 'om-et';
     public const LANGUAGE_OM_KE = 'om-ke';
@@ -1215,6 +1320,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_PA_PK = 'pa-pk';
     public const LANGUAGE_PCM = 'pcm';
     public const LANGUAGE_PCM_NG = 'pcm-ng';
+    public const LANGUAGE_PI = 'pi';
+    public const LANGUAGE_PIS = 'pis';
+    public const LANGUAGE_PIS_SB = 'pis-sb';
     public const LANGUAGE_PL = 'pl';
     public const LANGUAGE_PL_PL = 'pl-pl';
     public const LANGUAGE_PRG = 'prg';
@@ -1239,6 +1347,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_QU_BO = 'qu-bo';
     public const LANGUAGE_QU_EC = 'qu-ec';
     public const LANGUAGE_QU_PE = 'qu-pe';
+    public const LANGUAGE_RAJ = 'raj';
+    public const LANGUAGE_RAJ_IN = 'raj-in';
     public const LANGUAGE_RM = 'rm';
     public const LANGUAGE_RM_CH = 'rm-ch';
     public const LANGUAGE_RN = 'rn';
@@ -1269,6 +1379,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SAT_IN = 'sat-in';
     public const LANGUAGE_SBP = 'sbp';
     public const LANGUAGE_SBP_TZ = 'sbp-tz';
+    public const LANGUAGE_SC = 'sc';
+    public const LANGUAGE_SC_IT = 'sc-it';
     public const LANGUAGE_SD = 'sd';
     public const LANGUAGE_SD_IN = 'sd-in';
     public const LANGUAGE_SD_PK = 'sd-pk';
@@ -1290,8 +1402,11 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SK_SK = 'sk-sk';
     public const LANGUAGE_SL = 'sl';
     public const LANGUAGE_SL_SI = 'sl-si';
+    public const LANGUAGE_SM = 'sm';
     public const LANGUAGE_SMN = 'smn';
     public const LANGUAGE_SMN_FI = 'smn-fi';
+    public const LANGUAGE_SMS = 'sms';
+    public const LANGUAGE_SMS_FI = 'sms-fi';
     public const LANGUAGE_SN = 'sn';
     public const LANGUAGE_SN_ZW = 'sn-zw';
     public const LANGUAGE_SO = 'so';
@@ -1309,6 +1424,10 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SR_ME = 'sr-me';
     public const LANGUAGE_SR_RS = 'sr-rs';
     public const LANGUAGE_SR_XK = 'sr-xk';
+    public const LANGUAGE_SS = 'ss';
+    public const LANGUAGE_ST = 'st';
+    public const LANGUAGE_ST_LS = 'st-ls';
+    public const LANGUAGE_ST_ZA = 'st-za';
     public const LANGUAGE_SU = 'su';
     public const LANGUAGE_SU_ID = 'su-id';
     public const LANGUAGE_SV = 'sv';
@@ -1321,6 +1440,11 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_SW_TZ = 'sw-tz';
     public const LANGUAGE_SW_UG = 'sw-ug';
     public const LANGUAGE_SY = 'sy';
+    public const LANGUAGE_SYR = 'syr';
+    public const LANGUAGE_SYR_IQ = 'syr-iq';
+    public const LANGUAGE_SYR_SY = 'syr-sy';
+    public const LANGUAGE_SZL = 'szl';
+    public const LANGUAGE_SZL_PL = 'szl-pl';
     public const LANGUAGE_TA = 'ta';
     public const LANGUAGE_TA_IN = 'ta-in';
     public const LANGUAGE_TA_LK = 'ta-lk';
@@ -1341,15 +1465,23 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_TK = 'tk';
     public const LANGUAGE_TK_TM = 'tk-tm';
     public const LANGUAGE_TL = 'tl';
+    public const LANGUAGE_TN = 'tn';
+    public const LANGUAGE_TN_BW = 'tn-bw';
+    public const LANGUAGE_TN_ZA = 'tn-za';
     public const LANGUAGE_TO = 'to';
     public const LANGUAGE_TO_TO = 'to-to';
+    public const LANGUAGE_TOK = 'tok';
+    public const LANGUAGE_TOK_001 = 'tok-001';
     public const LANGUAGE_TR = 'tr';
     public const LANGUAGE_TR_CY = 'tr-cy';
     public const LANGUAGE_TR_TR = 'tr-tr';
+    public const LANGUAGE_TS = 'ts';
     public const LANGUAGE_TT = 'tt';
     public const LANGUAGE_TT_RU = 'tt-ru';
+    public const LANGUAGE_TW = 'tw';
     public const LANGUAGE_TWQ = 'twq';
     public const LANGUAGE_TWQ_NE = 'twq-ne';
+    public const LANGUAGE_TY = 'ty';
     public const LANGUAGE_TZM = 'tzm';
     public const LANGUAGE_TZM_MA = 'tzm-ma';
     public const LANGUAGE_UG = 'ug';
@@ -1364,30 +1496,46 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_UZ_UZ = 'uz-uz';
     public const LANGUAGE_VAI = 'vai';
     public const LANGUAGE_VAI_LR = 'vai-lr';
+    public const LANGUAGE_VE = 've';
+    public const LANGUAGE_VEC = 'vec';
+    public const LANGUAGE_VEC_IT = 'vec-it';
     public const LANGUAGE_VI = 'vi';
     public const LANGUAGE_VI_VN = 'vi-vn';
+    public const LANGUAGE_VMW = 'vmw';
+    public const LANGUAGE_VMW_MZ = 'vmw-mz';
     public const LANGUAGE_VO = 'vo';
     public const LANGUAGE_VO_001 = 'vo-001';
     public const LANGUAGE_VUN = 'vun';
     public const LANGUAGE_VUN_TZ = 'vun-tz';
+    public const LANGUAGE_WA = 'wa';
     public const LANGUAGE_WAE = 'wae';
     public const LANGUAGE_WAE_CH = 'wae-ch';
     public const LANGUAGE_WO = 'wo';
     public const LANGUAGE_WO_SN = 'wo-sn';
     public const LANGUAGE_XH = 'xh';
     public const LANGUAGE_XH_ZA = 'xh-za';
+    public const LANGUAGE_XNR = 'xnr';
+    public const LANGUAGE_XNR_IN = 'xnr-in';
     public const LANGUAGE_XOG = 'xog';
     public const LANGUAGE_XOG_UG = 'xog-ug';
     public const LANGUAGE_YAV = 'yav';
     public const LANGUAGE_YAV_CM = 'yav-cm';
     public const LANGUAGE_YI = 'yi';
     public const LANGUAGE_YI_001 = 'yi-001';
+    public const LANGUAGE_YI_UA = 'yi-ua';
     public const LANGUAGE_YO = 'yo';
     public const LANGUAGE_YO_BJ = 'yo-bj';
     public const LANGUAGE_YO_NG = 'yo-ng';
+    public const LANGUAGE_YRL = 'yrl';
+    public const LANGUAGE_YRL_BR = 'yrl-br';
+    public const LANGUAGE_YRL_CO = 'yrl-co';
+    public const LANGUAGE_YRL_VE = 'yrl-ve';
     public const LANGUAGE_YUE = 'yue';
     public const LANGUAGE_YUE_CN = 'yue-cn';
     public const LANGUAGE_YUE_HK = 'yue-hk';
+    public const LANGUAGE_YUE_MO = 'yue-mo';
+    public const LANGUAGE_ZA = 'za';
+    public const LANGUAGE_ZA_CN = 'za-cn';
     public const LANGUAGE_ZGH = 'zgh';
     public const LANGUAGE_ZGH_MA = 'zgh-ma';
     public const LANGUAGE_ZH = 'zh';
@@ -1396,6 +1544,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LANGUAGE_ZH_HANT = 'zh-hant';
     public const LANGUAGE_ZH_HK = 'zh-hk';
     public const LANGUAGE_ZH_MO = 'zh-mo';
+    public const LANGUAGE_ZH_MY = 'zh-my';
     public const LANGUAGE_ZH_SG = 'zh-sg';
     public const LANGUAGE_ZH_TW = 'zh-tw';
     public const LANGUAGE_ZU = 'zu';
@@ -1436,7 +1585,14 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CONTENT_TYPE_CATEGORY__13,
             self::CONTENT_TYPE_CATEGORY__14,
             self::CONTENT_TYPE_CATEGORY__15,
+            self::CONTENT_TYPE_CATEGORY__16,
+            self::CONTENT_TYPE_CATEGORY__17,
+            self::CONTENT_TYPE_CATEGORY__18,
+            self::CONTENT_TYPE_CATEGORY__19,
             self::CONTENT_TYPE_CATEGORY__2,
+            self::CONTENT_TYPE_CATEGORY__20,
+            self::CONTENT_TYPE_CATEGORY__21,
+            self::CONTENT_TYPE_CATEGORY__22,
             self::CONTENT_TYPE_CATEGORY__3,
             self::CONTENT_TYPE_CATEGORY__4,
             self::CONTENT_TYPE_CATEGORY__5,
@@ -1455,6 +1611,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getCurrentStateAllowableValues()
     {
         return [
+            self::CURRENT_STATE_AGENT_GENERATED,
             self::CURRENT_STATE_AUTOMATED,
             self::CURRENT_STATE_AUTOMATED_AB,
             self::CURRENT_STATE_AUTOMATED_AB_VARIANT,
@@ -1497,6 +1654,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getLanguageAllowableValues()
     {
         return [
+            self::LANGUAGE_AA,
+            self::LANGUAGE_AB,
+            self::LANGUAGE_AE,
             self::LANGUAGE_AF,
             self::LANGUAGE_AF_NA,
             self::LANGUAGE_AF_ZA,
@@ -1506,6 +1666,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_AK_GH,
             self::LANGUAGE_AM,
             self::LANGUAGE_AM_ET,
+            self::LANGUAGE_AN,
+            self::LANGUAGE_ANN,
+            self::LANGUAGE_ANN_NG,
             self::LANGUAGE_AR,
             self::LANGUAGE_AR_001,
             self::LANGUAGE_AR_AE,
@@ -1541,8 +1704,13 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_ASA_TZ,
             self::LANGUAGE_AST,
             self::LANGUAGE_AST_ES,
+            self::LANGUAGE_AV,
+            self::LANGUAGE_AY,
             self::LANGUAGE_AZ,
             self::LANGUAGE_AZ_AZ,
+            self::LANGUAGE_BA,
+            self::LANGUAGE_BAL,
+            self::LANGUAGE_BAL_PK,
             self::LANGUAGE_BAS,
             self::LANGUAGE_BAS_CM,
             self::LANGUAGE_BE,
@@ -1553,6 +1721,13 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_BEZ_TZ,
             self::LANGUAGE_BG,
             self::LANGUAGE_BG_BG,
+            self::LANGUAGE_BGC,
+            self::LANGUAGE_BGC_IN,
+            self::LANGUAGE_BHO,
+            self::LANGUAGE_BHO_IN,
+            self::LANGUAGE_BI,
+            self::LANGUAGE_BLO,
+            self::LANGUAGE_BLO_BJ,
             self::LANGUAGE_BM,
             self::LANGUAGE_BM_ML,
             self::LANGUAGE_BN,
@@ -1581,15 +1756,22 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_CEB_PH,
             self::LANGUAGE_CGG,
             self::LANGUAGE_CGG_UG,
+            self::LANGUAGE_CH,
             self::LANGUAGE_CHR,
             self::LANGUAGE_CHR_US,
             self::LANGUAGE_CKB,
             self::LANGUAGE_CKB_IQ,
             self::LANGUAGE_CKB_IR,
+            self::LANGUAGE_CO,
+            self::LANGUAGE_CR,
             self::LANGUAGE_CS,
             self::LANGUAGE_CS_CZ,
+            self::LANGUAGE_CSW,
+            self::LANGUAGE_CSW_CA,
             self::LANGUAGE_CU,
             self::LANGUAGE_CU_RU,
+            self::LANGUAGE_CV,
+            self::LANGUAGE_CV_RU,
             self::LANGUAGE_CY,
             self::LANGUAGE_CY_GB,
             self::LANGUAGE_DA,
@@ -1614,6 +1796,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_DSB_DE,
             self::LANGUAGE_DUA,
             self::LANGUAGE_DUA_CM,
+            self::LANGUAGE_DV,
             self::LANGUAGE_DYO,
             self::LANGUAGE_DYO_SN,
             self::LANGUAGE_DZ,
@@ -1650,12 +1833,15 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_CN,
             self::LANGUAGE_EN_CX,
             self::LANGUAGE_EN_CY,
+            self::LANGUAGE_EN_CZ,
             self::LANGUAGE_EN_DE,
             self::LANGUAGE_EN_DG,
             self::LANGUAGE_EN_DK,
             self::LANGUAGE_EN_DM,
             self::LANGUAGE_EN_EE,
+            self::LANGUAGE_EN_EG,
             self::LANGUAGE_EN_ER,
+            self::LANGUAGE_EN_ES,
             self::LANGUAGE_EN_FI,
             self::LANGUAGE_EN_FJ,
             self::LANGUAGE_EN_FK,
@@ -1667,14 +1853,18 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_GH,
             self::LANGUAGE_EN_GI,
             self::LANGUAGE_EN_GM,
+            self::LANGUAGE_EN_GS,
             self::LANGUAGE_EN_GU,
             self::LANGUAGE_EN_GY,
             self::LANGUAGE_EN_HK,
+            self::LANGUAGE_EN_HU,
+            self::LANGUAGE_EN_ID,
             self::LANGUAGE_EN_IE,
             self::LANGUAGE_EN_IL,
             self::LANGUAGE_EN_IM,
             self::LANGUAGE_EN_IN,
             self::LANGUAGE_EN_IO,
+            self::LANGUAGE_EN_IT,
             self::LANGUAGE_EN_JE,
             self::LANGUAGE_EN_JM,
             self::LANGUAGE_EN_KE,
@@ -1692,6 +1882,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_MS,
             self::LANGUAGE_EN_MT,
             self::LANGUAGE_EN_MU,
+            self::LANGUAGE_EN_MV,
             self::LANGUAGE_EN_MW,
             self::LANGUAGE_EN_MX,
             self::LANGUAGE_EN_MY,
@@ -1699,15 +1890,19 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_NF,
             self::LANGUAGE_EN_NG,
             self::LANGUAGE_EN_NL,
+            self::LANGUAGE_EN_NO,
             self::LANGUAGE_EN_NR,
             self::LANGUAGE_EN_NU,
             self::LANGUAGE_EN_NZ,
             self::LANGUAGE_EN_PG,
             self::LANGUAGE_EN_PH,
             self::LANGUAGE_EN_PK,
+            self::LANGUAGE_EN_PL,
             self::LANGUAGE_EN_PN,
             self::LANGUAGE_EN_PR,
+            self::LANGUAGE_EN_PT,
             self::LANGUAGE_EN_PW,
+            self::LANGUAGE_EN_RO,
             self::LANGUAGE_EN_RW,
             self::LANGUAGE_EN_SB,
             self::LANGUAGE_EN_SC,
@@ -1716,12 +1911,15 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_SG,
             self::LANGUAGE_EN_SH,
             self::LANGUAGE_EN_SI,
+            self::LANGUAGE_EN_SK,
             self::LANGUAGE_EN_SL,
             self::LANGUAGE_EN_SS,
             self::LANGUAGE_EN_SX,
             self::LANGUAGE_EN_SZ,
             self::LANGUAGE_EN_TC,
+            self::LANGUAGE_EN_TH,
             self::LANGUAGE_EN_TK,
+            self::LANGUAGE_EN_TN,
             self::LANGUAGE_EN_TO,
             self::LANGUAGE_EN_TT,
             self::LANGUAGE_EN_TV,
@@ -1732,6 +1930,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_EN_VC,
             self::LANGUAGE_EN_VG,
             self::LANGUAGE_EN_VI,
+            self::LANGUAGE_EN_VN,
             self::LANGUAGE_EN_VU,
             self::LANGUAGE_EN_WS,
             self::LANGUAGE_EN_ZA,
@@ -1794,6 +1993,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FI_FI,
             self::LANGUAGE_FIL,
             self::LANGUAGE_FIL_PH,
+            self::LANGUAGE_FJ,
             self::LANGUAGE_FO,
             self::LANGUAGE_FO_DK,
             self::LANGUAGE_FO_FO,
@@ -1844,6 +2044,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_FR_VU,
             self::LANGUAGE_FR_WF,
             self::LANGUAGE_FR_YT,
+            self::LANGUAGE_FRR,
+            self::LANGUAGE_FRR_DE,
             self::LANGUAGE_FUR,
             self::LANGUAGE_FUR_IT,
             self::LANGUAGE_FY,
@@ -1851,10 +2053,13 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_GA,
             self::LANGUAGE_GA_GB,
             self::LANGUAGE_GA_IE,
+            self::LANGUAGE_GAA,
+            self::LANGUAGE_GAA_GH,
             self::LANGUAGE_GD,
             self::LANGUAGE_GD_GB,
             self::LANGUAGE_GL,
             self::LANGUAGE_GL_ES,
+            self::LANGUAGE_GN,
             self::LANGUAGE_GSW,
             self::LANGUAGE_GSW_CH,
             self::LANGUAGE_GSW_FR,
@@ -1875,23 +2080,32 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_HE_IL,
             self::LANGUAGE_HI,
             self::LANGUAGE_HI_IN,
+            self::LANGUAGE_HMN,
+            self::LANGUAGE_HO,
             self::LANGUAGE_HR,
             self::LANGUAGE_HR_BA,
             self::LANGUAGE_HR_HR,
             self::LANGUAGE_HSB,
             self::LANGUAGE_HSB_DE,
+            self::LANGUAGE_HT,
+            self::LANGUAGE_HT_HT,
             self::LANGUAGE_HU,
             self::LANGUAGE_HU_HU,
             self::LANGUAGE_HY,
             self::LANGUAGE_HY_AM,
+            self::LANGUAGE_HZ,
             self::LANGUAGE_IA,
             self::LANGUAGE_IA_001,
             self::LANGUAGE_ID,
             self::LANGUAGE_ID_ID,
+            self::LANGUAGE_IE,
+            self::LANGUAGE_IE_EE,
             self::LANGUAGE_IG,
             self::LANGUAGE_IG_NG,
             self::LANGUAGE_II,
             self::LANGUAGE_II_CN,
+            self::LANGUAGE_IK,
+            self::LANGUAGE_IO,
             self::LANGUAGE_IS,
             self::LANGUAGE_IS_IS,
             self::LANGUAGE_IT,
@@ -1899,6 +2113,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_IT_IT,
             self::LANGUAGE_IT_SM,
             self::LANGUAGE_IT_VA,
+            self::LANGUAGE_IU,
             self::LANGUAGE_JA,
             self::LANGUAGE_JA_JP,
             self::LANGUAGE_JGO,
@@ -1913,14 +2128,20 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_KAB_DZ,
             self::LANGUAGE_KAM,
             self::LANGUAGE_KAM_KE,
+            self::LANGUAGE_KAR,
             self::LANGUAGE_KDE,
             self::LANGUAGE_KDE_TZ,
             self::LANGUAGE_KEA,
             self::LANGUAGE_KEA_CV,
+            self::LANGUAGE_KG,
+            self::LANGUAGE_KGP,
+            self::LANGUAGE_KGP_BR,
+            self::LANGUAGE_KH,
             self::LANGUAGE_KHQ,
             self::LANGUAGE_KHQ_ML,
             self::LANGUAGE_KI,
             self::LANGUAGE_KI_KE,
+            self::LANGUAGE_KJ,
             self::LANGUAGE_KK,
             self::LANGUAGE_KK_KZ,
             self::LANGUAGE_KKJ,
@@ -1934,10 +2155,12 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_KN,
             self::LANGUAGE_KN_IN,
             self::LANGUAGE_KO,
+            self::LANGUAGE_KO_CN,
             self::LANGUAGE_KO_KP,
             self::LANGUAGE_KO_KR,
             self::LANGUAGE_KOK,
             self::LANGUAGE_KOK_IN,
+            self::LANGUAGE_KR,
             self::LANGUAGE_KS,
             self::LANGUAGE_KS_IN,
             self::LANGUAGE_KSB,
@@ -1948,18 +2171,27 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_KSH_DE,
             self::LANGUAGE_KU,
             self::LANGUAGE_KU_TR,
+            self::LANGUAGE_KV,
             self::LANGUAGE_KW,
             self::LANGUAGE_KW_GB,
+            self::LANGUAGE_KXV,
+            self::LANGUAGE_KXV_IN,
             self::LANGUAGE_KY,
             self::LANGUAGE_KY_KG,
+            self::LANGUAGE_LA,
             self::LANGUAGE_LAG,
             self::LANGUAGE_LAG_TZ,
             self::LANGUAGE_LB,
             self::LANGUAGE_LB_LU,
             self::LANGUAGE_LG,
             self::LANGUAGE_LG_UG,
+            self::LANGUAGE_LI,
+            self::LANGUAGE_LIJ,
+            self::LANGUAGE_LIJ_IT,
             self::LANGUAGE_LKT,
             self::LANGUAGE_LKT_US,
+            self::LANGUAGE_LMO,
+            self::LANGUAGE_LMO_IT,
             self::LANGUAGE_LN,
             self::LANGUAGE_LN_AO,
             self::LANGUAGE_LN_CD,
@@ -1985,6 +2217,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_MAS,
             self::LANGUAGE_MAS_KE,
             self::LANGUAGE_MAS_TZ,
+            self::LANGUAGE_MDF,
+            self::LANGUAGE_MDF_RU,
             self::LANGUAGE_MER,
             self::LANGUAGE_MER_KE,
             self::LANGUAGE_MFE,
@@ -1995,6 +2229,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_MGH_MZ,
             self::LANGUAGE_MGO,
             self::LANGUAGE_MGO_CM,
+            self::LANGUAGE_MH,
             self::LANGUAGE_MI,
             self::LANGUAGE_MI_NZ,
             self::LANGUAGE_MK,
@@ -2020,6 +2255,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_MY_MM,
             self::LANGUAGE_MZN,
             self::LANGUAGE_MZN_IR,
+            self::LANGUAGE_NA,
             self::LANGUAGE_NAQ,
             self::LANGUAGE_NAQ_NA,
             self::LANGUAGE_NB,
@@ -2033,6 +2269,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_NE,
             self::LANGUAGE_NE_IN,
             self::LANGUAGE_NE_NP,
+            self::LANGUAGE_NG,
             self::LANGUAGE_NL,
             self::LANGUAGE_NL_AW,
             self::LANGUAGE_NL_BE,
@@ -2051,10 +2288,21 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_NNH_CM,
             self::LANGUAGE_NO,
             self::LANGUAGE_NO_NO,
+            self::LANGUAGE_NQO,
+            self::LANGUAGE_NQO_GN,
+            self::LANGUAGE_NR,
+            self::LANGUAGE_NSO,
+            self::LANGUAGE_NSO_ZA,
             self::LANGUAGE_NUS,
             self::LANGUAGE_NUS_SS,
+            self::LANGUAGE_NV,
+            self::LANGUAGE_NY,
             self::LANGUAGE_NYN,
             self::LANGUAGE_NYN_UG,
+            self::LANGUAGE_OC,
+            self::LANGUAGE_OC_ES,
+            self::LANGUAGE_OC_FR,
+            self::LANGUAGE_OJ,
             self::LANGUAGE_OM,
             self::LANGUAGE_OM_ET,
             self::LANGUAGE_OM_KE,
@@ -2068,6 +2316,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_PA_PK,
             self::LANGUAGE_PCM,
             self::LANGUAGE_PCM_NG,
+            self::LANGUAGE_PI,
+            self::LANGUAGE_PIS,
+            self::LANGUAGE_PIS_SB,
             self::LANGUAGE_PL,
             self::LANGUAGE_PL_PL,
             self::LANGUAGE_PRG,
@@ -2092,6 +2343,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_QU_BO,
             self::LANGUAGE_QU_EC,
             self::LANGUAGE_QU_PE,
+            self::LANGUAGE_RAJ,
+            self::LANGUAGE_RAJ_IN,
             self::LANGUAGE_RM,
             self::LANGUAGE_RM_CH,
             self::LANGUAGE_RN,
@@ -2122,6 +2375,8 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SAT_IN,
             self::LANGUAGE_SBP,
             self::LANGUAGE_SBP_TZ,
+            self::LANGUAGE_SC,
+            self::LANGUAGE_SC_IT,
             self::LANGUAGE_SD,
             self::LANGUAGE_SD_IN,
             self::LANGUAGE_SD_PK,
@@ -2143,8 +2398,11 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SK_SK,
             self::LANGUAGE_SL,
             self::LANGUAGE_SL_SI,
+            self::LANGUAGE_SM,
             self::LANGUAGE_SMN,
             self::LANGUAGE_SMN_FI,
+            self::LANGUAGE_SMS,
+            self::LANGUAGE_SMS_FI,
             self::LANGUAGE_SN,
             self::LANGUAGE_SN_ZW,
             self::LANGUAGE_SO,
@@ -2162,6 +2420,10 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SR_ME,
             self::LANGUAGE_SR_RS,
             self::LANGUAGE_SR_XK,
+            self::LANGUAGE_SS,
+            self::LANGUAGE_ST,
+            self::LANGUAGE_ST_LS,
+            self::LANGUAGE_ST_ZA,
             self::LANGUAGE_SU,
             self::LANGUAGE_SU_ID,
             self::LANGUAGE_SV,
@@ -2174,6 +2436,11 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_SW_TZ,
             self::LANGUAGE_SW_UG,
             self::LANGUAGE_SY,
+            self::LANGUAGE_SYR,
+            self::LANGUAGE_SYR_IQ,
+            self::LANGUAGE_SYR_SY,
+            self::LANGUAGE_SZL,
+            self::LANGUAGE_SZL_PL,
             self::LANGUAGE_TA,
             self::LANGUAGE_TA_IN,
             self::LANGUAGE_TA_LK,
@@ -2194,15 +2461,23 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_TK,
             self::LANGUAGE_TK_TM,
             self::LANGUAGE_TL,
+            self::LANGUAGE_TN,
+            self::LANGUAGE_TN_BW,
+            self::LANGUAGE_TN_ZA,
             self::LANGUAGE_TO,
             self::LANGUAGE_TO_TO,
+            self::LANGUAGE_TOK,
+            self::LANGUAGE_TOK_001,
             self::LANGUAGE_TR,
             self::LANGUAGE_TR_CY,
             self::LANGUAGE_TR_TR,
+            self::LANGUAGE_TS,
             self::LANGUAGE_TT,
             self::LANGUAGE_TT_RU,
+            self::LANGUAGE_TW,
             self::LANGUAGE_TWQ,
             self::LANGUAGE_TWQ_NE,
+            self::LANGUAGE_TY,
             self::LANGUAGE_TZM,
             self::LANGUAGE_TZM_MA,
             self::LANGUAGE_UG,
@@ -2217,30 +2492,46 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_UZ_UZ,
             self::LANGUAGE_VAI,
             self::LANGUAGE_VAI_LR,
+            self::LANGUAGE_VE,
+            self::LANGUAGE_VEC,
+            self::LANGUAGE_VEC_IT,
             self::LANGUAGE_VI,
             self::LANGUAGE_VI_VN,
+            self::LANGUAGE_VMW,
+            self::LANGUAGE_VMW_MZ,
             self::LANGUAGE_VO,
             self::LANGUAGE_VO_001,
             self::LANGUAGE_VUN,
             self::LANGUAGE_VUN_TZ,
+            self::LANGUAGE_WA,
             self::LANGUAGE_WAE,
             self::LANGUAGE_WAE_CH,
             self::LANGUAGE_WO,
             self::LANGUAGE_WO_SN,
             self::LANGUAGE_XH,
             self::LANGUAGE_XH_ZA,
+            self::LANGUAGE_XNR,
+            self::LANGUAGE_XNR_IN,
             self::LANGUAGE_XOG,
             self::LANGUAGE_XOG_UG,
             self::LANGUAGE_YAV,
             self::LANGUAGE_YAV_CM,
             self::LANGUAGE_YI,
             self::LANGUAGE_YI_001,
+            self::LANGUAGE_YI_UA,
             self::LANGUAGE_YO,
             self::LANGUAGE_YO_BJ,
             self::LANGUAGE_YO_NG,
+            self::LANGUAGE_YRL,
+            self::LANGUAGE_YRL_BR,
+            self::LANGUAGE_YRL_CO,
+            self::LANGUAGE_YRL_VE,
             self::LANGUAGE_YUE,
             self::LANGUAGE_YUE_CN,
             self::LANGUAGE_YUE_HK,
+            self::LANGUAGE_YUE_MO,
+            self::LANGUAGE_ZA,
+            self::LANGUAGE_ZA_CN,
             self::LANGUAGE_ZGH,
             self::LANGUAGE_ZGH_MA,
             self::LANGUAGE_ZH,
@@ -2249,6 +2540,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::LANGUAGE_ZH_HANT,
             self::LANGUAGE_ZH_HK,
             self::LANGUAGE_ZH_MO,
+            self::LANGUAGE_ZH_MY,
             self::LANGUAGE_ZH_SG,
             self::LANGUAGE_ZH_TW,
             self::LANGUAGE_ZU,
@@ -2318,6 +2610,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('public_access_rules_enabled', $data ?? [], null);
         $this->setIfExists('publish_date', $data ?? [], null);
         $this->setIfExists('publish_immediately', $data ?? [], null);
+        $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('rss_body', $data ?? [], null);
         $this->setIfExists('rss_summary', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
@@ -2538,6 +2831,9 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['publish_immediately'] === null) {
             $invalidProperties[] = "'publish_immediately' can't be null";
         }
+        if ($this->container['published_at'] === null) {
+            $invalidProperties[] = "'published_at' can't be null";
+        }
         if ($this->container['rss_body'] === null) {
             $invalidProperties[] = "'rss_body' can't be null";
         }
@@ -2757,7 +3053,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets author_name
      *
-     * @param string $author_name The name of the user who last published the blog post. For posts that haven't been published yet, this property will reflect the user who initially created the draft.
+     * @param string $author_name The name of the user that updated this Blog Post.
      *
      * @return self
      */
@@ -2784,7 +3080,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets blog_author_id
      *
-     * @param string $blog_author_id The ID of the blog author associated with this post.
+     * @param string $blog_author_id The ID of the Blog Author associated with this Blog Post.
      *
      * @return self
      */
@@ -2811,7 +3107,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaign
      *
-     * @param string $campaign The GUID of the marketing campaign the post is associated with.
+     * @param string $campaign The GUID of the marketing campaign this Blog Post is a part of.
      *
      * @return self
      */
@@ -2838,7 +3134,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category_id
      *
-     * @param int $category_id ID of the object type.
+     * @param int $category_id ID of the type of object this is. Should always .
      *
      * @return self
      */
@@ -2865,7 +3161,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content_group_id
      *
-     * @param string $content_group_id The ID of the post's parent blog.
+     * @param string $content_group_id The ID of the parent Blog this Blog Post is associated with.
      *
      * @return self
      */
@@ -2956,7 +3252,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_by_id
      *
-     * @param string $created_by_id The ID of the user that created the post.
+     * @param string $created_by_id The ID of the user that created this Blog Post.
      *
      * @return self
      */
@@ -3047,7 +3343,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain
      *
-     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
+     * @param string $domain The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
      *
      * @return self
      */
@@ -3128,7 +3424,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dynamic_page_hub_db_table_id
      *
-     * @param string $dynamic_page_hub_db_table_id For dynamic HubDB pages,  the ID of the HubDB table this post references.
+     * @param string $dynamic_page_hub_db_table_id The ID of the HubDB table this Blog Post references, if applicable
      *
      * @return self
      */
@@ -3371,7 +3667,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets html_title
      *
-     * @param string $html_title The HTML title of the post.
+     * @param string $html_title The html title of this Blog Post.
      *
      * @return self
      */
@@ -3398,7 +3694,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id The unique ID of the blog post.
+     * @param string $id The unique ID of the Blog Post.
      *
      * @return self
      */
@@ -3452,7 +3748,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param string $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+     * @param string $language The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
      *
      * @return self
      */
@@ -3597,7 +3893,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name The internal name of the post.
+     * @param string $name The internal name of the Blog Post.
      *
      * @return self
      */
@@ -3732,7 +4028,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password
      *
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the blog post.
+     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
      *
      * @return self
      */
@@ -3909,6 +4205,33 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets published_at
+     *
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->container['published_at'];
+    }
+
+    /**
+     * Sets published_at
+     *
+     * @param \DateTime $published_at published_at
+     *
+     * @return self
+     */
+    public function setPublishedAt($published_at)
+    {
+        if (is_null($published_at)) {
+            throw new \InvalidArgumentException('non-nullable published_at cannot be null');
+        }
+        $this->container['published_at'] = $published_at;
+
+        return $this;
+    }
+
+    /**
      * Gets rss_body
      *
      * @return string
@@ -3975,7 +4298,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets slug
      *
-     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     * @param string $slug The path of the this blog post. This field is appended to the domain to construct the url of this post.
      *
      * @return self
      */
@@ -4002,7 +4325,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state
      *
-     * @param string $state An enumeration describing the current publish state of the post.
+     * @param string $state An ENUM descibing the current state of this Blog Post.
      *
      * @return self
      */
@@ -4033,7 +4356,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tag_ids
      *
-     * @param int[] $tag_ids The IDs of the tags associated with this post.
+     * @param int[] $tag_ids List of IDs for the tags associated with this Blog Post.
      *
      * @return self
      */
@@ -4087,7 +4410,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets translated_from_id
      *
-     * @param string $translated_from_id ID of the primary blog post that this post was translated from.
+     * @param string $translated_from_id ID of the primary blog post this object was translated from.
      *
      * @return self
      */
@@ -4168,7 +4491,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_by_id
      *
-     * @param string $updated_by_id The ID of the user that updated the post.
+     * @param string $updated_by_id The ID of the user that updated this Blog Post.
      *
      * @return self
      */
@@ -4222,7 +4545,7 @@ class BlogPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets use_featured_image
      *
-     * @param bool $use_featured_image Boolean to determine if this post should use a featured image.
+     * @param bool $use_featured_image Boolean to determine if this post should use a featuredImage.
      *
      * @return self
      */

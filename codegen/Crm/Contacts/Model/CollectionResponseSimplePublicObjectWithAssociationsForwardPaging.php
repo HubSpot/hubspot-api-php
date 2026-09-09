@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Contacts\ObjectSerializer;
  * CollectionResponseSimplePublicObjectWithAssociationsForwardPaging Class Doc Comment
  *
  * @category Class
+ * @description Represents a paginated collection response that includes simple public objects with their associations. This component is used to handle the results and pagination details when retrieving a list of objects from the API.
  * @package  HubSpot\Client\Crm\Contacts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -339,7 +340,7 @@ class CollectionResponseSimplePublicObjectWithAssociationsForwardPaging implemen
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectWithAssociations[] $results results
+     * @param \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectWithAssociations[] $results An array of simple public objects that are included in the current page of the response. Each object may include its associated data.
      *
      * @return self
      */

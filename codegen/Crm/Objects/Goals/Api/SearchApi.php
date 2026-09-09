@@ -128,7 +128,7 @@ class SearchApi
     /**
      * Operation doSearch
      *
-     * Perform a search for goal targets based on various filters and criteria.
+     * Search for goal targets
      *
      * @param  \HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -146,7 +146,7 @@ class SearchApi
     /**
      * Operation doSearchWithHttpInfo
      *
-     * Perform a search for goal targets based on various filters and criteria.
+     * Search for goal targets
      *
      * @param  \HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -245,7 +245,7 @@ class SearchApi
     /**
      * Operation doSearchAsync
      *
-     * Perform a search for goal targets based on various filters and criteria.
+     * Search for goal targets
      *
      * @param  \HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -266,7 +266,7 @@ class SearchApi
     /**
      * Operation doSearchAsyncWithHttpInfo
      *
-     * Perform a search for goal targets based on various filters and criteria.
+     * Search for goal targets
      *
      * @param  \HubSpot\Client\Crm\Objects\Goals\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation

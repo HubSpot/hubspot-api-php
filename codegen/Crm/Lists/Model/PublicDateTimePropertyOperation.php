@@ -76,7 +76,7 @@ class PublicDateTimePropertyOperation implements ModelInterface, ArrayAccess, \J
         'operation_type' => null,
         'operator' => null,
         'requires_time_zone_conversion' => null,
-        'timestamp' => 'int32'
+        'timestamp' => 'int64'
     ];
 
     /**

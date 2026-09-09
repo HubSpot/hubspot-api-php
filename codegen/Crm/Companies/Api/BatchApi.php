@@ -205,7 +205,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -376,7 +376,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
+     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error
      */
     public function create($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -394,7 +394,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -430,6 +430,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Companies\Model\Error',
@@ -438,7 +444,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -460,10 +466,18 @@ class BatchApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,7 +491,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -662,7 +676,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
+     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error
      */
     public function read($batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -681,7 +695,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -717,6 +731,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Companies\Model\Error',
@@ -725,7 +745,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -755,6 +775,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -764,7 +792,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -961,7 +989,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error
+     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error
      */
     public function update($batch_input_simple_public_object_batch_input, string $contentType = self::contentTypes['update'][0])
     {
@@ -979,7 +1007,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($batch_input_simple_public_object_batch_input, string $contentType = self::contentTypes['update'][0])
     {
@@ -1015,6 +1043,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Companies\Model\Error',
@@ -1023,7 +1057,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1053,6 +1087,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1062,7 +1104,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -1246,7 +1288,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Companies\Model\Error
+     * @return \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error
      */
     public function upsert($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1264,7 +1306,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Companies\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Companies\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function upsertWithHttpInfo($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1300,6 +1342,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Companies\Model\Error',
@@ -1308,7 +1356,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1338,6 +1386,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Companies\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1347,7 +1403,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }

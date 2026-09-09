@@ -72,7 +72,7 @@ class MarketingEventSubscriber implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'interaction_date_time' => 'int64',
         'properties' => null,
-        'vid' => 'int32'
+        'vid' => 'int64'
     ];
 
     /**

@@ -480,7 +480,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets active
      *
-     * @param bool $active Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * @param bool $active Whether the subscription is active or paused. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
      *
      * @return self
      */
@@ -507,7 +507,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets created_at
      *
-     * @param \DateTime $created_at When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     * @param \DateTime $created_at The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param string $id The unique ID of the subscription.
+     * @param string $id The unique ID of the webhook subscription.
      *
      * @return self
      */
@@ -679,7 +679,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     * @param \DateTime|null $updated_at The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
      *
      * @return self
      */

@@ -398,6 +398,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_AZ = 'az';
     public const LANGUAGE_AZ_AZ = 'az-az';
     public const LANGUAGE_BA = 'ba';
+    public const LANGUAGE_BAL = 'bal';
+    public const LANGUAGE_BAL_PK = 'bal-pk';
     public const LANGUAGE_BAS = 'bas';
     public const LANGUAGE_BAS_CM = 'bas-cm';
     public const LANGUAGE_BE = 'be';
@@ -413,6 +415,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_BHO = 'bho';
     public const LANGUAGE_BHO_IN = 'bho-in';
     public const LANGUAGE_BI = 'bi';
+    public const LANGUAGE_BLO = 'blo';
+    public const LANGUAGE_BLO_BJ = 'blo-bj';
     public const LANGUAGE_BM = 'bm';
     public const LANGUAGE_BM_ML = 'bm-ml';
     public const LANGUAGE_BN = 'bn';
@@ -451,6 +455,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_CR = 'cr';
     public const LANGUAGE_CS = 'cs';
     public const LANGUAGE_CS_CZ = 'cs-cz';
+    public const LANGUAGE_CSW = 'csw';
+    public const LANGUAGE_CSW_CA = 'csw-ca';
     public const LANGUAGE_CU = 'cu';
     public const LANGUAGE_CU_RU = 'cu-ru';
     public const LANGUAGE_CV = 'cv';
@@ -516,6 +522,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_EN_CN = 'en-cn';
     public const LANGUAGE_EN_CX = 'en-cx';
     public const LANGUAGE_EN_CY = 'en-cy';
+    public const LANGUAGE_EN_CZ = 'en-cz';
     public const LANGUAGE_EN_DE = 'en-de';
     public const LANGUAGE_EN_DG = 'en-dg';
     public const LANGUAGE_EN_DK = 'en-dk';
@@ -535,14 +542,18 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_EN_GH = 'en-gh';
     public const LANGUAGE_EN_GI = 'en-gi';
     public const LANGUAGE_EN_GM = 'en-gm';
+    public const LANGUAGE_EN_GS = 'en-gs';
     public const LANGUAGE_EN_GU = 'en-gu';
     public const LANGUAGE_EN_GY = 'en-gy';
     public const LANGUAGE_EN_HK = 'en-hk';
+    public const LANGUAGE_EN_HU = 'en-hu';
+    public const LANGUAGE_EN_ID = 'en-id';
     public const LANGUAGE_EN_IE = 'en-ie';
     public const LANGUAGE_EN_IL = 'en-il';
     public const LANGUAGE_EN_IM = 'en-im';
     public const LANGUAGE_EN_IN = 'en-in';
     public const LANGUAGE_EN_IO = 'en-io';
+    public const LANGUAGE_EN_IT = 'en-it';
     public const LANGUAGE_EN_JE = 'en-je';
     public const LANGUAGE_EN_JM = 'en-jm';
     public const LANGUAGE_EN_KE = 'en-ke';
@@ -568,16 +579,19 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_EN_NF = 'en-nf';
     public const LANGUAGE_EN_NG = 'en-ng';
     public const LANGUAGE_EN_NL = 'en-nl';
+    public const LANGUAGE_EN_NO = 'en-no';
     public const LANGUAGE_EN_NR = 'en-nr';
     public const LANGUAGE_EN_NU = 'en-nu';
     public const LANGUAGE_EN_NZ = 'en-nz';
     public const LANGUAGE_EN_PG = 'en-pg';
     public const LANGUAGE_EN_PH = 'en-ph';
     public const LANGUAGE_EN_PK = 'en-pk';
+    public const LANGUAGE_EN_PL = 'en-pl';
     public const LANGUAGE_EN_PN = 'en-pn';
     public const LANGUAGE_EN_PR = 'en-pr';
     public const LANGUAGE_EN_PT = 'en-pt';
     public const LANGUAGE_EN_PW = 'en-pw';
+    public const LANGUAGE_EN_RO = 'en-ro';
     public const LANGUAGE_EN_RW = 'en-rw';
     public const LANGUAGE_EN_SB = 'en-sb';
     public const LANGUAGE_EN_SC = 'en-sc';
@@ -586,11 +600,13 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_EN_SG = 'en-sg';
     public const LANGUAGE_EN_SH = 'en-sh';
     public const LANGUAGE_EN_SI = 'en-si';
+    public const LANGUAGE_EN_SK = 'en-sk';
     public const LANGUAGE_EN_SL = 'en-sl';
     public const LANGUAGE_EN_SS = 'en-ss';
     public const LANGUAGE_EN_SX = 'en-sx';
     public const LANGUAGE_EN_SZ = 'en-sz';
     public const LANGUAGE_EN_TC = 'en-tc';
+    public const LANGUAGE_EN_TH = 'en-th';
     public const LANGUAGE_EN_TK = 'en-tk';
     public const LANGUAGE_EN_TN = 'en-tn';
     public const LANGUAGE_EN_TO = 'en-to';
@@ -603,6 +619,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_EN_VC = 'en-vc';
     public const LANGUAGE_EN_VG = 'en-vg';
     public const LANGUAGE_EN_VI = 'en-vi';
+    public const LANGUAGE_EN_VN = 'en-vn';
     public const LANGUAGE_EN_VU = 'en-vu';
     public const LANGUAGE_EN_WS = 'en-ws';
     public const LANGUAGE_EN_ZA = 'en-za';
@@ -725,6 +742,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_GA = 'ga';
     public const LANGUAGE_GA_GB = 'ga-gb';
     public const LANGUAGE_GA_IE = 'ga-ie';
+    public const LANGUAGE_GAA = 'gaa';
+    public const LANGUAGE_GAA_GH = 'gaa-gh';
     public const LANGUAGE_GD = 'gd';
     public const LANGUAGE_GD_GB = 'gd-gb';
     public const LANGUAGE_GL = 'gl';
@@ -758,6 +777,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_HSB = 'hsb';
     public const LANGUAGE_HSB_DE = 'hsb-de';
     public const LANGUAGE_HT = 'ht';
+    public const LANGUAGE_HT_HT = 'ht-ht';
     public const LANGUAGE_HU = 'hu';
     public const LANGUAGE_HU_HU = 'hu-hu';
     public const LANGUAGE_HY = 'hy';
@@ -768,6 +788,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_ID = 'id';
     public const LANGUAGE_ID_ID = 'id-id';
     public const LANGUAGE_IE = 'ie';
+    public const LANGUAGE_IE_EE = 'ie-ee';
     public const LANGUAGE_IG = 'ig';
     public const LANGUAGE_IG_NG = 'ig-ng';
     public const LANGUAGE_II = 'ii';
@@ -823,6 +844,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_KN = 'kn';
     public const LANGUAGE_KN_IN = 'kn-in';
     public const LANGUAGE_KO = 'ko';
+    public const LANGUAGE_KO_CN = 'ko-cn';
     public const LANGUAGE_KO_KP = 'ko-kp';
     public const LANGUAGE_KO_KR = 'ko-kr';
     public const LANGUAGE_KOK = 'kok';
@@ -841,6 +863,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_KV = 'kv';
     public const LANGUAGE_KW = 'kw';
     public const LANGUAGE_KW_GB = 'kw-gb';
+    public const LANGUAGE_KXV = 'kxv';
+    public const LANGUAGE_KXV_IN = 'kxv-in';
     public const LANGUAGE_KY = 'ky';
     public const LANGUAGE_KY_KG = 'ky-kg';
     public const LANGUAGE_LA = 'la';
@@ -851,8 +875,12 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_LG = 'lg';
     public const LANGUAGE_LG_UG = 'lg-ug';
     public const LANGUAGE_LI = 'li';
+    public const LANGUAGE_LIJ = 'lij';
+    public const LANGUAGE_LIJ_IT = 'lij-it';
     public const LANGUAGE_LKT = 'lkt';
     public const LANGUAGE_LKT_US = 'lkt-us';
+    public const LANGUAGE_LMO = 'lmo';
+    public const LANGUAGE_LMO_IT = 'lmo-it';
     public const LANGUAGE_LN = 'ln';
     public const LANGUAGE_LN_AO = 'ln-ao';
     public const LANGUAGE_LN_CD = 'ln-cd';
@@ -949,7 +977,11 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_NNH_CM = 'nnh-cm';
     public const LANGUAGE_NO = 'no';
     public const LANGUAGE_NO_NO = 'no-no';
+    public const LANGUAGE_NQO = 'nqo';
+    public const LANGUAGE_NQO_GN = 'nqo-gn';
     public const LANGUAGE_NR = 'nr';
+    public const LANGUAGE_NSO = 'nso';
+    public const LANGUAGE_NSO_ZA = 'nso-za';
     public const LANGUAGE_NUS = 'nus';
     public const LANGUAGE_NUS_SS = 'nus-ss';
     public const LANGUAGE_NV = 'nv';
@@ -1079,6 +1111,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_SR_XK = 'sr-xk';
     public const LANGUAGE_SS = 'ss';
     public const LANGUAGE_ST = 'st';
+    public const LANGUAGE_ST_LS = 'st-ls';
+    public const LANGUAGE_ST_ZA = 'st-za';
     public const LANGUAGE_SU = 'su';
     public const LANGUAGE_SU_ID = 'su-id';
     public const LANGUAGE_SV = 'sv';
@@ -1091,6 +1125,11 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_SW_TZ = 'sw-tz';
     public const LANGUAGE_SW_UG = 'sw-ug';
     public const LANGUAGE_SY = 'sy';
+    public const LANGUAGE_SYR = 'syr';
+    public const LANGUAGE_SYR_IQ = 'syr-iq';
+    public const LANGUAGE_SYR_SY = 'syr-sy';
+    public const LANGUAGE_SZL = 'szl';
+    public const LANGUAGE_SZL_PL = 'szl-pl';
     public const LANGUAGE_TA = 'ta';
     public const LANGUAGE_TA_IN = 'ta-in';
     public const LANGUAGE_TA_LK = 'ta-lk';
@@ -1112,6 +1151,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_TK_TM = 'tk-tm';
     public const LANGUAGE_TL = 'tl';
     public const LANGUAGE_TN = 'tn';
+    public const LANGUAGE_TN_BW = 'tn-bw';
+    public const LANGUAGE_TN_ZA = 'tn-za';
     public const LANGUAGE_TO = 'to';
     public const LANGUAGE_TO_TO = 'to-to';
     public const LANGUAGE_TOK = 'tok';
@@ -1141,8 +1182,12 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_VAI = 'vai';
     public const LANGUAGE_VAI_LR = 'vai-lr';
     public const LANGUAGE_VE = 've';
+    public const LANGUAGE_VEC = 'vec';
+    public const LANGUAGE_VEC_IT = 'vec-it';
     public const LANGUAGE_VI = 'vi';
     public const LANGUAGE_VI_VN = 'vi-vn';
+    public const LANGUAGE_VMW = 'vmw';
+    public const LANGUAGE_VMW_MZ = 'vmw-mz';
     public const LANGUAGE_VO = 'vo';
     public const LANGUAGE_VO_001 = 'vo-001';
     public const LANGUAGE_VUN = 'vun';
@@ -1154,12 +1199,15 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_WO_SN = 'wo-sn';
     public const LANGUAGE_XH = 'xh';
     public const LANGUAGE_XH_ZA = 'xh-za';
+    public const LANGUAGE_XNR = 'xnr';
+    public const LANGUAGE_XNR_IN = 'xnr-in';
     public const LANGUAGE_XOG = 'xog';
     public const LANGUAGE_XOG_UG = 'xog-ug';
     public const LANGUAGE_YAV = 'yav';
     public const LANGUAGE_YAV_CM = 'yav-cm';
     public const LANGUAGE_YI = 'yi';
     public const LANGUAGE_YI_001 = 'yi-001';
+    public const LANGUAGE_YI_UA = 'yi-ua';
     public const LANGUAGE_YO = 'yo';
     public const LANGUAGE_YO_BJ = 'yo-bj';
     public const LANGUAGE_YO_NG = 'yo-ng';
@@ -1170,7 +1218,9 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_YUE = 'yue';
     public const LANGUAGE_YUE_CN = 'yue-cn';
     public const LANGUAGE_YUE_HK = 'yue-hk';
+    public const LANGUAGE_YUE_MO = 'yue-mo';
     public const LANGUAGE_ZA = 'za';
+    public const LANGUAGE_ZA_CN = 'za-cn';
     public const LANGUAGE_ZGH = 'zgh';
     public const LANGUAGE_ZGH_MA = 'zgh-ma';
     public const LANGUAGE_ZH = 'zh';
@@ -1179,6 +1229,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public const LANGUAGE_ZH_HANT = 'zh-hant';
     public const LANGUAGE_ZH_HK = 'zh-hk';
     public const LANGUAGE_ZH_MO = 'zh-mo';
+    public const LANGUAGE_ZH_MY = 'zh-my';
     public const LANGUAGE_ZH_SG = 'zh-sg';
     public const LANGUAGE_ZH_TW = 'zh-tw';
     public const LANGUAGE_ZU = 'zu';
@@ -1357,6 +1408,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_AZ,
             self::LANGUAGE_AZ_AZ,
             self::LANGUAGE_BA,
+            self::LANGUAGE_BAL,
+            self::LANGUAGE_BAL_PK,
             self::LANGUAGE_BAS,
             self::LANGUAGE_BAS_CM,
             self::LANGUAGE_BE,
@@ -1372,6 +1425,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_BHO,
             self::LANGUAGE_BHO_IN,
             self::LANGUAGE_BI,
+            self::LANGUAGE_BLO,
+            self::LANGUAGE_BLO_BJ,
             self::LANGUAGE_BM,
             self::LANGUAGE_BM_ML,
             self::LANGUAGE_BN,
@@ -1410,6 +1465,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_CR,
             self::LANGUAGE_CS,
             self::LANGUAGE_CS_CZ,
+            self::LANGUAGE_CSW,
+            self::LANGUAGE_CSW_CA,
             self::LANGUAGE_CU,
             self::LANGUAGE_CU_RU,
             self::LANGUAGE_CV,
@@ -1475,6 +1532,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_EN_CN,
             self::LANGUAGE_EN_CX,
             self::LANGUAGE_EN_CY,
+            self::LANGUAGE_EN_CZ,
             self::LANGUAGE_EN_DE,
             self::LANGUAGE_EN_DG,
             self::LANGUAGE_EN_DK,
@@ -1494,14 +1552,18 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_EN_GH,
             self::LANGUAGE_EN_GI,
             self::LANGUAGE_EN_GM,
+            self::LANGUAGE_EN_GS,
             self::LANGUAGE_EN_GU,
             self::LANGUAGE_EN_GY,
             self::LANGUAGE_EN_HK,
+            self::LANGUAGE_EN_HU,
+            self::LANGUAGE_EN_ID,
             self::LANGUAGE_EN_IE,
             self::LANGUAGE_EN_IL,
             self::LANGUAGE_EN_IM,
             self::LANGUAGE_EN_IN,
             self::LANGUAGE_EN_IO,
+            self::LANGUAGE_EN_IT,
             self::LANGUAGE_EN_JE,
             self::LANGUAGE_EN_JM,
             self::LANGUAGE_EN_KE,
@@ -1527,16 +1589,19 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_EN_NF,
             self::LANGUAGE_EN_NG,
             self::LANGUAGE_EN_NL,
+            self::LANGUAGE_EN_NO,
             self::LANGUAGE_EN_NR,
             self::LANGUAGE_EN_NU,
             self::LANGUAGE_EN_NZ,
             self::LANGUAGE_EN_PG,
             self::LANGUAGE_EN_PH,
             self::LANGUAGE_EN_PK,
+            self::LANGUAGE_EN_PL,
             self::LANGUAGE_EN_PN,
             self::LANGUAGE_EN_PR,
             self::LANGUAGE_EN_PT,
             self::LANGUAGE_EN_PW,
+            self::LANGUAGE_EN_RO,
             self::LANGUAGE_EN_RW,
             self::LANGUAGE_EN_SB,
             self::LANGUAGE_EN_SC,
@@ -1545,11 +1610,13 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_EN_SG,
             self::LANGUAGE_EN_SH,
             self::LANGUAGE_EN_SI,
+            self::LANGUAGE_EN_SK,
             self::LANGUAGE_EN_SL,
             self::LANGUAGE_EN_SS,
             self::LANGUAGE_EN_SX,
             self::LANGUAGE_EN_SZ,
             self::LANGUAGE_EN_TC,
+            self::LANGUAGE_EN_TH,
             self::LANGUAGE_EN_TK,
             self::LANGUAGE_EN_TN,
             self::LANGUAGE_EN_TO,
@@ -1562,6 +1629,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_EN_VC,
             self::LANGUAGE_EN_VG,
             self::LANGUAGE_EN_VI,
+            self::LANGUAGE_EN_VN,
             self::LANGUAGE_EN_VU,
             self::LANGUAGE_EN_WS,
             self::LANGUAGE_EN_ZA,
@@ -1684,6 +1752,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_GA,
             self::LANGUAGE_GA_GB,
             self::LANGUAGE_GA_IE,
+            self::LANGUAGE_GAA,
+            self::LANGUAGE_GAA_GH,
             self::LANGUAGE_GD,
             self::LANGUAGE_GD_GB,
             self::LANGUAGE_GL,
@@ -1717,6 +1787,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_HSB,
             self::LANGUAGE_HSB_DE,
             self::LANGUAGE_HT,
+            self::LANGUAGE_HT_HT,
             self::LANGUAGE_HU,
             self::LANGUAGE_HU_HU,
             self::LANGUAGE_HY,
@@ -1727,6 +1798,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_ID,
             self::LANGUAGE_ID_ID,
             self::LANGUAGE_IE,
+            self::LANGUAGE_IE_EE,
             self::LANGUAGE_IG,
             self::LANGUAGE_IG_NG,
             self::LANGUAGE_II,
@@ -1782,6 +1854,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_KN,
             self::LANGUAGE_KN_IN,
             self::LANGUAGE_KO,
+            self::LANGUAGE_KO_CN,
             self::LANGUAGE_KO_KP,
             self::LANGUAGE_KO_KR,
             self::LANGUAGE_KOK,
@@ -1800,6 +1873,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_KV,
             self::LANGUAGE_KW,
             self::LANGUAGE_KW_GB,
+            self::LANGUAGE_KXV,
+            self::LANGUAGE_KXV_IN,
             self::LANGUAGE_KY,
             self::LANGUAGE_KY_KG,
             self::LANGUAGE_LA,
@@ -1810,8 +1885,12 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_LG,
             self::LANGUAGE_LG_UG,
             self::LANGUAGE_LI,
+            self::LANGUAGE_LIJ,
+            self::LANGUAGE_LIJ_IT,
             self::LANGUAGE_LKT,
             self::LANGUAGE_LKT_US,
+            self::LANGUAGE_LMO,
+            self::LANGUAGE_LMO_IT,
             self::LANGUAGE_LN,
             self::LANGUAGE_LN_AO,
             self::LANGUAGE_LN_CD,
@@ -1908,7 +1987,11 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_NNH_CM,
             self::LANGUAGE_NO,
             self::LANGUAGE_NO_NO,
+            self::LANGUAGE_NQO,
+            self::LANGUAGE_NQO_GN,
             self::LANGUAGE_NR,
+            self::LANGUAGE_NSO,
+            self::LANGUAGE_NSO_ZA,
             self::LANGUAGE_NUS,
             self::LANGUAGE_NUS_SS,
             self::LANGUAGE_NV,
@@ -2038,6 +2121,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_SR_XK,
             self::LANGUAGE_SS,
             self::LANGUAGE_ST,
+            self::LANGUAGE_ST_LS,
+            self::LANGUAGE_ST_ZA,
             self::LANGUAGE_SU,
             self::LANGUAGE_SU_ID,
             self::LANGUAGE_SV,
@@ -2050,6 +2135,11 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_SW_TZ,
             self::LANGUAGE_SW_UG,
             self::LANGUAGE_SY,
+            self::LANGUAGE_SYR,
+            self::LANGUAGE_SYR_IQ,
+            self::LANGUAGE_SYR_SY,
+            self::LANGUAGE_SZL,
+            self::LANGUAGE_SZL_PL,
             self::LANGUAGE_TA,
             self::LANGUAGE_TA_IN,
             self::LANGUAGE_TA_LK,
@@ -2071,6 +2161,8 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_TK_TM,
             self::LANGUAGE_TL,
             self::LANGUAGE_TN,
+            self::LANGUAGE_TN_BW,
+            self::LANGUAGE_TN_ZA,
             self::LANGUAGE_TO,
             self::LANGUAGE_TO_TO,
             self::LANGUAGE_TOK,
@@ -2100,8 +2192,12 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_VAI,
             self::LANGUAGE_VAI_LR,
             self::LANGUAGE_VE,
+            self::LANGUAGE_VEC,
+            self::LANGUAGE_VEC_IT,
             self::LANGUAGE_VI,
             self::LANGUAGE_VI_VN,
+            self::LANGUAGE_VMW,
+            self::LANGUAGE_VMW_MZ,
             self::LANGUAGE_VO,
             self::LANGUAGE_VO_001,
             self::LANGUAGE_VUN,
@@ -2113,12 +2209,15 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_WO_SN,
             self::LANGUAGE_XH,
             self::LANGUAGE_XH_ZA,
+            self::LANGUAGE_XNR,
+            self::LANGUAGE_XNR_IN,
             self::LANGUAGE_XOG,
             self::LANGUAGE_XOG_UG,
             self::LANGUAGE_YAV,
             self::LANGUAGE_YAV_CM,
             self::LANGUAGE_YI,
             self::LANGUAGE_YI_001,
+            self::LANGUAGE_YI_UA,
             self::LANGUAGE_YO,
             self::LANGUAGE_YO_BJ,
             self::LANGUAGE_YO_NG,
@@ -2129,7 +2228,9 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_YUE,
             self::LANGUAGE_YUE_CN,
             self::LANGUAGE_YUE_HK,
+            self::LANGUAGE_YUE_MO,
             self::LANGUAGE_ZA,
+            self::LANGUAGE_ZA_CN,
             self::LANGUAGE_ZGH,
             self::LANGUAGE_ZGH_MA,
             self::LANGUAGE_ZH,
@@ -2138,6 +2239,7 @@ class EmailUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             self::LANGUAGE_ZH_HANT,
             self::LANGUAGE_ZH_HK,
             self::LANGUAGE_ZH_MO,
+            self::LANGUAGE_ZH_MY,
             self::LANGUAGE_ZH_SG,
             self::LANGUAGE_ZH_TW,
             self::LANGUAGE_ZU,

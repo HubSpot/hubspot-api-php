@@ -58,6 +58,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'app_id' => 'int',
+        'app_install_id' => 'string',
+        'audience' => 'string',
         'expires_at' => 'int',
         'hub_id' => 'int',
         'hublet' => 'string',
@@ -83,6 +85,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'app_id' => 'int32',
+        'app_install_id' => null,
+        'audience' => null,
         'expires_at' => 'int64',
         'hub_id' => 'int32',
         'hublet' => null,
@@ -106,6 +110,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'app_id' => false,
+        'app_install_id' => false,
+        'audience' => false,
         'expires_at' => false,
         'hub_id' => false,
         'hublet' => false,
@@ -209,6 +215,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'app_id' => 'appId',
+        'app_install_id' => 'appInstallId',
+        'audience' => 'audience',
         'expires_at' => 'expiresAt',
         'hub_id' => 'hubId',
         'hublet' => 'hublet',
@@ -232,6 +240,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'app_id' => 'setAppId',
+        'app_install_id' => 'setAppInstallId',
+        'audience' => 'setAudience',
         'expires_at' => 'setExpiresAt',
         'hub_id' => 'setHubId',
         'hublet' => 'setHublet',
@@ -255,6 +265,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'app_id' => 'getAppId',
+        'app_install_id' => 'getAppInstallId',
+        'audience' => 'getAudience',
         'expires_at' => 'getExpiresAt',
         'hub_id' => 'getHubId',
         'hublet' => 'getHublet',
@@ -329,6 +341,8 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('app_id', $data ?? [], null);
+        $this->setIfExists('app_install_id', $data ?? [], null);
+        $this->setIfExists('audience', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('hub_id', $data ?? [], null);
         $this->setIfExists('hublet', $data ?? [], null);
@@ -374,6 +388,12 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
 
         if ($this->container['app_id'] === null) {
             $invalidProperties[] = "'app_id' can't be null";
+        }
+        if ($this->container['app_install_id'] === null) {
+            $invalidProperties[] = "'app_install_id' can't be null";
+        }
+        if ($this->container['audience'] === null) {
+            $invalidProperties[] = "'audience' can't be null";
         }
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
@@ -445,7 +465,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets app_id
      *
-     * @param int $app_id The ID of the application associated with the access token.
+     * @param int $app_id app_id
      *
      * @return self
      */
@@ -455,6 +475,60 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable app_id cannot be null');
         }
         $this->container['app_id'] = $app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_install_id
+     *
+     * @return string
+     */
+    public function getAppInstallId()
+    {
+        return $this->container['app_install_id'];
+    }
+
+    /**
+     * Sets app_install_id
+     *
+     * @param string $app_install_id app_install_id
+     *
+     * @return self
+     */
+    public function setAppInstallId($app_install_id)
+    {
+        if (is_null($app_install_id)) {
+            throw new \InvalidArgumentException('non-nullable app_install_id cannot be null');
+        }
+        $this->container['app_install_id'] = $app_install_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets audience
+     *
+     * @return string
+     */
+    public function getAudience()
+    {
+        return $this->container['audience'];
+    }
+
+    /**
+     * Sets audience
+     *
+     * @param string $audience audience
+     *
+     * @return self
+     */
+    public function setAudience($audience)
+    {
+        if (is_null($audience)) {
+            throw new \InvalidArgumentException('non-nullable audience cannot be null');
+        }
+        $this->container['audience'] = $audience;
 
         return $this;
     }
@@ -472,7 +546,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets expires_at
      *
-     * @param int $expires_at The timestamp indicating when the access token will expire.
+     * @param int $expires_at expires_at
      *
      * @return self
      */
@@ -499,7 +573,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets hub_id
      *
-     * @param int $hub_id The ID of the HubSpot account associated with the access token.
+     * @param int $hub_id hub_id
      *
      * @return self
      */
@@ -526,7 +600,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets hublet
      *
-     * @param string $hublet The specific regional data center where the account is hosted.
+     * @param string $hublet hublet
      *
      * @return self
      */
@@ -553,7 +627,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets installing_user_id
      *
-     * @param int $installing_user_id The ID of the user who installed the application.
+     * @param int $installing_user_id installing_user_id
      *
      * @return self
      */
@@ -580,7 +654,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_private_distribution
      *
-     * @param bool $is_private_distribution Indicates whether the token is for a privately distributed application. If false, it is marketplace distributed.
+     * @param bool $is_private_distribution is_private_distribution
      *
      * @return self
      */
@@ -607,7 +681,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_service_account
      *
-     * @param bool $is_service_account Indicates whether the access token is associated with a service account. Meaning it is decoupled from the user who installed it.
+     * @param bool $is_service_account is_service_account
      *
      * @return self
      */
@@ -634,7 +708,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_user_level
      *
-     * @param bool $is_user_level Indicates whether the access token is issued at the user level. Meaning the app is configured to allow multiple installs of the same app on a hub.
+     * @param bool $is_user_level is_user_level
      *
      * @return self
      */
@@ -661,7 +735,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets new_signature
      *
-     * @param string $new_signature The updated cryptographic signature for the access token.
+     * @param string $new_signature new_signature
      *
      * @return self
      */
@@ -688,7 +762,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets scope_to_scope_group_pks
      *
-     * @param string $scope_to_scope_group_pks A mapping of scopes to their corresponding scope group primary keys.
+     * @param string $scope_to_scope_group_pks scope_to_scope_group_pks
      *
      * @return self
      */
@@ -715,7 +789,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets scopes
      *
-     * @param string $scopes The permissions granted to the access token.
+     * @param string $scopes scopes
      *
      * @return self
      */
@@ -742,7 +816,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets signature
      *
-     * @param string $signature The cryptographic signature used to verify the integrity of the access token.
+     * @param string $signature signature
      *
      * @return self
      */
@@ -769,7 +843,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets trial_scope_to_scope_group_pks
      *
-     * @param string $trial_scope_to_scope_group_pks A mapping of trial scopes to their corresponding scope group primary keys.
+     * @param string $trial_scope_to_scope_group_pks trial_scope_to_scope_group_pks
      *
      * @return self
      */
@@ -796,7 +870,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets trial_scopes
      *
-     * @param string $trial_scopes The trial scopes included in the access token.
+     * @param string $trial_scopes trial_scopes
      *
      * @return self
      */
@@ -823,7 +897,7 @@ class SignedAccessToken implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets user_id
      *
-     * @param int $user_id The ID of the hubspot user associated with the access token.
+     * @param int $user_id user_id
      *
      * @return self
      */

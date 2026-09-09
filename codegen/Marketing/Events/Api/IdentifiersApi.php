@@ -425,7 +425,7 @@ class IdentifiersApi
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponse|\HubSpot\Client\Marketing\Events\Model\Error
      */
     public function searchPortalEvents($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
@@ -443,7 +443,7 @@ class IdentifiersApi
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponse|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchPortalEventsWithHttpInfo($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
@@ -475,7 +475,7 @@ class IdentifiersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponse',
                         $request,
                         $response,
                     );
@@ -503,7 +503,7 @@ class IdentifiersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging',
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponse',
                 $request,
                 $response,
             );
@@ -512,7 +512,7 @@ class IdentifiersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -566,7 +566,7 @@ class IdentifiersApi
      */
     public function searchPortalEventsAsyncWithHttpInfo($external_event_id, string $contentType = self::contentTypes['searchPortalEvents'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging';
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalMarketingEventIdentifiersResponse';
         $request = $this->searchPortalEventsRequest($external_event_id, $contentType);
 
         return $this->client

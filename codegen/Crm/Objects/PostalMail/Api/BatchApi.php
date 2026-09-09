@@ -140,8 +140,6 @@ class BatchApi
     /**
      * Operation archive
      *
-     * Batch archive
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
@@ -156,8 +154,6 @@ class BatchApi
 
     /**
      * Operation archiveWithHttpInfo
-     *
-     * Batch archive
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -205,7 +201,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -213,8 +209,6 @@ class BatchApi
 
     /**
      * Operation archiveAsync
-     *
-     * Batch archive
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -234,8 +228,6 @@ class BatchApi
 
     /**
      * Operation archiveAsyncWithHttpInfo
-     *
-     * Batch archive
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectId $batch_input_simple_public_object_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
@@ -369,14 +361,12 @@ class BatchApi
     /**
      * Operation create
      *
-     * Batch create
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
      */
     public function create($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -387,14 +377,12 @@ class BatchApi
     /**
      * Operation createWithHttpInfo
      *
-     * Batch create
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($batch_input_simple_public_object_batch_input_for_create, string $contentType = self::contentTypes['create'][0])
     {
@@ -430,6 +418,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\PostalMail\Model\Error',
@@ -438,7 +432,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -460,10 +454,18 @@ class BatchApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -477,7 +479,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -485,8 +487,6 @@ class BatchApi
 
     /**
      * Operation createAsync
-     *
-     * Batch create
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
@@ -506,8 +506,6 @@ class BatchApi
 
     /**
      * Operation createAsyncWithHttpInfo
-     *
-     * Batch create
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputForCreate $batch_input_simple_public_object_batch_input_for_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
@@ -654,15 +652,13 @@ class BatchApi
     /**
      * Operation read
      *
-     *
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id batch_read_input_simple_public_object_id (required)
-     * @param  bool|null $archived archived (optional, default to false)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
      */
     public function read($batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -673,15 +669,13 @@ class BatchApi
     /**
      * Operation readWithHttpInfo
      *
-     *
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
-     * @param  bool|null $archived (optional, default to false)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -717,6 +711,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\PostalMail\Model\Error',
@@ -725,7 +725,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -755,6 +755,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -764,7 +772,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -773,10 +781,8 @@ class BatchApi
     /**
      * Operation readAsync
      *
-     *
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
-     * @param  bool|null $archived (optional, default to false)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -795,10 +801,8 @@ class BatchApi
     /**
      * Operation readAsyncWithHttpInfo
      *
-     *
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
-     * @param  bool|null $archived (optional, default to false)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -849,7 +853,7 @@ class BatchApi
      * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchReadInputSimplePublicObjectId $batch_read_input_simple_public_object_id (required)
-     * @param  bool|null $archived (optional, default to false)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -954,14 +958,12 @@ class BatchApi
     /**
      * Operation update
      *
-     *
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
      */
     public function update($batch_input_simple_public_object_batch_input, string $contentType = self::contentTypes['update'][0])
     {
@@ -972,14 +974,12 @@ class BatchApi
     /**
      * Operation updateWithHttpInfo
      *
-     *
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($batch_input_simple_public_object_batch_input, string $contentType = self::contentTypes['update'][0])
     {
@@ -1015,6 +1015,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\PostalMail\Model\Error',
@@ -1023,7 +1029,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1053,6 +1059,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1062,7 +1076,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -1070,8 +1084,6 @@ class BatchApi
 
     /**
      * Operation updateAsync
-     *
-     *
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
@@ -1091,8 +1103,6 @@ class BatchApi
 
     /**
      * Operation updateAsyncWithHttpInfo
-     *
-     *
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInput $batch_input_simple_public_object_batch_input (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
@@ -1239,14 +1249,12 @@ class BatchApi
     /**
      * Operation upsert
      *
-     * Batch upsert
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error
      */
     public function upsert($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1257,14 +1265,12 @@ class BatchApi
     /**
      * Operation upsertWithHttpInfo
      *
-     * Batch upsert
-     *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\PostalMail\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\PostalMail\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function upsertWithHttpInfo($batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
     {
@@ -1300,6 +1306,12 @@ class BatchApi
                         $request,
                         $response,
                     );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $request,
+                        $response,
+                    );
                 default:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\PostalMail\Model\Error',
@@ -1308,7 +1320,7 @@ class BatchApi
                     );
             }
 
-
+            
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1338,6 +1350,14 @@ class BatchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\PostalMail\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1347,7 +1367,7 @@ class BatchApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-
+        
 
             throw $e;
         }
@@ -1355,8 +1375,6 @@ class BatchApi
 
     /**
      * Operation upsertAsync
-     *
-     * Batch upsert
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
@@ -1376,8 +1394,6 @@ class BatchApi
 
     /**
      * Operation upsertAsyncWithHttpInfo
-     *
-     * Batch upsert
      *
      * @param  \HubSpot\Client\Crm\Objects\PostalMail\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation

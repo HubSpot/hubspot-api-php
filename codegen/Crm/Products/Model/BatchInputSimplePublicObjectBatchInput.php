@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Products\ObjectSerializer;
  * BatchInputSimplePublicObjectBatchInput Class Doc Comment
  *
  * @category Class
+ * @description Represents a batch input component used to handle multiple simple public objects in a single API request. This component is typically used when performing batch operations to create, update, or delete multiple records simultaneously.
  * @package  HubSpot\Client\Crm\Products
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class BatchInputSimplePublicObjectBatchInput implements ModelInterface, ArrayAcc
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Products\Model\SimplePublicObjectBatchInput[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Products\Model\SimplePublicObjectBatchInput[] $inputs An array of simple public objects to be processed in the batch operation. Each object in the array contains the data necessary for the specific operation being performed.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \HubSpot\Client\Webhooks\ObjectSerializer;
  * ErrorDetail Class Doc Comment
  *
  * @category Class
+ * @description Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.
  * @package  HubSpot\Client\Webhooks
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -333,7 +334,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string|null $code The status code associated with the error detail
+     * @param string|null $code The status code associated with the error detail.
      *
      * @return self
      */
@@ -360,7 +361,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param array<string,string[]>|null $context Context about the error condition
+     * @param array<string,string[]>|null $context Context about the error condition, provided as an object with additional properties.
      *
      * @return self
      */
@@ -414,7 +415,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate.
      *
      * @return self
      */
@@ -441,7 +442,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sub_category
      *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     * @param string|null $sub_category A specific category that contains more specific detail about the error.
      *
      * @return self
      */

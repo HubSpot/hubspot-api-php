@@ -35,7 +35,6 @@ use \HubSpot\Client\Marketing\Transactional\ObjectSerializer;
  * EventIdView Class Doc Comment
  *
  * @category Class
- * @description The ID of a send event.
  * @package  HubSpot\Client\Marketing\Transactional
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

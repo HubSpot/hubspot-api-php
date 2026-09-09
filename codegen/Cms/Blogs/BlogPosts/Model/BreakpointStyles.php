@@ -58,8 +58,8 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'hidden' => 'bool',
-        'margin' => 'object',
-        'padding' => 'object'
+        'margin' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Margin',
+        'padding' => '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Padding'
     ];
 
     /**
@@ -342,7 +342,7 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets margin
      *
-     * @return object
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Margin
      */
     public function getMargin()
     {
@@ -352,7 +352,7 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets margin
      *
-     * @param object $margin margin
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Margin $margin margin
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets padding
      *
-     * @return object
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Padding
      */
     public function getPadding()
     {
@@ -379,7 +379,7 @@ class BreakpointStyles implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets padding
      *
-     * @param object $padding padding
+     * @param \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Padding $padding padding
      *
      * @return self
      */

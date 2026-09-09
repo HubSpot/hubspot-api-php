@@ -58,6 +58,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'allows_sensitive_properties' => 'bool',
         'archived' => 'bool',
         'associations' => '\HubSpot\Client\Crm\Schemas\Model\AssociationDefinition[]',
         'created_at' => '\DateTime',
@@ -85,6 +86,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'allows_sensitive_properties' => null,
         'archived' => null,
         'associations' => null,
         'created_at' => 'date-time',
@@ -110,6 +112,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'allows_sensitive_properties' => false,
         'archived' => false,
         'associations' => false,
         'created_at' => false,
@@ -215,6 +218,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'allows_sensitive_properties' => 'allowsSensitiveProperties',
         'archived' => 'archived',
         'associations' => 'associations',
         'created_at' => 'createdAt',
@@ -240,6 +244,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'allows_sensitive_properties' => 'setAllowsSensitiveProperties',
         'archived' => 'setArchived',
         'associations' => 'setAssociations',
         'created_at' => 'setCreatedAt',
@@ -265,6 +270,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'allows_sensitive_properties' => 'getAllowsSensitiveProperties',
         'archived' => 'getArchived',
         'associations' => 'getAssociations',
         'created_at' => 'getCreatedAt',
@@ -341,6 +347,7 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('allows_sensitive_properties', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
         $this->setIfExists('associations', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
@@ -419,6 +426,33 @@ class ObjectSchema implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets allows_sensitive_properties
+     *
+     * @return bool|null
+     */
+    public function getAllowsSensitiveProperties()
+    {
+        return $this->container['allows_sensitive_properties'];
+    }
+
+    /**
+     * Sets allows_sensitive_properties
+     *
+     * @param bool|null $allows_sensitive_properties allows_sensitive_properties
+     *
+     * @return self
+     */
+    public function setAllowsSensitiveProperties($allows_sensitive_properties)
+    {
+        if (is_null($allows_sensitive_properties)) {
+            throw new \InvalidArgumentException('non-nullable allows_sensitive_properties cannot be null');
+        }
+        $this->container['allows_sensitive_properties'] = $allows_sensitive_properties;
+
+        return $this;
+    }
 
     /**
      * Gets archived

@@ -58,6 +58,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'allows_sensitive_properties' => 'bool',
         'associated_objects' => 'string[]',
         'description' => 'string',
         'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
@@ -66,7 +67,8 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         'properties' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypePropertyCreate[]',
         'required_properties' => 'string[]',
         'searchable_properties' => 'string[]',
-        'secondary_display_properties' => 'string[]'
+        'secondary_display_properties' => 'string[]',
+        'should_create_same_object_association' => 'bool'
     ];
 
     /**
@@ -77,6 +79,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'allows_sensitive_properties' => null,
         'associated_objects' => null,
         'description' => null,
         'labels' => null,
@@ -85,7 +88,8 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         'properties' => null,
         'required_properties' => null,
         'searchable_properties' => null,
-        'secondary_display_properties' => null
+        'secondary_display_properties' => null,
+        'should_create_same_object_association' => null
     ];
 
     /**
@@ -94,6 +98,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'allows_sensitive_properties' => false,
         'associated_objects' => false,
         'description' => false,
         'labels' => false,
@@ -102,7 +107,8 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         'properties' => false,
         'required_properties' => false,
         'searchable_properties' => false,
-        'secondary_display_properties' => false
+        'secondary_display_properties' => false,
+        'should_create_same_object_association' => false
     ];
 
     /**
@@ -191,6 +197,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'allows_sensitive_properties' => 'allowsSensitiveProperties',
         'associated_objects' => 'associatedObjects',
         'description' => 'description',
         'labels' => 'labels',
@@ -199,7 +206,8 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         'properties' => 'properties',
         'required_properties' => 'requiredProperties',
         'searchable_properties' => 'searchableProperties',
-        'secondary_display_properties' => 'secondaryDisplayProperties'
+        'secondary_display_properties' => 'secondaryDisplayProperties',
+        'should_create_same_object_association' => 'shouldCreateSameObjectAssociation'
     ];
 
     /**
@@ -208,6 +216,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'allows_sensitive_properties' => 'setAllowsSensitiveProperties',
         'associated_objects' => 'setAssociatedObjects',
         'description' => 'setDescription',
         'labels' => 'setLabels',
@@ -216,7 +225,8 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         'properties' => 'setProperties',
         'required_properties' => 'setRequiredProperties',
         'searchable_properties' => 'setSearchableProperties',
-        'secondary_display_properties' => 'setSecondaryDisplayProperties'
+        'secondary_display_properties' => 'setSecondaryDisplayProperties',
+        'should_create_same_object_association' => 'setShouldCreateSameObjectAssociation'
     ];
 
     /**
@@ -225,6 +235,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'allows_sensitive_properties' => 'getAllowsSensitiveProperties',
         'associated_objects' => 'getAssociatedObjects',
         'description' => 'getDescription',
         'labels' => 'getLabels',
@@ -233,7 +244,8 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         'properties' => 'getProperties',
         'required_properties' => 'getRequiredProperties',
         'searchable_properties' => 'getSearchableProperties',
-        'secondary_display_properties' => 'getSecondaryDisplayProperties'
+        'secondary_display_properties' => 'getSecondaryDisplayProperties',
+        'should_create_same_object_association' => 'getShouldCreateSameObjectAssociation'
     ];
 
     /**
@@ -293,6 +305,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('allows_sensitive_properties', $data ?? [], null);
         $this->setIfExists('associated_objects', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('labels', $data ?? [], null);
@@ -302,6 +315,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('required_properties', $data ?? [], null);
         $this->setIfExists('searchable_properties', $data ?? [], null);
         $this->setIfExists('secondary_display_properties', $data ?? [], null);
+        $this->setIfExists('should_create_same_object_association', $data ?? [], null);
     }
 
     /**
@@ -362,6 +376,33 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets allows_sensitive_properties
+     *
+     * @return bool|null
+     */
+    public function getAllowsSensitiveProperties()
+    {
+        return $this->container['allows_sensitive_properties'];
+    }
+
+    /**
+     * Sets allows_sensitive_properties
+     *
+     * @param bool|null $allows_sensitive_properties Determines if the object type can include properties that are marked as sensitive.
+     *
+     * @return self
+     */
+    public function setAllowsSensitiveProperties($allows_sensitive_properties)
+    {
+        if (is_null($allows_sensitive_properties)) {
+            throw new \InvalidArgumentException('non-nullable allows_sensitive_properties cannot be null');
+        }
+        $this->container['allows_sensitive_properties'] = $allows_sensitive_properties;
+
+        return $this;
+    }
+
+    /**
      * Gets associated_objects
      *
      * @return string[]
@@ -401,7 +442,7 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description A brief explanation of the object type.
      *
      * @return self
      */
@@ -600,6 +641,33 @@ class ObjectSchemaEgg implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable secondary_display_properties cannot be null');
         }
         $this->container['secondary_display_properties'] = $secondary_display_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets should_create_same_object_association
+     *
+     * @return bool|null
+     */
+    public function getShouldCreateSameObjectAssociation()
+    {
+        return $this->container['should_create_same_object_association'];
+    }
+
+    /**
+     * Sets should_create_same_object_association
+     *
+     * @param bool|null $should_create_same_object_association should_create_same_object_association
+     *
+     * @return self
+     */
+    public function setShouldCreateSameObjectAssociation($should_create_same_object_association)
+    {
+        if (is_null($should_create_same_object_association)) {
+            throw new \InvalidArgumentException('non-nullable should_create_same_object_association cannot be null');
+        }
+        $this->container['should_create_same_object_association'] = $should_create_same_object_association;
 
         return $this;
     }

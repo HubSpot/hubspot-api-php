@@ -270,6 +270,52 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const FLEXBOX_POSITIONING_BOTTOM_CENTER = 'BOTTOM_CENTER';
+    public const FLEXBOX_POSITIONING_BOTTOM_LEFT = 'BOTTOM_LEFT';
+    public const FLEXBOX_POSITIONING_BOTTOM_RIGHT = 'BOTTOM_RIGHT';
+    public const FLEXBOX_POSITIONING_MIDDLE_CENTER = 'MIDDLE_CENTER';
+    public const FLEXBOX_POSITIONING_MIDDLE_LEFT = 'MIDDLE_LEFT';
+    public const FLEXBOX_POSITIONING_MIDDLE_RIGHT = 'MIDDLE_RIGHT';
+    public const FLEXBOX_POSITIONING_TOP_CENTER = 'TOP_CENTER';
+    public const FLEXBOX_POSITIONING_TOP_LEFT = 'TOP_LEFT';
+    public const FLEXBOX_POSITIONING_TOP_RIGHT = 'TOP_RIGHT';
+    public const VERTICAL_ALIGNMENT_BOTTOM = 'BOTTOM';
+    public const VERTICAL_ALIGNMENT_MIDDLE = 'MIDDLE';
+    public const VERTICAL_ALIGNMENT_TOP = 'TOP';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFlexboxPositioningAllowableValues()
+    {
+        return [
+            self::FLEXBOX_POSITIONING_BOTTOM_CENTER,
+            self::FLEXBOX_POSITIONING_BOTTOM_LEFT,
+            self::FLEXBOX_POSITIONING_BOTTOM_RIGHT,
+            self::FLEXBOX_POSITIONING_MIDDLE_CENTER,
+            self::FLEXBOX_POSITIONING_MIDDLE_LEFT,
+            self::FLEXBOX_POSITIONING_MIDDLE_RIGHT,
+            self::FLEXBOX_POSITIONING_TOP_CENTER,
+            self::FLEXBOX_POSITIONING_TOP_LEFT,
+            self::FLEXBOX_POSITIONING_TOP_RIGHT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVerticalAlignmentAllowableValues()
+    {
+        return [
+            self::VERTICAL_ALIGNMENT_BOTTOM,
+            self::VERTICAL_ALIGNMENT_MIDDLE,
+            self::VERTICAL_ALIGNMENT_TOP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -335,6 +381,15 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['flexbox_positioning'] === null) {
             $invalidProperties[] = "'flexbox_positioning' can't be null";
         }
+        $allowedValues = $this->getFlexboxPositioningAllowableValues();
+        if (!is_null($this->container['flexbox_positioning']) && !in_array($this->container['flexbox_positioning'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'flexbox_positioning', must be one of '%s'",
+                $this->container['flexbox_positioning'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['force_full_width_section'] === null) {
             $invalidProperties[] = "'force_full_width_section' can't be null";
         }
@@ -344,6 +399,15 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['vertical_alignment'] === null) {
             $invalidProperties[] = "'vertical_alignment' can't be null";
         }
+        $allowedValues = $this->getVerticalAlignmentAllowableValues();
+        if (!is_null($this->container['vertical_alignment']) && !in_array($this->container['vertical_alignment'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'vertical_alignment', must be one of '%s'",
+                $this->container['vertical_alignment'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -489,6 +553,16 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($flexbox_positioning)) {
             throw new \InvalidArgumentException('non-nullable flexbox_positioning cannot be null');
         }
+        $allowedValues = $this->getFlexboxPositioningAllowableValues();
+        if (!in_array($flexbox_positioning, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'flexbox_positioning', must be one of '%s'",
+                    $flexbox_positioning,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['flexbox_positioning'] = $flexbox_positioning;
 
         return $this;
@@ -569,6 +643,16 @@ class Styles implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($vertical_alignment)) {
             throw new \InvalidArgumentException('non-nullable vertical_alignment cannot be null');
+        }
+        $allowedValues = $this->getVerticalAlignmentAllowableValues();
+        if (!in_array($vertical_alignment, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'vertical_alignment', must be one of '%s'",
+                    $vertical_alignment,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['vertical_alignment'] = $vertical_alignment;
 

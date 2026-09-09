@@ -649,7 +649,7 @@ class ImportFromUrlInput implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets name
      *
-     * @param string|null $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param string|null $name Name to give the resulting file in the file manager.
      *
      * @return self
      */

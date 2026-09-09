@@ -35,6 +35,7 @@ use \HubSpot\Client\Settings\BusinessUnits\ObjectSerializer;
  * ErrorDetail Class Doc Comment
  *
  * @category Class
+ * @description Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.
  * @package  HubSpot\Client\Settings\BusinessUnits
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

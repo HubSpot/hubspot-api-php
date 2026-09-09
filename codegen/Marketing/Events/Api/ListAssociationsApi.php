@@ -1185,13 +1185,13 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList|\HubSpot\Client\Marketing\Events\Model\Error
      */
     public function getAllByExternalAccountAndEventIds($external_account_id, $external_event_id, string $contentType = self::contentTypes['getAllByExternalAccountAndEventIds'][0])
     {
@@ -1204,13 +1204,13 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllByExternalAccountAndEventIdsWithHttpInfo($external_account_id, $external_event_id, string $contentType = self::contentTypes['getAllByExternalAccountAndEventIds'][0])
     {
@@ -1242,7 +1242,7 @@ class ListAssociationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList',
                         $request,
                         $response,
                     );
@@ -1270,7 +1270,7 @@ class ListAssociationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging',
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList',
                 $request,
                 $response,
             );
@@ -1279,7 +1279,7 @@ class ListAssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1304,7 +1304,7 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1326,7 +1326,7 @@ class ListAssociationsApi
      *
      * Get lists associated with a marketing event
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1335,7 +1335,7 @@ class ListAssociationsApi
      */
     public function getAllByExternalAccountAndEventIdsAsyncWithHttpInfo($external_account_id, $external_event_id, string $contentType = self::contentTypes['getAllByExternalAccountAndEventIds'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging';
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList';
         $request = $this->getAllByExternalAccountAndEventIdsRequest($external_account_id, $external_event_id, $contentType);
 
         return $this->client
@@ -1377,7 +1377,7 @@ class ListAssociationsApi
     /**
      * Create request for operation 'getAllByExternalAccountAndEventIds'
      *
-     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application (required)
+     * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllByExternalAccountAndEventIds'] to see the possible values for this operation
      *
@@ -1496,7 +1496,7 @@ class ListAssociationsApi
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList|\HubSpot\Client\Marketing\Events\Model\Error
      */
     public function getAllByMarketingEventId($marketing_event_id, string $contentType = self::contentTypes['getAllByMarketingEventId'][0])
     {
@@ -1514,7 +1514,7 @@ class ListAssociationsApi
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllByMarketingEventIdWithHttpInfo($marketing_event_id, string $contentType = self::contentTypes['getAllByMarketingEventId'][0])
     {
@@ -1546,7 +1546,7 @@ class ListAssociationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList',
                         $request,
                         $response,
                     );
@@ -1574,7 +1574,7 @@ class ListAssociationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging',
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList',
                 $request,
                 $response,
             );
@@ -1583,7 +1583,7 @@ class ListAssociationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1637,7 +1637,7 @@ class ListAssociationsApi
      */
     public function getAllByMarketingEventIdAsyncWithHttpInfo($marketing_event_id, string $contentType = self::contentTypes['getAllByMarketingEventId'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicListNoPaging';
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalPublicList';
         $request = $this->getAllByMarketingEventIdRequest($marketing_event_id, $contentType);
 
         return $this->client

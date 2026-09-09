@@ -377,7 +377,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Sets total
      *
-     * @param int $total The total number of objects included into response.
+     * @param int $total The number of available results
      *
      * @return self
      */

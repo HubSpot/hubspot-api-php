@@ -92,22 +92,10 @@ class BasicApi
         'getPage' => [
             'application/json',
         ],
-        'getPreviousVersion' => [
-            'application/json',
-        ],
-        'getPreviousVersions' => [
-            'application/json',
-        ],
         'pushLive' => [
             'application/json',
         ],
         'resetDraft' => [
-            'application/json',
-        ],
-        'restorePreviousVersion' => [
-            'application/json',
-        ],
-        'restorePreviousVersionToDraft' => [
             'application/json',
         ],
         'schedule' => [
@@ -173,7 +161,7 @@ class BasicApi
      * Delete a blog post
      *
      * @param  string $object_id The ID of the blog post to delete. (required)
-     * @param  bool|null $archived Whether to return only results that have been deleted. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -191,7 +179,7 @@ class BasicApi
      * Delete a blog post
      *
      * @param  string $object_id The ID of the blog post to delete. (required)
-     * @param  bool|null $archived Whether to return only results that have been deleted. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -249,7 +237,7 @@ class BasicApi
      * Delete a blog post
      *
      * @param  string $object_id The ID of the blog post to delete. (required)
-     * @param  bool|null $archived Whether to return only results that have been deleted. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -271,7 +259,7 @@ class BasicApi
      * Delete a blog post
      *
      * @param  string $object_id The ID of the blog post to delete. (required)
-     * @param  bool|null $archived Whether to return only results that have been deleted. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -309,7 +297,7 @@ class BasicApi
      * Create request for operation 'archive'
      *
      * @param  string $object_id The ID of the blog post to delete. (required)
-     * @param  bool|null $archived Whether to return only results that have been deleted. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -417,7 +405,7 @@ class BasicApi
      *
      * Clone a blog post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next The JSON representation of the ContentCloneRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next content_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callClone'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -435,7 +423,7 @@ class BasicApi
      *
      * Clone a blog post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next The JSON representation of the ContentCloneRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callClone'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -534,7 +522,7 @@ class BasicApi
      *
      * Clone a blog post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next The JSON representation of the ContentCloneRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callClone'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -555,7 +543,7 @@ class BasicApi
      *
      * Clone a blog post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next The JSON representation of the ContentCloneRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callClone'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -605,7 +593,7 @@ class BasicApi
     /**
      * Create request for operation 'callClone'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next The JSON representation of the ContentCloneRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentCloneRequestVNext $content_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callClone'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -702,7 +690,7 @@ class BasicApi
      *
      * Create a new post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of a new Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -720,7 +708,7 @@ class BasicApi
      *
      * Create a new post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of a new Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -819,7 +807,7 @@ class BasicApi
      *
      * Create a new post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of a new Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -840,7 +828,7 @@ class BasicApi
      *
      * Create a new post
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of a new Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -890,7 +878,7 @@ class BasicApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of a new Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1589,26 +1577,26 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property Specific properties to return from the posts (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPostForwardPaging|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
      */
-    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType);
+        list($response) = $this->getPageWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
         return $response;
     }
 
@@ -1617,26 +1605,26 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property Specific properties to return from the posts (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPostForwardPaging|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType);
+        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1726,25 +1714,25 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property Specific properties to return from the posts (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType)
+        return $this->getPageAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1757,26 +1745,26 @@ class BasicApi
      *
      * Get all posts
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property Specific properties to return from the posts (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalBlogPostForwardPaging';
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $property, $contentType);
+        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1817,23 +1805,23 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Specifies whether to return deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
+     * @param  \DateTime|null $created_after Only return blog posts created after the specified time. (optional)
+     * @param  \DateTime|null $created_at Only return blog posts created at exactly the specified time. (optional)
+     * @param  \DateTime|null $created_before Only return blog posts created before the specified time. (optional)
+     * @param  int|null $limit The maximum number of results to return. Default is 20. (optional)
      * @param  string|null $property Specific properties to return from the posts (optional)
+     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;createdAt&#x60; (default), &#x60;name&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. (optional)
+     * @param  \DateTime|null $updated_after Only return blog posts last updated after the specified time. (optional)
+     * @param  \DateTime|null $updated_at Only return blog posts last updated at exactly the specified time. (optional)
+     * @param  \DateTime|null $updated_before Only return blog posts last updated before the specified time. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, $property = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -1857,9 +1845,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
+            $after,
+            'after', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1868,6 +1865,15 @@ class BasicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $created_after,
             'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1884,26 +1890,17 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
+            $property,
+            'property', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1920,8 +1917,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $updated_after,
+            'updatedAfter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1929,637 +1926,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getPreviousVersion
-     *
-     * Retrieve a previous version of a blog post
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function getPreviousVersion($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
-    {
-        list($response) = $this->getPreviousVersionWithHttpInfo($object_id, $revision_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getPreviousVersionWithHttpInfo
-     *
-     * Retrieve a previous version of a blog post
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getPreviousVersionWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
-    {
-        $request = $this->getPreviousVersionRequest($object_id, $revision_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getPreviousVersionAsync
-     *
-     * Retrieve a previous version of a blog post
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPreviousVersionAsync($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
-    {
-        return $this->getPreviousVersionAsyncWithHttpInfo($object_id, $revision_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getPreviousVersionAsyncWithHttpInfo
-     *
-     * Retrieve a previous version of a blog post
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPreviousVersionAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\VersionBlogPost';
-        $request = $this->getPreviousVersionRequest($object_id, $revision_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getPreviousVersion'
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getPreviousVersionRequest($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
-    {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPreviousVersion'
-            );
-        }
-
-        // verify the required parameter 'revision_id' is set
-        if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling getPreviousVersion'
-            );
-        }
-
-
-        $resourcePath = '/cms/v3/blogs/posts/{objectId}/revisions/{revisionId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($revision_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'revisionId' . '}',
-                ObjectSerializer::toPathValue($revision_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getPreviousVersions
-     *
-     * Retrieves all previous versions of a post
-     *
-     * @param  string $object_id The ID of the blog post to retrieve previous versions of. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  string|null $before A paging cursor token for retrieving previous pages. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalVersionBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function getPreviousVersions($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
-    {
-        list($response) = $this->getPreviousVersionsWithHttpInfo($object_id, $after, $before, $limit, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getPreviousVersionsWithHttpInfo
-     *
-     * Retrieves all previous versions of a post
-     *
-     * @param  string $object_id The ID of the blog post to retrieve previous versions of. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  string|null $before A paging cursor token for retrieving previous pages. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalVersionBlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getPreviousVersionsWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
-    {
-        $request = $this->getPreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalVersionBlogPost',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalVersionBlogPost',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalVersionBlogPost',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getPreviousVersionsAsync
-     *
-     * Retrieves all previous versions of a post
-     *
-     * @param  string $object_id The ID of the blog post to retrieve previous versions of. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  string|null $before A paging cursor token for retrieving previous pages. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPreviousVersionsAsync($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
-    {
-        return $this->getPreviousVersionsAsyncWithHttpInfo($object_id, $after, $before, $limit, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getPreviousVersionsAsyncWithHttpInfo
-     *
-     * Retrieves all previous versions of a post
-     *
-     * @param  string $object_id The ID of the blog post to retrieve previous versions of. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  string|null $before A paging cursor token for retrieving previous pages. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPreviousVersionsAsyncWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\CollectionResponseWithTotalVersionBlogPost';
-        $request = $this->getPreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getPreviousVersions'
-     *
-     * @param  string $object_id The ID of the blog post to retrieve previous versions of. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  string|null $before A paging cursor token for retrieving previous pages. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getPreviousVersionsRequest($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
-    {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPreviousVersions'
-            );
-        }
-
-
-
-
-
-        $resourcePath = '/cms/v3/blogs/posts/{objectId}/revisions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $updated_at,
+            'updatedAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2567,32 +1935,15 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $before,
-            'before', // param base name
+            $updated_before,
+            'updatedBefore', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -3113,623 +2464,11 @@ class BasicApi
     }
 
     /**
-     * Operation restorePreviousVersion
-     *
-     * Restore a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function restorePreviousVersion($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersion'][0])
-    {
-        list($response) = $this->restorePreviousVersionWithHttpInfo($object_id, $revision_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation restorePreviousVersionWithHttpInfo
-     *
-     * Restore a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function restorePreviousVersionWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersion'][0])
-    {
-        $request = $this->restorePreviousVersionRequest($object_id, $revision_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation restorePreviousVersionAsync
-     *
-     * Restore a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restorePreviousVersionAsync($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersion'][0])
-    {
-        return $this->restorePreviousVersionAsyncWithHttpInfo($object_id, $revision_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation restorePreviousVersionAsyncWithHttpInfo
-     *
-     * Restore a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restorePreviousVersionAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersion'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost';
-        $request = $this->restorePreviousVersionRequest($object_id, $revision_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'restorePreviousVersion'
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  string $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function restorePreviousVersionRequest($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersion'][0])
-    {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling restorePreviousVersion'
-            );
-        }
-
-        // verify the required parameter 'revision_id' is set
-        if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling restorePreviousVersion'
-            );
-        }
-
-
-        $resourcePath = '/cms/v3/blogs/posts/{objectId}/revisions/{revisionId}/restore';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($revision_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'revisionId' . '}',
-                ObjectSerializer::toPathValue($revision_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraft
-     *
-     * Restore a draft to a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  int $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
-     */
-    public function restorePreviousVersionToDraft($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        list($response) = $this->restorePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraftWithHttpInfo
-     *
-     * Restore a draft to a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  int $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost|\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function restorePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        $request = $this->restorePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraftAsync
-     *
-     * Restore a draft to a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  int $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restorePreviousVersionToDraftAsync($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        return $this->restorePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraftAsyncWithHttpInfo
-     *
-     * Restore a draft to a previous version
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  int $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restorePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost';
-        $request = $this->restorePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'restorePreviousVersionToDraft'
-     *
-     * @param  string $object_id The ID of the blog post. (required)
-     * @param  int $revision_id The ID of the version to restore the blog post to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function restorePreviousVersionToDraftRequest($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling restorePreviousVersionToDraft'
-            );
-        }
-
-        // verify the required parameter 'revision_id' is set
-        if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling restorePreviousVersionToDraft'
-            );
-        }
-
-
-        $resourcePath = '/cms/v3/blogs/posts/{objectId}/revisions/{revisionId}/restore-to-draft';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($revision_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'revisionId' . '}',
-                ObjectSerializer::toPathValue($revision_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation schedule
      *
      * Schedule a post to be published
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next The JSON representation of the ContentScheduleRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next content_schedule_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['schedule'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3746,7 +2485,7 @@ class BasicApi
      *
      * Schedule a post to be published
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next The JSON representation of the ContentScheduleRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['schedule'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3803,7 +2542,7 @@ class BasicApi
      *
      * Schedule a post to be published
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next The JSON representation of the ContentScheduleRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['schedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3824,7 +2563,7 @@ class BasicApi
      *
      * Schedule a post to be published
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next The JSON representation of the ContentScheduleRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['schedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3861,7 +2600,7 @@ class BasicApi
     /**
      * Create request for operation 'schedule'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next The JSON representation of the ContentScheduleRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\ContentScheduleRequestVNext $content_schedule_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['schedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3959,7 +2698,7 @@ class BasicApi
      * Update a post
      *
      * @param  string $object_id The ID of the blog post to update. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post blog_post (required)
      * @param  bool|null $archived Specifies whether to update deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -3979,7 +2718,7 @@ class BasicApi
      * Update a post
      *
      * @param  string $object_id The ID of the blog post to update. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  bool|null $archived Specifies whether to update deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4080,7 +2819,7 @@ class BasicApi
      * Update a post
      *
      * @param  string $object_id The ID of the blog post to update. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  bool|null $archived Specifies whether to update deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4103,7 +2842,7 @@ class BasicApi
      * Update a post
      *
      * @param  string $object_id The ID of the blog post to update. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  bool|null $archived Specifies whether to update deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4155,7 +2894,7 @@ class BasicApi
      * Create request for operation 'update'
      *
      * @param  string $object_id The ID of the blog post to update. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  bool|null $archived Specifies whether to update deleted blog posts. Defaults to &#x60;false&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4279,7 +3018,7 @@ class BasicApi
      * Update the draft of a post
      *
      * @param  string $object_id The ID of the blog post to update the draft of. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post to be applied to the draft. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4298,7 +3037,7 @@ class BasicApi
      * Update the draft of a post
      *
      * @param  string $object_id The ID of the blog post to update the draft of. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post to be applied to the draft. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4398,7 +3137,7 @@ class BasicApi
      * Update the draft of a post
      *
      * @param  string $object_id The ID of the blog post to update the draft of. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post to be applied to the draft. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4420,7 +3159,7 @@ class BasicApi
      * Update the draft of a post
      *
      * @param  string $object_id The ID of the blog post to update the draft of. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post to be applied to the draft. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4471,7 +3210,7 @@ class BasicApi
      * Create request for operation 'updateDraft'
      *
      * @param  string $object_id The ID of the blog post to update the draft of. (required)
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post The JSON representation of the updated Blog Post to be applied to the draft. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPost $blog_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

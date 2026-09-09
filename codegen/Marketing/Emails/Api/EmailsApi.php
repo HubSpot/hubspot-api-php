@@ -80,9 +80,6 @@ class EmailsApi
         'callClone' => [
             'application/json',
         ],
-        'create' => [
-            'application/json',
-        ],
         'createAbTestVariation' => [
             'application/json',
         ],
@@ -93,9 +90,6 @@ class EmailsApi
             'application/json',
         ],
         'getDraft' => [
-            'application/json',
-        ],
-        'getPage' => [
             'application/json',
         ],
         'getRevisionById' => [
@@ -652,291 +646,6 @@ class EmailsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_clone_request_v_next));
             } else {
                 $httpBody = $email_clone_request_v_next;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation create
-     *
-     * Create a new marketing email
-     *
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailCreateRequest $email_create_request email_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Emails\Model\PublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error
-     */
-    public function create($email_create_request, string $contentType = self::contentTypes['create'][0])
-    {
-        list($response) = $this->createWithHttpInfo($email_create_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createWithHttpInfo
-     *
-     * Create a new marketing email
-     *
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailCreateRequest $email_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Emails\Model\PublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createWithHttpInfo($email_create_request, string $contentType = self::contentTypes['create'][0])
-    {
-        $request = $this->createRequest($email_create_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 201:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Emails\Model\PublicEmail',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Emails\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Emails\Model\PublicEmail',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Emails\Model\PublicEmail',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Emails\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsync
-     *
-     * Create a new marketing email
-     *
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailCreateRequest $email_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsync($email_create_request, string $contentType = self::contentTypes['create'][0])
-    {
-        return $this->createAsyncWithHttpInfo($email_create_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncWithHttpInfo
-     *
-     * Create a new marketing email
-     *
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailCreateRequest $email_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncWithHttpInfo($email_create_request, string $contentType = self::contentTypes['create'][0])
-    {
-        $returnType = '\HubSpot\Client\Marketing\Emails\Model\PublicEmail';
-        $request = $this->createRequest($email_create_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'create'
-     *
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailCreateRequest $email_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRequest($email_create_request, string $contentType = self::contentTypes['create'][0])
-    {
-
-        // verify the required parameter 'email_create_request' is set
-        if ($email_create_request === null || (is_array($email_create_request) && count($email_create_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $email_create_request when calling create'
-            );
-        }
-
-
-        $resourcePath = '/marketing/v3/emails/';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($email_create_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_create_request));
-            } else {
-                $httpBody = $email_create_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1655,21 +1364,21 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $variant_stats  (optional)
+     * @param  bool|null $workflow_names  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Emails\Model\PublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error
      */
-    public function getById($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
+    public function getById($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType);
         return $response;
     }
 
@@ -1679,21 +1388,21 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $variant_stats  (optional)
+     * @param  bool|null $workflow_names  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Emails\Model\PublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType);
+        $request = $this->getByIdRequest($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1784,20 +1493,20 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $variant_stats  (optional)
+     * @param  bool|null $workflow_names  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1811,21 +1520,21 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $variant_stats  (optional)
+     * @param  bool|null $workflow_names  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Emails\Model\PublicEmail';
-        $request = $this->getByIdRequest($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType);
+        $request = $this->getByIdRequest($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1867,18 +1576,18 @@ class EmailsApi
      * Create request for operation 'getById'
      *
      * @param  string $email_id The marketing email ID. (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $variant_stats  (optional)
+     * @param  bool|null $workflow_names  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
     {
 
         // verify the required parameter 'email_id' is set
@@ -1904,6 +1613,24 @@ class EmailsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $included_properties,
+            'includedProperties', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_stats,
             'includeStats', // param base name
             'boolean', // openApiType
@@ -1922,35 +1649,17 @@ class EmailsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $workflow_names,
-            'workflowNames', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $included_properties,
-            'includedProperties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $variant_stats,
             'variantStats', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $workflow_names,
+            'workflowNames', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2312,587 +2021,6 @@ class EmailsApi
     }
 
     /**
-     * Operation getPage
-     *
-     * Get all marketing emails
-     *
-     * @param  \DateTime|null $created_at Only return emails created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return emails created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return emails created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return emails last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return emails last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return emails last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool|null $include_stats Include statistics with emails. (optional)
-     * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string|null $type Email types to be filtered by. Multiple types can be included. All emails will be returned if not present. (optional)
-     * @param  bool|null $is_published Filter by published/draft emails. All emails will be returned if not present. (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Specifies whether to return archived emails. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string|null $campaign  (optional)
-     * @param  \DateTime|null $published_after  (optional)
-     * @param  \DateTime|null $published_at  (optional)
-     * @param  \DateTime|null $published_before  (optional)
-     * @param  bool|null $variant_stats  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailForwardPaging|\HubSpot\Client\Marketing\Emails\Model\Error
-     */
-    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
-    {
-        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getPageWithHttpInfo
-     *
-     * Get all marketing emails
-     *
-     * @param  \DateTime|null $created_at Only return emails created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return emails created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return emails created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return emails last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return emails last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return emails last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool|null $include_stats Include statistics with emails. (optional)
-     * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string|null $type Email types to be filtered by. Multiple types can be included. All emails will be returned if not present. (optional)
-     * @param  bool|null $is_published Filter by published/draft emails. All emails will be returned if not present. (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Specifies whether to return archived emails. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string|null $campaign  (optional)
-     * @param  \DateTime|null $published_after  (optional)
-     * @param  \DateTime|null $published_at  (optional)
-     * @param  \DateTime|null $published_before  (optional)
-     * @param  bool|null $variant_stats  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailForwardPaging|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
-    {
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailForwardPaging',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Emails\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailForwardPaging',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailForwardPaging',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Emails\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getPageAsync
-     *
-     * Get all marketing emails
-     *
-     * @param  \DateTime|null $created_at Only return emails created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return emails created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return emails created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return emails last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return emails last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return emails last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool|null $include_stats Include statistics with emails. (optional)
-     * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string|null $type Email types to be filtered by. Multiple types can be included. All emails will be returned if not present. (optional)
-     * @param  bool|null $is_published Filter by published/draft emails. All emails will be returned if not present. (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Specifies whether to return archived emails. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string|null $campaign  (optional)
-     * @param  \DateTime|null $published_after  (optional)
-     * @param  \DateTime|null $published_at  (optional)
-     * @param  \DateTime|null $published_before  (optional)
-     * @param  bool|null $variant_stats  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
-    {
-        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getPageAsyncWithHttpInfo
-     *
-     * Get all marketing emails
-     *
-     * @param  \DateTime|null $created_at Only return emails created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return emails created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return emails created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return emails last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return emails last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return emails last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool|null $include_stats Include statistics with emails. (optional)
-     * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string|null $type Email types to be filtered by. Multiple types can be included. All emails will be returned if not present. (optional)
-     * @param  bool|null $is_published Filter by published/draft emails. All emails will be returned if not present. (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Specifies whether to return archived emails. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string|null $campaign  (optional)
-     * @param  \DateTime|null $published_after  (optional)
-     * @param  \DateTime|null $published_at  (optional)
-     * @param  \DateTime|null $published_before  (optional)
-     * @param  bool|null $variant_stats  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
-    {
-        $returnType = '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailForwardPaging';
-        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getPage'
-     *
-     * @param  \DateTime|null $created_at Only return emails created at exactly the specified time. (optional)
-     * @param  \DateTime|null $created_after Only return emails created after the specified time. (optional)
-     * @param  \DateTime|null $created_before Only return emails created before the specified time. (optional)
-     * @param  \DateTime|null $updated_at Only return emails last updated at exactly the specified time. (optional)
-     * @param  \DateTime|null $updated_after Only return emails last updated after the specified time. (optional)
-     * @param  \DateTime|null $updated_before Only return emails last updated before the specified time. (optional)
-     * @param  string[]|null $sort Specifies which fields to use for sorting results. Valid fields are &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60;. &#x60;createdAt&#x60; will be used by default. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  bool|null $include_stats Include statistics with emails. (optional)
-     * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $workflow_names  (optional)
-     * @param  string|null $type Email types to be filtered by. Multiple types can be included. All emails will be returned if not present. (optional)
-     * @param  bool|null $is_published Filter by published/draft emails. All emails will be returned if not present. (optional)
-     * @param  string[]|null $included_properties  (optional)
-     * @param  bool|null $archived Specifies whether to return archived emails. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string|null $campaign  (optional)
-     * @param  \DateTime|null $published_after  (optional)
-     * @param  \DateTime|null $published_at  (optional)
-     * @param  \DateTime|null $published_before  (optional)
-     * @param  bool|null $variant_stats  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/marketing/v3/emails/';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_stats,
-            'includeStats', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $marketing_campaign_names,
-            'marketingCampaignNames', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $workflow_names,
-            'workflowNames', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_published,
-            'isPublished', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $included_properties,
-            'includedProperties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $campaign,
-            'campaign', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $published_after,
-            'publishedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $published_at,
-            'publishedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $published_before,
-            'publishedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $variant_stats,
-            'variantStats', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getRevisionById
      *
      * Get a revision of a marketing email
@@ -2903,7 +2031,7 @@ class EmailsApi
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Emails\Model\VersionPublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error
+     * @return \HubSpot\Client\Marketing\Emails\Model\PublicEmailVersion|\HubSpot\Client\Marketing\Emails\Model\Error
      */
     public function getRevisionById($email_id, $revision_id, string $contentType = self::contentTypes['getRevisionById'][0])
     {
@@ -2922,7 +2050,7 @@ class EmailsApi
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Emails\Model\VersionPublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Emails\Model\PublicEmailVersion|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRevisionByIdWithHttpInfo($email_id, $revision_id, string $contentType = self::contentTypes['getRevisionById'][0])
     {
@@ -2954,7 +2082,7 @@ class EmailsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Emails\Model\VersionPublicEmail',
+                        '\HubSpot\Client\Marketing\Emails\Model\PublicEmailVersion',
                         $request,
                         $response,
                     );
@@ -2982,7 +2110,7 @@ class EmailsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Emails\Model\VersionPublicEmail',
+                '\HubSpot\Client\Marketing\Emails\Model\PublicEmailVersion',
                 $request,
                 $response,
             );
@@ -2991,7 +2119,7 @@ class EmailsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Emails\Model\VersionPublicEmail',
+                        '\HubSpot\Client\Marketing\Emails\Model\PublicEmailVersion',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3047,7 +2175,7 @@ class EmailsApi
      */
     public function getRevisionByIdAsyncWithHttpInfo($email_id, $revision_id, string $contentType = self::contentTypes['getRevisionById'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Emails\Model\VersionPublicEmail';
+        $returnType = '\HubSpot\Client\Marketing\Emails\Model\PublicEmailVersion';
         $request = $this->getRevisionByIdRequest($email_id, $revision_id, $contentType);
 
         return $this->client
@@ -3204,14 +2332,14 @@ class EmailsApi
      * Get revisions of a marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to get the previous set of results. You can get this from the &#x60;paging.prev.before&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRevisions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalVersionPublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error
+     * @return \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailVersion|\HubSpot\Client\Marketing\Emails\Model\Error
      */
     public function getRevisions($email_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getRevisions'][0])
     {
@@ -3225,14 +2353,14 @@ class EmailsApi
      * Get revisions of a marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to get the previous set of results. You can get this from the &#x60;paging.prev.before&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRevisions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalVersionPublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailVersion|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRevisionsWithHttpInfo($email_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getRevisions'][0])
     {
@@ -3264,7 +2392,7 @@ class EmailsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalVersionPublicEmail',
+                        '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailVersion',
                         $request,
                         $response,
                     );
@@ -3292,7 +2420,7 @@ class EmailsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalVersionPublicEmail',
+                '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailVersion',
                 $request,
                 $response,
             );
@@ -3301,7 +2429,7 @@ class EmailsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalVersionPublicEmail',
+                        '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailVersion',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3327,7 +2455,7 @@ class EmailsApi
      * Get revisions of a marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to get the previous set of results. You can get this from the &#x60;paging.prev.before&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRevisions'] to see the possible values for this operation
@@ -3351,7 +2479,7 @@ class EmailsApi
      * Get revisions of a marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to get the previous set of results. You can get this from the &#x60;paging.prev.before&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRevisions'] to see the possible values for this operation
@@ -3361,7 +2489,7 @@ class EmailsApi
      */
     public function getRevisionsAsyncWithHttpInfo($email_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getRevisions'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalVersionPublicEmail';
+        $returnType = '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmailVersion';
         $request = $this->getRevisionsRequest($email_id, $after, $before, $limit, $contentType);
 
         return $this->client
@@ -3404,7 +2532,7 @@ class EmailsApi
      * Create request for operation 'getRevisions'
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to get the previous set of results. You can get this from the &#x60;paging.prev.before&#x60; JSON property of a paged response containing more results. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRevisions'] to see the possible values for this operation
@@ -4781,7 +3909,7 @@ class EmailsApi
      * Update a marketing email
      *
      * @param  string $email_id The ID of the marketing email that should get updated (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties of the marketing email. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request email_update_request (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4801,7 +3929,7 @@ class EmailsApi
      * Update a marketing email
      *
      * @param  string $email_id The ID of the marketing email that should get updated (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties of the marketing email. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4902,7 +4030,7 @@ class EmailsApi
      * Update a marketing email
      *
      * @param  string $email_id The ID of the marketing email that should get updated (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties of the marketing email. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4925,7 +4053,7 @@ class EmailsApi
      * Update a marketing email
      *
      * @param  string $email_id The ID of the marketing email that should get updated (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties of the marketing email. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -4977,7 +4105,7 @@ class EmailsApi
      * Create request for operation 'update'
      *
      * @param  string $email_id The ID of the marketing email that should get updated (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties of the marketing email. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -5101,7 +4229,7 @@ class EmailsApi
      * Create or update draft version
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties in the email&#39;s current draft. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request email_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5120,7 +4248,7 @@ class EmailsApi
      * Create or update draft version
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties in the email&#39;s current draft. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5220,7 +4348,7 @@ class EmailsApi
      * Create or update draft version
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties in the email&#39;s current draft. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5242,7 +4370,7 @@ class EmailsApi
      * Create or update draft version
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties in the email&#39;s current draft. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5293,7 +4421,7 @@ class EmailsApi
      * Create request for operation 'upsertDraft'
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request A marketing email object with properties that should overwrite the corresponding properties in the email&#39;s current draft. (required)
+     * @param  \HubSpot\Client\Marketing\Emails\Model\EmailUpdateRequest $email_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

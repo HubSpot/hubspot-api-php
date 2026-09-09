@@ -380,7 +380,7 @@ class VersionUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id The email ID.
+     * @param string $id ID of the user.
      *
      * @return self
      */

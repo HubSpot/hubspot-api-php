@@ -398,7 +398,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at When the requested changes have been completed.
+     * @param \DateTime $completed_at Time of completion of task.
      *
      * @return self
      */
@@ -479,7 +479,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets num_errors
      *
-     * @param int|null $num_errors Number of errors resulting from the requested changes.
+     * @param int|null $num_errors Number of errors resulting from the task.
      *
      * @return self
      */
@@ -506,7 +506,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at Timestamp representing when the task was requested.
+     * @param \DateTime|null $requested_at Timestamp of when the task was requested.
      *
      * @return self
      */
@@ -560,7 +560,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at Timestamp representing when the task was started at.
+     * @param \DateTime $started_at Timestamp of when the task was started.
      *
      * @return self
      */
@@ -624,7 +624,7 @@ class FileActionResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets task_id
      *
-     * @param string $task_id ID of the task.
+     * @param string $task_id ID of the requested task.
      *
      * @return self
      */

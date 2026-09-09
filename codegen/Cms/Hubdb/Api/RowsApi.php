@@ -77,6 +77,12 @@ class RowsApi
         'cloneDraftTableRow' => [
             'application/json',
         ],
+        'cloneDraftTableRows' => [
+            'application/json',
+        ],
+        'createDraftTableRows' => [
+            'application/json',
+        ],
         'createTableRow' => [
             'application/json',
         ],
@@ -92,13 +98,25 @@ class RowsApi
         'purgeDraftTableRow' => [
             'application/json',
         ],
+        'purgeDraftTableRows' => [
+            'application/json',
+        ],
         'readDraftTableRows' => [
+            'application/json',
+        ],
+        'readTableRows' => [
             'application/json',
         ],
         'replaceDraftTableRow' => [
             'application/json',
         ],
+        'replaceDraftTableRows' => [
+            'application/json',
+        ],
         'updateDraftTableRow' => [
+            'application/json',
+        ],
+        'updateDraftTableRows' => [
             'application/json',
         ],
     ];
@@ -154,18 +172,18 @@ class RowsApi
      *
      * Clone a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  string|null $name The name for the cloned row. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRow'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function cloneDraftTableRow($table_id_or_name, $row_id, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
+    public function cloneDraftTableRow($row_id, $table_id_or_name, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
     {
-        list($response) = $this->cloneDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $name, $contentType);
+        list($response) = $this->cloneDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $name, $contentType);
         return $response;
     }
 
@@ -174,18 +192,18 @@ class RowsApi
      *
      * Clone a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  string|null $name The name for the cloned row. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRow'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cloneDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
+    public function cloneDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
     {
-        $request = $this->cloneDraftTableRowRequest($table_id_or_name, $row_id, $name, $contentType);
+        $request = $this->cloneDraftTableRowRequest($row_id, $table_id_or_name, $name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -275,17 +293,17 @@ class RowsApi
      *
      * Clone a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  string|null $name The name for the cloned row. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cloneDraftTableRowAsync($table_id_or_name, $row_id, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
+    public function cloneDraftTableRowAsync($row_id, $table_id_or_name, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
     {
-        return $this->cloneDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $name, $contentType)
+        return $this->cloneDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -298,18 +316,18 @@ class RowsApi
      *
      * Clone a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  string|null $name The name for the cloned row. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cloneDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
+    public function cloneDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
-        $request = $this->cloneDraftTableRowRequest($table_id_or_name, $row_id, $name, $contentType);
+        $request = $this->cloneDraftTableRowRequest($row_id, $table_id_or_name, $name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -350,23 +368,16 @@ class RowsApi
     /**
      * Create request for operation 'cloneDraftTableRow'
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  string|null $name The name for the cloned row. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cloneDraftTableRowRequest($table_id_or_name, $row_id, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
+    public function cloneDraftTableRowRequest($row_id, $table_id_or_name, $name = null, string $contentType = self::contentTypes['cloneDraftTableRow'][0])
     {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling cloneDraftTableRow'
-            );
-        }
 
         // verify the required parameter 'row_id' is set
         if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
@@ -378,6 +389,13 @@ class RowsApi
             throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.cloneDraftTableRow, must conform to the pattern /\\d+/.");
         }
         
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling cloneDraftTableRow'
+            );
+        }
+
 
 
         $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft/clone';
@@ -399,18 +417,18 @@ class RowsApi
 
 
         // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-        // path params
         if ($row_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'rowId' . '}',
                 ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -474,11 +492,635 @@ class RowsApi
     }
 
     /**
+     * Operation cloneDraftTableRows
+     *
+     * Clone rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowBatchCloneRequest $batch_input_hub_db_table_row_batch_clone_request batch_input_hub_db_table_row_batch_clone_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function cloneDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, string $contentType = self::contentTypes['cloneDraftTableRows'][0])
+    {
+        list($response) = $this->cloneDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation cloneDraftTableRowsWithHttpInfo
+     *
+     * Clone rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowBatchCloneRequest $batch_input_hub_db_table_row_batch_clone_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cloneDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, string $contentType = self::contentTypes['cloneDraftTableRows'][0])
+    {
+        $request = $this->cloneDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cloneDraftTableRowsAsync
+     *
+     * Clone rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowBatchCloneRequest $batch_input_hub_db_table_row_batch_clone_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cloneDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, string $contentType = self::contentTypes['cloneDraftTableRows'][0])
+    {
+        return $this->cloneDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cloneDraftTableRowsAsyncWithHttpInfo
+     *
+     * Clone rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowBatchCloneRequest $batch_input_hub_db_table_row_batch_clone_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cloneDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, string $contentType = self::contentTypes['cloneDraftTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
+        $request = $this->cloneDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cloneDraftTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowBatchCloneRequest $batch_input_hub_db_table_row_batch_clone_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cloneDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cloneDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_batch_clone_request, string $contentType = self::contentTypes['cloneDraftTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling cloneDraftTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_hub_db_table_row_batch_clone_request' is set
+        if ($batch_input_hub_db_table_row_batch_clone_request === null || (is_array($batch_input_hub_db_table_row_batch_clone_request) && count($batch_input_hub_db_table_row_batch_clone_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_hub_db_table_row_batch_clone_request when calling cloneDraftTableRows'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/clone';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_hub_db_table_row_batch_clone_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_batch_clone_request));
+            } else {
+                $httpBody = $batch_input_hub_db_table_row_batch_clone_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createDraftTableRows
+     *
+     * Create rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request batch_input_hub_db_table_row_v3_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function createDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_request, string $contentType = self::contentTypes['createDraftTableRows'][0])
+    {
+        list($response) = $this->createDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createDraftTableRowsWithHttpInfo
+     *
+     * Create rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request, string $contentType = self::contentTypes['createDraftTableRows'][0])
+    {
+        $request = $this->createDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createDraftTableRowsAsync
+     *
+     * Create rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_request, string $contentType = self::contentTypes['createDraftTableRows'][0])
+    {
+        return $this->createDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createDraftTableRowsAsyncWithHttpInfo
+     *
+     * Create rows in batch
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_request, string $contentType = self::contentTypes['createDraftTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
+        $request = $this->createDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createDraftTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3Request $batch_input_hub_db_table_row_v3_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_request, string $contentType = self::contentTypes['createDraftTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling createDraftTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_hub_db_table_row_v3_request' is set
+        if ($batch_input_hub_db_table_row_v3_request === null || (is_array($batch_input_hub_db_table_row_v3_request) && count($batch_input_hub_db_table_row_v3_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_hub_db_table_row_v3_request when calling createDraftTableRows'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_hub_db_table_row_v3_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_v3_request));
+            } else {
+                $httpBody = $batch_input_hub_db_table_row_v3_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createTableRow
      *
-     * Add a new row to a table
+     * Add a row to a table
      *
-     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTableRow'] to see the possible values for this operation
      *
@@ -495,9 +1137,9 @@ class RowsApi
     /**
      * Operation createTableRowWithHttpInfo
      *
-     * Add a new row to a table
+     * Add a row to a table
      *
-     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTableRow'] to see the possible values for this operation
      *
@@ -595,9 +1237,9 @@ class RowsApi
     /**
      * Operation createTableRowAsync
      *
-     * Add a new row to a table
+     * Add a row to a table
      *
-     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTableRow'] to see the possible values for this operation
      *
@@ -617,9 +1259,9 @@ class RowsApi
     /**
      * Operation createTableRowAsyncWithHttpInfo
      *
-     * Add a new row to a table
+     * Add a row to a table
      *
-     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTableRow'] to see the possible values for this operation
      *
@@ -670,7 +1312,7 @@ class RowsApi
     /**
      * Create request for operation 'createTableRow'
      *
-     * @param  string $table_id_or_name The ID or name of the target table. (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTableRow'] to see the possible values for this operation
      *
@@ -783,18 +1425,18 @@ class RowsApi
      *
      * Get a row from the draft table
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Set this to &#x60;true&#x60; to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRowById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getDraftTableRowById($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
+    public function getDraftTableRowById($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
     {
-        list($response) = $this->getDraftTableRowByIdWithHttpInfo($table_id_or_name, $row_id, $archived, $contentType);
+        list($response) = $this->getDraftTableRowByIdWithHttpInfo($row_id, $table_id_or_name, $archived, $contentType);
         return $response;
     }
 
@@ -803,18 +1445,18 @@ class RowsApi
      *
      * Get a row from the draft table
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Set this to &#x60;true&#x60; to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRowById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDraftTableRowByIdWithHttpInfo($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
+    public function getDraftTableRowByIdWithHttpInfo($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
     {
-        $request = $this->getDraftTableRowByIdRequest($table_id_or_name, $row_id, $archived, $contentType);
+        $request = $this->getDraftTableRowByIdRequest($row_id, $table_id_or_name, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -904,17 +1546,17 @@ class RowsApi
      *
      * Get a row from the draft table
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Set this to &#x60;true&#x60; to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRowById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDraftTableRowByIdAsync($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
+    public function getDraftTableRowByIdAsync($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
     {
-        return $this->getDraftTableRowByIdAsyncWithHttpInfo($table_id_or_name, $row_id, $archived, $contentType)
+        return $this->getDraftTableRowByIdAsyncWithHttpInfo($row_id, $table_id_or_name, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -927,18 +1569,18 @@ class RowsApi
      *
      * Get a row from the draft table
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Set this to &#x60;true&#x60; to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRowById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDraftTableRowByIdAsyncWithHttpInfo($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
+    public function getDraftTableRowByIdAsyncWithHttpInfo($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
-        $request = $this->getDraftTableRowByIdRequest($table_id_or_name, $row_id, $archived, $contentType);
+        $request = $this->getDraftTableRowByIdRequest($row_id, $table_id_or_name, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -979,23 +1621,16 @@ class RowsApi
     /**
      * Create request for operation 'getDraftTableRowById'
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Set this to &#x60;true&#x60; to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRowById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDraftTableRowByIdRequest($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
+    public function getDraftTableRowByIdRequest($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getDraftTableRowById'][0])
     {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling getDraftTableRowById'
-            );
-        }
 
         // verify the required parameter 'row_id' is set
         if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
@@ -1007,6 +1642,13 @@ class RowsApi
             throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.getDraftTableRowById, must conform to the pattern /\\d+/.");
         }
         
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling getDraftTableRowById'
+            );
+        }
+
 
 
         $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft';
@@ -1028,18 +1670,18 @@ class RowsApi
 
 
         // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-        // path params
         if ($row_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'rowId' . '}',
                 ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -1107,18 +1749,18 @@ class RowsApi
      *
      * Get a table row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Specifies whether to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRow'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getTableRow($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
+    public function getTableRow($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
     {
-        list($response) = $this->getTableRowWithHttpInfo($table_id_or_name, $row_id, $archived, $contentType);
+        list($response) = $this->getTableRowWithHttpInfo($row_id, $table_id_or_name, $archived, $contentType);
         return $response;
     }
 
@@ -1127,18 +1769,18 @@ class RowsApi
      *
      * Get a table row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Specifies whether to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRow'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTableRowWithHttpInfo($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
+    public function getTableRowWithHttpInfo($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
     {
-        $request = $this->getTableRowRequest($table_id_or_name, $row_id, $archived, $contentType);
+        $request = $this->getTableRowRequest($row_id, $table_id_or_name, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1228,17 +1870,17 @@ class RowsApi
      *
      * Get a table row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Specifies whether to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableRowAsync($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
+    public function getTableRowAsync($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
     {
-        return $this->getTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $archived, $contentType)
+        return $this->getTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1251,18 +1893,18 @@ class RowsApi
      *
      * Get a table row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Specifies whether to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
+    public function getTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
-        $request = $this->getTableRowRequest($table_id_or_name, $row_id, $archived, $contentType);
+        $request = $this->getTableRowRequest($row_id, $table_id_or_name, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1303,23 +1945,16 @@ class RowsApi
     /**
      * Create request for operation 'getTableRow'
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
-     * @param  bool|null $archived Specifies whether to return an archived row. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTableRowRequest($table_id_or_name, $row_id, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
+    public function getTableRowRequest($row_id, $table_id_or_name, $archived = null, string $contentType = self::contentTypes['getTableRow'][0])
     {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling getTableRow'
-            );
-        }
 
         // verify the required parameter 'row_id' is set
         if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
@@ -1331,6 +1966,13 @@ class RowsApi
             throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.getTableRow, must conform to the pattern /\\d+/.");
         }
         
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling getTableRow'
+            );
+        }
+
 
 
         $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}';
@@ -1352,18 +1994,18 @@ class RowsApi
 
 
         // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-        // path params
         if ($row_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'rowId' . '}',
                 ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -1431,22 +2073,22 @@ class RowsApi
      *
      * Get rows for a table
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to include archived rows in the response. (optional)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRows'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getTableRows($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getTableRows'][0])
+    public function getTableRows($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['getTableRows'][0])
     {
-        list($response) = $this->getTableRowsWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+        list($response) = $this->getTableRowsWithHttpInfo($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType);
         return $response;
     }
 
@@ -1455,22 +2097,22 @@ class RowsApi
      *
      * Get rows for a table
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to include archived rows in the response. (optional)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRows'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTableRowsWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getTableRows'][0])
+    public function getTableRowsWithHttpInfo($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['getTableRows'][0])
     {
-        $request = $this->getTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+        $request = $this->getTableRowsRequest($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1560,21 +2202,21 @@ class RowsApi
      *
      * Get rows for a table
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to include archived rows in the response. (optional)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableRowsAsync($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getTableRows'][0])
+    public function getTableRowsAsync($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['getTableRows'][0])
     {
-        return $this->getTableRowsAsyncWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType)
+        return $this->getTableRowsAsyncWithHttpInfo($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1587,22 +2229,22 @@ class RowsApi
      *
      * Get rows for a table
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to include archived rows in the response. (optional)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableRowsAsyncWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getTableRows'][0])
+    public function getTableRowsAsyncWithHttpInfo($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['getTableRows'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3';
-        $request = $this->getTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+        $request = $this->getTableRowsRequest($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1643,19 +2285,19 @@ class RowsApi
     /**
      * Create request for operation 'getTableRows'
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. See the above description for more details. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to include archived rows in the response. (optional)
+     * @param  string $table_id_or_name  (required)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTableRowsRequest($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getTableRows'][0])
+    public function getTableRowsRequest($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['getTableRows'][0])
     {
 
         // verify the required parameter 'table_id_or_name' is set
@@ -1681,15 +2323,6 @@ class RowsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -1699,8 +2332,26 @@ class RowsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -1717,18 +2368,9 @@ class RowsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1807,17 +2449,17 @@ class RowsApi
      *
      * Permanently deletes a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRow'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function purgeDraftTableRow($table_id_or_name, $row_id, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
+    public function purgeDraftTableRow($row_id, $table_id_or_name, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
     {
-        $this->purgeDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $contentType);
+        $this->purgeDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $contentType);
     }
 
     /**
@@ -1825,17 +2467,17 @@ class RowsApi
      *
      * Permanently deletes a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRow'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function purgeDraftTableRowWithHttpInfo($table_id_or_name, $row_id, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
+    public function purgeDraftTableRowWithHttpInfo($row_id, $table_id_or_name, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
     {
-        $request = $this->purgeDraftTableRowRequest($table_id_or_name, $row_id, $contentType);
+        $request = $this->purgeDraftTableRowRequest($row_id, $table_id_or_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1883,16 +2525,16 @@ class RowsApi
      *
      * Permanently deletes a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purgeDraftTableRowAsync($table_id_or_name, $row_id, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
+    public function purgeDraftTableRowAsync($row_id, $table_id_or_name, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
     {
-        return $this->purgeDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $contentType)
+        return $this->purgeDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1905,17 +2547,17 @@ class RowsApi
      *
      * Permanently deletes a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purgeDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
+    public function purgeDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
     {
         $returnType = '';
-        $request = $this->purgeDraftTableRowRequest($table_id_or_name, $row_id, $contentType);
+        $request = $this->purgeDraftTableRowRequest($row_id, $table_id_or_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1943,22 +2585,15 @@ class RowsApi
     /**
      * Create request for operation 'purgeDraftTableRow'
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function purgeDraftTableRowRequest($table_id_or_name, $row_id, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
+    public function purgeDraftTableRowRequest($row_id, $table_id_or_name, string $contentType = self::contentTypes['purgeDraftTableRow'][0])
     {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling purgeDraftTableRow'
-            );
-        }
 
         // verify the required parameter 'row_id' is set
         if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
@@ -1970,6 +2605,13 @@ class RowsApi
             throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.purgeDraftTableRow, must conform to the pattern /\\d+/.");
         }
         
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling purgeDraftTableRow'
+            );
+        }
+
 
         $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft';
         $formParams = [];
@@ -1981,18 +2623,18 @@ class RowsApi
 
 
         // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-        // path params
         if ($row_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'rowId' . '}',
                 ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -2056,50 +2698,39 @@ class RowsApi
     }
 
     /**
-     * Operation readDraftTableRows
+     * Operation purgeDraftTableRows
      *
-     * Get rows from draft table
+     * Delete rows
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to return archived rows. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRows'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
+     * @return void
      */
-    public function readDraftTableRows($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function purgeDraftTableRows($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['purgeDraftTableRows'][0])
     {
-        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
-        return $response;
+        $this->purgeDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string, $contentType);
     }
 
     /**
-     * Operation readDraftTableRowsWithHttpInfo
+     * Operation purgeDraftTableRowsWithHttpInfo
      *
-     * Get rows from draft table
+     * Delete rows
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to return archived rows. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRows'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function purgeDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['purgeDraftTableRows'][0])
     {
-        $request = $this->readDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+        $request = $this->purgeDraftTableRowsRequest($table_id_or_name, $batch_input_string, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2124,51 +2755,9 @@ class RowsApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2185,25 +2774,20 @@ class RowsApi
     }
 
     /**
-     * Operation readDraftTableRowsAsync
+     * Operation purgeDraftTableRowsAsync
      *
-     * Get rows from draft table
+     * Delete rows
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to return archived rows. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readDraftTableRowsAsync($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function purgeDraftTableRowsAsync($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['purgeDraftTableRows'][0])
     {
-        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType)
+        return $this->purgeDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2212,45 +2796,27 @@ class RowsApi
     }
 
     /**
-     * Operation readDraftTableRowsAsyncWithHttpInfo
+     * Operation purgeDraftTableRowsAsyncWithHttpInfo
      *
-     * Get rows from draft table
+     * Delete rows
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to return archived rows. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function purgeDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['purgeDraftTableRows'][0])
     {
-        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3';
-        $request = $this->readDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+        $returnType = '';
+        $request = $this->purgeDraftTableRowsRequest($table_id_or_name, $batch_input_string, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2270,98 +2836,40 @@ class RowsApi
     }
 
     /**
-     * Create request for operation 'readDraftTableRows'
+     * Create request for operation 'purgeDraftTableRows'
      *
-     * @param  string $table_id_or_name The ID or name of the table to query. (required)
-     * @param  string[]|null $sort Specifies the column names to sort the results by. (optional)
-     * @param  string|null $after The cursor token value to get the next set of results. You can get this from the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to return. Default is &#x60;1000&#x60;. (optional)
-     * @param  string[]|null $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times. (optional)
-     * @param  int|null $offset The number of rows to skip before starting to return results. (optional)
-     * @param  bool|null $archived Specifies whether to return archived rows. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purgeDraftTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function readDraftTableRowsRequest($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function purgeDraftTableRowsRequest($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['purgeDraftTableRows'][0])
     {
 
         // verify the required parameter 'table_id_or_name' is set
         if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling readDraftTableRows'
+                'Missing the required parameter $table_id_or_name when calling purgeDraftTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_string' is set
+        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_string when calling purgeDraftTableRows'
             );
         }
 
 
-
-
-
-
-
-
-        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft';
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/purge';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
         // path params
@@ -2375,13 +2883,20 @@ class RowsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
+            ['*/*', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($batch_input_string)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_string));
+            } else {
+                $httpBody = $batch_input_string;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -2424,7 +2939,645 @@ class RowsApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'GET',
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation readDraftTableRows
+     *
+     * Get a set of rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function readDraftTableRows($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    {
+        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation readDraftTableRowsWithHttpInfo
+     *
+     * Get a set of rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    {
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $batch_input_string, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation readDraftTableRowsAsync
+     *
+     * Get a set of rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function readDraftTableRowsAsync($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    {
+        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation readDraftTableRowsAsyncWithHttpInfo
+     *
+     * Get a set of rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $batch_input_string, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'readDraftTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function readDraftTableRowsRequest($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling readDraftTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_string' is set
+        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_string when calling readDraftTableRows'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/read';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_string)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_string));
+            } else {
+                $httpBody = $batch_input_string;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation readTableRows
+     *
+     * Get a set of rows
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function readTableRows($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readTableRows'][0])
+    {
+        list($response) = $this->readTableRowsWithHttpInfo($table_id_or_name, $batch_input_string, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation readTableRowsWithHttpInfo
+     *
+     * Get a set of rows
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function readTableRowsWithHttpInfo($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readTableRows'][0])
+    {
+        $request = $this->readTableRowsRequest($table_id_or_name, $batch_input_string, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation readTableRowsAsync
+     *
+     * Get a set of rows
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function readTableRowsAsync($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readTableRows'][0])
+    {
+        return $this->readTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation readTableRowsAsyncWithHttpInfo
+     *
+     * Get a set of rows
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function readTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
+        $request = $this->readTableRowsRequest($table_id_or_name, $batch_input_string, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'readTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function readTableRowsRequest($table_id_or_name, $batch_input_string, string $contentType = self::contentTypes['readTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling readTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_string' is set
+        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_string when calling readTableRows'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/batch/read';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_string)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_string));
+            } else {
+                $httpBody = $batch_input_string;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -2434,10 +3587,10 @@ class RowsApi
     /**
      * Operation replaceDraftTableRow
      *
-     * Replaces an existing row
+     * Replace an existing row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRow'] to see the possible values for this operation
      *
@@ -2445,19 +3598,19 @@ class RowsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function replaceDraftTableRow($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
+    public function replaceDraftTableRow($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
     {
-        list($response) = $this->replaceDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType);
+        list($response) = $this->replaceDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType);
         return $response;
     }
 
     /**
      * Operation replaceDraftTableRowWithHttpInfo
      *
-     * Replaces an existing row
+     * Replace an existing row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRow'] to see the possible values for this operation
      *
@@ -2465,9 +3618,9 @@ class RowsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
+    public function replaceDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
     {
-        $request = $this->replaceDraftTableRowRequest($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType);
+        $request = $this->replaceDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2555,19 +3708,19 @@ class RowsApi
     /**
      * Operation replaceDraftTableRowAsync
      *
-     * Replaces an existing row
+     * Replace an existing row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceDraftTableRowAsync($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
+    public function replaceDraftTableRowAsync($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
     {
-        return $this->replaceDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType)
+        return $this->replaceDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2578,20 +3731,20 @@ class RowsApi
     /**
      * Operation replaceDraftTableRowAsyncWithHttpInfo
      *
-     * Replaces an existing row
+     * Replace an existing row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
+    public function replaceDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
-        $request = $this->replaceDraftTableRowRequest($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType);
+        $request = $this->replaceDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2632,23 +3785,16 @@ class RowsApi
     /**
      * Create request for operation 'replaceDraftTableRow'
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceDraftTableRowRequest($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
+    public function replaceDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['replaceDraftTableRow'][0])
     {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling replaceDraftTableRow'
-            );
-        }
 
         // verify the required parameter 'row_id' is set
         if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
@@ -2660,6 +3806,13 @@ class RowsApi
             throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.replaceDraftTableRow, must conform to the pattern /\\d+/.");
         }
         
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling replaceDraftTableRow'
+            );
+        }
+
         // verify the required parameter 'hub_db_table_row_v3_request' is set
         if ($hub_db_table_row_v3_request === null || (is_array($hub_db_table_row_v3_request) && count($hub_db_table_row_v3_request) === 0)) {
             throw new \InvalidArgumentException(
@@ -2678,18 +3831,18 @@ class RowsApi
 
 
         // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-        // path params
         if ($row_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'rowId' . '}',
                 ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -2760,12 +3913,331 @@ class RowsApi
     }
 
     /**
+     * Operation replaceDraftTableRows
+     *
+     * Replace rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function replaceDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['replaceDraftTableRows'][0])
+    {
+        list($response) = $this->replaceDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation replaceDraftTableRowsWithHttpInfo
+     *
+     * Replace rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function replaceDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['replaceDraftTableRows'][0])
+    {
+        $request = $this->replaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation replaceDraftTableRowsAsync
+     *
+     * Replace rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replaceDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['replaceDraftTableRows'][0])
+    {
+        return $this->replaceDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation replaceDraftTableRowsAsyncWithHttpInfo
+     *
+     * Replace rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replaceDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['replaceDraftTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
+        $request = $this->replaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'replaceDraftTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function replaceDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['replaceDraftTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling replaceDraftTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_hub_db_table_row_v3_batch_update_request' is set
+        if ($batch_input_hub_db_table_row_v3_batch_update_request === null || (is_array($batch_input_hub_db_table_row_v3_batch_update_request) && count($batch_input_hub_db_table_row_v3_batch_update_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_hub_db_table_row_v3_batch_update_request when calling replaceDraftTableRows'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/replace';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_hub_db_table_row_v3_batch_update_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_v3_batch_update_request));
+            } else {
+                $httpBody = $batch_input_hub_db_table_row_v3_batch_update_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateDraftTableRow
      *
-     * Updates an existing row
+     * Update a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRow'] to see the possible values for this operation
      *
@@ -2773,19 +4245,19 @@ class RowsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function updateDraftTableRow($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
+    public function updateDraftTableRow($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
     {
-        list($response) = $this->updateDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType);
+        list($response) = $this->updateDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType);
         return $response;
     }
 
     /**
      * Operation updateDraftTableRowWithHttpInfo
      *
-     * Updates an existing row
+     * Update a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRow'] to see the possible values for this operation
      *
@@ -2793,9 +4265,9 @@ class RowsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateDraftTableRowWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
+    public function updateDraftTableRowWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
     {
-        $request = $this->updateDraftTableRowRequest($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType);
+        $request = $this->updateDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2883,19 +4355,19 @@ class RowsApi
     /**
      * Operation updateDraftTableRowAsync
      *
-     * Updates an existing row
+     * Update a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDraftTableRowAsync($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
+    public function updateDraftTableRowAsync($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
     {
-        return $this->updateDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType)
+        return $this->updateDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2906,20 +4378,20 @@ class RowsApi
     /**
      * Operation updateDraftTableRowAsyncWithHttpInfo
      *
-     * Updates an existing row
+     * Update a row
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDraftTableRowAsyncWithHttpInfo($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
+    public function updateDraftTableRowAsyncWithHttpInfo($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3';
-        $request = $this->updateDraftTableRowRequest($table_id_or_name, $row_id, $hub_db_table_row_v3_request, $contentType);
+        $request = $this->updateDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2960,23 +4432,16 @@ class RowsApi
     /**
      * Create request for operation 'updateDraftTableRow'
      *
-     * @param  string $table_id_or_name The ID or name of the table (required)
-     * @param  string $row_id The ID of the row (required)
+     * @param  string $row_id  (required)
+     * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableRowV3Request $hub_db_table_row_v3_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRow'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateDraftTableRowRequest($table_id_or_name, $row_id, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
+    public function updateDraftTableRowRequest($row_id, $table_id_or_name, $hub_db_table_row_v3_request, string $contentType = self::contentTypes['updateDraftTableRow'][0])
     {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling updateDraftTableRow'
-            );
-        }
 
         // verify the required parameter 'row_id' is set
         if ($row_id === null || (is_array($row_id) && count($row_id) === 0)) {
@@ -2988,6 +4453,13 @@ class RowsApi
             throw new \InvalidArgumentException("invalid value for \"row_id\" when calling RowsApi.updateDraftTableRow, must conform to the pattern /\\d+/.");
         }
         
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling updateDraftTableRow'
+            );
+        }
+
         // verify the required parameter 'hub_db_table_row_v3_request' is set
         if ($hub_db_table_row_v3_request === null || (is_array($hub_db_table_row_v3_request) && count($hub_db_table_row_v3_request) === 0)) {
             throw new \InvalidArgumentException(
@@ -3006,18 +4478,18 @@ class RowsApi
 
 
         // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-        // path params
         if ($row_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'rowId' . '}',
                 ObjectSerializer::toPathValue($row_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
                 $resourcePath
             );
         }
@@ -3081,6 +4553,325 @@ class RowsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateDraftTableRows
+     *
+     * Update rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function updateDraftTableRows($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['updateDraftTableRows'][0])
+    {
+        list($response) = $this->updateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateDraftTableRowsWithHttpInfo
+     *
+     * Update rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateDraftTableRowsWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['updateDraftTableRows'][0])
+    {
+        $request = $this->updateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3WithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateDraftTableRowsAsync
+     *
+     * Update rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDraftTableRowsAsync($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['updateDraftTableRows'][0])
+    {
+        return $this->updateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateDraftTableRowsAsyncWithHttpInfo
+     *
+     * Update rows in batch in draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['updateDraftTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\BatchResponseHubDbTableRowV3';
+        $request = $this->updateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateDraftTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  \HubSpot\Client\Cms\Hubdb\Model\BatchInputHubDbTableRowV3BatchUpdateRequest $batch_input_hub_db_table_row_v3_batch_update_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateDraftTableRowsRequest($table_id_or_name, $batch_input_hub_db_table_row_v3_batch_update_request, string $contentType = self::contentTypes['updateDraftTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling updateDraftTableRows'
+            );
+        }
+
+        // verify the required parameter 'batch_input_hub_db_table_row_v3_batch_update_request' is set
+        if ($batch_input_hub_db_table_row_v3_batch_update_request === null || (is_array($batch_input_hub_db_table_row_v3_batch_update_request) && count($batch_input_hub_db_table_row_v3_batch_update_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_hub_db_table_row_v3_batch_update_request when calling updateDraftTableRows'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_hub_db_table_row_v3_batch_update_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_hub_db_table_row_v3_batch_update_request));
+            } else {
+                $httpBody = $batch_input_hub_db_table_row_v3_batch_update_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

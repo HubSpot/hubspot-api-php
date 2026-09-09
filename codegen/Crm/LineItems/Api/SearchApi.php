@@ -128,7 +128,7 @@ class SearchApi
     /**
      * Operation doSearch
      *
-     * Search for line items using specified criteria.
+     * Search for line items
      *
      * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -146,7 +146,7 @@ class SearchApi
     /**
      * Operation doSearchWithHttpInfo
      *
-     * Search for line items using specified criteria.
+     * Search for line items
      *
      * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -245,7 +245,7 @@ class SearchApi
     /**
      * Operation doSearchAsync
      *
-     * Search for line items using specified criteria.
+     * Search for line items
      *
      * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -266,7 +266,7 @@ class SearchApi
     /**
      * Operation doSearchAsyncWithHttpInfo
      *
-     * Search for line items using specified criteria.
+     * Search for line items
      *
      * @param  \HubSpot\Client\Crm\LineItems\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation

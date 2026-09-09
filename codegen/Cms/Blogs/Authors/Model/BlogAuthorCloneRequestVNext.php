@@ -61,7 +61,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         'blog_author' => '\HubSpot\Client\Cms\Blogs\Authors\Model\BlogAuthor',
         'id' => 'string',
         'language' => 'string',
-        'primary_language' => 'string'
+        'primary_language' => 'string',
+        'use_published' => 'bool'
     ];
 
     /**
@@ -75,7 +76,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         'blog_author' => null,
         'id' => null,
         'language' => null,
-        'primary_language' => null
+        'primary_language' => null,
+        'use_published' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         'blog_author' => false,
         'id' => false,
         'language' => false,
-        'primary_language' => false
+        'primary_language' => false,
+        'use_published' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         'blog_author' => 'blogAuthor',
         'id' => 'id',
         'language' => 'language',
-        'primary_language' => 'primaryLanguage'
+        'primary_language' => 'primaryLanguage',
+        'use_published' => 'usePublished'
     ];
 
     /**
@@ -191,7 +195,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         'blog_author' => 'setBlogAuthor',
         'id' => 'setId',
         'language' => 'setLanguage',
-        'primary_language' => 'setPrimaryLanguage'
+        'primary_language' => 'setPrimaryLanguage',
+        'use_published' => 'setUsePublished'
     ];
 
     /**
@@ -203,7 +208,8 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         'blog_author' => 'getBlogAuthor',
         'id' => 'getId',
         'language' => 'getLanguage',
-        'primary_language' => 'getPrimaryLanguage'
+        'primary_language' => 'getPrimaryLanguage',
+        'use_published' => 'getUsePublished'
     ];
 
     /**
@@ -267,6 +273,7 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('primary_language', $data ?? [], null);
+        $this->setIfExists('use_published', $data ?? [], null);
     }
 
     /**
@@ -421,6 +428,33 @@ class BlogAuthorCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable primary_language cannot be null');
         }
         $this->container['primary_language'] = $primary_language;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_published
+     *
+     * @return bool|null
+     */
+    public function getUsePublished()
+    {
+        return $this->container['use_published'];
+    }
+
+    /**
+     * Sets use_published
+     *
+     * @param bool|null $use_published use_published
+     *
+     * @return self
+     */
+    public function setUsePublished($use_published)
+    {
+        if (is_null($use_published)) {
+            throw new \InvalidArgumentException('non-nullable use_published cannot be null');
+        }
+        $this->container['use_published'] = $use_published;
 
         return $this;
     }

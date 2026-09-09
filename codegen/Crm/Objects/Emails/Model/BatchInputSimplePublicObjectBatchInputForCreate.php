@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Objects\Emails\ObjectSerializer;
  * BatchInputSimplePublicObjectBatchInputForCreate Class Doc Comment
  *
  * @category Class
+ * @description Represents a batch input for creating multiple simple public objects in a single request. This component is used to streamline the process of adding new objects to a HubSpot account by allowing multiple entries to be created at once.
  * @package  HubSpot\Client\Crm\Objects\Emails
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class BatchInputSimplePublicObjectBatchInputForCreate implements ModelInterface,
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectBatchInputForCreate[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Objects\Emails\Model\SimplePublicObjectBatchInputForCreate[] $inputs An array of simple public objects to be created. Each object in the array contains the necessary data for creating a new entry in the system.
      *
      * @return self
      */

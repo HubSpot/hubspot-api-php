@@ -143,18 +143,18 @@ class ParticipantStateApi
      * Read participations breakdown by Contact identifier
      *
      * @param  string $contact_identifier The identifier of the Contact. It may be email or internal id. (required)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByContactId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function getParticipationsBreakdownByContactId($contact_identifier, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
+    public function getParticipationsBreakdownByContactId($contact_identifier, $after = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
     {
-        list($response) = $this->getParticipationsBreakdownByContactIdWithHttpInfo($contact_identifier, $state, $limit, $after, $contentType);
+        list($response) = $this->getParticipationsBreakdownByContactIdWithHttpInfo($contact_identifier, $after, $limit, $state, $contentType);
         return $response;
     }
 
@@ -164,18 +164,18 @@ class ParticipantStateApi
      * Read participations breakdown by Contact identifier
      *
      * @param  string $contact_identifier The identifier of the Contact. It may be email or internal id. (required)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByContactId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getParticipationsBreakdownByContactIdWithHttpInfo($contact_identifier, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
+    public function getParticipationsBreakdownByContactIdWithHttpInfo($contact_identifier, $after = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
     {
-        $request = $this->getParticipationsBreakdownByContactIdRequest($contact_identifier, $state, $limit, $after, $contentType);
+        $request = $this->getParticipationsBreakdownByContactIdRequest($contact_identifier, $after, $limit, $state, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -203,7 +203,7 @@ class ParticipantStateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                         $request,
                         $response,
                     );
@@ -231,7 +231,7 @@ class ParticipantStateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                 $request,
                 $response,
             );
@@ -240,7 +240,7 @@ class ParticipantStateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,17 +266,17 @@ class ParticipantStateApi
      * Read participations breakdown by Contact identifier
      *
      * @param  string $contact_identifier The identifier of the Contact. It may be email or internal id. (required)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByContactId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParticipationsBreakdownByContactIdAsync($contact_identifier, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
+    public function getParticipationsBreakdownByContactIdAsync($contact_identifier, $after = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
     {
-        return $this->getParticipationsBreakdownByContactIdAsyncWithHttpInfo($contact_identifier, $state, $limit, $after, $contentType)
+        return $this->getParticipationsBreakdownByContactIdAsyncWithHttpInfo($contact_identifier, $after, $limit, $state, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -290,18 +290,18 @@ class ParticipantStateApi
      * Read participations breakdown by Contact identifier
      *
      * @param  string $contact_identifier The identifier of the Contact. It may be email or internal id. (required)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByContactId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParticipationsBreakdownByContactIdAsyncWithHttpInfo($contact_identifier, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
+    public function getParticipationsBreakdownByContactIdAsyncWithHttpInfo($contact_identifier, $after = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging';
-        $request = $this->getParticipationsBreakdownByContactIdRequest($contact_identifier, $state, $limit, $after, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown';
+        $request = $this->getParticipationsBreakdownByContactIdRequest($contact_identifier, $after, $limit, $state, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -343,15 +343,15 @@ class ParticipantStateApi
      * Create request for operation 'getParticipationsBreakdownByContactId'
      *
      * @param  string $contact_identifier The identifier of the Contact. It may be email or internal id. (required)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByContactId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getParticipationsBreakdownByContactIdRequest($contact_identifier, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
+    public function getParticipationsBreakdownByContactIdRequest($contact_identifier, $after = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByContactId'][0])
     {
 
         // verify the required parameter 'contact_identifier' is set
@@ -374,8 +374,8 @@ class ParticipantStateApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $state,
-            'state', // param base name
+            $after,
+            'after', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -392,8 +392,8 @@ class ParticipantStateApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $state,
+            'state', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -475,19 +475,19 @@ class ParticipantStateApi
      *
      * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByExternalEventId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function getParticipationsBreakdownByExternalEventId($external_account_id, $external_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
+    public function getParticipationsBreakdownByExternalEventId($external_account_id, $external_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
     {
-        list($response) = $this->getParticipationsBreakdownByExternalEventIdWithHttpInfo($external_account_id, $external_event_id, $contact_identifier, $state, $limit, $after, $contentType);
+        list($response) = $this->getParticipationsBreakdownByExternalEventIdWithHttpInfo($external_account_id, $external_event_id, $after, $contact_identifier, $limit, $state, $contentType);
         return $response;
     }
 
@@ -498,19 +498,19 @@ class ParticipantStateApi
      *
      * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByExternalEventId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getParticipationsBreakdownByExternalEventIdWithHttpInfo($external_account_id, $external_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
+    public function getParticipationsBreakdownByExternalEventIdWithHttpInfo($external_account_id, $external_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
     {
-        $request = $this->getParticipationsBreakdownByExternalEventIdRequest($external_account_id, $external_event_id, $contact_identifier, $state, $limit, $after, $contentType);
+        $request = $this->getParticipationsBreakdownByExternalEventIdRequest($external_account_id, $external_event_id, $after, $contact_identifier, $limit, $state, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -538,7 +538,7 @@ class ParticipantStateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                         $request,
                         $response,
                     );
@@ -566,7 +566,7 @@ class ParticipantStateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                 $request,
                 $response,
             );
@@ -575,7 +575,7 @@ class ParticipantStateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -602,18 +602,18 @@ class ParticipantStateApi
      *
      * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByExternalEventId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParticipationsBreakdownByExternalEventIdAsync($external_account_id, $external_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
+    public function getParticipationsBreakdownByExternalEventIdAsync($external_account_id, $external_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
     {
-        return $this->getParticipationsBreakdownByExternalEventIdAsyncWithHttpInfo($external_account_id, $external_event_id, $contact_identifier, $state, $limit, $after, $contentType)
+        return $this->getParticipationsBreakdownByExternalEventIdAsyncWithHttpInfo($external_account_id, $external_event_id, $after, $contact_identifier, $limit, $state, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -628,19 +628,19 @@ class ParticipantStateApi
      *
      * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByExternalEventId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParticipationsBreakdownByExternalEventIdAsyncWithHttpInfo($external_account_id, $external_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
+    public function getParticipationsBreakdownByExternalEventIdAsyncWithHttpInfo($external_account_id, $external_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging';
-        $request = $this->getParticipationsBreakdownByExternalEventIdRequest($external_account_id, $external_event_id, $contact_identifier, $state, $limit, $after, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown';
+        $request = $this->getParticipationsBreakdownByExternalEventIdRequest($external_account_id, $external_event_id, $after, $contact_identifier, $limit, $state, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -683,16 +683,16 @@ class ParticipantStateApi
      *
      * @param  string $external_account_id The accountId that is associated with this marketing event in the external event application. (required)
      * @param  string $external_event_id The id of the marketing event in the external event application. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByExternalEventId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getParticipationsBreakdownByExternalEventIdRequest($external_account_id, $external_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
+    public function getParticipationsBreakdownByExternalEventIdRequest($external_account_id, $external_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByExternalEventId'][0])
     {
 
         // verify the required parameter 'external_account_id' is set
@@ -723,8 +723,8 @@ class ParticipantStateApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $contact_identifier,
-            'contactIdentifier', // param base name
+            $after,
+            'after', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -732,8 +732,8 @@ class ParticipantStateApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $state,
-            'state', // param base name
+            $contact_identifier,
+            'contactIdentifier', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -750,8 +750,8 @@ class ParticipantStateApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $state,
+            'state', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -840,19 +840,19 @@ class ParticipantStateApi
      * Read participations breakdown by Marketing Event internal identifier
      *
      * @param  int $marketing_event_id The internal id of the marketing event in HubSpot. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByMarketingEventId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function getParticipationsBreakdownByMarketingEventId($marketing_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
+    public function getParticipationsBreakdownByMarketingEventId($marketing_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
     {
-        list($response) = $this->getParticipationsBreakdownByMarketingEventIdWithHttpInfo($marketing_event_id, $contact_identifier, $state, $limit, $after, $contentType);
+        list($response) = $this->getParticipationsBreakdownByMarketingEventIdWithHttpInfo($marketing_event_id, $after, $contact_identifier, $limit, $state, $contentType);
         return $response;
     }
 
@@ -862,19 +862,19 @@ class ParticipantStateApi
      * Read participations breakdown by Marketing Event internal identifier
      *
      * @param  int $marketing_event_id The internal id of the marketing event in HubSpot. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByMarketingEventId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getParticipationsBreakdownByMarketingEventIdWithHttpInfo($marketing_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
+    public function getParticipationsBreakdownByMarketingEventIdWithHttpInfo($marketing_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
     {
-        $request = $this->getParticipationsBreakdownByMarketingEventIdRequest($marketing_event_id, $contact_identifier, $state, $limit, $after, $contentType);
+        $request = $this->getParticipationsBreakdownByMarketingEventIdRequest($marketing_event_id, $after, $contact_identifier, $limit, $state, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -902,7 +902,7 @@ class ParticipantStateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                         $request,
                         $response,
                     );
@@ -930,7 +930,7 @@ class ParticipantStateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                 $request,
                 $response,
             );
@@ -939,7 +939,7 @@ class ParticipantStateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging',
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -965,18 +965,18 @@ class ParticipantStateApi
      * Read participations breakdown by Marketing Event internal identifier
      *
      * @param  int $marketing_event_id The internal id of the marketing event in HubSpot. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByMarketingEventId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParticipationsBreakdownByMarketingEventIdAsync($marketing_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
+    public function getParticipationsBreakdownByMarketingEventIdAsync($marketing_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
     {
-        return $this->getParticipationsBreakdownByMarketingEventIdAsyncWithHttpInfo($marketing_event_id, $contact_identifier, $state, $limit, $after, $contentType)
+        return $this->getParticipationsBreakdownByMarketingEventIdAsyncWithHttpInfo($marketing_event_id, $after, $contact_identifier, $limit, $state, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -990,19 +990,19 @@ class ParticipantStateApi
      * Read participations breakdown by Marketing Event internal identifier
      *
      * @param  int $marketing_event_id The internal id of the marketing event in HubSpot. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByMarketingEventId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getParticipationsBreakdownByMarketingEventIdAsyncWithHttpInfo($marketing_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
+    public function getParticipationsBreakdownByMarketingEventIdAsyncWithHttpInfo($marketing_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
     {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdownForwardPaging';
-        $request = $this->getParticipationsBreakdownByMarketingEventIdRequest($marketing_event_id, $contact_identifier, $state, $limit, $after, $contentType);
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseWithTotalParticipationBreakdown';
+        $request = $this->getParticipationsBreakdownByMarketingEventIdRequest($marketing_event_id, $after, $contact_identifier, $limit, $state, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1044,16 +1044,16 @@ class ParticipantStateApi
      * Create request for operation 'getParticipationsBreakdownByMarketingEventId'
      *
      * @param  int $marketing_event_id The internal id of the marketing event in HubSpot. (required)
-     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
-     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
      * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
+     * @param  string|null $contact_identifier The identifier of the Contact. It may be email or internal id. (optional)
+     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
+     * @param  string|null $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getParticipationsBreakdownByMarketingEventId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getParticipationsBreakdownByMarketingEventIdRequest($marketing_event_id, $contact_identifier = null, $state = null, $limit = 10, $after = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
+    public function getParticipationsBreakdownByMarketingEventIdRequest($marketing_event_id, $after = null, $contact_identifier = null, $limit = 10, $state = null, string $contentType = self::contentTypes['getParticipationsBreakdownByMarketingEventId'][0])
     {
 
         // verify the required parameter 'marketing_event_id' is set
@@ -1077,8 +1077,8 @@ class ParticipantStateApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $contact_identifier,
-            'contactIdentifier', // param base name
+            $after,
+            'after', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1086,8 +1086,8 @@ class ParticipantStateApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $state,
-            'state', // param base name
+            $contact_identifier,
+            'contactIdentifier', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1104,8 +1104,8 @@ class ParticipantStateApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $state,
+            'state', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

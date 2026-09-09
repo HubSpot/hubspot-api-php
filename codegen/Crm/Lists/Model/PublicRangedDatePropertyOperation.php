@@ -74,11 +74,11 @@ class PublicRangedDatePropertyOperation implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'include_objects_with_no_value_set' => null,
-        'lower_bound' => 'int32',
+        'lower_bound' => 'int64',
         'operation_type' => null,
         'operator' => null,
         'requires_time_zone_conversion' => null,
-        'upper_bound' => 'int32'
+        'upper_bound' => 'int64'
     ];
 
     /**

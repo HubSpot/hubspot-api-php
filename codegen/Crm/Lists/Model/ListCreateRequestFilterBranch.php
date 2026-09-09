@@ -60,15 +60,15 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'filter_branch_operator' => 'string',
         'filter_branch_type' => 'string',
-        'filter_branches' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[]',
-        'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]',
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
+        'filter_branches' => '\HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[]',
+        'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[]',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy',
         'event_type_id' => 'string',
         'operator' => 'string',
-        'object_type_id' => 'string',
-        'property_with_object_id' => 'string',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranchPruningRefineBy',
         'association_category' => 'string',
-        'association_type_id' => 'int'
+        'association_type_id' => 'int',
+        'object_type_id' => 'string'
     ];
 
     /**
@@ -86,10 +86,10 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         'coalescing_refine_by' => null,
         'event_type_id' => null,
         'operator' => null,
-        'object_type_id' => null,
-        'property_with_object_id' => null,
+        'pruning_refine_by' => null,
         'association_category' => null,
-        'association_type_id' => 'int32'
+        'association_type_id' => 'int32',
+        'object_type_id' => null
     ];
 
     /**
@@ -105,10 +105,10 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         'coalescing_refine_by' => false,
         'event_type_id' => false,
         'operator' => false,
-        'object_type_id' => false,
-        'property_with_object_id' => false,
+        'pruning_refine_by' => false,
         'association_category' => false,
-        'association_type_id' => false
+        'association_type_id' => false,
+        'object_type_id' => false
     ];
 
     /**
@@ -204,10 +204,10 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         'coalescing_refine_by' => 'coalescingRefineBy',
         'event_type_id' => 'eventTypeId',
         'operator' => 'operator',
-        'object_type_id' => 'objectTypeId',
-        'property_with_object_id' => 'propertyWithObjectId',
+        'pruning_refine_by' => 'pruningRefineBy',
         'association_category' => 'associationCategory',
-        'association_type_id' => 'associationTypeId'
+        'association_type_id' => 'associationTypeId',
+        'object_type_id' => 'objectTypeId'
     ];
 
     /**
@@ -223,10 +223,10 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         'coalescing_refine_by' => 'setCoalescingRefineBy',
         'event_type_id' => 'setEventTypeId',
         'operator' => 'setOperator',
-        'object_type_id' => 'setObjectTypeId',
-        'property_with_object_id' => 'setPropertyWithObjectId',
+        'pruning_refine_by' => 'setPruningRefineBy',
         'association_category' => 'setAssociationCategory',
-        'association_type_id' => 'setAssociationTypeId'
+        'association_type_id' => 'setAssociationTypeId',
+        'object_type_id' => 'setObjectTypeId'
     ];
 
     /**
@@ -242,10 +242,10 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         'coalescing_refine_by' => 'getCoalescingRefineBy',
         'event_type_id' => 'getEventTypeId',
         'operator' => 'getOperator',
-        'object_type_id' => 'getObjectTypeId',
-        'property_with_object_id' => 'getPropertyWithObjectId',
+        'pruning_refine_by' => 'getPruningRefineBy',
         'association_category' => 'getAssociationCategory',
-        'association_type_id' => 'getAssociationTypeId'
+        'association_type_id' => 'getAssociationTypeId',
+        'object_type_id' => 'getObjectTypeId'
     ];
 
     /**
@@ -325,10 +325,10 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('coalescing_refine_by', $data ?? [], null);
         $this->setIfExists('event_type_id', $data ?? [], null);
         $this->setIfExists('operator', $data ?? [], null);
-        $this->setIfExists('object_type_id', $data ?? [], null);
-        $this->setIfExists('property_with_object_id', $data ?? [], null);
+        $this->setIfExists('pruning_refine_by', $data ?? [], null);
         $this->setIfExists('association_category', $data ?? [], null);
         $this->setIfExists('association_type_id', $data ?? [], null);
+        $this->setIfExists('object_type_id', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['filter_branch_type'] = static::$openAPIModelName;
@@ -388,17 +388,14 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['operator'] === null) {
             $invalidProperties[] = "'operator' can't be null";
         }
-        if ($this->container['object_type_id'] === null) {
-            $invalidProperties[] = "'object_type_id' can't be null";
-        }
-        if ($this->container['property_with_object_id'] === null) {
-            $invalidProperties[] = "'property_with_object_id' can't be null";
-        }
         if ($this->container['association_category'] === null) {
             $invalidProperties[] = "'association_category' can't be null";
         }
         if ($this->container['association_type_id'] === null) {
             $invalidProperties[] = "'association_type_id' can't be null";
+        }
+        if ($this->container['object_type_id'] === null) {
+            $invalidProperties[] = "'object_type_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -482,7 +479,7 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets filter_branches
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[]
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[]
      */
     public function getFilterBranches()
     {
@@ -492,7 +489,7 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets filter_branches
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[] $filter_branches filter_branches
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[] $filter_branches filter_branches
      *
      * @return self
      */
@@ -509,7 +506,7 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets filters
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[]
      */
     public function getFilters()
     {
@@ -519,7 +516,7 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets filters
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[] $filters filters
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[] $filters filters
      *
      * @return self
      */
@@ -536,7 +533,7 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy|null
      */
     public function getCoalescingRefineBy()
     {
@@ -546,7 +543,7 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -615,55 +612,28 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets object_type_id
+     * Gets pruning_refine_by
      *
-     * @return string
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranchPruningRefineBy|null
      */
-    public function getObjectTypeId()
+    public function getPruningRefineBy()
     {
-        return $this->container['object_type_id'];
+        return $this->container['pruning_refine_by'];
     }
 
     /**
-     * Sets object_type_id
+     * Sets pruning_refine_by
      *
-     * @param string $object_type_id The ID representing the type of object associated with the filter branch.
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranchPruningRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */
-    public function setObjectTypeId($object_type_id)
+    public function setPruningRefineBy($pruning_refine_by)
     {
-        if (is_null($object_type_id)) {
-            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        if (is_null($pruning_refine_by)) {
+            throw new \InvalidArgumentException('non-nullable pruning_refine_by cannot be null');
         }
-        $this->container['object_type_id'] = $object_type_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets property_with_object_id
-     *
-     * @return string
-     */
-    public function getPropertyWithObjectId()
-    {
-        return $this->container['property_with_object_id'];
-    }
-
-    /**
-     * Sets property_with_object_id
-     *
-     * @param string $property_with_object_id The property that is associated with the object ID in the filter branch.
-     *
-     * @return self
-     */
-    public function setPropertyWithObjectId($property_with_object_id)
-    {
-        if (is_null($property_with_object_id)) {
-            throw new \InvalidArgumentException('non-nullable property_with_object_id cannot be null');
-        }
-        $this->container['property_with_object_id'] = $property_with_object_id;
+        $this->container['pruning_refine_by'] = $pruning_refine_by;
 
         return $this;
     }
@@ -718,6 +688,33 @@ class ListCreateRequestFilterBranch implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable association_type_id cannot be null');
         }
         $this->container['association_type_id'] = $association_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type_id
+     *
+     * @return string
+     */
+    public function getObjectTypeId()
+    {
+        return $this->container['object_type_id'];
+    }
+
+    /**
+     * Sets object_type_id
+     *
+     * @param string $object_type_id The ID representing the type of object associated with the filter branch.
+     *
+     * @return self
+     */
+    public function setObjectTypeId($object_type_id)
+    {
+        if (is_null($object_type_id)) {
+            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        }
+        $this->container['object_type_id'] = $object_type_id;
 
         return $this;
     }

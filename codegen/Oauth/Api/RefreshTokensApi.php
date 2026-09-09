@@ -131,9 +131,7 @@ class RefreshTokensApi
     /**
      * Operation archive
      *
-     * Delete a refresh token
-     *
-     * @param  string $token  (required)
+     * @param  string $token token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
@@ -149,9 +147,7 @@ class RefreshTokensApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Delete a refresh token
-     *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
@@ -207,9 +203,7 @@ class RefreshTokensApi
     /**
      * Operation archiveAsync
      *
-     * Delete a refresh token
-     *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -229,9 +223,7 @@ class RefreshTokensApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Delete a refresh token
-     *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -269,7 +261,7 @@ class RefreshTokensApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -362,9 +354,7 @@ class RefreshTokensApi
     /**
      * Operation get
      *
-     * Retrieve refresh token metadata
-     *
-     * @param  string $token  (required)
+     * @param  string $token token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
@@ -381,9 +371,7 @@ class RefreshTokensApi
     /**
      * Operation getWithHttpInfo
      *
-     * Retrieve refresh token metadata
-     *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
@@ -481,9 +469,7 @@ class RefreshTokensApi
     /**
      * Operation getAsync
      *
-     * Retrieve refresh token metadata
-     *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -503,9 +489,7 @@ class RefreshTokensApi
     /**
      * Operation getAsyncWithHttpInfo
      *
-     * Retrieve refresh token metadata
-     *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -556,7 +540,7 @@ class RefreshTokensApi
     /**
      * Create request for operation 'get'
      *
-     * @param  string $token  (required)
+     * @param  string $token (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ObjectSerializer;
  * FilterGroup Class Doc Comment
  *
  * @category Class
+ * @description Represents a group of filters used to query data within HubSpot. This component is used to define criteria for filtering records in various API endpoints.
  * @package  HubSpot\Client\Crm\Objects\FeedbackSubmissions
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filters
      *
-     * @param \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Filter[] $filters filters
+     * @param \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Filter[] $filters A list of individual filter criteria that are applied together as a group. Each filter specifies a condition that records must meet to be included in the results.
      *
      * @return self
      */

@@ -61,6 +61,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'additional_properties' => 'string[]',
         'count' => 'int',
         'list_ids' => 'string[]',
+        'object_type_id' => 'string',
         'offset' => 'int',
         'processing_types' => 'string[]',
         'query' => 'string',
@@ -78,6 +79,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'additional_properties' => null,
         'count' => 'int32',
         'list_ids' => null,
+        'object_type_id' => null,
         'offset' => 'int32',
         'processing_types' => null,
         'query' => null,
@@ -93,6 +95,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'additional_properties' => false,
         'count' => false,
         'list_ids' => false,
+        'object_type_id' => false,
         'offset' => false,
         'processing_types' => false,
         'query' => false,
@@ -188,6 +191,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'additional_properties' => 'additionalProperties',
         'count' => 'count',
         'list_ids' => 'listIds',
+        'object_type_id' => 'objectTypeId',
         'offset' => 'offset',
         'processing_types' => 'processingTypes',
         'query' => 'query',
@@ -203,6 +207,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'additional_properties' => 'setAdditionalProperties',
         'count' => 'setCount',
         'list_ids' => 'setListIds',
+        'object_type_id' => 'setObjectTypeId',
         'offset' => 'setOffset',
         'processing_types' => 'setProcessingTypes',
         'query' => 'setQuery',
@@ -218,6 +223,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'additional_properties' => 'getAdditionalProperties',
         'count' => 'getCount',
         'list_ids' => 'getListIds',
+        'object_type_id' => 'getObjectTypeId',
         'offset' => 'getOffset',
         'processing_types' => 'getProcessingTypes',
         'query' => 'getQuery',
@@ -284,6 +290,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('additional_properties', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
         $this->setIfExists('list_ids', $data ?? [], null);
+        $this->setIfExists('object_type_id', $data ?? [], null);
         $this->setIfExists('offset', $data ?? [], null);
         $this->setIfExists('processing_types', $data ?? [], null);
         $this->setIfExists('query', $data ?? [], null);
@@ -405,7 +412,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets list_ids
      *
-     * @param string[]|null $list_ids The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.  If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
+     * @param string[]|null $list_ids ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included
      *
      * @return self
      */
@@ -415,6 +422,33 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable list_ids cannot be null');
         }
         $this->container['list_ids'] = $list_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type_id
+     *
+     * @return string|null
+     */
+    public function getObjectTypeId()
+    {
+        return $this->container['object_type_id'];
+    }
+
+    /**
+     * Sets object_type_id
+     *
+     * @param string|null $object_type_id object_type_id
+     *
+     * @return self
+     */
+    public function setObjectTypeId($object_type_id)
+    {
+        if (is_null($object_type_id)) {
+            throw new \InvalidArgumentException('non-nullable object_type_id cannot be null');
+        }
+        $this->container['object_type_id'] = $object_type_id;
 
         return $this;
     }
@@ -459,7 +493,7 @@ class ListSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets processing_types
      *
-     * @param string[]|null $processing_types The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.  If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.  Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
+     * @param string[]|null $processing_types List processing types to be included in search results. If not specified, all lists with all processing types will be included.
      *
      * @return self
      */

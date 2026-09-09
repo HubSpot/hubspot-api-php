@@ -66,7 +66,9 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'object_write_trace_id' => 'string',
         'properties' => 'array<string,string>',
         'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Calls\Model\ValueWithTimestamp[]>',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'url' => 'string',
+        'warnings' => '\HubSpot\Client\Crm\Objects\Calls\Model\PublicObjectWarning[]'
     ];
 
     /**
@@ -85,7 +87,9 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'object_write_trace_id' => null,
         'properties' => null,
         'properties_with_history' => null,
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'url' => null,
+        'warnings' => null
     ];
 
     /**
@@ -102,7 +106,9 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'object_write_trace_id' => false,
         'properties' => false,
         'properties_with_history' => false,
-        'updated_at' => false
+        'updated_at' => false,
+        'url' => false,
+        'warnings' => false
     ];
 
     /**
@@ -199,7 +205,9 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'object_write_trace_id' => 'objectWriteTraceId',
         'properties' => 'properties',
         'properties_with_history' => 'propertiesWithHistory',
-        'updated_at' => 'updatedAt'
+        'updated_at' => 'updatedAt',
+        'url' => 'url',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -216,7 +224,9 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'object_write_trace_id' => 'setObjectWriteTraceId',
         'properties' => 'setProperties',
         'properties_with_history' => 'setPropertiesWithHistory',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'url' => 'setUrl',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -233,7 +243,9 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'object_write_trace_id' => 'getObjectWriteTraceId',
         'properties' => 'getProperties',
         'properties_with_history' => 'getPropertiesWithHistory',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'url' => 'getUrl',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -302,6 +314,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('properties', $data ?? [], null);
         $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -331,9 +345,6 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
@@ -367,7 +378,7 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets archived
      *
-     * @return bool
+     * @return bool|null
      */
     public function getArchived()
     {
@@ -377,7 +388,7 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets archived
      *
-     * @param bool $archived Whether the object is archived.
+     * @param bool|null $archived Whether the object is archived.
      *
      * @return self
      */
@@ -603,6 +614,60 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url The URL associated with the object.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \HubSpot\Client\Crm\Objects\Calls\Model\PublicObjectWarning[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \HubSpot\Client\Crm\Objects\Calls\Model\PublicObjectWarning[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

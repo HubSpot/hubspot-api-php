@@ -63,7 +63,7 @@ class BatchResponsePublicDefaultAssociation implements ModelInterface, ArrayAcce
         'links' => 'array<string,string>',
         'num_errors' => 'int',
         'requested_at' => '\DateTime',
-        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation[]',
+        'results' => '\HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation1[]',
         'started_at' => '\DateTime',
         'status' => 'string'
     ];
@@ -517,7 +517,7 @@ class BatchResponsePublicDefaultAssociation implements ModelInterface, ArrayAcce
     /**
      * Gets results
      *
-     * @return \HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation[]
+     * @return \HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation1[]
      */
     public function getResults()
     {
@@ -527,7 +527,7 @@ class BatchResponsePublicDefaultAssociation implements ModelInterface, ArrayAcce
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation[] $results results
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation1[] $results results
      *
      * @return self
      */

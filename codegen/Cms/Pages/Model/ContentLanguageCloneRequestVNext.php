@@ -60,7 +60,8 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'id' => 'string',
         'language' => 'string',
-        'primary_language' => 'string'
+        'primary_language' => 'string',
+        'use_published' => 'bool'
     ];
 
     /**
@@ -73,7 +74,8 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'id' => null,
         'language' => null,
-        'primary_language' => null
+        'primary_language' => null,
+        'use_published' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'id' => false,
         'language' => false,
-        'primary_language' => false
+        'primary_language' => false,
+        'use_published' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     protected static $attributeMap = [
         'id' => 'id',
         'language' => 'language',
-        'primary_language' => 'primaryLanguage'
+        'primary_language' => 'primaryLanguage',
+        'use_published' => 'usePublished'
     ];
 
     /**
@@ -186,7 +190,8 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     protected static $setters = [
         'id' => 'setId',
         'language' => 'setLanguage',
-        'primary_language' => 'setPrimaryLanguage'
+        'primary_language' => 'setPrimaryLanguage',
+        'use_published' => 'setUsePublished'
     ];
 
     /**
@@ -197,7 +202,8 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
     protected static $getters = [
         'id' => 'getId',
         'language' => 'getLanguage',
-        'primary_language' => 'getPrimaryLanguage'
+        'primary_language' => 'getPrimaryLanguage',
+        'use_published' => 'getUsePublished'
     ];
 
     /**
@@ -260,6 +266,7 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('primary_language', $data ?? [], null);
+        $this->setIfExists('use_published', $data ?? [], null);
     }
 
     /**
@@ -384,6 +391,33 @@ class ContentLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable primary_language cannot be null');
         }
         $this->container['primary_language'] = $primary_language;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_published
+     *
+     * @return bool|null
+     */
+    public function getUsePublished()
+    {
+        return $this->container['use_published'];
+    }
+
+    /**
+     * Sets use_published
+     *
+     * @param bool|null $use_published If true, clone from the published version of the content. Defaults to false (clones from the current draft).
+     *
+     * @return self
+     */
+    public function setUsePublished($use_published)
+    {
+        if (is_null($use_published)) {
+            throw new \InvalidArgumentException('non-nullable use_published cannot be null');
+        }
+        $this->container['use_published'] = $use_published;
 
         return $this;
     }

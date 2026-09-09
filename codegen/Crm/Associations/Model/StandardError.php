@@ -451,7 +451,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The unique ID that identifies an object.
+     * @param string|null $id A unique ID for the error instance.
      *
      * @return self
      */

@@ -316,7 +316,7 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets active
      *
-     * @param bool $active Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * @param bool $active Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications. It is a boolean.
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class SubscriptionBatchUpdateRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param int $id The ID of the webhook subscription to update.
+     * @param int $id The ID of the webhook subscription to update. It is an integer.
      *
      * @return self
      */

@@ -410,7 +410,7 @@ class Filter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operator
      *
-     * @param string $operator null
+     * @param string $operator The comparison operator used in the filter, such as \"EQ\" or \"GT\".
      *
      * @return self
      */

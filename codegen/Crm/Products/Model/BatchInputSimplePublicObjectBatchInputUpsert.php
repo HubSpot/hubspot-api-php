@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Products\ObjectSerializer;
  * BatchInputSimplePublicObjectBatchInputUpsert Class Doc Comment
  *
  * @category Class
+ * @description Represents a batch input operation for upserting simple public objects in HubSpot. This component is used to process multiple upsert operations in a single request, improving efficiency and performance.
  * @package  HubSpot\Client\Crm\Products
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class BatchInputSimplePublicObjectBatchInputUpsert implements ModelInterface, Ar
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Products\Model\SimplePublicObjectBatchInputUpsert[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Products\Model\SimplePublicObjectBatchInputUpsert[] $inputs An array of simple public objects to be upserted. Each object in the array contains the necessary data for creating or updating a record in HubSpot.
      *
      * @return self
      */

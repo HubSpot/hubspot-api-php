@@ -61,6 +61,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_name' => 'string',
         'primary_team_id' => 'string',
         'role_id' => 'string',
+        'seat_names' => 'string[]',
         'secondary_team_ids' => 'string[]'
     ];
 
@@ -76,6 +77,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_name' => null,
         'primary_team_id' => null,
         'role_id' => null,
+        'seat_names' => null,
         'secondary_team_ids' => null
     ];
 
@@ -89,6 +91,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_name' => false,
         'primary_team_id' => false,
         'role_id' => false,
+        'seat_names' => false,
         'secondary_team_ids' => false
     ];
 
@@ -182,6 +185,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_name' => 'lastName',
         'primary_team_id' => 'primaryTeamId',
         'role_id' => 'roleId',
+        'seat_names' => 'seatNames',
         'secondary_team_ids' => 'secondaryTeamIds'
     ];
 
@@ -195,6 +199,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_name' => 'setLastName',
         'primary_team_id' => 'setPrimaryTeamId',
         'role_id' => 'setRoleId',
+        'seat_names' => 'setSeatNames',
         'secondary_team_ids' => 'setSecondaryTeamIds'
     ];
 
@@ -208,6 +213,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_name' => 'getLastName',
         'primary_team_id' => 'getPrimaryTeamId',
         'role_id' => 'getRoleId',
+        'seat_names' => 'getSeatNames',
         'secondary_team_ids' => 'getSecondaryTeamIds'
     ];
 
@@ -272,6 +278,7 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('last_name', $data ?? [], null);
         $this->setIfExists('primary_team_id', $data ?? [], null);
         $this->setIfExists('role_id', $data ?? [], null);
+        $this->setIfExists('seat_names', $data ?? [], null);
         $this->setIfExists('secondary_team_ids', $data ?? [], null);
     }
 
@@ -421,6 +428,33 @@ class PublicUserUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable role_id cannot be null');
         }
         $this->container['role_id'] = $role_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets seat_names
+     *
+     * @return string[]|null
+     */
+    public function getSeatNames()
+    {
+        return $this->container['seat_names'];
+    }
+
+    /**
+     * Sets seat_names
+     *
+     * @param string[]|null $seat_names seat_names
+     *
+     * @return self
+     */
+    public function setSeatNames($seat_names)
+    {
+        if (is_null($seat_names)) {
+            throw new \InvalidArgumentException('non-nullable seat_names cannot be null');
+        }
+        $this->container['seat_names'] = $seat_names;
 
         return $this;
     }

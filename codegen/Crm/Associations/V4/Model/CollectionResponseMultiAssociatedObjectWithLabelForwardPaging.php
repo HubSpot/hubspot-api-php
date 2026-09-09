@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Associations\V4\ObjectSerializer;
  * CollectionResponseMultiAssociatedObjectWithLabelForwardPaging Class Doc Comment
  *
  * @category Class
+ * @description Represents a paginated collection of objects that are associated with multiple labels, including the results and pagination details. This component is used when retrieving associated objects with specific labels in a forward-paging manner.
  * @package  HubSpot\Client\Crm\Associations\V4
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -339,7 +340,7 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging implements M
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[] $results results
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\MultiAssociatedObjectWithLabel[] $results The list of objects that are associated with multiple labels, returned as part of the collection.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \HubSpot\Client\Marketing\Transactional\ObjectSerializer;
  * ForwardPaging Class Doc Comment
  *
  * @category Class
+ * @description Paging information for forward-only pagination. Contains the next page reference when more results are available; omitted or empty on the last page.
  * @package  HubSpot\Client\Marketing\Transactional
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

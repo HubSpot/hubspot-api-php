@@ -471,7 +471,7 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param string|null $name Name of the folder.
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class Folder implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent_folder_id
      *
-     * @param string|null $parent_folder_id New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     * @param string|null $parent_folder_id ID of the parent folder.
      *
      * @return self
      */

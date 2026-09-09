@@ -316,7 +316,7 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id The unique ID that identifies an object.
+     * @param string $id The ID for the association type.
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class AssociatedId implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type The type of associations.
+     * @param string $type The type of association.
      *
      * @return self
      */

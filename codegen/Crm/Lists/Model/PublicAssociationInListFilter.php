@@ -59,7 +59,7 @@ class PublicAssociationInListFilter implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'association_category' => 'string',
         'association_type_id' => 'int',
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicNumAssociationsFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicAssociationInListFilterCoalescingRefineBy',
         'filter_type' => 'string',
         'list_id' => 'string',
         'operator' => 'string',
@@ -435,7 +435,7 @@ class PublicAssociationInListFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicNumAssociationsFilterCoalescingRefineBy
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAssociationInListFilterCoalescingRefineBy
      */
     public function getCoalescingRefineBy()
     {
@@ -445,7 +445,7 @@ class PublicAssociationInListFilter implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicNumAssociationsFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAssociationInListFilterCoalescingRefineBy $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */

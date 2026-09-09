@@ -35,7 +35,7 @@ use \HubSpot\Client\Marketing\Emails\ObjectSerializer;
  * Paging Class Doc Comment
  *
  * @category Class
- * @description Contains information pagination of results.
+ * @description Represents the pagination information for navigating through a list of results in the API. It provides details on how to access the previous or next set of results.
  * @package  HubSpot\Client\Marketing\Emails
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

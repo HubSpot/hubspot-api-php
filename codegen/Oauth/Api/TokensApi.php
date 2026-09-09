@@ -128,7 +128,7 @@ class TokensApi
     /**
      * Operation create
      *
-     * Refresh an access token
+     * OAuth token endpoint
      *
      * @param  string|null $grant_type grant_type (optional)
      * @param  string|null $code code (optional)
@@ -153,7 +153,7 @@ class TokensApi
     /**
      * Operation createWithHttpInfo
      *
-     * Refresh an access token
+     * OAuth token endpoint
      *
      * @param  string|null $grant_type (optional)
      * @param  string|null $code (optional)
@@ -259,7 +259,7 @@ class TokensApi
     /**
      * Operation createAsync
      *
-     * Refresh an access token
+     * OAuth token endpoint
      *
      * @param  string|null $grant_type (optional)
      * @param  string|null $code (optional)
@@ -287,7 +287,7 @@ class TokensApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Refresh an access token
+     * OAuth token endpoint
      *
      * @param  string|null $grant_type (optional)
      * @param  string|null $code (optional)

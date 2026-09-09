@@ -59,7 +59,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'language' => 'string'
+        'language' => 'string',
+        'use_published' => 'bool'
     ];
 
     /**
@@ -71,7 +72,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'language' => null
+        'language' => null,
+        'use_published' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'language' => false
+        'language' => false,
+        'use_published' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'language' => 'language'
+        'language' => 'language',
+        'use_published' => 'usePublished'
     ];
 
     /**
@@ -181,7 +185,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
-        'language' => 'setLanguage'
+        'language' => 'setLanguage',
+        'use_published' => 'setUsePublished'
     ];
 
     /**
@@ -191,7 +196,8 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
-        'language' => 'getLanguage'
+        'language' => 'getLanguage',
+        'use_published' => 'getUsePublished'
     ];
 
     /**
@@ -253,6 +259,7 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('use_published', $data ?? [], null);
     }
 
     /**
@@ -284,9 +291,6 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['language'] === null) {
-            $invalidProperties[] = "'language' can't be null";
         }
         return $invalidProperties;
     }
@@ -333,7 +337,7 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
     /**
      * Gets language
      *
-     * @return string
+     * @return string|null
      */
     public function getLanguage()
     {
@@ -343,7 +347,7 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
     /**
      * Sets language
      *
-     * @param string $language Target language of new variant.
+     * @param string|null $language Target language of new variant.
      *
      * @return self
      */
@@ -353,6 +357,33 @@ class BlogPostLanguageCloneRequestVNext implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable language cannot be null');
         }
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_published
+     *
+     * @return bool|null
+     */
+    public function getUsePublished()
+    {
+        return $this->container['use_published'];
+    }
+
+    /**
+     * Sets use_published
+     *
+     * @param bool|null $use_published use_published
+     *
+     * @return self
+     */
+    public function setUsePublished($use_published)
+    {
+        if (is_null($use_published)) {
+            throw new \InvalidArgumentException('non-nullable use_published cannot be null');
+        }
+        $this->container['use_published'] = $use_published;
 
         return $this;
     }

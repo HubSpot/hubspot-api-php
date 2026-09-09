@@ -648,7 +648,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_used_for_blog_post
      *
-     * @param bool $is_used_for_blog_post Whether the domain is used for CMS blog posts. Deprecated
+     * @param bool $is_used_for_blog_post Whether the domain is used for CMS blog posts.
      *
      * @return self
      */
@@ -675,7 +675,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_used_for_email
      *
-     * @param bool $is_used_for_email Whether the domain is used for CMS email web pages. Deprecated
+     * @param bool $is_used_for_email Whether the domain is used for CMS email web pages.
      *
      * @return self
      */
@@ -702,7 +702,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_used_for_knowledge
      *
-     * @param bool $is_used_for_knowledge Whether the domain is used for CMS knowledge pages. Deprecated
+     * @param bool $is_used_for_knowledge Whether the domain is used for CMS knowledge pages.
      *
      * @return self
      */
@@ -729,7 +729,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_used_for_landing_page
      *
-     * @param bool $is_used_for_landing_page Whether the domain is used for CMS landing pages. Deprecated
+     * @param bool $is_used_for_landing_page Whether the domain is used for CMS landing pages.
      *
      * @return self
      */
@@ -756,7 +756,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_used_for_site_page
      *
-     * @param bool $is_used_for_site_page Whether the domain is used for CMS site pages. Deprecated
+     * @param bool $is_used_for_site_page Whether the domain is used for CMS site pages.
      *
      * @return self
      */

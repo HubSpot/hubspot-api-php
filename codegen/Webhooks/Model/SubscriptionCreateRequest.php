@@ -450,7 +450,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets active
      *
-     * @param bool|null $active Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * @param bool|null $active Determines if the subscription is active or paused. Defaults to false.
      *
      * @return self
      */
@@ -477,7 +477,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets event_type
      *
-     * @param string $event_type The type of event to listen for. Accepted values include contact.creation, contact.deletion, contact.propertyChange, and similar event types for other CRM objects and custom objects.
+     * @param string $event_type Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class SubscriptionCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets property_name
      *
-     * @param string|null $property_name The internal name of the property to monitor for changes. Only applies when eventType is propertyChange.
+     * @param string|null $property_name The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
      *
      * @return self
      */
