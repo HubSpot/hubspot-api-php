@@ -29,7 +29,6 @@ namespace HubSpot\Client\Cms\Pages\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
@@ -192,10 +191,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -271,8 +270,8 @@ class FoldersApi
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -280,8 +279,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -361,7 +360,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -436,10 +435,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -568,8 +567,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -577,8 +576,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -625,7 +624,7 @@ class FoldersApi
         if (isset($content_folder)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($content_folder));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($content_folder), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $content_folder;
             }
@@ -646,7 +645,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -725,10 +724,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -861,8 +860,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -870,8 +869,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -962,7 +961,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1039,10 +1038,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -1173,8 +1172,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1182,8 +1181,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -1268,7 +1267,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1349,10 +1348,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -1487,8 +1486,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1496,8 +1495,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -1599,7 +1598,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1694,10 +1693,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -1846,8 +1845,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1855,8 +1854,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -2030,7 +2029,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2107,10 +2106,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -2255,8 +2254,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2264,8 +2263,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -2323,7 +2322,7 @@ class FoldersApi
         if (isset($batch_input_string)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_string));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_string), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batch_input_string;
             }
@@ -2344,7 +2343,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2421,10 +2420,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -2555,8 +2554,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2564,8 +2563,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -2650,7 +2649,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2729,10 +2728,10 @@ class FoldersApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -2865,8 +2864,8 @@ class FoldersApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -2874,8 +2873,8 @@ class FoldersApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -2949,7 +2948,7 @@ class FoldersApi
         if (isset($content_folder)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($content_folder));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($content_folder), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $content_folder;
             }
@@ -2970,7 +2969,7 @@ class FoldersApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
