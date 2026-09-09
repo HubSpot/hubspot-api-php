@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Contacts\ObjectSerializer;
  * BatchInputSimplePublicObjectId Class Doc Comment
  *
  * @category Class
+ * @description Represents a batch input payload containing a list of simple public object IDs. This component is used when performing batch operations on multiple objects within HubSpot.
  * @package  HubSpot\Client\Crm\Contacts
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class BatchInputSimplePublicObjectId implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectId[] $inputs An array of simple public object IDs to be processed in the batch operation.
      *
      * @return self
      */

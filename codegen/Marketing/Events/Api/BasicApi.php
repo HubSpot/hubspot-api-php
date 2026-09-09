@@ -83,13 +83,13 @@ class BasicApi
         'create' => [
             'application/json',
         ],
-        'getAll' => [
-            'application/json',
-        ],
         'getByObjectId' => [
             'application/json',
         ],
         'getDetails' => [
+            'application/json',
+        ],
+        'marketingMarketingEventsV3' => [
             'application/json',
         ],
         'update' => [
@@ -405,7 +405,7 @@ class BasicApi
      *
      * Delete Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByObjectId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
@@ -422,7 +422,7 @@ class BasicApi
      *
      * Delete Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByObjectId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
@@ -479,7 +479,7 @@ class BasicApi
      *
      * Delete Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByObjectId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -500,7 +500,7 @@ class BasicApi
      *
      * Delete Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByObjectId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -537,7 +537,7 @@ class BasicApi
     /**
      * Create request for operation 'archiveByObjectId'
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByObjectId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -916,307 +916,11 @@ class BasicApi
     }
 
     /**
-     * Operation getAll
-     *
-     * Get all marketing event
-     *
-     * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error
-     */
-    public function getAll($after = null, $limit = 10, string $contentType = self::contentTypes['getAll'][0])
-    {
-        list($response) = $this->getAllWithHttpInfo($after, $limit, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getAllWithHttpInfo
-     *
-     * Get all marketing event
-     *
-     * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getAllWithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['getAll'][0])
-    {
-        $request = $this->getAllRequest($after, $limit, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Events\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Events\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getAllAsync
-     *
-     * Get all marketing event
-     *
-     * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAllAsync($after = null, $limit = 10, string $contentType = self::contentTypes['getAll'][0])
-    {
-        return $this->getAllAsyncWithHttpInfo($after, $limit, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAllAsyncWithHttpInfo
-     *
-     * Get all marketing event
-     *
-     * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAllAsyncWithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['getAll'][0])
-    {
-        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging';
-        $request = $this->getAllRequest($after, $limit, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getAll'
-     *
-     * @param  string|null $after The cursor indicating the position of the last retrieved item. (optional)
-     * @param  int|null $limit The limit for response size. The default value is 10, the max number is 100 (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getAllRequest($after = null, $limit = 10, string $contentType = self::contentTypes['getAll'][0])
-    {
-
-
-
-
-        $resourcePath = '/marketing/v3/marketing-events/';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getByObjectId
      *
      * Get Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByObjectId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1234,7 +938,7 @@ class BasicApi
      *
      * Get Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByObjectId'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1333,7 +1037,7 @@ class BasicApi
      *
      * Get Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByObjectId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1354,7 +1058,7 @@ class BasicApi
      *
      * Get Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByObjectId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1404,7 +1108,7 @@ class BasicApi
     /**
      * Create request for operation 'getByObjectId'
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByObjectId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1805,6 +1509,294 @@ class BasicApi
     }
 
     /**
+     * Operation marketingMarketingEventsV3
+     *
+     * @param  string|null $after after (optional)
+     * @param  int|null $limit limit (optional, default to 10)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error
+     */
+    public function marketingMarketingEventsV3($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    {
+        list($response) = $this->marketingMarketingEventsV3WithHttpInfo($after, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation marketingMarketingEventsV3WithHttpInfo
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional, default to 10)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function marketingMarketingEventsV3WithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    {
+        $request = $this->marketingMarketingEventsV3Request($after, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Marketing\Events\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Events\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation marketingMarketingEventsV3Async
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional, default to 10)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function marketingMarketingEventsV3Async($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    {
+        return $this->marketingMarketingEventsV3AsyncWithHttpInfo($after, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation marketingMarketingEventsV3AsyncWithHttpInfo
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional, default to 10)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function marketingMarketingEventsV3AsyncWithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    {
+        $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging';
+        $request = $this->marketingMarketingEventsV3Request($after, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'marketingMarketingEventsV3'
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional, default to 10)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function marketingMarketingEventsV3Request($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    {
+
+
+
+
+        $resourcePath = '/marketing/marketing-events/v3';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation update
      *
      * Update Marketing Event by External IDs
@@ -2135,7 +2127,7 @@ class BasicApi
      *
      * Update Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicUpdateRequestV2 $marketing_event_public_update_request_v2 marketing_event_public_update_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateByObjectId'] to see the possible values for this operation
      *
@@ -2154,7 +2146,7 @@ class BasicApi
      *
      * Update Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicUpdateRequestV2 $marketing_event_public_update_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateByObjectId'] to see the possible values for this operation
      *
@@ -2254,7 +2246,7 @@ class BasicApi
      *
      * Update Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicUpdateRequestV2 $marketing_event_public_update_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateByObjectId'] to see the possible values for this operation
      *
@@ -2276,7 +2268,7 @@ class BasicApi
      *
      * Update Marketing Event by objectId
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicUpdateRequestV2 $marketing_event_public_update_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateByObjectId'] to see the possible values for this operation
      *
@@ -2327,7 +2319,7 @@ class BasicApi
     /**
      * Create request for operation 'updateByObjectId'
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\MarketingEventPublicUpdateRequestV2 $marketing_event_public_update_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateByObjectId'] to see the possible values for this operation
      *

@@ -72,7 +72,7 @@ class LegalConsentCheckbox implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPIFormats = [
         'label' => null,
         'required' => null,
-        'subscription_type_id' => 'int32'
+        'subscription_type_id' => 'int64'
     ];
 
     /**

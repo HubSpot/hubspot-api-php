@@ -473,7 +473,7 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets label
      *
-     * @param string|null $label The label for the button that triggers the action as it will be displayed to users.
+     * @param string|null $label The label for this property as you'd like it displayed to users.
      *
      * @return self
      */
@@ -527,7 +527,7 @@ class ActionHookActionBody implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets type
      *
-     * @param string $type Specifies the type of action, which is 'ACTION_HOOK' for action hooks.
+     * @param string $type The type of status.
      *
      * @return self
      */

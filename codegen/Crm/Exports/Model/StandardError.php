@@ -35,7 +35,7 @@ use \HubSpot\Client\Crm\Exports\ObjectSerializer;
  * StandardError Class Doc Comment
  *
  * @category Class
- * @description Ye olde error
+ * @description Represents a standard error response in the HubSpot API, providing detailed information about an error that occurred during an API request.
  * @package  HubSpot\Client\Crm\Exports
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -397,7 +397,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param array<string,string[]> $context Additional context-specific information related to the error.
+     * @param array<string,string[]> $context Context about the error condition
      *
      * @return self
      */
@@ -505,7 +505,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message A human-readable string describing the error and possible remediation steps.
+     * @param string $message A human readable message describing the error along with remediation steps where appropriate
      *
      * @return self
      */
@@ -559,7 +559,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sub_category
      *
-     * @param object|null $sub_category A more specific error category within each main category.
+     * @param object|null $sub_category A specific category that contains more specific detail about the error
      *
      * @return self
      */

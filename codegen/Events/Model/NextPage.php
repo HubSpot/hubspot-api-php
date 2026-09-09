@@ -313,7 +313,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets after
      *
-     * @param string $after A paging cursor token for retrieving subsequent pages.
+     * @param string $after The cursor token to pass as the after query parameter to retrieve the next page of results.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link A URL that can be used to retrieve the next page results.
+     * @param string|null $link The full URL of the next page of results, with the after cursor token included as a query parameter.
      *
      * @return self
      */

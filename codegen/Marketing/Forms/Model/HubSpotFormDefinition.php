@@ -57,17 +57,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'form_type' => 'string',
-        'id' => 'string',
-        'name' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
         'archived' => 'bool',
         'archived_at' => '\DateTime',
-        'field_groups' => '\HubSpot\Client\Marketing\Forms\Model\FieldGroup[]',
         'configuration' => '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration',
+        'created_at' => '\DateTime',
         'display_options' => '\HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions',
-        'legal_consent_options' => '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionAllOfLegalConsentOptions'
+        'field_groups' => '\HubSpot\Client\Marketing\Forms\Model\FieldGroup[]',
+        'form_type' => 'string',
+        'id' => 'string',
+        'legal_consent_options' => '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionLegalConsentOptions',
+        'name' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -78,17 +78,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'form_type' => null,
-        'id' => null,
-        'name' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
         'archived' => null,
         'archived_at' => 'date-time',
-        'field_groups' => null,
         'configuration' => null,
+        'created_at' => 'date-time',
         'display_options' => null,
-        'legal_consent_options' => null
+        'field_groups' => null,
+        'form_type' => null,
+        'id' => null,
+        'legal_consent_options' => null,
+        'name' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -97,17 +97,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'form_type' => false,
-        'id' => false,
-        'name' => false,
-        'created_at' => false,
-        'updated_at' => false,
         'archived' => false,
         'archived_at' => false,
-        'field_groups' => false,
         'configuration' => false,
+        'created_at' => false,
         'display_options' => false,
-        'legal_consent_options' => false
+        'field_groups' => false,
+        'form_type' => false,
+        'id' => false,
+        'legal_consent_options' => false,
+        'name' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -196,17 +196,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'form_type' => 'formType',
-        'id' => 'id',
-        'name' => 'name',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
         'archived' => 'archived',
         'archived_at' => 'archivedAt',
-        'field_groups' => 'fieldGroups',
         'configuration' => 'configuration',
+        'created_at' => 'createdAt',
         'display_options' => 'displayOptions',
-        'legal_consent_options' => 'legalConsentOptions'
+        'field_groups' => 'fieldGroups',
+        'form_type' => 'formType',
+        'id' => 'id',
+        'legal_consent_options' => 'legalConsentOptions',
+        'name' => 'name',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -215,17 +215,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'form_type' => 'setFormType',
-        'id' => 'setId',
-        'name' => 'setName',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
         'archived' => 'setArchived',
         'archived_at' => 'setArchivedAt',
-        'field_groups' => 'setFieldGroups',
         'configuration' => 'setConfiguration',
+        'created_at' => 'setCreatedAt',
         'display_options' => 'setDisplayOptions',
-        'legal_consent_options' => 'setLegalConsentOptions'
+        'field_groups' => 'setFieldGroups',
+        'form_type' => 'setFormType',
+        'id' => 'setId',
+        'legal_consent_options' => 'setLegalConsentOptions',
+        'name' => 'setName',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -234,17 +234,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'form_type' => 'getFormType',
-        'id' => 'getId',
-        'name' => 'getName',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
         'archived' => 'getArchived',
         'archived_at' => 'getArchivedAt',
-        'field_groups' => 'getFieldGroups',
         'configuration' => 'getConfiguration',
+        'created_at' => 'getCreatedAt',
         'display_options' => 'getDisplayOptions',
-        'legal_consent_options' => 'getLegalConsentOptions'
+        'field_groups' => 'getFieldGroups',
+        'form_type' => 'getFormType',
+        'id' => 'getId',
+        'legal_consent_options' => 'getLegalConsentOptions',
+        'name' => 'getName',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -317,17 +317,17 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('form_type', $data ?? [], 'hubspot');
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
         $this->setIfExists('archived_at', $data ?? [], null);
-        $this->setIfExists('field_groups', $data ?? [], null);
         $this->setIfExists('configuration', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('display_options', $data ?? [], null);
+        $this->setIfExists('field_groups', $data ?? [], null);
+        $this->setIfExists('form_type', $data ?? [], 'hubspot');
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('legal_consent_options', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -357,6 +357,21 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['archived'] === null) {
+            $invalidProperties[] = "'archived' can't be null";
+        }
+        if ($this->container['configuration'] === null) {
+            $invalidProperties[] = "'configuration' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['display_options'] === null) {
+            $invalidProperties[] = "'display_options' can't be null";
+        }
+        if ($this->container['field_groups'] === null) {
+            $invalidProperties[] = "'field_groups' can't be null";
+        }
         if ($this->container['form_type'] === null) {
             $invalidProperties[] = "'form_type' can't be null";
         }
@@ -372,29 +387,14 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['legal_consent_options'] === null) {
+            $invalidProperties[] = "'legal_consent_options' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
-        if ($this->container['field_groups'] === null) {
-            $invalidProperties[] = "'field_groups' can't be null";
-        }
-        if ($this->container['configuration'] === null) {
-            $invalidProperties[] = "'configuration' can't be null";
-        }
-        if ($this->container['display_options'] === null) {
-            $invalidProperties[] = "'display_options' can't be null";
-        }
-        if ($this->container['legal_consent_options'] === null) {
-            $invalidProperties[] = "'legal_consent_options' can't be null";
         }
         return $invalidProperties;
     }
@@ -410,6 +410,168 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets archived
+     *
+     * @return bool
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool $archived archived
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        }
+        $this->container['archived'] = $archived;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived_at
+     *
+     * @return \DateTime|null
+     */
+    public function getArchivedAt()
+    {
+        return $this->container['archived_at'];
+    }
+
+    /**
+     * Sets archived_at
+     *
+     * @param \DateTime|null $archived_at archived_at
+     *
+     * @return self
+     */
+    public function setArchivedAt($archived_at)
+    {
+        if (is_null($archived_at)) {
+            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
+        }
+        $this->container['archived_at'] = $archived_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets configuration
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration
+     */
+    public function getConfiguration()
+    {
+        return $this->container['configuration'];
+    }
+
+    /**
+     * Sets configuration
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration $configuration configuration
+     *
+     * @return self
+     */
+    public function setConfiguration($configuration)
+    {
+        if (is_null($configuration)) {
+            throw new \InvalidArgumentException('non-nullable configuration cannot be null');
+        }
+        $this->container['configuration'] = $configuration;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_options
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions
+     */
+    public function getDisplayOptions()
+    {
+        return $this->container['display_options'];
+    }
+
+    /**
+     * Sets display_options
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions $display_options display_options
+     *
+     * @return self
+     */
+    public function setDisplayOptions($display_options)
+    {
+        if (is_null($display_options)) {
+            throw new \InvalidArgumentException('non-nullable display_options cannot be null');
+        }
+        $this->container['display_options'] = $display_options;
+
+        return $this;
+    }
+
+    /**
+     * Gets field_groups
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\FieldGroup[]
+     */
+    public function getFieldGroups()
+    {
+        return $this->container['field_groups'];
+    }
+
+    /**
+     * Sets field_groups
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\FieldGroup[] $field_groups field_groups
+     *
+     * @return self
+     */
+    public function setFieldGroups($field_groups)
+    {
+        if (is_null($field_groups)) {
+            throw new \InvalidArgumentException('non-nullable field_groups cannot be null');
+        }
+        $this->container['field_groups'] = $field_groups;
+
+        return $this;
+    }
 
     /**
      * Gets form_type
@@ -476,6 +638,33 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets legal_consent_options
+     *
+     * @return \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionLegalConsentOptions
+     */
+    public function getLegalConsentOptions()
+    {
+        return $this->container['legal_consent_options'];
+    }
+
+    /**
+     * Sets legal_consent_options
+     *
+     * @param \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionLegalConsentOptions $legal_consent_options legal_consent_options
+     *
+     * @return self
+     */
+    public function setLegalConsentOptions($legal_consent_options)
+    {
+        if (is_null($legal_consent_options)) {
+            throw new \InvalidArgumentException('non-nullable legal_consent_options cannot be null');
+        }
+        $this->container['legal_consent_options'] = $legal_consent_options;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -503,33 +692,6 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets updated_at
      *
      * @return \DateTime
@@ -552,168 +714,6 @@ class HubSpotFormDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool $archived archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        if (is_null($archived)) {
-            throw new \InvalidArgumentException('non-nullable archived cannot be null');
-        }
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return \DateTime|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param \DateTime|null $archived_at archived_at
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        if (is_null($archived_at)) {
-            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
-        }
-        $this->container['archived_at'] = $archived_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets field_groups
-     *
-     * @return \HubSpot\Client\Marketing\Forms\Model\FieldGroup[]
-     */
-    public function getFieldGroups()
-    {
-        return $this->container['field_groups'];
-    }
-
-    /**
-     * Sets field_groups
-     *
-     * @param \HubSpot\Client\Marketing\Forms\Model\FieldGroup[] $field_groups field_groups
-     *
-     * @return self
-     */
-    public function setFieldGroups($field_groups)
-    {
-        if (is_null($field_groups)) {
-            throw new \InvalidArgumentException('non-nullable field_groups cannot be null');
-        }
-        $this->container['field_groups'] = $field_groups;
-
-        return $this;
-    }
-
-    /**
-     * Gets configuration
-     *
-     * @return \HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration
-     */
-    public function getConfiguration()
-    {
-        return $this->container['configuration'];
-    }
-
-    /**
-     * Sets configuration
-     *
-     * @param \HubSpot\Client\Marketing\Forms\Model\HubSpotFormConfiguration $configuration configuration
-     *
-     * @return self
-     */
-    public function setConfiguration($configuration)
-    {
-        if (is_null($configuration)) {
-            throw new \InvalidArgumentException('non-nullable configuration cannot be null');
-        }
-        $this->container['configuration'] = $configuration;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_options
-     *
-     * @return \HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions
-     */
-    public function getDisplayOptions()
-    {
-        return $this->container['display_options'];
-    }
-
-    /**
-     * Sets display_options
-     *
-     * @param \HubSpot\Client\Marketing\Forms\Model\FormDisplayOptions $display_options display_options
-     *
-     * @return self
-     */
-    public function setDisplayOptions($display_options)
-    {
-        if (is_null($display_options)) {
-            throw new \InvalidArgumentException('non-nullable display_options cannot be null');
-        }
-        $this->container['display_options'] = $display_options;
-
-        return $this;
-    }
-
-    /**
-     * Gets legal_consent_options
-     *
-     * @return \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionAllOfLegalConsentOptions
-     */
-    public function getLegalConsentOptions()
-    {
-        return $this->container['legal_consent_options'];
-    }
-
-    /**
-     * Sets legal_consent_options
-     *
-     * @param \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionAllOfLegalConsentOptions $legal_consent_options legal_consent_options
-     *
-     * @return self
-     */
-    public function setLegalConsentOptions($legal_consent_options)
-    {
-        if (is_null($legal_consent_options)) {
-            throw new \InvalidArgumentException('non-nullable legal_consent_options cannot be null');
-        }
-        $this->container['legal_consent_options'] = $legal_consent_options;
 
         return $this;
     }

@@ -35,6 +35,7 @@ use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
  * ErrorDetail Class Doc Comment
  *
  * @category Class
+ * @description Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.
  * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -360,7 +361,7 @@ class ErrorDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param array<string,string[]>|null $context Context about the error condition.
+     * @param array<string,string[]>|null $context Context about the error condition
      *
      * @return self
      */

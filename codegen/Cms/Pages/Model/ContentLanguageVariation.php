@@ -60,6 +60,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'archived_in_dashboard' => 'bool',
         'author_name' => 'string',
         'campaign' => 'string',
+        'campaign_name' => 'string',
         'created' => '\DateTime',
         'id' => 'int',
         'name' => 'string',
@@ -84,6 +85,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'archived_in_dashboard' => null,
         'author_name' => null,
         'campaign' => null,
+        'campaign_name' => null,
         'created' => 'date-time',
         'id' => 'int64',
         'name' => null,
@@ -106,6 +108,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'archived_in_dashboard' => false,
         'author_name' => false,
         'campaign' => false,
+        'campaign_name' => false,
         'created' => false,
         'id' => false,
         'name' => false,
@@ -208,6 +211,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'archived_in_dashboard' => 'archivedInDashboard',
         'author_name' => 'authorName',
         'campaign' => 'campaign',
+        'campaign_name' => 'campaignName',
         'created' => 'created',
         'id' => 'id',
         'name' => 'name',
@@ -230,6 +234,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'archived_in_dashboard' => 'setArchivedInDashboard',
         'author_name' => 'setAuthorName',
         'campaign' => 'setCampaign',
+        'campaign_name' => 'setCampaignName',
         'created' => 'setCreated',
         'id' => 'setId',
         'name' => 'setName',
@@ -252,6 +257,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         'archived_in_dashboard' => 'getArchivedInDashboard',
         'author_name' => 'getAuthorName',
         'campaign' => 'getCampaign',
+        'campaign_name' => 'getCampaignName',
         'created' => 'getCreated',
         'id' => 'getId',
         'name' => 'getName',
@@ -325,6 +331,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('archived_in_dashboard', $data ?? [], null);
         $this->setIfExists('author_name', $data ?? [], null);
         $this->setIfExists('campaign', $data ?? [], null);
+        $this->setIfExists('campaign_name', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -373,6 +380,9 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['campaign'] === null) {
             $invalidProperties[] = "'campaign' can't be null";
+        }
+        if ($this->container['campaign_name'] === null) {
+            $invalidProperties[] = "'campaign_name' can't be null";
         }
         if ($this->container['created'] === null) {
             $invalidProperties[] = "'created' can't be null";
@@ -459,7 +469,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets author_name
      *
-     * @param string $author_name The name of the user who updated this page.
+     * @param string $author_name The name of the user that updated this page.
      *
      * @return self
      */
@@ -496,6 +506,33 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable campaign cannot be null');
         }
         $this->container['campaign'] = $campaign;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_name
+     *
+     * @return string
+     */
+    public function getCampaignName()
+    {
+        return $this->container['campaign_name'];
+    }
+
+    /**
+     * Sets campaign_name
+     *
+     * @param string $campaign_name campaign_name
+     *
+     * @return self
+     */
+    public function setCampaignName($campaign_name)
+    {
+        if (is_null($campaign_name)) {
+            throw new \InvalidArgumentException('non-nullable campaign_name cannot be null');
+        }
+        $this->container['campaign_name'] = $campaign_name;
 
         return $this;
     }
@@ -540,7 +577,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param int $id The unique ID of the content language variation.
+     * @param int $id ID of object to set as primary in multi-language group.
      *
      * @return self
      */
@@ -567,7 +604,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets name
      *
-     * @param string $name The internal name of the content language variation.
+     * @param string $name The internal name of the page.
      *
      * @return self
      */
@@ -729,7 +766,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets state
      *
-     * @param string $state The current state of the content language variation.
+     * @param string $state An ENUM descibing the current state of this page.
      *
      * @return self
      */

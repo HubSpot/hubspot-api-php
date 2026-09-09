@@ -136,7 +136,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
+     * @return \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error
      */
     public function read($batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -155,7 +155,7 @@ class BatchApi
      *
      * @throws \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors|\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function readWithHttpInfo($batch_read_input_simple_public_object_id, $archived = false, string $contentType = self::contentTypes['read'][0])
     {
@@ -188,6 +188,12 @@ class BatchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors',
                         $request,
                         $response,
                     );
@@ -225,6 +231,14 @@ class BatchApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\BatchResponseSimplePublicObjectWithErrors',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

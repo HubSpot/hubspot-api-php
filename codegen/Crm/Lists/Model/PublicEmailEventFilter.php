@@ -63,7 +63,7 @@ class PublicEmailEventFilter implements ModelInterface, ArrayAccess, \JsonSerial
         'filter_type' => 'string',
         'level' => 'string',
         'operator' => 'string',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy'
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy'
     ];
 
     /**
@@ -599,7 +599,7 @@ class PublicEmailEventFilter implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -609,7 +609,7 @@ class PublicEmailEventFilter implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

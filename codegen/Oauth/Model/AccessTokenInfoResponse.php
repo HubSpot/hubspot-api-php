@@ -79,7 +79,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'app_id' => 'int32',
-        'expires_in' => 'int32',
+        'expires_in' => 'int64',
         'hub_domain' => null,
         'hub_id' => 'int32',
         'is_private_distribution' => null,
@@ -393,7 +393,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets app_id
      *
-     * @param int $app_id The ID of the application associated with the access token.
+     * @param int $app_id app_id
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets expires_in
      *
-     * @param int $expires_in The time in seconds until the access token expires.
+     * @param int $expires_in expires_in
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets hub_domain
      *
-     * @param string|null $hub_domain The domain of the HubSpot account associated with the access token.
+     * @param string|null $hub_domain hub_domain
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets hub_id
      *
-     * @param int $hub_id The ID of the HubSpot account associated with the access token.
+     * @param int $hub_id hub_id
      *
      * @return self
      */
@@ -501,7 +501,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets is_private_distribution
      *
-     * @param bool|null $is_private_distribution Indicates whether the token is for a privately distributed application. If false, it is marketplace distributed.
+     * @param bool|null $is_private_distribution is_private_distribution
      *
      * @return self
      */
@@ -528,7 +528,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets scopes
      *
-     * @param string[] $scopes An array of strings indicating the scopes
+     * @param string[] $scopes scopes
      *
      * @return self
      */
@@ -582,7 +582,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets token
      *
-     * @param string $token The access token string used to make API calls.
+     * @param string $token token
      *
      * @return self
      */
@@ -609,7 +609,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets token_type
      *
-     * @param string $token_type The type of token, typically indicating the authentication scheme. Typically `bearer`.
+     * @param string $token_type token_type
      *
      * @return self
      */
@@ -636,7 +636,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets user
      *
-     * @param string|null $user The email address of the hubspot user for whom the access token was created.
+     * @param string|null $user user
      *
      * @return self
      */
@@ -663,7 +663,7 @@ class AccessTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets user_id
      *
-     * @param int $user_id The ID of the hubspot user for whom the access token was created.
+     * @param int $user_id user_id
      *
      * @return self
      */

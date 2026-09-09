@@ -57,13 +57,14 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy',
         'event_type_id' => 'string',
         'filter_branch_operator' => 'string',
         'filter_branch_type' => 'string',
-        'filter_branches' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[]',
-        'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]',
-        'operator' => 'string'
+        'filter_branches' => '\HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[]',
+        'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[]',
+        'operator' => 'string',
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranchPruningRefineBy'
     ];
 
     /**
@@ -80,7 +81,8 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
         'filter_branch_type' => null,
         'filter_branches' => null,
         'filters' => null,
-        'operator' => null
+        'operator' => null,
+        'pruning_refine_by' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
         'filter_branch_type' => false,
         'filter_branches' => false,
         'filters' => false,
-        'operator' => false
+        'operator' => false,
+        'pruning_refine_by' => false
     ];
 
     /**
@@ -190,7 +193,8 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
         'filter_branch_type' => 'filterBranchType',
         'filter_branches' => 'filterBranches',
         'filters' => 'filters',
-        'operator' => 'operator'
+        'operator' => 'operator',
+        'pruning_refine_by' => 'pruningRefineBy'
     ];
 
     /**
@@ -205,7 +209,8 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
         'filter_branch_type' => 'setFilterBranchType',
         'filter_branches' => 'setFilterBranches',
         'filters' => 'setFilters',
-        'operator' => 'setOperator'
+        'operator' => 'setOperator',
+        'pruning_refine_by' => 'setPruningRefineBy'
     ];
 
     /**
@@ -220,7 +225,8 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
         'filter_branch_type' => 'getFilterBranchType',
         'filter_branches' => 'getFilterBranches',
         'filters' => 'getFilters',
-        'operator' => 'getOperator'
+        'operator' => 'getOperator',
+        'pruning_refine_by' => 'getPruningRefineBy'
     ];
 
     /**
@@ -315,6 +321,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('filter_branches', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
         $this->setIfExists('operator', $data ?? [], null);
+        $this->setIfExists('pruning_refine_by', $data ?? [], null);
     }
 
     /**
@@ -398,7 +405,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy|null
      */
     public function getCoalescingRefineBy()
     {
@@ -408,7 +415,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -516,7 +523,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
     /**
      * Gets filter_branches
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[]
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[]
      */
     public function getFilterBranches()
     {
@@ -526,7 +533,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
     /**
      * Sets filter_branches
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[] $filter_branches filter_branches
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[] $filter_branches filter_branches
      *
      * @return self
      */
@@ -543,7 +550,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
     /**
      * Gets filters
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[]
      */
     public function getFilters()
     {
@@ -553,7 +560,7 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
     /**
      * Sets filters
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[] $filters filters
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[] $filters filters
      *
      * @return self
      */
@@ -600,6 +607,33 @@ class PublicUnifiedEventsFilterBranch implements ModelInterface, ArrayAccess, \J
             );
         }
         $this->container['operator'] = $operator;
+
+        return $this;
+    }
+
+    /**
+     * Gets pruning_refine_by
+     *
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranchPruningRefineBy|null
+     */
+    public function getPruningRefineBy()
+    {
+        return $this->container['pruning_refine_by'];
+    }
+
+    /**
+     * Sets pruning_refine_by
+     *
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicUnifiedEventsFilterBranchPruningRefineBy|null $pruning_refine_by pruning_refine_by
+     *
+     * @return self
+     */
+    public function setPruningRefineBy($pruning_refine_by)
+    {
+        if (is_null($pruning_refine_by)) {
+            throw new \InvalidArgumentException('non-nullable pruning_refine_by cannot be null');
+        }
+        $this->container['pruning_refine_by'] = $pruning_refine_by;
 
         return $this;
     }

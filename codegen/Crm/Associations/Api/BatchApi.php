@@ -134,7 +134,7 @@ class BatchApi
     /**
      * Operation archive
      *
-     * Archive associations
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -153,7 +153,7 @@ class BatchApi
     /**
      * Operation archiveWithHttpInfo
      *
-     * Archive associations
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -212,7 +212,7 @@ class BatchApi
     /**
      * Operation archiveAsync
      *
-     * Archive associations
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -235,7 +235,7 @@ class BatchApi
     /**
      * Operation archiveAsyncWithHttpInfo
      *
-     * Archive associations
+     * Remove associations
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -403,7 +403,7 @@ class BatchApi
     /**
      * Operation create
      *
-     * Create associations
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -423,7 +423,7 @@ class BatchApi
     /**
      * Operation createWithHttpInfo
      *
-     * Create associations
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -538,7 +538,7 @@ class BatchApi
     /**
      * Operation createAsync
      *
-     * Create associations
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)
@@ -561,7 +561,7 @@ class BatchApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Create associations
+     * Associate records (labelled)
      *
      * @param  string $from_object_type  (required)
      * @param  string $to_object_type  (required)

@@ -305,7 +305,7 @@ class BatchInputSubscriptionBatchUpdateRequest implements ModelInterface, ArrayA
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Webhooks\Model\SubscriptionBatchUpdateRequest[] $inputs inputs
+     * @param \HubSpot\Client\Webhooks\Model\SubscriptionBatchUpdateRequest[] $inputs An array of SubscriptionBatchUpdateRequest objects, each representing the updated settings for a specific webhook subscription in the batch operation.
      *
      * @return self
      */

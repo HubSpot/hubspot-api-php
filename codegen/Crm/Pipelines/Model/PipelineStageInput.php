@@ -60,7 +60,8 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'display_order' => 'int',
         'label' => 'string',
-        'metadata' => 'array<string,string>'
+        'metadata' => 'array<string,string>',
+        'stage_id' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'display_order' => 'int32',
         'label' => null,
-        'metadata' => null
+        'metadata' => null,
+        'stage_id' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'display_order' => false,
         'label' => false,
-        'metadata' => false
+        'metadata' => false,
+        'stage_id' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'display_order' => 'displayOrder',
         'label' => 'label',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'stage_id' => 'stageId'
     ];
 
     /**
@@ -186,7 +190,8 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'display_order' => 'setDisplayOrder',
         'label' => 'setLabel',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'stage_id' => 'setStageId'
     ];
 
     /**
@@ -197,7 +202,8 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'display_order' => 'getDisplayOrder',
         'label' => 'getLabel',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'stage_id' => 'getStageId'
     ];
 
     /**
@@ -260,6 +266,7 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('display_order', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('stage_id', $data ?? [], null);
     }
 
     /**
@@ -390,6 +397,33 @@ class PipelineStageInput implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets stage_id
+     *
+     * @return string|null
+     */
+    public function getStageId()
+    {
+        return $this->container['stage_id'];
+    }
+
+    /**
+     * Sets stage_id
+     *
+     * @param string|null $stage_id stage_id
+     *
+     * @return self
+     */
+    public function setStageId($stage_id)
+    {
+        if (is_null($stage_id)) {
+            throw new \InvalidArgumentException('non-nullable stage_id cannot be null');
+        }
+        $this->container['stage_id'] = $stage_id;
 
         return $this;
     }

@@ -58,6 +58,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'allows_sensitive_properties' => 'bool',
         'archived' => 'bool',
         'created_at' => '\DateTime',
         'description' => 'string',
@@ -82,6 +83,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'allows_sensitive_properties' => null,
         'archived' => null,
         'created_at' => 'date-time',
         'description' => null,
@@ -104,6 +106,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'allows_sensitive_properties' => false,
         'archived' => false,
         'created_at' => false,
         'description' => false,
@@ -206,6 +209,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'allows_sensitive_properties' => 'allowsSensitiveProperties',
         'archived' => 'archived',
         'created_at' => 'createdAt',
         'description' => 'description',
@@ -228,6 +232,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'allows_sensitive_properties' => 'setAllowsSensitiveProperties',
         'archived' => 'setArchived',
         'created_at' => 'setCreatedAt',
         'description' => 'setDescription',
@@ -250,6 +255,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'allows_sensitive_properties' => 'getAllowsSensitiveProperties',
         'archived' => 'getArchived',
         'created_at' => 'getCreatedAt',
         'description' => 'getDescription',
@@ -323,6 +329,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('allows_sensitive_properties', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
@@ -394,6 +401,33 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
+     * Gets allows_sensitive_properties
+     *
+     * @return bool|null
+     */
+    public function getAllowsSensitiveProperties()
+    {
+        return $this->container['allows_sensitive_properties'];
+    }
+
+    /**
+     * Sets allows_sensitive_properties
+     *
+     * @param bool|null $allows_sensitive_properties Indicates whether the object type allows properties that contain sensitive data.
+     *
+     * @return self
+     */
+    public function setAllowsSensitiveProperties($allows_sensitive_properties)
+    {
+        if (is_null($allows_sensitive_properties)) {
+            throw new \InvalidArgumentException('non-nullable allows_sensitive_properties cannot be null');
+        }
+        $this->container['allows_sensitive_properties'] = $allows_sensitive_properties;
+
+        return $this;
+    }
+
+    /**
      * Gets archived
      *
      * @return bool|null
@@ -406,7 +440,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets archived
      *
-     * @param bool|null $archived archived
+     * @param bool|null $archived Indicates whether the object type is archived.
      *
      * @return self
      */
@@ -460,7 +494,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description A description of the object type.
      *
      * @return self
      */
@@ -487,7 +521,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets fully_qualified_name
      *
-     * @param string|null $fully_qualified_name fully_qualified_name
+     * @param string|null $fully_qualified_name An assigned unique ID for the object, including portal ID and object name.
      *
      * @return self
      */
@@ -595,7 +629,7 @@ class ObjectTypeDefinition implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object_type_id
      *
-     * @param string|null $object_type_id object_type_id
+     * @param string|null $object_type_id A unique identifier for the object type.
      *
      * @return self
      */

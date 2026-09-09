@@ -35,7 +35,7 @@ use \HubSpot\Client\Crm\Lists\ObjectSerializer;
  * PreviousPage Class Doc Comment
  *
  * @category Class
- * @description The cursor for the previous page of records.
+ * @description specifies the paging information needed to retrieve the previous set of results in a paginated API response
  * @package  HubSpot\Client\Crm\Lists
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

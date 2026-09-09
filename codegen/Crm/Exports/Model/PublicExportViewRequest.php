@@ -57,16 +57,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'associated_object_type' => 'string[]',
+        'export_internal_values_options' => 'string[]',
+        'export_name' => 'string',
         'export_type' => 'string',
         'format' => 'string',
-        'export_name' => 'string',
-        'object_properties' => 'string[]',
-        'associated_object_type' => 'string[]',
         'include_labeled_associations' => 'bool',
         'include_primary_display_property_for_associated_objects' => 'bool',
-        'object_type' => 'string',
         'language' => 'string',
-        'export_internal_values_options' => 'string[]',
+        'object_properties' => 'string[]',
+        'object_type' => 'string',
         'override_associated_objects_per_definition_per_row_limit' => 'bool',
         'public_crm_search_request' => '\HubSpot\Client\Crm\Exports\Model\PublicCrmSearchRequest'
     ];
@@ -79,16 +79,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'associated_object_type' => null,
+        'export_internal_values_options' => null,
+        'export_name' => null,
         'export_type' => null,
         'format' => null,
-        'export_name' => null,
-        'object_properties' => null,
-        'associated_object_type' => null,
         'include_labeled_associations' => null,
         'include_primary_display_property_for_associated_objects' => null,
-        'object_type' => null,
         'language' => null,
-        'export_internal_values_options' => null,
+        'object_properties' => null,
+        'object_type' => null,
         'override_associated_objects_per_definition_per_row_limit' => null,
         'public_crm_search_request' => null
     ];
@@ -99,16 +99,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'associated_object_type' => false,
+        'export_internal_values_options' => false,
+        'export_name' => false,
         'export_type' => false,
         'format' => false,
-        'export_name' => false,
-        'object_properties' => false,
-        'associated_object_type' => false,
         'include_labeled_associations' => false,
         'include_primary_display_property_for_associated_objects' => false,
-        'object_type' => false,
         'language' => false,
-        'export_internal_values_options' => false,
+        'object_properties' => false,
+        'object_type' => false,
         'override_associated_objects_per_definition_per_row_limit' => false,
         'public_crm_search_request' => false
     ];
@@ -199,16 +199,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'associated_object_type' => 'associatedObjectType',
+        'export_internal_values_options' => 'exportInternalValuesOptions',
+        'export_name' => 'exportName',
         'export_type' => 'exportType',
         'format' => 'format',
-        'export_name' => 'exportName',
-        'object_properties' => 'objectProperties',
-        'associated_object_type' => 'associatedObjectType',
         'include_labeled_associations' => 'includeLabeledAssociations',
         'include_primary_display_property_for_associated_objects' => 'includePrimaryDisplayPropertyForAssociatedObjects',
-        'object_type' => 'objectType',
         'language' => 'language',
-        'export_internal_values_options' => 'exportInternalValuesOptions',
+        'object_properties' => 'objectProperties',
+        'object_type' => 'objectType',
         'override_associated_objects_per_definition_per_row_limit' => 'overrideAssociatedObjectsPerDefinitionPerRowLimit',
         'public_crm_search_request' => 'publicCrmSearchRequest'
     ];
@@ -219,16 +219,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'associated_object_type' => 'setAssociatedObjectType',
+        'export_internal_values_options' => 'setExportInternalValuesOptions',
+        'export_name' => 'setExportName',
         'export_type' => 'setExportType',
         'format' => 'setFormat',
-        'export_name' => 'setExportName',
-        'object_properties' => 'setObjectProperties',
-        'associated_object_type' => 'setAssociatedObjectType',
         'include_labeled_associations' => 'setIncludeLabeledAssociations',
         'include_primary_display_property_for_associated_objects' => 'setIncludePrimaryDisplayPropertyForAssociatedObjects',
-        'object_type' => 'setObjectType',
         'language' => 'setLanguage',
-        'export_internal_values_options' => 'setExportInternalValuesOptions',
+        'object_properties' => 'setObjectProperties',
+        'object_type' => 'setObjectType',
         'override_associated_objects_per_definition_per_row_limit' => 'setOverrideAssociatedObjectsPerDefinitionPerRowLimit',
         'public_crm_search_request' => 'setPublicCrmSearchRequest'
     ];
@@ -239,16 +239,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'associated_object_type' => 'getAssociatedObjectType',
+        'export_internal_values_options' => 'getExportInternalValuesOptions',
+        'export_name' => 'getExportName',
         'export_type' => 'getExportType',
         'format' => 'getFormat',
-        'export_name' => 'getExportName',
-        'object_properties' => 'getObjectProperties',
-        'associated_object_type' => 'getAssociatedObjectType',
         'include_labeled_associations' => 'getIncludeLabeledAssociations',
         'include_primary_display_property_for_associated_objects' => 'getIncludePrimaryDisplayPropertyForAssociatedObjects',
-        'object_type' => 'getObjectType',
         'language' => 'getLanguage',
-        'export_internal_values_options' => 'getExportInternalValuesOptions',
+        'object_properties' => 'getObjectProperties',
+        'object_type' => 'getObjectType',
         'override_associated_objects_per_definition_per_row_limit' => 'getOverrideAssociatedObjectsPerDefinitionPerRowLimit',
         'public_crm_search_request' => 'getPublicCrmSearchRequest'
     ];
@@ -294,26 +294,70 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const EXPORT_TYPE_VIEW = 'VIEW';
-    public const FORMAT_XLS = 'XLS';
-    public const FORMAT_XLSX = 'XLSX';
-    public const FORMAT_CSV = 'CSV';
-    public const LANGUAGE_EN = 'EN';
-    public const LANGUAGE_DE = 'DE';
-    public const LANGUAGE_ES = 'ES';
-    public const LANGUAGE_FR = 'FR';
-    public const LANGUAGE_JA = 'JA';
-    public const LANGUAGE_NL = 'NL';
-    public const LANGUAGE_PT_BR = 'PT_BR';
-    public const LANGUAGE_IT = 'IT';
-    public const LANGUAGE_PL = 'PL';
-    public const LANGUAGE_SV = 'SV';
-    public const LANGUAGE_FI = 'FI';
-    public const LANGUAGE_ZH_TW = 'ZH_TW';
-    public const LANGUAGE_DA_DK = 'DA_DK';
-    public const LANGUAGE_NO = 'NO';
     public const EXPORT_INTERNAL_VALUES_OPTIONS_NAMES = 'NAMES';
     public const EXPORT_INTERNAL_VALUES_OPTIONS_VALUES = 'VALUES';
+    public const EXPORT_TYPE_VIEW = 'VIEW';
+    public const FORMAT_CSV = 'CSV';
+    public const FORMAT_XLS = 'XLS';
+    public const FORMAT_XLSX = 'XLSX';
+    public const LANGUAGE_AF_ZA = 'AF_ZA';
+    public const LANGUAGE_AR_EG = 'AR_EG';
+    public const LANGUAGE_BG = 'BG';
+    public const LANGUAGE_BN = 'BN';
+    public const LANGUAGE_CA_ES = 'CA_ES';
+    public const LANGUAGE_CS = 'CS';
+    public const LANGUAGE_DA_DK = 'DA_DK';
+    public const LANGUAGE_DE = 'DE';
+    public const LANGUAGE_EL_GR = 'EL_GR';
+    public const LANGUAGE_EN = 'EN';
+    public const LANGUAGE_EN_GB = 'EN_GB';
+    public const LANGUAGE_ES = 'ES';
+    public const LANGUAGE_ES_MX = 'ES_MX';
+    public const LANGUAGE_ET_EE = 'ET_EE';
+    public const LANGUAGE_FI = 'FI';
+    public const LANGUAGE_FR = 'FR';
+    public const LANGUAGE_FR_CA = 'FR_CA';
+    public const LANGUAGE_HE_IL = 'HE_IL';
+    public const LANGUAGE_HI_IN = 'HI_IN';
+    public const LANGUAGE_HR = 'HR';
+    public const LANGUAGE_HU = 'HU';
+    public const LANGUAGE_ID = 'ID';
+    public const LANGUAGE_IT = 'IT';
+    public const LANGUAGE_JA = 'JA';
+    public const LANGUAGE_KO_KR = 'KO_KR';
+    public const LANGUAGE_LT_LT = 'LT_LT';
+    public const LANGUAGE_MS = 'MS';
+    public const LANGUAGE_NL = 'NL';
+    public const LANGUAGE_NO = 'NO';
+    public const LANGUAGE_PL = 'PL';
+    public const LANGUAGE_PT_BR = 'PT_BR';
+    public const LANGUAGE_PT_PT = 'PT_PT';
+    public const LANGUAGE_RO = 'RO';
+    public const LANGUAGE_RU = 'RU';
+    public const LANGUAGE_SK_SK = 'SK_SK';
+    public const LANGUAGE_SL = 'SL';
+    public const LANGUAGE_SV = 'SV';
+    public const LANGUAGE_TH = 'TH';
+    public const LANGUAGE_TL = 'TL';
+    public const LANGUAGE_TR = 'TR';
+    public const LANGUAGE_UK = 'UK';
+    public const LANGUAGE_VI_VN = 'VI_VN';
+    public const LANGUAGE_ZH_CN = 'ZH_CN';
+    public const LANGUAGE_ZH_HK = 'ZH_HK';
+    public const LANGUAGE_ZH_TW = 'ZH_TW';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getExportInternalValuesOptionsAllowableValues()
+    {
+        return [
+            self::EXPORT_INTERNAL_VALUES_OPTIONS_NAMES,
+            self::EXPORT_INTERNAL_VALUES_OPTIONS_VALUES,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -335,9 +379,9 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function getFormatAllowableValues()
     {
         return [
+            self::FORMAT_CSV,
             self::FORMAT_XLS,
             self::FORMAT_XLSX,
-            self::FORMAT_CSV,
         ];
     }
 
@@ -349,33 +393,51 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function getLanguageAllowableValues()
     {
         return [
-            self::LANGUAGE_EN,
-            self::LANGUAGE_DE,
-            self::LANGUAGE_ES,
-            self::LANGUAGE_FR,
-            self::LANGUAGE_JA,
-            self::LANGUAGE_NL,
-            self::LANGUAGE_PT_BR,
-            self::LANGUAGE_IT,
-            self::LANGUAGE_PL,
-            self::LANGUAGE_SV,
-            self::LANGUAGE_FI,
-            self::LANGUAGE_ZH_TW,
+            self::LANGUAGE_AF_ZA,
+            self::LANGUAGE_AR_EG,
+            self::LANGUAGE_BG,
+            self::LANGUAGE_BN,
+            self::LANGUAGE_CA_ES,
+            self::LANGUAGE_CS,
             self::LANGUAGE_DA_DK,
+            self::LANGUAGE_DE,
+            self::LANGUAGE_EL_GR,
+            self::LANGUAGE_EN,
+            self::LANGUAGE_EN_GB,
+            self::LANGUAGE_ES,
+            self::LANGUAGE_ES_MX,
+            self::LANGUAGE_ET_EE,
+            self::LANGUAGE_FI,
+            self::LANGUAGE_FR,
+            self::LANGUAGE_FR_CA,
+            self::LANGUAGE_HE_IL,
+            self::LANGUAGE_HI_IN,
+            self::LANGUAGE_HR,
+            self::LANGUAGE_HU,
+            self::LANGUAGE_ID,
+            self::LANGUAGE_IT,
+            self::LANGUAGE_JA,
+            self::LANGUAGE_KO_KR,
+            self::LANGUAGE_LT_LT,
+            self::LANGUAGE_MS,
+            self::LANGUAGE_NL,
             self::LANGUAGE_NO,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getExportInternalValuesOptionsAllowableValues()
-    {
-        return [
-            self::EXPORT_INTERNAL_VALUES_OPTIONS_NAMES,
-            self::EXPORT_INTERNAL_VALUES_OPTIONS_VALUES,
+            self::LANGUAGE_PL,
+            self::LANGUAGE_PT_BR,
+            self::LANGUAGE_PT_PT,
+            self::LANGUAGE_RO,
+            self::LANGUAGE_RU,
+            self::LANGUAGE_SK_SK,
+            self::LANGUAGE_SL,
+            self::LANGUAGE_SV,
+            self::LANGUAGE_TH,
+            self::LANGUAGE_TL,
+            self::LANGUAGE_TR,
+            self::LANGUAGE_UK,
+            self::LANGUAGE_VI_VN,
+            self::LANGUAGE_ZH_CN,
+            self::LANGUAGE_ZH_HK,
+            self::LANGUAGE_ZH_TW,
         ];
     }
 
@@ -394,16 +456,16 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('associated_object_type', $data ?? [], null);
+        $this->setIfExists('export_internal_values_options', $data ?? [], null);
+        $this->setIfExists('export_name', $data ?? [], null);
         $this->setIfExists('export_type', $data ?? [], 'VIEW');
         $this->setIfExists('format', $data ?? [], null);
-        $this->setIfExists('export_name', $data ?? [], null);
-        $this->setIfExists('object_properties', $data ?? [], null);
-        $this->setIfExists('associated_object_type', $data ?? [], null);
         $this->setIfExists('include_labeled_associations', $data ?? [], null);
         $this->setIfExists('include_primary_display_property_for_associated_objects', $data ?? [], null);
-        $this->setIfExists('object_type', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
-        $this->setIfExists('export_internal_values_options', $data ?? [], null);
+        $this->setIfExists('object_properties', $data ?? [], null);
+        $this->setIfExists('object_type', $data ?? [], null);
         $this->setIfExists('override_associated_objects_per_definition_per_row_limit', $data ?? [], null);
         $this->setIfExists('public_crm_search_request', $data ?? [], null);
     }
@@ -435,6 +497,15 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['associated_object_type'] === null) {
+            $invalidProperties[] = "'associated_object_type' can't be null";
+        }
+        if ($this->container['export_internal_values_options'] === null) {
+            $invalidProperties[] = "'export_internal_values_options' can't be null";
+        }
+        if ($this->container['export_name'] === null) {
+            $invalidProperties[] = "'export_name' can't be null";
+        }
         if ($this->container['export_type'] === null) {
             $invalidProperties[] = "'export_type' can't be null";
         }
@@ -459,23 +530,11 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if ($this->container['export_name'] === null) {
-            $invalidProperties[] = "'export_name' can't be null";
-        }
-        if ($this->container['object_properties'] === null) {
-            $invalidProperties[] = "'object_properties' can't be null";
-        }
-        if ($this->container['associated_object_type'] === null) {
-            $invalidProperties[] = "'associated_object_type' can't be null";
-        }
         if ($this->container['include_labeled_associations'] === null) {
             $invalidProperties[] = "'include_labeled_associations' can't be null";
         }
         if ($this->container['include_primary_display_property_for_associated_objects'] === null) {
             $invalidProperties[] = "'include_primary_display_property_for_associated_objects' can't be null";
-        }
-        if ($this->container['object_type'] === null) {
-            $invalidProperties[] = "'object_type' can't be null";
         }
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
@@ -489,8 +548,11 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if ($this->container['export_internal_values_options'] === null) {
-            $invalidProperties[] = "'export_internal_values_options' can't be null";
+        if ($this->container['object_properties'] === null) {
+            $invalidProperties[] = "'object_properties' can't be null";
+        }
+        if ($this->container['object_type'] === null) {
+            $invalidProperties[] = "'object_type' can't be null";
         }
         if ($this->container['override_associated_objects_per_definition_per_row_limit'] === null) {
             $invalidProperties[] = "'override_associated_objects_per_definition_per_row_limit' can't be null";
@@ -509,6 +571,96 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets associated_object_type
+     *
+     * @return string[]
+     */
+    public function getAssociatedObjectType()
+    {
+        return $this->container['associated_object_type'];
+    }
+
+    /**
+     * Sets associated_object_type
+     *
+     * @param string[] $associated_object_type associated_object_type
+     *
+     * @return self
+     */
+    public function setAssociatedObjectType($associated_object_type)
+    {
+        if (is_null($associated_object_type)) {
+            throw new \InvalidArgumentException('non-nullable associated_object_type cannot be null');
+        }
+        $this->container['associated_object_type'] = $associated_object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets export_internal_values_options
+     *
+     * @return string[]
+     */
+    public function getExportInternalValuesOptions()
+    {
+        return $this->container['export_internal_values_options'];
+    }
+
+    /**
+     * Sets export_internal_values_options
+     *
+     * @param string[] $export_internal_values_options export_internal_values_options
+     *
+     * @return self
+     */
+    public function setExportInternalValuesOptions($export_internal_values_options)
+    {
+        if (is_null($export_internal_values_options)) {
+            throw new \InvalidArgumentException('non-nullable export_internal_values_options cannot be null');
+        }
+        $allowedValues = $this->getExportInternalValuesOptionsAllowableValues();
+        if (array_diff($export_internal_values_options, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'export_internal_values_options', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['export_internal_values_options'] = $export_internal_values_options;
+
+        return $this;
+    }
+
+    /**
+     * Gets export_name
+     *
+     * @return string
+     */
+    public function getExportName()
+    {
+        return $this->container['export_name'];
+    }
+
+    /**
+     * Sets export_name
+     *
+     * @param string $export_name export_name
+     *
+     * @return self
+     */
+    public function setExportName($export_name)
+    {
+        if (is_null($export_name)) {
+            throw new \InvalidArgumentException('non-nullable export_name cannot be null');
+        }
+        $this->container['export_name'] = $export_name;
+
+        return $this;
+    }
 
     /**
      * Gets export_type
@@ -585,87 +737,6 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets export_name
-     *
-     * @return string
-     */
-    public function getExportName()
-    {
-        return $this->container['export_name'];
-    }
-
-    /**
-     * Sets export_name
-     *
-     * @param string $export_name export_name
-     *
-     * @return self
-     */
-    public function setExportName($export_name)
-    {
-        if (is_null($export_name)) {
-            throw new \InvalidArgumentException('non-nullable export_name cannot be null');
-        }
-        $this->container['export_name'] = $export_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets object_properties
-     *
-     * @return string[]
-     */
-    public function getObjectProperties()
-    {
-        return $this->container['object_properties'];
-    }
-
-    /**
-     * Sets object_properties
-     *
-     * @param string[] $object_properties object_properties
-     *
-     * @return self
-     */
-    public function setObjectProperties($object_properties)
-    {
-        if (is_null($object_properties)) {
-            throw new \InvalidArgumentException('non-nullable object_properties cannot be null');
-        }
-        $this->container['object_properties'] = $object_properties;
-
-        return $this;
-    }
-
-    /**
-     * Gets associated_object_type
-     *
-     * @return string[]
-     */
-    public function getAssociatedObjectType()
-    {
-        return $this->container['associated_object_type'];
-    }
-
-    /**
-     * Sets associated_object_type
-     *
-     * @param string[] $associated_object_type associated_object_type
-     *
-     * @return self
-     */
-    public function setAssociatedObjectType($associated_object_type)
-    {
-        if (is_null($associated_object_type)) {
-            throw new \InvalidArgumentException('non-nullable associated_object_type cannot be null');
-        }
-        $this->container['associated_object_type'] = $associated_object_type;
-
-        return $this;
-    }
-
-    /**
      * Gets include_labeled_associations
      *
      * @return bool
@@ -720,33 +791,6 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets object_type
-     *
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->container['object_type'];
-    }
-
-    /**
-     * Sets object_type
-     *
-     * @param string $object_type object_type
-     *
-     * @return self
-     */
-    public function setObjectType($object_type)
-    {
-        if (is_null($object_type)) {
-            throw new \InvalidArgumentException('non-nullable object_type cannot be null');
-        }
-        $this->container['object_type'] = $object_type;
-
-        return $this;
-    }
-
-    /**
      * Gets language
      *
      * @return string
@@ -784,37 +828,55 @@ class PublicExportViewRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets export_internal_values_options
+     * Gets object_properties
      *
      * @return string[]
      */
-    public function getExportInternalValuesOptions()
+    public function getObjectProperties()
     {
-        return $this->container['export_internal_values_options'];
+        return $this->container['object_properties'];
     }
 
     /**
-     * Sets export_internal_values_options
+     * Sets object_properties
      *
-     * @param string[] $export_internal_values_options export_internal_values_options
+     * @param string[] $object_properties object_properties
      *
      * @return self
      */
-    public function setExportInternalValuesOptions($export_internal_values_options)
+    public function setObjectProperties($object_properties)
     {
-        if (is_null($export_internal_values_options)) {
-            throw new \InvalidArgumentException('non-nullable export_internal_values_options cannot be null');
+        if (is_null($object_properties)) {
+            throw new \InvalidArgumentException('non-nullable object_properties cannot be null');
         }
-        $allowedValues = $this->getExportInternalValuesOptionsAllowableValues();
-        if (array_diff($export_internal_values_options, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'export_internal_values_options', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['object_properties'] = $object_properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type
+     *
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->container['object_type'];
+    }
+
+    /**
+     * Sets object_type
+     *
+     * @param string $object_type object_type
+     *
+     * @return self
+     */
+    public function setObjectType($object_type)
+    {
+        if (is_null($object_type)) {
+            throw new \InvalidArgumentException('non-nullable object_type cannot be null');
         }
-        $this->container['export_internal_values_options'] = $export_internal_values_options;
+        $this->container['object_type'] = $object_type;
 
         return $this;
     }

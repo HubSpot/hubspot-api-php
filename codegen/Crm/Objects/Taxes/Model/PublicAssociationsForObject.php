@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Objects\Taxes\ObjectSerializer;
  * PublicAssociationsForObject Class Doc Comment
  *
  * @category Class
+ * @description Represents the associations for a specific object in HubSpot, detailing the types of associations and the related objects involved.
  * @package  HubSpot\Client\Crm\Objects\Taxes
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -342,7 +343,7 @@ class PublicAssociationsForObject implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets types
      *
-     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\AssociationSpec[] $types types
+     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\AssociationSpec[] $types The types of associations that exist between the object and other entities, indicating the nature of their relationship.
      *
      * @return self
      */

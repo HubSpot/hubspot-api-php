@@ -130,7 +130,7 @@ class SendTransactionalEmailApi
      *
      * Send a single send transactional email asynchronously.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg A request object describing the email to send. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg public_single_send_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEmail'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response or if the response body is not in the expected format
@@ -148,7 +148,7 @@ class SendTransactionalEmailApi
      *
      * Send a single send transactional email asynchronously.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg A request object describing the email to send. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEmail'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response or if the response body is not in the expected format
@@ -247,7 +247,7 @@ class SendTransactionalEmailApi
      *
      * Send a single send transactional email asynchronously.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg A request object describing the email to send. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -268,7 +268,7 @@ class SendTransactionalEmailApi
      *
      * Send a single send transactional email asynchronously.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg A request object describing the email to send. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -318,7 +318,7 @@ class SendTransactionalEmailApi
     /**
      * Create request for operation 'sendEmail'
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg A request object describing the email to send. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\PublicSingleSendRequestEgg $public_single_send_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

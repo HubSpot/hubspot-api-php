@@ -525,7 +525,7 @@ class PublicListConversionResponseRequestedConversionTime implements ModelInterf
     /**
      * Sets offset
      *
-     * @param int $offset The number of time units for the inactivity period.
+     * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      *
      * @return self
      */

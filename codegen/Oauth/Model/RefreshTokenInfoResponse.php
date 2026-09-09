@@ -369,7 +369,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets client_id
      *
-     * @param string $client_id The client ID of the application that the refresh token was issued for.
+     * @param string $client_id client_id
      *
      * @return self
      */
@@ -396,7 +396,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets hub_domain
      *
-     * @param string|null $hub_domain The domain of the HubSpot account associated with the refresh token.
+     * @param string|null $hub_domain hub_domain
      *
      * @return self
      */
@@ -423,7 +423,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets hub_id
      *
-     * @param int $hub_id The ID of the HubSpot account associated with the refresh token.
+     * @param int $hub_id hub_id
      *
      * @return self
      */
@@ -450,7 +450,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets scopes
      *
-     * @param string[] $scopes An array of strings detailing the scopes
+     * @param string[] $scopes scopes
      *
      * @return self
      */
@@ -477,7 +477,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets token
      *
-     * @param string $token The access token string used to make API calls.
+     * @param string $token token
      *
      * @return self
      */
@@ -504,7 +504,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets token_type
      *
-     * @param string $token_type The type of token, typically indicating the OAuth token type. Typically `bearer`.
+     * @param string $token_type token_type
      *
      * @return self
      */
@@ -531,7 +531,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets user
      *
-     * @param string|null $user The email address of the hubspot user associated with the refresh token.
+     * @param string|null $user user
      *
      * @return self
      */
@@ -558,7 +558,7 @@ class RefreshTokenInfoResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets user_id
      *
-     * @param int $user_id The ID of the hubspot user associated with the refresh token.
+     * @param int $user_id user_id
      *
      * @return self
      */

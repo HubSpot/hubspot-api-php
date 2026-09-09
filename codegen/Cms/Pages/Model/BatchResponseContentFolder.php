@@ -378,7 +378,7 @@ class BatchResponseContentFolder implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at The timestamp indicating when the batch operation was completed.
+     * @param \DateTime $completed_at Time of batch operation completion.
      *
      * @return self
      */
@@ -405,7 +405,7 @@ class BatchResponseContentFolder implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links A collection of associated links for the batch operation.
+     * @param array<string,string>|null $links Links associated with batch operation.
      *
      * @return self
      */
@@ -432,7 +432,7 @@ class BatchResponseContentFolder implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The timestamp indicating when the batch operation was requested.
+     * @param \DateTime|null $requested_at Time of batch operation request.
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class BatchResponseContentFolder implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Cms\Pages\Model\ContentFolder[] $results results
+     * @param \HubSpot\Client\Cms\Pages\Model\ContentFolder[] $results Results of batch operation.
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class BatchResponseContentFolder implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The timestamp indicating when the batch operation started.
+     * @param \DateTime $started_at Time of batch operation start.
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class BatchResponseContentFolder implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status
      *
-     * @param string $status The current status of the batch operation, which can be CANCELED, COMPLETE, PENDING, or PROCESSING.
+     * @param string $status Status of batch operation.
      *
      * @return self
      */

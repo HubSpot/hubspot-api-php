@@ -62,7 +62,7 @@ class PublicFormSubmissionOnPageFilter implements ModelInterface, ArrayAccess, \
         'form_id' => 'string',
         'operator' => 'string',
         'page_id' => 'string',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy'
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy'
     ];
 
     /**
@@ -537,7 +537,7 @@ class PublicFormSubmissionOnPageFilter implements ModelInterface, ArrayAccess, \
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -547,7 +547,7 @@ class PublicFormSubmissionOnPageFilter implements ModelInterface, ArrayAccess, \
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

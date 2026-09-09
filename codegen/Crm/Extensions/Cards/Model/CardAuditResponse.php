@@ -78,7 +78,7 @@ class CardAuditResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         'auth_source' => null,
         'changed_at' => 'int64',
         'initiating_user_id' => 'int32',
-        'object_type_id' => 'int32'
+        'object_type_id' => 'int64'
     ];
 
     /**

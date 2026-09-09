@@ -60,6 +60,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'display_order' => 'int',
         'label' => 'string',
+        'pipeline_id' => 'string',
         'stages' => '\HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput[]'
     ];
 
@@ -73,6 +74,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'display_order' => 'int32',
         'label' => null,
+        'pipeline_id' => null,
         'stages' => null
     ];
 
@@ -84,6 +86,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'display_order' => false,
         'label' => false,
+        'pipeline_id' => false,
         'stages' => false
     ];
 
@@ -175,6 +178,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'display_order' => 'displayOrder',
         'label' => 'label',
+        'pipeline_id' => 'pipelineId',
         'stages' => 'stages'
     ];
 
@@ -186,6 +190,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'display_order' => 'setDisplayOrder',
         'label' => 'setLabel',
+        'pipeline_id' => 'setPipelineId',
         'stages' => 'setStages'
     ];
 
@@ -197,6 +202,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'display_order' => 'getDisplayOrder',
         'label' => 'getLabel',
+        'pipeline_id' => 'getPipelineId',
         'stages' => 'getStages'
     ];
 
@@ -259,6 +265,7 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('display_order', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('pipeline_id', $data ?? [], null);
         $this->setIfExists('stages', $data ?? [], null);
     }
 
@@ -363,6 +370,33 @@ class PipelineInput implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
         $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets pipeline_id
+     *
+     * @return string|null
+     */
+    public function getPipelineId()
+    {
+        return $this->container['pipeline_id'];
+    }
+
+    /**
+     * Sets pipeline_id
+     *
+     * @param string|null $pipeline_id pipeline_id
+     *
+     * @return self
+     */
+    public function setPipelineId($pipeline_id)
+    {
+        if (is_null($pipeline_id)) {
+            throw new \InvalidArgumentException('non-nullable pipeline_id cannot be null');
+        }
+        $this->container['pipeline_id'] = $pipeline_id;
 
         return $this;
     }

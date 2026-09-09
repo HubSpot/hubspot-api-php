@@ -339,7 +339,7 @@ class TaskLocator implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links A collection of link names mapped to their corresponding URIs.
+     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
      *
      * @return self
      */

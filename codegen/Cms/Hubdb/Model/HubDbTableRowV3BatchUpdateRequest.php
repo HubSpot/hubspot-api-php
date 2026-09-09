@@ -73,7 +73,7 @@ class HubDbTableRowV3BatchUpdateRequest implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'child_table_id' => 'int32',
+        'child_table_id' => 'int64',
         'display_index' => 'int32',
         'id' => null,
         'name' => null,

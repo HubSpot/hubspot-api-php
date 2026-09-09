@@ -35,7 +35,7 @@ use \HubSpot\Client\Webhooks\ObjectSerializer;
  * StandardError Class Doc Comment
  *
  * @category Class
- * @description Ye olde error
+ * @description Represents a standard error response in the HubSpot API, providing detailed information about an error that occurred during an API request.
  * @package  HubSpot\Client\Webhooks
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +370,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category
      *
-     * @param string $category The main category of the error.
+     * @param string $category A string denoting the category of the error.
      *
      * @return self
      */
@@ -397,7 +397,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param array<string,string[]> $context Additional context-specific information related to the error.
+     * @param array<string,string[]> $context An object containing context about the error condition, with additional properties as arrays of strings.
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Webhooks\Model\ErrorDetail[] $errors The detailed error objects.
+     * @param \HubSpot\Client\Webhooks\Model\ErrorDetail[] $errors An array of ErrorDetail objects, each providing further information about individual errors.
      *
      * @return self
      */
@@ -451,7 +451,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id A unique ID for the error instance.
+     * @param string|null $id A string representing the unique identifier for the error.
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets links
      *
-     * @param array<string,string> $links URLs linking to documentation or resources associated with the error.
+     * @param array<string,string> $links An object mapping link names to associated URIs, which contain documentation about the error or recommended remediation steps.
      *
      * @return self
      */
@@ -505,7 +505,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message A human-readable string describing the error and possible remediation steps.
+     * @param string $message A string containing a human-readable message that describes the error.
      *
      * @return self
      */
@@ -532,7 +532,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string $status The HTTP status code associated with the error.
+     * @param string $status A string indicating the status of the error.
      *
      * @return self
      */
@@ -559,7 +559,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sub_category
      *
-     * @param object|null $sub_category A more specific error category within each main category.
+     * @param object|null $sub_category An object providing additional, more specific categorization of the error.
      *
      * @return self
      */

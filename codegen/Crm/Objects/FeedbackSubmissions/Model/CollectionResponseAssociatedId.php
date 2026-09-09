@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Objects\FeedbackSubmissions\ObjectSerializer;
  * CollectionResponseAssociatedId Class Doc Comment
  *
  * @category Class
+ * @description Represents a collection of associated IDs returned by an API request, including pagination details for navigating through the results.
  * @package  HubSpot\Client\Crm\Objects\FeedbackSubmissions
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -339,7 +340,7 @@ class CollectionResponseAssociatedId implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociatedId[] $results results
+     * @param \HubSpot\Client\Crm\Objects\FeedbackSubmissions\Model\AssociatedId[] $results A list of associated IDs retrieved from the API request.
      *
      * @return self
      */

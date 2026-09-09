@@ -59,8 +59,8 @@ class PublicOrFilterBranch implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'filter_branch_operator' => 'string',
         'filter_branch_type' => 'string',
-        'filter_branches' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[]',
-        'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]'
+        'filter_branches' => '\HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[]',
+        'filters' => '\HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[]'
     ];
 
     /**
@@ -411,7 +411,7 @@ class PublicOrFilterBranch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets filter_branches
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[]
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[]
      */
     public function getFilterBranches()
     {
@@ -421,7 +421,7 @@ class PublicOrFilterBranch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets filter_branches
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFilterBranchesInner[] $filter_branches filter_branches
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFilterBranchesInner[] $filter_branches filter_branches
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class PublicOrFilterBranch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets filters
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[]
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[]
      */
     public function getFilters()
     {
@@ -448,7 +448,7 @@ class PublicOrFilterBranch implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets filters
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicPropertyAssociationFilterBranchFiltersInner[] $filters filters
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicAndFilterBranchFiltersInner[] $filters filters
      *
      * @return self
      */

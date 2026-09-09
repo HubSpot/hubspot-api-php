@@ -234,6 +234,25 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const UNITS_DEGREES = 'DEGREES';
+    public const UNITS_GRADIANS = 'GRADIANS';
+    public const UNITS_RADIANS = 'RADIANS';
+    public const UNITS_TURNS = 'TURNS';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUnitsAllowableValues()
+    {
+        return [
+            self::UNITS_DEGREES,
+            self::UNITS_GRADIANS,
+            self::UNITS_RADIANS,
+            self::UNITS_TURNS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -284,6 +303,15 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['units'] === null) {
             $invalidProperties[] = "'units' can't be null";
         }
+        $allowedValues = $this->getUnitsAllowableValues();
+        if (!is_null($this->container['units']) && !in_array($this->container['units'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'units', must be one of '%s'",
+                $this->container['units'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
@@ -323,6 +351,16 @@ class Angle implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($units)) {
             throw new \InvalidArgumentException('non-nullable units cannot be null');
+        }
+        $allowedValues = $this->getUnitsAllowableValues();
+        if (!in_array($units, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'units', must be one of '%s'",
+                    $units,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['units'] = $units;
 

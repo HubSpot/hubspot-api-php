@@ -381,7 +381,7 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access
      *
-     * @param string|null $access PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
+     * @param string|null $access NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param string|null $name New name for the file.
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class FileUpdateInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent_folder_id
      *
-     * @param string|null $parent_folder_id New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     * @param string|null $parent_folder_id FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
      *
      * @return self
      */

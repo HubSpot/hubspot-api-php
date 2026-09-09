@@ -35,6 +35,7 @@ use \HubSpot\Client\Webhooks\ObjectSerializer;
  * Error Class Doc Comment
  *
  * @category Class
+ * @description Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.
  * @package  HubSpot\Client\Webhooks
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -353,7 +354,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category
      *
-     * @param string $category The error category
+     * @param string $category The error category, represented as a string.
      *
      * @return self
      */
@@ -380,7 +381,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param array<string,string[]>|null $context Context about the error condition
+     * @param array<string,string[]>|null $context An object containing context about the error condition. This includes additional properties, each of which is an array of strings.
      *
      * @return self
      */
@@ -407,7 +408,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets correlation_id
      *
-     * @param string $correlation_id A unique identifier for the request. Include this value with any error reports or support tickets
+     * @param string $correlation_id A unique identifier for the request, formatted as a UUID. Include this value with any error reports or support tickets.
      *
      * @return self
      */
@@ -434,7 +435,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Webhooks\Model\ErrorDetail[]|null $errors further information about the error
+     * @param \HubSpot\Client\Webhooks\Model\ErrorDetail[]|null $errors An array providing further information about the error. Each item in the array is an ErrorDetail object.
      *
      * @return self
      */
@@ -461,7 +462,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps. This is an object with string properties.
      *
      * @return self
      */
@@ -488,7 +489,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message A human readable message describing the error along with remediation steps where appropriate
+     * @param string $message A human-readable message describing the error along with remediation steps where appropriate. This is a string.
      *
      * @return self
      */
@@ -515,7 +516,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sub_category
      *
-     * @param string|null $sub_category A specific category that contains more specific detail about the error
+     * @param string|null $sub_category A specific category that provides more detailed information about the error. This is a string.
      *
      * @return self
      */

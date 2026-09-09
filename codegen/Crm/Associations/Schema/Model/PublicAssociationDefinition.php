@@ -315,7 +315,7 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets id
      *
-     * @param string $id The unique identifier for the association type.
+     * @param string $id id
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class PublicAssociationDefinition implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets name
      *
-     * @param string $name The name of the association type, such as 'contact_to_company'.
+     * @param string $name name
      *
      * @return self
      */

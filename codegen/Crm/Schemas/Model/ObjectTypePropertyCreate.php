@@ -60,6 +60,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'description' => 'string',
         'display_order' => 'int',
+        'external_options_reference_type' => 'string',
         'field_type' => 'string',
         'form_field' => 'bool',
         'group_name' => 'string',
@@ -87,6 +88,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'description' => null,
         'display_order' => 'int32',
+        'external_options_reference_type' => null,
         'field_type' => null,
         'form_field' => null,
         'group_name' => null,
@@ -112,6 +114,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'description' => false,
         'display_order' => false,
+        'external_options_reference_type' => false,
         'field_type' => false,
         'form_field' => false,
         'group_name' => false,
@@ -217,6 +220,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'description' => 'description',
         'display_order' => 'displayOrder',
+        'external_options_reference_type' => 'externalOptionsReferenceType',
         'field_type' => 'fieldType',
         'form_field' => 'formField',
         'group_name' => 'groupName',
@@ -242,6 +246,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'description' => 'setDescription',
         'display_order' => 'setDisplayOrder',
+        'external_options_reference_type' => 'setExternalOptionsReferenceType',
         'field_type' => 'setFieldType',
         'form_field' => 'setFormField',
         'group_name' => 'setGroupName',
@@ -267,6 +272,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'description' => 'getDescription',
         'display_order' => 'getDisplayOrder',
+        'external_options_reference_type' => 'getExternalOptionsReferenceType',
         'field_type' => 'getFieldType',
         'form_field' => 'getFormField',
         'group_name' => 'getGroupName',
@@ -346,6 +352,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     public const TYPE_DATETIME = 'datetime';
     public const TYPE_ENUMERATION = 'enumeration';
     public const TYPE_NUMBER = 'number';
+    public const TYPE_PHONE_NUMBER = 'phone_number';
     public const TYPE_STRING = 'string';
 
     /**
@@ -410,6 +417,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
             self::TYPE_DATETIME,
             self::TYPE_ENUMERATION,
             self::TYPE_NUMBER,
+            self::TYPE_PHONE_NUMBER,
             self::TYPE_STRING,
         ];
     }
@@ -431,6 +439,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('display_order', $data ?? [], null);
+        $this->setIfExists('external_options_reference_type', $data ?? [], null);
         $this->setIfExists('field_type', $data ?? [], null);
         $this->setIfExists('form_field', $data ?? [], null);
         $this->setIfExists('group_name', $data ?? [], null);
@@ -593,6 +602,33 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets external_options_reference_type
+     *
+     * @return string|null
+     */
+    public function getExternalOptionsReferenceType()
+    {
+        return $this->container['external_options_reference_type'];
+    }
+
+    /**
+     * Sets external_options_reference_type
+     *
+     * @param string|null $external_options_reference_type Specifies the reference type for external options associated with the property.
+     *
+     * @return self
+     */
+    public function setExternalOptionsReferenceType($external_options_reference_type)
+    {
+        if (is_null($external_options_reference_type)) {
+            throw new \InvalidArgumentException('non-nullable external_options_reference_type cannot be null');
+        }
+        $this->container['external_options_reference_type'] = $external_options_reference_type;
+
+        return $this;
+    }
+
+    /**
      * Gets field_type
      *
      * @return string
@@ -713,7 +749,7 @@ class ObjectTypePropertyCreate implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets hidden
      *
-     * @param bool|null $hidden hidden
+     * @param bool|null $hidden Hidden options won't be shown in HubSpot.
      *
      * @return self
      */

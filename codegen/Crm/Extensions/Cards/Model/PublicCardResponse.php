@@ -531,7 +531,7 @@ class PublicCardResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets title
      *
-     * @param string $title The top-level title for this card, displayed to users in the CRM UI.
+     * @param string $title The top-level title for this card. Displayed to users in the CRM UI.
      *
      * @return self
      */

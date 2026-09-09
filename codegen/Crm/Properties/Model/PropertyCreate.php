@@ -74,6 +74,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => '\HubSpot\Client\Crm\Properties\Model\OptionInput[]',
         'referenced_object_type' => 'string',
         'show_currency_symbol' => 'bool',
+        'text_display_hint' => 'string',
         'type' => 'string'
     ];
 
@@ -102,6 +103,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => null,
         'referenced_object_type' => null,
         'show_currency_symbol' => null,
+        'text_display_hint' => null,
         'type' => null
     ];
 
@@ -128,6 +130,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => false,
         'referenced_object_type' => false,
         'show_currency_symbol' => false,
+        'text_display_hint' => false,
         'type' => false
     ];
 
@@ -234,6 +237,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => 'options',
         'referenced_object_type' => 'referencedObjectType',
         'show_currency_symbol' => 'showCurrencySymbol',
+        'text_display_hint' => 'textDisplayHint',
         'type' => 'type'
     ];
 
@@ -260,6 +264,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => 'setOptions',
         'referenced_object_type' => 'setReferencedObjectType',
         'show_currency_symbol' => 'setShowCurrencySymbol',
+        'text_display_hint' => 'setTextDisplayHint',
         'type' => 'setType'
     ];
 
@@ -286,6 +291,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'options' => 'getOptions',
         'referenced_object_type' => 'getReferencedObjectType',
         'show_currency_symbol' => 'getShowCurrencySymbol',
+        'text_display_hint' => 'getTextDisplayHint',
         'type' => 'getType'
     ];
 
@@ -351,6 +357,14 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const NUMBER_DISPLAY_HINT_PERCENTAGE = 'percentage';
     public const NUMBER_DISPLAY_HINT_PROBABILITY = 'probability';
     public const NUMBER_DISPLAY_HINT_UNFORMATTED = 'unformatted';
+    public const TEXT_DISPLAY_HINT_DOMAIN_NAME = 'domain_name';
+    public const TEXT_DISPLAY_HINT_EMAIL = 'email';
+    public const TEXT_DISPLAY_HINT_IP_ADDRESS = 'ip_address';
+    public const TEXT_DISPLAY_HINT_MULTI_LINE = 'multi_line';
+    public const TEXT_DISPLAY_HINT_PHONE_NUMBER = 'phone_number';
+    public const TEXT_DISPLAY_HINT_PHYSICAL_ADDRESS = 'physical_address';
+    public const TEXT_DISPLAY_HINT_POSTAL_CODE = 'postal_code';
+    public const TEXT_DISPLAY_HINT_UNFORMATTED_SINGLE_LINE = 'unformatted_single_line';
     public const TYPE_BOOL = 'bool';
     public const TYPE_DATE = 'date';
     public const TYPE_DATETIME = 'datetime';
@@ -418,6 +432,25 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
+    public function getTextDisplayHintAllowableValues()
+    {
+        return [
+            self::TEXT_DISPLAY_HINT_DOMAIN_NAME,
+            self::TEXT_DISPLAY_HINT_EMAIL,
+            self::TEXT_DISPLAY_HINT_IP_ADDRESS,
+            self::TEXT_DISPLAY_HINT_MULTI_LINE,
+            self::TEXT_DISPLAY_HINT_PHONE_NUMBER,
+            self::TEXT_DISPLAY_HINT_PHYSICAL_ADDRESS,
+            self::TEXT_DISPLAY_HINT_POSTAL_CODE,
+            self::TEXT_DISPLAY_HINT_UNFORMATTED_SINGLE_LINE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getTypeAllowableValues()
     {
         return [
@@ -463,6 +496,7 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('options', $data ?? [], null);
         $this->setIfExists('referenced_object_type', $data ?? [], null);
         $this->setIfExists('show_currency_symbol', $data ?? [], null);
+        $this->setIfExists('text_display_hint', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -528,6 +562,15 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'number_display_hint', must be one of '%s'",
                 $this->container['number_display_hint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTextDisplayHintAllowableValues();
+        if (!is_null($this->container['text_display_hint']) && !in_array($this->container['text_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'text_display_hint', must be one of '%s'",
+                $this->container['text_display_hint'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1044,6 +1087,43 @@ class PropertyCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable show_currency_symbol cannot be null');
         }
         $this->container['show_currency_symbol'] = $show_currency_symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets text_display_hint
+     *
+     * @return string|null
+     */
+    public function getTextDisplayHint()
+    {
+        return $this->container['text_display_hint'];
+    }
+
+    /**
+     * Sets text_display_hint
+     *
+     * @param string|null $text_display_hint text_display_hint
+     *
+     * @return self
+     */
+    public function setTextDisplayHint($text_display_hint)
+    {
+        if (is_null($text_display_hint)) {
+            throw new \InvalidArgumentException('non-nullable text_display_hint cannot be null');
+        }
+        $allowedValues = $this->getTextDisplayHintAllowableValues();
+        if (!in_array($text_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'text_display_hint', must be one of '%s'",
+                    $text_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['text_display_hint'] = $text_display_hint;
 
         return $this;
     }

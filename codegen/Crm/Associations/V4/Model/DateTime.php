@@ -72,7 +72,7 @@ class DateTime implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'date_only' => null,
         'time_zone_shift' => 'int32',
-        'value' => 'int32'
+        'value' => 'int64'
     ];
 
     /**

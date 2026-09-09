@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Owners\ObjectSerializer;
  * ForwardPaging Class Doc Comment
  *
  * @category Class
+ * @description Paging information for forward-only pagination. Contains the next page reference when more results are available; omitted or empty on the last page.
  * @package  HubSpot\Client\Crm\Owners
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

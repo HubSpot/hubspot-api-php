@@ -64,6 +64,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'primary_team_id' => 'string',
         'role_id' => 'string',
         'role_ids' => 'string[]',
+        'seat_names' => 'string[]',
         'secondary_team_ids' => 'string[]',
         'send_welcome_email' => 'bool',
         'super_admin' => 'bool'
@@ -84,6 +85,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'primary_team_id' => null,
         'role_id' => null,
         'role_ids' => null,
+        'seat_names' => null,
         'secondary_team_ids' => null,
         'send_welcome_email' => null,
         'super_admin' => null
@@ -102,6 +104,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'primary_team_id' => false,
         'role_id' => false,
         'role_ids' => false,
+        'seat_names' => false,
         'secondary_team_ids' => false,
         'send_welcome_email' => false,
         'super_admin' => false
@@ -200,6 +203,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'primary_team_id' => 'primaryTeamId',
         'role_id' => 'roleId',
         'role_ids' => 'roleIds',
+        'seat_names' => 'seatNames',
         'secondary_team_ids' => 'secondaryTeamIds',
         'send_welcome_email' => 'sendWelcomeEmail',
         'super_admin' => 'superAdmin'
@@ -218,6 +222,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'primary_team_id' => 'setPrimaryTeamId',
         'role_id' => 'setRoleId',
         'role_ids' => 'setRoleIds',
+        'seat_names' => 'setSeatNames',
         'secondary_team_ids' => 'setSecondaryTeamIds',
         'send_welcome_email' => 'setSendWelcomeEmail',
         'super_admin' => 'setSuperAdmin'
@@ -236,6 +241,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'primary_team_id' => 'getPrimaryTeamId',
         'role_id' => 'getRoleId',
         'role_ids' => 'getRoleIds',
+        'seat_names' => 'getSeatNames',
         'secondary_team_ids' => 'getSecondaryTeamIds',
         'send_welcome_email' => 'getSendWelcomeEmail',
         'super_admin' => 'getSuperAdmin'
@@ -305,6 +311,7 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('primary_team_id', $data ?? [], null);
         $this->setIfExists('role_id', $data ?? [], null);
         $this->setIfExists('role_ids', $data ?? [], null);
+        $this->setIfExists('seat_names', $data ?? [], null);
         $this->setIfExists('secondary_team_ids', $data ?? [], null);
         $this->setIfExists('send_welcome_email', $data ?? [], null);
         $this->setIfExists('super_admin', $data ?? [], null);
@@ -549,6 +556,33 @@ class PublicUser implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable role_ids cannot be null');
         }
         $this->container['role_ids'] = $role_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets seat_names
+     *
+     * @return string[]|null
+     */
+    public function getSeatNames()
+    {
+        return $this->container['seat_names'];
+    }
+
+    /**
+     * Sets seat_names
+     *
+     * @param string[]|null $seat_names seat_names
+     *
+     * @return self
+     */
+    public function setSeatNames($seat_names)
+    {
+        if (is_null($seat_names)) {
+            throw new \InvalidArgumentException('non-nullable seat_names cannot be null');
+        }
+        $this->container['seat_names'] = $seat_names;
 
         return $this;
     }

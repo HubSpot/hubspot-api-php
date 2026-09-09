@@ -423,7 +423,7 @@ class IntegratorObjectResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets title
      *
-     * @param string $title The title of the object card, displayed to users.
+     * @param string $title The top-level title for this card. Displayed to users in the CRM UI.
      *
      * @return self
      */

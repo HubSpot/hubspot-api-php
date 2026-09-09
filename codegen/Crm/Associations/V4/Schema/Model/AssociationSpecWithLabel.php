@@ -59,7 +59,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'category' => 'string',
+        'from_object_type_id' => 'string',
         'label' => 'string',
+        'to_object_type_id' => 'string',
         'type_id' => 'int'
     ];
 
@@ -72,7 +74,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'category' => null,
+        'from_object_type_id' => null,
         'label' => null,
+        'to_object_type_id' => null,
         'type_id' => 'int32'
     ];
 
@@ -83,7 +87,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'category' => false,
+        'from_object_type_id' => false,
         'label' => false,
+        'to_object_type_id' => false,
         'type_id' => false
     ];
 
@@ -174,7 +180,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'category' => 'category',
+        'from_object_type_id' => 'fromObjectTypeId',
         'label' => 'label',
+        'to_object_type_id' => 'toObjectTypeId',
         'type_id' => 'typeId'
     ];
 
@@ -185,7 +193,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'category' => 'setCategory',
+        'from_object_type_id' => 'setFromObjectTypeId',
         'label' => 'setLabel',
+        'to_object_type_id' => 'setToObjectTypeId',
         'type_id' => 'setTypeId'
     ];
 
@@ -196,7 +206,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'category' => 'getCategory',
+        'from_object_type_id' => 'getFromObjectTypeId',
         'label' => 'getLabel',
+        'to_object_type_id' => 'getToObjectTypeId',
         'type_id' => 'getTypeId'
     ];
 
@@ -244,6 +256,7 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
     public const CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
     public const CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
     public const CATEGORY_USER_DEFINED = 'USER_DEFINED';
+    public const CATEGORY_WORK = 'WORK';
 
     /**
      * Gets allowable values of the enum
@@ -256,6 +269,7 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
             self::CATEGORY_HUBSPOT_DEFINED,
             self::CATEGORY_INTEGRATOR_DEFINED,
             self::CATEGORY_USER_DEFINED,
+            self::CATEGORY_WORK,
         ];
     }
 
@@ -275,7 +289,9 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(?array $data = null)
     {
         $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('from_object_type_id', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('to_object_type_id', $data ?? [], null);
         $this->setIfExists('type_id', $data ?? [], null);
     }
 
@@ -374,6 +390,33 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets from_object_type_id
+     *
+     * @return string|null
+     */
+    public function getFromObjectTypeId()
+    {
+        return $this->container['from_object_type_id'];
+    }
+
+    /**
+     * Sets from_object_type_id
+     *
+     * @param string|null $from_object_type_id from_object_type_id
+     *
+     * @return self
+     */
+    public function setFromObjectTypeId($from_object_type_id)
+    {
+        if (is_null($from_object_type_id)) {
+            throw new \InvalidArgumentException('non-nullable from_object_type_id cannot be null');
+        }
+        $this->container['from_object_type_id'] = $from_object_type_id;
+
+        return $this;
+    }
+
+    /**
      * Gets label
      *
      * @return string|null
@@ -396,6 +439,33 @@ class AssociationSpecWithLabel implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
         $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_object_type_id
+     *
+     * @return string|null
+     */
+    public function getToObjectTypeId()
+    {
+        return $this->container['to_object_type_id'];
+    }
+
+    /**
+     * Sets to_object_type_id
+     *
+     * @param string|null $to_object_type_id to_object_type_id
+     *
+     * @return self
+     */
+    public function setToObjectTypeId($to_object_type_id)
+    {
+        if (is_null($to_object_type_id)) {
+            throw new \InvalidArgumentException('non-nullable to_object_type_id cannot be null');
+        }
+        $this->container['to_object_type_id'] = $to_object_type_id;
 
         return $this;
     }

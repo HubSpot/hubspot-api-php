@@ -35,7 +35,7 @@ use \HubSpot\Client\Crm\Schemas\ObjectSerializer;
  * Option Class Doc Comment
  *
  * @category Class
- * @description The options available when a property is an enumeration
+ * @description A HubSpot property option
  * @package  HubSpot\Client\Crm\Schemas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

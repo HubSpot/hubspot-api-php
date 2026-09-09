@@ -68,7 +68,7 @@ class SubscriberVidResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vid' => 'int32'
+        'vid' => 'int64'
     ];
 
     /**

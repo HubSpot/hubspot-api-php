@@ -451,7 +451,7 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param string $name Name of the requested file.
      *
      * @return self
      */
@@ -532,7 +532,7 @@ class SignedUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string $url URL to download the new file from.
+     * @param string $url Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
      *
      * @return self
      */

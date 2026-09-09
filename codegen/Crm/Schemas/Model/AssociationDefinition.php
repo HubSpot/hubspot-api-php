@@ -35,7 +35,7 @@ use \HubSpot\Client\Crm\Schemas\ObjectSerializer;
  * AssociationDefinition Class Doc Comment
  *
  * @category Class
- * @description Defines an association between two object types.
+ * @description The definition of an association
  * @package  HubSpot\Client\Crm\Schemas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -455,7 +455,7 @@ class AssociationDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets to_object_type_id
      *
-     * @param string $to_object_type_id ID of the target object type to link to.
+     * @param string $to_object_type_id ID of the target object type ID to link to.
      *
      * @return self
      */

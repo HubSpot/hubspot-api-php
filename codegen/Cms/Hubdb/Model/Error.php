@@ -35,6 +35,7 @@ use \HubSpot\Client\Cms\Hubdb\ObjectSerializer;
  * Error Class Doc Comment
  *
  * @category Class
+ * @description Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.
  * @package  HubSpot\Client\Cms\Hubdb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

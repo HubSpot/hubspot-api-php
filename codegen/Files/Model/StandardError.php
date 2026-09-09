@@ -35,7 +35,7 @@ use \HubSpot\Client\Files\ObjectSerializer;
  * StandardError Class Doc Comment
  *
  * @category Class
- * @description Ye olde error
+ * @description Represents a standard error response in the HubSpot API, providing detailed information about an error that occurred during an API request.
  * @package  HubSpot\Client\Files
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

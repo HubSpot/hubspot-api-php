@@ -417,7 +417,7 @@ class CardCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets title
      *
-     * @param string $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param string $title The top-level title for this card, displayed to users in the CRM UI. It is a string.
      *
      * @return self
      */

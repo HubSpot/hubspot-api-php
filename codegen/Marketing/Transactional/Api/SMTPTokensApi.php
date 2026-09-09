@@ -372,7 +372,7 @@ class SMTPTokensApi
      *
      * Create a SMTP API token.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg smtp_api_token_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response or if the response body is not in the expected format
@@ -390,7 +390,7 @@ class SMTPTokensApi
      *
      * Create a SMTP API token.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response or if the response body is not in the expected format
@@ -489,7 +489,7 @@ class SMTPTokensApi
      *
      * Create a SMTP API token.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -510,7 +510,7 @@ class SMTPTokensApi
      *
      * Create a SMTP API token.
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -560,7 +560,7 @@ class SMTPTokensApi
     /**
      * Create request for operation 'createToken'
      *
-     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
+     * @param  \HubSpot\Client\Marketing\Transactional\Model\SmtpApiTokenRequestEgg $smtp_api_token_request_egg (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -943,19 +943,19 @@ class SMTPTokensApi
      *
      * Query SMTP API tokens by campaign name or an emailCampaignId.
      *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $campaign_name A name for the campaign tied to the SMTP API token. (optional)
      * @param  string|null $email_campaign_id Identifier assigned to the campaign provided during the token creation. (optional)
-     * @param  string|null $after Starting point to get the next set of results. (optional)
-     * @param  int|null $limit Maximum number of tokens to return. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTokensPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Transactional\Model\CollectionResponseSmtpApiTokenViewForwardPaging|\HubSpot\Client\Marketing\Transactional\Model\Error
      */
-    public function getTokensPage($campaign_name = null, $email_campaign_id = null, $after = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
+    public function getTokensPage($after = null, $campaign_name = null, $email_campaign_id = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
     {
-        list($response) = $this->getTokensPageWithHttpInfo($campaign_name, $email_campaign_id, $after, $limit, $contentType);
+        list($response) = $this->getTokensPageWithHttpInfo($after, $campaign_name, $email_campaign_id, $limit, $contentType);
         return $response;
     }
 
@@ -964,19 +964,19 @@ class SMTPTokensApi
      *
      * Query SMTP API tokens by campaign name or an emailCampaignId.
      *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $campaign_name A name for the campaign tied to the SMTP API token. (optional)
      * @param  string|null $email_campaign_id Identifier assigned to the campaign provided during the token creation. (optional)
-     * @param  string|null $after Starting point to get the next set of results. (optional)
-     * @param  int|null $limit Maximum number of tokens to return. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTokensPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Transactional\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Transactional\Model\CollectionResponseSmtpApiTokenViewForwardPaging|\HubSpot\Client\Marketing\Transactional\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTokensPageWithHttpInfo($campaign_name = null, $email_campaign_id = null, $after = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
+    public function getTokensPageWithHttpInfo($after = null, $campaign_name = null, $email_campaign_id = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
     {
-        $request = $this->getTokensPageRequest($campaign_name, $email_campaign_id, $after, $limit, $contentType);
+        $request = $this->getTokensPageRequest($after, $campaign_name, $email_campaign_id, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1066,18 +1066,18 @@ class SMTPTokensApi
      *
      * Query SMTP API tokens by campaign name or an emailCampaignId.
      *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $campaign_name A name for the campaign tied to the SMTP API token. (optional)
      * @param  string|null $email_campaign_id Identifier assigned to the campaign provided during the token creation. (optional)
-     * @param  string|null $after Starting point to get the next set of results. (optional)
-     * @param  int|null $limit Maximum number of tokens to return. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTokensPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTokensPageAsync($campaign_name = null, $email_campaign_id = null, $after = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
+    public function getTokensPageAsync($after = null, $campaign_name = null, $email_campaign_id = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
     {
-        return $this->getTokensPageAsyncWithHttpInfo($campaign_name, $email_campaign_id, $after, $limit, $contentType)
+        return $this->getTokensPageAsyncWithHttpInfo($after, $campaign_name, $email_campaign_id, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1090,19 +1090,19 @@ class SMTPTokensApi
      *
      * Query SMTP API tokens by campaign name or an emailCampaignId.
      *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $campaign_name A name for the campaign tied to the SMTP API token. (optional)
      * @param  string|null $email_campaign_id Identifier assigned to the campaign provided during the token creation. (optional)
-     * @param  string|null $after Starting point to get the next set of results. (optional)
-     * @param  int|null $limit Maximum number of tokens to return. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTokensPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTokensPageAsyncWithHttpInfo($campaign_name = null, $email_campaign_id = null, $after = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
+    public function getTokensPageAsyncWithHttpInfo($after = null, $campaign_name = null, $email_campaign_id = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Transactional\Model\CollectionResponseSmtpApiTokenViewForwardPaging';
-        $request = $this->getTokensPageRequest($campaign_name, $email_campaign_id, $after, $limit, $contentType);
+        $request = $this->getTokensPageRequest($after, $campaign_name, $email_campaign_id, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1143,16 +1143,16 @@ class SMTPTokensApi
     /**
      * Create request for operation 'getTokensPage'
      *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $campaign_name A name for the campaign tied to the SMTP API token. (optional)
      * @param  string|null $email_campaign_id Identifier assigned to the campaign provided during the token creation. (optional)
-     * @param  string|null $after Starting point to get the next set of results. (optional)
-     * @param  int|null $limit Maximum number of tokens to return. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTokensPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTokensPageRequest($campaign_name = null, $email_campaign_id = null, $after = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
+    public function getTokensPageRequest($after = null, $campaign_name = null, $email_campaign_id = null, $limit = null, string $contentType = self::contentTypes['getTokensPage'][0])
     {
 
 
@@ -1169,6 +1169,15 @@ class SMTPTokensApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $campaign_name,
             'campaignName', // param base name
             'string', // openApiType
@@ -1180,15 +1189,6 @@ class SMTPTokensApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $email_campaign_id,
             'emailCampaignId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

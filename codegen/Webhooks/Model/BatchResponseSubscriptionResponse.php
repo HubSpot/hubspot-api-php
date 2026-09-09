@@ -377,7 +377,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at The date and time when the batch operation was completed.
+     * @param \DateTime $completed_at The timestamp when the batch operation completed, in ISO 8601 format.
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links A collection of related links associated with the batch operation.
+     * @param array<string,string>|null $links An object containing URLs for related resources or operations.
      *
      * @return self
      */
@@ -431,7 +431,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The date and time when the batch operation was requested.
+     * @param \DateTime|null $requested_at The timestamp when the batch operation was requested, in ISO 8601 format.
      *
      * @return self
      */
@@ -458,7 +458,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Webhooks\Model\SubscriptionResponse[] $results The list of results from the batch operation.
+     * @param \HubSpot\Client\Webhooks\Model\SubscriptionResponse[] $results An array containing the successfully processed webhook subscriptions from the batch operation.
      *
      * @return self
      */
@@ -485,7 +485,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The date and time when the batch operation started.
+     * @param \DateTime $started_at The timestamp when the batch operation started processing, in ISO 8601 format.
      *
      * @return self
      */
@@ -512,7 +512,7 @@ class BatchResponseSubscriptionResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets status
      *
-     * @param string $status The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     * @param string $status The status of the batch operation. Accepted values are 'PENDING', 'PROCESSING', 'CANCELED', or 'COMPLETE'.
      *
      * @return self
      */

@@ -70,7 +70,7 @@ class SubscriberEmailResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'email' => null,
-        'vid' => 'int32'
+        'vid' => 'int64'
     ];
 
     /**

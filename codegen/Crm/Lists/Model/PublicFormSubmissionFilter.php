@@ -57,11 +57,11 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy',
+        'coalescing_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy',
         'filter_type' => 'string',
         'form_id' => 'string',
         'operator' => 'string',
-        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy'
+        'pruning_refine_by' => '\HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy'
     ];
 
     /**
@@ -372,7 +372,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets coalescing_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy|null
      */
     public function getCoalescingRefineBy()
     {
@@ -382,7 +382,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets coalescing_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterCoalescingRefineBy|null $coalescing_refine_by coalescing_refine_by
      *
      * @return self
      */
@@ -500,7 +500,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets pruning_refine_by
      *
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy|null
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy|null
      */
     public function getPruningRefineBy()
     {
@@ -510,7 +510,7 @@ class PublicFormSubmissionFilter implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets pruning_refine_by
      *
-     * @param \HubSpot\Client\Crm\Lists\Model\PublicFormSubmissionFilterPruningRefineBy|null $pruning_refine_by pruning_refine_by
+     * @param \HubSpot\Client\Crm\Lists\Model\PublicCtaAnalyticsFilterPruningRefineBy|null $pruning_refine_by pruning_refine_by
      *
      * @return self
      */

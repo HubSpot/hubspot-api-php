@@ -479,7 +479,7 @@ class EventAttendeesApi
      *
      * Record Participants by ContactId with Marketing Event Object Id
      *
-     * @param  string $object_id The internal id of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber batch_input_marketing_event_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactId'] to see the possible values for this operation
@@ -499,7 +499,7 @@ class EventAttendeesApi
      *
      * Record Participants by ContactId with Marketing Event Object Id
      *
-     * @param  string $object_id The internal id of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactId'] to see the possible values for this operation
@@ -600,7 +600,7 @@ class EventAttendeesApi
      *
      * Record Participants by ContactId with Marketing Event Object Id
      *
-     * @param  string $object_id The internal id of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactId'] to see the possible values for this operation
@@ -623,7 +623,7 @@ class EventAttendeesApi
      *
      * Record Participants by ContactId with Marketing Event Object Id
      *
-     * @param  string $object_id The internal id of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactId'] to see the possible values for this operation
@@ -675,7 +675,7 @@ class EventAttendeesApi
     /**
      * Create request for operation 'recordByContactId'
      *
-     * @param  string $object_id The internal id of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventSubscriber $batch_input_marketing_event_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByContactId'] to see the possible values for this operation
@@ -1144,7 +1144,7 @@ class EventAttendeesApi
      *
      * Record Participants by Email with Marketing Event Object Id
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber batch_input_marketing_event_email_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByEmail'] to see the possible values for this operation
@@ -1164,7 +1164,7 @@ class EventAttendeesApi
      *
      * Record Participants by Email with Marketing Event Object Id
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByEmail'] to see the possible values for this operation
@@ -1265,7 +1265,7 @@ class EventAttendeesApi
      *
      * Record Participants by Email with Marketing Event Object Id
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByEmail'] to see the possible values for this operation
@@ -1288,7 +1288,7 @@ class EventAttendeesApi
      *
      * Record Participants by Email with Marketing Event Object Id
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByEmail'] to see the possible values for this operation
@@ -1340,7 +1340,7 @@ class EventAttendeesApi
     /**
      * Create request for operation 'recordByEmail'
      *
-     * @param  string $object_id The internal ID of the marketing event in HubSpot (required)
+     * @param  string $object_id The internal id of the marketing event in HubSpot. (required)
      * @param  string $subscriber_state The attendance state value. It may be &#39;register&#39;, &#39;attend&#39; or &#39;cancel&#39; (required)
      * @param  \HubSpot\Client\Marketing\Events\Model\BatchInputMarketingEventEmailSubscriber $batch_input_marketing_event_email_subscriber (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recordByEmail'] to see the possible values for this operation

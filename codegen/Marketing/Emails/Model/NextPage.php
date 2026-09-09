@@ -35,7 +35,7 @@ use \HubSpot\Client\Marketing\Emails\ObjectSerializer;
  * NextPage Class Doc Comment
  *
  * @category Class
- * @description Contains information about the next page.
+ * @description Specifies the paging information needed to retrieve the next set of results in a paginated API response
  * @package  HubSpot\Client\Marketing\Emails
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -340,7 +340,7 @@ class NextPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link The link to the previous page.
+     * @param string|null $link The link to the next page.
      *
      * @return self
      */

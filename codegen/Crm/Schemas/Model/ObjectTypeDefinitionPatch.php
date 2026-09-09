@@ -58,6 +58,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
+        'allows_sensitive_properties' => 'bool',
         'clear_description' => 'bool',
         'description' => 'string',
         'labels' => '\HubSpot\Client\Crm\Schemas\Model\ObjectTypeDefinitionLabels',
@@ -76,6 +77,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'allows_sensitive_properties' => null,
         'clear_description' => null,
         'description' => null,
         'labels' => null,
@@ -92,6 +94,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'allows_sensitive_properties' => false,
         'clear_description' => false,
         'description' => false,
         'labels' => false,
@@ -188,6 +191,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'allows_sensitive_properties' => 'allowsSensitiveProperties',
         'clear_description' => 'clearDescription',
         'description' => 'description',
         'labels' => 'labels',
@@ -204,6 +208,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'allows_sensitive_properties' => 'setAllowsSensitiveProperties',
         'clear_description' => 'setClearDescription',
         'description' => 'setDescription',
         'labels' => 'setLabels',
@@ -220,6 +225,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'allows_sensitive_properties' => 'getAllowsSensitiveProperties',
         'clear_description' => 'getClearDescription',
         'description' => 'getDescription',
         'labels' => 'getLabels',
@@ -287,6 +293,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('allows_sensitive_properties', $data ?? [], null);
         $this->setIfExists('clear_description', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('labels', $data ?? [], null);
@@ -340,6 +347,33 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
+     * Gets allows_sensitive_properties
+     *
+     * @return bool|null
+     */
+    public function getAllowsSensitiveProperties()
+    {
+        return $this->container['allows_sensitive_properties'];
+    }
+
+    /**
+     * Sets allows_sensitive_properties
+     *
+     * @param bool|null $allows_sensitive_properties Determines if the object type can include properties that are marked as sensitive.
+     *
+     * @return self
+     */
+    public function setAllowsSensitiveProperties($allows_sensitive_properties)
+    {
+        if (is_null($allows_sensitive_properties)) {
+            throw new \InvalidArgumentException('non-nullable allows_sensitive_properties cannot be null');
+        }
+        $this->container['allows_sensitive_properties'] = $allows_sensitive_properties;
+
+        return $this;
+    }
+
+    /**
      * Gets clear_description
      *
      * @return bool|null
@@ -352,7 +386,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets clear_description
      *
-     * @param bool|null $clear_description clear_description
+     * @param bool|null $clear_description Indicates whether the description of the object type should be cleared.
      *
      * @return self
      */
@@ -379,7 +413,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description A brief explanation of the object type.
      *
      * @return self
      */
@@ -487,7 +521,7 @@ class ObjectTypeDefinitionPatch implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets restorable
      *
-     * @param bool|null $restorable restorable
+     * @param bool|null $restorable Specifies if the object type can be restored after being deleted.
      *
      * @return self
      */

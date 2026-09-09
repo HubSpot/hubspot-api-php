@@ -142,16 +142,17 @@ class MultiLanguageApi
      *
      * Attach post to a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next attach_to_lang_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
      */
     public function attachToLangGroup($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
     {
-        $this->attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType);
+        list($response) = $this->attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType);
+        return $response;
     }
 
     /**
@@ -159,12 +160,12 @@ class MultiLanguageApi
      *
      * Attach post to a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
     {
@@ -193,7 +194,35 @@ class MultiLanguageApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 default:
@@ -216,7 +245,7 @@ class MultiLanguageApi
      *
      * Attach post to a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -237,7 +266,7 @@ class MultiLanguageApi
      *
      * Attach post to a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -245,14 +274,27 @@ class MultiLanguageApi
      */
     public function attachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
     {
-        $returnType = '';
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
         $request = $this->attachToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -274,7 +316,7 @@ class MultiLanguageApi
     /**
      * Create request for operation 'attachToLangGroup'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next The JSON representation of the AttachToLangPrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -371,7 +413,7 @@ class MultiLanguageApi
      *
      * Create a language variation
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next blog_post_language_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -389,7 +431,7 @@ class MultiLanguageApi
      *
      * Create a language variation
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -488,7 +530,7 @@ class MultiLanguageApi
      *
      * Create a language variation
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -509,7 +551,7 @@ class MultiLanguageApi
      *
      * Create a language variation
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -559,7 +601,7 @@ class MultiLanguageApi
     /**
      * Create request for operation 'createLangVariation'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\BlogPostLanguageCloneRequestVNext $blog_post_language_clone_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -656,16 +698,17 @@ class MultiLanguageApi
      *
      * Detach post from a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next detach_from_lang_group_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
      */
     public function detachFromLangGroup($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
     {
-        $this->detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, $contentType);
+        list($response) = $this->detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, $contentType);
+        return $response;
     }
 
     /**
@@ -673,12 +716,12 @@ class MultiLanguageApi
      *
      * Detach post from a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
     {
@@ -707,7 +750,35 @@ class MultiLanguageApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 default:
@@ -730,7 +801,7 @@ class MultiLanguageApi
      *
      * Detach post from a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -751,7 +822,7 @@ class MultiLanguageApi
      *
      * Detach post from a multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -759,14 +830,27 @@ class MultiLanguageApi
      */
     public function detachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
     {
-        $returnType = '';
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
         $request = $this->detachFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -788,7 +872,7 @@ class MultiLanguageApi
     /**
      * Create request for operation 'detachFromLangGroup'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next The JSON representation of the DetachFromLangGroupRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -885,7 +969,7 @@ class MultiLanguageApi
      *
      * Set a new primary language
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next set_new_language_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -902,7 +986,7 @@ class MultiLanguageApi
      *
      * Set a new primary language
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
@@ -959,7 +1043,7 @@ class MultiLanguageApi
      *
      * Set a new primary language
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -980,7 +1064,7 @@ class MultiLanguageApi
      *
      * Set a new primary language
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1017,7 +1101,7 @@ class MultiLanguageApi
     /**
      * Create request for operation 'setLangPrimary'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1114,16 +1198,17 @@ class MultiLanguageApi
      *
      * Update languages of multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next update_languages_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error
      */
     public function updateLangs($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
     {
-        $this->updateLangsWithHttpInfo($update_languages_request_v_next, $contentType);
+        list($response) = $this->updateLangsWithHttpInfo($update_languages_request_v_next, $contentType);
+        return $response;
     }
 
     /**
@@ -1131,12 +1216,12 @@ class MultiLanguageApi
      *
      * Update languages of multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Blogs\BlogPosts\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLangsWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
     {
@@ -1165,7 +1250,35 @@ class MultiLanguageApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 default:
@@ -1188,7 +1301,7 @@ class MultiLanguageApi
      *
      * Update languages of multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1209,7 +1322,7 @@ class MultiLanguageApi
      *
      * Update languages of multi-language group
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1217,14 +1330,27 @@ class MultiLanguageApi
      */
     public function updateLangsAsyncWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
     {
-        $returnType = '';
+        $returnType = '\HubSpot\Client\Cms\Blogs\BlogPosts\Model\Error';
         $request = $this->updateLangsRequest($update_languages_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1246,7 +1372,7 @@ class MultiLanguageApi
     /**
      * Create request for operation 'updateLangs'
      *
-     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+     * @param  \HubSpot\Client\Cms\Blogs\BlogPosts\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

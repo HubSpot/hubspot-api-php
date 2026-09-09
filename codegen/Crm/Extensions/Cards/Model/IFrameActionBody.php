@@ -401,7 +401,7 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets label
      *
-     * @param string|null $label The label for the button that opens the iframen as it will be displayed to users.
+     * @param string|null $label The label for this property as you'd like it displayed to users.
      *
      * @return self
      */
@@ -455,7 +455,7 @@ class IFrameActionBody implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type Specifies the type of action, which is 'IFRAME' for iframe actions.
+     * @param string $type The type of status.
      *
      * @return self
      */

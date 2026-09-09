@@ -336,7 +336,7 @@ class VersionPublicEmail implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string $id The email ID.
+     * @param string $id ID of this marketing email version.
      *
      * @return self
      */

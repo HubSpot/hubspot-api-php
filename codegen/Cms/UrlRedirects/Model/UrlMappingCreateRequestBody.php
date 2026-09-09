@@ -374,7 +374,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets destination
      *
-     * @param string $destination The destination URL, where the target URL should be redirected if it matches the routePrefix.
+     * @param string $destination The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets is_match_full_url
      *
-     * @param bool|null $is_match_full_url Whether the routePrefix should match on the entire URL, including the domain.
+     * @param bool|null $is_match_full_url Whether the `routePrefix` should match on the entire URL, including the domain.
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets is_match_query_string
      *
-     * @param bool|null $is_match_query_string Whether the routePrefix should match on the entire URL path, including the query string.
+     * @param bool|null $is_match_query_string Whether the `routePrefix` should match on the entire URL path, including the query string.
      *
      * @return self
      */
@@ -482,7 +482,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets is_pattern
      *
-     * @param bool|null $is_pattern Whether the routePrefix should match based on pattern.
+     * @param bool|null $is_pattern Whether the `routePrefix` should match based on pattern.
      *
      * @return self
      */
@@ -509,7 +509,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets is_protocol_agnostic
      *
-     * @param bool|null $is_protocol_agnostic Whether the routePrefix should match both HTTP and HTTPS protocols.
+     * @param bool|null $is_protocol_agnostic Whether the `routePrefix` should match both HTTP and HTTPS protocols.
      *
      * @return self
      */
@@ -563,7 +563,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets precedence
      *
-     * @param int|null $precedence Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the lower precedence will be used.
+     * @param int|null $precedence Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class UrlMappingCreateRequestBody implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets redirect_style
      *
-     * @param int $redirect_style The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy).
+     * @param int $redirect_style The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
      *
      * @return self
      */

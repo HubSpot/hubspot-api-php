@@ -577,7 +577,7 @@ class ContentLanguageVariation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param int $id The unique ID of the content language variation.
+     * @param int $id ID of object to set as primary in multi-language group.
      *
      * @return self
      */

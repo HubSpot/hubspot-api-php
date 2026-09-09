@@ -249,6 +249,7 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
     public const CATEGORY_HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';
     public const CATEGORY_INTEGRATOR_DEFINED = 'INTEGRATOR_DEFINED';
     public const CATEGORY_USER_DEFINED = 'USER_DEFINED';
+    public const CATEGORY_WORK = 'WORK';
 
     /**
      * Gets allowable values of the enum
@@ -261,6 +262,7 @@ class PublicAssociationDefinitionUserConfiguration implements ModelInterface, Ar
             self::CATEGORY_HUBSPOT_DEFINED,
             self::CATEGORY_INTEGRATOR_DEFINED,
             self::CATEGORY_USER_DEFINED,
+            self::CATEGORY_WORK,
         ];
     }
 

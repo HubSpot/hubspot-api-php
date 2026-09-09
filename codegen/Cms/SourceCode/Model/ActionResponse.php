@@ -394,7 +394,7 @@ class ActionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links A collection of related links associated with the action.
+     * @param array<string,string>|null $links A map of link names to associated URIs containing documentation about the error or recommended remediation steps
      *
      * @return self
      */

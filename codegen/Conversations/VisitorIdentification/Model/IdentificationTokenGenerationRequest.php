@@ -59,6 +59,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'email' => 'string',
         'first_name' => 'string',
+        'hs_customer_agent_context' => 'array<string,string>',
         'last_name' => 'string'
     ];
 
@@ -72,6 +73,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'email' => null,
         'first_name' => null,
+        'hs_customer_agent_context' => null,
         'last_name' => null
     ];
 
@@ -83,6 +85,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'email' => false,
         'first_name' => false,
+        'hs_customer_agent_context' => false,
         'last_name' => false
     ];
 
@@ -174,6 +177,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'email' => 'email',
         'first_name' => 'firstName',
+        'hs_customer_agent_context' => 'hsCustomerAgentContext',
         'last_name' => 'lastName'
     ];
 
@@ -185,6 +189,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     protected static $setters = [
         'email' => 'setEmail',
         'first_name' => 'setFirstName',
+        'hs_customer_agent_context' => 'setHsCustomerAgentContext',
         'last_name' => 'setLastName'
     ];
 
@@ -196,6 +201,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     protected static $getters = [
         'email' => 'getEmail',
         'first_name' => 'getFirstName',
+        'hs_customer_agent_context' => 'getHsCustomerAgentContext',
         'last_name' => 'getLastName'
     ];
 
@@ -258,6 +264,7 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('first_name', $data ?? [], null);
+        $this->setIfExists('hs_customer_agent_context', $data ?? [], null);
         $this->setIfExists('last_name', $data ?? [], null);
     }
 
@@ -290,6 +297,9 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
 
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
+        }
+        if ($this->container['hs_customer_agent_context'] === null) {
+            $invalidProperties[] = "'hs_customer_agent_context' can't be null";
         }
         return $invalidProperties;
     }
@@ -356,6 +366,33 @@ class IdentificationTokenGenerationRequest implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable first_name cannot be null');
         }
         $this->container['first_name'] = $first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets hs_customer_agent_context
+     *
+     * @return array<string,string>
+     */
+    public function getHsCustomerAgentContext()
+    {
+        return $this->container['hs_customer_agent_context'];
+    }
+
+    /**
+     * Sets hs_customer_agent_context
+     *
+     * @param array<string,string> $hs_customer_agent_context hs_customer_agent_context
+     *
+     * @return self
+     */
+    public function setHsCustomerAgentContext($hs_customer_agent_context)
+    {
+        if (is_null($hs_customer_agent_context)) {
+            throw new \InvalidArgumentException('non-nullable hs_customer_agent_context cannot be null');
+        }
+        $this->container['hs_customer_agent_context'] = $hs_customer_agent_context;
 
         return $this;
     }

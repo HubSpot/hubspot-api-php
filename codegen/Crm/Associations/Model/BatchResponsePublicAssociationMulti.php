@@ -377,7 +377,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets completed_at
      *
-     * @param \DateTime $completed_at The date and time when the batch operation was completed.
+     * @param \DateTime $completed_at completed_at
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links URLs linking to resources or documentation associated with the batch operation.
+     * @param array<string,string>|null $links links
      *
      * @return self
      */
@@ -431,7 +431,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets requested_at
      *
-     * @param \DateTime|null $requested_at The date and time when the batch request was made.
+     * @param \DateTime|null $requested_at requested_at
      *
      * @return self
      */
@@ -485,7 +485,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets started_at
      *
-     * @param \DateTime $started_at The date and time when the batch operation started.
+     * @param \DateTime $started_at started_at
      *
      * @return self
      */
@@ -512,7 +512,7 @@ class BatchResponsePublicAssociationMulti implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status The current status of the batch operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+     * @param string $status status
      *
      * @return self
      */

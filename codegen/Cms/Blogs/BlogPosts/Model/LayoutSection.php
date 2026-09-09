@@ -587,7 +587,7 @@ class LayoutSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets params
      *
-     * @param array<string,object> $params Parameters associated with the layout section.
+     * @param array<string,object> $params null
      *
      * @return self
      */

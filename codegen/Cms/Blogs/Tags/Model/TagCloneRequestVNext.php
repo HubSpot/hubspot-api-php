@@ -61,7 +61,8 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => 'string',
         'language' => 'string',
         'name' => 'string',
-        'primary_language' => 'string'
+        'primary_language' => 'string',
+        'use_published' => 'bool'
     ];
 
     /**
@@ -75,7 +76,8 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => null,
         'language' => null,
         'name' => null,
-        'primary_language' => null
+        'primary_language' => null,
+        'use_published' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => false,
         'language' => false,
         'name' => false,
-        'primary_language' => false
+        'primary_language' => false,
+        'use_published' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => 'id',
         'language' => 'language',
         'name' => 'name',
-        'primary_language' => 'primaryLanguage'
+        'primary_language' => 'primaryLanguage',
+        'use_published' => 'usePublished'
     ];
 
     /**
@@ -191,7 +195,8 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => 'setId',
         'language' => 'setLanguage',
         'name' => 'setName',
-        'primary_language' => 'setPrimaryLanguage'
+        'primary_language' => 'setPrimaryLanguage',
+        'use_published' => 'setUsePublished'
     ];
 
     /**
@@ -203,7 +208,8 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         'id' => 'getId',
         'language' => 'getLanguage',
         'name' => 'getName',
-        'primary_language' => 'getPrimaryLanguage'
+        'primary_language' => 'getPrimaryLanguage',
+        'use_published' => 'getUsePublished'
     ];
 
     /**
@@ -267,6 +273,7 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('primary_language', $data ?? [], null);
+        $this->setIfExists('use_published', $data ?? [], null);
     }
 
     /**
@@ -421,6 +428,33 @@ class TagCloneRequestVNext implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable primary_language cannot be null');
         }
         $this->container['primary_language'] = $primary_language;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_published
+     *
+     * @return bool|null
+     */
+    public function getUsePublished()
+    {
+        return $this->container['use_published'];
+    }
+
+    /**
+     * Sets use_published
+     *
+     * @param bool|null $use_published use_published
+     *
+     * @return self
+     */
+    public function setUsePublished($use_published)
+    {
+        if (is_null($use_published)) {
+            throw new \InvalidArgumentException('non-nullable use_published cannot be null');
+        }
+        $this->container['use_published'] = $use_published;
 
         return $this;
     }

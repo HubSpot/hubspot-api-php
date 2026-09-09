@@ -339,7 +339,7 @@ class CollectionResponseExternalUnifiedEvent implements ModelInterface, ArrayAcc
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Events\Model\ExternalUnifiedEvent[] $results results
+     * @param \HubSpot\Client\Events\Model\ExternalUnifiedEvent[] $results An array of ExternalUnifiedEvent objects, each representing an individual event with its associated details.
      *
      * @return self
      */

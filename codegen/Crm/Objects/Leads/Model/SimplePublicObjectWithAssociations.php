@@ -67,7 +67,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         'properties' => 'array<string,string>',
         'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Leads\Model\ValueWithTimestamp[]>',
         'updated_at' => '\DateTime',
-        'url' => 'string'
+        'url' => 'string',
+        'warnings' => '\HubSpot\Client\Crm\Objects\Leads\Model\PublicObjectWarning[]'
     ];
 
     /**
@@ -87,7 +88,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         'properties' => null,
         'properties_with_history' => null,
         'updated_at' => 'date-time',
-        'url' => null
+        'url' => null,
+        'warnings' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         'properties' => false,
         'properties_with_history' => false,
         'updated_at' => false,
-        'url' => false
+        'url' => false,
+        'warnings' => false
     ];
 
     /**
@@ -203,7 +206,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         'properties' => 'properties',
         'properties_with_history' => 'propertiesWithHistory',
         'updated_at' => 'updatedAt',
-        'url' => 'url'
+        'url' => 'url',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -221,7 +225,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         'properties' => 'setProperties',
         'properties_with_history' => 'setPropertiesWithHistory',
         'updated_at' => 'setUpdatedAt',
-        'url' => 'setUrl'
+        'url' => 'setUrl',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -239,7 +244,8 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         'properties' => 'getProperties',
         'properties_with_history' => 'getPropertiesWithHistory',
         'updated_at' => 'getUpdatedAt',
-        'url' => 'getUrl'
+        'url' => 'getUrl',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -309,6 +315,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
         $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -338,9 +345,6 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['archived'] === null) {
-            $invalidProperties[] = "'archived' can't be null";
-        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
@@ -371,7 +375,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     /**
      * Gets archived
      *
-     * @return bool
+     * @return bool|null
      */
     public function getArchived()
     {
@@ -381,7 +385,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     /**
      * Sets archived
      *
-     * @param bool $archived Whether the object is archived.
+     * @param bool|null $archived Whether the object is archived.
      *
      * @return self
      */
@@ -634,6 +638,33 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \HubSpot\Client\Crm\Objects\Leads\Model\PublicObjectWarning[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \HubSpot\Client\Crm\Objects\Leads\Model\PublicObjectWarning[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

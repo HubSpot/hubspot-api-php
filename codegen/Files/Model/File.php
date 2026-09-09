@@ -524,7 +524,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access
      *
-     * @param string $access PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
+     * @param string $access File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
      *
      * @return self
      */
@@ -561,7 +561,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets archived
      *
-     * @param bool $archived Marks whether the folder is deleted or not.
+     * @param bool $archived If the file is deleted.
      *
      * @return self
      */
@@ -588,7 +588,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets archived_at
      *
-     * @param \DateTime|null $archived_at Timestamp of folder deletion.
+     * @param \DateTime|null $archived_at Deletion time of the file object.
      *
      * @return self
      */
@@ -615,7 +615,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime $created_at Timestamp of folder creation.
+     * @param \DateTime $created_at Creation time of the file object.
      *
      * @return self
      */
@@ -723,7 +723,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets extension
      *
-     * @param string|null $extension Extension of the requested file.
+     * @param string|null $extension Extension of the file. ex: .jpg, .png, .gif, .pdf, etc.
      *
      * @return self
      */
@@ -777,7 +777,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets height
      *
-     * @param int|null $height For image and video files. The height of the file.
+     * @param int|null $height For image and video files, the height of the content.
      *
      * @return self
      */
@@ -831,7 +831,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_usable_in_content
      *
-     * @param bool|null $is_usable_in_content Mark whether the file should be used in new content or not.
+     * @param bool|null $is_usable_in_content Previously \"archied\". Indicates if the file should be used when creating new content like web pages.
      *
      * @return self
      */
@@ -858,7 +858,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param string|null $name Name of the file.
      *
      * @return self
      */
@@ -885,7 +885,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parent_folder_id
      *
-     * @param string|null $parent_folder_id New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     * @param string|null $parent_folder_id ID of the folder the file is in.
      *
      * @return self
      */
@@ -912,7 +912,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path
      *
-     * @param string|null $path Path of the folder in the file manager.
+     * @param string|null $path Path of the file in the file manager.
      *
      * @return self
      */
@@ -939,7 +939,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets size
      *
-     * @param int|null $size Size in bytes of the requested file.
+     * @param int|null $size Size of the file in bytes.
      *
      * @return self
      */
@@ -1030,7 +1030,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime $updated_at Timestamp of the latest update to the folder.
+     * @param \DateTime $updated_at Timestamp of the latest update to the file.
      *
      * @return self
      */
@@ -1057,7 +1057,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url URL to download the new file from.
+     * @param string|null $url URL of the given file. This URL can change depending on the domain settings of the account. Will use the select file hosting domain.
      *
      * @return self
      */
@@ -1084,7 +1084,7 @@ class File implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets width
      *
-     * @param int|null $width For image and video files. The width of the file.
+     * @param int|null $width For image and video files, the width of the content.
      *
      * @return self
      */

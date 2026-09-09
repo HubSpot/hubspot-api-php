@@ -35,7 +35,7 @@ use \HubSpot\Client\Crm\Schemas\ObjectSerializer;
  * Property Class Doc Comment
  *
  * @category Class
- * @description Defines a property
+ * @description A HubSpot property
  * @package  HubSpot\Client\Crm\Schemas
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -64,7 +64,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'calculation_formula' => 'string',
         'created_at' => '\DateTime',
         'created_user_id' => 'string',
+        'currency_property_name' => 'string',
         'data_sensitivity' => 'string',
+        'date_display_hint' => 'string',
         'description' => 'string',
         'display_order' => 'int',
         'external_options' => 'bool',
@@ -77,10 +79,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'string',
         'modification_metadata' => '\HubSpot\Client\Crm\Schemas\Model\PropertyModificationMetadata',
         'name' => 'string',
+        'number_display_hint' => 'string',
         'options' => '\HubSpot\Client\Crm\Schemas\Model\Option[]',
         'referenced_object_type' => 'string',
         'sensitive_data_categories' => 'string[]',
         'show_currency_symbol' => 'bool',
+        'text_display_hint' => 'string',
         'type' => 'string',
         'updated_at' => '\DateTime',
         'updated_user_id' => 'string'
@@ -100,7 +104,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'calculation_formula' => null,
         'created_at' => 'date-time',
         'created_user_id' => null,
+        'currency_property_name' => null,
         'data_sensitivity' => null,
+        'date_display_hint' => null,
         'description' => null,
         'display_order' => 'int32',
         'external_options' => null,
@@ -113,10 +119,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => null,
         'modification_metadata' => null,
         'name' => null,
+        'number_display_hint' => null,
         'options' => null,
         'referenced_object_type' => null,
         'sensitive_data_categories' => null,
         'show_currency_symbol' => null,
+        'text_display_hint' => null,
         'type' => null,
         'updated_at' => 'date-time',
         'updated_user_id' => null
@@ -134,7 +142,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'calculation_formula' => false,
         'created_at' => false,
         'created_user_id' => false,
+        'currency_property_name' => false,
         'data_sensitivity' => false,
+        'date_display_hint' => false,
         'description' => false,
         'display_order' => false,
         'external_options' => false,
@@ -147,10 +157,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => false,
         'modification_metadata' => false,
         'name' => false,
+        'number_display_hint' => false,
         'options' => false,
         'referenced_object_type' => false,
         'sensitive_data_categories' => false,
         'show_currency_symbol' => false,
+        'text_display_hint' => false,
         'type' => false,
         'updated_at' => false,
         'updated_user_id' => false
@@ -248,7 +260,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'calculation_formula' => 'calculationFormula',
         'created_at' => 'createdAt',
         'created_user_id' => 'createdUserId',
+        'currency_property_name' => 'currencyPropertyName',
         'data_sensitivity' => 'dataSensitivity',
+        'date_display_hint' => 'dateDisplayHint',
         'description' => 'description',
         'display_order' => 'displayOrder',
         'external_options' => 'externalOptions',
@@ -261,10 +275,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'label',
         'modification_metadata' => 'modificationMetadata',
         'name' => 'name',
+        'number_display_hint' => 'numberDisplayHint',
         'options' => 'options',
         'referenced_object_type' => 'referencedObjectType',
         'sensitive_data_categories' => 'sensitiveDataCategories',
         'show_currency_symbol' => 'showCurrencySymbol',
+        'text_display_hint' => 'textDisplayHint',
         'type' => 'type',
         'updated_at' => 'updatedAt',
         'updated_user_id' => 'updatedUserId'
@@ -282,7 +298,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'calculation_formula' => 'setCalculationFormula',
         'created_at' => 'setCreatedAt',
         'created_user_id' => 'setCreatedUserId',
+        'currency_property_name' => 'setCurrencyPropertyName',
         'data_sensitivity' => 'setDataSensitivity',
+        'date_display_hint' => 'setDateDisplayHint',
         'description' => 'setDescription',
         'display_order' => 'setDisplayOrder',
         'external_options' => 'setExternalOptions',
@@ -295,10 +313,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'setLabel',
         'modification_metadata' => 'setModificationMetadata',
         'name' => 'setName',
+        'number_display_hint' => 'setNumberDisplayHint',
         'options' => 'setOptions',
         'referenced_object_type' => 'setReferencedObjectType',
         'sensitive_data_categories' => 'setSensitiveDataCategories',
         'show_currency_symbol' => 'setShowCurrencySymbol',
+        'text_display_hint' => 'setTextDisplayHint',
         'type' => 'setType',
         'updated_at' => 'setUpdatedAt',
         'updated_user_id' => 'setUpdatedUserId'
@@ -316,7 +336,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'calculation_formula' => 'getCalculationFormula',
         'created_at' => 'getCreatedAt',
         'created_user_id' => 'getCreatedUserId',
+        'currency_property_name' => 'getCurrencyPropertyName',
         'data_sensitivity' => 'getDataSensitivity',
+        'date_display_hint' => 'getDateDisplayHint',
         'description' => 'getDescription',
         'display_order' => 'getDisplayOrder',
         'external_options' => 'getExternalOptions',
@@ -329,10 +351,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         'label' => 'getLabel',
         'modification_metadata' => 'getModificationMetadata',
         'name' => 'getName',
+        'number_display_hint' => 'getNumberDisplayHint',
         'options' => 'getOptions',
         'referenced_object_type' => 'getReferencedObjectType',
         'sensitive_data_categories' => 'getSensitiveDataCategories',
         'show_currency_symbol' => 'getShowCurrencySymbol',
+        'text_display_hint' => 'getTextDisplayHint',
         'type' => 'getType',
         'updated_at' => 'getUpdatedAt',
         'updated_user_id' => 'getUpdatedUserId'
@@ -382,6 +406,24 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     public const DATA_SENSITIVITY_HIGHLY_SENSITIVE = 'highly_sensitive';
     public const DATA_SENSITIVITY_NON_SENSITIVE = 'non_sensitive';
     public const DATA_SENSITIVITY_SENSITIVE = 'sensitive';
+    public const DATE_DISPLAY_HINT_ABSOLUTE = 'absolute';
+    public const DATE_DISPLAY_HINT_ABSOLUTE_WITH_RELATIVE = 'absolute_with_relative';
+    public const DATE_DISPLAY_HINT_TIME_SINCE = 'time_since';
+    public const DATE_DISPLAY_HINT_TIME_UNTIL = 'time_until';
+    public const NUMBER_DISPLAY_HINT_CURRENCY = 'currency';
+    public const NUMBER_DISPLAY_HINT_DURATION = 'duration';
+    public const NUMBER_DISPLAY_HINT_FORMATTED = 'formatted';
+    public const NUMBER_DISPLAY_HINT_PERCENTAGE = 'percentage';
+    public const NUMBER_DISPLAY_HINT_PROBABILITY = 'probability';
+    public const NUMBER_DISPLAY_HINT_UNFORMATTED = 'unformatted';
+    public const TEXT_DISPLAY_HINT_DOMAIN_NAME = 'domain_name';
+    public const TEXT_DISPLAY_HINT_EMAIL = 'email';
+    public const TEXT_DISPLAY_HINT_IP_ADDRESS = 'ip_address';
+    public const TEXT_DISPLAY_HINT_MULTI_LINE = 'multi_line';
+    public const TEXT_DISPLAY_HINT_PHONE_NUMBER = 'phone_number';
+    public const TEXT_DISPLAY_HINT_PHYSICAL_ADDRESS = 'physical_address';
+    public const TEXT_DISPLAY_HINT_POSTAL_CODE = 'postal_code';
+    public const TEXT_DISPLAY_HINT_UNFORMATTED_SINGLE_LINE = 'unformatted_single_line';
 
     /**
      * Gets allowable values of the enum
@@ -394,6 +436,57 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
             self::DATA_SENSITIVITY_HIGHLY_SENSITIVE,
             self::DATA_SENSITIVITY_NON_SENSITIVE,
             self::DATA_SENSITIVITY_SENSITIVE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDateDisplayHintAllowableValues()
+    {
+        return [
+            self::DATE_DISPLAY_HINT_ABSOLUTE,
+            self::DATE_DISPLAY_HINT_ABSOLUTE_WITH_RELATIVE,
+            self::DATE_DISPLAY_HINT_TIME_SINCE,
+            self::DATE_DISPLAY_HINT_TIME_UNTIL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNumberDisplayHintAllowableValues()
+    {
+        return [
+            self::NUMBER_DISPLAY_HINT_CURRENCY,
+            self::NUMBER_DISPLAY_HINT_DURATION,
+            self::NUMBER_DISPLAY_HINT_FORMATTED,
+            self::NUMBER_DISPLAY_HINT_PERCENTAGE,
+            self::NUMBER_DISPLAY_HINT_PROBABILITY,
+            self::NUMBER_DISPLAY_HINT_UNFORMATTED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTextDisplayHintAllowableValues()
+    {
+        return [
+            self::TEXT_DISPLAY_HINT_DOMAIN_NAME,
+            self::TEXT_DISPLAY_HINT_EMAIL,
+            self::TEXT_DISPLAY_HINT_IP_ADDRESS,
+            self::TEXT_DISPLAY_HINT_MULTI_LINE,
+            self::TEXT_DISPLAY_HINT_PHONE_NUMBER,
+            self::TEXT_DISPLAY_HINT_PHYSICAL_ADDRESS,
+            self::TEXT_DISPLAY_HINT_POSTAL_CODE,
+            self::TEXT_DISPLAY_HINT_UNFORMATTED_SINGLE_LINE,
         ];
     }
 
@@ -418,7 +511,9 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('calculation_formula', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('created_user_id', $data ?? [], null);
+        $this->setIfExists('currency_property_name', $data ?? [], null);
         $this->setIfExists('data_sensitivity', $data ?? [], null);
+        $this->setIfExists('date_display_hint', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('display_order', $data ?? [], null);
         $this->setIfExists('external_options', $data ?? [], null);
@@ -431,10 +526,12 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('label', $data ?? [], null);
         $this->setIfExists('modification_metadata', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('number_display_hint', $data ?? [], null);
         $this->setIfExists('options', $data ?? [], null);
         $this->setIfExists('referenced_object_type', $data ?? [], null);
         $this->setIfExists('sensitive_data_categories', $data ?? [], null);
         $this->setIfExists('show_currency_symbol', $data ?? [], null);
+        $this->setIfExists('text_display_hint', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('updated_user_id', $data ?? [], null);
@@ -476,6 +573,15 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        $allowedValues = $this->getDateDisplayHintAllowableValues();
+        if (!is_null($this->container['date_display_hint']) && !in_array($this->container['date_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'date_display_hint', must be one of '%s'",
+                $this->container['date_display_hint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
@@ -491,9 +597,27 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!is_null($this->container['number_display_hint']) && !in_array($this->container['number_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                $this->container['number_display_hint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['options'] === null) {
             $invalidProperties[] = "'options' can't be null";
         }
+        $allowedValues = $this->getTextDisplayHintAllowableValues();
+        if (!is_null($this->container['text_display_hint']) && !in_array($this->container['text_display_hint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'text_display_hint', must be one of '%s'",
+                $this->container['text_display_hint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -675,6 +799,33 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets currency_property_name
+     *
+     * @return string|null
+     */
+    public function getCurrencyPropertyName()
+    {
+        return $this->container['currency_property_name'];
+    }
+
+    /**
+     * Sets currency_property_name
+     *
+     * @param string|null $currency_property_name The name of the related currency property.
+     *
+     * @return self
+     */
+    public function setCurrencyPropertyName($currency_property_name)
+    {
+        if (is_null($currency_property_name)) {
+            throw new \InvalidArgumentException('non-nullable currency_property_name cannot be null');
+        }
+        $this->container['currency_property_name'] = $currency_property_name;
+
+        return $this;
+    }
+
+    /**
      * Gets data_sensitivity
      *
      * @return string|null
@@ -707,6 +858,43 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['data_sensitivity'] = $data_sensitivity;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_display_hint
+     *
+     * @return string|null
+     */
+    public function getDateDisplayHint()
+    {
+        return $this->container['date_display_hint'];
+    }
+
+    /**
+     * Sets date_display_hint
+     *
+     * @param string|null $date_display_hint Controls how date properties are displayed in the HubSpot UI, with options such as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
+     *
+     * @return self
+     */
+    public function setDateDisplayHint($date_display_hint)
+    {
+        if (is_null($date_display_hint)) {
+            throw new \InvalidArgumentException('non-nullable date_display_hint cannot be null');
+        }
+        $allowedValues = $this->getDateDisplayHintAllowableValues();
+        if (!in_array($date_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'date_display_hint', must be one of '%s'",
+                    $date_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['date_display_hint'] = $date_display_hint;
 
         return $this;
     }
@@ -913,7 +1101,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hidden
      *
-     * @param bool|null $hidden Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
+     * @param bool|null $hidden Hidden options won't be shown in HubSpot.
      *
      * @return self
      */
@@ -1036,6 +1224,43 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets number_display_hint
+     *
+     * @return string|null
+     */
+    public function getNumberDisplayHint()
+    {
+        return $this->container['number_display_hint'];
+    }
+
+    /**
+     * Sets number_display_hint
+     *
+     * @param string|null $number_display_hint Hint for how a number property is displayed and validated in HubSpot's UI. Can be: \"unformatted\", \"formatted\", \"currency\", \"percentage\", \"duration\", or \"probability\".
+     *
+     * @return self
+     */
+    public function setNumberDisplayHint($number_display_hint)
+    {
+        if (is_null($number_display_hint)) {
+            throw new \InvalidArgumentException('non-nullable number_display_hint cannot be null');
+        }
+        $allowedValues = $this->getNumberDisplayHintAllowableValues();
+        if (!in_array($number_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'number_display_hint', must be one of '%s'",
+                    $number_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['number_display_hint'] = $number_display_hint;
+
+        return $this;
+    }
+
+    /**
      * Gets options
      *
      * @return \HubSpot\Client\Crm\Schemas\Model\Option[]
@@ -1144,6 +1369,43 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets text_display_hint
+     *
+     * @return string|null
+     */
+    public function getTextDisplayHint()
+    {
+        return $this->container['text_display_hint'];
+    }
+
+    /**
+     * Sets text_display_hint
+     *
+     * @param string|null $text_display_hint Hint for how the text is displayed and validated in HubSpot's UI. Can be: \"unformatted_single_line\", \"multi_line\", \"email\", \"phone_number\", \"domain_name\", \"ip_address\", \"physical_address\", or \"postal_code\".
+     *
+     * @return self
+     */
+    public function setTextDisplayHint($text_display_hint)
+    {
+        if (is_null($text_display_hint)) {
+            throw new \InvalidArgumentException('non-nullable text_display_hint cannot be null');
+        }
+        $allowedValues = $this->getTextDisplayHintAllowableValues();
+        if (!in_array($text_display_hint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'text_display_hint', must be one of '%s'",
+                    $text_display_hint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['text_display_hint'] = $text_display_hint;
+
+        return $this;
+    }
+
+    /**
      * Gets type
      *
      * @return string
@@ -1183,7 +1445,7 @@ class Property implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at The timestamp when the property was last updated, in ISO 8601 format.
+     * @param \DateTime|null $updated_at When the object type was last updated.
      *
      * @return self
      */
