@@ -4,6 +4,7 @@ namespace Hubspot\Tests\Unit;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\NetworkException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -13,6 +14,8 @@ use HubSpot\Client\Crm\Contacts\Api\BasicApi;
 use HubSpot\Client\Crm\Contacts\ApiException;
 use HubSpot\Client\Crm\Contacts\Configuration;
 use HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInputForCreate;
+use HubSpot\Client\Webhooks\Api\BasicApi as WebhooksBasicApi;
+use HubSpot\Client\Webhooks\Model\SubscriptionCreateRequest;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
@@ -28,6 +31,43 @@ use Psr\Http\Message\RequestInterface;
  */
 class GeneratedApiClientTest extends TestCase
 {
+    public function testWebhooksRequestBodyIsCompatibleWithBothGuzzleVersions(): void
+    {
+        $api = new WebhooksBasicApi();
+        $input = new SubscriptionCreateRequest();
+        $input->setActive(true);
+        $request = $api->createRequest(123, $input);
+        $this->assertSame(['active' => true], json_decode((string) $request->getBody(), true));
+    }
+
+    public function testWebhooksHandlesResponselessExceptionsOnBothPaths(): void
+    {
+        $request = new Request('GET', 'https://api.hubapi.com');
+        $exceptions = [new RequestException('No response', $request), new ConnectException('Connection failed', $request)];
+        if (class_exists(NetworkException::class)) {
+            $exceptions[] = new NetworkException('Network failed', $request);
+        }
+        foreach ($exceptions as $exception) {
+            foreach ([false, true] as $async) {
+                $client = new Client(['handler' => HandlerStack::create(new MockHandler([$exception]))]);
+                $api = new WebhooksBasicApi($client);
+
+                try {
+                    if ($async) {
+                        $api->getAllAsync(123)->wait();
+                    } else {
+                        $api->getAll(123);
+                    }
+                    $this->fail('Expected ApiException');
+                } catch (\HubSpot\Client\Webhooks\ApiException $error) {
+                    $this->assertSame(0, $error->getCode());
+                    $this->assertNull($error->getResponseHeaders());
+                    $this->assertNull($error->getResponseBody());
+                }
+            }
+        }
+    }
+
     /** @test */
     public function itSendsAJsonEncodedBody(): void
     {

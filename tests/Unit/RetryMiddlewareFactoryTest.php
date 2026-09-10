@@ -3,6 +3,7 @@
 namespace Hubspot\Tests\Unit;
 
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\NetworkException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use HubSpot\RetryMiddlewareFactory;
@@ -15,6 +16,28 @@ use PHPUnit\Framework\TestCase;
  */
 class RetryMiddlewareFactoryTest extends TestCase
 {
+    public function testRetriesTransferFailuresUsingActualGuzzleExceptionTypes(): void
+    {
+        $request = new Request('GET', 'https://api.hubapi.com/test');
+        foreach ([52, 55, 56] as $errno) {
+            if (class_exists(NetworkException::class)) {
+                $exception = new NetworkException("cURL error {$errno}: transfer failed", $request);
+            } elseif (52 === $errno) {
+                $exception = new ConnectException('Transfer failed', $request, null, ['errno' => $errno]);
+            } else {
+                $exception = new RequestException('Transfer failed', $request, null, null, ['errno' => $errno]);
+            }
+
+            $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors();
+            $this->assertTrue($retry(0, $request, null, $exception), "cURL error {$errno}");
+            $this->assertFalse($retry(5, $request, null, $exception));
+            $restricted = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([7]);
+            $this->assertFalse($restricted(0, $request, null, $exception));
+            $unrestricted = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([]);
+            $this->assertTrue($unrestricted(0, $request, null, $exception));
+        }
+    }
+
     /** @test */
     public function itRetriesRetriableConnectionErrorsByMessage(): void
     {

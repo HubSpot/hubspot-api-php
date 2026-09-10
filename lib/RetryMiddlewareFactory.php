@@ -2,6 +2,7 @@
 
 namespace HubSpot;
 
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Middleware;
 use Psr\Http\Client\NetworkExceptionInterface;
 use Psr\Http\Message\RequestInterface;
@@ -159,10 +160,23 @@ class RetryMiddlewareFactory
                 return false;
             }
 
-            // Guzzle 7 reports connection failures as ConnectException, Guzzle 8
-            // splits them across ConnectException and NetworkException. Both
-            // implement PSR-18's NetworkExceptionInterface.
-            if (!$exception instanceof NetworkExceptionInterface) {
+            // Guzzle 7 exposes cURL context; Guzzle 8 exposes only the message.
+            $context = ($exception instanceof RequestException || $exception instanceof NetworkExceptionInterface)
+                && method_exists($exception, 'getHandlerContext')
+                ? $exception->getHandlerContext()
+                : [];
+            $errno = $context['errno'] ?? null;
+            if (!is_numeric($errno) && $exception instanceof \Throwable
+                && 1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
+                $errno = $matches[1];
+            }
+
+            // Guzzle 7 uses RequestException for send/receive errors (55/56).
+            // Require cURL context to distinguish them from other request failures.
+            $legacyTransferError = $exception instanceof RequestException
+                && is_numeric($context['errno'] ?? null)
+                && in_array((int) $context['errno'], self::TRANSIENT_CURL_ERROR_CODES, true);
+            if (!$exception instanceof NetworkExceptionInterface && !$legacyTransferError) {
                 return false;
             }
 
@@ -170,10 +184,8 @@ class RetryMiddlewareFactory
                 return true;
             }
 
-            // RequestException::getHandlerContext() was removed in Guzzle 8, so the
-            // cURL errno is read from the exception message in both major versions.
-            if (1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
-                return in_array((int) $matches[1], $curlErrorCodes, true);
+            if (is_numeric($errno)) {
+                return in_array((int) $errno, $curlErrorCodes, true);
             }
 
             return false;

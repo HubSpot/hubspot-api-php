@@ -303,7 +303,7 @@ class AdvancedApi
                 },
                 function ($exception) {
                     $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    $statusCode = $response ? $response->getStatusCode() : 0;
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -311,8 +311,8 @@ class AdvancedApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
+                        $response ? $response->getHeaders() : null,
+                        $response ? (string) $response->getBody() : null
                     );
                 }
             );
