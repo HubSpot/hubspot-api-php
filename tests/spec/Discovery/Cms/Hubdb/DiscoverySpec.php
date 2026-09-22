@@ -4,7 +4,6 @@ namespace spec\HubSpot\Discovery\Cms\Hubdb;
 
 use GuzzleHttp\Client;
 use HubSpot\Client\Cms\Hubdb\Api\RowsApi;
-use HubSpot\Client\Cms\Hubdb\Api\RowsBatchApi;
 use HubSpot\Client\Cms\Hubdb\Api\TablesApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Cms\Hubdb\Discovery;
@@ -25,7 +24,6 @@ class DiscoverySpec extends ObjectBehavior
     public function it_creates_clients()
     {
         $this->rowsApi()->shouldHaveType(RowsApi::class);
-        $this->rowsBatchApi()->shouldHaveType(RowsBatchApi::class);
         $this->tablesApi()->shouldHaveType(TablesApi::class);
     }
 }
