@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Objects
+ * Custom Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -67,7 +67,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'properties' => 'array<string,string>',
         'properties_with_history' => 'array<string,\HubSpot\Client\Crm\Objects\Model\ValueWithTimestamp[]>',
         'updated_at' => '\DateTime',
-        'url' => 'string'
+        'url' => 'string',
+        'warnings' => '\HubSpot\Client\Crm\Objects\Model\PublicObjectWarning[]'
     ];
 
     /**
@@ -87,7 +88,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'properties' => null,
         'properties_with_history' => null,
         'updated_at' => 'date-time',
-        'url' => null
+        'url' => null,
+        'warnings' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'properties' => false,
         'properties_with_history' => false,
         'updated_at' => false,
-        'url' => false
+        'url' => false,
+        'warnings' => false
     ];
 
     /**
@@ -203,7 +206,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'properties' => 'properties',
         'properties_with_history' => 'propertiesWithHistory',
         'updated_at' => 'updatedAt',
-        'url' => 'url'
+        'url' => 'url',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -221,7 +225,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'properties' => 'setProperties',
         'properties_with_history' => 'setPropertiesWithHistory',
         'updated_at' => 'setUpdatedAt',
-        'url' => 'setUrl'
+        'url' => 'setUrl',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -239,7 +244,8 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         'properties' => 'getProperties',
         'properties_with_history' => 'getPropertiesWithHistory',
         'updated_at' => 'getUpdatedAt',
-        'url' => 'getUrl'
+        'url' => 'getUrl',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -309,6 +315,7 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('properties_with_history', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -624,7 +631,7 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets url
      *
-     * @param string|null $url Direct URL for this object in HubSpot
+     * @param string|null $url The URL associated with the object.
      *
      * @return self
      */
@@ -634,6 +641,33 @@ class SimplePublicUpsertObject implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \HubSpot\Client\Crm\Objects\Model\PublicObjectWarning[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \HubSpot\Client\Crm\Objects\Model\PublicObjectWarning[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

@@ -357,7 +357,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -643,7 +643,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -907,7 +907,7 @@ class FilesApi
         if (isset($folder_input)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($folder_input), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $folder_input;
             }
@@ -928,7 +928,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1161,7 +1161,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1967,7 +1967,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2271,7 +2271,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2575,7 +2575,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2909,7 +2909,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3173,7 +3173,7 @@ class FilesApi
         if (isset($import_from_url_input)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($import_from_url_input), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $import_from_url_input;
             }
@@ -3194,7 +3194,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3513,7 +3513,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3800,7 +3800,7 @@ class FilesApi
         if (isset($file_update_input)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($file_update_input), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $file_update_input;
             }
@@ -3821,7 +3821,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -4138,7 +4138,7 @@ class FilesApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

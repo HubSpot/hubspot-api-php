@@ -353,7 +353,7 @@ class MultiLanguageApi
         if (isset($attach_to_lang_primary_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($attach_to_lang_primary_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $attach_to_lang_primary_request_v_next;
             }
@@ -374,7 +374,7 @@ class MultiLanguageApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -638,7 +638,7 @@ class MultiLanguageApi
         if (isset($tag_clone_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($tag_clone_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $tag_clone_request_v_next;
             }
@@ -659,7 +659,7 @@ class MultiLanguageApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -909,7 +909,7 @@ class MultiLanguageApi
         if (isset($detach_from_lang_group_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($detach_from_lang_group_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $detach_from_lang_group_request_v_next;
             }
@@ -930,7 +930,7 @@ class MultiLanguageApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1138,7 +1138,7 @@ class MultiLanguageApi
         if (isset($set_new_language_primary_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($set_new_language_primary_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $set_new_language_primary_request_v_next;
             }
@@ -1159,7 +1159,7 @@ class MultiLanguageApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1409,7 +1409,7 @@ class MultiLanguageApi
         if (isset($update_languages_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($update_languages_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $update_languages_request_v_next;
             }
@@ -1430,7 +1430,7 @@ class MultiLanguageApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

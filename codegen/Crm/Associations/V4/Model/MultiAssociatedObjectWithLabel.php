@@ -316,7 +316,7 @@ class MultiAssociatedObjectWithLabel implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets association_types
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpecWithLabel[] $association_types association_types
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\AssociationSpecWithLabel[] $association_types An array of association types that define the relationships between this object and other objects. This property is required.
      *
      * @return self
      */

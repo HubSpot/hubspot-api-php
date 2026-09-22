@@ -405,7 +405,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links An object containing relevant links related to the batch request.
+     * @param array<string,string>|null $links A map of link names to associated URIs, providing additional information or actions related to the batch operation.
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicUpsertObject[] $results results
+     * @param \HubSpot\Client\Crm\Objects\Notes\Model\SimplePublicUpsertObject[] $results An array of SimplePublicUpsertObject items representing the results of the batch upsert operation.
      *
      * @return self
      */

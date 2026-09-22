@@ -35,7 +35,7 @@ use \HubSpot\Client\Crm\Objects\Taxes\ObjectSerializer;
  * SimplePublicObjectInput Class Doc Comment
  *
  * @category Class
- * @description Represents the input required to create or update a CRM object, containing an object with property names and their corresponding values.
+ * @description Represents the input required to update a CRM object, containing an object with property names and their corresponding values.
  * @package  HubSpot\Client\Crm\Objects\Taxes
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

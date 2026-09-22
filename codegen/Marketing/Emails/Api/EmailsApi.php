@@ -378,7 +378,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -642,7 +642,7 @@ class EmailsApi
         if (isset($email_clone_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($email_clone_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $email_clone_request_v_next;
             }
@@ -663,7 +663,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -927,7 +927,7 @@ class EmailsApi
         if (isset($ab_test_create_request_v_next)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($ab_test_create_request_v_next), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $ab_test_create_request_v_next;
             }
@@ -948,7 +948,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1324,7 +1324,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1700,7 +1700,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1986,7 +1986,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2292,7 +2292,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2623,7 +2623,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -2853,7 +2853,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3083,7 +3083,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3389,7 +3389,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3639,7 +3639,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -3869,7 +3869,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -4168,7 +4168,7 @@ class EmailsApi
         if (isset($email_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($email_update_request), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $email_update_request;
             }
@@ -4189,7 +4189,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -4473,7 +4473,7 @@ class EmailsApi
         if (isset($email_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($email_update_request), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $email_update_request;
             }
@@ -4494,7 +4494,7 @@ class EmailsApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

@@ -10,7 +10,7 @@
  */
 
 /**
- * CRM Objects
+ * Custom Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -29,7 +29,6 @@ namespace HubSpot\Client\Crm\Objects\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
@@ -128,6 +127,8 @@ class SearchApi
     /**
      * Operation doSearch
      *
+     * Search for CRM objects of a specified type.
+     *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -144,6 +145,8 @@ class SearchApi
 
     /**
      * Operation doSearchWithHttpInfo
+     *
+     * Search for CRM objects of a specified type.
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
@@ -165,10 +168,10 @@ class SearchApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -243,6 +246,8 @@ class SearchApi
     /**
      * Operation doSearchAsync
      *
+     * Search for CRM objects of a specified type.
+     *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
@@ -262,6 +267,8 @@ class SearchApi
 
     /**
      * Operation doSearchAsyncWithHttpInfo
+     *
+     * Search for CRM objects of a specified type.
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Objects\Model\PublicObjectSearchRequest $public_object_search_request (required)
@@ -295,8 +302,8 @@ class SearchApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -304,8 +311,8 @@ class SearchApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -368,7 +375,7 @@ class SearchApi
         if (isset($public_object_search_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($public_object_search_request));
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $public_object_search_request;
             }
@@ -389,7 +396,7 @@ class SearchApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

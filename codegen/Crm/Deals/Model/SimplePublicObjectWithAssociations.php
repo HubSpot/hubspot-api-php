@@ -628,7 +628,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     /**
      * Sets url
      *
-     * @param string|null $url The URL on the API that provide direct navigation to the corresponding UI pages for the connectors.
+     * @param string|null $url The URL link to access this object.
      *
      * @return self
      */

@@ -320,7 +320,7 @@ class SimplePublicObjectBatchInputForCreate implements ModelInterface, ArrayAcce
     /**
      * Sets associations
      *
-     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]|null $associations associations
+     * @param \HubSpot\Client\Crm\Objects\Taxes\Model\PublicAssociationsForObject[]|null $associations An array of associations that define the relationships between the objects being created and other existing objects. This property is required.
      *
      * @return self
      */

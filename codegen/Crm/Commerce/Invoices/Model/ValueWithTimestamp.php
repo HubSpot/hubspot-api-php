@@ -347,7 +347,7 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets source_id
      *
-     * @param string|null $source_id The unique ID of the property.
+     * @param string|null $source_id A string identifier for the specific source of the value.
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class ValueWithTimestamp implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets source_type
      *
-     * @param string $source_type The property type.
+     * @param string $source_type A string indicating the type of source from which the value originated.
      *
      * @return self
      */

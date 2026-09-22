@@ -419,7 +419,7 @@ class BatchResponsePublicDefaultAssociation implements ModelInterface, ArrayAcce
     /**
      * Sets errors
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\StandardError[]|null $errors errors
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\StandardError[]|null $errors An array of StandardError objects detailing any errors that occurred during the batch operation.
      *
      * @return self
      */
@@ -527,7 +527,7 @@ class BatchResponsePublicDefaultAssociation implements ModelInterface, ArrayAcce
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation1[] $results results
+     * @param \HubSpot\Client\Crm\Associations\V4\Model\PublicDefaultAssociation1[] $results An array of PublicDefaultAssociation objects representing the results of the batch operation.
      *
      * @return self
      */

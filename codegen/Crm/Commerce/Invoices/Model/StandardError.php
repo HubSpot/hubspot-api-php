@@ -532,7 +532,7 @@ class StandardError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string $status The HTTP status code associated with the error.
+     * @param string $status A text status code for the error, typically \"error\".
      *
      * @return self
      */

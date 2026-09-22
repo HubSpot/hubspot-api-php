@@ -313,7 +313,7 @@ class SimplePublicObjectInputForCreate implements ModelInterface, ArrayAccess, \
     /**
      * Sets associations
      *
-     * @param \HubSpot\Client\Crm\Objects\Meetings\Model\PublicAssociationsForObject[]|null $associations associations
+     * @param \HubSpot\Client\Crm\Objects\Meetings\Model\PublicAssociationsForObject[]|null $associations An array that specifies the relationships between the new public object and existing objects. This is required to establish how the new object is connected within the system.
      *
      * @return self
      */
