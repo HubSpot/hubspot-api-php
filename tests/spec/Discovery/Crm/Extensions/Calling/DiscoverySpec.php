@@ -3,9 +3,9 @@
 namespace spec\HubSpot\Discovery\Crm\Extensions\Calling;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Extensions\Calling\Api\ChannelConnectionSettingsApi;
-use HubSpot\Client\Crm\Extensions\Calling\Api\RecordingSettingsApi;
-use HubSpot\Client\Crm\Extensions\Calling\Api\SettingsApi;
+use HubSpot\Client\Crm\Extensions\Calling\Api\AdvancedApi;
+use HubSpot\Client\Crm\Extensions\Calling\Api\BasicApi;
+use HubSpot\Client\Crm\Extensions\Calling\Api\BatchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Extensions\Calling\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -24,8 +24,8 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->channelConnectionSettingsApi()->shouldHaveType(ChannelConnectionSettingsApi::class);
-        $this->recordingSettingsApi()->shouldHaveType(RecordingSettingsApi::class);
-        $this->settingsApi()->shouldHaveType(SettingsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->advancedApi()->shouldHaveType(AdvancedApi::class);
+        $this->batchApi()->shouldHaveType(BatchApi::class);
     }
 }

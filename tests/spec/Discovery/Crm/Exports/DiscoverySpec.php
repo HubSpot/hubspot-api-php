@@ -3,7 +3,8 @@
 namespace spec\HubSpot\Discovery\Crm\Exports;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Exports\Api\PublicExportsApi;
+use HubSpot\Client\Crm\Exports\Api\AdvancedApi;
+use HubSpot\Client\Crm\Exports\Api\BasicApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Exports\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +23,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->publicExportsApi()->shouldHaveType(PublicExportsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->advancedApi()->shouldHaveType(AdvancedApi::class);
     }
 }

@@ -3,9 +3,9 @@
 namespace spec\HubSpot\Discovery\Crm\Timeline;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Timeline\Api\EventsApi;
-use HubSpot\Client\Crm\Timeline\Api\TemplatesApi;
-use HubSpot\Client\Crm\Timeline\Api\TokensApi;
+use HubSpot\Client\Crm\Timeline\Api\AdvancedApi;
+use HubSpot\Client\Crm\Timeline\Api\BasicApi;
+use HubSpot\Client\Crm\Timeline\Api\BatchApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Timeline\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -24,8 +24,8 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->eventsApi()->shouldHaveType(EventsApi::class);
-        $this->templatesApi()->shouldHaveType(TemplatesApi::class);
-        $this->tokensApi()->shouldHaveType(TokensApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->advancedApi()->shouldHaveType(AdvancedApi::class);
+        $this->batchApi()->shouldHaveType(BatchApi::class);
     }
 }

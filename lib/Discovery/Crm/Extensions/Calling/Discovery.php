@@ -2,14 +2,14 @@
 
 namespace HubSpot\Discovery\Crm\Extensions\Calling;
 
-use HubSpot\Client\Crm\Extensions\Calling\Api\ChannelConnectionSettingsApi;
-use HubSpot\Client\Crm\Extensions\Calling\Api\RecordingSettingsApi;
-use HubSpot\Client\Crm\Extensions\Calling\Api\SettingsApi;
+use HubSpot\Client\Crm\Extensions\Calling\Api\AdvancedApi;
+use HubSpot\Client\Crm\Extensions\Calling\Api\BasicApi;
+use HubSpot\Client\Crm\Extensions\Calling\Api\BatchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method ChannelConnectionSettingsApi channelConnectionSettingsApi()
- * @method RecordingSettingsApi         recordingSettingsApi()
- * @method SettingsApi                  settingsApi()
+ * @method BasicApi    basicApi()
+ * @method AdvancedApi advancedApi()
+ * @method BatchApi    batchApi()
  */
 class Discovery extends DiscoveryBase {}

@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Crm\Associations\Schema;
 
-use HubSpot\Client\Crm\Associations\Schema\Api\TypesApi;
+use HubSpot\Client\Crm\Associations\Schema\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method TypesApi typesApi()
+ * @method BasicApi basicApi()
  */
 class Discovery extends DiscoveryBase {}

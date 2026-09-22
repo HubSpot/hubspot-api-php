@@ -2,11 +2,11 @@
 
 namespace HubSpot\Discovery\Events;
 
-use HubSpot\Client\Events\Api\EventsApi;
+use HubSpot\Client\Events\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method EventsApi      eventsApi()
+ * @method BasicApi       basicApi()
  * @method Send\Discovery send()
  */
 class Discovery extends DiscoveryBase {}

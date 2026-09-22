@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\Domains;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\Domains\Api\DomainsApi;
+use HubSpot\Client\Cms\Domains\Api\BasicApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Cms\Domains\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +22,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->domainsApi()->shouldHaveType(DomainsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
     }
 }

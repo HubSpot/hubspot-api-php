@@ -3,8 +3,8 @@
 namespace spec\HubSpot\Discovery\Crm\Imports;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Crm\Imports\Api\CoreApi;
-use HubSpot\Client\Crm\Imports\Api\PublicImportsApi;
+use HubSpot\Client\Crm\Imports\Api\AdvancedApi;
+use HubSpot\Client\Crm\Imports\Api\BasicApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Crm\Imports\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -23,7 +23,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->coreApi()->shouldHaveType(CoreApi::class);
-        $this->publicImportsApi()->shouldHaveType(PublicImportsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->advancedApi()->shouldHaveType(AdvancedApi::class);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace HubSpot\Discovery\Webhooks;
 
-use HubSpot\Client\Webhooks\Api\SettingsApi;
-use HubSpot\Client\Webhooks\Api\SubscriptionsApi;
+use HubSpot\Client\Webhooks\Api\BasicApi;
+use HubSpot\Client\Webhooks\Api\BatchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method SettingsApi      settingsApi()
- * @method SubscriptionsApi subscriptionsApi()
+ * @method BasicApi basicApi()
+ * @method BatchApi batchApi()
  */
 class Discovery extends DiscoveryBase {}

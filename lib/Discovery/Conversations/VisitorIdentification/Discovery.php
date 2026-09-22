@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Conversations\VisitorIdentification;
 
-use HubSpot\Client\Conversations\VisitorIdentification\Api\GenerateApi;
-use HubSpot\Discovery\Crm\ObjectDiscovery;
+use HubSpot\Client\Conversations\VisitorIdentification\Api\BasicApi;
+use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method GenerateApi generateApi()
+ * @method BasicApi basicApi()
  */
-class Discovery extends ObjectDiscovery {}
+class Discovery extends DiscoveryBase {}
