@@ -358,7 +358,7 @@ class AdvancedApi
         if (isset($completed_third_party_call_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($completed_third_party_call_request), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $completed_third_party_call_request;
             }
@@ -379,7 +379,7 @@ class AdvancedApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -587,7 +587,7 @@ class AdvancedApi
         if (isset($mark_recording_as_ready_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($mark_recording_as_ready_request), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $mark_recording_as_ready_request;
             }
@@ -608,7 +608,7 @@ class AdvancedApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

@@ -299,7 +299,7 @@ class BatchApi
         if (isset($batched_behavioral_event_http_completion_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batched_behavioral_event_http_completion_request), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batched_behavioral_event_http_completion_request;
             }
@@ -320,7 +320,7 @@ class BatchApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($1, JSON_THROW_ON_ERROR);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
