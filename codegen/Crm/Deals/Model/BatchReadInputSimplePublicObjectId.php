@@ -360,7 +360,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectId[] $inputs inputs
+     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectId[] $inputs An array of SimplePublicObjectId objects, each containing the ID of an object to be read.
      *
      * @return self
      */

@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Cms\SiteSearch;
 
-use HubSpot\Client\Cms\SiteSearch\Api\PublicApi;
+use HubSpot\Client\Cms\SiteSearch\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method PublicApi publicApi()
+ * @method BasicApi basicApi()
  */
 class Discovery extends DiscoveryBase {}

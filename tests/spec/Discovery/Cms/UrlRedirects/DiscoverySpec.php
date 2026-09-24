@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\UrlRedirects;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\UrlRedirects\Api\RedirectsApi;
+use HubSpot\Client\Cms\UrlRedirects\Api\BasicApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Cms\UrlRedirects\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +22,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->redirectsApi()->shouldHaveType(RedirectsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
     }
 }

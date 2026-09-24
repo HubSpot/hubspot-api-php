@@ -486,7 +486,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets object_write_trace_id
      *
-     * @param string|null $object_write_trace_id An identifier used for tracing the write request for the object.
+     * @param string|null $object_write_trace_id An identifier used to trace the write request for the object. Set a unique ID for each write operation; it is returned with any errors so you can identify which request encountered which error.
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets properties_with_history
      *
-     * @param array<string,\HubSpot\Client\Crm\Quotes\Model\ValueWithTimestamp[]>|null $properties_with_history Key-value pairs representing the properties of the object along with their history.
+     * @param array<string,\HubSpot\Client\Crm\Quotes\Model\ValueWithTimestamp[]>|null $properties_with_history Key-value pairs representing the properties of the object along with their history, each with a timestamp and source information.
      *
      * @return self
      */

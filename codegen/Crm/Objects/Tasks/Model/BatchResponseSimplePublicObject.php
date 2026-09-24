@@ -405,7 +405,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess, \J
     /**
      * Sets links
      *
-     * @param array<string,string>|null $links An object containing relevant links related to the batch request.
+     * @param array<string,string>|null $links A map of link names to associated URIs, providing additional information or actions related to the batch operation.
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess, \J
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\Objects\Tasks\Model\SimplePublicObject[] $results An array of SimplePublicObject items representing the results of the batch operation.
      *
      * @return self
      */

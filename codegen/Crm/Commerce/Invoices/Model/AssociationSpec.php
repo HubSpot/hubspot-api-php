@@ -344,7 +344,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets association_category
      *
-     * @param string $association_category The category of the association, such as \"HUBSPOT_DEFINED\".
+     * @param string $association_category The category of the association, indicating its origin or purpose. Valid values include \"HUBSPOT_DEFINED\", \"USER_DEFINED\", \"INTEGRATOR_DEFINED\", and \"WORK\".
      *
      * @return self
      */
@@ -381,7 +381,7 @@ class AssociationSpec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets association_type_id
      *
-     * @param int $association_type_id The ID representing the specific type of association.
+     * @param int $association_type_id An integer representing the unique identifier for the type of association.
      *
      * @return self
      */

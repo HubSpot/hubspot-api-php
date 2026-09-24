@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Cms\Blogs\Tags;
 
-use HubSpot\Client\Cms\Blogs\Tags\Api\BlogTagsApi;
+use HubSpot\Client\Cms\Blogs\Tags\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BlogTagsApi blogTagsApi()
+ * @method BasicApi basicApi()
  */
 class Discovery extends DiscoveryBase {}

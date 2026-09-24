@@ -2,12 +2,12 @@
 
 namespace HubSpot\Discovery\CommunicationPreferences;
 
-use HubSpot\Client\CommunicationPreferences\Api\DefinitionsApi;
-use HubSpot\Client\CommunicationPreferences\Api\StatusApi;
+use HubSpot\Client\CommunicationPreferences\Api\AdvancedApi;
+use HubSpot\Client\CommunicationPreferences\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method DefinitionsApi definitionsApi()
- * @method StatusApi      statusApi()
+ * @method BasicApi    basicApi()
+ * @method AdvancedApi advancedApi()
  */
 class Discovery extends DiscoveryBase {}

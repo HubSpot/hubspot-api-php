@@ -360,7 +360,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     /**
      * Sets inputs
      *
-     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[] $inputs inputs
+     * @param \HubSpot\Client\Crm\LineItems\Model\SimplePublicObjectId[] $inputs An array of SimplePublicObjectId objects, each containing the ID of an object to be read.
      *
      * @return self
      */
@@ -387,7 +387,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     /**
      * Sets properties
      *
-     * @param string[] $properties Key-value pairs for setting properties for the new object.
+     * @param string[] $properties An array of the property names to be returned in the response. If a specified property is not present on the requested object(s), it will be ignored.
      *
      * @return self
      */
@@ -414,7 +414,7 @@ class BatchReadInputSimplePublicObjectId implements ModelInterface, ArrayAccess,
     /**
      * Sets properties_with_history
      *
-     * @param string[] $properties_with_history Key-value pairs for setting properties for the new object and their histories.
+     * @param string[] $properties_with_history An array of the property names to be returned along with their history of previous values. If a specified property is not present on the requested object(s), it will be ignored.
      *
      * @return self
      */

@@ -459,7 +459,7 @@ class BatchResponseSimplePublicObject implements ModelInterface, ArrayAccess, \J
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicObject[] $results An array of SimplePublicObject items representing the results of the batch operation.
      *
      * @return self
      */

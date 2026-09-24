@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Settings\BusinessUnits;
 
-use HubSpot\Client\Settings\BusinessUnits\Api\BusinessUnitsApi;
+use HubSpot\Client\Settings\BusinessUnits\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BusinessUnitsApi businessUnitsApi()
+ * @method BasicApi basicApi()
  */
 class Discovery extends DiscoveryBase {}

@@ -459,7 +459,7 @@ class BatchResponseSimplePublicUpsertObject implements ModelInterface, ArrayAcce
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject[] $results results
+     * @param \HubSpot\Client\Crm\Deals\Model\SimplePublicUpsertObject[] $results An array of SimplePublicUpsertObject items representing the results of the batch upsert operation.
      *
      * @return self
      */

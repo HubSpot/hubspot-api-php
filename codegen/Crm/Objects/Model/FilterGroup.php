@@ -11,7 +11,7 @@
  */
 
 /**
- * CRM Objects
+ * Custom Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -35,6 +35,7 @@ use \HubSpot\Client\Crm\Objects\ObjectSerializer;
  * FilterGroup Class Doc Comment
  *
  * @category Class
+ * @description Represents a group of filters used to query data within HubSpot. This component is used to define criteria for filtering records in various API endpoints.
  * @package  HubSpot\Client\Crm\Objects
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class FilterGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filters
      *
-     * @param \HubSpot\Client\Crm\Objects\Model\Filter[] $filters filters
+     * @param \HubSpot\Client\Crm\Objects\Model\Filter[] $filters A list of individual filter criteria that are applied together as a group. Each filter specifies a condition that records must meet to be included in the results.
      *
      * @return self
      */

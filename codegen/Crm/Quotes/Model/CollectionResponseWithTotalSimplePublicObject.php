@@ -350,7 +350,7 @@ class CollectionResponseWithTotalSimplePublicObject implements ModelInterface, A
     /**
      * Sets results
      *
-     * @param \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject[] $results results
+     * @param \HubSpot\Client\Crm\Quotes\Model\SimplePublicObject[] $results An array containing the simple public objects returned in the current page of the response. This property is required.
      *
      * @return self
      */

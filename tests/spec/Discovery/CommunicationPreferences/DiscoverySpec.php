@@ -3,8 +3,8 @@
 namespace spec\HubSpot\Discovery\CommunicationPreferences;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\CommunicationPreferences\Api\DefinitionsApi;
-use HubSpot\Client\CommunicationPreferences\Api\StatusApi;
+use HubSpot\Client\CommunicationPreferences\Api\AdvancedApi;
+use HubSpot\Client\CommunicationPreferences\Api\BasicApi;
 use HubSpot\Config;
 use HubSpot\Discovery\CommunicationPreferences\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -23,7 +23,7 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->definitionsApi()->shouldHaveType(DefinitionsApi::class);
-        $this->statusApi()->shouldHaveType(StatusApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
+        $this->advancedApi()->shouldHaveType(AdvancedApi::class);
     }
 }

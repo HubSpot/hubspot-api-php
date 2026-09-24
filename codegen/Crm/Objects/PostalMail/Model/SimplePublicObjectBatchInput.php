@@ -330,7 +330,7 @@ class SimplePublicObjectBatchInput implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string $id The unique ID of the object.
+     * @param string $id The ID to update. This can be the object ID, or the unique property value of the idProperty property.
      *
      * @return self
      */

@@ -439,7 +439,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     /**
      * Sets associations
      *
-     * @param array<string,\HubSpot\Client\Crm\Contacts\Model\CollectionResponseAssociatedId>|null $associations A list defining relationships with other objects.
+     * @param array<string,\HubSpot\Client\Crm\Contacts\Model\CollectionResponseAssociatedId>|null $associations A map of associated object types to their associated IDs.
      *
      * @return self
      */
@@ -628,7 +628,7 @@ class SimplePublicObjectWithAssociations implements ModelInterface, ArrayAccess,
     /**
      * Sets url
      *
-     * @param string|null $url The URL on the API that provide direct navigation to the corresponding UI pages for the connectors.
+     * @param string|null $url The URL link to access this object.
      *
      * @return self
      */

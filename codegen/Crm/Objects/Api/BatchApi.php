@@ -10,7 +10,7 @@
  */
 
 /**
- * CRM Objects
+ * Custom Objects
  *
  * CRM objects such as companies, contacts, deals, line items, products, tickets, and quotes are standard objects in HubSpot’s CRM. These core building blocks support custom properties, store critical information, and play a central role in the HubSpot application.  ## Supported Object Types  This API provides access to collections of CRM objects, which return a map of property names to values. Each object type has its own set of default properties, which can be found by exploring the [CRM Object Properties API](https://developers.hubspot.com/docs/methods/crm-properties/crm-properties-overview).  |Object Type |Properties returned by default | |--|--| | `companies` | `name`, `domain` | | `contacts` | `firstname`, `lastname`, `email` | | `deals` | `dealname`, `amount`, `closedate`, `pipeline`, `dealstage` | | `products` | `name`, `description`, `price` | | `tickets` | `content`, `hs_pipeline`, `hs_pipeline_stage`, `hs_ticket_category`, `hs_ticket_priority`, `subject` |  Find a list of all properties for an object type using the [CRM Object Properties](https://developers.hubspot.com/docs/methods/crm-properties/get-properties) API. e.g. `GET https://api.hubapi.com/properties/v2/companies/properties`. Change the properties returned in the response using the `properties` array in the request body.
  *
@@ -29,7 +29,6 @@ namespace HubSpot\Client\Crm\Objects\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
@@ -80,13 +79,13 @@ class BatchApi
         'create' => [
             'application/json',
         ],
+        'postCrmV3ObjectsObjectTypeBatchUpsert' => [
+            'application/json',
+        ],
         'read' => [
             'application/json',
         ],
         'update' => [
-            'application/json',
-        ],
-        'upsert' => [
             'application/json',
         ],
     ];
@@ -180,10 +179,10 @@ class BatchApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -259,8 +258,8 @@ class BatchApi
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -268,8 +267,8 @@ class BatchApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -332,7 +331,7 @@ class BatchApi
         if (isset($batch_input_simple_public_object_id)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_id));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_id), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batch_input_simple_public_object_id;
             }
@@ -353,7 +352,7 @@ class BatchApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -430,10 +429,10 @@ class BatchApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -578,8 +577,8 @@ class BatchApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -587,8 +586,8 @@ class BatchApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -651,7 +650,7 @@ class BatchApi
         if (isset($batch_input_simple_public_object_batch_input_for_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input_for_create));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input_for_create), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batch_input_simple_public_object_batch_input_for_create;
             }
@@ -672,7 +671,326 @@ class BatchApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postCrmV3ObjectsObjectTypeBatchUpsert
+     *
+     * Create or update a batch of objects by unique property values
+     *
+     * @param  string $object_type  (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert batch_input_simple_public_object_batch_input_upsert (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
+     */
+    public function postCrmV3ObjectsObjectTypeBatchUpsert($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'][0])
+    {
+        list($response) = $this->postCrmV3ObjectsObjectTypeBatchUpsertWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postCrmV3ObjectsObjectTypeBatchUpsertWithHttpInfo
+     *
+     * Create or update a batch of objects by unique property values
+     *
+     * @param  string $object_type  (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postCrmV3ObjectsObjectTypeBatchUpsertWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'][0])
+    {
+        $request = $this->postCrmV3ObjectsObjectTypeBatchUpsertRequest($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Objects\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Objects\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postCrmV3ObjectsObjectTypeBatchUpsertAsync
+     *
+     * Create or update a batch of objects by unique property values
+     *
+     * @param  string $object_type  (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postCrmV3ObjectsObjectTypeBatchUpsertAsync($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'][0])
+    {
+        return $this->postCrmV3ObjectsObjectTypeBatchUpsertAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postCrmV3ObjectsObjectTypeBatchUpsertAsyncWithHttpInfo
+     *
+     * Create or update a batch of objects by unique property values
+     *
+     * @param  string $object_type  (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postCrmV3ObjectsObjectTypeBatchUpsertAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject';
+        $request = $this->postCrmV3ObjectsObjectTypeBatchUpsertRequest($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postCrmV3ObjectsObjectTypeBatchUpsert'
+     *
+     * @param  string $object_type  (required)
+     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postCrmV3ObjectsObjectTypeBatchUpsertRequest($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['postCrmV3ObjectsObjectTypeBatchUpsert'][0])
+    {
+
+        // verify the required parameter 'object_type' is set
+        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type when calling postCrmV3ObjectsObjectTypeBatchUpsert'
+            );
+        }
+
+        // verify the required parameter 'batch_input_simple_public_object_batch_input_upsert' is set
+        if ($batch_input_simple_public_object_batch_input_upsert === null || (is_array($batch_input_simple_public_object_batch_input_upsert) && count($batch_input_simple_public_object_batch_input_upsert) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_simple_public_object_batch_input_upsert when calling postCrmV3ObjectsObjectTypeBatchUpsert'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/objects/{objectType}/batch/upsert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectType' . '}',
+                ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_simple_public_object_batch_input_upsert)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input_upsert), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $batch_input_simple_public_object_batch_input_upsert;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -751,10 +1069,10 @@ class BatchApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -901,8 +1219,8 @@ class BatchApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -910,8 +1228,8 @@ class BatchApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -985,7 +1303,7 @@ class BatchApi
         if (isset($batch_read_input_simple_public_object_id)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_read_input_simple_public_object_id));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_read_input_simple_public_object_id), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batch_read_input_simple_public_object_id;
             }
@@ -1006,7 +1324,7 @@ class BatchApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1083,10 +1401,10 @@ class BatchApi
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
                 );
-            } catch (ConnectException $e) {
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
                 throw new ApiException(
                     "[{$e->getCode()}] {$e->getMessage()}",
                     (int) $e->getCode(),
@@ -1231,8 +1549,8 @@ class BatchApi
                     ];
                 },
                 function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -1240,8 +1558,8 @@ class BatchApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
@@ -1304,7 +1622,7 @@ class BatchApi
         if (isset($batch_input_simple_public_object_batch_input)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batch_input_simple_public_object_batch_input;
             }
@@ -1325,326 +1643,7 @@ class BatchApi
 
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation upsert
-     *
-     * Create or update a batch of objects by unique property values
-     *
-     * @param  string $object_type  (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert batch_input_simple_public_object_batch_input_upsert (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error
-     */
-    public function upsert($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
-    {
-        list($response) = $this->upsertWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation upsertWithHttpInfo
-     *
-     * Create or update a batch of objects by unique property values
-     *
-     * @param  string $object_type  (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject|\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function upsertWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
-    {
-        $request = $this->upsertRequest($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
-                        $request,
-                        $response,
-                    );
-                case 207:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Objects\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObjectWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Objects\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation upsertAsync
-     *
-     * Create or update a batch of objects by unique property values
-     *
-     * @param  string $object_type  (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function upsertAsync($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
-    {
-        return $this->upsertAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation upsertAsyncWithHttpInfo
-     *
-     * Create or update a batch of objects by unique property values
-     *
-     * @param  string $object_type  (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function upsertAsyncWithHttpInfo($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Objects\Model\BatchResponseSimplePublicUpsertObject';
-        $request = $this->upsertRequest($object_type, $batch_input_simple_public_object_batch_input_upsert, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'upsert'
-     *
-     * @param  string $object_type  (required)
-     * @param  \HubSpot\Client\Crm\Objects\Model\BatchInputSimplePublicObjectBatchInputUpsert $batch_input_simple_public_object_batch_input_upsert (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function upsertRequest($object_type, $batch_input_simple_public_object_batch_input_upsert, string $contentType = self::contentTypes['upsert'][0])
-    {
-
-        // verify the required parameter 'object_type' is set
-        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling upsert'
-            );
-        }
-
-        // verify the required parameter 'batch_input_simple_public_object_batch_input_upsert' is set
-        if ($batch_input_simple_public_object_batch_input_upsert === null || (is_array($batch_input_simple_public_object_batch_input_upsert) && count($batch_input_simple_public_object_batch_input_upsert) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_simple_public_object_batch_input_upsert when calling upsert'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/objects/{objectType}/batch/upsert';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectType' . '}',
-                ObjectSerializer::toPathValue($object_type),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_input_simple_public_object_batch_input_upsert)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_input_simple_public_object_batch_input_upsert));
-            } else {
-                $httpBody = $batch_input_simple_public_object_batch_input_upsert;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);

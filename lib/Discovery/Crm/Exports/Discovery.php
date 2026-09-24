@@ -2,10 +2,12 @@
 
 namespace HubSpot\Discovery\Crm\Exports;
 
-use HubSpot\Client\Crm\Exports\Api\PublicExportsApi;
+use HubSpot\Client\Crm\Exports\Api\AdvancedApi;
+use HubSpot\Client\Crm\Exports\Api\BasicApi;
 use HubSpot\Discovery\Crm\ObjectDiscovery;
 
 /**
- * @method PublicExportsApi publicExportsApi()
+ * @method BasicApi    basicApi()
+ * @method AdvancedApi advancedApi()
  */
 class Discovery extends ObjectDiscovery {}

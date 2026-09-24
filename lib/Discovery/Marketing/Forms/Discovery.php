@@ -2,10 +2,10 @@
 
 namespace HubSpot\Discovery\Marketing\Forms;
 
-use HubSpot\Client\Marketing\Forms\Api\FormsApi;
+use HubSpot\Client\Marketing\Forms\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method FormsApi formsApi()
+ * @method BasicApi basicApi()
  */
 class Discovery extends DiscoveryBase {}

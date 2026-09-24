@@ -3,7 +3,7 @@
 namespace spec\HubSpot\Discovery\Cms\AuditLogs;
 
 use GuzzleHttp\Client;
-use HubSpot\Client\Cms\AuditLogs\Api\AuditLogsApi;
+use HubSpot\Client\Cms\AuditLogs\Api\BasicApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Cms\AuditLogs\Discovery;
 use PhpSpec\ObjectBehavior;
@@ -22,6 +22,6 @@ class DiscoverySpec extends ObjectBehavior
 
     public function it_creates_clients()
     {
-        $this->auditLogsApi()->shouldHaveType(AuditLogsApi::class);
+        $this->basicApi()->shouldHaveType(BasicApi::class);
     }
 }

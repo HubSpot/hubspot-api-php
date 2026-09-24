@@ -540,7 +540,7 @@ class SimplePublicObject implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets properties_with_history
      *
-     * @param array<string,\HubSpot\Client\Crm\Objects\PostalMail\Model\ValueWithTimestamp[]>|null $properties_with_history Key-value pairs representing the properties of the object along with their history.
+     * @param array<string,\HubSpot\Client\Crm\Objects\PostalMail\Model\ValueWithTimestamp[]>|null $properties_with_history Key-value pairs representing the properties of the object along with their history, each with a timestamp and source information.
      *
      * @return self
      */

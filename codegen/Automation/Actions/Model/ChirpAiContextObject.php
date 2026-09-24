@@ -66,6 +66,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_private' => 'bool',
         'metadata' => 'array<string,string>',
         'otel_context_holder' => 'array<string,string>',
+        'sensitivity' => 'string',
         'trajectory_id' => 'string',
         'unstructured_sources' => 'string[]'
     ];
@@ -87,6 +88,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_private' => null,
         'metadata' => null,
         'otel_context_holder' => null,
+        'sensitivity' => null,
         'trajectory_id' => 'uuid',
         'unstructured_sources' => null
     ];
@@ -106,6 +108,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_private' => false,
         'metadata' => false,
         'otel_context_holder' => false,
+        'sensitivity' => false,
         'trajectory_id' => false,
         'unstructured_sources' => false
     ];
@@ -205,6 +208,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_private' => 'isPrivate',
         'metadata' => 'metadata',
         'otel_context_holder' => 'otelContextHolder',
+        'sensitivity' => 'sensitivity',
         'trajectory_id' => 'trajectoryId',
         'unstructured_sources' => 'unstructuredSources'
     ];
@@ -224,6 +228,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_private' => 'setIsPrivate',
         'metadata' => 'setMetadata',
         'otel_context_holder' => 'setOtelContextHolder',
+        'sensitivity' => 'setSensitivity',
         'trajectory_id' => 'setTrajectoryId',
         'unstructured_sources' => 'setUnstructuredSources'
     ];
@@ -243,6 +248,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         'is_private' => 'getIsPrivate',
         'metadata' => 'getMetadata',
         'otel_context_holder' => 'getOtelContextHolder',
+        'sensitivity' => 'getSensitivity',
         'trajectory_id' => 'getTrajectoryId',
         'unstructured_sources' => 'getUnstructuredSources'
     ];
@@ -288,6 +294,9 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const SENSITIVITY_HIPAA = 'HIPAA';
+    public const SENSITIVITY_NOT_SENSITIVE = 'NOT_SENSITIVE';
+    public const SENSITIVITY_SENSITIVE = 'SENSITIVE';
     public const UNSTRUCTURED_SOURCES_NONE = 'NONE';
     public const UNSTRUCTURED_SOURCES_USER_INPUT = 'USER_INPUT';
     public const UNSTRUCTURED_SOURCES_LOGGED_EMAIL = 'LOGGED_EMAIL';
@@ -309,6 +318,20 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
     public const UNSTRUCTURED_SOURCES_MANY = 'MANY';
     public const UNSTRUCTURED_SOURCES_NOTE = 'NOTE';
     public const UNSTRUCTURED_SOURCES_DERIVED = 'DERIVED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSensitivityAllowableValues()
+    {
+        return [
+            self::SENSITIVITY_HIPAA,
+            self::SENSITIVITY_NOT_SENSITIVE,
+            self::SENSITIVITY_SENSITIVE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -366,6 +389,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('is_private', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('otel_context_holder', $data ?? [], null);
+        $this->setIfExists('sensitivity', $data ?? [], null);
         $this->setIfExists('trajectory_id', $data ?? [], null);
         $this->setIfExists('unstructured_sources', $data ?? [], null);
     }
@@ -412,6 +436,15 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['otel_context_holder'] === null) {
             $invalidProperties[] = "'otel_context_holder' can't be null";
         }
+        $allowedValues = $this->getSensitivityAllowableValues();
+        if (!is_null($this->container['sensitivity']) && !in_array($this->container['sensitivity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sensitivity', must be one of '%s'",
+                $this->container['sensitivity'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['unstructured_sources'] === null) {
             $invalidProperties[] = "'unstructured_sources' can't be null";
         }
@@ -669,6 +702,43 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable otel_context_holder cannot be null');
         }
         $this->container['otel_context_holder'] = $otel_context_holder;
+
+        return $this;
+    }
+
+    /**
+     * Gets sensitivity
+     *
+     * @return string|null
+     */
+    public function getSensitivity()
+    {
+        return $this->container['sensitivity'];
+    }
+
+    /**
+     * Sets sensitivity
+     *
+     * @param string|null $sensitivity sensitivity
+     *
+     * @return self
+     */
+    public function setSensitivity($sensitivity)
+    {
+        if (is_null($sensitivity)) {
+            throw new \InvalidArgumentException('non-nullable sensitivity cannot be null');
+        }
+        $allowedValues = $this->getSensitivityAllowableValues();
+        if (!in_array($sensitivity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sensitivity', must be one of '%s'",
+                    $sensitivity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sensitivity'] = $sensitivity;
 
         return $this;
     }

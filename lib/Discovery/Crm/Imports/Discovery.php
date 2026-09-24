@@ -2,12 +2,12 @@
 
 namespace HubSpot\Discovery\Crm\Imports;
 
-use HubSpot\Client\Crm\Imports\Api\CoreApi;
-use HubSpot\Client\Crm\Imports\Api\PublicImportsApi;
+use HubSpot\Client\Crm\Imports\Api\AdvancedApi;
+use HubSpot\Client\Crm\Imports\Api\BasicApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method CoreApi          coreApi()
- * @method PublicImportsApi publicImportsApi()
+ * @method BasicApi    basicApi()
+ * @method AdvancedApi advancedApi()
  */
 class Discovery extends DiscoveryBase {}
