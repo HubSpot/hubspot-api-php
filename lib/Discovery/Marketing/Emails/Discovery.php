@@ -7,7 +7,7 @@ use HubSpot\Client\Marketing\Emails\Api\EmailsApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
- * @method BasicApi    basicApi()
- * @method EmailsApi   emailsApi()
+ * @method BasicApi  basicApi()
+ * @method EmailsApi emailsApi()
  */
 class Discovery extends DiscoveryBase {}
