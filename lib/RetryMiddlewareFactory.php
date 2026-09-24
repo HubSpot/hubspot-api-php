@@ -3,6 +3,7 @@
 namespace HubSpot;
 
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ResponseTransferException;
 use GuzzleHttp\Middleware;
 use Psr\Http\Client\NetworkExceptionInterface;
 use Psr\Http\Message\RequestInterface;
@@ -171,12 +172,7 @@ class RetryMiddlewareFactory
                 $errno = $matches[1];
             }
 
-            // Guzzle 7 uses RequestException for send/receive errors (55/56).
-            // Require cURL context to distinguish them from other request failures.
-            $legacyTransferError = $exception instanceof RequestException
-                && is_numeric($context['errno'] ?? null)
-                && in_array((int) $context['errno'], self::TRANSIENT_CURL_ERROR_CODES, true);
-            if (!$exception instanceof NetworkExceptionInterface && !$legacyTransferError) {
+            if (!static::isTransferFailure($exception, $context, $errno)) {
                 return false;
             }
 
@@ -184,11 +180,32 @@ class RetryMiddlewareFactory
                 return true;
             }
 
-            if (is_numeric($errno)) {
-                return in_array((int) $errno, $curlErrorCodes, true);
-            }
-
-            return false;
+            return is_numeric($errno) && in_array((int) $errno, $curlErrorCodes, true);
         };
+    }
+
+    /**
+     * Identifies transfer failures; the caller filters cURL error codes.
+     * Guzzle 7 uses handler context; Guzzle 8 uses specific exception types.
+     *
+     * @param mixed $exception rejection reason, not necessarily a Throwable
+     * @param array $context   cURL handler context, empty on Guzzle 8
+     * @param mixed $errno     cURL errno from the context or the message
+     */
+    protected static function isTransferFailure($exception, array $context, $errno): bool
+    {
+        if ($exception instanceof NetworkExceptionInterface) {
+            return true;
+        }
+
+        if (!$exception instanceof RequestException) {
+            return false;
+        }
+
+        if (is_numeric($context['errno'] ?? null)) {
+            return true;
+        }
+
+        return $exception instanceof ResponseTransferException && is_numeric($errno);
     }
 }

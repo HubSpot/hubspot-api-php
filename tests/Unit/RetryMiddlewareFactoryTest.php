@@ -5,7 +5,9 @@ namespace Hubspot\Tests\Unit;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\NetworkException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ResponseTransferException;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use HubSpot\RetryMiddlewareFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -19,14 +21,8 @@ class RetryMiddlewareFactoryTest extends TestCase
     public function testRetriesTransferFailuresUsingActualGuzzleExceptionTypes(): void
     {
         $request = new Request('GET', 'https://api.hubapi.com/test');
-        foreach ([52, 55, 56] as $errno) {
-            if (class_exists(NetworkException::class)) {
-                $exception = new NetworkException("cURL error {$errno}: transfer failed", $request);
-            } elseif (52 === $errno) {
-                $exception = new ConnectException('Transfer failed', $request, null, ['errno' => $errno]);
-            } else {
-                $exception = new RequestException('Transfer failed', $request, null, null, ['errno' => $errno]);
-            }
+        foreach (RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES as $errno) {
+            $exception = $this->connectionException($errno, $request);
 
             $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors();
             $this->assertTrue($retry(0, $request, null, $exception), "cURL error {$errno}");
@@ -38,30 +34,34 @@ class RetryMiddlewareFactoryTest extends TestCase
         }
     }
 
-    /** @test */
-    public function itRetriesRetriableConnectionErrorsByMessage(): void
+    public function testRetriesTransferFailuresThatHappenAfterResponseHeaders(): void
     {
-        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
-        $exception = new ConnectException(
-            'cURL error 56: OpenSSL SSL_read unexpected eof while reading',
-            $request
-        );
+        foreach (RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES as $errno) {
+            $exception = $this->responseTransferException($errno, $request);
 
-        $this->assertTrue($retry(0, $request, null, $exception));
+            $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors();
+            $this->assertTrue($retry(0, $request, null, $exception), "cURL error {$errno}");
+            $this->assertFalse($retry(5, $request, null, $exception));
+            $restricted = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([7]);
+            $this->assertFalse($restricted(0, $request, null, $exception));
+            $unrestricted = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([]);
+            $this->assertTrue($unrestricted(0, $request, null, $exception));
+        }
     }
 
-    /** @test */
-    public function itRetriesRetriableSendErrors(): void
+    public function testRetriesCurlErrorCodesRequestedByTheCaller(): void
     {
-        $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 3);
         $request = new Request('GET', 'https://api.hubapi.com/test');
-        $exception = new ConnectException(
-            'cURL error 55: Send failure: Broken pipe',
-            $request
-        );
+        // CURLE_PARTIAL_FILE, not part of the default set.
+        $exception = $this->responseTransferException(18, $request);
 
-        $this->assertTrue($retry(0, $request, null, $exception));
+        $requested = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([18]);
+        $this->assertTrue($requested(0, $request, null, $exception));
+        $default = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors();
+        $this->assertFalse($default(0, $request, null, $exception));
+        $unrestricted = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors([]);
+        $this->assertTrue($unrestricted(0, $request, null, $exception));
     }
 
     /** @test */
@@ -107,16 +107,60 @@ class RetryMiddlewareFactoryTest extends TestCase
         $this->assertFalse($retry(0, $request, null, $exception));
     }
 
+    public function testDoesNotRetryHttpErrorsContainingCurlErrorMessages(): void
+    {
+        $request = new Request('POST', 'https://api.hubapi.com/test');
+        foreach ([400, 500] as $statusCode) {
+            $response = new Response($statusCode, ['Content-Type' => 'application/json'], '{"message":"cURL error 56: upstream failure"}');
+            $exception = RequestException::create($request, $response);
+            $this->assertStringContainsString('cURL error 56:', $exception->getMessage());
+
+            foreach ([RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, [56], []] as $curlErrorCodes) {
+                $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors($curlErrorCodes);
+                $this->assertFalse($retry(0, $request, null, $exception));
+            }
+        }
+    }
+
     /** @test */
     public function itStopsRetryingWhenMaxRetriesReached(): void
     {
         $retry = RetryMiddlewareFactory::getRetryFunctionByConnectionErrors(RetryMiddlewareFactory::TRANSIENT_CURL_ERROR_CODES, 1);
         $request = new Request('GET', 'https://api.hubapi.com/test');
-        $exception = new ConnectException(
-            'cURL error 56: OpenSSL SSL_read unexpected eof while reading',
-            $request
-        );
+        $exception = $this->connectionException(56, $request);
 
         $this->assertFalse($retry(1, $request, null, $exception));
+    }
+
+    /**
+     * Builds a failure before response headers using the installed Guzzle version.
+     */
+    private function connectionException(int $errno, Request $request): \Exception
+    {
+        $message = sprintf('cURL error %d: transfer failed', $errno);
+
+        if (class_exists(NetworkException::class)) {
+            return new NetworkException($message, $request);
+        }
+
+        if (in_array($errno, [6, 7, 28, 35, 52], true)) {
+            return new ConnectException($message, $request, null, ['errno' => $errno]);
+        }
+
+        return new RequestException($message, $request, null, null, ['errno' => $errno]);
+    }
+
+    /**
+     * Builds a failure after response headers using the installed Guzzle version.
+     */
+    private function responseTransferException(int $errno, Request $request): \Exception
+    {
+        $message = sprintf('cURL error %d: transfer failed', $errno);
+
+        if (class_exists(ResponseTransferException::class)) {
+            return new ResponseTransferException($message, $request, new Response(200));
+        }
+
+        return new RequestException($message, $request, new Response(200), null, ['errno' => $errno]);
     }
 }
