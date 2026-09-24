@@ -61,8 +61,8 @@ class GeneratedApiClientTest extends TestCase
                     $this->fail('Expected ApiException');
                 } catch (\HubSpot\Client\Webhooks\ApiException $error) {
                     $this->assertSame(0, $error->getCode());
-                    $this->assertNull($error->getResponseHeaders());
-                    $this->assertNull($error->getResponseBody());
+                    $this->assertSame($async ? [] : null, $error->getResponseHeaders());
+                    $this->assertSame($async ? '' : null, $error->getResponseBody());
                 }
             }
         }

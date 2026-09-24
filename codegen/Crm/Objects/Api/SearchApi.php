@@ -303,7 +303,7 @@ class SearchApi
                 },
                 function ($exception) {
                     $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : 0;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
                     throw new ApiException(
                         sprintf(
                             '[%d] Error connecting to the API (%s)',
@@ -311,8 +311,8 @@ class SearchApi
                             $exception->getRequest()->getUri()
                         ),
                         $statusCode,
-                        $response ? $response->getHeaders() : null,
-                        $response ? (string) $response->getBody() : null
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
                     );
                 }
             );
