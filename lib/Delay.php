@@ -19,7 +19,7 @@ class Delay
     }
 
     /**
-     * @deprecated pass null as the delay function instead — Guzzle will apply its built-in exponential delay via \GuzzleHttp\RetryMiddleware::exponentialDelay
+     * @deprecated pass null as the delay function instead - \GuzzleHttp\RetryMiddleware then applies its built-in exponential delay
      */
     public static function getExponentialDelayFunction(int $base)
     {

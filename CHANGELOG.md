@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.1.0...HEAD)
 
+### Guzzle 8 support
+
+- `guzzlehttp/guzzle` `^8.0` and `guzzlehttp/psr7` `^3.0` are now allowed; Guzzle 7 remains supported.
+- Generated clients no longer call the removed `\GuzzleHttp\Utils::jsonEncode()`; they use `json_encode(..., JSON_THROW_ON_ERROR)`.
+- Generated clients no longer assume `RequestException::getResponse()` exists (removed in Guzzle 8, where only `ResponseException` subclasses carry a response). Failures without a response now produce an `ApiException` instead of a fatal error: with `null` headers/body on the sync path, and with empty headers/body (`[]` and `''`) on the async path, which is unchanged.
+- Generated clients catch `Psr\Http\Client\NetworkExceptionInterface` instead of `GuzzleHttp\Exception\ConnectException`, so Guzzle 8's `NetworkException` (send/receive errors, HTTP/2 and HTTP/3 failures) is still converted to an `ApiException`.
+- `RetryMiddlewareFactory::getRetryFunctionByConnectionErrors()` now matches `Psr\Http\Client\NetworkExceptionInterface` and reads the cURL errno from handler context when available, falling back to the exception message because Guzzle 8 removed `RequestException::getHandlerContext()` and reclassified cURL errors 52, 55 and 56 as `NetworkException` rather than `ConnectException`. Failures that happen after the response headers arrived are also retried, whether they are reported as Guzzle 8's `ResponseTransferException` or as Guzzle 7's `RequestException` with cURL handler context. Which cURL errors are retried always follows the `$curlErrorCodes` argument, on both majors.
+- `apiRequest()` uppercases the `method` option. Guzzle 7 uppercased request methods, Guzzle 8 sends them verbatim.
+- The retry decider callbacks accept any PSR-7 `RequestInterface`/`ResponseInterface` instead of only `GuzzleHttp\Psr7\Request`/`Response`.
+
 ## [14.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/14.1.0) - 2026-05-12
 
 ### Retry Middleware

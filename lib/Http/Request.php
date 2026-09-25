@@ -39,7 +39,8 @@ class Request
         if (array_key_exists('defaultJson', $this->options)) {
             $this->defaultJson = $this->options['defaultJson'];
         }
-        $this->method = $this->options['method'] ?? 'GET';
+        // Guzzle 7 uppercased request methods, Guzzle 8 sends them verbatim.
+        $this->method = strtoupper($this->options['method'] ?? 'GET');
 
         $this->initHeaders();
         $this->applyAuth();

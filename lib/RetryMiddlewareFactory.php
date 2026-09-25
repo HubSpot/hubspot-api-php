@@ -2,10 +2,12 @@
 
 namespace HubSpot;
 
-use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ResponseTransferException;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
+use Psr\Http\Client\NetworkExceptionInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class RetryMiddlewareFactory
 {
@@ -92,14 +94,14 @@ class RetryMiddlewareFactory
     ): callable {
         return function (
             $retries,
-            Request $request,
-            ?Response $response = null
+            RequestInterface $request,
+            ?ResponseInterface $response = null
         ) use ($ranges, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (!$response instanceof Response) {
+            if (!$response instanceof ResponseInterface) {
                 return false;
             }
 
@@ -130,14 +132,14 @@ class RetryMiddlewareFactory
     ): callable {
         return function (
             $retries,
-            Request $request,
-            ?Response $response = null
+            RequestInterface $request,
+            ?ResponseInterface $response = null
         ) use ($codes, $maxRetries) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (($response instanceof Response) && in_array($response->getStatusCode(), $codes)) {
+            if (($response instanceof ResponseInterface) && in_array($response->getStatusCode(), $codes)) {
                 return true;
             }
 
@@ -151,15 +153,26 @@ class RetryMiddlewareFactory
     ): callable {
         return function (
             $retries,
-            Request $request,
-            ?Response $response = null,
+            RequestInterface $request,
+            ?ResponseInterface $response = null,
             $exception = null
         ) use ($maxRetries, $curlErrorCodes) {
             if ($retries >= $maxRetries) {
                 return false;
             }
 
-            if (!$exception instanceof ConnectException) {
+            // Guzzle 7 exposes cURL context; Guzzle 8 exposes only the message.
+            $context = ($exception instanceof RequestException || $exception instanceof NetworkExceptionInterface)
+                && method_exists($exception, 'getHandlerContext')
+                ? $exception->getHandlerContext()
+                : [];
+            $errno = $context['errno'] ?? null;
+            if (!is_numeric($errno) && $exception instanceof \Throwable
+                && 1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
+                $errno = $matches[1];
+            }
+
+            if (!static::isTransferFailure($exception, $context, $errno)) {
                 return false;
             }
 
@@ -167,18 +180,32 @@ class RetryMiddlewareFactory
                 return true;
             }
 
-            $handlerContext = $exception->getHandlerContext();
-            $errno = $handlerContext['errno'] ?? null;
-
-            if (is_numeric($errno) && in_array((int) $errno, $curlErrorCodes, true)) {
-                return true;
-            }
-
-            if (1 === preg_match('/cURL error\s+(\d+):/i', $exception->getMessage(), $matches)) {
-                return in_array((int) $matches[1], $curlErrorCodes, true);
-            }
-
-            return false;
+            return is_numeric($errno) && in_array((int) $errno, $curlErrorCodes, true);
         };
+    }
+
+    /**
+     * Identifies transfer failures; the caller filters cURL error codes.
+     * Guzzle 7 uses handler context; Guzzle 8 uses specific exception types.
+     *
+     * @param mixed $exception rejection reason, not necessarily a Throwable
+     * @param array $context   cURL handler context, empty on Guzzle 8
+     * @param mixed $errno     cURL errno from the context or the message
+     */
+    protected static function isTransferFailure($exception, array $context, $errno): bool
+    {
+        if ($exception instanceof NetworkExceptionInterface) {
+            return true;
+        }
+
+        if (!$exception instanceof RequestException) {
+            return false;
+        }
+
+        if (is_numeric($context['errno'] ?? null)) {
+            return true;
+        }
+
+        return $exception instanceof ResponseTransferException && is_numeric($errno);
     }
 }
