@@ -35,6 +35,7 @@ use \HubSpot\Client\Marketing\Transactional\ObjectSerializer;
  * SmtpApiTokenView Class Doc Comment
  *
  * @category Class
+ * @description A SMTP API token provides both an ID and password that can be used to send email through the HubSpot SMTP API.
  * @package  HubSpot\Client\Marketing\Transactional
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

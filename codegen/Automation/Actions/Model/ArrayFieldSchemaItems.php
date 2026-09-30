@@ -271,6 +271,7 @@ class ArrayFieldSchemaItems implements ModelInterface, ArrayAccess, \JsonSeriali
     public const FORMAT_DATE_TIME = 'DATE_TIME';
     public const FORMAT_MONTH_AND_DAY = 'MONTH_AND_DAY';
     public const FORMAT_OBJECT_COORDINATE = 'OBJECT_COORDINATE';
+    public const FORMAT_OBJECT_TYPE = 'OBJECT_TYPE';
     public const FORMAT_TIME = 'TIME';
     public const FORMAT_URI = 'URI';
 
@@ -305,6 +306,7 @@ class ArrayFieldSchemaItems implements ModelInterface, ArrayAccess, \JsonSeriali
             self::FORMAT_DATE_TIME,
             self::FORMAT_MONTH_AND_DAY,
             self::FORMAT_OBJECT_COORDINATE,
+            self::FORMAT_OBJECT_TYPE,
             self::FORMAT_TIME,
             self::FORMAT_URI,
         ];
