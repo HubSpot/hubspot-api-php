@@ -238,6 +238,7 @@ class StringFieldSchema implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const FORMAT_DATE_TIME = 'DATE_TIME';
     public const FORMAT_MONTH_AND_DAY = 'MONTH_AND_DAY';
     public const FORMAT_OBJECT_COORDINATE = 'OBJECT_COORDINATE';
+    public const FORMAT_OBJECT_TYPE = 'OBJECT_TYPE';
     public const FORMAT_TIME = 'TIME';
     public const FORMAT_URI = 'URI';
     public const TYPE_STRING = 'STRING';
@@ -254,6 +255,7 @@ class StringFieldSchema implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::FORMAT_DATE_TIME,
             self::FORMAT_MONTH_AND_DAY,
             self::FORMAT_OBJECT_COORDINATE,
+            self::FORMAT_OBJECT_TYPE,
             self::FORMAT_TIME,
             self::FORMAT_URI,
         ];

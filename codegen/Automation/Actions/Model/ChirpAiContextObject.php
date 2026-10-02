@@ -436,6 +436,9 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['otel_context_holder'] === null) {
             $invalidProperties[] = "'otel_context_holder' can't be null";
         }
+        if ($this->container['sensitivity'] === null) {
+            $invalidProperties[] = "'sensitivity' can't be null";
+        }
         $allowedValues = $this->getSensitivityAllowableValues();
         if (!is_null($this->container['sensitivity']) && !in_array($this->container['sensitivity'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -709,7 +712,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets sensitivity
      *
-     * @return string|null
+     * @return string
      */
     public function getSensitivity()
     {
@@ -719,7 +722,7 @@ class ChirpAiContextObject implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets sensitivity
      *
-     * @param string|null $sensitivity sensitivity
+     * @param string $sensitivity sensitivity
      *
      * @return self
      */

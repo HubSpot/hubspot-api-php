@@ -35,6 +35,7 @@ use \HubSpot\Client\Marketing\Transactional\ObjectSerializer;
  * PublicSingleSendRequestEgg Class Doc Comment
  *
  * @category Class
+ * @description A request to send a single transactional email asynchronously.
  * @package  HubSpot\Client\Marketing\Transactional
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
