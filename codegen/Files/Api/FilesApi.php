@@ -3480,7 +3480,7 @@ class FilesApi
         $formDataProcessor = new FormDataProcessor();
 
         $formData = $formDataProcessor->prepare([
-            'charset_hunch' => $charset_hunch,
+            'charsetHunch' => $charset_hunch,
             'file' => $file,
             'options' => $options,
         ]);
@@ -4102,11 +4102,11 @@ class FilesApi
         $formDataProcessor = new FormDataProcessor();
 
         $formData = $formDataProcessor->prepare([
-            'charset_hunch' => $charset_hunch,
+            'charsetHunch' => $charset_hunch,
             'file' => $file,
-            'file_name' => $file_name,
-            'folder_id' => $folder_id,
-            'folder_path' => $folder_path,
+            'fileName' => $file_name,
+            'folderId' => $folder_id,
+            'folderPath' => $folder_path,
             'options' => $options,
         ]);
 

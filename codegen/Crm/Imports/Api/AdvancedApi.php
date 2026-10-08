@@ -630,7 +630,7 @@ class AdvancedApi
 
         $formData = $formDataProcessor->prepare([
             'files' => $files,
-            'import_request' => $import_request,
+            'importRequest' => $import_request,
         ]);
 
         $formParams = $formDataProcessor->flatten($formData);
