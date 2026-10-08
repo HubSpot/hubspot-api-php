@@ -130,56 +130,56 @@ class BasicApi
     /**
      * Operation getPage
      *
+     * @param  string|null $object_type  (optional)
+     * @param  string|null $event_type  (optional)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
-     * @param  string|null $event_type  (optional)
-     * @param  string[]|null $id  (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $object_id  (optional)
-     * @param  object|null $object_property_propname  (optional)
-     * @param  string|null $object_type  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  \DateTime|null $occurred_after  (optional)
      * @param  \DateTime|null $occurred_before  (optional)
-     * @param  string[]|null $properties  (optional)
+     * @param  int|null $object_id  (optional)
+     * @param  object|null $object_property_propname  (optional)
      * @param  object|null $property_propname  (optional)
-     * @param  string[]|null $sort  (optional)
+     * @param  string[]|null $id  (optional)
+     * @param  string[]|null $properties  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent|\HubSpot\Client\Events\Model\Error
      */
-    public function getPage($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($object_type = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null, $occurred_after = null, $occurred_before = null, $object_id = null, $object_property_propname = null, $property_propname = null, $id = null, $properties = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
+        list($response) = $this->getPageWithHttpInfo($object_type, $event_type, $after, $before, $limit, $sort, $occurred_after, $occurred_before, $object_id, $object_property_propname, $property_propname, $id, $properties, $contentType);
         return $response;
     }
 
     /**
      * Operation getPageWithHttpInfo
      *
+     * @param  string|null $object_type  (optional)
+     * @param  string|null $event_type  (optional)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
-     * @param  string|null $event_type  (optional)
-     * @param  string[]|null $id  (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $object_id  (optional)
-     * @param  object|null $object_property_propname  (optional)
-     * @param  string|null $object_type  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  \DateTime|null $occurred_after  (optional)
      * @param  \DateTime|null $occurred_before  (optional)
-     * @param  string[]|null $properties  (optional)
+     * @param  int|null $object_id  (optional)
+     * @param  object|null $object_property_propname  (optional)
      * @param  object|null $property_propname  (optional)
-     * @param  string[]|null $sort  (optional)
+     * @param  string[]|null $id  (optional)
+     * @param  string[]|null $properties  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent|\HubSpot\Client\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($object_type = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null, $occurred_after = null, $occurred_before = null, $object_id = null, $object_property_propname = null, $property_propname = null, $id = null, $properties = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
+        $request = $this->getPageRequest($object_type, $event_type, $after, $before, $limit, $sort, $occurred_after, $occurred_before, $object_id, $object_property_propname, $property_propname, $id, $properties, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -267,27 +267,27 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
+     * @param  string|null $object_type  (optional)
+     * @param  string|null $event_type  (optional)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
-     * @param  string|null $event_type  (optional)
-     * @param  string[]|null $id  (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $object_id  (optional)
-     * @param  object|null $object_property_propname  (optional)
-     * @param  string|null $object_type  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  \DateTime|null $occurred_after  (optional)
      * @param  \DateTime|null $occurred_before  (optional)
-     * @param  string[]|null $properties  (optional)
+     * @param  int|null $object_id  (optional)
+     * @param  object|null $object_property_propname  (optional)
      * @param  object|null $property_propname  (optional)
-     * @param  string[]|null $sort  (optional)
+     * @param  string[]|null $id  (optional)
+     * @param  string[]|null $properties  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($object_type = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null, $occurred_after = null, $occurred_before = null, $object_id = null, $object_property_propname = null, $property_propname = null, $id = null, $properties = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType)
+        return $this->getPageAsyncWithHttpInfo($object_type, $event_type, $after, $before, $limit, $sort, $occurred_after, $occurred_before, $object_id, $object_property_propname, $property_propname, $id, $properties, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -298,28 +298,28 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
+     * @param  string|null $object_type  (optional)
+     * @param  string|null $event_type  (optional)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
-     * @param  string|null $event_type  (optional)
-     * @param  string[]|null $id  (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $object_id  (optional)
-     * @param  object|null $object_property_propname  (optional)
-     * @param  string|null $object_type  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  \DateTime|null $occurred_after  (optional)
      * @param  \DateTime|null $occurred_before  (optional)
-     * @param  string[]|null $properties  (optional)
+     * @param  int|null $object_id  (optional)
+     * @param  object|null $object_property_propname  (optional)
      * @param  object|null $property_propname  (optional)
-     * @param  string[]|null $sort  (optional)
+     * @param  string[]|null $id  (optional)
+     * @param  string[]|null $properties  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($object_type = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null, $occurred_after = null, $occurred_before = null, $object_id = null, $object_property_propname = null, $property_propname = null, $id = null, $properties = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent';
-        $request = $this->getPageRequest($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
+        $request = $this->getPageRequest($object_type, $event_type, $after, $before, $limit, $sort, $occurred_after, $occurred_before, $object_id, $object_property_propname, $property_propname, $id, $properties, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -360,25 +360,25 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
+     * @param  string|null $object_type  (optional)
+     * @param  string|null $event_type  (optional)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
-     * @param  string|null $event_type  (optional)
-     * @param  string[]|null $id  (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $object_id  (optional)
-     * @param  object|null $object_property_propname  (optional)
-     * @param  string|null $object_type  (optional)
+     * @param  string[]|null $sort  (optional)
      * @param  \DateTime|null $occurred_after  (optional)
      * @param  \DateTime|null $occurred_before  (optional)
-     * @param  string[]|null $properties  (optional)
+     * @param  int|null $object_id  (optional)
+     * @param  object|null $object_property_propname  (optional)
      * @param  object|null $property_propname  (optional)
-     * @param  string[]|null $sort  (optional)
+     * @param  string[]|null $id  (optional)
+     * @param  string[]|null $properties  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($object_type = null, $event_type = null, $after = null, $before = null, $limit = null, $sort = null, $occurred_after = null, $occurred_before = null, $object_id = null, $object_property_propname = null, $property_propname = null, $id = null, $properties = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -404,6 +404,24 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_type,
+            'objectType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event_type,
+            'eventType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -422,24 +440,6 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $event_type,
-            'eventType', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id,
-            'id', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
             'integer', // openApiType
@@ -449,27 +449,9 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_id,
-            'objectId', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_property_propname,
-            'objectProperty.{propname}', // param base name
-            'object', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_type,
-            'objectType', // param base name
-            'string', // openApiType
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -494,9 +476,18 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
-            'array', // openApiType
+            $object_id,
+            'objectId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_property_propname,
+            'objectProperty.{propname}', // param base name
+            'object', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -512,8 +503,17 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
+            $id,
+            'id', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
             'array', // openApiType
             'form', // style
             true, // explode

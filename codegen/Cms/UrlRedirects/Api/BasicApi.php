@@ -1432,50 +1432,50 @@ class BasicApi
     /**
      * Operation getPage
      *
-     * @param  string|null $after after (optional)
-     * @param  bool|null $archived archived (optional)
-     * @param  \DateTime|null $created_after created_after (optional)
      * @param  \DateTime|null $created_at created_at (optional)
+     * @param  \DateTime|null $created_after created_after (optional)
      * @param  \DateTime|null $created_before created_before (optional)
-     * @param  int|null $limit limit (optional)
-     * @param  string[]|null $sort sort (optional)
-     * @param  \DateTime|null $updated_after updated_after (optional)
      * @param  \DateTime|null $updated_at updated_at (optional)
+     * @param  \DateTime|null $updated_after updated_after (optional)
      * @param  \DateTime|null $updated_before updated_before (optional)
+     * @param  string[]|null $sort sort (optional)
+     * @param  string|null $after after (optional)
+     * @param  int|null $limit limit (optional)
+     * @param  bool|null $archived archived (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\UrlRedirects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\UrlRedirects\Model\CollectionResponseWithTotalUrlMappingForwardPaging|\HubSpot\Client\Cms\UrlRedirects\Model\Error
      */
-    public function getPage($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $contentType);
         return $response;
     }
 
     /**
      * Operation getPageWithHttpInfo
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $archived (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\UrlRedirects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\UrlRedirects\Model\CollectionResponseWithTotalUrlMappingForwardPaging|\HubSpot\Client\Cms\UrlRedirects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1563,24 +1563,24 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $archived (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1591,25 +1591,25 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $archived (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Cms\UrlRedirects\Model\CollectionResponseWithTotalUrlMappingForwardPaging';
-        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1650,22 +1650,22 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
      * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
      * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $archived (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $archived = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -1688,18 +1688,9 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $created_at,
+            'createdAt', // param base name
             'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1708,15 +1699,6 @@ class BasicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $created_after,
             'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1733,18 +1715,9 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1760,8 +1733,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
+            $updated_before,
+            'updatedBefore', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1769,9 +1742,36 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

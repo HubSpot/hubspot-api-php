@@ -170,17 +170,17 @@ class BasicApi
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archive($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
     {
-        $this->archiveWithHttpInfo($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $this->archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
     }
 
     /**
@@ -190,17 +190,17 @@ class BasicApi
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
     {
-        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -250,16 +250,16 @@ class BasicApi
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsync($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType)
+        return $this->archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -274,17 +274,17 @@ class BasicApi
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,14 +314,14 @@ class BasicApi
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($object_type, $pipeline_id, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archiveRequest($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
     {
 
         // verify the required parameter 'object_type' is set
@@ -350,8 +350,8 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $validate_deal_stage_usages_before_delete,
-            'validateDealStageUsagesBeforeDelete', // param base name
+            $validate_references_before_delete,
+            'validateReferencesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -359,8 +359,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $validate_references_before_delete,
-            'validateReferencesBeforeDelete', // param base name
+            $validate_deal_stage_usages_before_delete,
+            'validateDealStageUsagesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2260,17 +2260,17 @@ class BasicApi
      * Operation getAudit_0
      *
      * @param  string $object_type  (required)
-     * @param  string $pipeline_id pipeline_id (required)
      * @param  string $stage_id  (required)
+     * @param  string $pipeline_id pipeline_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getAudit_0($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getAudit_0($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
     {
-        list($response) = $this->getAudit_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $contentType);
+        list($response) = $this->getAudit_0WithHttpInfo($object_type, $stage_id, $pipeline_id, $contentType);
         return $response;
     }
 
@@ -2278,17 +2278,17 @@ class BasicApi
      * Operation getAudit_0WithHttpInfo
      *
      * @param  string $object_type  (required)
-     * @param  string $pipeline_id (required)
      * @param  string $stage_id  (required)
+     * @param  string $pipeline_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAudit_0WithHttpInfo($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getAudit_0WithHttpInfo($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
     {
-        $request = $this->getAudit_0Request($object_type, $pipeline_id, $stage_id, $contentType);
+        $request = $this->getAudit_0Request($object_type, $stage_id, $pipeline_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2377,16 +2377,16 @@ class BasicApi
      * Operation getAudit_0Async
      *
      * @param  string $object_type  (required)
-     * @param  string $pipeline_id (required)
      * @param  string $stage_id  (required)
+     * @param  string $pipeline_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAudit_0Async($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getAudit_0Async($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
     {
-        return $this->getAudit_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $contentType)
+        return $this->getAudit_0AsyncWithHttpInfo($object_type, $stage_id, $pipeline_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2398,17 +2398,17 @@ class BasicApi
      * Operation getAudit_0AsyncWithHttpInfo
      *
      * @param  string $object_type  (required)
-     * @param  string $pipeline_id (required)
      * @param  string $stage_id  (required)
+     * @param  string $pipeline_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAudit_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getAudit_0AsyncWithHttpInfo($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging';
-        $request = $this->getAudit_0Request($object_type, $pipeline_id, $stage_id, $contentType);
+        $request = $this->getAudit_0Request($object_type, $stage_id, $pipeline_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2450,20 +2450,27 @@ class BasicApi
      * Create request for operation 'getAudit_0'
      *
      * @param  string $object_type  (required)
-     * @param  string $pipeline_id (required)
      * @param  string $stage_id  (required)
+     * @param  string $pipeline_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAudit_0Request($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getAudit_0Request($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling getAudit_0'
+            );
+        }
+
+        // verify the required parameter 'stage_id' is set
+        if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $stage_id when calling getAudit_0'
             );
         }
 
@@ -2477,13 +2484,6 @@ class BasicApi
             throw new \InvalidArgumentException("invalid value for \"pipeline_id\" when calling BasicApi.getAudit_0, must conform to the pattern /.+/.");
         }
         
-        // verify the required parameter 'stage_id' is set
-        if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $stage_id when calling getAudit_0'
-            );
-        }
-
 
         $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}/audit';
         $formParams = [];
@@ -2503,18 +2503,18 @@ class BasicApi
             );
         }
         // path params
-        if ($pipeline_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'pipelineId' . '}',
-                ObjectSerializer::toPathValue($pipeline_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($stage_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'stageId' . '}',
                 ObjectSerializer::toPathValue($stage_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($pipeline_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'pipelineId' . '}',
+                ObjectSerializer::toPathValue($pipeline_id),
                 $resourcePath
             );
         }
@@ -3217,17 +3217,17 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input pipeline_replace_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function replace($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replace($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
     {
-        list($response) = $this->replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        list($response) = $this->replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
         return $response;
     }
 
@@ -3239,17 +3239,17 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
     {
-        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3342,16 +3342,16 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsync($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replaceAsync($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
     {
-        return $this->replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType)
+        return $this->replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3367,17 +3367,17 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3421,14 +3421,14 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
     {
 
         // verify the required parameter 'object_type' is set
@@ -3464,8 +3464,8 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $validate_deal_stage_usages_before_delete,
-            'validateDealStageUsagesBeforeDelete', // param base name
+            $validate_references_before_delete,
+            'validateReferencesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3473,8 +3473,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $validate_references_before_delete,
-            'validateReferencesBeforeDelete', // param base name
+            $validate_deal_stage_usages_before_delete,
+            'validateDealStageUsagesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3915,17 +3915,17 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input pipeline_patch_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function update($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function update($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
     {
-        list($response) = $this->updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        list($response) = $this->updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
         return $response;
     }
 
@@ -3935,17 +3935,17 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
     {
-        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4036,16 +4036,16 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updateAsync($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
     {
-        return $this->updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType)
+        return $this->updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4059,17 +4059,17 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete, $validate_references_before_delete, $contentType);
+        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4113,14 +4113,14 @@ class BasicApi
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
-     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
+     * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_deal_stage_usages_before_delete = false, $validate_references_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
     {
 
         // verify the required parameter 'object_type' is set
@@ -4156,8 +4156,8 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $validate_deal_stage_usages_before_delete,
-            'validateDealStageUsagesBeforeDelete', // param base name
+            $validate_references_before_delete,
+            'validateReferencesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4165,8 +4165,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $validate_references_before_delete,
-            'validateReferencesBeforeDelete', // param base name
+            $validate_deal_stage_usages_before_delete,
+            'validateDealStageUsagesBeforeDelete', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

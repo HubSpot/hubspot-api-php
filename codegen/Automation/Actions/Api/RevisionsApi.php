@@ -132,18 +132,18 @@ class RevisionsApi
      *
      * Retrieve a specific revision of a definition
      *
-     * @param  int $app_id app_id (required)
      * @param  string $definition_id definition_id (required)
      * @param  string $revision_id revision_id (required)
+     * @param  int $app_id app_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\PublicActionRevision|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function getById($app_id, $definition_id, $revision_id, string $contentType = self::contentTypes['getById'][0])
+    public function getById($definition_id, $revision_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($app_id, $definition_id, $revision_id, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($definition_id, $revision_id, $app_id, $contentType);
         return $response;
     }
 
@@ -152,18 +152,18 @@ class RevisionsApi
      *
      * Retrieve a specific revision of a definition
      *
-     * @param  int $app_id (required)
      * @param  string $definition_id (required)
      * @param  string $revision_id (required)
+     * @param  int $app_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionRevision|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($app_id, $definition_id, $revision_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($definition_id, $revision_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($app_id, $definition_id, $revision_id, $contentType);
+        $request = $this->getByIdRequest($definition_id, $revision_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -253,17 +253,17 @@ class RevisionsApi
      *
      * Retrieve a specific revision of a definition
      *
-     * @param  int $app_id (required)
      * @param  string $definition_id (required)
      * @param  string $revision_id (required)
+     * @param  int $app_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($app_id, $definition_id, $revision_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($definition_id, $revision_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($app_id, $definition_id, $revision_id, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($definition_id, $revision_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -276,18 +276,18 @@ class RevisionsApi
      *
      * Retrieve a specific revision of a definition
      *
-     * @param  int $app_id (required)
      * @param  string $definition_id (required)
      * @param  string $revision_id (required)
+     * @param  int $app_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($app_id, $definition_id, $revision_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($definition_id, $revision_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionRevision';
-        $request = $this->getByIdRequest($app_id, $definition_id, $revision_id, $contentType);
+        $request = $this->getByIdRequest($definition_id, $revision_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -328,23 +328,16 @@ class RevisionsApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  int $app_id (required)
      * @param  string $definition_id (required)
      * @param  string $revision_id (required)
+     * @param  int $app_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($app_id, $definition_id, $revision_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($definition_id, $revision_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
@@ -360,6 +353,13 @@ class RevisionsApi
             );
         }
 
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getById'
+            );
+        }
+
 
         $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/revisions/{revisionId}';
         $formParams = [];
@@ -370,14 +370,6 @@ class RevisionsApi
 
 
 
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
@@ -391,6 +383,14 @@ class RevisionsApi
             $resourcePath = str_replace(
                 '{' . 'revisionId' . '}',
                 ObjectSerializer::toPathValue($revision_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -459,19 +459,19 @@ class RevisionsApi
      *
      * Retrieve revisions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\CollectionResponsePublicActionRevisionForwardPaging|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function getPage($app_id, $definition_id, $after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($definition_id, $app_id, $limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($app_id, $definition_id, $after, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($definition_id, $app_id, $limit, $after, $contentType);
         return $response;
     }
 
@@ -480,19 +480,19 @@ class RevisionsApi
      *
      * Retrieve revisions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\CollectionResponsePublicActionRevisionForwardPaging|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($app_id, $definition_id, $after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($definition_id, $app_id, $limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($app_id, $definition_id, $after, $limit, $contentType);
+        $request = $this->getPageRequest($definition_id, $app_id, $limit, $after, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -582,18 +582,18 @@ class RevisionsApi
      *
      * Retrieve revisions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($app_id, $definition_id, $after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($definition_id, $app_id, $limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($app_id, $definition_id, $after, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($definition_id, $app_id, $limit, $after, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -606,19 +606,19 @@ class RevisionsApi
      *
      * Retrieve revisions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($app_id, $definition_id, $after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($definition_id, $app_id, $limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\CollectionResponsePublicActionRevisionForwardPaging';
-        $request = $this->getPageRequest($app_id, $definition_id, $after, $limit, $contentType);
+        $request = $this->getPageRequest($definition_id, $app_id, $limit, $after, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -659,29 +659,29 @@ class RevisionsApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($app_id, $definition_id, $after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($definition_id, $app_id, $limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getPage'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $definition_id when calling getPage'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getPage'
             );
         }
 
@@ -697,15 +697,6 @@ class RevisionsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
             'integer', // openApiType
@@ -713,21 +704,30 @@ class RevisionsApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'definitionId' . '}',
                 ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }

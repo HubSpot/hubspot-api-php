@@ -415,19 +415,19 @@ class BasicApi
      *
      * Get aggregated statistics
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
-     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
+     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailsList'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Emails\Model\AggregateEmailStatistics|\HubSpot\Client\Marketing\Emails\Model\Error
      */
-    public function getEmailsList($email_ids = null, $end_timestamp = null, $property = null, $start_timestamp = null, string $contentType = self::contentTypes['getEmailsList'][0])
+    public function getEmailsList($start_timestamp = null, $end_timestamp = null, $email_ids = null, $property = null, string $contentType = self::contentTypes['getEmailsList'][0])
     {
-        list($response) = $this->getEmailsListWithHttpInfo($email_ids, $end_timestamp, $property, $start_timestamp, $contentType);
+        list($response) = $this->getEmailsListWithHttpInfo($start_timestamp, $end_timestamp, $email_ids, $property, $contentType);
         return $response;
     }
 
@@ -436,19 +436,19 @@ class BasicApi
      *
      * Get aggregated statistics
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
-     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
+     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailsList'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Emails\Model\AggregateEmailStatistics|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEmailsListWithHttpInfo($email_ids = null, $end_timestamp = null, $property = null, $start_timestamp = null, string $contentType = self::contentTypes['getEmailsList'][0])
+    public function getEmailsListWithHttpInfo($start_timestamp = null, $end_timestamp = null, $email_ids = null, $property = null, string $contentType = self::contentTypes['getEmailsList'][0])
     {
-        $request = $this->getEmailsListRequest($email_ids, $end_timestamp, $property, $start_timestamp, $contentType);
+        $request = $this->getEmailsListRequest($start_timestamp, $end_timestamp, $email_ids, $property, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -538,18 +538,18 @@ class BasicApi
      *
      * Get aggregated statistics
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
-     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
+     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailsListAsync($email_ids = null, $end_timestamp = null, $property = null, $start_timestamp = null, string $contentType = self::contentTypes['getEmailsList'][0])
+    public function getEmailsListAsync($start_timestamp = null, $end_timestamp = null, $email_ids = null, $property = null, string $contentType = self::contentTypes['getEmailsList'][0])
     {
-        return $this->getEmailsListAsyncWithHttpInfo($email_ids, $end_timestamp, $property, $start_timestamp, $contentType)
+        return $this->getEmailsListAsyncWithHttpInfo($start_timestamp, $end_timestamp, $email_ids, $property, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -562,19 +562,19 @@ class BasicApi
      *
      * Get aggregated statistics
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
-     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
+     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailsListAsyncWithHttpInfo($email_ids = null, $end_timestamp = null, $property = null, $start_timestamp = null, string $contentType = self::contentTypes['getEmailsList'][0])
+    public function getEmailsListAsyncWithHttpInfo($start_timestamp = null, $end_timestamp = null, $email_ids = null, $property = null, string $contentType = self::contentTypes['getEmailsList'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Emails\Model\AggregateEmailStatistics';
-        $request = $this->getEmailsListRequest($email_ids, $end_timestamp, $property, $start_timestamp, $contentType);
+        $request = $this->getEmailsListRequest($start_timestamp, $end_timestamp, $email_ids, $property, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -615,16 +615,16 @@ class BasicApi
     /**
      * Create request for operation 'getEmailsList'
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
-     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
+     * @param  string|null $property Specifies which email properties should be returned. All properties will be returned by default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEmailsListRequest($email_ids = null, $end_timestamp = null, $property = null, $start_timestamp = null, string $contentType = self::contentTypes['getEmailsList'][0])
+    public function getEmailsListRequest($start_timestamp = null, $end_timestamp = null, $email_ids = null, $property = null, string $contentType = self::contentTypes['getEmailsList'][0])
     {
 
 
@@ -641,9 +641,9 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $email_ids,
-            'emailIds', // param base name
-            'array', // openApiType
+            $start_timestamp,
+            'startTimestamp', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -659,17 +659,17 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
-            'string', // openApiType
+            $email_ids,
+            'emailIds', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $start_timestamp,
-            'startTimestamp', // param base name
+            $property,
+            'property', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -741,19 +741,19 @@ class BasicApi
      *
      * Get aggregated statistic intervals
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
      * @param  string|null $interval The interval to aggregate statistics for. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistogram'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalEmailStatisticInterval|\HubSpot\Client\Marketing\Emails\Model\Error
      */
-    public function getHistogram($email_ids = null, $end_timestamp = null, $interval = null, $start_timestamp = null, string $contentType = self::contentTypes['getHistogram'][0])
+    public function getHistogram($interval = null, $start_timestamp = null, $end_timestamp = null, $email_ids = null, string $contentType = self::contentTypes['getHistogram'][0])
     {
-        list($response) = $this->getHistogramWithHttpInfo($email_ids, $end_timestamp, $interval, $start_timestamp, $contentType);
+        list($response) = $this->getHistogramWithHttpInfo($interval, $start_timestamp, $end_timestamp, $email_ids, $contentType);
         return $response;
     }
 
@@ -762,19 +762,19 @@ class BasicApi
      *
      * Get aggregated statistic intervals
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
      * @param  string|null $interval The interval to aggregate statistics for. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistogram'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalEmailStatisticInterval|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getHistogramWithHttpInfo($email_ids = null, $end_timestamp = null, $interval = null, $start_timestamp = null, string $contentType = self::contentTypes['getHistogram'][0])
+    public function getHistogramWithHttpInfo($interval = null, $start_timestamp = null, $end_timestamp = null, $email_ids = null, string $contentType = self::contentTypes['getHistogram'][0])
     {
-        $request = $this->getHistogramRequest($email_ids, $end_timestamp, $interval, $start_timestamp, $contentType);
+        $request = $this->getHistogramRequest($interval, $start_timestamp, $end_timestamp, $email_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -864,18 +864,18 @@ class BasicApi
      *
      * Get aggregated statistic intervals
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
      * @param  string|null $interval The interval to aggregate statistics for. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistogram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getHistogramAsync($email_ids = null, $end_timestamp = null, $interval = null, $start_timestamp = null, string $contentType = self::contentTypes['getHistogram'][0])
+    public function getHistogramAsync($interval = null, $start_timestamp = null, $end_timestamp = null, $email_ids = null, string $contentType = self::contentTypes['getHistogram'][0])
     {
-        return $this->getHistogramAsyncWithHttpInfo($email_ids, $end_timestamp, $interval, $start_timestamp, $contentType)
+        return $this->getHistogramAsyncWithHttpInfo($interval, $start_timestamp, $end_timestamp, $email_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -888,19 +888,19 @@ class BasicApi
      *
      * Get aggregated statistic intervals
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
      * @param  string|null $interval The interval to aggregate statistics for. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistogram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getHistogramAsyncWithHttpInfo($email_ids = null, $end_timestamp = null, $interval = null, $start_timestamp = null, string $contentType = self::contentTypes['getHistogram'][0])
+    public function getHistogramAsyncWithHttpInfo($interval = null, $start_timestamp = null, $end_timestamp = null, $email_ids = null, string $contentType = self::contentTypes['getHistogram'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalEmailStatisticInterval';
-        $request = $this->getHistogramRequest($email_ids, $end_timestamp, $interval, $start_timestamp, $contentType);
+        $request = $this->getHistogramRequest($interval, $start_timestamp, $end_timestamp, $email_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -941,16 +941,16 @@ class BasicApi
     /**
      * Create request for operation 'getHistogram'
      *
-     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
-     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
      * @param  string|null $interval The interval to aggregate statistics for. (optional)
      * @param  \DateTime|null $start_timestamp The start timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  \DateTime|null $end_timestamp The end timestamp of the time span, in ISO8601 representation. (optional)
+     * @param  int[]|null $email_ids Filter by email IDs. Only include statistics of emails with these IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHistogram'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getHistogramRequest($email_ids = null, $end_timestamp = null, $interval = null, $start_timestamp = null, string $contentType = self::contentTypes['getHistogram'][0])
+    public function getHistogramRequest($interval = null, $start_timestamp = null, $end_timestamp = null, $email_ids = null, string $contentType = self::contentTypes['getHistogram'][0])
     {
 
 
@@ -967,9 +967,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $email_ids,
-            'emailIds', // param base name
-            'array', // openApiType
+            $interval,
+            'interval', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_timestamp,
+            'startTimestamp', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -985,18 +994,9 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $interval,
-            'interval', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $start_timestamp,
-            'startTimestamp', // param base name
-            'string', // openApiType
+            $email_ids,
+            'emailIds', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1065,72 +1065,72 @@ class BasicApi
     /**
      * Operation getPage
      *
+     * @param  \DateTime|null $created_at created_at (optional)
+     * @param  \DateTime|null $created_after created_after (optional)
+     * @param  \DateTime|null $created_before created_before (optional)
+     * @param  \DateTime|null $updated_at updated_at (optional)
+     * @param  \DateTime|null $updated_after updated_after (optional)
+     * @param  \DateTime|null $updated_before updated_before (optional)
+     * @param  string[]|null $sort sort (optional)
      * @param  string|null $after after (optional)
+     * @param  int|null $limit limit (optional)
+     * @param  bool|null $include_stats include_stats (optional)
+     * @param  bool|null $marketing_campaign_names marketing_campaign_names (optional)
+     * @param  bool|null $workflow_names workflow_names (optional)
+     * @param  string|null $type type (optional)
+     * @param  bool|null $is_published is_published (optional)
+     * @param  string[]|null $included_properties included_properties (optional)
      * @param  bool|null $archived archived (optional)
      * @param  string|null $campaign campaign (optional)
-     * @param  \DateTime|null $created_after created_after (optional)
-     * @param  \DateTime|null $created_at created_at (optional)
-     * @param  \DateTime|null $created_before created_before (optional)
-     * @param  string[]|null $included_properties included_properties (optional)
-     * @param  bool|null $include_stats include_stats (optional)
-     * @param  bool|null $is_published is_published (optional)
-     * @param  int|null $limit limit (optional)
-     * @param  bool|null $marketing_campaign_names marketing_campaign_names (optional)
      * @param  \DateTime|null $published_after published_after (optional)
      * @param  \DateTime|null $published_at published_at (optional)
      * @param  \DateTime|null $published_before published_before (optional)
-     * @param  string[]|null $sort sort (optional)
-     * @param  string|null $type type (optional)
-     * @param  \DateTime|null $updated_after updated_after (optional)
-     * @param  \DateTime|null $updated_at updated_at (optional)
-     * @param  \DateTime|null $updated_before updated_before (optional)
      * @param  bool|null $variant_stats variant_stats (optional)
-     * @param  bool|null $workflow_names workflow_names (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error
      */
-    public function getPage($after = null, $archived = null, $campaign = null, $created_after = null, $created_at = null, $created_before = null, $included_properties = null, $include_stats = null, $is_published = null, $limit = null, $marketing_campaign_names = null, $published_after = null, $published_at = null, $published_before = null, $sort = null, $type = null, $updated_after = null, $updated_at = null, $updated_before = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($after, $archived, $campaign, $created_after, $created_at, $created_before, $included_properties, $include_stats, $is_published, $limit, $marketing_campaign_names, $published_after, $published_at, $published_before, $sort, $type, $updated_after, $updated_at, $updated_before, $variant_stats, $workflow_names, $contentType);
+        list($response) = $this->getPageWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType);
         return $response;
     }
 
     /**
      * Operation getPageWithHttpInfo
      *
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $include_stats (optional)
+     * @param  bool|null $marketing_campaign_names (optional)
+     * @param  bool|null $workflow_names (optional)
+     * @param  string|null $type (optional)
+     * @param  bool|null $is_published (optional)
+     * @param  string[]|null $included_properties (optional)
      * @param  bool|null $archived (optional)
      * @param  string|null $campaign (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  string[]|null $included_properties (optional)
-     * @param  bool|null $include_stats (optional)
-     * @param  bool|null $is_published (optional)
-     * @param  int|null $limit (optional)
-     * @param  bool|null $marketing_campaign_names (optional)
      * @param  \DateTime|null $published_after (optional)
      * @param  \DateTime|null $published_at (optional)
      * @param  \DateTime|null $published_before (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  string|null $type (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
      * @param  bool|null $variant_stats (optional)
-     * @param  bool|null $workflow_names (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($after = null, $archived = null, $campaign = null, $created_after = null, $created_at = null, $created_before = null, $included_properties = null, $include_stats = null, $is_published = null, $limit = null, $marketing_campaign_names = null, $published_after = null, $published_at = null, $published_before = null, $sort = null, $type = null, $updated_after = null, $updated_at = null, $updated_before = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($after, $archived, $campaign, $created_after, $created_at, $created_before, $included_properties, $include_stats, $is_published, $limit, $marketing_campaign_names, $published_after, $published_at, $published_before, $sort, $type, $updated_after, $updated_at, $updated_before, $variant_stats, $workflow_names, $contentType);
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1218,35 +1218,35 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $include_stats (optional)
+     * @param  bool|null $marketing_campaign_names (optional)
+     * @param  bool|null $workflow_names (optional)
+     * @param  string|null $type (optional)
+     * @param  bool|null $is_published (optional)
+     * @param  string[]|null $included_properties (optional)
      * @param  bool|null $archived (optional)
      * @param  string|null $campaign (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  string[]|null $included_properties (optional)
-     * @param  bool|null $include_stats (optional)
-     * @param  bool|null $is_published (optional)
-     * @param  int|null $limit (optional)
-     * @param  bool|null $marketing_campaign_names (optional)
      * @param  \DateTime|null $published_after (optional)
      * @param  \DateTime|null $published_at (optional)
      * @param  \DateTime|null $published_before (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  string|null $type (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
      * @param  bool|null $variant_stats (optional)
-     * @param  bool|null $workflow_names (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($after = null, $archived = null, $campaign = null, $created_after = null, $created_at = null, $created_before = null, $included_properties = null, $include_stats = null, $is_published = null, $limit = null, $marketing_campaign_names = null, $published_after = null, $published_at = null, $published_before = null, $sort = null, $type = null, $updated_after = null, $updated_at = null, $updated_before = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($after, $archived, $campaign, $created_after, $created_at, $created_before, $included_properties, $include_stats, $is_published, $limit, $marketing_campaign_names, $published_after, $published_at, $published_before, $sort, $type, $updated_after, $updated_at, $updated_before, $variant_stats, $workflow_names, $contentType)
+        return $this->getPageAsyncWithHttpInfo($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1257,36 +1257,36 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $include_stats (optional)
+     * @param  bool|null $marketing_campaign_names (optional)
+     * @param  bool|null $workflow_names (optional)
+     * @param  string|null $type (optional)
+     * @param  bool|null $is_published (optional)
+     * @param  string[]|null $included_properties (optional)
      * @param  bool|null $archived (optional)
      * @param  string|null $campaign (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  string[]|null $included_properties (optional)
-     * @param  bool|null $include_stats (optional)
-     * @param  bool|null $is_published (optional)
-     * @param  int|null $limit (optional)
-     * @param  bool|null $marketing_campaign_names (optional)
      * @param  \DateTime|null $published_after (optional)
      * @param  \DateTime|null $published_at (optional)
      * @param  \DateTime|null $published_before (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  string|null $type (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
      * @param  bool|null $variant_stats (optional)
-     * @param  bool|null $workflow_names (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $campaign = null, $created_after = null, $created_at = null, $created_before = null, $included_properties = null, $include_stats = null, $is_published = null, $limit = null, $marketing_campaign_names = null, $published_after = null, $published_at = null, $published_before = null, $sort = null, $type = null, $updated_after = null, $updated_at = null, $updated_before = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Emails\Model\CollectionResponseWithTotalPublicEmail';
-        $request = $this->getPageRequest($after, $archived, $campaign, $created_after, $created_at, $created_before, $included_properties, $include_stats, $is_published, $limit, $marketing_campaign_names, $published_after, $published_at, $published_before, $sort, $type, $updated_after, $updated_at, $updated_before, $variant_stats, $workflow_names, $contentType);
+        $request = $this->getPageRequest($created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $sort, $after, $limit, $include_stats, $marketing_campaign_names, $workflow_names, $type, $is_published, $included_properties, $archived, $campaign, $published_after, $published_at, $published_before, $variant_stats, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1327,33 +1327,33 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string[]|null $sort (optional)
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  bool|null $include_stats (optional)
+     * @param  bool|null $marketing_campaign_names (optional)
+     * @param  bool|null $workflow_names (optional)
+     * @param  string|null $type (optional)
+     * @param  bool|null $is_published (optional)
+     * @param  string[]|null $included_properties (optional)
      * @param  bool|null $archived (optional)
      * @param  string|null $campaign (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  string[]|null $included_properties (optional)
-     * @param  bool|null $include_stats (optional)
-     * @param  bool|null $is_published (optional)
-     * @param  int|null $limit (optional)
-     * @param  bool|null $marketing_campaign_names (optional)
      * @param  \DateTime|null $published_after (optional)
      * @param  \DateTime|null $published_at (optional)
      * @param  \DateTime|null $published_before (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  string|null $type (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
      * @param  bool|null $variant_stats (optional)
-     * @param  bool|null $workflow_names (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($after = null, $archived = null, $campaign = null, $created_after = null, $created_at = null, $created_before = null, $included_properties = null, $include_stats = null, $is_published = null, $limit = null, $marketing_campaign_names = null, $published_after = null, $published_at = null, $published_before = null, $sort = null, $type = null, $updated_after = null, $updated_at = null, $updated_before = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $sort = null, $after = null, $limit = null, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $type = null, $is_published = null, $included_properties = null, $archived = null, $campaign = null, $published_after = null, $published_at = null, $published_before = null, $variant_stats = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -1387,9 +1387,135 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_stats,
+            'includeStats', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketing_campaign_names,
+            'marketingCampaignNames', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $workflow_names,
+            'workflowNames', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_published,
+            'isPublished', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $included_properties,
+            'includedProperties', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1408,78 +1534,6 @@ class BasicApi
             $campaign,
             'campaign', // param base name
             'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $included_properties,
-            'includedProperties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_stats,
-            'includeStats', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_published,
-            'isPublished', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $marketing_campaign_names,
-            'marketingCampaignNames', // param base name
-            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1513,62 +1567,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $variant_stats,
             'variantStats', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $workflow_names,
-            'workflowNames', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

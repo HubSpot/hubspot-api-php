@@ -1596,27 +1596,27 @@ class TablesApi
      *
      * Return all draft tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllDraftTables'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getAllDraftTables($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
+    public function getAllDraftTables($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
     {
-        list($response) = $this->getAllDraftTablesWithHttpInfo($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        list($response) = $this->getAllDraftTablesWithHttpInfo($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType);
         return $response;
     }
 
@@ -1625,27 +1625,27 @@ class TablesApi
      *
      * Return all draft tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllDraftTables'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllDraftTablesWithHttpInfo($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
+    public function getAllDraftTablesWithHttpInfo($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
     {
-        $request = $this->getAllDraftTablesRequest($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getAllDraftTablesRequest($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1735,26 +1735,26 @@ class TablesApi
      *
      * Return all draft tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllDraftTables'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllDraftTablesAsync($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
+    public function getAllDraftTablesAsync($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
     {
-        return $this->getAllDraftTablesAsyncWithHttpInfo($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+        return $this->getAllDraftTablesAsyncWithHttpInfo($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1767,27 +1767,27 @@ class TablesApi
      *
      * Return all draft tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllDraftTables'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllDraftTablesAsyncWithHttpInfo($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
+    public function getAllDraftTablesAsyncWithHttpInfo($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableV3';
-        $request = $this->getAllDraftTablesRequest($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getAllDraftTablesRequest($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1828,24 +1828,24 @@ class TablesApi
     /**
      * Create request for operation 'getAllDraftTables'
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllDraftTables'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllDraftTablesRequest($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
+    public function getAllDraftTablesRequest($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllDraftTables'][0])
     {
 
 
@@ -1870,6 +1870,15 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -1879,17 +1888,17 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $content_type,
-            'contentType', // param base name
+            $created_at,
+            'createdAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1906,53 +1915,8 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $created_before,
             'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_get_localized_schema,
-            'isGetLocalizedSchema', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1969,9 +1933,45 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $updated_before,
             'updatedBefore', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $content_type,
+            'contentType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_get_localized_schema,
+            'isGetLocalizedSchema', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2042,27 +2042,27 @@ class TablesApi
      *
      * Get all published tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTables'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getAllTables($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllTables'][0])
+    public function getAllTables($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllTables'][0])
     {
-        list($response) = $this->getAllTablesWithHttpInfo($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        list($response) = $this->getAllTablesWithHttpInfo($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType);
         return $response;
     }
 
@@ -2071,27 +2071,27 @@ class TablesApi
      *
      * Get all published tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTables'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllTablesWithHttpInfo($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllTables'][0])
+    public function getAllTablesWithHttpInfo($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllTables'][0])
     {
-        $request = $this->getAllTablesRequest($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getAllTablesRequest($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2181,26 +2181,26 @@ class TablesApi
      *
      * Get all published tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTables'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllTablesAsync($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllTables'][0])
+    public function getAllTablesAsync($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllTables'][0])
     {
-        return $this->getAllTablesAsyncWithHttpInfo($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+        return $this->getAllTablesAsyncWithHttpInfo($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2213,27 +2213,27 @@ class TablesApi
      *
      * Get all published tables
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTables'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllTablesAsyncWithHttpInfo($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllTables'][0])
+    public function getAllTablesAsyncWithHttpInfo($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllTables'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\CollectionResponseWithTotalHubDbTableV3';
-        $request = $this->getAllTablesRequest($after, $archived, $content_type, $created_after, $created_at, $created_before, $is_get_localized_schema, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getAllTablesRequest($sort, $after, $limit, $created_at, $created_after, $created_before, $updated_at, $updated_after, $updated_before, $content_type, $archived, $is_get_localized_schema, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2274,24 +2274,24 @@ class TablesApi
     /**
      * Create request for operation 'getAllTables'
      *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string|null $content_type  (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_before  (optional)
      * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_before  (optional)
+     * @param  string|null $content_type  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTables'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllTablesRequest($after = null, $archived = null, $content_type = null, $created_after = null, $created_at = null, $created_before = null, $is_get_localized_schema = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getAllTables'][0])
+    public function getAllTablesRequest($sort = null, $after = null, $limit = null, $created_at = null, $created_after = null, $created_before = null, $updated_at = null, $updated_after = null, $updated_before = null, $content_type = null, $archived = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getAllTables'][0])
     {
 
 
@@ -2316,6 +2316,15 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -2325,17 +2334,17 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $content_type,
-            'contentType', // param base name
+            $created_at,
+            'createdAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2352,53 +2361,8 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $created_before,
             'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_get_localized_schema,
-            'isGetLocalizedSchema', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2415,9 +2379,45 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $updated_before,
             'updatedBefore', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $content_type,
+            'contentType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_get_localized_schema,
+            'isGetLocalizedSchema', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2489,18 +2489,18 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableDetailsById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getDraftTableDetailsById($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
+    public function getDraftTableDetailsById($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
     {
-        list($response) = $this->getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        list($response) = $this->getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
         return $response;
     }
 
@@ -2510,18 +2510,18 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableDetailsById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
+    public function getDraftTableDetailsByIdWithHttpInfo($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
     {
-        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2612,17 +2612,17 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableDetailsById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDraftTableDetailsByIdAsync($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
+    public function getDraftTableDetailsByIdAsync($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
     {
-        return $this->getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType)
+        return $this->getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2636,18 +2636,18 @@ class TablesApi
      * Get details for a draft table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableDetailsById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
+    public function getDraftTableDetailsByIdAsyncWithHttpInfo($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3';
-        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        $request = $this->getDraftTableDetailsByIdRequest($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2689,15 +2689,15 @@ class TablesApi
      * Create request for operation 'getDraftTableDetailsById'
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableDetailsById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDraftTableDetailsByIdRequest($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
+    public function getDraftTableDetailsByIdRequest($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getDraftTableDetailsById'][0])
     {
 
         // verify the required parameter 'table_id_or_name' is set
@@ -2720,6 +2720,15 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_get_localized_schema,
+            'isGetLocalizedSchema', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $archived,
             'archived', // param base name
             'boolean', // openApiType
@@ -2731,15 +2740,6 @@ class TablesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_foreign_ids,
             'includeForeignIds', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_get_localized_schema,
-            'isGetLocalizedSchema', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2820,18 +2820,18 @@ class TablesApi
      * Get details of a published table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableDetails'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function getTableDetails($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getTableDetails'][0])
+    public function getTableDetails($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getTableDetails'][0])
     {
-        list($response) = $this->getTableDetailsWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        list($response) = $this->getTableDetailsWithHttpInfo($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
         return $response;
     }
 
@@ -2841,18 +2841,18 @@ class TablesApi
      * Get details of a published table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableDetails'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTableDetailsWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getTableDetails'][0])
+    public function getTableDetailsWithHttpInfo($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getTableDetails'][0])
     {
-        $request = $this->getTableDetailsRequest($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        $request = $this->getTableDetailsRequest($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2943,17 +2943,17 @@ class TablesApi
      * Get details of a published table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableDetailsAsync($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getTableDetails'][0])
+    public function getTableDetailsAsync($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getTableDetails'][0])
     {
-        return $this->getTableDetailsAsyncWithHttpInfo($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType)
+        return $this->getTableDetailsAsyncWithHttpInfo($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2967,18 +2967,18 @@ class TablesApi
      * Get details of a published table
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTableDetailsAsyncWithHttpInfo($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getTableDetails'][0])
+    public function getTableDetailsAsyncWithHttpInfo($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getTableDetails'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3';
-        $request = $this->getTableDetailsRequest($table_id_or_name, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        $request = $this->getTableDetailsRequest($table_id_or_name, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3020,15 +3020,15 @@ class TablesApi
      * Create request for operation 'getTableDetails'
      *
      * @param  string $table_id_or_name  (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTableDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTableDetailsRequest($table_id_or_name, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['getTableDetails'][0])
+    public function getTableDetailsRequest($table_id_or_name, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['getTableDetails'][0])
     {
 
         // verify the required parameter 'table_id_or_name' is set
@@ -3051,6 +3051,15 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_get_localized_schema,
+            'isGetLocalizedSchema', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $archived,
             'archived', // param base name
             'boolean', // openApiType
@@ -3062,15 +3071,6 @@ class TablesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_foreign_ids,
             'includeForeignIds', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_get_localized_schema,
-            'isGetLocalizedSchema', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3761,21 +3761,21 @@ class TablesApi
      * Get rows from draft table
      *
      * @param  string $table_id_or_name  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $properties  (optional)
      * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function readDraftTableRows($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function readDraftTableRows($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
     {
-        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType);
+        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
         return $response;
     }
 
@@ -3785,21 +3785,21 @@ class TablesApi
      * Get rows from draft table
      *
      * @param  string $table_id_or_name  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $properties  (optional)
      * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
     {
-        $request = $this->readDraftTableRowsRequest($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType);
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3890,20 +3890,20 @@ class TablesApi
      * Get rows from draft table
      *
      * @param  string $table_id_or_name  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $properties  (optional)
      * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readDraftTableRowsAsync($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function readDraftTableRowsAsync($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
     {
-        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType)
+        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3917,21 +3917,21 @@ class TablesApi
      * Get rows from draft table
      *
      * @param  string $table_id_or_name  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $properties  (optional)
      * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3';
-        $request = $this->readDraftTableRowsRequest($table_id_or_name, $after, $archived, $limit, $offset, $properties, $sort, $contentType);
+        $request = $this->readDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3973,18 +3973,18 @@ class TablesApi
      * Create request for operation 'readDraftTableRows'
      *
      * @param  string $table_id_or_name  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $properties  (optional)
      * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function readDraftTableRowsRequest($table_id_or_name, $after = null, $archived = null, $limit = null, $offset = null, $properties = null, $sort = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
+    public function readDraftTableRowsRequest($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
     {
 
         // verify the required parameter 'table_id_or_name' is set
@@ -4010,6 +4010,15 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -4019,26 +4028,8 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -4055,9 +4046,18 @@ class TablesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4993,18 +4993,18 @@ class TablesApi
      *
      * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request hub_db_table_v3_request (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTable'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error
      */
-    public function updateDraftTable($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['updateDraftTable'][0])
+    public function updateDraftTable($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['updateDraftTable'][0])
     {
-        list($response) = $this->updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        list($response) = $this->updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
         return $response;
     }
 
@@ -5015,18 +5015,18 @@ class TablesApi
      *
      * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTable'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['updateDraftTable'][0])
+    public function updateDraftTableWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['updateDraftTable'][0])
     {
-        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5118,17 +5118,17 @@ class TablesApi
      *
      * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTable'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDraftTableAsync($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['updateDraftTable'][0])
+    public function updateDraftTableAsync($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['updateDraftTable'][0])
     {
-        return $this->updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType)
+        return $this->updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5143,18 +5143,18 @@ class TablesApi
      *
      * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTable'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['updateDraftTable'][0])
+    public function updateDraftTableAsyncWithHttpInfo($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['updateDraftTable'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3';
-        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $archived, $include_foreign_ids, $is_get_localized_schema, $contentType);
+        $request = $this->updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema, $archived, $include_foreign_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5197,15 +5197,15 @@ class TablesApi
      *
      * @param  string $table_id_or_name  (required)
      * @param  \HubSpot\Client\Cms\Hubdb\Model\HubDbTableV3Request $hub_db_table_v3_request (required)
+     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
      * @param  bool|null $include_foreign_ids  (optional)
-     * @param  bool|null $is_get_localized_schema  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDraftTable'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $archived = null, $include_foreign_ids = null, $is_get_localized_schema = null, string $contentType = self::contentTypes['updateDraftTable'][0])
+    public function updateDraftTableRequest($table_id_or_name, $hub_db_table_v3_request, $is_get_localized_schema = null, $archived = null, $include_foreign_ids = null, string $contentType = self::contentTypes['updateDraftTable'][0])
     {
 
         // verify the required parameter 'table_id_or_name' is set
@@ -5235,6 +5235,15 @@ class TablesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_get_localized_schema,
+            'isGetLocalizedSchema', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $archived,
             'archived', // param base name
             'boolean', // openApiType
@@ -5246,15 +5255,6 @@ class TablesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_foreign_ids,
             'includeForeignIds', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_get_localized_schema,
-            'isGetLocalizedSchema', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

@@ -1860,34 +1860,34 @@ class BasicApi
     /**
      * Operation getAll
      *
-     * @param  bool|null $include_filters include_filters (optional, default to false)
      * @param  string[]|null $list_ids list_ids (optional)
+     * @param  bool|null $include_filters include_filters (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListsByIdResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function getAll($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAll($list_ids = null, $include_filters = false, string $contentType = self::contentTypes['getAll'][0])
     {
-        list($response) = $this->getAllWithHttpInfo($include_filters, $list_ids, $contentType);
+        list($response) = $this->getAllWithHttpInfo($list_ids, $include_filters, $contentType);
         return $response;
     }
 
     /**
      * Operation getAllWithHttpInfo
      *
-     * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
+     * @param  bool|null $include_filters (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListsByIdResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllWithHttpInfo($list_ids = null, $include_filters = false, string $contentType = self::contentTypes['getAll'][0])
     {
-        $request = $this->getAllRequest($include_filters, $list_ids, $contentType);
+        $request = $this->getAllRequest($list_ids, $include_filters, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1975,16 +1975,16 @@ class BasicApi
     /**
      * Operation getAllAsync
      *
-     * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
+     * @param  bool|null $include_filters (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllAsync($list_ids = null, $include_filters = false, string $contentType = self::contentTypes['getAll'][0])
     {
-        return $this->getAllAsyncWithHttpInfo($include_filters, $list_ids, $contentType)
+        return $this->getAllAsyncWithHttpInfo($list_ids, $include_filters, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1995,17 +1995,17 @@ class BasicApi
     /**
      * Operation getAllAsyncWithHttpInfo
      *
-     * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
+     * @param  bool|null $include_filters (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllAsyncWithHttpInfo($list_ids = null, $include_filters = false, string $contentType = self::contentTypes['getAll'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListsByIdResponse';
-        $request = $this->getAllRequest($include_filters, $list_ids, $contentType);
+        $request = $this->getAllRequest($list_ids, $include_filters, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2046,14 +2046,14 @@ class BasicApi
     /**
      * Create request for operation 'getAll'
      *
-     * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
+     * @param  bool|null $include_filters (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllRequest($list_ids = null, $include_filters = false, string $contentType = self::contentTypes['getAll'][0])
     {
 
 
@@ -2068,18 +2068,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_filters,
-            'includeFilters', // param base name
-            'boolean', // openApiType
+            $list_ids,
+            'listIds', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $list_ids,
-            'listIds', // param base name
-            'array', // openApiType
+            $include_filters,
+            'includeFilters', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7868,17 +7868,17 @@ class BasicApi
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function updateName($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
+    public function updateName($list_id, $list_name = null, $include_filters = false, string $contentType = self::contentTypes['updateName'][0])
     {
-        list($response) = $this->updateNameWithHttpInfo($list_id, $include_filters, $list_name, $contentType);
+        list($response) = $this->updateNameWithHttpInfo($list_id, $list_name, $include_filters, $contentType);
         return $response;
     }
 
@@ -7888,17 +7888,17 @@ class BasicApi
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateNameWithHttpInfo($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
+    public function updateNameWithHttpInfo($list_id, $list_name = null, $include_filters = false, string $contentType = self::contentTypes['updateName'][0])
     {
-        $request = $this->updateNameRequest($list_id, $include_filters, $list_name, $contentType);
+        $request = $this->updateNameRequest($list_id, $list_name, $include_filters, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7989,16 +7989,16 @@ class BasicApi
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNameAsync($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
+    public function updateNameAsync($list_id, $list_name = null, $include_filters = false, string $contentType = self::contentTypes['updateName'][0])
     {
-        return $this->updateNameAsyncWithHttpInfo($list_id, $include_filters, $list_name, $contentType)
+        return $this->updateNameAsyncWithHttpInfo($list_id, $list_name, $include_filters, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8012,17 +8012,17 @@ class BasicApi
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNameAsyncWithHttpInfo($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
+    public function updateNameAsyncWithHttpInfo($list_id, $list_name = null, $include_filters = false, string $contentType = self::contentTypes['updateName'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListUpdateResponse';
-        $request = $this->updateNameRequest($list_id, $include_filters, $list_name, $contentType);
+        $request = $this->updateNameRequest($list_id, $list_name, $include_filters, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8064,14 +8064,14 @@ class BasicApi
      * Create request for operation 'updateName'
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateNameRequest($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
+    public function updateNameRequest($list_id, $list_name = null, $include_filters = false, string $contentType = self::contentTypes['updateName'][0])
     {
 
         // verify the required parameter 'list_id' is set
@@ -8093,18 +8093,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_filters,
-            'includeFilters', // param base name
-            'boolean', // openApiType
+            $list_name,
+            'listName', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $list_name,
-            'listName', // param base name
-            'string', // openApiType
+            $include_filters,
+            'includeFilters', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

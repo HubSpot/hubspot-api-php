@@ -141,17 +141,17 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
+     * @param  string $object_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_id, $object_type, string $contentType = self::contentTypes['archive'][0])
+    public function archive($object_type, $object_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $this->archiveWithHttpInfo($object_id, $object_type, $contentType);
+        $this->archiveWithHttpInfo($object_type, $object_id, $contentType);
     }
 
     /**
@@ -159,17 +159,17 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
+     * @param  string $object_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_id, $object_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveWithHttpInfo($object_type, $object_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $request = $this->archiveRequest($object_id, $object_type, $contentType);
+        $request = $this->archiveRequest($object_type, $object_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -217,16 +217,16 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
+     * @param  string $object_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_id, $object_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsync($object_type, $object_id, string $contentType = self::contentTypes['archive'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($object_id, $object_type, $contentType)
+        return $this->archiveAsyncWithHttpInfo($object_type, $object_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -239,17 +239,17 @@ class BasicApi
      *
      * Archive
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
+     * @param  string $object_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_id, $object_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsyncWithHttpInfo($object_type, $object_id, string $contentType = self::contentTypes['archive'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_id, $object_type, $contentType);
+        $request = $this->archiveRequest($object_type, $object_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -277,27 +277,27 @@ class BasicApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
+     * @param  string $object_id  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($object_id, $object_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveRequest($object_type, $object_id, string $contentType = self::contentTypes['archive'][0])
     {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling archive'
-            );
-        }
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling archive'
+            );
+        }
+
+        // verify the required parameter 'object_id' is set
+        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_id when calling archive'
             );
         }
 
@@ -312,18 +312,18 @@ class BasicApi
 
 
         // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($object_type !== null) {
             $resourcePath = str_replace(
                 '{' . 'objectType' . '}',
                 ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectId' . '}',
+                ObjectSerializer::toPathValue($object_id),
                 $resourcePath
             );
         }
@@ -696,22 +696,22 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $object_id  (required)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\Model\Error
      */
-    public function getById($object_id, $object_type, $archived = false, $associations = null, $id_property = null, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getById'][0])
+    public function getById($object_type, $object_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($object_id, $object_type, $archived, $associations, $id_property, $properties, $properties_with_history, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($object_type, $object_id, $properties, $properties_with_history, $associations, $archived, $id_property, $contentType);
         return $response;
     }
 
@@ -720,22 +720,22 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $object_id  (required)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($object_id, $object_type, $archived = false, $associations = null, $id_property = null, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($object_type, $object_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($object_id, $object_type, $archived, $associations, $id_property, $properties, $properties_with_history, $contentType);
+        $request = $this->getByIdRequest($object_type, $object_id, $properties, $properties_with_history, $associations, $archived, $id_property, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -825,21 +825,21 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $object_id  (required)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($object_id, $object_type, $archived = false, $associations = null, $id_property = null, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($object_type, $object_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($object_id, $object_type, $archived, $associations, $id_property, $properties, $properties_with_history, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($object_type, $object_id, $properties, $properties_with_history, $associations, $archived, $id_property, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -852,22 +852,22 @@ class BasicApi
      *
      * Read
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $object_id  (required)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($object_id, $object_type, $archived = false, $associations = null, $id_property = null, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($object_type, $object_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Objects\Model\SimplePublicObjectWithAssociations';
-        $request = $this->getByIdRequest($object_id, $object_type, $archived, $associations, $id_property, $properties, $properties_with_history, $contentType);
+        $request = $this->getByIdRequest($object_type, $object_id, $properties, $properties_with_history, $associations, $archived, $id_property, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -908,32 +908,32 @@ class BasicApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  string $object_id  (required)
      * @param  string $object_type  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
-     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
+     * @param  string $object_id  (required)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
+     * @param  string|null $id_property The name of a property whose values are unique for this object type (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($object_id, $object_type, $archived = false, $associations = null, $id_property = null, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($object_type, $object_id, $properties = null, $properties_with_history = null, $associations = null, $archived = false, $id_property = null, string $contentType = self::contentTypes['getById'][0])
     {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getById'
-            );
-        }
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling getById'
+            );
+        }
+
+        // verify the required parameter 'object_id' is set
+        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_id when calling getById'
             );
         }
 
@@ -952,33 +952,6 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $associations,
-            'associations', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_property,
-            'idProperty', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $properties,
             'properties', // param base name
             'array', // openApiType
@@ -995,21 +968,48 @@ class BasicApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $associations,
+            'associations', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id_property,
+            'idProperty', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($object_type !== null) {
             $resourcePath = str_replace(
                 '{' . 'objectType' . '}',
                 ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectId' . '}',
+                ObjectSerializer::toPathValue($object_id),
                 $resourcePath
             );
         }
@@ -1078,21 +1078,21 @@ class BasicApi
      * List
      *
      * @param  string $object_type  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Objects\Model\Error
      */
-    public function getPage($object_type, $after = null, $archived = false, $associations = null, $limit = 10, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($object_type, $limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($object_type, $after, $archived, $associations, $limit, $properties, $properties_with_history, $contentType);
+        list($response) = $this->getPageWithHttpInfo($object_type, $limit, $after, $properties, $properties_with_history, $associations, $archived, $contentType);
         return $response;
     }
 
@@ -1102,21 +1102,21 @@ class BasicApi
      * List
      *
      * @param  string $object_type  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|\HubSpot\Client\Crm\Objects\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($object_type, $after = null, $archived = false, $associations = null, $limit = 10, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($object_type, $limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($object_type, $after, $archived, $associations, $limit, $properties, $properties_with_history, $contentType);
+        $request = $this->getPageRequest($object_type, $limit, $after, $properties, $properties_with_history, $associations, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1207,20 +1207,20 @@ class BasicApi
      * List
      *
      * @param  string $object_type  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($object_type, $after = null, $archived = false, $associations = null, $limit = 10, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($object_type, $limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($object_type, $after, $archived, $associations, $limit, $properties, $properties_with_history, $contentType)
+        return $this->getPageAsyncWithHttpInfo($object_type, $limit, $after, $properties, $properties_with_history, $associations, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1234,21 +1234,21 @@ class BasicApi
      * List
      *
      * @param  string $object_type  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($object_type, $after = null, $archived = false, $associations = null, $limit = 10, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($object_type, $limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Objects\Model\CollectionResponseSimplePublicObjectWithAssociationsForwardPaging';
-        $request = $this->getPageRequest($object_type, $after, $archived, $associations, $limit, $properties, $properties_with_history, $contentType);
+        $request = $this->getPageRequest($object_type, $limit, $after, $properties, $properties_with_history, $associations, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1290,18 +1290,18 @@ class BasicApi
      * Create request for operation 'getPage'
      *
      * @param  string $object_type  (required)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
-     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
      * @param  int|null $limit The maximum number of results to display per page. (optional, default to 10)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string[]|null $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored. (optional)
      * @param  string[]|null $properties_with_history A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request. (optional)
+     * @param  string[]|null $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($object_type, $after = null, $archived = false, $associations = null, $limit = 10, $properties = null, $properties_with_history = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($object_type, $limit = 10, $after = null, $properties = null, $properties_with_history = null, $associations = null, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
 
         // verify the required parameter 'object_type' is set
@@ -1327,36 +1327,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $associations,
-            'associations', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1375,6 +1357,24 @@ class BasicApi
             $properties_with_history,
             'propertiesWithHistory', // param base name
             'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $associations,
+            'associations', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

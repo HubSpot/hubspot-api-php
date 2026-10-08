@@ -150,17 +150,17 @@ class BasicApi
      *
      * Delete event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($app_id, $subscription_id, string $contentType = self::contentTypes['archive'][0])
+    public function archive($subscription_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $this->archiveWithHttpInfo($app_id, $subscription_id, $contentType);
+        $this->archiveWithHttpInfo($subscription_id, $app_id, $contentType);
     }
 
     /**
@@ -168,17 +168,17 @@ class BasicApi
      *
      * Delete event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($app_id, $subscription_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveWithHttpInfo($subscription_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $request = $this->archiveRequest($app_id, $subscription_id, $contentType);
+        $request = $this->archiveRequest($subscription_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -226,16 +226,16 @@ class BasicApi
      *
      * Delete event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($app_id, $subscription_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsync($subscription_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($app_id, $subscription_id, $contentType)
+        return $this->archiveAsyncWithHttpInfo($subscription_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -248,17 +248,17 @@ class BasicApi
      *
      * Delete event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($app_id, $subscription_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsyncWithHttpInfo($subscription_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($app_id, $subscription_id, $contentType);
+        $request = $this->archiveRequest($subscription_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -286,27 +286,27 @@ class BasicApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to delete. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($app_id, $subscription_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveRequest($subscription_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive'
-            );
-        }
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $subscription_id when calling archive'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling archive'
             );
         }
 
@@ -321,18 +321,18 @@ class BasicApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($subscription_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'subscriptionId' . '}',
                 ObjectSerializer::toPathValue($subscription_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -1818,17 +1818,17 @@ class BasicApi
      *
      * Read an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the target subscription. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getById($app_id, $subscription_id, string $contentType = self::contentTypes['getById'][0])
+    public function getById($subscription_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($app_id, $subscription_id, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($subscription_id, $app_id, $contentType);
         return $response;
     }
 
@@ -1837,17 +1837,17 @@ class BasicApi
      *
      * Read an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the target subscription. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($app_id, $subscription_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($subscription_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($app_id, $subscription_id, $contentType);
+        $request = $this->getByIdRequest($subscription_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1937,16 +1937,16 @@ class BasicApi
      *
      * Read an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the target subscription. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($app_id, $subscription_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($subscription_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($app_id, $subscription_id, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($subscription_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1959,17 +1959,17 @@ class BasicApi
      *
      * Read an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the target subscription. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($app_id, $subscription_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($subscription_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->getByIdRequest($app_id, $subscription_id, $contentType);
+        $request = $this->getByIdRequest($subscription_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2010,27 +2010,27 @@ class BasicApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the target subscription. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($app_id, $subscription_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($subscription_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById'
-            );
-        }
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $subscription_id when calling getById'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getById'
             );
         }
 
@@ -2045,18 +2045,18 @@ class BasicApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($subscription_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'subscriptionId' . '}',
                 ObjectSerializer::toPathValue($subscription_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -2125,8 +2125,8 @@ class BasicApi
      *
      * Update an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -2134,9 +2134,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function update($app_id, $subscription_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function update($subscription_id, $app_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        list($response) = $this->updateWithHttpInfo($app_id, $subscription_id, $subscription_patch_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request, $contentType);
         return $response;
     }
 
@@ -2145,8 +2145,8 @@ class BasicApi
      *
      * Update an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -2154,9 +2154,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $subscription_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateWithHttpInfo($subscription_id, $app_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        $request = $this->updateRequest($app_id, $subscription_id, $subscription_patch_request, $contentType);
+        $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2246,17 +2246,17 @@ class BasicApi
      *
      * Update an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $subscription_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateAsync($subscription_id, $app_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        return $this->updateAsyncWithHttpInfo($app_id, $subscription_id, $subscription_patch_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2269,18 +2269,18 @@ class BasicApi
      *
      * Update an event subscription
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $subscription_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateAsyncWithHttpInfo($subscription_id, $app_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionResponse';
-        $request = $this->updateRequest($app_id, $subscription_id, $subscription_patch_request, $contentType);
+        $request = $this->updateRequest($subscription_id, $app_id, $subscription_patch_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2321,28 +2321,28 @@ class BasicApi
     /**
      * Create request for operation 'update'
      *
-     * @param  int $app_id The ID of the target app. (required)
      * @param  int $subscription_id The ID of the subscription to update. (required)
+     * @param  int $app_id The ID of the target app. (required)
      * @param  \HubSpot\Client\Webhooks\Model\SubscriptionPatchRequest $subscription_patch_request Updated details for the subscription. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($app_id, $subscription_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateRequest($subscription_id, $app_id, $subscription_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update'
-            );
-        }
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $subscription_id when calling update'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling update'
             );
         }
 
@@ -2364,18 +2364,18 @@ class BasicApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($subscription_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'subscriptionId' . '}',
                 ObjectSerializer::toPathValue($subscription_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }

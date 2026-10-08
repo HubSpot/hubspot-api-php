@@ -130,17 +130,17 @@ class BasicApi
      * Retrieve brands by associated user
      *
      * @param  string $user_id  (required)
-     * @param  string[]|null $name  (optional)
      * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByUserID'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Settings\BusinessUnits\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Settings\BusinessUnits\Model\CollectionResponsePublicBusinessUnitNoPaging|\HubSpot\Client\Settings\BusinessUnits\Model\Error
      */
-    public function getByUserID($user_id, $name = null, $properties = null, string $contentType = self::contentTypes['getByUserID'][0])
+    public function getByUserID($user_id, $properties = null, $name = null, string $contentType = self::contentTypes['getByUserID'][0])
     {
-        list($response) = $this->getByUserIDWithHttpInfo($user_id, $name, $properties, $contentType);
+        list($response) = $this->getByUserIDWithHttpInfo($user_id, $properties, $name, $contentType);
         return $response;
     }
 
@@ -150,17 +150,17 @@ class BasicApi
      * Retrieve brands by associated user
      *
      * @param  string $user_id  (required)
-     * @param  string[]|null $name  (optional)
      * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByUserID'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Settings\BusinessUnits\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Settings\BusinessUnits\Model\CollectionResponsePublicBusinessUnitNoPaging|\HubSpot\Client\Settings\BusinessUnits\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByUserIDWithHttpInfo($user_id, $name = null, $properties = null, string $contentType = self::contentTypes['getByUserID'][0])
+    public function getByUserIDWithHttpInfo($user_id, $properties = null, $name = null, string $contentType = self::contentTypes['getByUserID'][0])
     {
-        $request = $this->getByUserIDRequest($user_id, $name, $properties, $contentType);
+        $request = $this->getByUserIDRequest($user_id, $properties, $name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -251,16 +251,16 @@ class BasicApi
      * Retrieve brands by associated user
      *
      * @param  string $user_id  (required)
-     * @param  string[]|null $name  (optional)
      * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByUserID'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByUserIDAsync($user_id, $name = null, $properties = null, string $contentType = self::contentTypes['getByUserID'][0])
+    public function getByUserIDAsync($user_id, $properties = null, $name = null, string $contentType = self::contentTypes['getByUserID'][0])
     {
-        return $this->getByUserIDAsyncWithHttpInfo($user_id, $name, $properties, $contentType)
+        return $this->getByUserIDAsyncWithHttpInfo($user_id, $properties, $name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -274,17 +274,17 @@ class BasicApi
      * Retrieve brands by associated user
      *
      * @param  string $user_id  (required)
-     * @param  string[]|null $name  (optional)
      * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByUserID'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByUserIDAsyncWithHttpInfo($user_id, $name = null, $properties = null, string $contentType = self::contentTypes['getByUserID'][0])
+    public function getByUserIDAsyncWithHttpInfo($user_id, $properties = null, $name = null, string $contentType = self::contentTypes['getByUserID'][0])
     {
         $returnType = '\HubSpot\Client\Settings\BusinessUnits\Model\CollectionResponsePublicBusinessUnitNoPaging';
-        $request = $this->getByUserIDRequest($user_id, $name, $properties, $contentType);
+        $request = $this->getByUserIDRequest($user_id, $properties, $name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,14 +326,14 @@ class BasicApi
      * Create request for operation 'getByUserID'
      *
      * @param  string $user_id  (required)
-     * @param  string[]|null $name  (optional)
      * @param  string[]|null $properties  (optional)
+     * @param  string[]|null $name  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByUserID'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByUserIDRequest($user_id, $name = null, $properties = null, string $contentType = self::contentTypes['getByUserID'][0])
+    public function getByUserIDRequest($user_id, $properties = null, $name = null, string $contentType = self::contentTypes['getByUserID'][0])
     {
 
         // verify the required parameter 'user_id' is set
@@ -355,8 +355,8 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $name,
-            'name', // param base name
+            $properties,
+            'properties', // param base name
             'array', // openApiType
             'form', // style
             true, // explode
@@ -364,8 +364,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
+            $name,
+            'name', // param base name
             'array', // openApiType
             'form', // style
             true, // explode

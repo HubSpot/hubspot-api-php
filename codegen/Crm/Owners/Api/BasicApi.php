@@ -133,17 +133,17 @@ class BasicApi
      * Retrieve a specific owner by ID
      *
      * @param  int $owner_id  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string|null $id_property  (optional, default to 'id')
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Owners\Model\PublicOwner|\HubSpot\Client\Crm\Owners\Model\Error
      */
-    public function getById($owner_id, $archived = false, $id_property = 'id', string $contentType = self::contentTypes['getById'][0])
+    public function getById($owner_id, $id_property = 'id', $archived = false, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($owner_id, $archived, $id_property, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($owner_id, $id_property, $archived, $contentType);
         return $response;
     }
 
@@ -153,17 +153,17 @@ class BasicApi
      * Retrieve a specific owner by ID
      *
      * @param  int $owner_id  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string|null $id_property  (optional, default to 'id')
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Owners\Model\PublicOwner|\HubSpot\Client\Crm\Owners\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($owner_id, $archived = false, $id_property = 'id', string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($owner_id, $id_property = 'id', $archived = false, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($owner_id, $archived, $id_property, $contentType);
+        $request = $this->getByIdRequest($owner_id, $id_property, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -254,16 +254,16 @@ class BasicApi
      * Retrieve a specific owner by ID
      *
      * @param  int $owner_id  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string|null $id_property  (optional, default to 'id')
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($owner_id, $archived = false, $id_property = 'id', string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($owner_id, $id_property = 'id', $archived = false, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($owner_id, $archived, $id_property, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($owner_id, $id_property, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -277,17 +277,17 @@ class BasicApi
      * Retrieve a specific owner by ID
      *
      * @param  int $owner_id  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string|null $id_property  (optional, default to 'id')
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($owner_id, $archived = false, $id_property = 'id', string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($owner_id, $id_property = 'id', $archived = false, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Owners\Model\PublicOwner';
-        $request = $this->getByIdRequest($owner_id, $archived, $id_property, $contentType);
+        $request = $this->getByIdRequest($owner_id, $id_property, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -329,14 +329,14 @@ class BasicApi
      * Create request for operation 'getById'
      *
      * @param  int $owner_id  (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string|null $id_property  (optional, default to 'id')
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($owner_id, $archived = false, $id_property = 'id', string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($owner_id, $id_property = 'id', $archived = false, string $contentType = self::contentTypes['getById'][0])
     {
 
         // verify the required parameter 'owner_id' is set
@@ -358,18 +358,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
+            $id_property,
+            'idProperty', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_property,
-            'idProperty', // param base name
-            'string', // openApiType
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -446,38 +446,38 @@ class BasicApi
     /**
      * Operation getPage
      *
-     * @param  string|null $after after (optional)
-     * @param  bool|null $archived archived (optional, default to false)
      * @param  string|null $email email (optional)
+     * @param  string|null $after after (optional)
      * @param  int|null $limit limit (optional, default to 100)
+     * @param  bool|null $archived archived (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging|\HubSpot\Client\Crm\Owners\Model\Error
      */
-    public function getPage($after = null, $archived = false, $email = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($email = null, $after = null, $limit = 100, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($after, $archived, $email, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($email, $after, $limit, $archived, $contentType);
         return $response;
     }
 
     /**
      * Operation getPageWithHttpInfo
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional, default to false)
      * @param  string|null $email (optional)
+     * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 100)
+     * @param  bool|null $archived (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Owners\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging|\HubSpot\Client\Crm\Owners\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($after = null, $archived = false, $email = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($email = null, $after = null, $limit = 100, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($after, $archived, $email, $limit, $contentType);
+        $request = $this->getPageRequest($email, $after, $limit, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -565,18 +565,18 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional, default to false)
      * @param  string|null $email (optional)
+     * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 100)
+     * @param  bool|null $archived (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($after = null, $archived = false, $email = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($email = null, $after = null, $limit = 100, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($after, $archived, $email, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($email, $after, $limit, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -587,19 +587,19 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional, default to false)
      * @param  string|null $email (optional)
+     * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 100)
+     * @param  bool|null $archived (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($after = null, $archived = false, $email = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($email = null, $after = null, $limit = 100, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Owners\Model\CollectionResponsePublicOwnerForwardPaging';
-        $request = $this->getPageRequest($after, $archived, $email, $limit, $contentType);
+        $request = $this->getPageRequest($email, $after, $limit, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -640,16 +640,16 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional, default to false)
      * @param  string|null $email (optional)
+     * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 100)
+     * @param  bool|null $archived (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($after = null, $archived = false, $email = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($email = null, $after = null, $limit = 100, $archived = false, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -666,8 +666,8 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
+            $email,
+            'email', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -675,17 +675,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $email,
-            'email', // param base name
+            $after,
+            'after', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -696,6 +687,15 @@ class BasicApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

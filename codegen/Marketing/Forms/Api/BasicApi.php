@@ -951,18 +951,18 @@ class BasicApi
      * Operation getPage
      *
      * @param  string|null $after after (optional)
+     * @param  int|null $limit limit (optional)
      * @param  bool|null $archived archived (optional)
      * @param  string[]|null $form_types form_types (optional)
-     * @param  int|null $limit limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPaging|\HubSpot\Client\Marketing\Forms\Model\Error
      */
-    public function getPage($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($after = null, $limit = null, $archived = null, $form_types = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($after, $archived, $form_types, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($after, $limit, $archived, $form_types, $contentType);
         return $response;
     }
 
@@ -970,18 +970,18 @@ class BasicApi
      * Operation getPageWithHttpInfo
      *
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
-     * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPaging|\HubSpot\Client\Marketing\Forms\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($after = null, $limit = null, $archived = null, $form_types = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($after, $archived, $form_types, $limit, $contentType);
+        $request = $this->getPageRequest($after, $limit, $archived, $form_types, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1070,17 +1070,17 @@ class BasicApi
      * Operation getPageAsync
      *
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
-     * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($after = null, $limit = null, $archived = null, $form_types = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($after, $archived, $form_types, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($after, $limit, $archived, $form_types, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1092,18 +1092,18 @@ class BasicApi
      * Operation getPageAsyncWithHttpInfo
      *
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
-     * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($after = null, $limit = null, $archived = null, $form_types = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPaging';
-        $request = $this->getPageRequest($after, $archived, $form_types, $limit, $contentType);
+        $request = $this->getPageRequest($after, $limit, $archived, $form_types, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1145,15 +1145,15 @@ class BasicApi
      * Create request for operation 'getPage'
      *
      * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
-     * @param  int|null $limit (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($after = null, $limit = null, $archived = null, $form_types = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -1179,6 +1179,15 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $archived,
             'archived', // param base name
             'boolean', // openApiType
@@ -1191,15 +1200,6 @@ class BasicApi
             $form_types,
             'formTypes', // param base name
             'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -407,34 +407,34 @@ class BasicApi
     /**
      * Operation getPage
      *
-     * @param  string|null $after after (optional)
      * @param  int|null $limit limit (optional)
+     * @param  string|null $after after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Settings\Users\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Settings\Users\Model\CollectionResponsePublicUserForwardPaging|\HubSpot\Client\Settings\Users\Model\Error
      */
-    public function getPage($after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($after, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($limit, $after, $contentType);
         return $response;
     }
 
     /**
      * Operation getPageWithHttpInfo
      *
-     * @param  string|null $after (optional)
      * @param  int|null $limit (optional)
+     * @param  string|null $after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Settings\Users\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Settings\Users\Model\CollectionResponsePublicUserForwardPaging|\HubSpot\Client\Settings\Users\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($after, $limit, $contentType);
+        $request = $this->getPageRequest($limit, $after, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -522,16 +522,16 @@ class BasicApi
     /**
      * Operation getPageAsync
      *
-     * @param  string|null $after (optional)
      * @param  int|null $limit (optional)
+     * @param  string|null $after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($after, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($limit, $after, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -542,17 +542,17 @@ class BasicApi
     /**
      * Operation getPageAsyncWithHttpInfo
      *
-     * @param  string|null $after (optional)
      * @param  int|null $limit (optional)
+     * @param  string|null $after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Settings\Users\Model\CollectionResponsePublicUserForwardPaging';
-        $request = $this->getPageRequest($after, $limit, $contentType);
+        $request = $this->getPageRequest($limit, $after, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -593,14 +593,14 @@ class BasicApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  string|null $after (optional)
      * @param  int|null $limit (optional)
+     * @param  string|null $after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($after = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($limit = null, $after = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -615,18 +615,18 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
+            $after,
+            'after', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

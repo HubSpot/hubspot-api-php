@@ -1199,51 +1199,51 @@ class FilesApi
      *
      * Search files
      *
-     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
-     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
-     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  string|null $encoding Search files by specified encoding. (optional)
-     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
-     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
-     * @param  string|null $extension Search files by given extension. (optional)
-     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
-     * @param  int|null $height Search files by height of image or video. (optional)
-     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
-     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
-     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids  (optional)
-     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
-     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for files containing the given name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search files by path. (optional)
      * @param  string[]|null $properties Desired file properties in the return object. (optional)
-     * @param  int|null $size Search files by exact file size in bytes. (optional)
-     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
-     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
+     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
+     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
      * @param  string[]|null $sort Sort files by a given field. (optional)
-     * @param  string|null $type Search files by file type. (optional)
+     * @param  int[]|null $ids  (optional)
+     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search files by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search files by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
-     * @param  string|null $url Search for given URL (optional)
+     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for files containing the given name. (optional)
+     * @param  string|null $path Search files by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
+     * @param  int|null $size Search files by exact file size in bytes. (optional)
+     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
+     * @param  int|null $height Search files by height of image or video. (optional)
+     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
+     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
      * @param  int|null $width Search files by width of image or video. (optional)
-     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
      * @param  int|null $width_lte Search files by less than or equal to width of image or video. Can be used with widthGte to create a range. (optional)
+     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
+     * @param  string|null $encoding Search files by specified encoding. (optional)
+     * @param  string|null $type Search files by file type. (optional)
+     * @param  string|null $extension Search files by given extension. (optional)
+     * @param  string|null $url Search for given URL (optional)
+     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
+     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
+     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
+     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
+     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Files\Model\CollectionResponseFile|\HubSpot\Client\Files\Model\Error
      */
-    public function doSearch($after = null, $allows_anonymous_access = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $encoding = null, $expires_at = null, $expires_at_gte = null, $expires_at_lte = null, $extension = null, $file_md5 = null, $height = null, $height_gte = null, $height_lte = null, $id_gte = null, $id_lte = null, $ids = null, $is_usable_in_content = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $size = null, $size_gte = null, $size_lte = null, $sort = null, $type = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, $url = null, $width = null, $width_gte = null, $width_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null, string $contentType = self::contentTypes['doSearch'][0])
     {
-        list($response) = $this->doSearchWithHttpInfo($after, $allows_anonymous_access, $before, $created_at, $created_at_gte, $created_at_lte, $encoding, $expires_at, $expires_at_gte, $expires_at_lte, $extension, $file_md5, $height, $height_gte, $height_lte, $id_gte, $id_lte, $ids, $is_usable_in_content, $limit, $name, $parent_folder_ids, $path, $properties, $size, $size_gte, $size_lte, $sort, $type, $updated_at, $updated_at_gte, $updated_at_lte, $url, $width, $width_gte, $width_lte, $contentType);
+        list($response) = $this->doSearchWithHttpInfo($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $size, $size_lte, $size_gte, $height, $height_lte, $height_gte, $width, $width_lte, $width_gte, $encoding, $type, $extension, $url, $is_usable_in_content, $allows_anonymous_access, $file_md5, $expires_at, $expires_at_lte, $expires_at_gte, $contentType);
         return $response;
     }
 
@@ -1252,51 +1252,51 @@ class FilesApi
      *
      * Search files
      *
-     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
-     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
-     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  string|null $encoding Search files by specified encoding. (optional)
-     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
-     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
-     * @param  string|null $extension Search files by given extension. (optional)
-     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
-     * @param  int|null $height Search files by height of image or video. (optional)
-     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
-     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
-     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids  (optional)
-     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
-     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for files containing the given name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search files by path. (optional)
      * @param  string[]|null $properties Desired file properties in the return object. (optional)
-     * @param  int|null $size Search files by exact file size in bytes. (optional)
-     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
-     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
+     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
+     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
      * @param  string[]|null $sort Sort files by a given field. (optional)
-     * @param  string|null $type Search files by file type. (optional)
+     * @param  int[]|null $ids  (optional)
+     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search files by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search files by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
-     * @param  string|null $url Search for given URL (optional)
+     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for files containing the given name. (optional)
+     * @param  string|null $path Search files by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
+     * @param  int|null $size Search files by exact file size in bytes. (optional)
+     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
+     * @param  int|null $height Search files by height of image or video. (optional)
+     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
+     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
      * @param  int|null $width Search files by width of image or video. (optional)
-     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
      * @param  int|null $width_lte Search files by less than or equal to width of image or video. Can be used with widthGte to create a range. (optional)
+     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
+     * @param  string|null $encoding Search files by specified encoding. (optional)
+     * @param  string|null $type Search files by file type. (optional)
+     * @param  string|null $extension Search files by given extension. (optional)
+     * @param  string|null $url Search for given URL (optional)
+     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
+     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
+     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
+     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
+     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Files\Model\CollectionResponseFile|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function doSearchWithHttpInfo($after = null, $allows_anonymous_access = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $encoding = null, $expires_at = null, $expires_at_gte = null, $expires_at_lte = null, $extension = null, $file_md5 = null, $height = null, $height_gte = null, $height_lte = null, $id_gte = null, $id_lte = null, $ids = null, $is_usable_in_content = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $size = null, $size_gte = null, $size_lte = null, $sort = null, $type = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, $url = null, $width = null, $width_gte = null, $width_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null, string $contentType = self::contentTypes['doSearch'][0])
     {
-        $request = $this->doSearchRequest($after, $allows_anonymous_access, $before, $created_at, $created_at_gte, $created_at_lte, $encoding, $expires_at, $expires_at_gte, $expires_at_lte, $extension, $file_md5, $height, $height_gte, $height_lte, $id_gte, $id_lte, $ids, $is_usable_in_content, $limit, $name, $parent_folder_ids, $path, $properties, $size, $size_gte, $size_lte, $sort, $type, $updated_at, $updated_at_gte, $updated_at_lte, $url, $width, $width_gte, $width_lte, $contentType);
+        $request = $this->doSearchRequest($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $size, $size_lte, $size_gte, $height, $height_lte, $height_gte, $width, $width_lte, $width_gte, $encoding, $type, $extension, $url, $is_usable_in_content, $allows_anonymous_access, $file_md5, $expires_at, $expires_at_lte, $expires_at_gte, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1386,50 +1386,50 @@ class FilesApi
      *
      * Search files
      *
-     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
-     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
-     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  string|null $encoding Search files by specified encoding. (optional)
-     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
-     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
-     * @param  string|null $extension Search files by given extension. (optional)
-     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
-     * @param  int|null $height Search files by height of image or video. (optional)
-     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
-     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
-     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids  (optional)
-     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
-     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for files containing the given name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search files by path. (optional)
      * @param  string[]|null $properties Desired file properties in the return object. (optional)
-     * @param  int|null $size Search files by exact file size in bytes. (optional)
-     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
-     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
+     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
+     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
      * @param  string[]|null $sort Sort files by a given field. (optional)
-     * @param  string|null $type Search files by file type. (optional)
+     * @param  int[]|null $ids  (optional)
+     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search files by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search files by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
-     * @param  string|null $url Search for given URL (optional)
+     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for files containing the given name. (optional)
+     * @param  string|null $path Search files by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
+     * @param  int|null $size Search files by exact file size in bytes. (optional)
+     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
+     * @param  int|null $height Search files by height of image or video. (optional)
+     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
+     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
      * @param  int|null $width Search files by width of image or video. (optional)
-     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
      * @param  int|null $width_lte Search files by less than or equal to width of image or video. Can be used with widthGte to create a range. (optional)
+     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
+     * @param  string|null $encoding Search files by specified encoding. (optional)
+     * @param  string|null $type Search files by file type. (optional)
+     * @param  string|null $extension Search files by given extension. (optional)
+     * @param  string|null $url Search for given URL (optional)
+     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
+     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
+     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
+     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
+     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsync($after = null, $allows_anonymous_access = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $encoding = null, $expires_at = null, $expires_at_gte = null, $expires_at_lte = null, $extension = null, $file_md5 = null, $height = null, $height_gte = null, $height_lte = null, $id_gte = null, $id_lte = null, $ids = null, $is_usable_in_content = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $size = null, $size_gte = null, $size_lte = null, $sort = null, $type = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, $url = null, $width = null, $width_gte = null, $width_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchAsync($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null, string $contentType = self::contentTypes['doSearch'][0])
     {
-        return $this->doSearchAsyncWithHttpInfo($after, $allows_anonymous_access, $before, $created_at, $created_at_gte, $created_at_lte, $encoding, $expires_at, $expires_at_gte, $expires_at_lte, $extension, $file_md5, $height, $height_gte, $height_lte, $id_gte, $id_lte, $ids, $is_usable_in_content, $limit, $name, $parent_folder_ids, $path, $properties, $size, $size_gte, $size_lte, $sort, $type, $updated_at, $updated_at_gte, $updated_at_lte, $url, $width, $width_gte, $width_lte, $contentType)
+        return $this->doSearchAsyncWithHttpInfo($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $size, $size_lte, $size_gte, $height, $height_lte, $height_gte, $width, $width_lte, $width_gte, $encoding, $type, $extension, $url, $is_usable_in_content, $allows_anonymous_access, $file_md5, $expires_at, $expires_at_lte, $expires_at_gte, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1442,51 +1442,51 @@ class FilesApi
      *
      * Search files
      *
-     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
-     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
-     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  string|null $encoding Search files by specified encoding. (optional)
-     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
-     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
-     * @param  string|null $extension Search files by given extension. (optional)
-     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
-     * @param  int|null $height Search files by height of image or video. (optional)
-     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
-     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
-     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids  (optional)
-     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
-     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for files containing the given name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search files by path. (optional)
      * @param  string[]|null $properties Desired file properties in the return object. (optional)
-     * @param  int|null $size Search files by exact file size in bytes. (optional)
-     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
-     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
+     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
+     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
      * @param  string[]|null $sort Sort files by a given field. (optional)
-     * @param  string|null $type Search files by file type. (optional)
+     * @param  int[]|null $ids  (optional)
+     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search files by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search files by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
-     * @param  string|null $url Search for given URL (optional)
+     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for files containing the given name. (optional)
+     * @param  string|null $path Search files by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
+     * @param  int|null $size Search files by exact file size in bytes. (optional)
+     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
+     * @param  int|null $height Search files by height of image or video. (optional)
+     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
+     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
      * @param  int|null $width Search files by width of image or video. (optional)
-     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
      * @param  int|null $width_lte Search files by less than or equal to width of image or video. Can be used with widthGte to create a range. (optional)
+     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
+     * @param  string|null $encoding Search files by specified encoding. (optional)
+     * @param  string|null $type Search files by file type. (optional)
+     * @param  string|null $extension Search files by given extension. (optional)
+     * @param  string|null $url Search for given URL (optional)
+     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
+     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
+     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
+     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
+     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsyncWithHttpInfo($after = null, $allows_anonymous_access = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $encoding = null, $expires_at = null, $expires_at_gte = null, $expires_at_lte = null, $extension = null, $file_md5 = null, $height = null, $height_gte = null, $height_lte = null, $id_gte = null, $id_lte = null, $ids = null, $is_usable_in_content = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $size = null, $size_gte = null, $size_lte = null, $sort = null, $type = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, $url = null, $width = null, $width_gte = null, $width_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchAsyncWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null, string $contentType = self::contentTypes['doSearch'][0])
     {
         $returnType = '\HubSpot\Client\Files\Model\CollectionResponseFile';
-        $request = $this->doSearchRequest($after, $allows_anonymous_access, $before, $created_at, $created_at_gte, $created_at_lte, $encoding, $expires_at, $expires_at_gte, $expires_at_lte, $extension, $file_md5, $height, $height_gte, $height_lte, $id_gte, $id_lte, $ids, $is_usable_in_content, $limit, $name, $parent_folder_ids, $path, $properties, $size, $size_gte, $size_lte, $sort, $type, $updated_at, $updated_at_gte, $updated_at_lte, $url, $width, $width_gte, $width_lte, $contentType);
+        $request = $this->doSearchRequest($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $size, $size_lte, $size_gte, $height, $height_lte, $height_gte, $width, $width_lte, $width_gte, $encoding, $type, $extension, $url, $is_usable_in_content, $allows_anonymous_access, $file_md5, $expires_at, $expires_at_lte, $expires_at_gte, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1527,48 +1527,48 @@ class FilesApi
     /**
      * Create request for operation 'doSearch'
      *
-     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
-     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
-     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  string|null $encoding Search files by specified encoding. (optional)
-     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
-     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
-     * @param  string|null $extension Search files by given extension. (optional)
-     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
-     * @param  int|null $height Search files by height of image or video. (optional)
-     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
-     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
-     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids  (optional)
-     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
-     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for files containing the given name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search files by path. (optional)
      * @param  string[]|null $properties Desired file properties in the return object. (optional)
-     * @param  int|null $size Search files by exact file size in bytes. (optional)
-     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
-     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
+     * @param  string|null $before Search files updated before this timestamp. Time must be epoch time in milliseconds. (optional)
+     * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
      * @param  string[]|null $sort Sort files by a given field. (optional)
-     * @param  string|null $type Search files by file type. (optional)
+     * @param  int[]|null $ids  (optional)
+     * @param  int|null $id_lte Search files by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search files by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search files by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search files by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search files by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
-     * @param  string|null $url Search for given URL (optional)
+     * @param  \DateTime|null $updated_at_gte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for files containing the given name. (optional)
+     * @param  string|null $path Search files by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
+     * @param  int|null $size Search files by exact file size in bytes. (optional)
+     * @param  int|null $size_lte Search files by less than or equal to file size. Can be used with sizeGte to create a range. (optional)
+     * @param  int|null $size_gte Search files by greater than or equal to file size. Can be used with sizeLte to create a range. (optional)
+     * @param  int|null $height Search files by height of image or video. (optional)
+     * @param  int|null $height_lte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range. (optional)
+     * @param  int|null $height_gte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range. (optional)
      * @param  int|null $width Search files by width of image or video. (optional)
-     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
      * @param  int|null $width_lte Search files by less than or equal to width of image or video. Can be used with widthGte to create a range. (optional)
+     * @param  int|null $width_gte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range. (optional)
+     * @param  string|null $encoding Search files by specified encoding. (optional)
+     * @param  string|null $type Search files by file type. (optional)
+     * @param  string|null $extension Search files by given extension. (optional)
+     * @param  string|null $url Search for given URL (optional)
+     * @param  bool|null $is_usable_in_content If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content. (optional)
+     * @param  bool|null $allows_anonymous_access Search files by access. If &#39;true&#39; will show only public files; if &#39;false&#39; will show only private files (optional)
+     * @param  string|null $file_md5 Search files by specific md5 hash. (optional)
+     * @param  \DateTime|null $expires_at Search files by exact expires time. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $expires_at_lte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range. (optional)
+     * @param  \DateTime|null $expires_at_gte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function doSearchRequest($after = null, $allows_anonymous_access = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $encoding = null, $expires_at = null, $expires_at_gte = null, $expires_at_lte = null, $extension = null, $file_md5 = null, $height = null, $height_gte = null, $height_lte = null, $id_gte = null, $id_lte = null, $ids = null, $is_usable_in_content = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $size = null, $size_gte = null, $size_lte = null, $sort = null, $type = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, $url = null, $width = null, $width_gte = null, $width_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchRequest($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, $size = null, $size_lte = null, $size_gte = null, $height = null, $height_lte = null, $height_gte = null, $width = null, $width_lte = null, $width_gte = null, $encoding = null, $type = null, $extension = null, $url = null, $is_usable_in_content = null, $allows_anonymous_access = null, $file_md5 = null, $expires_at = null, $expires_at_lte = null, $expires_at_gte = null, string $contentType = self::contentTypes['doSearch'][0])
     {
 
 
@@ -1617,18 +1617,18 @@ class FilesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
+            $properties,
+            'properties', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $allows_anonymous_access,
-            'allowsAnonymousAccess', // param base name
-            'boolean', // openApiType
+            $after,
+            'after', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1644,215 +1644,8 @@ class FilesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at_gte,
-            'createdAtGte', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at_lte,
-            'createdAtLte', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $encoding,
-            'encoding', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $expires_at,
-            'expiresAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $expires_at_gte,
-            'expiresAtGte', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $expires_at_lte,
-            'expiresAtLte', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $extension,
-            'extension', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $file_md5,
-            'fileMd5', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $height,
-            'height', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $height_gte,
-            'heightGte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $height_lte,
-            'heightLte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_gte,
-            'idGte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_lte,
-            'idLte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $ids,
-            'ids', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $is_usable_in_content,
-            'isUsableInContent', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $name,
-            'name', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $parent_folder_ids,
-            'parentFolderIds', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $path,
-            'path', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $size,
-            'size', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $size_gte,
-            'sizeGte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $size_lte,
-            'sizeLte', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -1869,8 +1662,53 @@ class FilesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
+            $ids,
+            'ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id_lte,
+            'idLte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id_gte,
+            'idGte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at_lte,
+            'createdAtLte', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at_gte,
+            'createdAtGte', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1887,15 +1725,6 @@ class FilesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at_gte,
-            'updatedAtGte', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $updated_at_lte,
             'updatedAtLte', // param base name
             'string', // openApiType
@@ -1905,9 +1734,90 @@ class FilesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $url,
-            'url', // param base name
+            $updated_at_gte,
+            'updatedAtGte', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $name,
+            'name', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $path,
+            'path', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $parent_folder_ids,
+            'parentFolderIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $size,
+            'size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $size_lte,
+            'sizeLte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $size_gte,
+            'sizeGte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $height,
+            'height', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $height_lte,
+            'heightLte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $height_gte,
+            'heightGte', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1916,6 +1826,15 @@ class FilesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $width,
             'width', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $width_lte,
+            'widthLte', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -1932,9 +1851,90 @@ class FilesApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $width_lte,
-            'widthLte', // param base name
-            'integer', // openApiType
+            $encoding,
+            'encoding', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $extension,
+            'extension', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $url,
+            'url', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_usable_in_content,
+            'isUsableInContent', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $allows_anonymous_access,
+            'allowsAnonymousAccess', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $file_md5,
+            'fileMd5', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $expires_at,
+            'expiresAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $expires_at_lte,
+            'expiresAtLte', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $expires_at_gte,
+            'expiresAtGte', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2614,8 +2614,8 @@ class FilesApi
      * Get signed URL to access private file
      *
      * @param  string $file_id ID of file. (required)
-     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  string|null $size For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL. (optional)
+     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool|null $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSignedUrl'] to see the possible values for this operation
      *
@@ -2623,9 +2623,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Files\Model\SignedUrl|\HubSpot\Client\Files\Model\Error
      */
-    public function getSignedUrl($file_id, $expiration_seconds = null, $size = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
+    public function getSignedUrl($file_id, $size = null, $expiration_seconds = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
     {
-        list($response) = $this->getSignedUrlWithHttpInfo($file_id, $expiration_seconds, $size, $upscale, $contentType);
+        list($response) = $this->getSignedUrlWithHttpInfo($file_id, $size, $expiration_seconds, $upscale, $contentType);
         return $response;
     }
 
@@ -2635,8 +2635,8 @@ class FilesApi
      * Get signed URL to access private file
      *
      * @param  string $file_id ID of file. (required)
-     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  string|null $size For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL. (optional)
+     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool|null $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSignedUrl'] to see the possible values for this operation
      *
@@ -2644,9 +2644,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Files\Model\SignedUrl|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSignedUrlWithHttpInfo($file_id, $expiration_seconds = null, $size = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
+    public function getSignedUrlWithHttpInfo($file_id, $size = null, $expiration_seconds = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
     {
-        $request = $this->getSignedUrlRequest($file_id, $expiration_seconds, $size, $upscale, $contentType);
+        $request = $this->getSignedUrlRequest($file_id, $size, $expiration_seconds, $upscale, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2737,17 +2737,17 @@ class FilesApi
      * Get signed URL to access private file
      *
      * @param  string $file_id ID of file. (required)
-     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  string|null $size For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL. (optional)
+     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool|null $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSignedUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSignedUrlAsync($file_id, $expiration_seconds = null, $size = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
+    public function getSignedUrlAsync($file_id, $size = null, $expiration_seconds = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
     {
-        return $this->getSignedUrlAsyncWithHttpInfo($file_id, $expiration_seconds, $size, $upscale, $contentType)
+        return $this->getSignedUrlAsyncWithHttpInfo($file_id, $size, $expiration_seconds, $upscale, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2761,18 +2761,18 @@ class FilesApi
      * Get signed URL to access private file
      *
      * @param  string $file_id ID of file. (required)
-     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  string|null $size For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL. (optional)
+     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool|null $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSignedUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSignedUrlAsyncWithHttpInfo($file_id, $expiration_seconds = null, $size = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
+    public function getSignedUrlAsyncWithHttpInfo($file_id, $size = null, $expiration_seconds = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
     {
         $returnType = '\HubSpot\Client\Files\Model\SignedUrl';
-        $request = $this->getSignedUrlRequest($file_id, $expiration_seconds, $size, $upscale, $contentType);
+        $request = $this->getSignedUrlRequest($file_id, $size, $expiration_seconds, $upscale, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2814,15 +2814,15 @@ class FilesApi
      * Create request for operation 'getSignedUrl'
      *
      * @param  string $file_id ID of file. (required)
-     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  string|null $size For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL. (optional)
+     * @param  int|null $expiration_seconds How long in seconds the link will provide access to the file. (optional)
      * @param  bool|null $upscale If size is provided, this will upscale the image to fit the size dimensions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSignedUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSignedUrlRequest($file_id, $expiration_seconds = null, $size = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
+    public function getSignedUrlRequest($file_id, $size = null, $expiration_seconds = null, $upscale = null, string $contentType = self::contentTypes['getSignedUrl'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -2848,18 +2848,18 @@ class FilesApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $expiration_seconds,
-            'expirationSeconds', // param base name
-            'integer', // openApiType
+            $size,
+            'size', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $size,
-            'size', // param base name
-            'string', // openApiType
+            $expiration_seconds,
+            'expirationSeconds', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
