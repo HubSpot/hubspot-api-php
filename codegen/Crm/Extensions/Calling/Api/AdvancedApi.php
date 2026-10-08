@@ -73,7 +73,7 @@ class AdvancedApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3ExtensionsCallingInboundCall' => [
+        'createInboundCall' => [
             'application/json',
         ],
         'markAsReady' => [
@@ -128,38 +128,38 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ExtensionsCallingInboundCall
+     * Operation createInboundCall
      *
      * Submit details of an inbound call to the CRM.
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallRequest $completed_third_party_call_request completed_third_party_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCallingInboundCall'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboundCall'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function crmV3ExtensionsCallingInboundCall($completed_third_party_call_request, string $contentType = self::contentTypes['crmV3ExtensionsCallingInboundCall'][0])
+    public function createInboundCall($completed_third_party_call_request, string $contentType = self::contentTypes['createInboundCall'][0])
     {
-        list($response) = $this->crmV3ExtensionsCallingInboundCallWithHttpInfo($completed_third_party_call_request, $contentType);
+        list($response) = $this->createInboundCallWithHttpInfo($completed_third_party_call_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ExtensionsCallingInboundCallWithHttpInfo
+     * Operation createInboundCallWithHttpInfo
      *
      * Submit details of an inbound call to the CRM.
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallRequest $completed_third_party_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCallingInboundCall'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboundCall'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ExtensionsCallingInboundCallWithHttpInfo($completed_third_party_call_request, string $contentType = self::contentTypes['crmV3ExtensionsCallingInboundCall'][0])
+    public function createInboundCallWithHttpInfo($completed_third_party_call_request, string $contentType = self::contentTypes['createInboundCall'][0])
     {
-        $request = $this->crmV3ExtensionsCallingInboundCallRequest($completed_third_party_call_request, $contentType);
+        $request = $this->createInboundCallRequest($completed_third_party_call_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -245,19 +245,19 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ExtensionsCallingInboundCallAsync
+     * Operation createInboundCallAsync
      *
      * Submit details of an inbound call to the CRM.
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallRequest $completed_third_party_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCallingInboundCall'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboundCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ExtensionsCallingInboundCallAsync($completed_third_party_call_request, string $contentType = self::contentTypes['crmV3ExtensionsCallingInboundCall'][0])
+    public function createInboundCallAsync($completed_third_party_call_request, string $contentType = self::contentTypes['createInboundCall'][0])
     {
-        return $this->crmV3ExtensionsCallingInboundCallAsyncWithHttpInfo($completed_third_party_call_request, $contentType)
+        return $this->createInboundCallAsyncWithHttpInfo($completed_third_party_call_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -266,20 +266,20 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ExtensionsCallingInboundCallAsyncWithHttpInfo
+     * Operation createInboundCallAsyncWithHttpInfo
      *
      * Submit details of an inbound call to the CRM.
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallRequest $completed_third_party_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCallingInboundCall'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboundCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ExtensionsCallingInboundCallAsyncWithHttpInfo($completed_third_party_call_request, string $contentType = self::contentTypes['crmV3ExtensionsCallingInboundCall'][0])
+    public function createInboundCallAsyncWithHttpInfo($completed_third_party_call_request, string $contentType = self::contentTypes['createInboundCall'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallResponse';
-        $request = $this->crmV3ExtensionsCallingInboundCallRequest($completed_third_party_call_request, $contentType);
+        $request = $this->createInboundCallRequest($completed_third_party_call_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -318,21 +318,21 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'crmV3ExtensionsCallingInboundCall'
+     * Create request for operation 'createInboundCall'
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\CompletedThirdPartyCallRequest $completed_third_party_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCallingInboundCall'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboundCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ExtensionsCallingInboundCallRequest($completed_third_party_call_request, string $contentType = self::contentTypes['crmV3ExtensionsCallingInboundCall'][0])
+    public function createInboundCallRequest($completed_third_party_call_request, string $contentType = self::contentTypes['createInboundCall'][0])
     {
 
         // verify the required parameter 'completed_third_party_call_request' is set
         if ($completed_third_party_call_request === null || (is_array($completed_third_party_call_request) && count($completed_third_party_call_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $completed_third_party_call_request when calling crmV3ExtensionsCallingInboundCall'
+                'Missing the required parameter $completed_third_party_call_request when calling createInboundCall'
             );
         }
 

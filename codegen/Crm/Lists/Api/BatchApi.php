@@ -73,7 +73,7 @@ class BatchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3ListsRecordsMembershipsBatchRead' => [
+        'read' => [
             'application/json',
         ],
     ];
@@ -125,34 +125,34 @@ class BatchApi
     }
 
     /**
-     * Operation crmV3ListsRecordsMembershipsBatchRead
+     * Operation read
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\BatchInputRecordIdInput $batch_input_record_id_input batch_input_record_id_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\BatchResponseRecordIdWithMemberships|\HubSpot\Client\Crm\Lists\Model\BatchResponseRecordIdWithMembershipsWithErrors|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsRecordsMembershipsBatchRead($batch_input_record_id_input, string $contentType = self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'][0])
+    public function read($batch_input_record_id_input, string $contentType = self::contentTypes['read'][0])
     {
-        list($response) = $this->crmV3ListsRecordsMembershipsBatchReadWithHttpInfo($batch_input_record_id_input, $contentType);
+        list($response) = $this->readWithHttpInfo($batch_input_record_id_input, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsRecordsMembershipsBatchReadWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\BatchInputRecordIdInput $batch_input_record_id_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\BatchResponseRecordIdWithMemberships|\HubSpot\Client\Crm\Lists\Model\BatchResponseRecordIdWithMembershipsWithErrors|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsRecordsMembershipsBatchReadWithHttpInfo($batch_input_record_id_input, string $contentType = self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'][0])
+    public function readWithHttpInfo($batch_input_record_id_input, string $contentType = self::contentTypes['read'][0])
     {
-        $request = $this->crmV3ListsRecordsMembershipsBatchReadRequest($batch_input_record_id_input, $contentType);
+        $request = $this->readRequest($batch_input_record_id_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -252,17 +252,17 @@ class BatchApi
     }
 
     /**
-     * Operation crmV3ListsRecordsMembershipsBatchReadAsync
+     * Operation readAsync
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\BatchInputRecordIdInput $batch_input_record_id_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsRecordsMembershipsBatchReadAsync($batch_input_record_id_input, string $contentType = self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'][0])
+    public function readAsync($batch_input_record_id_input, string $contentType = self::contentTypes['read'][0])
     {
-        return $this->crmV3ListsRecordsMembershipsBatchReadAsyncWithHttpInfo($batch_input_record_id_input, $contentType)
+        return $this->readAsyncWithHttpInfo($batch_input_record_id_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -271,18 +271,18 @@ class BatchApi
     }
 
     /**
-     * Operation crmV3ListsRecordsMembershipsBatchReadAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\BatchInputRecordIdInput $batch_input_record_id_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsRecordsMembershipsBatchReadAsyncWithHttpInfo($batch_input_record_id_input, string $contentType = self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'][0])
+    public function readAsyncWithHttpInfo($batch_input_record_id_input, string $contentType = self::contentTypes['read'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\BatchResponseRecordIdWithMemberships';
-        $request = $this->crmV3ListsRecordsMembershipsBatchReadRequest($batch_input_record_id_input, $contentType);
+        $request = $this->readRequest($batch_input_record_id_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -321,21 +321,21 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsRecordsMembershipsBatchRead'
+     * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\BatchInputRecordIdInput $batch_input_record_id_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsRecordsMembershipsBatchReadRequest($batch_input_record_id_input, string $contentType = self::contentTypes['crmV3ListsRecordsMembershipsBatchRead'][0])
+    public function readRequest($batch_input_record_id_input, string $contentType = self::contentTypes['read'][0])
     {
 
         // verify the required parameter 'batch_input_record_id_input' is set
         if ($batch_input_record_id_input === null || (is_array($batch_input_record_id_input) && count($batch_input_record_id_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_record_id_input when calling crmV3ListsRecordsMembershipsBatchRead'
+                'Missing the required parameter $batch_input_record_id_input when calling read'
             );
         }
 

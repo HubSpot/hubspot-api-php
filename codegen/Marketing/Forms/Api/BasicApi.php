@@ -76,13 +76,13 @@ class BasicApi
         'archive' => [
             'application/json',
         ],
+        'create' => [
+            'application/json',
+        ],
         'getById' => [
             'application/json',
         ],
-        'marketingV3Forms' => [
-            'application/json',
-        ],
-        'marketingV3Forms_0' => [
+        'getPage' => [
             'application/json',
         ],
         'replace' => [
@@ -363,6 +363,283 @@ class BasicApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition|\HubSpot\Client\Marketing\Forms\Model\Error
+     */
+    public function create($body, string $contentType = self::contentTypes['create'][0])
+    {
+        list($response) = $this->createWithHttpInfo($body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition|\HubSpot\Client\Marketing\Forms\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($body, string $contentType = self::contentTypes['create'][0])
+    {
+        $request = $this->createRequest($body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Marketing\Forms\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Marketing\Forms\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($body, string $contentType = self::contentTypes['create'][0])
+    {
+        return $this->createAsyncWithHttpInfo($body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($body, string $contentType = self::contentTypes['create'][0])
+    {
+        $returnType = '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition';
+        $request = $this->createRequest($body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRequest($body, string $contentType = self::contentTypes['create'][0])
+    {
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling create'
+            );
+        }
+
+
+        $resourcePath = '/marketing/v3/forms';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($body), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -671,40 +948,40 @@ class BasicApi
     }
 
     /**
-     * Operation marketingV3Forms
+     * Operation getPage
      *
      * @param  string|null $after after (optional)
      * @param  bool|null $archived archived (optional)
      * @param  string[]|null $form_types form_types (optional)
      * @param  int|null $limit limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPaging|\HubSpot\Client\Marketing\Forms\Model\Error
      */
-    public function marketingV3Forms($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['marketingV3Forms'][0])
+    public function getPage($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->marketingV3FormsWithHttpInfo($after, $archived, $form_types, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($after, $archived, $form_types, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation marketingV3FormsWithHttpInfo
+     * Operation getPageWithHttpInfo
      *
      * @param  string|null $after (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
      * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPaging|\HubSpot\Client\Marketing\Forms\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function marketingV3FormsWithHttpInfo($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['marketingV3Forms'][0])
+    public function getPageWithHttpInfo($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->marketingV3FormsRequest($after, $archived, $form_types, $limit, $contentType);
+        $request = $this->getPageRequest($after, $archived, $form_types, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -790,20 +1067,20 @@ class BasicApi
     }
 
     /**
-     * Operation marketingV3FormsAsync
+     * Operation getPageAsync
      *
      * @param  string|null $after (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
      * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function marketingV3FormsAsync($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['marketingV3Forms'][0])
+    public function getPageAsync($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->marketingV3FormsAsyncWithHttpInfo($after, $archived, $form_types, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($after, $archived, $form_types, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -812,21 +1089,21 @@ class BasicApi
     }
 
     /**
-     * Operation marketingV3FormsAsyncWithHttpInfo
+     * Operation getPageAsyncWithHttpInfo
      *
      * @param  string|null $after (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
      * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function marketingV3FormsAsyncWithHttpInfo($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['marketingV3Forms'][0])
+    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Forms\Model\CollectionResponseFormDefinitionBaseForwardPaging';
-        $request = $this->marketingV3FormsRequest($after, $archived, $form_types, $limit, $contentType);
+        $request = $this->getPageRequest($after, $archived, $form_types, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -865,18 +1142,18 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'marketingV3Forms'
+     * Create request for operation 'getPage'
      *
      * @param  string|null $after (optional)
      * @param  bool|null $archived (optional)
      * @param  string[]|null $form_types (optional)
      * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function marketingV3FormsRequest($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['marketingV3Forms'][0])
+    public function getPageRequest($after = null, $archived = null, $form_types = null, $limit = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -982,283 +1259,6 @@ class BasicApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation marketingV3Forms_0
-     *
-     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition|\HubSpot\Client\Marketing\Forms\Model\Error
-     */
-    public function marketingV3Forms_0($body, string $contentType = self::contentTypes['marketingV3Forms_0'][0])
-    {
-        list($response) = $this->marketingV3Forms_0WithHttpInfo($body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation marketingV3Forms_0WithHttpInfo
-     *
-     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Marketing\Forms\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition|\HubSpot\Client\Marketing\Forms\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function marketingV3Forms_0WithHttpInfo($body, string $contentType = self::contentTypes['marketingV3Forms_0'][0])
-    {
-        $request = $this->marketingV3Forms_0Request($body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 201:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Marketing\Forms\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Marketing\Forms\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation marketingV3Forms_0Async
-     *
-     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function marketingV3Forms_0Async($body, string $contentType = self::contentTypes['marketingV3Forms_0'][0])
-    {
-        return $this->marketingV3Forms_0AsyncWithHttpInfo($body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation marketingV3Forms_0AsyncWithHttpInfo
-     *
-     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function marketingV3Forms_0AsyncWithHttpInfo($body, string $contentType = self::contentTypes['marketingV3Forms_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinition';
-        $request = $this->marketingV3Forms_0Request($body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'marketingV3Forms_0'
-     *
-     * @param  \HubSpot\Client\Marketing\Forms\Model\HubSpotFormDefinitionCreateRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingV3Forms_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function marketingV3Forms_0Request($body, string $contentType = self::contentTypes['marketingV3Forms_0'][0])
-    {
-
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling marketingV3Forms_0'
-            );
-        }
-
-
-        $resourcePath = '/marketing/v3/forms';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($body), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

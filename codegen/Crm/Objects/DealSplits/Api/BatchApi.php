@@ -73,10 +73,10 @@ class BatchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmObjectsV3DealsSplitsBatchRead' => [
+        'read' => [
             'application/json',
         ],
-        'crmObjectsV3DealsSplitsBatchUpsert' => [
+        'upsert' => [
             'application/json',
         ],
     ];
@@ -128,38 +128,38 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchRead
+     * Operation read
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchInputPublicObjectId $batch_input_public_object_id batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\DealSplits\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplits|\HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplitsWithErrors|\HubSpot\Client\Crm\Objects\DealSplits\Model\Error
      */
-    public function crmObjectsV3DealsSplitsBatchRead($batch_input_public_object_id, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchRead'][0])
+    public function read($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
-        list($response) = $this->crmObjectsV3DealsSplitsBatchReadWithHttpInfo($batch_input_public_object_id, $contentType);
+        list($response) = $this->readWithHttpInfo($batch_input_public_object_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchReadWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\DealSplits\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplits|\HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplitsWithErrors|\HubSpot\Client\Crm\Objects\DealSplits\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmObjectsV3DealsSplitsBatchReadWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchRead'][0])
+    public function readWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
-        $request = $this->crmObjectsV3DealsSplitsBatchReadRequest($batch_input_public_object_id, $contentType);
+        $request = $this->readRequest($batch_input_public_object_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -259,19 +259,19 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchReadAsync
+     * Operation readAsync
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmObjectsV3DealsSplitsBatchReadAsync($batch_input_public_object_id, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchRead'][0])
+    public function readAsync($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
-        return $this->crmObjectsV3DealsSplitsBatchReadAsyncWithHttpInfo($batch_input_public_object_id, $contentType)
+        return $this->readAsyncWithHttpInfo($batch_input_public_object_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -280,20 +280,20 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchReadAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmObjectsV3DealsSplitsBatchReadAsyncWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchRead'][0])
+    public function readAsyncWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplits';
-        $request = $this->crmObjectsV3DealsSplitsBatchReadRequest($batch_input_public_object_id, $contentType);
+        $request = $this->readRequest($batch_input_public_object_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -332,21 +332,21 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'crmObjectsV3DealsSplitsBatchRead'
+     * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmObjectsV3DealsSplitsBatchReadRequest($batch_input_public_object_id, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchRead'][0])
+    public function readRequest($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
 
         // verify the required parameter 'batch_input_public_object_id' is set
         if ($batch_input_public_object_id === null || (is_array($batch_input_public_object_id) && count($batch_input_public_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_object_id when calling crmObjectsV3DealsSplitsBatchRead'
+                'Missing the required parameter $batch_input_public_object_id when calling read'
             );
         }
 
@@ -427,38 +427,38 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchUpsert
+     * Operation upsert
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsBatchCreateRequest $public_deal_splits_batch_create_request public_deal_splits_batch_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\DealSplits\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplits|\HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplitsWithErrors|\HubSpot\Client\Crm\Objects\DealSplits\Model\Error
      */
-    public function crmObjectsV3DealsSplitsBatchUpsert($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'][0])
+    public function upsert($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['upsert'][0])
     {
-        list($response) = $this->crmObjectsV3DealsSplitsBatchUpsertWithHttpInfo($public_deal_splits_batch_create_request, $contentType);
+        list($response) = $this->upsertWithHttpInfo($public_deal_splits_batch_create_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchUpsertWithHttpInfo
+     * Operation upsertWithHttpInfo
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsBatchCreateRequest $public_deal_splits_batch_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Objects\DealSplits\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplits|\HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplitsWithErrors|\HubSpot\Client\Crm\Objects\DealSplits\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmObjectsV3DealsSplitsBatchUpsertWithHttpInfo($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'][0])
+    public function upsertWithHttpInfo($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['upsert'][0])
     {
-        $request = $this->crmObjectsV3DealsSplitsBatchUpsertRequest($public_deal_splits_batch_create_request, $contentType);
+        $request = $this->upsertRequest($public_deal_splits_batch_create_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -558,19 +558,19 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchUpsertAsync
+     * Operation upsertAsync
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsBatchCreateRequest $public_deal_splits_batch_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmObjectsV3DealsSplitsBatchUpsertAsync($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'][0])
+    public function upsertAsync($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['upsert'][0])
     {
-        return $this->crmObjectsV3DealsSplitsBatchUpsertAsyncWithHttpInfo($public_deal_splits_batch_create_request, $contentType)
+        return $this->upsertAsyncWithHttpInfo($public_deal_splits_batch_create_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -579,20 +579,20 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectsV3DealsSplitsBatchUpsertAsyncWithHttpInfo
+     * Operation upsertAsyncWithHttpInfo
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsBatchCreateRequest $public_deal_splits_batch_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmObjectsV3DealsSplitsBatchUpsertAsyncWithHttpInfo($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'][0])
+    public function upsertAsyncWithHttpInfo($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['upsert'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Objects\DealSplits\Model\BatchResponseDealToDealSplits';
-        $request = $this->crmObjectsV3DealsSplitsBatchUpsertRequest($public_deal_splits_batch_create_request, $contentType);
+        $request = $this->upsertRequest($public_deal_splits_batch_create_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -631,21 +631,21 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'crmObjectsV3DealsSplitsBatchUpsert'
+     * Create request for operation 'upsert'
      *
      * @param  \HubSpot\Client\Crm\Objects\DealSplits\Model\PublicDealSplitsBatchCreateRequest $public_deal_splits_batch_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsert'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmObjectsV3DealsSplitsBatchUpsertRequest($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['crmObjectsV3DealsSplitsBatchUpsert'][0])
+    public function upsertRequest($public_deal_splits_batch_create_request, string $contentType = self::contentTypes['upsert'][0])
     {
 
         // verify the required parameter 'public_deal_splits_batch_create_request' is set
         if ($public_deal_splits_batch_create_request === null || (is_array($public_deal_splits_batch_create_request) && count($public_deal_splits_batch_create_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_deal_splits_batch_create_request when calling crmObjectsV3DealsSplitsBatchUpsert'
+                'Missing the required parameter $public_deal_splits_batch_create_request when calling upsert'
             );
         }
 

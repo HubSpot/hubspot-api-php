@@ -73,28 +73,28 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'cmsPagesV3LandingPagesCursor' => [
+        'getLandingPageFoldersWithCursor' => [
             'application/json',
         ],
-        'cmsPagesV3LandingPagesCursorQuery' => [
-            'application/json',
-        ],
-        'cmsPagesV3LandingPagesFoldersCursor' => [
-            'application/json',
-        ],
-        'cmsPagesV3LandingPagesFoldersCursorQuery' => [
-            'application/json',
-        ],
-        'cmsPagesV3SitePagesCursor' => [
-            'application/json',
-        ],
-        'cmsPagesV3SitePagesCursorQuery' => [
+        'getLandingPagesWithCursor' => [
             'application/json',
         ],
         'getPreviousVersion' => [
             'application/json',
         ],
         'getPreviousVersions' => [
+            'application/json',
+        ],
+        'getSitePagesWithCursor' => [
+            'application/json',
+        ],
+        'queryLandingPageFoldersWithCursor' => [
+            'application/json',
+        ],
+        'queryLandingPagesWithCursor' => [
+            'application/json',
+        ],
+        'querySitePagesWithCursor' => [
             'application/json',
         ],
         'resetDraft' => [
@@ -152,7 +152,7 @@ class BasicApi
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesCursor
+     * Operation getLandingPageFoldersWithCursor
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -165,20 +165,20 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursor'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPageFoldersWithCursor'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function cmsPagesV3LandingPagesCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursor'][0])
+    public function getLandingPageFoldersWithCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPageFoldersWithCursor'][0])
     {
-        list($response) = $this->cmsPagesV3LandingPagesCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        list($response) = $this->getLandingPageFoldersWithCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
         return $response;
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesCursorWithHttpInfo
+     * Operation getLandingPageFoldersWithCursorWithHttpInfo
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -191,15 +191,15 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursor'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPageFoldersWithCursor'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cmsPagesV3LandingPagesCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursor'][0])
+    public function getLandingPageFoldersWithCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPageFoldersWithCursor'][0])
     {
-        $request = $this->cmsPagesV3LandingPagesCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getLandingPageFoldersWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -285,7 +285,7 @@ class BasicApi
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesCursorAsync
+     * Operation getLandingPageFoldersWithCursorAsync
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -298,14 +298,14 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursor'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPageFoldersWithCursor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsPagesV3LandingPagesCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursor'][0])
+    public function getLandingPageFoldersWithCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPageFoldersWithCursor'][0])
     {
-        return $this->cmsPagesV3LandingPagesCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+        return $this->getLandingPageFoldersWithCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -314,7 +314,7 @@ class BasicApi
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesCursorAsyncWithHttpInfo
+     * Operation getLandingPageFoldersWithCursorAsyncWithHttpInfo
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -327,15 +327,15 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursor'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPageFoldersWithCursor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsPagesV3LandingPagesCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursor'][0])
+    public function getLandingPageFoldersWithCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPageFoldersWithCursor'][0])
     {
         $returnType = 'object';
-        $request = $this->cmsPagesV3LandingPagesCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getLandingPageFoldersWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -374,7 +374,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'cmsPagesV3LandingPagesCursor'
+     * Create request for operation 'getLandingPageFoldersWithCursor'
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -387,858 +387,12 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursor'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPageFoldersWithCursor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cmsPagesV3LandingPagesCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursor'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/cms/pages/v3/landing-pages/cursor';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesCursorQuery
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function cmsPagesV3LandingPagesCursorQuery($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursorQuery'][0])
-    {
-        list($response) = $this->cmsPagesV3LandingPagesCursorQueryWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesCursorQueryWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function cmsPagesV3LandingPagesCursorQueryWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursorQuery'][0])
-    {
-        $request = $this->cmsPagesV3LandingPagesCursorQueryRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesCursorQueryAsync
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3LandingPagesCursorQueryAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursorQuery'][0])
-    {
-        return $this->cmsPagesV3LandingPagesCursorQueryAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesCursorQueryAsyncWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3LandingPagesCursorQueryAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursorQuery'][0])
-    {
-        $returnType = 'object';
-        $request = $this->cmsPagesV3LandingPagesCursorQueryRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'cmsPagesV3LandingPagesCursorQuery'
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function cmsPagesV3LandingPagesCursorQueryRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesCursorQuery'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/cms/pages/v3/landing-pages/cursor/query';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesFoldersCursor
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function cmsPagesV3LandingPagesFoldersCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'][0])
-    {
-        list($response) = $this->cmsPagesV3LandingPagesFoldersCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function cmsPagesV3LandingPagesFoldersCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'][0])
-    {
-        $request = $this->cmsPagesV3LandingPagesFoldersCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorAsync
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3LandingPagesFoldersCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'][0])
-    {
-        return $this->cmsPagesV3LandingPagesFoldersCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorAsyncWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3LandingPagesFoldersCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'][0])
-    {
-        $returnType = 'object';
-        $request = $this->cmsPagesV3LandingPagesFoldersCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'cmsPagesV3LandingPagesFoldersCursor'
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function cmsPagesV3LandingPagesFoldersCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursor'][0])
+    public function getLandingPageFoldersWithCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPageFoldersWithCursor'][0])
     {
 
 
@@ -1421,7 +575,7 @@ class BasicApi
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorQuery
+     * Operation getLandingPagesWithCursor
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -1434,20 +588,20 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagesWithCursor'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function cmsPagesV3LandingPagesFoldersCursorQuery($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'][0])
+    public function getLandingPagesWithCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPagesWithCursor'][0])
     {
-        list($response) = $this->cmsPagesV3LandingPagesFoldersCursorQueryWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        list($response) = $this->getLandingPagesWithCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
         return $response;
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorQueryWithHttpInfo
+     * Operation getLandingPagesWithCursorWithHttpInfo
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -1460,15 +614,15 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagesWithCursor'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cmsPagesV3LandingPagesFoldersCursorQueryWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'][0])
+    public function getLandingPagesWithCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPagesWithCursor'][0])
     {
-        $request = $this->cmsPagesV3LandingPagesFoldersCursorQueryRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getLandingPagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1554,7 +708,7 @@ class BasicApi
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorQueryAsync
+     * Operation getLandingPagesWithCursorAsync
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -1567,14 +721,14 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagesWithCursor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsPagesV3LandingPagesFoldersCursorQueryAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'][0])
+    public function getLandingPagesWithCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPagesWithCursor'][0])
     {
-        return $this->cmsPagesV3LandingPagesFoldersCursorQueryAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+        return $this->getLandingPagesWithCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1583,7 +737,7 @@ class BasicApi
     }
 
     /**
-     * Operation cmsPagesV3LandingPagesFoldersCursorQueryAsyncWithHttpInfo
+     * Operation getLandingPagesWithCursorAsyncWithHttpInfo
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -1596,15 +750,15 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagesWithCursor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsPagesV3LandingPagesFoldersCursorQueryAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'][0])
+    public function getLandingPagesWithCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPagesWithCursor'][0])
     {
         $returnType = 'object';
-        $request = $this->cmsPagesV3LandingPagesFoldersCursorQueryRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        $request = $this->getLandingPagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1643,7 +797,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'cmsPagesV3LandingPagesFoldersCursorQuery'
+     * Create request for operation 'getLandingPagesWithCursor'
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  bool|null $archived Whether to return only results that have been archived. (optional)
@@ -1656,12 +810,12 @@ class BasicApi
      * @param  \DateTime|null $updated_after  (optional)
      * @param  \DateTime|null $updated_at  (optional)
      * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagesWithCursor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cmsPagesV3LandingPagesFoldersCursorQueryRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3LandingPagesFoldersCursorQuery'][0])
+    public function getLandingPagesWithCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getLandingPagesWithCursor'][0])
     {
 
 
@@ -1676,853 +830,7 @@ class BasicApi
 
 
 
-        $resourcePath = '/cms/pages/v3/landing-pages/folders/cursor/query';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursor
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursor'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function cmsPagesV3SitePagesCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursor'][0])
-    {
-        list($response) = $this->cmsPagesV3SitePagesCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursor'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function cmsPagesV3SitePagesCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursor'][0])
-    {
-        $request = $this->cmsPagesV3SitePagesCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorAsync
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3SitePagesCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursor'][0])
-    {
-        return $this->cmsPagesV3SitePagesCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorAsyncWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3SitePagesCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursor'][0])
-    {
-        $returnType = 'object';
-        $request = $this->cmsPagesV3SitePagesCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'cmsPagesV3SitePagesCursor'
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursor'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function cmsPagesV3SitePagesCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursor'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/cms/pages/v3/site-pages/cursor';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $property,
-            'property', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorQuery
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function cmsPagesV3SitePagesCursorQuery($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursorQuery'][0])
-    {
-        list($response) = $this->cmsPagesV3SitePagesCursorQueryWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorQueryWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function cmsPagesV3SitePagesCursorQueryWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursorQuery'][0])
-    {
-        $request = $this->cmsPagesV3SitePagesCursorQueryRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorQueryAsync
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3SitePagesCursorQueryAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursorQuery'][0])
-    {
-        return $this->cmsPagesV3SitePagesCursorQueryAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation cmsPagesV3SitePagesCursorQueryAsyncWithHttpInfo
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsPagesV3SitePagesCursorQueryAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursorQuery'][0])
-    {
-        $returnType = 'object';
-        $request = $this->cmsPagesV3SitePagesCursorQueryRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'cmsPagesV3SitePagesCursorQuery'
-     *
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  \DateTime|null $created_after  (optional)
-     * @param  \DateTime|null $created_at  (optional)
-     * @param  \DateTime|null $created_before  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string|null $property  (optional)
-     * @param  string[]|null $sort  (optional)
-     * @param  \DateTime|null $updated_after  (optional)
-     * @param  \DateTime|null $updated_at  (optional)
-     * @param  \DateTime|null $updated_before  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsPagesV3SitePagesCursorQuery'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function cmsPagesV3SitePagesCursorQueryRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsPagesV3SitePagesCursorQuery'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/cms/pages/v3/site-pages/cursor/query';
+        $resourcePath = '/cms/pages/v3/landing-pages/cursor';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3267,6 +1575,1698 @@ class BasicApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getSitePagesWithCursor
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function getSitePagesWithCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getSitePagesWithCursor'][0])
+    {
+        list($response) = $this->getSitePagesWithCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getSitePagesWithCursorWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getSitePagesWithCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getSitePagesWithCursor'][0])
+    {
+        $request = $this->getSitePagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getSitePagesWithCursorAsync
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSitePagesWithCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getSitePagesWithCursor'][0])
+    {
+        return $this->getSitePagesWithCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getSitePagesWithCursorAsyncWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSitePagesWithCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getSitePagesWithCursor'][0])
+    {
+        $returnType = 'object';
+        $request = $this->getSitePagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getSitePagesWithCursor'
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getSitePagesWithCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getSitePagesWithCursor'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/cms/pages/v3/site-pages/cursor';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property,
+            'property', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation queryLandingPageFoldersWithCursor
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPageFoldersWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function queryLandingPageFoldersWithCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPageFoldersWithCursor'][0])
+    {
+        list($response) = $this->queryLandingPageFoldersWithCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation queryLandingPageFoldersWithCursorWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPageFoldersWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function queryLandingPageFoldersWithCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPageFoldersWithCursor'][0])
+    {
+        $request = $this->queryLandingPageFoldersWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation queryLandingPageFoldersWithCursorAsync
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPageFoldersWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryLandingPageFoldersWithCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPageFoldersWithCursor'][0])
+    {
+        return $this->queryLandingPageFoldersWithCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation queryLandingPageFoldersWithCursorAsyncWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPageFoldersWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryLandingPageFoldersWithCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPageFoldersWithCursor'][0])
+    {
+        $returnType = 'object';
+        $request = $this->queryLandingPageFoldersWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'queryLandingPageFoldersWithCursor'
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPageFoldersWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function queryLandingPageFoldersWithCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPageFoldersWithCursor'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/cms/pages/v3/landing-pages/folders/cursor/query';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property,
+            'property', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation queryLandingPagesWithCursor
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function queryLandingPagesWithCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPagesWithCursor'][0])
+    {
+        list($response) = $this->queryLandingPagesWithCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation queryLandingPagesWithCursorWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function queryLandingPagesWithCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPagesWithCursor'][0])
+    {
+        $request = $this->queryLandingPagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation queryLandingPagesWithCursorAsync
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryLandingPagesWithCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPagesWithCursor'][0])
+    {
+        return $this->queryLandingPagesWithCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation queryLandingPagesWithCursorAsyncWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryLandingPagesWithCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPagesWithCursor'][0])
+    {
+        $returnType = 'object';
+        $request = $this->queryLandingPagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'queryLandingPagesWithCursor'
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryLandingPagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function queryLandingPagesWithCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['queryLandingPagesWithCursor'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/cms/pages/v3/landing-pages/cursor/query';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property,
+            'property', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation querySitePagesWithCursor
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['querySitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return object|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function querySitePagesWithCursor($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['querySitePagesWithCursor'][0])
+    {
+        list($response) = $this->querySitePagesWithCursorWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation querySitePagesWithCursorWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['querySitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of object|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function querySitePagesWithCursorWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['querySitePagesWithCursor'][0])
+    {
+        $request = $this->querySitePagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation querySitePagesWithCursorAsync
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['querySitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function querySitePagesWithCursorAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['querySitePagesWithCursor'][0])
+    {
+        return $this->querySitePagesWithCursorAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation querySitePagesWithCursorAsyncWithHttpInfo
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['querySitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function querySitePagesWithCursorAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['querySitePagesWithCursor'][0])
+    {
+        $returnType = 'object';
+        $request = $this->querySitePagesWithCursorRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $property, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'querySitePagesWithCursor'
+     *
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  \DateTime|null $created_after  (optional)
+     * @param  \DateTime|null $created_at  (optional)
+     * @param  \DateTime|null $created_before  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string|null $property  (optional)
+     * @param  string[]|null $sort  (optional)
+     * @param  \DateTime|null $updated_after  (optional)
+     * @param  \DateTime|null $updated_at  (optional)
+     * @param  \DateTime|null $updated_before  (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['querySitePagesWithCursor'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function querySitePagesWithCursorRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $property = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['querySitePagesWithCursor'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/cms/pages/v3/site-pages/cursor/query';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $property,
+            'property', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(

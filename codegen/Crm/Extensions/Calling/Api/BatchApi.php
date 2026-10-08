@@ -73,7 +73,7 @@ class BatchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmExtensionsCallingV3ConnectionStatusesBatchRead' => [
+        'read' => [
             'application/json',
         ],
     ];
@@ -125,34 +125,34 @@ class BatchApi
     }
 
     /**
-     * Operation crmExtensionsCallingV3ConnectionStatusesBatchRead
+     * Operation read
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\BatchInputPublicObjectId $batch_input_public_object_id batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\CollectionResponseUserCallingConnectionStatusResponseNoPaging|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function crmExtensionsCallingV3ConnectionStatusesBatchRead($batch_input_public_object_id, string $contentType = self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'][0])
+    public function read($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
-        list($response) = $this->crmExtensionsCallingV3ConnectionStatusesBatchReadWithHttpInfo($batch_input_public_object_id, $contentType);
+        list($response) = $this->readWithHttpInfo($batch_input_public_object_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmExtensionsCallingV3ConnectionStatusesBatchReadWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\CollectionResponseUserCallingConnectionStatusResponseNoPaging|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmExtensionsCallingV3ConnectionStatusesBatchReadWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'][0])
+    public function readWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
-        $request = $this->crmExtensionsCallingV3ConnectionStatusesBatchReadRequest($batch_input_public_object_id, $contentType);
+        $request = $this->readRequest($batch_input_public_object_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -238,17 +238,17 @@ class BatchApi
     }
 
     /**
-     * Operation crmExtensionsCallingV3ConnectionStatusesBatchReadAsync
+     * Operation readAsync
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmExtensionsCallingV3ConnectionStatusesBatchReadAsync($batch_input_public_object_id, string $contentType = self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'][0])
+    public function readAsync($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
-        return $this->crmExtensionsCallingV3ConnectionStatusesBatchReadAsyncWithHttpInfo($batch_input_public_object_id, $contentType)
+        return $this->readAsyncWithHttpInfo($batch_input_public_object_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -257,18 +257,18 @@ class BatchApi
     }
 
     /**
-     * Operation crmExtensionsCallingV3ConnectionStatusesBatchReadAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmExtensionsCallingV3ConnectionStatusesBatchReadAsyncWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'][0])
+    public function readAsyncWithHttpInfo($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\CollectionResponseUserCallingConnectionStatusResponseNoPaging';
-        $request = $this->crmExtensionsCallingV3ConnectionStatusesBatchReadRequest($batch_input_public_object_id, $contentType);
+        $request = $this->readRequest($batch_input_public_object_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -307,21 +307,21 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'crmExtensionsCallingV3ConnectionStatusesBatchRead'
+     * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\BatchInputPublicObjectId $batch_input_public_object_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmExtensionsCallingV3ConnectionStatusesBatchReadRequest($batch_input_public_object_id, string $contentType = self::contentTypes['crmExtensionsCallingV3ConnectionStatusesBatchRead'][0])
+    public function readRequest($batch_input_public_object_id, string $contentType = self::contentTypes['read'][0])
     {
 
         // verify the required parameter 'batch_input_public_object_id' is set
         if ($batch_input_public_object_id === null || (is_array($batch_input_public_object_id) && count($batch_input_public_object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_public_object_id when calling crmExtensionsCallingV3ConnectionStatusesBatchRead'
+                'Missing the required parameter $batch_input_public_object_id when calling read'
             );
         }
 

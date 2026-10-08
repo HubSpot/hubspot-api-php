@@ -73,10 +73,10 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'cmsV3Domains' => [
+        'getById' => [
             'application/json',
         ],
-        'getById' => [
+        'getPage' => [
             'application/json',
         ],
     ];
@@ -125,414 +125,6 @@ class BasicApi
     public function getConfig()
     {
         return $this->config;
-    }
-
-    /**
-     * Operation cmsV3Domains
-     *
-     * @param  string|null $after after (optional)
-     * @param  bool|null $archived archived (optional)
-     * @param  \DateTime|null $created_after created_after (optional)
-     * @param  \DateTime|null $created_at created_at (optional)
-     * @param  \DateTime|null $created_before created_before (optional)
-     * @param  int|null $limit limit (optional)
-     * @param  string[]|null $sort sort (optional)
-     * @param  \DateTime|null $updated_after updated_after (optional)
-     * @param  \DateTime|null $updated_at updated_at (optional)
-     * @param  \DateTime|null $updated_before updated_before (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsV3Domains'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Domains\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain|\HubSpot\Client\Cms\Domains\Model\Error
-     */
-    public function cmsV3Domains($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsV3Domains'][0])
-    {
-        list($response) = $this->cmsV3DomainsWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation cmsV3DomainsWithHttpInfo
-     *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsV3Domains'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Domains\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain|\HubSpot\Client\Cms\Domains\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function cmsV3DomainsWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsV3Domains'][0])
-    {
-        $request = $this->cmsV3DomainsRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Domains\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Domains\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation cmsV3DomainsAsync
-     *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsV3Domains'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsV3DomainsAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsV3Domains'][0])
-    {
-        return $this->cmsV3DomainsAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation cmsV3DomainsAsyncWithHttpInfo
-     *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsV3Domains'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function cmsV3DomainsAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsV3Domains'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain';
-        $request = $this->cmsV3DomainsRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'cmsV3Domains'
-     *
-     * @param  string|null $after (optional)
-     * @param  bool|null $archived (optional)
-     * @param  \DateTime|null $created_after (optional)
-     * @param  \DateTime|null $created_at (optional)
-     * @param  \DateTime|null $created_before (optional)
-     * @param  int|null $limit (optional)
-     * @param  string[]|null $sort (optional)
-     * @param  \DateTime|null $updated_after (optional)
-     * @param  \DateTime|null $updated_at (optional)
-     * @param  \DateTime|null $updated_before (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsV3Domains'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function cmsV3DomainsRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['cmsV3Domains'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/cms/v3/domains';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_after,
-            'createdAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_before,
-            'createdBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_after,
-            'updatedAfter', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at,
-            'updatedAt', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_before,
-            'updatedBefore', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
     }
 
     /**
@@ -762,6 +354,414 @@ class BasicApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPage
+     *
+     * @param  string|null $after after (optional)
+     * @param  bool|null $archived archived (optional)
+     * @param  \DateTime|null $created_after created_after (optional)
+     * @param  \DateTime|null $created_at created_at (optional)
+     * @param  \DateTime|null $created_before created_before (optional)
+     * @param  int|null $limit limit (optional)
+     * @param  string[]|null $sort sort (optional)
+     * @param  \DateTime|null $updated_after updated_after (optional)
+     * @param  \DateTime|null $updated_at updated_at (optional)
+     * @param  \DateTime|null $updated_before updated_before (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Domains\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain|\HubSpot\Client\Cms\Domains\Model\Error
+     */
+    public function getPage($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    {
+        list($response) = $this->getPageWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPageWithHttpInfo
+     *
+     * @param  string|null $after (optional)
+     * @param  bool|null $archived (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  int|null $limit (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Domains\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain|\HubSpot\Client\Cms\Domains\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPageWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    {
+        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Domains\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Domains\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPageAsync
+     *
+     * @param  string|null $after (optional)
+     * @param  bool|null $archived (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  int|null $limit (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPageAsync($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    {
+        return $this->getPageAsyncWithHttpInfo($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPageAsyncWithHttpInfo
+     *
+     * @param  string|null $after (optional)
+     * @param  bool|null $archived (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  int|null $limit (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPageAsyncWithHttpInfo($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Domains\Model\CollectionResponseWithTotalDomain';
+        $request = $this->getPageRequest($after, $archived, $created_after, $created_at, $created_before, $limit, $sort, $updated_after, $updated_at, $updated_before, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPage'
+     *
+     * @param  string|null $after (optional)
+     * @param  bool|null $archived (optional)
+     * @param  \DateTime|null $created_after (optional)
+     * @param  \DateTime|null $created_at (optional)
+     * @param  \DateTime|null $created_before (optional)
+     * @param  int|null $limit (optional)
+     * @param  string[]|null $sort (optional)
+     * @param  \DateTime|null $updated_after (optional)
+     * @param  \DateTime|null $updated_at (optional)
+     * @param  \DateTime|null $updated_before (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPageRequest($after = null, $archived = null, $created_after = null, $created_at = null, $created_before = null, $limit = null, $sort = null, $updated_after = null, $updated_at = null, $updated_before = null, string $contentType = self::contentTypes['getPage'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/cms/v3/domains';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at,
+            'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(

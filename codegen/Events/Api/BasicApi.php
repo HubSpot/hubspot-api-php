@@ -73,10 +73,10 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'eventsV3Events' => [
+        'getPage' => [
             'application/json',
         ],
-        'eventsV3EventsEventTypes' => [
+        'getTypes' => [
             'application/json',
         ],
     ];
@@ -128,7 +128,7 @@ class BasicApi
     }
 
     /**
-     * Operation eventsV3Events
+     * Operation getPage
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
@@ -143,20 +143,20 @@ class BasicApi
      * @param  string[]|null $properties  (optional)
      * @param  object|null $property_propname  (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3Events'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent|\HubSpot\Client\Events\Model\Error
      */
-    public function eventsV3Events($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['eventsV3Events'][0])
+    public function getPage($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->eventsV3EventsWithHttpInfo($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
+        list($response) = $this->getPageWithHttpInfo($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
         return $response;
     }
 
     /**
-     * Operation eventsV3EventsWithHttpInfo
+     * Operation getPageWithHttpInfo
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
@@ -171,15 +171,15 @@ class BasicApi
      * @param  string[]|null $properties  (optional)
      * @param  object|null $property_propname  (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3Events'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent|\HubSpot\Client\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function eventsV3EventsWithHttpInfo($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['eventsV3Events'][0])
+    public function getPageWithHttpInfo($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->eventsV3EventsRequest($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
+        $request = $this->getPageRequest($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -265,7 +265,7 @@ class BasicApi
     }
 
     /**
-     * Operation eventsV3EventsAsync
+     * Operation getPageAsync
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
@@ -280,14 +280,14 @@ class BasicApi
      * @param  string[]|null $properties  (optional)
      * @param  object|null $property_propname  (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3Events'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function eventsV3EventsAsync($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['eventsV3Events'][0])
+    public function getPageAsync($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->eventsV3EventsAsyncWithHttpInfo($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType)
+        return $this->getPageAsyncWithHttpInfo($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -296,7 +296,7 @@ class BasicApi
     }
 
     /**
-     * Operation eventsV3EventsAsyncWithHttpInfo
+     * Operation getPageAsyncWithHttpInfo
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
@@ -311,15 +311,15 @@ class BasicApi
      * @param  string[]|null $properties  (optional)
      * @param  object|null $property_propname  (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3Events'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function eventsV3EventsAsyncWithHttpInfo($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['eventsV3Events'][0])
+    public function getPageAsyncWithHttpInfo($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Events\Model\CollectionResponseExternalUnifiedEvent';
-        $request = $this->eventsV3EventsRequest($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
+        $request = $this->getPageRequest($after, $before, $event_type, $id, $limit, $object_id, $object_property_propname, $object_type, $occurred_after, $occurred_before, $properties, $property_propname, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -358,7 +358,7 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'eventsV3Events'
+     * Create request for operation 'getPage'
      *
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before  (optional)
@@ -373,12 +373,12 @@ class BasicApi
      * @param  string[]|null $properties  (optional)
      * @param  object|null $property_propname  (optional)
      * @param  string[]|null $sort  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3Events'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function eventsV3EventsRequest($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['eventsV3Events'][0])
+    public function getPageRequest($after = null, $before = null, $event_type = null, $id = null, $limit = null, $object_id = null, $object_property_propname = null, $object_type = null, $occurred_after = null, $occurred_before = null, $properties = null, $property_propname = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -581,32 +581,32 @@ class BasicApi
     }
 
     /**
-     * Operation eventsV3EventsEventTypes
+     * Operation getTypes
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3EventsEventTypes'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTypes'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Events\Model\VisibleExternalEventTypeNames|\HubSpot\Client\Events\Model\Error
      */
-    public function eventsV3EventsEventTypes(string $contentType = self::contentTypes['eventsV3EventsEventTypes'][0])
+    public function getTypes(string $contentType = self::contentTypes['getTypes'][0])
     {
-        list($response) = $this->eventsV3EventsEventTypesWithHttpInfo($contentType);
+        list($response) = $this->getTypesWithHttpInfo($contentType);
         return $response;
     }
 
     /**
-     * Operation eventsV3EventsEventTypesWithHttpInfo
+     * Operation getTypesWithHttpInfo
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3EventsEventTypes'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTypes'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Events\Model\VisibleExternalEventTypeNames|\HubSpot\Client\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function eventsV3EventsEventTypesWithHttpInfo(string $contentType = self::contentTypes['eventsV3EventsEventTypes'][0])
+    public function getTypesWithHttpInfo(string $contentType = self::contentTypes['getTypes'][0])
     {
-        $request = $this->eventsV3EventsEventTypesRequest($contentType);
+        $request = $this->getTypesRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -692,16 +692,16 @@ class BasicApi
     }
 
     /**
-     * Operation eventsV3EventsEventTypesAsync
+     * Operation getTypesAsync
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3EventsEventTypes'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTypes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function eventsV3EventsEventTypesAsync(string $contentType = self::contentTypes['eventsV3EventsEventTypes'][0])
+    public function getTypesAsync(string $contentType = self::contentTypes['getTypes'][0])
     {
-        return $this->eventsV3EventsEventTypesAsyncWithHttpInfo($contentType)
+        return $this->getTypesAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -710,17 +710,17 @@ class BasicApi
     }
 
     /**
-     * Operation eventsV3EventsEventTypesAsyncWithHttpInfo
+     * Operation getTypesAsyncWithHttpInfo
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3EventsEventTypes'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTypes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function eventsV3EventsEventTypesAsyncWithHttpInfo(string $contentType = self::contentTypes['eventsV3EventsEventTypes'][0])
+    public function getTypesAsyncWithHttpInfo(string $contentType = self::contentTypes['getTypes'][0])
     {
         $returnType = '\HubSpot\Client\Events\Model\VisibleExternalEventTypeNames';
-        $request = $this->eventsV3EventsEventTypesRequest($contentType);
+        $request = $this->getTypesRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -759,14 +759,14 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'eventsV3EventsEventTypes'
+     * Create request for operation 'getTypes'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['eventsV3EventsEventTypes'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTypes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function eventsV3EventsEventTypesRequest(string $contentType = self::contentTypes['eventsV3EventsEventTypes'][0])
+    public function getTypesRequest(string $contentType = self::contentTypes['getTypes'][0])
     {
 
 

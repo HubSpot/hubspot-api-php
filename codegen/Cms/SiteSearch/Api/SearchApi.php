@@ -73,7 +73,7 @@ class SearchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'cmsSiteSearchV3Search' => [
+        'search' => [
             'application/json',
         ],
     ];
@@ -125,7 +125,7 @@ class SearchApi
     }
 
     /**
-     * Operation cmsSiteSearchV3Search
+     * Operation search
      *
      * Search your site
      *
@@ -148,20 +148,20 @@ class SearchApi
      * @param  int|null $table_id  (optional)
      * @param  string[]|null $type  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\SiteSearch\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error
      */
-    public function cmsSiteSearchV3Search($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function search($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
-        list($response) = $this->cmsSiteSearchV3SearchWithHttpInfo($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
+        list($response) = $this->searchWithHttpInfo($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
         return $response;
     }
 
     /**
-     * Operation cmsSiteSearchV3SearchWithHttpInfo
+     * Operation searchWithHttpInfo
      *
      * Search your site
      *
@@ -184,15 +184,15 @@ class SearchApi
      * @param  int|null $table_id  (optional)
      * @param  string[]|null $type  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\SiteSearch\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cmsSiteSearchV3SearchWithHttpInfo($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchWithHttpInfo($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
-        $request = $this->cmsSiteSearchV3SearchRequest($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
+        $request = $this->searchRequest($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -278,7 +278,7 @@ class SearchApi
     }
 
     /**
-     * Operation cmsSiteSearchV3SearchAsync
+     * Operation searchAsync
      *
      * Search your site
      *
@@ -301,14 +301,14 @@ class SearchApi
      * @param  int|null $table_id  (optional)
      * @param  string[]|null $type  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsSiteSearchV3SearchAsync($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchAsync($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
-        return $this->cmsSiteSearchV3SearchAsyncWithHttpInfo($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType)
+        return $this->searchAsyncWithHttpInfo($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -317,7 +317,7 @@ class SearchApi
     }
 
     /**
-     * Operation cmsSiteSearchV3SearchAsyncWithHttpInfo
+     * Operation searchAsyncWithHttpInfo
      *
      * Search your site
      *
@@ -340,15 +340,15 @@ class SearchApi
      * @param  int|null $table_id  (optional)
      * @param  string[]|null $type  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsSiteSearchV3SearchAsyncWithHttpInfo($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchAsyncWithHttpInfo($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
         $returnType = '\HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults';
-        $request = $this->cmsSiteSearchV3SearchRequest($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
+        $request = $this->searchRequest($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -387,7 +387,7 @@ class SearchApi
     }
 
     /**
-     * Create request for operation 'cmsSiteSearchV3Search'
+     * Create request for operation 'search'
      *
      * @param  bool|null $analytics  (optional)
      * @param  bool|null $autocomplete  (optional)
@@ -408,12 +408,12 @@ class SearchApi
      * @param  int|null $table_id  (optional)
      * @param  string[]|null $type  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cmsSiteSearchV3SearchRequest($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchRequest($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
 
 

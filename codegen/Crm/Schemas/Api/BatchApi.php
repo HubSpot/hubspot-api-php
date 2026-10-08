@@ -73,7 +73,7 @@ class BatchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmObjectSchemasV3SchemasBatchRead' => [
+        'read' => [
             'application/json',
         ],
     ];
@@ -125,38 +125,38 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectSchemasV3SchemasBatchRead
+     * Operation read
      *
      * Retrieve multiple custom object schemas in a batch request.
      *
      * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectSchemaBatchReadRequest $object_schema_batch_read_request object_schema_batch_read_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectSchemasV3SchemasBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging|\HubSpot\Client\Crm\Schemas\Model\Error
      */
-    public function crmObjectSchemasV3SchemasBatchRead($object_schema_batch_read_request, string $contentType = self::contentTypes['crmObjectSchemasV3SchemasBatchRead'][0])
+    public function read($object_schema_batch_read_request, string $contentType = self::contentTypes['read'][0])
     {
-        list($response) = $this->crmObjectSchemasV3SchemasBatchReadWithHttpInfo($object_schema_batch_read_request, $contentType);
+        list($response) = $this->readWithHttpInfo($object_schema_batch_read_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmObjectSchemasV3SchemasBatchReadWithHttpInfo
+     * Operation readWithHttpInfo
      *
      * Retrieve multiple custom object schemas in a batch request.
      *
      * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectSchemaBatchReadRequest $object_schema_batch_read_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectSchemasV3SchemasBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging|\HubSpot\Client\Crm\Schemas\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmObjectSchemasV3SchemasBatchReadWithHttpInfo($object_schema_batch_read_request, string $contentType = self::contentTypes['crmObjectSchemasV3SchemasBatchRead'][0])
+    public function readWithHttpInfo($object_schema_batch_read_request, string $contentType = self::contentTypes['read'][0])
     {
-        $request = $this->crmObjectSchemasV3SchemasBatchReadRequest($object_schema_batch_read_request, $contentType);
+        $request = $this->readRequest($object_schema_batch_read_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -242,19 +242,19 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectSchemasV3SchemasBatchReadAsync
+     * Operation readAsync
      *
      * Retrieve multiple custom object schemas in a batch request.
      *
      * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectSchemaBatchReadRequest $object_schema_batch_read_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectSchemasV3SchemasBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmObjectSchemasV3SchemasBatchReadAsync($object_schema_batch_read_request, string $contentType = self::contentTypes['crmObjectSchemasV3SchemasBatchRead'][0])
+    public function readAsync($object_schema_batch_read_request, string $contentType = self::contentTypes['read'][0])
     {
-        return $this->crmObjectSchemasV3SchemasBatchReadAsyncWithHttpInfo($object_schema_batch_read_request, $contentType)
+        return $this->readAsyncWithHttpInfo($object_schema_batch_read_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -263,20 +263,20 @@ class BatchApi
     }
 
     /**
-     * Operation crmObjectSchemasV3SchemasBatchReadAsyncWithHttpInfo
+     * Operation readAsyncWithHttpInfo
      *
      * Retrieve multiple custom object schemas in a batch request.
      *
      * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectSchemaBatchReadRequest $object_schema_batch_read_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectSchemasV3SchemasBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmObjectSchemasV3SchemasBatchReadAsyncWithHttpInfo($object_schema_batch_read_request, string $contentType = self::contentTypes['crmObjectSchemasV3SchemasBatchRead'][0])
+    public function readAsyncWithHttpInfo($object_schema_batch_read_request, string $contentType = self::contentTypes['read'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Schemas\Model\CollectionResponseObjectSchemaNoPaging';
-        $request = $this->crmObjectSchemasV3SchemasBatchReadRequest($object_schema_batch_read_request, $contentType);
+        $request = $this->readRequest($object_schema_batch_read_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -315,21 +315,21 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'crmObjectSchemasV3SchemasBatchRead'
+     * Create request for operation 'read'
      *
      * @param  \HubSpot\Client\Crm\Schemas\Model\ObjectSchemaBatchReadRequest $object_schema_batch_read_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmObjectSchemasV3SchemasBatchRead'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['read'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmObjectSchemasV3SchemasBatchReadRequest($object_schema_batch_read_request, string $contentType = self::contentTypes['crmObjectSchemasV3SchemasBatchRead'][0])
+    public function readRequest($object_schema_batch_read_request, string $contentType = self::contentTypes['read'][0])
     {
 
         // verify the required parameter 'object_schema_batch_read_request' is set
         if ($object_schema_batch_read_request === null || (is_array($object_schema_batch_read_request) && count($object_schema_batch_read_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_schema_batch_read_request when calling crmObjectSchemasV3SchemasBatchRead'
+                'Missing the required parameter $object_schema_batch_read_request when calling read'
             );
         }
 

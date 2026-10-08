@@ -88,7 +88,7 @@ class BasicApi
         'getDetails' => [
             'application/json',
         ],
-        'marketingMarketingEventsV3' => [
+        'getPage' => [
             'application/json',
         ],
         'update' => [
@@ -1508,36 +1508,36 @@ class BasicApi
     }
 
     /**
-     * Operation marketingMarketingEventsV3
+     * Operation getPage
      *
      * @param  string|null $after after (optional)
      * @param  int|null $limit limit (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error
      */
-    public function marketingMarketingEventsV3($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    public function getPage($after = null, $limit = 10, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->marketingMarketingEventsV3WithHttpInfo($after, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($after, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation marketingMarketingEventsV3WithHttpInfo
+     * Operation getPageWithHttpInfo
      *
      * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Events\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging|\HubSpot\Client\Marketing\Events\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function marketingMarketingEventsV3WithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    public function getPageWithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->marketingMarketingEventsV3Request($after, $limit, $contentType);
+        $request = $this->getPageRequest($after, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1623,18 +1623,18 @@ class BasicApi
     }
 
     /**
-     * Operation marketingMarketingEventsV3Async
+     * Operation getPageAsync
      *
      * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function marketingMarketingEventsV3Async($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    public function getPageAsync($after = null, $limit = 10, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->marketingMarketingEventsV3AsyncWithHttpInfo($after, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($after, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1643,19 +1643,19 @@ class BasicApi
     }
 
     /**
-     * Operation marketingMarketingEventsV3AsyncWithHttpInfo
+     * Operation getPageAsyncWithHttpInfo
      *
      * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function marketingMarketingEventsV3AsyncWithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    public function getPageAsyncWithHttpInfo($after = null, $limit = 10, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Events\Model\CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging';
-        $request = $this->marketingMarketingEventsV3Request($after, $limit, $contentType);
+        $request = $this->getPageRequest($after, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1694,16 +1694,16 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'marketingMarketingEventsV3'
+     * Create request for operation 'getPage'
      *
      * @param  string|null $after (optional)
      * @param  int|null $limit (optional, default to 10)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['marketingMarketingEventsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function marketingMarketingEventsV3Request($after = null, $limit = 10, string $contentType = self::contentTypes['marketingMarketingEventsV3'][0])
+    public function getPageRequest($after = null, $limit = 10, string $contentType = self::contentTypes['getPage'][0])
     {
 
 

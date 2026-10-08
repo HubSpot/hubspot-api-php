@@ -76,19 +76,19 @@ class DefinitionsApi
         'archive' => [
             'application/json',
         ],
-        'automationV4ActionsAppIdDefinitionIdRequiresObject' => [
-            'application/json',
-        ],
-        'automationV4ActionsAppIdDefinitionIdRequiresObject_0' => [
-            'application/json',
-        ],
         'create' => [
             'application/json',
         ],
         'getById' => [
             'application/json',
         ],
+        'getObjectRequirement' => [
+            'application/json',
+        ],
         'getPage' => [
+            'application/json',
+        ],
+        'setObjectRequirement' => [
             'application/json',
         ],
         'update' => [
@@ -387,583 +387,6 @@ class DefinitionsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObject
-     *
-     * Retrieve the object requirement status for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse|\HubSpot\Client\Automation\Actions\Model\Error
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObject($app_id, $definition_id, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'][0])
-    {
-        list($response) = $this->automationV4ActionsAppIdDefinitionIdRequiresObjectWithHttpInfo($app_id, $definition_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObjectWithHttpInfo
-     *
-     * Retrieve the object requirement status for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObjectWithHttpInfo($app_id, $definition_id, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'][0])
-    {
-        $request = $this->automationV4ActionsAppIdDefinitionIdRequiresObjectRequest($app_id, $definition_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Automation\Actions\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Automation\Actions\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObjectAsync
-     *
-     * Retrieve the object requirement status for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObjectAsync($app_id, $definition_id, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'][0])
-    {
-        return $this->automationV4ActionsAppIdDefinitionIdRequiresObjectAsyncWithHttpInfo($app_id, $definition_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObjectAsyncWithHttpInfo
-     *
-     * Retrieve the object requirement status for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObjectAsyncWithHttpInfo($app_id, $definition_id, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'][0])
-    {
-        $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse';
-        $request = $this->automationV4ActionsAppIdDefinitionIdRequiresObjectRequest($app_id, $definition_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'automationV4ActionsAppIdDefinitionIdRequiresObject'
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObjectRequest($app_id, $definition_id, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling automationV4ActionsAppIdDefinitionIdRequiresObject'
-            );
-        }
-
-        // verify the required parameter 'definition_id' is set
-        if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $definition_id when calling automationV4ActionsAppIdDefinitionIdRequiresObject'
-            );
-        }
-
-
-        $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/requires-object';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($definition_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'definitionId' . '}',
-                ObjectSerializer::toPathValue($definition_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObject_0
-     *
-     * Set the object requirement for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request public_action_definition_requires_object_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObject_0($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'][0])
-    {
-        $this->automationV4ActionsAppIdDefinitionIdRequiresObject_0WithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType);
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObject_0WithHttpInfo
-     *
-     * Set the object requirement for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObject_0WithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'][0])
-    {
-        $request = $this->automationV4ActionsAppIdDefinitionIdRequiresObject_0Request($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Automation\Actions\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObject_0Async
-     *
-     * Set the object requirement for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObject_0Async($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'][0])
-    {
-        return $this->automationV4ActionsAppIdDefinitionIdRequiresObject_0AsyncWithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation automationV4ActionsAppIdDefinitionIdRequiresObject_0AsyncWithHttpInfo
-     *
-     * Set the object requirement for a custom action definition.
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObject_0AsyncWithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'][0])
-    {
-        $returnType = '';
-        $request = $this->automationV4ActionsAppIdDefinitionIdRequiresObject_0Request($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'automationV4ActionsAppIdDefinitionIdRequiresObject_0'
-     *
-     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
-     * @param  string $definition_id The ID of the custom action definition. (required)
-     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function automationV4ActionsAppIdDefinitionIdRequiresObject_0Request($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['automationV4ActionsAppIdDefinitionIdRequiresObject_0'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling automationV4ActionsAppIdDefinitionIdRequiresObject_0'
-            );
-        }
-
-        // verify the required parameter 'definition_id' is set
-        if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $definition_id when calling automationV4ActionsAppIdDefinitionIdRequiresObject_0'
-            );
-        }
-
-        // verify the required parameter 'public_action_definition_requires_object_request' is set
-        if ($public_action_definition_requires_object_request === null || (is_array($public_action_definition_requires_object_request) && count($public_action_definition_requires_object_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $public_action_definition_requires_object_request when calling automationV4ActionsAppIdDefinitionIdRequiresObject_0'
-            );
-        }
-
-
-        $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/requires-object';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($definition_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'definitionId' . '}',
-                ObjectSerializer::toPathValue($definition_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($public_action_definition_requires_object_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($public_action_definition_requires_object_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $public_action_definition_requires_object_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1599,6 +1022,313 @@ class DefinitionsApi
     }
 
     /**
+     * Operation getObjectRequirement
+     *
+     * Retrieve the object requirement status for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse|\HubSpot\Client\Automation\Actions\Model\Error
+     */
+    public function getObjectRequirement($app_id, $definition_id, string $contentType = self::contentTypes['getObjectRequirement'][0])
+    {
+        list($response) = $this->getObjectRequirementWithHttpInfo($app_id, $definition_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getObjectRequirementWithHttpInfo
+     *
+     * Retrieve the object requirement status for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getObjectRequirementWithHttpInfo($app_id, $definition_id, string $contentType = self::contentTypes['getObjectRequirement'][0])
+    {
+        $request = $this->getObjectRequirementRequest($app_id, $definition_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Automation\Actions\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Automation\Actions\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getObjectRequirementAsync
+     *
+     * Retrieve the object requirement status for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getObjectRequirementAsync($app_id, $definition_id, string $contentType = self::contentTypes['getObjectRequirement'][0])
+    {
+        return $this->getObjectRequirementAsyncWithHttpInfo($app_id, $definition_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getObjectRequirementAsyncWithHttpInfo
+     *
+     * Retrieve the object requirement status for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getObjectRequirementAsyncWithHttpInfo($app_id, $definition_id, string $contentType = self::contentTypes['getObjectRequirement'][0])
+    {
+        $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectResponse';
+        $request = $this->getObjectRequirementRequest($app_id, $definition_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getObjectRequirement'
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getObjectRequirementRequest($app_id, $definition_id, string $contentType = self::contentTypes['getObjectRequirement'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getObjectRequirement'
+            );
+        }
+
+        // verify the required parameter 'definition_id' is set
+        if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $definition_id when calling getObjectRequirement'
+            );
+        }
+
+
+        $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/requires-object';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($definition_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'definitionId' . '}',
+                ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getPage
      *
      * Retrieve custom action definitions
@@ -1924,6 +1654,276 @@ class DefinitionsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setObjectRequirement
+     *
+     * Set the object requirement for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request public_action_definition_requires_object_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function setObjectRequirement($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['setObjectRequirement'][0])
+    {
+        $this->setObjectRequirementWithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType);
+    }
+
+    /**
+     * Operation setObjectRequirementWithHttpInfo
+     *
+     * Set the object requirement for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setObjectRequirementWithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['setObjectRequirement'][0])
+    {
+        $request = $this->setObjectRequirementRequest($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Automation\Actions\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setObjectRequirementAsync
+     *
+     * Set the object requirement for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setObjectRequirementAsync($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['setObjectRequirement'][0])
+    {
+        return $this->setObjectRequirementAsyncWithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setObjectRequirementAsyncWithHttpInfo
+     *
+     * Set the object requirement for a custom action definition.
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setObjectRequirementAsyncWithHttpInfo($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['setObjectRequirement'][0])
+    {
+        $returnType = '';
+        $request = $this->setObjectRequirementRequest($app_id, $definition_id, $public_action_definition_requires_object_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setObjectRequirement'
+     *
+     * @param  int $app_id The ID of the app associated with the custom action definition. (required)
+     * @param  string $definition_id The ID of the custom action definition. (required)
+     * @param  \HubSpot\Client\Automation\Actions\Model\PublicActionDefinitionRequiresObjectRequest $public_action_definition_requires_object_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setObjectRequirement'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function setObjectRequirementRequest($app_id, $definition_id, $public_action_definition_requires_object_request, string $contentType = self::contentTypes['setObjectRequirement'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling setObjectRequirement'
+            );
+        }
+
+        // verify the required parameter 'definition_id' is set
+        if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $definition_id when calling setObjectRequirement'
+            );
+        }
+
+        // verify the required parameter 'public_action_definition_requires_object_request' is set
+        if ($public_action_definition_requires_object_request === null || (is_array($public_action_definition_requires_object_request) && count($public_action_definition_requires_object_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $public_action_definition_requires_object_request when calling setObjectRequirement'
+            );
+        }
+
+
+        $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/requires-object';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($definition_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'definitionId' . '}',
+                ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($public_action_definition_requires_object_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($public_action_definition_requires_object_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $public_action_definition_requires_object_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

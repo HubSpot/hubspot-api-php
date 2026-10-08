@@ -73,88 +73,88 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3Lists' => [
+        'add' => [
             'application/json',
         ],
-        'crmV3ListsFolders' => [
+        'addAllFromList' => [
             'application/json',
         ],
-        'crmV3ListsFoldersFolderId' => [
+        'addAndRemove' => [
             'application/json',
         ],
-        'crmV3ListsFoldersFolderIdMoveNewParentFolderId' => [
+        'cancelConversion' => [
             'application/json',
         ],
-        'crmV3ListsFoldersFolderIdRename' => [
+        'create' => [
             'application/json',
         ],
-        'crmV3ListsFoldersMoveList' => [
+        'createFolder' => [
             'application/json',
         ],
-        'crmV3ListsFolders_0' => [
+        'getAll' => [
             'application/json',
         ],
-        'crmV3ListsIdmapping' => [
+        'getAllFolders' => [
             'application/json',
         ],
-        'crmV3ListsIdmapping_0' => [
+        'getById' => [
             'application/json',
         ],
-        'crmV3ListsListId' => [
+        'getByName' => [
             'application/json',
         ],
-        'crmV3ListsListIdMemberships' => [
+        'getConversionDetails' => [
             'application/json',
         ],
-        'crmV3ListsListIdMembershipsAdd' => [
+        'getLists' => [
             'application/json',
         ],
-        'crmV3ListsListIdMembershipsAddAndRemove' => [
+        'getPage' => [
             'application/json',
         ],
-        'crmV3ListsListIdMembershipsAddFromSourceListId' => [
+        'getPageOrderedByAddedToListDate' => [
             'application/json',
         ],
-        'crmV3ListsListIdMembershipsJoinOrder' => [
+        'getSizeAndEditsHistory' => [
             'application/json',
         ],
-        'crmV3ListsListIdMembershipsRemove' => [
+        'move' => [
             'application/json',
         ],
-        'crmV3ListsListIdMemberships_0' => [
+        'moveList' => [
             'application/json',
         ],
-        'crmV3ListsListIdRestore' => [
+        'remove' => [
             'application/json',
         ],
-        'crmV3ListsListIdScheduleConversion' => [
+        'removeAll' => [
             'application/json',
         ],
-        'crmV3ListsListIdScheduleConversion_0' => [
+        'removeFolder' => [
             'application/json',
         ],
-        'crmV3ListsListIdScheduleConversion_1' => [
+        'removeMembers' => [
             'application/json',
         ],
-        'crmV3ListsListIdSizeAndEditsHistoryBetween' => [
+        'rename' => [
             'application/json',
         ],
-        'crmV3ListsListIdUpdateListFilters' => [
+        'restore' => [
             'application/json',
         ],
-        'crmV3ListsListIdUpdateListName' => [
+        'scheduleConversion' => [
             'application/json',
         ],
-        'crmV3ListsListId_0' => [
+        'translateLegacyListIdToListId' => [
             'application/json',
         ],
-        'crmV3ListsObjectTypeIdObjectTypeIdNameListName' => [
+        'translateLegacyListIdToListIdBatch' => [
             'application/json',
         ],
-        'crmV3ListsRecordsObjectTypeIdRecordIdMemberships' => [
+        'updateListFilters' => [
             'application/json',
         ],
-        'crmV3Lists_0' => [
+        'updateName' => [
             'application/json',
         ],
     ];
@@ -206,36 +206,1688 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3Lists
+     * Operation add
+     *
+     * Add Records to a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['add'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function add($list_id, $request_body, string $contentType = self::contentTypes['add'][0])
+    {
+        list($response) = $this->addWithHttpInfo($list_id, $request_body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addWithHttpInfo
+     *
+     * Add Records to a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['add'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['add'][0])
+    {
+        $request = $this->addRequest($list_id, $request_body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addAsync
+     *
+     * Add Records to a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['add'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAsync($list_id, $request_body, string $contentType = self::contentTypes['add'][0])
+    {
+        return $this->addAsyncWithHttpInfo($list_id, $request_body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addAsyncWithHttpInfo
+     *
+     * Add Records to a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['add'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAsyncWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['add'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse';
+        $request = $this->addRequest($list_id, $request_body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'add'
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['add'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addRequest($list_id, $request_body, string $contentType = self::contentTypes['add'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling add'
+            );
+        }
+
+        // verify the required parameter 'request_body' is set
+        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_body when calling add'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships/add';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($request_body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation addAllFromList
+     *
+     * Add All Records from a Source List to a Destination List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
+     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAllFromList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function addAllFromList($list_id, $source_list_id, string $contentType = self::contentTypes['addAllFromList'][0])
+    {
+        $this->addAllFromListWithHttpInfo($list_id, $source_list_id, $contentType);
+    }
+
+    /**
+     * Operation addAllFromListWithHttpInfo
+     *
+     * Add All Records from a Source List to a Destination List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
+     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAllFromList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addAllFromListWithHttpInfo($list_id, $source_list_id, string $contentType = self::contentTypes['addAllFromList'][0])
+    {
+        $request = $this->addAllFromListRequest($list_id, $source_list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addAllFromListAsync
+     *
+     * Add All Records from a Source List to a Destination List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
+     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAllFromList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAllFromListAsync($list_id, $source_list_id, string $contentType = self::contentTypes['addAllFromList'][0])
+    {
+        return $this->addAllFromListAsyncWithHttpInfo($list_id, $source_list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addAllFromListAsyncWithHttpInfo
+     *
+     * Add All Records from a Source List to a Destination List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
+     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAllFromList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAllFromListAsyncWithHttpInfo($list_id, $source_list_id, string $contentType = self::contentTypes['addAllFromList'][0])
+    {
+        $returnType = '';
+        $request = $this->addAllFromListRequest($list_id, $source_list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addAllFromList'
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
+     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAllFromList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addAllFromListRequest($list_id, $source_list_id, string $contentType = self::contentTypes['addAllFromList'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling addAllFromList'
+            );
+        }
+
+        // verify the required parameter 'source_list_id' is set
+        if ($source_list_id === null || (is_array($source_list_id) && count($source_list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $source_list_id when calling addAllFromList'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships/add-from/{sourceListId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($source_list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'sourceListId' . '}',
+                ObjectSerializer::toPathValue($source_list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation addAndRemove
+     *
+     * Add and/or Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request membership_change_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAndRemove'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function addAndRemove($list_id, $membership_change_request, string $contentType = self::contentTypes['addAndRemove'][0])
+    {
+        list($response) = $this->addAndRemoveWithHttpInfo($list_id, $membership_change_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addAndRemoveWithHttpInfo
+     *
+     * Add and/or Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAndRemove'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addAndRemoveWithHttpInfo($list_id, $membership_change_request, string $contentType = self::contentTypes['addAndRemove'][0])
+    {
+        $request = $this->addAndRemoveRequest($list_id, $membership_change_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addAndRemoveAsync
+     *
+     * Add and/or Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAndRemove'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAndRemoveAsync($list_id, $membership_change_request, string $contentType = self::contentTypes['addAndRemove'][0])
+    {
+        return $this->addAndRemoveAsyncWithHttpInfo($list_id, $membership_change_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addAndRemoveAsyncWithHttpInfo
+     *
+     * Add and/or Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAndRemove'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addAndRemoveAsyncWithHttpInfo($list_id, $membership_change_request, string $contentType = self::contentTypes['addAndRemove'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse';
+        $request = $this->addAndRemoveRequest($list_id, $membership_change_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addAndRemove'
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addAndRemove'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addAndRemoveRequest($list_id, $membership_change_request, string $contentType = self::contentTypes['addAndRemove'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling addAndRemove'
+            );
+        }
+
+        // verify the required parameter 'membership_change_request' is set
+        if ($membership_change_request === null || (is_array($membership_change_request) && count($membership_change_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $membership_change_request when calling addAndRemove'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships/add-and-remove';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($membership_change_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($membership_change_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $membership_change_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation cancelConversion
+     *
+     * Cancel the conversion of a list
+     *
+     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelConversion'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function cancelConversion($list_id, string $contentType = self::contentTypes['cancelConversion'][0])
+    {
+        $this->cancelConversionWithHttpInfo($list_id, $contentType);
+    }
+
+    /**
+     * Operation cancelConversionWithHttpInfo
+     *
+     * Cancel the conversion of a list
+     *
+     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelConversion'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelConversionWithHttpInfo($list_id, string $contentType = self::contentTypes['cancelConversion'][0])
+    {
+        $request = $this->cancelConversionRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cancelConversionAsync
+     *
+     * Cancel the conversion of a list
+     *
+     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelConversionAsync($list_id, string $contentType = self::contentTypes['cancelConversion'][0])
+    {
+        return $this->cancelConversionAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelConversionAsyncWithHttpInfo
+     *
+     * Cancel the conversion of a list
+     *
+     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelConversionAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['cancelConversion'][0])
+    {
+        $returnType = '';
+        $request = $this->cancelConversionRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelConversion'
+     *
+     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cancelConversionRequest($list_id, string $contentType = self::contentTypes['cancelConversion'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling cancelConversion'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/schedule-conversion';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request list_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ListCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function create($list_create_request, string $contentType = self::contentTypes['create'][0])
+    {
+        list($response) = $this->createWithHttpInfo($list_create_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ListCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($list_create_request, string $contentType = self::contentTypes['create'][0])
+    {
+        $request = $this->createRequest($list_create_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($list_create_request, string $contentType = self::contentTypes['create'][0])
+    {
+        return $this->createAsyncWithHttpInfo($list_create_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($list_create_request, string $contentType = self::contentTypes['create'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse';
+        $request = $this->createRequest($list_create_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRequest($list_create_request, string $contentType = self::contentTypes['create'][0])
+    {
+
+        // verify the required parameter 'list_create_request' is set
+        if ($list_create_request === null || (is_array($list_create_request) && count($list_create_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_create_request when calling create'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($list_create_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_create_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $list_create_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createFolder
+     *
+     * Creates a folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request list_folder_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function createFolder($list_folder_create_request, string $contentType = self::contentTypes['createFolder'][0])
+    {
+        list($response) = $this->createFolderWithHttpInfo($list_folder_create_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createFolderWithHttpInfo
+     *
+     * Creates a folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createFolderWithHttpInfo($list_folder_create_request, string $contentType = self::contentTypes['createFolder'][0])
+    {
+        $request = $this->createFolderRequest($list_folder_create_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createFolderAsync
+     *
+     * Creates a folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFolderAsync($list_folder_create_request, string $contentType = self::contentTypes['createFolder'][0])
+    {
+        return $this->createFolderAsyncWithHttpInfo($list_folder_create_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createFolderAsyncWithHttpInfo
+     *
+     * Creates a folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFolderAsyncWithHttpInfo($list_folder_create_request, string $contentType = self::contentTypes['createFolder'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse';
+        $request = $this->createFolderRequest($list_folder_create_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createFolder'
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createFolderRequest($list_folder_create_request, string $contentType = self::contentTypes['createFolder'][0])
+    {
+
+        // verify the required parameter 'list_folder_create_request' is set
+        if ($list_folder_create_request === null || (is_array($list_folder_create_request) && count($list_folder_create_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_folder_create_request when calling createFolder'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/folders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($list_folder_create_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_folder_create_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $list_folder_create_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAll
      *
      * @param  bool|null $include_filters include_filters (optional, default to false)
      * @param  string[]|null $list_ids list_ids (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListsByIdResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3Lists($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['crmV3Lists'][0])
+    public function getAll($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
     {
-        list($response) = $this->crmV3ListsWithHttpInfo($include_filters, $list_ids, $contentType);
+        list($response) = $this->getAllWithHttpInfo($include_filters, $list_ids, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsWithHttpInfo
+     * Operation getAllWithHttpInfo
      *
      * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListsByIdResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsWithHttpInfo($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['crmV3Lists'][0])
+    public function getAllWithHttpInfo($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
     {
-        $request = $this->crmV3ListsRequest($include_filters, $list_ids, $contentType);
+        $request = $this->getAllRequest($include_filters, $list_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -321,18 +1973,18 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsAsync
+     * Operation getAllAsync
      *
      * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsAsync($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['crmV3Lists'][0])
+    public function getAllAsync($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
     {
-        return $this->crmV3ListsAsyncWithHttpInfo($include_filters, $list_ids, $contentType)
+        return $this->getAllAsyncWithHttpInfo($include_filters, $list_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -341,19 +1993,19 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsAsyncWithHttpInfo
+     * Operation getAllAsyncWithHttpInfo
      *
      * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsAsyncWithHttpInfo($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['crmV3Lists'][0])
+    public function getAllAsyncWithHttpInfo($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListsByIdResponse';
-        $request = $this->crmV3ListsRequest($include_filters, $list_ids, $contentType);
+        $request = $this->getAllRequest($include_filters, $list_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -392,16 +2044,16 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3Lists'
+     * Create request for operation 'getAll'
      *
      * @param  bool|null $include_filters (optional, default to false)
      * @param  string[]|null $list_ids (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsRequest($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['crmV3Lists'][0])
+    public function getAllRequest($include_filters = false, $list_ids = null, string $contentType = self::contentTypes['getAll'][0])
     {
 
 
@@ -494,38 +2146,38 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsFolders
+     * Operation getAllFolders
      *
      * Retrieves a folder.
      *
      * @param  string|null $folder_id The Id of the folder to retrieve. (optional, default to '0')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFolders'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsFolders($folder_id = '0', string $contentType = self::contentTypes['crmV3ListsFolders'][0])
+    public function getAllFolders($folder_id = '0', string $contentType = self::contentTypes['getAllFolders'][0])
     {
-        list($response) = $this->crmV3ListsFoldersWithHttpInfo($folder_id, $contentType);
+        list($response) = $this->getAllFoldersWithHttpInfo($folder_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsFoldersWithHttpInfo
+     * Operation getAllFoldersWithHttpInfo
      *
      * Retrieves a folder.
      *
      * @param  string|null $folder_id The Id of the folder to retrieve. (optional, default to '0')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFolders'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsFoldersWithHttpInfo($folder_id = '0', string $contentType = self::contentTypes['crmV3ListsFolders'][0])
+    public function getAllFoldersWithHttpInfo($folder_id = '0', string $contentType = self::contentTypes['getAllFolders'][0])
     {
-        $request = $this->crmV3ListsFoldersRequest($folder_id, $contentType);
+        $request = $this->getAllFoldersRequest($folder_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -611,19 +2263,19 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsFoldersAsync
+     * Operation getAllFoldersAsync
      *
      * Retrieves a folder.
      *
      * @param  string|null $folder_id The Id of the folder to retrieve. (optional, default to '0')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsFoldersAsync($folder_id = '0', string $contentType = self::contentTypes['crmV3ListsFolders'][0])
+    public function getAllFoldersAsync($folder_id = '0', string $contentType = self::contentTypes['getAllFolders'][0])
     {
-        return $this->crmV3ListsFoldersAsyncWithHttpInfo($folder_id, $contentType)
+        return $this->getAllFoldersAsyncWithHttpInfo($folder_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -632,20 +2284,20 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsFoldersAsyncWithHttpInfo
+     * Operation getAllFoldersAsyncWithHttpInfo
      *
      * Retrieves a folder.
      *
      * @param  string|null $folder_id The Id of the folder to retrieve. (optional, default to '0')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsFoldersAsyncWithHttpInfo($folder_id = '0', string $contentType = self::contentTypes['crmV3ListsFolders'][0])
+    public function getAllFoldersAsyncWithHttpInfo($folder_id = '0', string $contentType = self::contentTypes['getAllFolders'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->crmV3ListsFoldersRequest($folder_id, $contentType);
+        $request = $this->getAllFoldersRequest($folder_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -684,15 +2336,15 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsFolders'
+     * Create request for operation 'getAllFolders'
      *
      * @param  string|null $folder_id The Id of the folder to retrieve. (optional, default to '0')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsFoldersRequest($folder_id = '0', string $contentType = self::contentTypes['crmV3ListsFolders'][0])
+    public function getAllFoldersRequest($folder_id = '0', string $contentType = self::contentTypes['getAllFolders'][0])
     {
 
 
@@ -775,1957 +2427,40 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsFoldersFolderId
-     *
-     * Deletes a folder
-     *
-     * @param  string $folder_id The ID of the folder to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderId'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsFoldersFolderId($folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderId'][0])
-    {
-        $this->crmV3ListsFoldersFolderIdWithHttpInfo($folder_id, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdWithHttpInfo
-     *
-     * Deletes a folder
-     *
-     * @param  string $folder_id The ID of the folder to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderId'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsFoldersFolderIdWithHttpInfo($folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderId'][0])
-    {
-        $request = $this->crmV3ListsFoldersFolderIdRequest($folder_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdAsync
-     *
-     * Deletes a folder
-     *
-     * @param  string $folder_id The ID of the folder to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersFolderIdAsync($folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderId'][0])
-    {
-        return $this->crmV3ListsFoldersFolderIdAsyncWithHttpInfo($folder_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdAsyncWithHttpInfo
-     *
-     * Deletes a folder
-     *
-     * @param  string $folder_id The ID of the folder to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersFolderIdAsyncWithHttpInfo($folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderId'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsFoldersFolderIdRequest($folder_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsFoldersFolderId'
-     *
-     * @param  string $folder_id The ID of the folder to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsFoldersFolderIdRequest($folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderId'][0])
-    {
-
-        // verify the required parameter 'folder_id' is set
-        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling crmV3ListsFoldersFolderId'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/folders/{folderId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($folder_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'folderId' . '}',
-                ObjectSerializer::toPathValue($folder_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdMoveNewParentFolderId
-     *
-     * Moves a folder
-     *
-     * @param  string $folder_id The ID of the folder to move (required)
-     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsFoldersFolderIdMoveNewParentFolderId($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'][0])
-    {
-        list($response) = $this->crmV3ListsFoldersFolderIdMoveNewParentFolderIdWithHttpInfo($folder_id, $new_parent_folder_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdMoveNewParentFolderIdWithHttpInfo
-     *
-     * Moves a folder
-     *
-     * @param  string $folder_id The ID of the folder to move (required)
-     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsFoldersFolderIdMoveNewParentFolderIdWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'][0])
-    {
-        $request = $this->crmV3ListsFoldersFolderIdMoveNewParentFolderIdRequest($folder_id, $new_parent_folder_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdMoveNewParentFolderIdAsync
-     *
-     * Moves a folder
-     *
-     * @param  string $folder_id The ID of the folder to move (required)
-     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersFolderIdMoveNewParentFolderIdAsync($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'][0])
-    {
-        return $this->crmV3ListsFoldersFolderIdMoveNewParentFolderIdAsyncWithHttpInfo($folder_id, $new_parent_folder_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdMoveNewParentFolderIdAsyncWithHttpInfo
-     *
-     * Moves a folder
-     *
-     * @param  string $folder_id The ID of the folder to move (required)
-     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersFolderIdMoveNewParentFolderIdAsyncWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->crmV3ListsFoldersFolderIdMoveNewParentFolderIdRequest($folder_id, $new_parent_folder_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsFoldersFolderIdMoveNewParentFolderId'
-     *
-     * @param  string $folder_id The ID of the folder to move (required)
-     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsFoldersFolderIdMoveNewParentFolderIdRequest($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdMoveNewParentFolderId'][0])
-    {
-
-        // verify the required parameter 'folder_id' is set
-        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling crmV3ListsFoldersFolderIdMoveNewParentFolderId'
-            );
-        }
-
-        // verify the required parameter 'new_parent_folder_id' is set
-        if ($new_parent_folder_id === null || (is_array($new_parent_folder_id) && count($new_parent_folder_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $new_parent_folder_id when calling crmV3ListsFoldersFolderIdMoveNewParentFolderId'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/folders/{folderId}/move/{newParentFolderId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($folder_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'folderId' . '}',
-                ObjectSerializer::toPathValue($folder_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($new_parent_folder_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'newParentFolderId' . '}',
-                ObjectSerializer::toPathValue($new_parent_folder_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdRename
-     *
-     * Rename a folder
-     *
-     * @param  string $folder_id The ID of the folder to rename (required)
-     * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdRename'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsFoldersFolderIdRename($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdRename'][0])
-    {
-        list($response) = $this->crmV3ListsFoldersFolderIdRenameWithHttpInfo($folder_id, $new_folder_name, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdRenameWithHttpInfo
-     *
-     * Rename a folder
-     *
-     * @param  string $folder_id The ID of the folder to rename (required)
-     * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdRename'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsFoldersFolderIdRenameWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdRename'][0])
-    {
-        $request = $this->crmV3ListsFoldersFolderIdRenameRequest($folder_id, $new_folder_name, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdRenameAsync
-     *
-     * Rename a folder
-     *
-     * @param  string $folder_id The ID of the folder to rename (required)
-     * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdRename'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersFolderIdRenameAsync($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdRename'][0])
-    {
-        return $this->crmV3ListsFoldersFolderIdRenameAsyncWithHttpInfo($folder_id, $new_folder_name, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersFolderIdRenameAsyncWithHttpInfo
-     *
-     * Rename a folder
-     *
-     * @param  string $folder_id The ID of the folder to rename (required)
-     * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdRename'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersFolderIdRenameAsyncWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdRename'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->crmV3ListsFoldersFolderIdRenameRequest($folder_id, $new_folder_name, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsFoldersFolderIdRename'
-     *
-     * @param  string $folder_id The ID of the folder to rename (required)
-     * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersFolderIdRename'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsFoldersFolderIdRenameRequest($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['crmV3ListsFoldersFolderIdRename'][0])
-    {
-
-        // verify the required parameter 'folder_id' is set
-        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling crmV3ListsFoldersFolderIdRename'
-            );
-        }
-
-
-
-        $resourcePath = '/crm/v3/lists/folders/{folderId}/rename';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $new_folder_name,
-            'newFolderName', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($folder_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'folderId' . '}',
-                ObjectSerializer::toPathValue($folder_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersMoveList
-     *
-     * Moves a list to a given folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request list_move_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersMoveList'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsFoldersMoveList($list_move_request, string $contentType = self::contentTypes['crmV3ListsFoldersMoveList'][0])
-    {
-        $this->crmV3ListsFoldersMoveListWithHttpInfo($list_move_request, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsFoldersMoveListWithHttpInfo
-     *
-     * Moves a list to a given folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersMoveList'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsFoldersMoveListWithHttpInfo($list_move_request, string $contentType = self::contentTypes['crmV3ListsFoldersMoveList'][0])
-    {
-        $request = $this->crmV3ListsFoldersMoveListRequest($list_move_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsFoldersMoveListAsync
-     *
-     * Moves a list to a given folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersMoveList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersMoveListAsync($list_move_request, string $contentType = self::contentTypes['crmV3ListsFoldersMoveList'][0])
-    {
-        return $this->crmV3ListsFoldersMoveListAsyncWithHttpInfo($list_move_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsFoldersMoveListAsyncWithHttpInfo
-     *
-     * Moves a list to a given folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersMoveList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFoldersMoveListAsyncWithHttpInfo($list_move_request, string $contentType = self::contentTypes['crmV3ListsFoldersMoveList'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsFoldersMoveListRequest($list_move_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsFoldersMoveList'
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFoldersMoveList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsFoldersMoveListRequest($list_move_request, string $contentType = self::contentTypes['crmV3ListsFoldersMoveList'][0])
-    {
-
-        // verify the required parameter 'list_move_request' is set
-        if ($list_move_request === null || (is_array($list_move_request) && count($list_move_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_move_request when calling crmV3ListsFoldersMoveList'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/folders/move-list';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($list_move_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_move_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $list_move_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsFolders_0
-     *
-     * Creates a folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request list_folder_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsFolders_0($list_folder_create_request, string $contentType = self::contentTypes['crmV3ListsFolders_0'][0])
-    {
-        list($response) = $this->crmV3ListsFolders_0WithHttpInfo($list_folder_create_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsFolders_0WithHttpInfo
-     *
-     * Creates a folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsFolders_0WithHttpInfo($list_folder_create_request, string $contentType = self::contentTypes['crmV3ListsFolders_0'][0])
-    {
-        $request = $this->crmV3ListsFolders_0Request($list_folder_create_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsFolders_0Async
-     *
-     * Creates a folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFolders_0Async($list_folder_create_request, string $contentType = self::contentTypes['crmV3ListsFolders_0'][0])
-    {
-        return $this->crmV3ListsFolders_0AsyncWithHttpInfo($list_folder_create_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsFolders_0AsyncWithHttpInfo
-     *
-     * Creates a folder
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsFolders_0AsyncWithHttpInfo($list_folder_create_request, string $contentType = self::contentTypes['crmV3ListsFolders_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderCreateResponse';
-        $request = $this->crmV3ListsFolders_0Request($list_folder_create_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsFolders_0'
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListFolderCreateRequest $list_folder_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsFolders_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsFolders_0Request($list_folder_create_request, string $contentType = self::contentTypes['crmV3ListsFolders_0'][0])
-    {
-
-        // verify the required parameter 'list_folder_create_request' is set
-        if ($list_folder_create_request === null || (is_array($list_folder_create_request) && count($list_folder_create_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_folder_create_request when calling crmV3ListsFolders_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/folders';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($list_folder_create_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_folder_create_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $list_folder_create_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsIdmapping
-     *
-     * Translate Legacy List Id to Modern List Id
-     *
-     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsIdmapping($legacy_list_id = null, string $contentType = self::contentTypes['crmV3ListsIdmapping'][0])
-    {
-        list($response) = $this->crmV3ListsIdmappingWithHttpInfo($legacy_list_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsIdmappingWithHttpInfo
-     *
-     * Translate Legacy List Id to Modern List Id
-     *
-     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsIdmappingWithHttpInfo($legacy_list_id = null, string $contentType = self::contentTypes['crmV3ListsIdmapping'][0])
-    {
-        $request = $this->crmV3ListsIdmappingRequest($legacy_list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsIdmappingAsync
-     *
-     * Translate Legacy List Id to Modern List Id
-     *
-     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsIdmappingAsync($legacy_list_id = null, string $contentType = self::contentTypes['crmV3ListsIdmapping'][0])
-    {
-        return $this->crmV3ListsIdmappingAsyncWithHttpInfo($legacy_list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsIdmappingAsyncWithHttpInfo
-     *
-     * Translate Legacy List Id to Modern List Id
-     *
-     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsIdmappingAsyncWithHttpInfo($legacy_list_id = null, string $contentType = self::contentTypes['crmV3ListsIdmapping'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping';
-        $request = $this->crmV3ListsIdmappingRequest($legacy_list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsIdmapping'
-     *
-     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsIdmappingRequest($legacy_list_id = null, string $contentType = self::contentTypes['crmV3ListsIdmapping'][0])
-    {
-
-
-
-        $resourcePath = '/crm/v3/lists/idmapping';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $legacy_list_id,
-            'legacyListId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsIdmapping_0
-     *
-     * Translate Legacy List Id to Modern List Id in Batch
-     *
-     * @param  string[] $request_body request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsIdmapping_0($request_body, string $contentType = self::contentTypes['crmV3ListsIdmapping_0'][0])
-    {
-        list($response) = $this->crmV3ListsIdmapping_0WithHttpInfo($request_body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsIdmapping_0WithHttpInfo
-     *
-     * Translate Legacy List Id to Modern List Id in Batch
-     *
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsIdmapping_0WithHttpInfo($request_body, string $contentType = self::contentTypes['crmV3ListsIdmapping_0'][0])
-    {
-        $request = $this->crmV3ListsIdmapping_0Request($request_body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsIdmapping_0Async
-     *
-     * Translate Legacy List Id to Modern List Id in Batch
-     *
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsIdmapping_0Async($request_body, string $contentType = self::contentTypes['crmV3ListsIdmapping_0'][0])
-    {
-        return $this->crmV3ListsIdmapping_0AsyncWithHttpInfo($request_body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsIdmapping_0AsyncWithHttpInfo
-     *
-     * Translate Legacy List Id to Modern List Id in Batch
-     *
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsIdmapping_0AsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['crmV3ListsIdmapping_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping';
-        $request = $this->crmV3ListsIdmapping_0Request($request_body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsIdmapping_0'
-     *
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsIdmapping_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsIdmapping_0Request($request_body, string $contentType = self::contentTypes['crmV3ListsIdmapping_0'][0])
-    {
-
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling crmV3ListsIdmapping_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/idmapping';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($request_body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $request_body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListId
+     * Operation getById
      *
      * Fetch List by ID
      *
      * @param  string $list_id The **ILS ID** of the list to fetch. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsListId($list_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsListId'][0])
+    public function getById($list_id, $include_filters = false, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->crmV3ListsListIdWithHttpInfo($list_id, $include_filters, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($list_id, $include_filters, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsListIdWithHttpInfo
+     * Operation getByIdWithHttpInfo
      *
      * Fetch List by ID
      *
      * @param  string $list_id The **ILS ID** of the list to fetch. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsListIdWithHttpInfo($list_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsListId'][0])
+    public function getByIdWithHttpInfo($list_id, $include_filters = false, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->crmV3ListsListIdRequest($list_id, $include_filters, $contentType);
+        $request = $this->getByIdRequest($list_id, $include_filters, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2811,20 +2546,20 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdAsync
+     * Operation getByIdAsync
      *
      * Fetch List by ID
      *
      * @param  string $list_id The **ILS ID** of the list to fetch. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdAsync($list_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsListId'][0])
+    public function getByIdAsync($list_id, $include_filters = false, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->crmV3ListsListIdAsyncWithHttpInfo($list_id, $include_filters, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($list_id, $include_filters, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2833,21 +2568,21 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdAsyncWithHttpInfo
+     * Operation getByIdAsyncWithHttpInfo
      *
      * Fetch List by ID
      *
      * @param  string $list_id The **ILS ID** of the list to fetch. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdAsyncWithHttpInfo($list_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsListId'][0])
+    public function getByIdAsyncWithHttpInfo($list_id, $include_filters = false, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse';
-        $request = $this->crmV3ListsListIdRequest($list_id, $include_filters, $contentType);
+        $request = $this->getByIdRequest($list_id, $include_filters, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2886,22 +2621,22 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsListId'
+     * Create request for operation 'getById'
      *
      * @param  string $list_id The **ILS ID** of the list to fetch. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsListIdRequest($list_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsListId'][0])
+    public function getByIdRequest($list_id, $include_filters = false, string $contentType = self::contentTypes['getById'][0])
     {
 
         // verify the required parameter 'list_id' is set
         if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListId'
+                'Missing the required parameter $list_id when calling getById'
             );
         }
 
@@ -2993,7 +2728,920 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMemberships
+     * Operation getByName
+     *
+     * Retrieve List by Name
+     *
+     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
+     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ListFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function getByName($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['getByName'][0])
+    {
+        list($response) = $this->getByNameWithHttpInfo($list_name, $object_type_id, $include_filters, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getByNameWithHttpInfo
+     *
+     * Retrieve List by Name
+     *
+     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
+     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getByNameWithHttpInfo($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['getByName'][0])
+    {
+        $request = $this->getByNameRequest($list_name, $object_type_id, $include_filters, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getByNameAsync
+     *
+     * Retrieve List by Name
+     *
+     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
+     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getByNameAsync($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['getByName'][0])
+    {
+        return $this->getByNameAsyncWithHttpInfo($list_name, $object_type_id, $include_filters, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getByNameAsyncWithHttpInfo
+     *
+     * Retrieve List by Name
+     *
+     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
+     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getByNameAsyncWithHttpInfo($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['getByName'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse';
+        $request = $this->getByNameRequest($list_name, $object_type_id, $include_filters, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getByName'
+     *
+     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
+     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
+     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getByNameRequest($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['getByName'][0])
+    {
+
+        // verify the required parameter 'list_name' is set
+        if ($list_name === null || (is_array($list_name) && count($list_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_name when calling getByName'
+            );
+        }
+
+        // verify the required parameter 'object_type_id' is set
+        if ($object_type_id === null || (is_array($object_type_id) && count($object_type_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type_id when calling getByName'
+            );
+        }
+
+
+
+        $resourcePath = '/crm/v3/lists/object-type-id/{objectTypeId}/name/{listName}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_filters,
+            'includeFilters', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($list_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listName' . '}',
+                ObjectSerializer::toPathValue($list_name),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($object_type_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectTypeId' . '}',
+                ObjectSerializer::toPathValue($object_type_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getConversionDetails
+     *
+     * Retrieve the conversion details for a list
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDetails'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function getConversionDetails($list_id, string $contentType = self::contentTypes['getConversionDetails'][0])
+    {
+        list($response) = $this->getConversionDetailsWithHttpInfo($list_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getConversionDetailsWithHttpInfo
+     *
+     * Retrieve the conversion details for a list
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDetails'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getConversionDetailsWithHttpInfo($list_id, string $contentType = self::contentTypes['getConversionDetails'][0])
+    {
+        $request = $this->getConversionDetailsRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getConversionDetailsAsync
+     *
+     * Retrieve the conversion details for a list
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDetails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionDetailsAsync($list_id, string $contentType = self::contentTypes['getConversionDetails'][0])
+    {
+        return $this->getConversionDetailsAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getConversionDetailsAsyncWithHttpInfo
+     *
+     * Retrieve the conversion details for a list
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDetails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionDetailsAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['getConversionDetails'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse';
+        $request = $this->getConversionDetailsRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getConversionDetails'
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDetails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getConversionDetailsRequest($list_id, string $contentType = self::contentTypes['getConversionDetails'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling getConversionDetails'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/schedule-conversion';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getLists
+     *
+     * Get lists record is member of
+     *
+     * @param  string $object_type_id Object type id of the record (required)
+     * @param  string $record_id Id of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLists'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function getLists($object_type_id, $record_id, string $contentType = self::contentTypes['getLists'][0])
+    {
+        list($response) = $this->getListsWithHttpInfo($object_type_id, $record_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getListsWithHttpInfo
+     *
+     * Get lists record is member of
+     *
+     * @param  string $object_type_id Object type id of the record (required)
+     * @param  string $record_id Id of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLists'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getListsWithHttpInfo($object_type_id, $record_id, string $contentType = self::contentTypes['getLists'][0])
+    {
+        $request = $this->getListsRequest($object_type_id, $record_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getListsAsync
+     *
+     * Get lists record is member of
+     *
+     * @param  string $object_type_id Object type id of the record (required)
+     * @param  string $record_id Id of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getListsAsync($object_type_id, $record_id, string $contentType = self::contentTypes['getLists'][0])
+    {
+        return $this->getListsAsyncWithHttpInfo($object_type_id, $record_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getListsAsyncWithHttpInfo
+     *
+     * Get lists record is member of
+     *
+     * @param  string $object_type_id Object type id of the record (required)
+     * @param  string $record_id Id of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getListsAsyncWithHttpInfo($object_type_id, $record_id, string $contentType = self::contentTypes['getLists'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership';
+        $request = $this->getListsRequest($object_type_id, $record_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getLists'
+     *
+     * @param  string $object_type_id Object type id of the record (required)
+     * @param  string $record_id Id of the record (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getListsRequest($object_type_id, $record_id, string $contentType = self::contentTypes['getLists'][0])
+    {
+
+        // verify the required parameter 'object_type_id' is set
+        if ($object_type_id === null || (is_array($object_type_id) && count($object_type_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type_id when calling getLists'
+            );
+        }
+
+        // verify the required parameter 'record_id' is set
+        if ($record_id === null || (is_array($record_id) && count($record_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $record_id when calling getLists'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/records/{objectTypeId}/{recordId}/memberships';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($object_type_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectTypeId' . '}',
+                ObjectSerializer::toPathValue($object_type_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($record_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'recordId' . '}',
+                ObjectSerializer::toPathValue($record_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPage
      *
      * Fetch List Memberships Ordered by ID
      *
@@ -3001,20 +3649,20 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsListIdMemberships($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMemberships'][0])
+    public function getPage($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->crmV3ListsListIdMembershipsWithHttpInfo($list_id, $after, $before, $limit, $contentType);
+        list($response) = $this->getPageWithHttpInfo($list_id, $after, $before, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsWithHttpInfo
+     * Operation getPageWithHttpInfo
      *
      * Fetch List Memberships Ordered by ID
      *
@@ -3022,15 +3670,15 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsListIdMembershipsWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMemberships'][0])
+    public function getPageWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->crmV3ListsListIdMembershipsRequest($list_id, $after, $before, $limit, $contentType);
+        $request = $this->getPageRequest($list_id, $after, $before, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3116,7 +3764,7 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsAsync
+     * Operation getPageAsync
      *
      * Fetch List Memberships Ordered by ID
      *
@@ -3124,14 +3772,14 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdMembershipsAsync($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMemberships'][0])
+    public function getPageAsync($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->crmV3ListsListIdMembershipsAsyncWithHttpInfo($list_id, $after, $before, $limit, $contentType)
+        return $this->getPageAsyncWithHttpInfo($list_id, $after, $before, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3140,7 +3788,7 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsAsyncWithHttpInfo
+     * Operation getPageAsyncWithHttpInfo
      *
      * Fetch List Memberships Ordered by ID
      *
@@ -3148,15 +3796,15 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdMembershipsAsyncWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMemberships'][0])
+    public function getPageAsyncWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId';
-        $request = $this->crmV3ListsListIdMembershipsRequest($list_id, $after, $before, $limit, $contentType);
+        $request = $this->getPageRequest($list_id, $after, $before, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3195,24 +3843,24 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsListIdMemberships'
+     * Create request for operation 'getPage'
      *
      * @param  string $list_id The **ILS ID** of the list. (required)
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsListIdMembershipsRequest($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMemberships'][0])
+    public function getPageRequest($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPage'][0])
     {
 
         // verify the required parameter 'list_id' is set
         if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMemberships'
+                'Missing the required parameter $list_id when calling getPage'
             );
         }
 
@@ -3324,867 +3972,7 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsAdd
-     *
-     * Add Records to a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAdd'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsListIdMembershipsAdd($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAdd'][0])
-    {
-        list($response) = $this->crmV3ListsListIdMembershipsAddWithHttpInfo($list_id, $request_body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddWithHttpInfo
-     *
-     * Add Records to a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAdd'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdMembershipsAddWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAdd'][0])
-    {
-        $request = $this->crmV3ListsListIdMembershipsAddRequest($list_id, $request_body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddAsync
-     *
-     * Add Records to a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAdd'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsAddAsync($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAdd'][0])
-    {
-        return $this->crmV3ListsListIdMembershipsAddAsyncWithHttpInfo($list_id, $request_body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddAsyncWithHttpInfo
-     *
-     * Add Records to a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAdd'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsAddAsyncWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAdd'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse';
-        $request = $this->crmV3ListsListIdMembershipsAddRequest($list_id, $request_body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdMembershipsAdd'
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAdd'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdMembershipsAddRequest($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAdd'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMembershipsAdd'
-            );
-        }
-
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling crmV3ListsListIdMembershipsAdd'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/memberships/add';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($request_body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $request_body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddAndRemove
-     *
-     * Add and/or Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request membership_change_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsListIdMembershipsAddAndRemove($list_id, $membership_change_request, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'][0])
-    {
-        list($response) = $this->crmV3ListsListIdMembershipsAddAndRemoveWithHttpInfo($list_id, $membership_change_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddAndRemoveWithHttpInfo
-     *
-     * Add and/or Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdMembershipsAddAndRemoveWithHttpInfo($list_id, $membership_change_request, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'][0])
-    {
-        $request = $this->crmV3ListsListIdMembershipsAddAndRemoveRequest($list_id, $membership_change_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddAndRemoveAsync
-     *
-     * Add and/or Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsAddAndRemoveAsync($list_id, $membership_change_request, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'][0])
-    {
-        return $this->crmV3ListsListIdMembershipsAddAndRemoveAsyncWithHttpInfo($list_id, $membership_change_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddAndRemoveAsyncWithHttpInfo
-     *
-     * Add and/or Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsAddAndRemoveAsyncWithHttpInfo($list_id, $membership_change_request, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse';
-        $request = $this->crmV3ListsListIdMembershipsAddAndRemoveRequest($list_id, $membership_change_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdMembershipsAddAndRemove'
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\MembershipChangeRequest $membership_change_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdMembershipsAddAndRemoveRequest($list_id, $membership_change_request, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddAndRemove'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMembershipsAddAndRemove'
-            );
-        }
-
-        // verify the required parameter 'membership_change_request' is set
-        if ($membership_change_request === null || (is_array($membership_change_request) && count($membership_change_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $membership_change_request when calling crmV3ListsListIdMembershipsAddAndRemove'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/memberships/add-and-remove';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($membership_change_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($membership_change_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $membership_change_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddFromSourceListId
-     *
-     * Add All Records from a Source List to a Destination List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
-     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsListIdMembershipsAddFromSourceListId($list_id, $source_list_id, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'][0])
-    {
-        $this->crmV3ListsListIdMembershipsAddFromSourceListIdWithHttpInfo($list_id, $source_list_id, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddFromSourceListIdWithHttpInfo
-     *
-     * Add All Records from a Source List to a Destination List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
-     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdMembershipsAddFromSourceListIdWithHttpInfo($list_id, $source_list_id, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'][0])
-    {
-        $request = $this->crmV3ListsListIdMembershipsAddFromSourceListIdRequest($list_id, $source_list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddFromSourceListIdAsync
-     *
-     * Add All Records from a Source List to a Destination List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
-     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsAddFromSourceListIdAsync($list_id, $source_list_id, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'][0])
-    {
-        return $this->crmV3ListsListIdMembershipsAddFromSourceListIdAsyncWithHttpInfo($list_id, $source_list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsAddFromSourceListIdAsyncWithHttpInfo
-     *
-     * Add All Records from a Source List to a Destination List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
-     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsAddFromSourceListIdAsyncWithHttpInfo($list_id, $source_list_id, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsListIdMembershipsAddFromSourceListIdRequest($list_id, $source_list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdMembershipsAddFromSourceListId'
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; *destination list*, which the *source list* records are added to. (required)
-     * @param  string $source_list_id The **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdMembershipsAddFromSourceListIdRequest($list_id, $source_list_id, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsAddFromSourceListId'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMembershipsAddFromSourceListId'
-            );
-        }
-
-        // verify the required parameter 'source_list_id' is set
-        if ($source_list_id === null || (is_array($source_list_id) && count($source_list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $source_list_id when calling crmV3ListsListIdMembershipsAddFromSourceListId'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/memberships/add-from/{sourceListId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($source_list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'sourceListId' . '}',
-                ObjectSerializer::toPathValue($source_list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsJoinOrder
+     * Operation getPageOrderedByAddedToListDate
      *
      * Fetch List Memberships Ordered by Added to List Date
      *
@@ -4192,20 +3980,20 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsListIdMembershipsJoinOrder($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'][0])
+    public function getPageOrderedByAddedToListDate($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
     {
-        list($response) = $this->crmV3ListsListIdMembershipsJoinOrderWithHttpInfo($list_id, $after, $before, $limit, $contentType);
+        list($response) = $this->getPageOrderedByAddedToListDateWithHttpInfo($list_id, $after, $before, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsJoinOrderWithHttpInfo
+     * Operation getPageOrderedByAddedToListDateWithHttpInfo
      *
      * Fetch List Memberships Ordered by Added to List Date
      *
@@ -4213,15 +4001,15 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsListIdMembershipsJoinOrderWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'][0])
+    public function getPageOrderedByAddedToListDateWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
     {
-        $request = $this->crmV3ListsListIdMembershipsJoinOrderRequest($list_id, $after, $before, $limit, $contentType);
+        $request = $this->getPageOrderedByAddedToListDateRequest($list_id, $after, $before, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4307,7 +4095,7 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsJoinOrderAsync
+     * Operation getPageOrderedByAddedToListDateAsync
      *
      * Fetch List Memberships Ordered by Added to List Date
      *
@@ -4315,14 +4103,14 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdMembershipsJoinOrderAsync($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'][0])
+    public function getPageOrderedByAddedToListDateAsync($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
     {
-        return $this->crmV3ListsListIdMembershipsJoinOrderAsyncWithHttpInfo($list_id, $after, $before, $limit, $contentType)
+        return $this->getPageOrderedByAddedToListDateAsyncWithHttpInfo($list_id, $after, $before, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4331,7 +4119,7 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsJoinOrderAsyncWithHttpInfo
+     * Operation getPageOrderedByAddedToListDateAsyncWithHttpInfo
      *
      * Fetch List Memberships Ordered by Added to List Date
      *
@@ -4339,15 +4127,15 @@ class BasicApi
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdMembershipsJoinOrderAsyncWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'][0])
+    public function getPageOrderedByAddedToListDateAsyncWithHttpInfo($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseJoinTimeAndRecordId';
-        $request = $this->crmV3ListsListIdMembershipsJoinOrderRequest($list_id, $after, $before, $limit, $contentType);
+        $request = $this->getPageOrderedByAddedToListDateRequest($list_id, $after, $before, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4386,24 +4174,24 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsListIdMembershipsJoinOrder'
+     * Create request for operation 'getPageOrderedByAddedToListDate'
      *
      * @param  string $list_id The **ILS ID** of the list. (required)
      * @param  string|null $after The paging offset token for the page that comes &#x60;after&#x60; the previously requested records.  If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the &#x60;before&#x60; offset. (optional)
      * @param  string|null $before The paging offset token for the page that comes &#x60;before&#x60; the previously requested records.  If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order. (optional)
      * @param  int|null $limit The number of records to return in the response. The maximum &#x60;limit&#x60; is 250. (optional, default to 100)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageOrderedByAddedToListDate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsListIdMembershipsJoinOrderRequest($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsJoinOrder'][0])
+    public function getPageOrderedByAddedToListDateRequest($list_id, $after = null, $before = null, $limit = 100, string $contentType = self::contentTypes['getPageOrderedByAddedToListDate'][0])
     {
 
         // verify the required parameter 'list_id' is set
         if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMembershipsJoinOrder'
+                'Missing the required parameter $list_id when calling getPageOrderedByAddedToListDate'
             );
         }
 
@@ -4515,1624 +4303,38 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdMembershipsRemove
-     *
-     * Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsRemove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsListIdMembershipsRemove($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsRemove'][0])
-    {
-        list($response) = $this->crmV3ListsListIdMembershipsRemoveWithHttpInfo($list_id, $request_body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsRemoveWithHttpInfo
-     *
-     * Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsRemove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdMembershipsRemoveWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsRemove'][0])
-    {
-        $request = $this->crmV3ListsListIdMembershipsRemoveRequest($list_id, $request_body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsRemoveAsync
-     *
-     * Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsRemove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsRemoveAsync($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsRemove'][0])
-    {
-        return $this->crmV3ListsListIdMembershipsRemoveAsyncWithHttpInfo($list_id, $request_body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMembershipsRemoveAsyncWithHttpInfo
-     *
-     * Remove Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsRemove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMembershipsRemoveAsyncWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsRemove'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse';
-        $request = $this->crmV3ListsListIdMembershipsRemoveRequest($list_id, $request_body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdMembershipsRemove'
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string[] $request_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMembershipsRemove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdMembershipsRemoveRequest($list_id, $request_body, string $contentType = self::contentTypes['crmV3ListsListIdMembershipsRemove'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMembershipsRemove'
-            );
-        }
-
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling crmV3ListsListIdMembershipsRemove'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/memberships/remove';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($request_body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $request_body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMemberships_0
-     *
-     * Delete All Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsListIdMemberships_0($list_id, string $contentType = self::contentTypes['crmV3ListsListIdMemberships_0'][0])
-    {
-        $this->crmV3ListsListIdMemberships_0WithHttpInfo($list_id, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsListIdMemberships_0WithHttpInfo
-     *
-     * Delete All Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdMemberships_0WithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdMemberships_0'][0])
-    {
-        $request = $this->crmV3ListsListIdMemberships_0Request($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdMemberships_0Async
-     *
-     * Delete All Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMemberships_0Async($list_id, string $contentType = self::contentTypes['crmV3ListsListIdMemberships_0'][0])
-    {
-        return $this->crmV3ListsListIdMemberships_0AsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdMemberships_0AsyncWithHttpInfo
-     *
-     * Delete All Records from a List
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdMemberships_0AsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdMemberships_0'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsListIdMemberships_0Request($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdMemberships_0'
-     *
-     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdMemberships_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdMemberships_0Request($list_id, string $contentType = self::contentTypes['crmV3ListsListIdMemberships_0'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdMemberships_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/memberships';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdRestore
-     *
-     * Restore a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdRestore'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsListIdRestore($list_id, string $contentType = self::contentTypes['crmV3ListsListIdRestore'][0])
-    {
-        $this->crmV3ListsListIdRestoreWithHttpInfo($list_id, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsListIdRestoreWithHttpInfo
-     *
-     * Restore a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdRestore'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdRestoreWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdRestore'][0])
-    {
-        $request = $this->crmV3ListsListIdRestoreRequest($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdRestoreAsync
-     *
-     * Restore a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdRestore'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdRestoreAsync($list_id, string $contentType = self::contentTypes['crmV3ListsListIdRestore'][0])
-    {
-        return $this->crmV3ListsListIdRestoreAsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdRestoreAsyncWithHttpInfo
-     *
-     * Restore a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdRestore'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdRestoreAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdRestore'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsListIdRestoreRequest($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdRestore'
-     *
-     * @param  string $list_id The **ILS ID** of the list to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdRestore'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdRestoreRequest($list_id, string $contentType = self::contentTypes['crmV3ListsListIdRestore'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdRestore'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/restore';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion
-     *
-     * Retrieve the conversion details for a list
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsListIdScheduleConversion($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion'][0])
-    {
-        list($response) = $this->crmV3ListsListIdScheduleConversionWithHttpInfo($list_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversionWithHttpInfo
-     *
-     * Retrieve the conversion details for a list
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdScheduleConversionWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion'][0])
-    {
-        $request = $this->crmV3ListsListIdScheduleConversionRequest($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversionAsync
-     *
-     * Retrieve the conversion details for a list
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdScheduleConversionAsync($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion'][0])
-    {
-        return $this->crmV3ListsListIdScheduleConversionAsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversionAsyncWithHttpInfo
-     *
-     * Retrieve the conversion details for a list
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdScheduleConversionAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse';
-        $request = $this->crmV3ListsListIdScheduleConversionRequest($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdScheduleConversion'
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdScheduleConversionRequest($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdScheduleConversion'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/schedule-conversion';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_0
-     *
-     * Schedule or update the conversion of a list to static
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time public_list_conversion_time (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsListIdScheduleConversion_0($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_0'][0])
-    {
-        list($response) = $this->crmV3ListsListIdScheduleConversion_0WithHttpInfo($list_id, $public_list_conversion_time, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_0WithHttpInfo
-     *
-     * Schedule or update the conversion of a list to static
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdScheduleConversion_0WithHttpInfo($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_0'][0])
-    {
-        $request = $this->crmV3ListsListIdScheduleConversion_0Request($list_id, $public_list_conversion_time, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_0Async
-     *
-     * Schedule or update the conversion of a list to static
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdScheduleConversion_0Async($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_0'][0])
-    {
-        return $this->crmV3ListsListIdScheduleConversion_0AsyncWithHttpInfo($list_id, $public_list_conversion_time, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_0AsyncWithHttpInfo
-     *
-     * Schedule or update the conversion of a list to static
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdScheduleConversion_0AsyncWithHttpInfo($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse';
-        $request = $this->crmV3ListsListIdScheduleConversion_0Request($list_id, $public_list_conversion_time, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdScheduleConversion_0'
-     *
-     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
-     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdScheduleConversion_0Request($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_0'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdScheduleConversion_0'
-            );
-        }
-
-        // verify the required parameter 'public_list_conversion_time' is set
-        if ($public_list_conversion_time === null || (is_array($public_list_conversion_time) && count($public_list_conversion_time) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $public_list_conversion_time when calling crmV3ListsListIdScheduleConversion_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/schedule-conversion';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($public_list_conversion_time)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($public_list_conversion_time), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $public_list_conversion_time;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_1
-     *
-     * Cancel the conversion of a list
-     *
-     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_1'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsListIdScheduleConversion_1($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_1'][0])
-    {
-        $this->crmV3ListsListIdScheduleConversion_1WithHttpInfo($list_id, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_1WithHttpInfo
-     *
-     * Cancel the conversion of a list
-     *
-     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_1'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListIdScheduleConversion_1WithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_1'][0])
-    {
-        $request = $this->crmV3ListsListIdScheduleConversion_1Request($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_1Async
-     *
-     * Cancel the conversion of a list
-     *
-     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdScheduleConversion_1Async($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_1'][0])
-    {
-        return $this->crmV3ListsListIdScheduleConversion_1AsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListIdScheduleConversion_1AsyncWithHttpInfo
-     *
-     * Cancel the conversion of a list
-     *
-     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListIdScheduleConversion_1AsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_1'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsListIdScheduleConversion_1Request($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListIdScheduleConversion_1'
-     *
-     * @param  string $list_id The ID of the list that you want to cancel the conversion for. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdScheduleConversion_1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListIdScheduleConversion_1Request($list_id, string $contentType = self::contentTypes['crmV3ListsListIdScheduleConversion_1'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdScheduleConversion_1'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}/schedule-conversion';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListIdSizeAndEditsHistoryBetween
+     * Operation getSizeAndEditsHistory
      *
      * @param  string $list_id  (required)
      * @param  \DateTime|null $end_date  (optional)
      * @param  \DateTime|null $start_date  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSizeAndEditsHistory'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListSizeAndEditHistoryResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsListIdSizeAndEditsHistoryBetween($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'][0])
+    public function getSizeAndEditsHistory($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['getSizeAndEditsHistory'][0])
     {
-        list($response) = $this->crmV3ListsListIdSizeAndEditsHistoryBetweenWithHttpInfo($list_id, $end_date, $start_date, $contentType);
+        list($response) = $this->getSizeAndEditsHistoryWithHttpInfo($list_id, $end_date, $start_date, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsListIdSizeAndEditsHistoryBetweenWithHttpInfo
+     * Operation getSizeAndEditsHistoryWithHttpInfo
      *
      * @param  string $list_id  (required)
      * @param  \DateTime|null $end_date  (optional)
      * @param  \DateTime|null $start_date  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSizeAndEditsHistory'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListSizeAndEditHistoryResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsListIdSizeAndEditsHistoryBetweenWithHttpInfo($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'][0])
+    public function getSizeAndEditsHistoryWithHttpInfo($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['getSizeAndEditsHistory'][0])
     {
-        $request = $this->crmV3ListsListIdSizeAndEditsHistoryBetweenRequest($list_id, $end_date, $start_date, $contentType);
+        $request = $this->getSizeAndEditsHistoryRequest($list_id, $end_date, $start_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6218,19 +4420,19 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdSizeAndEditsHistoryBetweenAsync
+     * Operation getSizeAndEditsHistoryAsync
      *
      * @param  string $list_id  (required)
      * @param  \DateTime|null $end_date  (optional)
      * @param  \DateTime|null $start_date  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSizeAndEditsHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdSizeAndEditsHistoryBetweenAsync($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'][0])
+    public function getSizeAndEditsHistoryAsync($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['getSizeAndEditsHistory'][0])
     {
-        return $this->crmV3ListsListIdSizeAndEditsHistoryBetweenAsyncWithHttpInfo($list_id, $end_date, $start_date, $contentType)
+        return $this->getSizeAndEditsHistoryAsyncWithHttpInfo($list_id, $end_date, $start_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6239,20 +4441,20 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdSizeAndEditsHistoryBetweenAsyncWithHttpInfo
+     * Operation getSizeAndEditsHistoryAsyncWithHttpInfo
      *
      * @param  string $list_id  (required)
      * @param  \DateTime|null $end_date  (optional)
      * @param  \DateTime|null $start_date  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSizeAndEditsHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdSizeAndEditsHistoryBetweenAsyncWithHttpInfo($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'][0])
+    public function getSizeAndEditsHistoryAsyncWithHttpInfo($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['getSizeAndEditsHistory'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListSizeAndEditHistoryResponse';
-        $request = $this->crmV3ListsListIdSizeAndEditsHistoryBetweenRequest($list_id, $end_date, $start_date, $contentType);
+        $request = $this->getSizeAndEditsHistoryRequest($list_id, $end_date, $start_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6291,23 +4493,23 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsListIdSizeAndEditsHistoryBetween'
+     * Create request for operation 'getSizeAndEditsHistory'
      *
      * @param  string $list_id  (required)
      * @param  \DateTime|null $end_date  (optional)
      * @param  \DateTime|null $start_date  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSizeAndEditsHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsListIdSizeAndEditsHistoryBetweenRequest($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['crmV3ListsListIdSizeAndEditsHistoryBetween'][0])
+    public function getSizeAndEditsHistoryRequest($list_id, $end_date = null, $start_date = null, string $contentType = self::contentTypes['getSizeAndEditsHistory'][0])
     {
 
         // verify the required parameter 'list_id' is set
         if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdSizeAndEditsHistoryBetween'
+                'Missing the required parameter $list_id when calling getSizeAndEditsHistory'
             );
         }
 
@@ -6409,42 +4611,2974 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListFilters
+     * Operation move
+     *
+     * Moves a folder
+     *
+     * @param  string $folder_id The ID of the folder to move (required)
+     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function move($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    {
+        list($response) = $this->moveWithHttpInfo($folder_id, $new_parent_folder_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation moveWithHttpInfo
+     *
+     * Moves a folder
+     *
+     * @param  string $folder_id The ID of the folder to move (required)
+     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function moveWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    {
+        $request = $this->moveRequest($folder_id, $new_parent_folder_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation moveAsync
+     *
+     * Moves a folder
+     *
+     * @param  string $folder_id The ID of the folder to move (required)
+     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveAsync($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    {
+        return $this->moveAsyncWithHttpInfo($folder_id, $new_parent_folder_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation moveAsyncWithHttpInfo
+     *
+     * Moves a folder
+     *
+     * @param  string $folder_id The ID of the folder to move (required)
+     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveAsyncWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
+        $request = $this->moveRequest($folder_id, $new_parent_folder_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'move'
+     *
+     * @param  string $folder_id The ID of the folder to move (required)
+     * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function moveRequest($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    {
+
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling move'
+            );
+        }
+
+        // verify the required parameter 'new_parent_folder_id' is set
+        if ($new_parent_folder_id === null || (is_array($new_parent_folder_id) && count($new_parent_folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $new_parent_folder_id when calling move'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/folders/{folderId}/move/{newParentFolderId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'folderId' . '}',
+                ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($new_parent_folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'newParentFolderId' . '}',
+                ObjectSerializer::toPathValue($new_parent_folder_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation moveList
+     *
+     * Moves a list to a given folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request list_move_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function moveList($list_move_request, string $contentType = self::contentTypes['moveList'][0])
+    {
+        $this->moveListWithHttpInfo($list_move_request, $contentType);
+    }
+
+    /**
+     * Operation moveListWithHttpInfo
+     *
+     * Moves a list to a given folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function moveListWithHttpInfo($list_move_request, string $contentType = self::contentTypes['moveList'][0])
+    {
+        $request = $this->moveListRequest($list_move_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation moveListAsync
+     *
+     * Moves a list to a given folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveListAsync($list_move_request, string $contentType = self::contentTypes['moveList'][0])
+    {
+        return $this->moveListAsyncWithHttpInfo($list_move_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation moveListAsyncWithHttpInfo
+     *
+     * Moves a list to a given folder
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveListAsyncWithHttpInfo($list_move_request, string $contentType = self::contentTypes['moveList'][0])
+    {
+        $returnType = '';
+        $request = $this->moveListRequest($list_move_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'moveList'
+     *
+     * @param  \HubSpot\Client\Crm\Lists\Model\ListMoveRequest $list_move_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function moveListRequest($list_move_request, string $contentType = self::contentTypes['moveList'][0])
+    {
+
+        // verify the required parameter 'list_move_request' is set
+        if ($list_move_request === null || (is_array($list_move_request) && count($list_move_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_move_request when calling moveList'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/folders/move-list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($list_move_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_move_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $list_move_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation remove
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function remove($list_id, string $contentType = self::contentTypes['remove'][0])
+    {
+        $this->removeWithHttpInfo($list_id, $contentType);
+    }
+
+    /**
+     * Operation removeWithHttpInfo
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeWithHttpInfo($list_id, string $contentType = self::contentTypes['remove'][0])
+    {
+        $request = $this->removeRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAsync
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAsync($list_id, string $contentType = self::contentTypes['remove'][0])
+    {
+        return $this->removeAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAsyncWithHttpInfo
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['remove'][0])
+    {
+        $returnType = '';
+        $request = $this->removeRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'remove'
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeRequest($list_id, string $contentType = self::contentTypes['remove'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling remove'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeAll
+     *
+     * Delete All Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAll'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeAll($list_id, string $contentType = self::contentTypes['removeAll'][0])
+    {
+        $this->removeAllWithHttpInfo($list_id, $contentType);
+    }
+
+    /**
+     * Operation removeAllWithHttpInfo
+     *
+     * Delete All Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAll'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeAllWithHttpInfo($list_id, string $contentType = self::contentTypes['removeAll'][0])
+    {
+        $request = $this->removeAllRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAllAsync
+     *
+     * Delete All Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAll'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAllAsync($list_id, string $contentType = self::contentTypes['removeAll'][0])
+    {
+        return $this->removeAllAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAllAsyncWithHttpInfo
+     *
+     * Delete All Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAll'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAllAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['removeAll'][0])
+    {
+        $returnType = '';
+        $request = $this->removeAllRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeAll'
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeAll'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeAllRequest($list_id, string $contentType = self::contentTypes['removeAll'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling removeAll'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeFolder
+     *
+     * Deletes a folder
+     *
+     * @param  string $folder_id The ID of the folder to delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeFolder'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeFolder($folder_id, string $contentType = self::contentTypes['removeFolder'][0])
+    {
+        $this->removeFolderWithHttpInfo($folder_id, $contentType);
+    }
+
+    /**
+     * Operation removeFolderWithHttpInfo
+     *
+     * Deletes a folder
+     *
+     * @param  string $folder_id The ID of the folder to delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeFolder'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeFolderWithHttpInfo($folder_id, string $contentType = self::contentTypes['removeFolder'][0])
+    {
+        $request = $this->removeFolderRequest($folder_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeFolderAsync
+     *
+     * Deletes a folder
+     *
+     * @param  string $folder_id The ID of the folder to delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeFolderAsync($folder_id, string $contentType = self::contentTypes['removeFolder'][0])
+    {
+        return $this->removeFolderAsyncWithHttpInfo($folder_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeFolderAsyncWithHttpInfo
+     *
+     * Deletes a folder
+     *
+     * @param  string $folder_id The ID of the folder to delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeFolderAsyncWithHttpInfo($folder_id, string $contentType = self::contentTypes['removeFolder'][0])
+    {
+        $returnType = '';
+        $request = $this->removeFolderRequest($folder_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeFolder'
+     *
+     * @param  string $folder_id The ID of the folder to delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeFolderRequest($folder_id, string $contentType = self::contentTypes['removeFolder'][0])
+    {
+
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling removeFolder'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/folders/{folderId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'folderId' . '}',
+                ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeMembers
+     *
+     * Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembers'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function removeMembers($list_id, $request_body, string $contentType = self::contentTypes['removeMembers'][0])
+    {
+        list($response) = $this->removeMembersWithHttpInfo($list_id, $request_body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeMembersWithHttpInfo
+     *
+     * Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembers'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeMembersWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['removeMembers'][0])
+    {
+        $request = $this->removeMembersRequest($list_id, $request_body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeMembersAsync
+     *
+     * Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeMembersAsync($list_id, $request_body, string $contentType = self::contentTypes['removeMembers'][0])
+    {
+        return $this->removeMembersAsyncWithHttpInfo($list_id, $request_body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeMembersAsyncWithHttpInfo
+     *
+     * Remove Records from a List
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeMembersAsyncWithHttpInfo($list_id, $request_body, string $contentType = self::contentTypes['removeMembers'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\MembershipsUpdateResponse';
+        $request = $this->removeMembersRequest($list_id, $request_body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeMembers'
+     *
+     * @param  string $list_id The **ILS ID** of the &#x60;MANUAL&#x60; or &#x60;SNAPSHOT&#x60; list. (required)
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeMembersRequest($list_id, $request_body, string $contentType = self::contentTypes['removeMembers'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling removeMembers'
+            );
+        }
+
+        // verify the required parameter 'request_body' is set
+        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_body when calling removeMembers'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/memberships/remove';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($request_body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation rename
+     *
+     * Rename a folder
+     *
+     * @param  string $folder_id The ID of the folder to rename (required)
+     * @param  string|null $new_folder_name The new name of the folder. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function rename($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    {
+        list($response) = $this->renameWithHttpInfo($folder_id, $new_folder_name, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation renameWithHttpInfo
+     *
+     * Rename a folder
+     *
+     * @param  string $folder_id The ID of the folder to rename (required)
+     * @param  string|null $new_folder_name The new name of the folder. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function renameWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    {
+        $request = $this->renameRequest($folder_id, $new_folder_name, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation renameAsync
+     *
+     * Rename a folder
+     *
+     * @param  string $folder_id The ID of the folder to rename (required)
+     * @param  string|null $new_folder_name The new name of the folder. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function renameAsync($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    {
+        return $this->renameAsyncWithHttpInfo($folder_id, $new_folder_name, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation renameAsyncWithHttpInfo
+     *
+     * Rename a folder
+     *
+     * @param  string $folder_id The ID of the folder to rename (required)
+     * @param  string|null $new_folder_name The new name of the folder. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function renameAsyncWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
+        $request = $this->renameRequest($folder_id, $new_folder_name, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'rename'
+     *
+     * @param  string $folder_id The ID of the folder to rename (required)
+     * @param  string|null $new_folder_name The new name of the folder. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function renameRequest($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    {
+
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling rename'
+            );
+        }
+
+
+
+        $resourcePath = '/crm/v3/lists/folders/{folderId}/rename';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $new_folder_name,
+            'newFolderName', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'folderId' . '}',
+                ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation restore
+     *
+     * Restore a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to restore. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restore'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function restore($list_id, string $contentType = self::contentTypes['restore'][0])
+    {
+        $this->restoreWithHttpInfo($list_id, $contentType);
+    }
+
+    /**
+     * Operation restoreWithHttpInfo
+     *
+     * Restore a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to restore. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restore'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function restoreWithHttpInfo($list_id, string $contentType = self::contentTypes['restore'][0])
+    {
+        $request = $this->restoreRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation restoreAsync
+     *
+     * Restore a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to restore. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restore'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreAsync($list_id, string $contentType = self::contentTypes['restore'][0])
+    {
+        return $this->restoreAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation restoreAsyncWithHttpInfo
+     *
+     * Restore a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to restore. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restore'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['restore'][0])
+    {
+        $returnType = '';
+        $request = $this->restoreRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'restore'
+     *
+     * @param  string $list_id The **ILS ID** of the list to restore. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restore'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function restoreRequest($list_id, string $contentType = self::contentTypes['restore'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling restore'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/restore';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation scheduleConversion
+     *
+     * Schedule or update the conversion of a list to static
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time public_list_conversion_time (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleConversion'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function scheduleConversion($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['scheduleConversion'][0])
+    {
+        list($response) = $this->scheduleConversionWithHttpInfo($list_id, $public_list_conversion_time, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation scheduleConversionWithHttpInfo
+     *
+     * Schedule or update the conversion of a list to static
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleConversion'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function scheduleConversionWithHttpInfo($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['scheduleConversion'][0])
+    {
+        $request = $this->scheduleConversionRequest($list_id, $public_list_conversion_time, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation scheduleConversionAsync
+     *
+     * Schedule or update the conversion of a list to static
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function scheduleConversionAsync($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['scheduleConversion'][0])
+    {
+        return $this->scheduleConversionAsyncWithHttpInfo($list_id, $public_list_conversion_time, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation scheduleConversionAsyncWithHttpInfo
+     *
+     * Schedule or update the conversion of a list to static
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function scheduleConversionAsyncWithHttpInfo($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['scheduleConversion'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicListConversionResponse';
+        $request = $this->scheduleConversionRequest($list_id, $public_list_conversion_time, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'scheduleConversion'
+     *
+     * @param  string $list_id The ID of the list to schedule the conversion for. (required)
+     * @param  \HubSpot\Client\Crm\Lists\Model\PublicListConversionTime $public_list_conversion_time (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function scheduleConversionRequest($list_id, $public_list_conversion_time, string $contentType = self::contentTypes['scheduleConversion'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling scheduleConversion'
+            );
+        }
+
+        // verify the required parameter 'public_list_conversion_time' is set
+        if ($public_list_conversion_time === null || (is_array($public_list_conversion_time) && count($public_list_conversion_time) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $public_list_conversion_time when calling scheduleConversion'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}/schedule-conversion';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($public_list_conversion_time)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($public_list_conversion_time), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $public_list_conversion_time;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation translateLegacyListIdToListId
+     *
+     * Translate Legacy List Id to Modern List Id
+     *
+     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListId'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function translateLegacyListIdToListId($legacy_list_id = null, string $contentType = self::contentTypes['translateLegacyListIdToListId'][0])
+    {
+        list($response) = $this->translateLegacyListIdToListIdWithHttpInfo($legacy_list_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdWithHttpInfo
+     *
+     * Translate Legacy List Id to Modern List Id
+     *
+     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListId'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function translateLegacyListIdToListIdWithHttpInfo($legacy_list_id = null, string $contentType = self::contentTypes['translateLegacyListIdToListId'][0])
+    {
+        $request = $this->translateLegacyListIdToListIdRequest($legacy_list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdAsync
+     *
+     * Translate Legacy List Id to Modern List Id
+     *
+     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function translateLegacyListIdToListIdAsync($legacy_list_id = null, string $contentType = self::contentTypes['translateLegacyListIdToListId'][0])
+    {
+        return $this->translateLegacyListIdToListIdAsyncWithHttpInfo($legacy_list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdAsyncWithHttpInfo
+     *
+     * Translate Legacy List Id to Modern List Id
+     *
+     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function translateLegacyListIdToListIdAsyncWithHttpInfo($legacy_list_id = null, string $contentType = self::contentTypes['translateLegacyListIdToListId'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicMigrationMapping';
+        $request = $this->translateLegacyListIdToListIdRequest($legacy_list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'translateLegacyListIdToListId'
+     *
+     * @param  string|null $legacy_list_id The legacy list id from lists v1 API. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function translateLegacyListIdToListIdRequest($legacy_list_id = null, string $contentType = self::contentTypes['translateLegacyListIdToListId'][0])
+    {
+
+
+
+        $resourcePath = '/crm/v3/lists/idmapping';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $legacy_list_id,
+            'legacyListId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdBatch
+     *
+     * Translate Legacy List Id to Modern List Id in Batch
+     *
+     * @param  string[] $request_body request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListIdBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error
+     */
+    public function translateLegacyListIdToListIdBatch($request_body, string $contentType = self::contentTypes['translateLegacyListIdToListIdBatch'][0])
+    {
+        list($response) = $this->translateLegacyListIdToListIdBatchWithHttpInfo($request_body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdBatchWithHttpInfo
+     *
+     * Translate Legacy List Id to Modern List Id in Batch
+     *
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListIdBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function translateLegacyListIdToListIdBatchWithHttpInfo($request_body, string $contentType = self::contentTypes['translateLegacyListIdToListIdBatch'][0])
+    {
+        $request = $this->translateLegacyListIdToListIdBatchRequest($request_body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdBatchAsync
+     *
+     * Translate Legacy List Id to Modern List Id in Batch
+     *
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListIdBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function translateLegacyListIdToListIdBatchAsync($request_body, string $contentType = self::contentTypes['translateLegacyListIdToListIdBatch'][0])
+    {
+        return $this->translateLegacyListIdToListIdBatchAsyncWithHttpInfo($request_body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation translateLegacyListIdToListIdBatchAsyncWithHttpInfo
+     *
+     * Translate Legacy List Id to Modern List Id in Batch
+     *
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListIdBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function translateLegacyListIdToListIdBatchAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['translateLegacyListIdToListIdBatch'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Lists\Model\PublicBatchMigrationMapping';
+        $request = $this->translateLegacyListIdToListIdBatchRequest($request_body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'translateLegacyListIdToListIdBatch'
+     *
+     * @param  string[] $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['translateLegacyListIdToListIdBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function translateLegacyListIdToListIdBatchRequest($request_body, string $contentType = self::contentTypes['translateLegacyListIdToListIdBatch'][0])
+    {
+
+        // verify the required parameter 'request_body' is set
+        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_body when calling translateLegacyListIdToListIdBatch'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/idmapping';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($request_body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($request_body), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateListFilters
      *
      * Update List Filter Definition
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  \HubSpot\Client\Crm\Lists\Model\ListFilterUpdateRequest $list_filter_update_request list_filter_update_request (required)
      * @param  bool|null $enroll_objects_in_workflows A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListFilters'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateListFilters'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsListIdUpdateListFilters($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListFilters'][0])
+    public function updateListFilters($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['updateListFilters'][0])
     {
-        list($response) = $this->crmV3ListsListIdUpdateListFiltersWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType);
+        list($response) = $this->updateListFiltersWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListFiltersWithHttpInfo
+     * Operation updateListFiltersWithHttpInfo
      *
      * Update List Filter Definition
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  \HubSpot\Client\Crm\Lists\Model\ListFilterUpdateRequest $list_filter_update_request (required)
      * @param  bool|null $enroll_objects_in_workflows A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListFilters'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateListFilters'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsListIdUpdateListFiltersWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListFilters'][0])
+    public function updateListFiltersWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['updateListFilters'][0])
     {
-        $request = $this->crmV3ListsListIdUpdateListFiltersRequest($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType);
+        $request = $this->updateListFiltersRequest($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6530,21 +7664,21 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListFiltersAsync
+     * Operation updateListFiltersAsync
      *
      * Update List Filter Definition
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  \HubSpot\Client\Crm\Lists\Model\ListFilterUpdateRequest $list_filter_update_request (required)
      * @param  bool|null $enroll_objects_in_workflows A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListFilters'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateListFilters'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdUpdateListFiltersAsync($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListFilters'][0])
+    public function updateListFiltersAsync($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['updateListFilters'][0])
     {
-        return $this->crmV3ListsListIdUpdateListFiltersAsyncWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType)
+        return $this->updateListFiltersAsyncWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6553,22 +7687,22 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListFiltersAsyncWithHttpInfo
+     * Operation updateListFiltersAsyncWithHttpInfo
      *
      * Update List Filter Definition
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  \HubSpot\Client\Crm\Lists\Model\ListFilterUpdateRequest $list_filter_update_request (required)
      * @param  bool|null $enroll_objects_in_workflows A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListFilters'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateListFilters'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdUpdateListFiltersAsyncWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListFilters'][0])
+    public function updateListFiltersAsyncWithHttpInfo($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['updateListFilters'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListUpdateResponse';
-        $request = $this->crmV3ListsListIdUpdateListFiltersRequest($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType);
+        $request = $this->updateListFiltersRequest($list_id, $list_filter_update_request, $enroll_objects_in_workflows, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6607,30 +7741,30 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsListIdUpdateListFilters'
+     * Create request for operation 'updateListFilters'
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  \HubSpot\Client\Crm\Lists\Model\ListFilterUpdateRequest $list_filter_update_request (required)
      * @param  bool|null $enroll_objects_in_workflows A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListFilters'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateListFilters'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsListIdUpdateListFiltersRequest($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListFilters'][0])
+    public function updateListFiltersRequest($list_id, $list_filter_update_request, $enroll_objects_in_workflows = false, string $contentType = self::contentTypes['updateListFilters'][0])
     {
 
         // verify the required parameter 'list_id' is set
         if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdUpdateListFilters'
+                'Missing the required parameter $list_id when calling updateListFilters'
             );
         }
 
         // verify the required parameter 'list_filter_update_request' is set
         if ($list_filter_update_request === null || (is_array($list_filter_update_request) && count($list_filter_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_filter_update_request when calling crmV3ListsListIdUpdateListFilters'
+                'Missing the required parameter $list_filter_update_request when calling updateListFilters'
             );
         }
 
@@ -6729,42 +7863,42 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListName
+     * Operation updateName
      *
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsListIdUpdateListName($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListName'][0])
+    public function updateName($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
     {
-        list($response) = $this->crmV3ListsListIdUpdateListNameWithHttpInfo($list_id, $include_filters, $list_name, $contentType);
+        list($response) = $this->updateNameWithHttpInfo($list_id, $include_filters, $list_name, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListNameWithHttpInfo
+     * Operation updateNameWithHttpInfo
      *
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListUpdateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsListIdUpdateListNameWithHttpInfo($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListName'][0])
+    public function updateNameWithHttpInfo($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
     {
-        $request = $this->crmV3ListsListIdUpdateListNameRequest($list_id, $include_filters, $list_name, $contentType);
+        $request = $this->updateNameRequest($list_id, $include_filters, $list_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6850,21 +7984,21 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListNameAsync
+     * Operation updateNameAsync
      *
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdUpdateListNameAsync($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListName'][0])
+    public function updateNameAsync($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
     {
-        return $this->crmV3ListsListIdUpdateListNameAsyncWithHttpInfo($list_id, $include_filters, $list_name, $contentType)
+        return $this->updateNameAsyncWithHttpInfo($list_id, $include_filters, $list_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6873,22 +8007,22 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ListsListIdUpdateListNameAsyncWithHttpInfo
+     * Operation updateNameAsyncWithHttpInfo
      *
      * Update List Name
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsListIdUpdateListNameAsyncWithHttpInfo($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListName'][0])
+    public function updateNameAsyncWithHttpInfo($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListUpdateResponse';
-        $request = $this->crmV3ListsListIdUpdateListNameRequest($list_id, $include_filters, $list_name, $contentType);
+        $request = $this->updateNameRequest($list_id, $include_filters, $list_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6927,23 +8061,23 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsListIdUpdateListName'
+     * Create request for operation 'updateName'
      *
      * @param  string $list_id The **ILS ID** of the list to update. (required)
      * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
      * @param  string|null $list_name The name to update the list to. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListIdUpdateListName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsListIdUpdateListNameRequest($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['crmV3ListsListIdUpdateListName'][0])
+    public function updateNameRequest($list_id, $include_filters = false, $list_name = null, string $contentType = self::contentTypes['updateName'][0])
     {
 
         // verify the required parameter 'list_id' is set
         if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListIdUpdateListName'
+                'Missing the required parameter $list_id when calling updateName'
             );
         }
 
@@ -7038,1140 +8172,6 @@ class BasicApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsListId_0
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function crmV3ListsListId_0($list_id, string $contentType = self::contentTypes['crmV3ListsListId_0'][0])
-    {
-        $this->crmV3ListsListId_0WithHttpInfo($list_id, $contentType);
-    }
-
-    /**
-     * Operation crmV3ListsListId_0WithHttpInfo
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsListId_0WithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListId_0'][0])
-    {
-        $request = $this->crmV3ListsListId_0Request($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsListId_0Async
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListId_0Async($list_id, string $contentType = self::contentTypes['crmV3ListsListId_0'][0])
-    {
-        return $this->crmV3ListsListId_0AsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsListId_0AsyncWithHttpInfo
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsListId_0AsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['crmV3ListsListId_0'][0])
-    {
-        $returnType = '';
-        $request = $this->crmV3ListsListId_0Request($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsListId_0'
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsListId_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsListId_0Request($list_id, string $contentType = self::contentTypes['crmV3ListsListId_0'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling crmV3ListsListId_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsObjectTypeIdObjectTypeIdNameListName
-     *
-     * Retrieve List by Name
-     *
-     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
-     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\ListFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsObjectTypeIdObjectTypeIdNameListName($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'][0])
-    {
-        list($response) = $this->crmV3ListsObjectTypeIdObjectTypeIdNameListNameWithHttpInfo($list_name, $object_type_id, $include_filters, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsObjectTypeIdObjectTypeIdNameListNameWithHttpInfo
-     *
-     * Retrieve List by Name
-     *
-     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
-     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\ListFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsObjectTypeIdObjectTypeIdNameListNameWithHttpInfo($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'][0])
-    {
-        $request = $this->crmV3ListsObjectTypeIdObjectTypeIdNameListNameRequest($list_name, $object_type_id, $include_filters, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsObjectTypeIdObjectTypeIdNameListNameAsync
-     *
-     * Retrieve List by Name
-     *
-     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
-     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsObjectTypeIdObjectTypeIdNameListNameAsync($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'][0])
-    {
-        return $this->crmV3ListsObjectTypeIdObjectTypeIdNameListNameAsyncWithHttpInfo($list_name, $object_type_id, $include_filters, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsObjectTypeIdObjectTypeIdNameListNameAsyncWithHttpInfo
-     *
-     * Retrieve List by Name
-     *
-     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
-     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsObjectTypeIdObjectTypeIdNameListNameAsyncWithHttpInfo($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFetchResponse';
-        $request = $this->crmV3ListsObjectTypeIdObjectTypeIdNameListNameRequest($list_name, $object_type_id, $include_filters, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsObjectTypeIdObjectTypeIdNameListName'
-     *
-     * @param  string $list_name The name of the list to fetch. This is **not** case sensitive. (required)
-     * @param  string $object_type_id The object type ID of the object types stored by the list to fetch. For example, &#x60;0-1&#x60; for a &#x60;CONTACT&#x60; list. (required)
-     * @param  bool|null $include_filters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response. (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsObjectTypeIdObjectTypeIdNameListNameRequest($list_name, $object_type_id, $include_filters = false, string $contentType = self::contentTypes['crmV3ListsObjectTypeIdObjectTypeIdNameListName'][0])
-    {
-
-        // verify the required parameter 'list_name' is set
-        if ($list_name === null || (is_array($list_name) && count($list_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_name when calling crmV3ListsObjectTypeIdObjectTypeIdNameListName'
-            );
-        }
-
-        // verify the required parameter 'object_type_id' is set
-        if ($object_type_id === null || (is_array($object_type_id) && count($object_type_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type_id when calling crmV3ListsObjectTypeIdObjectTypeIdNameListName'
-            );
-        }
-
-
-
-        $resourcePath = '/crm/v3/lists/object-type-id/{objectTypeId}/name/{listName}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $include_filters,
-            'includeFilters', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($list_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listName' . '}',
-                ObjectSerializer::toPathValue($list_name),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($object_type_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectTypeId' . '}',
-                ObjectSerializer::toPathValue($object_type_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ListsRecordsObjectTypeIdRecordIdMemberships
-     *
-     * Get lists record is member of
-     *
-     * @param  string $object_type_id Object type id of the record (required)
-     * @param  string $record_id Id of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3ListsRecordsObjectTypeIdRecordIdMemberships($object_type_id, $record_id, string $contentType = self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'][0])
-    {
-        list($response) = $this->crmV3ListsRecordsObjectTypeIdRecordIdMembershipsWithHttpInfo($object_type_id, $record_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ListsRecordsObjectTypeIdRecordIdMembershipsWithHttpInfo
-     *
-     * Get lists record is member of
-     *
-     * @param  string $object_type_id Object type id of the record (required)
-     * @param  string $record_id Id of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ListsRecordsObjectTypeIdRecordIdMembershipsWithHttpInfo($object_type_id, $record_id, string $contentType = self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'][0])
-    {
-        $request = $this->crmV3ListsRecordsObjectTypeIdRecordIdMembershipsRequest($object_type_id, $record_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ListsRecordsObjectTypeIdRecordIdMembershipsAsync
-     *
-     * Get lists record is member of
-     *
-     * @param  string $object_type_id Object type id of the record (required)
-     * @param  string $record_id Id of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsRecordsObjectTypeIdRecordIdMembershipsAsync($object_type_id, $record_id, string $contentType = self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'][0])
-    {
-        return $this->crmV3ListsRecordsObjectTypeIdRecordIdMembershipsAsyncWithHttpInfo($object_type_id, $record_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ListsRecordsObjectTypeIdRecordIdMembershipsAsyncWithHttpInfo
-     *
-     * Get lists record is member of
-     *
-     * @param  string $object_type_id Object type id of the record (required)
-     * @param  string $record_id Id of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ListsRecordsObjectTypeIdRecordIdMembershipsAsyncWithHttpInfo($object_type_id, $record_id, string $contentType = self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\ApiCollectionResponseRecordListMembership';
-        $request = $this->crmV3ListsRecordsObjectTypeIdRecordIdMembershipsRequest($object_type_id, $record_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3ListsRecordsObjectTypeIdRecordIdMemberships'
-     *
-     * @param  string $object_type_id Object type id of the record (required)
-     * @param  string $record_id Id of the record (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ListsRecordsObjectTypeIdRecordIdMembershipsRequest($object_type_id, $record_id, string $contentType = self::contentTypes['crmV3ListsRecordsObjectTypeIdRecordIdMemberships'][0])
-    {
-
-        // verify the required parameter 'object_type_id' is set
-        if ($object_type_id === null || (is_array($object_type_id) && count($object_type_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type_id when calling crmV3ListsRecordsObjectTypeIdRecordIdMemberships'
-            );
-        }
-
-        // verify the required parameter 'record_id' is set
-        if ($record_id === null || (is_array($record_id) && count($record_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $record_id when calling crmV3ListsRecordsObjectTypeIdRecordIdMemberships'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/records/{objectTypeId}/{recordId}/memberships';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_type_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectTypeId' . '}',
-                ObjectSerializer::toPathValue($object_type_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($record_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'recordId' . '}',
-                ObjectSerializer::toPathValue($record_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3Lists_0
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request list_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Lists\Model\ListCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error
-     */
-    public function crmV3Lists_0($list_create_request, string $contentType = self::contentTypes['crmV3Lists_0'][0])
-    {
-        list($response) = $this->crmV3Lists_0WithHttpInfo($list_create_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3Lists_0WithHttpInfo
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Lists\Model\ListCreateResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3Lists_0WithHttpInfo($list_create_request, string $contentType = self::contentTypes['crmV3Lists_0'][0])
-    {
-        $request = $this->crmV3Lists_0Request($list_create_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3Lists_0Async
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3Lists_0Async($list_create_request, string $contentType = self::contentTypes['crmV3Lists_0'][0])
-    {
-        return $this->crmV3Lists_0AsyncWithHttpInfo($list_create_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3Lists_0AsyncWithHttpInfo
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3Lists_0AsyncWithHttpInfo($list_create_request, string $contentType = self::contentTypes['crmV3Lists_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Lists\Model\ListCreateResponse';
-        $request = $this->crmV3Lists_0Request($list_create_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3Lists_0'
-     *
-     * @param  \HubSpot\Client\Crm\Lists\Model\ListCreateRequest $list_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Lists_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3Lists_0Request($list_create_request, string $contentType = self::contentTypes['crmV3Lists_0'][0])
-    {
-
-        // verify the required parameter 'list_create_request' is set
-        if ($list_create_request === null || (is_array($list_create_request) && count($list_create_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_create_request when calling crmV3Lists_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($list_create_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($list_create_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $list_create_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
